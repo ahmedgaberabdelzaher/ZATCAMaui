@@ -33,65 +33,59 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             try
             {
-                if (!string.IsNullOrEmpty(viewModel.NewPasswordEntry) && !string.IsNullOrEmpty(viewModel.ConfirmPasswordEntry))
+                /*if (!string.IsNullOrEmpty(viewModel.CurrentPasswordEntry) && !string.IsNullOrEmpty(viewModel.NewPasswordEntry))
+                {*/
+                string lang = "EN";
+                if (App.IsArabic == true) { lang = "AR"; }
+                WebServiceManager.ErrorMessage = string.Empty;
+                // Call Update Mobile Number API + Go Success Page
+                bool callAPIFlag = TaxpayerProfilePasswordUpdateValidation(viewModel.CurrentPasswordEntry,
+                                                                            viewModel.NewPasswordEntry,
+                                                                            viewModel.ConfirmPasswordEntry);
+                if (callAPIFlag)
                 {
-                    string lang = "EN";
-                    if (App.IsArabic == true) { lang = "AR"; }
-                    WebServiceManager.ErrorMessage = string.Empty;
-                    // Call Update Mobile Number API + Go Success Page
-                    bool callAPIFlag = TaxpayerProfilePasswordUpdateValidation(viewModel.CurrentPasswordEntry,
-                                                                                viewModel.NewPasswordEntry,
-                                                                                viewModel.ConfirmPasswordEntry);
-                    if (callAPIFlag)
+
+                    bool APIResponse = await WebServiceManager.GAZTValidateAndChangePassword(lang,
+                                                                App.TP.Tin,
+                                                                viewModel.CurrentPasswordEntry,
+                                                                viewModel.NewPasswordEntry);
+                    if (APIResponse)
                     {
+                        // * Navigating to Verification Screen
+                        this.CloseAllPopup();
 
-                        bool APIResponse = await WebServiceManager.GAZTValidateAndChangePassword(lang,
-                                                                    App.TP.Tin,
-                                                                    viewModel.CurrentPasswordEntry,
-                                                                    viewModel.NewPasswordEntry);
-                        //bool PWDSuccess = await viewModel.ChangePassword();
-                        //System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
-
-                        if (APIResponse)
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            // * Navigating to Verification Screen
-                            this.CloseAllPopup();
-
-                            Device.BeginInvokeOnMainThread(() =>
+                            viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
+                        });
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
+                                await viewModel._dialogService.ShowMessageBox(WebServiceManager.ErrorMessage, AppResources.Information);
                             });
                         }
                         else
                         {
-                            if (!string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                            String OnInvalidPassword = AppResources.InvalidPassword;
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await viewModel._dialogService.ShowMessageBox(WebServiceManager.ErrorMessage, AppResources.Information);
-                                });
-                            }
-                            else
-                            {
-                                String OnInvalidPassword = AppResources.InvalidPassword;
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await viewModel._dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
-                                });
-                            }
+                                await viewModel._dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
+                            });
                         }
-
-
                     }
                 }
+                /*}
                 else
                 {
-
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
                     });
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -106,21 +100,17 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         // * Password Validations
         private bool TaxpayerProfilePasswordUpdateValidation(string CurrentPassword, string NewPassword, string ConfirmPassword)
         {
-            //CurrentMobileNumber = Regex.Replace(CurrentMobileNumber, @"\s+", "");
-            //NewMobileNumber = Regex.Replace(NewMobileNumber, @"\s+", "");
-
             string validationError = VerifyPasswords(CurrentPassword, NewPassword, ConfirmPassword);
 
             if (validationError == string.Empty)
-            {
                 return true;
-            }
             else
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
                     await viewModel._dialogService.ShowMessageBox(validationError, AppResources.Information);
                 });
+
                 return false;
             }
         }
@@ -129,25 +119,19 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
 
-            if (CurrentPassword == null || NewPassword == null
-                                        || ConfirmPassword == null
-                                        || CurrentPassword == string.Empty
-                                        || NewPassword == string.Empty
-                                        || ConfirmPassword == string.Empty)
-                return AppResources.PasswordValidationMesseg;
+            if (string.IsNullOrEmpty(CurrentPassword))
+                return AppResources.TPOldPasswordEmpty;
+            else if (string.IsNullOrEmpty(NewPassword))
+                return AppResources.TPNewPasswordEmpty;
             else if (!compareStringFlag)
                 return AppResources.NewPasswordandRetypePasswordNotMatch;
             else
             {
                 bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
                 if (passwordValidationRegXFlag)
-                {
                     return string.Empty;
-                }
                 else
-                {
-                    return AppResources.InvalidPassword;
-                }
+                    return AppResources.PasswordValidationMesseg;
             }
         }
 

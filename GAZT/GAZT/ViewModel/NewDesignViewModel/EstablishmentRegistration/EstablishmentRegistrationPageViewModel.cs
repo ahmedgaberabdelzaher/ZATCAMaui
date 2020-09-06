@@ -22,9 +22,10 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
-    public class EstablishmentRegistrationPageViewModel : BaseViewModel, INotifyPropertyChanged
+    public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
+        //public int DefaultMonth;
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private OutletNumber number;
@@ -42,22 +43,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
                         SelectedTabText = AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.PassportDetails:
                         SelectedTabText = AppResources.ESTPassportDetailsTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.Outlets:
                         SelectedTabText = AppResources.ESTOutletsTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.FinancialDetail:
                         SelectedTabText = AppResources.VATRFinancialDetails;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.Declaration:
                         SelectedTabText = AppResources.ZVatSummary;
+                        NxtButtonLabel = AppResources.Submit;
                         break;
                     case EstablishmentRegistrationTabsEnum.RegistrationType:
                     default:
                         SelectedTabText = AppResources.ESTRegTaxTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                 }
                 fetchTabDataAndBind(_currentTab);
@@ -101,6 +108,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _selectedTabText = value;
                 RaisePropertyChanged(nameof(SelectedTabText));
+            }
+        }
+
+        private string _nxtButtonLabel = AppResources.ZZNext;
+        public string NxtButtonLabel
+        {
+            get => _nxtButtonLabel;
+            set
+            {
+                _nxtButtonLabel = value;
+                RaisePropertyChanged(nameof(NxtButtonLabel));
             }
         }
 
@@ -496,7 +514,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedDOB = "26/08/2020";
+        //private ObservableCollection<object> _todayDate;
+        //public ObservableCollection<object> TodayDate
+        //{
+        //    get
+        //    {
+        //        return _todayDate;
+        //    }
+        //    set
+        //    {
+        //        _todayDate = value;
+        //        RaisePropertyChanged("TodayDate");
+        //    }
+        //}
+
+        private string _selectedDOB = string.Empty;
         public string SelectedDOB
         {
             get => _selectedDOB;
@@ -932,11 +964,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
 
-
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                _canExecute = value;
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
         #region Commands
 
 
-        public ICommand OnNextButtonClick { get; set; }
+        public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
 
@@ -990,7 +1031,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ICommand OnPassportAttachmentTapped { get; set; }
 
         public ICommand TappedOnAttachmentInformationIcon { get; set; }
-        
+
         public ICommand OnPassportCloseTapped { get; set; }
 
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
@@ -1022,7 +1063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
-            OnNextButtonClick = new Command(() => navigateToNext());
+            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
 
             #region Registration Tab Variable initialization
@@ -1099,7 +1140,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             TappedOnAttachmentInformationIcon = new Command(() =>
             ShowValidationPopup(
-                AppResources.ZFilesizeshouldnotbemorethan5MB
+                AppResources.ESTAttachmentSizeNotfication
                 + System.Environment.NewLine
                 + AppResources.ZZChooseonlyfilewithextensionForZAKAT
                 + System.Environment.NewLine + AppResources.ZMaximumnoof5attachmentscanbeuploaded
@@ -1144,7 +1185,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Summary Tabs variable initialization
             OnExpendGridViewClick = new Command((_enum) => OnExpandCollapseGridViewClick(_enum));
-            OnEditPageViewClick = new Command((_enum) => {
+            OnEditPageViewClick = new Command((_enum) =>
+            {
                 currentTab = (EstablishmentRegistrationTabsEnum)_enum;
             });
             OutletList.Clear();
@@ -1161,10 +1203,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (actionName == AppResources.Save)
                     {
                         IsLoading = true;
-                        taxPayerDetails.Draftfg = "X";
-                        taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                        taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
-                        IsLoading = false;
+                        try
+                        {
+                            taxPayerDetails.Draftfg = "X";
+                            taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                            var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.StackTrace);
+                            if (e is HTTPBadRequestException)
+                            {
+                                await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                            }
+                        }
+                        finally
+                        {
+                            IsLoading = false;
+                        }
                     }
                     if (actionName == AppResources.ZZVoid)
                     {
@@ -1175,17 +1231,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 OnVoidSelect = async (notes) =>
                                 {
                                     IsLoading = true;
-                                    OffNotes note = new OffNotes()
+                                    try
                                     {
-                                        Tdline = notes,
-                                        ByGpartz = App.LoginDataRetrieved.TIN
-                                    };
-                                    taxPayerDetails?.off_notesSet.results?.Clear();
-                                    taxPayerDetails?.off_notesSet.results?.Add(note);
-                                    taxPayerDetails.Operationx = "04";
-                                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
-                                    IsLoading = false;
+                                        OffNotes note = new OffNotes()
+                                        {
+                                            Tdline = notes,
+                                            ByGpartz = App.LoginDataRetrieved.TIN
+                                        };
+                                        taxPayerDetails?.off_notesSet.results?.Clear();
+                                        taxPayerDetails?.off_notesSet.results?.Add(note);
+                                        taxPayerDetails.Operationx = "04";
+                                        taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                                        var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                        navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Console.WriteLine(e.StackTrace);
+                                        if (e is HTTPBadRequestException)
+                                        {
+                                            await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                                        }
+                                    }
+                                    finally
+                                    {
+                                        IsLoading = false;
+                                    }
                                 }
                             };
                             await PopupNavigation.Instance.PushAsync(voidNotePop);
@@ -1200,7 +1271,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        public async void OnAppearing()
+        public void OnAppearing()
         {
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
@@ -1211,11 +1282,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        //public async Task SetDefaultDate()
+        //{
+        //    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+        //    //Select today dates
+
+        //    if (DateTime.Now.Date.Day < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Day);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Day.ToString());
+        //    if (DateTime.Now.Date.Month < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Month);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Month.ToString());
+        //    todaycollection.Add(DateTime.Now.Date.Year.ToString());
+        //    TodayDate = todaycollection;
+        //    DefaultMonth = DateTime.Now.Date.Month;
+        //}
+
         private async void navigateToNext()
         {
+            CanExecute = false;
             try
             {
-                var failedMesage = "Failed to push the data to server";
+                var failedMesage = AppResources.Somethingwentwrong;
                 if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
                     if (FormValidation(currentTab))
@@ -1265,15 +1355,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                   
-                        if (await PushDatatoServer(currentTab))
-                        {
-                            currentTab = EstablishmentRegistrationTabsEnum.Declaration;
-                        }
-                        else
-                        {
-                            ShowValidationPopup(failedMesage);
-                        }
+
+                    if (await PushDatatoServer(currentTab))
+                    {
+                        currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                    }
+                    else
+                    {
+                        ShowValidationPopup(failedMesage);
+                    }
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
@@ -1318,6 +1408,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
 
             }
+            finally
+            {
+                CanExecute = true;
+            }
         }
         private void navigateToPre()
         {
@@ -1345,7 +1439,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _navigationService.GoBack();
             }
-          
+
         }
 
 
@@ -1562,7 +1656,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             //if (ReportingBranchList == null || ReportingBranchList?.Count == 0)
             //{
-                ReportingBranchList = await WebServiceManager.ESTBranchesDropDown();
+            ReportingBranchList = await WebServiceManager.ESTBranchesDropDown();
             //}
 
         }
@@ -1589,7 +1683,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("Something went wrong");
+                ShowValidationPopup(AppResources.Somethingwentwrong);
             }
             if (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count() == 0)
             {
@@ -1611,7 +1705,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("You can add max 5 attachments only");
+                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
 
         }
@@ -1626,7 +1720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("Something went wrong");
+                ShowValidationPopup(AppResources.Somethingwentwrong);
             }
 
             if (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count() == 0)
@@ -1649,7 +1743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("You can add max 5 attachments only");
+                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
         }
 
@@ -1713,18 +1807,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
                     var attachmentName = fileData.FileName;
-
+                    bool isFileAlreayUploaded = IsFileAlreadyAttached(docType,attachmentName);
                     float sizemb = (attachmentByte.Length / 1024f) / 1024f;
                     decimal attachmentSize = 0;
                     attachmentSize = attachmentSize + (Decimal)sizemb;
-
-                    if (fileData.FileName.Contains("."))
+                    if (!isFileAlreayUploaded)
                     {
-                        string Extention = fileData.FileName.Split('.')[1];//pdf
-                        if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
+                        if (fileData.FileName.Contains("."))
                         {
-                            if (TotalAttachmentSize <= 30)
+                            string Extention = fileData.FileName.Split('.')[1];//pdf
+                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                             {
+
                                 attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
                                 decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 4);
                                 if (Convert.ToDecimal(attachmentSize) <= 10)
@@ -1757,14 +1851,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         attachmentName = string.Empty;
                                         await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
+
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage("File size is with more 10 MB can not be uploaded", AppResources.Information);
                                 }
                             }
-                        }
-                        else
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            else
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            }
                         }
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+
+                            //await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
+                            IsLoading = false;
+                        });
+                    }
+                        
                 }
 
             }
@@ -2115,6 +2225,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
+            //return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2224,7 +2335,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-
+            //return true;
             try
             {
                 IsLoading = true;
@@ -2356,6 +2467,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 ex.ToString();
+                if (ex is HTTPBadRequestException)
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                }
             }
             finally
             {
@@ -2421,6 +2536,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+
+        private bool IsFileAlreadyAttached(string doctype, string FileName)
+        {
+            bool isFileAlreadyAttached = false;
+            if(doctype.Equals("RG16"))//Rent
+            {
+                if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
+                {
+                    for (int i = 0; i < UploadedRentDocumentsList.Count; i++)
+                    {
+                        if (UploadedRentDocumentsList[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+            else if(doctype.Equals("RG19"))//PAssport
+            {
+                if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
+                {
+                    for (int i = 0; i < UploadedPassportDocumentsList.Count; i++)
+                    {
+                        if (UploadedPassportDocumentsList[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+           
+            return isFileAlreadyAttached;
+        }
 
 
         #endregion

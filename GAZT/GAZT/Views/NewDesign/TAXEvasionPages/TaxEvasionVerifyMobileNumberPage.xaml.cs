@@ -80,8 +80,23 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
         }
 
-        void btn_Continue_Clicked(System.Object sender, System.EventArgs e)
+        async void btn_Continue_ClickedAsync(System.Object sender, System.EventArgs e)
         {
+            if (string.IsNullOrEmpty(viewModel.MobileNumber))
+            {
+                StringBuilder Message = new StringBuilder();
+                frmMobile.HasError = true;
+                Message.Append(AppResources.EnterMobileNumber);
+                PopUp popUp = new PopUp();
+                popUp.Message = Message.ToString();
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
+            else
+            {
+                viewModel.IsTimerCancel = true;
+                viewModel.IsResendOTPEnabled = false;
+                await viewModel.sendOTPAsync();
+            }
         }
 
         // * Forgot password : OTP Verification :

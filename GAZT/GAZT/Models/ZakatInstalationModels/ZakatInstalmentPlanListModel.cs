@@ -914,10 +914,58 @@ namespace EGAZT.Models.ZakatInstalmentModels
 
         public D d { get; set; }
 
+    }
 
 
+    public class ZakatRevokeValidateModel
+    {
+        public D d { get; set; }
+        public class __metadata
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
 
+        }
+        public class D
+        {
+            public __metadata __metadata { get; set; }
+            public string Fbnum { get; set; }
+            public bool Valid { get; set; }
+            public bool ValidSms { get; set; }
+            public string Error { get; set; }
 
+        }
+
+    }
+
+    public class ZakatRevokeSendSMSModel
+    {
+        public D d { get; set; }
+        public class __metadata
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
+
+        }
+        public class Results
+        {
+            public __metadata __metadata { get; set; }
+            public string Fbnum { get; set; }
+            public string Error { get; set; }
+            public string Tin { get; set; }
+            public string Code { get; set; }
+            public bool Valid { get; set; }
+            public bool ValidSms { get; set; }
+            public bool ValidEmail { get; set; }
+
+        }
+        public class D
+        {
+            public IList<Results> results { get; set; }
+
+        }
 
 
     }

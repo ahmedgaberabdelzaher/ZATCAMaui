@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:models="clr-namespace:EGAZT.Models"
@@ -24,6 +27,12 @@
              x:Name="ESTRegistrationPage">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
             <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentFinanicalMethodsToVisibilityConverter x:Key="methodToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
@@ -108,7 +117,7 @@
                                 <Label  Style="{StaticResource forLightLabel}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="What is your Nationality?" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDWhatisYourNationality}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -529,6 +538,7 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
+
                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
 
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
@@ -549,6 +559,13 @@
 
                                         </StackLayout>
                                     </border:SfBorder >
+                                    <syncfusion:SfDatePicker x:Name="dobPicker"
+                                                             ShowHeader="False"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+                                                             PickerMode="Dialog"
+                                                             IsOpen="False"
+                                                             DateSelected="dobPicker_DateSelected" />
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
@@ -805,6 +822,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
+
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
@@ -825,6 +843,13 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
+
+                                <syncfusion:SfDatePicker x:Name="PassportIssueDatePicker" IsOpen="False"
+                                                         Format="dd_MMM_yyyy"
+                                                         HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+                                                         ShowHeader="False"  
+                                                         PickerMode="Dialog"
+                                                         DateSelected="PassportIssueDatePicker_DateSelected"/>
                             </StackLayout>
                             <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
                                 <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
@@ -855,6 +880,11 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
+                                <syncfusion:SfDatePicker x:Name="PassportExpiryDatePicker" ShowHeader="False"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
+                                                             PickerMode="Dialog"                                                            
+                                                             DateSelected="PassportExpiryDatePicker_DateSelected"/>
                             </StackLayout>
 
                             <StackLayout x:Name="PassportAttachmentsMainLayout"  Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">
@@ -907,11 +937,13 @@
                                                         <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0"
                                                                             Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
                                                                             HorizontalTextAlignment="Start" />
-                                                        <Image Grid.Column="2" Source="closeGrey.png"  HorizontalOptions="Center" VerticalOptions="Center">
+                                                        <StackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
+                                                        <Image Source="closeGrey.png"  HorizontalOptions="Center" VerticalOptions="Center">
                                                             <Image.GestureRecognizers>
                                                                 <TapGestureRecognizer Tapped="TapPassportDeleteGestureRecognizer_Tapped"/>
                                                             </Image.GestureRecognizers>
                                                         </Image>
+                                                        </StackLayout>
                                                     </Grid>
                                                 </border:SfBorder>
                                             </DataTemplate>
@@ -925,10 +957,10 @@
                 <StackLayout x:Name="OutletsTabMainLayout"
                              Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
                     <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
-                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
+                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
                         <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         <inputLayout:SfTextInputLayout.TrailingView>
-                            <Image Source="search.png"/>
+                            <Image Source="grey_search.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
                     <CollectionView VerticalOptions="StartAndExpand" ItemsSource="{Binding OutletData}" HorizontalOptions="FillAndExpand" SelectionMode="None" Margin="0" VerticalScrollBarVisibility="Never">
@@ -1362,24 +1394,38 @@
                         <ColumnDefinition Width="70*"/>
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image.Source>
+                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Source="arrowLeft.png" Style="{DynamicResource BackButtonArrow}">
+                        <!--<Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
-                        </Image.Source>
+                        </Image.Source>-->
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
                     </Image>
                     <Image Grid.Column="1" Grid.Row="0" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
-                    <Image Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                    
+                    <StackLayout Grid.Column="2" Grid.Row="0">
+                        <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Rotation="90">
+                            <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource NeutralGreay}"/>
+                            <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource NeutralGreay}"/>
+                            <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource NeutralGreay}"/>
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <!-- Need to replace icon-->
+                    <!--
+                    <Image Grid.Column="2" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center">
                         <Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.DotsVertical}"/>
                         </Image.Source>
                         <Image.GestureRecognizers>
-                            <!-- Need to replace icon-->
+                    
                             <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                     </Image>
+                    -->
                 </Grid>
                 <commonView:PageIndicatorView MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
                 <custom:CustomLabel Text="{Binding SelectedTabText}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
@@ -1401,7 +1447,7 @@
                 </ScrollView>
             </StackLayout>
             <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White">
-                <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static ResourceManager:AppResources.ZZNext}" Command="{Binding OnNextButtonClick}" />
+                <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{Binding NxtButtonLabel}" Command="{Binding OnNextButtonClick}" />
             </Grid>
             <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
                Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >

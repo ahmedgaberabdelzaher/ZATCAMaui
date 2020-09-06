@@ -2036,4 +2036,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\individual_32White%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\grey_search%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\grey_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\grey_search%402x.png" />
+  </ItemGroup>
 </Project>

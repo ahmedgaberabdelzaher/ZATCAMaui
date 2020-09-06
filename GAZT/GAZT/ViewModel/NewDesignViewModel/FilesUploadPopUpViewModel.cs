@@ -378,7 +378,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             if (fileData.FileName.Contains("."))
                             {
                                 string Extention = fileData.FileName.Split('.')[1];
-                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
                                 {
                                     if (TotalAttachmentSize <= 300)
                                     {
@@ -601,11 +601,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         else if (IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
-                        }else if(IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
+                        }
+                        else if(IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
-
                         }
+                        else if(IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
+
                         string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, attachment.Doguid, APiMethod);
                         PopToRootPage();
                         if (results == "X")
@@ -692,8 +697,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 try
                 {
-
-
                     string APiMethod = "Z_SAVE_ATTACH_SRV";
 
                     if (IsComeForWhichAttachment == WhichAttachment.VATInstalment)
@@ -708,7 +711,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }
-
                     else if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
                     {
                         APiMethod = "ZDP_INDTAX_ATT_SRV";
@@ -718,6 +720,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }
                     else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                     {
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }

@@ -1203,7 +1203,7 @@
     <value>25% of Disputed Amount</value>
   </data>
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
-    <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt</value>
+    <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>حجم الملف لا يزيد عن 5 ميجا</value>
@@ -3184,7 +3184,7 @@
     <comment>VAT Form Label</comment>
   </data>
   <data name="ZReportStatusClose" xml:space="preserve">
-    <value>مغلق</value>
+    <value>مغلقة</value>
     <comment>Tax Evasion Service</comment>
   </data>
   <data name="ZReportStatusInprogress" xml:space="preserve">
@@ -4359,9 +4359,27 @@
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
   </data>
- 
- <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">     <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>   </data>   <data name="TinDeregistrationDetails" xml:space="preserve">     <value>Registration Details</value>   </data>   <data name="TinDeregistration" xml:space="preserve">     <value>إيقاف الرقم المميز</value>   </data>   <data name="TinDeregistrationReason" xml:space="preserve">     <value>الأسباب</value>   </data>   <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">     <value>إفلاس</value>   </data>   <data name="TinDeregistrationReasonDeath" xml:space="preserve">     <value>Death</value>   </data>   <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">     <value>تصفية</value>   </data> 
- 
+  <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">
+    <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>
+  </data>
+  <data name="TinDeregistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
+  <data name="TinDeregistration" xml:space="preserve">
+    <value>إيقاف الرقم المميز</value>
+  </data>
+  <data name="TinDeregistrationReason" xml:space="preserve">
+    <value>الأسباب</value>
+  </data>
+  <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">
+    <value>إفلاس</value>
+  </data>
+  <data name="TinDeregistrationReasonDeath" xml:space="preserve">
+    <value>Death</value>
+  </data>
+  <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">
+    <value>تصفية</value>
+  </data>
   <data name="TinDeregistrationReasonEstablishmentToCompany" xml:space="preserve">
     <value>Establishment to Company</value>
   </data>
@@ -4446,6 +4464,18 @@
   <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
     <value>نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
+  <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
+    <value>Attachments - Copy of Contract of Sale Agreement</value>
+  </data>
+  <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
+    <value>Attachments - Death Certificate of Individual</value>
+  </data>
+  <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
+    <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
+  </data>
+  <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
+    <value>Attachments - Ministerial Resolution to approve the Acquisition process</value>
+  </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
     <value>تحميل المرفقات</value>
   </data>
@@ -4469,6 +4499,9 @@
   </data>
   <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
     <value>تفاصيل التسجيل</value>
+  </data>
+  <data name="TinDeregistrationCompanyIDCheck" xml:space="preserve">
+    <value>Company ID should start with 7</value>
   </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>إيقاف التسجيل في ضريبة القيمة المضافة</value>
@@ -4582,25 +4615,31 @@
     <value>تأكيد</value>
   </data>
   <data name="VatDeregSuspendedStartDate" xml:space="preserve">
-    <value>بداية فترة الايقاف</value>
+    <value>فترة بداية تعليق الالتزام</value>
   </data>
   <data name="VatDeregSuspendedEndDate" xml:space="preserve">
     <value>نهاية فترة الايقاف</value>
   </data>
   <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
-    <value>فترة الايداع الموقوف</value>
+    <value>فترة تعليق الالتزام</value>
   </data>
   <data name="VatDeregNextFilingPeriod" xml:space="preserve">
-    <value>فترة الايداع التالية</value>
+    <value>فترة تقديم الإقرار القادم</value>
   </data>
   <data name="VatDeregNextFilingDueDate" xml:space="preserve">
-    <value>تاريخ استحقاق الايداع التالي</value>
+    <value>تاريخ الاستحقاق القادم</value>
   </data>
   <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
     <value>يقع تاريخ البدء وتاريخ الانتهاء في نفس الفترة</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
-    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
+    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز).</value>
+  </data>
+  <data name="VATDeregInstructionsAndConditionsFirst" xml:space="preserve">
+    <value>تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.</value>
+  </data>
+  <data name="VATDeregInstructionsAndConditionsSecond" xml:space="preserve">
+    <value>يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
   </data>
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>أوافق على التعليمات والشروط وإكمال الخطوات.</value>
@@ -4950,7 +4989,7 @@
     <value>SADAD Number</value>
   </data>
   <data name="ZakatInstalmetDetails" xml:space="preserve">
-    <value>Display Installment Details</value>
+    <value>عرض تفاصيل القسط</value>
   </data>
   <data name="AllReturns" xml:space="preserve">
     <value>جميع الاقرارات</value>
@@ -5354,7 +5393,7 @@
     <value>معلومات المنشأة</value>
   </data>
   <data name="NDReporterInformation" xml:space="preserve">
-    <value>معلومات المبلغ</value>
+    <value>معلومات المُبلغ</value>
   </data>
   <data name="NDChangeToAccountBasis" xml:space="preserve">
     <value>تغير الى حساب أساسي</value>
@@ -5381,7 +5420,7 @@
     <value> إقرار زكاة</value>
   </data>
   <data name="NDTaxEvasionReport" xml:space="preserve">
-    <value>تقرير التهرب الضريبي</value>
+    <value>الإبلاغ عن التهرب الضريبي</value>
   </data>
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
     <value>تم استلام بلاغ التهرب الضريبي بنجاح</value>
@@ -5423,7 +5462,7 @@
     <value>العودة لصفحة تسجيل الدخول</value>
   </data>
   <data name="NDMyReports" xml:space="preserve">
-    <value>تقاريري</value>
+    <value>بلاغاتي</value>
   </data>
   <data name="NDOpen" xml:space="preserve">
     <value>افتح</value>
@@ -5461,6 +5500,18 @@
   </data>
   <data name="TPUpdatePassword" xml:space="preserve">
     <value>تغيير الرقم السري</value>
+  </data>
+  <data name="TPOldPasswordEmpty" xml:space="preserve">
+    <value>الرجاء ادخال كلمة المرور القديمة</value>
+  </data>
+  <data name="TPNewPasswordEmpty" xml:space="preserve">
+    <value>ادخل كلمة المرور الجديدة</value>
+  </data>
+  <data name="TPNewMobileNumberEmpty" xml:space="preserve">
+    <value>Please enter new mobile number</value>
+  </data>
+  <data name="TPOTPSentToEmail" xml:space="preserve">
+    <value>الرجاء إدخال رمز التحقق المرسل الى بريدك الإلكتروني</value>
   </data>
   <data name="NDAckReceiptForZakat" xml:space="preserve">
     <value>GAZT acknowledges the receipt of your Return of Zakat\Income Tax</value>
@@ -5586,7 +5637,7 @@
     <value>Establishment Account</value>
   </data>
   <data name="NDEstablishments" xml:space="preserve">
-    <value>Establishments</value>
+    <value>المنشآت</value>
   </data>
   <data name="NDFacilityAddress" xml:space="preserve">
     <value>Facility Address</value>
@@ -5595,7 +5646,7 @@
     <value>Facility Branches</value>
   </data>
   <data name="NDIndividuals" xml:space="preserve">
-    <value>Individuals</value>
+    <value>الأفراد</value>
   </data>
   <data name="NDLegalEntity" xml:space="preserve">
     <value>Legal Entity</value>
@@ -5631,12 +5682,12 @@
     <value>طلب او عرض خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatFinancialCrisis" xml:space="preserve">
-    <value>Financial Crisis</value>
+    <value>أزمة مالية- دعم القدرة على تسوية المستحقات</value>
   </data>
- <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
+  <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
     <value>حالة نزاع انتهت لصالح الهيئة العامة للزكاة والدخل</value>
   </data>
- <data name="ZakatOtherReason" xml:space="preserve">
+  <data name="ZakatOtherReason" xml:space="preserve">
     <value>سبب آخر</value>
   </data>
   <data name="ZakatInstructions" xml:space="preserve">
@@ -5662,25 +5713,7 @@
     <value>Cleared Amount</value>
   </data>
   <data name="ZakatDueAmount" xml:space="preserve">
-     <value>مبلغ الفاتورة</value>
-  </data>
-  <data name="ZakatYear" xml:space="preserve">
-    <value>Year</value>
-  </data>
-   <data name="ZakatShortTermInvestment" xml:space="preserve">
-    <value>استثمار قصير المدى</value>
-  </data>
- <data name="ZakatInventory" xml:space="preserve">
-    <value>المخزون</value>
-  </data>
-  <data name="ZakatYearOne" xml:space="preserve">
-    <value>Year 1</value>
-  </data>
-  <data name="ZakatYearTwo" xml:space="preserve">
-    <value>Year 2</value>
-  </data>
-  <data name="ZakatYearThree" xml:space="preserve">
-    <value>Year 3</value>
+    <value>مبلغ الفاتورة</value>
   </data>
   <data name="ZZZDBMyCertificates" xml:space="preserve">
     <value>شهاداتي</value>
@@ -5902,7 +5935,7 @@
     <value>أقر بموجب هذا بأنني مفوض لملء هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
   </data>
   <data name="CRContractprofitEstimatedRate" xml:space="preserve">
-    <value>الربح التقديري للعقد</value>
+    <value>نسبة الربح التقديرية للعقد%</value>
   </data>
   <data name="CRTheValueofZakatdues" xml:space="preserve">
     <value>قيمة الضريبة المستحقة</value>
@@ -6564,13 +6597,13 @@
   <data name="NDRegZakatin5mins" xml:space="preserve">
     <value>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</value>
   </data>
-    <data name="VRUploadYourDocument" xml:space="preserve">
-  <value>تحميل المرفقات</value>
-    </data>
-    <data name="VRNewAttachment" xml:space="preserve">
-  <value>مرفق جديد</value>
-</data>
-    <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+  <data name="VRUploadYourDocument" xml:space="preserve">
+    <value>تحميل المرفقات</value>
+  </data>
+  <data name="VRNewAttachment" xml:space="preserve">
+    <value>مرفق جديد</value>
+  </data>
+  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>طلب او عرض خطة تقسيط الزكاة</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
@@ -6582,7 +6615,7 @@
   <data name="ZakatInstalmentCannotExceed" xml:space="preserve">
     <value>لا يمكن أن يتجاوز المبلغ </value>
   </data>
- <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
+  <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
     <value>الاستحقاق</value>
   </data>
   <data name="ZakatInstalmentNumberOfInstalments" xml:space="preserve">
@@ -6590,6 +6623,45 @@
   </data>
   <data name="ZakatInstalmentSubmissionDate" xml:space="preserve">
     <value>تاريخ التقديم</value>
+  </data>
+  <data name="VoidReasonHint" xml:space="preserve">
+    <value>Reason for void</value>
+  </data>
+  <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
+    <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value>
+  </data>
+  <data name="ZakatYear" xml:space="preserve">
+    <value>سنة .1</value>
+  </data>
+  <data name="ZakatCashBank" xml:space="preserve">
+    <value>المدينون .2 </value>
+  </data>
+  <data name="ZakatShortTermInvestment" xml:space="preserve">
+    <value>استثمار قصير المدى .3</value>
+  </data>
+  <data name="ZakatDebitors" xml:space="preserve">
+    <value>المدينون .4</value>
+  </data>
+  <data name="ZakatInventory" xml:space="preserve">
+    <value>المخزون .5</value>
+  </data>
+  <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
+    <value>إجمالي الممتلكات الحالية .6</value>
+  </data>
+  <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
+    <value>الزكاة والضريبة .7</value>
+  </data>
+  <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
+    <value>إجمالي الطلبات الحالية .8</value>
+  </data>
+  <data name="ZakatRevenue" xml:space="preserve">
+    <value>الايرادات .9</value>
+  </data>
+  <data name="ZakatInstalmentNetIncome" xml:space="preserve">
+    <value>صافي الدخل .10</value>
+  </data>
+  <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
+    <value>صافي السيولة النقدية من العملية .11</value>
   </data>
   <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -6621,13 +6693,47 @@
   <data name="ZakatInstalmentReasonForRequestInstalment" xml:space="preserve">
     <value>سبب طلب خطة التقسيط</value>
   </data>
-    <data name="ZakatDebitors" xml:space="preserve">
-    <value>المدينون</value>
+  <data name="BPInstructionsAndConditionsAlert" xml:space="preserve">
+    <value>الرجاء الموافقة على الشروط والتعليمات</value>
   </data>
-<data name="ZakatCashBank" xml:space="preserve">
-    <value>المدينون</value>
+  <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
+    <value>المرفقات - كشف حساب بنكي لآخر 3 أشهر</value>
   </data>
-     <data name="VoidReasonHint" xml:space="preserve">
-    <value>Reason for void</value>
+  <data name="ZakatInstalmentAttachmentFInancialStatement" xml:space="preserve">
+    <value>المرفقات - كشوفات مالية لآخر 3 سنوات</value>
   </data>
-</root>
+  <data name="ZakatInstalmentCashRatio" xml:space="preserve">
+    <value>النسبة النقدية (2 + 3) / 8</value>
+  </data>
+  <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
+    <value>عرض تفاصيل القسط</value>
+  </data>
+  <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
+    <value>نسبة الربحية (10/9)</value>
+  </data>
+  <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
+    <value>خطة تقسيط الزكاة</value>
+  </data>
+  <data name="ZakatInstalmentPeriodicInstalmentAmount" xml:space="preserve">
+    <value>مبلغ الاقساط الدورية</value>
+  </data>
+  <data name="ZakatInstalmentSrNo" xml:space="preserve">
+    <value>الرقم التسلسلي</value>
+  </data>
+  <data name="NDWhatisYourNationality" xml:space="preserve">
+    <value>What is your Nationality?</value>
+  </data>
+    <data name="ZakatYearOne" xml:space="preserve">
+    <value>سنة 1</value>
+  </data>
+  <data name="ZakatYearThree" xml:space="preserve">
+    <value>سنة 3</value>
+  </data>
+  <data name="ZakatYearTwo" xml:space="preserve">
+    <value>سنة 2</value>
+  </data>
+     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+    <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
+  </data>
+  </root>
+

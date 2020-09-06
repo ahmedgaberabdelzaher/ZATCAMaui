@@ -9,6 +9,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -41,11 +42,14 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 viewModel = App.Locator.ZakatInstalmentPlanPageView;
                 this.BindingContext = viewModel;
-
+                viewModel.IsZakat = Preferences.Get("isZakat", false);
+                viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
                 viewModel.showInstructionsDialog();
                 GetZakatInstalmentData();
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.ResetData();
+
+
             }
             catch (Exception ex)
             {
@@ -65,6 +69,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
+
                 });
                 await Task.Run(async () =>
                 {
@@ -294,17 +299,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 base.OnAppearing();
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-
-                        // viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
-                        viewModel.PopulateAttachments(arg.results);
-
-
-                    }
-                });
+             
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -316,7 +311,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
                 {
-                    if (arg != null)
+                    if (arg != null && viewModel.ZakatInvoicesList != null)
                     {
                         totalAmountDue = 0;
                         for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
@@ -335,6 +330,19 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                     }
                 });
+
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    //iOS stuff
+                    BillsVATListVIew.IsScrollingEnabled = false;
+                    VATInstalmentDisplayDetailsViewPage.IsScrollingEnabled = false;
+
+
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+
+                }
 
             }
             catch (Exception ex)
@@ -402,6 +410,19 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
 
             }
+        }
+
+        private void calculation_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.calculateYear1Data();
+        }
+        private void calculation2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.calculateYear2Data();
+        }
+        private void calculation3_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.calculateYear3Data();
         }
     }
 }

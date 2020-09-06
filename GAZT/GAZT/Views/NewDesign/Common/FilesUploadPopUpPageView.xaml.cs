@@ -138,6 +138,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = "ZIP3";
             }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
+            {
+                viewModel.DocTypeString = dmsTypeString;
+            }
         }
 
         private void SetLTR()

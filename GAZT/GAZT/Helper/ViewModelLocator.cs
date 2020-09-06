@@ -203,7 +203,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
+            SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
 
+            //TINDeregistrationCloseIndividualOutletsPageView
             SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
 
             SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
@@ -326,6 +328,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
             SimpleIoc.Default.Register<TINDeregestrationSuccessPageViewModel>();
+            SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
 
             SimpleIoc.Default.Register<VATRefundListPageViewModel>();
             SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
@@ -396,6 +399,21 @@ namespace EGAZT
                 }
             }
         }
+        public TINDeregistrationCloseIndividualOutletsPageViewModel TINDeregistrationCloseIndividualOutletsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TINDeregistrationCloseIndividualOutletsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         public SignUpForEstablishmentPageViewModel SignUpForEstablishmentPageView
         {
             get
@@ -2287,6 +2305,8 @@ namespace EGAZT
             navigationService.Configure(App.ZAKATReturnDetailsView, typeof(ZAKATReturnDetailsView));
             navigationService.Configure(App.TINDeregestrationSuccessPageView, typeof(TINDeregestrationSuccessPageView));
             navigationService.Configure(App.TINDeregistrationPageView, typeof(TINDeregistrationPageView));
+            navigationService.Configure(App.TINDeregistrationCloseIndividualOutletsPageView, typeof(TINDeregistrationCloseIndividualOutletsPageView));
+
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
 
             navigationService.Configure(App.ZakatReturnDetailsSuccessfullPageView, typeof(ZakatReturnDetailsSuccessfullPageView));
@@ -2302,6 +2322,7 @@ namespace EGAZT
             navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
             navigationService.Configure(App.MorePopUpPageView, typeof(MorePopUpPageView));
             navigationService.Configure(App.ShowVatInformationConfirmationPageView, typeof(ShowVatInformationConfirmationPageView));
+
 
             // * Taxpayer Profile
             navigationService.Configure(App.TaxpayerProfilePageView, typeof(TaxpayerProfilePageView));

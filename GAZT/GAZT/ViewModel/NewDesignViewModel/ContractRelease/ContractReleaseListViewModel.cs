@@ -264,6 +264,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        private string _fromDate = "";
+
+        public string FromDate
+        {
+            get { return _fromDate; }
+            set
+            {
+                _fromDate = value;
+                RaisePropertyChanged("FromDate");
+            }
+        }
+
         private string _toDate = "";
 
         public string ToDate
@@ -275,6 +287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("ToDate");
             }
         }
+
 
         public ObservableCollection<Attachment> contractCopyAttachmentsListViewData { get; set; }
 
@@ -386,7 +399,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         private void BindSummaryData()
         {
-            //FromDate = ContractReLeaseSummaryData.ContractDate;
+            FromDate = ContractReLeaseSummaryData.ContractDate;
             ToDate = ContractReLeaseSummaryData.ContractEnddate;
             ContractTotalAmount = ContractReLeaseSummaryData.TotalAmountofContract;
             AmountToRelease = ContractReLeaseSummaryData.AmountRequiredtoRelease;

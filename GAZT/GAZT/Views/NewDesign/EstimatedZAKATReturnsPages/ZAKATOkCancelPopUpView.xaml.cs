@@ -9,6 +9,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
     public partial class ZAKATOkCancelPopUpView : PopupPage
     {
         string _confirmationText = string.Empty;
+        public delegate void OnSelectDelegate(string item);
+        public OnSelectDelegate OnSelect { get; set; } = null;
         public ZAKATOkCancelPopUpView(string ConfirmationText)
         {
             InitializeComponent();
@@ -38,6 +40,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MessagingCenter.Send<Object, string>(this, "YesPressedToAmendheReturn", "Yes");
             }
+            OnSelect?.Invoke("Yes");
             PopupNavigation.Instance.PopAsync();
 
         }
@@ -45,6 +48,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         private void OnCancelClicked(object sender, EventArgs e)
         {
             MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
+            OnSelect?.Invoke("No");
             PopupNavigation.Instance.PopAsync();
 
         }

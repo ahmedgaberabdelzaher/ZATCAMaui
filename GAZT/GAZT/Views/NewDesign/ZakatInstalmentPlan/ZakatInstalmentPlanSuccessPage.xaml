@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:custom="clr-namespace:GAZT"
              mc:Ignorable="d"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.ZakatInstalmentPlanSuccessPage"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background">
     <ContentPage.Resources>
@@ -23,9 +25,9 @@
                 <Image HeightRequest="120" WidthRequest="120"
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" />
-                <custom:CustomLabel Text="Request Instalment Plan" Margin="0,20,0,0"
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" Margin="0,20,0,0"
                                     FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                <custom:CustomLabel Text="Your Zakat Instalment plan is succesfully submitted"
+                <custom:CustomLabel Text="{Binding SuccessMessage}"
                                     Margin="0,15,0,0"
                                     TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
             </StackLayout>
@@ -46,36 +48,39 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                    Text="Reference Number"
+                                                    Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}"
                                                     VerticalOptions="Center" FontSize="12" TextColor="#909090"
                                                     HorizontalOptions="Start" />
 
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="1234567890" FontSize="16"
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding ZakatReferanceNumber}" FontSize="16"
                                                     VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />
-
+                                     
                                 <Image Grid.Row="0" Grid.Column="2">
-                                   <!-- <Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                              Tapped="Instalment_copy_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                    <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
-                                    </Image.Source> -->
-                                </Image> 
-                               
+                                    </Image.Source>
+                                </Image>
+
                             </Grid>
                         </Frame>
 
-                        <buttons:SfButton x:Name="btnDashboard"
-                                          Text="Download Confirmation"
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.VatInstalmentDownload}"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" />
+                                          BackgroundColor="#d49504" TextColor="White" Command="{Binding DownloadConfirmationTapped}"/>
 
                         <custom:CustomLabel Margin="10,0,10,15"
-                                            Text="Contract Release"
+                                            Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
                                             TextColor="#d49504" HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
-                            <!--<custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Dashboard_Tapped" />
-                            </custom:CustomLabel.GestureRecognizers> -->
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Instalment_plan_Tapped" />
+                            </custom:CustomLabel.GestureRecognizers> 
                         </custom:CustomLabel>
                     </StackLayout>
                 </yummy:PancakeView>
@@ -84,3 +89,4 @@
 
     </ContentPage.Content>
 </ContentPage>
+    

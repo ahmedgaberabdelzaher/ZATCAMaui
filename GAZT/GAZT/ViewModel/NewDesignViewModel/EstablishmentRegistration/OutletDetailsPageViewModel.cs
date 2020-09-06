@@ -20,6 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
         //public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public bool editModeEnabled { get; set; } = false;
         private OutletNumber newNumber = null;
         private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
         private ValidateCR validateCR = null;
@@ -32,18 +33,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                MarkComplete = (int)value == MaxIndex;
                 switch (value)
                 {
                     case EstablishmentRegistrationOutletTabsEnum.ActivityDetails:
                         SelectedOutletTabText = AppResources.ESTActivityDetails;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationOutletTabsEnum.AddressDetails:
                         SelectedOutletTabText = AppResources.ESTAddressDetails;
+                        NxtButtonLabel = AppResources.Save;
                         break;
                     case EstablishmentRegistrationOutletTabsEnum.OutletDetail:
                     default:
                         SelectedOutletTabText = AppResources.TinDeregistrationOutletDetails;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                 }
                 if (taxPayerDetails != null)
@@ -74,8 +78,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
-                MarkComplete = _currenrIndex == MaxIndex;
-                RaisePropertyChanged(nameof(MarkComplete));
+                //MarkComplete = _currenrIndex == MaxIndex;
+                //RaisePropertyChanged(nameof(MarkComplete));
             }
         }
 
@@ -90,6 +94,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedOutletTabText));
             }
         }
+
+        private string _nxtButtonLabel = AppResources.ZZNext;
+        public string NxtButtonLabel
+        {
+            get => _nxtButtonLabel;
+            set
+            {
+                _nxtButtonLabel = value;
+                RaisePropertyChanged(nameof(NxtButtonLabel));
+            }
+        }
+
         private string _outletName = string.Empty;
         public string OutletName
         {
@@ -428,10 +444,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //}
             }
         }
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                _canExecute = value;
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
         #endregion
 
         #region commands
-        public ICommand OnNextButtonClick { get; private set; }
+        public Command OnNextButtonClick { get; private set; }
         public ICommand OnPreButtonClick { get; private set; }
         public ICommand OnActivityItemButtonClick { get; private set; }
         public ICommand OnCountrySelectButtonClick { get; private set; }
@@ -442,8 +468,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public OutletDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnNextButtonClick = new Command(() => navigateToNext());
-            OnPreButtonClick = new Command(() => navigationService.GoBack());
+            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
+            OnPreButtonClick = new Command(() => navigateToPre());
+            editModeEnabled = false;
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
@@ -526,40 +553,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
             Console.WriteLine(_enum);
+
             if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
             {
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "BUP002").ToList();
-                if (mainactivity.Count() == 1)
+
+                if (mainactivity.Count() == 1 && editModeEnabled == false)
                 {
                     return;
                 }
             }
-            if(_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
-                if (mainactivity.Count() == 4)
+                if (mainactivity.Count() == 4 && editModeEnabled == false)
                 {
                     return;
                 }
+                if (editModeEnabled == true || mainactivity.Count > 0)
+                {
+                    _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
+                }
             }
+
+
             _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
             {
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
+                EditEnabledMode = editModeEnabled,
                 //newActivityItems = activityItems,
                 goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
-            });
+            }); ;
         }
 
         private async void navigateToNext()
         {
+            CanExecute = false;
             if (validateForm())
             {
                 if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     if (!string.IsNullOrEmpty(validateCR?.Crname))
                     {
+                        CanExecute = true;
                         _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
                             openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
@@ -568,7 +606,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             validateCR = validateCR,
                             //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
                             //newActivityItems = activityItems,
-                            goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
+                            goBackAction = (List<Nreg_ActivityItem> list) =>
+                            {
+                                addActivities(list);
+                                currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                            }
                         });
                     }
                     else
@@ -638,15 +680,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                         await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
+                        _navigationService.GoBack();
                     }
-                    catch (Exception e)
+                    catch (Exception ex)
                     {
                         IsLoading = false;
-                        Console.WriteLine(e.StackTrace);
+                        Console.WriteLine(ex.StackTrace);
+                        if (ex is HTTPBadRequestException)
+                        {
+                            editModeEnabled = true;
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        }
                     }
                     finally
                     {
-                        _navigationService.GoBack();
+                        CanExecute = true;
                     }
                 }
             }
@@ -655,8 +703,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
         }
-        private void addActivities(List<Nreg_ActivityItem> list)
+        private async void addActivities(List<Nreg_ActivityItem> list)
         {
+            IsLoading = true;
             try
             {
                 taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
@@ -674,11 +723,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //    Actcat = "M"
                 //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-                //currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                taxPayerDetails?.AttDetSet.results?.Clear();
+                taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         private void navigateToPre()
@@ -691,7 +746,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
             }
+            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+            {
+                _navigationService.GoBack();
+            }
         }
+
+
         private async void fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
         {
             try

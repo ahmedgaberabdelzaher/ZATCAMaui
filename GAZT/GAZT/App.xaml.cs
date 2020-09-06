@@ -57,6 +57,8 @@ namespace EGAZT
         public static string CalendarPickerPageView = "CalendarPickerPageView";
         public static string PickerPageView = "PickerPageView";
         public static string ZakatRegistrationDetailsListPageView = "ZakatRegistrationDetailsListPageView";
+        public static string TINDeregistrationCloseIndividualOutletsPageView = "TINDeregistrationCloseIndividualOutletsPageView";
+
 
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
@@ -114,7 +116,7 @@ namespace EGAZT
         public static string ChangeFillingPeriodListPageView = "ChangeFillingPeriodListPageView";
         public static string ChangeFillingPeriodSuccessPage = "ChangeFillingPeriodSuccessPage";
         public static string ContractReleaseListPageView = "ContractReleaseListPageView";
-
+        public static string ZakatInstalmentPlanSuccessPage = "ZakatInstalmentPlanSuccessPage";
         #endregion
 
         #region old view strings
