@@ -46,7 +46,58 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (arg != null)
                 {
-                    viewModel.TinDeregistrationData.AttDetSet.Results = arg.results; 
+                    viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
+                    foreach(Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
+                    {
+                        if(attachment.Dotyp == "DR01")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt1 = "1";
+                        }
+                        if (attachment.Dotyp == "DR02")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt2 = "1";
+                        }
+                        if (attachment.Dotyp == "DR03")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt3 = "1";
+                        }
+                        if (attachment.Dotyp == "DR04")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt4 = "1";
+                        }
+                        if (attachment.Dotyp == "DR05")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt10 = "1";
+                        }
+                        if (attachment.Dotyp == "DR05")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt10 = "1";
+                        }
+                        if (attachment.Dotyp == "DR09")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt7 = "1";
+                        }
+                        if (attachment.Dotyp == "DR08")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt5 = "1";
+                        }
+                        if (attachment.Dotyp == "DR07")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt9 = "1";
+                        }
+                        if (attachment.Dotyp == "DR10")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt13 = "1";
+                        }
+                        if (attachment.Dotyp == "DR11")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt8 = "1";
+                        }
+                        if (attachment.Dotyp == "DR12")
+                        {
+                            viewModel.TinDeregistrationData.ADocumnt14 = "1";
+                        }
+                    }
                 }
             });
 

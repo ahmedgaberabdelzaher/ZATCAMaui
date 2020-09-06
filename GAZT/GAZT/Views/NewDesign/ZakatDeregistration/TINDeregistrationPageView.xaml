@@ -746,7 +746,7 @@
 							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start"
+                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecName}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -784,14 +784,14 @@
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                  <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Date}" HorizontalOptions="StartAndExpand"
                                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                                    <Label Text="08 June 1995" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                    <Label Text="{Binding SubmissionDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                                         <Image Margin="5,0">
                                                             <Image.Source>
                                                                 <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
@@ -799,20 +799,17 @@
                                                             </Image.Source>
                                                         </Image>
                                                     </StackLayout>
-
-                                                    <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
-                                                        </StackLayout.GestureRecognizers>
-                                                </StackLayout>
+                                                 </StackLayout>
                                             </border:SfBorder >
-                                 </StackLayout>
+                                      </StackLayout>
                                 <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnDeclarationContinue"
                                    Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                             </StackLayout>
                          </Grid>
                      </Grid>
-              <Grid IsVisible="{Binding IsSummaryViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <ScrollView IsVisible="{Binding IsSummaryViewEnabled}">
+                <Grid IsVisible="{Binding IsSummaryViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
@@ -980,6 +977,7 @@
                  <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnContinueSummary" Command="{Binding SummaryContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
-           </Grid>
+              </ScrollView>
+              </Grid>
     </ContentPage.Content>
 </ContentPage>
