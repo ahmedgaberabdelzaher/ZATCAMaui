@@ -1070,7 +1070,6 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string AttByz { get; set; }
         public string ByGpartz { get; set; }
         public string DataVersionz { get; set; }
-        public string Namez { get; set; }
         public string Noteno { get; set; }
         public long Lineno { get; set; }
         public long ElemNo { get; set; }

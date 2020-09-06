@@ -981,8 +981,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-            TotalAmount = string.Format("{0:N2}", zakatRequestDisplayModel.d.ATotalAmt) + " SAR";
-            InstalmentAmount = string.Format("{0:N2}", zakatRequestDisplayModel.d.AAppInstAmt) + " SAR";
+          
         }
 
         #endregion
@@ -1031,6 +1030,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             }
 
+                            NoOfInstalments = item.noOfInstalments;
+                            TotalAmount = string.Format("{0:N2}", item.downpayment) + " SAR";
+                            InstalmentAmount = string.Format("{0:N2}", item.dueamount) + " SAR";
 
                             BindZakatSummaryData(SeletedZakatForm);
                         }
@@ -1589,7 +1591,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 var item = ZakatInstalments.d;
 
 
-                request.AccMethod = item.AccMethod;
+                request.AccMethod = "A";
                 request.AltMobNo = item.AltMobNo;
                 request.DataVersion = item.DataVersion;
                 request.DecCb = item.DecCb;
@@ -1598,34 +1600,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 request.Euser = item.Euser;
                 request.Fbguid = item.Fbguid;
                 request.FbnumIprr = item.FbnumIprr;
-                request.InsDtOff = item.InsDtOff;
                 request.Fbnum = item.Fbnum;
                 request.FormGuid = item.FormGuid;
                 request.InstReqFor = item.InstReqFor;
                 request.InstReqReason = item.InstReqReason;
-                request.Langz = item.Langz;
+                request.Langz = GetLangZParameter();
                 request.MobNo = item.MobNo;
                 request.Officer = item.Officer;
                 request.OffAmt = item.OffAmt;
-                request.OffPlanDur = item.OffPlanDur;
-                request.OffPymntFreq = item.OffPymntFreq;
+                request.OffPlanDur = "";
+                request.OffPymntFreq = "";
                 request.Formproc = item.Formproc;
                 request.PaymtDt = item.PaymtDt;
                 request.PenlAmt = item.PenlAmt;
                 request.Periodkey = item.Periodkey;
                 request.PlanDur = item.PlanDur;
                 request.PymntFreq = item.PymntFreq;
-                request.ReturnId = item.ReturnId;
+                request.ReturnId = "";
                 request.Sopbel = item.Sopbel;
-                request.Status = item.Status;
+                request.Status = "E0045";
                 request.StepNumber = item.StepNumber;
                 request.SuAmt = item.SuAmt;
                 request.SuAmtFg = item.SuAmtFg;
                 request.Tin = item.Tin;
                 request.TinNm = item.TinNm;
                 request.TotAmt = item.TotAmt;
-                request.TxnTp = item.TxnTp;
-                request.UserTyp = item.UserTyp;
+                request.TxnTp = "CRE_IPRR";
                 request.Waers = item.Waers;
                 request.AttachSet = new AttachSetResults[0];
                 request.FnDtlSet = new Array[0];
@@ -1633,6 +1633,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 request.insPlanSet = new Array[0];
                 request.invDtlsSet = new ZakatInvoicesResult[0];
                 request.retmsgSet = new Array[0];
+                request.UserTyp = "TP";
 
                 request.Operation = "69";
 
@@ -1653,7 +1654,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 Metadata _metdata = new Metadata();
                 _metdata.uri = "HTTP://SAPECCDEV.MYDZIT.GOV.SA:8000/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/NotesSet('001')";
-                _metdata.type = "ZDP_IPRF_M_SRV.znotes";
+                _metdata.type = "ZDP_IPRF_M_SRV.Notes";
                 _metdata.id = "HTTP://SAPECCDEV.MYDZIT.GOV.SA:8000/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/NotesSet('001')";
 
                 notes.__metadata = _metdata;
@@ -1662,7 +1663,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 notes.DataVersionz = "00000";
                 notes.ElemNo = 0;
-                notes.Erfdtz = "";
                 notes.Erfusrz = "";
                 notes.Lineno = 1;
                 notes.Noteno = "1";
@@ -1724,6 +1724,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         #endregion
 
+        private static string GetLangZParameter()
+        {
+            if (App.IsArabic)
+                return "AR";
+            else
+                return "EN";
+        }
 
         public void PopToRootPage()
         {
