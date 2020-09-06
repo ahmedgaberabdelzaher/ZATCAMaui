@@ -59,6 +59,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ZakatInstalmentPlanListViewModel(INavigationService navigationService, IDialogService dialogService)
         {
 
+             IsZakat = Preferences.Get("isZakat", false);
+
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -75,6 +77,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 await Application.Current.MainPage.Navigation.PopAsync();
             });
+
+            if (IsZakat)
+            {
+                ZakatTitle = AppResources.ZakatInstalmetSelectTypeZakat;
+            }
+            else
+            {
+                ZakatTitle = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+            }
 
             GoBackClick = new Command(async () =>
             {
@@ -168,7 +179,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         }
 
+        private bool _isZakat;
+        public bool IsZakat
+        {
+            get
+            {
+                return _isZakat;
+            }
+            set
+            {
+                _isZakat = value;
+                RaisePropertyChanged("IsZakat");
+            }
+        }
 
+        private string _zakatTitle = AppResources.ZakatInstalmetSelectTypeZakat;
+        public string ZakatTitle
+        {
+            get
+            {
+                return _zakatTitle;
+            }
+            set
+            {
+                _zakatTitle = value;
+                RaisePropertyChanged("ZakatTitle");
+            }
+        }
 
         private ZakatInstalmentPlanRevokeResponse _zakatInstalments;
         public ZakatInstalmentPlanRevokeResponse ZakatInstalments
@@ -953,11 +990,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     saadNumber = bill.AIvNoTb,
                     taxPeriod = "",
                     isSelected = false,
-                    billType = AppResources.ZakatInstalmetSelectTypeZakat
+                    billType = ZakatTitle
 
 
 
-                });
+                });;
             }
             SummarySelectedBillsList = summarySelectedBillsList;
 

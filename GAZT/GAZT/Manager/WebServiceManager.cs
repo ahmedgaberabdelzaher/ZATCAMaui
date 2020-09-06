@@ -11101,6 +11101,8 @@ namespace GAZT.Manager
 
         public static async Task<TinDeregistrationResponseModel> GaztTinDeregistrationSubmitRequestData(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
+            TinDeregistrationSendResponseModel tinDeregistrationSendResponseModel = new TinDeregistrationSendResponseModel();
+
             tinDeregistrationResponseModel.AEffectiveDtC = "G";
             tinDeregistrationResponseModel.ASubmissionDateC = "G";
             tinDeregistrationResponseModel.ADecDateC = "G";
@@ -11108,21 +11110,20 @@ namespace GAZT.Manager
 
             try
             {
-
-
                 ObservableCollection<OutletSetResult> AllOutlets = new ObservableCollection<OutletSetResult>(tinDeregistrationResponseModel.OutletSet.Results);
-                List<OutletSetResult> allPermitTypes = new List<OutletSetResult>(tinDeregistrationResponseModel.PermitSet.Results);
+                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(tinDeregistrationResponseModel.PermitSet.Results);
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
                     outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
                     outletInfo.AOutletEffDtCTb = "G";
 
-                    foreach (OutletSetResult permitInfo in allPermitTypes)
-                    {
-                        permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
-                        permitInfo.APermitEffDtCTb = "G";
-                    }
+                }
+
+                foreach (PermitSetResult permitInfo in allPermitTypes)
+                {
+                    permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
+                    permitInfo.APermitEffDtCTb = "G";
                 }
 
             }
@@ -11130,6 +11131,98 @@ namespace GAZT.Manager
             {
                 Console.WriteLine(ex.Message);
             }
+
+            tinDeregistrationSendResponseModel.Metadata = tinDeregistrationResponseModel.Metadata;
+            tinDeregistrationSendResponseModel.Caseid = tinDeregistrationResponseModel.Caseid;
+            tinDeregistrationSendResponseModel.Xvoidz = tinDeregistrationResponseModel.Xvoidz;
+            tinDeregistrationSendResponseModel.TinInPrcFg = tinDeregistrationResponseModel.TinInPrcFg;
+            tinDeregistrationSendResponseModel.Taxpayerz = tinDeregistrationResponseModel.Taxpayerz;
+            tinDeregistrationSendResponseModel.Submitz = tinDeregistrationResponseModel.Submitz;
+            tinDeregistrationSendResponseModel.Status = tinDeregistrationResponseModel.Status;
+            tinDeregistrationSendResponseModel.Savez = tinDeregistrationResponseModel.Savez;
+            tinDeregistrationSendResponseModel.Rejectz = tinDeregistrationResponseModel.Rejectz;
+            tinDeregistrationSendResponseModel.RegIdz = tinDeregistrationResponseModel.RegIdz;
+            tinDeregistrationSendResponseModel.PortalUsrz = tinDeregistrationResponseModel.PortalUsrz;
+            tinDeregistrationSendResponseModel.PeriodKeyz = tinDeregistrationResponseModel.PeriodKeyz;
+            tinDeregistrationSendResponseModel.Operation = tinDeregistrationResponseModel.Operation;
+            tinDeregistrationSendResponseModel.OfficerUidz = tinDeregistrationResponseModel.OfficerUidz;
+            tinDeregistrationSendResponseModel.Monthz = tinDeregistrationResponseModel.Monthz;
+            tinDeregistrationSendResponseModel.LegacyDocNo = tinDeregistrationResponseModel.LegacyDocNo;
+            tinDeregistrationSendResponseModel.Langz = tinDeregistrationResponseModel.Langz;
+            tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.FormGuid;
+            tinDeregistrationSendResponseModel.Fbnumz = tinDeregistrationResponseModel.Fbnumz;
+            tinDeregistrationSendResponseModel.Fbnum = tinDeregistrationResponseModel.Fbnum;
+            tinDeregistrationSendResponseModel.Dflag = tinDeregistrationResponseModel.Dflag;
+            tinDeregistrationSendResponseModel.CreateTxAssesz = tinDeregistrationResponseModel.CreateTxAssesz;
+            tinDeregistrationSendResponseModel.Cflag = tinDeregistrationResponseModel.Cflag;
+            tinDeregistrationSendResponseModel.CaseGuid = tinDeregistrationResponseModel.CaseGuid;
+            tinDeregistrationSendResponseModel.Auditorz = tinDeregistrationResponseModel.Auditorz;
+            tinDeregistrationSendResponseModel.ATransTin = tinDeregistrationResponseModel.ATransTin;
+            tinDeregistrationSendResponseModel.ATitle = tinDeregistrationResponseModel.ATitle;
+            tinDeregistrationSendResponseModel.ATinType = tinDeregistrationResponseModel.ATinType;
+            tinDeregistrationSendResponseModel.ATin = tinDeregistrationResponseModel.ATin;
+            tinDeregistrationSendResponseModel.ATaxpayerName = tinDeregistrationResponseModel.ATaxpayerName;
+            tinDeregistrationSendResponseModel.ASubmissionDateH = tinDeregistrationResponseModel.ASubmissionDateH;
+            tinDeregistrationSendResponseModel.ASubmissionDateC = tinDeregistrationResponseModel.ASubmissionDateC;
+            tinDeregistrationSendResponseModel.ASubmissionDate = tinDeregistrationResponseModel.ASubmissionDate;
+            tinDeregistrationSendResponseModel.AStep = tinDeregistrationResponseModel.AStep;
+            tinDeregistrationSendResponseModel.Approvez = tinDeregistrationResponseModel.Approvez;
+            tinDeregistrationSendResponseModel.AOffOrigin = tinDeregistrationResponseModel.AOffOrigin;
+            tinDeregistrationSendResponseModel.AOffAppNo = tinDeregistrationResponseModel.AOffAppNo;
+            tinDeregistrationSendResponseModel.ANm7 = tinDeregistrationResponseModel.ANm7;
+            tinDeregistrationSendResponseModel.ANm6 = tinDeregistrationResponseModel.ANm6;
+            tinDeregistrationSendResponseModel.ANm5 = tinDeregistrationResponseModel.ANm5;
+            tinDeregistrationSendResponseModel.ANm4 = tinDeregistrationResponseModel.ANm4;
+            tinDeregistrationSendResponseModel.ANm3 = tinDeregistrationResponseModel.ANm3;
+            tinDeregistrationSendResponseModel.ANm2 = tinDeregistrationResponseModel.ANm2;
+            tinDeregistrationSendResponseModel.ANm1 = tinDeregistrationResponseModel.ANm1;
+            tinDeregistrationSendResponseModel.AmdRsnz = tinDeregistrationResponseModel.AmdRsnz;
+            tinDeregistrationSendResponseModel.AIdType = tinDeregistrationResponseModel.AIdType;
+            tinDeregistrationSendResponseModel.AIdNo = tinDeregistrationResponseModel.AIdNo;
+            tinDeregistrationSendResponseModel.AFormStatus = tinDeregistrationResponseModel.AFormStatus;
+            tinDeregistrationSendResponseModel.AExpdtH = tinDeregistrationResponseModel.AExpdtH;
+            tinDeregistrationSendResponseModel.AExpdtC = tinDeregistrationResponseModel.AExpdtC;
+            tinDeregistrationSendResponseModel.AExpdt = tinDeregistrationResponseModel.AExpdt;
+            tinDeregistrationSendResponseModel.AEffectiveDtH = tinDeregistrationResponseModel.AEffectiveDtH;
+            tinDeregistrationSendResponseModel.AEffectiveDtC = tinDeregistrationResponseModel.AEffectiveDtC;
+            tinDeregistrationSendResponseModel.AEffectiveDt = tinDeregistrationResponseModel.AEffectiveDt;
+            tinDeregistrationSendResponseModel.ADregReason = tinDeregistrationResponseModel.ADregReason;
+            tinDeregistrationSendResponseModel.ADregOpt = tinDeregistrationResponseModel.ADregOpt;
+            tinDeregistrationSendResponseModel.ADocumnt9 = tinDeregistrationResponseModel.ADocumnt9;
+            tinDeregistrationSendResponseModel.ADocumnt8 = tinDeregistrationResponseModel.ADocumnt8;
+            tinDeregistrationSendResponseModel.ADocumnt7 = tinDeregistrationResponseModel.ADocumnt7;
+            tinDeregistrationSendResponseModel.ADocumnt6 = tinDeregistrationResponseModel.ADocumnt6;
+            tinDeregistrationSendResponseModel.ADocumnt5Txt = tinDeregistrationResponseModel.ADocumnt5Txt;
+            tinDeregistrationSendResponseModel.ADocumnt5 = tinDeregistrationResponseModel.ADocumnt5;
+            tinDeregistrationSendResponseModel.ADocumnt4Txt = tinDeregistrationResponseModel.ADocumnt4Txt;
+            tinDeregistrationSendResponseModel.ADocumnt4 = tinDeregistrationResponseModel.ADocumnt4;
+            tinDeregistrationSendResponseModel.ADocumnt3 = tinDeregistrationResponseModel.ADocumnt3;
+            tinDeregistrationSendResponseModel.ADocumnt2 = tinDeregistrationResponseModel.ADocumnt2;
+            tinDeregistrationSendResponseModel.ADocumnt14 = tinDeregistrationResponseModel.ADocumnt14;
+            tinDeregistrationSendResponseModel.ADocumnt13 = tinDeregistrationResponseModel.ADocumnt13;
+            tinDeregistrationSendResponseModel.ADocumnt12 = tinDeregistrationResponseModel.ADocumnt12;
+            tinDeregistrationSendResponseModel.ADocumnt11 = tinDeregistrationResponseModel.ADocumnt11;
+            tinDeregistrationSendResponseModel.ADocumnt10 = tinDeregistrationResponseModel.ADocumnt10;
+            tinDeregistrationSendResponseModel.ADocumnt1 = tinDeregistrationResponseModel.ADocumnt1;
+            tinDeregistrationSendResponseModel.ADobH = tinDeregistrationResponseModel.ADobH;
+            tinDeregistrationSendResponseModel.ADobC = tinDeregistrationResponseModel.ADobC;
+            tinDeregistrationSendResponseModel.ADob = tinDeregistrationResponseModel.ADob;
+            tinDeregistrationSendResponseModel.ADegister = "1";
+            tinDeregistrationSendResponseModel.ADecTitle = tinDeregistrationResponseModel.ADecTitle;
+            tinDeregistrationSendResponseModel.ADecTelNo = tinDeregistrationResponseModel.ADecTelNo;
+            tinDeregistrationSendResponseModel.ADeclarationChkbox = "1";
+            tinDeregistrationSendResponseModel.ADecDesig = tinDeregistrationResponseModel.ADecDesig;
+            tinDeregistrationSendResponseModel.ADecDateH = tinDeregistrationResponseModel.ADecDateH;
+            tinDeregistrationSendResponseModel.ADecDateC = tinDeregistrationResponseModel.ADecDateC;
+            tinDeregistrationSendResponseModel.ADecDate = tinDeregistrationResponseModel.ADecDate;
+            tinDeregistrationSendResponseModel.ADateFormat = "";
+            tinDeregistrationSendResponseModel.ABranchTxt = tinDeregistrationResponseModel.ABranchTxt;
+            tinDeregistrationSendResponseModel.ABpKind = tinDeregistrationResponseModel.ABpKind;
+            tinDeregistrationSendResponseModel.PermitSet = tinDeregistrationResponseModel.PermitSet.Results;
+            tinDeregistrationSendResponseModel.OutletSet = tinDeregistrationResponseModel.OutletSet.Results;
+            tinDeregistrationSendResponseModel.OffNotesSet = new List<string>();
+            tinDeregistrationSendResponseModel.AttDetSet = new List<string>();
+            tinDeregistrationSendResponseModel.ReturnSet = new List<string>();
 
             if (CrossConnectivity.Current.IsConnected)
             {

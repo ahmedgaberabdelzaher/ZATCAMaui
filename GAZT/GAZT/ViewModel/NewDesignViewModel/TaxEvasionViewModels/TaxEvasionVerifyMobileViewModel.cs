@@ -393,7 +393,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         }
     }
 
-    private async Task sendOTPAsync()
+    public async Task sendOTPAsync()
     {
         try
         {

@@ -6867,4 +6867,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDWhatisYourNationality" xml:space="preserve">
     <value>What is your Nationality?</value>
   </data>
+     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+    <value>There are no invoices to be added to the installments plan request.</value>
+  </data>
 </root>

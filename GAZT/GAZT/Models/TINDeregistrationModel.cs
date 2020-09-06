@@ -18,7 +18,7 @@ namespace EGAZT.Models
 
     }
 
-    public class TinDeregestrationAttachmentsModel: INotifyPropertyChanged
+    public class TinDeregestrationAttachmentsModel : INotifyPropertyChanged
     {
         public TinDeregestrationAttachmentsModel()
         {
@@ -117,6 +117,296 @@ namespace EGAZT.Models
     }
 
     public partial class TinDeregistrationResponseModel
+    {
+        [JsonProperty("__metadata")]
+        public Metadata Metadata { get; set; }
+
+        [JsonProperty("Assignme")]
+        public string CaseidAssignme { get; set; }
+
+        [JsonProperty("Caseid")]
+        public string Caseid { get; set; }
+
+        [JsonProperty("Xvoidz")]
+        public string Xvoidz { get; set; }
+
+        [JsonProperty("TinInPrcFg")]
+        public string TinInPrcFg { get; set; }
+
+        [JsonProperty("Taxpayerz")]
+        public string Taxpayerz { get; set; }
+
+        [JsonProperty("Submitz")]
+        public string Submitz { get; set; }
+
+        [JsonProperty("Status")]
+        public string Status { get; set; }
+
+        [JsonProperty("Savez")]
+        public string Savez { get; set; }
+
+        [JsonProperty("Rejectz")]
+        public string Rejectz { get; set; }
+
+        [JsonProperty("RegIdz")]
+        public string RegIdz { get; set; }
+
+        [JsonProperty("PortalUsrz")]
+        public string PortalUsrz { get; set; }
+
+        [JsonProperty("PeriodKeyz")]
+        public string PeriodKeyz { get; set; }
+
+        [JsonProperty("Operation")]
+        public string Operation { get; set; }
+
+        [JsonProperty("OfficerUidz")]
+        public string OfficerUidz { get; set; }
+
+        [JsonProperty("Monthz")]
+        public string Monthz { get; set; }
+
+        [JsonProperty("LegacyDocNo")]
+        public string LegacyDocNo { get; set; }
+
+        [JsonProperty("Langz")]
+        public string Langz { get; set; }
+
+        [JsonProperty("FormGuid")]
+        public string FormGuid { get; set; }
+
+        [JsonProperty("Fbnumz")]
+        public string Fbnumz { get; set; }
+
+        [JsonProperty("Fbnum")]
+        public string Fbnum { get; set; }
+
+        [JsonProperty("Dflag")]
+        public string Dflag { get; set; }
+
+        [JsonProperty("CreateTxAssesz")]
+        public string CreateTxAssesz { get; set; }
+
+        [JsonProperty("Cflag")]
+        public string Cflag { get; set; }
+
+        [JsonProperty("CaseGuid")]
+        public string CaseGuid { get; set; }
+
+        [JsonProperty("Auditorz")]
+        public string Auditorz { get; set; }
+
+        [JsonProperty("ATransTin")]
+        public string ATransTin { get; set; }
+
+        [JsonProperty("ATitle")]
+        public string ATitle { get; set; }
+
+        [JsonProperty("ATinType")]
+        public string ATinType { get; set; }
+
+        [JsonProperty("ATin")]
+        public string ATin { get; set; }
+
+        [JsonProperty("ATaxpayerName")]
+        public string ATaxpayerName { get; set; }
+
+        [JsonProperty("ASubmissionDateH")]
+        public string ASubmissionDateH { get; set; }
+
+        [JsonProperty("ASubmissionDateC")]
+        public string ASubmissionDateC { get; set; }
+
+        [JsonProperty("ASubmissionDate")]
+        public string ASubmissionDate { get; set; }
+
+        [JsonProperty("AStep")]
+        public long AStep { get; set; }
+
+        [JsonProperty("Approvez")]
+        public string Approvez { get; set; }
+
+        [JsonProperty("AOffOrigin")]
+        public string AOffOrigin { get; set; }
+
+        [JsonProperty("AOffAppNo")]
+        public string AOffAppNo { get; set; }
+
+        [JsonProperty("ANm7")]
+        public string ANm7 { get; set; }
+
+        [JsonProperty("ANm6")]
+        public string ANm6 { get; set; }
+
+        [JsonProperty("ANm5")]
+        public string ANm5 { get; set; }
+
+        [JsonProperty("ANm4")]
+        public string ANm4 { get; set; }
+
+        [JsonProperty("ANm3")]
+        public string ANm3 { get; set; }
+
+        [JsonProperty("ANm2")]
+        public string ANm2 { get; set; }
+
+        [JsonProperty("ANm1")]
+        public string ANm1 { get; set; }
+
+        [JsonProperty("AmdRsnz")]
+        public string AmdRsnz { get; set; }
+
+        [JsonProperty("AIdType")]
+        public string AIdType { get; set; }
+
+        [JsonProperty("AIdNo")]
+        public string AIdNo { get; set; }
+
+        [JsonProperty("AFormStatus")]
+        public string AFormStatus { get; set; }
+
+        [JsonProperty("AExpdtH")]
+        public string AExpdtH { get; set; }
+
+        [JsonProperty("AExpdtC")]
+        public string AExpdtC { get; set; }
+
+        [JsonProperty("AExpdt")]
+        public string AExpdt { get; set; }
+
+        [JsonProperty("AEffectiveDtH")]
+        public string AEffectiveDtH { get; set; }
+
+        [JsonProperty("AEffectiveDtC")]
+        public string AEffectiveDtC { get; set; }
+
+        [JsonProperty("AEffectiveDt")]
+        public string AEffectiveDt { get; set; }
+
+        [JsonProperty("ADregReason")]
+        public string ADregReason { get; set; }
+
+        [JsonIgnore]
+        public string ADeregSelectedReasonValue { get; set; }
+
+        [JsonProperty("ADregOpt")]
+        public string ADregOpt { get; set; }
+
+        [JsonProperty("ADocumnt9")]
+        public string ADocumnt9 { get; set; }
+
+        [JsonProperty("ADocumnt8")]
+        public string ADocumnt8 { get; set; }
+
+        [JsonProperty("ADocumnt7")]
+        public string ADocumnt7 { get; set; }
+
+        [JsonProperty("ADocumnt6")]
+        public string ADocumnt6 { get; set; }
+
+        [JsonProperty("ADocumnt5Txt")]
+        public string ADocumnt5Txt { get; set; }
+
+        [JsonProperty("ADocumnt5")]
+        public string ADocumnt5 { get; set; }
+
+        [JsonProperty("ADocumnt4Txt")]
+        public string ADocumnt4Txt { get; set; }
+
+        [JsonProperty("ADocumnt4")]
+        public string ADocumnt4 { get; set; }
+
+        [JsonProperty("ADocumnt3")]
+        public string ADocumnt3 { get; set; }
+
+        [JsonProperty("ADocumnt2")]
+        public string ADocumnt2 { get; set; }
+
+        [JsonProperty("ADocumnt14")]
+        public string ADocumnt14 { get; set; }
+
+        [JsonProperty("ADocumnt13")]
+        public string ADocumnt13 { get; set; }
+
+        [JsonProperty("ADocumnt12")]
+        public string ADocumnt12 { get; set; }
+
+        [JsonProperty("ADocumnt11")]
+        public string ADocumnt11 { get; set; }
+
+        [JsonProperty("ADocumnt10")]
+        public string ADocumnt10 { get; set; }
+
+        [JsonProperty("ADocumnt1")]
+        public string ADocumnt1 { get; set; }
+
+        [JsonProperty("ADobH")]
+        public string ADobH { get; set; }
+
+        [JsonProperty("ADobC")]
+        public string ADobC { get; set; }
+
+        [JsonProperty("ADob")]
+        public string ADob { get; set; }
+
+        [JsonProperty("ADegister")]
+        public string ADegister { get; set; }
+
+        [JsonProperty("ADecTitle")]
+        public string ADecTitle { get; set; }
+
+        [JsonProperty("ADecTelNo")]
+        public string ADecTelNo { get; set; }
+
+        [JsonProperty("ADecName")]
+        public string ADecName { get; set; }
+
+        [JsonProperty("ADeclarationChkbox")]
+        public string ADeclarationChkbox { get; set; }
+
+        [JsonProperty("ADecDesig")]
+        public string ADecDesig { get; set; }
+
+        [JsonProperty("ADecDateH")]
+        public string ADecDateH { get; set; }
+
+        [JsonProperty("ADecDateC")]
+        public string ADecDateC { get; set; }
+
+        [JsonProperty("ADecDate")]
+        public string ADecDate { get; set; }
+
+        [JsonProperty("ADateFormat")]
+        public string ADateFormat { get; set; }
+
+        [JsonProperty("ABranchTxt")]
+        public string ABranchTxt { get; set; }
+
+        [JsonProperty("ABpKind")]
+        public string ABpKind { get; set; }
+
+        [JsonProperty("Permit_TableSet")]
+        public Set PermitTableSet { get; set; }
+
+        [JsonProperty("Off_notesSet")]
+        public Set OffNotesSet { get; set; }
+
+        [JsonProperty("PermitSet")]
+        public PermitSet PermitSet { get; set; }
+
+        [JsonProperty("OutletSet")]
+        public Set OutletSet { get; set; }
+
+        [JsonProperty("AttDetSet")]
+        public AttachmentSet AttDetSet { get; set; }
+
+        [JsonProperty("returnSet")]
+        public Set ReturnSet { get; set; }
+
+
+    }
+
+    public partial class TinDeregistrationSendResponseModel
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
@@ -272,7 +562,7 @@ namespace EGAZT.Models
         public string AExpdtC { get; set; }
 
         [JsonProperty("AExpdt")]
-        public object AExpdt { get; set; }
+        public string AExpdt { get; set; }
 
         [JsonProperty("AEffectiveDtH")]
         public string AEffectiveDtH { get; set; }
@@ -386,30 +676,36 @@ namespace EGAZT.Models
         public string ABpKind { get; set; }
 
         [JsonProperty("Permit_TableSet")]
-        public Set PermitTableSet { get; set; }
+        public List<string> PermitTableSet { get; set; }
 
         [JsonProperty("Off_notesSet")]
-        public Set OffNotesSet { get; set; }
+        public List<string> OffNotesSet { get; set; }
 
         [JsonProperty("PermitSet")]
-        public Set PermitSet { get; set; }
+        public Array PermitSet { get; set; }
 
         [JsonProperty("OutletSet")]
-        public Set OutletSet { get; set; }
+        public Array OutletSet { get; set; }
 
         [JsonProperty("AttDetSet")]
-        public AttachmentSet AttDetSet { get; set; }
+        public List<string> AttDetSet { get; set; }
 
         [JsonProperty("returnSet")]
-        public Set ReturnSet { get; set; }
+        public List<string> ReturnSet { get; set; }
 
-       
+
     }
 
     public partial class AttachmentSet
     {
         [JsonProperty("results")]
         public List<Attachment> Results { get; set; }
+    }
+
+    public partial class PermitSet
+    {
+        [JsonProperty("results")]
+        public PermitSetResult[] Results { get; set; }
     }
 
     public partial class AttDetSetResult
@@ -615,13 +911,34 @@ namespace EGAZT.Models
         public string AOutletNm4Tb { get; set; }
 
         [JsonProperty("AOutletDobTb")]
-        public object AOutletDobTb { get; set; }
+        public string AOutletDobTb { get; set; }
 
         [JsonProperty("AOutletDobHTb")]
         public string AOutletDobHTb { get; set; }
 
         [JsonProperty("AOutletDobCTb")]
         public string AOutletDobCTb { get; set; }
+
+        [JsonIgnore]
+        private ObservableCollection<PermitSetResult> _permitTypes { get; set; }
+        [JsonIgnore]
+        public ObservableCollection<PermitSetResult> PermitTypes
+        {
+            get
+            {
+                return _permitTypes;
+            }
+            set
+            {
+                _permitTypes = value;
+                OnPropertyRaised("PermitTypes");
+            }
+        }
+
+    }
+
+    public class PermitSetResult
+    {
 
         [JsonProperty("APermitNewMainNoIdTb")]
         public string APermitNewMainNoIdTb { get; set; }
@@ -634,9 +951,6 @@ namespace EGAZT.Models
 
         [JsonProperty("APermitConFlag")]
         public string APermitConFlag { get; set; }
-
-        [JsonProperty("APermitExpdtTb")]
-        public object APermitExpdtTb { get; set; }
 
         [JsonProperty("APermitGovFlag")]
         public string APermitGovFlag { get; set; }
@@ -693,7 +1007,7 @@ namespace EGAZT.Models
         public string APermitValfrDtCTb { get; set; }
 
         [JsonProperty("APermitEffDtTb")]
-        public object APermitEffDtTb { get; set; }
+        public string APermitEffDtTb { get; set; }
 
         [JsonProperty("APermitEffDtHTb")]
         public string APermitEffDtHTb { get; set; }
@@ -733,22 +1047,6 @@ namespace EGAZT.Models
 
         [JsonProperty("APermitDobCTb")]
         public string APermitDobCTb { get; set; }
-
-        [JsonIgnore]
-        private ObservableCollection<OutletSetResult> _permitTypes { get; set; }
-        [JsonIgnore]
-        public ObservableCollection<OutletSetResult> PermitTypes
-        {
-            get
-            {
-                return _permitTypes;
-            }
-            set
-            {
-                _permitTypes = value;
-                OnPropertyRaised("PermitTypes");
-            }
-        }
 
     }
 

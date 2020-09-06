@@ -124,7 +124,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 else
                 {
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
             }
             catch(Exception ex)
@@ -203,7 +217,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             else
             {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
+                headerAmountInfo.IsLinkAvailable = false;
+                headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
+
+                headerWithInfos.Add(headerAmountInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
         }
 
@@ -233,7 +261,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             else
             {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
+                headerAmountInfo.IsLinkAvailable = false;
+                headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
+
+                headerWithInfos.Add(headerAmountInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
         }
 
@@ -262,7 +304,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             else
             {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
+                headerAmountInfo.IsLinkAvailable = false;
+                headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
+
+                headerWithInfos.Add(headerAmountInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             
         }

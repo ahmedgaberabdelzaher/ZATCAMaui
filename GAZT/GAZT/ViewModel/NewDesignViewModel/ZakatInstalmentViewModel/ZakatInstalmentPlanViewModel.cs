@@ -44,6 +44,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         double maxAmount = 2000000.0;
         string inputData = "";
         string totalAmountSAR = "0.00 SAR";
+        string downPaymentSAR = "0.00 SAR";
+
         string _vATDueAmount = "0.00";
         string _vATPenalityAmount = "0.00";
         string _vATBillDueAmount = "0.00 SAR";
@@ -162,6 +164,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
+        private string _zakatTitle = AppResources.ZakatInstalmetSelectTypeZakat;
+        public string ZakatTitle
+        {
+            get
+            {
+                return _zakatTitle;
+            }
+            set
+            {
+                _zakatTitle = value;
+                RaisePropertyChanged("ZakatTitle");
+            }
+        }
         public string VATDueAmount
         {
             get
@@ -543,6 +558,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 return totalAmountSAR;
             }
         }
+
+        public string DownPaymentSAR
+        {
+            set
+            {
+                if (downPaymentSAR != value)
+                {
+                    downPaymentSAR = value;
+                    RaisePropertyChanged("DownPaymentSAR");
+                }
+            }
+            get
+            {
+                return totalAmountSAR;
+            }
+        }
+
 
         public double PeriodicInstalment
         {
@@ -1847,6 +1879,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
 
 
+            if (IsZakat)
+            {
+                ZakatTitle = AppResources.ZakatInstalmetSelectTypeZakat;
+            }
+            else
+            {
+                ZakatTitle = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+            }
+
             if (Preferences.Get("IsFromRevok", false))
             {
                 SuccessMessage = AppResources.ZakatInstalmentRevokedSuccessfully;
@@ -1898,7 +1939,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
 
                 var totalamount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
-                var instalmentamount = VATBillDueAmount.Replace(" SAR", "").Replace(",", "");  
+                var instalmentamount = VATBillDueAmount.Replace(" SAR", "").Replace(",", "");
+                DownPaymentSAR = DownPaymentAmount.ToString();
                 ZakatInstalments.d.DpAmt = DownPaymentAmount.ToString(); 
                 ZakatInstalments.d.TotAmt = totalamount.ToString();  
                 ZakatInstalments.d.Operation = "51";
@@ -2444,24 +2486,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             await _dialogService.ShowMessage(msg, AppResources.Information);
         }
+
         public async void BillContinueBtnClicked()
         {
             try
             {
-                EnableAgreementView();
+                double totalAmount = double.Parse(TotalAmountSAR.Replace(" SAR", ""));
+                if (totalAmount == 0)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZakatNoInvoicesToBeAdded, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                else
+                {
+                    EnableAgreementView();
+                }
                 return;
 
-                /* if (TotalAmountSAR.Equals("0.00 SAR"))
-                 {
-                     await _dialogService.ShowMessage("Please Select atleast one bill to continue", "Alert");
-                 }
-                 else
-                 {
-                     EnableAgreementView();
-                 }*/
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
+
+
 
 
 
@@ -2700,7 +2751,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     saadNumber = selectedList[i].InvNo.ToString(),
                     taxPeriod = dt1,
                     isSelected = false,
-                    billType = AppResources.ZakatInstalmetSelectTypeZakat
+                    billType = ZakatTitle
 
 
 
