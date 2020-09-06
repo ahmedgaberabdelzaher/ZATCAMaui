@@ -960,7 +960,7 @@
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
                         <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         <inputLayout:SfTextInputLayout.TrailingView>
-                            <Image Source="search.png"/>
+                            <Image Source="grey_search.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
                     <CollectionView VerticalOptions="StartAndExpand" ItemsSource="{Binding OutletData}" HorizontalOptions="FillAndExpand" SelectionMode="None" Margin="0" VerticalScrollBarVisibility="Never">

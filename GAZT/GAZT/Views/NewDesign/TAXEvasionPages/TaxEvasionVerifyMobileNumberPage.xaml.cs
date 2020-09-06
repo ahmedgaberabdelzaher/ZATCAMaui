@@ -91,6 +91,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 popUp.Message = Message.ToString();
                 await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
+            else
+            {
+                viewModel.IsTimerCancel = true;
+                viewModel.IsResendOTPEnabled = false;
+                await viewModel.sendOTPAsync();
+            }
         }
 
         // * Forgot password : OTP Verification :

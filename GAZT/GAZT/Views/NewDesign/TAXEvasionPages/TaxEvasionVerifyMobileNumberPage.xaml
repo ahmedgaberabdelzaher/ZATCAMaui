@@ -42,7 +42,7 @@
                 <Grid>
 
                     <StackLayout>
-                        <Grid Padding="0,5,0,5">
+                        <Grid Padding="10,5,10,5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
@@ -324,7 +324,7 @@
 
                 <!--Continue button-->
                 <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"      Clicked="btn_Continue_ClickedAsync"
-                                      Command="{Binding SendOTPCommand}"
+                                      
                                       Grid.Row="2"
                                       HorizontalOptions="FillAndExpand"
                                       IsVisible="{Binding IsShowMobileInput}"
