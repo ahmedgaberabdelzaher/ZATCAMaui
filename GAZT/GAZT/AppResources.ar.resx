@@ -2152,7 +2152,7 @@
     <value>لا ينطبق</value>
   </data>
   <data name="ZNegative" xml:space="preserve">
-    <value>سلبي</value>
+    <value>مبلغ سالب</value>
   </data>
   <data name="ZZThefileisstillloading" xml:space="preserve">
     <value>لا يزال الملف قيد التحميل</value>
@@ -6732,7 +6732,7 @@
   <data name="NDWhatisYourNationality" xml:space="preserve">
     <value>What is your Nationality?</value>
   </data>
-    <data name="ZakatYearOne" xml:space="preserve">
+  <data name="ZakatYearOne" xml:space="preserve">
     <value>سنة 1</value>
   </data>
   <data name="ZakatYearThree" xml:space="preserve">
@@ -6741,11 +6741,132 @@
   <data name="ZakatYearTwo" xml:space="preserve">
     <value>سنة 2</value>
   </data>
-     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+  <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
     <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
   </data>
    <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
     <value>المعلومات من الجهات ذات العلاقة (القيمة الجديدة)</value>
   </data>
+   <data name="VatReview" xml:space="preserve">
+  <value>طلب مراجعة لضريبة القيمة المضافة</value>
+</data>
+  <data name="ZakatObjection" xml:space="preserve">
+  <value>إعتراضات الزكاة</value>
+</data>
+  <data name="VRReviewReason" xml:space="preserve">
+  <value>سبب المراجعة</value>
+</data>
+  <data name="VRCompleteTheBelowDetails" xml:space="preserve">
+  <value>اكمل البيانات التالية</value>
+</data>
+  <data name="VRReviewReason" xml:space="preserve">
+  <value>سبب المراجعة</value>
+</data>
+  <data name="VRSelectAReason" xml:space="preserve">
+  <value>الرجاء اختيار سبب المراجعة</value>
+</data>
+  <data name="VRReviewSubReason" xml:space="preserve">
+  <value>السبب الفرعي للمراجعة</value>
+</data>
+  <data name="VRSelectASubReason" xml:space="preserve">
+  <value>الرجاء اختيار السبب الفرعي للمراجعة</value>
+</data>
+  <data name="VRApplicationReferenceNumber" xml:space="preserve">
+  <value>الرقم المرجعي للطلب</value>
+</data>
+  <data name="VRRequestDate" xml:space="preserve">
+  <value>تاريخ الطلب</value>
+</data>
+  <data name="VRContinue" xml:space="preserve">
+  <value>التالي</value>
+</data>
+  <data name="VRViewApplication" xml:space="preserve">
+  <value>عرض الطلب</value>
+</data>
+  <data name="VRReviewDetails" xml:space="preserve">
+  <value>عرض التفاصيل</value>
+</data>
+  <data name="VRReportDetails" xml:space="preserve">
+  <value>تفاصيل التقرير</value>
+</data>
+  <data name="VRHelperText" xml:space="preserve">
+  <value>النص المساعد</value>
+</data>
+  <data name="VRAttachment" xml:space="preserve">
+  <value>المرفقات</value>
+</data>
+  <data name="VR20MB" xml:space="preserve">
+  <value>20MB</value>
+</data>
+  <data name="VRNewAttachment" xml:space="preserve">
+  <value>مرفق جديد</value>
+</data>
+  <data name="VRUploadYourDocument" xml:space="preserve">
+  <value>الرجاء رفع الملف</value>
+</data>
+  <data name="VRPleaseCompleteTheDescription" xml:space="preserve">
+  <value>الرجاء ادخال الوصف</value>
+</data>
+  <data name="VRDeclaration" xml:space="preserve">
+  <value>التعهد</value>
+</data>
+  <data name="VRIDType" xml:space="preserve">
+  <value>نوع الهوية</value>
+</data>
+  <data name="VRIDNumber" xml:space="preserve">
+  <value>رقم الهوية</value>
+</data>
+  <data name="VRDateOfBirth" xml:space="preserve">
+  <value>تاريخ الميلاد</value>
+</data>
+  <data name="VRContactPersonName" xml:space="preserve">
+  <value>اسم جهة الاتصال</value>
+</data>
+  <data name="VRVatReviewRequest" xml:space="preserve">
+  <value>طلب مراجعة لضريبة القيمة المضافة</value>
+</data>
+  <data name="VRContactPersonName" xml:space="preserve">
+  <value>اسم جهة الاتصال</value>
+</data>
+  <data name="VRNewObjectionorReview" xml:space="preserve">
+  <value>طلب جديد للمراجعة او الإعتراض</value>
+</data>
+  <data name="VRObjectionsReviews" xml:space="preserve">
+  <value>الاعتراضات و المراجعات</value>
+</data>
+  <data name="VRSelectType" xml:space="preserve">
+  <value>اختر نوع</value>
+</data>
+  <data name="VRChooseaZakatObjectionorVATReview" xml:space="preserve">
+  <value>اختر مراجعة لضريبة القمية المضافة او اعتراض على الزكاة</value>
+</data>
+  <data name="VRDecisionDate" xml:space="preserve">
+  <value>تاريخ القرار</value>
+</data>
+  <data name="VRYourVATReviewissubmittedsuccessfully" xml:space="preserve">
+  <value>تم إرسال مراجعة ضريبة القيمة المضافة بنجاح</value>
+</data>
+  <data name="VRInstructions" xml:space="preserve">
+  <value>1-يرجى تعبئة المعلومات المطلوبة لكل خطوة.&#10;2-لا يمكن تقديم الطلب بنجاح حتى يتم الانتهاء من جميع الحقول الإلزامية.&#10;3-يجب على مقدم الطلب التأكد من أن لديه المرجع أو رقم الطلب المتعلق بالقرار الذي يرغب في مراجعته.&#10;4-في حال تقديمك طلب مراجعة بخصوص غرامة متعلقة بإقرار ضريبي معين، قد يطلب منك تقديم إيداع مبلغ ضمان يشمل ضريبة القيمة المضافة المستحقة عن تلك الفترة.&#10;5-سيتم مراجعة اعتراض غرامات التأخير والغرامات الخاصة بالخطأ في الإقرار الضريبي كجزء من طلب الاعتراض على إعادة التقييم. بعد تقديم طلب الاعتراض، لن تتمكن من تقديم طلب اعتراض على هذه الغرامات، بالإضافة إلى غرامات التأخر في السداد.&#10;6-أقر بأنه بطلب الاعتراض على الغرامات (الخطأ الإقرار، غرامة التأخر في السداد) بأنني موافق على تقييم الهيئة للضريبة المستحقة للفترة محل الاعتراض وأن الاعتراض يقتصر فقط على هذه الغرامات.&#10;7-يرجى الرجوع إلى قسم الأسئلة الشائعة قبل تعبئة استمارة الطلب.
+</value>
+  </data>
+  <data name="VRCheckBoxDesc" xml:space="preserve">
+  <value>أوافق على التعليمات والشروط وإكمال الخطوات</value>
+</data>
+  <data name="VRObjectionsAndReviews" xml:space="preserve">
+  <value>الاعتراضات و المراجعات</value>
+</data>
+  <data name="VRAll" xml:space="preserve">
+  <value>الجميع</value>
+</data>
+  <data name="VRTaxPayersName" xml:space="preserve">
+  <value>اسم المكلف</value>
+</data>
+  <data name="VRApplicationNumber" xml:space="preserve">
+  <value>رقم الطلب</value>
+</data>
+  <data name="VRDate" xml:space="preserve">
+  <value>التاريخ</value>
+</data>
   </root>
 

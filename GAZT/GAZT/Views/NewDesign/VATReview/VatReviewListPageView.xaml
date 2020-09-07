@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png"
+             x:Class="EGAZT.Views.NewDesign.VatReview.VatReviewListPageView">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"
+                              Padding="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <!--<RowDefinition Height="10*" />-->
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                                              HorizontalOptions="FillAndExpand"
+                                              Grid.Column="0"
+                                              Grid.Row="0" BackgroundColor="White" />
+                        </Grid>
+                    </yummy:PancakeView>
+                    <Grid Padding="0,10,0,10" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" Grid.Row="0"
+                               Text="{x:Static ResourceManager:AppResources.VatReview}"
+                               TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
+                               FontSize="Large" />
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}"
+                               Text="{DynamicResource StyleReverseBack}" TextColor="White"
+                               IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Grid.Row="0" Grid.Column="2" Style="{StaticResource IconLabelStyle}" TextColor="White"
+                               Text="{StaticResource Close}" VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="EndAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Grid>
+
+                <StackLayout IsVisible="{Binding IsVatListVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    
+                    <Grid Grid.Row="0" Margin="10,0,10,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                            Text="{Binding FilteredSelectionName}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource SectionTitleBlack}" />
+                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start">
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                 Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NumberOfObjAndReviews}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"/>
+
+                    </Grid>
+
+                    <Grid BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                          VerticalOptions="Start">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0"
+                                         HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30"
+                                       HorizontalOptions="Start" />
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                    Text="{x:Static ResourceManager:AppResources.VRNewObjectionorReview}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NewRequestBtnTapped}" />
+                                    <!-- <TapGestureRecognizer Tapped="NewObjection" /> -->
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </border:SfBorder>
+
+                        <Grid Grid.Row="1" Margin="0,10,0,0" BackgroundColor="Transparent"
+                              HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+
+                            <listView:SfListView Grid.Row="0" HorizontalOptions="CenterAndExpand"
+                                                 IsScrollBarVisible="False" Margin="0" Padding="0"
+                                                 IsScrollingEnabled="False" VerticalOptions="Start"
+                                                 AutoFitMode="Height" ItemSpacing="0"
+                                                 ItemTapped="Reviews_ItemTapped"
+                                                 ItemsSource="{Binding ContractListViewData}" SelectionMode="Single"
+                                                 SelectionBackgroundColor="Transparent">
+
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <border:SfBorder Padding="10" Grid.Column="0" CornerRadius="15"
+                                                         Margin="0,15,0,0" HasShadow="True"
+                                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Grid Padding="0" RowSpacing="0" Margin="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*" />
+                                                    <ColumnDefinition Width="50*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical">
+                                                    <custom:CustomLabel
+                                                        Text="{Binding ItemType}"
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Style="{StaticResource SectionTitleBlack}" Margin="0,0,0,10" />
+
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+
+                                                    <Label Text="{Binding Fbnum}"
+                                                           Style="{StaticResource ValueLabelGrey}" LineHeight="0.7"
+                                                           HorizontalTextAlignment="Start"
+                                                           HorizontalOptions="StartAndExpand"
+                                                           VerticalOptions="CenterAndExpand" />
+
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="1"
+                                                             Orientation="Horizontal" VerticalOptions="FillAndExpand"
+                                                             HorizontalOptions="FillAndExpand">
+
+
+                                                    <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14"
+                                                                       BorderThickness="1" BackgroundColor="#E5EFED"
+                                                                       VerticalOptions="CenterAndExpand"
+                                                                       HorizontalOptions="EndAndExpand">
+
+                                                        <Label Style="{StaticResource CaptionLabelBlack}"
+                                                               TextColor="DarkGoldenrod" Text="{Binding StatText}"
+                                                               HorizontalTextAlignment="Center"
+                                                               HorizontalOptions="CenterAndExpand"
+                                                               VerticalOptions="CenterAndExpand">
+                                                            <Label.Triggers>
+
+                                                                <DataTrigger TargetType="Label"
+                                                                             Binding="{Binding StatText}"
+                                                                             Value="{x:Static ResourceManager:AppResources.NDBilled}">
+                                                                    <Setter Property="Text"
+                                                                            Value="{x:Static ResourceManager:AppResources.NDBilled}" />
+                                                                    <Setter Property="TextColor"
+                                                                            Value="{StaticResource Primary}" />
+                                                                    <Setter Property="HorizontalTextAlignment"
+                                                                            Value="Center" />
+                                                                </DataTrigger>
+                                                            </Label.Triggers>
+                                                        </Label>
+                                                    </yummy:PancakeView>
+                                                </StackLayout>
+                                            </Grid>
+                                        </border:SfBorder>
+                                    </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                            </listView:SfListView>
+
+                        </Grid>
+                    </Grid>
+
+                </StackLayout>
+
+                 <Grid IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <StackLayout Orientation="Vertical">
+
+                        <Grid Margin="0,5,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRSummary}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource PageTitleBlack}" />
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                                Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelGrey}" />
+                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                        </Grid>
+
+                        <border:SfBorder Margin="0,16,0,10" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="establishments" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRReviewReason}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <StackLayout Padding="15,15,15,0">
+                                   
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRReviewReason}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="Vat Registration Deregistration}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRReviewSubReason}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="Vat Deregistration Cancellaton" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRApplicationReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="00089887879" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDecisionDate}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="09 August 2020" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                </StackLayout>
+                            </StackLayout>
+
+                        </border:SfBorder>
+
+                        <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="ic_attachment" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRReviewDetails}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                    
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <StackLayout Padding="15,15,15,0">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRTaxPeriodofCase}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="Quarter 2 - 2018" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="2018/04/01" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPeriodTo}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="2018/06/30" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="38,250.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRReviewDetails}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="Lorem Ipsum" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAttachment}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="File1.pdf" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                </StackLayout>
+                            </StackLayout>
+                        </border:SfBorder>
+
+                         <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="ic_attachment" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRSecurityPayment}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                   
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <StackLayout Padding="15,15,15,0">
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="21,000 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSecurityType}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="SADAD" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="3456789123" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                </StackLayout>
+                            </StackLayout>
+                        </border:SfBorder>
+                        
+                        <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="establishments" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRDeclaration}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Row="0" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRIDType}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="0" Grid.Column="1">
+                                        <Label Text="National ID"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRIDNumber}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <Label Text="Q1720187"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="1">
+                                        <Label Text="7 June 1995"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="1">
+                                        <Label Text="Zaed Hardy"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                </Grid>
+                            </StackLayout>
+                        </border:SfBorder>
+
+                        <buttons:SfButton Margin="0,16,0,16"
+                                          Text="{x:Static ResourceManager:AppResources.Submit}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding SummaryConBtnTapped}" />
+
+                    </StackLayout>
+                </Grid>
+
+                <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
+                                 Opacity="0.4" VerticalOptions="FillAndExpand" />
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                                 Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                                           EnableAnimation="True"
+                                                           AnimationType="SingleCircle"
+                                                           HorizontalOptions="CenterAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           IsBusy="True"
+                                                           ViewBoxWidth="70"
+                                                           TitlePlacement="Bottom"
+                                                           ViewBoxHeight="70"
+                                                           TextColor="#D99A29" />
+                            <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

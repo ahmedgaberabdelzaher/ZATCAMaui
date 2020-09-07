@@ -285,7 +285,29 @@ namespace GAZT.Helper
 
         #endregion
 
-       
+        #region VATObjection
+        public static string GetVATObjectionListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";
+
+        //Excel sheet API1  for fetching intial Action Called on the initial load of the application to fetch all the form data to be displayed on the screen
+        public static string GetVATObjectionSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/HeaderSet(";
+        //Excel sheet API2 Called to get the on screen button codes and form mode(editable/uneditable). 
+        public static string GetVATObjectionButtonFormModeURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_REVIEW_UI_SRV/VR_UI_HDRSet(";
+        //Excel sheet API3 Called to get the list of rejected forms
+        public static string GetVATObjectionRejectedFormURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_GET_REJFRM_SRV/HeaderSet(";
+        //Excel sheet API4 for Attachment API
+        public static string GetVATObjectionAttachmentURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(";
+        //Excel sheet API5 to get security amount
+        public static string GetVATObjectionSecurityURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/GetSecurityAmountSet(";
+        //Excel sheet API6  To decide whether to enable to submit button or not
+        public static string GetVATObjectionEnableSubmitURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/GetSubmitEnabledSet(";
+        //Excel sheet API7 To validate ID and fetch taxpayer name
+        public static string GetVATObjectionValidateTaxPayerNameURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet(";
+        //Excel sheet API9 To Called on the press of Download Acknowledgement Button
+        public static string GetVATObjectionDownloadAckURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(";
+        //API10 To generate SADAD && API11 On press of refresh button for SADAD
+        public static string GetVATObjectionGenrateorRefreshSADADURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_GEN_SADAD_SRV/GetSADADSet(";
+        public static string GetVATObjectionViewBillURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/BillDtlSet?$filter=";
+        #endregion
 
     }
 }

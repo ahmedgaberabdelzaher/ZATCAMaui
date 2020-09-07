@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
@@ -591,7 +592,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private async void navigateToNext()
         {
             CanExecute = false;
-            if (validateForm())
+            if (await validateForm())
             {
                 if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
@@ -678,6 +679,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                        taxPayerDetails.UserTypx = "TP";
                         await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
                         _navigationService.GoBack();
@@ -698,10 +700,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            else
-            {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-            }
+            //else
+            //{
+            //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+            //}
         }
         private async void addActivities(List<Nreg_ActivityItem> list)
         {
@@ -811,7 +813,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = false;
             }
         }
-        private bool validateForm()
+        private async Task<bool> validateForm()
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
@@ -819,60 +821,73 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 var count = mainactivity.Count();
                 if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please add activity with mainactivity"));
                     return false;
                 }
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
-                if (string.IsNullOrEmpty(BuildingNumber) && string.IsNullOrEmpty(BuildingNumberSame))
+                if (string.IsNullOrWhiteSpace(HouseNumber) && string.IsNullOrWhiteSpace(HouseNumberSame))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both house number and postal's house number"));
                     return false;
                 }
-                else if (string.IsNullOrEmpty(BuildingNumber) && string.IsNullOrEmpty(BuildingNumberSame))
+                else if (string.IsNullOrWhiteSpace(BuildingNumber) && string.IsNullOrWhiteSpace(BuildingNumberSame))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both building number and postal's building number"));
                     return false;
                 }
-                else if (string.IsNullOrEmpty(FloorNumber) && string.IsNullOrEmpty(FloorNumber))
+                else if (string.IsNullOrWhiteSpace(FloorNumber) && string.IsNullOrWhiteSpace(FloorNumber))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both floor number and postal's floor number"));
                     return false;
                 }
-                else if (string.IsNullOrEmpty(Street) && string.IsNullOrEmpty(StreetSame))
+                else if (string.IsNullOrWhiteSpace(Street) && string.IsNullOrWhiteSpace(StreetSame))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both street and postal's street"));
                     return false;
                 }
-                else if (string.IsNullOrEmpty(Quarter) && string.IsNullOrEmpty(QuarterSame))
+                else if (string.IsNullOrWhiteSpace(Quarter) && string.IsNullOrWhiteSpace(QuarterSame))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both quarter and postal's quarter"));
                     return false;
                 }
-                else if (string.IsNullOrEmpty(PostalCode) && string.IsNullOrEmpty(PostalCodeSame))
+                else if (string.IsNullOrWhiteSpace(PostalCode) && string.IsNullOrWhiteSpace(PostalCodeSame))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both postal code and postal's postal code"));
                     return false;
                 }
                 else if (PostalCode.Length != 5 && PostalCodeSame.Length != 5)
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide postal codes in 5 digit"));
                     return false;
                 }
                 else if (Country == null && CountrySame == null)
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both country and postal's country"));
                     return false;
                 }
                 else if (Provinance == null && ProvinanceSame == null)
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both provinance and postal's proviance"));
                     return false;
                 }
-                else if (Country == null && CountrySame == null)
+                else if (string.IsNullOrWhiteSpace(AddNumber) && string.IsNullOrWhiteSpace(AddNumberSame))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both additional number and postal's additional number"));
                     return false;
                 }
                 else if (City == null && CitySame == null)
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both city and postal's city"));
                     return false;
                 }
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
             {
-                if (string.IsNullOrEmpty(OutletName))
+                if (string.IsNullOrWhiteSpace(OutletName))
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide name"));
                     return false;
                 }
             }
