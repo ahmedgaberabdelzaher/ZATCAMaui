@@ -3554,7 +3554,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.TxnTp = ZakatInstalments.d.TxnTp;
             _postData.MobNo = ZakatInstalments.d.MobNo;
             _postData.FormGuid = ZakatInstalments.d.FormGuid;
-            _postData.Fbnum = ZakatInstalments.d.Fbnum;
+            _postData.Fbnum = "";
             _postData.DataVersion = ZakatInstalments.d.DataVersion;
             _postData.Operation = ZakatInstalments.d.Operation;
             _postData.Euser = ZakatInstalments.d.Euser;
