@@ -492,7 +492,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             { "ZS0003", "رقم هوية مواطني دول الخليج" }
         };
 
-        private string _gCCIDType = "GCC ID";
+        private string _gCCIDType = string.Empty;
         public string GCCIDType
         {
             get => _gCCIDType;
