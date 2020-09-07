@@ -149,9 +149,9 @@ SelectedIndex="{Binding IDTypeIndex}"  OkButtonClicked="BundleType_OkButtonClick
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="15*"/>
                 </Grid.ColumnDefinitions>
 
                 <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZZFormBundleStatus}" TextColor="White" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
