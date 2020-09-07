@@ -127,8 +127,8 @@
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
                         <syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
-                                                             ShowHeader="True"
-                                                             Format="dd_MMM_yyyy"
+                                                             ShowHeader="False"
+                                                             Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"
                                                              PickerMode="Dialog"
                                                              IsOpen="False"
@@ -347,8 +347,8 @@
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
                         <syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
-                                                             ShowHeader="True"
-                                                             Format="dd_MMM_yyyy"
+                                                             ShowHeader="False"
+                                                             Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"
                                                              PickerMode="Dialog"
                                                              IsOpen="False"

@@ -117,6 +117,10 @@ namespace EGAZT
         public static string ChangeFillingPeriodSuccessPage = "ChangeFillingPeriodSuccessPage";
         public static string ContractReleaseListPageView = "ContractReleaseListPageView";
         public static string ZakatInstalmentPlanSuccessPage = "ZakatInstalmentPlanSuccessPage";
+        public static string VatReviewPageView = "VatReviewPageView";
+        public static string VatReviewListPageView = "VatReviewListPageView";
+        public static string VatReviewSuccessPageView = "VatReviewSuccessPageView";
+        public static string VatReviewViewApplicationPageView = "VatReviewViewApplicationPageView";
         #endregion
 
         #region old view strings

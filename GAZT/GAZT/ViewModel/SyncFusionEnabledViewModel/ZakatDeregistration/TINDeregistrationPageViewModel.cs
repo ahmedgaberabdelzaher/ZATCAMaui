@@ -44,6 +44,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand OnTinRegisrtationReasonDateTapped { get; set; }
         public ICommand OnTinRegistrationReasonTapped { get; set; }
         public ICommand OnTinRegistrationDateTapped { get; set; }
+        public ICommand OnOutletPermitTypeDeRegisrtationReasonDateTapped { get; set; }
+
+        //OnOutletPermitTypeDeRegisrtationReasonDateTapped
         #endregion
 
         #region Properties
@@ -196,6 +199,52 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (value != null)
                     permitOutletDecisionOptions = value;
                 RaisePropertyChanged("PermitOutletDecisionOptions");
+            }
+        }
+
+        private TINDeregistrationModel selectedPermitTypeOutletOption { get; set; }
+        public TINDeregistrationModel SelectedPermitTypeOutletOption
+        {
+            get
+            {
+                return selectedPermitTypeOutletOption;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    selectedPermitTypeOutletOption = value;
+
+                    if (TinDeregistrationData != null)
+                    {
+                        //if (TinDeregistrationData.ADregOpt != null)
+                        //{
+                        //    TinDeregistrationData.ADregOpt = selectedPermitTypeOutletOption.OutletOptionIndex;
+                        //}
+                        //else
+                        //{
+                        //    TinDeregistrationData.ADregOpt = string.Empty;
+                        //    TinDeregistrationData.ADregOpt = selectedPermitTypeOutletOption.OutletOptionIndex;
+                        //}
+
+                        PopulateAttachmentsListViewTemplate();
+                    }
+                }
+                RaisePropertyChanged("SelectedPermitTypeOutletOption");
+            }
+        }
+
+        private int _selectedPermitOutletOptionIndex { get; set; }
+        public int SelectedPermitOutletOptionIndex
+        {
+            get
+            {
+                return _selectedPermitOutletOptionIndex;
+            }
+            set
+            {
+                _selectedPermitOutletOptionIndex = value;
+                RaisePropertyChanged("SelectedPermitOutletOptionIndex");
             }
         }
 
@@ -625,6 +674,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private DateTime _singleOutletDeregistrationDate = DateTime.Now;
+        public DateTime SingleOutletDeregistrationDate
+        {
+            get
+            {
+                return _singleOutletDeregistrationDate;
+            }
+            set
+            {
+                _singleOutletDeregistrationDate = value;
+                RaisePropertyChanged("SingleOutletDeregistrationDate");
+            }
+        }
+
         private DateTime _deregistrationDate = DateTime.Now;
         public DateTime DeregistrationDate
         {
@@ -905,6 +968,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public OutletSetResult _selectedOutletForCloseTranser { get; set; }
+        public OutletSetResult SelectedOutletForCloseTranser
+        {
+            get
+            {
+                return _selectedOutletForCloseTranser;
+            }
+
+            set
+            {
+                _selectedOutletForCloseTranser = value;
+                RaisePropertyChanged("SelectedOutletForCloseTranser");
+            }
+        }
+
         public ObservableCollection<OutletSetResult> _allOutlets { get; set; }
         public ObservableCollection<OutletSetResult> AllOutlets
         {
@@ -1181,7 +1259,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             OnTinRegisrtationReasonDateTapped = new Command(this.OnTinRegisrtationReasonDateClicked);
             OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
             OnTinRegistrationDateTapped = new Command(this.OnTinRegistrationDateClicked);
-
+            OnOutletPermitTypeDeRegisrtationReasonDateTapped = new Command(this.OnOutletPermitTypeDeRegisrtationReasonDateClicked);
             TinDeregistrationModel = new TINDeregistrationModel();
             SelectedOutletOption = new TINDeregistrationModel();
             TinDeregistrationData = new TinDeregistrationResponseModel();
@@ -1932,7 +2010,45 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-       
+        public async void OnOutletPermitTypeDeRegisrtationReasonDateClicked()
+        {
+            try
+            {
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
+                genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
+
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
         public async void OnTinRegisrtationReasonDateClicked()
         {
             try

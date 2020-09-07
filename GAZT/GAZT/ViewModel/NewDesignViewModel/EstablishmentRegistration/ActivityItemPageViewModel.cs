@@ -683,12 +683,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        private void navigateToNext()
+        private async void navigateToNext()
         {
             CanExecute = false;
             try
             {
-                if (ValidateForm())
+                if (await ValidateForm())
                 {
                     //if(editModeEnabled == true && CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                     //{
@@ -737,10 +737,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _navigationService.GoBack();
                     }
                 }
-                else
-                {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                }
+                //else
+                //{
+                //    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                //}
             }
             catch (Exception e)
             {
@@ -808,7 +808,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage("File size is with more 10 MB can not be uploaded", AppResources.Information);
+                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
 
                             }
@@ -1140,19 +1140,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
-        private bool ValidateForm()
+        private async Task<bool> ValidateForm()
         {
             if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
             {
-                if (CRIssueCountry == null
-                    || string.IsNullOrEmpty(CRIssueBy)
-                    || CRIssueCity == null
-                    || string.IsNullOrEmpty(CRNumber)
-                    || string.IsNullOrEmpty(CRValidFrom)
-                    || CRsCopies.Count == 0
-                    || CRMainGroup == null
-                    || CRSubGroup == null)
+                if (CRIssueCountry == null)
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue country"));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(CRIssueBy))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue by"));
+                    return false;
+                }
+                else if(CRIssueCity == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue city"));
+                    return false;
+                }
+                else if(string.IsNullOrWhiteSpace(CRNumber))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide CR number"));
+                    return false;
+                }
+                else if(string.IsNullOrWhiteSpace(CRValidFrom))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide CR valid from date"));
+                    return false;
+                }
+                else if (CRsCopies == null && CRsCopies.Count == 0)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach CR copy"));
+                    return false;
+                }
+                else if (CRMainGroup == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide main group"));
+                    return false;
+                }
+                else if (CRSubGroup == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide sub group"));
+                    return false;
+                }
+                else if (CRAcitivity == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide activity"));
                     return false;
                 }
                 else
@@ -1162,16 +1196,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
-                if (LicenseIssueCountry == null
-                                   || string.IsNullOrEmpty(LicenseIssueBy)
-                                   || LicenseIssueCity == null
-                                   || string.IsNullOrEmpty(LicenseNumber)
-                                   || string.IsNullOrEmpty(ValidFrom)
-                                   || LicensesCopies.Count == 0
-                                   || LicenseMainGroup == null
-                                   || LicenseSubGroup == null
-                                   || LicenseAcitivity == null)
+                if (LicenseIssueCountry == null)
                 {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue country"));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(LicenseIssueBy))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue by"));
+                    return false;
+                }
+                else if (LicenseIssueCity == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue city"));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(LicenseNumber))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide License number"));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(ValidFrom))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide License valid from date"));
+                    return false;
+                }
+                else if (LicensesCopies == null && LicensesCopies.Count == 0)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach License copy"));
+                    return false;
+                }
+                else if (LicenseMainGroup == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide main group"));
+                    return false;
+                }
+                else if (LicenseSubGroup == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide sub group"));
+                    return false;
+                }
+                else if (LicenseAcitivity == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide activity"));
                     return false;
                 }
                 else

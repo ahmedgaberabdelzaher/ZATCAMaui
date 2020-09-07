@@ -486,6 +486,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             if(viewModel.TinDeregistrationData.ADregOpt == "3")
             {
+                OutletSetResult selectedItem = e.AddedItems[0] as OutletSetResult;
+                viewModel.SelectedOutletForCloseTranser = selectedItem;
+                viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+
                 viewModel.AddPermitOutletDecisionOptions();
                 viewModel.AddPopUpPage();
             }
