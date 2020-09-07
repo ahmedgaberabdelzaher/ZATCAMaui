@@ -739,33 +739,72 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if(SelectedTaxTypeDropdownItem.Id=="01")
                 {
-                    ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListZAKATCorrespondance);
-                    if (ListToDisplay != null)
+                    if (ListZAKATCorrespondance != null)
                     {
-                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListZAKATCorrespondance);
+                        if (ListToDisplay != null)
+                        {
+                            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        }
+                    }
+                    else
+                    {
+                        if (ListToDisplay != null)
+                        {
+                            ClearList();
+                        }
                     }
                     IsVisibleFavourite = true;
                 }
                 else if(SelectedTaxTypeDropdownItem.Id == "02")
                 {
-                    ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListVATCorrespondance);
-                    if (ListToDisplay != null)
+                    if (ListVATCorrespondance != null)
                     {
-                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListVATCorrespondance);
+                        if (ListToDisplay != null)
+                        {
+                            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        }
+                    }
+                    else
+                    {
+                        if (ListToDisplay != null)
+                        {
+                            ClearList();
+                        }
                     }
                     IsVisibleFavourite = false;
                 }
                 else if(SelectedTaxTypeDropdownItem.Id == "03")
                 {
-                    ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListETCorrespondance);
-                    if (ListToDisplay != null)
+                    if (ListETCorrespondance != null)
                     {
-                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListETCorrespondance);
+                        if (ListToDisplay != null)
+                        {
+                            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        }
+                    }
+                    else
+                    {
+                        if(ListToDisplay!=null)
+                        {
+                            ClearList();
+                        }
                     }
                     IsVisibleFavourite = false;
                 }
             }
            
+        }
+
+        public void ClearList()
+        {
+            ListToDisplay.Clear();
+            Count = 0;
+            CountLabel = AppResources.NDCount + ": " + Count.ToString();
+            IsListVisible = false;
+            IsNoDataLableVisible = true;
         }
         public async void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
         {

@@ -40,23 +40,25 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
+
+
                 viewModel = App.Locator.ZakatInstalmentPlanPageView;
                 this.BindingContext = viewModel;
+                viewModel.ResetData();
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
                 viewModel.showInstructionsDialog();
                 GetZakatInstalmentData();
+                outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
-                viewModel.ResetData();
-
 
             }
             catch (Exception ex)
             {
 
+
+
             }
-
-
 
 
 

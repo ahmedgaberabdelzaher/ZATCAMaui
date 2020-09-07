@@ -151,6 +151,16 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 if (viewModel.MobileNumber.Substring(0, 1) == "0")
                 {
                     Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
+
+                }
+                if (viewModel.MobileNumber.Substring(0, 1) != "5")
+                {
+                    Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+
+                }
+                if (viewModel.MobileNumber.Substring(0, 1) == "0")
+                {
+                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
                 }
                 if (viewModel.MobileNumber.Length < 9)
                 {
