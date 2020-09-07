@@ -71,6 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("FilterLabelText");
             }
         }
+
         //private Xamarin.Forms.Shapes.RotateTransform  _rotationForImageInArabic = 0;
         //    public Xamarin.Forms.Shapes.RotateTransform RotationForImageInArabic
         //{
@@ -162,7 +163,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ListETCorrespondance");
             }
         }
-   
+
+        private string _filterTaxTypeLabelText = null;
+        public string FilterTaxTypeLabelText
+        {
+            get
+            {
+                return _filterTaxTypeLabelText;
+            }
+            set
+            {
+                _filterTaxTypeLabelText = value;
+                RaisePropertyChanged("FilterTaxTypeLabelText");
+            }
+        }
+
+
+        
+
         public ReturnTypes _selectedDropdownItem;
         public ReturnTypes SelectedDropdownItem
         {
@@ -187,6 +205,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SelectedDropdownItem");
             }
         }
+
+        public ReturnTypes _selectedTaxTypeDropdownItem;
+        public ReturnTypes SelectedTaxTypeDropdownItem
+        {
+            get
+            {
+                return _selectedTaxTypeDropdownItem;
+            }
+            set
+            {
+                _selectedTaxTypeDropdownItem = value;
+                if (_selectedTaxTypeDropdownItem != null)
+                {
+                    FilterTaxTypeLabelText = _selectedTaxTypeDropdownItem.TaxType;
+                    FilterCorrespondancedata();
+                }
+
+                RaisePropertyChanged("SelectedDropdownItem");
+            }
+        }
+
         private bool _isLoading=false;
         public bool IsLoading
         {
@@ -200,6 +239,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+        private bool _isVisibleFavourite = false;
+        public bool IsVisibleFavourite
+        {
+            get
+            {
+                return _isVisibleFavourite;
+            }
+            set
+            {
+                _isVisibleFavourite = value;
+                RaisePropertyChanged("IsVisibleFavourite");
+            }
+        }
+
+
         private bool _isListVisible = false;
         public bool IsListVisible
         {
@@ -239,6 +294,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("FilterListForDropDown");
             }
         }
+
+
+        private List<ReturnTypes> _taxTypeListForDropDown;
+        public List<ReturnTypes> TaxTypeListForDropDown
+        {
+            get
+            {
+                return _taxTypeListForDropDown;
+            }
+            set
+            {
+                _taxTypeListForDropDown = value;
+                RaisePropertyChanged("TaxTypeListForDropDown");
+            }
+        }
+
         private ObservableCollection<CorrespondanceModel> _listToDisplay;
         public ObservableCollection<CorrespondanceModel> ListToDisplay
         {
@@ -356,6 +427,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         childZakat.Gpart = itemZakat.Gpart;
                         childZakat.Begdaz = itemZakat.Begdaz;
                         childZakat.Enddaz = itemZakat.Enddaz;
+                        try
+                        {
+                            childZakat.TaxtpFg = itemZakat.TaxtpFg;
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
                         DateTime? BegDate = DateTime.Now;
                         if (itemZakat.Cdate != null)
                         {
@@ -446,6 +525,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         childVAT.Gpart = itemVAT.Gpart;
                         childVAT.Begdaz = itemVAT.Begdaz;
                         childVAT.Enddaz = itemVAT.Enddaz;
+                        try
+                        {
+                            childVAT.TaxtpFg = itemVAT.TaxtpFg;
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
                         DateTime? BegDate = DateTime.Now;
                         if (itemVAT.Cdate != null)
                         {
@@ -535,6 +622,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         childET.Gpart = itemET.Gpart;
                         childET.Begdaz = itemET.Begdaz;
                         childET.Enddaz = itemET.Enddaz;
+                        try
+                        {
+                            childET.TaxtpFg = itemET.TaxtpFg;
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
                         DateTime? BegDate = DateTime.Now;
                         if (itemET.Cdate != null)
                         {
@@ -637,6 +732,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
             }
+        }
+        public void FilterCorrespondancedata()
+        {
+            if(SelectedTaxTypeDropdownItem!=null)
+            {
+                if(SelectedTaxTypeDropdownItem.Id=="01")
+                {
+                    ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListZAKATCorrespondance);
+                    if (ListToDisplay != null)
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                    }
+                    IsVisibleFavourite = true;
+                }
+                else if(SelectedTaxTypeDropdownItem.Id == "02")
+                {
+                    ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListVATCorrespondance);
+                    if (ListToDisplay != null)
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                    }
+                    IsVisibleFavourite = false;
+                }
+                else if(SelectedTaxTypeDropdownItem.Id == "03")
+                {
+                    ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListETCorrespondance);
+                    if (ListToDisplay != null)
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                    }
+                    IsVisibleFavourite = false;
+                }
+            }
+           
         }
         public async void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
         {

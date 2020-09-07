@@ -125,7 +125,7 @@
                         </StackLayout>
 
                     </StackLayout>
-                    <Image Grid.Row="0" Grid.Column="1" Source="{Binding FavIcon}" VerticalOptions="StartAndExpand">
+                    <Image Grid.Row="0" Grid.Column="1" Source="{Binding FavIcon}" IsVisible="{Binding IsFavoriteVisible}" VerticalOptions="StartAndExpand">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnFavClicked}"/>
                         </Image.GestureRecognizers>
