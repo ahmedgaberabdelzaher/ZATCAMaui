@@ -379,7 +379,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTaxPayerType = "Trade/Business";
+        private string _selectedTaxPayerType = string.Empty;
         public string SelectedTaxPayerType
         {
             get => _selectedTaxPayerType;
@@ -1060,9 +1060,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-            CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
 
@@ -1925,6 +1922,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async void fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
         {
+            clearFormData(_enum);
             try
             {
                 IsLoading = true;
@@ -1936,11 +1934,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {
-                        IsLoading = false;
                         _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
+                    SelectedTaxPayerType = "Trade/Business";
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
 
                     ResidenceTypePrePopulateData(taxPayerDetails);
@@ -1956,7 +1954,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     GCCIDTypeIdNumberValue = idItem.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
-                    LastName = taxPayerDetails?.NameLast;
+                    LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;
                     GrandFatherName = taxPayerDetails?.GrandfatherName;
                     FamilyName = taxPayerDetails?.FamilyName;
@@ -1995,7 +1993,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                     SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
                     udpdateDates();
@@ -2235,37 +2233,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (SelectedReportingBranch == null || string.IsNullOrWhiteSpace(SelectedReportingBranch.Bez50))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Choose Reporting Branch"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateBranch));
                         return false;
                     }
-                    if (string.IsNullOrWhiteSpace(SelectedTaxPayerType))
-                    {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Choose TaxPayer Type"));
-                        return false;
-                    }
+                    //if (string.IsNullOrWhiteSpace(SelectedTaxPayerType))
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Choose TaxPayer Type"));
+                    //    return false;
+                    //}
                     else if (string.IsNullOrWhiteSpace(SelectedTpresidence))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Choose Residence type"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidenceType));
                         return false;
                     }
                     else if (SelectedTpresidence == "2" && (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count <= 0))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach Rent Copy"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAttachRent));
                         return false;
                     }
                     else if (SelectedTpresidence == "3" && string.IsNullOrWhiteSpace(SelectedOrgNonResident))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose your legal entity"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateLegalEntity));
                         return false;
                     }
                     else if (SelectedTpresidence == "3" && SelectedOrgNonResident == "1" && string.IsNullOrWhiteSpace(SelectedOrgNonResidentOptions))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose permanent establishment"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateParmanentEst));
                         return false;
                     }
                     else if (SelectedTpresidence == "3" && SelectedOrgNonResident == "2" && string.IsNullOrWhiteSpace(SelectedOrgNonResidentActivity))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose other taxable income from sources within the KSA"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOtherTax));
                         return false;
                     }
                 }
@@ -2274,32 +2272,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (string.IsNullOrWhiteSpace(SelectedDOB))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose DOB"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateDOB));
                         return false;
                     }
                     else if (string.IsNullOrWhiteSpace(FirstName))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide first name"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateFirstName));
                         return false;
                     }
                     else if (string.IsNullOrWhiteSpace(SelectedGender))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose gender"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateGender));
                         return false;
                     }
                     else if (null == SelectedTaxpayerPDNationality)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose nationality"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateNationality));
                         return false;
                     }
                     else if (null == SelectedCitizen)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose citizen"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCitizen));
                         return false;
                     }
                     else if (null == SelectedResidence)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose residence"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidence));
                         return false;
                     }
                 }
@@ -2307,27 +2305,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (string.IsNullOrWhiteSpace(PassportNumber))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide passport number"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePassportNumber));
                         return false;
                     }
                     else if (null == SelectedPassportIssueCountry)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose issue country"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueCountry));
                         return false;
                     }
                     else if (string.IsNullOrWhiteSpace(PassportIssueDate))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose issue date"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueDate));
                         return false;
                     }
                     else if (string.IsNullOrWhiteSpace(PassportExpireDate))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please choose expiry date"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePExpiryDate));
                         return false;
                     }
                     else if (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count <= 0)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach passport copy"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAttachCopy));
                         return false;
                     }
                 }
@@ -2335,7 +2333,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (OutletData.Count == 0)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please add one outlet atleast"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAtleastOutlet));
                         return false;
                     }
                 }
@@ -2346,7 +2344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (!ESTLedge)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please mark check on pledge"));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePledge));
                         return false;
                     }
                 }
@@ -2605,7 +2603,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             return isFileAlreadyAttached;
         }
 
-
+        public void clearFormData(EstablishmentRegistrationTabsEnum _enum)
+        {
+            switch (_enum)
+            {
+                case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
+                    SelectedDOB = string.Empty;
+                    FirstName = string.Empty;
+                    SelectedGender = string.Empty;
+                    SelectedTaxpayerPDNationality = null;
+                    SelectedCitizen = null;
+                    SelectedResidence = null;
+                    SelectedEntityType = string.Empty;
+                    SelectedTaxPayerType = string.Empty;
+                    SelectedRegNationalityType = string.Empty;
+                    break;
+                case EstablishmentRegistrationTabsEnum.PassportDetails:
+                    PassportNumber = string.Empty;
+                    SelectedPassportIssueCountry = null;
+                    PassportIssueDate = string.Empty;
+                    PassportExpireDate = string.Empty;
+                    UploadedPassportDocumentsList?.Clear();
+                    break;
+                case EstablishmentRegistrationTabsEnum.Outlets:
+                    OutletData?.Clear();
+                    break;
+                case EstablishmentRegistrationTabsEnum.FinancialDetail:
+                    FiscalMonth = string.Empty;
+                    FiscalDay = string.Empty;
+                    CommDate = string.Empty;
+                    TaxDate = string.Empty;
+                    break;
+                case EstablishmentRegistrationTabsEnum.Declaration:
+                    ESTLedge = false;
+                    break;
+                case EstablishmentRegistrationTabsEnum.RegistrationType:
+                default:
+                    SelectedReportingBranch = null;
+                    SelectedTpresidence = string.Empty;
+                    SelectedOrgNonResident = string.Empty;
+                    SelectedOrgNonResidentOptions = string.Empty;
+                    SelectedOrgNonResidentActivity = string.Empty;
+                    UploadedRentDocumentsList?.Clear();
+                    break;
+            }
+        }
         #endregion
     }
 

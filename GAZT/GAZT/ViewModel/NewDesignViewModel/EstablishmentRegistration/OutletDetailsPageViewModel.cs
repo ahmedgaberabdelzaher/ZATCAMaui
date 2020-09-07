@@ -799,6 +799,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
+                    OutletActNumber = string.Empty;
                     newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
@@ -858,7 +859,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 var count = mainactivity.Count();
                 if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please add activity with mainactivity"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
                     return false;
                 }
             }
@@ -866,57 +867,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (string.IsNullOrWhiteSpace(HouseNumber) && string.IsNullOrWhiteSpace(HouseNumberSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both house number and postal's house number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddHouseNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(BuildingNumber) && string.IsNullOrWhiteSpace(BuildingNumberSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both building number and postal's building number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(FloorNumber) && string.IsNullOrWhiteSpace(FloorNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both floor number and postal's floor number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddFloorNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(Street) && string.IsNullOrWhiteSpace(StreetSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both street and postal's street"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddStreet));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(Quarter) && string.IsNullOrWhiteSpace(QuarterSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both quarter and postal's quarter"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddQuarter));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(PostalCode) && string.IsNullOrWhiteSpace(PostalCodeSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both postal code and postal's postal code"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostal));
                     return false;
                 }
                 else if (PostalCode.Length != 5 && PostalCodeSame.Length != 5)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide postal codes in 5 digit"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostalCode5));
                     return false;
                 }
                 else if (Country == null && CountrySame == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both country and postal's country"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
                     return false;
                 }
                 else if (Provinance == null && ProvinanceSame == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both provinance and postal's proviance"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddProvinance));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(AddNumber) && string.IsNullOrWhiteSpace(AddNumberSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both additional number and postal's additional number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddAdditional));
                     return false;
                 }
                 else if (City == null && CitySame == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide both city and postal's city"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
                     return false;
                 }
             }
@@ -924,7 +925,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (string.IsNullOrWhiteSpace(OutletName))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide name"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletName));
                     return false;
                 }
             }

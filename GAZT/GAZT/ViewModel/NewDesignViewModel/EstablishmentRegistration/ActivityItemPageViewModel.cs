@@ -491,6 +491,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             CRIssueCountry = item as CountryDropdownItem;
                             CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                            CRIssueCity = null;
                         }
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                             LicenseIssueCountry = item as CountryDropdownItem;
@@ -1023,7 +1024,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             if (validateCR?.NotFound == "X")
             {
-                await _dialogService.ShowMessage("CR Number is invalid", AppResources.Information);
+                await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
                 return;
             }
             if (validateCR?.Excption == "X")
@@ -1149,47 +1150,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (CRIssueCountry == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue country"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CRIssueBy))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue by"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
                     return false;
                 }
                 else if(CRIssueCity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue city"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
                     return false;
                 }
                 else if(string.IsNullOrWhiteSpace(CRNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide CR number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRNumber));
                     return false;
                 }
                 else if(string.IsNullOrWhiteSpace(CRValidFrom))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide CR valid from date"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
                 else if (CRsCopies == null && CRsCopies.Count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach CR copy"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
                     return false;
                 }
                 else if (CRMainGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide main group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
                     return false;
                 }
                 else if (CRSubGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide sub group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
                 else if (CRAcitivity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide activity"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;
                 }
                 else
@@ -1201,47 +1202,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (LicenseIssueCountry == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue country"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(LicenseIssueBy))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue by"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
                     return false;
                 }
                 else if (LicenseIssueCity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue city"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(LicenseNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide License number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACLicense));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(ValidFrom))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide License valid from date"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
                     return false;
                 }
                 else if (LicensesCopies == null && LicensesCopies.Count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach License copy"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachLicense));
                     return false;
                 }
                 else if (LicenseMainGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide main group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
                 else if (LicenseSubGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide sub group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
                 else if (LicenseAcitivity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide activity"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;
                 }
                 else
