@@ -6293,7 +6293,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>What is your Taxpayer type(from signup)?</value>
   </data>
   <data name="ESTNationalyStatusQuestionLabel" xml:space="preserve">
-    <value>What is your Nationality Status?</value>
+    <value>What is your Residency Status?</value>
   </data>
   <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
     <value>Stay More than or equal to 183 days in KSA</value>
