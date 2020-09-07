@@ -433,7 +433,8 @@
             </Grid>
                </ScrollView>
               
-              <Grid IsVisible="{Binding IsOutletViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <Grid IsVisible="{Binding IsOutletViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
@@ -455,8 +456,9 @@
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         
-                        <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                        <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
+                                             IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">

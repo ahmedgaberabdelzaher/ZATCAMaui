@@ -184,6 +184,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public ObservableCollection<TINDeregistrationModel> permitOutletDecisionOptions { get; set; }
+        public ObservableCollection<TINDeregistrationModel> PermitOutletDecisionOptions
+        {
+            get
+            {
+                return permitOutletDecisionOptions;
+            }
+            set
+            {
+                if (value != null)
+                    permitOutletDecisionOptions = value;
+                RaisePropertyChanged("PermitOutletDecisionOptions");
+            }
+        }
+
         public ObservableCollection<TinDeregestrationAttachmentsModel> attachmentsListViewData { get; set; }
         public ObservableCollection<TinDeregestrationAttachmentsModel> AttachmentsListViewData
         {
@@ -276,8 +291,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (TinDeregistrationData != null)
                     {
-                        if (String.IsNullOrEmpty(TinDeregistrationData.ADregOpt))
+                        if (TinDeregistrationData.ADregOpt != null)
+                        {
                             TinDeregistrationData.ADregOpt = _selectedOutletOption.OutletOptionIndex;
+                        }
+                        else
+                        {
+                            TinDeregistrationData.ADregOpt = string.Empty;
+                            TinDeregistrationData.ADregOpt = _selectedOutletOption.OutletOptionIndex;
+                        }
 
                         PopulateAttachmentsListViewTemplate();
                     }
@@ -537,6 +559,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
+
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -1581,6 +1604,38 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public void AddPermitOutletDecisionOptions()
+        {
+            List<TINDeregistrationModel> tempValues = new List<TINDeregistrationModel>();
+            try
+            {
+                tempValues.Add(new TINDeregistrationModel
+                {
+                    ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseOneOutlet,
+                    ActiveOutletDecisionOptionsIsSelected = true,
+                    OutletOptionIndex = "1"
+                });
+                tempValues.Add(new TINDeregistrationModel
+                {
+                    ActiveOutletDecisionOptions = AppResources.TinDeregistrationTransferOneOutletsToSingle,
+                    ActiveOutletDecisionOptionsIsSelected = false,
+                    OutletOptionIndex = "2"
+                });
+                tempValues.Add(new TINDeregistrationModel
+                {
+                    ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseOrTransferOutletPermitIndividually,
+                    ActiveOutletDecisionOptionsIsSelected = false,
+                    OutletOptionIndex = "3"
+                });
+                   
+                PermitOutletDecisionOptions = new ObservableCollection<TINDeregistrationModel>(tempValues);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public void AddOutletDecisionOptions()
         {
             List<TINDeregistrationModel> tempValues = new List<TINDeregistrationModel>();
@@ -1739,9 +1794,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //TinDeregistrationData.AEffectiveDt = TinDeregistrationData.ASubmissionDate;
                 //TinDeregistrationData.ADecDate = TinDeregistrationData.ASubmissionDate;
 
-                //addPopUpPage();
-
-                await SaveAsDraft();
+                //await SaveAsDraft();
                 EnableOutletDetaislView();
             }
             catch (GAZTUnlockAccountException ex)
@@ -1758,7 +1811,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        async void addPopUpPage()
+        public async void AddPopUpPage()
         {
             try
             {

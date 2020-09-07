@@ -4407,6 +4407,15 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
     <value>What do you want to do with active outlets?</value>
   </data>
+  <data name="TinDeregistrationCloseOneOutlet" xml:space="preserve">
+    <value>Close the Outlet</value>
+  </data>
+  <data name="TinDeregistrationTransferOneOutletsToSingle" xml:space="preserve">
+    <value>Transfer the Outlet to a single Transferee</value>
+  </data>
+  <data name="TinDeregistrationCloseOrTransferOutletPermitIndividually" xml:space="preserve">
+    <value>Close/Transfer Outlet permits individually</value>
+  </data>
   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
     <value>Close all Outlets</value>
   </data>

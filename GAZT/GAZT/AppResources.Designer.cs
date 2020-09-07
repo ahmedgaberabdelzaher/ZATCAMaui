@@ -7410,6 +7410,24 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationCloseOneOutlet {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCloseOneOutlet", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationTransferOneOutletsToSingle {
+            get {
+                return ResourceManager.GetString("TinDeregistrationTransferOneOutletsToSingle", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationCloseOrTransferOutletPermitIndividually {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCloseOrTransferOutletPermitIndividually", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationCloseAllOutlets {
             get {
                 return ResourceManager.GetString("TinDeregistrationCloseAllOutlets", resourceCulture);

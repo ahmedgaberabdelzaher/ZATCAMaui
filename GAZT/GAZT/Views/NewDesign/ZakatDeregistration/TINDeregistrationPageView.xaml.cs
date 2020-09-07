@@ -482,5 +482,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
+        void outletsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            if(viewModel.TinDeregistrationData.ADregOpt == "3")
+            {
+                viewModel.AddPermitOutletDecisionOptions();
+                viewModel.AddPopUpPage();
+            }
+        }
     }
 }
