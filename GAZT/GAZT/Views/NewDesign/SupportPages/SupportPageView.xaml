@@ -63,6 +63,9 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDChat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnChatTapped"/>
+                                </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -96,6 +99,11 @@
                     </StackLayout>
                     <!--FAQ View End-->
 
+                    <!--Chat View Ends-->
+                    <StackLayout IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Chat}}">
+                        <WebView x:Name="ChatWebView" WidthRequest="1000" Navigating="ChatWebView_Navigating" Navigated="ChatWebView_Navigated" VerticalOptions="FillAndExpand" />
+                    </StackLayout>
+                    <!--Chat View Ends-->
 
                     <!--ContactUs View Starts-->
                     <StackLayout IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
