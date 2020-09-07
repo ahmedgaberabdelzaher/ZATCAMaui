@@ -1207,6 +1207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             taxPayerDetails.Draftfg = "X";
                             taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                            taxPayerDetails.UserTypx = "TP";
                             var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         }
                         catch (Exception e)
@@ -1856,7 +1857,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage("File size is with more 10 MB can not be uploaded", AppResources.Information);
+                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
                             }
                             else
@@ -2385,6 +2386,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                     taxPayerDetails.StepNumberx = "01";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -2415,6 +2417,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.StepNumberx = "02";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
 
@@ -2450,6 +2453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.StepNumberx = "02";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -2469,6 +2473,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -2480,6 +2485,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Decfg = "X";
                     taxPayerDetails.Operationx = "01";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
