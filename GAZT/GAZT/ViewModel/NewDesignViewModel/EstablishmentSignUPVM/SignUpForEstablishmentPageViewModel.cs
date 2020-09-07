@@ -2575,12 +2575,68 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                 }
             }
+            catch (GAZTException gex)
+            {
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                  IsLoading = false;
+
+                    //   await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    //_navigationService.GoBack();
+                });
+            }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                });
+            }
+            catch (HttpRequestException ex)
+            {
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                  IsLoading = false;
+
+                    //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                   // _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                  
                 });
             }
         }
