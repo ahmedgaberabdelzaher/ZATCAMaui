@@ -2144,19 +2144,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         #region Attachments View
         public void PopulateAttachmentsListViewTemplate()
         {
-            AttachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>();
+            List<TinDeregestrationAttachmentsModel> check = new List<TinDeregestrationAttachmentsModel>();
 
             //ADregReason: "2"
             //ADregOpt: "1"
 
-            if(TinDeregistrationData.ATinType == "1")
+            if (TinDeregistrationData.ATinType == "1")
             {
                 //Bankruptcy for Establishment
-                if(TinDeregistrationData.ADregReason == "1")
+                if(TinDeregistrationData.ADregReason == "2")
                 {
                     if(TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
                     {
-                        AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                        check.Add(new TinDeregestrationAttachmentsModel
                         {
                             FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
                             FieldSubTitle = AppResources.TinDeregistration20MB,
@@ -2169,11 +2169,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 //Death Certificate of individual
-                if (TinDeregistrationData.ADregReason == "2")
+                if (TinDeregistrationData.ADregReason == "3")
                 {
                     if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
                     {
-                        AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                        check.Add(new TinDeregestrationAttachmentsModel
                         {
                             FieldTitle = AppResources.TinDeregistrationAttachmentDeathCertificate,
                             FieldSubTitle = AppResources.TinDeregistration20MB,
@@ -2186,11 +2186,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 //Liquidatation
-                if (TinDeregistrationData.ADregReason == "3")
+                if (TinDeregistrationData.ADregReason == "4")
                 {
                     if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
                     {
-                        AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                        check.Add(new TinDeregestrationAttachmentsModel
                         {
                             FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
                             FieldSubTitle = AppResources.TinDeregistration20MB,
@@ -2211,7 +2211,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (TinDeregistrationData.ADregOpt == "2")
                     {
-                        AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                        check.Add(new TinDeregestrationAttachmentsModel
                         {
                             FieldTitle = AppResources.TinDeregistrationAttachmentMinisterialResponse,
                             FieldSubTitle = AppResources.TinDeregistration50MBMax,
@@ -2220,7 +2220,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             DocType = "DR03",
                             IsMandatory = true
                         });
-                        AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                        check.Add(new TinDeregestrationAttachmentsModel
                         {
                             FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement,
                             FieldSubTitle = AppResources.TinDeregistration50MBMax,
@@ -2234,7 +2234,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if ( TinDeregistrationData.ADregReason == "2")
                 {
-                    AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                    check.Add(new TinDeregestrationAttachmentsModel
                     {
                         FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
                         FieldSubTitle = AppResources.TinDeregistration20MB,
@@ -2246,7 +2246,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (TinDeregistrationData.ADregOpt == "2")
                     {
-                        AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                        check.Add(new TinDeregestrationAttachmentsModel
                         {
                             FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
                             FieldSubTitle = AppResources.TinDeregistration50MBMax,
@@ -2266,7 +2266,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //This attachment is needed when transferring the outlets and not closing for all the cases
             if (TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
             {
-                AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+                check.Add(new TinDeregestrationAttachmentsModel
                 {
                     FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
                     FieldSubTitle = AppResources.TinDeregistration50MBMax,
@@ -2278,7 +2278,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
             //In all Cases
-            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            check.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
                 FieldSubTitle = AppResources.TinDeregistration20MB,
@@ -2288,7 +2288,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 IsMandatory = true
             });
 
-            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            check.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing,
                 FieldSubTitle = AppResources.TinDeregistration50MBMax,
@@ -2297,6 +2297,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 DocType = "DR10",
                 IsMandatory = true
             });
+            AttachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>(check);
 
             //AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             //{
