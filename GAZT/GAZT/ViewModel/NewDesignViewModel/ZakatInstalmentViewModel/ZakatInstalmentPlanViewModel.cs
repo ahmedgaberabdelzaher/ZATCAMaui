@@ -1845,26 +1845,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public void ResetData()
         {
-            noOfInstalments = 1;
-            minInstalments = 1;
-            maxInstalments = 36;
-            downPaymentAmount = 0.0;
-            periodicInstalment = 0.0;
-            minAmount = 0.0;
+
+            NoOfInstalments = 1;
+            MinInstalments = 1;
+            MaxInstalments = 36;
+            DownPaymentAmount = 0.0;
+            PeriodicInstalment = 0.0;
+            MinAmount = 0.0;
             maxAmount = 0.0;
-            inputData = "";
-            totalAmountSAR = "0.00 SAR";
-            _vATDueAmount = "0.00";
-            _vATPenalityAmount = "0.00";
-            _vATBillDueAmount = "0.00 SAR";
-            _vATLiabilityAmount = "0.00 SAR";
+            InputData = "";
+            TotalAmountSAR = "0.00 SAR";
+            VATDueAmount = "0.00";
+            VATPenalityAmount = "0.00";
+            VATBillDueAmount = "0.00 SAR";
+            VATLiabilityAmount = "0.00 SAR";
             CurrentIndex = 1;
             Year1 = "";
             Year2 = "";
             Year3 = "";
-            BankStatementsAttachmentsListViewData.Clear();
-            FinanceAttachmentsListViewData.Clear();
+            BankStatementsAttachmentsListViewData = null;
+            FinanceAttachmentsListViewData = null;
             EnableDeclarationContinue();
+            AddFrequencyOptions();
+            AddOutletDecisionOptions();
+
+
 
         }
 

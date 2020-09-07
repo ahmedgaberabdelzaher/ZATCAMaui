@@ -2,7 +2,6 @@
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel;
 #region OldUsing
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage_ViewModel;
@@ -53,7 +52,6 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewMo
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage;
@@ -163,7 +161,8 @@ using EGAZT.Views.NewDesign.Template;
 using EGAZT.Views.NewDesign.ContractReleasePages;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 using EGAZT.Views.NewDesign;
-using EGAZT.Views.NewDesign.VATRefunds;
+using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
+using EGAZT.Views.NewDesign.VatReview;
 
 namespace EGAZT
 {
@@ -248,7 +247,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<ContractReleaseListViewModel>();
             SimpleIoc.Default.Register<ChangeFillingPeriodListViewModel>();
             SimpleIoc.Default.Register<ChangeFillingPeriodSuccessPage>();
-
+            SimpleIoc.Default.Register<VatReviewViewModel>();
+            SimpleIoc.Default.Register<VatReviewListViewModel>();
             #endregion
 
             #region OldIOC
@@ -2209,8 +2209,12 @@ namespace EGAZT
             navigationService.Configure(App.ContractReleaseListPageView, typeof(ContractReleaseListPageView));
             navigationService.Configure(App.ChangeFillingPeriodListPageView, typeof(ChangeFillingPeriodListPageView));
             navigationService.Configure(App.InfoPopUpPage, typeof(InfoPopUpPage));
+            navigationService.Configure(App.VatReviewPageView, typeof(VatReviewPageView));
+            navigationService.Configure(App.VatReviewListPageView, typeof(VatReviewListPageView));
+            navigationService.Configure(App.VatReviewSuccessPageView, typeof(VatReviewSuccessPageView));
+            navigationService.Configure(App.VatReviewViewApplicationPageView, typeof(VatReviewViewApplicationPageView));
 
-            
+
             #endregion
 
             #region SYNCFUSION INTEGRATION
@@ -2528,7 +2532,36 @@ namespace EGAZT
             }
         }
 
-
+        #region VatReview
+        public VatReviewViewModel VatReviewView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VatReviewViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VatReviewListViewModel VatReviewListView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VatReviewListViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        #endregion
 
         #endregion
 

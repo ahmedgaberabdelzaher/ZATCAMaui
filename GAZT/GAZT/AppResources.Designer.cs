@@ -11868,6 +11868,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZakatObjection {
+            get {
+                return ResourceManager.GetString("ZakatObjection", resourceCulture);
+            }
+        }
+        
         public static string VRReviewReason {
             get {
                 return ResourceManager.GetString("VRReviewReason", resourceCulture);
@@ -11979,6 +11985,252 @@ namespace EGAZT {
         public static string VRContactPersonName {
             get {
                 return ResourceManager.GetString("VRContactPersonName", resourceCulture);
+            }
+        }
+        
+        public static string VRVatReviewRequest {
+            get {
+                return ResourceManager.GetString("VRVatReviewRequest", resourceCulture);
+            }
+        }
+        
+        public static string VRNewObjectionorReview {
+            get {
+                return ResourceManager.GetString("VRNewObjectionorReview", resourceCulture);
+            }
+        }
+        
+        public static string VRObjectionsReviews {
+            get {
+                return ResourceManager.GetString("VRObjectionsReviews", resourceCulture);
+            }
+        }
+        
+        public static string VRSelectType {
+            get {
+                return ResourceManager.GetString("VRSelectType", resourceCulture);
+            }
+        }
+        
+        public static string VRChooseaZakatObjectionorVATReview {
+            get {
+                return ResourceManager.GetString("VRChooseaZakatObjectionorVATReview", resourceCulture);
+            }
+        }
+        
+        public static string VRDecisionDate {
+            get {
+                return ResourceManager.GetString("VRDecisionDate", resourceCulture);
+            }
+        }
+        
+        public static string VRYourVATReviewissubmittedsuccessfully {
+            get {
+                return ResourceManager.GetString("VRYourVATReviewissubmittedsuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string VRInstructions {
+            get {
+                return ResourceManager.GetString("VRInstructions", resourceCulture);
+            }
+        }
+        
+        public static string VRCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("VRCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        public static string VRObjectionsAndReviews {
+            get {
+                return ResourceManager.GetString("VRObjectionsAndReviews", resourceCulture);
+            }
+        }
+        
+        public static string VRAll {
+            get {
+                return ResourceManager.GetString("VRAll", resourceCulture);
+            }
+        }
+        
+        public static string VRTaxPayersName {
+            get {
+                return ResourceManager.GetString("VRTaxPayersName", resourceCulture);
+            }
+        }
+        
+        public static string VRApplicationNumber {
+            get {
+                return ResourceManager.GetString("VRApplicationNumber", resourceCulture);
+            }
+        }
+        
+        public static string VRDate {
+            get {
+                return ResourceManager.GetString("VRDate", resourceCulture);
+            }
+        }
+        
+        public static string VRTaxPeriodofCase {
+            get {
+                return ResourceManager.GetString("VRTaxPeriodofCase", resourceCulture);
+            }
+        }
+        
+        public static string VRPeriodFrom {
+            get {
+                return ResourceManager.GetString("VRPeriodFrom", resourceCulture);
+            }
+        }
+        
+        public static string VRPeriodTo {
+            get {
+                return ResourceManager.GetString("VRPeriodTo", resourceCulture);
+            }
+        }
+        
+        public static string VRPenality_amount_in_question {
+            get {
+                return ResourceManager.GetString("VRPenality amount in question", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityPayment {
+            get {
+                return ResourceManager.GetString("VRSecurityPayment", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityType {
+            get {
+                return ResourceManager.GetString("VRSecurityType", resourceCulture);
+            }
+        }
+        
+        public static string VRSADAD {
+            get {
+                return ResourceManager.GetString("VRSADAD", resourceCulture);
+            }
+        }
+        
+        public static string VRBANKGURANTEE {
+            get {
+                return ResourceManager.GetString("VRBANKGURANTEE", resourceCulture);
+            }
+        }
+        
+        public static string VRSECURITYAMOUNT {
+            get {
+                return ResourceManager.GetString("VRSECURITYAMOUNT", resourceCulture);
+            }
+        }
+        
+        public static string VRGENERATESADAD {
+            get {
+                return ResourceManager.GetString("VRGENERATESADAD", resourceCulture);
+            }
+        }
+        
+        public static string VRSADADNumberGenerationisinprogress {
+            get {
+                return ResourceManager.GetString("VRSADADNumberGenerationisinprogress", resourceCulture);
+            }
+        }
+        
+        public static string VRSADADNumber {
+            get {
+                return ResourceManager.GetString("VRSADADNumber", resourceCulture);
+            }
+        }
+        
+        public static string VRViewBill {
+            get {
+                return ResourceManager.GetString("VRViewBill", resourceCulture);
+            }
+        }
+        
+        public static string VRBillDetails {
+            get {
+                return ResourceManager.GetString("VRBillDetails", resourceCulture);
+            }
+        }
+        
+        public static string VRDocumentNo {
+            get {
+                return ResourceManager.GetString("VRDocumentNo", resourceCulture);
+            }
+        }
+        
+        public static string VRDateofPenalty {
+            get {
+                return ResourceManager.GetString("VRDateofPenalty", resourceCulture);
+            }
+        }
+        
+        public static string VRDescriptionofPenalty {
+            get {
+                return ResourceManager.GetString("VRDescriptionofPenalty", resourceCulture);
+            }
+        }
+        
+        public static string VRPeriodKey {
+            get {
+                return ResourceManager.GetString("VRPeriodKey", resourceCulture);
+            }
+        }
+        
+        public static string VRStartDate {
+            get {
+                return ResourceManager.GetString("VRStartDate", resourceCulture);
+            }
+        }
+        
+        public static string VREndDate {
+            get {
+                return ResourceManager.GetString("VREndDate", resourceCulture);
+            }
+        }
+        
+        public static string VRDueDate {
+            get {
+                return ResourceManager.GetString("VRDueDate", resourceCulture);
+            }
+        }
+        
+        public static string VRAmount {
+            get {
+                return ResourceManager.GetString("VRAmount", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityNote1 {
+            get {
+                return ResourceManager.GetString("VRSecurityNote1", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityNote2 {
+            get {
+                return ResourceManager.GetString("VRSecurityNote2", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityBankGurrantCheckBoxDesc1 {
+            get {
+                return ResourceManager.GetString("VRSecurityBankGurrantCheckBoxDesc1", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityBankGurrantCheckBoxDesc2 {
+            get {
+                return ResourceManager.GetString("VRSecurityBankGurrantCheckBoxDesc2", resourceCulture);
+            }
+        }
+        
+        public static string VRSecuritySadadCheckBoxDesc1 {
+            get {
+                return ResourceManager.GetString("VRSecuritySadadCheckBoxDesc1", resourceCulture);
             }
         }
         

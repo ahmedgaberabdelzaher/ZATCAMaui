@@ -37,6 +37,7 @@ using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.Models.ZakatInstalmentModels;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using RequestToVATInstallmentPlanDetails = EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
+using EGAZT.Models.VatReviewModel;
 
 namespace GAZT.Manager
 {
@@ -12072,5 +12073,811 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+        #region VATObjection
+        public async static Task<VATObjectionListModel> GAZTGetVATObjectionList()
+        {
+            VATObjectionListModel _vATObjectionListModel = new VATObjectionListModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    string taxType = "VT";
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(TaxType='VT',AudTin='',Gpart='3060200042',Lang='E',UserTin='')
+                    //  ?= &$expand = ASSLISTSet,STATUSSet,REQTYPSet &$format = json
+
+                    String url = Constants.GetVATObjectionListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "'," +
+                     "UserTin='" + "')?$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage vATObjectionListResponse = await client.GetAsync(uri);
+                    if (vATObjectionListResponse != null)
+                    {
+                        if (vATObjectionListResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = vATObjectionListResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String __vATObjectionListData = vATObjectionListResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionListModel = JsonConvert.DeserializeObject<VATObjectionListModel>(__vATObjectionListData);
+                        if (!string.IsNullOrEmpty(__vATObjectionListData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__vATObjectionListData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionListModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public async static Task<VATObjectionSummaryModel> GAZTGetVATObjectionSummary()
+        {
+            VATObjectionSummaryModel _vATObjectionSummaryModel = new VATObjectionSummaryModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    string formGuid = "005056B1F8FB1EEABBBED2788047FDBE";
+                    string euserx = "00001000000008325981";
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //   https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/HeaderSet
+                    //(FormGuid = '005056B1F8FB1EDABAF453EBDAB0ACB7', Fbnumx = '', Gpartx = '', Langx = 'E', Officerx = '', PortalUsrx = '', Euserx = '00000000001008324001', Appfg = 'N')
+                    //?$expand = AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl &$format = json
+
+
+                    String url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + formGuid + "',Fbnumx='" + "',Gpartx='" + "',Langx='" + lang + "'," +
+                     "Officerx='" + "',PortalUsrx='" + "',Euserx='" + euserx + "',Appfg='" + "')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage vATObjectionSummaryResponse = await client.GetAsync(uri);
+                    if (vATObjectionSummaryResponse != null)
+                    {
+                        if (vATObjectionSummaryResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = vATObjectionSummaryResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String __vATObjectionSummaryData = vATObjectionSummaryResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionSummaryModel = JsonConvert.DeserializeObject<VATObjectionSummaryModel>(__vATObjectionSummaryData);
+                        if (!string.IsNullOrEmpty(__vATObjectionSummaryData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__vATObjectionSummaryData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionSummaryModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        //Excel sheet API2 Called to get the on screen button codes and form mode(editable/uneditable). 
+        public async static Task<VATObjectionButtonFormModeModel> GAZTGetVATObjectionFormMode(string status)
+        {
+            VATObjectionButtonFormModeModel _vATObjectionButtonFormModeModel = new VATObjectionButtonFormModeModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    status = "E0001";
+                    string formProc = "ZTAX_VT_REV";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    ///sap/opu/odata/SAP/ZDP_REVIEW_UI_SRV/VR_UI_HDRSet(Fbnum='',Lang='E',Officer='',Gpart='',Status='E0001',TxnTp='',Formproc='ZTAX_VT_REV')
+                    ///?&$expand=VR_UI_BTNSet,ELGBL_DOCSet,ReasonSet
+
+                    String url = Constants.GetVATObjectionButtonFormModeURL + "Fbnum='" + "',Lang='" + lang + "',Officer='" + "',Gpart='" + "'," +
+                     "Status='" + status + "',TxnTp='" + "',Formproc='" + formProc + "')?&$expand=VR_UI_BTNSet,ELGBL_DOCSet,ReasonSet&$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage vATObjectionButtonFormResponse = await client.GetAsync(uri);
+                    if (vATObjectionButtonFormResponse != null)
+                    {
+                        if (vATObjectionButtonFormResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = vATObjectionButtonFormResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String __vATObjectionButtonFormData = vATObjectionButtonFormResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionButtonFormModeModel = JsonConvert.DeserializeObject<VATObjectionButtonFormModeModel>(__vATObjectionButtonFormData);
+                        if (!string.IsNullOrEmpty(__vATObjectionButtonFormData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__vATObjectionButtonFormData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionButtonFormModeModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        //Excel sheet API3 Called to get the list of rejected forms
+        public async static Task<VATObjectionRejectedFormModel> GAZTGetVATObjectionFormRejected(string fbustx, string RvRsn, string rvSubRsn, string UserTypx)
+        {
+            VATObjectionRejectedFormModel _vATObjectionRejectedFormModel = new VATObjectionRejectedFormModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    // fbustx = "E0001";
+                    UserTypx = "TP";
+                    // RvRsn = "VTAS";
+                    // rvSubRsn = "0090";
+                    string formprocx = "ZTAX_VT_REV";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    /// sap / opu / odata / SAP / ZDP_VAT_GET_REJFRM_SRV / HeaderSet(Langx = 'EN', Gpartx = '3102407123', TxnTpx = '', Fbustx = 'E0001', Fbstax = '',
+                    //UserTypx = 'TP', RvRsn = 'VTAS', RvSubRsn = '0090', Fbnumx = '', Sopbel = '', Formprocx = 'ZTAX_VT_REV') ?$expand=RejectedFormSet
+
+                    String url = Constants.GetVATObjectionRejectedFormURL + "Langx='" + lang + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',TxnTpx='" + "',Fbustx='" + fbustx + "'," +
+                     "Fbstax='" + "',UserTypx='" + UserTypx + "',RvRsn='" + RvRsn + "',RvSubRsn='" + rvSubRsn + "',Fbnumx='" + "',Sopbel='" + "',Formprocx='" + formprocx + "')?$expand=RejectedFormSet&$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage vATObjectionRejectedFormResponse = await client.GetAsync(uri);
+                    if (vATObjectionRejectedFormResponse != null)
+                    {
+                        if (vATObjectionRejectedFormResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = vATObjectionRejectedFormResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String __vATObjectionRejectedFormData = vATObjectionRejectedFormResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionRejectedFormModel = JsonConvert.DeserializeObject<VATObjectionRejectedFormModel>(__vATObjectionRejectedFormData);
+                        if (!string.IsNullOrEmpty(__vATObjectionRejectedFormData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__vATObjectionRejectedFormData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionRejectedFormModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        ////Excel sheet API4 for Attachment API
+        public static async Task<AttachmentRootOject> GAZTSaveVATObjectionAttachment(byte[] AttachmentByte, string fileName, string retGuid, string dotyp, string contentType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    // / sap / opu / odata / SAP / ZDP_INDTAX_ATT_SRV / AttachSet(OutletRef = '',
+                    // RetGuid = '005056B1CB171EEAB4FD713DB2A24D4A', Flag = 'N', Dotyp = 'RAGA', SchGuid = '', Srno = 1, Doguid = '', AttBy = 'TP') / AttachMedSet
+
+                    string flag = "N";
+                    dotyp = "RAGA";
+                    string attBy = "TP";
+                    string srNo = "1";
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
+                    char LangZ = GetLangZParameter();
+
+                    String url = Constants.GetVATObjectionAttachmentURL + "OutletRef='" + "',RetGuid='" + retGuid + "',Flag='" + flag + "'" + ",Dotyp='" + dotyp + "',SchGuid='" + "',Srno='" + srNo + "',Doguid='" + "',AttBy='" + attBy + "')/AttachMedSet";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    if (!string.IsNullOrEmpty(contentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(url, baContent);
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                    return _attachment;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        //Excel sheet API5 Called to get the list of rejected forms
+        public async static Task<VATObjectionSecurityAmountModel> GAZTGetVATObjectionSecurityAmount(Decimal disamt, Decimal liaamt, Decimal clramt)
+        {
+            VATObjectionSecurityAmountModel _vATObjectionSecurityAmountModel = new VATObjectionSecurityAmountModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    string amttp = "P";
+                    ///    disamt = "-76000m";
+                    ///   liaamt = "-76000m";
+                    //   clramt = "-76000m";
+
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    /// sap / opu / odata / SAP / ZDP_VAT_NW_REV_SRV / GetSecurityAmountSet(Disamt = -76000m, Liaamt = -76000m, Clramt = -76000m, Amttp = 'P')
+                    String url = Constants.GetVATObjectionSecurityURL + "Disamt=" + disamt + "m,Liaamt=" + liaamt + "m,Clramt=" + clramt + "m,Amttp='" + amttp + "')?$format=json";
+                    //   String url = Constants.GetVATObjectionRejectedFormURL + "Disamt=" + disamt + ",Liaamt=" + liaamt + ",Clramt=" + clramt+ ",Amttp='" + amttp + "')";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage vATObjectionSecurityAmountResponse = await client.GetAsync(uri);
+                    if (vATObjectionSecurityAmountResponse != null)
+                    {
+                        if (vATObjectionSecurityAmountResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = vATObjectionSecurityAmountResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String __vATObjectionSecurityAmountData = vATObjectionSecurityAmountResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionSecurityAmountModel = JsonConvert.DeserializeObject<VATObjectionSecurityAmountModel>(__vATObjectionSecurityAmountData);
+                        if (!string.IsNullOrEmpty(__vATObjectionSecurityAmountData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__vATObjectionSecurityAmountData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionSecurityAmountModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        //Excel sheet API6  To decide whether to enable to submit button or not
+        public async static Task<VATObjectionEnableSubmitModel> GAZTGetVATObjectionEnableSubmit(string statusx, string rvRsn, string rvSubRsn, string rejFb)
+        {
+            VATObjectionEnableSubmitModel _vATObjectionEnableSubmitModel = new VATObjectionEnableSubmitModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    //string amttp = "P";
+                    //  statusx = "E0001";
+                    // rvRsn = "-76000m";
+                    //  rvSubRsn = "-76000m";
+                    // rejFb = "";
+
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    /// sap / opu / odata / SAP / ZDP_VAT_NW_REV_SRV / GetSubmitEnabledSet(Fbnumx = '', Gpartx = '3102407123', Statusx = 'E0001', RvRsn = 'VTAS', RvSubRsn = '0090', RejFb = '65000558139') ?$format = json
+
+
+                    String url = Constants.GetVATObjectionEnableSubmitURL + "Fbnumx='" + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',Statusx='" + statusx + "'" +
+                        ",RvRsn='" + rvRsn + "',RvSubRsn='" + rvSubRsn + "',RejFb='" + rejFb + "')?$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATObjectionEnableSubmitResponse = await client.GetAsync(uri);
+                    if (_vATObjectionEnableSubmitResponse != null)
+                    {
+                        if (_vATObjectionEnableSubmitResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATObjectionEnableSubmitResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _vATObjectionEnableSubmitData = _vATObjectionEnableSubmitResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionEnableSubmitModel = JsonConvert.DeserializeObject<VATObjectionEnableSubmitModel>(_vATObjectionEnableSubmitData);
+                        if (!string.IsNullOrEmpty(_vATObjectionEnableSubmitData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vATObjectionEnableSubmitData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionEnableSubmitModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        ////Excel sheet API7 To validate ID and fetch taxpayer name
+        public async static Task<VATObjectionValidateTaxpayerModel> GAZTGetVATObjectionValidateTaxPayer(string idnum, string idtype, string passExpDt, string taxpDob)
+        {
+            VATObjectionValidateTaxpayerModel _vATObjectionValidateTaxpayerModel = new VATObjectionValidateTaxpayerModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    /// sap / opu / odata / SAP / Z_REG_GET_TAXPAYER_SRV / taxpayer_nameSet(Tin = '', Idtype = 'ZS0003', Idnum = '674634544544', Country = '', PassExpDt = '20200702', TaxpDob = '20200702')
+
+
+                    String url = Constants.GetVATObjectionValidateTaxPayerNameURL + "Tin='" + "',Idtype='" + idtype + "',Idnum='" + idnum + "'" +
+                        ",Country='" + "',PassExpDt='" + passExpDt + "',TaxpDob='" + taxpDob + "')?$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATObjectionValidateTaxpayerResponse = await client.GetAsync(uri);
+                    if (_vATObjectionValidateTaxpayerResponse != null)
+                    {
+                        if (_vATObjectionValidateTaxpayerResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATObjectionValidateTaxpayerResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _VATObjectionValidateTaxpayerData = _vATObjectionValidateTaxpayerResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionValidateTaxpayerModel = JsonConvert.DeserializeObject<VATObjectionValidateTaxpayerModel>(_VATObjectionValidateTaxpayerData);
+                        if (!string.IsNullOrEmpty(_VATObjectionValidateTaxpayerData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATObjectionValidateTaxpayerData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionValidateTaxpayerModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        //Excel sheet API9 To Called on the press of Download Acknowledgement Button
+        public static string GetVATObjectionDownloadAck(string fbnum)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+                    /// sap / opu / odata / SAP / Z_GET_ACK_LETTER_SRV / Ack_letterSet(Fbnum = '90000000231') /$value
+                    String Url = string.Empty;
+                    Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + fbnum + "')/$value";
+
+                    return Url;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        ////Excel sheet API10  To generate SADAD  && API11 On press of refresh button for SADAD
+        public async static Task<VATObjectionGenrateSadadModel> GAZTGetVATObjectionGenrateorRefreshSADAD(string fbnum, string Disamt,
+            string Liaamt, string Abrzu, string Abrzo, string Secamt, string Security, string Persl)
+        {
+            VATObjectionGenrateSadadModel _vATObjectionGenrateSadadModel = new VATObjectionGenrateSadadModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                /// sap / opu / odata / SAP / ZDP_GEN_SADAD_SRV / GetSADADSet(Fbnum = '90000003100', Gpart = '3102285153', Disamt = 125000m, Liaamt = 125000m, Sectp = 'C',
+                /// Abrzu = datetime'2018-04-01T00:00:00', Abrzo = datetime'2018-04-30T00:00:00', Flag = true, Secamt = 125000m, Security = '100000002498', Persl = '18AP')
+
+                https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_GEN_SADAD_SRV/GetSADADSet(Fbnum='65000212928',Gpart='3100000567',Disamt='0.00',Liaamt='541750.00',Sectp='C',Abrzu=datetime'5/1/2019 12:00:00 AM',Abrzo=datetime'5/31/2019 12:00:00 AM',Flag='true',Secamt='',Security='',Persl='19MY')?$format=json
+                    String url = Constants.GetVATObjectionGenrateorRefreshSADADURL + "Fbnum='" + fbnum + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Disamt='" + Disamt + "'" +
+                        "m,Liaamt='" + Liaamt + "m',Sectp='C',Abrzu=datetime'" + Abrzu + "',Abrzo=datetime'" + Abrzo + "',Flag='true',Secamt='" + Secamt + "m',Security='" + Security + "',Persl='" + Persl + "')?$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATObjectionGenrateSadadResponse = await client.GetAsync(uri);
+                    if (_vATObjectionGenrateSadadResponse != null)
+                    {
+                        if (_vATObjectionGenrateSadadResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATObjectionGenrateSadadResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String __vATObjectionGenrateSadadData = _vATObjectionGenrateSadadResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionGenrateSadadModel = JsonConvert.DeserializeObject<VATObjectionGenrateSadadModel>(__vATObjectionGenrateSadadData);
+                        if (!string.IsNullOrEmpty(__vATObjectionGenrateSadadData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__vATObjectionGenrateSadadData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionGenrateSadadModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public async static Task<VATObjectionViewbillModel> GAZTGetVATObjectionViewBill(string opbel, string vtre2)
+        {
+            VATObjectionViewbillModel _vATObjectionViewbillModel = new VATObjectionViewbillModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/BillDtlSet?$filter=Opbel eq '5000218062'and Vtre2 eq '3100000567193004'&$format=json
+
+                    vtre2 = App.LoginDataRetrieved.TIN;
+                    String url = Constants.GetVATObjectionViewBillURL + "Opbel eq'" + opbel + "' and Vtre2 eq'" + vtre2 + "')?$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATObjectionViewbillResponse = await client.GetAsync(uri);
+                    if (_vATObjectionViewbillResponse != null)
+                    {
+                        if (_vATObjectionViewbillResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATObjectionViewbillResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _vATObjectionViewbillData = _vATObjectionViewbillResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionViewbillModel = JsonConvert.DeserializeObject<VATObjectionViewbillModel>(_vATObjectionViewbillData);
+                        if (!string.IsNullOrEmpty(_vATObjectionViewbillData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vATObjectionViewbillData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionViewbillModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        #endregion
     }
 }
