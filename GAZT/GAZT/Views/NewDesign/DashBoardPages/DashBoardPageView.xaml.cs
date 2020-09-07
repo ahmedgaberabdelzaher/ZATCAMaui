@@ -80,6 +80,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             base.OnAppearing();
             OnDataLoad();
             RefreshDashboardCommand();
+            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+            viewModel.PaidString = AppResources.Paid;
+            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+            viewModel.UnPaidString = AppResources.UnPaid;
+            viewModel.TotalString = AppResources.NDTotal;
         }
 
         public void OnDataLoad()
