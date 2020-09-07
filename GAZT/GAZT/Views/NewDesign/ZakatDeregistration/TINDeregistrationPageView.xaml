@@ -645,7 +645,7 @@
                                                     </StackLayout>
                                                 </border:SfBorder >-->
                                             <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
-                                            ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                            ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
                                             OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
                                                 <StackLayout Orientation="Horizontal">
                                                     <Grid IsVisible="false" >
@@ -662,7 +662,7 @@
                                                         </Grid.Triggers>
                                                     </Grid>
                                                     <Entry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                       HorizontalTextAlignment="Start" Text="{Binding AttachmentName}"  HeightRequest="20"/>
+                                                       HorizontalTextAlignment="Start" VerticalOptions="Center" Text="{Binding AttachmentName}"  />
                                                 </StackLayout>
 
                                            

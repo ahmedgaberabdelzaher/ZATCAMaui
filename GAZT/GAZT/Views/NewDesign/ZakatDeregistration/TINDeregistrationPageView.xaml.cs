@@ -28,15 +28,37 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             ChangeAeroIcon();
             SetLTR();
+            ChangeArrowDirection();
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
         }
 
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
 
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeArrowDirection();
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {

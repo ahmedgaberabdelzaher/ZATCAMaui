@@ -1025,6 +1025,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("VoidIsVisible");
             }
         }
+
         public void CompanyIdTypeSelected()
         {
             TinText.IsMandatory = false;
@@ -1316,10 +1317,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
+                //await Task.Run(() =>
+                //{
+                //    App.DisplayProgressView();
+                //});
 
                 TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
                 TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
@@ -1371,10 +1372,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 //TinDeregistrationReasonSetData.ReasonSet.Results.
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                //await Task.Run(() =>
+                //{
+                //    App.HideProgressView();
+                //});
             }
             catch (InternetException ex)
             {
@@ -1831,7 +1832,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //SelectedOutletOption = OutletDecisionOptions[0];
             //SelectedOutletOptionIndex = 0;
 
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             IsReasonViewEnabled = true;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
@@ -2610,6 +2611,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     });
 
                     return;
+                }
+                else if (TinDeregistrationData.Xvoidz.Equals("X"))
+
+                {
+                    string number = TinDeregistrationData.Fbnum;
+                    string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                    await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                    _navigationService.GoBack();
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+
+                    });
                 }
 
                 await Task.Run(() =>
