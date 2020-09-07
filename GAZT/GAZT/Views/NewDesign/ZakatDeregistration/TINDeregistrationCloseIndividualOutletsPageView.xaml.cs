@@ -58,7 +58,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
                 }
-
+                if (arg.PickerId == "DeregPermitOutletDatePicker")
+                {
+                    viewModel.SingleOutletDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                }
                 if (arg.PickerId == "DOBDateTypePicker")
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
@@ -71,6 +74,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
                 }
+
+                //
 
                 Console.WriteLine(arg);
             });
@@ -99,7 +104,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+            viewModel.SelectedPermitOutletOptionIndex = viewModel.PermitOutletDecisionOptions.IndexOf(selectedItem);
         }
 
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
