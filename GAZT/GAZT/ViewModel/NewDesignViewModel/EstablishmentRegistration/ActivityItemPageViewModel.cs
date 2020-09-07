@@ -488,7 +488,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     try
                     {
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                        {
                             CRIssueCountry = item as CountryDropdownItem;
+                            CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                        }
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                             LicenseIssueCountry = item as CountryDropdownItem;
                     }

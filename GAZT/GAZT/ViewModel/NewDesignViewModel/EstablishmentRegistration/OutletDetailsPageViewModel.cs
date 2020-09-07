@@ -498,7 +498,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             });
             OnProvinanceSelectButtonClick = new Command((str) =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.State_dropdownSet?.results);
+                List<StateDropdownItem> states = OutletDropDowns?.State_dropdownSet?.results;
+                if (str != null && str.ToString().Equals("same"))
+                {
+                    if (CountrySame != null && !string.IsNullOrWhiteSpace(CountrySame?.Landx50))
+                    {
+                        states = new List<StateDropdownItem>();
+                        states.AddRange(OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Land1 == CountrySame.Land1));
+                    }
+                }
+                else
+                {
+                    if (Country != null && !string.IsNullOrWhiteSpace(Country?.Landx50))
+                    {
+                        states = new List<StateDropdownItem>();
+                        states.AddRange(OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Land1 == Country.Land1));
+                    }
+                }
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(states);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
@@ -521,6 +538,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             });
             OnCitySelectButtonClick = new Command((str) =>
             {
+                List<CityDropdownItem> cities = OutletDropDowns?.city_dropdownSet?.results;
+                if (str != null && str.ToString().Equals("same"))
+                {
+                    if (CountrySame != null && !string.IsNullOrWhiteSpace(CountrySame?.Landx50) && ProvinanceSame != null && !string.IsNullOrWhiteSpace(ProvinanceSame?.Bezei))
+                    {
+                        cities = new List<CityDropdownItem>();
+                        cities.AddRange(OutletDropDowns?.city_dropdownSet?.results.Where(i => i.Country == CountrySame.Land1 && i.Region == ProvinanceSame.Bland));
+                    }
+                }
+                else
+                {
+                    if (Country != null && !string.IsNullOrWhiteSpace(Country?.Landx50) && Provinance != null && !string.IsNullOrWhiteSpace(Provinance?.Bezei))
+                    {
+                        cities = new List<CityDropdownItem>();
+                        cities.AddRange(OutletDropDowns?.city_dropdownSet?.results.Where(i => i.Country == Country.Land1 && i.Region == Provinance.Bland));
+                    }
+                }
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.city_dropdownSet?.results);
                 poupWindow.OnItemSelect = (item) =>
                 {
@@ -585,7 +619,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 nextNumber = newNumber,
                 EditEnabledMode = editModeEnabled,
                 //newActivityItems = activityItems,
-                goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
+                goBackAction = (List<Nreg_ActivityItem> list) =>
+                {
+                    addActivities(list);
+                }
             }); ;
         }
 
@@ -640,7 +677,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         defaultAddress.PostCode1 = PostalCode;
                         defaultAddress.HouseNum2 = AddNumber;
                         defaultAddress.Country = Country.Land1;
-                        defaultAddress.Region = Provinance.Land1;
+                        defaultAddress.Region = Provinance.Bland;
                         defaultAddress.City1 = City.CityName;
                         defaultAddress.CityCode = City.CityCode;
                         defaultAddress.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
@@ -659,7 +696,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _address.PostCode1 = PostalCodeSame;
                         _address.HouseNum2 = AddNumberSame;
                         _address.Country = CountrySame.Land1;
-                        _address.Region = ProvinanceSame.Land1;
+                        _address.Region = ProvinanceSame.Bland;
                         _address.City1 = CitySame.CityName;
                         _address.CityCode = CitySame.CityCode;
                         _address.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
