@@ -756,9 +756,12 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel._navigationService.NavigateTo(App.SupportPageView);
         }
 
-        private void OnZakatNowTapped(object sender, EventArgs e)
+        private async void OnZakatNowTapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+            await Task.Run(() => viewModel.IsLoading = true);
+            Device.BeginInvokeOnMainThread(() => {
+                viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+            });
         }
     }
 }

@@ -9248,9 +9248,13 @@ namespace GAZT.Manager
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
                             {
                                 string ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
+                                throw new HTTPBadRequestException(ErrorMessageFormServer);
+                            }else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
+                            {
+                                string ErrorMessageFormServer = errorMesg.error.message.value;
                                 throw new HTTPBadRequestException(ErrorMessageFormServer);
                             }
                         }
