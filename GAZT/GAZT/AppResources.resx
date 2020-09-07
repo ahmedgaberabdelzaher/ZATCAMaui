@@ -4377,7 +4377,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationClosed" xml:space="preserve">
     <value>Closed</value>
   </data>
-   <data name="TinDeregistrationTransfer" xml:space="preserve">
+  <data name="TinDeregistrationTransfer" xml:space="preserve">
     <value>Transfer</value>
   </data>
   <data name="TinDeregistrationDetails" xml:space="preserve">
@@ -7022,6 +7022,9 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Information from related parties(New Value)</value>
   </data>
   <data name="NDMyApplication" xml:space="preserve">
+    <value>My Application Status</value>
+  </data>
+  <data name="NDAppStatus" xml:space="preserve">
     <value>My Application Status</value>
   </data>
 </root>

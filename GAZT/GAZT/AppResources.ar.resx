@@ -4359,7 +4359,7 @@
   <data name="TinDeregistrationClosed" xml:space="preserve">
     <value>اغلاق</value>
   </data>
-   <data name="TinDeregistrationTransfer" xml:space="preserve">
+  <data name="TinDeregistrationTransfer" xml:space="preserve">
     <value>نقل</value>
   </data>
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
@@ -6869,6 +6869,9 @@
     <value>التاريخ</value>
   </data>
   <data name="NDMyApplication" xml:space="preserve">
+    <value>حالة طلبي</value>
+  </data>
+  <data name="NDAppStatus" xml:space="preserve">
     <value>حالة طلبي</value>
   </data>
 </root>

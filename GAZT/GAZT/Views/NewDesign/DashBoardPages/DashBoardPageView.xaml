@@ -556,7 +556,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="ic_Application_Status.png">
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDMyApplication}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDAppStatus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
                                     </StackLayout.GestureRecognizers>
