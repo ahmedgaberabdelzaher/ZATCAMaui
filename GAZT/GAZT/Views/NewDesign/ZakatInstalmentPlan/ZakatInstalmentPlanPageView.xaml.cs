@@ -144,6 +144,23 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
+
+        private void Year1Change_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (viewModel.Year1.Contains("_") || viewModel.Year1.Contains("-") || viewModel.Year1.Contains(",") || viewModel.Year1.Contains(".") || viewModel.Year1.Contains(" "))
+            {
+                viewModel.Year1 = viewModel.Year1.Replace("_", "").Replace(",", "").Replace(".", "").Replace("-", "").Replace(" ", "");
+            }
+            if (viewModel.Year2.Contains("_") || viewModel.Year2.Contains("-") || viewModel.Year2.Contains(",") || viewModel.Year2.Contains(".") || viewModel.Year2.Contains(" "))
+            {
+                viewModel.Year2 = viewModel.Year2.Replace("_", "").Replace(",", "").Replace(".", "").Replace("-", "").Replace(" ", "");
+            }
+            if (viewModel.Year3.Contains("_") || viewModel.Year3.Contains("-") || viewModel.Year3.Contains(",") || viewModel.Year3.Contains(".") || viewModel.Year3.Contains(" "))
+            {
+                viewModel.Year3 = viewModel.Year3.Replace("_", "").Replace(",", "").Replace(".", "").Replace("-", "").Replace(" ", "");
+            }
+        }
+
         private void DownPayment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
             viewModel.DownPaymentAmount = args.NewValue;

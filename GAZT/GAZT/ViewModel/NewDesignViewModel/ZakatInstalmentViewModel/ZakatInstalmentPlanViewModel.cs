@@ -73,6 +73,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         private bool _isAgreementViewEnabled = false;
         private bool _isOutletViewEnabled = false;
         private string _selectedFrequencyType = "01";
+        private string _selectedFrequencyName = AppResources.ZakatInstalmetMonthly;
+
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 6;
         private List<CorrespondenceFiltersModel> _subCorresFilterZakat;
@@ -200,6 +202,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 _selectedFrequencyType = value;
                 RaisePropertyChanged("SelectedFrequencyType");
+            }
+        }
+        public string SelectedFrequencyName
+        {
+            get
+            {
+                return _selectedFrequencyName;
+            }
+            set
+            {
+                _selectedFrequencyName = value;
+                RaisePropertyChanged("SelectedFrequencyName");
             }
         }
 
@@ -571,7 +585,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             get
             {
-                return totalAmountSAR;
+                return downPaymentSAR;
             }
         }
 
@@ -1834,10 +1848,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             noOfInstalments = 1;
             minInstalments = 1;
             maxInstalments = 36;
-            downPaymentAmount = 400.00;
+            downPaymentAmount = 0.0;
             periodicInstalment = 0.0;
-            minAmount = 400.0;
-            maxAmount = 2000000.0;
+            minAmount = 0.0;
+            maxAmount = 0.0;
             inputData = "";
             totalAmountSAR = "0.00 SAR";
             _vATDueAmount = "0.00";
@@ -1850,6 +1864,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             Year3 = "";
             BankStatementsAttachmentsListViewData.Clear();
             FinanceAttachmentsListViewData.Clear();
+            EnableDeclarationContinue();
 
         }
 
@@ -1878,8 +1893,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 throw new ArgumentNullException("dialogService");
             }
 
+            EnableDeclarationContinue();
 
-            if (IsZakat)
+            if (Preferences.Get("isZakat", false))
             {
                 ZakatTitle = AppResources.ZakatInstalmetSelectTypeZakat;
             }
@@ -1888,10 +1904,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatTitle = AppResources.ZakatInstalmetSelectTypeIncomeTax;
             }
 
+            
+
             if (Preferences.Get("IsFromRevok", false))
             {
                 SuccessMessage = AppResources.ZakatInstalmentRevokedSuccessfully;
+                ZakatReferanceNumber = Preferences.Get("RevokeRef","");
             }
+
+
             else
             {
                 SuccessMessage = AppResources.VatInstalmentPlanSubmittedSuccess;
@@ -1940,7 +1961,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 var totalamount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
                 var instalmentamount = VATBillDueAmount.Replace(" SAR", "").Replace(",", "");
-                DownPaymentSAR = DownPaymentAmount.ToString();
+                DownPaymentSAR = string.Format("{0:N2}", DownPaymentAmount) + " SAR";
+                
                 ZakatInstalments.d.DpAmt = DownPaymentAmount.ToString(); 
                 ZakatInstalments.d.TotAmt = totalamount.ToString();  
                 ZakatInstalments.d.Operation = "51";
@@ -2339,6 +2361,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         public void calculateYear1Data()
         {
 
+
+
             if ((NetIncomeY1.Length > 0 && double.Parse(NetIncomeY1) != 0) && (RevenueY1.Length > 0 && double.Parse(RevenueY1) != 0))
             {
                 ProfitRatioY1 = (double.Parse(NetIncomeY1) / double.Parse(RevenueY1)).ToString("0.00");
@@ -2350,16 +2374,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-            if ((CashBankY1.Length > 0 && double.Parse(CashBankY1) != 0) && (StiY1.Length > 0 && double.Parse(StiY1) != 0) && (TcLiabltyY1.Length > 0 && double.Parse(TcLiabltyY1) != 0))
+
+
+            if (TcLiabltyY1.Length > 0 && double.Parse(TcLiabltyY1) != 0)
             {
-                double a = double.Parse(CashBankY1) + double.Parse(StiY1);
-                CashRatioY1 = (a / double.Parse(TcLiabltyY1)).ToString("0.00");
+                double a = 0.0; double b = 0.0;
+                if ((CashBankY1.Length > 0 && double.Parse(CashBankY1) != 0) && (StiY1.Length > 0 && double.Parse(StiY1) != 0))
+                {
+                    a = double.Parse(CashBankY1);
+                    b = double.Parse(StiY1);
+                }
+                else if (CashBankY1.Length > 0 && double.Parse(CashBankY1) != 0)
+                {
+                    a = double.Parse(CashBankY1);
+                    b = 0;
+                }
+                else if (StiY1.Length > 0 && double.Parse(StiY1) != 0)
+                {
+                    a = 0;
+                    b = double.Parse(StiY1);
+                }
+
+
+
+                double c = a + b;
+                CashRatioY1 = (c / double.Parse(TcLiabltyY1)).ToString("0.00");
             }
             else
             {
                 CashRatioY1 = "0.00";
             }
         }
+
 
         public void calculateYear2Data()
         {
@@ -2374,10 +2420,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-            if ((CashBankY2.Length > 0 && double.Parse(CashBankY2) != 0) && (StiY2.Length > 0 && double.Parse(StiY2) != 0) && (TcLiabltyY2.Length > 0 && double.Parse(TcLiabltyY2) != 0))
+
+            if (TcLiabltyY2.Length > 0 && double.Parse(TcLiabltyY2) != 0)
             {
-                double a = double.Parse(CashBankY2) + double.Parse(StiY2);
-                CashRatioY2 = (a / double.Parse(TcLiabltyY2)).ToString("0.00");
+                double a = 0.0; double b = 0.0;
+                if ((CashBankY2.Length > 0 && double.Parse(CashBankY2) != 0) && (StiY2.Length > 0 && double.Parse(StiY2) != 0))
+                {
+                    a = double.Parse(CashBankY2);
+                    b = double.Parse(StiY2);
+                }
+                else if (CashBankY2.Length > 0 && double.Parse(CashBankY2) != 0)
+                {
+                    a = double.Parse(CashBankY2);
+                    b = 0;
+                }
+                else if (StiY2.Length > 0 && double.Parse(StiY2) != 0)
+                {
+                    a = 0;
+                    b = double.Parse(StiY2);
+                }
+
+
+                double c = a + b;
+                CashRatioY2 = (c / double.Parse(TcLiabltyY2)).ToString("0.00");
             }
             else
             {
@@ -2387,7 +2452,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
+
         }
+
 
 
         public void calculateYear3Data()
@@ -2401,12 +2468,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ProfitRatioY3 = "0.00";
             }
 
-
-
-            if ((CashBankY3.Length > 0 && double.Parse(CashBankY3) != 0) && (StiY3.Length > 0 && double.Parse(StiY3) != 0) && (TcLiabltyY3.Length > 0 && double.Parse(TcLiabltyY3) != 0))
+            if (TcLiabltyY3.Length > 0 && double.Parse(TcLiabltyY3) != 0)
             {
-                double a = double.Parse(CashBankY3) + double.Parse(StiY3);
-                CashRatioY3 = (a / double.Parse(TcLiabltyY3)).ToString("0.00");
+                double a = 0.0; double b = 0.0;
+                if ((CashBankY3.Length > 0 && double.Parse(CashBankY3) != 0) && (StiY3.Length > 0 && double.Parse(StiY3) != 0))
+                {
+                    a = double.Parse(CashBankY3);
+                    b = double.Parse(StiY3);
+                }
+                else if (CashBankY3.Length > 0 && double.Parse(CashBankY3) != 0)
+                {
+                    a = double.Parse(CashBankY3);
+                    b = 0;
+                }
+                else if (StiY3.Length > 0 && double.Parse(StiY3) != 0)
+                {
+                    a = 0;
+                    b = double.Parse(StiY3);
+                }
+
+                double c = a + b;
+                CashRatioY3 = (c / double.Parse(TcLiabltyY3)).ToString("0.00");
             }
             else
             {
@@ -2414,16 +2496,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
 
 
-
         }
 
         public async Task EnableSucessScreenAsync()
         {
+            Preferences.Set("IsFromRevok", false);
+            Preferences.Set("RevokeRef", "");
 
             await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
 
         }
 
+        public void EnableDeclarationContinue()
+        {
+            if ((BankStatementsAttachmentsListViewData != null && BankStatementsAttachmentsListViewData.Count > 0) && (FinanceAttachmentsListViewData != null && FinanceAttachmentsListViewData.Count > 0))
+            {
+                IsDeclarationEnabled = true;
+            }
+            else
+            {
+                IsDeclarationEnabled = false;
+            }
+        }
+
+
+
+        private bool _isDeclarationEnabled = false;
+
+
+
+        public bool IsDeclarationEnabled
+        {
+            get { return _isDeclarationEnabled; }
+            set
+            {
+                _isDeclarationEnabled = value;
+                DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
+
+
+
+                RaisePropertyChanged("IsDeclarationEnabled");
+            }
+        }
+        private Color _declarationButtonBackGroundColor = Color.FromHex("#d49504");
+        public Color DeclarationButtonBackGroundColor
+        {
+            get
+            {
+                return _declarationButtonBackGroundColor;
+            }
+            set
+            {
+                if (_declarationButtonBackGroundColor == value)
+                {
+                    return;
+                }
+                _declarationButtonBackGroundColor = value;
+                RaisePropertyChanged("DeclarationButtonBackGroundColor");
+            }
+        }
 
         public async void VATInstalationTapped()
         {
@@ -2760,6 +2891,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 });
             }
             SummarySelectedBillsList = summarySelectedBillsList;
+
+
+
+
+            if (SelectedFrequencyType == "01")
+            {
+             
+                SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
+
+            }
+            else if (SelectedFrequencyType == "02")
+            {
+               
+                SelectedFrequencyName = AppResources.ZakatInstalmetQuarterly;
+            }
+            else if (SelectedFrequencyType == "03")
+            {
+              
+                SelectedFrequencyName = AppResources.ZakatInstalmetHalfYearly;
+            }
+            else if (SelectedFrequencyType == "04")
+            {
+                SelectedFrequencyName = AppResources.ZakatInstalmetYearly;
+            }
         }
 
         public async void SummaryContinueBtnClicked()
@@ -2941,7 +3096,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 FinanceAttachmentsListViewData = attachmentsListViewData;
             }
 
-
+            EnableDeclarationContinue();
 
         }
 
@@ -3399,7 +3554,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.TxnTp = ZakatInstalments.d.TxnTp;
             _postData.MobNo = ZakatInstalments.d.MobNo;
             _postData.FormGuid = ZakatInstalments.d.FormGuid;
-            _postData.Fbnum = ZakatInstalments.d.Fbnum;
+            _postData.Fbnum = "";
             _postData.DataVersion = ZakatInstalments.d.DataVersion;
             _postData.Operation = ZakatInstalments.d.Operation;
             _postData.Euser = ZakatInstalments.d.Euser;

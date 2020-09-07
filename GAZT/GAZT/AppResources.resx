@@ -4407,6 +4407,15 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
     <value>What do you want to do with active outlets?</value>
   </data>
+  <data name="TinDeregistrationCloseOneOutlet" xml:space="preserve">
+    <value>Close the Outlet</value>
+  </data>
+  <data name="TinDeregistrationTransferOneOutletsToSingle" xml:space="preserve">
+    <value>Transfer the Outlet to a single Transferee</value>
+  </data>
+  <data name="TinDeregistrationCloseOrTransferOutletPermitIndividually" xml:space="preserve">
+    <value>Close/Transfer Outlet permits individually</value>
+  </data>
   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
     <value>Close all Outlets</value>
   </data>
@@ -6284,7 +6293,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>What is your Taxpayer type(from signup)?</value>
   </data>
   <data name="ESTNationalyStatusQuestionLabel" xml:space="preserve">
-    <value>What is your Nationality Status?</value>
+    <value>What is your Residency Status?</value>
   </data>
   <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
     <value>Stay More than or equal to 183 days in KSA</value>
@@ -6867,7 +6876,11 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDWhatisYourNationality" xml:space="preserve">
     <value>What is your Nationality?</value>
   </data>
-     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+  <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
     <value>There are no invoices to be added to the installments plan request.</value>
   </data>
+   <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
+    <value>Information from related parties(New Value)</value>
+  </data>
+ 
 </root>

@@ -4389,6 +4389,15 @@
   <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
     <value>ما هو الإجراء الذي تود إتخاذه حيال هذا الفرع المفعل؟</value>
   </data>
+  <data name="TinDeregistrationCloseOneOutlet" xml:space="preserve">
+    <value>إغلاق الفرع</value>
+  </data>
+  <data name="TinDeregistrationTransferOneOutletsToSingle" xml:space="preserve">
+    <value>نقل ملكية الفرع لمكلف آخر</value>
+  </data>
+  <data name="TinDeregistrationCloseOrTransferOutletPermitIndividually" xml:space="preserve">
+    <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
+  </data>
   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
     <value>إغلاق الفرع</value>
   </data>
@@ -6735,4 +6744,8 @@
   <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
     <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
   </data>
-</root>
+   <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
+    <value>المعلومات من الجهات ذات العلاقة (القيمة الجديدة)</value>
+  </data>
+  </root>
+

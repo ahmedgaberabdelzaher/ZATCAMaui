@@ -138,7 +138,7 @@
                     </StackLayout>
                 </Grid>
 
-                 <listView:SfListView  x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
+                 <listView:SfListView BackgroundColor="White" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5"
                                       ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
@@ -150,7 +150,7 @@
                                                                     Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
                                                 </Label>
                                             </Grid>
-                                    </cards:SfCardView>
+                                    </cards:SfCardView> 
 			                </DataTemplate>
                         </listView:SfListView.ItemTemplate>
                       <listView:SfListView.SelectedItemTemplate>
@@ -227,7 +227,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                        <Label Text="{Binding DeregistrationDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding DeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -247,12 +247,15 @@
                             <StackLayout IsVisible="{Binding TinText.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start"
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
+                                    <custom:BorderlessEntry x:Name="EntryTIN" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -286,7 +289,7 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                     <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged"  
+                                                            VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
@@ -324,12 +327,13 @@
                         <StackLayout>
                             
                             <StackLayout IsVisible="{Binding FirstNameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" HorizontalOptions="StartAndExpand"
+                                <custom:CustomLabel Text="{Binding FirstNameLbl}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" IsEnabled="{Binding FirstNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" IsEnabled="{Binding FirstNameText.IsEditable}"
+                                                            Placeholder="{Binding FirstNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                     </custom:BorderlessEntry>
@@ -337,12 +341,13 @@
                             </StackLayout>
                            
                             <StackLayout IsVisible="{Binding SurnameText.IsVisible}">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVATRSurName}" HorizontalOptions="StartAndExpand"
+                                <custom:CustomLabel Text="{Binding SurnameNameLbl}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRSurName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}"
+                                                            Placeholder="{Binding SurnameNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                     </custom:BorderlessEntry>
@@ -392,7 +397,7 @@
 
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection comapny id-!>-->
 
-                        <StackLayout IsVisible="{Binding Name1Text.IsVisible}">
+                        <StackLayout IsVisible="{Binding IsName1Visible}">
                              <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
@@ -400,7 +405,7 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" IsEnabled="{Binding Name1Text.IsEditable}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
@@ -413,7 +418,7 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" IsEnabled="{Binding Name2Text.IsEditable}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
@@ -428,7 +433,8 @@
             </Grid>
                </ScrollView>
               
-              <Grid IsVisible="{Binding IsOutletViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <Grid IsVisible="{Binding IsOutletViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
@@ -450,8 +456,9 @@
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         
-                        <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                        <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
+                                             IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -578,7 +585,7 @@
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
 
-               <ScrollView IsVisible="{Binding IsAttachmentsViewEnabled}">
+              <ScrollView IsVisible="{Binding IsAttachmentsViewEnabled}">
                <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                      <RowDefinition Height="auto"/>
@@ -707,7 +714,8 @@
 
                </ScrollView>
 
-              <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <ScrollView IsVisible="{Binding IsDeclarationViewEnabled}">
+                  <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
@@ -758,7 +766,7 @@
 							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start"
+                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecDesig}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -778,7 +786,7 @@
                                         </inputLayout:SfTextInputLayout.LeadingView>
                                         
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start"
+                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -808,6 +816,7 @@
                             </StackLayout>
                          </Grid>
                      </Grid>
+              </ScrollView>
               <ScrollView IsVisible="{Binding IsSummaryViewEnabled}">
                 <Grid IsVisible="{Binding IsSummaryViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
@@ -832,7 +841,7 @@
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                        <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout Padding="0">
                             <Grid Padding="15" RowSpacing="0" >
                                 <Grid.RowDefinitions>
@@ -879,7 +888,7 @@
                               </listView:SfListView>
                         </StackLayout>
                     </border:SfBorder >
-                     <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout Padding="0">
                             <Grid Padding="15" RowSpacing="0" >
                                 <Grid.RowDefinitions>
@@ -902,7 +911,7 @@
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                              <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                      ItemsSource="{Binding TinDeregistrationData.AttDetSet.Results}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
 					                        <Grid Padding="0" RowSpacing="0">
@@ -915,10 +924,58 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                                    <Label Text="{Binding FieldTitle}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start"
+                                                           HorizontalOptions="StartAndExpand">
+                                                        <Label.Triggers>
+                                                            <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR01">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentDeathCertificate}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR02">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy}" />
+                                                            </DataTrigger>
+                                                             <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR03">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentMinisterialResponse}" />
+                                                            </DataTrigger>
+                                                             <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR03">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentMinisterialResponse}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR05">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentLiquidation}" />
+                                                            </DataTrigger>
+                                                             <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR07">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement}" />
+                                                            </DataTrigger>
+                                                             <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR08">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision}" />
+                                                            </DataTrigger>
+                                                             <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR09">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement}" />
+                                                            </DataTrigger>
+                                                             <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR10">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing}" />
+                                                            </DataTrigger>
+                                                             <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR11">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label"
+                                                                         Binding="{Binding Dotyp}" Value="DR12">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentCopyOfContractAfterClosing}" />
+                                                            </DataTrigger>
+                                                        </Label.Triggers>
+                                                                    </Label>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <Label Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>
@@ -943,7 +1000,7 @@
                                 </Frame> 
                                 <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="declaration"/>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="Declaration" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.ZDeclaration}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
                             </Grid>
 

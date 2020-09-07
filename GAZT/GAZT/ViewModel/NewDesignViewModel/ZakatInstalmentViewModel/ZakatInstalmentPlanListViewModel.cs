@@ -431,6 +431,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged(() => ContinueButtonEnability);
             }
         }
+        private string _selectedFrequencyName = "";
+        public string SelectedFrequencyName
+        {
+            get
+            {
+                return _selectedFrequencyName;
+            }
+            set
+            {
+                _selectedFrequencyName = value;
+                RaisePropertyChanged("SelectedFrequencyName");
+            }
+        }
 
         private bool _isResendOTPEnabled = false;
         public bool IsResendOTPEnabled
@@ -991,9 +1004,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     taxPeriod = "",
                     isSelected = false,
                     billType = ZakatTitle
-
-
-
+               
                 });;
             }
             SummarySelectedBillsList = summarySelectedBillsList;
@@ -1001,6 +1012,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
             Attachments = new ObservableCollection<AttDetSet>();
+
 
 
 
@@ -1017,8 +1029,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
 
 
+            
 
-          
+
+
         }
 
         #endregion
@@ -1070,6 +1084,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             NoOfInstalments = item.noOfInstalments;
                             TotalAmount = string.Format("{0:N2}", item.downpayment) + " SAR";
                             InstalmentAmount = string.Format("{0:N2}", item.dueamount) + " SAR";
+
+
+                            if (item.frequency == "01")
+                            {
+
+                                SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
+
+                            }
+                            else if (item.frequency == "02")
+                            {
+
+                                SelectedFrequencyName = AppResources.ZakatInstalmetQuarterly;
+                            }
+                            else if (item.frequency == "03")
+                            {
+
+                                SelectedFrequencyName = AppResources.ZakatInstalmetHalfYearly;
+                            }
+                            else if (item.frequency == "04")
+                            {
+                                SelectedFrequencyName = AppResources.ZakatInstalmetYearly;
+                            }
+
+                           
 
                             BindZakatSummaryData(SeletedZakatForm);
                         }
@@ -1213,8 +1251,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     noOfInstalments = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].PlanDur,
                                     downpayment = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DpAmt,
                                     dateOfSubmission = submitDate,
-                                    Fbtyp = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].Fbtyp
-
+                                    Fbtyp = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].Fbtyp,
+                                    frequency = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].PymntFreq,
+                                    SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
+                                  
                                 });
 
 
@@ -1355,7 +1395,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     noOfInstalments = revokResult.d.WorklistSet.results[i].PlanDur,
                                     downpayment = revokResult.d.WorklistSet.results[i].DpAmt,
                                     dateOfSubmission = submitDate,
-                                    Fbtyp = revokResult.d.WorklistSet.results[i].Fbtyp
+                                    Fbtyp = revokResult.d.WorklistSet.results[i].Fbtyp,
+                                    frequency = revokResult.d.WorklistSet.results[i].PymntFreq,
+                                   SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
 
 
                                 });
@@ -1548,7 +1590,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         if (ZakatInstalments != null)
                         {
 
-                             await RevokeSubmitClicked();
+                             var isrevoked = await RevokeSubmitClicked();
+
+                            if(isrevoked != null && isrevoked.d !=null) {
+
+                                Preferences.Set("IsFromRevok", true);
+
+                                Preferences.Set("RevokeRef", isrevoked.d.Fbnum.ToString());
+
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
+
+                                });
+                            }
+
+                            
                         }
                         else
                         {
@@ -1720,12 +1778,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     try
                     {
-                        if (response != null && response.d != null)
-                        {
-
-                            Preferences.Set("IsFromRevok", true);
-                            await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
-                        }
+                          
+                        
                         IsLoading = false;
                         return response;
 
@@ -1825,16 +1879,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                  else {
                                      if(OTPItem.ValidSms)
                                      {
-
-                                         await getZakatRevokeData();
+                                     otpTimer.Stop();
+                                     await getZakatRevokeData();
 
                                      }
                                      else
                                      {
-                                         await getZakatRevokeData();
 
-                                     }
-                                 
+
+                                     Device.BeginInvokeOnMainThread(async () =>
+                                     {
+                                         await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
+                                         
+                                     });
+
+
+
+                                 }
+
 
                              }
                             
@@ -1878,6 +1940,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async Task ValidateOTPAsync()
         {
+
             await SendOTPToRegisterMobileNumber(SelectedFbNum, EnteredOTP);
         }
     }

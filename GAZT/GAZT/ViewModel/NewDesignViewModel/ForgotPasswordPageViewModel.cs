@@ -73,6 +73,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IDNumber = IDNumber.Substring(0, IDNumber.Length - 1);
                 }
 
+                if (CorporateCardBackgroundImg.Equals("FP_selected_tile") && !string.IsNullOrEmpty(IDNumber))
+                {
+                    try
+                    {
+                        if (IDNumber.Length > 0 && !(IDNumber[0].Equals("7")))
+                        {
+                            IDNumber = string.Empty;
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Corporate ID must start with 7"));
+
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                    
+
+
+                }
                 RaisePropertyChanged("IDNumber");
             }
         }
@@ -1220,7 +1239,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsVerifyOTPEnabled");
             }
         }
-        private int _maxChar = 60;
+        private int _maxChar = 10;
         public int MaxChar
         {
             get
@@ -1533,7 +1552,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnCorporateCardClicked = new Command(() =>
             {
-                MaximumUserNameCharacter = 60;
+                MaximumUserNameCharacter = 10;
                 CorporateCardBackgroundImg = "FP_selected_tile";
                 CorporateTextColor = Color.White;
                 IndividualOrPersonalBusinessCardBackgroundImg = "FP_unselected_tile";
@@ -1688,7 +1707,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //IsForgotUserNameWithIndividual = false;
                 //IsForgotUserNameWithCorporate = true;
                 IDNumberOrCorporateIDOrUserName = AppResources.CorportaeID;
-                MaxChar = 60;
+                MaxChar = 10;
             }
         }
         private bool ValidateForms()

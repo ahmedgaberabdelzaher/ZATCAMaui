@@ -30,6 +30,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ClearData();
             viewModel.OnPageLoad();
             SetLTR();
+            
             viewModel.StartPage = 1;
 
         }
@@ -168,6 +169,16 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
                 OTPThirdEntry.Focus();
             }
         }
+
+        void OnIdNumberTextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.CorporateCardBackgroundImg.Equals("FP_selected_tile"))
+            {
+               
+                
+            }
+        }
+        
 
         void OtpThirdEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
