@@ -45,8 +45,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand OnTinRegistrationReasonTapped { get; set; }
         public ICommand OnTinRegistrationDateTapped { get; set; }
         public ICommand OnOutletPermitTypeDeRegisrtationReasonDateTapped { get; set; }
+        public ICommand OnPermitTypeReasonTapped { get; set; }
 
-        //OnOutletPermitTypeDeRegisrtationReasonDateTapped
         #endregion
 
         #region Properties
@@ -85,6 +85,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private bool _isMultiplePermitsVisible = false;
+        public bool IsMultiplePermitsVisible
+        {
+            get
+            {
+                return _isMultiplePermitsVisible;
+            }
+            set
+            {
+                _isMultiplePermitsVisible = value;
+                RaisePropertyChanged("IsMultiplePermitsVisible");
+            }
+        }
+
+        //
         private bool _isReasonViewEnabled = true;
         public bool IsReasonViewEnabled
         {
@@ -1264,6 +1279,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             SelectedOutletOption = new TINDeregistrationModel();
             TinDeregistrationData = new TinDeregistrationResponseModel();
             TinDeregistrationReasonSetData = new TinDeregistrationReasonSetDataModel();
+            OnPermitTypeReasonTapped = new Command(this.OnOutletPermitTypeDeRegisrtationReasonClicked);
 
             TinText = new FieldValidations();
             IdTypeText = new FieldValidations();
@@ -1410,7 +1426,39 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
         }
-        
+
+        public async void OnOutletPermitTypeDeRegisrtationReasonClicked()
+        {
+            try
+            {
+                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = reasonData;
+                genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                genericPickerModel.PickerId = "permitTypeReasonPicker";
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
         public async void OnTinRegistrationDateClicked()
         {
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
