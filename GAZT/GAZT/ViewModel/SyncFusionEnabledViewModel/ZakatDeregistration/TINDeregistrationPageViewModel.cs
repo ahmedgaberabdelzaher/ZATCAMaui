@@ -1432,6 +1432,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                reasonData.Add(AppResources.TinDeregistrationClosed);
+                reasonData.Add(AppResources.TinDeregistrationTransfer);
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
                 genericPickerModel.PickerData = reasonData;
