@@ -105,6 +105,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             viewModel.SelectedPermitOutletOptionIndex = viewModel.PermitOutletDecisionOptions.IndexOf(selectedItem);
+
+            if(viewModel.SelectedPermitOutletOptionIndex == 2)
+            {
+                viewModel.IsMultiplePermitsVisible = true;
+            }
+            else
+            {
+                viewModel.IsMultiplePermitsVisible = false;
+            }
         }
 
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)

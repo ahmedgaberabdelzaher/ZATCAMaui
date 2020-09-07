@@ -4374,6 +4374,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>Kindly complete the required fields to be able to proceed.</value>
   </data>
+  <data name="TinDeregistrationClosed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+  <data name="TinDeregistrationTransfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
   <data name="TinDeregistrationDetails" xml:space="preserve">
     <value>Registration Details</value>
   </data>
@@ -6691,209 +6697,198 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Register now for Zakat in less than 5 minutes</value>
   </data>
   <data name="VatReview" xml:space="preserve">
-  <value>VAT Review</value>
-</data>
+    <value>VAT Review</value>
+  </data>
   <data name="ZakatObjection" xml:space="preserve">
-  <value>Zakat Objection</value>
-</data>
+    <value>Zakat Objection</value>
+  </data>
   <data name="VRReviewReason" xml:space="preserve">
-  <value>Review Reason</value>
-</data>
+    <value>Review Reason</value>
+  </data>
   <data name="VRCompleteTheBelowDetails" xml:space="preserve">
-  <value>Complete the below details</value>
-</data>
-  <data name="VRReviewReason" xml:space="preserve">
-  <value>Review Reason</value>
-</data>
+    <value>Complete the below details</value>
+  </data>
   <data name="VRSelectAReason" xml:space="preserve">
-  <value>Select a Reason</value>
-</data>
+    <value>Select a Reason</value>
+  </data>
   <data name="VRReviewSubReason" xml:space="preserve">
-  <value>Review Sub-Reason</value>
-</data>
+    <value>Review Sub-Reason</value>
+  </data>
   <data name="VRSelectASubReason" xml:space="preserve">
-  <value>Select a Sub-Reason</value>
-</data>
+    <value>Select a Sub-Reason</value>
+  </data>
   <data name="VRApplicationReferenceNumber" xml:space="preserve">
-  <value>Application Reference Number</value>
-</data>
+    <value>Application Reference Number</value>
+  </data>
   <data name="VRRequestDate" xml:space="preserve">
-  <value>Request Date</value>
-</data>
+    <value>Request Date</value>
+  </data>
   <data name="VRContinue" xml:space="preserve">
-  <value>Continue</value>
-</data>
+    <value>Continue</value>
+  </data>
   <data name="VRViewApplication" xml:space="preserve">
-  <value>View Application</value>
-</data>
+    <value>View Application</value>
+  </data>
   <data name="VRReviewDetails" xml:space="preserve">
-  <value>Review Details</value>
-</data>
+    <value>Review Details</value>
+  </data>
   <data name="VRReportDetails" xml:space="preserve">
-  <value>Report Details</value>
-</data>
+    <value>Report Details</value>
+  </data>
   <data name="VRHelperText" xml:space="preserve">
-  <value>Helper text</value>
-</data>
+    <value>Helper text</value>
+  </data>
   <data name="VRAttachment" xml:space="preserve">
-  <value>Attachment</value>
-</data>
-  <data name="VR20MB" xml:space="preserve">
-  <value>20MB</value>
-</data>
-  <data name="VRNewAttachment" xml:space="preserve">
-  <value>New Attachment</value>
-</data>
-  <data name="VRUploadYourDocument" xml:space="preserve">
-  <value>Upload your document</value>
-</data>
+    <value>Attachment</value>
+  </data>
   <data name="VRPleaseCompleteTheDescription" xml:space="preserve">
-  <value>Please complete the description</value>
-</data>
+    <value>Please complete the description</value>
+  </data>
   <data name="VRDeclaration" xml:space="preserve">
-  <value>Declaration</value>
-</data>
+    <value>Declaration</value>
+  </data>
   <data name="VRIDType" xml:space="preserve">
-  <value>ID Type</value>
-</data>
+    <value>ID Type</value>
+  </data>
   <data name="VRIDNumber" xml:space="preserve">
-  <value>ID Number</value>
-</data>
+    <value>ID Number</value>
+  </data>
   <data name="VRDateOfBirth" xml:space="preserve">
-  <value>Date of Birth</value>
-</data>
+    <value>Date of Birth</value>
+  </data>
   <data name="VRContactPersonName" xml:space="preserve">
-  <value>Contact Person Name</value>
-</data>
+    <value>Contact Person Name</value>
+  </data>
   <data name="VRVatReviewRequest" xml:space="preserve">
-  <value>Vat Review Request</value>
-</data>
-  <data name="VRContactPersonName" xml:space="preserve">
-  <value>Contact Person Name</value>
-</data>
+    <value>Vat Review Request</value>
+  </data>
   <data name="VRNewObjectionorReview" xml:space="preserve">
-  <value>New Objection or Review</value>
-</data>
+    <value>New Objection or Review</value>
+  </data>
   <data name="VRObjectionsReviews" xml:space="preserve">
-  <value>Objections &amp; Reviews</value>
-</data>
+    <value>Objections &amp; Reviews</value>
+  </data>
   <data name="VRSelectType" xml:space="preserve">
-  <value>Select Type</value>
-</data>
+    <value>Select Type</value>
+  </data>
   <data name="VRChooseaZakatObjectionorVATReview" xml:space="preserve">
-  <value>Choose a Zakat Objection or VAT Review</value>
-</data>
+    <value>Choose a Zakat Objection or VAT Review</value>
+  </data>
   <data name="VRDecisionDate" xml:space="preserve">
-  <value>Decision Date</value>
-</data>
+    <value>Decision Date</value>
+  </data>
   <data name="VRYourVATReviewissubmittedsuccessfully" xml:space="preserve">
-  <value>Your VAT Review is submitted successfully</value>
-</data>
+    <value>Your VAT Review is submitted successfully</value>
+  </data>
   <data name="VRInstructions" xml:space="preserve">
-  <value>1.Please fill the requested information for each step.&#10;2.The request cannot be successfully submitted until all of the mandatory fields have been completed.&#10;3.Applicants should ensure that they have the reference or request number related to the decision they would like to review.&#10;4.If you are submitting a review on a penalty related to a specific VAT return, you may be asked to submit a security deposit that includes the VAT due for that period.&#10;5.Correction penalties and penalties for error in tax return will be reviewed as part of your re-assessment review request. After submitting this review request, you will not be able to request a review on these penalties, as well as late payment penalties.&#10;6.I accept that once I object on penalties (Correction penalties, penalties for error in tax ,and late payment penalties) I will agree on the re-assessment issued by GAZT for this return period and this objection is only on penalties.&#10;7.Please refer to the FAQ section before filling out the request form.
-</value></data>
+    <value>1.Please fill the requested information for each step.
+2.The request cannot be successfully submitted until all of the mandatory fields have been completed.
+3.Applicants should ensure that they have the reference or request number related to the decision they would like to review.
+4.If you are submitting a review on a penalty related to a specific VAT return, you may be asked to submit a security deposit that includes the VAT due for that period.
+5.Correction penalties and penalties for error in tax return will be reviewed as part of your re-assessment review request. After submitting this review request, you will not be able to request a review on these penalties, as well as late payment penalties.
+6.I accept that once I object on penalties (Correction penalties, penalties for error in tax ,and late payment penalties) I will agree on the re-assessment issued by GAZT for this return period and this objection is only on penalties.
+7.Please refer to the FAQ section before filling out the request form.
+</value>
+  </data>
   <data name="VRCheckBoxDesc" xml:space="preserve">
-  <value>I agree with these condition and proceed further</value>
-</data>
+    <value>I agree with these condition and proceed further</value>
+  </data>
   <data name="VRObjectionsAndReviews" xml:space="preserve">
-  <value>Objections &amp; Reviews </value>
-</data>
+    <value>Objections &amp; Reviews </value>
+  </data>
   <data name="VRAll" xml:space="preserve">
-  <value>All</value>
-</data>
+    <value>All</value>
+  </data>
   <data name="VRTaxPayersName" xml:space="preserve">
-  <value>Name (taxpayer's)</value>
-</data>
+    <value>Name (taxpayer's)</value>
+  </data>
   <data name="VRApplicationNumber" xml:space="preserve">
-  <value>Application No.</value>
-</data>
+    <value>Application No.</value>
+  </data>
   <data name="VRDate" xml:space="preserve">
-  <value>Date</value>
-</data>
+    <value>Date</value>
+  </data>
   <data name="VRTaxPeriodofCase" xml:space="preserve">
-  <value>Tax Period of Case</value>
-</data>
+    <value>Tax Period of Case</value>
+  </data>
   <data name="VRPeriodFrom" xml:space="preserve">
-  <value>Period From</value>
-</data>
+    <value>Period From</value>
+  </data>
   <data name="VRPeriodTo" xml:space="preserve">
-  <value>Period To</value>
-</data>
+    <value>Period To</value>
+  </data>
   <data name="VRPenality amount in question" xml:space="preserve">
-  <value>Penality amount in question</value>
-</data>
+    <value>Penality amount in question</value>
+  </data>
   <data name="VRSecurityPayment" xml:space="preserve">
-  <value>Security Payment</value>
-</data>
+    <value>Security Payment</value>
+  </data>
   <data name="VRSecurityType" xml:space="preserve">
-  <value>Security Type</value>
-</data>
+    <value>Security Type</value>
+  </data>
   <data name="VRSADAD" xml:space="preserve">
-  <value>SADAD</value>
-</data>
+    <value>SADAD</value>
+  </data>
   <data name="VRBANKGURANTEE" xml:space="preserve">
-  <value>BANK GURANTEE</value>
-</data>
+    <value>BANK GURANTEE</value>
+  </data>
   <data name="VRSECURITYAMOUNT" xml:space="preserve">
-  <value>SECURITY AMOUNT</value>
-</data>
+    <value>SECURITY AMOUNT</value>
+  </data>
   <data name="VRGENERATESADAD" xml:space="preserve">
-  <value>GENERATE SADAD</value>
-</data>
+    <value>GENERATE SADAD</value>
+  </data>
   <data name="VRSADADNumberGenerationisinprogress" xml:space="preserve">
-  <value>SADAD Number Generation is in progress.....</value>
-</data>
+    <value>SADAD Number Generation is in progress.....</value>
+  </data>
   <data name="VRSADADNumber" xml:space="preserve">
-  <value>SADAD Number</value>
-</data>
-  <data name="VRViewApplication" xml:space="preserve">
-  <value>View Application</value>
-</data>
+    <value>SADAD Number</value>
+  </data>
   <data name="VRViewBill" xml:space="preserve">
-  <value>View Bill</value>
-</data>
+    <value>View Bill</value>
+  </data>
   <data name="VRBillDetails" xml:space="preserve">
-  <value>Bill Details</value>
-</data>
+    <value>Bill Details</value>
+  </data>
   <data name="VRDocumentNo" xml:space="preserve">
-  <value>Document No.</value>
-</data>
+    <value>Document No.</value>
+  </data>
   <data name="VRDateofPenalty" xml:space="preserve">
-  <value>Date of Penalty</value>
-</data>
+    <value>Date of Penalty</value>
+  </data>
   <data name="VRDescriptionofPenalty" xml:space="preserve">
-  <value>Description of Penalty</value>
-</data>
+    <value>Description of Penalty</value>
+  </data>
   <data name="VRPeriodKey" xml:space="preserve">
-  <value>Period Key</value>
-</data>
+    <value>Period Key</value>
+  </data>
   <data name="VRStartDate" xml:space="preserve">
-  <value>Start Date</value>
-</data>
+    <value>Start Date</value>
+  </data>
   <data name="VREndDate" xml:space="preserve">
-  <value>End Date</value>
-</data>
+    <value>End Date</value>
+  </data>
   <data name="VRDueDate" xml:space="preserve">
-  <value>Due Date</value>
-</data>
+    <value>Due Date</value>
+  </data>
   <data name="VRAmount" xml:space="preserve">
-  <value>Amount</value>
-</data>
+    <value>Amount</value>
+  </data>
   <data name="VRSecurityNote1" xml:space="preserve">
-  <value>Please note that once you press this button, the security amount and the related SADAD bill cannot be revised.</value>
-</data>
+    <value>Please note that once you press this button, the security amount and the related SADAD bill cannot be revised.</value>
+  </data>
   <data name="VRSecurityNote2" xml:space="preserve">
-  <value>Please ensure you pay any outstanding dues on the original re-assessment bill that were not paid or submitted as security</value>
-</data>
+    <value>Please ensure you pay any outstanding dues on the original re-assessment bill that were not paid or submitted as security</value>
+  </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
-  <value>I acknowledge that my application will not process until my security is paid in full within 20 Days.</value>
-</data>
+    <value>I acknowledge that my application will not process until my security is paid in full within 20 Days.</value>
+  </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc2" xml:space="preserve">
-  <value>I acknowledge that bank guarantees need to be valid for at least one year and submitted in person to the GAZT branch assigned to me.</value>
-</data>
+    <value>I acknowledge that bank guarantees need to be valid for at least one year and submitted in person to the GAZT branch assigned to me.</value>
+  </data>
   <data name="VRSecuritySadadCheckBoxDesc1" xml:space="preserve">
-  <value>I acknowledge that my application will not process until my security is paid in full within 20 Days.</value>
-</data>
+    <value>I acknowledge that my application will not process until my security is paid in full within 20 Days.</value>
+  </data>
   <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>Create/Display for ZAKAT Instalment Plan</value>
   </data>
@@ -7023,9 +7018,13 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
     <value>There are no invoices to be added to the installments plan request.</value>
   </data>
-   <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
+  <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
     <value>Information from related parties(New Value)</value>
   </data>
-  
- 
+  <data name="NDMyApplication" xml:space="preserve">
+    <value>My Application Status</value>
+  </data>
+  <data name="NDAppStatus" xml:space="preserve">
+    <value>My Application Status</value>
+  </data>
 </root>

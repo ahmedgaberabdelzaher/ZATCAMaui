@@ -2045,4 +2045,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\grey_search%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Application_Status.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Application_Status%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Application_Status%403x.png" />
+  </ItemGroup>
 </Project>
