@@ -368,7 +368,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
 
-        private string _selectedEntityType = "Individual";
+        private string _selectedEntityType = string.Empty;
         public string SelectedEntityType
         {
             get => _selectedEntityType;
@@ -379,7 +379,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTaxPayerType = "Trade/Business";
+        private string _selectedTaxPayerType = string.Empty;
         public string SelectedTaxPayerType
         {
             get => _selectedTaxPayerType;
@@ -390,7 +390,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedRegNationalityType = "GCC";
+        private string _selectedRegNationalityType = string.Empty;
         public string SelectedRegNationalityType
         {
             get => _selectedRegNationalityType;
@@ -484,7 +484,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         Dictionary<string, string> EnIDType = new Dictionary<string, string>() {
             { "ZS0001", "National ID" },
             { "ZS0002", "Iqama ID" },
-            { "ZS0003", "National ID" }
+            { "ZS0003", "GCC ID" }
         };
         Dictionary<string, string> ArIDType = new Dictionary<string, string>() {
             { "ZS0001", "رقم الهوية الوطنية" },
@@ -503,7 +503,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _gCCIDTypeIdNumberValue = "12345677899";
+        private string _gCCIDTypeIdNumberValue = string.Empty;
         public string GCCIDTypeIdNumberValue
         {
             get => _gCCIDTypeIdNumberValue;
@@ -1437,6 +1437,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
+                //taxPayerDetails = new TaxPayerDetails();
                 _navigationService.GoBack();
             }
 
@@ -2231,6 +2232,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     if (SelectedReportingBranch == null)
+                    {
+                        return false;
+                    }
+                    if (string.IsNullOrEmpty(SelectedTaxPayerType))
                     {
                         return false;
                     }
