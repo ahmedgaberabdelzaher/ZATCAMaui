@@ -187,6 +187,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.NewAttachmentClicked();
             var view = sender as SfListView;
             view.SelectedItem = null;
+
             //if (viewModel.SelectedAttachment.IsAttachmentAttached == true)
             //{
             //    viewModel.SelectedAttachment.AttachmentName = string.Empty;

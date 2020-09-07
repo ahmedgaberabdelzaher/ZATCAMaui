@@ -4374,6 +4374,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>Kindly complete the required fields to be able to proceed.</value>
   </data>
+  <data name="TinDeregistrationClosed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
+   <data name="TinDeregistrationTransfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
   <data name="TinDeregistrationDetails" xml:space="preserve">
     <value>Registration Details</value>
   </data>
