@@ -379,7 +379,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTaxPayerType = string.Empty;
+        private string _selectedTaxPayerType = "Trade/Business";
         public string SelectedTaxPayerType
         {
             get => _selectedTaxPayerType;
@@ -2232,13 +2232,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    if (SelectedReportingBranch == null)
+                    if (SelectedReportingBranch == null || string.IsNullOrEmpty(SelectedReportingBranch.Bez50))
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Choose Reporting Branch"));
                         return false;
                     }
                     if (string.IsNullOrEmpty(SelectedTaxPayerType))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Choose TaxPayer Type"));
                         return false;
                     }
                     else if (string.IsNullOrEmpty(SelectedTpresidence))

@@ -42,6 +42,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("CorrespondenceDateTime");
             }
         }
+
+        private bool _isFavoriteVisible = false;
+        public bool IsFavoriteVisible
+        {
+            get
+            {
+                return _isFavoriteVisible;
+            }
+            set
+            {
+                _isFavoriteVisible = value;
+                RaisePropertyChanged("IsFavoriteVisible");
+            }
+        }
         private CorrespondanceModel _correspondenceD = null;
         public CorrespondanceModel CorrespondenceD
         {

@@ -24,6 +24,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             ChangeAeroIcon();
             SetLTR();
             viewModel.SelectedChipFilterItemList = new List<ChipModel>();
+            PopulateReturnTypeList();
             viewModel.PopulateFilterDropdownList();
             viewModel.PopulateDataInChips();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -69,13 +70,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             }
 
         }
-        protected async override void OnAppearing()
+        public async Task PageLoad()
         {
-            base.OnAppearing();
-         
-            try 
+
+            try
             {
-                 await  Task.Run(() =>
+                await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
@@ -86,16 +86,37 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     viewModel.IsLoading = false;
                 });
                 //  viewModel.SetAllCorrespondancedata();
-                ;            }
+                ;
+            }
             catch (Exception ex)
             {
                 viewModel.IsLoading = true;
             }
         }
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+                await PageLoad();
+                if (TaxTypeDownPicker.SelectedItem != null)
+                {
+                    viewModel.SelectedTaxTypeDropdownItem = (ReturnTypes)TaxTypeDownPicker.SelectedItem;
+                }
+                else
+                {
+                    TaxTypeDownPicker.SelectedItem = viewModel.TaxTypeListForDropDown.FirstOrDefault();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
 
         private void btn_Clicked(object sender, EventArgs e)
         {
-            CorrespondanceDownPicker.IsOpen = true;
+            //CorrespondanceDownPicker.IsOpen = true;
         }
 
         private void CorrespondanceDownPicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -105,6 +126,44 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
                 CorrespondanceDownPicker.SelectedItem = selectedReturntype;//Fbnum
                 viewModel.SelectedDropdownItem = selectedReturntype;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void PopulateReturnTypeList()
+        {
+            try
+            {
+                List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
+                {
+                   // new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
+                    new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
+                    new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
+                    new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
+                   // new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
+            };
+                viewModel.TaxTypeListForDropDown = new List<ReturnTypes>();
+                viewModel.TaxTypeListForDropDown = ReturnTypesList;
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+        private void TaxTypeDownPicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
+                TaxTypeDownPicker.SelectedItem = selectedReturntype;//Fbnum
+                viewModel.SelectedTaxTypeDropdownItem = selectedReturntype;
 
             }
             catch (Exception ex)
@@ -149,6 +208,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
           
             //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
             //viewModel.SelectedChipFilterItem = selectedReturntype;
+        }
+
+        private void btn_TaxTypeClicked(object sender, EventArgs e)
+        {
+            TaxTypeDownPicker.IsOpen = true;
         }
     }
 }

@@ -22,6 +22,7 @@ namespace GAZT.Models
         public string Enddaz { get; set; }
         public string Ctime { get; set; }
         public DateTime Cdate { get; set; }
+        public string TaxtpFg { get; set; }
     }
     public class CorrespondenceCollection : ObservableCollection<CorrespondanceModel>
     {

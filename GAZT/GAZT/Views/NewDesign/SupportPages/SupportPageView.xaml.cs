@@ -84,6 +84,19 @@ namespace EGAZT.Views.NewDesign
             }
         }
 
+        private void OnChatTapped(object sender, EventArgs e)
+        {
+            viewModel.setChat();
+            if (App.IsArabic)
+            {
+                ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=ar";
+            }
+            else
+            {
+                ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=en";
+            }
+        }
+
         private void OnContactUsTapped(object sender, EventArgs e)
         {
             viewModel.setContactUs();
@@ -95,6 +108,16 @@ namespace EGAZT.Views.NewDesign
             {
                 ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
             }
+        }
+
+        private void ChatWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+
+        }
+
+        private void ChatWebView_Navigated(object sender, WebNavigatedEventArgs e)
+        {
+
         }
     }
 }
