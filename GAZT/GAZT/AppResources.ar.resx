@@ -4356,6 +4356,12 @@
   <data name="UnlockAccountPasswordsSecurityPolicy" xml:space="preserve">
     <value>كلمة المرور المدخلة غير متوافقة مع قواعد إنشاء كلمة المرور، ان لا تقل عن 8 احرف ولا تزيد عن 16 ، تحتوي على احرف كبيرة وصغيرة وأرقام ورموز.</value>
   </data>
+  <data name="TinDeregistrationClosed" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+   <data name="TinDeregistrationTransfer" xml:space="preserve">
+    <value>نقل</value>
+  </data>
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
   </data>

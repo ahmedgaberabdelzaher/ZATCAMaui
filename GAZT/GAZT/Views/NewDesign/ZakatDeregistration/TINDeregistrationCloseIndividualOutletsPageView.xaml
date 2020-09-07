@@ -481,14 +481,14 @@
                                          </StackLayout>
                                           <StackLayout Grid.Row="4" Grid.Column="0">
                                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
-                                                                        Style="{StaticResource CaptionLabelGrey}" />
+                                                                        Style="{StaticResource BodyLabelGrey}" />
                                             </StackLayout>
                                             <StackLayout Grid.Row="4" Grid.Column="1">
                                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                                            <Label Text="{Binding SelectedReason.ReasonDesc}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                            <Label Text="{Binding SelectPermitReason.ReasonDesc}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                                 <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                                         HorizontalOptions="Start" VerticalOptions="Center">

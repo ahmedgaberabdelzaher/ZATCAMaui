@@ -7344,6 +7344,18 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationClosed {
+            get {
+                return ResourceManager.GetString("TinDeregistrationClosed", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationTransfer {
+            get {
+                return ResourceManager.GetString("TinDeregistrationTransfer", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationDetails {
             get {
                 return ResourceManager.GetString("TinDeregistrationDetails", resourceCulture);
