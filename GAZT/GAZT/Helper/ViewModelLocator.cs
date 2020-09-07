@@ -2253,7 +2253,7 @@ namespace EGAZT
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
             navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
             navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
-            navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
+            navigationService.Configure(App.FormBundleStatusPageView, typeof(EGAZT.Views.NewDesign.FormBundleStatusPages.FormBundleStatusPageView));
             navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
             navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
