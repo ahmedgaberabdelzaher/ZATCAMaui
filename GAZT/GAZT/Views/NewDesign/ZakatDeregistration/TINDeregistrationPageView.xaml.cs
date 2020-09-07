@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
@@ -493,6 +494,31 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.AddPermitOutletDecisionOptions();
                 viewModel.AddPopUpPage();
+            }
+        }
+  
+
+       async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        {
+            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
+            if (!result)
+            {
+                if (viewModel.TinDeregistrationData != null)
+                {
+
+                    if (viewModel.TinDeregistrationData.Fbnum != string.Empty)
+                    {
+
+                        await viewModel.VoidForm();
+
+                    }
+                    else
+                    {
+                        viewModel._navigationService.GoBack();
+
+                    }
+
+                }
             }
         }
     }
