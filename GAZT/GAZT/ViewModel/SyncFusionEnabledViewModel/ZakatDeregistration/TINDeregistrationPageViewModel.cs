@@ -2353,56 +2353,71 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         #region Summary View
         public void PopulateSummaryReasonData()
         {
-            TinDeregistrationSummaryReasonData = new ObservableCollection<TINDeregistrationSummaryModel>();
-            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
+            List<TINDeregistrationSummaryModel> summaryReasonData = new List<TINDeregistrationSummaryModel>();
+            try
             {
-                SummaryTitle = AppResources.TinDeregistrationReason,
-                SummaryData = SelectedReason.ReasonDesc,
-                IsEditVisible = true
-            });
-            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
-            {
-                SummaryTitle = AppResources.TinDeregistrationQuestionOutlets,
-                SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
-                IsEditVisible = true
-            });
-            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
-            {
-                //TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
+                summaryReasonData.Add(new TINDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.TinDeregistrationReason,
+                    SummaryData = SelectedReason.ReasonDesc,
+                    IsEditVisible = true
+                });
+                summaryReasonData.Add(new TINDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.TinDeregistrationQuestionOutlets,
+                    SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
+                    IsEditVisible = true
+                });
+                summaryReasonData.Add(new TINDeregistrationSummaryModel
+                {
+                    //TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
-                SummaryTitle = AppResources.TinDeregistrationDate,
-                SummaryData = DeregistrationDate.ToString("dd MMM yyyy"),
-                IsEditVisible = true
-            });
+                    SummaryTitle = AppResources.TinDeregistrationDate,
+                    SummaryData = DeregistrationDate.ToString("dd MMM yyyy"),
+                    IsEditVisible = true
+                });
+                TinDeregistrationSummaryReasonData = new ObservableCollection<TINDeregistrationSummaryModel>(summaryReasonData);
+            }catch(Exception ex)
+            {
+
+            }
         }
 
         public void PopulateSummaryDeclarationData()
         {
-            TinDeregistrationSummaryDeclarationData = new ObservableCollection<TINDeregistrationSummaryModel>();
-            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            List<TINDeregistrationSummaryModel> summaryDeclarationData = new List<TINDeregistrationSummaryModel>();
+            try
             {
-                SummaryTitle = AppResources.TinDeregistrationContactPersonName,
-                SummaryData = TinDeregistrationData.ADecName,
-                IsEditVisible = true
-            });
-            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+                summaryDeclarationData.Add(new TINDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.TinDeregistrationContactPersonName,
+                    SummaryData = TinDeregistrationData.ADecName,
+                    IsEditVisible = true
+                });
+                summaryDeclarationData.Add(new TINDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.TinDeregistrationDesignation,
+                    SummaryData = TinDeregistrationData.ADecDesig,
+                    IsEditVisible = true
+                });
+                summaryDeclarationData.Add(new TINDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.MobileNumber,
+                    SummaryData = TinDeregistrationData.ADecTelNo,
+                    IsEditVisible = true
+                });
+                summaryDeclarationData.Add(new TINDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.ZZDateofBirth,
+                    SummaryData = SubmissionDate.ToString("dd MMM yyyy"),
+                    IsEditVisible = true
+                });
+
+                TinDeregistrationSummaryDeclarationData = new ObservableCollection<TINDeregistrationSummaryModel>(summaryDeclarationData);
+            }catch(Exception ex)
             {
-                SummaryTitle = AppResources.TinDeregistrationDesignation,
-                SummaryData = TinDeregistrationData.ADecDesig,
-                IsEditVisible = true
-            });
-            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
-            {
-                SummaryTitle = AppResources.MobileNumber,
-                SummaryData = TinDeregistrationData.ADecTelNo,
-                IsEditVisible = true
-            });
-            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
-            {
-                SummaryTitle = AppResources.ZZDateofBirth,
-                SummaryData = SubmissionDate.ToString("dd MMM yyyy"),
-                IsEditVisible = true
-            });
+
+            }
         }
 
         private String ConvertDateFormat(DateTime newDate)
