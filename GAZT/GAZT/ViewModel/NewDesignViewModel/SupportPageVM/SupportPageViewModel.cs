@@ -92,6 +92,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             PageTitle = AppResources.ZZZFaq;
             currentTab = SupportTabEnum.FAQ;
         }
+        public void setChat()
+        {
+            PageTitle = AppResources.NDChat;
+            currentTab = SupportTabEnum.Chat;
+        }
         public void setContactUs()
         {
             PageTitle = AppResources.ZZZContactus;
