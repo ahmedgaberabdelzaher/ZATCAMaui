@@ -561,7 +561,7 @@
                                     </border:SfBorder >
                                     <syncfusion:SfDatePicker x:Name="dobPicker"
                                                              ShowHeader="False"
-                                                             Format="dd_MMM_yyyy"
+                                                             Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
                                                              PickerMode="Dialog"
                                                              IsOpen="False"
@@ -845,7 +845,7 @@
                                 </border:SfBorder >
 
                                 <syncfusion:SfDatePicker x:Name="PassportIssueDatePicker" IsOpen="False"
-                                                         Format="dd_MMM_yyyy"
+                                                         Format="yyyy_MM_dd"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
                                                          ShowHeader="False"  
                                                          PickerMode="Dialog"
@@ -881,7 +881,7 @@
                                     </StackLayout>
                                 </border:SfBorder >
                                 <syncfusion:SfDatePicker x:Name="PassportExpiryDatePicker" ShowHeader="False"
-                                                             Format="dd_MMM_yyyy"
+                                                             Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
                                                              PickerMode="Dialog"                                                            
                                                              DateSelected="PassportExpiryDatePicker_DateSelected"/>

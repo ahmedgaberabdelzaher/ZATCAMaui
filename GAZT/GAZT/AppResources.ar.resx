@@ -2152,7 +2152,7 @@
     <value>لا ينطبق</value>
   </data>
   <data name="ZNegative" xml:space="preserve">
-    <value>سلبي</value>
+    <value>مبلغ سالب</value>
   </data>
   <data name="ZZThefileisstillloading" xml:space="preserve">
     <value>لا يزال الملف قيد التحميل</value>
@@ -6732,7 +6732,7 @@
   <data name="NDWhatisYourNationality" xml:space="preserve">
     <value>What is your Nationality?</value>
   </data>
-    <data name="ZakatYearOne" xml:space="preserve">
+  <data name="ZakatYearOne" xml:space="preserve">
     <value>سنة 1</value>
   </data>
   <data name="ZakatYearThree" xml:space="preserve">
@@ -6741,7 +6741,7 @@
   <data name="ZakatYearTwo" xml:space="preserve">
     <value>سنة 2</value>
   </data>
-     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+  <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
     <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
   </data>
    <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
