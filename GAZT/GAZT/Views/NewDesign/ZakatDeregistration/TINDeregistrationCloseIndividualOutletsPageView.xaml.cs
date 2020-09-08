@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Helper;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -74,10 +77,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
                 }
-
-                //
-
-                Console.WriteLine(arg);
             });
         }
 
@@ -108,10 +107,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             if(viewModel.SelectedPermitOutletOptionIndex == 2)
             {
-                viewModel.IsMultiplePermitsVisible = true;
+                if(viewModel.SelectedOutletForCloseTranser.PermitTypes != null && viewModel.SelectedOutletForCloseTranser.PermitTypes.Count > 0)
+                {
+                    viewModel.IsNodataAvailableVisible = false;
+
+                    viewModel.IsMultiplePermitsVisible = true;
+                }
+                else
+                {
+                    viewModel.IsNodataAvailableVisible = true;
+                }
             }
             else
-            {
+            { 
+                viewModel.IsNodataAvailableVisible = false;
                 viewModel.IsMultiplePermitsVisible = false;
             }
         }
@@ -389,5 +398,72 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 EntryTIN.Text = string.Empty;
             }
         }
+
+        async void TapGestureRecognizerSelectSingleOutleDate_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
+                genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
+                var parameterVal = (e as TappedEventArgs).Parameter.ToString();
+                viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
+
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                   
+                }
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                   
+                });
+            }
+        }
+
+        async void TapGestureRecognizerSelectPermitType_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                reasonData.Add(AppResources.TinDeregistrationClosed);
+                reasonData.Add(AppResources.TinDeregistrationTransfer);
+
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = reasonData;
+                genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                genericPickerModel.PickerId = "permitTypeReasonPicker";
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+       
     }
 }

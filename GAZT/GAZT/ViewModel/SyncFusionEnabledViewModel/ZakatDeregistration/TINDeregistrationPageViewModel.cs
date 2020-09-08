@@ -32,7 +32,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
         public ICommand IdTypeTapped { get; set; }
-    
+        public ICommand PermitIdtypeTapped { get; set; }
+
         #endregion
 
         #region Commands
@@ -85,6 +86,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private bool _isOutletTranferOutletGridVisible { get; set; }
+        public bool IsOutletTranferOutletGridVisible
+        {
+            get
+            {
+                return _isOutletTranferOutletGridVisible;
+            }
+            set
+            {
+                _isOutletTranferOutletGridVisible = value;
+                RaisePropertyChanged("IsOutletTranferOutletGridVisible");
+            }
+        }
+
+        //
         private bool _isMultiplePermitsVisible = false;
         public bool IsMultiplePermitsVisible
         {
@@ -96,6 +112,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _isMultiplePermitsVisible = value;
                 RaisePropertyChanged("IsMultiplePermitsVisible");
+            }
+        }
+
+        private bool _isNodataAvailableVisible = false;
+        public bool IsNodataAvailableVisible
+        {
+            get
+            {
+                return _isNodataAvailableVisible;
+            }
+            set
+            {
+                _isNodataAvailableVisible = value;
+                RaisePropertyChanged("IsNodataAvailableVisible");
             }
         }
 
@@ -646,6 +676,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             TinDeregistrationData.ADregReason = SelectedReason.ReasonCd;
                             TinDeregistrationData.ADeregSelectedReasonValue = SelectedReason.ReasonDesc;
 
+                            List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
+
+                            foreach (OutletSetResult outletInfo in AllOutlets)
+                            {
+                                outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
+                                foreach (PermitSetResult permitInfo in allPermitTypes)
+                                {
+
+                                    if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                                    {
+                                        permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                                        if (outletInfo.PermitTypes == null)
+                                            outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+
+
+                                        outletInfo.PermitTypes.Add(permitInfo);
+                                    }
+                                }
+                            }
+
+
                             AddOutletDecisionOptions();
                             PopulateAttachmentsListViewTemplate();
                         }
@@ -678,6 +730,51 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 GCCIdTypeSelected();
                             }
                         }
+                        else if(PickerModel.PickerId == "permitTypeReasonPicker")
+                        {
+                            string tempSelectedReason = PickerModel.SelectedValue;
+                            if(PickerModel.SelectedValue == AppResources.TinDeregistrationClosed)
+                            {
+                                IsOutletTranferOutletGridVisible = false;
+                            }
+                            else
+                            {
+                                IsOutletTranferOutletGridVisible = true;
+                            }
+                        }
+                        else if(PickerModel.PickerId == "permitIdTypePicker")
+                        {
+                            SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                              x =>
+                              {
+                                  if (x.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb)
+                                  {
+                                      //x.APermitIdTypeTb
+
+                                      x.APermitTransTinTb = string.Empty;
+                                      x.APermitIdNoTb = string.Empty;
+
+                                      if (PickerModel.SelectedValue == AppResources.NationaID)
+                                      {
+                                          x.APermitIdTypeTb = "ZS0001";
+                                      }
+                                      else if (PickerModel.SelectedValue == AppResources.ZIBANCompanyID)
+                                      {
+                                          x.APermitIdTypeTb = "ZS0005";
+                                      }
+                                      else if (PickerModel.SelectedValue == AppResources.ZZIqamaID)
+                                      {
+                                          x.APermitIdTypeTb = "ZS0002";
+                                      }
+                                      else if (PickerModel.SelectedValue == AppResources.ZZGCCID)
+                                      {
+                                          x.APermitIdTypeTb = "ZS0003";
+                                      }
+                                  }
+                              return x;
+                              }
+                              ).ToList());
+                                    }
                     }
                 }
                 catch (Exception ex)
@@ -1241,6 +1338,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             IBANTypesList = IBANTypesDummyList;
         }
 
+        private PermitSetResult tempIdTypePermitSetResult = new PermitSetResult();
+        public async void OnPermitIdTypeClicked(PermitSetResult permitSetResult)
+        {
+            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+
+            foreach (IBANType iBANType in IBANTypesList)
+            {
+                idTypeData.Add(iBANType.Text);
+            }
+
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = idTypeData;
+            genericPickerModel.PickerTitle = AppResources.ZZIDType;
+            genericPickerModel.PickerId = "permitIdTypePicker";
+
+            tempIdTypePermitSetResult = permitSetResult;
+
+            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+        }
+
         public async void OnIdTypeClicked()
         {
             ObservableCollection<string> idTypeData = new ObservableCollection<string>();
@@ -1285,7 +1402,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             OnTinRegisrtationReasonDateTapped = new Command(this.OnTinRegisrtationReasonDateClicked);
             OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
             OnTinRegistrationDateTapped = new Command(this.OnTinRegistrationDateClicked);
-            OnOutletPermitTypeDeRegisrtationReasonDateTapped = new Command(this.OnOutletPermitTypeDeRegisrtationReasonDateClicked);
+            OnOutletPermitTypeDeRegisrtationReasonDateTapped = new Command<string>(this.OnOutletPermitTypeDeRegisrtationReasonDateClicked);
             TinDeregistrationModel = new TINDeregistrationModel();
             SelectedOutletOption = new TINDeregistrationModel();
             TinDeregistrationData = new TinDeregistrationResponseModel();
@@ -1305,6 +1422,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             Name2Text = new FieldValidations();
 
             IdTypeTapped = new Command(OnIdTypeClicked);
+            PermitIdtypeTapped = new Command<PermitSetResult>(OnPermitIdTypeClicked);
 
             //AddOutletDecisionOptions();
             //PopulateAttachmentsListViewTemplate();
@@ -1328,13 +1446,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                 List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
 
-
                 if (!String.IsNullOrEmpty(TinDeregistrationData.ADregReason))
                 {
                     SelectedReason = TinDeregReasons.Where(m => m.ReasonCd == TinDeregistrationData.ADregReason).FirstOrDefault();
                 }
 
                 AddOutletDecisionOptions();
+
 
                 if (!String.IsNullOrEmpty(TinDeregistrationData.ADregOpt))
                 {
@@ -1358,10 +1476,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     //if (outletInfo.AOutletExpdtTb == null)
                     //    outletInfo.AOutletExpdtTb = string.Empty;
 
+                    outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
                     foreach (PermitSetResult permitInfo in allPermitTypes)
                     {
                         if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
                         {
+                            permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
                             if (outletInfo.PermitTypes == null)
                                 outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
@@ -1934,7 +2056,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 //await SaveAsDraft();
 
-                if (SelectedOutletOptionIndex == 1 || SelectedOutletOptionIndex == 2)
+                if (SelectedOutletOptionIndex == 1)
                 {
                     if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null)
                     {
@@ -1949,12 +2071,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
 
                 }
+                else if(SelectedOutletOptionIndex == 2)
+                {
+                    if(SelectedReason ==null)
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                    }
+                    else
+                    {
+                        await SaveAsDraft();
+                        VoidIsVisible = true;
+                        EnableOutletDetaislView();
+
+                    }
+                }
                 else if (SelectedOutletOptionIndex ==0)
                 {
                     if(SelectedReason == null)
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-
                     }
                     else
                     {
@@ -1962,7 +2097,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         VoidIsVisible = true;
 
                         EnableOutletDetaislView();
-
                     }
                 }
                 else
@@ -2119,13 +2253,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public async void OnOutletPermitTypeDeRegisrtationReasonDateClicked()
+        private string selectedAPermitOutletnoTb;
+        public async void OnOutletPermitTypeDeRegisrtationReasonDateClicked(string value)
         {
             try
             {
+                this.selectedAPermitOutletnoTb = value;
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
                 genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
                 genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
+
+                SelectedOutletForCloseTranser.PermitTypes =new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                    x =>
+                    {
+                        if (x.APermitNoTb == value)
+                        {
+                            x.APermitEffDtTb = ConvertDateFormat(SingleOutletDeregistrationDate);
+                            x.APermitEffDtCTb = "G";
+                            x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyyMMdd");
+                        }
+                        return x;
+                    }
+                    ).ToList());
 
                 try
                 {
