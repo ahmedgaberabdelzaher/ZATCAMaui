@@ -628,7 +628,7 @@
     <value>لا يوجد بلاغات متاحة</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>لا تتوفر بيانات</value>
+    <value>لا توجد بيانات</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>أدخل كلمة التحقق</value>
