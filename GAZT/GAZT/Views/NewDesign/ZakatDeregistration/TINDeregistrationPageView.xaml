@@ -123,7 +123,7 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="{Binding SelectedReason.ReasonDesc}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding SelectedReason.ReasonDesc}" x:Name="selectedReasonLbl" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
@@ -209,7 +209,7 @@
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                    <Setter Property="IsVisible" Value="true" />
+                                    <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                  </StackLayout>
@@ -223,7 +223,7 @@
                                     <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                    <Setter Property="IsVisible" Value="true" />
+                                    <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
@@ -548,7 +548,7 @@
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitTypeTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Text="{Binding APermitTypTxt}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                             </StackLayout>
                                                                 <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
@@ -560,19 +560,19 @@
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitValfrDtHTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Text="{Binding APermitValfrDtHTb,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                             </StackLayout>
                                                                 <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="04 August 2020" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Text="{Binding APermitEffDt, StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                             </StackLayout>
                                                                 <StackLayout Grid.Row="5" Grid.Column="0" Spacing="-5">
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeregReason}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="5" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="Bankruptcy" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Text="{Binding ReasonDescription}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                             </StackLayout>
                                                         </Grid>
                                                 </DataTemplate>
