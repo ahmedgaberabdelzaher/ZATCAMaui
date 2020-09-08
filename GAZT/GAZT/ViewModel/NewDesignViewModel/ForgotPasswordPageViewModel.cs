@@ -77,7 +77,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                        if (IDNumber.Length > 0)
+                    if (IDNumber.Length > 0)
                         {
                             string firstlettorOfIdNumber = IDNumber.Substring(0, 1);
                             if (!firstlettorOfIdNumber.Equals("7"))
