@@ -5514,7 +5514,7 @@
     <value>تحديث رقم الجوال</value>
   </data>
   <data name="TPUpdatePassword" xml:space="preserve">
-    <value>تغيير الرقم السري</value>
+    <value>تغيير كلمة المرور</value>
   </data>
   <data name="TPOldPasswordEmpty" xml:space="preserve">
     <value>الرجاء ادخال كلمة المرور القديمة</value>
