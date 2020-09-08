@@ -3224,6 +3224,40 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                 VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                if (registrationDetails != null & registrationDetails.d != null)
+                {
+                    viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                    string code = registrationDetails.d.RegTy;
+                    string eligibilityText = string.Empty;
+                    viewModel.Attachments = AppResources.Attachments;
+
+                    if (code.Equals("L"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                        FrmNewAttachment.HasError = false;
+                    }
+                    else if (code.Equals("S"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        FrmNewAttachment.HasError = false;
+                    }
+                    else if (code.Equals("V"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        FrmNewAttachment.HasError = false;
+                    }
+                    else if (code.Equals("N"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                        viewModel.Attachments = AppResources.Attachments + "*";
+                    }
+                    else if (code.Equals("M"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        FrmNewAttachment.HasError = false;
+                    }
+                    viewModel.SliderLable1EligibilityText = eligibilityText;
+                }
             }
             catch (Exception ex)
             {
