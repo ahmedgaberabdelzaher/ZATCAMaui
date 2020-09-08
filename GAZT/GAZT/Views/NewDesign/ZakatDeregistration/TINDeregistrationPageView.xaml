@@ -17,7 +17,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                       <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+
         </ResourceDictionary>
         
     </ContentPage.Resources>
@@ -60,9 +69,9 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image Grid.Row="0" Grid.Column="2" Source="close" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                        <Image Grid.Row="0" Grid.Column="2" Source="close" IsVisible="{TemplateBinding BindingContext.VoidIsVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseBtnTapped}" ></TapGestureRecognizer>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
@@ -200,7 +209,7 @@
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                    <Setter Property="IsVisible" Value="false" />
+                                    <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                  </StackLayout>
@@ -214,7 +223,7 @@
                                     <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                    <Setter Property="IsVisible" Value="false" />
+                                    <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
@@ -478,7 +487,7 @@
                                         </Frame> 
                                         <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
                                         <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="Hardy Store" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                            <Label Text="{Binding  AOutletNameTb}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                         </StackLayout>
                                     </Grid>
 
@@ -645,7 +654,7 @@
                                                     </StackLayout>
                                                 </border:SfBorder >-->
                                             <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
-                                            ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                            ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
                                             OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
                                                 <StackLayout Orientation="Horizontal">
                                                     <Grid IsVisible="false" >
@@ -662,7 +671,7 @@
                                                         </Grid.Triggers>
                                                     </Grid>
                                                     <Entry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                       HorizontalTextAlignment="Start" Text="{Binding AttachmentName}"  HeightRequest="20"/>
+                                                       HorizontalTextAlignment="Start" VerticalOptions="Center" Text="{Binding AttachmentName}"  />
                                                 </StackLayout>
 
                                            

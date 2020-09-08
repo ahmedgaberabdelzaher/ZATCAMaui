@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
@@ -27,15 +28,37 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             ChangeAeroIcon();
             SetLTR();
+            ChangeArrowDirection();
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
         }
 
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
 
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeArrowDirection();
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
@@ -187,6 +210,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.NewAttachmentClicked();
             var view = sender as SfListView;
             view.SelectedItem = null;
+
             //if (viewModel.SelectedAttachment.IsAttachmentAttached == true)
             //{
             //    viewModel.SelectedAttachment.AttachmentName = string.Empty;
@@ -492,6 +516,31 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.AddPermitOutletDecisionOptions();
                 viewModel.AddPopUpPage();
+            }
+        }
+  
+
+       async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        {
+            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
+            if (!result)
+            {
+                if (viewModel.TinDeregistrationData != null)
+                {
+
+                    if (viewModel.TinDeregistrationData.Fbnum != string.Empty)
+                    {
+
+                        await viewModel.VoidForm();
+
+                    }
+                    else
+                    {
+                        viewModel._navigationService.GoBack();
+
+                    }
+
+                }
             }
         }
     }
