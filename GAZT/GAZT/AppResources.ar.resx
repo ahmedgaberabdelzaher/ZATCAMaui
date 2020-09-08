@@ -628,7 +628,7 @@
     <value>لا يوجد بلاغات متاحة</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
-    <value>لا تتوفر بيانات</value>
+    <value>لا توجد بيانات</value>
   </data>
   <data name="Entercaptcha" xml:space="preserve">
     <value>أدخل كلمة التحقق</value>
@@ -3039,7 +3039,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="NoAppointmentText" xml:space="preserve">
-    <value>لا يوجد اتزامات</value>
+    <value>لا يوجد التزامات</value>
   </data>
   <data name="ZReturnStatus" xml:space="preserve">
     <value>حالة الإقرار</value>
@@ -5514,7 +5514,7 @@
     <value>تحديث رقم الجوال</value>
   </data>
   <data name="TPUpdatePassword" xml:space="preserve">
-    <value>تغيير الرقم السري</value>
+    <value>تغيير كلمة المرور</value>
   </data>
   <data name="TPOldPasswordEmpty" xml:space="preserve">
     <value>الرجاء ادخال كلمة المرور القديمة</value>

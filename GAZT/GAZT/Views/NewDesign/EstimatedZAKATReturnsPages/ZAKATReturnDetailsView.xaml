@@ -523,7 +523,7 @@
 
                                              <StackLayout x:Name="ImportValueNotApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
-                                                <inputLayout:SfTextInputLayout ContainerBackgroundColor="#F3F3F3" IsVisible="true" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                <inputLayout:SfTextInputLayout ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}" IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}"  Focused="ImportValueInputFocused"  Unfocused="ImportValueInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
