@@ -3039,7 +3039,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="NoAppointmentText" xml:space="preserve">
-    <value>لا يوجد اتزامات</value>
+    <value>لا يوجد التزامات</value>
   </data>
   <data name="ZReturnStatus" xml:space="preserve">
     <value>حالة الإقرار</value>
