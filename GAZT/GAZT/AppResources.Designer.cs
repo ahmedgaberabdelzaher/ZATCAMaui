@@ -7344,6 +7344,18 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationClosed {
+            get {
+                return ResourceManager.GetString("TinDeregistrationClosed", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationTransfer {
+            get {
+                return ResourceManager.GetString("TinDeregistrationTransfer", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationDetails {
             get {
                 return ResourceManager.GetString("TinDeregistrationDetails", resourceCulture);
@@ -11868,6 +11880,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZakatObjection {
+            get {
+                return ResourceManager.GetString("ZakatObjection", resourceCulture);
+            }
+        }
+        
         public static string VRReviewReason {
             get {
                 return ResourceManager.GetString("VRReviewReason", resourceCulture);
@@ -11979,6 +11997,252 @@ namespace EGAZT {
         public static string VRContactPersonName {
             get {
                 return ResourceManager.GetString("VRContactPersonName", resourceCulture);
+            }
+        }
+        
+        public static string VRVatReviewRequest {
+            get {
+                return ResourceManager.GetString("VRVatReviewRequest", resourceCulture);
+            }
+        }
+        
+        public static string VRNewObjectionorReview {
+            get {
+                return ResourceManager.GetString("VRNewObjectionorReview", resourceCulture);
+            }
+        }
+        
+        public static string VRObjectionsReviews {
+            get {
+                return ResourceManager.GetString("VRObjectionsReviews", resourceCulture);
+            }
+        }
+        
+        public static string VRSelectType {
+            get {
+                return ResourceManager.GetString("VRSelectType", resourceCulture);
+            }
+        }
+        
+        public static string VRChooseaZakatObjectionorVATReview {
+            get {
+                return ResourceManager.GetString("VRChooseaZakatObjectionorVATReview", resourceCulture);
+            }
+        }
+        
+        public static string VRDecisionDate {
+            get {
+                return ResourceManager.GetString("VRDecisionDate", resourceCulture);
+            }
+        }
+        
+        public static string VRYourVATReviewissubmittedsuccessfully {
+            get {
+                return ResourceManager.GetString("VRYourVATReviewissubmittedsuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string VRInstructions {
+            get {
+                return ResourceManager.GetString("VRInstructions", resourceCulture);
+            }
+        }
+        
+        public static string VRCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("VRCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        public static string VRObjectionsAndReviews {
+            get {
+                return ResourceManager.GetString("VRObjectionsAndReviews", resourceCulture);
+            }
+        }
+        
+        public static string VRAll {
+            get {
+                return ResourceManager.GetString("VRAll", resourceCulture);
+            }
+        }
+        
+        public static string VRTaxPayersName {
+            get {
+                return ResourceManager.GetString("VRTaxPayersName", resourceCulture);
+            }
+        }
+        
+        public static string VRApplicationNumber {
+            get {
+                return ResourceManager.GetString("VRApplicationNumber", resourceCulture);
+            }
+        }
+        
+        public static string VRDate {
+            get {
+                return ResourceManager.GetString("VRDate", resourceCulture);
+            }
+        }
+        
+        public static string VRTaxPeriodofCase {
+            get {
+                return ResourceManager.GetString("VRTaxPeriodofCase", resourceCulture);
+            }
+        }
+        
+        public static string VRPeriodFrom {
+            get {
+                return ResourceManager.GetString("VRPeriodFrom", resourceCulture);
+            }
+        }
+        
+        public static string VRPeriodTo {
+            get {
+                return ResourceManager.GetString("VRPeriodTo", resourceCulture);
+            }
+        }
+        
+        public static string VRPenality_amount_in_question {
+            get {
+                return ResourceManager.GetString("VRPenality amount in question", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityPayment {
+            get {
+                return ResourceManager.GetString("VRSecurityPayment", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityType {
+            get {
+                return ResourceManager.GetString("VRSecurityType", resourceCulture);
+            }
+        }
+        
+        public static string VRSADAD {
+            get {
+                return ResourceManager.GetString("VRSADAD", resourceCulture);
+            }
+        }
+        
+        public static string VRBANKGURANTEE {
+            get {
+                return ResourceManager.GetString("VRBANKGURANTEE", resourceCulture);
+            }
+        }
+        
+        public static string VRSECURITYAMOUNT {
+            get {
+                return ResourceManager.GetString("VRSECURITYAMOUNT", resourceCulture);
+            }
+        }
+        
+        public static string VRGENERATESADAD {
+            get {
+                return ResourceManager.GetString("VRGENERATESADAD", resourceCulture);
+            }
+        }
+        
+        public static string VRSADADNumberGenerationisinprogress {
+            get {
+                return ResourceManager.GetString("VRSADADNumberGenerationisinprogress", resourceCulture);
+            }
+        }
+        
+        public static string VRSADADNumber {
+            get {
+                return ResourceManager.GetString("VRSADADNumber", resourceCulture);
+            }
+        }
+        
+        public static string VRViewBill {
+            get {
+                return ResourceManager.GetString("VRViewBill", resourceCulture);
+            }
+        }
+        
+        public static string VRBillDetails {
+            get {
+                return ResourceManager.GetString("VRBillDetails", resourceCulture);
+            }
+        }
+        
+        public static string VRDocumentNo {
+            get {
+                return ResourceManager.GetString("VRDocumentNo", resourceCulture);
+            }
+        }
+        
+        public static string VRDateofPenalty {
+            get {
+                return ResourceManager.GetString("VRDateofPenalty", resourceCulture);
+            }
+        }
+        
+        public static string VRDescriptionofPenalty {
+            get {
+                return ResourceManager.GetString("VRDescriptionofPenalty", resourceCulture);
+            }
+        }
+        
+        public static string VRPeriodKey {
+            get {
+                return ResourceManager.GetString("VRPeriodKey", resourceCulture);
+            }
+        }
+        
+        public static string VRStartDate {
+            get {
+                return ResourceManager.GetString("VRStartDate", resourceCulture);
+            }
+        }
+        
+        public static string VREndDate {
+            get {
+                return ResourceManager.GetString("VREndDate", resourceCulture);
+            }
+        }
+        
+        public static string VRDueDate {
+            get {
+                return ResourceManager.GetString("VRDueDate", resourceCulture);
+            }
+        }
+        
+        public static string VRAmount {
+            get {
+                return ResourceManager.GetString("VRAmount", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityNote1 {
+            get {
+                return ResourceManager.GetString("VRSecurityNote1", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityNote2 {
+            get {
+                return ResourceManager.GetString("VRSecurityNote2", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityBankGurrantCheckBoxDesc1 {
+            get {
+                return ResourceManager.GetString("VRSecurityBankGurrantCheckBoxDesc1", resourceCulture);
+            }
+        }
+        
+        public static string VRSecurityBankGurrantCheckBoxDesc2 {
+            get {
+                return ResourceManager.GetString("VRSecurityBankGurrantCheckBoxDesc2", resourceCulture);
+            }
+        }
+        
+        public static string VRSecuritySadadCheckBoxDesc1 {
+            get {
+                return ResourceManager.GetString("VRSecuritySadadCheckBoxDesc1", resourceCulture);
             }
         }
         
@@ -12243,6 +12507,288 @@ namespace EGAZT {
         public static string InformationFromRelatedPartiesNewValue {
             get {
                 return ResourceManager.GetString("InformationFromRelatedPartiesNewValue", resourceCulture);
+            }
+        }
+        
+        public static string NDMyApplication {
+            get {
+                return ResourceManager.GetString("NDMyApplication", resourceCulture);
+            }
+        }
+        
+        public static string NDAppStatus {
+            get {
+                return ResourceManager.GetString("NDAppStatus", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateBranch {
+            get {
+                return ResourceManager.GetString("ESTValidateBranch", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateResidenceType {
+            get {
+                return ResourceManager.GetString("ESTValidateResidenceType", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAttachRent {
+            get {
+                return ResourceManager.GetString("ESTValidateAttachRent", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateLegalEntity {
+            get {
+                return ResourceManager.GetString("ESTValidateLegalEntity", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateParmanentEst {
+            get {
+                return ResourceManager.GetString("ESTValidateParmanentEst", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateOtherTax {
+            get {
+                return ResourceManager.GetString("ESTValidateOtherTax", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateDOB {
+            get {
+                return ResourceManager.GetString("ESTValidateDOB", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateFirstName {
+            get {
+                return ResourceManager.GetString("ESTValidateFirstName", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateGender {
+            get {
+                return ResourceManager.GetString("ESTValidateGender", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateNationality {
+            get {
+                return ResourceManager.GetString("ESTValidateNationality", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateCitizen {
+            get {
+                return ResourceManager.GetString("ESTValidateCitizen", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateResidence {
+            get {
+                return ResourceManager.GetString("ESTValidateResidence", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidatePassportNumber {
+            get {
+                return ResourceManager.GetString("ESTValidatePassportNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidatePIssueCountry {
+            get {
+                return ResourceManager.GetString("ESTValidatePIssueCountry", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidatePIssueDate {
+            get {
+                return ResourceManager.GetString("ESTValidatePIssueDate", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidatePExpiryDate {
+            get {
+                return ResourceManager.GetString("ESTValidatePExpiryDate", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidatePAttachCopy {
+            get {
+                return ResourceManager.GetString("ESTValidatePAttachCopy", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAtleastOutlet {
+            get {
+                return ResourceManager.GetString("ESTValidateAtleastOutlet", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidatePledge {
+            get {
+                return ResourceManager.GetString("ESTValidatePledge", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateCRNumberInValid {
+            get {
+                return ResourceManager.GetString("ESTValidateCRNumberInValid", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAIssueCountry {
+            get {
+                return ResourceManager.GetString("ESTValidateAIssueCountry", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAIssueBy {
+            get {
+                return ResourceManager.GetString("ESTValidateAIssueBy", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAIssueCity {
+            get {
+                return ResourceManager.GetString("ESTValidateAIssueCity", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateACRNumber {
+            get {
+                return ResourceManager.GetString("ESTValidateACRNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateACRValidFrom {
+            get {
+                return ResourceManager.GetString("ESTValidateACRValidFrom", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAAttachCR {
+            get {
+                return ResourceManager.GetString("ESTValidateAAttachCR", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAMainGroup {
+            get {
+                return ResourceManager.GetString("ESTValidateAMainGroup", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateASubGroup {
+            get {
+                return ResourceManager.GetString("ESTValidateASubGroup", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateActivity {
+            get {
+                return ResourceManager.GetString("ESTValidateActivity", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateACLicense {
+            get {
+                return ResourceManager.GetString("ESTValidateACLicense", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateALicenseValidFrom {
+            get {
+                return ResourceManager.GetString("ESTValidateALicenseValidFrom", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAAttachLicense {
+            get {
+                return ResourceManager.GetString("ESTValidateAAttachLicense", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddActivity {
+            get {
+                return ResourceManager.GetString("ESTValidateAddActivity", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddHouseNumber {
+            get {
+                return ResourceManager.GetString("ESTValidateAddHouseNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddBuildingNumber {
+            get {
+                return ResourceManager.GetString("ESTValidateAddBuildingNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddFloorNumber {
+            get {
+                return ResourceManager.GetString("ESTValidateAddFloorNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddStreet {
+            get {
+                return ResourceManager.GetString("ESTValidateAddStreet", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddQuarter {
+            get {
+                return ResourceManager.GetString("ESTValidateAddQuarter", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddPostal {
+            get {
+                return ResourceManager.GetString("ESTValidateAddPostal", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddPostalCode5 {
+            get {
+                return ResourceManager.GetString("ESTValidateAddPostalCode5", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddCountry {
+            get {
+                return ResourceManager.GetString("ESTValidateAddCountry", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddProvinance {
+            get {
+                return ResourceManager.GetString("ESTValidateAddProvinance", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddAdditional {
+            get {
+                return ResourceManager.GetString("ESTValidateAddAdditional", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateAddCity {
+            get {
+                return ResourceManager.GetString("ESTValidateAddCity", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateOutletName {
+            get {
+                return ResourceManager.GetString("ESTValidateOutletName", resourceCulture);
             }
         }
     }

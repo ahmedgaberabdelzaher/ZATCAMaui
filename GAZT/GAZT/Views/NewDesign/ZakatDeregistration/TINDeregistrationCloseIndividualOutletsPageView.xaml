@@ -47,7 +47,8 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
-                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -72,7 +73,7 @@
                      <RowDefinition Height="1"/>
                     </Grid.RowDefinitions>
 
-                    <StackLayout Grid.Row="0" Grid.Column="0">
+                    <!--<StackLayout Grid.Row="0" Grid.Column="0">
 
                          <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
@@ -87,12 +88,12 @@
 
                                         </Image>
 
-                                        <!--<Image Margin="5,0" Rotation="270">
+                                        <Image Margin="5,0" Rotation="270">
                                             <Image.Source Aspect="AspectFit" HeightRequest="15" WidthRequest="15">
                                                 <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="15"  
                                                             Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                             </Image.Source>
-                                        </Image>-->
+                                        </Image>
                                     </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
@@ -101,11 +102,11 @@
 
                                 </StackLayout>
                             </border:SfBorder >
-                    </StackLayout>
+                    </StackLayout>-->
                 </Grid>
 
                  <listView:SfListView BackgroundColor="White" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5"
-                                      ItemsSource="{Binding PermitOutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
+                                      ItemsSource="{Binding PermitOutletDecisionOptions}" SelectedItem="{Binding SelectedPermitTypeOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -159,27 +160,27 @@
                                 </StackLayout>
                             </border:SfBorder >
                             <StackLayout.Triggers>
-                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
+                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="1">
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="2">
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                  </StackLayout>
 
-                 <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                        <StackLayout.Triggers>
-                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
+                 <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="false" >
+                            <StackLayout.Triggers>
+                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="1">
                                     <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="2">
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
@@ -393,7 +394,343 @@
 
                  </StackLayout>
 
-                 <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                 <listView:SfListView Margin="-3,0,-3,0" IsVisible="{Binding IsMultiplePermitsVisible}"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedOutletForCloseTranser.PermitTypes}" x:Name="outletsListView" HorizontalOptions="Center"
+                                             IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                      
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout Padding="0">
+                                    <Grid Padding="15" RowSpacing="0" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Center" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                       HasShadow="False">
+                                        </Frame> 
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                            <Label Text="Hardy Store" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                    <Grid Padding="10" RowSpacing="8">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                            <Label Text="{Binding APermitTypeTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitNumber}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
+                                            <Label Text="{Binding APermitNoTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
+                                            <Label Text="{Binding APermitValfrDtTb, StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout  Grid.Row="3" Grid.Column="0" Spacing="-5" Grid.ColumnSpan="1">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
+                                                VerticalOptions="Center"                    Style="{StaticResource BodyLabelGrey}" />   
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
+                                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                                    <Label Text="{Binding SingleOutletDeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                        <Image Margin="5,0">
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                     </StackLayout>
+                                                <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OnOutletPermitTypeDeRegisrtationReasonDateTapped}" ></TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+                                             </StackLayout>
+                                            </border:SfBorder>
+                                         </StackLayout>
+                                          <StackLayout Grid.Row="4" Grid.Column="0">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                                                        Style="{StaticResource BodyLabelGrey}" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="4" Grid.Column="1">
+                                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                                                            <Label Text="{Binding SelectPermitReason.ReasonDesc}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                                <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                                                        HorizontalOptions="Start" VerticalOptions="Center">
+
+                                                                </Image>
+
+                                                                <!--<Image Margin="5,0" Rotation="270">
+                                                                    <Image.Source Aspect="AspectFit" HeightRequest="15" WidthRequest="15">
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="15"  
+                                                                                    Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+                                                                </Image>-->
+                                                            </StackLayout>
+
+                                                            <StackLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding OnPermitTypeReasonTapped}" ></TapGestureRecognizer>
+                                                            </StackLayout.GestureRecognizers>
+
+                                                        </StackLayout>
+                                                    </border:SfBorder >
+                                            </StackLayout>
+                                      
+                                    </Grid>
+                                </StackLayout>
+                                </border:SfBorder >
+
+			                </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+
+
+                 <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                        <!--<StackLayout.Triggers>
+                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="1">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="2">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+                        Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>
+
+                        <StackLayout>
+                            <StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                                        <Label Text="{Binding DeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout>
+                            <StackLayout IsVisible="{Binding TinText.IsVisible}">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
+                                    <custom:BorderlessEntry x:Name="EntryTINPermitType" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+
+                            <StackLayout >
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" />   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                                        <Label Text="{Binding SelectedIdtype}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                             <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                               HorizontalOptions="Start" VerticalOptions="Center">
+                                             </Image>
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding IdTypeTapped}" ></TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout>
+
+                            <StackLayout IsVisible="{Binding IdNumberText.IsVisible}">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
+                                    <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <StackLayout IsVisible="{Binding DobText.IsVisible}">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout IsEnabled="{Binding DobText.IsEditable}" Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                                        <Label Text="{Binding SelectedDob}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                             <TapGestureRecognizer Command="{Binding OnTinRegistrationDateTapped}" ></TapGestureRecognizer>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout>
+
+                         Display this view in both cases Transfer outlets to snigle transferee an sub selection all other id types except comapny id-!>
+
+                        <StackLayout>
+                            
+                            <StackLayout IsVisible="{Binding FirstNameText.IsVisible}">
+                                <custom:CustomLabel Text="{Binding FirstNameLbl}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" IsEnabled="{Binding FirstNameText.IsEditable}"
+                                                            Placeholder="{Binding FirstNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                           
+                            <StackLayout IsVisible="{Binding SurnameText.IsVisible}">
+                                <custom:CustomLabel Text="{Binding SurnameNameLbl}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}"
+                                                            Placeholder="{Binding SurnameNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+
+                            <StackLayout IsVisible="{Binding FathersNameText.IsVisible}">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.FatherName}" IsEnabled="{Binding FathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+
+                            <StackLayout IsVisible="{Binding GrandFathersNameText.IsVisible}">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.GrandfatherName}" IsEnabled="{Binding GrandFathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+
+                             
+                             <StackLayout IsVisible="{Binding FamilyNameText.IsVisible}">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.FamilyName}" IsEnabled="{Binding FamilyNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+                        Display this view in both cases Transfer outlets to snigle transferee an sub selection comapny id-!>
+
+                        <StackLayout IsVisible="{Binding IsName1Visible}">
+                             <StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" IsEnabled="{Binding Name1Text.IsEditable}"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                           
+                            <StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />     
+                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" IsEnabled="{Binding Name2Text.IsEditable}"
+                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                        </StackLayout>-->
+
+                 </StackLayout>
+
+                 <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>

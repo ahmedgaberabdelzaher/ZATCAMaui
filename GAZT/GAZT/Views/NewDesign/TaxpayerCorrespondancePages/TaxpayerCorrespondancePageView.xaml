@@ -81,8 +81,8 @@
                     </Grid.ColumnDefinitions>
                     <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                     </custom:CustomLabel>
-                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-                    </Image>
+                    <!--<Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                    </Image>-->
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     </custom:CustomButton>
                     <syncfusion:SfPicker x:Name="CorrespondanceDownPicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
@@ -95,6 +95,32 @@
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <custom:CustomLabel Text="{Binding FilterTaxTypeLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                    </custom:CustomLabel>
+                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                    </Image>
+                    <custom:CustomButton x:Name="btnForTaxType" Grid.Column="0" Grid.Row="0"  Clicked="btn_TaxTypeClicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
+                    </custom:CustomButton>
+                    <syncfusion:SfPicker x:Name="TaxTypeDownPicker" HeaderHeight="55" HeaderTextColor="White"
+                    ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                    ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeListForDropDown}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                    PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                    FooterHeight="46" SelectionChanged="TaxTypeDownPicker_SelectionChanged">
+                        <syncfusion:SfPicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+                </Grid>
+
                 <custom:CustomLabel HorizontalOptions="StartAndExpand" Margin="5,0,5,0" Text="{Binding CountLabel}" Style="{StaticResource CaptionLabelGrey}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
@@ -104,7 +130,7 @@
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsVisibleFavourite}">
                     <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Filter"  Margin="0,10,0,0" HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" SelectionChanging="ChipGroup_statusFilter_SelectionChanged" SelectedChipTextColor="{StaticResource Secondary}">
                         <!--SelectionChanged="chipgroup_SelectionChanged" ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1"  -->
                         <buttons:SfChipGroup.ItemTemplate>

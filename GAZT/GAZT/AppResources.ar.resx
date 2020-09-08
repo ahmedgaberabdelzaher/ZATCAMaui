@@ -2152,7 +2152,7 @@
     <value>لا ينطبق</value>
   </data>
   <data name="ZNegative" xml:space="preserve">
-    <value>سلبي</value>
+    <value>مبلغ سالب</value>
   </data>
   <data name="ZZThefileisstillloading" xml:space="preserve">
     <value>لا يزال الملف قيد التحميل</value>
@@ -4356,14 +4356,20 @@
   <data name="UnlockAccountPasswordsSecurityPolicy" xml:space="preserve">
     <value>كلمة المرور المدخلة غير متوافقة مع قواعد إنشاء كلمة المرور، ان لا تقل عن 8 احرف ولا تزيد عن 16 ، تحتوي على احرف كبيرة وصغيرة وأرقام ورموز.</value>
   </data>
+  <data name="TinDeregistrationClosed" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="TinDeregistrationTransfer" xml:space="preserve">
+    <value>نقل</value>
+  </data>
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
   </data>
   <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">
-    <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>
+    <value>عزيزي المكلف ، لديك طلب تم حفظه في وضع المسودة لإلغاء تسجيل التصريح / منفذ البيع / رقم التعريف الضريبي ، هل تريد تجاهله والمضي قدمًا في طلب جديد؟</value>
   </data>
   <data name="TinDeregistrationDetails" xml:space="preserve">
-    <value>Registration Details</value>
+    <value>تفاصيل التسجيل</value>
   </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>إيقاف الرقم المميز</value>
@@ -4381,7 +4387,7 @@
     <value>تصفية</value>
   </data>
   <data name="TinDeregistrationReasonEstablishmentToCompany" xml:space="preserve">
-    <value>Establishment to Company</value>
+    <value>مؤسسة الى شركة</value>
   </data>
   <data name="TinDeregistrationSelectReason" xml:space="preserve">
     <value>حدد سبب ايقاف التسجيل</value>
@@ -4411,19 +4417,19 @@
     <value>تاريخ الإيقاف / الشطب</value>
   </data>
   <data name="TinDeregistrationFathersName" xml:space="preserve">
-    <value>Father's Name</value>
+    <value>اسم الاب</value>
   </data>
   <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
-    <value>Grand Father's Name</value>
+    <value>اسم الجد</value>
   </data>
   <data name="TinDeregistrationFamilyName" xml:space="preserve">
-    <value>Family Name</value>
+    <value>اسم العائلة</value>
   </data>
   <data name="TinDeregistrationName1" xml:space="preserve">
-    <value>Name 1</value>
+    <value>الاسم 1</value>
   </data>
   <data name="TinDeregistrationName2" xml:space="preserve">
-    <value>Name 2</value>
+    <value>الاسم 2</value>
   </data>
   <data name="TinDeregistrationOutletDetails" xml:space="preserve">
     <value>معلومات الفرع</value>
@@ -4450,7 +4456,7 @@
     <value>سبب الإيقاف</value>
   </data>
   <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
-    <value>Outlets</value>
+    <value>الفروع</value>
   </data>
   <data name="TinDeregistrationProvideSuportingDocuments" xml:space="preserve">
     <value>يرجى تقديم نسخة من الوثائق التالية</value>
@@ -4474,16 +4480,16 @@
     <value>نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
-    <value>Attachments - Copy of Contract of Sale Agreement</value>
+    <value>المرفقات - نسخة من عقد البيع</value>
   </data>
   <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
-    <value>Attachments - Death Certificate of Individual</value>
+    <value>المرفقات - شهادة الوفاة</value>
   </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
-    <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
+    <value>المرفقات - قرار وزاري لبدء إجراءات التصفية يحدد الشخص المخول بالتصفية</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
-    <value>Attachments - Ministerial Resolution to approve the Acquisition process</value>
+    <value>المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
   </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
     <value>تحميل المرفقات</value>
@@ -4495,7 +4501,7 @@
     <value>50MB Max</value>
   </data>
   <data name="TinDeregistrationContactPersonName" xml:space="preserve">
-    <value>Contact Person Name</value>
+    <value>اسم جهة الاتصال</value>
   </data>
   <data name="TinDeregistrationDesignation" xml:space="preserve">
     <value>الصفة</value>
@@ -4510,7 +4516,7 @@
     <value>تفاصيل التسجيل</value>
   </data>
   <data name="TinDeregistrationCompanyIDCheck" xml:space="preserve">
-    <value>Company ID should start with 7</value>
+    <value>رقم الشركة يجب ان يبدأ بـ 7</value>
   </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>إيقاف التسجيل في ضريبة القيمة المضافة</value>
@@ -4840,7 +4846,7 @@
     <comment>Bills</comment>
   </data>
   <data name="Partiallynewui" xml:space="preserve">
-    <value>مسددة جزئياً</value>
+    <value>مدفوعة جزئيا</value>
     <comment>Bills</comment>
   </data>
   <data name="ZakatInstalmetPlan" xml:space="preserve">
@@ -6607,7 +6613,7 @@
     <value>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</value>
   </data>
   <data name="VRUploadYourDocument" xml:space="preserve">
-    <value>تحميل المرفقات</value>
+    <value>الرجاء رفع الملف</value>
   </data>
   <data name="VRNewAttachment" xml:space="preserve">
     <value>مرفق جديد</value>
@@ -6732,7 +6738,7 @@
   <data name="NDWhatisYourNationality" xml:space="preserve">
     <value>What is your Nationality?</value>
   </data>
-    <data name="ZakatYearOne" xml:space="preserve">
+  <data name="ZakatYearOne" xml:space="preserve">
     <value>سنة 1</value>
   </data>
   <data name="ZakatYearThree" xml:space="preserve">
@@ -6741,11 +6747,266 @@
   <data name="ZakatYearTwo" xml:space="preserve">
     <value>سنة 2</value>
   </data>
-     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+  <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
     <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
   </data>
-   <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
+  <data name="InformationFromRelatedPartiesNewValue" xml:space="preserve">
     <value>المعلومات من الجهات ذات العلاقة (القيمة الجديدة)</value>
   </data>
-  </root>
-
+  <data name="VatReview" xml:space="preserve">
+    <value>طلب مراجعة لضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZakatObjection" xml:space="preserve">
+    <value>إعتراضات الزكاة</value>
+  </data>
+  <data name="VRReviewReason" xml:space="preserve">
+    <value>سبب المراجعة</value>
+  </data>
+  <data name="VRCompleteTheBelowDetails" xml:space="preserve">
+    <value>اكمل البيانات التالية</value>
+  </data>
+  <data name="VRSelectAReason" xml:space="preserve">
+    <value>الرجاء اختيار سبب المراجعة</value>
+  </data>
+  <data name="VRReviewSubReason" xml:space="preserve">
+    <value>السبب الفرعي للمراجعة</value>
+  </data>
+  <data name="VRSelectASubReason" xml:space="preserve">
+    <value>الرجاء اختيار السبب الفرعي للمراجعة</value>
+  </data>
+  <data name="VRApplicationReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي للطلب</value>
+  </data>
+  <data name="VRRequestDate" xml:space="preserve">
+    <value>تاريخ الطلب</value>
+  </data>
+  <data name="VRContinue" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="VRViewApplication" xml:space="preserve">
+    <value>عرض الطلب</value>
+  </data>
+  <data name="VRReviewDetails" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="VRReportDetails" xml:space="preserve">
+    <value>تفاصيل التقرير</value>
+  </data>
+  <data name="VRHelperText" xml:space="preserve">
+    <value>النص المساعد</value>
+  </data>
+  <data name="VRAttachment" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="VR20MB" xml:space="preserve">
+    <value>20MB</value>
+  </data>
+  <data name="VRPleaseCompleteTheDescription" xml:space="preserve">
+    <value>الرجاء ادخال الوصف</value>
+  </data>
+  <data name="VRDeclaration" xml:space="preserve">
+    <value>التعهد</value>
+  </data>
+  <data name="VRIDType" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="VRIDNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="VRDateOfBirth" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="VRContactPersonName" xml:space="preserve">
+    <value>اسم جهة الاتصال</value>
+  </data>
+  <data name="VRVatReviewRequest" xml:space="preserve">
+    <value>طلب مراجعة لضريبة القيمة المضافة</value>
+  </data>
+  <data name="VRNewObjectionorReview" xml:space="preserve">
+    <value>طلب جديد للمراجعة او الإعتراض</value>
+  </data>
+  <data name="VRObjectionsReviews" xml:space="preserve">
+    <value>الاعتراضات و المراجعات</value>
+  </data>
+  <data name="VRSelectType" xml:space="preserve">
+    <value>اختر نوع</value>
+  </data>
+  <data name="VRChooseaZakatObjectionorVATReview" xml:space="preserve">
+    <value>اختر مراجعة لضريبة القمية المضافة او اعتراض على الزكاة</value>
+  </data>
+  <data name="VRDecisionDate" xml:space="preserve">
+    <value>تاريخ القرار</value>
+  </data>
+  <data name="VRYourVATReviewissubmittedsuccessfully" xml:space="preserve">
+    <value>تم إرسال مراجعة ضريبة القيمة المضافة بنجاح</value>
+  </data>
+  <data name="VRInstructions" xml:space="preserve">
+    <value>1-يرجى تعبئة المعلومات المطلوبة لكل خطوة.
+2-لا يمكن تقديم الطلب بنجاح حتى يتم الانتهاء من جميع الحقول الإلزامية.
+3-يجب على مقدم الطلب التأكد من أن لديه المرجع أو رقم الطلب المتعلق بالقرار الذي يرغب في مراجعته.
+4-في حال تقديمك طلب مراجعة بخصوص غرامة متعلقة بإقرار ضريبي معين، قد يطلب منك تقديم إيداع مبلغ ضمان يشمل ضريبة القيمة المضافة المستحقة عن تلك الفترة.
+5-سيتم مراجعة اعتراض غرامات التأخير والغرامات الخاصة بالخطأ في الإقرار الضريبي كجزء من طلب الاعتراض على إعادة التقييم. بعد تقديم طلب الاعتراض، لن تتمكن من تقديم طلب اعتراض على هذه الغرامات، بالإضافة إلى غرامات التأخر في السداد.
+6-أقر بأنه بطلب الاعتراض على الغرامات (الخطأ الإقرار، غرامة التأخر في السداد) بأنني موافق على تقييم الهيئة للضريبة المستحقة للفترة محل الاعتراض وأن الاعتراض يقتصر فقط على هذه الغرامات.
+7-يرجى الرجوع إلى قسم الأسئلة الشائعة قبل تعبئة استمارة الطلب.
+</value>
+  </data>
+  <data name="VRCheckBoxDesc" xml:space="preserve">
+    <value>أوافق على التعليمات والشروط وإكمال الخطوات</value>
+  </data>
+  <data name="VRObjectionsAndReviews" xml:space="preserve">
+    <value>الاعتراضات و المراجعات</value>
+  </data>
+  <data name="VRAll" xml:space="preserve">
+    <value>الجميع</value>
+  </data>
+  <data name="VRTaxPayersName" xml:space="preserve">
+    <value>اسم المكلف</value>
+  </data>
+  <data name="VRApplicationNumber" xml:space="preserve">
+    <value>رقم الطلب</value>
+  </data>
+  <data name="VRDate" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="NDMyApplication" xml:space="preserve">
+    <value>حالة طلبي</value>
+  </data>
+  <data name="NDAppStatus" xml:space="preserve">
+    <value>حالة طلبي</value>
+  </data>
+    <data name="ESTValidateBranch" xml:space="preserve">
+    <value>اختر فرع الهيئة</value>
+  </data>
+    <data name="ESTValidateResidenceType" xml:space="preserve">
+    <value>اختر حالة الإقامة</value>
+  </data>
+    <data name="ESTValidateAttachRent" xml:space="preserve">
+    <value>الرجاء ارفاق عقد الايجار</value>
+  </data>
+    <data name="ESTValidateLegalEntity" xml:space="preserve">
+    <value>الرجاء تحديد نوع الكيان القانوني</value>
+  </data>
+    <data name="ESTValidateParmanentEst" xml:space="preserve">
+    <value>الرجاء اختيار منشأة دائمة</value>
+  </data>
+    <data name="ESTValidateOtherTax" xml:space="preserve">
+    <value>يرجى اختيار الدخل الخاضع للضريبة من مصادر داخل المملكة العربية السعودية</value>
+  </data>
+    <data name="ESTValidateDOB" xml:space="preserve">
+    <value>الرجاء ادخال تاريخ الميلاد</value>
+  </data>
+    <data name="ESTValidateFirstName" xml:space="preserve">
+    <value>الرجاء ادخال الاسم الأول</value>
+  </data>
+    <data name="ESTValidateGender" xml:space="preserve">
+    <value>الرجاء اختيار النوع</value>
+  </data>
+    <data name="ESTValidateNationality" xml:space="preserve">
+    <value>الرجاء اختيار الدولة</value>
+  </data>
+    <data name="ESTValidateCitizen" xml:space="preserve">
+    <value>لرجاء اختيار الجنسية</value>
+  </data>
+    <data name="ESTValidateResidence" xml:space="preserve">
+    <value>الرجاء اختيار حالة الإقامة</value>
+  </data>
+    <data name="ESTValidatePassportNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم الجواز</value>
+  </data>
+    <data name="ESTValidatePIssueCountry" xml:space="preserve">
+    <value>ارجاء تحديد دولة الإصدار</value>
+  </data>
+    <data name="ESTValidatePIssueDate" xml:space="preserve">
+    <value>الرجاء ادخال تاريخ الإصدار</value>
+  </data>
+    <data name="ESTValidatePExpiryDate" xml:space="preserve">
+    <value>الرجاء ادخال تاريخ نهاية الجواز</value>
+  </data>
+    <data name="ESTValidatePAttachCopy" xml:space="preserve">
+    <value>الرجاء ارافق نسخه من الجواز</value>
+  </data>
+    <data name="ESTValidateAtleastOutlet" xml:space="preserve">
+    <value>الرجاء إضافة فرع على الأقل</value>
+  </data>
+    <data name="ESTValidatePledge" xml:space="preserve">
+    <value>الرجاء الموافقه على التعهد</value>
+  </data>
+    <data name="ESTValidateCRNumberInValid" xml:space="preserve">
+    <value>رقم السجل التجاري غير صحيح</value>
+  </data>
+    <data name="ESTValidateAIssueCountry" xml:space="preserve">
+    <value>الرجاء ادخال دولة الإصدار</value>
+  </data>
+    <data name="ESTValidateAIssueBy" xml:space="preserve">
+    <value>الرجاء ادخال جهة الإصدار</value>
+  </data>
+    <data name="ESTValidateAIssueCity" xml:space="preserve">
+    <value>الرجاء ادخال مدينة الإصدار</value>
+  </data>
+    <data name="ESTValidateACRNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم السجل التجاري</value>
+  </data>
+    <data name="ESTValidateACRValidFrom" xml:space="preserve">
+    <value>الرجاء ادخال تاريخ بداية صحيح للسجل التجاري</value>
+  </data>
+    <data name="ESTValidateAAttachCR" xml:space="preserve">
+    <value>الرجاء ارفاق نسخه من السجل التجاري</value>
+  </data>
+    <data name="ESTValidateAMainGroup" xml:space="preserve">
+    <value>ارجاء ادخال المجموعة الرئيسية</value>
+  </data>
+    <data name="ESTValidateASubGroup" xml:space="preserve">
+    <value>الرجاء ادخال المجموعة الفرعية</value>
+  </data>
+    <data name="ESTValidateActivity" xml:space="preserve">
+    <value>الرجاء اختيار نوع النشاط</value>
+  </data>
+    <data name="ESTValidateACLicense" xml:space="preserve">
+    <value>الرجاء ادخال رقم الرخصة</value>
+  </data>
+    <data name="ESTValidateALicenseValidFrom" xml:space="preserve">
+    <value>الرجاء ادخال تاريخ بداية صحيح للرخصة </value>
+  </data>
+    <data name="ESTValidateAAttachLicense" xml:space="preserve">
+    <value>الرجاء ارفاق نسخه من الرخصة</value>
+  </data>
+    <data name="ESTValidateAddActivity" xml:space="preserve">
+    <value>الرجاء اختيار نشاط من الأنشطة الرئيسية</value>
+  </data>
+    <data name="ESTValidateAddHouseNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم المنزل </value>
+  </data>
+    <data name="ESTValidateAddBuildingNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم المبنى</value>
+  </data>
+    <data name="ESTValidateAddFloorNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم الطابق </value>
+  </data>
+    <data name="ESTValidateAddStreet" xml:space="preserve">
+    <value>الرجاء ادخال اسم الشارع</value>
+  </data>
+    <data name="ESTValidateAddQuarter" xml:space="preserve">
+    <value>الرجاء ادخال اسم المنطقة</value>
+  </data>
+    <data name="ESTValidateAddPostal" xml:space="preserve">
+    <value>الرجاء ادخال الرمز البريدي</value>
+  </data>
+    <data name="ESTValidateAddPostalCode5" xml:space="preserve">
+    <value>الرجاء ادخال رمز بريدي مكون من 5 ارقام</value>
+  </data>
+    <data name="ESTValidateAddCountry" xml:space="preserve">
+    <value>الرجاء ادخال اسم الدولة</value>
+  </data>
+    <data name="ESTValidateAddProvinance" xml:space="preserve">
+    <value>الرجاء ادخال اسم المنطقة</value>
+  </data>
+    <data name="ESTValidateAddAdditional" xml:space="preserve">
+    <value>الرجاء ادخال الرقم الإضافي</value>
+  </data>
+    <data name="ESTValidateAddCity" xml:space="preserve">
+    <value>الرجاء ادخال المدينة</value>
+  </data>
+    <data name="ESTValidateOutletName" xml:space="preserve">
+    <value>v</value>
+  </data>
+</root>

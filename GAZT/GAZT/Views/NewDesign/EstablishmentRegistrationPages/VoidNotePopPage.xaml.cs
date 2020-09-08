@@ -30,6 +30,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         async void Void_Button_Clicked(System.Object sender, System.EventArgs e)
         {
+            if (notesInputLayout.HasError || string.IsNullOrWhiteSpace(notes.Text))
+            {
+                notesInputLayout.HasError = true;
+                return;
+            }
             OnVoidSelect?.Invoke(notes.Text);
             await PopupNavigation.Instance.PopAsync();
         }
@@ -37,6 +42,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         async void CancelButton_Clicked(System.Object sender, System.EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
+        }
+
+        void notes_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            notesInputLayout.HasError = string.IsNullOrWhiteSpace(notes.Text);
         }
     }
 }

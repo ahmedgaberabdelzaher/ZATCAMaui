@@ -368,7 +368,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
 
-        private string _selectedEntityType = "Individual";
+        private string _selectedEntityType = string.Empty;
         public string SelectedEntityType
         {
             get => _selectedEntityType;
@@ -379,7 +379,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTaxPayerType = "Trade/Business";
+        private string _selectedTaxPayerType = string.Empty;
         public string SelectedTaxPayerType
         {
             get => _selectedTaxPayerType;
@@ -390,7 +390,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedRegNationalityType = "GCC";
+        private string _selectedRegNationalityType = string.Empty;
         public string SelectedRegNationalityType
         {
             get => _selectedRegNationalityType;
@@ -484,7 +484,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         Dictionary<string, string> EnIDType = new Dictionary<string, string>() {
             { "ZS0001", "National ID" },
             { "ZS0002", "Iqama ID" },
-            { "ZS0003", "National ID" }
+            { "ZS0003", "GCC ID" }
         };
         Dictionary<string, string> ArIDType = new Dictionary<string, string>() {
             { "ZS0001", "رقم الهوية الوطنية" },
@@ -492,7 +492,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             { "ZS0003", "رقم هوية مواطني دول الخليج" }
         };
 
-        private string _gCCIDType = "GCC ID";
+        private string _gCCIDType = string.Empty;
         public string GCCIDType
         {
             get => _gCCIDType;
@@ -503,7 +503,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _gCCIDTypeIdNumberValue = "12345677899";
+        private string _gCCIDTypeIdNumberValue = string.Empty;
         public string GCCIDTypeIdNumberValue
         {
             get => _gCCIDTypeIdNumberValue;
@@ -1060,9 +1060,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-            CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
 
@@ -1207,6 +1204,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             taxPayerDetails.Draftfg = "X";
                             taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                            taxPayerDetails.UserTypx = "TP";
                             var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         }
                         catch (Exception e)
@@ -1242,6 +1240,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         taxPayerDetails?.off_notesSet.results?.Add(note);
                                         taxPayerDetails.Operationx = "04";
                                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                                        taxPayerDetails.UserTypx = "TP";
                                         var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                         navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                                     }
@@ -1308,50 +1307,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 var failedMesage = AppResources.Somethingwentwrong;
                 if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    if (FormValidation(currentTab))
+                    if (await FormValidation(currentTab))
                     {
                         if (await PushDatatoServer(currentTab))
                         {
                             currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
                         }
-                        else
-                        {
-                            ShowValidationPopup(failedMesage);
-                        }
+                        //else
+                        //{
+                        //    ShowValidationPopup(failedMesage);
+                        //}
                     }
-                    else
-                    {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                    }
+                    //else
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    //}
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                    if (FormValidation(currentTab))
+                    if (await FormValidation(currentTab))
                     {
                         if (await PushDatatoServer(currentTab))
                         {
                             currentTab = EstablishmentRegistrationTabsEnum.Outlets;
                         }
-                        else
-                        {
-                            ShowValidationPopup(failedMesage);
-                        }
+                        //else
+                        //{
+                        //    ShowValidationPopup(failedMesage);
+                        //}
                     }
-                    else
-                    {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                    }
+                    //else
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    //}
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
                 {
-                    if (FormValidation(currentTab))
+                    if (await FormValidation(currentTab))
                     {
                         currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
                     }
-                    else
-                    {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                    }
+                    //else
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    //}
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
@@ -1360,48 +1359,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         currentTab = EstablishmentRegistrationTabsEnum.Declaration;
                     }
-                    else
-                    {
-                        ShowValidationPopup(failedMesage);
-                    }
+                    //else
+                    //{
+                    //    ShowValidationPopup(failedMesage);
+                    //}
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    if (FormValidation(currentTab))
+                    if (await FormValidation(currentTab))
                     {
                         if (await PushDatatoServer(currentTab))
                         {
                             currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
                         }
-                        else
-                        {
-                            ShowValidationPopup(failedMesage);// _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                        //else
+                        //{
+                        //    ShowValidationPopup(failedMesage);// _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
 
-                        }
+                        //}
                     }
-                    else
-                    {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                    }
+                    //else
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    //}
 
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
                 {
-                    if (FormValidation(currentTab))
+                    if (await FormValidation(currentTab))
                     {
                         if (await PushDatatoServer(currentTab))
                         {
                             _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                         }
-                        else
-                        {
-                            ShowValidationPopup(failedMesage);
-                        }
+                        //else
+                        //{
+                        //    ShowValidationPopup(failedMesage);
+                        //}
                     }
-                    else
-                    {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
-                    }
+                    //else
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    //}
                 }
             }
             catch (Exception e)
@@ -1437,6 +1436,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
+                //taxPayerDetails = new TaxPayerDetails();
                 _navigationService.GoBack();
             }
 
@@ -1855,7 +1855,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage("File size is with more 10 MB can not be uploaded", AppResources.Information);
+                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
                             }
                             else
@@ -1922,22 +1922,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async void fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
         {
+            clearFormData(_enum);
             try
             {
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    var branchTask = GetReportingBranchListFromServer();
-                    var nationalityTask = GetPdNationalityListFromServer(null);
-                    await Task.WhenAll(branchTask, nationalityTask);
+                    await GetReportingBranchListFromServer();
+                    //var nationalityTask = GetPdNationalityListFromServer(null);
+                    //await Task.WhenAll(branchTask, nationalityTask);
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {
-                        IsLoading = false;
                         _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
+                    SelectedTaxPayerType = "Trade/Business";
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
 
                     ResidenceTypePrePopulateData(taxPayerDetails);
@@ -1953,7 +1954,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     GCCIDTypeIdNumberValue = idItem.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
-                    LastName = taxPayerDetails?.NameLast;
+                    LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;
                     GrandFatherName = taxPayerDetails?.GrandfatherName;
                     FamilyName = taxPayerDetails?.FamilyName;
@@ -1992,10 +1993,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                     SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
-                    //udpdateDates();
+                    udpdateDates();
                     //FiscalMonth = taxPayerDetails?.Fdmonth;
                     //FiscalDay = taxPayerDetails?.Fdday;
                     //CommDate = taxPayerDetails?.Commdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
@@ -2072,8 +2073,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     FiscalMonth = mm;
                     FiscalDay = "LD";
                 }
-                FiscalMonth = mm;
-                FiscalDay = dd;
+                //FiscalMonth = mm;
+                //FiscalDay = dd;
             }
             financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
             {
@@ -2106,11 +2107,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private async void bindingOutletList()
         {
             var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
-            if (_outletTempData.Count > 0)
-            {
+            //if (_outletTempData.Count > 0)
+            //{
                 OutletData.Clear();
                 _outletTempData.ForEach(_out => OutletData.Add(_out));
-            }
+            //}
         }
         private void openNewOutlet()
         {
@@ -2223,86 +2224,108 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
+        private async Task<bool> FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
             //return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    if (SelectedReportingBranch == null)
+                    if (SelectedReportingBranch == null || string.IsNullOrWhiteSpace(SelectedReportingBranch.Bez50))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateBranch));
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(SelectedTpresidence))
+                    //if (string.IsNullOrWhiteSpace(SelectedTaxPayerType))
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Choose TaxPayer Type"));
+                    //    return false;
+                    //}
+                    else if (string.IsNullOrWhiteSpace(SelectedTpresidence))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidenceType));
                         return false;
                     }
                     else if (SelectedTpresidence == "2" && (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count <= 0))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAttachRent));
                         return false;
                     }
-                    else if (SelectedTpresidence == "3" && string.IsNullOrEmpty(SelectedOrgNonResident))
+                    else if (SelectedTpresidence == "3" && string.IsNullOrWhiteSpace(SelectedOrgNonResident))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateLegalEntity));
                         return false;
                     }
-                    else if (SelectedTpresidence == "3" && SelectedOrgNonResident == "1" && string.IsNullOrEmpty(SelectedOrgNonResidentOptions))
+                    else if (SelectedTpresidence == "3" && SelectedOrgNonResident == "1" && string.IsNullOrWhiteSpace(SelectedOrgNonResidentOptions))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateParmanentEst));
                         return false;
                     }
-                    else if (SelectedTpresidence == "3" && SelectedOrgNonResident == "2" && string.IsNullOrEmpty(SelectedOrgNonResidentActivity))
+                    else if (SelectedTpresidence == "3" && SelectedOrgNonResident == "2" && string.IsNullOrWhiteSpace(SelectedOrgNonResidentActivity))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOtherTax));
                         return false;
                     }
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
 
-                    if (string.IsNullOrEmpty(SelectedDOB))
+                    if (string.IsNullOrWhiteSpace(SelectedDOB))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateDOB));
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(FirstName))
+                    else if (string.IsNullOrWhiteSpace(FirstName))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateFirstName));
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(SelectedGender))
+                    else if (string.IsNullOrWhiteSpace(SelectedGender))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateGender));
                         return false;
                     }
                     else if (null == SelectedTaxpayerPDNationality)
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateNationality));
                         return false;
                     }
                     else if (null == SelectedCitizen)
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCitizen));
                         return false;
                     }
                     else if (null == SelectedResidence)
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidence));
                         return false;
                     }
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                    if (string.IsNullOrEmpty(PassportNumber))
+                    if (string.IsNullOrWhiteSpace(PassportNumber))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePassportNumber));
                         return false;
                     }
                     else if (null == SelectedPassportIssueCountry)
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueCountry));
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(PassportIssueDate))
+                    else if (string.IsNullOrWhiteSpace(PassportIssueDate))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueDate));
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(PassportExpireDate))
+                    else if (string.IsNullOrWhiteSpace(PassportExpireDate))
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePExpiryDate));
                         return false;
                     }
                     else if (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count <= 0)
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAttachCopy));
                         return false;
                     }
                 }
@@ -2310,6 +2333,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (OutletData.Count == 0)
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAtleastOutlet));
                         return false;
                     }
                 }
@@ -2320,6 +2344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (!ESTLedge)
                     {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePledge));
                         return false;
                     }
                 }
@@ -2361,6 +2386,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                     taxPayerDetails.StepNumberx = "01";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -2391,6 +2417,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.StepNumberx = "02";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
 
@@ -2426,6 +2453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.StepNumberx = "02";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -2445,6 +2473,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
+                    taxPayerDetails.UserTypx = "TP";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -2453,9 +2482,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
                     //return true;
+                    taxPayerDetails?.off_notesSet?.results?.Clear();
                     taxPayerDetails.Decfg = "X";
                     taxPayerDetails.Operationx = "01";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -2466,15 +2497,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 ex.ToString();
                 if (ex is HTTPBadRequestException)
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
-            }
-            finally
-            {
-                IsLoading = false;
+                return false;
             }
             return false;
         }
@@ -2574,7 +2603,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             return isFileAlreadyAttached;
         }
 
-
+        public void clearFormData(EstablishmentRegistrationTabsEnum _enum)
+        {
+            switch (_enum)
+            {
+                case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
+                    SelectedDOB = string.Empty;
+                    FirstName = string.Empty;
+                    SelectedGender = string.Empty;
+                    SelectedTaxpayerPDNationality = null;
+                    SelectedCitizen = null;
+                    SelectedResidence = null;
+                    SelectedEntityType = string.Empty;
+                    SelectedTaxPayerType = string.Empty;
+                    SelectedRegNationalityType = string.Empty;
+                    break;
+                case EstablishmentRegistrationTabsEnum.PassportDetails:
+                    PassportNumber = string.Empty;
+                    SelectedPassportIssueCountry = null;
+                    PassportIssueDate = string.Empty;
+                    PassportExpireDate = string.Empty;
+                    UploadedPassportDocumentsList?.Clear();
+                    break;
+                case EstablishmentRegistrationTabsEnum.Outlets:
+                    OutletData?.Clear();
+                    break;
+                case EstablishmentRegistrationTabsEnum.FinancialDetail:
+                    FiscalMonth = string.Empty;
+                    FiscalDay = string.Empty;
+                    CommDate = string.Empty;
+                    TaxDate = string.Empty;
+                    break;
+                case EstablishmentRegistrationTabsEnum.Declaration:
+                    ESTLedge = false;
+                    break;
+                case EstablishmentRegistrationTabsEnum.RegistrationType:
+                default:
+                    SelectedReportingBranch = null;
+                    SelectedTpresidence = string.Empty;
+                    SelectedOrgNonResident = string.Empty;
+                    SelectedOrgNonResidentOptions = string.Empty;
+                    SelectedOrgNonResidentActivity = string.Empty;
+                    UploadedRentDocumentsList?.Clear();
+                    break;
+            }
+        }
         #endregion
     }
 

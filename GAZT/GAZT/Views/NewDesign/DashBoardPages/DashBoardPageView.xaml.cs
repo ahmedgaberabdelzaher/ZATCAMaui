@@ -80,6 +80,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             base.OnAppearing();
             OnDataLoad();
             RefreshDashboardCommand();
+            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+            viewModel.PaidString = AppResources.Paid;
+            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+            viewModel.UnPaidString = AppResources.UnPaid;
+            viewModel.TotalString = AppResources.NDTotal;
         }
 
         public void OnDataLoad()
@@ -756,9 +761,17 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel._navigationService.NavigateTo(App.SupportPageView);
         }
 
-        private void OnZakatNowTapped(object sender, EventArgs e)
+        private async void OnZakatNowTapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+            await Task.Run(() => viewModel.IsLoading = true);
+            Device.BeginInvokeOnMainThread(() => {
+                viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+            });
+        }
+
+        private void OnApplicationStatus_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
         }
     }
 }
