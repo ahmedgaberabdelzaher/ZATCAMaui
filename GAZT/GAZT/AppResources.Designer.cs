@@ -18450,6 +18450,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adjustment(SAR).
+        /// </summary>
+        public static string ZZZZAdjustmentWithSAR {
+            get {
+                return ResourceManager.GetString("ZZZZAdjustmentWithSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount(SAR).
+        /// </summary>
+        public static string ZZZZAmountWithSAR {
+            get {
+                return ResourceManager.GetString("ZZZZAmountWithSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to At least 8 characters long.
         /// </summary>
         public static string ZZZZAtleast8characterslong {
