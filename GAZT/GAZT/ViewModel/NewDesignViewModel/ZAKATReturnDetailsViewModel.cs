@@ -463,6 +463,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _zAKATReturnsPagName =AppResources.FORM5ReturnDetails;
+        public string ZAKATReturnsPagName
+        {
+            get
+            {
+                return _zAKATReturnsPagName;
+            }
+            set
+            {
+                _zAKATReturnsPagName = value;
+                RaisePropertyChanged("ZAKATReturnsPagName");
+            }
+        }
+        
         #endregion
 
         #region Constructor
@@ -1745,6 +1759,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetConfirmButtonVisibility = false;
             ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
             DesClaimerVisibility = true;
+            ZAKATReturnsPagName = AppResources.NDReturnAmendments;
             //if (isThresholdValueLessThanTotalVATSales)
             //{
             //    SetReadOnlyToOtherThanTotalVATSales = true;
