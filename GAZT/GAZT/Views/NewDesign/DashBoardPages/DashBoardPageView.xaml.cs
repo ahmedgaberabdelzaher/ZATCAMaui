@@ -768,5 +768,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
             });
         }
+
+        private void OnApplicationStatus_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+        }
     }
 }

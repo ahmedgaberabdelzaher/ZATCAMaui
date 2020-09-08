@@ -9209,6 +9209,7 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.Timeout = TimeSpan.FromMinutes(10);
 
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);

@@ -827,18 +827,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void FilterOnbasisOfChipSelectedItem()
         {
-            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance);
-            if (SelectedChipFilterItemList != null)
-                foreach (var Item in SelectedChipFilterItemList)
-                {
-                    if (Item.TemplateType.Equals(AppResources.ZZFavoriteAscending)) 
-                    {
-                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.Where(x => x.IsFav==true).ToList());
-                    }
-                }
-            if (ListToDisplay != null)
+            try
             {
-                ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                FilterCorrespondancedata();
+                //ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance);
+                if (SelectedChipFilterItemList != null)
+                    foreach (var Item in SelectedChipFilterItemList)
+                    {
+                        if (Item.TemplateType.Equals(AppResources.ZZFavoriteAscending))
+                        {
+                            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.Where(x => x.IsFav == true).ToList());
+                        }
+                    }
+                if (ListToDisplay != null)
+                {
+                    ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
             
         }
