@@ -100,10 +100,14 @@
                                                 <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTSmallGoldLabel}" Margin="0"/>
 
 
-                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"  Margin="0">
+                                                <!--<custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"  Margin="0">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" TextColor="{StaticResource Secondary}"/>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" TextColor="{StaticResource Secondary}">
+                                                                  <Span.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
+                                                                </Span.GestureRecognizers>
+                                                            </Span>
                                                             <Span Text="&#160;"/>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}"  TextColor="#005e4b">
                                                                 <Span.GestureRecognizers>
@@ -114,9 +118,18 @@
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}" TextColor="{StaticResource NeutralGreay}"/>
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                </custom:CustomLabel>-->
+                                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                     <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Secondary}"></custom:CustomLabel>
+                                                     <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" Style="{StaticResource CaptionLabelBlack}" TextColor="#005e4b">
+                                                         <custom:CustomLabel.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
+                                                                </custom:CustomLabel.GestureRecognizers>
+                                                     </custom:CustomLabel>
 
-                                                
+                                                </StackLayout>
+                                               <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}" Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource NeutralGreay}" Margin="0,-10,0,0"></custom:CustomLabel>
+
                                                 <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
