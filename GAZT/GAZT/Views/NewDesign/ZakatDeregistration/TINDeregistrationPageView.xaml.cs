@@ -519,8 +519,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
   
-
-       async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
         {
             var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
             if (!result)
