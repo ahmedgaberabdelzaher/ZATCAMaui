@@ -989,7 +989,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         }
                         else
                         {
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " "+ SignupIsIDTypeValid.d.FamilyName;
                             //EntryName.IsEnabled = false;
                             viewModel.IsAllValidDataEntered = true;
                             FrmIDNumber.HasError = false;
@@ -1118,8 +1118,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         else
                         {
                             viewModel.IsAllValidDataEntered = true;
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                           // EntryName.IsEnabled = false;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                            // EntryName.IsEnabled = false;
                             FrmIDNumber.HasError = false;
                         }
                     }
@@ -1368,8 +1368,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                 }
                                                 else
                                                 {
-                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                     FrmIDNumber.HasError = false;
+                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                                                    FrmIDNumber.HasError = false;
                                                     viewModel.IsAllValidDataEntered = true;
                                                    // EntryName.IsEnabled = false;
                                                 }
@@ -1513,8 +1513,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                 }
                                                 else
                                                 {
-                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                   // EntryName.IsEnabled = false;
+                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                                                    // EntryName.IsEnabled = false;
                                                     viewModel.IsAllValidDataEntered = true;
                                                     FrmIDNumber.HasError = false;
                                                 }
