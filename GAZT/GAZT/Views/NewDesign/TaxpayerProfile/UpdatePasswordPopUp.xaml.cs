@@ -118,13 +118,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         private string VerifyPasswords(string CurrentPassword, string NewPassword, string ConfirmPassword)
         {
             bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
-
+            bool CompareNewandOldPassword = string.Equals(CurrentPassword,NewPassword);
             if (string.IsNullOrEmpty(CurrentPassword))
                 return AppResources.TPOldPasswordEmpty;
             else if (string.IsNullOrEmpty(NewPassword))
                 return AppResources.TPNewPasswordEmpty;
             else if (!compareStringFlag)
                 return AppResources.NewPasswordandRetypePasswordNotMatch;
+            else if (CompareNewandOldPassword)
+                return AppResources.NDOldPasswordAndNewPasswordSame;
             else
             {
                 bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);

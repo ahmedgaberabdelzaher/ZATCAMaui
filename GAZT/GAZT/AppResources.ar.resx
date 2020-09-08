@@ -7009,4 +7009,7 @@
   <data name="ESTValidateOutletName" xml:space="preserve">
     <value>v</value>
   </data>
+  <data name="NDOldPasswordAndNewPasswordSame" xml:space="preserve">
+    <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
+  </data>
 </root>
