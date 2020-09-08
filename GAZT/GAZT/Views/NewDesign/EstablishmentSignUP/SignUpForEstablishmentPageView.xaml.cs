@@ -35,6 +35,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
     {
         SignUpForEstablishmentPageViewModel viewModel;
         ObservableCollection<InternationalMobileData> mobileData = null;
+        bool IsTermsAndConditionPage = true;
 
         public SignUpForEstablishmentPageView()
         {
@@ -47,6 +48,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.IsAllValidDataEntered = false;
             viewModel.IsAllValidCRNumberEntered = false;
             viewModel.IsDeclarationCheckedForInstruction = false;
+             IsTermsAndConditionPage = true;
+
             ChangeAeroIcon();
             SetLTR();
             ClearFields();
@@ -727,7 +730,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.SelectedSignUpUsing = signUpUsing;
             viewModel.TxtIDType = signUpUsing.SUType;
             viewModel.TxtIDNumber = string.Empty;
-            EntryIDNumber.Focus();
+            if(IsTermsAndConditionPage == false)
+            {
+                EntryIDNumber.Focus();
+            }
+            IsTermsAndConditionPage = false;
             IDTypePicker.IsOpen = false;
 
         }
