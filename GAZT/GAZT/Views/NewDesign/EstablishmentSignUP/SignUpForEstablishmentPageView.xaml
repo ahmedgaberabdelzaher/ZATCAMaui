@@ -467,10 +467,19 @@
                             </Grid>
 
                             <!-- issuein city -->
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}" Style="{StaticResource CaptionLabelGrey}"/>
-                        <Grid>
+                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <Grid>
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" x:Name="FrmIssuedByCity" Margin="0,-10,0,0">
                                         <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
+                                                                 TextChanged="IssuedByCity_TextChanged"
                                                          VerticalTextAlignment="End" TextColor="{StaticResource NeutralBlack}" IsReadOnly="True" Text="{Binding TxtLOrCIssuedByCity}">
 
                                     </control:BorderlessEntry>
