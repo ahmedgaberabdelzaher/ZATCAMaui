@@ -602,10 +602,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         }
                         else
                         {
-                           
                             dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                         }
-
                     
                         GregorianCalendar hjCalendar = new GregorianCalendar();
                         int year = hjCalendar.GetYear(dateStart);
@@ -622,8 +620,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         dts = myBills[i].Faednar.Split('/');
                         dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                         myBills[i].Faednar = dt;
-
-                      
                     }
                 }
 

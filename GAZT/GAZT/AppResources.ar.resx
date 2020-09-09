@@ -7054,6 +7054,13 @@
   <data name="NDReturnAmendments" xml:space="preserve">
     <value>تفاصيل تعديل الاقرار</value>
   </data>
+  <data name="ZakatandIncomeTax" xml:space="preserve">
+    <value>الزكاة وضريبة الدخل</value>
+  </data>
+  <data name="ZZIncomeTax" xml:space="preserve">
+    <value>ضريبة الدخل</value>
+    <comment>My Return </comment>
+  </data>
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
     <value>مراسلاتي</value>
   </data>

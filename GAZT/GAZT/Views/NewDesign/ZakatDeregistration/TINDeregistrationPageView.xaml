@@ -813,8 +813,8 @@
                                         </inputLayout:SfTextInputLayout.LeadingView>
                                         
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" 
-                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
+                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" MaxLength="10">
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>

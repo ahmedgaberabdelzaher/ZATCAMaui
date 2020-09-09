@@ -7207,6 +7207,13 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZZZZAmountWithSAR" xml:space="preserve">
     <value>Amount(SAR)</value>
   </data>
+  <data name="ZakatandIncomeTax" xml:space="preserve">
+    <value>Zakat and Income Tax</value>
+  </data>
+  <data name="ZZIncomeTax" xml:space="preserve">
+    <value>Income Tax</value>
+    <comment>My Return </comment>
+  </data>
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
     <value>My correspondence</value>
   </data>

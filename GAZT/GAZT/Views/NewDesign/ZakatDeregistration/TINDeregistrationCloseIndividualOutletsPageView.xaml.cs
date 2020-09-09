@@ -404,7 +404,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             try
             {
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-                genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
+                genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
                 genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
                 var parameterVal = (e as TappedEventArgs).Parameter.ToString();
                 viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);

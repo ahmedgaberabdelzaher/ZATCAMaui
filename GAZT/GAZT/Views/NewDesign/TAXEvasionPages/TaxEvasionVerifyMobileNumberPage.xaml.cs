@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -86,10 +87,11 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 StringBuilder Message = new StringBuilder();
                 frmMobile.HasError = true;
-                Message.Append(AppResources.EnterMobileNumber);
+                Message.Append(AppResources.ZZPleasefillthemandatoryfields);
                 PopUp popUp = new PopUp();
                 popUp.Message = Message.ToString();
-                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
             else
             {
@@ -183,7 +185,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                   //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                     frmMobile.HasError = true;
                     viewModel.MobileNumber = string.Empty;
                 }
@@ -196,7 +199,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 Message.Append(AppResources.EnterMobileNumber);
                 popUp.Message = Message.ToString();
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
         }
     }

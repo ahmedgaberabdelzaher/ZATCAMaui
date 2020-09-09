@@ -10397,6 +10397,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zakat and Income Tax.
+        /// </summary>
+        public static string ZakatandIncomeTax {
+            get {
+                return ResourceManager.GetString("ZakatandIncomeTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat Base.
         /// </summary>
         public static string ZakatBase {
@@ -15756,6 +15765,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Income Tax.
+        /// </summary>
+        public static string ZZIncomeTax {
+            get {
+                return ResourceManager.GetString("ZZIncomeTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Instruction.
         /// </summary>
         public static string ZZInstruction {
@@ -18959,15 +18977,6 @@ namespace EGAZT {
         public static string ZZZZKuwait {
             get {
                 return ResourceManager.GetString("ZZZZKuwait", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My correspondence.
-        /// </summary>
-        public static string ZZZZMyCorrespondence {
-            get {
-                return ResourceManager.GetString("ZZZZMyCorrespondence", resourceCulture);
             }
         }
         

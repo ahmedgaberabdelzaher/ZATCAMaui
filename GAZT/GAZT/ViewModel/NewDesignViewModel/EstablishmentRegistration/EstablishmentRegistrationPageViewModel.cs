@@ -1145,7 +1145,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
-            OnDeleteOutletButtonClick = new Command((item) => Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem)));
+            OnDeleteOutletButtonClick = new Command(async (item) => {
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText)
+                {
+                    CloseWhenBackgroundIsClicked = false
+                };
+                confirmPopup.OnSelect = (str) =>
+                {
+                    if (str == "Yes")
+                    {
+                        Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+                    }
+                };
+                await PopupNavigation.Instance.PushAsync(confirmPopup);
+            });
             #endregion
 
             #region Financial Details Tabs variable initialization

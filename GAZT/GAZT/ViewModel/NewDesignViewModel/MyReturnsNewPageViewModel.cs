@@ -1182,7 +1182,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
                 {
                     new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
-                    new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
+                   // new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
+                    new ReturnTypes {Id = "01",TaxType = AppResources.ZakatandIncomeTax},
                     new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
                     new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
                     new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
