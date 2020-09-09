@@ -4849,9 +4849,6 @@
     <value>مدفوعة جزئيا</value>
     <comment>Bills</comment>
   </data>
-  <data name="ZakatInstalmetPlan" xml:space="preserve">
-    <value>خطة التقسيط</value>
-  </data>
   <data name="ZakatInstalmetSelectType" xml:space="preserve">
     <value>اختر النوع</value>
   </data>
@@ -5703,13 +5700,13 @@
     <value>طلب او عرض خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatFinancialCrisis" xml:space="preserve">
-    <value>أزمة مالية- دعم القدرة على تسوية المستحقات</value>
+    <value>الأزمة المالية - عدم القدرة على تسوية الرسوم</value>
   </data>
   <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
-    <value>حالة نزاع انتهت لصالح الهيئة العامة للزكاة والدخل</value>
+    <value>نزاع لصالح الهيئة</value>
   </data>
   <data name="ZakatOtherReason" xml:space="preserve">
-    <value>سبب آخر</value>
+    <value>أسباب أخرى</value>
   </data>
   <data name="ZakatInstructions" xml:space="preserve">
     <value>
@@ -6651,8 +6648,8 @@
   <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
     <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value>
   </data>
-  <data name="ZakatYear" xml:space="preserve">
-    <value>سنة .1</value>
+ <data name="ZakatYear" xml:space="preserve">
+    <value>سنة</value>
   </data>
   <data name="ZakatCashBank" xml:space="preserve">
     <value>المدينون .2 </value>
@@ -7068,6 +7065,100 @@
     <comment>My Return </comment>
   </data>
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
-    <value>مراسلاتي</value>
+   <value>التاريخ</value>
+    </data>
+    <data name="ZakatInstalmetPlan" xml:space="preserve">
+    <value>خطط التقسيط</value>
   </data>
-</root>
+    <data name="VRTaxPeriodofCase" xml:space="preserve">
+  <value>سنة الربط</value>
+</data>
+  <data name="VRPeriodFrom" xml:space="preserve">
+  <value>الفترة من</value>
+</data>
+  <data name="VRPeriodTo" xml:space="preserve">
+  <value>الفترة الى</value>
+</data>
+  <data name="VRPenality amount in question" xml:space="preserve">
+  <value>مبلغ العقوبة</value>
+</data>
+  <data name="VRSecurityPayment" xml:space="preserve">
+  <value>الضمان المدفوع</value>
+</data>
+  <data name="VRSecurityType" xml:space="preserve">
+  <value>نوع الضمان</value>
+</data>
+  <data name="VRSADAD" xml:space="preserve">
+  <value>فاتورة سداد</value>
+</data>
+  <data name="VRBANKGURANTEE" xml:space="preserve">
+  <value>الضمان البنكي</value>
+</data>
+  <data name="VRSECURITYAMOUNT" xml:space="preserve">
+  <value>مبلغ الضمان</value>
+</data>
+  <data name="VRGENERATESADAD" xml:space="preserve">
+  <value>إنشاء فاتورة سداد</value>
+</data>
+  <data name="VRSADADNumberGenerationisinprogress" xml:space="preserve">
+  <value>جاري إعداد فاتورة سداد ....</value>
+</data>
+  <data name="VRSADADNumber" xml:space="preserve">
+  <value>رقم فاتورة سداد</value>
+</data>
+  <data name="VRViewApplication" xml:space="preserve">
+  <value>عرض الطلب</value>
+</data>
+  <data name="VRViewBill" xml:space="preserve">
+  <value>عرض الفاتورة</value>
+</data>
+  <data name="VRBillDetails" xml:space="preserve">
+  <value>تفاصيل الفاتورة</value>
+</data>
+  <data name="VRDocumentNo" xml:space="preserve">
+  <value>رقم الملف .</value>
+</data>
+  <data name="VRDateofPenalty" xml:space="preserve">
+  <value>تاريخ الغرامة</value>
+</data>
+  <data name="VRDescriptionofPenalty" xml:space="preserve">
+  <value>وصف الغرامة</value>
+</data>
+  <data name="VRPeriodKey" xml:space="preserve">
+  <value>الفترة</value>
+</data>
+  <data name="VRStartDate" xml:space="preserve">
+  <value>تاريخ البدء</value>
+</data>
+  <data name="VREndDate" xml:space="preserve">
+  <value>تاريخ الانتهاء</value>
+</data>
+  <data name="VRDueDate" xml:space="preserve">
+  <value>تاريخ الاستحقاق</value>
+</data>
+  <data name="VRAmount" xml:space="preserve">
+  <value>المبلغ</value>
+</data>
+  <data name="VRSecurityNote1" xml:space="preserve">
+  <value>يرجى ملاحظة أنه بمجرد الضغط على هذا الزر ، لا يمكن مراجعة مبلغ التأمين وفاتورة سداد ذات الصلة.</value>
+</data>
+  <data name="VRSecurityNote2" xml:space="preserve">
+  <value>يرجى التأكد من دفع أي مستحقات معلقة على فاتورة إعادة التقييم الأصلية التي لم يتم دفعها أو تقديمها كضمان</value>
+</data>
+  <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
+  <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
+</data>
+  <data name="VRSecurityBankGurrantCheckBoxDesc2" xml:space="preserve">
+  <value>أقر بأن الضمانات المصرفية يجب أن تكون صالحة لمدة عام واحد على الأقل وتقديمها شخصيًا إلى فرع الهيئة العامة للزكاة والدخل المخصص لي.</value>
+</data>
+  <data name="VRSecuritySadadCheckBoxDesc1" xml:space="preserve">
+  <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
+</data>
+     <data name="CRContractStartDate" xml:space="preserve">
+    <value>تاريخ بداية العقد</value>
+  </data>
+  <data name="CRContractEndDate" xml:space="preserve">
+    <value>تاريخ نهاية العقد</value>
+  </data>
+  </root>
+

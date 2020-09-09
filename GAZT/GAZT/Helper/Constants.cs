@@ -307,6 +307,9 @@ namespace GAZT.Helper
         //API10 To generate SADAD && API11 On press of refresh button for SADAD
         public static string GetVATObjectionGenrateorRefreshSADADURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_GEN_SADAD_SRV/GetSADADSet(";
         public static string GetVATObjectionViewBillURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/BillDtlSet?$filter=";
+        public static string PostVATObjectionURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/HeaderSet";
+        public static string VATObjectionSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+
         #endregion
 
     }

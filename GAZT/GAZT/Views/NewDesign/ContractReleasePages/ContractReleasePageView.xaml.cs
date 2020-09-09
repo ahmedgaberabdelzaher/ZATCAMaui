@@ -146,16 +146,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         private void HandleTotalAmount(object sender, TextChangedEventArgs e)
         {
 
-            try
-            {
-                viewModel._contractTotalAmount = Double.Parse(e.NewTextValue);
 
-            }
-            catch (Exception ex)
-            {
-
-            }
-            viewModel.MakeCalculations();
         }
 
         private void ContractAttach_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
@@ -198,6 +189,50 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         private void ContractNumberTextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.ContractNumber = e.NewTextValue;
+        }
+
+        private void ContractNameUnfocused(object sender, FocusEventArgs e)
+        {
+            viewModel.ContractName = ContractNameText.Text;
+        }
+
+        private void ContractNumberUnfocused(object sender, FocusEventArgs e)
+        {
+            viewModel.ContractNumber = ContractNumberText.Text;
+        }
+
+        private void TotalAmountUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                viewModel._contractTotalAmount = Double.Parse(ContractTotalAmountText.Text);
+                viewModel.MakeCalculations();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        private void AmountToReleaseUnfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+
+                if (viewModel.ContractTotalAmount < Double.Parse(AmountoReleaseTxt.Text))
+                {
+                    viewModel._dialogService.ShowMessageBox(AppResources.CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract, AppResources.Information);
+                    return;
+                }
+                viewModel._amountToRelease = Double.Parse(AmountoReleaseTxt.Text);
+                viewModel.MakeCalculations();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
     }
 }

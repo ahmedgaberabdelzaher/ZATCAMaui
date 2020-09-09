@@ -142,6 +142,15 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = dmsTypeString;
             }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewAttachments)
+            {
+                viewModel.DocTypeString = "RAGA";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
+            {
+                viewModel.DocTypeString = "RVBT";
+            }
+
         }
 
         private void SetLTR()

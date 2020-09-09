@@ -1852,7 +1852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             DownPaymentAmount = 0.0;
             PeriodicInstalment = 0.0;
             MinAmount = 0.0;
-            maxAmount = 0.0;
+            //maxAmount = 0.0;
             InputData = "";
             TotalAmountSAR = "0.00 SAR";
             VATDueAmount = "0.00";
@@ -1865,6 +1865,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             Year3 = "";
             BankStatementsAttachmentsListViewData = null;
             FinanceAttachmentsListViewData = null;
+            NumberOFInstalmentSliderValue = 1;
+            IDType = IDTypeDictionary[AppResources.ZakatFinancialCrisis];
+            SelectedFrequencyType = "01";
+            IsZakatSelected = true;
             EnableDeclarationContinue();
             AddFrequencyOptions();
             AddOutletDecisionOptions();
@@ -3410,9 +3414,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                         if (ZakatInstalments != null)
                         {
-                            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
-                    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-                        .Instructions));
+
+                            if (IsZakat)
+                            {
+                                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
+                   _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                       .Instructions));
+                            }
+                            else
+                            {
+                                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                   _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                       .Instructions));
+
+                            }
+
                             BindZakatBillsList();
                         }
                         else

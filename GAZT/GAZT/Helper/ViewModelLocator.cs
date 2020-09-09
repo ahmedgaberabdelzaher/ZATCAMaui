@@ -163,6 +163,8 @@ using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 using EGAZT.Views.NewDesign;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using EGAZT.Views.NewDesign.VatReview;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
+using EGAZT.Views.NewDesign.ZakatObjection;
 
 namespace EGAZT
 {
@@ -249,6 +251,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ChangeFillingPeriodSuccessPage>();
             SimpleIoc.Default.Register<VatReviewViewModel>();
             SimpleIoc.Default.Register<VatReviewListViewModel>();
+            SimpleIoc.Default.Register<ObjectionViewModel>();
             #endregion
 
             #region OldIOC
@@ -2213,7 +2216,7 @@ namespace EGAZT
             navigationService.Configure(App.VatReviewListPageView, typeof(VatReviewListPageView));
             navigationService.Configure(App.VatReviewSuccessPageView, typeof(VatReviewSuccessPageView));
             navigationService.Configure(App.VatReviewViewApplicationPageView, typeof(VatReviewViewApplicationPageView));
-
+            navigationService.Configure(App.ObjectionsSelectionPageView, typeof(ObjectionsSelectionPageView));
 
             #endregion
 
@@ -2561,9 +2564,29 @@ namespace EGAZT
                 }
             }
         }
+
+
+        public ObjectionViewModel ObjectionsSelectionPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ObjectionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #endregion
 
+
+
         #endregion
+
+       
 
         public ZakatDeregistrationPageViewModel ZakatDeregistrationPageView
         {

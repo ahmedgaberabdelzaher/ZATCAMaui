@@ -38,6 +38,7 @@ using EGAZT.Models.ZakatInstalmentModels;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using RequestToVATInstallmentPlanDetails = EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using EGAZT.Models.VatReviewModel;
+using static EGAZT.Models.VatReviewModel.VATObjectionFormModel;
 
 namespace GAZT.Manager
 {
@@ -8813,32 +8814,6 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    //if (_zakatInstalmentDetails.d.Savez == "X")
-                    //{
-
-                    //    var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails.d);
-                    //    client.DefaultRequestHeaders.Add("Token", "123");
-                    //    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //    client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    //    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    //    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    //    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                    //    _zakatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
-                    //    if (_zakatResponseObject == null || _zakatResponseObject.d == null)
-                    //    {
-                    //        ErrorMessage = string.Empty;
-                    //        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                    //        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    //        {
-                    //            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-                    //        }
-                    //    }
-                    //    return _zakatResponseObject;
-                    //}
-                    //else
-                    //{
                         var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails);
                         client.DefaultRequestHeaders.Add("Token", "123");
                         client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -12091,8 +12066,10 @@ namespace GAZT.Manager
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(TaxType='VT',AudTin='',Gpart='3060200042',Lang='E',UserTin='')
                     //  ?= &$expand = ASSLISTSet,STATUSSet,REQTYPSet &$format = json
 
-                    String url = Constants.GetVATObjectionListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "'," +
-                     "UserTin='" + "')?$format=json";
+                   // String url = Constants.GetVATObjectionListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "'," +"UserTin='" + "')?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
+
+                    String url = Constants.GetVATObjectionListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "'," + "UserTin='" + "')?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
+
                     var uri = new Uri(url);
                     HttpResponseMessage vATObjectionListResponse = await client.GetAsync(uri);
                     if (vATObjectionListResponse != null)
@@ -12153,7 +12130,7 @@ namespace GAZT.Manager
             }
         }
 
-        public async static Task<VATObjectionSummaryModel> GAZTGetVATObjectionSummary()
+        public async static Task<VATObjectionSummaryModel> GAZTGetVATObjectionSummary(string FBGuid)
         {
             VATObjectionSummaryModel _vATObjectionSummaryModel = new VATObjectionSummaryModel();
 
@@ -12162,18 +12139,25 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    string formGuid = "005056B1F8FB1EEABBBED2788047FDBE";
-                    string euserx = "00001000000008325981";
+                   
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     //   https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/HeaderSet
                     //(FormGuid = '005056B1F8FB1EDABAF453EBDAB0ACB7', Fbnumx = '', Gpartx = '', Langx = 'E', Officerx = '', PortalUsrx = '', Euserx = '00000000001008324001', Appfg = 'N')
                     //?$expand = AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl &$format = json
+                    String url = "";
+                    if (string.IsNullOrEmpty(FBGuid)) {
 
+                        url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + "',Fbnumx='" + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "'," +
+                     "Officerx='" + "',PortalUsrx='" + "',Euserx='" + "',Appfg='" + "')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
+                    }
+                    else {
+                         url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + "',Fbnumx='" + FBGuid + "',Gpartx='" + "',Langx='" + lang + "'," +
+                     "Officerx='" + "',PortalUsrx='" + "',Euserx='00000000000000000000',Appfg='" + "')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
+                    }
 
-                    String url = Constants.GetVATObjectionSummaryURL + "FormGuid='" + formGuid + "',Fbnumx='" + "',Gpartx='" + "',Langx='" + lang + "'," +
-                     "Officerx='" + "',PortalUsrx='" + "',Euserx='" + euserx + "',Appfg='" + "')?$expand=AddressSet,AttdetSet,NotesSet,QuesListSet,ReasonSet,IdDetailSet,MainReasonSet,SecurityDtl&$format=json";
+                    
                     var uri = new Uri(url);
                     HttpResponseMessage vATObjectionSummaryResponse = await client.GetAsync(uri);
                     if (vATObjectionSummaryResponse != null)
@@ -12720,8 +12704,8 @@ namespace GAZT.Manager
             }
         }
         ////Excel sheet API10  To generate SADAD  && API11 On press of refresh button for SADAD
-        public async static Task<VATObjectionGenrateSadadModel> GAZTGetVATObjectionGenrateorRefreshSADAD(string fbnum, string Disamt,
-            string Liaamt, string Abrzu, string Abrzo, string Secamt, string Security, string Persl)
+        public async static Task<VATObjectionGenrateSadadModel> GAZTGetVATObjectionGenrateorRefreshSADAD(string fbnum, decimal Disamt,
+            decimal Liaamt, string Abrzu, string Abrzo, decimal Secamt, string Security, string Persl, bool isFlagenable)
         {
             VATObjectionGenrateSadadModel _vATObjectionGenrateSadadModel = new VATObjectionGenrateSadadModel();
 
@@ -12734,12 +12718,24 @@ namespace GAZT.Manager
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                /// sap / opu / odata / SAP / ZDP_GEN_SADAD_SRV / GetSADADSet(Fbnum = '90000003100', Gpart = '3102285153', Disamt = 125000m, Liaamt = 125000m, Sectp = 'C',
-                /// Abrzu = datetime'2018-04-01T00:00:00', Abrzo = datetime'2018-04-30T00:00:00', Flag = true, Secamt = 125000m, Security = '100000002498', Persl = '18AP')
+                    /// sap / opu / odata / SAP / ZDP_GEN_SADAD_SRV / GetSADADSet(Fbnum = '90000003100', Gpart = '3102285153', Disamt = 125000m, Liaamt = 125000m, Sectp = 'C',
+                    /// Abrzu = datetime'2018-04-01T00:00:00', Abrzo = datetime'2018-04-30T00:00:00', Flag = true, Secamt = 125000m, Security = '100000002498', Persl = '18AP')
 
-                https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_GEN_SADAD_SRV/GetSADADSet(Fbnum='65000212928',Gpart='3100000567',Disamt='0.00',Liaamt='541750.00',Sectp='C',Abrzu=datetime'5/1/2019 12:00:00 AM',Abrzo=datetime'5/31/2019 12:00:00 AM',Flag='true',Secamt='',Security='',Persl='19MY')?$format=json
-                    String url = Constants.GetVATObjectionGenrateorRefreshSADADURL + "Fbnum='" + fbnum + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Disamt='" + Disamt + "'" +
-                        "m,Liaamt='" + Liaamt + "m',Sectp='C',Abrzu=datetime'" + Abrzu + "',Abrzo=datetime'" + Abrzo + "',Flag='true',Secamt='" + Secamt + "m',Security='" + Security + "',Persl='" + Persl + "')?$format=json";
+                    // https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_GEN_SADAD_SRV/GetSADADSet(Fbnum='65000212928',Gpart='3100000567',Disamt='0.00',Liaamt='541750.00',Sectp='C',Abrzu=datetime'5/1/2019 12:00:00 AM',Abrzo=datetime'5/31/2019 12:00:00 AM',Flag='true',Secamt='',Security='',Persl='19MY')?$format=json
+
+                    String url = "";
+                    if (isFlagenable) {
+
+                         url = Constants.GetVATObjectionGenrateorRefreshSADADURL + "Fbnum='" + fbnum + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Disamt=" + Disamt + "" +
+                        "m,Liaamt=" + Liaamt + "m,Sectp='C',Abrzu=datetime'" + Abrzu + "',Abrzo=datetime'" + Abrzo + "',Flag=true,Secamt=" + Secamt + "m,Security='" + Security + "',Persl='" + Persl + "')?$format=json";
+                    }
+                    else {
+                         url = Constants.GetVATObjectionGenrateorRefreshSADADURL + "Fbnum='" + fbnum + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Disamt=" + Disamt + "" +
+                        "m,Liaamt=" + Liaamt + "m,Sectp='C',Abrzu=datetime'" + Abrzu + "',Abrzo=datetime'" + Abrzo + "',Flag=false,Secamt=" + Secamt + "m,Security='" + Security + "',Persl='" + Persl + "')?$format=json";
+                    }
+
+
+                    
 
                     var uri = new Uri(url);
                     HttpResponseMessage _vATObjectionGenrateSadadResponse = await client.GetAsync(uri);
@@ -12816,7 +12812,7 @@ namespace GAZT.Manager
                     //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/BillDtlSet?$filter=Opbel eq '5000218062'and Vtre2 eq '3100000567193004'&$format=json
 
                     vtre2 = App.LoginDataRetrieved.TIN;
-                    String url = Constants.GetVATObjectionViewBillURL + "Opbel eq'" + opbel + "' and Vtre2 eq'" + vtre2 + "')?$format=json";
+                    String url = Constants.GetVATObjectionViewBillURL + "Opbel eq'" + opbel + "' and Vtre2 eq'" + vtre2 + "'&$format=json";
 
                     var uri = new Uri(url);
                     HttpResponseMessage _vATObjectionViewbillResponse = await client.GetAsync(uri);
@@ -12877,6 +12873,152 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+
+        public async static Task<VATObjectionSummaryModel> SaveVatReviewObjection(VatObjectionsRequest _vatObjectionDetails)
+        {
+
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+                    VATObjectionSummaryModel _vatObjectionResponseObject = new VATObjectionSummaryModel();
+                    string LangZ = GetLangZParameterAREN();
+                    String url = Constants.PostVATObjectionURL;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    var serilized = JsonConvert.SerializeObject(_vatObjectionDetails);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var _vatObjectionsResponsestr = res.Content.ReadAsStringAsync().Result;
+                    _vatObjectionResponseObject = JsonConvert.DeserializeObject<VATObjectionSummaryModel>(_vatObjectionsResponsestr);
+                    if (!string.IsNullOrEmpty(_vatObjectionsResponsestr) && _vatObjectionResponseObject.d == null)
+                    {
+                        ErrorMessage = string.Empty;
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatObjectionsResponsestr);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            throw new GAZTVATRegistrationInProcessException(ErrorMessage);
+
+                        }
+
+                    }
+                    return _vatObjectionResponseObject;
+                    //  }
+
+
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+
+        }
+
+
+        public static async Task<VATObjectionSummaryInputModel> GAZTVATObjectionSummaryInputData(string fbNum, string status)
+        {
+            VATObjectionSummaryInputModel _vATObjectionSummaryInputModel = new VATObjectionSummaryInputModel();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+
+                    // https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(Euser1='00001000000000000000',
+                    //Fbguid='undefined',Fbnum='70000001515',Fbtyp='RAVT',Gpart='3300105114',Lang='EN',Persl='',Status='E0013',Dispflag='')
+
+
+
+                    String url = Constants.VATObjectionSummaryInputURL + "Euser1='00000000000000000000',Fbguid='undefined',Fbnum='" + fbNum + "'," +
+                        "Fbtyp='RAVT',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
+                    var uri = new Uri(url);
+
+
+                    HttpResponseMessage _vATObjectionSummaryInputResponse = await client.GetAsync(uri);
+                    if (_vATObjectionSummaryInputResponse != null)
+                    {
+                        if (_vATObjectionSummaryInputResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATObjectionSummaryInputResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _vATObjectionSummaryInputData = _vATObjectionSummaryInputResponse.Content.ReadAsStringAsync().Result;
+                        _vATObjectionSummaryInputModel = JsonConvert.DeserializeObject<VATObjectionSummaryInputModel>(_vATObjectionSummaryInputData);
+                        if (!string.IsNullOrEmpty(_vATObjectionSummaryInputData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vATObjectionSummaryInputData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATObjectionSummaryInputModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
 
         #endregion
     }

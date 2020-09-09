@@ -4874,7 +4874,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>VAT Instalment</value>
   </data>
   <data name="ZakatInstalmetPlan" xml:space="preserve">
-    <value>Instalment Plans</value>
+    <value>Installment Plan</value>
   </data>
   <data name="ZakatInstalmetSelectType" xml:space="preserve">
     <value>Select Type</value>
@@ -4964,8 +4964,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Request Instalment Plan</value>
     <comment>Title</comment>
   </data>
-  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>Search Reference Number</value>
+ <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+    <value>Search by Invoice ID</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>Select Bills</value>
@@ -6988,8 +6988,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
     <value>Profitability Ratio(10/9)</value>
   </data>
-  <data name="ZakatYear" xml:space="preserve">
-    <value>1. Year</value>
+ <data name="ZakatYear" xml:space="preserve">
+    <value>Year</value>
   </data>
   <data name="ZakatCashBank" xml:space="preserve">
     <value>2. Cash + Bank</value>
@@ -7222,5 +7222,14 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
     <value>My correspondence</value>
+  </data>
+   <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+    <value>Amount Required to Release must be less than Total Amount of Contract</value>
+  </data>
+  <data name="CRContractStartDate" xml:space="preserve">
+    <value>Contract Start Date</value>
+  </data>
+  <data name="CRContractEndDate" xml:space="preserve">
+    <value>Contract End Date </value>
   </data>
 </root>

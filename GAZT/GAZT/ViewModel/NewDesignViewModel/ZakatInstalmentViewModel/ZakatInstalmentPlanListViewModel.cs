@@ -993,25 +993,78 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void BindZakatSummaryData(ZakatRequestDisplayModel zakatRequestDisplayModel)
         {
 
+
+
             var summarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
             foreach (var bill in zakatRequestDisplayModel.d.Z_INVOICE_UI5Set.results)
             {
-                summarySelectedBillsList.Add(new ZakatSelectBillModel()
+                if (bill.AIvNoTb != null && !bill.AIvNoTb.Equals(""))
                 {
-                    billNumber = AppResources.Bill + (summarySelectedBillsList.Count + 1).ToString("00"),
-                    amount = "0.00 SAR",
-                    saadNumber = bill.AIvNoTb,
-                    taxPeriod = "",
-                    isSelected = false,
-                    billType = ZakatTitle
-               
-                });;
+
+
+
+                    string submitDate = "";
+
+
+
+                    if (bill.ADueDtTb != null)
+
+
+
+                    {
+                        DateTime dateStart = new DateTime();
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + bill.ADueDtTb + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+
+
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+
+                        bill.ADueDtTb = dateStr;
+
+
+
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = bill.ADueDtTb.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        submitDate = dt1;
+                    }
+
+
+
+                    summarySelectedBillsList.Add(new ZakatSelectBillModel()
+                    {
+                        billNumber = AppResources.Bill + (summarySelectedBillsList.Count + 1).ToString("00"),
+                        amount = bill.ADueAmtTb,
+                        saadNumber = bill.AIvNoTb,
+                        taxPeriod = bill.ADueDtTb,
+                        isSelected = false,
+                        billType = bill.AIvAbtyp
+
+
+
+                    });
+                }
             }
             SummarySelectedBillsList = summarySelectedBillsList;
 
 
 
+
+
             Attachments = new ObservableCollection<AttDetSet>();
+
 
 
 
@@ -1023,16 +1076,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
+
+
             if (Attachments != null && Attachments.Count > 0)
             {
                 IsSummaryAttachmentsVisible = true;
             }
 
 
-            
 
 
 
+            TotalAmount = string.Format("{0:N2}", zakatRequestDisplayModel.d.ATotalAmt) + " SAR";
+            InstalmentAmount = string.Format("{0:N2}", zakatRequestDisplayModel.d.AAppInstAmt) + " SAR";
         }
 
         #endregion

@@ -121,6 +121,7 @@ namespace EGAZT
         public static string VatReviewListPageView = "VatReviewListPageView";
         public static string VatReviewSuccessPageView = "VatReviewSuccessPageView";
         public static string VatReviewViewApplicationPageView = "VatReviewViewApplicationPageView";
+        public static string ObjectionsSelectionPageView = "ObjectionsSelectionPageView";
         #endregion
 
         #region old view strings
@@ -353,7 +354,7 @@ namespace EGAZT
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage()) { BarTextColor = Color.White };
+            //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

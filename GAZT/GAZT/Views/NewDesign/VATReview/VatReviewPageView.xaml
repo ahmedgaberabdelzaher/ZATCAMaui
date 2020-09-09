@@ -241,7 +241,7 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                            Text="{x:Static ResourceManager:AppResources.VRRequestDate}"
+                                            Text="{x:Static ResourceManager:AppResources.VRDecisionDate}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
@@ -257,13 +257,13 @@
 
                     </Grid>
 
-                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
+                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16" BackgroundColor="{Binding ReviewReasonButtonBackGroundColor}"
                                       Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"
                                       Command="{Binding ReviewReasonConBtnTapped}" />
 
                     <custom:CustomLabel Grid.Row="6" Margin="10,0,10,15"
-                                        Text="{x:Static ResourceManager:AppResources.VRViewApplication}"
+                                        Text="{Binding ViewApplicationTypeText}"
                                         TextColor="#d49504" HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center">
                         <custom:CustomLabel.GestureRecognizers>
@@ -294,7 +294,7 @@
 
                     </Grid>
 
-                    <Grid>
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -313,7 +313,7 @@
                         
                     </Grid>
                     
-                    <Grid>
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -332,7 +332,7 @@
                         
                     </Grid>
                     
-                    <Grid>
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -351,7 +351,7 @@
                         
                     </Grid>
                     
-                    <Grid>
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -374,7 +374,7 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="100" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0"
@@ -386,7 +386,7 @@
                            
                             <custom:GAZTBorderlessEditor x:Name="Report_Details_Tx" MaxLength="1000" Unfocused="Report_Details_UnFocused"
                                                          PlaceholderColor="Gray" FontSize="Small"
-                                                         MinimumHeightRequest="150" HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
+                                                         MinimumHeightRequest="100" HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
 
                         </border:SfBorder>
 
@@ -505,7 +505,7 @@
 
                     <buttons:SfButton Grid.Row="8" Margin="0,16,0,16"  VerticalOptions="End"
                                       Text="{x:Static ResourceManager:AppResources.VRContinue}"
-                                      Style="{StaticResource PrimaryButtonStyle}"
+                                      Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ReviewDetailsButtonBackGroundColor}"
                                       Command="{Binding ReviewDetailsConBtnTapped}" />
 
                 </StackLayout>
@@ -706,7 +706,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NewAttachmentTapped}" />
+                            <TapGestureRecognizer Command="{Binding NewBankGuranteeAttachmentTapped}" />
                         </Grid.GestureRecognizers>
 
                     </Grid>
@@ -719,7 +719,7 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionChecked}">
+                        <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsSadadCheckBox1}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox"  Value="false">
                                     <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
@@ -737,7 +737,7 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionChecked}">
+                        <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsSadadCheckBox2}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox"  Value="false">
                                     <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
@@ -752,16 +752,21 @@
                     
                     <StackLayout IsVisible="{Binding IsSadadSecuritySelected}">
                         
-                        <buttons:SfButton Margin="0,16,0,16"  VerticalOptions="End"
+                        <buttons:SfButton Margin="0,16,0,16" IsVisible="{Binding SadadGenerateBtnVisible}" VerticalOptions="End"
                                           Text="{x:Static ResourceManager:AppResources.VRGENERATESADAD}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding SadadGenerateBtnTapped}" />
+
+                         <buttons:SfButton Margin="0,16,0,16" IsVisible="{Binding IsGeneratingFormbundle}" VerticalOptions="End"
+                                          Text="{x:Static ResourceManager:AppResources.ZVatRefresh}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding SadadGenerateBtnTapped}" />
                         
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRSADADNumberGenerationisinprogress}"
-                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalOptions="StartAndExpand" IsVisible="{Binding SadadGenerateProgressVisible}"
                                             Style="{StaticResource BodyLabelBlack}" />
                         
-                        <border:SfBorder Margin="0,16,0,10" HasShadow="False"
+                        <border:SfBorder Margin="0,16,0,10" HasShadow="False" IsVisible="{Binding SadadAmountVisible}"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
                             
                                     <Grid Padding="15">
@@ -786,7 +791,7 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionChecked}">
+                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsSadadCheckBox3}">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox"  Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
@@ -811,7 +816,7 @@
                         </StackLayout>
                     </Frame>
                     
-                    <buttons:SfButton Margin="0,16,0,16"  VerticalOptions="End"
+                    <buttons:SfButton Margin="0,16,0,16"  VerticalOptions="End" BackgroundColor="{Binding SecurityPaymentButtonBackGroundColor}"
                                       Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"
                                       Command="{Binding SecurityPaymentConBtnTapped}" />
@@ -951,7 +956,7 @@
                          </border:SfBorder>
                      </Grid>
                      
-                    <buttons:SfButton Grid.Row="4" Margin="0,16,0,16"  VerticalOptions="End"
+                    <buttons:SfButton Grid.Row="4" Margin="0,16,0,16"  VerticalOptions="End" BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
                                       Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"
                                       Command="{Binding DeclarationConBtnTapped}" />
@@ -1121,7 +1126,7 @@
 
                                 <StackLayout Padding="15,15,15,0">
 
-                                    <Grid>
+                                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
@@ -1133,7 +1138,7 @@
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding TaxPeriodOfCase}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
-                                    <Grid>
+                                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
@@ -1145,7 +1150,7 @@
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding TaxPeriodFrom,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
-                                    <Grid>
+                                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
@@ -1157,7 +1162,7 @@
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding TaxPeriodTo,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
-                                    <Grid>
+                                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
@@ -1166,7 +1171,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding }" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding PenalityAmountInQuestion}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
                                     <Grid>
@@ -1177,26 +1182,35 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRReviewDetails}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding }" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAttachment}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="File1.pdf" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRReportDetails}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding ReportDetails}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
+                                    <listView:SfListView  Grid.Row="0" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
+                                                          ItemsSource="{Binding ContractCopyAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                               
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAttachment}" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                </Grid>
+                                                
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
                                 </StackLayout>
                             </StackLayout>
                         </border:SfBorder>
 
-                         <border:SfBorder IsVisible="{Binding SecurityPaymentVisible}" Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                         <border:SfBorder IsVisible="{Binding IsSecurityPaymentsTabVisible}" Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
 
                             <StackLayout Orientation="Vertical">
@@ -1250,7 +1264,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="21,000 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SecurityAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
                                     <Grid>
@@ -1262,10 +1276,10 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSecurityType}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="SADAD" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SecurityType}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
-                                    <Grid>
+                                    <Grid IsVisible="{Binding IsSadadSecuritySelected}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
@@ -1274,7 +1288,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="3456789123" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SADADNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
                                 </StackLayout>
