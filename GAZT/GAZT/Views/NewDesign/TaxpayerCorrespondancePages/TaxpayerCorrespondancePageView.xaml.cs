@@ -119,27 +119,27 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             //CorrespondanceDownPicker.IsOpen = true;
         }
 
-        private void CorrespondanceDownPicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-                CorrespondanceDownPicker.SelectedItem = selectedReturntype;//Fbnum
-                viewModel.SelectedDropdownItem = selectedReturntype;
+        //private void CorrespondanceDownPicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
+        //        CorrespondanceDownPicker.SelectedItem = selectedReturntype;//Fbnum
+        //        viewModel.SelectedDropdownItem = selectedReturntype;
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
         public void PopulateReturnTypeList()
         {
             try
             {
                 List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
                 {
-                   // new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
+                    new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
                     new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
                     new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
                     new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},

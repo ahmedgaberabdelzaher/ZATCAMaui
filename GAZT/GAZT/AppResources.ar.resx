@@ -7071,4 +7071,7 @@
     <value>ضريبة الدخل</value>
     <comment>My Return </comment>
   </data>
+  <data name="ZZZZMyCorrespondence" xml:space="preserve">
+    <value>مراسلاتي</value>
+  </data>
 </root>

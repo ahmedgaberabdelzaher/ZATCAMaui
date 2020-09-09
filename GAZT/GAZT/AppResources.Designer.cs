@@ -18981,6 +18981,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My correspondence.
+        /// </summary>
+        public static string ZZZZMyCorrespondence {
+            get {
+                return ResourceManager.GetString("ZZZZMyCorrespondence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to National Address.
         /// </summary>
         public static string ZZZZNationalAddress {
