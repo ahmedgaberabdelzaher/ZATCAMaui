@@ -21,12 +21,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
         #region Fields
         public ICommand OnBackButtonClicked { get; set; }
-        CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
-        CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
-        CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
+        //CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
+        //CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
+        //CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
 
         #endregion
         #region Properties
+
+        private CorrespondenceRootObject _zakatCorres;
+        public CorrespondenceRootObject ZakatCorres
+        {
+            get
+            {
+                return _zakatCorres;
+            }
+            set
+            {
+                _zakatCorres = value;
+                RaisePropertyChanged("ZakatCorres");
+            }
+        }
+
+        private CorrespondenceRootObject _vATCorres;
+        public CorrespondenceRootObject VATCorres
+        {
+            get
+            {
+                return _vATCorres;
+            }
+            set
+            {
+                _vATCorres = value;
+                RaisePropertyChanged("VATCorres");
+            }
+        }
+
+        private CorrespondenceRootObject _eTCorres;
+        public CorrespondenceRootObject ETCorres
+        {
+            get
+            {
+                return _eTCorres;
+            }
+            set
+            {
+                _eTCorres = value;
+                RaisePropertyChanged("ETCorres");
+            }
+        }
+
+
+
         public List<ChipModel>  _selectedChipFilterItemList = null;
         public List<ChipModel> SelectedChipFilterItemList
         {
@@ -219,7 +264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_selectedTaxTypeDropdownItem != null)
                 {
                     FilterTaxTypeLabelText = _selectedTaxTypeDropdownItem.TaxType;
-                    FilterCorrespondancedata();
+                    FilterOnbasisOfChipSelectedItem();
                 }
 
                 RaisePropertyChanged("SelectedDropdownItem");
@@ -377,6 +422,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
                 await Task.Run(() =>
                 {
+                    ZakatCorres = new CorrespondenceRootObject();
+                    VATCorres = new CorrespondenceRootObject();
+                    ETCorres = new CorrespondenceRootObject();
+
                     ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
                     VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
                     ETCorres = WebServiceManager.GAZTGetETCorrespondece();
@@ -402,6 +451,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 ListAllCorrespondance = new List<CorrespondanceModel>();
                 List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
                 // Assigning data in the list
+                ListZAKATCorrespondance = new List<CorrespondanceModel>();
+                ListVATCorrespondance = new List<CorrespondanceModel>();
+                ListETCorrespondance = new List<CorrespondanceModel>();
                 if (ZakatCorres != null && ZakatCorres.d!=null && ZakatCorres.d.results!=null && ZakatCorres.d.results.Count > 0)
                 {
                     foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
@@ -737,7 +789,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if(SelectedTaxTypeDropdownItem!=null)
             {
-                if(SelectedTaxTypeDropdownItem.Id=="01")
+
+                if (SelectedTaxTypeDropdownItem.Id == "00")
+                {
+                    if (ListZAKATCorrespondance != null)
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance);
+                        if (ListToDisplay != null)
+                        {
+                            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        }
+                    }
+                    else
+                    {
+                        if (ListToDisplay != null)
+                        {
+                            ClearList();
+                        }
+                    }
+                    IsVisibleFavourite = true;
+                }
+                else if (SelectedTaxTypeDropdownItem.Id=="01")
                 {
                     if (ListZAKATCorrespondance != null)
                     {
@@ -831,7 +903,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 FilterCorrespondancedata();
                 //ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance);
-                if (SelectedChipFilterItemList != null)
+                if (SelectedChipFilterItemList != null && IsVisibleFavourite)
                     foreach (var Item in SelectedChipFilterItemList)
                     {
                         if (Item.TemplateType.Equals(AppResources.ZZFavoriteAscending))

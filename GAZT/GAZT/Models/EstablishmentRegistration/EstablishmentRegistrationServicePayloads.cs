@@ -198,7 +198,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     {
         public List<Nreg_OutletItem> results { get; set; }
     }
-    public class Nreg_ActivityItem
+    public class Nreg_ActivityItem: INotifyPropertyChanged
     {
         [JsonIgnore]
         public Metadata __metadata { get; set; }
@@ -230,8 +230,28 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Crattfg { get; set; } = string.Empty;
         public string Crtrfattfg { get; set; } = string.Empty;
         public string Activity { get; set; } = string.Empty;
-        public string Actcat { get; set; } = string.Empty;
+        private string _actcat = string.Empty;
+        public string Actcat {
+            get => _actcat;
+            set
+            {
+                _actcat = value;
+                OnPropertyChanged(nameof(Actcat));
+            }
+        }
         public string ActMgrp { get; set; } = string.Empty;
+
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            var changed = PropertyChanged;
+            if (changed == null)
+                return;
+
+            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
     public class NregActivitySet
     {

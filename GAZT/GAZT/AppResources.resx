@@ -5542,6 +5542,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TPOTPSentToEmail" xml:space="preserve">
     <value>Please enter the verification code sent to your email</value>
   </data>
+  <data name="TPOldAndNewPasswordSame" xml:space="preserve">
+    <value>The new password must not match the current password</value>
+  </data>
+  <data name="TPOldNewPasswordEmpty" xml:space="preserve">
+    <value>please enter old and new password</value>
+  </data>
   <data name="TPSuccessMobileUpdated" xml:space="preserve">
     <value>New Mobile number updated Successfully</value>
   </data>
@@ -7213,5 +7219,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZZIncomeTax" xml:space="preserve">
     <value>Income Tax</value>
     <comment>My Return </comment>
+  </data>
+  <data name="ZZZZMyCorrespondence" xml:space="preserve">
+    <value>My correspondence</value>
   </data>
 </root>

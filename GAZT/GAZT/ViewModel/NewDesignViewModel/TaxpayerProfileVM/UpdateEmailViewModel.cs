@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
+using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -87,15 +90,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", NewEmailText);
                     System.Diagnostics.Debug.WriteLine("CONFIRM EMAIL : ", ConfirmEmailText);
 
-                    if((String.Compare(CurrentEmailText, NewEmailText,true) !=0) && ((String.Compare(NewEmailText, ConfirmEmailText, true)==0)))
-                        APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, CurrentEmailText, NewEmailText);
-                    else
-                    {
-                        if (String.Compare(CurrentEmailText, NewEmailText, true) == 0)
-                            throw new Exception(AppResources.NDNewEmailCannotBeSameAsOldEmail);
-                        else if (String.Compare(NewEmailText, ConfirmEmailText, true) != 0)
-                            throw new Exception(AppResources.ZZZZEmailandconfirmemailshouldmatchup);
-                    }
+                    APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, CurrentEmailText, NewEmailText);
 
                     // setup updated email's
                     UpdateEmailDataModel updateEmailData = new UpdateEmailDataModel();
@@ -109,13 +104,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                });
+                ShowValidationPopup(ex.Message);
             }
 
             return APIResponse;
+        }
+
+        public void ShowValidationPopup(string sourceString)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = sourceString;
+            popUp.IsLinkAvailable = false;
+
+            if (App.IsArabic)
+                popUp.FlowDirections = "RightToLeft";
+            else
+                popUp.FlowDirections = "LeftToRight";
+
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         #endregion
     }

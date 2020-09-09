@@ -5,9 +5,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesApp.Controls;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,9 +28,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             viewModel._updateEmailData = updateEmailData;
+
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -40,6 +44,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
+
         private async void VerifyBtnClicked(object sender, EventArgs e)
         {
             // Call Update Mobile Number API + Go Success Page
@@ -50,10 +55,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (viewModel.EnteredOTP.Length != 4)
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
-                });
+                viewModel.ShowValidationPopup(AppResources.PleaseenterOTP);
                 return;
             }
 
@@ -82,48 +84,27 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             string validationError = VerifyOTPPasswords(CurrentPassword, NewPassword, ConfirmPassword);
 
-            if (validationError == string.Empty)
-            {
+            if (validationError == string.Empty) 
                 return true;
-            }
             else
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessageBox(validationError, AppResources.Information);
-                });
+                viewModel.ShowValidationPopup(validationError);
                 return false;
             }
         }
 
         private string VerifyOTPPasswords(string CurrentPassword, string NewPassword, string ConfirmPassword)
         {
-            /*bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
-
-            if (CurrentPassword == null || NewPassword == null
-                                        || ConfirmPassword == null
-                                        || CurrentPassword == string.Empty
-                                        || NewPassword == string.Empty
-                                        || ConfirmPassword == string.Empty
-                                        || viewModel.EnteredOTP.Length != 4)
-                return AppResources.InvalidPassword;
-            else if (!compareStringFlag)
-                return AppResources.NewPasswordandRetypePasswordNotMatch;
-            else
-            {
-                bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
-                if (passwordValidationRegXFlag)
-                    return string.Empty;
-                else
-                    return AppResources.PasswordGuidelineText;
-            }*/
-
             bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
 
-            if (string.IsNullOrEmpty(CurrentPassword))
+            if (string.IsNullOrEmpty(CurrentPassword) && string.IsNullOrEmpty(NewPassword))
+                return AppResources.TPOldNewPasswordEmpty;
+            else if (string.IsNullOrEmpty(CurrentPassword))
                 return AppResources.TPOldPasswordEmpty;
             else if (string.IsNullOrEmpty(NewPassword))
                 return AppResources.TPNewPasswordEmpty;
+            else if (string.Equals(CurrentPassword, NewPassword))
+                return AppResources.TPOldAndNewPasswordSame;
             else if (!compareStringFlag)
                 return AppResources.NewPasswordandRetypePasswordNotMatch;
             else
@@ -230,10 +211,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             OTPThirdEntry.Unfocus();
 
             // * Show alert for OTP sent to given email id
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await viewModel._dialogService.ShowMessageBox(AppResources.TPOTPSentToEmail, AppResources.Information);
-            });
+            viewModel.ShowValidationPopup(AppResources.TPOTPSentToEmail);
         }
 
         protected override void OnDisappearing()

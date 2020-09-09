@@ -738,6 +738,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         CanExecute = true;
                         goBackAction?.Invoke(NregActivityList);
+                        NregActivityList = new List<Nreg_ActivityItem>();
                         _navigationService.GoBack();
                     }
                 }
