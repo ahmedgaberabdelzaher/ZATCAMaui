@@ -805,51 +805,51 @@ namespace GAZT.Manager
             {
                 Month = "Rabi II";
             }
-            else if (Month == "01")
+            else if (Month == "01" || Month == "1")
             {
                 Month = "Muharram";
             }
-            else if (Month == "02")
+            else if (Month == "02" || Month == "2")
             {
                 Month = "Safar";
             }
-            else if (Month == "03")
+            else if (Month == "03" || Month == "3")
             {
                 Month = "Rabi I";
             }
-            else if (Month == "04")
+            else if (Month == "04" || Month == "4")
             {
                 Month = "Rabi II";
             }
-            else if (Month == "05")
+            else if (Month == "05" || Month == "5")
             {
                 Month = "Jumada I";
             }
-            else if (Month == "06")
+            else if (Month == "06" || Month == "6")
             {
                 Month = "Jumada II";
             }
-            else if (Month == "07")
+            else if (Month == "07" || Month == "7")
             {
                 Month = "Rajab";
             }
-            else if (Month == "08")
+            else if (Month == "08" || Month == "8")
             {
                 Month = "Sha ban";
             }
-            else if (Month == "09")
+            else if (Month == "09" || Month == "9")
             {
                 Month = "Ramadan";
             }
-            else if (Month == "10")
+            else if (Month == "10" || Month == "10")
             {
                 Month = "shawwal";
             }
-            else if (Month == "11")
+            else if (Month == "11" || Month == "11")
             {
                 Month = "Dhul-Qi dah";
             }
-            else if (Month == "12")
+            else if (Month == "12" || Month == "12")
             {
                 Month = "Dhul-Hijjah";
             }
