@@ -253,6 +253,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
+                viewModel.TxtMobileNumber = string.Empty;
                 // IntnlCodes.Text = arg;
                 viewModel.TxtCountryCode = arg;
             });
