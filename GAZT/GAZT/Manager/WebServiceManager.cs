@@ -11235,7 +11235,6 @@ namespace GAZT.Manager
                     outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
                     outletInfo.AOutletEffDtCTb = "G";
                 }
-
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
                     permitInfo.APermitDobTb = null;
@@ -11341,7 +11340,7 @@ namespace GAZT.Manager
             tinDeregistrationSendResponseModel.OffNotesSet = new List<string>();
             tinDeregistrationSendResponseModel.AttDetSet = new List<string>();
             tinDeregistrationSendResponseModel.ReturnSet = new List<string>();
-            tinDeregistrationSendResponseModel.ADecName = "Rohith";
+            tinDeregistrationSendResponseModel.ADecName = tinDeregistrationResponseModel.ADecName;
             tinDeregistrationSendResponseModel.PermitTableSet = new List<string>();
 
             if (CrossConnectivity.Current.IsConnected)
@@ -11418,7 +11417,7 @@ namespace GAZT.Manager
                     }
                     return _newRequestSummaryDataResponse;
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTErrorException ex)
                 {
                     Console.WriteLine(ex);
                     throw new GAZTUnlockAccountException(ex.Message);
