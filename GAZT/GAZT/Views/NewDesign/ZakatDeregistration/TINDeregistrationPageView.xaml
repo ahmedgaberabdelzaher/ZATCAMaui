@@ -548,7 +548,25 @@
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitTypTxt}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
+                                                                    <Label.Triggers>
+                                                                       <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0001">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANNationalID}" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="BUP002">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANCommercialRegistrationID}" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0005">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANCompanyID}" />
+                                                                        </DataTrigger>
+                                                                         <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0002">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZIqamaID}" />
+                                                                        </DataTrigger>
+                                                                         <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0004">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" />
+                                                                        </DataTrigger>
+                                                                    </Label.Triggers>
+                                                                </Label>
                                                             </StackLayout>
                                                                 <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>

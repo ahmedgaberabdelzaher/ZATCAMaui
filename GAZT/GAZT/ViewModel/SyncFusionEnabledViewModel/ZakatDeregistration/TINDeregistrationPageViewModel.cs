@@ -1102,7 +1102,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 return _allOutlets;
             }
-
             set
             {
                 _allOutlets = value;
@@ -1476,17 +1475,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     //if (outletInfo.AOutletExpdtTb == null)
                     //    outletInfo.AOutletExpdtTb = string.Empty;
 
-                    outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                    if(SelectedReason!= null)
+                    {
+                        outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                    }
 
                     foreach (PermitSetResult permitInfo in allPermitTypes)
                     {
                         if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
                         {
-                            permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                            if(SelectedReason != null)
+                                permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
 
                             if (outletInfo.PermitTypes == null)
                                 outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
-
 
                             outletInfo.PermitTypes.Add(permitInfo);
                         }
@@ -1947,7 +1949,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
         }
-            public void EnableReasonView()
+        public void EnableReasonView()
         {
             CurrentStep = ProcessStep.Step1;
 
@@ -2056,6 +2058,37 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 //await SaveAsDraft();
 
+                try
+                {
+                    AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                    List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
+                    foreach (OutletSetResult outletInfo in AllOutlets)
+                    {
+                        //if (outletInfo.AOutletExpdtTb == null)
+                        //    outletInfo.AOutletExpdtTb = string.Empty;
+
+                        outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
+                        foreach (PermitSetResult permitInfo in allPermitTypes)
+                        {
+                            if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                            {
+                                permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
+                                if (outletInfo.PermitTypes == null)
+                                    outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+
+
+                                outletInfo.PermitTypes.Add(permitInfo);
+                            }
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+
+                }
+
                 if (SelectedOutletOptionIndex == 1)
                 {
                     if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null)
@@ -2080,6 +2113,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else
                     {
                         await SaveAsDraft();
+
+                        if (TinDeregistrationData.Savez.Equals("X"))
+                        {
+                            //  string number = response.d.Fbnumz;
+                            string displayMessage = AppResources.VATRSaveasdraftMessage;
+                            await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                           
+
+                            return;
+                        }
+
                         VoidIsVisible = true;
                         EnableOutletDetaislView();
 
@@ -2668,16 +2712,47 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async Task Submit()
         {
-            TinDeregistrationData.Submitz = "X";
-            TinDeregistrationData.Savez = "";
-            TinDeregistrationData.Xvoidz = "";
-
-            await SubmitRequest();
-
-            await Task.Run(() =>
+            try
             {
-                App.DisplayProgressView();
-            });
+                TinDeregistrationData.Submitz = "X";
+                TinDeregistrationData.Savez = "";
+                TinDeregistrationData.Xvoidz = "";
+                await SubmitRequest();
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(message, AppResources.Information);
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+            }
 
         }
 
@@ -2741,38 +2816,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                }
-
-               
-
-                TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
-
-                if (TinDeregistrationData.Savez.Equals("X"))
-                {
-                    //  string number = response.d.Fbnumz;
-                    string displayMessage = AppResources.VATRSaveasdraftMessage;
-                    await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
-                        
                     });
-
-                    return;
+                    Console.WriteLine(ex.Message);
                 }
-                else if (TinDeregistrationData.Xvoidz.Equals("X"))
+              
+                TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
 
+                if (TinDeregistrationData.Xvoidz.Equals("X"))
                 {
                     string number = TinDeregistrationData.Fbnum;
                     string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
                     await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                    _navigationService.GoBack();
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
-
                     });
+                    _navigationService.GoBack();
                 }
 
                 await Task.Run(() =>
