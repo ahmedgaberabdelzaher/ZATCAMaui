@@ -7052,4 +7052,7 @@
   <data name="ZZZZAmountWithSAR" xml:space="preserve">
     <value>(المبلغ (بالريال</value>
   </data>
+   <data name="NDReturnAmendments" xml:space="preserve">
+    <value>تفاصيل تعديل الاقرار</value>
+  </data>
 </root>
