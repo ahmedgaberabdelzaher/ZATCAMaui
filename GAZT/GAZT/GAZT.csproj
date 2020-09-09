@@ -62,6 +62,9 @@
     <Compile Remove="Helper\IHTTPClientHandlerCreationService.cs" />
     <Compile Remove="Models\AttachmentPageView.xaml.cs" />
     <Compile Remove="Views\SyncFusionEnabledViews\VATRefundsListPageView.xaml.cs" />
+    <Compile Remove="App.xaml.cs" />
+    <Compile Remove="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\ZakatInstalmentPlanListViewModel.cs" />
+    <Compile Remove="Views\NewDesign\ZakatObjection\ObjectionsSelectionPageView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Connected Services\" />
@@ -97,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
+    <EmbeddedResource Remove="Views\NewDesign\ZakatObjection\ObjectionsSelectionPageView.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="AppResources.ar.Designer.cs">
