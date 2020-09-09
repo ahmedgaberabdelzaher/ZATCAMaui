@@ -139,7 +139,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             {
                 List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
                 {
-                    new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
+                    new ReturnTypes {Id = "00",TaxType = AppResources.VRAll},
                     new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
                     new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
                     new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},

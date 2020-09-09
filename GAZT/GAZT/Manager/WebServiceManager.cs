@@ -11398,7 +11398,7 @@ namespace GAZT.Manager
                                 String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForUnlockAccount = WithReplacedString;
                                 //ErrorMessageForVAT
-                                //throw new GAZTUnlockAccountException(ErrorMessageForUnlockAccount);
+                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
                             }
                         }
                         else if (!string.IsNullOrEmpty(TinDeregResponseJson))
@@ -11420,7 +11420,7 @@ namespace GAZT.Manager
                 catch (GAZTErrorException ex)
                 {
                     Console.WriteLine(ex);
-                    throw new GAZTUnlockAccountException(ex.Message);
+                    throw new GAZTErrorException(ex.Message);
                 }
 
                 catch (Exception ex)
