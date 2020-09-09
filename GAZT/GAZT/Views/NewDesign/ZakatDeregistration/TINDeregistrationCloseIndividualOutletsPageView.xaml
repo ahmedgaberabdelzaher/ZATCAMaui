@@ -420,7 +420,7 @@
                                         </Frame> 
                                         <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
                                         <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="Hardy Store" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                            <Label Text="{Binding APermitOutletnoTb}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                         </StackLayout>
                                     </Grid>
 
@@ -459,6 +459,9 @@
                                                      <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0002">
                                                         <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZIqamaID}" />
                                                     </DataTrigger>
+                                                     <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0004">
+                                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" />
+                                                    </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
                                         </StackLayout>
@@ -482,7 +485,7 @@
                                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                                  <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                                    <Label Text="{Binding APermitEffDtTb,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                    <Label Text="{Binding APermitDeregDisplayDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                         <Image Margin="5,0">
                                                             <Image.Source>

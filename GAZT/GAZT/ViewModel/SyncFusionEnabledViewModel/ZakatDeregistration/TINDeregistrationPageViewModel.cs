@@ -776,6 +776,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                               ).ToList());
                                     }
                     }
+                    else
+                    {
+
+                        SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                            x =>
+                            {
+                                if (x.APermitNoTb == selectedAPermitOutletnoTb)
+                                {
+                                    x.APermitEffDtTb = ConvertDateFormat(SingleOutletDeregistrationDate);
+                                    x.APermitEffDtCTb = "G";
+                                    x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyyMMdd");
+                                    x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd MMM YYYY");
+                                }
+                                return x;
+                            }
+                            ).ToList());
+
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -2318,57 +2336,43 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
         private string selectedAPermitOutletnoTb;
-        public async void OnOutletPermitTypeDeRegisrtationReasonDateClicked(string value)
+        public void OnOutletPermitTypeDeRegisrtationReasonDateClicked(string value)
         {
-            try
-            {
-                this.selectedAPermitOutletnoTb = value;
-                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-                genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
-                genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
+            this.selectedAPermitOutletnoTb = value;
 
-                SelectedOutletForCloseTranser.PermitTypes =new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
-                    x =>
-                    {
-                        if (x.APermitNoTb == value)
-                        {
-                            x.APermitEffDtTb = ConvertDateFormat(SingleOutletDeregistrationDate);
-                            x.APermitEffDtCTb = "G";
-                            x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyyMMdd");
-                        }
-                        return x;
-                    }
-                    ).ToList());
+            //try
+            //{
+                //GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                //genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
+                //genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
 
-                try
-                {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
-                }
-                catch (GAZTUnlockAccountException ex)
-                {
-
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+                //try
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                //}
+                //catch (GAZTUnlockAccountException ex)
+                //{
+                //}
+                //catch (InternetException ex)
+                //{
+                //    Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                //        _navigationService.GoBack();
+                //    });
+                //}
+            //}
+            //catch (GAZTUnlockAccountException ex)
+            //{
+            //}
+            //catch (InternetException ex)
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            //        _navigationService.GoBack();
+            //    });
+            //}
         }
 
         public async void OnTinRegisrtationReasonDateClicked()
@@ -2850,6 +2854,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
 
                 TinDeregistrationData.AttDetSet.Results = tempAttachDetSet;
 

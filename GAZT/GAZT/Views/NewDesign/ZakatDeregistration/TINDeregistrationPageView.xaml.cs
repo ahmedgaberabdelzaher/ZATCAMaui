@@ -508,7 +508,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void outletsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            if(viewModel.TinDeregistrationData.ADregOpt == "3")
+           if(viewModel.TinDeregistrationData.ADregOpt == "3")
             {
                 OutletSetResult selectedItem = e.AddedItems[0] as OutletSetResult;
                 viewModel.SelectedOutletForCloseTranser = selectedItem;
@@ -529,16 +529,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                     if (viewModel.TinDeregistrationData.Fbnum != string.Empty)
                     {
-
                         await viewModel.VoidForm();
-
                     }
                     else
                     {
                         viewModel._navigationService.GoBack();
-
                     }
-
                 }
             }
         }
