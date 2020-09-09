@@ -7013,9 +7013,9 @@
     <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
   </data>
   <data name="ZZZZAdjustmentWithSAR" xml:space="preserve">
-    <value>(مبلغ التعديل (بالريال</value>
+    <value>مبلغ التعديل ( بالريال)</value>
   </data>
   <data name="ZZZZAmountWithSAR" xml:space="preserve">
-    <value>(المبلغ (بالريال</value>
+    <value>المبلغ  (بالريال)</value>
   </data>
 </root>
