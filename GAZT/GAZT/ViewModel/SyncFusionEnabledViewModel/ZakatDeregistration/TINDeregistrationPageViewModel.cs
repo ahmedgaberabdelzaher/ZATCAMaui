@@ -1985,14 +1985,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             IsSummaryViewEnabled = false;
         }
 
-        public void EnableDeclarationView()
+        public async void EnableDeclarationView()
         {
-            CurrentStep = ProcessStep.Step4;
-            IsReasonViewEnabled = false;
-            IsOutletViewEnabled = false;
-            IsAttachmentsViewEnabled = false;
-            IsDeclarationViewEnabled = true;
-            IsSummaryViewEnabled = false;
+            if (TinDeregistrationData.AttDetSet.Results != null)
+            {
+                if (TinDeregistrationData.AttDetSet.Results.Count != 0)
+                {
+                    CurrentStep = ProcessStep.Step4;
+                    IsReasonViewEnabled = false;
+                    IsOutletViewEnabled = false;
+                    IsAttachmentsViewEnabled = false;
+                    IsDeclarationViewEnabled = true;
+                    IsSummaryViewEnabled = false;
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                }
+            }
         }
 
         public void EnableSummaryView()
@@ -2078,6 +2088,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 if (outletInfo.PermitTypes == null)
                                     outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
+                                if(SelectedOutletOption.OutletOptionIndex != "3")
+                                {
+                                    permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("dd MMM yyyy");
+                                    permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                    permitInfo.APermitEffDtCTb = "G";
+                                    permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+                                }
 
                                 outletInfo.PermitTypes.Add(permitInfo);
                             }
@@ -2098,6 +2115,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else
                     {
                         await SaveAsDraft();
+
+                        if (TinDeregistrationData.Savez.Equals("X"))
+                        {
+                            //  string number = response.d.Fbnumz;
+                            string displayMessage = AppResources.VATRSaveasdraftMessage;
+                            await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                        }
+
                         VoidIsVisible = true;
                         EnableOutletDetaislView();
 
@@ -2119,14 +2144,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             //  string number = response.d.Fbnumz;
                             string displayMessage = AppResources.VATRSaveasdraftMessage;
                             await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                           
-
-                            return;
                         }
 
                         VoidIsVisible = true;
                         EnableOutletDetaislView();
-
+                        
                     }
                 }
                 else if (SelectedOutletOptionIndex ==0)
@@ -2248,8 +2270,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                
-
                 PopulateSummaryReasonData();
                 PopulateSummaryDeclarationData();
                 if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
@@ -2791,7 +2811,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.ADecDate = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
 
-                    TinDeregistrationData.AttDetSet = new AttachmentSet();
+                    //TinDeregistrationData.AttDetSet = new AttachmentSet();
 
                     AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                     List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
@@ -2822,8 +2842,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     });
                     Console.WriteLine(ex.Message);
                 }
-              
+
+                List<Attachment> tempAttachDetSet = new List<Attachment>();
+                foreach(Attachment attachment in TinDeregistrationData.AttDetSet.Results)
+                {
+                    tempAttachDetSet.Add(attachment);
+                }
+
                 TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+
+                TinDeregistrationData.AttDetSet.Results = tempAttachDetSet;
 
                 if (TinDeregistrationData.Xvoidz.Equals("X"))
                 {
