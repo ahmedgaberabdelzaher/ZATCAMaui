@@ -1985,14 +1985,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             IsSummaryViewEnabled = false;
         }
 
-        public void EnableDeclarationView()
+        public async void EnableDeclarationView()
         {
-            CurrentStep = ProcessStep.Step4;
-            IsReasonViewEnabled = false;
-            IsOutletViewEnabled = false;
-            IsAttachmentsViewEnabled = false;
-            IsDeclarationViewEnabled = true;
-            IsSummaryViewEnabled = false;
+            if (TinDeregistrationData.AttDetSet.Results != null)
+            {
+                if (TinDeregistrationData.AttDetSet.Results.Count != 0)
+                {
+                    CurrentStep = ProcessStep.Step4;
+                    IsReasonViewEnabled = false;
+                    IsOutletViewEnabled = false;
+                    IsAttachmentsViewEnabled = false;
+                    IsDeclarationViewEnabled = true;
+                    IsSummaryViewEnabled = false;
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                }
+            }
         }
 
         public void EnableSummaryView()
@@ -2105,6 +2115,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else
                     {
                         await SaveAsDraft();
+
+                        if (TinDeregistrationData.Savez.Equals("X"))
+                        {
+                            //  string number = response.d.Fbnumz;
+                            string displayMessage = AppResources.VATRSaveasdraftMessage;
+                            await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                        }
+
                         VoidIsVisible = true;
                         EnableOutletDetaislView();
 
@@ -2126,14 +2144,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             //  string number = response.d.Fbnumz;
                             string displayMessage = AppResources.VATRSaveasdraftMessage;
                             await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                           
-
-                            return;
                         }
 
                         VoidIsVisible = true;
                         EnableOutletDetaislView();
-
+                        
                     }
                 }
                 else if (SelectedOutletOptionIndex ==0)
@@ -2827,8 +2842,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     });
                     Console.WriteLine(ex.Message);
                 }
-              
+
+                List<Attachment> tempAttachDetSet = new List<Attachment>();
+                foreach(Attachment attachment in TinDeregistrationData.AttDetSet.Results)
+                {
+                    tempAttachDetSet.Add(attachment);
+                }
+
                 TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+
+                TinDeregistrationData.AttDetSet.Results = tempAttachDetSet;
 
                 if (TinDeregistrationData.Xvoidz.Equals("X"))
                 {

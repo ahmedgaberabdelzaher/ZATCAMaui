@@ -111,11 +111,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
-
+                
                 ZakatDeregResponseData = new TinDeregistrationResponseModel();
                 ZakatDeregResponseData.Approvez = "";
                 ZakatDeregResponseData.Rejectz = "";
