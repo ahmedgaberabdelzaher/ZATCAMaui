@@ -3928,7 +3928,8 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Return Number.
         /// </summary>
-        public static string NDReturnNumber {
+        public static string ZZResendtheverificationcode
+        {
             get {
                 return ResourceManager.GetString("ZZResendtheverificationcode", resourceCulture);
             }
@@ -12339,7 +12340,8 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to At least 8 characters long.
         /// </summary>
-        public static string ZZZZAtleast8characterslong {
+        public static string ZakatInstalmentPlanDuration
+        {
             get {
                 return ResourceManager.GetString("ZakatInstalmentPlanDuration", resourceCulture);
             }
