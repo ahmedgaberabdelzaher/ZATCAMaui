@@ -36,10 +36,10 @@
                                TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Margin="30,60,30,80" >
-                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,0    "  x:Name="btnDownloadConfirmation" Command="{Binding RegistrationDownloadConfirmationBtnTapped}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationDownloadConfirmation}"
+                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,0" Clicked="btnDash_Clicked"  x:Name="btnDownloadConfirmation" Command="{Binding RegistrationDownloadConfirmationBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                         
-                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  x:Name="btnRegistrationDetails" Command="{Binding RegistrationDetailsBtnTapped}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}"
+                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  x:Name="btnRegistrationDetails" Clicked="btnRegistrationDetailsClicked" Command="{Binding RegistrationDetailsBtnTapped}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}"
                                    Style="{StaticResource NoBackgroundButtonStyle}"/>
                     </StackLayout>
                     </Grid>

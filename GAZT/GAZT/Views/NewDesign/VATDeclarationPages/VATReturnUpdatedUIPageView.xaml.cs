@@ -906,7 +906,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsNewLoading = false;
             });
         }
-
+        private void OnClickedFAQ(object sender, EventArgs e)
+        {
+            string FaqUrl = string.Empty;
+            if (App.IsArabic)
+            {
+                FaqUrl = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+            }
+            else
+            {
+                FaqUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+            }
+            Device.OpenUri(new Uri(FaqUrl));
+        }
         public async Task onPageLoadCalculation()
         {
             viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);

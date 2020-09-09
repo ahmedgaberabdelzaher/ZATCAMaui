@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
@@ -54,10 +55,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        public void registrationDetailsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        public async void registrationDetailsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
                 viewModel.GetNewTinDeregistrationDataCliked();
                 var view = sender as SfListView;
                 view.SelectedItem = null;
