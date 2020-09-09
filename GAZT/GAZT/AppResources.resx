@@ -7200,4 +7200,14 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDOldPasswordAndNewPasswordSame" xml:space="preserve">
     <value>The new password must not match the current password</value>
   </data>
+  <data name="NDReturnAmendments" xml:space="preserve">
+    <value>Amendments Details</value>
+  </data>
+    
+  <data name="ZZZZAdjustmentWithSAR" xml:space="preserve">
+    <value>Adjustment(SAR)</value>
+  </data>
+  <data name="ZZZZAmountWithSAR" xml:space="preserve">
+    <value>Amount(SAR)</value>
+  </data>
 </root>

@@ -52,11 +52,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             string FaqUrl = string.Empty;
             if (App.IsArabic)
             {
-                FaqUrl = "https://www.vat.gov.sa/ar/vat-rate";
+                FaqUrl = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
             }
             else
             {
-                FaqUrl = "https://www.vat.gov.sa/en/vat-rate";
+                FaqUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
             }
             Device.OpenUri(new Uri(FaqUrl));
         }

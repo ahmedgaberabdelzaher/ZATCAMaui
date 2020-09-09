@@ -3916,7 +3916,19 @@ namespace EGAZT {
             }
         }
         
-        public static string ZZResendtheverificationcode {
+        /// <summary>
+        ///   Looks up a localized string similar to Amendments Details.
+        /// </summary>
+        public static string NDReturnAmendments {
+            get {
+                return ResourceManager.GetString("NDReturnAmendments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Number.
+        /// </summary>
+        public static string NDReturnNumber {
             get {
                 return ResourceManager.GetString("ZZResendtheverificationcode", resourceCulture);
             }
@@ -12306,7 +12318,28 @@ namespace EGAZT {
             }
         }
         
-        public static string ZakatInstalmentPlanDuration {
+        /// <summary>
+        ///   Looks up a localized string similar to Adjustment(SAR).
+        /// </summary>
+        public static string ZZZZAdjustmentWithSAR {
+            get {
+                return ResourceManager.GetString("ZZZZAdjustmentWithSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount(SAR).
+        /// </summary>
+        public static string ZZZZAmountWithSAR {
+            get {
+                return ResourceManager.GetString("ZZZZAmountWithSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least 8 characters long.
+        /// </summary>
+        public static string ZZZZAtleast8characterslong {
             get {
                 return ResourceManager.GetString("ZakatInstalmentPlanDuration", resourceCulture);
             }

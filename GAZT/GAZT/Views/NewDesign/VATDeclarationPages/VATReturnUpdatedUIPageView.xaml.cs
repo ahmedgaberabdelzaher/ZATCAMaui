@@ -127,7 +127,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                     headerAmountInfo.IsLinkAvailable = false;
                     headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
@@ -220,7 +220,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                 headerAmountInfo.IsLinkAvailable = false;
                 headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
@@ -264,7 +264,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                 headerAmountInfo.IsLinkAvailable = false;
                 headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
@@ -307,7 +307,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                 headerAmountInfo.IsLinkAvailable = false;
                 headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
@@ -714,7 +714,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                             headerAmountInfo.IsLinkAvailable = false;
                                             headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
@@ -786,7 +786,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                             headerAmountInfo.IsLinkAvailable = false;
                                             headerAmountInfo.Message = AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields;
 
@@ -981,16 +981,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 string rate = viewModel.VATRate002.Replace(".00", string.Empty);
                 String MessageWithPercent = headerAmountInfo.Message.Replace("5%", rate + "%");
                 headerAmountInfo.Message = MessageWithPercent;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
 
                 if (App.IsArabic)
@@ -1005,7 +1005,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 headerAdjustmentInfo.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 if (App.IsArabic)
                 {
                     headerAdjustmentInfo.FlowDirections = "RightToLeft";
@@ -3382,7 +3382,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
                         headerAmountInfo.Message = AppResources.ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
                         if (App.IsArabic)
@@ -3412,7 +3412,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             //  PopUp Pop = new PopUp();
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
@@ -3507,7 +3507,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = AppResources.ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
                             if (App.IsArabic)
@@ -3538,7 +3538,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
@@ -3684,7 +3684,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
 
                         Masseges.Append(Massege);
                         headerAmountInfo.IsLinkAvailable = false;
@@ -3727,7 +3727,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             // PopUp Pop = new PopUp();
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
@@ -3876,7 +3876,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             //PopUp Pop = new PopUp();
                             headerAmountInfo.IsLinkAvailable = false;
                             Masseges.Append(Massege);
@@ -3921,7 +3921,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
@@ -4094,6 +4094,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             {
                                 headerAmountInfo.Message = Masseges.ToString();
                                 headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.HeaderText= AppResources.ZZZInformationNew;
                                 if (App.IsArabic)
                                 {
                                     headerAmountInfo.FlowDirections = "RightToLeft";
@@ -4128,7 +4129,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 // PopUp Pop = new PopUp();
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
@@ -4262,7 +4263,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                     // PopUp Pop = new PopUp();
                     headerAmountInfo.IsLinkAvailable = false;
                     headerAmountInfo.Message = AppResources.ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
@@ -4407,7 +4408,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
@@ -4505,7 +4506,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
@@ -4605,7 +4606,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
@@ -4703,7 +4704,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
@@ -6968,16 +6969,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 string rate = viewModel.VATRate002.Replace(".00", string.Empty);
                 String MessageWithPercent = headerAmountInfo.Message.Replace("5%", rate + "%");
                 headerAmountInfo.Message = MessageWithPercent;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
 
                 if (App.IsArabic)
@@ -6991,7 +6992,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipStandardRatedSalesAdjustment15;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7034,16 +7035,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 string rate = viewModel.VATRate003.Replace(".00", string.Empty);
                 String MessageWithPercent = headerAmountInfo.Message.Replace("5%", rate + "%");
                 headerAmountInfo.Message = MessageWithPercent;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
 
                 if (App.IsArabic)
@@ -7060,7 +7061,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 string rateAdj = viewModel.VATRate003.Replace(".00", string.Empty);
                 String AdjMessageWithPercent = headerAdjustmentInfo.Message.Replace("5%", rateAdj + "%");
                 headerAdjustmentInfo.Message = AdjMessageWithPercent;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7099,7 +7100,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipPrivateHealthcareAmount;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZLink;
                 headerAmountInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
                 if (App.IsArabic)
@@ -7113,7 +7114,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = true;
                 headerAdjustmentInfo.LinkText = AppResources.ZLink; ;
                 headerAdjustmentInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
@@ -7155,15 +7156,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipExportsAmount;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7175,7 +7176,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipExportsAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7215,16 +7216,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
                 headerAmountInfo.Message = AppResources.ZToolTipExemptAmount;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7237,7 +7238,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipExemptAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7276,15 +7277,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7296,7 +7297,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7334,16 +7335,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
                 headerAmountInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7355,7 +7356,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7393,15 +7394,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount15;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7414,7 +7415,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment15;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7451,15 +7452,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount5;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7471,7 +7472,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment5;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7509,15 +7510,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7530,7 +7531,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7567,16 +7568,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount15;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7588,7 +7589,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment15;
-                headerAmountInfo.HeaderText = AppResources.ZAdjustment;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7625,15 +7626,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount5;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7645,7 +7646,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment5;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7682,16 +7683,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7703,7 +7704,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7740,15 +7741,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount15;
                 headerAmountInfo.IsLinkAvailable = true;
-                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7760,7 +7761,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment15;
-                headerAdjustmentInfo.HeaderText = AppResources.ZZZInformationNew;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7797,16 +7798,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
                 headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount5;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7818,7 +7819,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment5;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7854,16 +7855,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
                 headerAmountInfo.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7875,7 +7876,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipZeroratedpurchasesAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -7912,16 +7913,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
                 headerAmountInfo.Message = AppResources.ZToolTipExemptpurchasesAmount;
-                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7933,7 +7934,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
                 headerAdjustmentInfo.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
-                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -8166,7 +8167,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
