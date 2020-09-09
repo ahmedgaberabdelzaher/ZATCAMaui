@@ -7006,8 +7006,7 @@
   <data name="ESTValidateAddCity" xml:space="preserve">
     <value>الرجاء ادخال المدينة</value>
   </data>
-    
-    <data name="ESTValidatePAddHouseNumber" xml:space="preserve">
+  <data name="ESTValidatePAddHouseNumber" xml:space="preserve">
     <value>الرجاء ادخال رقم المنزل للبريد</value>
   </data>
   <data name="ESTValidatePAddBuildingNumber" xml:space="preserve">
@@ -7052,7 +7051,10 @@
   <data name="ZZZZAmountWithSAR" xml:space="preserve">
     <value>المبلغ  (بالريال)</value>
   </data>
-   <data name="NDReturnAmendments" xml:space="preserve">
+  <data name="NDReturnAmendments" xml:space="preserve">
     <value>تفاصيل تعديل الاقرار</value>
+  </data>
+  <data name="ZZZZMyCorrespondence" xml:space="preserve">
+    <value>مراسلاتي</value>
   </data>
 </root>

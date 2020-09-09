@@ -737,7 +737,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if(SelectedTaxTypeDropdownItem!=null)
             {
-                if(SelectedTaxTypeDropdownItem.Id=="01")
+
+                if (SelectedTaxTypeDropdownItem.Id == "00")
+                {
+                    if (ListZAKATCorrespondance != null)
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance);
+                        if (ListToDisplay != null)
+                        {
+                            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+                        }
+                    }
+                    else
+                    {
+                        if (ListToDisplay != null)
+                        {
+                            ClearList();
+                        }
+                    }
+                    IsVisibleFavourite = true;
+                }
+                else if (SelectedTaxTypeDropdownItem.Id=="01")
                 {
                     if (ListZAKATCorrespondance != null)
                     {
