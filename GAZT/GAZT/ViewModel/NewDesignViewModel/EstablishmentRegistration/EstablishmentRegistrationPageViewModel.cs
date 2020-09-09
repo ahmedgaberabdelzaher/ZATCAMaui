@@ -2048,7 +2048,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 ACaltype = _calendarType,
                 ADateComm = taxPayerDetails?.Commdt
             });
-            CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
+            if (_calendarType == "H")
+            {
+                string dd = financialDetail?.ACommDate.Substring(6, 2);
+                string mm = financialDetail?.ACommDate.Substring(4, 2);
+                string yy = financialDetail?.ACommDate.Substring(0, 4);
+                CommDate = $"{Int16.Parse(yy) - 1:0000}/{Int16.Parse(mm):00}/{Int16.Parse(dd):00}";
+            }
+            else {
+                CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
+            }
 
 
             if (selectedDate == null)
