@@ -56,17 +56,18 @@
             </Grid.RowDefinitions>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="35*"/>
-                <RowDefinition Height="65*"/>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="60*"/>
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="0" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
                 <Image Source="Forget_ic_success"/>
-                <Label Text="{x:Static ResourceManager:AppResources.NDZakatObjection}" Margin="0,0,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatObjectionIsSubmittedSuccessfully}" TextColor="White" HorizontalTextAlignment="Center" Style="{StaticResource BodyLabelBlack}" Margin="0,-5,0,10"/>
+                <Label Text="{x:Static ResourceManager:AppResources.NDZakatObjection}" Margin="0,0,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatObjectionIsSubmittedSuccessfully}" TextColor="White" HorizontalTextAlignment="Center" Style="{StaticResource BodyLabelBlack}" Margin="0,-15,0,0" StyleId="OnBoardText"/>
             </StackLayout>
 
-            <yummy:PancakeView  x:Name="MainGrid" Grid.Row="1" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+            <yummy:PancakeView  x:Name="MainGrid" Grid.Row="2" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
 
                 <Grid HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand">
@@ -171,7 +172,7 @@
 
                         </StackLayout>
                     </ScrollView>
-                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">
+                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVATInvoiceButton}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
                         <Label Text="{x:Static ResourceManager:AppResources.NDReturns}" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
                             <Label.GestureRecognizers>
@@ -189,12 +190,12 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="40"/>
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleWhiteBold}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDInvoiceDetail}" Style="{StaticResource SectionTitleWhiteBold}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
 
                 <StackLayout Grid.Row="0" Grid.Column="0">
                     <Image IsVisible="{Binding IsBackBtnVisible}" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">

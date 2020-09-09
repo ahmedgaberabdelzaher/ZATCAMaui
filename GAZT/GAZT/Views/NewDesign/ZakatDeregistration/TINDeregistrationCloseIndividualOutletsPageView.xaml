@@ -456,6 +456,9 @@
                                                     <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0005">
                                                         <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANCompanyID}" />
                                                     </DataTrigger>
+                                                     <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0002">
+                                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZIqamaID}" />
+                                                    </DataTrigger>
                                                 </Label.Triggers>
                                             </Label>
                                         </StackLayout>

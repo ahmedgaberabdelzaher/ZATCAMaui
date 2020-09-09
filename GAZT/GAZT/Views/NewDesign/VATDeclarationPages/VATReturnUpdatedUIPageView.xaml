@@ -158,11 +158,11 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
 
-                    <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.VATDeclaration}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                    <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.VATDeclaration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  />
 
                     <StackLayout Grid.Row="0" Grid.Column="0">
                         <!--<Image IsVisible="{Binding IsBackBtnVisible}" Source="arrowLeftwhite" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
@@ -233,8 +233,83 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackLayout  HorizontalOptions="FillAndExpand" Grid.Row="1" BackgroundColor="White" Margin="15,16,15,0">
+                    <ScrollView  VerticalScrollBarVisibility="Never" BackgroundColor="White">
+                        <StackLayout BackgroundColor="White">
+                            <Label Text="{x:Static custom2:AppResources.ZVatReadInstructions}" BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}"/>
 
-                    <StackLayout Orientation="Horizontal">
+                            <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="1."/>
+                                        <Span Text="{x:Static custom2:AppResources.ZZPleasefilltherequestedinformationforeachstep}"  />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="2."/>
+                                        <Span Text="{x:Static custom2:AppResources.ZVatSubmittedInstructions}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <custom:CustomLabel  VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="3."/>
+                                        <Span  Text="{x:Static custom2:AppResources.ZVatDateInstructions}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="4."/>
+                                        <Span Text="{x:Static custom2:AppResources.ZVatFaqSectionInstructions}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+
+                            <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZVatClickFaqInstructions}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}" TextColor="{StaticResource NewDullOrangeColor}">
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnClickedFAQ"/>
+                                </custom:CustomLabel.GestureRecognizers>
+                            </custom:CustomLabel>
+
+
+
+                            <!--                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
+                    <CheckBox.Triggers>
+                        <DataTrigger TargetType="CheckBox"  Value="false">
+                            <Setter Property="Color" Value="#ff0000" />
+                        </DataTrigger>
+                    </CheckBox.Triggers>
+                </CheckBox>-->
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
+                                            <Setter Property="Color" Value="#ff0000" />
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static custom2:AppResources.ZVatDeclarationInstructions}"  />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+
+                    <!--<StackLayout Orientation="Horizontal">
                         <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
@@ -254,7 +329,7 @@
                                 <TapGestureRecognizer Tapped="OnInCTapped"/>
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
-                    </StackLayout>
+                    </StackLayout>-->
 
                     <!---->
 
@@ -1416,7 +1491,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="0" Margin="0,-17,0,0" BackgroundColor="White"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"  Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"  />
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     </StackLayout>
                     <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
@@ -2356,6 +2431,31 @@
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZVATAccountNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Fin}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" MaxLines="1"/>
                                         </Grid>
+
+                                        <!--<Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TaxpayerPeriodFromDate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" MaxLines="1"/>
+                                        </Grid>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatPeriodTo}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TaxpayerPeriodToDate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" MaxLines="1"/>
+                                        </Grid>-->
+
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
