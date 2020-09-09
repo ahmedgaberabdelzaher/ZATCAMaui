@@ -5542,6 +5542,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TPOTPSentToEmail" xml:space="preserve">
     <value>Please enter the verification code sent to your email</value>
   </data>
+  <data name="TPOldAndNewPasswordSame" xml:space="preserve">
+    <value>The new password must not match the current password</value>
+  </data>
+  <data name="TPOldNewPasswordEmpty" xml:space="preserve">
+    <value>please enter old and new password</value>
+  </data>
   <data name="TPSuccessMobileUpdated" xml:space="preserve">
     <value>New Mobile number updated Successfully</value>
   </data>
@@ -7159,8 +7165,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ESTValidateAddCity" xml:space="preserve">
     <value>Please provide city</value>
   </data>
-    
-    <data name="ESTValidatePAddHouseNumber" xml:space="preserve">
+  <data name="ESTValidatePAddHouseNumber" xml:space="preserve">
     <value>Please provide postal's house number</value>
   </data>
   <data name="ESTValidatePAddBuildingNumber" xml:space="preserve">
@@ -7193,7 +7198,6 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ESTValidatePAddCity" xml:space="preserve">
     <value>Please provide postal's city</value>
   </data>
-    
   <data name="ESTValidateOutletName" xml:space="preserve">
     <value>Please provide name</value>
   </data>
@@ -7203,11 +7207,20 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDReturnAmendments" xml:space="preserve">
     <value>Amendments Details</value>
   </data>
-    
   <data name="ZZZZAdjustmentWithSAR" xml:space="preserve">
     <value>Adjustment(SAR)</value>
   </data>
   <data name="ZZZZAmountWithSAR" xml:space="preserve">
     <value>Amount(SAR)</value>
+  </data>
+  <data name="ZakatandIncomeTax" xml:space="preserve">
+    <value>Zakat and Income Tax</value>
+  </data>
+  <data name="ZZIncomeTax" xml:space="preserve">
+    <value>Income Tax</value>
+    <comment>My Return </comment>
+  </data>
+  <data name="ZZZZMyCorrespondence" xml:space="preserve">
+    <value>My correspondence</value>
   </data>
 </root>

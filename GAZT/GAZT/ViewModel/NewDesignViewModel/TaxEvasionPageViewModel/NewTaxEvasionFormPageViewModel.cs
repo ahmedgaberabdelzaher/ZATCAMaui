@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EnumModels;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -13,6 +14,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
@@ -875,7 +877,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             else
             {
-              _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+             // _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
 
         }
@@ -915,7 +918,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             else
             {
-                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+              //  _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
         }
         public void ReportDetailStepValidation()
@@ -938,7 +942,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             else
             {
-                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+ //               _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
 
         }
@@ -1025,7 +1030,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        //_dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         //_navigationService.GoBack();
                     });
                 }
@@ -1035,7 +1041,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   // _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     //_navigationService.GoBack();
                 });
             }
@@ -1103,7 +1110,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     {
                         IsLoading = false;
                     });
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     _navigationService.GoBack();
                 });
             }
@@ -1116,7 +1124,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         IsLoading = false;
                     });
 
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -1127,7 +1136,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+             ///   await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
                 _navigationService.GoBack();
             });
         }
@@ -1259,7 +1269,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-                                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                               // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
                                             }
                                             //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
@@ -1271,14 +1282,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                      //  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                           // _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                         }
                     }
                 }
@@ -1371,7 +1384,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     {
                         IsLoading = false;
                     });
-                    _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
+                   // _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTEReportReportSuccessResponsep2));
                 }
                 await Task.Run(() =>
                 {
@@ -1409,7 +1423,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         IsLoading = false;
                     });
 
-                    _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //viewModel._navigationService.GoBack();
                 });
             }
@@ -1427,7 +1442,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         IsLoading = false;
                     });
 
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                  //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 });
             }
         }

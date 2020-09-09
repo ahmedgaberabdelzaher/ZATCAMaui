@@ -3,10 +3,12 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Timers;
 using EGAZT.Models;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -104,9 +106,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 _NewMobileNumberEntryText = value;
 
-                BtnEnableFlag = false;
+                /*BtnEnableFlag = false;
                 if (value.Length > 0)
-                    BtnEnableFlag = true;
+                    BtnEnableFlag = true;*/
 
                 RaisePropertyChanged("NewMobileNumberEntryText");
             }
@@ -232,7 +234,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private bool _BtnEnableFlag;
+        private bool _BtnEnableFlag = true;
         public bool BtnEnableFlag
         {
             get { return _BtnEnableFlag; }
@@ -334,10 +336,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                });
+                ShowValidationPopup(ex.Message);
             }
 
             return callAPIFlag;
@@ -375,11 +374,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             catch (Exception ex)
             {
                 IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.ToString());
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                });
+                System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.Message);
+                ShowValidationPopup(ex.Message);
             }
 
             return TP;
@@ -387,13 +383,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         private string MobileNumberFormate(string mobileNumber)
         {
-         
             return App.TP.Mobile;
         }
+
         private string NewMobileNumberFormate(string mobileNumber)
         {
             string formatedCountryCode = CountryCode.Replace("+", "");
             return formatedCountryCode + NewMobileNumberEntryText;
+        }
+
+        public void ShowValidationPopup(string sourceString)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = sourceString;
+            popUp.IsLinkAvailable = false;
+
+            if (App.IsArabic)
+                popUp.FlowDirections = "RightToLeft";
+            else
+                popUp.FlowDirections = "LeftToRight";
+
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
 }

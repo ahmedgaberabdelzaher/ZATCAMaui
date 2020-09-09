@@ -1,9 +1,11 @@
 ﻿using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
@@ -331,7 +333,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
+                       // await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                         _navigationService.GoBack();
                     });
                     IsLoading = false;
@@ -342,7 +345,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
                 IsLoading = false;
@@ -360,6 +364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
                         new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
                         new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
+                        new ReturnTypes {Id = "05",TaxType = AppResources.ZZIncomeTax}
                 };
 
                 SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
@@ -474,6 +479,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 else
                 {
                     MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
+                }
+            }
+            if (SelectedTaxTypeForFilter.Id == "05")
+            {
+                if (!App.IsArabic)
+                {
+                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Income Tax")).ToList());
+                }
+                else
+                {
+                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الدخل")).ToList());
                 }
             }
 

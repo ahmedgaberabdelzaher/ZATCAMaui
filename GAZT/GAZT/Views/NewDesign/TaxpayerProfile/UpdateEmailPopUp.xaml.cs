@@ -42,7 +42,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 bool flag = IsValid(viewModel.NewEmailText);
                 if (!flag)
                 {
-                    ShowValidationPopup(flag);
+                    viewModel.ShowValidationPopup(AppResources.ZZPleaseenteravalidEmailAddress);
                     return;
                 }
 
@@ -80,15 +80,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         private bool TaxpayerProfileEmailUpdateValidation(string CurrentEmail, string NewEmail, string ConfirmEmail)
         {
             string validationError = VerifyEmails(CurrentEmail, NewEmail, ConfirmEmail);
-
             if (validationError == string.Empty)
                 return true;
             else
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessageBox(validationError, AppResources.Information);
-                });
+                viewModel.ShowValidationPopup(validationError);
                 return false;
             }
         }
@@ -99,30 +95,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (string.IsNullOrEmpty(NewEmail))
                 return AppResources.ZZPleasefillallthemandatoryfields;
+            else if (String.Compare(CurrentEmail, NewEmail, true) == 0)
+                return AppResources.NDNewEmailCannotBeSameAsOldEmail;
             else if (iEmailCompared != 0)
                 return AppResources.NewEmailandRetypeEmailNotMatch;
             else return string.Empty;
-        }
-
-        private void ShowValidationPopup(bool validEmailFlag)
-        {
-            if (!validEmailFlag)
-            {
-                PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
-                popUp.IsLinkAvailable = false;
-
-                if (App.IsArabic)
-                    popUp.FlowDirections = "RightToLeft";
-                else
-                    popUp.FlowDirections = "LeftToRight";
-
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                Frm_NewEmail.HasError = true;
-                viewModel.NewEmailText = string.Empty;
-            }
-            else
-                Frm_NewEmail.HasError = false;
         }
 
         private async void CloseAllPopup()
@@ -154,61 +131,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.IsLoading = false;
         }
 
-        private void NewEmail_Entry_Unfocused(object sender, FocusEventArgs e)
-        {
-            /*if (!string.IsNullOrEmpty(viewModel.NewEmailText))
-            {
-                bool flag = IsValid(viewModel.NewEmailText);
-                if (!flag)
-                {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
-                    popUp.IsLinkAvailable = false;
+        private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e) { }
 
-                    if (App.IsArabic)
-                        popUp.FlowDirections = "RightToLeft";
-                    else
-                        popUp.FlowDirections = "LeftToRight";
+        private void NewEmail_Entry_Unfocused(object sender, FocusEventArgs e) { }
 
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    Frm_NewEmail.HasError = true;
-                    viewModel.NewEmailText = string.Empty;
-                }
-                else
-                    Frm_NewEmail.HasError = false;
-            }*/
-        }
-
-        private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void ConfirmEmail_Entry_Unfocused(object sender, FocusEventArgs e)
-        {
-            /*if (!string.IsNullOrEmpty(viewModel.ConfirmEmailText))
-            {
-                bool flag = IsValid(viewModel.ConfirmEmailText);
-                if (!flag)
-                {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
-                    popUp.IsLinkAvailable = false;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    Frm_confirmEmail.HasError = true;
-                    viewModel.ConfirmEmailText = string.Empty;
-                }
-                else
-                    Frm_confirmEmail.HasError = false;
-            }*/
-        }
+        private void ConfirmEmail_Entry_Unfocused(object sender, FocusEventArgs e) { }
     }
 }
+ 

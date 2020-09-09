@@ -5528,6 +5528,12 @@
   <data name="TPOTPSentToEmail" xml:space="preserve">
     <value>الرجاء إدخال رمز التحقق المرسل الى بريدك الإلكتروني</value>
   </data>
+  <data name="TPOldAndNewPasswordSame" xml:space="preserve">
+    <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
+  </data>
+  <data name="TPOldNewPasswordEmpty" xml:space="preserve">
+    <value>الرجاء ادخال كلمة المرور القديمة والجديدة</value>
+  </data>
   <data name="NDAckReceiptForZakat" xml:space="preserve">
     <value>GAZT acknowledges the receipt of your Return of Zakat\Income Tax</value>
   </data>
@@ -7006,8 +7012,7 @@
   <data name="ESTValidateAddCity" xml:space="preserve">
     <value>الرجاء ادخال المدينة</value>
   </data>
-    
-    <data name="ESTValidatePAddHouseNumber" xml:space="preserve">
+  <data name="ESTValidatePAddHouseNumber" xml:space="preserve">
     <value>الرجاء ادخال رقم المنزل للبريد</value>
   </data>
   <data name="ESTValidatePAddBuildingNumber" xml:space="preserve">
@@ -7052,7 +7057,17 @@
   <data name="ZZZZAmountWithSAR" xml:space="preserve">
     <value>المبلغ  (بالريال)</value>
   </data>
-   <data name="NDReturnAmendments" xml:space="preserve">
+  <data name="NDReturnAmendments" xml:space="preserve">
     <value>تفاصيل تعديل الاقرار</value>
+  </data>
+  <data name="ZakatandIncomeTax" xml:space="preserve">
+    <value>الزكاة وضريبة الدخل</value>
+  </data>
+  <data name="ZZIncomeTax" xml:space="preserve">
+    <value>ضريبة الدخل</value>
+    <comment>My Return </comment>
+  </data>
+  <data name="ZZZZMyCorrespondence" xml:space="preserve">
+    <value>مراسلاتي</value>
   </data>
 </root>

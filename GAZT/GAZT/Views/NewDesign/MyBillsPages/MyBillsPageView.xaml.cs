@@ -28,6 +28,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             this.BindingContext = viewModel;
             try
             {
+                
                 viewModel.onPageLoad(billInfo);
                 viewModel.PopulateReturnTypeList();
                 viewModel.PopulateDataInChips();
