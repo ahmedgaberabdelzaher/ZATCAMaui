@@ -1042,6 +1042,9 @@ namespace EGAZT.Models
         [JsonProperty("APermitEffDtHTb")]
         public string APermitEffDtHTb { get; set; }
 
+        [JsonIgnore]
+        public string APermitDeregDisplayDate { get; set; }
+
         [JsonProperty("APermitEffDtCTb")]
         public string APermitEffDtCTb { get; set; }
 

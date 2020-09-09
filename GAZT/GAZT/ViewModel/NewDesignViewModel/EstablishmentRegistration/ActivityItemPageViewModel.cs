@@ -898,52 +898,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
                         CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
                         CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
-                        //var docPassportResult = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG19").ToList();
-                        List<Attachment> list = new List<Attachment>();
-                        var lists = taxPayerDetails.AttDetSet.results.Where(x => {
-                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
-                            var outRef = x.OutletRef == docIdentifier;
-                            return x.Dotyp == "RG01" && outRef;
-                        }).ToList();
-                        if (lists.Count > 0)
-                        {
-                            foreach (AttDetItem attDetItem in lists)
-                            {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
-                                list.Add(obj);
-                            }
-                            CRsCopies = new ObservableCollection<Attachment>(list);
-                        }
-
-                        lists = taxPayerDetails.AttDetSet.results.Where(x => {
-                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
-                            var outRef = x.OutletRef == docIdentifier;
-                            return x.Dotyp == "RG12" && outRef;
-                        }).ToList();
-                        if (lists.Count > 0)
-                        {
-                            foreach (AttDetItem attDetItem in lists)
-                            {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
-                                list.Add(obj);
-                            }
-
-                            TransferCRsCopies = new ObservableCollection<Attachment>(list);
-                        }
+                        updateCRAttachments();
                     }
                     if(!string.IsNullOrEmpty(CRNumber))
                         validateCRNumber();
@@ -1021,7 +976,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             IsLoading = true;
             validateCR = await WebServiceManager.ESTValidateCRNum(CRNumber);
             IsLoading = false;
-
+            updateCRAttachments();
             if (validateCR?.NotFound == "X")
             {
                 await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
@@ -1039,51 +994,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
 
+        }
+        private void updateCRAttachments()
+        {
             List<Attachment> list = new List<Attachment>();
-            var lists = taxPayerDetails.AttDetSet.results.Where(x => {
+            var lists = taxPayerDetails.AttDetSet.results.Where(x =>
+            {
                 var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
                 var outRef = x.OutletRef == docIdentifier;
                 return x.Dotyp == "RG01" && outRef;
             }).ToList();
-            //if (lists.Count > 0)
-            //{
-                foreach (AttDetItem attDetItem in lists)
-                {
-                    var obj = new Attachment();
-                    obj.Filename = attDetItem.Filename;
-                    obj.FileExtn = attDetItem.FileExtn;
-                    obj.Mimetype = attDetItem.Mimetype;
-                    obj.RetGuid = attDetItem.RetGuid;
-                    obj.DocUrl = attDetItem.DocUrl;
-                    obj.Dotyp = attDetItem.Dotyp;
-                    obj.Doguid = attDetItem.Doguid;
-                    list.Add(obj);
-                }
-                CRsCopies = new ObservableCollection<Attachment>(list);
-            //}
+            foreach (AttDetItem attDetItem in lists)
+            {
+                var obj = new Attachment();
+                obj.Filename = attDetItem.Filename;
+                obj.FileExtn = attDetItem.FileExtn;
+                obj.Mimetype = attDetItem.Mimetype;
+                obj.RetGuid = attDetItem.RetGuid;
+                obj.DocUrl = attDetItem.DocUrl;
+                obj.Dotyp = attDetItem.Dotyp;
+                obj.Doguid = attDetItem.Doguid;
+                list.Add(obj);
+            }
+            CRsCopies = new ObservableCollection<Attachment>(list);
 
-            lists = taxPayerDetails.AttDetSet.results.Where(x => {
+            lists = taxPayerDetails.AttDetSet.results.Where(x =>
+            {
                 var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
                 var outRef = x.OutletRef == docIdentifier;
                 return x.Dotyp == "RG12" && outRef;
             }).ToList();
-            //if (lists.Count > 0)
-            //{
-                foreach (AttDetItem attDetItem in lists)
-                {
-                    var obj = new Attachment();
-                    obj.Filename = attDetItem.Filename;
-                    obj.FileExtn = attDetItem.FileExtn;
-                    obj.Mimetype = attDetItem.Mimetype;
-                    obj.RetGuid = attDetItem.RetGuid;
-                    obj.DocUrl = attDetItem.DocUrl;
-                    obj.Dotyp = attDetItem.Dotyp;
-                    obj.Doguid = attDetItem.Doguid;
-                    list.Add(obj);
-                }
+            foreach (AttDetItem attDetItem in lists)
+            {
+                var obj = new Attachment();
+                obj.Filename = attDetItem.Filename;
+                obj.FileExtn = attDetItem.FileExtn;
+                obj.Mimetype = attDetItem.Mimetype;
+                obj.RetGuid = attDetItem.RetGuid;
+                obj.DocUrl = attDetItem.DocUrl;
+                obj.Dotyp = attDetItem.Dotyp;
+                obj.Doguid = attDetItem.Doguid;
+                list.Add(obj);
+            }
 
-                TransferCRsCopies = new ObservableCollection<Attachment>(list);
-            //}
+            TransferCRsCopies = new ObservableCollection<Attachment>(list);
         }
         private void resetForm()
         {
