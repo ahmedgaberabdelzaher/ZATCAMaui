@@ -696,10 +696,57 @@ namespace EGAZT.Models
 
     }
 
-    public partial class AttachmentSet
+    public partial class AttachmentSet : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyRaised(string propertyname)
+        {
+
+            if (PropertyChanged != null)
+            {
+
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+
+            }
+
+        }
+
+
+
+        [JsonIgnore]
+
+        public List<Attachment> _results { get; set; }
+
+
+
         [JsonProperty("results")]
-        public List<Attachment> Results { get; set; }
+
+        public List<Attachment> Results
+
+        {
+
+            get
+
+            {
+
+                return _results;
+
+            }
+
+            set
+
+            {
+
+                _results = value;
+
+                OnPropertyRaised("Results");
+
+            }
+
+        }
+
     }
 
     public partial class PermitSet

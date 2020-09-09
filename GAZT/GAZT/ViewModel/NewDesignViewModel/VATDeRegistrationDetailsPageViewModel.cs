@@ -397,8 +397,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("NextFilingEndDate");
             }
         }
-        private DateTime _nextFilingDueDate = DateTime.Now;
-        public DateTime NextFilingDueDate
+        private string _nextFilingDueDate = string.Empty;
+        public string NextFilingDueDate
         {
             get
             {
@@ -774,6 +774,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("DocTypeString");
             }
         }
+
 
         public string _textCount { get; set; }
         public string TextCount
@@ -2427,7 +2428,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     VATDeRegistrationDetailsData.d.SuspDtto = ConvertDateFormat(SuspendedEndDate);
                     VATDeRegistrationDetailsData.d.NextDtfrom = ConvertDateFormat(NextFilingStartDate);
                     VATDeRegistrationDetailsData.d.NextDtto = ConvertDateFormat(NextFilingEndDate);
-                    VATDeRegistrationDetailsData.d.Duedate = ConvertDateFormat(NextFilingDueDate);
+                    VATDeRegistrationDetailsData.d.Duedate = ConvertDateFormat(DateTime.Parse(NextFilingDueDate));
 
                 }
 
