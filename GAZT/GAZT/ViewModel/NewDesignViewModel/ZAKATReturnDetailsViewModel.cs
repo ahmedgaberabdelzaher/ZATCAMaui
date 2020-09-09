@@ -649,8 +649,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string CalenderType = ZakatReturnDetail.Incotyp.Substring(0, 1);
                         if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                         {
-                            FromDate = Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            ToDate = Converthijri(toDate);// " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            FromDate =UtilityManager.Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            ToDate = UtilityManager.Converthijri(toDate);// " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         }
                         else
                         {
