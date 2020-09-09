@@ -211,7 +211,7 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
-                            <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCode}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCode}" MaxLength="5" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
                                 <customOne:GAZTBorderlessEntry.Behaviors>
                                     <customOne:NumericValidationBehavior />
                                 </customOne:GAZTBorderlessEntry.Behaviors>
@@ -345,7 +345,7 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
-                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCodeSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCodeSame}" MaxLength="5" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
                                      <customOne:GAZTBorderlessEntry.Behaviors>
                                         <custom:NumericValidationBehavior/>
                                     </customOne:GAZTBorderlessEntry.Behaviors>

@@ -853,6 +853,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
+                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count == 0)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
+                    return false;
+                }
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M").ToList();
                 var count = mainactivity.Count();
                 if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
