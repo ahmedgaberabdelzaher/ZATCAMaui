@@ -6974,7 +6974,7 @@
     <value>الرجاء اختيار نشاط من الأنشطة الرئيسية</value>
   </data>
   <data name="ESTValidateAddHouseNumber" xml:space="preserve">
-    <value>الرجاء ادخال رقم المنزل </value>
+    <value>الرجاء ادخال رقم المنزل</value>
   </data>
   <data name="ESTValidateAddBuildingNumber" xml:space="preserve">
     <value>الرجاء ادخال رقم المبنى</value>
@@ -7005,6 +7005,40 @@
   </data>
   <data name="ESTValidateAddCity" xml:space="preserve">
     <value>الرجاء ادخال المدينة</value>
+  </data>
+    
+    <data name="ESTValidatePAddHouseNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم المنزل للبريد</value>
+  </data>
+  <data name="ESTValidatePAddBuildingNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم المبنى للبريد</value>
+  </data>
+  <data name="ESTValidatePAddFloorNumber" xml:space="preserve">
+    <value>الرجاء ادخال رقم الطابق للبريد</value>
+  </data>
+  <data name="ESTValidatePAddStreet" xml:space="preserve">
+    <value>الرجاء ادخال اسم الشارع للبريد</value>
+  </data>
+  <data name="ESTValidatePAddQuarter" xml:space="preserve">
+    <value>الرجاء ادخال اسم المنطقة للبريد</value>
+  </data>
+  <data name="ESTValidatePAddPostal" xml:space="preserve">
+    <value>الرجاء ادخال الرمز البريدي للبريد</value>
+  </data>
+  <data name="ESTValidatePAddPostalCode5" xml:space="preserve">
+    <value>الرجاء ادخال رمز بريدي مكون من 5 ارقام للبريد</value>
+  </data>
+  <data name="ESTValidatePAddCountry" xml:space="preserve">
+    <value>الرجاء ادخال اسم الدولة للبريد</value>
+  </data>
+  <data name="ESTValidatePAddProvinance" xml:space="preserve">
+    <value>الرجاء ادخال اسم المنطقة للبريد</value>
+  </data>
+  <data name="ESTValidatePAddAdditional" xml:space="preserve">
+    <value>الرجاء ادخال الرقم الإضافي للبريد</value>
+  </data>
+  <data name="ESTValidatePAddCity" xml:space="preserve">
+    <value>الرجاء ادخال المدينة للبريد</value>
   </data>
   <data name="ESTValidateOutletName" xml:space="preserve">
     <value>v</value>

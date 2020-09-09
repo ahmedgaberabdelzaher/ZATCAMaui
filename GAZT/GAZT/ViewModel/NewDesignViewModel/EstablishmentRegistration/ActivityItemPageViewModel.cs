@@ -1038,6 +1038,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             };
             CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
+
+            List<Attachment> list = new List<Attachment>();
+            var lists = taxPayerDetails.AttDetSet.results.Where(x => {
+                var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
+                var outRef = x.OutletRef == docIdentifier;
+                return x.Dotyp == "RG01" && outRef;
+            }).ToList();
+            //if (lists.Count > 0)
+            //{
+                foreach (AttDetItem attDetItem in lists)
+                {
+                    var obj = new Attachment();
+                    obj.Filename = attDetItem.Filename;
+                    obj.FileExtn = attDetItem.FileExtn;
+                    obj.Mimetype = attDetItem.Mimetype;
+                    obj.RetGuid = attDetItem.RetGuid;
+                    obj.DocUrl = attDetItem.DocUrl;
+                    obj.Dotyp = attDetItem.Dotyp;
+                    obj.Doguid = attDetItem.Doguid;
+                    list.Add(obj);
+                }
+                CRsCopies = new ObservableCollection<Attachment>(list);
+            //}
+
+            lists = taxPayerDetails.AttDetSet.results.Where(x => {
+                var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
+                var outRef = x.OutletRef == docIdentifier;
+                return x.Dotyp == "RG12" && outRef;
+            }).ToList();
+            //if (lists.Count > 0)
+            //{
+                foreach (AttDetItem attDetItem in lists)
+                {
+                    var obj = new Attachment();
+                    obj.Filename = attDetItem.Filename;
+                    obj.FileExtn = attDetItem.FileExtn;
+                    obj.Mimetype = attDetItem.Mimetype;
+                    obj.RetGuid = attDetItem.RetGuid;
+                    obj.DocUrl = attDetItem.DocUrl;
+                    obj.Dotyp = attDetItem.Dotyp;
+                    obj.Doguid = attDetItem.Doguid;
+                    list.Add(obj);
+                }
+
+                TransferCRsCopies = new ObservableCollection<Attachment>(list);
+            //}
         }
         private void resetForm()
         {
@@ -1173,14 +1219,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
-                else if (CRsCopies == null && CRsCopies.Count == 0)
+                else if (CRsCopies == null || CRsCopies.Count == 0)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
                     return false;
                 }
                 else if (CRMainGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
                 else if (CRSubGroup == null)
@@ -1225,7 +1271,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
                     return false;
                 }
-                else if (LicensesCopies == null && LicensesCopies.Count == 0)
+                else if (LicensesCopies == null || LicensesCopies.Count == 0)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachLicense));
                     return false;
