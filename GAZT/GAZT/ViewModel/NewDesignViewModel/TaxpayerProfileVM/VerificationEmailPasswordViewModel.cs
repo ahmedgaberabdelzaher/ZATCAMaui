@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Timers;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -302,10 +304,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                });
+                ShowValidationPopup(ex.Message);
             }
 
             return TP;
@@ -331,13 +330,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                });
+                ShowValidationPopup(ex.Message);
             }
 
             return APIResponse;
+        }
+
+        public void ShowValidationPopup(string sourceString)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = sourceString;
+            popUp.IsLinkAvailable = false;
+
+            if (App.IsArabic)
+                popUp.FlowDirections = "RightToLeft";
+            else
+                popUp.FlowDirections = "LeftToRight";
+
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
 

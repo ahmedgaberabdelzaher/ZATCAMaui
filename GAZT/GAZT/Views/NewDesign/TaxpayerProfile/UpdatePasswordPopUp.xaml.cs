@@ -1,5 +1,7 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesApp.Controls;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -33,12 +35,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             try
             {
-                /*if (!string.IsNullOrEmpty(viewModel.CurrentPasswordEntry) && !string.IsNullOrEmpty(viewModel.NewPasswordEntry))
-                {*/
                 string lang = "EN";
                 if (App.IsArabic == true) { lang = "AR"; }
                 WebServiceManager.ErrorMessage = string.Empty;
-                // Call Update Mobile Number API + Go Success Page
+
                 bool callAPIFlag = TaxpayerProfilePasswordUpdateValidation(viewModel.CurrentPasswordEntry,
                                                                             viewModel.NewPasswordEntry,
                                                                             viewModel.ConfirmPasswordEntry);
@@ -62,38 +62,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     else
                     {
                         if (!string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await viewModel._dialogService.ShowMessageBox(WebServiceManager.ErrorMessage, AppResources.Information);
-                            });
-                        }
+                            ShowValidationPopup(WebServiceManager.ErrorMessage);
                         else
-                        {
-                            String OnInvalidPassword = AppResources.InvalidPassword;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await viewModel._dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
-                            });
-                        }
+                            ShowValidationPopup(AppResources.InvalidPassword);
                     }
                 }
-                /*}
-                else
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
-                    });
-                }*/
             }
             catch (Exception ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                    //ClearPasswordDataForEmail();
-                });
+                ShowValidationPopup(ex.Message);
             }
         }
 
@@ -106,11 +83,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 return true;
             else
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessageBox(validationError, AppResources.Information);
-                });
-
+                ShowValidationPopup(validationError);
                 return false;
             }
         }
@@ -119,10 +92,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
 
-            if (string.IsNullOrEmpty(CurrentPassword))
+            if (string.IsNullOrEmpty(CurrentPassword) && string.IsNullOrEmpty(NewPassword))
+                return AppResources.TPOldNewPasswordEmpty;
+            else if (string.IsNullOrEmpty(CurrentPassword))
                 return AppResources.TPOldPasswordEmpty;
             else if (string.IsNullOrEmpty(NewPassword))
                 return AppResources.TPNewPasswordEmpty;
+            else if(string.Equals(CurrentPassword, NewPassword))
+                return AppResources.TPOldAndNewPasswordSame;
             else if (!compareStringFlag)
                 return AppResources.NewPasswordandRetypePasswordNotMatch;
             else
@@ -133,6 +110,20 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 else
                     return AppResources.PasswordValidationMesseg;
             }
+        }
+
+        private void ShowValidationPopup(string sourceString)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = sourceString;
+            popUp.IsLinkAvailable = false;
+
+            if (App.IsArabic)
+                popUp.FlowDirections = "RightToLeft";
+            else
+                popUp.FlowDirections = "LeftToRight";
+
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         // * Current Password - New Password - Confirm New Password : Show / Hide
@@ -179,7 +170,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             RefreshControlsData();
         }
 

@@ -9606,6 +9606,18 @@ namespace EGAZT {
             }
         }
         
+        public static string TPOldAndNewPasswordSame {
+            get {
+                return ResourceManager.GetString("TPOldAndNewPasswordSame", resourceCulture);
+            }
+        }
+        
+        public static string TPOldNewPasswordEmpty {
+            get {
+                return ResourceManager.GetString("TPOldNewPasswordEmpty", resourceCulture);
+            }
+        }
+        
         public static string TPSuccessMobileUpdated {
             get {
                 return ResourceManager.GetString("TPSuccessMobileUpdated", resourceCulture);
