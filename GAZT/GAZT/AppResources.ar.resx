@@ -5528,16 +5528,12 @@
   <data name="TPOTPSentToEmail" xml:space="preserve">
     <value>الرجاء إدخال رمز التحقق المرسل الى بريدك الإلكتروني</value>
   </data>
-    
-    
   <data name="TPOldAndNewPasswordSame" xml:space="preserve">
     <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
   </data>
   <data name="TPOldNewPasswordEmpty" xml:space="preserve">
     <value>الرجاء ادخال كلمة المرور القديمة والجديدة</value>
   </data>
-    
-    
   <data name="NDAckReceiptForZakat" xml:space="preserve">
     <value>GAZT acknowledges the receipt of your Return of Zakat\Income Tax</value>
   </data>
