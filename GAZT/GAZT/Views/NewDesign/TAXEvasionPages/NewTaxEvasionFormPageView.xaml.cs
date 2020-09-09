@@ -174,7 +174,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                         var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
                         viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
-                    }
+                    mapView.Pins.Add(pin);
+                }
                     catch (FeatureNotSupportedException fnsEx)
                     {
                         // Handle not supported on device exception
@@ -496,6 +497,11 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 viewModel.IsFSHasError = false;
             }
+        }
+
+        private void mapView_MapClicked(object sender, MapClickedEventArgs e)
+        {
+
         }
 
         //private void mapView_MapClicked(object sender, MapClickedEventArgs e)

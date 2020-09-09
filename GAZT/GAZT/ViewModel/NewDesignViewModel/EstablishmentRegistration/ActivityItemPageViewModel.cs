@@ -488,7 +488,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     try
                     {
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                        {
                             CRIssueCountry = item as CountryDropdownItem;
+                            CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                            CRIssueCity = null;
+                        }
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                             LicenseIssueCountry = item as CountryDropdownItem;
                     }
@@ -894,52 +898,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
                         CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
                         CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
-                        //var docPassportResult = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG19").ToList();
-                        List<Attachment> list = new List<Attachment>();
-                        var lists = taxPayerDetails.AttDetSet.results.Where(x => {
-                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
-                            var outRef = x.OutletRef == docIdentifier;
-                            return x.Dotyp == "RG01" && outRef;
-                        }).ToList();
-                        if (lists.Count > 0)
-                        {
-                            foreach (AttDetItem attDetItem in lists)
-                            {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
-                                list.Add(obj);
-                            }
-                            CRsCopies = new ObservableCollection<Attachment>(list);
-                        }
-
-                        lists = taxPayerDetails.AttDetSet.results.Where(x => {
-                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
-                            var outRef = x.OutletRef == docIdentifier;
-                            return x.Dotyp == "RG12" && outRef;
-                        }).ToList();
-                        if (lists.Count > 0)
-                        {
-                            foreach (AttDetItem attDetItem in lists)
-                            {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
-                                list.Add(obj);
-                            }
-
-                            TransferCRsCopies = new ObservableCollection<Attachment>(list);
-                        }
+                        updateCRAttachments();
                     }
                     if(!string.IsNullOrEmpty(CRNumber))
                         validateCRNumber();
@@ -1017,10 +976,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             IsLoading = true;
             validateCR = await WebServiceManager.ESTValidateCRNum(CRNumber);
             IsLoading = false;
-
+            updateCRAttachments();
             if (validateCR?.NotFound == "X")
             {
-                await _dialogService.ShowMessage("CR Number is invalid", AppResources.Information);
+                await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
                 return;
             }
             if (validateCR?.Excption == "X")
@@ -1034,6 +993,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             };
             CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
+
+        }
+        private void updateCRAttachments()
+        {
+            List<Attachment> list = new List<Attachment>();
+            var lists = taxPayerDetails.AttDetSet.results.Where(x =>
+            {
+                var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
+                var outRef = x.OutletRef == docIdentifier;
+                return x.Dotyp == "RG01" && outRef;
+            }).ToList();
+            foreach (AttDetItem attDetItem in lists)
+            {
+                var obj = new Attachment();
+                obj.Filename = attDetItem.Filename;
+                obj.FileExtn = attDetItem.FileExtn;
+                obj.Mimetype = attDetItem.Mimetype;
+                obj.RetGuid = attDetItem.RetGuid;
+                obj.DocUrl = attDetItem.DocUrl;
+                obj.Dotyp = attDetItem.Dotyp;
+                obj.Doguid = attDetItem.Doguid;
+                list.Add(obj);
+            }
+            CRsCopies = new ObservableCollection<Attachment>(list);
+
+            lists = taxPayerDetails.AttDetSet.results.Where(x =>
+            {
+                var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
+                var outRef = x.OutletRef == docIdentifier;
+                return x.Dotyp == "RG12" && outRef;
+            }).ToList();
+            foreach (AttDetItem attDetItem in lists)
+            {
+                var obj = new Attachment();
+                obj.Filename = attDetItem.Filename;
+                obj.FileExtn = attDetItem.FileExtn;
+                obj.Mimetype = attDetItem.Mimetype;
+                obj.RetGuid = attDetItem.RetGuid;
+                obj.DocUrl = attDetItem.DocUrl;
+                obj.Dotyp = attDetItem.Dotyp;
+                obj.Doguid = attDetItem.Doguid;
+                list.Add(obj);
+            }
+
+            TransferCRsCopies = new ObservableCollection<Attachment>(list);
         }
         private void resetForm()
         {
@@ -1146,47 +1150,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (CRIssueCountry == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue country"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CRIssueBy))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue by"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
                     return false;
                 }
                 else if(CRIssueCity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue city"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
                     return false;
                 }
                 else if(string.IsNullOrWhiteSpace(CRNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide CR number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRNumber));
                     return false;
                 }
                 else if(string.IsNullOrWhiteSpace(CRValidFrom))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide CR valid from date"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
-                else if (CRsCopies == null && CRsCopies.Count == 0)
+                else if (CRsCopies == null || CRsCopies.Count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach CR copy"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
                     return false;
                 }
                 else if (CRMainGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide main group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
                 else if (CRSubGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide sub group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
                 else if (CRAcitivity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide activity"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;
                 }
                 else
@@ -1198,47 +1202,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (LicenseIssueCountry == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue country"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(LicenseIssueBy))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue by"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
                     return false;
                 }
                 else if (LicenseIssueCity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide issue city"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(LicenseNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide License number"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACLicense));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(ValidFrom))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide License valid from date"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
                     return false;
                 }
-                else if (LicensesCopies == null && LicensesCopies.Count == 0)
+                else if (LicensesCopies == null || LicensesCopies.Count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please attach License copy"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachLicense));
                     return false;
                 }
                 else if (LicenseMainGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide main group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
                 else if (LicenseSubGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide sub group"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
                 else if (LicenseAcitivity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Please provide activity"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;
                 }
                 else

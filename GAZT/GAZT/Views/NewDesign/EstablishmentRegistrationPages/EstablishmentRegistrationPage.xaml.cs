@@ -29,6 +29,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             SetLTR();
             viewModel = App.Locator.EstablishmentRegistrationPage;
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+            viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             BindingContext = viewModel;
         }
 

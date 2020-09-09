@@ -35,7 +35,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <inputLayout:SfTextInputLayout Grid.Row="0" x:Name="notesInputLayout" ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}" Hint="{x:Static ResourceManager:AppResources.VoidReasonHint}" ContainerType="Outlined" ShowHint="True">
-                    <Entry x:Name="notes" IsSpellCheckEnabled="false"  MaxLength="132" />
+                    <Entry x:Name="notes" IsSpellCheckEnabled="false"  MaxLength="132" TextChanged="notes_TextChanged"/>
                 </inputLayout:SfTextInputLayout>
                 <StackLayout HorizontalOptions="End" VerticalOptions="EndAndExpand" Grid.Row="1" Orientation="Horizontal">
                     <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Padding="20,0" Text="{x:Static ResourceManager:AppResources.ZZVoid}" HorizontalOptions="Center" Clicked="Void_Button_Clicked" />

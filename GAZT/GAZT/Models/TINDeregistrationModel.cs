@@ -696,10 +696,57 @@ namespace EGAZT.Models
 
     }
 
-    public partial class AttachmentSet
+    public partial class AttachmentSet : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyRaised(string propertyname)
+        {
+
+            if (PropertyChanged != null)
+            {
+
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+
+            }
+
+        }
+
+
+
+        [JsonIgnore]
+
+        public List<Attachment> _results { get; set; }
+
+
+
         [JsonProperty("results")]
-        public List<Attachment> Results { get; set; }
+
+        public List<Attachment> Results
+
+        {
+
+            get
+
+            {
+
+                return _results;
+
+            }
+
+            set
+
+            {
+
+                _results = value;
+
+                OnPropertyRaised("Results");
+
+            }
+
+        }
+
     }
 
     public partial class PermitSet
@@ -766,6 +813,8 @@ namespace EGAZT.Models
 
         [JsonProperty("Visdel")]
         public string Visdel { get; set; }
+
+       
     }
 
 
@@ -935,10 +984,34 @@ namespace EGAZT.Models
             }
         }
 
+
+        [JsonIgnore]
+        private string _reasonDescription { get; set; }
+        [JsonIgnore]
+        public string ReasonDescription
+        {
+            get
+            {
+                return _reasonDescription;
+            }
+            set
+            {
+                _reasonDescription = value;
+                OnPropertyRaised("PermitTypes");
+            }
+        }
     }
 
-    public class PermitSetResult
+    public class PermitSetResult:INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
 
         [JsonProperty("APermitNewMainNoIdTb")]
         public string APermitNewMainNoIdTb { get; set; }
@@ -1006,11 +1079,18 @@ namespace EGAZT.Models
         [JsonProperty("APermitValfrDtCTb")]
         public string APermitValfrDtCTb { get; set; }
 
+        [JsonIgnore]
+        public string aPermitEffDtTb;
+
         [JsonProperty("APermitEffDtTb")]
-        public string APermitEffDtTb { get; set; }
+        public string APermitEffDtTb { get { return aPermitEffDtTb; } set
+            { if (!string.IsNullOrEmpty(value)) { aPermitEffDtTb = value; OnPropertyRaised("APermitEffDtTb"); } } }
 
         [JsonProperty("APermitEffDtHTb")]
         public string APermitEffDtHTb { get; set; }
+
+        [JsonIgnore]
+        public string APermitDeregDisplayDate { get; set; }
 
         [JsonProperty("APermitEffDtCTb")]
         public string APermitEffDtCTb { get; set; }
@@ -1021,8 +1101,53 @@ namespace EGAZT.Models
         [JsonProperty("APermitTransTinTb")]
         public string APermitTransTinTb { get; set; }
 
-        [JsonProperty("APermitIdTypeTb")]
-        public string APermitIdTypeTb { get; set; }
+        /*
+         IBANTypesList = new ObservableCollection<IBANType>();
+            ObservableCollection<IBANType> IBANTypesDummyList = new ObservableCollection<IBANType>();
+            IBANType iBANType = new IBANType();
+            iBANType.key = "ZS0001";
+            iBANType.Text = AppResources.NationaID;
+            IBANTypesDummyList.Add(iBANType);
+
+            IBANType iBANType2 = new IBANType();
+            iBANType2.key = "ZS0005";
+            iBANType2.Text = AppResources.ZIBANCompanyID;
+            IBANTypesDummyList.Add(iBANType2);
+
+            IBANType iBANType3 = new IBANType();
+            iBANType3.key = "ZS0002";
+            iBANType3.Text = AppResources.ZZIqamaID;
+            IBANTypesDummyList.Add(iBANType3);
+
+            IBANType iBANType4 = new IBANType();
+            iBANType4.key = "ZS0003";
+            iBANType4.Text = AppResources.ZZGCCID;  
+            IBANTypesDummyList.Add(iBANType4);*/
+
+            [JsonIgnore]
+            public string aPermitIdTypeTb;
+            [JsonProperty("APermitIdTypeTb")]
+            public string APermitIdTypeTb { get { return aPermitIdTypeTb; } set { aPermitIdTypeTb = value;
+
+                if(aPermitIdTypeTb == "ZS0001")
+                {
+                    PermitIdTypeName = AppResources.NationaID;
+                }
+                else if(aPermitIdTypeTb == "ZS0005")
+                {
+                    PermitIdTypeName = AppResources.ZIBANCompanyID;
+                }
+                else if(aPermitIdTypeTb == "ZS0002")
+                {
+                    PermitIdTypeName = AppResources.ZZIqamaID;
+                }
+                else
+                {
+                    PermitIdTypeName = AppResources.ZZGCCID;
+                }
+
+                OnPropertyRaised("APermitIdTypeTb");
+        } }
 
         [JsonProperty("APermitIdNoTb")]
         public string APermitIdNoTb { get; set; }
@@ -1048,6 +1173,32 @@ namespace EGAZT.Models
         [JsonProperty("APermitDobCTb")]
         public string APermitDobCTb { get; set; }
 
+        [JsonIgnore]
+        private string permitIdTypeName;
+        [JsonIgnore]
+        public string PermitIdTypeName
+        { get { return permitIdTypeName; } set {
+
+                permitIdTypeName = value;
+                OnPropertyRaised("PermitIdTypeName");
+
+            } }
+
+        [JsonIgnore]
+        private string _reasonDescription { get; set; }
+        [JsonIgnore]
+        public string ReasonDescription
+        {
+            get
+            {
+                return _reasonDescription;
+            }
+            set
+            {
+                _reasonDescription = value;
+                OnPropertyRaised("PermitTypes");
+            }
+        }
     }
 
     public partial class TinDeregistrationReasonSet

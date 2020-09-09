@@ -2114,8 +2114,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
-                            headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
                             headerWithInfos.Add(headerAmountInfo);
@@ -2156,7 +2156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                     headerAmountInfo.IsLinkAvailable = false;
                     headerAmountInfo.Message = AppResources.ZZZChangeRegistationNote;
 
@@ -2208,8 +2208,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
-                            headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
                             headerWithInfos.Add(headerAmountInfo);
@@ -2403,7 +2403,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
             headerAmountInfo.IsLinkAvailable = false;
             headerAmountInfo.Message = AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost;
 
@@ -2470,7 +2470,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATReturnFormCancelled;
 
@@ -2496,7 +2496,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                     headerAmountInfo.IsLinkAvailable = false;
                                     headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
@@ -2522,7 +2522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                     headerAmountInfo.IsLinkAvailable = false;
                                     headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
@@ -2608,7 +2608,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum);
 
@@ -2637,7 +2637,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = string.Format(AppResources.ZZSomethingwentwrong, "  " + res.d.Fbnum);
 
@@ -2661,7 +2661,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
@@ -2759,7 +2759,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion;
 
@@ -2787,7 +2787,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
@@ -2814,7 +2814,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
@@ -2848,7 +2848,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
                         headerAmountInfo.Message = ex.Message;
 
@@ -2890,7 +2890,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
                         headerAmountInfo.Message = AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed;
 
@@ -2968,7 +2968,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
@@ -2997,7 +2997,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
@@ -3504,7 +3504,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                     headerAmountInfo.IsLinkAvailable = false;
                                     headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
@@ -3535,7 +3535,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
@@ -3604,7 +3604,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
@@ -3629,7 +3629,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
                                 headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 
@@ -3692,7 +3692,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
 
                         StringBuilder Masseges = new StringBuilder();
@@ -3777,7 +3777,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
@@ -3803,7 +3803,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                             headerAmountInfo.IsLinkAvailable = false;
                             headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
 

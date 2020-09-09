@@ -35,6 +35,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
     {
         SignUpForEstablishmentPageViewModel viewModel;
         ObservableCollection<InternationalMobileData> mobileData = null;
+        bool IsTermsAndConditionPage = true;
 
         public SignUpForEstablishmentPageView()
         {
@@ -47,6 +48,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.IsAllValidDataEntered = false;
             viewModel.IsAllValidCRNumberEntered = false;
             viewModel.IsDeclarationCheckedForInstruction = false;
+             IsTermsAndConditionPage = true;
+
             ChangeAeroIcon();
             SetLTR();
             ClearFields();
@@ -70,25 +73,25 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 if (!App.IsArabic)
                 {
                     string url = Path.Combine(path, "TermsAndConditionsEN.html");
-                   // TCWebView.Source = url;
+                    TCWebView.Source = url;
 
                 }
                 else
                 {
                     string url = Path.Combine(path, "TermsAndConditionsAR.html");
-                    //TCWebView.Source = url;
+                    TCWebView.Source = url;
                 }
             }
             else
             {
                 if (!App.IsArabic)
                 {
-                    //   TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+                       TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
                     
                 }
                 else
                 {
-                  //  TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
+                    TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
                 }
             }
 
@@ -727,7 +730,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.SelectedSignUpUsing = signUpUsing;
             viewModel.TxtIDType = signUpUsing.SUType;
             viewModel.TxtIDNumber = string.Empty;
-            EntryIDNumber.Focus();
+            if(IsTermsAndConditionPage == false)
+            {
+                EntryIDNumber.Focus();
+            }
+            IsTermsAndConditionPage = false;
             IDTypePicker.IsOpen = false;
 
         }
@@ -982,7 +989,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         }
                         else
                         {
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " "+ SignupIsIDTypeValid.d.FamilyName;
                             //EntryName.IsEnabled = false;
                             viewModel.IsAllValidDataEntered = true;
                             FrmIDNumber.HasError = false;
@@ -1111,8 +1118,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         else
                         {
                             viewModel.IsAllValidDataEntered = true;
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                           // EntryName.IsEnabled = false;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                            // EntryName.IsEnabled = false;
                             FrmIDNumber.HasError = false;
                         }
                     }
@@ -1361,8 +1368,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                 }
                                                 else
                                                 {
-                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                     FrmIDNumber.HasError = false;
+                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                                                    FrmIDNumber.HasError = false;
                                                     viewModel.IsAllValidDataEntered = true;
                                                    // EntryName.IsEnabled = false;
                                                 }
@@ -1506,8 +1513,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                 }
                                                 else
                                                 {
-                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                   // EntryName.IsEnabled = false;
+                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                                                    // EntryName.IsEnabled = false;
                                                     viewModel.IsAllValidDataEntered = true;
                                                     FrmIDNumber.HasError = false;
                                                 }

@@ -642,7 +642,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
 
-                            viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingDueDate = date.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
                         }
                     }
                     isValid = false;

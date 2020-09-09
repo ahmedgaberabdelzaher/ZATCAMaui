@@ -77,10 +77,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                        if (IDNumber.Length > 0 && !(IDNumber[0].Equals("7")))
+                    if (IDNumber.Length > 0)
                         {
-                            IDNumber = string.Empty;
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Corporate ID must start with 7"));
+                            string firstlettorOfIdNumber = IDNumber.Substring(0, 1);
+                            if (!firstlettorOfIdNumber.Equals("7"))
+                            {
+                                IDNumber = string.Empty;
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Corporate ID must start with 7"));
+
+                            }
 
                         }
                     }

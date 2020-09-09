@@ -25,8 +25,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
+            TotalVATSales.Text = "NA";
 
-          
             ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
             SetLTR();
@@ -44,7 +44,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             base.OnAppearing();
             //date.Text = viewModel.Abrzu;
            await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
-            if(viewModel.isThresholdValueLessThanTotalVATSales)
+            viewModel.ZAKATReturnsPagName = AppResources.FORM5ReturnDetails;
+
+            if (viewModel.isThresholdValueLessThanTotalVATSales)
             {
                 TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
@@ -53,10 +55,42 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
                 ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
                 PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+
+                TotalVATSalesApplicableLayout.IsVisible = true;
+                TotalVATSalesNotApplicableLayout.IsVisible = false;
+
+                AverageNumberOfLabourApplicableApplicable.IsVisible = false;
+                AverageNumberOfLabourNotApplicableLayout.IsVisible = true;
+
+                ImportValueApplicableLayout.IsVisible = false;
+                ImportValueNotApplicableLayout.IsVisible = true;
+
+                SalesFromPointOfSalesNotApplicableLayout.IsVisible = true;
+                SalesFromPointOfSalesApplicableLayout.IsVisible = false;
+
+                ContractFromETIMADSystemApplicableLayout.IsVisible = false;
+                ContractFromETIMADSystemNotApplicableLayout.IsVisible = true;
+
+                ExportValueApplicableLayout.IsVisible = false;
+                ExportValueNotApplicableLayout.IsVisible = true;
+
+                PurchaseValueApplicableLayout.IsVisible = false;
+                PurchaseValueNotApplicableLayout.IsVisible = true;
+
+
+                //AverageNumberOfLabour.Text = AppResources.ZNA;
+                //ImportValue.Text = AppResources.ZNA;
+                //SalesFromPointOfSales.Text = AppResources.ZNA;
+                //ContractFromETIMADSystem.Text = AppResources.ZNA;
+                //ExportValue.Text = AppResources.ZNA;
+                //PurchaseValue.Text = AppResources.ZNA;
+                //CapitalAmount.Text = AppResources.ZNA;
             }
             else
             {
                 TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                //TotalVATSales.Text = "ABC";// AppResources.ZNA;
+               
                 AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 ImportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 SalesFromPointOfSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
@@ -64,7 +98,26 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
 
+                TotalVATSalesApplicableLayout.IsVisible = false;
+                TotalVATSalesNotApplicableLayout.IsVisible = true;
 
+                AverageNumberOfLabourApplicableApplicable.IsVisible = true;
+                AverageNumberOfLabourNotApplicableLayout.IsVisible = false;
+
+                ImportValueApplicableLayout.IsVisible = true;
+                ImportValueNotApplicableLayout.IsVisible = false;
+
+                SalesFromPointOfSalesNotApplicableLayout.IsVisible = false;
+                SalesFromPointOfSalesApplicableLayout.IsVisible = true;
+
+                ContractFromETIMADSystemApplicableLayout.IsVisible = true;
+                ContractFromETIMADSystemNotApplicableLayout.IsVisible = false;
+
+                ExportValueApplicableLayout.IsVisible = true;
+                ExportValueNotApplicableLayout.IsVisible = false;
+
+                PurchaseValueApplicableLayout.IsVisible = true;
+                PurchaseValueNotApplicableLayout.IsVisible = false;
             }
             getYesCommandToReleaseTheReturn();
             getYesCommandToAmendTheReturn();

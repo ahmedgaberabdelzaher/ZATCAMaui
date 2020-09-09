@@ -226,11 +226,12 @@
                                                                     HasError="False">
                                         <control:BorderlessEntry Text="{Binding LookupNumber}"
                                                                     MaxLength="{Binding MaxDigids}"
-                                                                    IsReadOnly="{Binding IsNameVisible}"
+                                                                   TextChanged="BorderlessEntry_TextChanged"
                                                                      Style="{StaticResource DefaultEntry}"  
                                                                     Placeholder="{x:Static ResourceManager:AppResources.NDTypeYourReferenceNumber}"
                                                                     TextColor="#bbbbbb" >
-                                             <Entry.Behaviors>
+                                        <!--IsReadOnly="{Binding IsNameVisible}"-->
+                                        <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
                                             </Entry.Behaviors>
                                         </control:BorderlessEntry>
