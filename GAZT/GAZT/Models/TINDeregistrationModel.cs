@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
+using GAZT.Manager;
+using GAZT.Models;
 using Newtonsoft.Json;
 
 namespace EGAZT.Models
@@ -818,10 +822,34 @@ namespace EGAZT.Models
     }
 
 
-    public partial class Set
+    public partial class Set : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+
+         [JsonIgnore]
+        public OutletSetResult[] _results { get; set; }
+
         [JsonProperty("results")]
-        public OutletSetResult[] Results { get; set; }
+        public OutletSetResult[] Results
+        {
+            get
+            {
+                return _results;
+            }
+            set
+            {
+                _results = value;
+                OnPropertyRaised("Results");
+            }
+        }
     }
 
     public partial class OutletSetResult : INotifyPropertyChanged
@@ -1004,6 +1032,11 @@ namespace EGAZT.Models
 
     public class PermitSetResult:INotifyPropertyChanged
     {
+        public PermitSetResult()
+        {
+            PopulateIdTypeTypeFromList();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyRaised(string propertyname)
         {
@@ -1090,16 +1123,129 @@ namespace EGAZT.Models
         public string APermitEffDtHTb { get; set; }
 
         [JsonIgnore]
-        public string APermitDeregDisplayDate { get; set; }
+        public string aPermitDeregDisplayDate { get; set; }
+
+        [JsonIgnore]
+        public string APermitDeregDisplayDate
+        {
+            get { return aPermitDeregDisplayDate; }
+            set
+            { if (!string.IsNullOrEmpty(value)) { aPermitDeregDisplayDate = value; OnPropertyRaised("APermitDeregDisplayDate"); } }
+        }
+
+        [JsonIgnore]
+        public string aPermitDisplayReason { get; set; }
+
+        [JsonIgnore]
+        public string APermitDisplayReason
+        {
+            get { return aPermitDisplayReason; }
+            set
+            { if (!string.IsNullOrEmpty(value)) { aPermitDisplayReason = value; OnPropertyRaised("APermitDisplayReason"); } }
+        }
 
         [JsonProperty("APermitEffDtCTb")]
         public string APermitEffDtCTb { get; set; }
 
         [JsonProperty("APermitDregRsnTb")]
         public string APermitDregRsnTb { get; set; }
+       
+
+        [JsonIgnore]
+        public string aPermitTransTinTb { get; set; }
 
         [JsonProperty("APermitTransTinTb")]
-        public string APermitTransTinTb { get; set; }
+        public string APermitTransTinTb
+        {
+            get { return aPermitTransTinTb; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    aPermitTransTinTb = value;
+                    Task.Run(async() =>
+                    { 
+                        if(aPermitTransTinTb.Length == 10)
+                        {
+                            VATSignUp resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitTransTinTb);
+                            
+                            if (resultData != null && resultData.d != null)
+                            {
+                                VATSignUpD IDTypeDataModel = new VATSignUpD();
+                                IDTypeDataModel = resultData.d;
+
+                                IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
+                                if (idType != null)
+                                {
+                                    APermitIdNoTb = IDTypeDataModel.Idnum;
+                                }
+
+                            }
+                    }
+                    });
+
+                    OnPropertyRaised("APermitTransTinTb");
+                }
+            }
+        }
+
+        [JsonIgnore]
+        private ObservableCollection<IBANType> _iBANTypesList;
+        [JsonIgnore]
+        public ObservableCollection<IBANType> IBANTypesList
+        {
+            get
+            {
+                return _iBANTypesList;
+            }
+            set
+            {
+                _iBANTypesList = value;
+                //if (_iBANTypesList != null && _iBANTypesList.Count != 0)
+                //{
+                //    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
+                //    {
+                //        IsEnableIBANType = false;
+                //    }
+                //    else
+                //    {
+                //        IsEnableIBANType = true;
+                //    }
+                //}
+                //else
+                //{
+                //    IsEnableIBANType = false;
+                //}
+                OnPropertyRaised("IBANTypesList");
+            }
+        }
+
+        public void PopulateIdTypeTypeFromList()
+        {
+            IBANTypesList = new ObservableCollection<IBANType>();
+            ObservableCollection<IBANType> IBANTypesDummyList = new ObservableCollection<IBANType>();
+            IBANType iBANType = new IBANType();
+            iBANType.key = "ZS0001";
+            iBANType.Text = AppResources.NationaID;
+            IBANTypesDummyList.Add(iBANType);
+
+            IBANType iBANType2 = new IBANType();
+            iBANType2.key = "ZS0005";
+            iBANType2.Text = AppResources.ZIBANCompanyID;
+            IBANTypesDummyList.Add(iBANType2);
+
+            IBANType iBANType3 = new IBANType();
+            iBANType3.key = "ZS0002";
+            iBANType3.Text = AppResources.ZZIqamaID;
+            IBANTypesDummyList.Add(iBANType3);
+
+            IBANType iBANType4 = new IBANType();
+            iBANType4.key = "ZS0003";
+            iBANType4.Text = AppResources.ZZGCCID;
+            IBANTypesDummyList.Add(iBANType4);
+
+            IBANTypesList = IBANTypesDummyList;
+        }
 
         /*
          IBANTypesList = new ObservableCollection<IBANType>();
@@ -1124,7 +1270,7 @@ namespace EGAZT.Models
             iBANType4.Text = AppResources.ZZGCCID;  
             IBANTypesDummyList.Add(iBANType4);*/
 
-            [JsonIgnore]
+        [JsonIgnore]
             public string aPermitIdTypeTb;
             [JsonProperty("APermitIdTypeTb")]
             public string APermitIdTypeTb { get { return aPermitIdTypeTb; } set { aPermitIdTypeTb = value;
@@ -1149,8 +1295,20 @@ namespace EGAZT.Models
                 OnPropertyRaised("APermitIdTypeTb");
         } }
 
+
+        private string aPermitIdNoTb;
         [JsonProperty("APermitIdNoTb")]
-        public string APermitIdNoTb { get; set; }
+        public string APermitIdNoTb { get { return aPermitIdNoTb; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    aPermitIdNoTb = value;
+                    OnPropertyRaised("APermitIdNoTb");
+                }
+            }
+
+                }
 
         [JsonProperty("APermitNm1Tb")]
         public string APermitNm1Tb { get; set; }

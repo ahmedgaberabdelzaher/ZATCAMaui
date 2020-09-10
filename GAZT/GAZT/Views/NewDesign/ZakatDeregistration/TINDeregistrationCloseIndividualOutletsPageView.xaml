@@ -105,7 +105,7 @@
                     </StackLayout>-->
                 </Grid>
 
-                 <listView:SfListView BackgroundColor="White" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5"
+                 <listView:SfListView BackgroundColor="White" IsScrollingEnabled="False" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" AutoFitMode="Height"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5"
                                       ItemsSource="{Binding PermitOutletDecisionOptions}" SelectedItem="{Binding SelectedPermitTypeOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
@@ -144,7 +144,7 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="{Binding SingleOutletDeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding SingleDeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Margin="5,0">
                                             <Image.Source>
@@ -155,7 +155,7 @@
                                     </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                          <TapGestureRecognizer Tapped="TapGestureRecognizerSelectSingleOutleDate_Tapped" CommandParameter="{Binding APermitNoTb}"></TapGestureRecognizer>
+                                          <TapGestureRecognizer Tapped="TapGestureRecognizerSingleDeregDate_Tapped" CommandParameter="{Binding APermitNoTb}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </border:SfBorder >
@@ -173,17 +173,17 @@
                  </StackLayout>
 
                  <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="false" >
-                            <StackLayout.Triggers>
-                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
-                                    <Setter Property="IsVisible" Value="false" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="1">
-                                    <Setter Property="IsVisible" Value="true" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="2">
-                                    <Setter Property="IsVisible" Value="false" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
+                        <StackLayout.Triggers>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
+                                <Setter Property="IsVisible" Value="false" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="1">
+                                <Setter Property="IsVisible" Value="true" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="2">
+                                <Setter Property="IsVisible" Value="false" />
+                            </DataTrigger>
+                        </StackLayout.Triggers>
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
 
                         <StackLayout>
@@ -194,7 +194,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                        <Label Text="{Binding DeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding SingleDeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -205,7 +205,7 @@
                                         </StackLayout>
 
                                         <StackLayout.GestureRecognizers>
-                                              <TapGestureRecognizer Tapped="TapGestureRecognizerSelectSingleOutleDate_Tapped" CommandParameter="{Binding APermitNoTb}"></TapGestureRecognizer>
+                                              <TapGestureRecognizer Tapped="TapGestureRecognizerSingleDeregDate_Tapped" CommandParameter="{Binding APermitNoTb}"></TapGestureRecognizer>
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
@@ -218,7 +218,7 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                     <custom:BorderlessEntry x:Name="EntryTIN" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
+                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding }" 
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                 <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
@@ -398,8 +398,8 @@
                                         Style="{StaticResource BodyLabelGrey}" />
 
                  <listView:SfListView BackgroundColor="White" Margin="-3,0,-3,0" IsVisible="{Binding IsMultiplePermitsVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedOutletForCloseTranser.PermitTypes}" x:Name="outletsListView" HorizontalOptions="Center"
-                                             IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                             IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                SelectionMode="Single" SelectionBackgroundColor="Transparent">
                       
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -509,23 +509,21 @@
 
                                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                                            <Label Text="{Binding ReasonDescription}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                            <Label Text="{Binding APermitDisplayReason}" BackgroundColor="AliceBlue"  Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                                 <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                                         HorizontalOptions="Start" VerticalOptions="Center">
-
                                                                 </Image>
                                                             </StackLayout>
 
                                                             <StackLayout.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped="TapGestureRecognizerSelectPermitType_Tapped" Command="{Binding OnPermitTypeReasonTapped}" ></TapGestureRecognizer>
+                                                                <TapGestureRecognizer Tapped="TapGestureRecognizerSelectPermitType_Tapped" Command="{Binding OnPermitTypeReasonTapped}" CommandParameter="{Binding APermitNoTb}" ></TapGestureRecognizer>
                                                             </StackLayout.GestureRecognizers>
 
                                                         </StackLayout>
                                                     </border:SfBorder >
                                             </StackLayout>
-                                            <StackLayout x:Name="parentView" Grid.Row="7" Grid.ColumnSpan="2" IsVisible="{Binding IsOutletTranferOutletGridVisible}" >
-                                            
+                                            <StackLayout x:Name="parentView" Grid.Row="7" Grid.ColumnSpan="2" IsVisible="{Binding IsOutletTranferOutletGridVisible}">
                                                <Grid RowSpacing="8">
                                                         <Grid.RowDefinitions >
                                                             <RowDefinition Height="auto"/>
@@ -550,8 +548,9 @@
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                                             <custom:BorderlessEntry x:Name="EntryTINPermitType" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding APermitTransTinTb, Mode=TwoWay}" 
+                                                                                            VerticalTextAlignment="Start" Unfocused="BorderlessEntryPermittype_Unfocused" Text="{Binding APermitTransTinTb, Mode=TwoWay}" ReturnType="Done" ReturnCommand="{Binding Source={RelativeSource AncestorType={x:Type local1:TINDeregistrationPageViewModel}}, Path=PermitTypeTinUnfocused}" ReturnCommandParameter="{Binding}"
                                                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
                                                                 </Entry.Behaviors>
@@ -591,6 +590,9 @@
                                                                 <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                                         VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding APermitIdNoTb, Mode=TwoWay}"
                                                                                         TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                    <Entry.Behaviors>
+                                                                                <custom1:OnlyNumericValuesBehaviour/>
+                                                                            </Entry.Behaviors>
                                                                 </custom:BorderlessEntry>
                                                             </inputLayout:SfTextInputLayout>
                                                         </StackLayout>
@@ -622,6 +624,11 @@
                                                             </border:SfBorder >
                                                             </StackLayout>
                                                          </StackLayout>
+                                                    <StackLayout>
+                            
+                           
+                                                        </StackLayout>
+
                                                   </Grid>
                                             </StackLayout>
                                         </Grid>

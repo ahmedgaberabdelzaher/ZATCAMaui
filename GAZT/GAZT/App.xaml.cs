@@ -28,6 +28,7 @@ using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
+using GAZT.Helper;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -520,7 +521,7 @@ namespace EGAZT
             IsJailBrokenDevice = false;
             try
             {
-                //  IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+                IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
             }
             catch (Exception ex)
             {

@@ -77,6 +77,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
                 }
+
+                if(arg.PickerId == "DeregOutletSingleDatePicker")
+                {
+                    viewModel.SingleDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                }
             });
         }
 
@@ -333,6 +338,74 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             }
         }
+
+        void BorderlessEntryPermittype_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            if (!string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                if (EntryTIN.Text.Substring(0, 1) != "3")
+                {
+                    Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                    EntryTIN.Focus();
+                }
+                if (EntryTIN.Text.Length != 10)
+                {
+                    if (Messages.Length > 0)
+                    {
+                        Messages.Append(Environment.NewLine);
+                    }
+                    Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                }
+                if (Messages.Length > 0)
+                {
+                    popUp.Message = Messages.ToString();
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    EntryTIN.Text = string.Empty;
+                }
+                else
+                {
+                    viewModel.FrameTinError = false;
+                    viewModel.ValidateIdNumberForPermitTypes (EntryTIN.Text);
+                }
+            }
+            else
+            {
+                viewModel.FrameTinError = true;
+                Messages.Append(AppResources.AccountUnlockedCompleteRequiedFields);
+
+                popUp.Message = Messages.ToString();
+                popUp.IsLinkAvailable = false;
+
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                EntryTIN.Text = string.Empty;
+            }
+        }
+
         void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -399,6 +472,41 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
+        async void TapGestureRecognizerSingleDeregDate_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
+                genericDatePickerModel.PickerId = "DeregOutletSingleDatePicker";
+
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+
+                }
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                });
+            }
+        }
+
+
         async void TapGestureRecognizerSelectSingleOutleDate_Tapped(System.Object sender, System.EventArgs e)
         {
             try
@@ -406,8 +514,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
                 genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
                 genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
-                var parameterVal = (e as TappedEventArgs).Parameter.ToString();
-                viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
+
+                if ((e as TappedEventArgs).Parameter != null)
+                {
+                    var parameterVal = (e as TappedEventArgs).Parameter.ToString();
+                    viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
+                }
 
                 try
                 {
@@ -442,6 +554,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 ObservableCollection<string> reasonData = new ObservableCollection<string>();
                 reasonData.Add(AppResources.TinDeregistrationClosed);
                 reasonData.Add(AppResources.TinDeregistrationTransfer);
+
+                if ((e as TappedEventArgs).Parameter != null)
+                {
+                    var parameterVal = (e as TappedEventArgs).Parameter.ToString();
+                    viewModel.OnOutletPermitTypeReasonTapped.Execute(parameterVal);
+                }
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
                 genericPickerModel.PickerData = reasonData;
