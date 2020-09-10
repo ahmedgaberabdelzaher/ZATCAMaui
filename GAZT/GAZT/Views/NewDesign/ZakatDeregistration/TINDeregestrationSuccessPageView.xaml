@@ -4,8 +4,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="EGAZT.Views.NewDesign.ZakatDeregistration.TINDeregestrationSuccessPageView"
              xmlns:custom2="clr-namespace:EGAZT"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background">
      <ContentPage.Resources>
         <ResourceDictionary>
@@ -36,67 +35,13 @@
                         <Label Text="{x:Static custom2:AppResources.TinDeregistrationSuccess}"  Style="{StaticResource BodyLabelBlack}"
                                TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                         </StackLayout>
-            <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0" Padding="20"  Margin="0,20,0,0" VerticalOptions="Fill">
-                <StackLayout >
-              
-                  <border:SfBorder   Margin="0,8,0,8"  Style="{StaticResource GreyBorderFrame}">
-               <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                        <Label  Text="{x:Static custom2:AppResources.VATRSName}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
-                       <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                            <Label x:Name="Label_Name" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-
-                        </StackLayout>
-
-                   </StackLayout>
-                 
-                </border:SfBorder>
-                     
-                  <border:SfBorder   Margin="0,0,0,8"  Style="{StaticResource GreyBorderFrame}">
-                   
-                      <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                        <Label  Text="{x:Static custom2:AppResources.VATRSAppNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
-                          <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                            <Label x:Name="Label_ApplicationNumber" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-                                <Image>
-                                      <Image.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                              Tapped="Image_Copy_Tapped"/>
-                                    </Image.GestureRecognizers>
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
-                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
-                                    </Image.Source>
-                                </Image>
-                        </StackLayout>
-                   </StackLayout>
-                 
-                </border:SfBorder>
-                     
-                  <border:SfBorder   Margin="0,0,0,8"  Style="{StaticResource GreyBorderFrame}">
-                   
-                    <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                        <Label  Text="{x:Static custom2:AppResources.Date}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
-                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                            <Label x:Name="Label_Date" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-
-                        </StackLayout>
-
-                   </StackLayout>
-                </border:SfBorder>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.VatInstalmentDownload}"
-                                          CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
-                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" Command="{Binding DownloadConfirmationTapped}"/>
-
-                       <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,0" Clicked="btnDash_Clicked"  x:Name="btnDownloadConfirmation" Command="{Binding RegistrationDownloadConfirmationBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Margin="30,60,30,80" >
+                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,0" Clicked="btnDash_Clicked"  x:Name="btnDownloadConfirmation" Command="{Binding RegistrationDownloadConfirmationBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                         
                          <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  x:Name="btnRegistrationDetails" Clicked="btnRegistrationDetailsClicked" Command="{Binding RegistrationDetailsBtnTapped}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}"
                                    Style="{StaticResource NoBackgroundButtonStyle}"/>
-                </StackLayout>
-            </yummy:PancakeView>
-
-              
+                    </StackLayout>
                     </Grid>
                 </StackLayout>
     </ContentPage.Content>

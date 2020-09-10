@@ -25,8 +25,8 @@
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZFilesizeshouldnotbemorethan5MB}" Margin="0,0,0,0" TextColor="#005e4b"  />
-                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZChooseonlyfilewithextension}" Margin="0,0,0,0" TextColor="#005e4b"  />
+                <Label HorizontalTextAlignment="Center" Text="{Binding TitleOne}" Margin="0,0,0,0" TextColor="#005e4b"  />
+                <Label HorizontalTextAlignment="Center" Text="{Binding TitleTwo}" Margin="0,0,0,0" TextColor="#005e4b"  />
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
 
                 <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300"  ItemTapped="Attachmentlist_ItemTapped" SeparatorVisibility="None">

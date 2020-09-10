@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
@@ -81,6 +82,17 @@
 
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+
                 <!--Review Reason-->
 
                 <Grid IsVisible="{Binding ReviewReasonVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
@@ -1422,6 +1434,7 @@
                     </StackLayout>
                 </Grid>
             </Grid>
+                </Grid>
         </ScrollView>
     </ContentPage.Content>
 

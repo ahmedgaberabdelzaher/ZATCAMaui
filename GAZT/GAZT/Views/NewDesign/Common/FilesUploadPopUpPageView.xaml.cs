@@ -50,6 +50,17 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var attachement = new Attachments();
             attachement.results = attachments;
             onPageLoad(attachement, whichAttachment, returnIdz);
+            if (whichAttachment == WhichAttachment.ZakatInstalmentBankStatements || whichAttachment == WhichAttachment.ZakatInstalmentFinance)
+
+            {
+                viewModel.TitleOne = "";
+                viewModel.TitleTwo = AppResources.ZakatAttachmentTitle;
+            }
+            else
+            {
+                viewModel.TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
+                viewModel.TitleTwo = AppResources.ZChooseonlyfilewithextension;
+            }
         }
 
         public void onPageLoad(Attachments attachments,WhichAttachment whichAttachment,string returnIdz)

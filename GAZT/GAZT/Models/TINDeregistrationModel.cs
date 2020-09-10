@@ -1205,7 +1205,15 @@ namespace EGAZT.Models
         [JsonProperty("APermitIdNoTb")]
         public string APermitIdNoTb
         {
-            get { return aPermitIdNoTb; }
+            get
+            {
+                if(aPermitIdNoTb == null)
+                {
+                    return string.Empty;
+                }
+
+                return aPermitIdNoTb;
+            }
             set
             {
                 if (!string.IsNullOrEmpty(value))
@@ -1244,7 +1252,13 @@ namespace EGAZT.Models
         [JsonProperty("APermitTransTinTb")]
         public string APermitTransTinTb
         {
-            get { return aPermitTransTinTb; }
+            get
+            {
+                if (string.IsNullOrEmpty(aPermitTransTinTb))
+                    return string.Empty;
+
+                return aPermitTransTinTb;
+            }
             set
             {
                 if (!string.IsNullOrEmpty(value))

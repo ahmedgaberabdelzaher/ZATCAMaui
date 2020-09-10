@@ -208,7 +208,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 else
                 {
 
-                    await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, "Alert");
+                    await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, AppResources.Information);
                 }
             });
 
