@@ -12929,5 +12929,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("CRContractEndDate", resourceCulture);
             }
         }
+        
+        public static string NDMobileNumberMustStartWithFive {
+            get {
+                return ResourceManager.GetString("NDMobileNumberMustStartWithFive", resourceCulture);
+            }
+        }
+        
+        public static string NDCorporateIDMustStartWithSeven {
+            get {
+                return ResourceManager.GetString("NDCorporateIDMustStartWithSeven", resourceCulture);
+            }
+        }
     }
 }

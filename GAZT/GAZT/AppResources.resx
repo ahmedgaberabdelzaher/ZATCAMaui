@@ -7232,4 +7232,10 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="CRContractEndDate" xml:space="preserve">
     <value>Contract End Date </value>
   </data>
+  <data name="NDMobileNumberMustStartWithFive" xml:space="preserve">
+    <value>Mobile number must start with 5</value>
+  </data>
+  <data name="NDCorporateIDMustStartWithSeven" xml:space="preserve">
+    <value>Corporate ID must start with 7</value>
+  </data>
 </root>

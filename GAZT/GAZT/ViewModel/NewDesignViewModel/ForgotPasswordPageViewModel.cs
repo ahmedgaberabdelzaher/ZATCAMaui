@@ -83,7 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (!firstlettorOfIdNumber.Equals("7"))
                             {
                                 IDNumber = string.Empty;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Corporate ID must start with 7"));
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDCorporateIDMustStartWithSeven));
 
                             }
 

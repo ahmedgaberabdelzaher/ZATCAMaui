@@ -123,7 +123,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             if (!firstlettorOfNewMobileNumberEntryText.Equals("5"))
                             {
                                 NewMobileNumberEntryText = string.Empty;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Mobile number must start with 5"));
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDMobileNumberMustStartWithFive));
 
                             }
 
