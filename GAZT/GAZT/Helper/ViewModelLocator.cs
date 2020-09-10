@@ -251,6 +251,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VatReviewViewModel>();
             SimpleIoc.Default.Register<VatReviewListViewModel>();
             SimpleIoc.Default.Register<ObjectionViewModel>();
+            SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
+            SimpleIoc.Default.Register<ZakatObjectionViewModel>();
             #endregion
 
             #region OldIOC
@@ -2216,8 +2218,11 @@ namespace EGAZT
             navigationService.Configure(App.VatReviewSuccessPageView, typeof(VatReviewSuccessPageView));
             navigationService.Configure(App.VatReviewViewApplicationPageView, typeof(VatReviewViewApplicationPageView));
             navigationService.Configure(App.ObjectionsSelectionPageView, typeof(ObjectionsSelectionPageView));
-
+            navigationService.Configure(App.ZakatObjectionsListPageView, typeof(ZakatObjectionsListPageView));
+            navigationService.Configure(App.ObjectionsSelectionPageView, typeof(ObjectionsSelectionPageView));
+            navigationService.Configure(App.ZakatObjectionPageView, typeof(ZakatObjectionPageView));
             #endregion
+
 
             #region SYNCFUSION INTEGRATION
 
@@ -2579,13 +2584,52 @@ namespace EGAZT
                 }
             }
         }
-        #endregion
+    
 
 
 
         #endregion
 
-       
+
+
+        #endregion
+
+
+        #region ZakatObjection
+
+
+
+        public ZakatObjectionsListViewModel ZakatObjectionListView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatObjectionsListViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatObjectionViewModel ZakatObjectionView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        #endregion
 
         public ZakatDeregistrationPageViewModel ZakatDeregistrationPageView
         {

@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         //public int DefaultMonth;
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
-        private OutletNumber number;
+        //private OutletNumber number;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
         {
@@ -1254,6 +1254,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         taxPayerDetails.Operationx = "04";
                                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                                         taxPayerDetails.UserTypx = "TP";
+                                        taxPayerDetails.StepNumberx = string.Empty;
                                         var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                         navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                                     }
@@ -1291,6 +1292,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
                 fetchTabDataAndBind(currentTab);
+                //bindingOutletList();
             }
         }
 
@@ -1998,8 +2000,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     bindingOutletList();
 
-                    number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
-                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, $"{Int16.Parse(number?.Actno):000}", taxPayerDetails?.Fbnumx);
+                    //number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    //taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, $"{Int16.Parse(number?.Actno):000}", taxPayerDetails?.Fbnumx);
+
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+
                     //await WebServiceManager.ESTOutletDropDowns();
                     //await WebServiceManager.ESTOutletGetActivitySetsList();
                     //ValidateCR crItem = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results?.FirstOrDefault()?.Idnumber);
