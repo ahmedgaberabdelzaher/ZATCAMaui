@@ -26,10 +26,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (response.Fbnum != null)
                 {
-                    if(response.ADecName != null)
-                        Label_Name.Text = response.ADecName;
+                    //if(response.ADecName != null)
+                    //    Label_Name.Text = response.ADecName;
 
-                    Label_ApplicationNumber.Text = response.Fbnum;
+                    //Label_ApplicationNumber.Text = response.Fbnum;
                     //viewModel.FBNumber = response.Fbnumx;
                     //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     //Label_Date.Text = StartdateToshow;
@@ -56,16 +56,16 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
-            if (Label_ApplicationNumber != null)
-            {
-                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
-                if (Clipboard.HasText)
-                {
-                    var text = await Clipboard.GetTextAsync();
-                    var displayText = AppResources.VATRSAppNumber + " " + text;
-                    viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
-                }
-            }
+            //if (Label_ApplicationNumber != null)
+            //{
+            //    Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+            //    if (Clipboard.HasText)
+            //    {
+            //        var text = await Clipboard.GetTextAsync();
+            //        var displayText = AppResources.VATRSAppNumber + " " + text;
+            //        viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+            //    }
+            //}
 
         }
         private void btnRegistrationDetailsClicked(object sender, EventArgs e)
