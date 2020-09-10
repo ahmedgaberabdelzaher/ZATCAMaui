@@ -948,11 +948,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            ValidateIDNumber();
+          //  ValidateIDNumber();
         }
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-            ValidateIDNumber();
+            //ValidateIDNumber();
         }
         public async void ValidateIDNumber()
         {
