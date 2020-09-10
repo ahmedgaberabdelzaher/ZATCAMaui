@@ -69,7 +69,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand IdTypeSpinnerTapped { get; set; }
         public ICommand ApplicationNumRefCommand { get; set; }
         public ICommand SadadGenerateBtnTapped { get; set; }
-     
+
 
 
         #endregion
@@ -77,7 +77,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
-        int selectedPage = (int) PagesEnum.ReviewReason;
+        int selectedPage = (int)PagesEnum.ReviewReason;
 
         private bool _isBackVisible = false;
 
@@ -255,7 +255,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("ReviewReason");
             }
         }
-        
+
         public string _subReviewReason = "";
 
         public string SubReviewReason
@@ -267,7 +267,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("SubReviewReason");
             }
         }
-        
+
         public string _applicationRefNumber = "";
 
         public string ApplicationRefNumber
@@ -279,7 +279,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("ApplicationRefNumber");
             }
         }
-        
+
         public DateTime? _requestDate = DateTime.Now;
 
         public DateTime? RequestDate
@@ -291,7 +291,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("RequestDate");
             }
         }
-        
+
         public string _taxPeriodOfCase = "";
 
         public string TaxPeriodOfCase
@@ -303,7 +303,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("TaxPeriodOfCase");
             }
         }
-        
+
         public DateTime? _taxPeriodFrom = DateTime.Now;
 
         public DateTime? TaxPeriodFrom
@@ -315,7 +315,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("TaxPeriodFrom");
             }
         }
-        
+
         public DateTime? _taxPeriodTo = DateTime.Now;
 
         public DateTime? TaxPeriodTo
@@ -327,7 +327,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("TaxPeriodTo");
             }
         }
-        
+
         public string _penalityAmountInQuestion = "";
 
         public string PenalityAmountInQuestion
@@ -339,7 +339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("PenalityAmountInQuestion");
             }
         }
-        
+
         public string _reportDetails = "";
 
         public string ReportDetails
@@ -351,7 +351,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("ReportDetails");
             }
         }
-        
+
         public string _sADADNumber = "";
 
         public string SADADNumber
@@ -528,10 +528,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             get
             {
-                
-              
-                    return securityType;
-                
+
+
+                return securityType;
+
             }
             set
             {
@@ -797,6 +797,215 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        public string _vATinNumber = "";
+        public string VATinNumber
+        {
+            get { return _vATinNumber; }
+            set
+            {
+                _vATinNumber = value;
+                RaisePropertyChanged("VATinNumber");
+            }
+        }
+
+        public string _vAAccNumber = "";
+        public string VAAccNumber
+        {
+            get { return _vAAccNumber; }
+            set
+            {
+                _vAAccNumber = value;
+                RaisePropertyChanged("VAAccNumber");
+            }
+        }
+
+        public string _vAIdnumber = "";
+        public string VAIdnumber
+        {
+            get { return _vAIdnumber; }
+            set
+            {
+                _vAIdnumber = value;
+                RaisePropertyChanged("VAIdnumber");
+            }
+        }
+
+        public string _vATaxpayerName = "";
+        public string VATaxpayerName
+        {
+            get { return _vATaxpayerName; }
+            set
+            {
+                _vATaxpayerName = value;
+                RaisePropertyChanged("VATaxpayerName");
+            }
+        }
+
+        public string _vAAddress = "";
+        public string VAAddress
+        {
+            get { return _vAAddress; }
+            set
+            {
+                _vAAddress = value;
+                RaisePropertyChanged("VAAddress");
+            }
+        }
+
+        public string _vAVATReturnType = "";
+        public string VAVATReturnType
+        {
+            get { return _vAVATReturnType; }
+            set
+            {
+                _vAVATReturnType = value;
+                RaisePropertyChanged("VAVATReturnType");
+            }
+        }
+
+        public string _vAVatReturnReferenceNo = "";
+        public string VAVatReturnReferenceNo
+        {
+            get { return _vAVatReturnReferenceNo; }
+            set
+            {
+                _vAVatReturnReferenceNo = value;
+                RaisePropertyChanged("VAVatReturnReferenceNo");
+            }
+        }
+
+        public string _vATaxPeriod = "";
+        public string VATaxPeriod
+        {
+            get { return _vATaxPeriod; }
+            set
+            {
+                _vATaxPeriod = value;
+                RaisePropertyChanged("VATaxPeriod");
+            }
+        }
+
+        public string _vAVatAccountNum = "";
+        public string VAVatAccountNum
+        {
+            get { return _vAVatAccountNum; }
+            set
+            {
+                _vAVatAccountNum = value;
+                RaisePropertyChanged("VAVatAccountNum");
+            }
+        }
+
+        public string _vASalesAmount = "";
+        public string VASalesAmount
+        {
+            get { return _vASalesAmount; }
+            set
+            {
+                _vASalesAmount = value;
+                RaisePropertyChanged("VASalesAmount");
+            }
+        }
+
+        public string _vASalesVatAdjustment = "";
+        public string VASalesVatAdjustment
+        {
+            get { return _vASalesVatAdjustment; }
+            set
+            {
+                _vASalesVatAdjustment = value;
+                RaisePropertyChanged("VASalesVatAdjustment");
+            }
+        }
+
+        public string _vAVatOnSales = "";
+        public string VAVatOnSales
+        {
+            get { return _vAVatOnSales; }
+            set
+            {
+                _vAVatOnSales = value;
+                RaisePropertyChanged("VAVatOnSales");
+            }
+        }
+
+        public string _vAPurchaseAmount = "";
+        public string VAPurchaseAmount
+        {
+            get { return _vAPurchaseAmount; }
+            set
+            {
+                _vAPurchaseAmount = value;
+                RaisePropertyChanged("VAPurchaseAmount");
+            }
+        }
+
+        public string _vAPurchaseVatAdjustment = "";
+        public string VAPurchaseVatAdjustment
+        {
+            get { return _vAPurchaseVatAdjustment; }
+            set
+            {
+                _vAPurchaseVatAdjustment = value;
+                RaisePropertyChanged("VAPurchaseVatAdjustment");
+            }
+        }
+
+        public string _vAVatOnPurchase = "";
+        public string VAVatOnPurchase
+        {
+            get { return _vAVatOnPurchase; }
+            set
+            {
+                _vAVatOnPurchase = value;
+                RaisePropertyChanged("VAVatOnPurchase");
+            }
+        }
+
+        public string _vATotalDueVAT = "";
+        public string VATotalDueVAT
+        {
+            get { return _vATotalDueVAT; }
+            set
+            {
+                _vATotalDueVAT = value;
+                RaisePropertyChanged("VATotalDueVAT");
+            }
+        }
+
+        public string _vATotalCreditVAT = "";
+        public string VATotalCreditVAT
+        {
+            get { return _vATotalCreditVAT; }
+            set
+            {
+                _vATotalCreditVAT = value;
+                RaisePropertyChanged("VATotalCreditVAT");
+            }
+        }
+
+        public string _vACorrrections = "";
+        public string VACorrrections
+        {
+            get { return _vACorrrections; }
+            set
+            {
+                _vACorrrections = value;
+                RaisePropertyChanged("VACorrrections");
+            }
+        }
+
+        public string _vANetVat = "";
+        public string VANetVat
+        {
+            get { return _vANetVat; }
+            set
+            {
+                _vANetVat = value;
+                RaisePropertyChanged("VANetVat");
+            }
+        }
+
         public string _viewApplicationTypeText = "";
         public string ViewApplicationTypeText
         {
@@ -807,6 +1016,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("ViewApplicationTypeText");
             }
         }
+
+        private int _currenrIndex = 1;
+
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+                else
+                {
+                    MarkComplete = false;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 5;
 
         private Color _declarationButtonBackGroundColor = Color.FromHex("#9EA4A9");
 
@@ -906,30 +1140,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private List<VATObjectionRejectedFormModel.AppRefNumResult> appRefNumList;
         private VATObjectionSummaryModel modelVATReview;
         private VATObjectionRejectedFormModel _VATObjectionRejected;
-
-
-        private int _currenrIndex = 1;
-        public int CurrentIndex
-        {
-            get => _currenrIndex;
-            set
-            {
-                _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
-                if (_currenrIndex == MaxIndex)
-                {
-                    MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
-                }
-                else
-                {
-                    MarkComplete = false;
-                    RaisePropertyChanged(nameof(MarkComplete));
-                }
-            }
-        }
-        public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 5;
 
         public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(
             navigationService, dialogService)
@@ -1093,13 +1303,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private void setReviewSubReasonPickerModel(string selectedReason)
         {
             ObservableCollection<string> subReasonTypes = new ObservableCollection<string>();
-            selectedReviewReason = reviewReasonList.First(reviewReason => reviewReason.Reasons==selectedReason);
+            selectedReviewReason = reviewReasonList.First(reviewReason => reviewReason.Reasons == selectedReason);
             subReviewReasonList = selectedReviewReason.ListSubReason;
             foreach (var subReason in subReviewReasonList)
             {
                 subReasonTypes.Add(subReason.SubReasons);
             }
-            
+
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = subReasonTypes;
             genericPickerModel.PickerTitle = AppResources.VRReviewSubReason;
@@ -1115,13 +1325,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 IsSecurityPaymentsTabVisible = false;
             }
-            if (selectedReviewReason.ProcCD == "VTAS")
+            if (selectedReviewReason.ProcCD == "VTPC" || selectedReviewReason.ProcCD == "VTPN")
             {
-                ViewApplicationTypeText = AppResources.VRViewApplication;
+                ViewApplicationTypeText = AppResources.VRViewBill;
             }
             else
             {
-                ViewApplicationTypeText = AppResources.VRViewBill;
+                ViewApplicationTypeText = AppResources.VRViewApplication;
             }
         }
 
@@ -1130,12 +1340,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             appRefNumList = results;
             ObservableCollection<string> appRefNums = new ObservableCollection<string>();
 
-            if(results != null && results.Count > 0) {
+            if (results != null && results.Count > 0)
+            {
 
 
                 foreach (var refNum in results)
                 {
-                    if(!string.IsNullOrEmpty(refNum.Opbel))
+                    if (!string.IsNullOrEmpty(refNum.Opbel))
                     {
                         appRefNums.Add(refNum.Opbel);
                     }
@@ -1155,7 +1366,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 ApplicationRefPickerModel = genericPickerModel;
             }
 
-            
+
         }
 
         private async void showDatePickerDialog()
@@ -1196,12 +1407,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         private async void showReviewReasonPickerDialog()
         {
             try
             {
-                if(ReviewReasonPickerModel != null) {
+                if (ReviewReasonPickerModel != null)
+                {
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(ReviewReasonPickerModel));
                 }
 
@@ -1218,12 +1430,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         private async void showSubReviewReasonPickerDialog()
         {
             try
             {
-                if(ReviewSubReasonPickerModel != null) {
+                if (ReviewSubReasonPickerModel != null)
+                {
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(ReviewSubReasonPickerModel));
 
                 }
@@ -1241,12 +1454,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         private async void showAppRefNumberPickerDialog()
         {
             try
             {
-                if(ApplicationRefPickerModel != null) {
+                if (ApplicationRefPickerModel != null)
+                {
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(ApplicationRefPickerModel));
 
                 }
@@ -1264,12 +1478,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         private void ReviewReasonConBtnClicked()
         {
             try
             {
-                if (IsReviewReasonEnabled) {
+                if (IsReviewReasonEnabled)
+                {
 
                     EnableReviewDetailsView();
 
@@ -1308,9 +1523,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         EnableDeclarationView();
                     }
 
-                   
+
                 }
-             
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1337,9 +1552,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 }
 
 
-               
 
-               
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1358,11 +1573,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             try
             {
-                if (IsDeclarationEnabled) {
+                if (IsDeclarationEnabled)
+                {
                     EnableSummaryView();
                 }
 
-               
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1385,7 +1601,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsGeneratingFormbundle = false;
                 modelVATReview = await SubmitClicked();
 
-                if(modelVATReview != null && modelVATReview.d != null) {
+                if (modelVATReview != null && modelVATReview.d != null)
+                {
 
                     VATReferanceNumber = modelVATReview.d.Fbnumx;
 
@@ -1414,7 +1631,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 modelVATReview = await SubmitClicked();
 
-                if (IsGeneratingFormbundle) {
+                if (IsGeneratingFormbundle)
+                {
 
                     if (modelVATReview != null && modelVATReview.d != null)
                     {
@@ -1444,13 +1662,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                         }
 
-                        VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"),SecamtValue, SecurityNumber, selectedApplicationRef.Persl,false );
+                        VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, false);
 
                     }
                 }
 
 
-                
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1475,7 +1693,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
-            selectedPage = (int) PagesEnum.ReviewReason;
+            selectedPage = (int)PagesEnum.ReviewReason;
         }
 
         private void EnableReviewDetailsView()
@@ -1487,7 +1705,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
-            selectedPage = (int) PagesEnum.ReviewDetails;
+            selectedPage = (int)PagesEnum.ReviewDetails;
         }
 
         private void EnableSecurityPaymentsView()
@@ -1499,7 +1717,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SecurityPaymentVisible = true;
             DeclarationVisible = false;
             SummaryVisible = false;
-            selectedPage = (int) PagesEnum.SecurityPayments;
+            selectedPage = (int)PagesEnum.SecurityPayments;
         }
 
         private void EnableDeclarationView()
@@ -1511,7 +1729,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SecurityPaymentVisible = false;
             DeclarationVisible = true;
             SummaryVisible = false;
-            selectedPage = (int) PagesEnum.Declaration;
+            selectedPage = (int)PagesEnum.Declaration;
         }
 
         private void EnableSummaryView()
@@ -1523,7 +1741,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = true;
-            selectedPage = (int) PagesEnum.Summary;
+            selectedPage = (int)PagesEnum.Summary;
         }
 
         public void EnableSadadSecurityView()
@@ -1533,7 +1751,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             SecurityType = AppResources.VRSADAD;
 
-          
+
             ShowSadadGenerateButton();
         }
 
@@ -1544,30 +1762,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             SecurityType = AppResources.VRBANKGURANTEE;
         }
-        
+
         public async Task GenerateSadadNumberAsync()
         {
             ShowSadadProgressLabel();
             //string fbnum, string Disamt, string Liaamt, string Abrzu, string Abrzo, string Secamt, string Security, string Persl
 
-            if (IsGeneratingFormbundle) {
+            if (IsGeneratingFormbundle)
+            {
 
                 decimal DisamtValue = 0;
                 decimal LiaamtValue = 0;
                 decimal SecamtValue = 0;
 
-                if (modelVATReview.d.SecurityDtl.Disamt.Length > 0) {
+                if (modelVATReview.d.SecurityDtl.Disamt.Length > 0)
+                {
 
                     DisamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Disamt));
 
                 }
 
-                if(modelVATReview.d.SecurityDtl.Liaamt.Length > 0) {
+                if (modelVATReview.d.SecurityDtl.Liaamt.Length > 0)
+                {
 
                     LiaamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Liaamt));
 
                 }
-                if(modelVATReview.d.SecurityDtl.Secamt.Length > 0) {
+                if (modelVATReview.d.SecurityDtl.Secamt.Length > 0)
+                {
 
                     SecamtValue = decimal.Truncate(Convert.ToDecimal(modelVATReview.d.SecurityDtl.Secamt));
 
@@ -1577,22 +1799,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 VATObjectionGenrateorRefreshSADAD(modelVATReview.d.Fbnumx, DisamtValue, LiaamtValue, selectedApplicationRef.Abrzu?.ToString("yyyy-MM-dd'T'HH:mm:ss"), selectedApplicationRef.Abrzo?.ToString("yyyy-MM-dd'T'HH:mm:ss"), SecamtValue, SecurityNumber, selectedApplicationRef.Persl, true);
 
             }
-            else {
+            else
+            {
 
                 IsGeneratingFormbundle = true;
 
                 SaveClicked();
 
-               
-
             }
-
-
-
-            
-
-
-
 
         }
 
@@ -1618,13 +1832,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private async void ViewApplicationClicked()
         {
 
-            if (selectedReviewReason.ProcCD == "VTAS")
+            if (selectedReviewReason.ProcCD == "VTPC" || selectedReviewReason.ProcCD == "VTPN")
             {
-                // FetchViewBill(selectedApplicationRef.Opbel,"");
+                await FetchViewBill(selectedApplicationRef.Opbel, "");
             }
             else
             {
-                FetchViewBill(selectedApplicationRef.Opbel, "");
+                await GetViewApplication(App.LoginDataRetrieved.FbGuid, "", modelVATReview.d.Euserx);
             }
             _isDialog = !_isDialog;
         }
@@ -1640,7 +1854,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             if (_isBankGuranteeAttachments)
             {
-              
+
                 BankGuranteeAttachmentsListViewData = attachmentsListViewData;
 
             }
@@ -1655,13 +1869,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             switch (selectedPage)
             {
-                case (int) PagesEnum.ReviewDetails:
+                case (int)PagesEnum.ReviewDetails:
                     EnableReviewReasonView();
                     break;
-                case (int) PagesEnum.SecurityPayments:
+                case (int)PagesEnum.SecurityPayments:
                     EnableReviewDetailsView();
                     break;
-                case (int) PagesEnum.Declaration:
+                case (int)PagesEnum.Declaration:
                     if (IsSecurityPaymentsTabVisible)
                     {
                         EnableSecurityPaymentsView();
@@ -1671,7 +1885,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         EnableReviewDetailsView();
                     }
                     break;
-                case (int) PagesEnum.Summary:
+                case (int)PagesEnum.Summary:
                     EnableDeclarationView();
                     break;
 
@@ -1710,7 +1924,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void ResetDataAfterReviewReasonPicked()
         {
-           
+
             ReviewSubReasonPickerModel = null;
             ApplicationRefPickerModel = null;
             SubReviewReason = "";
@@ -1739,19 +1953,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void fetchApplicationRefNums(string SubReasonValue)
         {
             selectedSubReviewReason = subReviewReasonList.First(subReviewReason => subReviewReason.SubReasons == SubReasonValue);
-            
+
             VATObjectionFormRejected(modelVATReview.d.Fbustx, selectedReviewReason.ProcCD, selectedSubReviewReason.Code,
                 modelVATReview.d.UserTypx);
             //VATObjectionEnableSubmit(modelVATReview.d.Statusx,selectedReviewReason.ProcCD,selectedSubReviewReason.Code,modelVATReview.d.RejFb);
         }
-        
+
         public void setDataBasedOnAppRefNum(string appRefNum)
         {
 
-            selectedApplicationRef  = appRefNumList.Find(appRef => (appRef.Fbnum == appRefNum) || (appRef.Opbel == appRefNum));
+            selectedApplicationRef = appRefNumList.Find(appRef => (appRef.Fbnum == appRefNum) || (appRef.Opbel == appRefNum));
 
 
-            if(selectedApplicationRef != null) {
+            if (selectedApplicationRef != null)
+            {
 
                 RequestDate = selectedApplicationRef.DecDt;
                 TaxPeriodOfCase = selectedApplicationRef.Perslt;
@@ -1762,7 +1977,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
 
 
-          
+
 
 
         }
@@ -2049,7 +2264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
 
 
-           
+
         }
         public void EnableReviewDetailsConButton()
         {
@@ -2065,29 +2280,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void EnableSecurityPaymentsConButton()
         {
 
-            if (IsSadadSecuritySelected) {
+            if (IsSadadSecuritySelected)
+            {
 
-                if(SecurityAmount == "" || Double.Parse(SecurityAmount) == 0 || !IsSadadCheckBox3 ) {
+                if (SecurityAmount == "" || !IsSadadCheckBox3)
+                {
 
                     IsSecurityPaymentEnabled = false;
 
 
                 }
-                else {
+                else
+                {
 
                     IsSecurityPaymentEnabled = true;
-                    
+
                 }
 
 
             }
-            else {
-                if(BankGuranteeAttachmentsListViewData == null || !IsSadadCheckBox1 || !IsSadadCheckBox2) {
+            else
+            {
+                if (BankGuranteeAttachmentsListViewData == null || !IsSadadCheckBox1 || !IsSadadCheckBox2)
+                {
 
                     IsSecurityPaymentEnabled = false;
 
                 }
-                else {
+                else
+                {
                     IsSecurityPaymentEnabled = true;
 
                 }
@@ -2098,7 +2319,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         }
 
-     
+
         public void EnableDeclarationConButton()
         {
             if (ContactPersonName == "" || !IsIDVerified)
@@ -2217,11 +2438,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         new VATObjectionFormModel.VATReviewsReturnModel();
                     try
                     {
-                         modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary("");
+                        modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary("");
 
                         if (modelVATReview != null && modelVATReview.d != null)
                         {
-                           
+
                             //modelVATReviewsReturn.ListReviewReason lstReasons =new modelVATReviewsReturn.ListReviewReason;
                             // List<Dictionary<string, string>> reasonDDL = new List<Dictionary<string, string>>();
                             List<VATObjectionFormModel.ReviewReason> reasonList =
@@ -2345,7 +2566,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         public async void VATObjectionEnableSubmit(string statusx, string rvRsn, string rvSubRsn, string rejFb)
         {
 
@@ -2403,7 +2624,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         public void VATObjectionDownloadAck(string fbnum)
         {
 
@@ -2435,25 +2656,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 Console.WriteLine(ex.Message);
             }
         }
-        
-        public async void VATObjectionFormRejected(string fbustx, string RvRsn ,string rvSubRsn,string UserTypx)
+
+        public async void VATObjectionFormRejected(string fbustx, string RvRsn, string rvSubRsn, string UserTypx)
         {
-    
+
             try
             {
                 await Task.Run(() =>
                 {
                     IsLoading = true;
                 });
-    
+
                 //VATObjectionRejectedFormModel _VATObjectionRejected = new VATObjectionRejectedFormModel();
-                _VATObjectionRejected = await WebServiceManager.GAZTGetVATObjectionFormRejected(fbustx, RvRsn, rvSubRsn,UserTypx);
-    
+                _VATObjectionRejected = await WebServiceManager.GAZTGetVATObjectionFormRejected(fbustx, RvRsn, rvSubRsn, UserTypx);
+
                 if (_VATObjectionRejected != null && _VATObjectionRejected.d != null)
                 {
                     setApplicationRefPickerModel(_VATObjectionRejected.d.RejectedFormSet.results);
                 }
-    
+
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2465,7 +2686,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = false;
                 });
-    
+
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
@@ -2474,7 +2695,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = false;
                 });
-    
+
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -2496,7 +2717,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             }
         }
-        
+
         public async void VATObjectionGenrateorRefreshSADAD(string fbnum, decimal Disamt, decimal Liaamt, string Abrzu, string Abrzo, decimal Secamt, string Security, string Persl, bool isFlagenable)
         {
 
@@ -2506,17 +2727,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = true;
                 });
-                
+
                 VATObjectionGenrateSadadModel _VATObjectionGenrateSadad = new VATObjectionGenrateSadadModel();
                 _VATObjectionGenrateSadad = await WebServiceManager.GAZTGetVATObjectionGenrateorRefreshSADAD(fbnum, Disamt, Liaamt, Abrzu, Abrzo, Secamt, Security, Persl, isFlagenable);
-                
+
                 if (_VATObjectionGenrateSadad != null && _VATObjectionGenrateSadad.d != null)
                 {
                     ShowSadadAmount();
                     SADADNumber = _VATObjectionGenrateSadad.d.Sopbel;
                     SecurityNumber = _VATObjectionGenrateSadad.d.Security;
                 }
-                else {
+                else
+                {
                     ShowSadadGenerateButton();
                 }
 
@@ -2556,7 +2778,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         public async void VATObjectionSecurityAmount(Decimal disamt, Decimal liaamt, Decimal clramt)
         {
 
@@ -2566,7 +2788,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = true;
                 });
-                
+
                 VATObjectionSecurityAmountModel _VATObjectionSecurityAmount = new VATObjectionSecurityAmountModel();
                 _VATObjectionSecurityAmount = await WebServiceManager.GAZTGetVATObjectionSecurityAmount(disamt, liaamt, clramt);
 
@@ -2611,7 +2833,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-      
+
         public async void VATObjectionValidateTaxPayer(string idnum, string idtype, string passExpDt, string taxpDob)
         {
 
@@ -2669,7 +2891,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
             }
         }
-        
+
         public async Task FetchViewBill(string opbel, string vtre2)
         {
             try
@@ -2681,12 +2903,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 await Task.Run(async () =>
                 {
                     IsLoading = true;
-                    
+
                     VATObjectionViewbillModel billModelResult = new VATObjectionViewbillModel();
                     VATObjectionFormViewBillModel billFormModel = new VATObjectionFormViewBillModel();
                     try
                     {
-                        billModelResult = await WebServiceManager.GAZTGetVATObjectionViewBill(opbel,vtre2);
+                        billModelResult = await WebServiceManager.GAZTGetVATObjectionViewBill(opbel, vtre2);
 
                         if (billModelResult != null && billModelResult.d != null)
                         {
@@ -2804,7 +3026,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.IdDetailSet = modelVATReview.d.IdDetailSet.results;
             _postData.IdType = modelVATReview.d.IdType;
             _postData.Langx = modelVATReview.d.Langx;
-          
+
             _postData.Officerx = modelVATReview.d.Officerx;
             _postData.PeriodKey = "M";
             _postData.Persl = modelVATReview.d.Persl;
@@ -2815,15 +3037,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.ReturnIdx = modelVATReview.d.ReturnIdx;
             _postData.RvRsn = modelVATReview.d.RvRsn;
             _postData.RvSubRsn = modelVATReview.d.RvSubRsn;
-             _postData.SecurityDtl = modelVATReview.d.SecurityDtl;
+            _postData.SecurityDtl = modelVATReview.d.SecurityDtl;
             _postData.Skipst5covid19 = "";
             _postData.Srcidentifyx = modelVATReview.d.Srcidentifyx;
             _postData.Statusx = modelVATReview.d.Statusx;
-            if (IsGeneratingFormbundle) {
+            if (IsGeneratingFormbundle)
+            {
                 _postData.StepNumberx = "01";
 
             }
-            else {
+            else
+            {
                 _postData.StepNumberx = "03";
 
             }
@@ -2883,7 +3107,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.SecurityDtl.Amttp = "F";
 
             _postData.MainReasonSet = modelVATReview.d.MainReasonSet.results;
-            
+
             _postData.AttdetSet = modelVATReview.d.AttdetSet.results;
             _postData.ReasonSet = modelVATReview.d.ReasonSet.results;
             _postData.MainReasonSet.Clear();
@@ -2925,13 +3149,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 modelVATReview.d.DecFlg2 = true;
                 modelVATReview.d.Decnm = ReportDetails.ToString();
 
-                if (!string.IsNullOrEmpty(IDType)) {
+                if (!string.IsNullOrEmpty(IDType))
+                {
 
                     modelVATReview.d.IdType = IDTypeDictionary[IDType];
                     modelVATReview.d.DecIdNo = IDNumber;
 
                 }
-                else {
+                else
+                {
                     modelVATReview.d.IdType = "";
                     modelVATReview.d.DecIdNo = "";
                 }
@@ -2944,37 +3170,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (!modelVATReview.d.DecDt.Contains("Date"))
                 {
 
-                   
-                        DateTime dt = Convert.ToDateTime(RequestDate.ToString());
-                        JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
-                        {
-                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                        };
-                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                        var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                        string[] dateList = jsonDateTime.Split('+');
-                        jsonDateTime = dateList[0].Replace("\"\\", "");
-                        jsonDateTime = jsonDateTime + ")/";
-                         modelVATReview.d.DecDt = jsonDateTime;
-                         strDecDate = jsonDateTime;
+
+                    DateTime dt = Convert.ToDateTime(RequestDate.ToString());
+                    JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                    {
+                        DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                    };
+                    //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                    var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                    string[] dateList = jsonDateTime.Split('+');
+                    jsonDateTime = dateList[0].Replace("\"\\", "");
+                    jsonDateTime = jsonDateTime + ")/";
+                    modelVATReview.d.DecDt = jsonDateTime;
+                    strDecDate = jsonDateTime;
 
 
-                  }
+                }
 
 
 
 
 
-                if (IsSecurityPaymentsTabVisible) {
+                if (IsSecurityPaymentsTabVisible)
+                {
 
-                    if (IsSadadSecuritySelected) {
+                    if (IsSadadSecuritySelected)
+                    {
 
                         modelVATReview.d.SecurityDtl.Sectp = "C";
                         modelVATReview.d.SecurityDtl.Sopbel = SADADNumber;
                     }
-                    else {
+                    else
+                    {
 
-                        
+
 
                         modelVATReview.d.SecurityDtl.Sectp = "B";
 
@@ -3006,18 +3235,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 request = BuildRequestObject();
 
-                if (IsGeneratingFormbundle) {
+                if (IsGeneratingFormbundle)
+                {
 
                     request.Operationx = "05";
                 }
-                else {
+                else
+                {
 
                     request.Operationx = "01";
                 }
 
-                
 
-               
+
+
 
 
                 response = await WebServiceManager.SaveVatReviewObjection(request);
@@ -3033,7 +3264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         {
 
 
-                           
+
 
                             //if (response.d.Submitz.Equals("X"))
                             //{
@@ -3103,7 +3334,108 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             return dateTime;
         }
-        
+
+        public async Task GetViewApplication(string Fbguid, string Fbnumz, string EUser)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+
+                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(Fbguid, Fbnumz, EUser, "");
+                    PopToRootPage();
+                    if (_vATDeclaration != null && _vATDeclaration.d != null)
+                    {
+                        VATinNumber = _vATDeclaration.d.Gpart;
+                        VAAccNumber = _vATDeclaration.d.Fin;
+                        VAIdnumber = _vATDeclaration.d.Idnumber;
+                        VATaxpayerName = _vATDeclaration.d.Tpnm;
+                        VAAddress = _vATDeclaration.d.ADRSet.results[0].BuildingNo + "," +
+                                    _vATDeclaration.d.ADRSet.results[0].Street + "," +
+                                    _vATDeclaration.d.ADRSet.results[0].Addrnumber + "," +
+                                    _vATDeclaration.d.ADRSet.results[0].RegionDesc + "," +
+                                    _vATDeclaration.d.ADRSet.results[0].City + "," +
+                                    _vATDeclaration.d.ADRSet.results[0].PostalCd;
+                        VAVATReturnType = _vATDeclaration.d.Incotext;
+                        VAVatReturnReferenceNo = _vATDeclaration.d.Fbnum;
+                        VATaxPeriod = _vATDeclaration.d.Perslt;
+                        VAVatAccountNum = _vATDeclaration.d.Fin;
+                        VASalesAmount = _vATDeclaration.d.TotalsalesAmt;
+                        VASalesVatAdjustment = _vATDeclaration.d.TotalsalesAdj;
+                        VAVatOnSales = _vATDeclaration.d.TotalsalesVat;
+                        VAPurchaseAmount = _vATDeclaration.d.TotalpurchaseAmt;
+                        VAVatOnPurchase = _vATDeclaration.d.TotalpurchaseVat;
+                        VAPurchaseVatAdjustment = _vATDeclaration.d.TotalpurchaseAdj;
+                        VATotalDueVAT = _vATDeclaration.d.TotaldueVat;
+                        VATotalCreditVAT = _vATDeclaration.d.CreditVat;
+                        VACorrrections = _vATDeclaration.d.Preperiodcorr;
+                        VANetVat = _vATDeclaration.d.NetdueVat;
+                        /*_vATDeclaration.d.Fbguid = SelectedICRGUID;
+                        VATDeclaration vATDeclaration = new VATDeclaration();
+                        VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                        if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
+                            numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
+                        Result5 result5 = new Result5();
+                        List<Result5> lst = new List<Result5>();
+                        ADRSet _aDRSet = new ADRSet();
+                        lst.Add(result5);
+                        vATDeclaration.d = vATDeclarationD;
+                        vATDeclaration.d.ADRSet = _aDRSet;
+                        vATDeclaration.d.ADRSet.results = lst;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
+                        });*/
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _navigationService.NavigateTo(App.VatReviewViewApplicationPageView);
+
+                        });
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading = false;
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
         #endregion
     }
 }

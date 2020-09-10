@@ -250,6 +250,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        public string _pickedDate = "";
+
+        public string PickedDate
+        {
+            get { return _pickedDate; }
+            set
+            {
+                _pickedDate = value;
+                RaisePropertyChanged("PickedDate");
+            }
+        }
+
         public string _penalityAmountInQuestion = "";
 
         public string PenalityAmountInQuestion
@@ -307,6 +319,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 _contactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
+            }
+        }
+
+        private string _securityType = "";
+
+        public string SecurityType
+        {
+            get { return _securityType; }
+            set
+            {
+                _securityType = value;
+                RaisePropertyChanged("SecurityType");
             }
         }
 
@@ -468,7 +492,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsLoading = true;
                     //VATReview = null;
 
-                  
+
                     try
                     {
 
@@ -490,22 +514,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                         modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary(item.Fbnum);
 
-                            if (modelVATReview != null && modelVATReview.d != null)
-                            {
-                                BindSummaryData(modelVATReview);
-                            }
+                        if (modelVATReview != null && modelVATReview.d != null)
+                        {
+                            BindSummaryData(modelVATReview);
+                        }
 
-                            else
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
-                                        AppResources.Information);
-                                    _navigationService.GoBack();
-                                });
-                            }
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
+                                    AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
 
-                       // }
+                        // }
 
                         IsLoading = false;
                     }
@@ -685,6 +709,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             modelVATReviewsReturn.ListReviewReason = reasonList;
 
+            if (responseModel.d.SecurityDtl.Sectp == "C")
+            {
+                SecurityType = AppResources.VRSADAD;
+            }
+            else
+            {
+                SecurityType = AppResources.VRBANKGURANTEE;
+            }
+
             //Step3 Details
 
             var selectedReason = reasonList.First(x => x.ProcCD == responseModel.d.RvRsn);
@@ -692,9 +725,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ReviewReason = selectedReason.Reasons;
             SubReviewReason = selectedReason.ListSubReason.First(x => x.Code == responseModel.d.RvSubRsn).SubReasons;
 
-            
-            ApplicationRefNumber = responseModel.d.Fbnumx;
-           
+
+            ApplicationRefNumber = responseModel.d.RejFb;
+
             string strRequestedDate = "";
             if (responseModel.d.DecDt != null)
             {
@@ -719,19 +752,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 strRequestedDate = dt1;
             }
 
+            PickedDate = strRequestedDate;
             RequestDate = strRequestedDate;
 
-            //     modelVATReviewsReturn.step3Text = ""; //(modelVATReview.d.NotesSet.results != null) ? modelVATReview.d.NotesSet.results.Strline : "";
-            //modelVATReviewsReturn.Corrections = responseModel.d.NotesSet.results;
-            //      modelVATReviewsReturn.AttachmentList = modelVATReview.d.AttdetSet.results;
-
-            //Step4
-            //modelVATReviewsReturnModel.DecisionTaken = modelVATReview.d.NotesSet.results;
-            //modelVATReviewsReturnModel.AttachmentName = modelVATReview.d.AttdetSet.results[0];
             TaxPeriodOfCase = responseModel.d.SecurityDtl.Perslt;
 
             string strTaxPeriodFromDate = "";
-            if (responseModel.d.SecurityDtl.Abrzu != null) {
+            if (responseModel.d.SecurityDtl.Abrzu != null)
+            {
 
                 DateTime dateStart = new DateTime();
                 CultureInfo cultureInfo = new CultureInfo("ar-SA");
@@ -814,6 +842,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             else if (responseModel.d.IdType == "ZS0003")
                 IDType = AppResources.VFCGCCID;
 
+            IDNumber = responseModel.d.DecIdNo;
+            ContactPersonName = responseModel.d.Decnm;
+
             modelVATReviewsReturn.NameOfTaxPayer = responseModel.d.FullName;
             ContactPersonName = responseModel.d.FullName;
             // modelVATReviewsReturn.ApplicationNo = modelVATReview.d.Fbnumx;
@@ -821,6 +852,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             modelVATReviewsReturn.Date = (responseModel.d.Declarationdt != null)
                 ? responseModel.d.Declarationdt.ToString()
                 : "";
+
+            SADADNumber = modelVATReviewsReturn.SADADNumber;
+            SecurityAmount = modelVATReviewsReturn.SecurityAmount;
+
+
+            /*
+               modelVATReviewsReturn.DecisionDate = (modelVATReview.d.DecDt != null)? modelVATReview.d.DecDt.ToString():"";
+                            //modelVATReviewsReturnModel.DecisionTaken = modelVATReview.d.NotesSet.results;
+                            //modelVATReviewsReturnModel.AttachmentName = modelVATReview.d.AttdetSet.results[0];
+                            modelVATReviewsReturn.TaxPeriodofCase = modelVATReview.d.SecurityDtl.Perslt;
+                             modelVATReviewsReturn.PeriodFrom = (modelVATReview.d.SecurityDtl.Abrzu!=null)? modelVATReview.d.SecurityDtl.Abrzu.ToString():"";
+                            modelVATReviewsReturn.PeriodTo = (modelVATReview.d.SecurityDtl.Abrzo!=null)? modelVATReview.d.SecurityDtl.Abrzo.ToString():"";
+                            modelVATReviewsReturn.TotalTaxLiability = modelVATReview.d.SecurityDtl.Liaamt;
+                            modelVATReviewsReturn.TaxPaid = modelVATReview.d.SecurityDtl.Clramt;
+                            modelVATReviewsReturn.RequestToReviewAmount = modelVATReview.d.SecurityDtl.Amttp;
+                            modelVATReviewsReturn.ParticularAmount = modelVATReview.d.SecurityDtl.Disamt;
+                            modelVATReviewsReturn.Corrections = modelVATReview.d.NotesSet.results;
+                            modelVATReviewsReturn.SecurityAmount = modelVATReview.d.SecurityDtl.Secamt;
+                            modelVATReviewsReturn.SADADNumber = modelVATReview.d.SecurityDtl.Sopbel;
+                            modelVATReviewsReturn.MethodSubmitSecurity = modelVATReview.d.SecurityDtl.Sectp;
+                            modelVATReviewsReturn.ChkSecurityPayment = modelVATReview.d.SecurityDtl.ChkCash;
+                            modelVATReviewsReturn.ChkBankGuarantee = modelVATReview.d.SecurityDtl.ChkBank;
+                            modelVATReviewsReturn.ChkInfoCorrect = modelVATReview.d.DecFlg1;
+                            modelVATReviewsReturn.NameOfTaxPayer = modelVATReview.d.FullName;
+                            modelVATReviewsReturn.ApplicationNo = modelVATReview.d.Fbnumx;
+                            modelVATReviewsReturn.Date =(modelVATReview.d.Declarationdt!=null)? modelVATReview.d.Declarationdt.ToString():"";
+             */
             //Step6 End
 
             /*SadadNumber = modelVATReviewsReturn.SADADNumber;
@@ -839,7 +897,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             //    Attachments.Add(attach);
             //}
 
-           // VatReviewAttachments = Attachments;
+            // VatReviewAttachments = Attachments;
 
             // ReferenceNumber= modelVATReviewsReturn.;
         }

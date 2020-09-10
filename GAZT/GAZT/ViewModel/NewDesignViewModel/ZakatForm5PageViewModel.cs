@@ -2679,14 +2679,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 int IsZakatFlag = 0;
                                 // information
                                 ReferenceNumber = ZakatForm5DataResult.Fbnum.ToString();
-                                DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatForm5DataResult.AFromDt + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
-                                DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatForm5DataResult.AToDt + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                                //DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatForm5DataResult.AFromDt + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                                //DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatForm5DataResult.AToDt + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                              
+                                DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                                DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+
 
                                 string CalenderType = ZakatForm5DataResult.Incotyp.Substring(0, 1);
                                 if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                                 {
                                     ZakatFromDate = UtilityManager.Converthijri(fromDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    ZakatToDate = UtilityManager.Converthijri(fromDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    ZakatToDate = UtilityManager.Converthijri(toDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
                                 }
                                 else

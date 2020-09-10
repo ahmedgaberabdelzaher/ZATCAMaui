@@ -7261,4 +7261,88 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
     <value>Maximum no. of allowed attachments are 10.</value>
   </data>
+    <data name="ZOAttachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="ZOCompletebelowdetails" xml:space="preserve">
+    <value>Complete below details</value>
+  </data>
+  <data name="ZODeclaration" xml:space="preserve">
+    <value>Declaration</value>
+  </data>
+  <data name="ZOObjectionDetails" xml:space="preserve">
+    <value>Objection Details</value>
+  </data>
+  <data name="ZOObjectionReason" xml:space="preserve">
+    <value>Objection Reason</value>
+  </data>
+  <data name="ZOWritteyourObjectionReason" xml:space="preserve">
+    <value>Write your Objection Reason</value>
+  </data>
+  <data name="ZOReturnDetails" xml:space="preserve">
+    <value>Return Details</value>
+  </data>
+  <data name="ZOFiscalYear" xml:space="preserve">
+    <value>Fiscal Year</value>
+  </data>
+  <data name="ZOFinancialPeriod" xml:space="preserve">
+    <value>Financial Period</value>
+  </data>
+  <data name="ZOReturnReferenceNumber" xml:space="preserve">
+    <value>Return Reference Number</value>
+  </data>
+  <data name="ZOTaxType" xml:space="preserve">
+    <value>Tax Type</value>
+  </data>
+  <data name="ZOAssessmentAmountGAZT" xml:space="preserve">
+    <value>Assessment Amount GAZT</value>
+  </data>
+  <data name="ZOViewReturn" xml:space="preserve">
+    <value>View Return</value>
+  </data>
+  <data name="ZORevisedAmount" xml:space="preserve">
+    <value>Revised Amount</value>
+  </data>
+  <data name="ZODisputeAmount" xml:space="preserve">
+    <value>Dispute Amount</value>
+  </data>
+  <data name="ZOWithdrawlAssessmentAmount" xml:space="preserve">
+    <value>Assessment Amount</value>
+  </data>
+  <data name="ZOWithdrawlAssessmentYear" xml:space="preserve">
+    <value>Assessment Year</value>
+  </data>
+  <data name="ZOWithdrawlCurrency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="ZOWithdrawlDetailDescription" xml:space="preserve">
+    <value>Detail Description</value>
+  </data>
+  <data name="ZOWithdrawlDisputeAmount" xml:space="preserve">
+    <value>Dispute Amount</value>
+  </data>
+  <data name="ZOWithdrawlObjectionDetails" xml:space="preserve">
+    <value>Objection Details</value>
+  </data>
+  <data name="ZOWithdrawlObjectionNo" xml:space="preserve">
+    <value>Objection No</value>
+  </data>
+  <data name="ZOWithdrawlPeriodFrom" xml:space="preserve">
+    <value>Period From</value>
+  </data>
+  <data name="ZOWithdrawlPeriodTo" xml:space="preserve">
+    <value>Period To</value>
+  </data>
+  <data name="ZOWithdrawlRefNumberOfAssessmen" xml:space="preserve">
+    <value>Ref Number of Assessmen</value>
+  </data>
+  <data name="ZOWithdrawlRemarks" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="ZOWithdrawlRevisedAmount" xml:space="preserve">
+    <value>Revised Amount</value>
+  </data>
+  <data name="ZOWithdrawlTaxType" xml:space="preserve">
+    <value>Tax Type</value>
+  </data>
 </root>

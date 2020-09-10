@@ -835,8 +835,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                      //  GetUpdatedDataAfterRemovingComma();
-                        ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+                        //  GetUpdatedDataAfterRemovingComma();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                          ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
 
                         ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
                         if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
@@ -892,19 +893,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //    _navigationService.GoBack();
                             //});
                         }
-                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
-                        PopToRootPage();
-                        //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                        if (zakatReturnDetails != null)
+                        if(string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                         {
-                            ZakatReturnDetails = zakatReturnDetails;
-                            if (zakatReturnDetails.d != null)
+                            ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                            PopToRootPage();
+                            //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                            if (zakatReturnDetails != null)
                             {
-                                ZakatReturnDetail = zakatReturnDetails.d;
-                                GetUpdatedDataAfterAddingComma();
-                                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                                ZakatReturnDetails = zakatReturnDetails;
+                                if (zakatReturnDetails.d != null)
+                                {
+                                    ZakatReturnDetail = zakatReturnDetails.d;
+                                    GetUpdatedDataAfterAddingComma();
+                                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                                }
                             }
                         }
+                        
                     }
                     catch (InternetException ex)
                     {
