@@ -778,7 +778,7 @@
     <value>رقم السجل التجاري</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>عدد الأرقام في رمز المعرف يجب أن يكون 10 أرقام</value>
+    <value>عدد الأرقام في الرقم التسلسلي يجب أن يكون 10 ارقام</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
@@ -811,7 +811,7 @@
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>عدد الأرقام في رمز المعرف يجب أن يكون 15 رقم</value>
+    <value>عدد الارقام في الرقم التسلسلي يجب ان يكون 15 رقم</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>مرحباً</value>
@@ -2767,7 +2767,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال5  أيام عمل</value>
+    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال 5  أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -6642,7 +6642,7 @@
   <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
     <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value>
   </data>
- <data name="ZakatYear" xml:space="preserve">
+  <data name="ZakatYear" xml:space="preserve">
     <value>سنة</value>
   </data>
   <data name="ZakatCashBank" xml:space="preserve">
@@ -6658,13 +6658,13 @@
     <value>المخزون .5</value>
   </data>
   <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>إجمالي الممتلكات الحالية .6</value>
+    <value>إجمالي الأصول الحالية .6</value>
   </data>
   <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
     <value>الزكاة والضريبة .7</value>
   </data>
   <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>إجمالي الطلبات الحالية .8</value>
+    <value>إجمالي الإلتزامات الحالية .8</value>
   </data>
   <data name="ZakatRevenue" xml:space="preserve">
     <value>الايرادات .9</value>
@@ -6673,7 +6673,7 @@
     <value>صافي الدخل .10</value>
   </data>
   <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>صافي السيولة النقدية من العملية .11</value>
+    <value>صافي التدفق النقدي من العملية .11</value>
   </data>
   <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -6715,13 +6715,13 @@
     <value>المرفقات - كشوفات مالية لآخر 3 سنوات</value>
   </data>
   <data name="ZakatInstalmentCashRatio" xml:space="preserve">
-    <value>النسبة النقدية (2 + 3) / 8</value>
+    <value>نسبة النقد (2 + 3) / 8</value>
   </data>
   <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
     <value>عرض تفاصيل القسط</value>
   </data>
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>نسبة الربحية (10/9)</value>
+    <value>(معدل الربحية (10/9</value>
   </data>
   <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -7059,102 +7059,99 @@
     <comment>My Return </comment>
   </data>
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
-   <value>التاريخ</value>
-    </data>
-    <data name="ZakatInstalmetPlan" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="ZakatInstalmetPlan" xml:space="preserve">
     <value>خطط التقسيط</value>
   </data>
-    <data name="VRTaxPeriodofCase" xml:space="preserve">
-  <value>سنة الربط</value>
-</data>
+  <data name="VRTaxPeriodofCase" xml:space="preserve">
+    <value>سنة الربط</value>
+  </data>
   <data name="VRPeriodFrom" xml:space="preserve">
-  <value>الفترة من</value>
-</data>
+    <value>الفترة من</value>
+  </data>
   <data name="VRPeriodTo" xml:space="preserve">
-  <value>الفترة الى</value>
-</data>
+    <value>الفترة الى</value>
+  </data>
   <data name="VRPenality amount in question" xml:space="preserve">
-  <value>مبلغ العقوبة</value>
-</data>
+    <value>مبلغ العقوبة</value>
+  </data>
   <data name="VRSecurityPayment" xml:space="preserve">
-  <value>الضمان المدفوع</value>
-</data>
+    <value>الضمان المدفوع</value>
+  </data>
   <data name="VRSecurityType" xml:space="preserve">
-  <value>نوع الضمان</value>
-</data>
+    <value>نوع الضمان</value>
+  </data>
   <data name="VRSADAD" xml:space="preserve">
-  <value>فاتورة سداد</value>
-</data>
+    <value>فاتورة سداد</value>
+  </data>
   <data name="VRBANKGURANTEE" xml:space="preserve">
-  <value>الضمان البنكي</value>
-</data>
+    <value>الضمان البنكي</value>
+  </data>
   <data name="VRSECURITYAMOUNT" xml:space="preserve">
-  <value>مبلغ الضمان</value>
-</data>
+    <value>مبلغ الضمان</value>
+  </data>
   <data name="VRGENERATESADAD" xml:space="preserve">
-  <value>إنشاء فاتورة سداد</value>
-</data>
+    <value>إنشاء فاتورة سداد</value>
+  </data>
   <data name="VRSADADNumberGenerationisinprogress" xml:space="preserve">
-  <value>جاري إعداد فاتورة سداد ....</value>
-</data>
+    <value>جاري إعداد فاتورة سداد ....</value>
+  </data>
   <data name="VRSADADNumber" xml:space="preserve">
-  <value>رقم فاتورة سداد</value>
-</data>
-  <data name="VRViewApplication" xml:space="preserve">
-  <value>عرض الطلب</value>
-</data>
+    <value>رقم فاتورة سداد</value>
+  </data>
   <data name="VRViewBill" xml:space="preserve">
-  <value>عرض الفاتورة</value>
-</data>
+    <value>عرض الفاتورة</value>
+  </data>
   <data name="VRBillDetails" xml:space="preserve">
-  <value>تفاصيل الفاتورة</value>
-</data>
+    <value>تفاصيل الفاتورة</value>
+  </data>
   <data name="VRDocumentNo" xml:space="preserve">
-  <value>رقم الملف .</value>
-</data>
+    <value>رقم الملف .</value>
+  </data>
   <data name="VRDateofPenalty" xml:space="preserve">
-  <value>تاريخ الغرامة</value>
-</data>
+    <value>تاريخ الغرامة</value>
+  </data>
   <data name="VRDescriptionofPenalty" xml:space="preserve">
-  <value>وصف الغرامة</value>
-</data>
+    <value>وصف الغرامة</value>
+  </data>
   <data name="VRPeriodKey" xml:space="preserve">
-  <value>الفترة</value>
-</data>
+    <value>الفترة</value>
+  </data>
   <data name="VRStartDate" xml:space="preserve">
-  <value>تاريخ البدء</value>
-</data>
+    <value>تاريخ البدء</value>
+  </data>
   <data name="VREndDate" xml:space="preserve">
-  <value>تاريخ الانتهاء</value>
-</data>
+    <value>تاريخ الانتهاء</value>
+  </data>
   <data name="VRDueDate" xml:space="preserve">
-  <value>تاريخ الاستحقاق</value>
-</data>
+    <value>تاريخ الاستحقاق</value>
+  </data>
   <data name="VRAmount" xml:space="preserve">
-  <value>المبلغ</value>
-</data>
+    <value>المبلغ</value>
+  </data>
   <data name="VRSecurityNote1" xml:space="preserve">
-  <value>يرجى ملاحظة أنه بمجرد الضغط على هذا الزر ، لا يمكن مراجعة مبلغ التأمين وفاتورة سداد ذات الصلة.</value>
-</data>
+    <value>يرجى ملاحظة أنه بمجرد الضغط على هذا الزر ، لا يمكن مراجعة مبلغ التأمين وفاتورة سداد ذات الصلة.</value>
+  </data>
   <data name="VRSecurityNote2" xml:space="preserve">
-  <value>يرجى التأكد من دفع أي مستحقات معلقة على فاتورة إعادة التقييم الأصلية التي لم يتم دفعها أو تقديمها كضمان</value>
-</data>
+    <value>يرجى التأكد من دفع أي مستحقات معلقة على فاتورة إعادة التقييم الأصلية التي لم يتم دفعها أو تقديمها كضمان</value>
+  </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc1" xml:space="preserve">
-  <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
-</data>
+    <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
+  </data>
   <data name="VRSecurityBankGurrantCheckBoxDesc2" xml:space="preserve">
-  <value>أقر بأن الضمانات المصرفية يجب أن تكون صالحة لمدة عام واحد على الأقل وتقديمها شخصيًا إلى فرع الهيئة العامة للزكاة والدخل المخصص لي.</value>
-</data>
+    <value>أقر بأن الضمانات المصرفية يجب أن تكون صالحة لمدة عام واحد على الأقل وتقديمها شخصيًا إلى فرع الهيئة العامة للزكاة والدخل المخصص لي.</value>
+  </data>
   <data name="VRSecuritySadadCheckBoxDesc1" xml:space="preserve">
-  <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
-</data>
-     <data name="CRContractStartDate" xml:space="preserve">
+    <value>أقر بأن طلبي لن تتم معالجته حتى يتم دفع مبلغ الضمان بالكامل في غضون 20 يومًا.</value>
+  </data>
+  <data name="CRContractStartDate" xml:space="preserve">
     <value>تاريخ بداية العقد</value>
   </data>
   <data name="CRContractEndDate" xml:space="preserve">
     <value>تاريخ نهاية العقد</value>
   </data>
- <data name="NDMobileNumberMustStartWithFive" xml:space="preserve">
+  <data name="NDMobileNumberMustStartWithFive" xml:space="preserve">
     <value>رقم الجوال يجب ان يبدأ برقم ٥</value>
   </data>
   <data name="NDCorporateIDMustStartWithSeven" xml:space="preserve">
@@ -7163,25 +7160,10 @@
   <data name="ZakatSearchByInvoiceId" xml:space="preserve">
     <value>البحث برقم فاتورة سداد</value>
   </data>
- <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
+  <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
     <value>مبلغ الدفعة الاولى (ريال سعودي)</value>
   </data>
- <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>إجمالي الأصول الحالية .6</value>
-  </data>
- <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>إجمالي الإلتزامات الحالية .8</value>
-  </data>
- <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>صافي التدفق النقدي من العملية .11</value>
-  </data>
-<data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>(معدل الربحية (10/9</value>
-  </data>
- <data name="ZakatInstalmentCashRatio" xml:space="preserve">
-    <value>نسبة النقد (2 + 3) / 8</value>
-  </data>
- <data name="ZakatMax" xml:space="preserve">
+  <data name="ZakatMax" xml:space="preserve">
     <value>الاعلى</value>
   </data>
   <data name="ZakatMin" xml:space="preserve">
@@ -7198,11 +7180,10 @@
 2. يجب ان يكون الملف بأحد الصيغ التالية: XLS, XLSX, PDF, JPG
 3. الحد الأقصى لعدد المرفقات المسموح بها هو 10.</value>
   </data>
-    <data name="VatInstalmentContinueCheckboxText" xml:space="preserve">
+  <data name="VatInstalmentContinueCheckboxText" xml:space="preserve">
     <value>يرجى التأكد من صحة المعلومات المذكورة أعلاه قبل المتابعة</value>
   </data>
-     <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
+  <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
     <value>يجب أن لا يزيد عدد المرفقات عن 10 ملفات.</value>
   </data>
-  </root>
-
+</root>

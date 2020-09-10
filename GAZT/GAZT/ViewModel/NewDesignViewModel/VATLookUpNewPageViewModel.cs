@@ -376,7 +376,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                   //  _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVATCerNumberisnotequalto15));
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVATNumberisnotequalto15));
                                 });
                                 return;
                             }

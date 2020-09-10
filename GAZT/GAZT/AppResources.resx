@@ -770,13 +770,13 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>CR Number</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>ID Number has to be 10 digits long</value>
+    <value>reference number has to be 10 digits</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
   </data>
   <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>Please enter the corresponding number</value>
+    <value>Please enter the reference number</value>
   </data>
   <data name="ZPleaseentertheCRcomposedof10digits" xml:space="preserve">
     <value>Please enter the CR composed of 10 digits</value>
@@ -806,7 +806,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>ID Number has to be 15 digits long</value>
+    <value>reference number has to be 15 digits</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>Welcome,</value>
@@ -4964,7 +4964,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Request Instalment Plan</value>
     <comment>Title</comment>
   </data>
- <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
     <value>Search by Invoice ID</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
@@ -6988,7 +6988,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
     <value>Profitability Ratio(10/9)</value>
   </data>
- <data name="ZakatYear" xml:space="preserve">
+  <data name="ZakatYear" xml:space="preserve">
     <value>Year</value>
   </data>
   <data name="ZakatCashBank" xml:space="preserve">
@@ -7223,7 +7223,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
     <value>My correspondence</value>
   </data>
-   <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+  <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
     <value>Amount Required to Release must be less than Total Amount of Contract</value>
   </data>
   <data name="CRContractStartDate" xml:space="preserve">
@@ -7238,7 +7238,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDCorporateIDMustStartWithSeven" xml:space="preserve">
     <value>Corporate ID must start with 7</value>
   </data>
- <data name="ZakatInstalmentDownPaymentAmount" xml:space="preserve">
+  <data name="ZakatInstalmentDownPaymentAmount" xml:space="preserve">
     <value>Down Payment Amount</value>
   </data>
   <data name="ZakatInstalmentTotalInstalmentsRequestAmount" xml:space="preserve">
@@ -7250,18 +7250,18 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatMin" xml:space="preserve">
     <value>Min</value>
   </data>
-<data name="ZakatAttachmentTitle" xml:space="preserve">
+  <data name="ZakatAttachmentTitle" xml:space="preserve">
     <value>1. File size should be less than 5 MB
 2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
 3. Maximum no. of allowed attachments are 10.</value>
   </data>
-<data name="VatInstalmentContinueCheckboxText" xml:space="preserve">
+  <data name="VatInstalmentContinueCheckboxText" xml:space="preserve">
     <value>Kindly confirm that the above information is correct before proceeding.</value>
   </data>
-    <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
+  <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
     <value>Maximum no. of allowed attachments are 10.</value>
   </data>
-    <data name="ZOAttachments" xml:space="preserve">
+  <data name="ZOAttachments" xml:space="preserve">
     <value>Attachments</value>
   </data>
   <data name="ZOCompletebelowdetails" xml:space="preserve">
