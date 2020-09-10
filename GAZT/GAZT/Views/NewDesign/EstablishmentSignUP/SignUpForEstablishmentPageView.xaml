@@ -588,6 +588,7 @@
                                 </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>-->
 
+                                
                                 <Frame BorderColor="LightGray" x:Name="FrmMobile"  HorizontalOptions="FillAndExpand" Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8"  Margin="0,-6,0,0">
                                     <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
                                         <Image HorizontalOptions="Start" Rotation="270" >
@@ -604,17 +605,17 @@
                                                                  BackgroundColor="Transparent"  >
                                         </custom:CustomButton>
                                         <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
-                                       <custom2:MyEntry x:Name="EntryMobileNumber" BackgroundColor="Green"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
-                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" VerticalTextAlignment="Start" VerticalOptions="Start"
+                                        <custom2:MyEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" VerticalTextAlignment="End"
                                                          Keyboard="Numeric" MaxLength="{Binding MaxDigids}" >
 
                                             <custom2:MyEntry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
                                             </custom2:MyEntry.Behaviors>
                                         </custom2:MyEntry>
+
                                     </StackLayout>
                                 </Frame>
-
 
 
 
