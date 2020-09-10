@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+              xmlns:custom2="clr-namespace:GAZT.CustomControl"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
@@ -603,15 +604,14 @@
                                                                  BackgroundColor="Transparent"  >
                                         </custom:CustomButton>
                                         <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
-                                        <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
-                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" VerticalTextAlignment="End"
+                                       <custom2:MyEntry x:Name="EntryMobileNumber" BackgroundColor="Green"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" VerticalTextAlignment="Start" VerticalOptions="Start"
                                                          Keyboard="Numeric" MaxLength="{Binding MaxDigids}" >
 
-                                            <control:BorderlessEntry.Behaviors>
+                                            <custom2:MyEntry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
-                                            </control:BorderlessEntry.Behaviors>
-                                        </control:BorderlessEntry>
-
+                                            </custom2:MyEntry.Behaviors>
+                                        </custom2:MyEntry>
                                     </StackLayout>
                                 </Frame>
 
