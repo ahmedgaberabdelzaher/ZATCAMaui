@@ -128,6 +128,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             }
 
                         }
+                        else
+                        {
+                            if(NewMobileNumberEntryText.Length > 0 && CountryCode.Length > 0)
+                            {
+                                string firstlettorOfNewMobileNumberEntryText = NewMobileNumberEntryText.Substring(0, 1);
+                                if (firstlettorOfNewMobileNumberEntryText.Equals("0"))
+                                {
+                                    NewMobileNumberEntryText = string.Empty;
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Mobile number can not start with 0"));
+
+                                }
+                            }
+                           
+                        }
                     }
                     catch (Exception ex)
                     {

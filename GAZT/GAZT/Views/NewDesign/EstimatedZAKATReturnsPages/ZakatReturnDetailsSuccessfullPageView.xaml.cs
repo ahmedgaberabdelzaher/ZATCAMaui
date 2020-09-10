@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Services;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -108,7 +109,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZSadadInvoiceNumber + " " + text));
+
+               // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
                 }
         }
 

@@ -149,7 +149,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                           // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         });
                         IsLoading = false;
@@ -159,7 +161,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                       await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                       // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             });
@@ -208,7 +212,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 //pop that certificate is not available
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+
+                   // await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 });
             }
             //}
