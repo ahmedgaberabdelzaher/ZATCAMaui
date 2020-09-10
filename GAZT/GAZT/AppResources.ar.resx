@@ -7160,5 +7160,11 @@
   <data name="CRContractEndDate" xml:space="preserve">
     <value>تاريخ نهاية العقد</value>
   </data>
+ <data name="NDMobileNumberMustStartWithFive" xml:space="preserve">
+    <value>رقم الجوال يجب ان يبدأ برقم ٥</value>
+  </data>
+  <data name="NDCorporateIDMustStartWithSeven" xml:space="preserve">
+    <value>رقم الشركة يجب ان يبدأ برقم ٧</value>
+  </data>
   </root>
 
