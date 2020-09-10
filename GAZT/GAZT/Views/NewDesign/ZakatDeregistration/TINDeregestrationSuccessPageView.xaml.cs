@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -9,7 +13,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     public partial class TINDeregestrationSuccessPageView : ContentPage
     {
         TINDeregestrationSuccessPageViewModel viewModel;
-        public TINDeregestrationSuccessPageView()
+        public TINDeregestrationSuccessPageView(TinDeregistrationResponseModel response)
         {
             InitializeComponent();
 
@@ -18,6 +22,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            if (response != null)
+            {
+                if (response.Fbnum != null)
+                {
+                    //if(response.ADecName != null)
+                    //    Label_Name.Text = response.ADecName;
+
+                    //Label_ApplicationNumber.Text = response.Fbnum;
+                    //viewModel.FBNumber = response.Fbnumx;
+                    //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    //Label_Date.Text = StartdateToshow;
+                }
+            }
         }
         private void SetLTR()
         {
@@ -37,7 +54,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
+        private async void Image_Copy_Tapped(object sender, EventArgs e)
+        {
+            //if (Label_ApplicationNumber != null)
+            //{
+            //    Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+            //    if (Clipboard.HasText)
+            //    {
+            //        var text = await Clipboard.GetTextAsync();
+            //        var displayText = AppResources.VATRSAppNumber + " " + text;
+            //        viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+            //    }
+            //}
 
+        }
         private void btnRegistrationDetailsClicked(object sender, EventArgs e)
         {
             var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];

@@ -89,14 +89,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (callAPIFlag)
             {
-                if (Label_InternationalnoCode.Text.Equals("+966"))
-                {
-                    if (!viewModel.NewMobileNumberEntryText.StartsWith("5"))
-                    {
-                        viewModel.ShowValidationPopup(AppResources.ZZMobilenumberhastostartwithnumber5);
-                        return;
-                    }
-                }
+                //if (Label_InternationalnoCode.Text.Equals("+966"))
+                //{
+                //    if (!viewModel.NewMobileNumberEntryText.StartsWith("5"))
+                //    {
+                //        viewModel.ShowValidationPopup(AppResources.ZZMobilenumberhastostartwithnumber5);
+                //        return;
+                //    }
+                //}
 
                 bool PWDSuccess = await viewModel.VarifyMobileNumber();
 

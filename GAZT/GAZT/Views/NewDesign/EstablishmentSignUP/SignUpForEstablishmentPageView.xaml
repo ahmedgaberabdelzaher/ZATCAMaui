@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+              xmlns:custom2="clr-namespace:GAZT.CustomControl"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
@@ -587,6 +588,7 @@
                                 </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>-->
 
+                                
                                 <Frame BorderColor="LightGray" x:Name="FrmMobile"  HorizontalOptions="FillAndExpand" Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8"  Margin="0,-6,0,0">
                                     <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
                                         <Image HorizontalOptions="Start" Rotation="270" >
@@ -603,18 +605,17 @@
                                                                  BackgroundColor="Transparent"  >
                                         </custom:CustomButton>
                                         <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
-                                        <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
+                                        <custom2:MyEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" VerticalTextAlignment="End"
                                                          Keyboard="Numeric" MaxLength="{Binding MaxDigids}" >
 
-                                            <control:BorderlessEntry.Behaviors>
+                                            <custom2:MyEntry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
-                                            </control:BorderlessEntry.Behaviors>
-                                        </control:BorderlessEntry>
+                                            </custom2:MyEntry.Behaviors>
+                                        </custom2:MyEntry>
 
                                     </StackLayout>
                                 </Frame>
-
 
 
 
@@ -1205,8 +1206,16 @@
 
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TxtMobileNumberwithCountryCode}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </StackLayout>
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                <custom:CustomLabel.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding TxtCountryCode}"/>
+                                                        <Span  Text="{Binding TxtMobileNumber}"  />
+                                                    </FormattedString>
+                                                </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+
+                                        </StackLayout>
 
 
 

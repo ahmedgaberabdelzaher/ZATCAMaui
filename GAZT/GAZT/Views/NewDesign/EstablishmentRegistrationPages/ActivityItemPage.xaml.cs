@@ -22,8 +22,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.ActivityItemPage;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             viewModel.newNumber = _activityNavigation.nextNumber;
-            viewModel.editModeEnabled = activityNavigation.EditEnabledMode;
+            //viewModel.editModeEnabled = activityNavigation.EditEnabledMode;
             viewModel.validateCR = _activityNavigation.validateCR;
+            viewModel.validateLicense = _activityNavigation.validateLicense;
             //viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
             viewModel.goBackAction = _activityNavigation.goBackAction;
             viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.results.Where(i => i.Actno == $"{Int16.Parse(_activityNavigation.nextNumber?.Actno):000}").ToList();

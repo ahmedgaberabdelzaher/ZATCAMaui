@@ -1133,5 +1133,238 @@ namespace EGAZT.Models.ZakatInstalationModels
         public object[] insPlan_OffSet { get; set; }
     }
 
+
+    public class ZakatInstalmentInvListModel
+    {
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        public D d { get; set; }
+        public class Metadata
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
+        }
+
+
+
+        public class Result
+        {
+            public Metadata __metadata { get; set; }
+            public string InvCbDeflt { get; set; }
+            public string DueYr { get; set; }
+            public string TotAmt { get; set; }
+            public string Fbnum { get; set; }
+            public string Fbguid { get; set; }
+            public string Inccbflag { get; set; }
+            public string ReturnId { get; set; }
+            public string Tin { get; set; }
+            public string FormGuid { get; set; }
+            public string Taxtype { get; set; }
+            public string DataVersion { get; set; }
+            public string Euser { get; set; }
+            public string Langz { get; set; }
+            public int LineNo { get; set; }
+            public string RankingOrder { get; set; }
+            public string InvCb { get; set; }
+            public string InvNo { get; set; }
+            public string DueDt { get; set; }
+            public string InvAmt { get; set; }
+            public string ClearedAmt { get; set; }
+            public string DueAmt { get; set; }
+            public string InstReqFor { get; set; }
+            public string Abtyp { get; set; }
+            public string Waers { get; set; }
+        }
+
+
+
+        public class D
+        {
+            public List<Result> results { get; set; }
+        }
+
+    }
+
+    public class SummaryDisplayModel
+    {
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        public class Metadata
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
+        }
+
+
+
+        public class FnDtlSet
+        {
+            public List<object> results { get; set; }
+        }
+
+
+
+        public class Deferred
+        {
+            public string uri { get; set; }
+        }
+
+
+
+        public class InsPlanOffSet
+        {
+            public Deferred __deferred { get; set; }
+        }
+
+
+
+        public class Deferred2
+        {
+            public string uri { get; set; }
+        }
+
+
+
+        public class InvDtlsSet
+        {
+            public Deferred2 __deferred { get; set; }
+        }
+
+
+
+        public class Metadata2
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
+        }
+
+
+
+        public class Result
+        {
+            public Metadata2 __metadata { get; set; }
+            public string RetGuid { get; set; }
+            public string Seqno { get; set; }
+            public string SchGuid { get; set; }
+            public string Dotyp { get; set; }
+            public int Srno { get; set; }
+            public string Doguid { get; set; }
+            public string AttBy { get; set; }
+            public string Filename { get; set; }
+            public string FileExtn { get; set; }
+            public string Mimetype { get; set; }
+            public string ByPusr { get; set; }
+            public DateTime Erfdt { get; set; }
+            public string Erftm { get; set; }
+            public string DataVersion { get; set; }
+            public string DocUrl { get; set; }
+            public string OutletRef { get; set; }
+            public string Enbedit { get; set; }
+            public string Enbdele { get; set; }
+        }
+
+
+
+        public class AttachSet
+        {
+            public List<Result> results { get; set; }
+        }
+
+
+
+        public class Deferred3
+        {
+            public string uri { get; set; }
+        }
+
+
+
+        public class InsPlanSet
+        {
+            public Deferred3 __deferred { get; set; }
+        }
+
+
+
+        public class NotesSet
+        {
+            public List<object> results { get; set; }
+        }
+
+
+
+        public class Deferred4
+        {
+            public string uri { get; set; }
+        }
+
+
+
+        public class RetmsgSet
+        {
+            public Deferred4 __deferred { get; set; }
+        }
+
+
+
+        public class D
+        {
+            public Metadata __metadata { get; set; }
+            public string Lokst { get; set; }
+            public string Fbguid { get; set; }
+            public string FbnumIprr { get; set; }
+            public object InsDtOff { get; set; }
+            public string PenlAmt { get; set; }
+            public string SuAmtFg { get; set; }
+            public string OffAmt { get; set; }
+            public string TotAmt { get; set; }
+            public string UserTyp { get; set; }
+            public string DpAmt { get; set; }
+            public string FormMode { get; set; }
+            public object PaymtDt { get; set; }
+            public string Fbnum { get; set; }
+            public string Sopbel { get; set; }
+            public string TxnTp { get; set; }
+            public string MobNo { get; set; }
+            public string Zdays { get; set; }
+            public string FormGuid { get; set; }
+            public string DataVersion { get; set; }
+            public string Operation { get; set; }
+            public string Euser { get; set; }
+            public string StepNumber { get; set; }
+            public string Email { get; set; }
+            public string Officer { get; set; }
+            public string Langz { get; set; }
+            public string Status { get; set; }
+            public string Formproc { get; set; }
+            public string SuAmt { get; set; }
+            public string Periodkey { get; set; }
+            public string Tin { get; set; }
+            public string ReturnId { get; set; }
+            public string TinNm { get; set; }
+            public string AltMobNo { get; set; }
+            public string InstReqFor { get; set; }
+            public string InstReqReason { get; set; }
+            public string PymntFreq { get; set; }
+            public string PlanDur { get; set; }
+            public string OffPymntFreq { get; set; }
+            public string OffPlanDur { get; set; }
+            public string DecCb { get; set; }
+            public string Waers { get; set; }
+            public string AccMethod { get; set; }
+            public FnDtlSet FnDtlSet { get; set; }
+            public InsPlanOffSet insPlan_OffSet { get; set; }
+            public InvDtlsSet invDtlsSet { get; set; }
+            public AttachSet AttachSet { get; set; }
+            public InsPlanSet insPlanSet { get; set; }
+            public NotesSet NotesSet { get; set; }
+            public RetmsgSet retmsgSet { get; set; }
+        }
+
+        public D d { get; set; }
+
+    }
+
 }
 

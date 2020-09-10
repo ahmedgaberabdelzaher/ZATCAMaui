@@ -380,4 +380,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\NewDesign\ZakatObjection\ObjectionsSelectionPageView.xaml" />
+  </ItemGroup>
 </Project>

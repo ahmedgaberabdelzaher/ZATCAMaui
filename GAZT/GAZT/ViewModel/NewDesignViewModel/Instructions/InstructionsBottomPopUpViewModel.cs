@@ -10,13 +10,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        
+
         public enum DialogType
         {
             Instructions,
             TermsConditions
         }
-        
+
         private string _description = "";
         public string Description
         {
@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("Description");
             }
         }
-        
+
         private bool _isInstuctionsChecked = false;
         public bool IsInstuctionsChecked
         {
@@ -44,7 +44,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("IsInstuctionsChecked");
             }
         }
-        
+
         private bool _isTermsChecked = false;
         public bool IsTermsChecked
         {
@@ -58,7 +58,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("IsTermsChecked");
             }
         }
-        
+
         private bool _isInstructions = false;
         public bool IsInstructions
         {
@@ -72,7 +72,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("IsInstructions");
             }
         }
-        
+
         private bool _isTerms = false;
         public bool IsTerms
         {
@@ -86,7 +86,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("IsTerms");
             }
         }
-        
+
         private string _checkBoxDescription = "";
         public string CheckBoxDescription
         {
@@ -100,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("CheckBoxDescription");
             }
         }
-        
+
         private string _buttonTitle = "";
         public string ButtonTitle
         {
@@ -116,15 +116,56 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         }
 
 
-           
+        public void EnableCheckboxContinue()
+        {
+            if (IsInstuctionsChecked || IsTermsChecked)
+            {
+                IsContinueEnabled = true;
+            }
+            else
+            {
+                IsContinueEnabled = false;
+            }
+        }
+
+        private bool _isContinueEnabled = false;
+        public bool IsContinueEnabled
+        {
+            get { return _isContinueEnabled; }
+            set
+            {
+                _isContinueEnabled = value;
+                ContinueBackGroundColor = Color.FromHex(_isContinueEnabled ? "#d49504" : "#9EA4A9");
+
+                RaisePropertyChanged("IsBillContinueEnabled");
+            }
+        }
+        private Color _continueBackGroundColor = Color.FromHex("#d49504");
+        public Color ContinueBackGroundColor
+        {
+            get
+            {
+                return _continueBackGroundColor;
+            }
+            set
+            {
+                if (_continueBackGroundColor == value)
+                {
+                    return;
+                }
+                _continueBackGroundColor = value;
+                RaisePropertyChanged("ContinueBackGroundColor");
+            }
+        }
+
 
 
         public ICommand Close_Tapped { get; set; }
 
         public ICommand TermsContinueClick { get; set; }
-        
+
         public ICommand InstructionsContinueClick { get; set; }
-        
+
         public InstructionsBottomPopUpViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -132,15 +173,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 throw new ArgumentNullException("navigationService");
             }
             _navigationService = navigationService;
-            
+
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            
+
             TermsContinueClick = new Command(async () =>
             {
+
+
                 if (_isTermsChecked)
                 {
                     InstructionsContinue();
@@ -149,12 +192,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 else
                 {
 
-                    await _dialogService.ShowMessage(AppResources.BPTermsAndConditionsAlert, "Alert");
+                    await _dialogService.ShowMessage(AppResources.BPTermsAndConditionsAlert, AppResources.Information);
                 }
             });
-            
+
             InstructionsContinueClick = new Command(async () =>
             {
+
+
                 if (_isInstuctionsChecked)
                 {
                     InstructionsContinue();
@@ -163,7 +208,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 else
                 {
 
-                    await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, "Alert");
+                    await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, AppResources.Information);
                 }
             });
 
@@ -173,7 +218,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             });
 
 
-             void InstructionsContinue() {
+            void InstructionsContinue()
+            {
 
                 if (IsInstructions)
                 {

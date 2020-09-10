@@ -21,10 +21,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
         //public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
-        public bool editModeEnabled { get; set; } = false;
+        //public bool editModeEnabled { get; set; } = false;
         private OutletNumber newNumber = null;
         private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
         private ValidateCR validateCR = null;
+        private Nreg_ActivityItem PreLoadedLicenseItem = null;
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
@@ -471,7 +472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
-            editModeEnabled = false;
+            //editModeEnabled = false;
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
@@ -587,23 +588,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             Console.WriteLine(_enum);
 
-            if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-            {
-                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "BUP002").ToList();
+            //if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+            //{
+            //    var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "BUP002").ToList();
 
-                if (mainactivity.Count() == 1 && editModeEnabled == false)
-                {
-                    return;
-                }
-            }
+            //    if (mainactivity.Count() == 1 && editModeEnabled == false)
+            //    {
+            //        return;
+            //    }
+            //}
             if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
-                if (mainactivity.Count() == 4 && editModeEnabled == false)
-                {
-                    return;
-                }
-                if (editModeEnabled == true || mainactivity.Count > 0)
+                //if (mainactivity.Count() == 4 && editModeEnabled == false)
+                //{
+                //    return;
+                //}
+                if (/*editModeEnabled == true ||*/ mainactivity.Count > 0)
                 {
                     _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                 }
@@ -615,7 +616,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
-                EditEnabledMode = editModeEnabled,
+                //EditEnabledMode = editModeEnabled,
                 //newActivityItems = activityItems,
                 goBackAction = (List<Nreg_ActivityItem> list) =>
                 {
@@ -631,21 +632,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
-                    if (!string.IsNullOrEmpty(validateCR?.Crname))
+                    if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
                         _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
-                            openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
+                            openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
                             validateCR = validateCR,
+                            validateLicense = PreLoadedLicenseItem,
                             //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
                             //newActivityItems = activityItems,
                             goBackAction = (List<Nreg_ActivityItem> list) =>
                             {
                                 addActivities(list);
-                                currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                                currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
                             }
                         });
                     }
@@ -725,7 +727,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Console.WriteLine(ex.StackTrace);
                         if (ex is HTTPBadRequestException)
                         {
-                            editModeEnabled = true;
+                            //editModeEnabled = true;
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         }
                     }
@@ -803,17 +805,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                     if (OutletActNumber == "000")
                     {
-                        var CRNum = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault()?.Idnumber;
-                        validateCR = await WebServiceManager.ESTValidateCRNum(CRNum);
-                        if (!string.IsNullOrEmpty(validateCR?.Crname))
+                        var preLoadedItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).FirstOrDefault();
+                        if (preLoadedItem?.Type == "BUP002")
                         {
-                            OutletName = validateCR?.Crname;
-                            validateCR.Crnum = CRNum;
+                            validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                            if (!string.IsNullOrEmpty(validateCR?.Crname))
+                            {
+                                OutletName = validateCR?.Crname;
+                                validateCR.Crnum = preLoadedItem?.Idnumber;
+                            }
+                            PreLoadedLicenseItem = null;
+                        }
+                        else if (preLoadedItem?.Type == "ZS0004")
+                        {
+                            validateCR = null;
+                            PreLoadedLicenseItem = preLoadedItem;
+                        }
+                        else
+                        {
+                            validateCR = null;
+                            PreLoadedLicenseItem = null;
                         }
                     }
                     else
                     {
                         validateCR = null;
+                        PreLoadedLicenseItem = null;
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
@@ -1003,6 +1020,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OutletName = string.Empty;
             taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+            PostalAsPhysical = false;
+
             HouseNumber = string.Empty;
             BuildingNumber = string.Empty;
             FloorNumber = string.Empty;

@@ -36,6 +36,8 @@ namespace EGAZT.Views.NewDesign
                 _viewModel.IsInstructions = false;
             }
 
+
+
         }
 
         protected async override void OnAppearing()
@@ -45,6 +47,9 @@ namespace EGAZT.Views.NewDesign
                 base.OnAppearing();
 
 
+                _viewModel.IsInstuctionsChecked = false;
+                _viewModel.IsTermsChecked = false;
+                _viewModel.EnableCheckboxContinue();
 
                 SetLTR();
 
@@ -71,8 +76,12 @@ namespace EGAZT.Views.NewDesign
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-           
 
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            _viewModel.EnableCheckboxContinue();
         }
     }
 }

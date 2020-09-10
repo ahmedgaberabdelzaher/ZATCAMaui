@@ -91,7 +91,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 PopUp popUp = new PopUp();
                 popUp.Message = Message.ToString();
                 //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+               // await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
             else
             {
