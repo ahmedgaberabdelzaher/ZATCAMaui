@@ -1463,33 +1463,46 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                PopUp popUp = new PopUp();
-                popUp.HeaderText = AppResources.ZZZInformationNew;
-                popUp.IsLinkAvailable = true;
-                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+
+                    Device.OpenUri(new Uri("https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx"));
                 }
                 else
                 {
-                    popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+                    Device.OpenUri(new Uri("https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx"));
+
                 }
 
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            catch (Exception ex)
+            catch 
             {
 
             }
+
+            //PopUp popUp = new PopUp();
+            //popUp.HeaderText = AppResources.ZZZInformationNew;
+            //popUp.IsLinkAvailable = true;
+            //popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+            //if (App.IsArabic)
+            //{
+            //    popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            //}
+            //else
+            //{
+            //    popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            //}
+
+            //if (App.IsArabic)
+            //{
+            //    popUp.FlowDirections = "RightToLeft";
+            //}
+            //else
+            //{
+            //    popUp.FlowDirections = "LeftToRight";
+            //}
+            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
         }
 
         private async void NewAttachment_Clicked(object sender, EventArgs e)
