@@ -1254,6 +1254,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         taxPayerDetails.Operationx = "04";
                                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                                         taxPayerDetails.UserTypx = "TP";
+                                        taxPayerDetails.StepNumberx = string.Empty;
                                         var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                         navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                                     }
