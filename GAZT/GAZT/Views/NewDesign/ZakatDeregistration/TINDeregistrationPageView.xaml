@@ -247,7 +247,7 @@
                                         </StackLayout>
 
                                         <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                             <TapGestureRecognizer Command="{Binding OnTinRegistrationDateTapped}" ></TapGestureRecognizer>
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
