@@ -10,6 +10,9 @@ using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 
+using Rg.Plugins.Popup.Services;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
     public class UpdateMobileViewModel : ViewModelBase
@@ -110,7 +113,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (value.Length > 0)
                     BtnEnableFlag = true;*/
 
+                if(!string.IsNullOrEmpty(NewMobileNumberEntryText) && !string.IsNullOrEmpty(CountryCode))
+                {
+                    try
+                    {
+                        if (NewMobileNumberEntryText.Length > 0 && CountryCode.Equals("+966"))
+                        {
+                            string firstlettorOfNewMobileNumberEntryText = NewMobileNumberEntryText.Substring(0, 1);
+                            if (!firstlettorOfNewMobileNumberEntryText.Equals("5"))
+                            {
+                                NewMobileNumberEntryText = string.Empty;
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Mobile number must start with 5"));
+
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
                 RaisePropertyChanged("NewMobileNumberEntryText");
+
+
             }
         }
 
