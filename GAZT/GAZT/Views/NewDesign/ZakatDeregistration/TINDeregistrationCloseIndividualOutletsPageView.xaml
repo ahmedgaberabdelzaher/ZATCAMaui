@@ -606,7 +606,7 @@
 
                                                                 <StackLayout IsEnabled="{Binding DobText.IsEditable}" Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                                                    <Label Text="{Binding APermitDobHTb, Mode=TwoWay}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                                    <Label Text="{Binding APermitDeregDisplayDobDate, Mode=TwoWay}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                                         <Image Margin="5,0">
                                                                             <Image.Source>

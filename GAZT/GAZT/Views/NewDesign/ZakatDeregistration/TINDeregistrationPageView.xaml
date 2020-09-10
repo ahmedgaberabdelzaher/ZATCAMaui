@@ -601,9 +601,9 @@
                                          </listView:SfListView>
                                         <border:SfBorder  Grid.Row="4" Grid.Column="0" HeightRequest="1" Grid.ColumnSpan="2" Margin="-4,8,-4,0" Padding="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}"/>
                                          <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
-                                        <CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionsChecked, Mode=TwoWay}">
+                                        <CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding APermitIsReasonSelected}">
                                             <CheckBox.Triggers>
-                                                <DataTrigger TargetType="CheckBox" Binding="{Binding IsInstructionsChecked}"  Value="false">
+                                                <DataTrigger TargetType="CheckBox" Binding="{Binding APermitIsReasonSelected}"  Value="true">
                                                     <Setter Property="Color" Value="{StaticResource NewDarkBlueGreenColor}" />
                                                 </DataTrigger>
                                             </CheckBox.Triggers>

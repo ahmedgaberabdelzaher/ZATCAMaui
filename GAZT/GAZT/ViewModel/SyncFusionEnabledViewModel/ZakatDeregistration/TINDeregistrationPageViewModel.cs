@@ -49,6 +49,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand OnTinRegistrationDateTapped { get; set; }
         public ICommand OnOutletPermitTypeDeRegisrtationReasonDateTapped { get; set; }
         public ICommand OnOutletPermitTypeReasonTapped { get; set; }
+        public ICommand OnPermitDobTapped { get; set; }
 
         public ICommand OnPermitTypeReasonTapped { get; set; }
         public ICommand OnTinDeregOutletDeregDatePickerTapped { get; set; }
@@ -691,6 +692,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 foreach (PermitSetResult permitInfo in allPermitTypes)
                                 {
 
+                                    if (permitInfo.APermitDregRsnTb == null)
+                                        permitInfo.APermitDregRsnTb = string.Empty;
+
                                     if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
                                     {
                                         permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
@@ -841,6 +845,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     ).ToList());
 
                 RaisePropertyChanged("SingleOutletDeregistrationDate");
+            }
+        }
+
+        private DateTime _permitDob = DateTime.Now;
+        public DateTime PermitDob
+        {
+            get
+            {
+                return _permitDob;
+            }
+            set
+            {
+                _permitDob = value;
+
+                SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                    x =>
+                    {
+                        if (x.APermitNoTb == selectedAPermitOutletnoTb)
+                        {
+                            x.APermitDobTb = ConvertDateFormat(PermitDob);
+                            x.APermitDobCTb = "G";
+                            x.APermitDobHTb = PermitDob.ToString("yyyyMMdd");
+                            x.APermitDeregDisplayDobDate = PermitDob.ToString("dd MMM yyyy");
+                        }
+                        return x;
+                    }
+                    ).ToList());
+
+                RaisePropertyChanged("PermitDob");
             }
         }
 
@@ -1496,7 +1529,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             OnTinRegistrationDateTapped = new Command(this.OnTinRegistrationDateClicked);
             OnOutletPermitTypeDeRegisrtationReasonDateTapped = new Command<string>(this.OnOutletPermitTypeDeRegisrtationReasonDateClicked);
             OnOutletPermitTypeReasonTapped = new Command<string>(this.OnOutletPermitTypeReasonClicked);
-
+            OnPermitDobTapped = new Command(this.OnPermitDobClicked);
             //
             TinDeregistrationModel = new TINDeregistrationModel();
             SelectedOutletOption = new TINDeregistrationModel();
@@ -1584,6 +1617,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if(SelectedReason != null)
                                 permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
+                            if (permitInfo.APermitDregRsnTb == null)
+                                permitInfo.APermitDregRsnTb = string.Empty;
 
                             if (outletInfo.PermitTypes == null)
                                 outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
@@ -1690,6 +1726,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        public async void OnPermitDobClicked()
+        {
+            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregDOBDatePickerTitle;
+            genericDatePickerModel.PickerId = "PermitTypeDobPickerDateTypePicker";
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
             }
 
         }
@@ -2313,6 +2373,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                             {
                                                 permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
                                             }
+
+                                            if (permitInfo.APermitDregRsnTb == null)
+                                                permitInfo.APermitDregRsnTb = string.Empty;
 
                                             if (outletInfo.PermitTypes == null)
                                                 outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
