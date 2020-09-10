@@ -11,25 +11,21 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.ZakatObjection
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ObjectionsSelectionPageView : ContentPage
+    public partial class ZakatObjectionPageView : ContentPage
     {
-
-        private ObjectionViewModel _viewModel;
-
-        public ObjectionsSelectionPageView()
+        private ZakatObjectionViewModel viewModel;
+        public ZakatObjectionPageView()
         {
             InitializeComponent();
-
+            
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+            
             ChangeAeroIcon();
             SetLTR();
-        
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-            _viewModel = App.Locator.ObjectionsSelectionPageView;
-
-            this.BindingContext = _viewModel;
-
-            _viewModel.AddSelectionOptions();
+            viewModel = App.Locator.ZakatObjectionView;
+            this.BindingContext = viewModel;
 
         }
 
@@ -51,24 +47,20 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
-        async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        
+        private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
         {
-            ObjectionViewModel.SelectionModel selectedItem = e.AddedItems[0] as ObjectionViewModel.SelectionModel;
+            
+        }
 
-            await Task.Delay(1000);
-            if (selectedItem.SelectionTitle == AppResources.VatReview)
-            {
-                _viewModel._navigationService.NavigateTo(App.VatReviewListPageView);
+        private void OnIDNumberFocusChanged(object sender, FocusEventArgs e)
+        {
+            
+        }
 
-            }
-            else if (selectedItem.SelectionTitle == AppResources.ZakatObjection)
-            {
-                _viewModel._navigationService.NavigateTo(App.ZakatObjectionsListPageView);
-            }
-
-
-
+        private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)
+        {
+            
         }
     }
 }

@@ -313,5 +313,10 @@ namespace GAZT.Helper
 
         #endregion
 
+        #region ZAKATObjections
+        public static string GetZAKATObjectionListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TP_DASHBOARD_SRV/HeaderSet(";
+        public static string GetZakatObjectionDataURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set(";
+        #endregion
+
     }
 }

@@ -22,7 +22,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.ActivityItemPage;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             viewModel.newNumber = _activityNavigation.nextNumber;
-            viewModel.editModeEnabled = activityNavigation.EditEnabledMode;
+            //viewModel.editModeEnabled = activityNavigation.EditEnabledMode;
             viewModel.validateCR = _activityNavigation.validateCR;
             viewModel.validateLicense = _activityNavigation.validateLicense;
             //viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
