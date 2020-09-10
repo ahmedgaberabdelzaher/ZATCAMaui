@@ -52,11 +52,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
-            // viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-            //  viewModel._navigationService.NavigateTo(App.SFLoginPageView);
+            try
+            {
+                // viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                //  viewModel._navigationService.NavigateTo(App.SFLoginPageView);
 
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+                if (Navigation.NavigationStack.Count > 0)
+                {
+                    Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
+                    Navigation.RemovePage(pg);
+                    Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                    Navigation.RemovePage(pg1);
+                }
+                viewModel._navigationService.GoBack();
 
+                //    viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            }
+            catch(Exception ex)
+            {
+
+            }
 
         }
 

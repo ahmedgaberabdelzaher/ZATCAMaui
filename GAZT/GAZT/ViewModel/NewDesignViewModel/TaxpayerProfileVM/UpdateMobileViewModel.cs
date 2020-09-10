@@ -443,7 +443,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             else
                 popUp.FlowDirections = "LeftToRight";
 
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
+
+           // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
 }
