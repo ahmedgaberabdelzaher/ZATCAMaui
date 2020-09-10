@@ -25,6 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private OutletNumber newNumber = null;
         private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
         private ValidateCR validateCR = null;
+        private Nreg_ActivityItem PreLoadedLicenseItem = null;
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
@@ -631,15 +632,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
-                    if (!string.IsNullOrEmpty(validateCR?.Crname))
+                    if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
                         _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
-                            openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
+                            openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
                             validateCR = validateCR,
+                            validateLicense = PreLoadedLicenseItem,
                             //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
                             //newActivityItems = activityItems,
                             goBackAction = (List<Nreg_ActivityItem> list) =>
@@ -803,17 +805,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                     if (OutletActNumber == "000")
                     {
-                        var CRNum = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault()?.Idnumber;
-                        validateCR = await WebServiceManager.ESTValidateCRNum(CRNum);
-                        if (!string.IsNullOrEmpty(validateCR?.Crname))
+                        var preLoadedItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).FirstOrDefault();
+                        if (preLoadedItem?.Type == "BUP002")
                         {
-                            OutletName = validateCR?.Crname;
-                            validateCR.Crnum = CRNum;
+                            validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                            if (!string.IsNullOrEmpty(validateCR?.Crname))
+                            {
+                                OutletName = validateCR?.Crname;
+                                validateCR.Crnum = preLoadedItem?.Idnumber;
+                            }
+                            PreLoadedLicenseItem = null;
+                        }
+                        else if (preLoadedItem?.Type == "ZS0004")
+                        {
+                            validateCR = null;
+                            PreLoadedLicenseItem = preLoadedItem;
+                        }
+                        else
+                        {
+                            validateCR = null;
+                            PreLoadedLicenseItem = null;
                         }
                     }
                     else
                     {
                         validateCR = null;
+                        PreLoadedLicenseItem = null;
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)

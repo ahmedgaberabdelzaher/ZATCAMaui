@@ -17,6 +17,7 @@ namespace EGAZT.Models
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         public OutletNumber nextNumber { get; set; } = null;
         public ValidateCR validateCR { get; set; } = null;
+        public Nreg_ActivityItem validateLicense { get; set; } = null;
         //public List<Nreg_ActivityItem> newActivityItems { get; set; } = new List<Nreg_ActivityItem>();
         public ActicityListDelegate goBackAction { get; set; } = null;
         public bool EditEnabledMode { get; set; } = false;

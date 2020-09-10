@@ -27,6 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private ActivitySetsList activityList = null;
         public OutletNumber newNumber { get; set; } = null;
         public ValidateCR validateCR { get; set; } = null;
+        public Nreg_ActivityItem validateLicense { get; set; } = null;
         public bool editModeEnabled { get; set; } = false;
         public List<Nreg_ActivityItem> NregActivityList = new List<Nreg_ActivityItem>();
         private Nreg_ActivityItem SelectedLicenseItem = null;
@@ -909,10 +910,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
                     activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
 
-                    if (editModeEnabled == true && SelectedLicenseItem != null)
+                    if ((editModeEnabled == true && SelectedLicenseItem != null) || validateLicense != null)
                     {
-                        //SelectedLicenseItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "ZS0004");
-
+                        if(SelectedLicenseItem == null && validateLicense != null)
+                        {
+                            SelectedLicenseItem = validateLicense;
+                        }
                         LicenseNumber = SelectedLicenseItem?.Idnumber;
                         LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedLicenseItem?.Country).FirstOrDefault();
                         LicenseIssueBy = EnIssueBy[SelectedLicenseItem?.Institute];
