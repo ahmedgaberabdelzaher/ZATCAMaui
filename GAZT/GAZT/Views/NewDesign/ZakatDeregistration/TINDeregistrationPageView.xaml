@@ -599,24 +599,7 @@
                                                 </DataTemplate>
                                             </listView:SfListView.ItemTemplate>
                                          </listView:SfListView>
-                                        <border:SfBorder  Grid.Row="4" Grid.Column="0" HeightRequest="1" Grid.ColumnSpan="2" Margin="-4,8,-4,0" Padding="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}"/>
-                                         <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
-                                        <CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding APermitIsReasonSelected}">
-                                            <CheckBox.Triggers>
-                                                <DataTrigger TargetType="CheckBox" Binding="{Binding APermitIsReasonSelected}"  Value="true">
-                                                    <Setter Property="Color" Value="{StaticResource NewDarkBlueGreenColor}" />
-                                                </DataTrigger>
-                                            </CheckBox.Triggers>
-                    
-                                        </CheckBox>
-                                        <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
-                                            <custom:CustomLabel.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}"  />
-                                                </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                   </StackLayout>
+                                       
                                     </Grid>
                                 </StackLayout>
                         </border:SfBorder >
@@ -752,7 +735,7 @@
                         </listView:SfListView.ItemTemplate>
                  </listView:SfListView>
 
-                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
+                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="48" VerticalOptions="Center"  Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 

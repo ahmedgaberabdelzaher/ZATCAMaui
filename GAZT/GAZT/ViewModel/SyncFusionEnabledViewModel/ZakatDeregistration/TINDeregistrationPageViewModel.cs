@@ -695,6 +695,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     if (permitInfo.APermitDregRsnTb == null)
                                         permitInfo.APermitDregRsnTb = string.Empty;
 
+                                    if (permitInfo.APermitIdNoTb == null)
+                                        permitInfo.APermitIdNoTb = "";
+
+                                    if (permitInfo.APermitTransTinTb == null)
+                                        permitInfo.APermitTransTinTb = "";
+
                                     if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
                                     {
                                         permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
@@ -1618,6 +1624,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if(SelectedReason != null)
                                 permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
 
+                            if (permitInfo.APermitIdNoTb == null)
+                                permitInfo.APermitIdNoTb = "";
+
+                            if (permitInfo.APermitTransTinTb == null)
+                                permitInfo.APermitTransTinTb = "";
+
                             if (permitInfo.APermitDregRsnTb == null)
                                 permitInfo.APermitDregRsnTb = string.Empty;
 
@@ -2380,6 +2392,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                             if (outletInfo.PermitTypes == null)
                                                 outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
+                                            if (permitInfo.APermitIdNoTb == null)
+                                                permitInfo.APermitIdNoTb = "";
+
+                                            if (permitInfo.APermitTransTinTb == null)
+                                                permitInfo.APermitTransTinTb = "";
+
                                             if (SelectedOutletOption.OutletOptionIndex != "3")
                                             {
                                                 permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("dd MMM yyyy");
@@ -2589,7 +2607,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 //Display Success Screen
                 await Submit();
-                _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView);
+                _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -2602,6 +2620,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
@@ -3166,6 +3188,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         if (!String.IsNullOrEmpty(permitInfo.APermitValfrDtTb))
                             permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
 
+                        if (permitInfo.APermitIdNoTb == null)
+                            permitInfo.APermitIdNoTb = "";
+
+                        if (permitInfo.APermitTransTinTb == null)
+                            permitInfo.APermitTransTinTb = "";
+
                         //TODO
                         //if (String.IsNullOrEmpty(permitInfo.APermitDobTb))
                         //{
@@ -3188,27 +3216,62 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     tempAttachDetSet.Add(attachment);
                 }
 
-                TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
-
-                await Task.Run(() =>
+                try
                 {
-                    App.HideProgressView();
-                });
+                    TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+                    TinDeregistrationData.AttDetSet.Results = tempAttachDetSet;
 
-                TinDeregistrationData.AttDetSet.Results = tempAttachDetSet;
+                    if (TinDeregistrationData.Xvoidz.Equals("X"))
+                    {
+                        string number = TinDeregistrationData.Fbnum;
+                        string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                        await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+                        _navigationService.GoBack();
+                    }
 
-                if (TinDeregistrationData.Xvoidz.Equals("X"))
-                {
-                    string number = TinDeregistrationData.Fbnum;
-                    string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                    await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
                     });
-                    _navigationService.GoBack();
                 }
+                catch (InternetException ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
 
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+                }
+                catch (GAZTErrorException ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
+
+                    string message = ex.Message;
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(message, AppResources.Information);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
+                }
                 await Task.Run(() =>
                 {
                     App.HideProgressView();

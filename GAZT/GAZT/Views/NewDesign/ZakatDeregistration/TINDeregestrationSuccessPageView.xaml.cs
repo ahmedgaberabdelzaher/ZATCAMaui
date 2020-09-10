@@ -26,10 +26,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (response.Fbnum != null)
                 {
-                    Label_Name.Text = response.ADecName;
+                    if(response.ADecName != null)
+                        Label_Name.Text = response.ADecName;
+
                     Label_ApplicationNumber.Text = response.Fbnum;
-                   // viewModel.FBNumber = response.Fbnumx;
-                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    //viewModel.FBNumber = response.Fbnumx;
+                    //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     //Label_Date.Text = StartdateToshow;
                 }
             }

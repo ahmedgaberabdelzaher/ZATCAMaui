@@ -11318,6 +11318,24 @@ namespace GAZT.Manager
             tinDeregistrationSendResponseModel.ADecName = tinDeregistrationResponseModel.ADecName;
             tinDeregistrationSendResponseModel.PermitTableSet = new List<string>();
 
+            List<PermitSetResult> temp = new List<PermitSetResult>();
+
+            foreach (PermitSetResult permitInfo in tinDeregistrationSendResponseModel.PermitSet)
+            {
+                if (permitInfo.APermitIdNoTb == null)
+                    permitInfo.APermitIdNoTb = "";
+
+                if (String.IsNullOrEmpty(permitInfo.APermitTransTinTb))
+                    permitInfo.APermitTransTinTb = " ";
+                
+                if (permitInfo.APermitDregRsnTb == null)
+                    permitInfo.APermitDregRsnTb = string.Empty;
+
+                temp.Add(permitInfo);
+            }
+
+            tinDeregistrationSendResponseModel.PermitSet = temp.ToArray();
+
             if (CrossConnectivity.Current.IsConnected)
             {
                 TinDeregistrationResponseModel _newRequestSummaryDataResponse = new TinDeregistrationResponseModel();
@@ -11367,13 +11385,24 @@ namespace GAZT.Manager
                         if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(TinDeregResponseJson);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                           try
                             {
-                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                ErrorMessageForUnlockAccount = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
+                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                                {
+                                    ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                    String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                    ErrorMessageForUnlockAccount = WithReplacedString;
+                                    //ErrorMessageForVAT
+                                    throw new GAZTErrorException(ErrorMessageForUnlockAccount);
+                                }
+                               
+                            }
+                            catch(Exception ex)
+                            {
+                                if (errorMesg != null && errorMesg.error != null)
+                                {
+                                    throw new GAZTErrorException(errorMesg.error.message.value);
+                                }
                             }
                         }
                         else if (!string.IsNullOrEmpty(TinDeregResponseJson))
