@@ -8,6 +8,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -346,8 +347,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 popUp.FlowDirections = "RightToLeft";
             else
                 popUp.FlowDirections = "LeftToRight";
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
 
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
 
