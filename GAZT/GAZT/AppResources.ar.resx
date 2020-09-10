@@ -4867,9 +4867,6 @@
   <data name="ZakatInstalmet" xml:space="preserve">
     <value>اختر نوع الضريبة لطلب خطة التقسيط</value>
   </data>
-  <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
-    <value>مبلغ الدفعة المقدمة بالريال السعودي</value>
-  </data>
   <data name="ZakatInstalmetFrequency" xml:space="preserve">
     <value>التكرار</value>
   </data>
@@ -4993,9 +4990,6 @@
   </data>
   <data name="ZZZZPleaseSelectZakatSubType" xml:space="preserve">
     <value>Reason for requesting Instalment</value>
-  </data>
-  <data name="ZakatInstalmentDownPaymentAmountPayable" xml:space="preserve">
-    <value>Down Payment Amount Payable</value>
   </data>
   <data name="ZakatInstalmentsSadadNumber" xml:space="preserve">
     <value>SADAD Number</value>
@@ -5728,7 +5722,7 @@
     <value>مبلغ الفاتورة</value>
   </data>
   <data name="ZakatClearedAmount" xml:space="preserve">
-    <value>Cleared Amount</value>
+    <value>المبلغ المدفوع</value>
   </data>
   <data name="ZakatDueAmount" xml:space="preserve">
     <value>مبلغ الفاتورة</value>
@@ -7165,6 +7159,50 @@
   </data>
   <data name="NDCorporateIDMustStartWithSeven" xml:space="preserve">
     <value>رقم الشركة يجب ان يبدأ برقم ٧</value>
+  </data>
+  <data name="ZakatSearchByInvoiceId" xml:space="preserve">
+    <value>البحث برقم فاتورة سداد</value>
+  </data>
+ <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
+    <value>مبلغ الدفعة الاولى (ريال سعودي)</value>
+  </data>
+ <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
+    <value>إجمالي الأصول الحالية .6</value>
+  </data>
+ <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
+    <value>إجمالي الإلتزامات الحالية .8</value>
+  </data>
+ <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
+    <value>صافي التدفق النقدي من العملية .11</value>
+  </data>
+<data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
+    <value>(معدل الربحية (10/9</value>
+  </data>
+ <data name="ZakatInstalmentCashRatio" xml:space="preserve">
+    <value>نسبة النقد (2 + 3) / 8</value>
+  </data>
+ <data name="ZakatMax" xml:space="preserve">
+    <value>الاعلى</value>
+  </data>
+  <data name="ZakatMin" xml:space="preserve">
+    <value>الادنى</value>
+  </data>
+  <data name="ZakatInstalmentDownPaymentAmount" xml:space="preserve">
+    <value>مبلغ الدفعة الأولى (ريال سعودي)</value>
+  </data>
+  <data name="ZakatInstalmentTotalInstalmentsRequestAmount" xml:space="preserve">
+    <value>إجمالي طلب الأقساط المبلغ (ريال سعودي)</value>
+  </data>
+  <data name="ZakatAttachmentTitle" xml:space="preserve">
+    <value>1. يجب أن يكون حجم الملف أقل من 5 ميجابايت
+2. يجب ان يكون الملف بأحد الصيغ التالية: XLS, XLSX, PDF, JPG
+3. الحد الأقصى لعدد المرفقات المسموح بها هو 10.</value>
+  </data>
+    <data name="VatInstalmentContinueCheckboxText" xml:space="preserve">
+    <value>يرجى التأكد من صحة المعلومات المذكورة أعلاه قبل المتابعة</value>
+  </data>
+     <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
+    <value>يجب أن لا يزيد عدد المرفقات عن 10 ملفات.</value>
   </data>
   </root>
 

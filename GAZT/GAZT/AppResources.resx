@@ -7238,4 +7238,27 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDCorporateIDMustStartWithSeven" xml:space="preserve">
     <value>Corporate ID must start with 7</value>
   </data>
+ <data name="ZakatInstalmentDownPaymentAmount" xml:space="preserve">
+    <value>Down Payment Amount</value>
+  </data>
+  <data name="ZakatInstalmentTotalInstalmentsRequestAmount" xml:space="preserve">
+    <value>Total Instalments Request Amount</value>
+  </data>
+  <data name="ZakatMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="ZakatMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+<data name="ZakatAttachmentTitle" xml:space="preserve">
+    <value>1. File size should be less than 5 MB
+2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
+3. Maximum no. of allowed attachments are 10.</value>
+  </data>
+<data name="VatInstalmentContinueCheckboxText" xml:space="preserve">
+    <value>Kindly confirm that the above information is correct before proceeding.</value>
+  </data>
+    <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
+    <value>Maximum no. of allowed attachments are 10.</value>
+  </data>
 </root>

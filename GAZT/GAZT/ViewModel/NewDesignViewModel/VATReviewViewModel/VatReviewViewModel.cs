@@ -907,6 +907,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private VATObjectionSummaryModel modelVATReview;
         private VATObjectionRejectedFormModel _VATObjectionRejected;
 
+
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+                else
+                {
+                    MarkComplete = false;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 5;
+
         public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(
             navigationService, dialogService)
         {
@@ -1444,6 +1468,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableReviewReasonView()
         {
+            CurrentIndex = 1;
             IsBackVisible = false;
             ReviewReasonVisible = true;
             ReviewDetailsVisible = false;
@@ -1455,6 +1480,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableReviewDetailsView()
         {
+            CurrentIndex = 2;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = true;
@@ -1466,6 +1492,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableSecurityPaymentsView()
         {
+            CurrentIndex = 3;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = false;
@@ -1477,6 +1504,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableDeclarationView()
         {
+            CurrentIndex = 4;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = false;
@@ -1488,6 +1516,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableSummaryView()
         {
+            CurrentIndex = 5;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = false;

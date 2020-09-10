@@ -432,6 +432,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
+        private Color _isSelectionContinueBackGroundColor = Color.FromHex("#d49504");
+
+        private bool _IsFirstCheckboxChecked = false;
+        public bool IsFirstCheckboxChecked
+        {
+            get
+            {
+                return _IsFirstCheckboxChecked;
+            }
+            set
+            {
+                _IsFirstCheckboxChecked = value;
+                IsSelectionContinueBackGroundColor = Color.FromHex(_IsFirstCheckboxChecked ? "#d49504" : "#9EA4A9");
+                RaisePropertyChanged("IsFirstCheckboxChecked");
+            }
+        }
+        public Color IsSelectionContinueBackGroundColor
+        {
+            get
+            {
+                return _isSelectionContinueBackGroundColor;
+            }
+            set
+            {
+                if (_isSelectionContinueBackGroundColor == value)
+                {
+                    return;
+                }
+                _isSelectionContinueBackGroundColor = value;
+                RaisePropertyChanged("IsSelectionContinueBackGroundColor");
+            }
+        }
+
         private bool _isSucessViewEnabled = true;
         public bool IsSucessViewEnabled
         {
@@ -1459,6 +1492,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 EnableAttachmentsView();
             });
 
+            IsFirstCheckboxChecked = false;
             VATInstalationClicked = new Command(this.VATInstalationTapped);
             ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             AggrementContinueBtnTapped = new Command(this.AggrementContinueBtnClicked);
@@ -1866,27 +1900,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public async void ReasonContinueBtnClicked()
         {
 
+
             try
             {
                 if (FirstTerms)
                 {
-                    EnableVATBillView();
+                    if (IsFirstCheckboxChecked)
+                    {
+                        EnableVATBillView();
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZZZConfirmAndCarryForward, AppResources.Information);
+                    }
                 }
                 else
                 {
                     await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
                         _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType.Instructions));
 
-                }
 
+                }
 
 
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
-
 
 
             }
@@ -1898,6 +1937,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     _navigationService.GoBack();
                 });
             }
+
+
 
 
         }

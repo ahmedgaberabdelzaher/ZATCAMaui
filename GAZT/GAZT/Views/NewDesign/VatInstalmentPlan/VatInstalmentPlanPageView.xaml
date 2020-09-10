@@ -127,6 +127,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0"  Margin="0,10,0,0">
@@ -183,11 +184,39 @@
                                 </Grid>
                             </border:SfBorder>
 
-                            <buttons:SfButton Grid.Row="2" Grid.Column="0"
+                        <StackLayout Grid.Row="2" Margin="0,10,0,10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+ 
+
+                                <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                                      IsChecked="{Binding IsFirstCheckboxChecked}">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Value="false">
+                                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+                                <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" VerticalOptions="Fill">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                Text="{x:Static ResourceManager:AppResources.VatInstalmentContinueCheckboxText}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+ 
+
+                            </StackLayout>
+
+ 
+
+                            <buttons:SfButton Grid.Row="3" Grid.Column="0"
                                           Margin="0,10,0,20" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding ReasonContinueBtnTapped}"
-                                          IsEnabled="{Binding IsContinueButtonEnable}" />
+                                              BackgroundColor="{Binding IsSelectionContinueBackGroundColor}"
+                                          IsEnabled="{Binding IsFirstCheckboxChecked}" />
 
                         </Grid>
                     </Grid>

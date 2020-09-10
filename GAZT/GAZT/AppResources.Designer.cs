@@ -12941,5 +12941,47 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDCorporateIDMustStartWithSeven", resourceCulture);
             }
         }
+        
+        public static string ZakatInstalmentDownPaymentAmount {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentDownPaymentAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentTotalInstalmentsRequestAmount {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentTotalInstalmentsRequestAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatMax {
+            get {
+                return ResourceManager.GetString("ZakatMax", resourceCulture);
+            }
+        }
+        
+        public static string ZakatMin {
+            get {
+                return ResourceManager.GetString("ZakatMin", resourceCulture);
+            }
+        }
+        
+        public static string ZakatAttachmentTitle {
+            get {
+                return ResourceManager.GetString("ZakatAttachmentTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentContinueCheckboxText {
+            get {
+                return ResourceManager.GetString("VatInstalmentContinueCheckboxText", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentAttachmentLimitReached {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAttachmentLimitReached", resourceCulture);
+            }
+        }
     }
 }

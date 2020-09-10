@@ -240,7 +240,7 @@ namespace GAZT.Helper
         public static string ZakatListOfInstalmentplanRequestUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/HdrSet(";
         public static string ZakatRevokeRequestListUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/HdrSet(";
         public static string ZakatOldInstalmentsListUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TP_DASHBOARD_SRV/HeaderSet(";
-        public static string ZakatRequestDisplayUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet(";
+        public static string ZakatRequestDisplayUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(";
         public static string ZakatValidateRevokeListUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/RevChkSet(";
         public static string ZakateRevokeSendOTPUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/OtpSendCheckSet?$filter=";
         #endregion
@@ -248,6 +248,7 @@ namespace GAZT.Helper
 
 
         #region ZakatInstalment
+        public static string ZakatInstalmentInvoiceURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=";
         public static string GetZAKATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(";
         public static string GetZAKATPostdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet";
         public static string GetZAKATInvoices = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=";

@@ -87,6 +87,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
+        private string _TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
+        public string TitleOne
+        {
+            get
+            {
+                return _TitleOne;
+            }
+            set
+            {
+                _TitleOne = value;
+                RaisePropertyChanged("TitleOne");
+            }
+        }
+
+
+
+        private string _TitleTwo = AppResources.ZChooseonlyfilewithextension;
+        public string TitleTwo
+        {
+            get
+            {
+                return _TitleTwo;
+            }
+            set
+            {
+                _TitleTwo = value;
+                RaisePropertyChanged("TitleTwo");
+            }
+        }
+
 
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
