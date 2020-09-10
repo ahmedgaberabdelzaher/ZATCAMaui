@@ -513,7 +513,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="21,000 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SecurityAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
                                     <Grid>
@@ -525,7 +525,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSecurityType}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="SADAD" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SecurityType}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
                                     <Grid>
@@ -537,7 +537,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="3456789123" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SADADNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     
                                 </StackLayout>
@@ -592,7 +592,7 @@
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding IDType}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
 
-                                    <!--<Grid>
+                                    <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
@@ -614,7 +614,7 @@
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>-->
+                                    </Grid>
                                     
                                     <Grid>
                                         <Grid.RowDefinitions>
