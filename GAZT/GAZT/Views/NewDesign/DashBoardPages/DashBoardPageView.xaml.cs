@@ -700,7 +700,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
-
+        private async void Vat_Review_Tapped(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ObjectionsSelectionPageView);
+            });
+        }
         private async void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
             //await Task.Run(() =>

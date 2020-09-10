@@ -300,6 +300,9 @@
                                     <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                         <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -467,7 +470,7 @@
                         
                         <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
                                              IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
+                                SelectionMode="Single" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -497,7 +500,7 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -596,8 +599,24 @@
                                                 </DataTemplate>
                                             </listView:SfListView.ItemTemplate>
                                          </listView:SfListView>
-                                           
-                                      
+                                        <border:SfBorder  Grid.Row="4" Grid.Column="0" HeightRequest="1" Grid.ColumnSpan="2" Margin="-4,8,-4,0" Padding="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}"/>
+                                         <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
+                                        <CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding APermitIsReasonSelected}">
+                                            <CheckBox.Triggers>
+                                                <DataTrigger TargetType="CheckBox" Binding="{Binding APermitIsReasonSelected}"  Value="true">
+                                                    <Setter Property="Color" Value="{StaticResource NewDarkBlueGreenColor}" />
+                                                </DataTrigger>
+                                            </CheckBox.Triggers>
+                    
+                                        </CheckBox>
+                                        <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}"  />
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                        </custom:CustomLabel>
+                                   </StackLayout>
                                     </Grid>
                                 </StackLayout>
                         </border:SfBorder >
@@ -815,6 +834,9 @@
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" MaxLength="10">
+                                                <Entry.Behaviors>
+                                                    <custom1:OnlyNumericValuesBehaviour/>
+                                                </Entry.Behaviors>
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
@@ -1027,7 +1049,7 @@
                                 </Frame> 
                                 <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="declaration"/>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ZDeclaration}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.FORM5Declaration}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
                             </Grid>
 

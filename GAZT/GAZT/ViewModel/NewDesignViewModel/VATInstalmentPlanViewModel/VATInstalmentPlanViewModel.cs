@@ -386,6 +386,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
+        public void EnableBillsContinue()
+        {
+            if (TotalAmountSAR.Equals("0.00 SAR"))
+            {
+                IsBillContinueEnabled = false;
+            }
+            else
+            {
+                IsBillContinueEnabled = true;
+            }
+        }
+
+
+
+        private bool _isBillContinueEnabled = false;
+        public bool IsBillContinueEnabled
+        {
+            get { return _isBillContinueEnabled; }
+            set
+            {
+                _isBillContinueEnabled = value;
+                IsBillContinueBackGroundColor = Color.FromHex(_isBillContinueEnabled ? "#d49504" : "#9EA4A9");
+
+
+
+                RaisePropertyChanged("IsBillContinueEnabled");
+            }
+        }
+        private Color _isBillContinueBackGroundColor = Color.FromHex("#d49504");
+        public Color IsBillContinueBackGroundColor
+        {
+            get
+            {
+                return _isBillContinueBackGroundColor;
+            }
+            set
+            {
+                if (_isBillContinueBackGroundColor == value)
+                {
+                    return;
+                }
+                _isBillContinueBackGroundColor = value;
+                RaisePropertyChanged("IsBillContinueBackGroundColor");
+            }
+        }
+
         private bool _isSucessViewEnabled = true;
         public bool IsSucessViewEnabled
         {
@@ -673,6 +719,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 _vATReferanceNumber = value;
                 RaisePropertyChanged("VATReferanceNumber");
+            }
+        }
+
+        private string _vATCustomerName = string.Empty;
+        public string VATCustomerName
+        {
+            get
+            {
+                return _vATCustomerName;
+            }
+            set
+            {
+                _vATCustomerName = value;
+                RaisePropertyChanged("VATCustomerName");
             }
         }
 
@@ -1414,21 +1474,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             vatInstalmentPlanModel = new VATInstalmentPlanModel();
             SelectedOutletOption = new VATInstalmentPlanModel();
-            //LoadVatInstalmentData();
+            EnableBillsContinue();
             AddOutletDecisionOptions();
             AddFrequencyOptions();
-            //PopulateAttachmentsListViewTemplate();
-
-            //PopulateSummaryReasonData();
-            //PopulateSummaryInstallmentAgreement();
-            //PopulateSummaryAttachments();
-            //PopulateSummaryInstallmentAgreement();
-            //SetStatusPickerItem();
-            //SetSubStatusPickerItem();
-
-            //PopulateInstalmentsListViewTemplate();
-
-            // EnableBillView();
+           
         }
 
         public void AddOutletDecisionOptions()
@@ -2620,8 +2669,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             Stream stream = null;
             try
             {
-                if (Device.RuntimePlatform == Device.Android)
-                {
+                
                     var dependency = DependencyService.Get<ILocalFileProvider>();
                     if (dependency == null)
                     {
@@ -2637,7 +2685,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             String downloadurl = Constants.downloadFile + "'" + VATReferanceNumber + "')/$value";
 
-                            StreamForDownloadURL = client.OpenRead(downloadurl);
+                       // String downloadurl = "http://www.africau.edu/images/default/sample.pdf";
+
+                        StreamForDownloadURL = client.OpenRead(downloadurl);
                             BinaryReader br = new BinaryReader(StreamForDownloadURL);
                             byte[] result = br.ReadBytes((int)StreamForDownloadURL.Length);
                             string strBase64 = Convert.ToBase64String(result);
@@ -2653,7 +2703,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         catch (Exception)
                         {
                         }
-                    }
+                    
                     //    using (var httpClient = new HttpClient())
                     //{
                     //    var pdfStream = Task.Run(() => httpClient.GetStreamAsync("https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value")).Result;
@@ -2667,9 +2717,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                 }
                 if (Device.RuntimePlatform == Device.Android)
+                {
                     PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
-                //else
-                //    Path = url;
+
+                }
+                else
+                {
+                   
+                }
+
+                   
             }
             catch (Exception e)
             {

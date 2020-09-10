@@ -52,7 +52,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         public ICommand GoBackToAttachments { get; set; }
         public ICommand GoBackToDeclaration { get; set; }
         public ICommand ShowPicker { get; set; }
-        public ICommand ShowDatePicker { get; set; }
+        public ICommand ShowStartDatePicker { get; set; }
+        public ICommand ShowEndDatePicker { get; set; }
 
         public ICommand ContractProfitPercentCommand { get; set; }
         public ICommand ProfitEstimatedContractCommand { get; set; }
@@ -697,7 +698,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         int selectedPage = (int)PagesEnum.CrReleaseDetailsView;
 
-        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) { 
+        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
             _navigationService = navigationService;
 
             _dialogService = dialogService;
@@ -758,11 +760,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(this));
             });
 
-            ShowDatePicker = new Command(async () =>
+            ShowStartDatePicker = new Command(async () =>
             {
-                fromDatePicker = !fromDatePicker;
-                showDatePickerDialog();
-                
+                fromDatePicker = true;
+                showDatePickerDialog(AppResources.CRContractStartDate);
+
+            });
+
+            ShowEndDatePicker = new Command(async () =>
+            {
+                fromDatePicker = false;
+                showDatePickerDialog(AppResources.CRContractEndDate);
+
             });
 
             ShowPicker = new Command(async () => { showPickerDialog(); });
@@ -847,15 +856,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             MakeCalculations();
         }
 
-        private async void showDatePickerDialog()
+        private async void showDatePickerDialog(string title)
         {
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = "Select Date";
+            genericPickerModel.DatePickerTitle = title;
             genericPickerModel.PickerId = "DatePicker";
 
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel, false));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1032,11 +1041,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     }
                 }
 
-                
 
-              
 
-                
+
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1072,7 +1081,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.APeriodFrom = ContractReleaseData.d.APeriodFrom;
                 request.d.APeriodTo = ContractReleaseData.d.APeriodTo;
                 request.d.Approvez = ContractReleaseData.d.Approvez;
-                
+
                 request.d.ARemark = ContractReleaseData.d.ARemark;
                 request.d.ATin = ContractReleaseData.d.ATin;
                 request.d.ATpNm = ContractReleaseData.d.ATpNm;
@@ -1084,7 +1093,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.Fbnum = ContractReleaseData.d.Fbnum;
                 request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
                 request.d.FormGuid = ContractReleaseData.d.FormGuid;
-                request.d.Langz = GetLangZParameter(); 
+                request.d.Langz = GetLangZParameter();
                 request.d.LegacyDocNo = ContractReleaseData.d.LegacyDocNo;
                 request.d.Mandt = ContractReleaseData.d.Mandt;
                 request.d.Monthz = ContractReleaseData.d.Monthz;
@@ -1125,9 +1134,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.ADoc3 = "1";
                 request.d.AInvoiceChk = "";
                 request.d.AType = PickedContractId;
-              
+
                 ZnotesSet notes = new ZnotesSet();
-                if(DetailDescription != null )  {
+                if (DetailDescription != null)
+                {
 
                     notes.Tdline = DetailDescription.ToString();
 
@@ -1164,13 +1174,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.znotesSet[0] = notes;
 
 
-           
-              
 
-              //  request.d.znotesSet = ContractReleaseData.d.znotesSet.results;
+
+
+                //  request.d.znotesSet = ContractReleaseData.d.znotesSet.results;
                 request.d.AttDetSet = ContractReleaseData.d.AttDetSet.results;
 
-               // var fromDate = (FromDate.Year + "/" + FromDate.Month + "/" + FromDate.Day).ToString();
+                // var fromDate = (FromDate.Year + "/" + FromDate.Month + "/" + FromDate.Day).ToString();
                 //var toDate = (ToDate.Year + "/" + ToDate.Month + "/" + ToDate.Day).ToString();
 
 
@@ -1223,10 +1233,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.Savez = "X";
                 request.d.Submitz = "X";
 
-                
+
             }
 
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
             }
 
@@ -1252,8 +1263,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
 
 
-           
-               
+
+
 
             await Task.Run(() => { IsLoading = true; });
 
@@ -1273,7 +1284,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     {
                         if (response != null && response.d != null)
                         {
-                           
+
 
 
                         }
@@ -1587,7 +1598,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 IsAttachmentsEnabled = false;
             }
-            else if (ContractCopyAttachmentsListViewData == null )
+            else if (ContractCopyAttachmentsListViewData == null)
             {
 
                 IsAttachmentsEnabled = false;
@@ -1595,17 +1606,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             else
             {
 
-                if(InvoiceAttachmentsListViewData.Count == 0 || ContractCopyAttachmentsListViewData.Count == 0) {
+                if (InvoiceAttachmentsListViewData.Count == 0 || ContractCopyAttachmentsListViewData.Count == 0)
+                {
 
                     IsAttachmentsEnabled = false;
                 }
-                else {
+                else
+                {
                     IsAttachmentsEnabled = true;
                 }
 
-             
+
             }
-           
+
         }
 
         public void EnableDeclarationContinue()

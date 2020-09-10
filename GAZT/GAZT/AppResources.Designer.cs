@@ -12911,5 +12911,35 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZMyCorrespondence", resourceCulture);
             }
         }
+        
+        public static string CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract {
+            get {
+                return ResourceManager.GetString("CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract", resourceCulture);
+            }
+        }
+        
+        public static string CRContractStartDate {
+            get {
+                return ResourceManager.GetString("CRContractStartDate", resourceCulture);
+            }
+        }
+        
+        public static string CRContractEndDate {
+            get {
+                return ResourceManager.GetString("CRContractEndDate", resourceCulture);
+            }
+        }
+        
+        public static string NDMobileNumberMustStartWithFive {
+            get {
+                return ResourceManager.GetString("NDMobileNumberMustStartWithFive", resourceCulture);
+            }
+        }
+        
+        public static string NDCorporateIDMustStartWithSeven {
+            get {
+                return ResourceManager.GetString("NDCorporateIDMustStartWithSeven", resourceCulture);
+            }
+        }
     }
 }

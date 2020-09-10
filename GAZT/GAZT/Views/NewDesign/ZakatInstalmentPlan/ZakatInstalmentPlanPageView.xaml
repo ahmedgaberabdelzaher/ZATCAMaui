@@ -1631,12 +1631,14 @@
 
                                             <border:SfBorder Grid.Row="0" Grid.Column="1" Padding="10,5,10,5"  HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}"   VerticalOptions="CenterAndExpand" HorizontalOptions="End">
 
-                                                <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding InsStatusTxt}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                 <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding InsStatusTxt}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                     <Label.Triggers>
+
+ 
 
                                                         <DataTrigger TargetType="Label" Binding="{Binding InsStatusTxt}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
                                                             <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnPaid}" />
-                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                            <Setter Property="TextColor" Value="Red" />
                                                         </DataTrigger>
                                                     </Label.Triggers>
                                                 </Label>

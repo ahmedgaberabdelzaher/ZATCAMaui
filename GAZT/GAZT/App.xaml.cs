@@ -28,6 +28,7 @@ using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
+using GAZT.Helper;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -121,6 +122,7 @@ namespace EGAZT
         public static string VatReviewListPageView = "VatReviewListPageView";
         public static string VatReviewSuccessPageView = "VatReviewSuccessPageView";
         public static string VatReviewViewApplicationPageView = "VatReviewViewApplicationPageView";
+        public static string ObjectionsSelectionPageView = "ObjectionsSelectionPageView";
         #endregion
 
         #region old view strings
@@ -353,7 +355,7 @@ namespace EGAZT
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage()) { BarTextColor = Color.White };
+            //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
@@ -519,7 +521,7 @@ namespace EGAZT
             IsJailBrokenDevice = false;
             try
             {
-                //  IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+                IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
             }
             catch (Exception ex)
             {

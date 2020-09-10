@@ -370,7 +370,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
                         
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                        
+                        if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration ||
+                            IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Where(x => (x.Dotyp == DocTypeString)).ToList().Count();
+
+                                if(count >= 5)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+
+                                    return;
+                                }
+                             
+                            }
+                        }
+          
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
                             attachment = fileData.DataArray;
@@ -610,6 +626,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewAttachments)
+                        {
+                            APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        }
+                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
+                        {
+                            APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        }
 
                         string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, attachment.Doguid, APiMethod);
                         PopToRootPage();
@@ -726,6 +750,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     else if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                     {
                         APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.VatReviewAttachments)
+                    {
+                        APiMethod = "ZDP_INDTAX_ATT_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
+                    {
+                        APiMethod = "ZDP_INDTAX_ATT_SRV";
                     }
 
                     AttachmentRootOject attachment = await WebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);

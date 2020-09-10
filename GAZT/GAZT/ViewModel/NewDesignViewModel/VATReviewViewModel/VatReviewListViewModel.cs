@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models;
+using EGAZT.Models.VatReviewModel;
+using EGAZT.Views.NewDesign.VatReview;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
@@ -18,9 +25,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand SelectionGoBackClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand NewRequestBtnTapped { get; set; }
+        public ICommand CloseClick { get; set; }
+        private int selectedFilter = (int)FilterOptions.All;
 
-        private int selectedFilter = (int) FilterOptions.All;
-        
         enum FilterOptions
         {
             All,
@@ -29,6 +36,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         }
 
         private bool _isLoading = false;
+
         public bool IsLoading
         {
             get { return _isLoading; }
@@ -38,8 +46,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-        
+
         private bool _isBackButtonVisible = false;
+
         public bool IsBackButtonVisible
         {
             get { return _isBackButtonVisible; }
@@ -49,8 +58,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsBackButtonVisible");
             }
         }
-        
+
         private bool _isVatListVisible = false;
+
         public bool IsVatListVisible
         {
             get { return _isVatListVisible; }
@@ -60,8 +70,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsVatListVisible");
             }
         }
-        
+
         private bool _summaryVisible = false;
+
         public bool SummaryVisible
         {
             get { return _summaryVisible; }
@@ -71,8 +82,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("SummaryVisible");
             }
         }
-        
+
         private string _filteredSelectionName = "";
+
         public string FilteredSelectionName
         {
             get { return _filteredSelectionName; }
@@ -82,8 +94,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("FilteredSelectionName");
             }
         }
-        
+
         private string _numberOfObjAndReviews = "";
+
         public string NumberOfObjAndReviews
         {
             get { return _numberOfObjAndReviews; }
@@ -93,23 +106,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("NumberOfObjAndReviews");
             }
         }
-        
+
         public class SelectionModel
         {
             public SelectionModel()
             {
             }
+
             public string SelectionTitle { get; set; }
             public bool IsSelected { get; set; }
         }
-        
+
         public ObservableCollection<SelectionModel> selectionOptions { get; set; }
+
         public ObservableCollection<SelectionModel> SelectionOptions
         {
-            get
-            {
-                return selectionOptions;
-            }
+            get { return selectionOptions; }
 
             set
             {
@@ -117,17 +129,253 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     return;
                 }
+
                 selectionOptions = value;
                 RaisePropertyChanged("SelectionOptions");
             }
         }
 
-        public VatReviewListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+
+        public ObservableCollection<VATObjectionListModel.Result3> _VatobjListViewData { get; set; }
+
+        public ObservableCollection<VATObjectionListModel.Result3> VATobjListViewData
+        {
+            get { return _VatobjListViewData; }
+
+            set
+            {
+                if (_VatobjListViewData == value)
+                {
+                    return;
+                }
+
+                _VatobjListViewData = value;
+                RaisePropertyChanged("VATobjListViewData");
+            }
+        }
+
+        public string _reviewReason = "";
+
+        public string ReviewReason
+        {
+            get { return _reviewReason; }
+            set
+            {
+                _reviewReason = value;
+                RaisePropertyChanged("ReviewReason");
+            }
+        }
+
+        public string _subReviewReason = "";
+
+        public string SubReviewReason
+        {
+            get { return _subReviewReason; }
+            set
+            {
+                _subReviewReason = value;
+                RaisePropertyChanged("SubReviewReason");
+            }
+        }
+
+        public string _applicationRefNumber = "";
+
+        public string ApplicationRefNumber
+        {
+            get { return _applicationRefNumber; }
+            set
+            {
+                _applicationRefNumber = value;
+                RaisePropertyChanged("ApplicationRefNumber");
+            }
+        }
+
+        public string _requestDate = "";
+
+        public string RequestDate
+        {
+            get { return _requestDate; }
+            set
+            {
+                _requestDate = value;
+                RaisePropertyChanged("RequestDate");
+            }
+        }
+
+        public string _taxPeriodOfCase = "";
+
+        public string TaxPeriodOfCase
+        {
+            get { return _taxPeriodOfCase; }
+            set
+            {
+                _taxPeriodOfCase = value;
+                RaisePropertyChanged("TaxPeriodOfCase");
+            }
+        }
+
+        public string _taxPeriodFrom = "";
+
+        public string TaxPeriodFrom
+        {
+            get { return _taxPeriodFrom; }
+            set
+            {
+                _taxPeriodFrom = value;
+                RaisePropertyChanged("TaxPeriodFrom");
+            }
+        }
+
+        private string _idType = "";
+
+        public string IDType
+        {
+            get { return _idType; }
+            set
+            {
+                _idType = value;
+                RaisePropertyChanged("IDType");
+            }
+        }
+
+        public string _taxPeriodTo = "";
+
+        public string TaxPeriodTo
+        {
+            get { return _taxPeriodTo; }
+            set
+            {
+                _taxPeriodTo = value;
+                RaisePropertyChanged("TaxPeriodTo");
+            }
+        }
+
+        public string _penalityAmountInQuestion = "";
+
+        public string PenalityAmountInQuestion
+        {
+            get { return _penalityAmountInQuestion; }
+            set
+            {
+                _penalityAmountInQuestion = value;
+                RaisePropertyChanged("PenalityAmountInQuestion");
+            }
+        }
+
+        public string _reportDetails = "";
+
+        public string ReportDetails
+        {
+            get { return _reportDetails; }
+            set
+            {
+                _reportDetails = value;
+                RaisePropertyChanged("ReportDetails");
+            }
+        }
+
+        public string _sADADNumber = "";
+
+        public string SADADNumber
+        {
+            get { return _sADADNumber; }
+            set
+            {
+                _sADADNumber = value;
+                RaisePropertyChanged("SADADNumber");
+            }
+        }
+
+        public string _securityAmount = "";
+
+        public string SecurityAmount
+        {
+            get { return _securityAmount; }
+            set
+            {
+                _securityAmount = value;
+                RaisePropertyChanged("SecurityAmount");
+            }
+        }
+
+        private string _contactPersonName = "";
+
+        public string ContactPersonName
+        {
+            get { return _contactPersonName; }
+            set
+            {
+                _contactPersonName = value;
+                RaisePropertyChanged("ContactPersonName");
+            }
+        }
+
+        public string _idNumber = "";
+
+        public string IDNumber
+        {
+            get { return _idNumber; }
+            set
+            {
+                _idNumber = value;
+                RaisePropertyChanged("IDNumber");
+            }
+        }
+
+        private List<VATObjectionListModel.Result3> _vatReviewListSet;
+
+        public List<VATObjectionListModel.Result3> VATReviewListSet
+        {
+            get { return _vatReviewListSet; }
+            set
+            {
+                _vatReviewListSet = value;
+                RaisePropertyChanged("VATReviewListSet");
+            }
+        }
+
+        private VATObjectionFormModel.VATReviewsReturnModel _modelVATReviewsReturn;
+
+        public VATObjectionFormModel.VATReviewsReturnModel modelVATReviewsReturn
+        {
+            get { return _modelVATReviewsReturn; }
+            set
+            {
+                _modelVATReviewsReturn = value;
+                RaisePropertyChanged("modelVATReviewsReturn");
+            }
+        }
+
+        public ObservableCollection<Attachment> _vatReviewAttachments
+        {
+            get;
+            set;
+        }
+
+        public ObservableCollection<Attachment> VatReviewAttachments
+        {
+            get { return _vatReviewAttachments; }
+
+            set
+            {
+                if (_vatReviewAttachments == value)
+                {
+                    return;
+                }
+
+                _vatReviewAttachments = value;
+                RaisePropertyChanged("VatReviewAttachments");
+            }
+        }
+
+        public VatReviewListViewModel(INavigationService navigationService, IDialogService dialogService) : base(
+            navigationService, dialogService)
         {
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
+
             _navigationService = navigationService;
             if (dialogService == null)
             {
@@ -135,74 +383,67 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
 
             _dialogService = dialogService;
-            
-            GoBackClick = new Command(async () =>
-            {
-                EnableListView();
-            });
-            SelectionGoBackClick = new Command(async () =>
-            {
-                _navigationService.GoBack();
-            });
-            NewRequestBtnTapped = new Command(async () =>
-            {
-                _navigationService.NavigateTo(App.VatReviewPageView);
-            });
-            
+
+            GoBackClick = new Command(async () => { EnableListView(); });
+
+            CloseClick = new Command(async () => { _navigationService.GoBack(); });
+
+            NewRequestBtnTapped = new Command(async () => { ShowVatReviewPage(); });
         }
-        
+
         public void EnableSummaryView()
         {
             IsBackButtonVisible = true;
             SummaryVisible = true;
             IsVatListVisible = false;
         }
-        
+
         public void EnableListView()
         {
             IsBackButtonVisible = false;
             SummaryVisible = false;
             IsVatListVisible = true;
         }
-        
+
         public void ResetSelectionData()
         {
             IsLoading = false;
+            EnableListView();
             //AddOutletDecisionOptions();
         }
-        
+
         public async void ShowVatReviewPage()
         {
-            //await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
-            _navigationService.NavigateTo(App.VatReviewPageView);
+            await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
+            // _navigationService.NavigateTo(App.VatReviewPageView);
         }
-        
+
         public void ResetListData()
         {
             IsLoading = false;
-            SetFilterOptions((int) FilterOptions.All);
-            NumberOfObjAndReviews = "0 "+AppResources.VRObjectionsAndReviews;
+            SetFilterOptions((int)FilterOptions.All);
+            NumberOfObjAndReviews = "0 " + AppResources.VatReview;
             EnableListView();
         }
-        
+
         private void SetFilterOptions(int selectedFilter)
         {
-            if (selectedFilter == (int) FilterOptions.All)
+            if (selectedFilter == (int)FilterOptions.All)
             {
                 FilteredSelectionName = AppResources.VRAll;
-            }else if (selectedFilter == (int) FilterOptions.Objections)
+            }
+            else if (selectedFilter == (int)FilterOptions.Objections)
             {
                 FilteredSelectionName = AppResources.ZakatObjection;
-            }else if (selectedFilter == (int) FilterOptions.VatReviews)
+            }
+            else if (selectedFilter == (int)FilterOptions.VatReviews)
             {
                 FilteredSelectionName = AppResources.VatReview;
             }
-              
         }
-        
+
         private void AddOutletDecisionOptions()
         {
-            
             var outletDecisionOptions = new ObservableCollection<SelectionModel>();
             outletDecisionOptions.Add(new SelectionModel
             {
@@ -216,6 +457,402 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             });
             SelectionOptions = outletDecisionOptions;
         }
-        
+
+        public async Task OnPageLoad1(int index)
+        {
+            try
+            {
+                await Task.Run(() => { IsLoading = true; });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    //VATReview = null;
+
+                  
+                    try
+                    {
+
+
+                        var item = VATobjListViewData[index];
+
+
+
+                        // VATObjectionSummaryInputModel getFormGuid = new VATObjectionSummaryInputModel();
+                        //getFormGuid = await WebServiceManager.GAZTVATObjectionSummaryInputData(item.Fbnum, item.Fbust);
+
+
+
+                        VATObjectionSummaryModel modelVATReview = new VATObjectionSummaryModel();
+                        modelVATReviewsReturn = new VATObjectionFormModel.VATReviewsReturnModel();
+
+                        //if(getFormGuid != null && getFormGuid.d != null) {
+
+
+                        modelVATReview = await WebServiceManager.GAZTGetVATObjectionSummary(item.Fbnum);
+
+                            if (modelVATReview != null && modelVATReview.d != null)
+                            {
+                                BindSummaryData(modelVATReview);
+                            }
+
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
+                                        AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
+                            }
+
+                       // }
+
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                    }
+                });
+                await Task.Run(() => { IsLoading = false; });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() => { IsLoading = false; });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task VATObjectionList()
+
+        {
+            try
+            {
+                await Task.Run(() => { IsLoading = true; });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+
+                    VATObjectionListModel _VATObjectionList = new VATObjectionListModel();
+                    try
+                    {
+                        _VATObjectionList = await WebServiceManager.GAZTGetVATObjectionList();
+
+                        if (_VATObjectionList != null && _VATObjectionList.d != null)
+                        {
+                            var selectedAssets = _VATObjectionList.d.ASSLISTSet.results
+                                .Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                            // PopulateVATReviewList();
+                            VATReviewListSet = selectedAssets;
+
+                            PopulateVATReviewList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
+                                    AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() => { IsLoading = false; });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() => { IsLoading = false; });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        private void PopulateVATReviewList()
+        {
+            var vatreviews = new ObservableCollection<VATObjectionListModel.Result3>();
+
+            foreach (var vatreview in VATReviewListSet)
+            {
+                vatreviews.Add(vatreview);
+            }
+
+            VATobjListViewData = vatreviews;
+            NumberOfObjAndReviews = vatreviews.Count + " " + AppResources.VatReview;
+        }
+
+        private void BindSummaryData(VATObjectionSummaryModel responseModel)
+        {
+            /*
+            modelVATReviewsReturn.TIN = responseModel.d.Gpartx;
+            modelVATReviewsReturn.TaxPayerName = responseModel.d.FullName;
+            modelVATReviewsReturn.License = responseModel.d.CrNo + "-" + responseModel.d.Actnm;
+            modelVATReviewsReturn.Address = responseModel.d.AddressSet.results[0].BuildingNo + "," +
+                                            responseModel.d.AddressSet.results[0].Street + "," +
+                                            responseModel.d.AddressSet.results[0].Addrnumber + "," +
+                                            responseModel.d.AddressSet.results[0].RegionDesc + "," +
+                                            responseModel.d.AddressSet.results[0].City + "," +
+                                            responseModel.d.AddressSet.results[0].PostalCd;
+            */
+            //modelVATReviewsReturn.ListReviewReason lstReasons =new modelVATReviewsReturn.ListReviewReason;
+            // List<Dictionary<string, string>> reasonDDL = new List<Dictionary<string, string>>();
+            List<VATObjectionFormModel.ReviewReason> reasonList =
+                new List<VATObjectionFormModel.ReviewReason>();
+            if (responseModel.d.MainReasonSet.results.Count > 0)
+            {
+                for (int i = 0; i < responseModel.d.MainReasonSet.results.Count; i++)
+                {
+                    VATObjectionFormModel.ReviewReason obj = new VATObjectionFormModel.ReviewReason();
+                    obj.ProcCD = responseModel.d.MainReasonSet.results[i].ProcCd;
+                    obj.Reasons = responseModel.d.MainReasonSet.results[i].TypeT;
+                    if (responseModel.d.ReasonSet.results.Where(x =>
+                        x.ProcCd == responseModel.d.MainReasonSet.results[i].ProcCd).Count() > 0)
+                    {
+                        List<VATObjectionFormModel.SubReason> subReasonList =
+                            new List<VATObjectionFormModel.SubReason>();
+                        var lstSub = responseModel.d.ReasonSet.results.Where(x =>
+                            x.ProcCd == responseModel.d.MainReasonSet.results[i].ProcCd).ToList();
+                        for (int j = 0; j < lstSub.Count(); j++)
+                        {
+                            VATObjectionFormModel.SubReason sub = new VATObjectionFormModel.SubReason();
+                            sub.Code = lstSub[j].Code;
+                            sub.SubReasons = lstSub[j].SubtypT;
+                            subReasonList.Add(sub);
+                        }
+
+                        obj.ListSubReason = subReasonList;
+                    }
+
+                    reasonList.Add(obj);
+                }
+            }
+
+            modelVATReviewsReturn.ListReviewReason = reasonList;
+
+            //Step3 Details
+
+            var selectedReason = reasonList.First(x => x.ProcCD == responseModel.d.RvRsn);
+
+            ReviewReason = selectedReason.Reasons;
+            SubReviewReason = selectedReason.ListSubReason.First(x => x.Code == responseModel.d.RvSubRsn).SubReasons;
+
+            
+            ApplicationRefNumber = responseModel.d.Fbnumx;
+           
+            string strRequestedDate = "";
+            if (responseModel.d.DecDt != null)
+            {
+
+                DateTime dateStart = new DateTime();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                string apiDate = @"""" + responseModel.d.DecDt + @"""";
+                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                string dt1 = string.Empty;
+                string[] dts = null;
+                dts = dateStr.Split('/');
+                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                strRequestedDate = dt1;
+            }
+
+            RequestDate = strRequestedDate;
+
+            //     modelVATReviewsReturn.step3Text = ""; //(modelVATReview.d.NotesSet.results != null) ? modelVATReview.d.NotesSet.results.Strline : "";
+            //modelVATReviewsReturn.Corrections = responseModel.d.NotesSet.results;
+            //      modelVATReviewsReturn.AttachmentList = modelVATReview.d.AttdetSet.results;
+
+            //Step4
+            //modelVATReviewsReturnModel.DecisionTaken = modelVATReview.d.NotesSet.results;
+            //modelVATReviewsReturnModel.AttachmentName = modelVATReview.d.AttdetSet.results[0];
+            TaxPeriodOfCase = responseModel.d.SecurityDtl.Perslt;
+
+            string strTaxPeriodFromDate = "";
+            if (responseModel.d.SecurityDtl.Abrzu != null) {
+
+                DateTime dateStart = new DateTime();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                string apiDate = @"""" + responseModel.d.SecurityDtl.Abrzu + @"""";
+                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                string dt1 = string.Empty;
+                string[] dts = null;
+                dts = dateStr.Split('/');
+                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                strTaxPeriodFromDate = dt1;
+
+            }
+            TaxPeriodFrom = strTaxPeriodFromDate;
+
+
+            string strTaxPeriodToDate = "";
+            if (responseModel.d.SecurityDtl.Abrzo != null)
+            {
+
+                DateTime dateStart = new DateTime();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                string apiDate = @"""" + responseModel.d.SecurityDtl.Abrzo + @"""";
+                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                string dt1 = string.Empty;
+                string[] dts = null;
+                dts = dateStr.Split('/');
+                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                strTaxPeriodToDate = dt1;
+
+            }
+
+            TaxPeriodTo = strTaxPeriodToDate;
+
+            PenalityAmountInQuestion = responseModel.d.SecurityDtl.Penamount;
+
+            modelVATReviewsReturn.TotalTaxLiability = responseModel.d.SecurityDtl.Liaamt;
+            modelVATReviewsReturn.TaxPaid = responseModel.d.SecurityDtl.Clramt;
+            modelVATReviewsReturn.RequestToReviewAmount = responseModel.d.SecurityDtl.Amttp;
+            modelVATReviewsReturn.ParticularAmount = responseModel.d.SecurityDtl.Disamt;
+            //for Dispute Details  Map the Strline
+            //modelVATReviewsReturn.Corrections = responseModel.d.NotesSet.results;
+            //Step4 End
+
+            //Step 5 Security Payments
+
+            SecurityAmount = responseModel.d.SecurityDtl.Secamt;
+            //Security Type field If Value modelVATReview.d.SecurityDtl.Sectp=="C" then Sadad payment and B then Bank Guarantee
+            modelVATReviewsReturn.MethodSubmitSecurity = responseModel.d.SecurityDtl.Sectp;
+            //Checkbox Value is "X"  checked  
+            modelVATReviewsReturn.ChkSecurityPayment = responseModel.d.SecurityDtl.ChkCash;
+            SADADNumber = responseModel.d.SecurityDtl.Sopbel;
+            //Step5 End
+
+            //Step6 Start Declaration
+
+            modelVATReviewsReturn.ChkBankGuarantee = responseModel.d.SecurityDtl.ChkBank;
+            modelVATReviewsReturn.ChkInfoCorrect = responseModel.d.DecFlg1;
+            if (responseModel.d.IdType == "ZS0001")
+                IDType = AppResources.VFCNationalID;
+            else if (responseModel.d.IdType == "ZS0002")
+                IDType = AppResources.VFCIqamaID;
+            else if (responseModel.d.IdType == "ZS0003")
+                IDType = AppResources.VFCGCCID;
+
+            modelVATReviewsReturn.NameOfTaxPayer = responseModel.d.FullName;
+            ContactPersonName = responseModel.d.FullName;
+            // modelVATReviewsReturn.ApplicationNo = modelVATReview.d.Fbnumx;
+            modelVATReviewsReturn.ApplicationNo = responseModel.d.DecIdNo;
+            modelVATReviewsReturn.Date = (responseModel.d.Declarationdt != null)
+                ? responseModel.d.Declarationdt.ToString()
+                : "";
+            //Step6 End
+
+            /*SadadNumber = modelVATReviewsReturn.SADADNumber;
+            TaxPeriodCase = modelVATReviewsReturn.TaxPeriodofCase;
+            PeriodFrom = modelVATReviewsReturn.PeriodFrom;
+            PeriodTo = modelVATReviewsReturn.PeriodTo;
+            DecisionDate = modelVATReviewsReturn.DecisionDate;
+            //Attachment = modelVATReviewsReturn.AttachmentList;
+            SecurityAmount = modelVATReviewsReturn.SecurityAmount;
+            //ReferenceNumber = modelVATReviewsReturn.SummaryReferenceNumber;
+            //ReviewReason = modelVATReviewsReturn.SelectedReason;
+            //SubReason = modelVATReviewsReturn.SelectedSubreason;*/
+            //var Attachments = new ObservableCollection<Attachment>();
+            //foreach (var attach in responseModel.d.AttdetSet.results)
+            //{
+            //    Attachments.Add(attach);
+            //}
+
+           // VatReviewAttachments = Attachments;
+
+            // ReferenceNumber= modelVATReviewsReturn.;
+        }
+
+        public static DateTime ConvertJsonToDateTime(string jsonDate)
+        {
+            // JavaScript uses the unix epoch of 1/1/1970. Note, it's important to call ToLocalTime()
+            // after doing the time conversion, otherwise we'd have to deal with daylight savings hooey.
+            DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            Double milliseconds = Convert.ToDouble(jsonDate);
+            DateTime dateTime = unixEpoch.AddMilliseconds(milliseconds).ToLocalTime();
+
+            return dateTime;
+        }
     }
 }

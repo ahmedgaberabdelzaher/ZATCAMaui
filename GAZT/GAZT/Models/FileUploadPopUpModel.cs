@@ -46,8 +46,8 @@ namespace EGAZT.Models.ZakatInstalationModels
             ZakatInstalmentBankStatements = 8,
              ZakatInstalmentFinance = 9,
              TINDeregistration =10,
-            VatReviewAttachments = 10,
-             VatReviewBankGuranteeAttach = 11
+            VatReviewAttachments = 11,
+             VatReviewBankGuranteeAttach = 12
 
     }
     

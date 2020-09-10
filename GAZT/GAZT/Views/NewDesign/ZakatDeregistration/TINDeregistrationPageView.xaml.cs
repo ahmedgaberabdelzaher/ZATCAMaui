@@ -544,15 +544,25 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void outletsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-           if(viewModel.TinDeregistrationData.ADregOpt == "3")
+            try
             {
-                OutletSetResult selectedItem = e.AddedItems[0] as OutletSetResult;
-                viewModel.SelectedOutletForCloseTranser = selectedItem;
-                viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+                if (viewModel.TinDeregistrationData.ADregOpt == "3")
+                {
+                    OutletSetResult selectedItem = e.AddedItems[0] as OutletSetResult;
+                    viewModel.SelectedOutletForCloseTranser = selectedItem;
+                    viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
 
-                viewModel.AddPermitOutletDecisionOptions();
-                viewModel.AddPopUpPage();
+                    viewModel.AddPermitOutletDecisionOptions();
+                    viewModel.AddPopUpPage();
+                    var view = sender as SfListView;
+                    view.SelectedItem = null;
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
   
         async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
