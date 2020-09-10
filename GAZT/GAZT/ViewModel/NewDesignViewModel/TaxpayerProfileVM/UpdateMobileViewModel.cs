@@ -136,7 +136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                                 if (firstlettorOfNewMobileNumberEntryText.Equals("0"))
                                 {
                                     NewMobileNumberEntryText = string.Empty;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Mobile number can not start with 0"));
+                                   // PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Mobile number can not start with 0"));
 
                                 }
                             }

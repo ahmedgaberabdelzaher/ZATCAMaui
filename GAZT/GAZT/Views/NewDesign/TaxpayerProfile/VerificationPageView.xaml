@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:GAZTBehaviors="clr-namespace:EGAZT"
+
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:local="clr-namespace:EGAZT.CustomControl"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
@@ -209,6 +211,10 @@
                                                              Text="{Binding CurrentPasswordEntry}"
                                                              IsPassword="True"
                                                              MaxLength="16">
+                                         <control:BorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:PasswordTextBehaviour />
+                                                        </control:BorderlessEntry.Behaviors>
+                     
                                     </control:BorderlessEntry>
 
                                     <inputLayout:SfTextInputLayout.TrailingView >
@@ -233,6 +239,10 @@
                                                              Text="{Binding NewPasswordEntry}"
                                                              IsPassword="True"
                                                              MaxLength="16">
+                                         <control:BorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:PasswordTextBehaviour />
+                                                        </control:BorderlessEntry.Behaviors>
+                     
                                     </control:BorderlessEntry>
 
                                     <inputLayout:SfTextInputLayout.TrailingView >
@@ -256,6 +266,10 @@
                                                              Text="{Binding ConfirmPasswordEntry}"
                                                              IsPassword="True"
                                                              MaxLength="16">
+                                         <control:BorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:PasswordTextBehaviour />
+                                                        </control:BorderlessEntry.Behaviors>
+                     
                                     </control:BorderlessEntry>
 
                                     <inputLayout:SfTextInputLayout.TrailingView >
