@@ -26,21 +26,25 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (response.Fbnum != null)
                 {
-                    //if(response.ADecName != null)
-                    //    Label_Name.Text = response.ADecName;
+                    if (response.ADecName != null)
+                        Label_Name.Text = response.ADecName;
 
-                    //Label_ApplicationNumber.Text = response.Fbnum;
-                    //viewModel.FBNumber = response.Fbnumx;
-                    //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    //Label_Date.Text = StartdateToshow;
+                    Label_ApplicationNumber.Text = response.Fbnum;
+                    viewModel.FBNumber = response.Fbnum;
+                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    Label_Date.Text = StartdateToshow;
                 }
             }
         }
         private void SetLTR()
         {
-            if (App.IsArabic)
+            if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
         public void ChangeAeroIcon()
@@ -56,16 +60,16 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
-            //if (Label_ApplicationNumber != null)
-            //{
-            //    Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
-            //    if (Clipboard.HasText)
-            //    {
-            //        var text = await Clipboard.GetTextAsync();
-            //        var displayText = AppResources.VATRSAppNumber + " " + text;
-            //        viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
-            //    }
-            //}
+            if (Label_ApplicationNumber != null)
+            {
+                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+                if (Clipboard.HasText)
+                {
+                    var text = await Clipboard.GetTextAsync();
+                    var displayText = AppResources.VATRSAppNumber + " " + text;
+                    viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                }
+            }
 
         }
         private void btnRegistrationDetailsClicked(object sender, EventArgs e)
@@ -87,6 +91,31 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 Navigation.RemovePage(secondPageToRemove);
 
                 viewModel._navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        void Download_Clicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+
+                viewModel.downloadConfirmation();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        void SfButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+
+                viewModel.downloadConfirmation();
             }
             catch (Exception ex)
             {

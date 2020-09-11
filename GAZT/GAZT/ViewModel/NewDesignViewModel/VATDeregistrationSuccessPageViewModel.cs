@@ -18,35 +18,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
-        public ICommand DownloadConfirmationTapped { get; set; }
 
         #endregion
-        private Stream _StreamForDownloadURL = null;
-        public Stream StreamForDownloadURL
-        {
-            get
-            {
-                return _StreamForDownloadURL;
-            }
-            set
-            {
-                _StreamForDownloadURL = value;
-                RaisePropertyChanged("StreamForDownloadURL");
-            }
-        }
-        private string _PathOfPdf;
-        public string PathOfPdf
-        {
-            get
-            {
-                return _PathOfPdf;
-            }
-            set
-            {
-                _PathOfPdf = value;
-                RaisePropertyChanged("PathOfPdf");
-            }
-        }
+  
         private string _fBNumber = string.Empty;
         public string FBNumber
         {
@@ -78,98 +52,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _navigationService.GoBack();
             });
-            DownloadConfirmationTapped = new Command(this.DownloadConfirmationClicked);
 
-        }
-        public async void DownloadConfirmationClicked()
-        {
-            try
-            {
-                downloadConfirmation();
-
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
         }
 
         #region Download Confirmation
 
         public void downloadConfirmation()
         {
-            var localPath = string.Empty;
-            Stream stream = null;
+           
             try
             {
-                if (Device.RuntimePlatform == Device.Android)
-                {
-                    var dependency = DependencyService.Get<ILocalFileProvider>();
-                    if (dependency == null)
-                    {
-                        // DisplayAlert("Error loading PDF", "Computer says no", "OK");
-                        return;
-                    }
-                    var fileName = Guid.NewGuid().ToString();
-                    // Download PDF locally for viewing
-                    using (System.Net.WebClient client = new System.Net.WebClient())
-                    {
-                        try
-                        {
+                String Url = string.Empty;
 
-                            String downloadurl = Constants.downloadFile + "'" + FBNumber + "')/$value";
-
-                            StreamForDownloadURL = client.OpenRead(downloadurl);
-                            BinaryReader br = new BinaryReader(StreamForDownloadURL);
-                            byte[] result = br.ReadBytes((int)StreamForDownloadURL.Length);
-                            string strBase64 = Convert.ToBase64String(result);
-                            if (string.IsNullOrEmpty(strBase64) != true)
-                            {
-                                byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
-                                stream = new MemoryStream(sPDFDecoded);
-                                StreamForDownloadURL = stream;
-                            }
-                            localPath =
-                          Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
-                    //    using (var httpClient = new HttpClient())
-                    //{
-                    //    var pdfStream = Task.Run(() => httpClient.GetStreamAsync("https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value")).Result;
-                    //    localPath =
-                    //        Task.Run(() => dependency.SaveFileToDisk(pdfStream, $"{fileName}.pdf")).Result;
-                    //}
-                    if (string.IsNullOrWhiteSpace(localPath))
-                    {
-                        //   DisplayAlert("Error loading PDF", "Computer says no", "OK");
-                        return;
-                    }
-                }
-                if (Device.RuntimePlatform == Device.Android)
-                    PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
-                //else
-                //    Path = url;
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + FBNumber + "',Utype=')$value?saml2=enabled";
+                ShowPdf(Url);
             }
             catch (Exception e)
             {
                 throw e;
             }
         }
+        public void ShowPdf(string pdfUrl)
+        {
+
+            if (pdfUrl != null)
+            {
+                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+            }
+            else
+            {
+                //pop that certificate is not available
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                });
+            }
+        }
+
 
         #endregion
 
