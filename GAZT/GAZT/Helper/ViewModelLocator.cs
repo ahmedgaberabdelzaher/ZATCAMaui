@@ -2221,6 +2221,7 @@ namespace EGAZT
             navigationService.Configure(App.ZakatObjectionsListPageView, typeof(ZakatObjectionsListPageView));
             navigationService.Configure(App.ObjectionsSelectionPageView, typeof(ObjectionsSelectionPageView));
             navigationService.Configure(App.ZakatObjectionPageView, typeof(ZakatObjectionPageView));
+            navigationService.Configure(App.ZakatObjectionSuccessPageView, typeof(ZakatObjectionSuccessPageView));
             #endregion
 
 

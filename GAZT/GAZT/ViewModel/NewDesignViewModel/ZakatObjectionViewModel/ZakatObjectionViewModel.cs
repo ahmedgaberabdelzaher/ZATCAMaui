@@ -1,7 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models;
+using EGAZT.Models.ZakatInstalationModels;
+using EGAZT.Models.ZakatObjectionsModel;
+using EGAZT.Views.NewDesign;
+using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
+using EGAZT.Views.NewDesign.ZakatObjection;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using static EGAZT.Models.ZakatObjectionsModel.ZakatObjectionWithdrawPostModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
@@ -11,11 +30,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         enum PagesEnum
         {
+            BillsPage,
+            DetailsPage,
             ReviewReason,
+            AttachmentsPage,
             ReviewDetails,
             SecurityPayments,
             Declaration,
-            Summary
+            Summary,
+            WithdrawObjectiondetails,
+            WithedrawAttachments
+
         }
 
         public enum PickerEnum
@@ -30,22 +55,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         #region Commands
 
-        public ICommand ReviewReasonConBtnTapped { get; set; }
+        public ICommand BillContinueBtnTapped { get; set; }
+        public ICommand ObjectionDetailsWithDrawlContinueTapped { get; set; }
+        public ICommand IsObjectionDetailsTapped { get; set; }
+        public ICommand ObjectionDetailsReasonTapped { get; set; }
+        public ICommand ObjectionAttachmentsContinueTapped { get; set; }
+        public ICommand AttachmentsContinueTapped { get; set; }
+
+        public ICommand DeclarationContinueBtnTapped { get; set; }
+
+
+
+
         public ICommand ReviewDetailsConBtnTapped { get; set; }
         public ICommand SecurityPaymentConBtnTapped { get; set; }
         public ICommand DeclarationConBtnTapped { get; set; }
         public ICommand SummaryConBtnTapped { get; set; }
+        public ICommand WithDrawObjectionConBtnTapped { get; set; }
+        public ICommand IsWithDrawDetailsTapped { get; set; }
+        public ICommand WithdrawAttachmentTapped { get; set; }
+        public ICommand WithdrawAttachmentTappedTwo { get; set; }
+        public ICommand WithdrAttachmentsContinueTapped { get; set; }
+
         public ICommand CloseClick { get; set; }
         public ICommand GoBackClick { get; set; }
-    
+
         #endregion
-        
+
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
-        int selectedPage = (int) PagesEnum.ReviewReason;
+        int selectedPage = (int)PagesEnum.BillsPage;
 
-        private bool _isBackVisible = false;
+        private bool _isBackVisible = true;
 
         public bool IsBackVisible
         {
@@ -69,6 +111,617 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
         }
 
+        private string _selectedFbNum = "";
+
+        public string SelectedFbNum
+        {
+            get { return _selectedFbNum; }
+            set
+            {
+                _selectedFbNum = value;
+                RaisePropertyChanged("SelectedFbNum");
+            }
+        }
+
+        private string _selectedFbType = "";
+
+        public string SelectedFbType
+        {
+            get { return _selectedFbType; }
+            set
+            {
+                _selectedFbType = value;
+                RaisePropertyChanged("SelectedFbNum");
+            }
+        }
+
+        private bool _isWithDrawEnable = false;
+
+        public bool IsWithDrawEnable
+        {
+            get { return _isWithDrawEnable; }
+            set
+            {
+                _isWithDrawEnable = value;
+                RaisePropertyChanged("IsWithDrawEnable");
+            }
+        }
+
+        private bool _isSubmitEnable = true;
+
+        public bool IsSubmitEnable
+        {
+            get { return _isSubmitEnable; }
+            set
+            {
+                _isSubmitEnable = value;
+                RaisePropertyChanged("IsSubmitEnable");
+            }
+        }
+
+        private string _DetailDescriptionNote = "";
+        public string DetailDescriptionNote
+        {
+            get
+            {
+                return _DetailDescriptionNote;
+            }
+            set
+            {
+                _DetailDescriptionNote = value;
+                RaisePropertyChanged("DetailDescriptionNote");
+            }
+        }
+
+        private bool _IsWithdrawAttachmentsVisible = false;
+        public bool IsWithdrawAttachmentsVisible
+        {
+            get
+            {
+                return _IsWithdrawAttachmentsVisible;
+            }
+            set
+            {
+                _IsWithdrawAttachmentsVisible = value;
+                RaisePropertyChanged("IsWithdrawAttachmentsVisible");
+            }
+        }
+
+        private string _RemarkNote = "";
+        public string RemarkNote
+        {
+            get
+            {
+                return _RemarkNote;
+            }
+            set
+            {
+                _RemarkNote = value;
+                RaisePropertyChanged("RemarkNote");
+            }
+        }
+
+        private bool _isSadadSecuritySelected = false;
+
+        public bool IsSadadSecuritySelected
+        {
+            get { return _isSadadSecuritySelected; }
+            set
+            {
+                _isSadadSecuritySelected = value;
+                RaisePropertyChanged("IsSadadSecuritySelected");
+            }
+        }
+
+        private bool _isBankGurantSecuritySelected = false;
+
+        public bool IsBankGurantSecuritySelected
+        {
+            get { return _isBankGurantSecuritySelected; }
+            set
+            {
+                _isBankGurantSecuritySelected = value;
+                RaisePropertyChanged("IsBankGurantSecuritySelected");
+            }
+        }
+
+        public string _fiscalYear = "";
+
+        public string FiscalYear
+        {
+            get { return _fiscalYear; }
+            set
+            {
+                _fiscalYear = value;
+                RaisePropertyChanged("FiscalYear");
+            }
+        }
+
+        public string _financialPeriod = "";
+
+        public string FinancialPeriod
+        {
+            get { return _financialPeriod; }
+            set
+            {
+                _financialPeriod = value;
+                RaisePropertyChanged("FinancialPeriod");
+            }
+        }
+
+        public string _referenceNum = "";
+
+        public string ReferenceNum
+        {
+            get { return _referenceNum; }
+            set
+            {
+                _referenceNum = value;
+                RaisePropertyChanged("ReferenceNum");
+            }
+        }
+
+        public string _taxType = "";
+
+        public string TaxType
+        {
+            get { return _taxType; }
+            set
+            {
+                _taxType = value;
+                RaisePropertyChanged("TaxType");
+            }
+        }
+
+        public string _assessmentAmountGAZT = "";
+
+        public string AssessmentAmountGAZT
+        {
+            get { return _assessmentAmountGAZT; }
+            set
+            {
+                _assessmentAmountGAZT = value;
+                RaisePropertyChanged("AssessmentAmountGAZT");
+            }
+        }
+
+        public string _disputeAmount = "";
+
+        public string DisputeAmount
+        {
+            get { return _disputeAmount; }
+            set
+            {
+                _disputeAmount = value;
+                RaisePropertyChanged("DisputeAmount");
+            }
+        }
+
+        public string _revisedAmount = "";
+
+        public string RevisedAmount
+        {
+            get { return _revisedAmount; }
+            set
+            {
+                _revisedAmount = value;
+                RaisePropertyChanged("RevisedAmount");
+            }
+        }
+
+        public string _objectionReasons = "";
+
+        public string ObjectionReasons
+        {
+            get { return _objectionReasons; }
+            set
+            {
+                _objectionReasons = value;
+                RaisePropertyChanged("ObjectionReasons");
+            }
+        }
+
+        public string _applicantName = "";
+
+        public string ApplicantName
+        {
+            get { return _applicantName; }
+            set
+            {
+                _applicantName = value;
+                RaisePropertyChanged("ApplicantName");
+            }
+        }
+
+        public string _capacity = "";
+
+        public string Capacity
+        {
+            get { return _capacity; }
+            set
+            {
+                _capacity = value;
+                RaisePropertyChanged("Capacity");
+            }
+        }
+
+        public string _repFullName = "";
+
+        public string RepFullName
+        {
+            get { return _repFullName; }
+            set
+            {
+                _repFullName = value;
+                RaisePropertyChanged("RepFullName");
+            }
+        }
+
+        public string _securityAmount = "";
+
+        public string SecurityAmount
+        {
+            get { return _securityAmount; }
+            set
+            {
+                _securityAmount = value;
+                RaisePropertyChanged("SecurityAmount");
+            }
+        }
+
+        public string _sADADNumber = "";
+
+        public string SADADNumber
+        {
+            get { return _sADADNumber; }
+            set
+            {
+                _sADADNumber = value;
+                RaisePropertyChanged("SADADNumber");
+            }
+        }
+
+        public string _repPhoneNo = "";
+
+        public string RepPhoneNo
+        {
+            get { return _repPhoneNo; }
+            set
+            {
+                _repPhoneNo = value;
+                RaisePropertyChanged("RepPhoneNo");
+            }
+        }
+
+        public string _repFaxNo = "";
+
+        public string RepFaxNo
+        {
+            get { return _repFaxNo; }
+            set
+            {
+                _repFaxNo = value;
+                RaisePropertyChanged("RepFaxNo");
+            }
+        }
+
+        public string _repElectronicMail = "";
+
+        public string RepElectronicMail
+        {
+            get { return _repElectronicMail; }
+            set
+            {
+                _repElectronicMail = value;
+                RaisePropertyChanged("RepElectronicMail");
+            }
+        }
+
+        public string _repDesignation = "";
+
+        public string RepDesignation
+        {
+            get { return _repDesignation; }
+            set
+            {
+                _repDesignation = value;
+                RaisePropertyChanged("RepDesignation");
+            }
+        }
+
+        public string _repBuildingName = "";
+
+        public string RepBuildingName
+        {
+            get { return _repBuildingName; }
+            set
+            {
+                _repBuildingName = value;
+                RaisePropertyChanged("RepBuildingName");
+            }
+        }
+
+        public string _repLevelStreetNumber = "";
+
+        public string RepLevelStreetNumber
+        {
+            get { return _repLevelStreetNumber; }
+            set
+            {
+                _repLevelStreetNumber = value;
+                RaisePropertyChanged("RepLevelStreetNumber");
+            }
+        }
+
+        public string _repCity = "";
+
+        public string RepCity
+        {
+            get { return _repCity; }
+            set
+            {
+                _repCity = value;
+                RaisePropertyChanged("RepCity");
+            }
+        }
+        private string _vATReferanceNumber = string.Empty;
+        public string VATReferanceNumber
+        {
+            get
+            {
+                return _vATReferanceNumber;
+            }
+            set
+            {
+                _vATReferanceNumber = value;
+                RaisePropertyChanged("VATReferanceNumber");
+            }
+        }
+        private string _returnNumber = "";
+        public string ReturnNumber
+        {
+            get
+            {
+                return _returnNumber;
+            }
+            set
+            {
+                _returnNumber = value;
+                RaisePropertyChanged("ReturnNumber");
+            }
+        }
+        private string _ReferenceNumberOfAssessment = "";
+        public string ReferenceNumberOfAssessment
+        {
+            get
+            {
+                return _ReferenceNumberOfAssessment;
+            }
+            set
+            {
+                _ReferenceNumberOfAssessment = value;
+                RaisePropertyChanged("ReferenceNumberOfAssessment");
+            }
+        }
+        private string _AssessmentYear = "";
+        public string AssessmentYear
+        {
+            get
+            {
+                return _AssessmentYear;
+            }
+            set
+            {
+                _AssessmentYear = value;
+                RaisePropertyChanged("AssessmentYear");
+            }
+        }
+        private string _PeriodFrom = "";
+        public string PeriodFrom
+        {
+            get
+            {
+                return _PeriodFrom;
+            }
+            set
+            {
+                _PeriodFrom = value;
+                RaisePropertyChanged("PeriodFrom");
+            }
+        }
+
+
+
+        private string _PeriodTo = "";
+        public string PeriodTo
+        {
+            get
+            {
+                return _PeriodTo;
+            }
+            set
+            {
+                _PeriodTo = value;
+                RaisePropertyChanged("PeriodTo");
+            }
+        }
+        private string _DisplaTaxType = "";
+        public string DisplaTaxType
+        {
+            get
+            {
+                return _DisplaTaxType;
+            }
+            set
+            {
+                _DisplaTaxType = value;
+                RaisePropertyChanged("DisplaTaxType");
+            }
+        }
+        private string _Currency = "";
+        public string Currency
+        {
+            get
+            {
+                return _Currency;
+            }
+            set
+            {
+                _Currency = value;
+                RaisePropertyChanged("Currency");
+            }
+        }
+        private string _AssessmentAmount = "";
+        public string AssessmentAmount
+        {
+            get
+            {
+                return _AssessmentAmount;
+            }
+            set
+            {
+                _AssessmentAmount = value;
+                RaisePropertyChanged("AssessmentAmount");
+            }
+        }
+        private string _DisplayRevisedAmount = "";
+        public string DisplayRevisedAmount
+        {
+            get
+            {
+                return _DisplayRevisedAmount;
+            }
+            set
+            {
+                _DisplayRevisedAmount = value;
+                RaisePropertyChanged("DisplayRevisedAmount");
+            }
+        }
+        private string _DisplayDisputeAmount = "";
+        public string DisplayDisputeAmount
+        {
+            get
+            {
+                return _DisplayDisputeAmount;
+            }
+            set
+            {
+                _DisplayDisputeAmount = value;
+                RaisePropertyChanged("DisplayDisputeAmount");
+            }
+        }
+        private string _objRefNumber = "";
+        public string objRefNumber
+        {
+            get
+            {
+                return _objRefNumber;
+            }
+            set
+            {
+                _objRefNumber = value;
+                RaisePropertyChanged("objRefNumber");
+            }
+        }
+        public class BillsModel
+        {
+            public BillsModel()
+            {
+            }
+
+            public string FiscalYear { get; set; }
+            public string FinancialPeriod { get; set; }
+            public string ReferenceNum { get; set; }
+            public string TaxType { get; set; }
+            public string AssessmentAmountGAZT { get; set; }
+        }
+
+        public class SelectionModel
+        {
+            public SelectionModel()
+            {
+            }
+            public string SelectionTitle { get; set; }
+            public bool IsSelected { get; set; }
+            public bool IsNotSelected { get; set; }
+        }
+
+        public ObservableCollection<BillsModel> returnBills { get; set; }
+
+        public ObservableCollection<BillsModel> ReturnBills
+        {
+            get { return returnBills; }
+
+            set
+            {
+                if (returnBills == value)
+                {
+                    return;
+                }
+
+                returnBills = value;
+                RaisePropertyChanged("ReturnBills");
+            }
+        }
+
+     
+
+        public ObservableCollection<SelectionModel> securityPaymentOptions { get; set; }
+
+        public ObservableCollection<SelectionModel> SecurityPaymentOptions
+        {
+            get { return securityPaymentOptions; }
+
+            set
+            {
+                if (securityPaymentOptions == value)
+                {
+                    return;
+                }
+
+                securityPaymentOptions = value;
+                RaisePropertyChanged("SecurityPaymentOptions");
+            }
+        }
+
+        public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> AttachmentsListViewData
+        {
+            get { return attachmentsListViewData; }
+
+            set
+            {
+                if (attachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                attachmentsListViewData = value;
+                RaisePropertyChanged("AttachmentsListViewData");
+            }
+        }
+
+        private bool isBankGurantee = false;
+
+        public ObservableCollection<Attachment> bankGuranteeAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> BankGuranteeAttachmentsListViewData
+        {
+            get { return bankGuranteeAttachmentsListViewData; }
+
+            set
+            {
+                if (bankGuranteeAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                bankGuranteeAttachmentsListViewData = value;
+                RaisePropertyChanged("BankGuranteeAttachmentsListViewData");
+            }
+        }
+
         public ZakatObjectionViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -84,39 +737,2612 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             _dialogService = dialogService;
 
+
+
+            
+
+
             CloseClick = new Command(async () => { _navigationService.GoBack(); });
 
             GoBackClick = new Command(async () => { BackNavigations(); });
+            BillContinueBtnTapped = new Command(async () => {
+                EnableDetailsView();
+            });
+
+            IsObjectionDetailsTapped = new Command(async () => {
+                EnableSecurityPaymentsView();
+            });
+            SecurityPaymentConBtnTapped = new Command(async () => {
+                EnableAttachmentsView();
+            });
+
+            AttachmentsContinueTapped = new Command(async () => {
+
+                EnableDeclarationView();
+            });
+
+            DeclarationContinueBtnTapped = new Command(async () => {
+
+                await GetWithdrawFBNums();
+                EnableSummaryView();
+            });
+
+            SummaryConBtnTapped = new Command(async () => {
+
+
+                if (IsWithDrawEnable)
+                {
+
+                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.NDZakatObjection,
+                _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                    .Instructions));
+
+
+                    //GAZTGetZakatWithDrawDDData
+                    await GetWithdrawReviewReason();
+                    EnableWithdrawObjectionDetails();
+                }
+                else
+                {
+
+
+
+                    VATReferanceNumber = SelectedFbNum;
+                    await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());
+                }
+            });
+
+            IsWithDrawDetailsTapped = new Command(async () => {
+
+
+                EnableWithdrawAttachments();
+               // await WithdrawSubmitClicked();
+                
+
+            });
+
+
+            WithdrawAttachmentTapped = new Command(this.WithdrawAttachmentTappedAsync);
+            WithdrawAttachmentTappedTwo = new Command(this.WithdrawAttachmentTappedAsyncTwo);
+            WithdrAttachmentsContinueTapped = new Command(SubmitClicked);
+
+
 
         }
-        
+
         private void BackNavigations()
         {
             switch (selectedPage)
             {
-                /*case (int) PagesEnum.ReviewDetails:
-                    EnableReviewReasonView();
+
+                case (int)PagesEnum.BillsPage:
+                    _navigationService.GoBack();
                     break;
-                case (int) PagesEnum.SecurityPayments:
-                    EnableReviewDetailsView();
+                case (int)PagesEnum.DetailsPage:
+                    EnableBillContinue();
                     break;
-                case (int) PagesEnum.Declaration:
-                    if (isSecurityPaymentsTabVisible)
-                    {
-                        EnableSecurityPaymentsView();    
-                    }
-                    else
-                    {
-                        EnableReviewDetailsView();
-                    }
-                    
+                case (int)PagesEnum.SecurityPayments:
+                    EnableDetailsView();
                     break;
-                case (int) PagesEnum.Summary:
+                case (int)PagesEnum.AttachmentsPage:
+                    EnableSecurityPaymentsView();
+                    break;
+                case (int)PagesEnum.Declaration:
+                    EnableAttachmentsView();
+                    break;
+                case (int)PagesEnum.Summary:
                     EnableDeclarationView();
                     break;
-                    */
+
+
 
             }
         }
+        private bool _IsVATBillsViewEnabled = true;
+        public bool IsVATBillsViewEnabled
+        {
+            get { return _IsVATBillsViewEnabled; }
+            set
+            {
+                _IsVATBillsViewEnabled = value;
+                RaisePropertyChanged("IsVATBillsViewEnabled");
+            }
+        }
+
+        private bool _IsObjectionDetailsEnabled = false;
+        public bool IsObjectionDetailsEnabled
+        {
+            get { return _IsObjectionDetailsEnabled; }
+            set
+            {
+                _IsObjectionDetailsEnabled = value;
+                RaisePropertyChanged("IsObjectionDetailsEnabled");
+            }
+        }
+
+        private bool _IsDeclarationViewEnabled = false;
+        public bool IsDeclarationViewEnabled
+        {
+            get { return _IsDeclarationViewEnabled; }
+            set
+            {
+                _IsDeclarationViewEnabled = value;
+                RaisePropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+        private bool _IsAttachmentsViewEnabled = false;
+        public bool IsAttachmentsViewEnabled
+        {
+            get { return _IsAttachmentsViewEnabled; }
+            set
+            {
+                _IsAttachmentsViewEnabled = value;
+                RaisePropertyChanged("IsAttachmentsViewEnabled");
+            }
+        }
+        private bool _SummaryVisible = false;
+        public bool SummaryVisible
+        {
+            get { return _SummaryVisible; }
+            set
+            {
+                _SummaryVisible = value;
+                RaisePropertyChanged("SummaryVisible");
+            }
+        }
+
+        private bool _isSecurityPaymentsVisible = false;
+        public bool IsSecurityPaymentsVisible
+        {
+            get { return _isSecurityPaymentsVisible; }
+            set
+            {
+                _isSecurityPaymentsVisible = value;
+                RaisePropertyChanged("IsSecurityPaymentsVisible");
+            }
+        }
+        private bool _isWithdrawDetailsEnabled = false;
+        public bool IsWithdrawDetailsEnabled
+        {
+            get { return _isWithdrawDetailsEnabled; }
+            set
+            {
+                _isWithdrawDetailsEnabled = value;
+                RaisePropertyChanged("IsWithdrawDetailsEnabled");
+            }
+        }
+
+
+        private ZakatObjectionRequestSummaryModel _summaryData;
+
+        public ZakatObjectionRequestSummaryModel SummaryData
+        {
+            get { return _summaryData; }
+            set
+            {
+                _summaryData = value;
+                RaisePropertyChanged("SummaryData");
+            }
+        }
+
+      
+
+
+        public ObservableCollection<Attachment> _WithdrawAttachmentsListViewData { get; set; }
+        public ObservableCollection<Attachment> WithdrawAttachmentsListViewData
+        {
+            get
+            {
+                return _WithdrawAttachmentsListViewData;
+            }
+
+
+
+            set
+            {
+                if (_WithdrawAttachmentsListViewData == value)
+                {
+                    return;
+                }
+                _WithdrawAttachmentsListViewData = value;
+                RaisePropertyChanged("WithdrawAttachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> _WithdrawAttachmentsListViewDataTwo { get; set; }
+        public ObservableCollection<Attachment> WithdrawAttachmentsListViewDataTwo
+        {
+            get
+            {
+                return _WithdrawAttachmentsListViewDataTwo;
+            }
+
+
+
+            set
+            {
+                if (_WithdrawAttachmentsListViewDataTwo == value)
+                {
+                    return;
+                }
+                _WithdrawAttachmentsListViewDataTwo = value;
+                RaisePropertyChanged("WithdrawAttachmentsListViewDataTwo");
+            }
+        }
+
+        public void EnableBillContinue()
+        {
+            IsVATBillsViewEnabled = true;
+            IsObjectionDetailsEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSecurityPaymentsVisible = false;
+            SummaryVisible = false;
+            IsWithdrawDetailsEnabled = false;
+            IsWithdrawAttachmentsVisible = false;
+            selectedPage = (int)PagesEnum.BillsPage;
+        }
+        public void EnableDetailsView()
+        {
+            IsVATBillsViewEnabled = false;
+            IsObjectionDetailsEnabled = true;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSecurityPaymentsVisible = false;
+            SummaryVisible = false;
+            IsWithdrawDetailsEnabled = false;
+            IsWithdrawAttachmentsVisible = false;
+            selectedPage = (int)PagesEnum.DetailsPage;
+        }
+        public void EnableSecurityPaymentsView()
+        {
+            IsVATBillsViewEnabled = false;
+            IsObjectionDetailsEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSecurityPaymentsVisible = true;
+            SummaryVisible = false;
+            IsWithdrawDetailsEnabled = false;
+            IsWithdrawAttachmentsVisible = false;
+            selectedPage = (int)PagesEnum.DetailsPage;
+        }
+        public void EnableAttachmentsView()
+        {
+            IsVATBillsViewEnabled = false;
+            IsObjectionDetailsEnabled = false;
+            IsAttachmentsViewEnabled = true;
+            IsDeclarationViewEnabled = false;
+            IsSecurityPaymentsVisible = false;
+            SummaryVisible = false;
+            IsWithdrawDetailsEnabled = false;
+            IsWithdrawAttachmentsVisible = false;
+            selectedPage = (int)PagesEnum.AttachmentsPage;
+        }
+        public void EnableDeclarationView()
+        {
+            IsVATBillsViewEnabled = false;
+            IsObjectionDetailsEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = true;
+            IsSecurityPaymentsVisible = false;
+            SummaryVisible = false;
+            IsWithdrawDetailsEnabled = false;
+            IsWithdrawAttachmentsVisible = false;
+            selectedPage = (int)PagesEnum.Declaration;
+        }
+        public void EnableSummaryView()
+        {
+            IsVATBillsViewEnabled = false;
+            IsObjectionDetailsEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsSecurityPaymentsVisible = false;
+            IsWithdrawDetailsEnabled = false;
+            IsWithdrawAttachmentsVisible = false;
+            SummaryVisible = true;
+            selectedPage = (int)PagesEnum.Summary;
+        }
+        public void EnableWithdrawObjectionDetails()
+        {
+            IsVATBillsViewEnabled = false;
+            IsObjectionDetailsEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsSecurityPaymentsVisible = false;
+            IsWithdrawDetailsEnabled = true;
+            SummaryVisible = false;
+            IsWithdrawAttachmentsVisible = false;
+            selectedPage = (int)PagesEnum.WithdrawObjectiondetails;
+        }
+
+        public void EnableWithdrawAttachments()
+        {
+            IsVATBillsViewEnabled = false;
+            IsObjectionDetailsEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsSecurityPaymentsVisible = false;
+            IsWithdrawDetailsEnabled = false;
+            SummaryVisible = false;
+            IsWithdrawAttachmentsVisible = true;
+            selectedPage = (int)PagesEnum.WithdrawObjectiondetails;
+        }
+
+
+        public void EnableSadadSecurityView()
+        {
+            IsSadadSecuritySelected = true;
+            IsBankGurantSecuritySelected = false;
+        }
+        public void EnablebankGuranteeSecurityView()
+        {
+            IsSadadSecuritySelected = false;
+            IsBankGurantSecuritySelected = true;
+        }
+
+        public void PopulateAttachments(List<Attachment> attachments)
+        {
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
+
+
+
+            foreach (Attachment attachemnt in attachments)
+            {
+                attachmentsListViewData.Add(attachemnt);
+            }
+
+
+
+            if (_isFirstAttachment)
+            {
+                WithdrawAttachmentsListViewData = attachmentsListViewData;
+            }
+            else
+            {
+                WithdrawAttachmentsListViewDataTwo = attachmentsListViewData;
+            }
+        }
+
+        private bool _isFirstAttachment = false;
+        public async void WithdrawAttachmentTappedAsync()
+        {
+            _isFirstAttachment = true;
+            if (WithdrawAttachmentsListViewData == null)
+            {
+                WithdrawAttachmentsListViewData = new ObservableCollection<Attachment>();
+            }
+            try
+            {
+
+
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    WithdrawAttachmentsListViewData.ToList(),
+                    WhichAttachment.ZakatObjectionsWithdrawAttachment, SummaryData.d.CaseGuid));
+                //TODO: ReturnID
+
+
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+
+        public async void WithdrawAttachmentTappedAsyncTwo()
+        {
+            _isFirstAttachment = false;
+            if (WithdrawAttachmentsListViewDataTwo == null)
+            {
+                WithdrawAttachmentsListViewDataTwo = new ObservableCollection<Attachment>();
+            }
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    WithdrawAttachmentsListViewDataTwo.ToList(),
+                    WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo, SummaryData.d.CaseGuid));
+                //TODO: ReturnID
+
+
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+
+
+        public void ResetData()
+        {
+            AddSecurityPaymentOptions();
+            EnableBillContinue();
+            IsSadadSecuritySelected = false;
+            IsBankGurantSecuritySelected = true;
+        }
+
+
+
+        private void AddSecurityPaymentOptions()
+        {
+            var securityPaymentOptions = new ObservableCollection<SelectionModel>();
+            securityPaymentOptions.Add(new SelectionModel
+            {
+                SelectionTitle = AppResources.VRSADAD,
+                IsSelected = !isBankGurantee,
+                IsNotSelected = isBankGurantee
+            });
+            securityPaymentOptions.Add(new SelectionModel
+            {
+                SelectionTitle = AppResources.VRBANKGURANTEE,
+                IsSelected = isBankGurantee,
+                IsNotSelected = !isBankGurantee
+            });
+            SecurityPaymentOptions = securityPaymentOptions;
+        }
+
+
+        public async void SubmitClicked()
+        {
+            //Go to Success page
+
+            await WithdrawSubmitClicked();
+        }
+
+        public async void showInstructionsDialog()
+        {
+            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOTerms, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatObjection,
+                   _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                       .Instructions));
+        }
+
+
+        public async Task OnPageLoad()
+        {
+
+            SelectedFbNum = Preferences.Get("ZakatObjectionSelectedValue", "");
+            SelectedFbType = Preferences.Get("ZakatObjectionSelectedType", "");
+
+            ZakatRequestObjectionSummary(SelectedFbNum);
+
+            EnableBillContinue();
+
+           
+
+        }
+
+
+        public async Task GetWithdrawFBNums()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionWithDrawListModel _ZAKATObjectionWithDraw = new ZakatObjectionWithDrawListModel();
+                    try
+                    {
+                        _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawList();
+
+                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
+                        {
+
+                            var isRefnumberAvilable = _ZAKATObjectionWithDraw.d.results.Find(appRef => (appRef.ObjFbnum == SelectedFbNum));
+
+                            if(isRefnumberAvilable != null) {
+
+                                IsSubmitEnable = false;
+                                IsWithDrawEnable = true;
+                            }
+                            else {
+                                IsSubmitEnable = true;
+                                IsWithDrawEnable = false;
+                            }
+
+
+
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        public async Task GetWithdrawReviewReason()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionWDDropdownModel _ZAKATObjectionWithDraw = new ZakatObjectionWDDropdownModel();
+                    try
+                    {
+
+
+
+                        //Data binding for withdraw objection details
+                        _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
+
+
+
+                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
+                        {
+                            DateTime dateStart = new DateTime();
+                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                            string apiDate = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodFrom + @"""";
+                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                            GregorianCalendar hjCalendar = new GregorianCalendar();
+                            int year = hjCalendar.GetYear(dateStart);
+                            int month = hjCalendar.GetMonth(dateStart);
+                            int day = hjCalendar.GetDayOfMonth(dateStart);
+                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dateStr;
+                            string dt1 = string.Empty;
+                            string[] dts = null;
+                            dts = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom.Split('/');
+                            dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dt1;
+
+
+
+                            DateTime dateStart1 = new DateTime();
+                            CultureInfo cultureInfo1 = new CultureInfo("ar-SA");
+                            string apiDate1 = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodTo + @"""";
+                            dateStart1 = JsonConvert.DeserializeObject<DateTime>(apiDate1);
+                            GregorianCalendar hjCalendar1 = new GregorianCalendar();
+                            int year1 = hjCalendar1.GetYear(dateStart1);
+                            int month1 = hjCalendar1.GetMonth(dateStart1);
+                            int day1 = hjCalendar1.GetDayOfMonth(dateStart1);
+                            string dateStr1 = string.Format("{0:00}/{1}/{2}", day1, month1, year1);
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dateStr1;
+                            string dt11 = string.Empty;
+                            string[] dts1 = null;
+                            dts1 = _ZAKATObjectionWithDraw.d.results[0].APeriodTo.Split('/');
+                            dt11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dt11;
+
+
+
+                            objRefNumber = _ZAKATObjectionWithDraw.d.results[0].ObjFbnum;
+                            ReferenceNumberOfAssessment = _ZAKATObjectionWithDraw.d.results[0].ARefNo;
+                            AssessmentYear = _ZAKATObjectionWithDraw.d.results[0].AAssnmtYr;
+                            PeriodFrom = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom;
+                            PeriodTo = _ZAKATObjectionWithDraw.d.results[0].APeriodTo;
+                            DisplaTaxType = _ZAKATObjectionWithDraw.d.results[0].ATaxTy;
+                            Currency = _ZAKATObjectionWithDraw.d.results[0].ACurr;
+                            AssessmentAmount = _ZAKATObjectionWithDraw.d.results[0].AAssnmtAmt;
+                            DisplayRevisedAmount = _ZAKATObjectionWithDraw.d.results[0].ARevAmt;
+                            DisplayDisputeAmount = _ZAKATObjectionWithDraw.d.results[0].ADisputeAmt;
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task ZakatRequestObjectionSummary(string fbnum)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionRequestSummaryModel _ZakatObjectionRequestSummary = new ZakatObjectionRequestSummaryModel();
+                    ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel _ZAKATObjectionReviewReturn = new ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel();
+                    try
+                    {
+                        _ZakatObjectionRequestSummary = await WebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
+
+                        if (_ZakatObjectionRequestSummary != null && _ZakatObjectionRequestSummary.d != null)
+                        {
+
+                            SummaryData = _ZakatObjectionRequestSummary;
+                            _ZAKATObjectionReviewReturn.Agree = _ZakatObjectionRequestSummary.d.AAgree;
+                            _ZAKATObjectionReviewReturn.TaxPayerName = _ZakatObjectionRequestSummary.d.ATpNm;
+                            _ZAKATObjectionReviewReturn.Branch = _ZakatObjectionRequestSummary.d.ABranch;
+                            _ZAKATObjectionReviewReturn.Address = _ZakatObjectionRequestSummary.d.Line0 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line1 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line2 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line3 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line4 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line5 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line6 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line7 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line8 + "," +
+                                                                 _ZakatObjectionRequestSummary.d.Line9;
+                            _ZAKATObjectionReviewReturn.ElectronicMail = _ZakatObjectionRequestSummary.d.AEmail;
+                            _ZAKATObjectionReviewReturn.TelephoneNo = _ZakatObjectionRequestSummary.d.ATelephone;
+                            _ZAKATObjectionReviewReturn.FaxNo = _ZakatObjectionRequestSummary.d.AFaxNo;
+                            _ZAKATObjectionReviewReturn.RegerenceNo = _ZakatObjectionRequestSummary.d.ARefNo;
+                            _ZAKATObjectionReviewReturn.AssessmentYear = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
+                            _ZAKATObjectionReviewReturn.PeriodFrom = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom;
+                            _ZAKATObjectionReviewReturn.PeriodTo = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo;
+                            _ZAKATObjectionReviewReturn.TaxType = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+                            _ZAKATObjectionReviewReturn.Currency = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ACurr;
+                            _ZAKATObjectionReviewReturn.AssessmentAmountGAZT = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
+                            _ZAKATObjectionReviewReturn.RevisedAmount = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARevAmt;
+                            _ZAKATObjectionReviewReturn.DisputeAmount = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ADisputeAmt;
+                            _ZAKATObjectionReviewReturn.ReturnDetails = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARetDet;
+                            _ZAKATObjectionReviewReturn.ObjectionReasons = _ZakatObjectionRequestSummary.d.AObjSum;
+                            _ZAKATObjectionReviewReturn.PaymentAmount = _ZakatObjectionRequestSummary.d.ASecam;
+                            _ZAKATObjectionReviewReturn.PaymentMethod = _ZakatObjectionRequestSummary.d.ASectp;
+                            _ZAKATObjectionReviewReturn.AckSADADPayment = _ZakatObjectionRequestSummary.d.AChkcs;
+                            _ZAKATObjectionReviewReturn.AckBankGuarantee = _ZakatObjectionRequestSummary.d.AChkcs;
+                            _ZAKATObjectionReviewReturn.ACKBG1 = _ZakatObjectionRequestSummary.d.AChkbg;
+                            _ZAKATObjectionReviewReturn.ACKBG2 = _ZakatObjectionRequestSummary.d.AChkbg1;
+                            //_ZAKATObjectionReviewReturn.BGAttachmentName= _ZakatObjectionRequestSummary.d.;//ZOBG
+                            _ZAKATObjectionReviewReturn.ZAKATSADADInvoiceNumber = _ZakatObjectionRequestSummary.d.AZsopbel;
+                            _ZAKATObjectionReviewReturn.TotalZAKATPayableAmount = _ZakatObjectionRequestSummary.d.ATotZkt;
+                            _ZAKATObjectionReviewReturn.CITSADADInvoiceNumber = _ZakatObjectionRequestSummary.d.AZsopbelCit;
+                            _ZAKATObjectionReviewReturn.TotalCITPayableAmount = _ZakatObjectionRequestSummary.d.ATotCit;
+                            _ZAKATObjectionReviewReturn.DisputedAmount = _ZakatObjectionRequestSummary.d.AZdisam != "" ? _ZakatObjectionRequestSummary.d.AZdisam : _ZakatObjectionRequestSummary.d.ACitdisam;
+                            _ZAKATObjectionReviewReturn.UnDisputedAmount = _ZakatObjectionRequestSummary.d.AZundisam != "" ? _ZakatObjectionRequestSummary.d.AZundisam : _ZakatObjectionRequestSummary.d.ACitundisam;
+                            //_ZAKATObjectionReviewReturn.SADADGAZTID = _ZakatObjectionRequestSummary.d.
+                            _ZAKATObjectionReviewReturn.DisputedZAKATAmount = _ZakatObjectionRequestSummary.d.AZdisam;
+                            _ZAKATObjectionReviewReturn.QuarterDisputedZAKATAmount = _ZakatObjectionRequestSummary.d.AZdisam != "" ? (Convert.ToDouble(_ZakatObjectionRequestSummary.d.AZdisam) / 4) : 0;
+                            _ZAKATObjectionReviewReturn.UnDisputedZAKATAmount = _ZakatObjectionRequestSummary.d.AZundisam;
+                            _ZAKATObjectionReviewReturn.DisputedCITAmount = _ZakatObjectionRequestSummary.d.ACitdisam;
+                            _ZAKATObjectionReviewReturn.UnDisputedCITAmount = _ZakatObjectionRequestSummary.d.ACitundisam;
+                            //_ZAKATObjectionReviewReturn.Reason = _ZakatObjectionRequestSummary.d.;// ZNOB_BGEX
+                            _ZAKATObjectionReviewReturn.BankGuaranteeID = _ZakatObjectionRequestSummary.d.ABnkid;
+                            _ZAKATObjectionReviewReturn.CalendarType = _ZakatObjectionRequestSummary.d.ACaltyp;
+                            _ZAKATObjectionReviewReturn.ValidFrom = _ZakatObjectionRequestSummary.d.ABnvfr;
+                            _ZAKATObjectionReviewReturn.ValidTo = _ZakatObjectionRequestSummary.d.ABnvto;
+                            _ZAKATObjectionReviewReturn.BankName = _ZakatObjectionRequestSummary.d.ABkext;
+                            _ZAKATObjectionReviewReturn.TotalPaymentAmount = _ZakatObjectionRequestSummary.d.ASecam;
+                            //_ZAKATObjectionReviewReturn.TaxOfficerComments = _ZakatObjectionRequestSummary.d.;//ZNOB_OFFC
+                            //_ZAKATObjectionReviewReturn.BGAttachmentName2 = _ZakatObjectionRequestSummary.d.;//ZCOB
+                            _ZAKATObjectionReviewReturn.RepFullName = _ZakatObjectionRequestSummary.d.ARepName;
+                            _ZAKATObjectionReviewReturn.RepPhoneNo = _ZakatObjectionRequestSummary.d.ARepPhone;
+                            _ZAKATObjectionReviewReturn.RepFaxNo = _ZakatObjectionRequestSummary.d.ARepFax;
+                            _ZAKATObjectionReviewReturn.RepElectronicMail = _ZakatObjectionRequestSummary.d.ARepEmail;
+                            _ZAKATObjectionReviewReturn.RepDesignation = _ZakatObjectionRequestSummary.d.ARepDes;
+                            _ZAKATObjectionReviewReturn.RepBuildingName = _ZakatObjectionRequestSummary.d.ARepBldNm;
+                            _ZAKATObjectionReviewReturn.RepLevelStreetNumber = _ZakatObjectionRequestSummary.d.ARepSteetNo;
+                            _ZAKATObjectionReviewReturn.RepCity = _ZakatObjectionRequestSummary.d.ARepCity;
+                            _ZAKATObjectionReviewReturn.ApplicantName = _ZakatObjectionRequestSummary.d.AName;
+                            _ZAKATObjectionReviewReturn.Capacity = _ZakatObjectionRequestSummary.d.ACapacity;
+
+                            BindData(_ZakatObjectionRequestSummary);
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        private void BindData(ZakatObjectionRequestSummaryModel zakatObjectionRequestSummary)
+        {
+            var bills = new ObservableCollection<BillsModel>();
+
+            var billsModel = new BillsModel();
+
+            billsModel.FiscalYear = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
+            billsModel.FinancialPeriod = String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
+                  String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
+            billsModel.ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
+            billsModel.TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+            billsModel.AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
+
+            bills.Add(billsModel);
+
+            ReturnBills = bills;
+
+            FiscalYear = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
+
+            FinancialPeriod = String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
+                  String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
+            ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
+            TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+            AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
+            RevisedAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARevAmt;
+            DisputeAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ADisputeAmt;
+            ObjectionReasons = zakatObjectionRequestSummary.d.AObjSum;
+
+            SecurityAmount = zakatObjectionRequestSummary.d.ASecam;
+            SADADNumber = zakatObjectionRequestSummary.d.AZsopbelCit;
+
+            var attachmentsList = new ObservableCollection<Attachment>();
+            var bankGurraAttachList = new ObservableCollection<Attachment>();
+
+
+            foreach (var attach in zakatObjectionRequestSummary.d.AttDetSet.results)
+            {
+                if (attach.Dotyp.ToUpper() == "ZOBG")
+                {
+                    bankGurraAttachList.Add(attach);
+                }
+                else if (attach.Dotyp.ToUpper() == "ZCOB")
+                {
+                    bankGurraAttachList.Add(attach);
+                }
+                else if (attach.Dotyp.ToUpper() == "OB20")
+                {
+                    attachmentsList.Add(attach);
+                }
+            }
+
+            AttachmentsListViewData = attachmentsList;
+            BankGuranteeAttachmentsListViewData = bankGurraAttachList;
+
+            RepFullName = zakatObjectionRequestSummary.d.ARepName;
+            RepPhoneNo = zakatObjectionRequestSummary.d.ARepPhone;
+            RepFaxNo = zakatObjectionRequestSummary.d.ARepFax;
+            RepElectronicMail = zakatObjectionRequestSummary.d.ARepEmail;
+            RepDesignation = zakatObjectionRequestSummary.d.ARepDes;
+            RepBuildingName = zakatObjectionRequestSummary.d.ARepBldNm;
+            RepLevelStreetNumber = zakatObjectionRequestSummary.d.ARepSteetNo;
+            RepCity = zakatObjectionRequestSummary.d.ARepCity;
+            ApplicantName = zakatObjectionRequestSummary.d.AName;
+            Capacity = zakatObjectionRequestSummary.d.ACapacity;
+
+            if (zakatObjectionRequestSummary.d.ASectp == "C")
+            {
+                isBankGurantee = false;
+                EnableSadadSecurityView();
+
+            }
+            else
+            {
+                isBankGurantee = true;
+                EnablebankGuranteeSecurityView();
+            }
+
+            AddSecurityPaymentOptions();
+        }
+
+        public async Task WithdrawSubmitClicked()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionWithdrawPostResponceModel _withdrawSubmitted = new ZakatObjectionWithdrawPostResponceModel();
+                    try
+                    {
+                        var result = await WebServiceManager.GAZTGetZakatObjectionSummary(SelectedFbNum);
+
+
+                        ZakatObjectionWithdrawPostModel.Root postData = new ZakatObjectionWithdrawPostModel.Root();
+                        ZakatObjectionWithdrawPostModel.Metadata metaData = new ZakatObjectionWithdrawPostModel.Metadata();
+
+                        
+                        metaData.uri = result.d.__metadata.uri;
+                        metaData.type = result.d.__metadata.type;
+                        metaData.id = result.d.__metadata.id;
+
+                        postData.__metadata = metaData;
+                        postData.AComments = RemarkNote;
+                        postData.UserTin = result.d.UserTin;
+                        postData.AErrorFg = result.d.AErrorFg;
+                        postData.Auditorz = result.d.Auditorz;
+                        postData.Taxpayerz = result.d.Taxpayerz;
+                        postData.RegIdz = result.d.RegIdz;
+                        postData.PeriodKeyz = result.d.PeriodKeyz;
+                        postData.Monthz = "00";
+                        postData.Fbnumz = result.d.Fbnumz;
+                        postData.Langz = result.d.Langz;
+                        postData.PortalUsrz = result.d.PortalUsrz;
+                        postData.Approvez = result.d.Approvez;
+                        postData.OfficerUidz = result.d.OfficerUidz;
+                        postData.Rejectz = result.d.Rejectz;
+                        postData.CreateTxAssesz = result.d.CreateTxAssesz;
+                        postData.Xvoidz = result.d.Xvoidz;
+
+                        postData.AmdRsnz = result.d.AmdRsnz;
+                        postData.Mandt = result.d.Mandt;
+                        postData.LegacyDocNo = result.d.LegacyDocNo;
+                        postData.ABranch = result.d.ABranch;
+                        postData.ABranchCd = result.d.ABranchCd;
+                        postData.AAppBy = result.d.AAppBy;
+                        postData.AAppDt = result.d.AAppDt;
+                        postData.AFbnum = result.d.AFbnum;
+                        postData.AGpart = result.d.AGpart;
+                        postData.ADoc1 = result.d.ADoc1;
+                        postData.ADoc2 = result.d.ADoc2;
+                        postData.AReceiveBy = result.d.AReceiveBy;
+                        postData.ADoc3 = result.d.ADoc3;
+                        postData.ADocOther = result.d.ADocOther;
+                        postData.ARemark = RemarkNote;
+                        postData.AObjFbnum = SelectedFbNum;
+                        postData.ATpName = result.d.ATpName;
+                        postData.ACheck = result.d.ACheck;
+                        postData.AGpart1 = result.d.AGpart1;
+                        postData.FormGuid = result.d.FormGuid;
+                        postData.Fbnum = result.d.Fbnum;
+                        postData.Status = result.d.Status;
+                        postData.AAgree = result.d.AAgree;
+
+                        postData.AStep = result.d.AStep;
+                        postData.AAgreeDt = result.d.AAgreeDt;
+                        postData.AAgreeTm = result.d.AAgreeTm;
+                        postData.CaseGuid = result.d.CaseGuid;
+                        postData.Textnote = result.d.Textnote;
+                        postData.AttDetSet = new List<object>();
+                        List<ZobjItemsSet> zobjItemsSet = new List<ZobjItemsSet>();
+
+                        foreach (var item in result.d.zobj_itemsSet.results)
+                        {
+                            ZakatObjectionWithdrawPostModel.Metadata3 metaData1 = new ZakatObjectionWithdrawPostModel.Metadata3();
+                            ZobjItemsSet obj1 = new ZobjItemsSet();
+                            metaData1.uri = item.__metadata.uri;
+                            metaData1.type = item.__metadata.type;
+                            metaData1.id = item.__metadata.id;
+                            obj1.__metadata = metaData1;
+                           
+                            obj1.ASel = item.ASel;
+                            obj1.ACurr = "SAR";
+                            obj1.ARefNo = item.ARefNo;
+                            obj1.AAssnmtYr = item.AAssnmtYr;
+                            obj1.ATaxTy = item.ATaxTy;
+                            obj1.AAssnmtAmt = item.AAssnmtAmt;
+                            obj1.ARevAmt = item.ARevAmt;
+                            obj1.ADisputeAmt = item.ADisputeAmt;
+                            obj1.ARetDet = item.ARetDet;
+
+                        
+                            DateTime dt1 = Convert.ToDateTime(item.APeriodTo);
+                            JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                            var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings2);
+                            string[] dateList1 = jsonDateTime1.Split('+');
+                            jsonDateTime1 = Regex.Replace(dateList1[0], "[@,\\.\";'\\\\]", string.Empty);
+                            obj1.APeriodTo = jsonDateTime1;
+
+                            DateTime dt2 = Convert.ToDateTime(item.APeriodFrom);
+                            JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                            var jsonDateTime2 = JsonConvert.SerializeObject(dt2.Date, microsoftDateFormatSettings1);
+                            string[] dateList2 = jsonDateTime2.Split('+');
+                            jsonDateTime2 = Regex.Replace(dateList2[0], "[@,\\.\";'\\\\]", string.Empty);
+
+
+                            obj1.APeriodFrom = jsonDateTime2;
+
+                         
+                            zobjItemsSet.Add(obj1);
+
+                        }
+
+                        postData.zobj_itemsSet = zobjItemsSet;
+
+                        ZakatObjectionWithdrawPostModel.Metadata2 metaData2 = new ZakatObjectionWithdrawPostModel.Metadata2();
+                        ZnotesSet obj = new ZnotesSet();
+                        metaData2.uri = "HTTPS://SAPGATEWAYQA.GAZT.GOV.SA/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotesSet(1)";
+                        metaData2.type = "Z_TP_NOTES_TP09_SRV.znotes";
+                        metaData2.id = "HTTPS://SAPGATEWAYQA.GAZT.GOV.SA/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotesSet(1)";
+                        obj.__metadata = metaData2;
+                        obj.Notenoz = "001";
+                        obj.AttByz = "TP";
+                        obj.ElemNo = 0;
+                        obj.Noteno = "001";
+                        obj.Refnamez = "";
+                        obj.XInvoicez = "";
+                        obj.XObsoletez = "";
+                        obj.Rcodez = "TP09_NOTE";
+                        obj.Erfusrz = "";
+                        obj.Lineno = 1;
+                        obj.Tdformat = "";
+
+                        if(DetailDescriptionNote != null) {
+                            obj.Tdline = DetailDescriptionNote;
+                        }
+                        else {
+                            obj.Tdline = "";
+                        }
+                       
+                        List<ZnotesSet> _znotesSet = new List<ZnotesSet>();
+                        _znotesSet.Add(obj);
+                        postData.znotesSet = _znotesSet;
+
+                         postData.Submitz = "X";
+                        postData.Savez = "X";
+
+
+                        DateTime dt = Convert.ToDateTime(result.d.AReceiveDt);
+                        JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                        {
+                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                        };
+                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                        var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                        string[] dateList = jsonDateTime.Split('+');
+                        //jsonDateTime = dateList[0].Replace("\"\\", "").Replace("\\/\"", "");
+                        jsonDateTime = Regex.Replace(dateList[0], "[@,\\.\";'\\\\]", string.Empty);
+                        postData.AReceiveDt = jsonDateTime;
+
+
+
+
+                        _withdrawSubmitted = await WebServiceManager.GAZTSaveZakatObjectionWithDrawData(postData);
+
+                        if (_withdrawSubmitted != null && _withdrawSubmitted.d != null)
+                        {
+
+                            VATReferanceNumber = _withdrawSubmitted.d.Fbnum;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
+
+                            });
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        //API-2
+        public async Task ZAKATObjectionCreateNew()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionCreateNewModel _ZAKATObjectionCreateNew = new ZAKATObjectionCreateNewModel();
+                    try
+                    {
+                        _ZAKATObjectionCreateNew = await WebServiceManager.GAZTGetZAKATObjectionCreateNew();
+
+                        if (_ZAKATObjectionCreateNew != null && _ZAKATObjectionCreateNew.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //API-5
+
+        //API To search by referance number
+        public async Task ZAKATObjectionDetailsByReferenceNumber()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionDetailsByReferenceNumberModel _ZAKATObjectionDetailsByReferenceNumber = new ZAKATObjectionDetailsByReferenceNumberModel();
+                    try
+                    {
+                        _ZAKATObjectionDetailsByReferenceNumber = await WebServiceManager.GAZTGetZAKATObjectionDetailsByReferenceNumber("");
+
+                        if (_ZAKATObjectionDetailsByReferenceNumber != null && _ZAKATObjectionDetailsByReferenceNumber.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //API-6
+        public async Task ZAKATObjectionDetailsToAmendReturn()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionDetailsToAmendReturnModel _ZAKATObjectionDetailsToAmendReturn = new ZAKATObjectionDetailsToAmendReturnModel();
+                    try
+                    {
+                        _ZAKATObjectionDetailsToAmendReturn = await WebServiceManager.GAZTGetZAKATObjectionDetailsToAmendReturn();
+
+                        if (_ZAKATObjectionDetailsToAmendReturn != null && _ZAKATObjectionDetailsToAmendReturn.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //API-7
+        public async Task ZAKATObjectionAmendReturnAndClose()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionAmendReturnAndCloseModel _ZAKATObjectionAmendReturnAndClose = new ZAKATObjectionAmendReturnAndCloseModel();
+                    try
+                    {
+                        _ZAKATObjectionAmendReturnAndClose = await WebServiceManager.GAZTGetZAKATObjectionAmendReturnAndClose();
+
+                        if (_ZAKATObjectionAmendReturnAndClose != null && _ZAKATObjectionAmendReturnAndClose.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //API-8
+        public async Task ZAKATObjectionOnPaymentMethodSelection()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionOnPaymentMethodSelectionModel _ZAKATObjectionOnPaymentMethodSelection = new ZAKATObjectionOnPaymentMethodSelectionModel();
+                    try
+                    {
+                        _ZAKATObjectionOnPaymentMethodSelection = await WebServiceManager.GAZTGetZAKATObjectionOnPaymentMethodSelection();
+
+                        if (_ZAKATObjectionOnPaymentMethodSelection != null && _ZAKATObjectionOnPaymentMethodSelection.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //API-9
+        public async Task ZAKATObjectionApplicationDetailsIfStatusIP017()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionApplicationDetailsIfStatusIP017Model _ZAKATObjectionApplicationDetailsIfStatusIP017 = new ZAKATObjectionApplicationDetailsIfStatusIP017Model();
+                    try
+                    {
+                        _ZAKATObjectionApplicationDetailsIfStatusIP017 = await WebServiceManager.GAZTGetZAKATObjectionApplicationDetailsIfStatusIP017();
+
+                        if (_ZAKATObjectionApplicationDetailsIfStatusIP017 != null && _ZAKATObjectionApplicationDetailsIfStatusIP017.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //API-10
+        public async Task ZAKATObjectionGenerateSADADNumber()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionGenerateSADADNumberModel _ZAKATObjectionGenerateSADADNumber = new ZAKATObjectionGenerateSADADNumberModel();
+                    try
+                    {
+                        _ZAKATObjectionGenerateSADADNumber = await WebServiceManager.GAZTGetZAKATObjectionGenerateSADADNumber();
+
+                        if (_ZAKATObjectionGenerateSADADNumber != null && _ZAKATObjectionGenerateSADADNumber.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //API-12
+        public async Task ZAKATObjectionBusyIndicator()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZAKATObjectionBusyIndicatorModel _ZAKATObjectionBusyIndicator = new ZAKATObjectionBusyIndicatorModel();
+                    try
+                    {
+                        _ZAKATObjectionBusyIndicator = await WebServiceManager.GAZTGetZAKATObjectionBusyIndicator();
+
+                        if (_ZAKATObjectionBusyIndicator != null && _ZAKATObjectionBusyIndicator.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task BankList()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatBankListModel _ZakatBankList = new ZakatBankListModel();
+                    try
+                    {
+                        _ZakatBankList = await WebServiceManager.GAZTGetBankList();
+
+                        if (_ZakatBankList != null && _ZakatBankList.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task IntialLoadData(string fbguid)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatBankListModel _IntialLoadData = new ZakatBankListModel();
+                    try
+                    {
+                        _IntialLoadData = await WebServiceManager.GAZTGetIntialLoadData(fbguid);
+
+                        if (_IntialLoadData != null && _IntialLoadData.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task ZakatRemoveObjection(string retFbnum, string objFbnum)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatBankListModel _ZakatRemoveObjection = new ZakatBankListModel();
+                    try
+                    {
+                        _ZakatRemoveObjection = await WebServiceManager.GAZTGetZakatRemoveObjection(retFbnum, objFbnum);
+
+                        if (_ZakatRemoveObjection != null && _ZakatRemoveObjection.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task ZakatRemoveObjectionACK(string retFbnum, string objFbnum)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatBankListModel _ZakatRemoveObjectionACK = new ZakatBankListModel();
+                    try
+                    {
+                        _ZakatRemoveObjectionACK = await WebServiceManager.GAZTGetZakatRemoveObjectionACK(retFbnum, objFbnum);
+
+                        if (_ZakatRemoveObjectionACK != null && _ZakatRemoveObjectionACK.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        #region Zakat Withdraw Objection
+        public async Task ZakatWithDrawMainData()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatWithdrawMainDataModel _ZakatWithdrawMainData = new ZakatWithdrawMainDataModel();
+                    try
+                    {
+                        _ZakatWithdrawMainData = await WebServiceManager.GAZTGetZakatWithDrawMainData();
+
+                        if (_ZakatWithdrawMainData != null && _ZakatWithdrawMainData.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task ZakatWithDrawList()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionWithDrawListModel _ZakatObjectionWithDrawList = new ZakatObjectionWithDrawListModel();
+                    try
+                    {
+                        _ZakatObjectionWithDrawList = await WebServiceManager.GAZTGetZakatWithDrawList();
+
+                        if (_ZakatObjectionWithDrawList != null && _ZakatObjectionWithDrawList.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task ZakatWithDrawDDData(string objFbnum)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionWDDropdownModel _ZakatObjectionWDDropdown = new ZakatObjectionWDDropdownModel();
+                    try
+                    {
+                        _ZakatObjectionWDDropdown = await WebServiceManager.GAZTGetZakatWithDrawDDData(objFbnum);
+
+                        if (_ZakatObjectionWDDropdown != null && _ZakatObjectionWDDropdown.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task SaveZakatObjectionWDAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    AttachmentRootOject _Attachment = new AttachmentRootOject();
+                    try
+                    {
+                        _Attachment = await WebServiceManager.GAZTSaveZakatObjectionWDAttachment(AttachmentByte, fileName, RetGuid, Dotyp, contentType);
+
+                        if (_Attachment != null && _Attachment.d != null)
+                        {
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void ObjectonWDDownloadacknowledgement(string fbnum)
+        {
+            try
+            {
+                IsLoading = true;
+                string strACK = null;
+                try
+                {
+                    strACK = WebServiceManager.GAZTZakatObjectonWDDownloadacknowledgement(fbnum);
+
+                    if (!string.IsNullOrEmpty(strACK))
+                    {
+
+                    }
+
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+                    IsLoading = false;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw ex;
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        IsLoading = false;
+                        _navigationService.GoBack();
+                    });
+                }
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void ZakatObjectionWDDownloadForm(string fbnum)
+        {
+            try
+            {
+                IsLoading = true;
+                string strACK = null;
+                try
+                {
+                    strACK = WebServiceManager.GAZTZakatObjectionWDDownloadForm(fbnum);
+
+                    if (!string.IsNullOrEmpty(strACK))
+                    {
+
+                    }
+
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+                    IsLoading = false;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw ex;
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        IsLoading = false;
+                        _navigationService.GoBack();
+                    });
+                }
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        #endregion
     }
 }

@@ -19818,5 +19818,245 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
             }
         }
+        
+        public static string ZOTerms {
+            get {
+                return ResourceManager.GetString("ZOTerms", resourceCulture);
+            }
+        }
+        
+        public static string ZOBuildingName {
+            get {
+                return ResourceManager.GetString("ZOBuildingName", resourceCulture);
+            }
+        }
+        
+        public static string ZOChooseOneReturn {
+            get {
+                return ResourceManager.GetString("ZOChooseOneReturn", resourceCulture);
+            }
+        }
+        
+        public static string ZOCityTown {
+            get {
+                return ResourceManager.GetString("ZOCityTown", resourceCulture);
+            }
+        }
+        
+        public static string ZODeclarationCheckboxText {
+            get {
+                return ResourceManager.GetString("ZODeclarationCheckboxText", resourceCulture);
+            }
+        }
+        
+        public static string ZOElectronicMail {
+            get {
+                return ResourceManager.GetString("ZOElectronicMail", resourceCulture);
+            }
+        }
+        
+        public static string ZOFaxNo {
+            get {
+                return ResourceManager.GetString("ZOFaxNo", resourceCulture);
+            }
+        }
+        
+        public static string ZOFullName {
+            get {
+                return ResourceManager.GetString("ZOFullName", resourceCulture);
+            }
+        }
+        
+        public static string ZOLevelStreetNumber {
+            get {
+                return ResourceManager.GetString("ZOLevelStreetNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZOPhoneNo {
+            get {
+                return ResourceManager.GetString("ZOPhoneNo", resourceCulture);
+            }
+        }
+        
+        public static string ZOPositionCapacity {
+            get {
+                return ResourceManager.GetString("ZOPositionCapacity", resourceCulture);
+            }
+        }
+        
+        public static string ZOSearchReturnReferenceNumber {
+            get {
+                return ResourceManager.GetString("ZOSearchReturnReferenceNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZOSelectReturn {
+            get {
+                return ResourceManager.GetString("ZOSelectReturn", resourceCulture);
+            }
+        }
+        
+        public static string OZObjectionDate {
+            get {
+                return ResourceManager.GetString("OZObjectionDate", resourceCulture);
+            }
+        }
+        
+        public static string ZOObjectionType {
+            get {
+                return ResourceManager.GetString("ZOObjectionType", resourceCulture);
+            }
+        }
+        
+        public static string ZOReasonOfObjection {
+            get {
+                return ResourceManager.GetString("ZOReasonOfObjection", resourceCulture);
+            }
+        }
+        
+        public static string ZOReasonWithDraw {
+            get {
+                return ResourceManager.GetString("ZOReasonWithDraw", resourceCulture);
+            }
+        }
+        
+        public static string ZONameOfTheApplicant {
+            get {
+                return ResourceManager.GetString("ZONameOfTheApplicant", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentBillAmount {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentBillAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentBillDueDate {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentBillDueDate", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentBillNumber {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentBillNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentBillStartDate {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentBillStartDate", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentDueInvoices {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentDueInvoices", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentDueInvoiceText {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentDueInvoiceText", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentReturnFBN {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentReturnFBN", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentReturnPeriodDesc {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentReturnPeriodDesc", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentSADADBillNo {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentSADADBillNo", resourceCulture);
+            }
+        }
+        
+        public static string ZOAssessmentAmount {
+            get {
+                return ResourceManager.GetString("ZOAssessmentAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZOAssessmentYear {
+            get {
+                return ResourceManager.GetString("ZOAssessmentYear", resourceCulture);
+            }
+        }
+        
+        public static string ZOCurrency {
+            get {
+                return ResourceManager.GetString("ZOCurrency", resourceCulture);
+            }
+        }
+        
+        public static string ZOObjectionRefNo {
+            get {
+                return ResourceManager.GetString("ZOObjectionRefNo", resourceCulture);
+            }
+        }
+        
+        public static string ZOPeriodFrom {
+            get {
+                return ResourceManager.GetString("ZOPeriodFrom", resourceCulture);
+            }
+        }
+        
+        public static string ZOPeriodTo {
+            get {
+                return ResourceManager.GetString("ZOPeriodTo", resourceCulture);
+            }
+        }
+        
+        public static string ZORefNumberOfAssessmen {
+            get {
+                return ResourceManager.GetString("ZORefNumberOfAssessmen", resourceCulture);
+            }
+        }
+        
+        public static string ZOWithdrawGeneralAttachmentOne {
+            get {
+                return ResourceManager.GetString("ZOWithdrawGeneralAttachmentOne", resourceCulture);
+            }
+        }
+        
+        public static string ZOWithdrawGeneralAttachmentTwo {
+            get {
+                return ResourceManager.GetString("ZOWithdrawGeneralAttachmentTwo", resourceCulture);
+            }
+        }
+        
+        public static string ZOObjectionissubmittedsuccessfully {
+            get {
+                return ResourceManager.GetString("ZOObjectionissubmittedsuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string ZOWIthdrawInstructions {
+            get {
+                return ResourceManager.GetString("ZOWIthdrawInstructions", resourceCulture);
+            }
+        }
+        
+        public static string ZONameOfTheApplicantStar {
+            get {
+                return ResourceManager.GetString("ZONameOfTheApplicantStar", resourceCulture);
+            }
+        }
+        
+        public static string ZOPositionCapacityStar {
+            get {
+                return ResourceManager.GetString("ZOPositionCapacityStar", resourceCulture);
+            }
+        }
     }
 }

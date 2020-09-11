@@ -110,20 +110,14 @@
                         </Grid.RowDefinitions>
 
                         <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
-                            <Grid >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal">
+                               
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
-                                <Grid.GestureRecognizers>
+                                <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding MyRequestsButtonTapped}"></TapGestureRecognizer>
-                                </Grid.GestureRecognizers>
-                            </Grid>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
                         </border:SfBorder>
 
                          </Grid>

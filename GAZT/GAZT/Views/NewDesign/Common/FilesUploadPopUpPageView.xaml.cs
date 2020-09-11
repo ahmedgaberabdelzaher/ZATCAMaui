@@ -56,6 +56,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.ZakatAttachmentTitle;
             }
+            else if (whichAttachment == WhichAttachment.ContractReleaseCopy || whichAttachment == WhichAttachment.ContractReleaseInvoice)
+            {
+                viewModel.TitleOne = AppResources.ESTAttachmentSizeNotfication;
+                viewModel.TitleTwo = AppResources.ZChooseonlyfilewithextension;
+            }
             else
             {
                 viewModel.TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
@@ -160,6 +165,14 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
             {
                 viewModel.DocTypeString = "RVBT";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
+            {
+                viewModel.DocTypeString = "N03A";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+            {
+                viewModel.DocTypeString = "N03B";
             }
 
         }

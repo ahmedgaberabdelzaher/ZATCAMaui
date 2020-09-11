@@ -1,11 +1,15 @@
-﻿using EGAZT.Models.ZakatObjectionsModel;
+﻿using EGAZT.Models;
+using EGAZT.Models.ZakatObjectionsModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +18,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
-   public class ZakatObjectionsListViewModel : ViewModelBase
+    public class ZakatObjectionsListViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -22,6 +26,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #region Commands
 
         public ICommand ReqInstalmentBtnTapped { get; set; }
+        public ICommand CloseClick { get; set; }
+        public ICommand GoBackClick { get; set; }
 
         #endregion
 
@@ -42,8 +48,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
 
             ReqInstalmentBtnTapped = new Command(this.ReqInstalmentBtnClickedAsync);
+            CloseClick = new Command(async () => { _navigationService.GoBack(); });
 
+            GoBackClick = new Command(async () => { BackNavigations(); });
         }
+        private void BackNavigations()
+        {
+            if (IsSummaryEnable)
+
+            {
+                EnableListView();
+            }
+            else
+            {
+                _navigationService.GoBack();
+            }
+        }
+        public void EnableSummaryView()
+        {
+            IsSummaryEnable = true;
+            CreateZakatInstalmentBtnVisible = false;
+        }
+
+        public void EnableListView()
+        {
+            IsSummaryEnable = false;
+            CreateZakatInstalmentBtnVisible = true;
+        }
+
+        private bool _CreateZakatInstalmentBtnVisible = true;
+        public bool CreateZakatInstalmentBtnVisible
+        {
+            get
+            {
+                return _CreateZakatInstalmentBtnVisible;
+            }
+            set
+            {
+                _CreateZakatInstalmentBtnVisible = value;
+                RaisePropertyChanged("CreateZakatInstalmentBtnVisible");
+            }
+        }
+        private bool _IsSummaryEnable = false;
+        public bool IsSummaryEnable
+        {
+            get
+            {
+                return _IsSummaryEnable;
+            }
+            set
+            {
+                _IsSummaryEnable = value;
+                RaisePropertyChanged("IsSummaryEnable");
+            }
+        }
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -58,11 +117,278 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+        private string _returnNumber = "";
+        public string ReturnNumber
+        {
+            get
+            {
+                return _returnNumber;
+            }
+            set
+            {
+                _returnNumber = value;
+                RaisePropertyChanged("ReturnNumber");
+            }
+        }
+        private string _ReferenceNumberOfAssessment = "";
+        public string ReferenceNumberOfAssessment
+        {
+            get
+            {
+                return _ReferenceNumberOfAssessment;
+            }
+            set
+            {
+                _ReferenceNumberOfAssessment = value;
+                RaisePropertyChanged("ReferenceNumberOfAssessment");
+            }
+        }
+
+        private string _AssessmentYear = "";
+        public string AssessmentYear
+        {
+            get
+            {
+                return _AssessmentYear;
+            }
+            set
+            {
+                _AssessmentYear = value;
+                RaisePropertyChanged("AssessmentYear");
+            }
+        }
+        private string _PeriodFrom = "";
+        public string PeriodFrom
+        {
+            get
+            {
+                return _PeriodFrom;
+            }
+            set
+            {
+                _PeriodFrom = value;
+                RaisePropertyChanged("PeriodFrom");
+            }
+        }
+
+        private string _PeriodTo = "";
+        public string PeriodTo
+        {
+            get
+            {
+                return _PeriodTo;
+            }
+            set
+            {
+                _PeriodTo = value;
+                RaisePropertyChanged("PeriodTo");
+            }
+        }
+
+        private string _DisplaTaxType = "";
+        public string DisplaTaxType
+        {
+            get
+            {
+                return _DisplaTaxType;
+            }
+            set
+            {
+                _DisplaTaxType = value;
+                RaisePropertyChanged("DisplaTaxType");
+            }
+        }
+        private string _Currency = "";
+        public string Currency
+        {
+            get
+            {
+                return _Currency;
+            }
+            set
+            {
+                _Currency = value;
+                RaisePropertyChanged("Currency");
+            }
+        }
+        private string _AssessmentAmount = "";
+        public string AssessmentAmount
+        {
+            get
+            {
+                return _AssessmentAmount;
+            }
+            set
+            {
+                _AssessmentAmount = value;
+                RaisePropertyChanged("AssessmentAmount");
+            }
+        }
+        private string _DisplayRevisedAmount = "";
+        public string DisplayRevisedAmount
+        {
+            get
+            {
+                return _DisplayRevisedAmount;
+            }
+            set
+            {
+                _DisplayRevisedAmount = value;
+                RaisePropertyChanged("DisplayRevisedAmount");
+            }
+        }
+        private string _DisplayDisputeAmount = "";
+        public string DisplayDisputeAmount
+        {
+            get
+            {
+                return _DisplayDisputeAmount;
+            }
+            set
+            {
+                _DisplayDisputeAmount = value;
+                RaisePropertyChanged("DisplayDisputeAmount");
+            }
+        }
+        private string _objRefNumber = "";
+        public string objRefNumber
+        {
+            get
+            {
+                return _objRefNumber;
+            }
+            set
+            {
+                _objRefNumber = value;
+                RaisePropertyChanged("objRefNumber");
+            }
+        }
+        private string _DisplayDetailDescription = "";
+        public string DisplayDetailDescription
+        {
+            get
+            {
+                return _DisplayDetailDescription;
+            }
+            set
+            {
+                _DisplayDetailDescription = value;
+                RaisePropertyChanged("DisplayDetailDescription");
+            }
+        }
+
+        private string _DisplayRemarks = "";
+        public string DisplayRemarks
+        {
+            get
+            {
+                return _DisplayRemarks;
+            }
+            set
+            {
+                _DisplayRemarks = value;
+                RaisePropertyChanged("DisplayRemarks");
+            }
+        }
+
+        private bool _IsAttachmentsVisible = false;
+        public bool IsAttachmentsVisible
+        {
+            get
+            {
+                return _IsAttachmentsVisible;
+            }
+            set
+            {
+                _IsAttachmentsVisible = value;
+                RaisePropertyChanged("IsAttachmentsVisible");
+            }
+        }
+
+        private string _objectionsCount = "";
+        public string ObjectionsCount
+        {
+            get
+            {
+                return _objectionsCount;
+            }
+            set
+            {
+                _objectionsCount = value;
+                RaisePropertyChanged("ObjectionsCount");
+            }
+        }
+
+        private List<ZakatObjectionListModel.Result> _objectionsList;
+        public List<ZakatObjectionListModel.Result> ObjectionsList
+        {
+            get
+            {
+                return _objectionsList;
+            }
+            set
+            {
+                _objectionsList = value;
+                RaisePropertyChanged("ObjectionsList");
+            }
+        }
+        public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
+        public ObservableCollection<Attachment> AttachmentsListViewData
+        {
+            get
+            {
+                return attachmentsListViewData;
+            }
+
+
+
+            set
+            {
+                if (attachmentsListViewData == value)
+                {
+                    return;
+                }
+
+
+
+                attachmentsListViewData = value;
+                RaisePropertyChanged("AttachmentsListViewData");
+            }
+        }
+
+
         public async void ReqInstalmentBtnClickedAsync()
         {
             _navigationService.NavigateTo(App.ZakatObjectionPageView);
         }
 
+
+        public void BindSummaryData(ZakatObjectionRequestSummaryModel _ZakatObjectionRequestSummary)
+        {
+            var attachmentsListViewData1 = new ObservableCollection<Attachment>();
+
+            foreach (Attachment attachment in _ZakatObjectionRequestSummary.d.AttDetSet.results)
+            {
+                attachmentsListViewData1.Add(attachment);
+            }
+
+            AttachmentsListViewData = attachmentsListViewData1;
+            if (AttachmentsListViewData.Count > 0)
+            {
+                IsAttachmentsVisible = true;
+            }
+
+            //if (_ZakatObjectionRequestSummary.d.znotesSet.results. > 0)
+            //{
+            //    if(_ZakatObjectionRequestSummary.d.znotesSet.results[0].Tdline != null) {
+
+            //        DisplayRemarks = _ZakatObjectionRequestSummary.d.znotesSet.results[0].Tdline;
+
+            //    }
+
+            //}
+            //    DisplayDetailDescription= _ZakatObjectionRequestSummary.d.ARepDes; 
+        }
 
         #region API Integration
         public async Task ZAKATObjectionList()
@@ -83,7 +409,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
                         if (_ZAKATObjectionList != null && _ZAKATObjectionList.d != null)
                         {
-                            var ObjectionList = _ZAKATObjectionList.d.ListSet.results.ToList();
+                            ObjectionsList = _ZAKATObjectionList.d.ListSet.results.ToList();
+                            ObjectionsCount = ObjectionsList.Count + " " + AppResources.ZakatObjection;
                         }
 
                         else
@@ -242,6 +569,215 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 });
             }
         }
+
+
+        public async Task GetWithdrawReviewReason(string SelectedFbNum)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionWDDropdownModel _ZAKATObjectionWithDraw = new ZakatObjectionWDDropdownModel();
+                    try
+                    {
+                        EnableSummaryView();
+                        //Data binding for withdraw objection details
+                        _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
+
+                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
+                        {
+                            DateTime dateStart = new DateTime();
+                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                            string apiDate = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodFrom + @"""";
+                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                            GregorianCalendar hjCalendar = new GregorianCalendar();
+                            int year = hjCalendar.GetYear(dateStart);
+                            int month = hjCalendar.GetMonth(dateStart);
+                            int day = hjCalendar.GetDayOfMonth(dateStart);
+                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dateStr;
+                            string dt1 = string.Empty;
+                            string[] dts = null;
+                            dts = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom.Split('/');
+                            dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dt1;
+
+                            DateTime dateStart1 = new DateTime();
+                            CultureInfo cultureInfo1 = new CultureInfo("ar-SA");
+                            string apiDate1 = @"""" + _ZAKATObjectionWithDraw.d.results[0].APeriodTo + @"""";
+                            dateStart1 = JsonConvert.DeserializeObject<DateTime>(apiDate1);
+                            GregorianCalendar hjCalendar1 = new GregorianCalendar();
+                            int year1 = hjCalendar1.GetYear(dateStart1);
+                            int month1 = hjCalendar1.GetMonth(dateStart1);
+                            int day1 = hjCalendar1.GetDayOfMonth(dateStart1);
+                            string dateStr1 = string.Format("{0:00}/{1}/{2}", day1, month1, year1);
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dateStr1;
+                            string dt11 = string.Empty;
+                            string[] dts1 = null;
+                            dts1 = _ZAKATObjectionWithDraw.d.results[0].APeriodTo.Split('/');
+                            dt11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
+                            _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dt11;
+
+                            objRefNumber = _ZAKATObjectionWithDraw.d.results[0].ObjFbnum;
+                            ReferenceNumberOfAssessment = _ZAKATObjectionWithDraw.d.results[0].ARefNo;
+                            AssessmentYear = _ZAKATObjectionWithDraw.d.results[0].AAssnmtYr;
+                            PeriodFrom = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom;
+                            PeriodTo = _ZAKATObjectionWithDraw.d.results[0].APeriodTo;
+                            DisplaTaxType = _ZAKATObjectionWithDraw.d.results[0].ATaxTy;
+                            Currency = _ZAKATObjectionWithDraw.d.results[0].ACurr;
+                            AssessmentAmount = _ZAKATObjectionWithDraw.d.results[0].AAssnmtAmt;
+                            DisplayRevisedAmount = _ZAKATObjectionWithDraw.d.results[0].ARevAmt;
+                            DisplayDisputeAmount = _ZAKATObjectionWithDraw.d.results[0].ADisputeAmt;
+                            //var selectedAssets = _ZAKATObjectionSummary.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        ZakatRequestObjectionSummary(SelectedFbNum);
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        public async Task ZakatRequestObjectionSummary(string fbnum)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    ZakatObjectionRequestSummaryModel _ZakatObjectionRequestSummary = new ZakatObjectionRequestSummaryModel();
+                    ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel _ZAKATObjectionReviewReturn = new ZAKATObjectionReturnModel.ZAKATObjectionReviewReturnModel();
+                    try
+                    {
+                        _ZakatObjectionRequestSummary = await WebServiceManager.GAZTGetZakatRequestObjectionSummary(fbnum);
+
+                        if (_ZakatObjectionRequestSummary != null && _ZakatObjectionRequestSummary.d != null)
+                        {
+                            
+
+                            BindSummaryData(_ZakatObjectionRequestSummary);
+                        }
+
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
         #endregion
     }
 }

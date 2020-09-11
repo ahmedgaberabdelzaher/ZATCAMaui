@@ -1490,12 +1490,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             try
             {
-                if (ContractCopyAttachmentsListViewData.Count == 0)
-                {
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                        ContractCopyAttachmentsListViewData.ToList(),
-                        Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
-                }
+
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    ContractCopyAttachmentsListViewData.ToList(),
+                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1524,13 +1523,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             try
             {
-                if (InvoiceAttachmentsListViewData.Count == 0)
-                {
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                        InvoiceAttachmentsListViewData.ToList(),
-                        Models.ZakatInstalationModels.WhichAttachment.ContractReleaseInvoice,
-                        ContractReleaseData.d.CaseGuid));
-                }
+
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    InvoiceAttachmentsListViewData.ToList(),
+                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseInvoice,
+                    ContractReleaseData.d.CaseGuid));
+
             }
             catch (GAZTUnlockAccountException ex)
             {

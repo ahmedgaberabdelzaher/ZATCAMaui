@@ -301,11 +301,22 @@
                                                HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
-                                        <Label Text="{Binding FromDate,ToDate,StringFormat='{0:MMM yyyy} - {0:MMM yyyy}'}"
+                                        <Label FontSize="14" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding FromDate,StringFormat='{0:MMM yyyy}'}"  />
+                                                        <Span Text=" - "  />
+                                                        <Span Text="{Binding ToDate,StringFormat='{0:MMM yyyy}'}"  />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <!--<Label Text="{Binding FromDate,ToDate,StringFormat='{0:MMM yyyy} - {0:MMM yyyy}'}"
                                                Margin="5,0,0,0"
                                                HorizontalOptions="End"
                                                
-                                               Style="{StaticResource BodyLabelBlack}" />
+                                               Style="{StaticResource BodyLabelBlack}" />-->
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="4">

@@ -5848,13 +5848,13 @@
     <value>رقم العقد</value>
   </data>
   <data name="CRContractType" xml:space="preserve">
-    <value>نوع العقد</value>
+    <value>النوع (عقد/امر شراء/فاتورة )</value>
   </data>
   <data name="CRContractPeriod" xml:space="preserve">
-    <value>تاريخ العقد</value>
+   <value>تاريخ العقد</value>
   </data>
   <data name="CRTotalAmountOfContract" xml:space="preserve">
-    <value>إجمالي المستحق</value>
+    <value>القيمة الإجمالية للعقد (رقما)</value>
   </data>
   <data name="CRAmountRequiredToRelease" xml:space="preserve">
     <value>المبلغ المطلوب الافراج عنه</value>
@@ -5953,7 +5953,7 @@
     <value>قيمة الضريبة المستحقة</value>
   </data>
   <data name="CRYourContractisreleasedsuccessfully" xml:space="preserve">
-    <value>تم الإفراج عن العقد بنجاح</value>
+    <value>تم استلام طلب الإفراج عن عقد</value>
   </data>
   <data name="CRReferenceNumber" xml:space="preserve">
     <value>الرقم المرجعي</value>
@@ -5984,7 +5984,7 @@
     <value>نسبة الربح التقديرية بناء على نوع العقد</value>
   </data>
   <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-    <value>حاصل ضرب "المبلغ المطلوب الإفراج عنه" مع "نسبة الربح التقديرية للعقد"</value>
+    <value>نسبة الربح التقديرية للعقد %</value>
   </data>
   <data name="CRTotalDuesDesc" xml:space="preserve">
     <value>حاصل جمع "قيمة الزكاة المستحقة" مع "قيمة الضريبة المستحقة"</value>
@@ -7186,4 +7186,121 @@
   <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
     <value>يجب أن لا يزيد عدد المرفقات عن 10 ملفات.</value>
   </data>
-</root>
+    <data name="ZOAssessmentAmountGAZT" xml:space="preserve">
+    <value>قيمة الربط/المعالجة (الهيئة)</value>
+  </data>
+  <data name="ZOCompletebelowdetails" xml:space="preserve">
+    <value>اكمل البيانات التالية</value>
+  </data>
+  <data name="ZODeclaration" xml:space="preserve">
+    <value>التعهد</value>
+  </data>
+  <data name="ZODisputeAmount" xml:space="preserve">
+    <value>المبلغ المعترض عليه</value>
+  </data>
+  <data name="ZOFinancialPeriod" xml:space="preserve">
+    <value>الفترة المالية</value>
+  </data>
+  <data name="ZOFiscalYear" xml:space="preserve">
+    <value>سنة الربط</value>
+  </data>
+  <data name="ZOObjectionDetails" xml:space="preserve">
+    <value>تفاصيل الاعتراض</value>
+  </data>
+  <data name="ZOObjectionReason" xml:space="preserve">
+    <value>سبب الإعتراض</value>
+  </data>
+  <data name="ZOReturnReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي للإقرار</value>
+  </data>
+  <data name="ZOTaxType" xml:space="preserve">
+    <value>نوع الضريبة</value>
+  </data>
+  <data name="ZOTerms" xml:space="preserve">
+    <value>١ حق للمكلف الاعتراض في مدة اقصاها ستون يوماً منذ الاشعار بالتقييم.
+٢ يدفع المكلف كامل المبلغ المتفق عليه قبل الاعتراض.
+٣ ادخل رقم النموذج المرجعي لإتمام الاعتراض.
+٤ اضغط على زر تفاصيل الإقرار وعدل الإقرار.
+٥ ادخل المبلغ الصحيح الذي وافق عليه المكلف في نموذج تعديل الإقرار.
+٦ اذكر اسباب الاعتراض في الجزء المقترح.
+٧ أرفق اي وثائق اخرى مؤيده لدعم طلب الاعتراض, إن وجد.
+٨ اضغط زر التقديم, لتقديم النموذج.
+٩ عدم ارفاق لمذكرة الاعتراض سيؤدي الى رفض طلبك.</value>
+  </data>
+  <data name="ZOViewReturn" xml:space="preserve">
+    <value>عرض تفاصيل الإقرار</value>
+  </data>
+  <data name="ZOWithdrawlAssessmentAmount" xml:space="preserve">
+    <value>قيمة الربط/المعالجة</value>
+  </data>
+  <data name="ZOWithdrawlAssessmentYear" xml:space="preserve">
+    <value>سنة الربط</value>
+  </data>
+  <data name="ZOWithdrawlCurrency" xml:space="preserve">
+    <value>العملة</value>
+  </data>
+  <data name="ZOWithdrawlDetailDescription" xml:space="preserve">
+    <value>تفاصيل الوصف</value>
+  </data>
+  <data name="ZOWithdrawlDisputeAmount" xml:space="preserve">
+    <value>المبلغ المعترض عليه</value>
+  </data>
+  <data name="ZOWithdrawlObjectionDetails" xml:space="preserve">
+    <value>تفاصيل الإعتراض</value>
+  </data>
+  <data name="ZOWithdrawlObjectionNo" xml:space="preserve">
+    <value>رقم الاعتراض</value>
+  </data>
+  <data name="ZOWithdrawlPeriodFrom" xml:space="preserve">
+    <value>الفترة من</value>
+  </data>
+  <data name="ZOWithdrawlPeriodTo" xml:space="preserve">
+    <value>الفترة إلى</value>
+  </data>
+  <data name="ZOWithdrawlRefNumberOfAssessmen" xml:space="preserve">
+    <value>الملاحظات</value>
+  </data>
+  <data name="ZOWithdrawlRevisedAmount" xml:space="preserve">
+    <value>المبلغ الغير معترض عليه من المكلف</value>
+  </data>
+  <data name="ZOWithdrawlTaxType" xml:space="preserve">
+    <value>نوع الضريبة</value>
+  </data>
+  <data name="ZOWritteyourObjectionReason" xml:space="preserve">
+    <value>اكتب سبب الإعتراض</value>
+  </data>
+    <data name="ZOReasonWithDraw" xml:space="preserve">
+  <value>Withdraw</value>
+</data>
+    <data name="ZakatInstalmentBillAmount" xml:space="preserve">
+    <value>مبلغ الفاتورة</value>
+  </data>
+  <data name="ZakatInstalmentBillDueDate" xml:space="preserve">
+    <value>تاريخ استحقاق الفاتورة</value>
+  </data>
+  <data name="ZakatInstalmentBillNumber" xml:space="preserve">
+    <value>رقم الفاتورة</value>
+  </data>
+  <data name="ZakatInstalmentBillStartDate" xml:space="preserve">
+    <value>تاريخ انشاء الفاتورة</value>
+  </data>
+  <data name="ZakatInstalmentDueInvoices" xml:space="preserve">
+    <value>الفواتير المستحقة</value>
+  </data>
+  <data name="ZakatInstalmentDueInvoiceText" xml:space="preserve">
+    <value>عزيزي المكلف, لا يمكنك الاستمرار في تقديم طلب خطة تقسيط قبل سداد الفواتير المستحقة الاتية والتي لا يمكن تضمينها ضمن خطة التقسيط:</value>
+  </data>
+  <data name="ZakatInstalmentReturnFBN" xml:space="preserve">
+    <value>رقم الإقرار</value>
+  </data>
+  <data name="ZakatInstalmentReturnPeriodDesc" xml:space="preserve">
+    <value>سنة الإقرار</value>
+  </data>
+  <data name="ZakatInstalmentSADADBillNo" xml:space="preserve">
+    <value>رقم فاتورة سداد</value>
+  </data>
+    <data name="ZOWIthdrawInstructions" xml:space="preserve">
+    <value>1. Attach a request letter displaying the with a reason for this request</value>
+  </data>
+  </root>
+

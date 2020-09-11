@@ -664,6 +664,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
+                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
 
                         string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, attachment.Doguid, APiMethod);
                         PopToRootPage();
@@ -789,7 +797,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         APiMethod = "ZDP_INDTAX_ATT_SRV";
                     }
-
+                    else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
                     AttachmentRootOject attachment = await WebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);
                     
                     if (attachment != null && attachment.d != null)
