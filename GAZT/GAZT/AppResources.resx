@@ -7420,9 +7420,6 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZOWithdrawlRefNumberOfAssessmen" xml:space="preserve">
     <value>Ref Number of Assessmen</value>
   </data>
-  <data name="ZOWithdrawlRemarks" xml:space="preserve">
-    <value>Remarks</value>
-  </data>
   <data name="ZOWithdrawlRevisedAmount" xml:space="preserve">
     <value>Revised Amount</value>
   </data>
@@ -7472,9 +7469,6 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="ZOSearchReturnReferenceNumber" xml:space="preserve">
     <value>Search Return Reference Number</value>
-  </data>
-  <data name="ZOSelectReturn" xml:space="preserve">
-    <value>Select Return</value>
   </data>
     <data name="OZObjectionDate" xml:space="preserve">
     <value>Objection Date</value>
@@ -7564,7 +7558,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Period To</value>
   </data>
   <data name="ZORefNumberOfAssessmen" xml:space="preserve">
-    <value>Ref Number of Assessmen</value>
+    <value>Ref Number of Assessment</value>
   </data>
   <data name="ZOWithdrawGeneralAttachmentOne" xml:space="preserve">
     <value>General Attachment 1</value>

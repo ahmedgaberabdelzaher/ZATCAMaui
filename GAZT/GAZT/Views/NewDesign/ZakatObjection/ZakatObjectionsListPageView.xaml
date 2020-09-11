@@ -337,7 +337,7 @@
                                            Source="establishments" />
                                     <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
                                                  Padding="8,0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZOAttachments}"
+                                        <Label Text="{x:Static ResourceManager:AppResources.Attachments}"
                                                VerticalOptions="CenterAndExpand"
                                                Style="{StaticResource SectionTitleBlackBold}" />
                                     </StackLayout>
@@ -408,10 +408,7 @@
 
                         </border:SfBorder>
 
-                        <buttons:SfButton Margin="0,16,0,16"
-                                          Text="{x:Static ResourceManager:AppResources.Submit}"
-                                          Style="{StaticResource PrimaryButtonStyle}"
-                                          Command="{Binding SummaryConBtnTapped}" />
+                       
 
                     </StackLayout>
                 </Grid>

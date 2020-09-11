@@ -7302,5 +7302,89 @@
     <data name="ZOWIthdrawInstructions" xml:space="preserve">
     <value>1. Attach a request letter displaying the with a reason for this request</value>
   </data>
+     <data name="OZObjectionDate" xml:space="preserve">
+    <value>تاريخ الاعتراض</value>
+  </data>
+  <data name="ZOObjectionType" xml:space="preserve">
+    <value>نوع الاعتراض</value>
+  </data>
+    <data name="ZORevisedAmount" xml:space="preserve">
+    <value>مسودة الربط بناء على الاعتراض (المكلف</value>
+  </data>
+   <data name="ZOSelectReturn" xml:space="preserve">
+    <value>حدد العودة</value>
+  </data>
+   <data name="ZOChooseOneReturn" xml:space="preserve">
+    <value>اختر عودة واحدة</value>
+  </data>
+    <data name="ZOSearchReturnReferenceNumber" xml:space="preserve">
+     <value>بحث</value>
+  </data>
+   <data name="ZOAttachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+    <data name="ZOFaxNo" xml:space="preserve">
+    <value>رقم الفاكس</value>
+  </data>
+  <data name="ZOFullName" xml:space="preserve">
+    <value>الاسم الكامل</value>
+  </data>
+  <data name="ZOLevelStreetNumber" xml:space="preserve">
+    <value>الاقامة و اسم الشارع</value>
+  </data>
+  <data name="ZONameOfTheApplicant" xml:space="preserve">
+   <value> اسم مقدم الطلب</value>
+  </data>
+  <data name="ZOPhoneNo" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="ZOPositionCapacity" xml:space="preserve">
+   <value>صفته</value>
+  </data>
+    <data name="ZOBuildingName" xml:space="preserve">
+    <value>اسم البناية</value>
+  </data>
+     <data name="ZOElectronicMail" xml:space="preserve">
+    <value>ديربلا</value>
+  </data>
+     <data name="ZOCityTown" xml:space="preserve">
+    <value>المدينة / القري</value>
+  </data>
+     <data name="ZONameOfTheApplicant" xml:space="preserve">
+   <value>اسم مقدم الطلب</value>
+  </data>
+     <data name="ZODeclarationCheckboxText" xml:space="preserve">
+    <value>قر بالإفصاح عن المعلومات ومصادقة المرفقات. وأتحمل المسؤولية الكاملة عن أي معلومات يثبت أنها غير صحيحة.</value>
+  </data>
+     <data name="ZORefNumberOfAssessmen" xml:space="preserve">
+    <value>الرقم المرجعي للإقرار</value>
+  </data>
+    <data name="ZOAssessmentYear" xml:space="preserve">
+    <value>سنة الربط</value>
+  </data>
+    <data name="ZOCurrency" xml:space="preserve">
+    <value>العملة</value>
+  </data>
+  <data name="ZOObjectionRefNo" xml:space="preserve">
+    <value>Objection Ref No</value>
+  </data>
+  <data name="ZOPeriodFrom" xml:space="preserve">
+    <value>الفترة من</value>
+  </data>
+  <data name="ZOPeriodTo" xml:space="preserve">
+    <value>الفترة إلى</value>
+  </data>
+    <data name="ZOAssessmentAmount" xml:space="preserve">
+    <value>قيمة الربط(المصلحة)</value>
+  </data>
+      <data name="ZOWithdrawlRemarks" xml:space="preserve">
+     <value>ملاحظات</value>
+  </data>
+     <data name="ZONameOfTheApplicantStar" xml:space="preserve">
+ <value> اسم مقدم الطلب</value>
+</data>
+<data name="ZOPositionCapacityStar" xml:space="preserve">
+<value>صفته</value>
+</data>
   </root>
 

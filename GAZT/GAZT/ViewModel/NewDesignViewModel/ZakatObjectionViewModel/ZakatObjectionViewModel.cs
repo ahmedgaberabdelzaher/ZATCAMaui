@@ -1731,7 +1731,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         postData.RegIdz = result.d.RegIdz;
                         postData.PeriodKeyz = result.d.PeriodKeyz;
                         postData.Monthz = "00";
-                        postData.Fbnumz = result.d.Fbnumz;
+                        postData.Fbnum = "$";
+                        postData.Fbnumz = "";
                         postData.Langz = result.d.Langz;
                         postData.PortalUsrz = result.d.PortalUsrz;
                         postData.Approvez = result.d.Approvez;
@@ -1761,7 +1762,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         postData.AGpart1 = result.d.AGpart1;
                         postData.FormGuid = result.d.FormGuid;
                         postData.Fbnum = result.d.Fbnum;
-                        postData.Status = result.d.Status;
+                        postData.Status = "IP011";
                         postData.AAgree = result.d.AAgree;
 
                         postData.AStep = result.d.AStep;
