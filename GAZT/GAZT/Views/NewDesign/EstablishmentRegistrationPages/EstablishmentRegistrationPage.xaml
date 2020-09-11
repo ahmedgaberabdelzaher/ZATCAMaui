@@ -124,8 +124,15 @@
                                 </Label>
                                 <custom:CustomLabel Text="{Binding SelectedRegNationalityType}"  HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal"  Grid.Row="4" Margin="0,0,0,10">
-                                <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="StartAndExpand"  >
+                            <Grid  Grid.Row="4" Margin="0,0,0,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label  Style="{StaticResource forLightLabel}"  Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand"  >
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusQuestionLabel}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
@@ -133,18 +140,9 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Frame BackgroundColor="#cee0dd" HorizontalOptions="EndAndExpand"  IsVisible="{Binding IsClickedStayMoreThanKSAOption}" Padding="0" CornerRadius="15" HasShadow="False">
-                                    <StackLayout Orientation="Horizontal" Padding="0,0,10,0">
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Check}"/>
-                                            </Image.Source>
-                                        </Image>
-                                        <Label Text="{x:Static ResourceManager:AppResources.ESTResidentOptionValue}"  TextColor=" DarkGreen" Style="{StaticResource GAZTSmallBlackLbl}"/>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
+                                <buttons:SfButton ImageWidth="25" VerticalOptions="FillAndExpand"  Grid.Row="0"  Grid.Column="1" IsVisible="{Binding IsClickedStayMoreThanKSAOption}" HeightRequest="30"  TextColor=" DarkGreen" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTResidentOptionValue}"  BorderWidth="1" BackgroundColor="#cee0dd"  CornerRadius="20"  HorizontalOptions="EndAndExpand"/>
+
+                            </Grid>
                             <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10">
                                 <Grid  Margin="0,0,0,10">
                                     <Grid.RowDefinitions>
