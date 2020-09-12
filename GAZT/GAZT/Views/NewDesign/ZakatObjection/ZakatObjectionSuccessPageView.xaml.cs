@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Helper;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
+using GAZT.Helper;
+using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -121,6 +124,17 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
         private void Reference_Num_copy_Tapped(object sender, EventArgs e)
         {
 
+        }
+
+        private async void Download_Acknowledgement(object sender, EventArgs e)
+        {
+           if(_viewModel.VATReferanceNumber != null) {
+
+                String downloadurl = Constants.downloadFile + "'" + _viewModel.VATReferanceNumber + "')/$value";
+                await WebServiceManager.FileDownload(downloadurl, "pdf");
+            }
+
+            
         }
     }
 }

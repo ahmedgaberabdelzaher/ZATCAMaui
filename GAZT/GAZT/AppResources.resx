@@ -1196,6 +1196,11 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
     <value>Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls.</value>
   </data>
+  <data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
+    <value>Caution, you must adjust the settings of the scanner so that the compressed file size less than MB10.
+Recommended settings for the scanner are: 1024 x 745
+Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
+  </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>File size should not be more than 5MB</value>
   </data>
@@ -5838,7 +5843,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Multiply Estimated profit for TAX with 20 %</value>
   </data>
   <data name="CRTotalDuesDesc" xml:space="preserve">
-    <value>Value of zakat due + value of TAX due</value>
+    <value>Value of zakat due + Value of TAX due</value>
   </data>
   <data name="ZakatInstalmentDueDate" xml:space="preserve">
     <value>Due Date</value>

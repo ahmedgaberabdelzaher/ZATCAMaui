@@ -1205,6 +1205,15 @@
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
     <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
+    <data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
+    <value>
+حجم الملف المسموح به في المرفقات 10 MB
+اعدادات الماسح الضوئي الموصى بها : 745*1024
+صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
+  </data>
+     <data name="BPTermsAndConditionsAlert" xml:space="preserve">
+    <value>الرجاء الموافقة على التعليمات والشروط</value>
+  </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>حجم الملف لا يزيد عن 5 ميجا</value>
   </data>
@@ -5842,13 +5851,13 @@
     <value>اكمل البيانات التالية</value>
   </data>
   <data name="CRNameOnContract" xml:space="preserve">
-    <value>الاسم المسجل في العقد</value>
+    <value>اسم المكلفد</value>
   </data>
   <data name="CRContractNumber" xml:space="preserve">
     <value>رقم العقد</value>
   </data>
   <data name="CRContractType" xml:space="preserve">
-    <value>النوع (عقد/امر شراء/فاتورة )</value>
+    <value>النوع (عقد/امر شراء/فاتورة)</value>
   </data>
   <data name="CRContractPeriod" xml:space="preserve">
    <value>تاريخ العقد</value>
@@ -5947,10 +5956,10 @@
     <value>أقر بموجب هذا بأنني مفوض لملء هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
   </data>
   <data name="CRContractprofitEstimatedRate" xml:space="preserve">
-    <value>نسبة الربح التقديرية للعقد%</value>
+    <value>نسبة الربح التقديرية للعقد %</value>
   </data>
   <data name="CRTheValueofZakatdues" xml:space="preserve">
-    <value>قيمة الضريبة المستحقة</value>
+    <value>قيمة الزكاة المستحقة</value>
   </data>
   <data name="CRYourContractisreleasedsuccessfully" xml:space="preserve">
     <value>تم استلام طلب الإفراج عن عقد</value>

@@ -1485,12 +1485,11 @@
                         </border:SfBorder>
                         
                          <buttons:SfButton Margin="0,16,0,16"
-                                           IsVisible="{Binding IsWithDrawEnable}"
+                                           IsEnabled="{Binding IsWithDrawEnable}"
                                           Text="{x:Static ResourceManager:AppResources.ZOReasonWithDraw}"
                                           Style="{StaticResource PrimaryButtonStyle}"
-                                          Command="{Binding SummaryConBtnTapped}" />
+                                          Command="{Binding WithdrawBtnTapped}" />
                         <buttons:SfButton Margin="0,16,0,16"
-                                          IsVisible="{Binding IsSubmitEnable}"
                                           Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding SummaryConBtnTapped}" />

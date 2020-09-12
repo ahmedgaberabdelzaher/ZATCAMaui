@@ -5,6 +5,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Application = Xamarin.Forms.Application;
 using Xamarin.Essentials;
+using GAZT.Helper;
+using GAZT.Manager;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
@@ -77,6 +79,16 @@ namespace EGAZT.Views.NewDesign.VatReview
 
 
 
+            }
+        }
+
+        private async void Download_Acknowledgement(object sender, EventArgs e)
+        {
+            if (viewModel.VATReferanceNumber != null)
+            {
+
+                String downloadurl = Constants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
+                await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
         }
         private async void VatReview_Tapped(object sender, EventArgs e)

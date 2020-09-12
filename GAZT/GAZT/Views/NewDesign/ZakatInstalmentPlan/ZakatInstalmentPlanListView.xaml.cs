@@ -37,7 +37,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 viewModel = App.Locator.ZakatInstalmentPlanListPageView;
                 this.BindingContext = viewModel;
-                viewModel.ResetData();
+               
                 viewModel.onPageLoad();
 
             }
@@ -92,6 +92,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             try
             {
                 base.OnAppearing();
+                viewModel.ResetData();
                 viewModel.EnableCreateZakatInstalment();
                 viewModel.GetZakatInstalmentPlanList();
             }

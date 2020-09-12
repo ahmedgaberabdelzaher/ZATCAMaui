@@ -234,6 +234,7 @@ namespace GAZT.Helper
         public static string VATGetFormGUIDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
         public static string downloadFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
 
+        
         #endregion
 
         #region ZAKAT
@@ -265,6 +266,7 @@ namespace GAZT.Helper
         public static string ContractReleaseSummaryData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set(";
         public static string GAZTSaveAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachSet(OutletRef=";
         public static string GAZTDeteleAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachMedSet(OutletRef=";
+        public static string downloadFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum=";
 
         #endregion
 

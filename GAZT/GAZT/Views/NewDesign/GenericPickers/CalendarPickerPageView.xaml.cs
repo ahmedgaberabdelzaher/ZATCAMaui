@@ -6,6 +6,7 @@ using System.Globalization;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -130,7 +131,60 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     // MessagingCenter.Send(this, "DatePickerSelectedItem",viewModel.DataSource);
                 }
             }
-            
+
+
+
+        }
+
+        private void PopupClose_Clicked(object sender, EventArgs e)
+        {
+
+
+
+            if (viewModel.IsFutureDatePickerVisible == true)
+            {
+                var selectedItem = futureCalendarPicker.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                newDate = year + "/" + month + "/" + day;
+
+
+
+                if (newDate != null || newDate != string.Empty)
+                {
+                    MessagingCenter.Send<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", viewModel.DataSource);
+
+
+
+                    // MessagingCenter.Send(this, "DatePickerSelectedItem",viewModel.DataSource);
+                }
+            }
+            else
+            {
+                var selectedItem = calendarPicker.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                newDate = year + "/" + month + "/" + day;
+
+
+
+                if (newDate != null || newDate != string.Empty)
+                {
+                    MessagingCenter.Send<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", viewModel.DataSource);
+
+
+
+                    // MessagingCenter.Send(this, "DatePickerSelectedItem",viewModel.DataSource);
+                }
+            }
+
+
+
+            PopupNavigation.Instance.PopAsync();
+
+
 
         }
     }

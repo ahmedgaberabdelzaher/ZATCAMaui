@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -47,6 +48,11 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void PopupClose_Clicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync();
         }
 
         void PopupPage_BackgroundClicked(System.Object sender, System.EventArgs e)

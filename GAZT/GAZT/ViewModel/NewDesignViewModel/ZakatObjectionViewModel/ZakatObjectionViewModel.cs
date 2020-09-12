@@ -70,6 +70,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         public ICommand ReviewDetailsConBtnTapped { get; set; }
         public ICommand SecurityPaymentConBtnTapped { get; set; }
         public ICommand DeclarationConBtnTapped { get; set; }
+        public ICommand WithdrawBtnTapped { get; set; }
         public ICommand SummaryConBtnTapped { get; set; }
         public ICommand WithDrawObjectionConBtnTapped { get; set; }
         public ICommand IsWithDrawDetailsTapped { get; set; }
@@ -136,14 +137,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         }
 
         private bool _isWithDrawEnable = false;
-
         public bool IsWithDrawEnable
         {
             get { return _isWithDrawEnable; }
             set
             {
                 _isWithDrawEnable = value;
+                WithdrawBackgroundColor = Color.FromHex(_isWithDrawEnable ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsWithDrawEnable");
+            }
+        }
+
+        private Color _WithdrawBackgroundColor = Color.FromHex("#d49504");
+        public Color WithdrawBackgroundColor
+        {
+            get
+            {
+                return _WithdrawBackgroundColor;
+            }
+            set
+            {
+                if (_WithdrawBackgroundColor == value)
+                {
+                    return;
+                }
+                _WithdrawBackgroundColor = value;
+                RaisePropertyChanged("WithdrawBackgroundColor");
             }
         }
 
@@ -767,29 +786,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 EnableSummaryView();
             });
 
+
+            
+
+                WithdrawBtnTapped = new Command(async () => {
+
+
+                    if (IsWithDrawEnable)
+                    {
+
+
+
+                        await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.NDZakatObjection,
+                    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                        .Instructions));
+
+
+
+
+                        //GAZTGetZakatWithDrawDDData
+                        await GetWithdrawReviewReason();
+                        EnableWithdrawObjectionDetails();
+                    }
+                    else
+                    {
+
+                        /*
+                                            VATReferanceNumber = SelectedFbNum;
+                                            await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());*/
+                    }
+                });
+
             SummaryConBtnTapped = new Command(async () => {
 
-
-                if (IsWithDrawEnable)
-                {
-
-                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.NDZakatObjection,
-                _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-                    .Instructions));
-
-
-                    //GAZTGetZakatWithDrawDDData
-                    await GetWithdrawReviewReason();
-                    EnableWithdrawObjectionDetails();
-                }
-                else
-                {
-
-
-
-                    VATReferanceNumber = SelectedFbNum;
+                   VATReferanceNumber = SelectedFbNum;
                     await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());
-                }
+                
             });
 
             IsWithDrawDetailsTapped = new Command(async () => {

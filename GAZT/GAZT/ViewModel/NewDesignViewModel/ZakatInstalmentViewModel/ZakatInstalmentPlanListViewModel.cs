@@ -1248,28 +1248,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
 
                     var zakatbill = "";
-                    if (RequestForInstalmentPlanList[i].IptypeFg == "NZ" || RequestForInstalmentPlanList[i].IptypeFg == "OZ")
+                    if (RequestForInstalmentPlanList[i].IptypeFg == "NZ")
                     {
                         zakatbill = AppResources.ZakatInstalmetSelectTypeZakat;
                     }
-                    else {
+                    else if (RequestForInstalmentPlanList[i].IptypeFg == "NI")
+                    {
                         zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                     }
 
-                    ZakatListData.Add(new ZakatListModel()
+
+                    zakatListData.Add(new ZakatListModel()
                     {
                         referanceNumber = RequestForInstalmentPlanList[i].Fbnum,
                         status = RequestForInstalmentPlanList[i].Status,
-                        dueamount = RequestForInstalmentPlanList[i].TotAmt,
-                        instalmentAmount = RequestForInstalmentPlanList[i].DueAmt,
+                        dueamount = string.Format("{0:N2}", Convert.ToDouble(RequestForInstalmentPlanList[i].TotAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                        instalmentAmount = string.Format("{0:N2}", Convert.ToDouble(RequestForInstalmentPlanList[i].DueAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
                         noOfInstalments = RequestForInstalmentPlanList[i].PlanDur,
-                        downpayment = RequestForInstalmentPlanList[i].DpAmt,
+                        downpayment = string.Format("{0:N2}", Convert.ToDouble(RequestForInstalmentPlanList[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
                         dateOfSubmission = submitDate,
-                   
                         Fbtyp = zakatbill
 
-                    });
 
+
+                    });
 
                 }
 
@@ -1812,18 +1814,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                 {
                                     referanceNumber = revokResult.d.WorklistSet.results[i].Fbnum,
                                     status = revokResult.d.WorklistSet.results[i].Status,
-                                    dueamount = revokResult.d.WorklistSet.results[i].TotAmt,
-                                    instalmentAmount = revokResult.d.WorklistSet.results[i].DueAmt,
+                                    dueamount = string.Format("{0:N2}", double.Parse(revokResult.d.WorklistSet.results[i].TotAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                                    instalmentAmount = string.Format("{0:N2}", double.Parse(revokResult.d.WorklistSet.results[i].DueAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
                                     noOfInstalments = revokResult.d.WorklistSet.results[i].PlanDur,
-                                    downpayment = revokResult.d.WorklistSet.results[i].DpAmt,
+                                    downpayment = string.Format("{0:N2}", double.Parse(revokResult.d.WorklistSet.results[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
                                     dateOfSubmission = submitDate,
-                                    Fbtyp = revokResult.d.WorklistSet.results[i].Fbtyp,
+                                    Fbtyp = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
                                     frequency = revokResult.d.WorklistSet.results[i].PymntFreq,
                                     SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
-
-
                                 });
-
 
                             }
 

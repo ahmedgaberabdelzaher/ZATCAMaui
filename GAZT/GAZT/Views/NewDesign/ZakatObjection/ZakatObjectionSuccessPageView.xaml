@@ -77,8 +77,9 @@
                         
                       
                         
-                        <buttons:SfButton 
+                       <buttons:SfButton
                                           Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"
+                            Clicked="Download_Acknowledgement"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" />

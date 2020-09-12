@@ -50,6 +50,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var attachement = new Attachments();
             attachement.results = attachments;
             onPageLoad(attachement, whichAttachment, returnIdz);
+           
+        }
+
+        public void onPageLoad(Attachments attachments,WhichAttachment whichAttachment,string returnIdz)
+        {
+
+
             if (whichAttachment == WhichAttachment.ZakatInstalmentBankStatements || whichAttachment == WhichAttachment.ZakatInstalmentFinance)
 
             {
@@ -59,17 +66,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             else if (whichAttachment == WhichAttachment.ContractReleaseCopy || whichAttachment == WhichAttachment.ContractReleaseInvoice)
             {
                 viewModel.TitleOne = AppResources.ESTAttachmentSizeNotfication;
-                viewModel.TitleTwo = AppResources.ZChooseonlyfilewithextension;
+                viewModel.TitleTwo = AppResources.ZContractReleaseChooseonlyfilewithextension;
             }
             else
             {
                 viewModel.TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
                 viewModel.TitleTwo = AppResources.ZChooseonlyfilewithextension;
             }
-        }
-
-        public void onPageLoad(Attachments attachments,WhichAttachment whichAttachment,string returnIdz)
-        {
             viewModel.IsComeForWhichAttachment = whichAttachment;
             viewModel.returnIdz = returnIdz;
             if (attachments!=null )

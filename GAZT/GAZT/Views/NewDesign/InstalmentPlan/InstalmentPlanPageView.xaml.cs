@@ -68,6 +68,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
         {
             base.OnAppearing();
             viewModel.AddOutletDecisionOptions();
+            
         }
 
 

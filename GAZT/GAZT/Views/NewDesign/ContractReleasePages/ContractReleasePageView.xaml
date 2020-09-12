@@ -59,10 +59,9 @@
                             <ColumnDefinition Width="60*" />
                             <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0"
-                               Text="{x:Static ResourceManager:AppResources.ContractRelease}"
-                               TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
-                               FontSize="Large" />
+                       
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ContractRelease}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+
                         <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}"
                                Text="{DynamicResource StyleReverseBack}" TextColor="White"
                                IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
@@ -146,7 +145,7 @@
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                             Text="{x:Static ResourceManager:AppResources.CRNameOnContract}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                             <custom:BorderlessEntry x:Name="ContractNameText" Unfocused="ContractNameUnfocused"
@@ -163,7 +162,7 @@
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                             Text="{x:Static ResourceManager:AppResources.CRContractNumber}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                             <custom:BorderlessEntry x:Name="ContractNumberText"
@@ -182,7 +181,7 @@
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                             Text="{x:Static ResourceManager:AppResources.CRContractType}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                             <Grid>
@@ -220,7 +219,7 @@
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                             Text="{x:Static ResourceManager:AppResources.CRContractStartDate}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                             <Grid>
@@ -257,7 +256,7 @@
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                             Text="{x:Static ResourceManager:AppResources.CRContractEndDate}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                             <Grid>
@@ -295,7 +294,7 @@
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                             Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                             <custom:BorderlessEntry x:Name="ContractTotalAmountText" Text="{Binding ContractTotalAmount,StringFormat='{0:0}'}"
@@ -312,7 +311,7 @@
                         <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                             Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
+                                            Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                             <custom:BorderlessEntry x:Name="AmountoReleaseTxt" Text="{Binding AmountToRelease,StringFormat='{0:0}'}"
@@ -554,7 +553,7 @@
                                                 Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}"
                                                 HorizontalOptions="StartAndExpand"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource SectionTitleBlack}" />
+                                                Style="{StaticResource ValueLabelBlack}" />
 
                             <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
                                 <Image.Source>
@@ -598,7 +597,7 @@
                                                 Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}"
                                                 HorizontalOptions="StartAndExpand"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource SectionTitleBlack}" />
+                                                Style="{StaticResource ValueLabelBlack}" />
 
                             <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
                                 <Image.Source>

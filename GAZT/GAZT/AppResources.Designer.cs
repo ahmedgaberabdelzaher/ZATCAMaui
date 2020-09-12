@@ -2201,6 +2201,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZContractReleaseChooseonlyfilewithextension {
+            get {
+                return ResourceManager.GetString("ZContractReleaseChooseonlyfilewithextension", resourceCulture);
+            }
+        }
+        
         public static string ZFilesizeshouldnotbemorethan5MB {
             get {
                 return ResourceManager.GetString("ZFilesizeshouldnotbemorethan5MB", resourceCulture);

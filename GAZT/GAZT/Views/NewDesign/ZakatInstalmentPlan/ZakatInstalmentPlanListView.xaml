@@ -252,7 +252,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding instalmentAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" />
+                                                <Label Text="{Binding instalmentAmount}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
@@ -886,7 +886,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                   
+
 
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
@@ -902,7 +902,8 @@
 
                     <custom:CustomLabel Grid.Row="1" Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueInvoiceText}" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-                    <listView:SfListView  Grid.Row="2" HorizontalOptions="CenterAndExpand"  Margin="0"
+                    <listView:SfListView  Grid.Row="2" IsScrollingEnabled="False" HorizontalOptions="CenterAndExpand"  
+                                          Margin="0"
                                           Padding="0" VerticalOptions="StartAndExpand" AutoFitMode="Height"
                                           ItemSpacing="0" ItemsSource="{Binding DueInvoicesList}"
                                           SelectionMode="Single" SelectionBackgroundColor="Transparent">
@@ -913,6 +914,11 @@
                                     GreyBorderFrameWithShadow}">
                                     <Grid Padding="0" RowSpacing="0" Margin="0">
                                         <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -932,22 +938,22 @@
                                                             Style="{StaticResource ValueLabelBlack}"
                                                             Text="{Binding Vtre2}" />
 
-                                        <BoxView Grid.Row="2" Margin="0,5,0,5" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        <BoxView Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                         <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillNumber}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                        <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{Binding Opbel}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{Binding Opbel}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
                                         <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnFBN}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
                                         <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{Binding RetFbn}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillStartDate}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"/>
-                                        <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{Binding Abrzu}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillStartDate}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{Binding Abrzu}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
                                         <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillDueDate}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
                                         <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding Abrzo}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="7" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillAmount}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"/>
-                                        <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{Binding Betrh}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="7" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillAmount}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{Binding Betrh}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
                                         <custom:CustomLabel Grid.Row="7" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnPeriodDesc}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
                                         <custom:CustomLabel Grid.Row="8" Grid.Column="1" Text="{Binding Perslt}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
@@ -958,9 +964,65 @@
                         </listView:SfListView.ItemTemplate>
 
                     </listView:SfListView>
+                   
+                   
+                    <!--NotiSet12-->
+                    <listView:SfListView  Grid.Row="2" IsScrollingEnabled="False" HorizontalOptions="CenterAndExpand"  
+                                          Margin="0"
+                                          Padding="0" VerticalOptions="StartAndExpand" AutoFitMode="Height"
+                                          ItemSpacing="0" ItemsSource="{Binding DueInvoicesListSet12}"
+                                          SelectionMode="Single" SelectionBackgroundColor="Transparent">
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15"
+                                    Margin="0,15,0,0" HasShadow="True" Style="{StaticResource
+                                    GreyBorderFrameWithShadow}">
+                                    <Grid Padding="0" RowSpacing="0" Margin="0">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                                            Style="{StaticResource SectionTitleBlackBold}"
+                                                            Text="{x:Static
+                                            ResourceManager:AppResources.ZakatInstalmentReturnTaxType}" />
+                                        <custom:CustomLabel Grid.Row="1" Grid.ColumnSpan="2"
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding IncoText}" />
+
+                                        <BoxView Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnPeriodDesc}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{Binding Perslt}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnFBN}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{Binding RetFbn}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnCreationDate}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{Binding Cdate}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZaaktInstalmentReturnDueDate}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding Faedn}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+
+
+                                    </Grid>
+                                </border:SfBorder>
+                            </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+
+                    </listView:SfListView>
 
                 </Grid>
-
                 <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                      Opacity="0.4" VerticalOptions="FillAndExpand" />

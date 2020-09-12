@@ -1392,6 +1392,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
+
+        string minInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+        string maxInstalmentsTitle = AppResources.ZakatMin + " " + 12;
+
+        public string MaxInstalmentsTitle
+        {
+            set
+            {
+                if (maxInstalmentsTitle != value)
+                {
+                    maxInstalmentsTitle = value;
+                    RaisePropertyChanged("MaxInstalmentsTitle");
+                }
+            }
+            get
+            {
+                return maxInstalmentsTitle;
+            }
+        }
+
+
+
+        public string MinInstalmentsTitle
+        {
+            set
+            {
+                if (minInstalmentsTitle != value)
+                {
+                    minInstalmentsTitle = value;
+                    RaisePropertyChanged("MinInstalmentsTitle");
+                }
+            }
+            get
+            {
+                return minInstalmentsTitle;
+            }
+        }
         private Stream _StreamForDownloadURL = null;
         public Stream StreamForDownloadURL
         {
@@ -1405,6 +1442,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
+
         private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
         public Color ContinueButtonnBackroundColor
         {
@@ -1649,7 +1687,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 for (int i = 0; i < statementList.Length; i++)
                 {
                     DateTime dateStart = new DateTime();
-                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                    //CultureInfo cultureInfo = new CultureInfo("ar-SA");
                     string apiDate = @"""" + statementList[i].Faedn + @"""";
                     dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
@@ -1871,6 +1909,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             downPaymentAmount = 00.00;
             inputData = "";
             TotalAmountSAR = "0.00 SAR";
+            MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+            MaxInstalmentsTitle = AppResources.ZakatMin + " " + 12;
             selectedList.Clear();
             selectedPage = (int)PagesEnum.ZakatSelectionView;
         }

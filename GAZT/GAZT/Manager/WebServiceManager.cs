@@ -40,6 +40,7 @@ using RequestToVATInstallmentPlanDetails = EGAZT.Models.VATInstalmentModels.Requ
 using EGAZT.Models.VatReviewModel;
 using static EGAZT.Models.VatReviewModel.VATObjectionFormModel;
 using EGAZT.Models.ZakatObjectionsModel;
+using EGAZT.Helper;
 
 namespace GAZT.Manager
 {
@@ -14953,6 +14954,77 @@ namespace GAZT.Manager
             else
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        #endregion
+
+        #region Download File
+
+        public async static System.Threading.Tasks.Task<bool> FileDownload(string url, string fileExtension)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string NewToken = string.Empty;
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    //  HttpClient client = new HttpClient(App.httpClientHandler);
+                    System.IO.MemoryStream pdfStream = new MemoryStream();
+                    var dependency = DependencyService.Get<IPrintService>();
+                    var uri = new Uri(url);
+                    HttpResponseMessage _fileDownloadResponse = new HttpResponseMessage();
+                    var fileName = Guid.NewGuid().ToString();
+
+                    using (HttpClient client = new HttpClient(App.httpClientHandler))
+                    {
+                        _fileDownloadResponse = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
+
+                        _fileDownloadResponse.EnsureSuccessStatusCode();
+                        await _fileDownloadResponse.Content.CopyToAsync(pdfStream);                      
+                        await dependency.Save(pdfStream, $"{fileName}." + fileExtension);
+                    }
+
+                    if (_fileDownloadResponse.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        App.IsSessionExpired = true;
+                        return false;
+                    }
+                    HttpHeaders headers = _fileDownloadResponse.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("token", out values))
+                    {
+                        NewToken = values.First();
+                        App.IsSessionExpired = false;
+                    }
+                    if ((!string.IsNullOrEmpty(NewToken)))
+                    {
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                        {
+                            App.IsSessionExpired = true;
+                            return false;
+                        }
+                        App.Token = NewToken;
+                    }
+                    return true;
+                }
+                catch (GAZTVATChangeFillingPeriodException ex)
+                {
+                    return false;
+                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
             }
         }
 

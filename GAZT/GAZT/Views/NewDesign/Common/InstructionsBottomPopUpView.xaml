@@ -24,8 +24,9 @@
 
     </pages:PopupPage.Resources>
 
+    <ScrollView>
     <Grid>
-
+        
         <yummy:PancakeView IsVisible="{Binding IsInstructions}" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
             <Grid RowSpacing="15">
                 <Grid.RowDefinitions>
@@ -174,4 +175,5 @@
         </yummy:PancakeView>
 
     </Grid>
+     </ScrollView>
 </pages:PopupPage>

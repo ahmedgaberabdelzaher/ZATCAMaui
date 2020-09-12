@@ -104,24 +104,28 @@
 
                      <Grid Grid.Row="1"   BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
+ 
+
                      <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
-                            <StackLayout Orientation="Horizontal">
+ 
+
+                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
+                            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
                                
                                 <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding MyRequestsButtonTapped}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                         </border:SfBorder>
 
-                         </Grid>
+ 
 
+                         </Grid>
 
                     <!--<cards:SfCardView Grid.Row="1" Margin="0,20,0,0" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
 
