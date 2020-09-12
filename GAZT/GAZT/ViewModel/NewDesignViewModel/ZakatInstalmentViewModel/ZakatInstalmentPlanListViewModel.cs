@@ -37,7 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         private bool _IsZakatSummaryVisible = false;
         private bool _isZakatSummaryRevokeVisible = false;
         private bool _isAttachmentsViewEnabled = false;
-
+        ZakatInstalmentValidateNewRequestModel result = null;
 
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
@@ -59,7 +59,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ZakatInstalmentPlanListViewModel(INavigationService navigationService, IDialogService dialogService)
         {
 
-            IsZakat = Preferences.Get("isZakat", false);
+            //IsZakat = Preferences.Get("isZakat", false);
 
             if (navigationService == null)
             {
@@ -78,6 +78,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 await Application.Current.MainPage.Navigation.PopAsync();
             });
 
+
+            IsZakat = Preferences.Get("isZakat", false);
             if (IsZakat)
             {
                 ZakatTitle = AppResources.ZakatInstalmetSelectTypeZakat;
@@ -159,6 +161,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             ReqInstalmentBtnTapped = new Command(async () =>
             {
                 CheckDueInvoices();
+               // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             });
             SummaryContinueBtnTapped = new Command(async () =>
             {
@@ -182,13 +185,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             });
 
         }
-
-        public async Task CheckDueInvoices()
+        public async Task onPageLoad()
         {
-
-
-
-
             try
             {
                 await Task.Run(() =>
@@ -206,117 +204,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     try
                     {
-                        DueInvoicesList = null;
-                        ZakatInstalmentValidateNewRequestModel result = await WebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
-
-
-
-
                         PopToRootPage();
 
 
 
-                        var dueInvoicesList = new ObservableCollection<ZakatInstalmentValidateNewRequestModel.Result2>();
-
-
-
-
-                        if (result != null && result.d != null)
-                        {
-                            if (result.d.EvtNotif1Set != null && result.d.EvtNotif1Set.results.Count > 0)
-                            {
-
-                                foreach (ZakatInstalmentValidateNewRequestModel.Result2 result2 in result.d.EvtNotif1Set.results)
-                                {
-
-
-
-                                    DateTime dateStart = new DateTime();
-                                    DateTime dateStart2 = new DateTime();
-                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                                    string apiDate = @"""" + result2.Abrzo + @"""";
-                                    string apiDate2 = @"""" + result2.Abrzu + @"""";
-                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-                                    dateStart2 = JsonConvert.DeserializeObject<DateTime>(apiDate2);
-
-
-
-                                    GregorianCalendar hjCalendar = new GregorianCalendar();
-                                    int year = hjCalendar.GetYear(dateStart);
-                                    int month = hjCalendar.GetMonth(dateStart);
-                                    int day = hjCalendar.GetDayOfMonth(dateStart);
-                                    int year2 = hjCalendar.GetYear(dateStart2);
-                                    int month2 = hjCalendar.GetMonth(dateStart2);
-                                    int day2 = hjCalendar.GetDayOfMonth(dateStart2);
-
-
-
-
-
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-                                    string dateStr2 = string.Format("{0:00}/{1}/{2}", day2, month2, year2);
-
-
-
-
-                                    result2.Abrzo = dateStr;
-                                    result2.Abrzu = dateStr2;
-
-
-
-
-
-                                    string dt1 = string.Empty;
-                                    string[] dts = null;
-                                    dts = result2.Abrzo.Split('/');
-                                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                                    result2.Abrzo = dt1;
-
-
-
-                                    string dt2 = string.Empty;
-                                    string[] dts2 = null;
-                                    dts2 = result2.Abrzu.Split('/');
-                                    dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
-                                    result2.Abrzu = dt2;
-
-
-
-                                    dueInvoicesList.Add(result2);
-                                }
-                                DueInvoicesList = dueInvoicesList;
-                                EnableDueInvoicesPage();
-                            }
-                            else if (result.d.EvtNotif12Set != null && result.d.EvtNotif12Set.results.Count > 0)
-                            {
-                                foreach (ZakatInstalmentValidateNewRequestModel.Result2 result2 in result.d.EvtNotif12Set.results)
-                                {
-                                    dueInvoicesList.Add(result2);
-                                }
-                                DueInvoicesList = dueInvoicesList;
-                                EnableDueInvoicesPage();
-                            }
-                            else
-                            {
-                                _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
-                            }
-
-
-
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-
-
-
-
-
+                        result = await WebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
                         IsLoading = false;
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
@@ -334,6 +226,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
+
+
                     }
                 });
                 await Task.Run(() =>
@@ -343,21 +237,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
+
+
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
 
 
 
-                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
+
+
 
 
 
@@ -375,6 +270,188 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
             }
 
+        }
+
+
+        public ObservableCollection<EvtNotif12SetResult> _DueInvoicesListSet12 { get; set; }
+        public ObservableCollection<EvtNotif12SetResult> DueInvoicesListSet12
+        {
+            get { return _DueInvoicesListSet12; }
+
+
+
+
+
+            set
+            {
+                if (_DueInvoicesListSet12 == value)
+                {
+                    return;
+                }
+
+
+
+
+
+                _DueInvoicesListSet12 = value;
+                RaisePropertyChanged("DueInvoicesListSet12");
+            }
+        }
+
+        public void CheckDueInvoices()
+        {
+            IsLoading = true;
+
+            // result = await WebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
+            DueInvoicesList = null;
+            DueInvoicesListSet12 = null;
+
+
+
+
+
+            var dueInvoicesList = new ObservableCollection<ZakatInstalmentValidateNewRequestModel.Result2>();
+            var dueInvoicesListSet12 = new ObservableCollection<EvtNotif12SetResult>();
+            if (result != null && result.d != null)
+            {
+                if (result.d.EvtNotif1Set != null && result.d.EvtNotif1Set.results.Count > 0)
+                {
+
+
+
+                    foreach (ZakatInstalmentValidateNewRequestModel.Result2 result2 in result.d.EvtNotif1Set.results)
+                    {
+
+
+
+                        DateTime dateStart = new DateTime();
+                        DateTime dateStart2 = new DateTime();
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + result2.Abrzo + @"""";
+                        string apiDate2 = @"""" + result2.Abrzu + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                        dateStart2 = JsonConvert.DeserializeObject<DateTime>(apiDate2);
+
+
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+                        int year2 = hjCalendar.GetYear(dateStart2);
+                        int month2 = hjCalendar.GetMonth(dateStart2);
+                        int day2 = hjCalendar.GetDayOfMonth(dateStart2);
+
+
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                        string dateStr2 = string.Format("{0:00}/{1}/{2}", day2, month2, year2);
+
+
+
+                        result2.Abrzo = dateStr;
+                        result2.Abrzu = dateStr2;
+
+
+
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = result2.Abrzo.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        result2.Abrzo = dt1;
+
+
+
+                        string dt2 = string.Empty;
+                        string[] dts2 = null;
+                        dts2 = result2.Abrzu.Split('/');
+                        dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
+                        result2.Abrzu = dt2;
+
+
+
+                        dueInvoicesList.Add(result2);
+                    }
+                    DueInvoicesList = dueInvoicesList;
+                    EnableDueInvoicesPage();
+                }
+                else if (result.d.EvtNotif12Set != null && result.d.EvtNotif12Set.results.Count > 0)
+                {
+                    foreach (EvtNotif12SetResult evtNotif12SetResult in result.d.EvtNotif12Set.results)
+                    {
+
+
+
+                        DateTime dateStart = new DateTime();
+                        DateTime dateStart2 = new DateTime();
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + evtNotif12SetResult.Faedn + @"""";
+                        string apiDate2 = @"""" + evtNotif12SetResult.Cdate + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                        dateStart2 = JsonConvert.DeserializeObject<DateTime>(apiDate2);
+
+
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+                        int year2 = hjCalendar.GetYear(dateStart2);
+                        int month2 = hjCalendar.GetMonth(dateStart2);
+                        int day2 = hjCalendar.GetDayOfMonth(dateStart2);
+
+
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                        string dateStr2 = string.Format("{0:00}/{1}/{2}", day2, month2, year2);
+
+
+
+                        evtNotif12SetResult.Faedn = dateStr;
+                        evtNotif12SetResult.Cdate = dateStr2;
+
+
+
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = evtNotif12SetResult.Faedn.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        evtNotif12SetResult.Faedn = dt1;
+
+
+
+                        string dt2 = string.Empty;
+                        string[] dts2 = null;
+                        dts2 = evtNotif12SetResult.Cdate.Split('/');
+                        dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
+                        evtNotif12SetResult.Cdate = dt2;
+
+
+
+                        dueInvoicesListSet12.Add(evtNotif12SetResult);
+                    }
+                    DueInvoicesListSet12 = dueInvoicesListSet12;
+                    EnableDueInvoicesPage();
+                }
+                else
+                {
+                    _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+                }
+
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+
+
+
+            IsLoading = false;
+
 
 
         }
@@ -385,7 +462,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         }
 
-        private bool _isZakat;
+        private bool _isZakat = false;
         public bool IsZakat
         {
             get
@@ -1122,7 +1199,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             if (ReqVatInstalmentPlanResponseList.d.WorklistSet.results != null)
             {
-                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results;
+                if(RequestForInstalmentPlanList != null) {
+
+                    RequestForInstalmentPlanList.Clear();
+
+                }
+
+                IsZakat = Preferences.Get("isZakat", false);
+                if (IsZakat) {
+
+                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NZ").ToList();
+                }
+                else {
+                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NI").ToList();
+
+
+                }
+
+
+                for (int i = 0; i < RequestForInstalmentPlanList.Count; i++)
+                {
+                    RequestForInstalmentPlanList[i].DpAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DpAmt) + " " + AppResources.FORM5SAR;
+                    RequestForInstalmentPlanList[i].TotAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].TotAmt) + " " + AppResources.FORM5SAR;
+
+                    string submitDate = "";
+                    if (RequestForInstalmentPlanList[i].SubmitDt != null)
+                    {
+
+                        DateTime dateStart = new DateTime();
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + RequestForInstalmentPlanList[i].SubmitDt + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                        RequestForInstalmentPlanList[i].SubmitDt = dateStr;
+
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = RequestForInstalmentPlanList[i].SubmitDt.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        submitDate = dt1;
+                    }
+
+                    var zakatbill = "";
+                    if (RequestForInstalmentPlanList[i].IptypeFg == "NZ" || RequestForInstalmentPlanList[i].IptypeFg == "OZ")
+                    {
+                        zakatbill = AppResources.ZakatInstalmetSelectTypeZakat;
+                    }
+                    else {
+                        zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                    }
+
+                    ZakatListData.Add(new ZakatListModel()
+                    {
+                        referanceNumber = RequestForInstalmentPlanList[i].Fbnum,
+                        status = RequestForInstalmentPlanList[i].Status,
+                        dueamount = RequestForInstalmentPlanList[i].TotAmt,
+                        instalmentAmount = RequestForInstalmentPlanList[i].DueAmt,
+                        noOfInstalments = RequestForInstalmentPlanList[i].PlanDur,
+                        downpayment = RequestForInstalmentPlanList[i].DpAmt,
+                        dateOfSubmission = submitDate,
+                   
+                        Fbtyp = zakatbill
+
+                    });
+
+
+                }
+
+
+
                 InstalmentsCount = RequestForInstalmentPlanList.Count + " " + AppResources.ZakatInstalmentRequestCount;
 
             }
@@ -1517,6 +1669,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         rEQVatInstalmentPlanResponse = await WebServiceManager.GAZTGetZakatInstalmentPlanRequestList("", "", "");
                         ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
 
+
                         PopToRootPage();
 
                         if (ReqVatInstalmentPlanResponseList != null && ReqVatInstalmentPlanResponseList.d != null)
@@ -1524,52 +1677,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             ZakatListData = new ObservableCollection<ZakatListModel>();
 
 
-                            for (int i = 0; i < ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Count; i++)
-                            {
-                                ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DpAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DpAmt) + " " + AppResources.FORM5SAR;
-                                ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].TotAmt = string.Format("{0:N2}", ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].TotAmt) + " " + AppResources.FORM5SAR;
-
-                                string submitDate = "";
-                                if (ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].SubmitDt != null)
-                                {
-
-                                    DateTime dateStart = new DateTime();
-                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                                    string apiDate = @"""" + ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].SubmitDt + @"""";
-                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-
-                                    GregorianCalendar hjCalendar = new GregorianCalendar();
-                                    int year = hjCalendar.GetYear(dateStart);
-                                    int month = hjCalendar.GetMonth(dateStart);
-                                    int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-                                    ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].SubmitDt = dateStr;
-
-                                    string dt1 = string.Empty;
-                                    string[] dts = null;
-                                    dts = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].SubmitDt.Split('/');
-                                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                                    submitDate = dt1;
-                                }
-
-
-                                ZakatListData.Add(new ZakatListModel()
-                                {
-                                    referanceNumber = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].Fbnum,
-                                    status = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].Status,
-                                    dueamount = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].TotAmt,
-                                    instalmentAmount = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DueAmt,
-                                    noOfInstalments = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].PlanDur,
-                                    downpayment = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].DpAmt,
-                                    dateOfSubmission = submitDate,
-                                    Fbtyp = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[i].Fbtyp.Equals("IPRF") ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
-
-                                });
-
-
-                            }
+                            
                             BindVatInstalments();
 
                         }

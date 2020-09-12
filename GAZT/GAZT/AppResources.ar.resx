@@ -4944,7 +4944,7 @@
     <value>يرجى تحديد فواتير سداد التي ترغب بتضمينها في اتفاقية التقسيط</value>
   </data>
   <data name="ZakatBillAmount" xml:space="preserve">
-    <value>الالتزامات المستحقة</value>
+    <value> (المبلغ المستحق (ريال سعودي </value>
   </data>
   <data name="ZakatInstalmentDownloadConfirmation" xml:space="preserve">
     <value>تحميل إشعار تسليم الطلب</value>
@@ -5725,7 +5725,7 @@
     <value>المبلغ المدفوع</value>
   </data>
   <data name="ZakatDueAmount" xml:space="preserve">
-    <value>مبلغ الفاتورة</value>
+    <value> (المبلغ المستحق (ريال سعودي </value>
   </data>
   <data name="ZZZDBMyCertificates" xml:space="preserve">
     <value>شهاداتي</value>
@@ -6628,7 +6628,7 @@
     <value>لا يمكن أن يتجاوز المبلغ </value>
   </data>
   <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
-    <value>الاستحقاق</value>
+    <value> (إجمالي طلب الأقساط المبلغ (ريال سعودي </value>
   </data>
   <data name="ZakatInstalmentNumberOfInstalments" xml:space="preserve">
     <value>عدد الأقساط</value>
@@ -7386,5 +7386,14 @@
 <data name="ZOPositionCapacityStar" xml:space="preserve">
 <value>صفته</value>
 </data>
-  </root>
+ <data name="ZaaktInstalmentReturnDueDate" xml:space="preserve">
+    <value>تاريخ استحقاق الإقرار</value>
+  </data>
+  <data name="ZakatInstalmentReturnCreationDate" xml:space="preserve">
+    <value>تاريخ انشاء الإقرار</value>
+  </data>
+  <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
+    <value>نوع الضريبة</value>
+  </data>
+</root>
 

@@ -549,6 +549,8 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string PlanDur { get; set; }
             public string Waers { get; set; }
             public string Status { get; set; }
+            public string IptypeFg { get; set; }
+
         }
 
         public class WorklistSet

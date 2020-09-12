@@ -771,6 +771,24 @@ namespace EGAZT.Models.ZakatInstalmentModels
 
     }
 
+    public class EvtNotif12SetResult
+    {
+        public Metadata2 __metadata { get; set; }
+        public string TinNm { get; set; }
+        public string Gpart { get; set; }
+        public string Vkont { get; set; }
+        public string Faedn { get; set; }
+        public string Cdate { get; set; }
+        public string Persl { get; set; }
+        public string Perslt { get; set; }
+        public string Incotyp { get; set; }
+        public string IncoText { get; set; }
+        public string RetFbn { get; set; }
+    }
+    public class EvtNotif12Set
+    {
+        public List<EvtNotif12SetResult> results { get; set; }
+    }
     public class ZakatRevokeList
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -822,10 +840,9 @@ namespace EGAZT.Models.ZakatInstalmentModels
             public List<object> results { get; set; }
         }
 
-        public class EvtNotif12Set
-        {
-            public List<object> results { get; set; }
-        }
+      
+
+       
 
         public class Metadata3
         {
@@ -1034,10 +1051,10 @@ namespace EGAZT.Models.ZakatInstalmentModels
 
 
 
-        public class EvtNotif12Set
-        {
-            public List<object> results { get; set; }
-        }
+        //public class EvtNotif12Set
+        //{
+        //    public List<EvtNotif12Set> results { get; set; }
+        //}
 
 
 

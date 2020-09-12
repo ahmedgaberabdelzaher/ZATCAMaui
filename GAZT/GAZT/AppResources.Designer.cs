@@ -13391,5 +13391,23 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZOPositionCapacityStar", resourceCulture);
             }
         }
+        
+        public static string ZaaktInstalmentReturnDueDate {
+            get {
+                return ResourceManager.GetString("ZaaktInstalmentReturnDueDate", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentReturnCreationDate {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentReturnCreationDate", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentReturnTaxType {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentReturnTaxType", resourceCulture);
+            }
+        }
     }
 }

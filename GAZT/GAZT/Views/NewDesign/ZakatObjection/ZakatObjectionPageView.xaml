@@ -136,7 +136,7 @@
                                                     <SearchBar Text="{Binding InputData}" Margin="0" 
                                                                Placeholder="{x:Static ResourceManager:AppResources.ZOSearchReturnReferenceNumber}"
                                                                PlaceholderColor="Gray" FontSize="Small" TextColor="Black" HorizontalTextAlignment="Center"
-                                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsEnabled="False"/>
                                                 </Frame>
 
                                             </Grid>

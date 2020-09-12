@@ -7578,4 +7578,13 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
 <data name="ZOPositionCapacityStar" xml:space="preserve">
  <value>Position/ Capacity * </value>
 </data>
+    <data name="ZaaktInstalmentReturnDueDate" xml:space="preserve">
+    <value>Return Due date</value>
+  </data>
+  <data name="ZakatInstalmentReturnCreationDate" xml:space="preserve">
+    <value>Return Creation date</value>
+  </data>
+  <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
+    <value>Return Tax Type</value>
+  </data>
 </root>

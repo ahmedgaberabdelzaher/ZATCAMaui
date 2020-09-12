@@ -319,7 +319,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 base.OnAppearing();
 
-
+                viewModel.IsZakat = Preferences.Get("isZakat", false);
+                viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
