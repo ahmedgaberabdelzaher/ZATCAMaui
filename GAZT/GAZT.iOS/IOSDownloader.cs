@@ -21,7 +21,10 @@ namespace GAZT.iOS
 
         NSTimer alertDelay;
         UIAlertController alert;
-        private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Documents");
+       // private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Documents");
+
+        private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+
         public async Task Save(MemoryStream stream, string fileName)
         {
             if (!Directory.Exists(_rootDir))
