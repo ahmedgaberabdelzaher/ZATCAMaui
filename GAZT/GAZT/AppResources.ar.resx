@@ -6181,7 +6181,7 @@
     <value>حالة الإقامة؟</value>
   </data>
   <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
-    <value>مقيم لـ 183 يوم او اكثر في الممكلة العربية السعودية</value>
+    <value>مقيم لـ 183 يوم او اكثر في المملكة العربية السعودية</value>
   </data>
   <data name="ESTNationalyStatusOptionTwoValue" xml:space="preserve">
     <value>مالك او مستأجر لمنزل اكثر من 30 يوم</value>
@@ -7045,7 +7045,7 @@
     <value>الرجاء ادخال المدينة للبريد</value>
   </data>
   <data name="ESTValidateOutletName" xml:space="preserve">
-    <value>v</value>
+    <value>الرجاء ادخل الاسم</value>
   </data>
   <data name="NDOldPasswordAndNewPasswordSame" xml:space="preserve">
     <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
