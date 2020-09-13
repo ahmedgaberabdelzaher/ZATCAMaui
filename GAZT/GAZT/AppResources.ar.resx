@@ -529,7 +529,7 @@
     <value>كلمة التحقق غير صالحة</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>لا يوجد فواتير</value>
+    <value>لا توجد فواتير</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>...تحميل</value>
@@ -7400,7 +7400,7 @@
   <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
   </data>
-   <data name="SubmitZakatReturn" xml:space="preserve">
+  <data name="SubmitZakatReturn" xml:space="preserve">
     <value>- Submit Zakat return</value>
   </data>
   <data name="DeclareVATReturn" xml:space="preserve">
@@ -7409,7 +7409,7 @@
   <data name="ReadInbox" xml:space="preserve">
     <value>- Read inbox</value>
   </data>
-<data name="GetSupport" xml:space="preserve">
+  <data name="GetSupport" xml:space="preserve">
     <value>- Get Support</value>
   </data>
 </root>

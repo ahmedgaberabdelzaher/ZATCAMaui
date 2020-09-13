@@ -518,7 +518,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Invalid captcha</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>No invoices available</value>
+    <value>There are no bills available</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
@@ -7496,7 +7496,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ReadInbox" xml:space="preserve">
     <value>- Read inbox</value>
   </data>
-<data name="GetSupport" xml:space="preserve">
+  <data name="GetSupport" xml:space="preserve">
     <value>- Get Support</value>
   </data>
 </root>
