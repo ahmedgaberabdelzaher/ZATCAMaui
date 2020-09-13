@@ -21,9 +21,11 @@ namespace GAZT.iOS
 
         NSTimer alertDelay;
         UIAlertController alert;
-       // private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Documents");
+        // private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Documents");
+  
 
-        private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal));
+        private readonly string _rootDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
+
 
         public async Task Save(MemoryStream stream, string fileName)
         {
@@ -32,11 +34,15 @@ namespace GAZT.iOS
 
             var filePath = Path.Combine(_rootDir, fileName);
 
-            using (var memoryStream = new MemoryStream())
-            {
-                await stream.CopyToAsync(memoryStream);
-                File.WriteAllBytes(filePath, memoryStream.ToArray());
-            }
+            //using (var memoryStream = new MemoryStream())
+            //{
+            //    await stream.CopyToAsync(memoryStream);
+            //    File.WriteAllBytes(filePath, stream.ToArray());
+            //}
+
+
+
+            File.WriteAllBytes(filePath, stream.ToArray());
 
             //Message("Downloaded File:" + filePath);
         }

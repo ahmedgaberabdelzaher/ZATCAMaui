@@ -4892,7 +4892,7 @@
     <value>عدد الأقساط</value>
   </data>
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
-    <value>القسط الدوري</value>
+    <value>القسط الشهري</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
     <value>طلب خطة التقسيط</value>
@@ -4946,8 +4946,8 @@
     <value>طلب خطة التقسيط</value>
     <comment>Title</comment>
   </data>
-  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+ <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>اختر الفاتورة</value>
@@ -4988,8 +4988,8 @@
   <data name="ZakatInstallmentSummaryTaxPeriod" xml:space="preserve">
     <value>الفترة الضريبية</value>
   </data>
-  <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
-    <value>الغرامة</value>
+<data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
+    <value>العقوبات</value>
   </data>
   <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
     <value>Zakat/IncomeTax</value>
@@ -6157,7 +6157,7 @@
     <value>المبلغ المتبقي</value>
   </data>
   <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
-    <value>الرجاء اختيار فاتورة واحده على الاقل للمتابعة</value>
+    <value>الرجاء اختيار فاتورة واحدة على الاقل للمتابعة</value>
   </data>
   <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
     <value>تم استلام خطة التقسيط بنجاح</value>
@@ -7414,5 +7414,11 @@
   </data>
 <data name="GetSupport" xml:space="preserve">
     <value>الدعم الفني</value>
+ </data>
+     <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+    <value>البحث بالرقم المرجعي</value>
+  </data>
+    <data name="VatInstalment5MB" xml:space="preserve">
+    <value>5MB</value>
   </data>
 </root>

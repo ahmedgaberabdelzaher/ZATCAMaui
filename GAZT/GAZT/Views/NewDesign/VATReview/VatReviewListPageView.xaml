@@ -90,26 +90,14 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                            Text="{Binding FilteredSelectionName}"
+    
+                        <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.VatReview}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlack}" />
-                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start">
-                            <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
-                                                 Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
-                            </Image.Source>
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding FilterCommand}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NumberOfObjAndReviews}" HorizontalOptions="StartAndExpand"
+    
+                        <custom:CustomLabel Grid.Row="1" Text="{Binding NumberOfObjAndReviews}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
-
                     </Grid>
 
                     <Grid BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"

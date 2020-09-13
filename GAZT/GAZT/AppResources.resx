@@ -4918,7 +4918,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Number of Instalments</value>
   </data>
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
-    <value>Periodic Instalment</value>
+    <value>Monthly Instalment</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
     <value>Request Instalment Plan</value>
@@ -7501,5 +7501,11 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
 <data name="GetSupport" xml:space="preserve">
     <value>Get Support</value>
+  </data>
+    <data name="VatInstalment5MB" xml:space="preserve">
+    <value>5MB</value>
+  </data>
+<data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+    <value>Search by SADAD Number</value>
   </data>
 </root>
