@@ -7491,15 +7491,15 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Return Tax Type</value>
   </data>
   <data name="SubmitZakatReturn" xml:space="preserve">
-    <value>- Submit Zakat return</value>
+    <value>Submit Zakat return</value>
   </data>
   <data name="DeclareVATReturn" xml:space="preserve">
-    <value>- Declare VAT return</value>
+    <value>Declare VAT return</value>
   </data>
   <data name="ReadInbox" xml:space="preserve">
-    <value>- Read inbox</value>
+    <value>Read inbox</value>
   </data>
 <data name="GetSupport" xml:space="preserve">
-    <value>- Get Support</value>
+    <value>Get Support</value>
   </data>
 </root>
