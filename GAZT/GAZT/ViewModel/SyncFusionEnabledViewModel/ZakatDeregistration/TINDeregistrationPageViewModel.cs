@@ -2868,7 +2868,34 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 //Logics pending for reason 3 4 5 for idtype 2
-
+                if (TinDeregistrationData.ADregReason == "4")
+                {
+                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                    {
+                        check.Add(new TinDeregestrationAttachmentsModel
+                        {
+                            FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
+                            AttachmentName = string.Empty,
+                            IsAttachmentAttached = false,
+                            DocType = "DR05",
+                            IsMandatory = true
+                        });
+                    }
+                }
+                if (TinDeregistrationData.ADregReason == "5")
+                {
+                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                    {
+                        check.Add(new TinDeregestrationAttachmentsModel
+                        {
+                            FieldTitle = AppResources.TinDeregistrationAttachmentMerger,
+                            AttachmentName = string.Empty,
+                            IsAttachmentAttached = false,
+                            DocType = "DR04",
+                            IsMandatory = true
+                        });
+                    }
+                }
             }
 
 

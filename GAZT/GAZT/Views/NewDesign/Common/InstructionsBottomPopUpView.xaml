@@ -24,7 +24,6 @@
 
     </pages:PopupPage.Resources>
 
-    <ScrollView>
     <Grid>
         
         <yummy:PancakeView IsVisible="{Binding IsInstructions}" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
@@ -69,24 +68,23 @@
                             </Grid>
                         </border:SfBorder>
 
-                        <StackLayout Orientation="Horizontal">
-                            <CheckBox Color="{StaticResource NewDarkGreenColor}"
-                                      VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsInstuctionsChecked}">
-                                <CheckBox.Triggers>
+                            <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsInstuctionsChecked}">
+                             <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
                                     </DataTrigger>
                                 </CheckBox.Triggers>
-                            </CheckBox>
-                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span
-                                            Text="{Binding CheckBoxDescription}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                        </StackLayout>
+                        </CheckBox>
+                        <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    </Grid>
 
                         <buttons:SfButton  Text="{Binding ButtonTitle}" Margin="0,24,0,24"  BackgroundColor="{Binding ContinueBackGroundColor}"
                                                    IsEnabled="{Binding IsContinueEnabled}"
@@ -143,27 +141,26 @@
                             </Grid>
                         </border:SfBorder>
 
-
-                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
-
-                            <CheckBox Color="{StaticResource NewDarkGreenColor}"
-                                      VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsTermsChecked}">
-                                <CheckBox.Triggers>
+                             <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsTermsChecked}">
+                             <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
                                     </DataTrigger>
                                 </CheckBox.Triggers>
+                        </CheckBox>
+                        <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                    </Grid>
 
-                            </CheckBox>
-                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" VerticalOptions="Fill">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span
-                                Text="{Binding CheckBoxDescription}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                        </StackLayout>
+
+                        
                         <buttons:SfButton Text="{Binding ButtonTitle}" BackgroundColor="{Binding ContinueBackGroundColor}"
                                                    IsEnabled="{Binding IsContinueEnabled}" Margin="0,24,0,24" Command="{Binding TermsContinueClick}" VerticalOptions="End"
                               Style="{StaticResource PrimaryButtonStyle}"/>
@@ -175,5 +172,5 @@
         </yummy:PancakeView>
 
     </Grid>
-     </ScrollView>
+     
 </pages:PopupPage>

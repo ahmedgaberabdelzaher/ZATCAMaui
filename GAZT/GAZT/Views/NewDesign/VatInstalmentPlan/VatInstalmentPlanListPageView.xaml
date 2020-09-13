@@ -562,6 +562,8 @@
                                       ItemsSource="{Binding RequestForScheduleList}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
                             <listView:SfListView.ItemTemplate>
 
+ 
+
                                 <DataTemplate>
                                     <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="0" Spacing="0">
@@ -574,14 +576,14 @@
                                                     <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="auto"/>
                                                 </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
                                                     <Label  Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentAgreementNumber}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                                     <Label Text="{Binding AgreementNo}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 </StackLayout>
 
                                             </Grid>
                                             <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                            <Grid Padding="10,10,10,10" RowSpacing="15" >
+                                            <Grid Padding="10,10,10,10" RowSpacing="10" >
                                                 <Grid.RowDefinitions >
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
@@ -599,11 +601,13 @@
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountRemaining}" Style="{StaticResource CaptionLabelGrey}"/>
                                                     <Label Text="{Binding RemainingAmt}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                                <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentRelevantTax}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding PeriodText}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding PeriodText}"  Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                             </Grid>
+
+ 
 
                                         </StackLayout>
                                     </border:SfBorder >
@@ -717,7 +721,7 @@
                                                     <Label Text="{Binding TotalPaidAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountPaid}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                     <Label Text="{Binding DueDate}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
 
@@ -730,55 +734,98 @@
                         </listView:SfListView>
 
                     </Grid>
-                    <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0">
+
+                    <StackLayout Grid.Row="2" Grid.Column="0" Margin="0,10,0,0">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                            <Grid Padding="10,3,10,2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalNumberOfMonths}" Style="{StaticResource BodyLabelBlack}"/>
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding ScheduleNoOfMonths}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                            </Grid>
+                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                                 <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalNumberOfMonths}"
                                       Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
                                 <Label Text="{Binding ScheduleNoOfMonths}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
-                            </StackLayout>
+                            </StackLayout>-->
                         </Frame>
-                    </Grid>
-                    <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0">
-
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Grid.Column="0" Margin="0,10,0,0">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                            <Grid Padding="10,3,10,2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalMonthlyInstalments}" Style="{StaticResource BodyLabelBlack}"/>
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding ScheduleMonthlyInstalment}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                            </Grid>
+                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                 <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalMonthlyInstalments}"
                                       Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
                                 <Label Text="{Binding ScheduleMonthlyInstalment}" Style="{StaticResource SectionTitleBlackBold}"
                                        HorizontalOptions="EndAndExpand" />
-                            </StackLayout>
+                            </StackLayout>-->
                         </Frame>
-                    </Grid>
-                    <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0">
-
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" Grid.Column="0" Margin="0,10,0,0">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                            <Grid Padding="10,3,10,2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountPaid}" Style="{StaticResource BodyLabelBlack}"/>
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding ScheduleTotalAmountPaid}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                            </Grid>
+                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                 <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountPaid}"
                                       Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
                                 <Label Text="{Binding ScheduleTotalAmountPaid}" Style="{StaticResource SectionTitleBlackBold}"
                                        HorizontalOptions="EndAndExpand" />
-                            </StackLayout>
+                            </StackLayout>-->
                         </Frame>
-                    </Grid>
-                    <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,20">
+                    </StackLayout>
+                    <StackLayout Grid.Row="5" Grid.Column="0" Margin="0,10,0,20">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                            <Grid Padding="10,3,10,2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountRemaining}" Style="{StaticResource BodyLabelBlack}"/>
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding ScheduleAmountRemaining}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                            </Grid>
+                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                 <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountRemaining}"
                                       Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
                                 <Label Text="{Binding ScheduleAmountRemaining}" Style="{StaticResource SectionTitleBlackBold}"
                                        HorizontalOptions="EndAndExpand" />
-                            </StackLayout>
+                            </StackLayout>-->
                         </Frame>
-                    </Grid>
+                    </StackLayout>
 
                 </Grid>
 

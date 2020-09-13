@@ -81,6 +81,22 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
 
                 }
+                if (viewModel.Index == 5)
+                {
+                    TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "01").FirstOrDefault();
+                    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
+
+                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                }
+                if (viewModel.Index == 6)
+                {
+                    TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "02").FirstOrDefault();
+                    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
+
+                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                }
 
                 await Task.Run(() =>
                 {

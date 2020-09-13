@@ -529,7 +529,7 @@
     <value>كلمة التحقق غير صالحة</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>لا يوجد فواتير</value>
+    <value>لا توجد فواتير</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>...تحميل</value>
@@ -784,7 +784,7 @@
     <value>Please enter lookup number</value>
   </data>
   <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>الرجاء إدخال الرقم التسلسلي    </value>
+    <value>الرجاء إدخال الرقم المرجعي</value>
   </data>
   <data name="ZPleaseentertheCRcomposedof10digits" xml:space="preserve">
     <value>يرجى ادخال رقم السجل التجاري المؤلف من 10 ارقام</value>
@@ -902,7 +902,7 @@
     <value>التعليمات</value>
   </data>
   <data name="ZSummary" xml:space="preserve">
-    <value>Summary</value>
+    <value>الملخص</value>
   </data>
   <data name="ZTPDetails" xml:space="preserve">
     <value>TPDetails</value>
@@ -4495,7 +4495,10 @@
     <value>المرفقات - شهادة الوفاة</value>
   </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
-    <value>المرفقات - قرار وزاري لبدء إجراءات التصفية يحدد الشخص المخول بالتصفية</value>
+    <value>المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
+  </data>
+       <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
+    <value>قرار وزاري للموافقة على عملية الاندماج</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
     <value>المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
@@ -4889,7 +4892,7 @@
     <value>عدد الأقساط</value>
   </data>
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
-    <value>القسط الدوري</value>
+    <value>القسط الشهري</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
     <value>طلب خطة التقسيط</value>
@@ -4943,8 +4946,8 @@
     <value>طلب خطة التقسيط</value>
     <comment>Title</comment>
   </data>
-  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+ <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>اختر الفاتورة</value>
@@ -4985,8 +4988,8 @@
   <data name="ZakatInstallmentSummaryTaxPeriod" xml:space="preserve">
     <value>الفترة الضريبية</value>
   </data>
-  <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
-    <value>الغرامة</value>
+<data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
+    <value>العقوبات</value>
   </data>
   <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
     <value>Zakat/IncomeTax</value>
@@ -6154,7 +6157,7 @@
     <value>المبلغ المتبقي</value>
   </data>
   <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
-    <value>الرجاء اختيار فاتورة واحده على الاقل للمتابعة</value>
+    <value>الرجاء اختيار فاتورة واحدة على الاقل للمتابعة</value>
   </data>
   <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
     <value>تم استلام خطة التقسيط بنجاح</value>
@@ -6623,7 +6626,7 @@
   <data name="VRNewAttachment" xml:space="preserve">
     <value>مرفق جديد</value>
   </data>
- <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>خطة التقسيط لضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
@@ -7399,5 +7402,23 @@
   </data>
   <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
+  </data>
+   <data name="SubmitZakatReturn" xml:space="preserve">
+    <value>رفع اقرار الزكاة التقديري</value>
+  </data>
+  <data name="DeclareVATReturn" xml:space="preserve">
+    <value>رفع اقرار ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ReadInbox" xml:space="preserve">
+    <value>قراءة المراسلات</value>
+  </data>
+<data name="GetSupport" xml:space="preserve">
+    <value>الدعم الفني</value>
+ </data>
+     <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+    <value>البحث بالرقم المرجعي</value>
+  </data>
+    <data name="VatInstalment5MB" xml:space="preserve">
+    <value>5MB</value>
   </data>
 </root>

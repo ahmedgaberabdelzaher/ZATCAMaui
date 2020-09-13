@@ -7608,6 +7608,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationAttachmentMerger {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentMerger", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationAttachmentMinisterialResponse {
             get {
                 return ResourceManager.GetString("TinDeregistrationAttachmentMinisterialResponse", resourceCulture);
@@ -13413,6 +13419,42 @@ namespace EGAZT {
         public static string ZakatInstalmentReturnTaxType {
             get {
                 return ResourceManager.GetString("ZakatInstalmentReturnTaxType", resourceCulture);
+            }
+        }
+        
+        public static string SubmitZakatReturn {
+            get {
+                return ResourceManager.GetString("SubmitZakatReturn", resourceCulture);
+            }
+        }
+        
+        public static string DeclareVATReturn {
+            get {
+                return ResourceManager.GetString("DeclareVATReturn", resourceCulture);
+            }
+        }
+        
+        public static string ReadInbox {
+            get {
+                return ResourceManager.GetString("ReadInbox", resourceCulture);
+            }
+        }
+        
+        public static string GetSupport {
+            get {
+                return ResourceManager.GetString("GetSupport", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalment5MB {
+            get {
+                return ResourceManager.GetString("VatInstalment5MB", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentSearchPlaceholder {
+            get {
+                return ResourceManager.GetString("VatInstalmentSearchPlaceholder", resourceCulture);
             }
         }
     }

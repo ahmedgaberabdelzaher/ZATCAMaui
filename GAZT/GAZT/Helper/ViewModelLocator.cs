@@ -255,8 +255,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionViewModel>();
             SimpleIoc.Default.Register<QuickActionPopUpPageViewModel>();
+            SimpleIoc.Default.Register<VATDeclarationAttachmentPageViewModel>();
 
             
+
             #endregion
 
             #region OldIOC
@@ -2206,6 +2208,22 @@ namespace EGAZT
             }
         }
 
+
+        public VATDeclarationAttachmentPageViewModel VATDeclarationAttachmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATDeclarationAttachmentPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         
 
 
@@ -2273,6 +2291,9 @@ namespace EGAZT
             navigationService.Configure(App.ObjectionsSelectionPageView, typeof(ObjectionsSelectionPageView));
             navigationService.Configure(App.ZakatObjectionPageView, typeof(ZakatObjectionPageView));
             navigationService.Configure(App.ZakatObjectionSuccessPageView, typeof(ZakatObjectionSuccessPageView));
+            navigationService.Configure(App.VATDeclarationAttachmentPageView, typeof(VATDeclarationAttachmentPageView));
+
+            
             #endregion
 
 

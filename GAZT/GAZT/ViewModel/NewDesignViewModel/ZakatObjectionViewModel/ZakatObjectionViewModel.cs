@@ -865,7 +865,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 case (int)PagesEnum.Summary:
                     EnableDeclarationView();
                     break;
-
+                case (int)PagesEnum.WithdrawObjectiondetails:
+                    EnableSummaryView();
+                    break;
 
 
             }

@@ -129,7 +129,9 @@ namespace EGAZT
         public static string ZakatObjectionPageView = "ZakatObjectionPageView";
         public static string ZakatObjectionListPageView = "ZakatObjectionListPageView";
         public static string ZakatObjectionSuccessPageView = "ZakatObjectionSuccessPageView";
+        public static string VATDeclarationAttachmentPageView = "VATDeclarationAttachmentPageView";
 
+        
         #endregion
 
         #region old view strings

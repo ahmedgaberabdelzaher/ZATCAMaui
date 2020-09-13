@@ -19,7 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
     public class FilesUploadPopUpViewModel : BaseViewModel
     {
-         public readonly INavigationService _navigationService;
+        public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoButtonClick { get; set; }
@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         public List<decimal> SizeList = new List<decimal>();
         byte[] attachment;
         public int NumberOfAttachmentComingFromServer = 0;
-        
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -58,7 +58,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("IsImpoterAndExporter");
             }
         }
-        
+
         private bool _isEnableSwitchToggled = false;
         public bool IsEnableSwitchToggled
         {
@@ -223,6 +223,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("AttachmentCount");
             }
         }
+
+        public int _vatAttachmentCount = 0;
+        public int VatAttachmentCount
+        {
+            get
+            {
+                return _vatAttachmentCount;
+            }
+            set
+            {
+                _vatAttachmentCount = value;
+                RaisePropertyChanged("VatAttachmentCount");
+            }
+        }
         private ObservableCollection<Attachment> _vatAttachmentsList;
         public ObservableCollection<Attachment> VatAttachmentsList
         {
@@ -281,7 +295,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         }
 
         public ObservableCollection<string> _fileAttachments;
-        public ObservableCollection<string> FileAttachments 
+        public ObservableCollection<string> FileAttachments
         {
             get
             {
@@ -363,8 +377,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 PopupNavigation.Instance.PopAsync();
             });
         }
-        
-          public async Task AddAttachment()
+
+        public async Task AddAttachment()
         {
             string fname;
 
@@ -381,7 +395,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 fname = fileData.FileName ?? "null";
 
                 FileAttachments.Add(fname);
-                
+
             }
         }
 
@@ -398,7 +412,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
-                        
+
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                         if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration ||
                             IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
@@ -407,16 +421,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             {
                                 int count = VatAttachmentsList.Where(x => (x.Dotyp == DocTypeString)).ToList().Count();
 
-                                if(count >= 5)
+                                if (count >= 5)
                                 {
                                     await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
-
+                                    await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
-                             
+
                             }
                         }
-          
+                        else if (IsComeForWhichAttachment == WhichAttachment.VATInstalment && VatAttachmentCount >= 5)
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                            await PopupNavigation.Instance.PopAsync();
+
+                            return;
+                        }
+                        VatAttachmentCount++;
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
                             attachment = fileData.DataArray;
@@ -446,12 +467,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                 if (IsAttachmentPresent == false)
                                                 {
                                                     string attachmentType = UtilityManager.GetContentType(Extention);
-                                                    AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType,DocTypeString);
-                                                    
+                                                    AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
+
                                                     // await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-                                                    
+
                                                     PopToRootPage();
-                                                    
+
                                                     if (_attachment != null && _attachment.d != null)
                                                     {
                                                         AttachmentName = string.Empty;
@@ -612,7 +633,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             await Task.Run(() =>
             {
-               IsLoading = false;
+                IsLoading = false;
             });
         }
 
@@ -648,11 +669,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
                         }
-                        else if(IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
+                        else if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
                         }
-                        else if(IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
+                        else if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
                         {
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
@@ -687,22 +708,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                          select itm)
                                             .FirstOrDefault<VATAttachment>();
 
-                            if(listitem!=null)
+                            if (listitem != null)
                                 VatAttachmentsList.Remove(listitem);
-                       
+
 
 
 
                             if (listitemTwo != null)
                                 AttachmentList.Remove(listitemTwo);
-                            
+
                             AttachmentsList.results.Remove(listitem);
 
 
                             //if (indexToReduceTheSize != -1)
                             // ReduceTotalAttachmentSize(indexToReduceTheSize);
-                           AttachmentCount--;
-                           filterList();
+                            AttachmentCount--;
+                            filterList();
                             CloneAttachmentList(VatAttachmentsListtofilter);
                         }
                         filterList();
@@ -723,13 +744,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 IsLoading = false;
             });
         }
-        
+
         public void filterList()
         {
             try
             {
                 if (AttachmentsList != null && AttachmentsList.results.Count != 0)
-                { 
+                {
                     List<Attachment> attachmentsList = new List<Attachment>();
                     foreach (var item in VatAttachmentsList)
                     {
@@ -738,8 +759,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             attachmentsList.Add(item);
                         }
                     }
-                     VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
-                   // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
+                    VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+                    // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
             catch (Exception ex)
@@ -748,7 +769,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
-        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType,string Doctype)
+        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType, string Doctype)
         {
             AttachmentRootOject _attachment = null;
             await Task.Run(() =>
@@ -806,18 +827,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }
                     AttachmentRootOject attachment = await WebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);
-                    
+
                     if (attachment != null && attachment.d != null)
                     {
                         attachmentSizeVisibility = true;
                         AttachmentSizeVisibility = attachmentSizeVisibility;
-                        
-                        if(SizeList!=null)
+
+                        if (SizeList != null)
                             SizeList.Add(AttachmentSize);
 
                         AttachmentUploadedSize = GetAttachMentSize(SizeList);
                         TotalAttachmentSize = AttachmentUploadedSize;
-                        
+
                         _attachment = attachment;
                     }
                     else
@@ -835,20 +856,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 IsLoading = false;
             });
             return _attachment;
-          
+
         }
         public decimal GetAttachMentSize(List<decimal> SizeList)
         {
             decimal TotalSize = 0;
 
-            if (SizeList!=null && SizeList.Count>0)
+            if (SizeList != null && SizeList.Count > 0)
             {
                 foreach (decimal attachmentSize in SizeList)
                 {
                     TotalSize = TotalSize + attachmentSize;
                 }
             }
-            
+
             return TotalSize;
         }
 
@@ -885,8 +906,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                     list.Add(vATAttachment);
                 }
-              
-                    AttachmentList = list;
+
+                AttachmentList = list;
                 if (AttachmentsList != null && AttachmentsList.results != null)
                     if (AttachmentsList.results.Count != 0)
                     {
