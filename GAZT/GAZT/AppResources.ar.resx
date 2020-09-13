@@ -6690,7 +6690,7 @@
     <value>طلب خطة تقسيط للزكاة</value>
   </data>
   <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
-    <value>رقم الفاتورة</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
     <value>مدة الخطة</value>
