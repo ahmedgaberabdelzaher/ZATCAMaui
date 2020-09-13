@@ -7401,15 +7401,15 @@
     <value>نوع الضريبة</value>
   </data>
    <data name="SubmitZakatReturn" xml:space="preserve">
-    <value>- Submit Zakat return</value>
+    <value>رفع اقرار الزكاة التقديري</value>
   </data>
   <data name="DeclareVATReturn" xml:space="preserve">
-    <value>- Declare VAT return</value>
+    <value>رفع اقرار ضريبة القيمة المضافة</value>
   </data>
   <data name="ReadInbox" xml:space="preserve">
-    <value>- Read inbox</value>
+    <value>قراءة المراسلات</value>
   </data>
 <data name="GetSupport" xml:space="preserve">
-    <value>- Get Support</value>
+    <value>الدعم الفني</value>
   </data>
 </root>

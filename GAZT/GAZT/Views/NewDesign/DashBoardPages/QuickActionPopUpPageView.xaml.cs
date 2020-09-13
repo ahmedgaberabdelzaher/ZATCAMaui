@@ -26,6 +26,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        private async void OnMyReturnsClickedForZAKAT(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 5);
+
+        }
+
         private void OnCloseTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync();
