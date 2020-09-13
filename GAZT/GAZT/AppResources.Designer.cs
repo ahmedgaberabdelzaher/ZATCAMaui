@@ -7608,6 +7608,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationAttachmentMerger {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentMerger", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationAttachmentMinisterialResponse {
             get {
                 return ResourceManager.GetString("TinDeregistrationAttachmentMinisterialResponse", resourceCulture);

@@ -583,6 +583,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
 
             double quarterrDiff = quarterDiff(viewModel.FromDate, viewModel.ToDate);
+            int monthDiff = GetMonthDifference(viewModel.FromDate, viewModel.ToDate);
             result = DateTime.Compare(viewModel.ToDate, viewModel.FromDate);
 
             if (result == 0 || result < 0)
@@ -590,15 +591,25 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 isValid = false;
                 popUp.Message = AppResources.VatDeregSuspendedEndDateMismatchException;
 
-            }else if (quarterrDiff <= 1)
+            }
+            if (viewModel.VATDeRegistrationDetailsData.d.Atype == "2")
             {
-                isValid = false;
-                //if (Messages.Length > 0)
-                //{
-                //    Messages.Append(Environment.NewLine);
-                //}
+                if (monthDiff < 1)
+                {
+                    isValid = false;
 
-                popUp.Message =  AppResources.VatDeregSuspendedDateMismatchException;
+                    popUp.Message = AppResources.VatDeregSuspendedDateMismatchException;
+                }
+            }
+            else
+            {
+                if (quarterrDiff <= 1)
+                {
+                    isValid = false;
+
+                    popUp.Message = AppResources.VatDeregSuspendedDateMismatchException;
+
+                }
             }
 
             if (isValid == true)
@@ -642,7 +653,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
 
-                            viewModel.NextFilingDueDate = date.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingDueDate = date.ToString("dd MMM yyyy", new CultureInfo("en-US"));
                         }
                     }
                     isValid = false;
@@ -677,7 +688,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         private static int getQuarter(DateTime date)
         {
-            return (date.Year * 4) + ((date.Month - 1) / 3);
+            return (date.Year * 4) + ((date.Month - 1)/ 3);
+        }
+
+        public static int GetMonthDifference(DateTime startDate, DateTime endDate)
+        {
+            int monthsApart = 12 * (startDate.Year - endDate.Year) + startDate.Month - endDate.Month;
+            return Math.Abs(monthsApart);
         }
 
         public void ChangeAeroIcon()

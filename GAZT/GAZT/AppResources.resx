@@ -4508,6 +4508,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
     <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
   </data>
+      <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
+    <value>Attachments - Ministerial Resolution to approve Merger</value>
+  </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
     <value>Attachments - Ministerial Resolution to approve the Acquisition process</value>
   </data>
