@@ -14972,19 +14972,18 @@ namespace GAZT.Manager
                     //  HttpClient client = new HttpClient(App.httpClientHandler);
                     System.IO.MemoryStream pdfStream = new MemoryStream();
                     var dependency = DependencyService.Get<IPrintService>();
+
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                     var uri = new Uri(url);
-                    HttpResponseMessage _fileDownloadResponse = new HttpResponseMessage();
+                    HttpResponseMessage _fileDownloadResponse = await client.GetAsync(uri);
+
                     var fileName = Guid.NewGuid().ToString();
 
-                    using (HttpClient client = new HttpClient(App.httpClientHandler))
-                    {
-                        _fileDownloadResponse = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
-
-                        _fileDownloadResponse.EnsureSuccessStatusCode();
-                        await _fileDownloadResponse.Content.CopyToAsync(pdfStream);                      
-                        await dependency.Save(pdfStream, $"{fileName}." + fileExtension);
-                    }
-
+                    _fileDownloadResponse.EnsureSuccessStatusCode();
+                    await _fileDownloadResponse.Content.CopyToAsync(pdfStream);
+                    await dependency.Save(pdfStream, $"{fileName}." + fileExtension);
+                 
                     if (_fileDownloadResponse.StatusCode == HttpStatusCode.Unauthorized)
                     {
                         App.IsSessionExpired = true;

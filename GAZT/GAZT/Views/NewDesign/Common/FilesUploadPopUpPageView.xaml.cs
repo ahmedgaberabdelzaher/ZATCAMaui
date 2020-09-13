@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         private FilesUploadPopUpViewModel viewModel;
         private string dmsTypeString = string.Empty;
 
-        public FilesUploadPopUpPageView(List<Attachment> attachments,WhichAttachment whichAttachment,string returnIdz)
+        public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz)
         {
             InitializeComponent();
             //App.IsArabic = false;
@@ -39,7 +39,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             SetLTR();
             var attachement = new Attachments();
             attachement.results = attachments;
-            onPageLoad(attachement, whichAttachment,returnIdz);
+            onPageLoadAsync(attachement, whichAttachment, returnIdz);
         }
 
         public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz, string dmsType)
@@ -53,13 +53,17 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             SetLTR();
             var attachement = new Attachments();
             attachement.results = attachments;
-            onPageLoad(attachement, whichAttachment, returnIdz);
-           
+            onPageLoadAsync(attachement, whichAttachment, returnIdz);
+
         }
 
-        public void onPageLoad(Attachments attachments,WhichAttachment whichAttachment,string returnIdz)
+        public async void onPageLoadAsync(Attachments attachments, WhichAttachment whichAttachment, string returnIdz)
         {
 
+            if (whichAttachment == WhichAttachment.VATInstalment)
+            {
+                viewModel.VatAttachmentCount = attachments.results.Count;
+            }
 
             if (whichAttachment == WhichAttachment.ZakatInstalmentBankStatements || whichAttachment == WhichAttachment.ZakatInstalmentFinance)
 
@@ -79,7 +83,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             viewModel.IsComeForWhichAttachment = whichAttachment;
             viewModel.returnIdz = returnIdz;
-            if (attachments!=null )
+            if (attachments != null)
             {
                 viewModel.AttachmentsList = attachments;
                 SetDocType();
@@ -125,7 +129,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         }
         public void SetDocType()
         {
-            if(viewModel.IsComeForWhichAttachment==WhichAttachment.VATInstalment)
+            if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATInstalment)
             {
                 viewModel.DocTypeString = "ZVTA";
             }
@@ -256,7 +260,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
             VATAttachment attachment = (VATAttachment)Document.SelectedItem;
             //attachment.DocUrl;
-            if (attachment.Filename.Contains("."));
+            if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
@@ -277,31 +281,31 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             try
             {
-                    try
-                    {
+                try
+                {
                     await Task.Run(() =>
                     {
-                       viewModel.IsLoading = true;
+                        viewModel.IsLoading = true;
                     });
                     Image arrowImage = sender as Image;
-                        VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-                        //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
-                        //{
-                           
-                                if (attachment != null)
+                    VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                    //{
+
+                    if (attachment != null)
                     {//ZZNotification
                         var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                    
-                                    await viewModel.DeleteAttachment(result, attachment);
-                                }
+
+                        await viewModel.DeleteAttachment(result, attachment);
+                    }
 
                     //}
                     await Task.Run(() =>
                     {
-                       viewModel.IsLoading = false;
+                        viewModel.IsLoading = false;
                     });
                 }
-                    catch (Exception ex)
+                catch (Exception ex)
                 {
                     await Task.Run(() =>
                     {
@@ -323,7 +327,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsLoading = false;
             });
         }
-        
+
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
