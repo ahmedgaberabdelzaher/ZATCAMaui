@@ -1394,7 +1394,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
 
         string minInstalmentsTitle = AppResources.ZakatMin + " " + 2;
-        string maxInstalmentsTitle = AppResources.ZakatMin + " " + 12;
+        string maxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
 
         public string MaxInstalmentsTitle
         {
@@ -1910,7 +1910,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             inputData = "";
             TotalAmountSAR = "0.00 SAR";
             MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
-            MaxInstalmentsTitle = AppResources.ZakatMin + " " + 12;
+            MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
             selectedList.Clear();
             selectedPage = (int)PagesEnum.ZakatSelectionView;
         }

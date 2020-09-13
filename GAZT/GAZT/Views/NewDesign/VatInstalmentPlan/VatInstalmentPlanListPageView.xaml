@@ -201,8 +201,6 @@
                             </Grid>
                         </border:SfBorder>
 
-
-
                         <listView:SfListView  Grid.Row="1" x:Name="VATInstalmentPlanListViewPage" HorizontalOptions="CenterAndExpand" IsScrollBarVisible="False" Margin="0" Padding="0"
                                                   IsScrollingEnabled="False" VerticalOptions="Center" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="SummaryattachmentsListView_ItemTapped"
                                       ItemsSource="{Binding RequestForInstalmentPlanList}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
@@ -218,41 +216,18 @@
                                                 <ColumnDefinition Width="50*"/>
                                                 <ColumnDefinition Width="50*"/>
                                             </Grid.ColumnDefinitions>
-
-
-
-
-                                            <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical">
-                                                <custom:CustomLabel    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetSelectTypeVAT}" HorizontalOptions="StartAndExpand"
+      
+                                                <custom:CustomLabel  Grid.Row="0" Grid.ColumnSpan="2"  Text="{x:Static ResourceManager:AppResources.ZakatInstalmetSelectTypeVAT}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" Margin="0,0,0,10" />
 
-
-
-                                                <Label  Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
+                                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
                                                HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                            </StackLayout>
-                                           <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
 
- 
-
-                                                <!--  <Button CornerRadius="15" Padding="0" Margin="0" IsEnabled="False" Text="{Binding FbustTxt}" BackgroundColor="#F9F0DF"
-                                                TextColor="DarkGoldenrod" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                    <Button.Triggers>
-                                                        <DataTrigger TargetType="Button" Binding="{Binding FbustTxt}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
-                                                            <Setter Property="BackgroundColor" Value="#E5EFED"></Setter>
-                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                        </DataTrigger>
-                                                    </Button.Triggers>
-                                                </Button> -->
-                                                <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="#E5EFED"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
-
- 
+                                            <yummy:PancakeView  Grid.Row="1" Grid.Column="1" Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="#E5EFED"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
 
                                                     <!--for 2nd background color #F9F0DF, E5EFED-->
                                                     <Label Style="{StaticResource CaptionLabelBlack}" TextColor="DarkGoldenrod" Text="{Binding FbustTxt}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
-
- 
 
                                                             <DataTrigger TargetType="Label" Binding="{Binding FbustTxt}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
                                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
@@ -260,25 +235,16 @@
                                                                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                                                             </DataTrigger>
 
- 
-
                                                         </Label.Triggers>
                                                     </Label>
                                                 </yummy:PancakeView>
-
- 
-
-                                            </StackLayout>
-
                                         </Grid>
                                     </border:SfBorder>
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
 
-
-
-
                         </listView:SfListView>
+
                     </Grid>
 
                 </Grid>

@@ -5735,8 +5735,8 @@
   <data name="ZakatClearedAmount" xml:space="preserve">
     <value>المبلغ المدفوع</value>
   </data>
-  <data name="ZakatDueAmount" xml:space="preserve">
-    <value> (المبلغ المستحق (ريال سعودي </value>
+ <data name="ZakatDueAmount" xml:space="preserve">
+    <value>المبلغ المستحق (ريال سعودي)</value>
   </data>
   <data name="ZZZDBMyCertificates" xml:space="preserve">
     <value>شهاداتي</value>
@@ -6639,7 +6639,7 @@
     <value>لا يمكن أن يتجاوز المبلغ </value>
   </data>
   <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
-    <value> (إجمالي طلب الأقساط المبلغ (ريال سعودي </value>
+    <value>إجمالي طلب الأقساط المبلغ (ريال سعودي)</value>
   </data>
   <data name="ZakatInstalmentNumberOfInstalments" xml:space="preserve">
     <value>عدد الأقساط</value>
