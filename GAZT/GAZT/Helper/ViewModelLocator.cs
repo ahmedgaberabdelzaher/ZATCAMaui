@@ -225,7 +225,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<DashboardAnonymousMenuPageViewModel>();
             SimpleIoc.Default.Register<VATCreditCarriedForwardPopUpPageViewModel>();
             SimpleIoc.Default.Register<SupportPageViewModel>();
-
+            SimpleIoc.Default.Register<NotesDescriptionPopUpPageViewModel>();
+            SimpleIoc.Default.Register<NotesPopUpPageViewModel>();
             #endregion
 
             #region NewDesignRelease2IOC
@@ -253,6 +254,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<ObjectionViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionViewModel>();
+            SimpleIoc.Default.Register<QuickActionPopUpPageViewModel>();
+
+            
             #endregion
 
             #region OldIOC
@@ -359,7 +363,34 @@ namespace EGAZT
         }
 
         #region NewDesignViewModel
-
+        public NotesPopUpPageViewModel NotesPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NotesPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public NotesDescriptionPopUpPageViewModel NotesDescriptionPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NotesDescriptionPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public SupportPageViewModel SupportPageView
         {
             get
@@ -2160,6 +2191,22 @@ namespace EGAZT
             }
         }
 
+        public QuickActionPopUpPageViewModel QuickActionPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<QuickActionPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        
 
 
         //SYNC FUSION INTEGRATION
@@ -2191,9 +2238,13 @@ namespace EGAZT
             navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
             navigationService.Configure(App.VATCreditCarriedForwardPopUpPageView, typeof(VATCreditCarriedForwardPopUpPageView));
             navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
+            navigationService.Configure(App.NotesPopUpPageView, typeof(NotesPopUpPageView));
+            navigationService.Configure(App.NotesDescriptionPopUpPageView, typeof(NotesDescriptionPopUpPageView));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+            navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));
 
+            
             #endregion
 
             #region NewDesignRelease2

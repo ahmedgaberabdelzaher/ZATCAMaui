@@ -38,11 +38,11 @@ namespace GAZT.iOS
                 File.WriteAllBytes(filePath, memoryStream.ToArray());
             }
 
-            Message("Downloaded File:" + filePath);
+            //Message("Downloaded File:" + filePath);
         }
         public void Message(string message)
         {
-            ShowAlert(message, LONG_DELAY);
+           // ShowAlert(message, LONG_DELAY);
         }
         void ShowAlert(string message, double seconds)
         {

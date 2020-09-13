@@ -721,10 +721,10 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="{Binding FieldTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Text="{Binding FieldTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Micro" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" FontSize="Micro" HorizontalTextAlignment="End" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>

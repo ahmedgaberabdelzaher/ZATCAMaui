@@ -1983,8 +1983,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.Attchk = ChangeFillingResponse.d.Attchk;
                 request.d.CPersl = ChangeFillingResponse.d.CPersl;
                 request.d.Fbnumz = ChangeFillingResponse.d.Fbnumz;
-                request.d.Iagrfg = ChangeFillingResponse.d.Iagrfg;
-                request.d.Reqfg = ChangeFillingResponse.d.Reqfg;
+                request.d.Iagrfg = "1";
+                request.d.Reqfg = "1";
                 request.d.StepNumber = ChangeFillingResponse.d.StepNumber;
                 request.d.Begda = ChangeFillingResponse.d.Begda;
                 request.d.PortalUsrz = ChangeFillingResponse.d.PortalUsrz;

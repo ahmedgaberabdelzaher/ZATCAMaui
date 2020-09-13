@@ -52,7 +52,18 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         private void PopupClose_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+         
+                try
+                {
+                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                PopupNavigation.Instance.PopAsync();
+            
         }
 
         void PopupPage_BackgroundClicked(System.Object sender, System.EventArgs e)

@@ -1912,7 +1912,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             VATReferanceNumber = _withdrawSubmitted.d.Fbnum;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
+                                await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());
 
                             });
                         }

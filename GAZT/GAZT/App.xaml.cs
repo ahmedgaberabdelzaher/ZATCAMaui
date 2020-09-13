@@ -97,6 +97,8 @@ namespace EGAZT
         public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
         public static string SignUpForEstablishmentPageView = "SignUpForEstablishmentPageView";
         public static string SupportPageView = "SupportPageView";
+        public static string NotesDescriptionPopUpPageView = "NotesDescriptionPopUpPageView";
+        public static string NotesPopUpPageView = "NotesPopUpPageView";
         // * End
 
         #endregion
@@ -220,7 +222,9 @@ namespace EGAZT
         public static string MorePopUpPageView = "MorePopUpPageView";
         public static string ShowVatInformationConfirmationPageView = "ShowVatInformationConfirmationPageView";
         public static string InfoPopUpPage = "InfoPopUpPage";
+        public static string QuickActionPopUpPageView = "QuickActionPopUpPageView";
 
+        
 
 
         //VATRefundsListPageView

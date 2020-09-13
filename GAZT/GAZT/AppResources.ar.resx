@@ -5712,8 +5712,7 @@
     <value>أسباب أخرى</value>
   </data>
   <data name="ZakatInstructions" xml:space="preserve">
-    <value>
-            1. اقر بأنه لا يوجد لدي سيولة مالية كافيه لسداد المبلغ كاملاً.
+    <value> 1. اقر بأنه لا يوجد لدي سيولة مالية كافيه لسداد المبلغ كاملاً.
 2. اتعهد بأن ازود الهيئة العامة للزكاة والدخل بكشوفات حديثة لجميع حسابات النشاط البنكية وكذلك حساباتي الشخصية لآخر ثلاثة أشهر.
 3. أتعهد بتزويد الهيئة العامة للزكاة والدخل بأي مستندات يتم طلبها لأغراض دراسة الطلب.
 4. للهيئة العامة للزكاة و الدخل الحق في تقدير مبلغ وفترة الاقساط حسب ما تراه مناسباً.
@@ -6624,8 +6623,8 @@
   <data name="VRNewAttachment" xml:space="preserve">
     <value>مرفق جديد</value>
   </data>
-  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
-    <value>طلب او عرض خطة تقسيط الزكاة</value>
+ <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+    <value>خطة التقسيط لضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
     <value>إلغاء خطة تقسيط الزكاة</value>
@@ -6691,7 +6690,7 @@
     <value>طلب خطة تقسيط للزكاة</value>
   </data>
   <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
-    <value>رقم الفاتورة</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
     <value>مدة الخطة</value>
@@ -7068,7 +7067,7 @@
     <comment>My Return </comment>
   </data>
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
-    <value>التاريخ</value>
+    <value>مراسلاتي</value>
   </data>
   <data name="ZakatInstalmetPlan" xml:space="preserve">
     <value>خطط التقسيط</value>

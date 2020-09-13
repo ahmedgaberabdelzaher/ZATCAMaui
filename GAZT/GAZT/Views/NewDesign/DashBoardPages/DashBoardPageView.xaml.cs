@@ -370,6 +370,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
 
         }
+
+        private async void OnQuickActionClicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new QuickActionPopUpPageView());
+
+        }
+
         private async void partiallyClicked(object sender, EventArgs e)
         {
             //  App.DisplayProgressView();
