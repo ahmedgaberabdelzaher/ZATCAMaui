@@ -66,11 +66,11 @@
 
           <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
-                   <Image Source="ic_vat_return.png" VerticalOptions="Center">
+                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
                        <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
                                                     </Image.GestureRecognizers>
-                   </Image>
+                   </Image>-->
                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Returns}" VerticalOptions="Center" FontSize="16">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
@@ -88,11 +88,11 @@
 
          <border:SfBorder  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False">
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="50">
-                   <Image Source="ic_vat_return.png" VerticalOptions="Center">
+                   <!--<Image Source="ic_Payments" VerticalOptions="Center">
                        <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyBillsClicked"/>
                                                     </Image.GestureRecognizers>
-                   </Image>
+                   </Image>-->
                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZMyBillsTitle}" VerticalOptions="Center" FontSize="16">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyBillsClicked"/>
@@ -110,11 +110,11 @@
 
           <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False">
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
-                   <Image Source="ic_vat_return.png" VerticalOptions="Center">
+                   <!--<Image Source="message.png" VerticalOptions="Center">
                        <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
                                                     </Image.GestureRecognizers>
-                   </Image>
+                   </Image>-->
                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZCorrespondenceTitle}" VerticalOptions="Center" FontSize="16">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
@@ -137,10 +137,8 @@
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZCorrespondenceTitle}"  Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnCorrespondanceClicked}" />
                     </StackLayout>-->
 
-                <Image HorizontalOptions="Center" >
-                    <Image.Source>
-                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                    </Image.Source>
+                <Image Source="ic_Close_Circle.png" HorizontalOptions="Center" >
+                    
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>
                     </Image.GestureRecognizers>
