@@ -97,6 +97,8 @@ namespace EGAZT
         public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
         public static string SignUpForEstablishmentPageView = "SignUpForEstablishmentPageView";
         public static string SupportPageView = "SupportPageView";
+        public static string NotesDescriptionPopUpPageView = "NotesDescriptionPopUpPageView";
+        public static string NotesPopUpPageView = "NotesPopUpPageView";
         // * End
 
         #endregion

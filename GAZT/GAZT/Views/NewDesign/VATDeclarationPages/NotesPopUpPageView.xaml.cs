@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotesPopUpPageView : PopupPage
     {
+        #region Variable
+        public NotesPopUpPageViewModel viewModel;
+        #endregion
+
+        #region Constructor
         public NotesPopUpPageView()
         {
             InitializeComponent();
+            viewModel = App.Locator.NotesPopUpPageView;
+            BindingContext = viewModel;
             SetLTR();
         }
+        #endregion
 
+        #region Methods
         private void SetLTR()
         {
 
@@ -56,5 +66,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
 
         }
+        #endregion
     }
 }
