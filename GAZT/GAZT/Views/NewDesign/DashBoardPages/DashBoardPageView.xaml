@@ -799,7 +799,8 @@
                                 CornerRadius="12"
                                 BorderWidth="0"
                                 HorizontalOptions="Center"
-                                WidthRequest="24" HeightRequest="24" />
+                                WidthRequest="24" HeightRequest="24"
+                                Clicked="OnQuickActionClicked"/>
 
                             <!--<Image Source="quick_action_2.png"
                                    BackgroundColor="{StaticResource Primary}"
@@ -853,6 +854,8 @@
                     </DataTrigger>
                 </StackLayout.Triggers>
             </StackLayout>
+
+
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>

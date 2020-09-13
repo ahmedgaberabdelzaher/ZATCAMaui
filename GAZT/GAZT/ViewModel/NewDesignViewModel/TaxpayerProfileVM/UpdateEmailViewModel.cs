@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -121,7 +122,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             else
                 popUp.FlowDirections = "LeftToRight";
 
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
+
+           // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         #endregion
     }

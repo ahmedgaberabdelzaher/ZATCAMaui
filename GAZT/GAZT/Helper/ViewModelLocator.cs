@@ -253,6 +253,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<ObjectionViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionViewModel>();
+            SimpleIoc.Default.Register<QuickActionPopUpPageViewModel>();
+
+            
             #endregion
 
             #region OldIOC
@@ -2160,6 +2163,22 @@ namespace EGAZT
             }
         }
 
+        public QuickActionPopUpPageViewModel QuickActionPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<QuickActionPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        
 
 
         //SYNC FUSION INTEGRATION
@@ -2193,7 +2212,9 @@ namespace EGAZT
             navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+            navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));
 
+            
             #endregion
 
             #region NewDesignRelease2
