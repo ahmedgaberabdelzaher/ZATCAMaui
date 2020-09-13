@@ -1205,13 +1205,13 @@
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
     <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
-    <data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
+  <data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
     <value>
 حجم الملف المسموح به في المرفقات 10 MB
 اعدادات الماسح الضوئي الموصى بها : 745*1024
 صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
   </data>
-     <data name="BPTermsAndConditionsAlert" xml:space="preserve">
+  <data name="BPTermsAndConditionsAlert" xml:space="preserve">
     <value>الرجاء الموافقة على التعليمات والشروط</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
@@ -5860,7 +5860,7 @@
     <value>النوع (عقد/امر شراء/فاتورة)</value>
   </data>
   <data name="CRContractPeriod" xml:space="preserve">
-   <value>تاريخ العقد</value>
+    <value>تاريخ العقد</value>
   </data>
   <data name="CRTotalAmountOfContract" xml:space="preserve">
     <value>القيمة الإجمالية للعقد (رقما)</value>
@@ -7068,7 +7068,7 @@
     <comment>My Return </comment>
   </data>
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
-    <value>التاريخ</value>
+    <value>مراسلاتي</value>
   </data>
   <data name="ZakatInstalmetPlan" xml:space="preserve">
     <value>خطط التقسيط</value>
@@ -7195,7 +7195,7 @@
   <data name="ZakatInstalmentAttachmentLimitReached" xml:space="preserve">
     <value>يجب أن لا يزيد عدد المرفقات عن 10 ملفات.</value>
   </data>
-    <data name="ZOAssessmentAmountGAZT" xml:space="preserve">
+  <data name="ZOAssessmentAmountGAZT" xml:space="preserve">
     <value>قيمة الربط/المعالجة (الهيئة)</value>
   </data>
   <data name="ZOCompletebelowdetails" xml:space="preserve">
@@ -7278,10 +7278,10 @@
   <data name="ZOWritteyourObjectionReason" xml:space="preserve">
     <value>اكتب سبب الإعتراض</value>
   </data>
-    <data name="ZOReasonWithDraw" xml:space="preserve">
-  <value>Withdraw</value>
-</data>
-    <data name="ZakatInstalmentBillAmount" xml:space="preserve">
+  <data name="ZOReasonWithDraw" xml:space="preserve">
+    <value>Withdraw</value>
+  </data>
+  <data name="ZakatInstalmentBillAmount" xml:space="preserve">
     <value>مبلغ الفاتورة</value>
   </data>
   <data name="ZakatInstalmentBillDueDate" xml:space="preserve">
@@ -7308,31 +7308,31 @@
   <data name="ZakatInstalmentSADADBillNo" xml:space="preserve">
     <value>رقم فاتورة سداد</value>
   </data>
-    <data name="ZOWIthdrawInstructions" xml:space="preserve">
+  <data name="ZOWIthdrawInstructions" xml:space="preserve">
     <value>1. Attach a request letter displaying the with a reason for this request</value>
   </data>
-     <data name="OZObjectionDate" xml:space="preserve">
+  <data name="OZObjectionDate" xml:space="preserve">
     <value>تاريخ الاعتراض</value>
   </data>
   <data name="ZOObjectionType" xml:space="preserve">
     <value>نوع الاعتراض</value>
   </data>
-    <data name="ZORevisedAmount" xml:space="preserve">
+  <data name="ZORevisedAmount" xml:space="preserve">
     <value>مسودة الربط بناء على الاعتراض (المكلف</value>
   </data>
-   <data name="ZOSelectReturn" xml:space="preserve">
+  <data name="ZOSelectReturn" xml:space="preserve">
     <value>حدد العودة</value>
   </data>
-   <data name="ZOChooseOneReturn" xml:space="preserve">
+  <data name="ZOChooseOneReturn" xml:space="preserve">
     <value>اختر عودة واحدة</value>
   </data>
-    <data name="ZOSearchReturnReferenceNumber" xml:space="preserve">
-     <value>بحث</value>
+  <data name="ZOSearchReturnReferenceNumber" xml:space="preserve">
+    <value>بحث</value>
   </data>
-   <data name="ZOAttachments" xml:space="preserve">
+  <data name="ZOAttachments" xml:space="preserve">
     <value>المرفقات</value>
   </data>
-    <data name="ZOFaxNo" xml:space="preserve">
+  <data name="ZOFaxNo" xml:space="preserve">
     <value>رقم الفاكس</value>
   </data>
   <data name="ZOFullName" xml:space="preserve">
@@ -7342,36 +7342,33 @@
     <value>الاقامة و اسم الشارع</value>
   </data>
   <data name="ZONameOfTheApplicant" xml:space="preserve">
-   <value> اسم مقدم الطلب</value>
+    <value>اسم مقدم الطلب</value>
   </data>
   <data name="ZOPhoneNo" xml:space="preserve">
     <value>رقم الهاتف</value>
   </data>
   <data name="ZOPositionCapacity" xml:space="preserve">
-   <value>صفته</value>
+    <value>صفته</value>
   </data>
-    <data name="ZOBuildingName" xml:space="preserve">
+  <data name="ZOBuildingName" xml:space="preserve">
     <value>اسم البناية</value>
   </data>
-     <data name="ZOElectronicMail" xml:space="preserve">
+  <data name="ZOElectronicMail" xml:space="preserve">
     <value>ديربلا</value>
   </data>
-     <data name="ZOCityTown" xml:space="preserve">
+  <data name="ZOCityTown" xml:space="preserve">
     <value>المدينة / القري</value>
   </data>
-     <data name="ZONameOfTheApplicant" xml:space="preserve">
-   <value>اسم مقدم الطلب</value>
-  </data>
-     <data name="ZODeclarationCheckboxText" xml:space="preserve">
+  <data name="ZODeclarationCheckboxText" xml:space="preserve">
     <value>قر بالإفصاح عن المعلومات ومصادقة المرفقات. وأتحمل المسؤولية الكاملة عن أي معلومات يثبت أنها غير صحيحة.</value>
   </data>
-     <data name="ZORefNumberOfAssessmen" xml:space="preserve">
+  <data name="ZORefNumberOfAssessmen" xml:space="preserve">
     <value>الرقم المرجعي للإقرار</value>
   </data>
-    <data name="ZOAssessmentYear" xml:space="preserve">
+  <data name="ZOAssessmentYear" xml:space="preserve">
     <value>سنة الربط</value>
   </data>
-    <data name="ZOCurrency" xml:space="preserve">
+  <data name="ZOCurrency" xml:space="preserve">
     <value>العملة</value>
   </data>
   <data name="ZOObjectionRefNo" xml:space="preserve">
@@ -7383,19 +7380,19 @@
   <data name="ZOPeriodTo" xml:space="preserve">
     <value>الفترة إلى</value>
   </data>
-    <data name="ZOAssessmentAmount" xml:space="preserve">
+  <data name="ZOAssessmentAmount" xml:space="preserve">
     <value>قيمة الربط(المصلحة)</value>
   </data>
-      <data name="ZOWithdrawlRemarks" xml:space="preserve">
-     <value>ملاحظات</value>
+  <data name="ZOWithdrawlRemarks" xml:space="preserve">
+    <value>ملاحظات</value>
   </data>
-     <data name="ZONameOfTheApplicantStar" xml:space="preserve">
- <value> اسم مقدم الطلب</value>
-</data>
-<data name="ZOPositionCapacityStar" xml:space="preserve">
-<value>صفته</value>
-</data>
- <data name="ZaaktInstalmentReturnDueDate" xml:space="preserve">
+  <data name="ZONameOfTheApplicantStar" xml:space="preserve">
+    <value> اسم مقدم الطلب</value>
+  </data>
+  <data name="ZOPositionCapacityStar" xml:space="preserve">
+    <value>صفته</value>
+  </data>
+  <data name="ZaaktInstalmentReturnDueDate" xml:space="preserve">
     <value>تاريخ استحقاق الإقرار</value>
   </data>
   <data name="ZakatInstalmentReturnCreationDate" xml:space="preserve">
@@ -7405,4 +7402,3 @@
     <value>نوع الضريبة</value>
   </data>
 </root>
-
