@@ -83,5 +83,18 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             }
         }
+
+        void SfButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+
+                viewModel.downloadConfirmation();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

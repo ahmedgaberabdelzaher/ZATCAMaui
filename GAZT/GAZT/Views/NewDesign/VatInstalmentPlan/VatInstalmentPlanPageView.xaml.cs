@@ -320,7 +320,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                 viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;
 
-
+                viewModel.EnableBillsContinue();
 
 
             }

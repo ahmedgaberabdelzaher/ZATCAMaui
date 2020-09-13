@@ -771,6 +771,24 @@ namespace EGAZT.Models.ZakatInstalmentModels
 
     }
 
+    public class EvtNotif12SetResult
+    {
+        public Metadata2 __metadata { get; set; }
+        public string TinNm { get; set; }
+        public string Gpart { get; set; }
+        public string Vkont { get; set; }
+        public string Faedn { get; set; }
+        public string Cdate { get; set; }
+        public string Persl { get; set; }
+        public string Perslt { get; set; }
+        public string Incotyp { get; set; }
+        public string IncoText { get; set; }
+        public string RetFbn { get; set; }
+    }
+    public class EvtNotif12Set
+    {
+        public List<EvtNotif12SetResult> results { get; set; }
+    }
     public class ZakatRevokeList
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -822,10 +840,9 @@ namespace EGAZT.Models.ZakatInstalmentModels
             public List<object> results { get; set; }
         }
 
-        public class EvtNotif12Set
-        {
-            public List<object> results { get; set; }
-        }
+      
+
+       
 
         public class Metadata3
         {
@@ -968,5 +985,168 @@ namespace EGAZT.Models.ZakatInstalmentModels
         }
 
 
+    }
+
+    public class ZakatInstalmentValidateNewRequestModel
+    {
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        public D d { get; set; }
+        public class Metadata
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
+        }
+
+
+
+        public class AuthServSet
+        {
+            public List<object> results { get; set; }
+        }
+
+
+
+        public class Metadata2
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
+        }
+
+
+
+        public class Result
+        {
+            public Metadata2 __metadata { get; set; }
+            public string DueAmt { get; set; }
+            public string Fbtyp { get; set; }
+            public string PymntFreq { get; set; }
+            public object SubmitDt { get; set; }
+            public string Fbsta { get; set; }
+            public string UserTyp { get; set; }
+            public string Fbust { get; set; }
+            public string Tin { get; set; }
+            public string Fbnum { get; set; }
+            public string TotAmt { get; set; }
+            public string DpAmt { get; set; }
+            public string PlanDur { get; set; }
+            public string Waers { get; set; }
+            public string Status { get; set; }
+        }
+
+
+
+        public class WorklistSet
+        {
+            public List<Result> results { get; set; }
+        }
+
+
+
+        public class RevokeListSet
+        {
+            public List<object> results { get; set; }
+        }
+
+
+
+        //public class EvtNotif12Set
+        //{
+        //    public List<EvtNotif12Set> results { get; set; }
+        //}
+
+
+
+        public class Metadata3
+        {
+            public string id { get; set; }
+            public string uri { get; set; }
+            public string type { get; set; }
+        }
+
+
+
+        public class Result2
+        {
+            public Metadata3 __metadata { get; set; }
+            public string Gpart { get; set; }
+            public string Persl { get; set; }
+            public string Perslt { get; set; }
+            public string RetFbn { get; set; }
+            public string Abrzu { get; set; }
+            public string Abrzo { get; set; }
+            public string Vtre2 { get; set; }
+            public string Betrh { get; set; }
+            public string Opbel { get; set; }
+        }
+
+
+
+        public class EvtNotif1Set
+        {
+            public List<Result2> results { get; set; }
+        }
+
+
+
+        public class D
+        {
+            public Metadata __metadata { get; set; }
+            public string Client { get; set; }
+            public string TinNm { get; set; }
+            public int Accnum { get; set; }
+            public int Actcnt { get; set; }
+            public string Auditor { get; set; }
+            public bool AudObjection { get; set; }
+            public bool AudRequest { get; set; }
+            public string Bpnum { get; set; }
+            public string Branch { get; set; }
+            public string CallServ { get; set; }
+            public string Caltype { get; set; }
+            public int Cnlcnt { get; set; }
+            public string Dept { get; set; }
+            public bool EnableInstPlan { get; set; }
+            public bool EnableTile { get; set; }
+            public string Ettr { get; set; }
+            public string Euser { get; set; }
+            public string Euser1 { get; set; }
+            public string Euser2 { get; set; }
+            public string Euser3 { get; set; }
+            public string Euser4 { get; set; }
+            public string Euser5 { get; set; }
+            public string Fbguid { get; set; }
+            public string Fbnum { get; set; }
+            public string HostName { get; set; }
+            public string IntPortal { get; set; }
+            public bool IsBankruptcy { get; set; }
+            public string Lang { get; set; }
+            public string Name { get; set; }
+            public bool NotifLogFlag { get; set; }
+            public int Oblnum { get; set; }
+            public string Overdue { get; set; }
+            public string Penalty { get; set; }
+            public string PortNo { get; set; }
+            public string Protocol { get; set; }
+            public int Refnum { get; set; }
+            public int Regnum { get; set; }
+            public int Rencnt { get; set; }
+            public int Reqnum { get; set; }
+            public int RetItCnt { get; set; }
+            public string RetItFlg { get; set; }
+            public string SystemName { get; set; }
+            public string Taxtype { get; set; }
+            public string Title { get; set; }
+            public string Type { get; set; }
+            public bool UpdregOutflag { get; set; }
+            public string UserTin { get; set; }
+            public string UserTyp { get; set; }
+            public string Zuser { get; set; }
+            public AuthServSet AuthServSet { get; set; }
+            public WorklistSet WorklistSet { get; set; }
+            public RevokeListSet RevokeListSet { get; set; }
+            public EvtNotif12Set EvtNotif12Set { get; set; }
+            public EvtNotif1Set EvtNotif1Set { get; set; }
+        }
     }
 }

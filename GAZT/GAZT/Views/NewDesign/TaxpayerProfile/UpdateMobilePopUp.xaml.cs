@@ -30,28 +30,17 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             InitializeComponent();
             viewModel = App.Locator.UpdateMobilePopUp;
             this.BindingContext = viewModel;
+
             viewModel.CountryCode = "+966";
             Label_InternationalnoCode.StyleId = "LTRLabelText";
-            // Label_InternationalnoCode.Text = "+966";
 
             if (Device.RuntimePlatform == Device.Android)
-            {
                 Label_InternationalnoCode.Margin = new Thickness(0);
-            }
             else
-            {
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
-            }
+
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
-            if (App.IsArabic)
-            {
-                Mobile_Entry.HorizontalTextAlignment = TextAlignment.End;
-            }
-            else
-            {
-                Mobile_Entry.HorizontalTextAlignment = TextAlignment.Start;
-            }
 
             // Setup International Mobile Data
             currentMobileData = mobileData;
@@ -82,8 +71,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            if (viewModel.OTPFourthDigit.Length != 0)
-                viewModel.BtnEnableFlag = true;
+            /*if (viewModel.OTPFourthDigit.Length != 0)
+                viewModel.BtnEnableFlag = true;*/
         }
         // * End
 
@@ -100,21 +89,26 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (callAPIFlag)
             {
+                //if (Label_InternationalnoCode.Text.Equals("+966"))
+                //{
+                //    if (!viewModel.NewMobileNumberEntryText.StartsWith("5"))
+                //    {
+                //        viewModel.ShowValidationPopup(AppResources.ZZMobilenumberhastostartwithnumber5);
+                //        return;
+                //    }
+                //}
+
                 bool PWDSuccess = await viewModel.VarifyMobileNumber();
 
                 if (PWDSuccess)
                 {
                     UpdateMobile.IsVisible = false;
                     VerificationView.IsVisible = true;
-                    viewModel.BtnEnableFlag = false;
+                    //viewModel.BtnEnableFlag = false;
                     btn.Text = AppResources.Verify;
 
                     var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
-
-                    if(App.IsArabic)
-                        viewModel.OTPSentOnThisMobileNumber = result + "******** " + AppResources.MobileNumber;
-                    else
-                        viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+                    viewModel.OTPSentOnThisMobileNumber = "********" + result;
 
                     // * Start timer period for valid OTP
                     viewModel.StartOTPTimer();
@@ -131,16 +125,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (viewModel.EnteredOTP.Length != 4)
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
-                });
+                viewModel.ShowValidationPopup(AppResources.PleaseenterOTP);
                 return;
             }
 
             // * Navigating to Verification Screen
-            //TaxPayerProfile TPAPIResponse = await APIManager.VarifyOTPToUpdateMobileNumber(viewModel.EnteredOTP, viewModel.CurrentMobileNumberEntryText, viewModel.NewMobileNumberEntryText);
-
             TaxPayerProfile TPAPIResponse = await viewModel.VarifyOTPToUpdateMobileNumber();
             System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
 
@@ -158,16 +147,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             if (viewModel.countDownSeconds == 0)
             {
-                viewModel.BtnEnableFlag = false;
-                //bool PWDSuccess = await APIManager.VarifyMobileNumber(viewModel.CurrentMobileNumberEntryText, viewModel.NewMobileNumberEntryText);
                 bool PWDSuccess = await viewModel.VarifyMobileNumber();
                 System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
 
                 if (PWDSuccess)
                 {
-                    //var result = Regex.Match(viewModel.NewMobileNumberEntryText, UtilityManager.MobileNumberLastThreeDigitsRegX);
-                    //viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
-
                     // * Start timer period for valid OTP
                     viewModel.StartOTPTimer();
                 }
@@ -181,10 +165,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             if (validationError == string.Empty) return true;
             else
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessageBox(validationError, AppResources.Information);
-                });
+                viewModel.ShowValidationPopup(validationError);
                 return false;
             }
         }
@@ -192,11 +173,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         private string VerifyCurrentAndNewMobilenNumbers(string CurrentMobileNumber, string NewMobileNumber)
         {
             // * Append country code + mobile number : For comparison OLD + NEW
-            NewMobileNumber = Label_InternationalnoCode.Text + NewMobileNumber;
-            bool compareStringFlag = string.Equals(CurrentMobileNumber, NewMobileNumber);
+            string NewMobileNumberWithCountyCode = Label_InternationalnoCode.Text + NewMobileNumber;
+            bool compareStringFlag = string.Equals(CurrentMobileNumber, NewMobileNumberWithCountyCode);
 
             if (string.IsNullOrEmpty(NewMobileNumber))
                 return AppResources.TPNewMobileNumberEmpty;
+            else if (viewModel.NewMobileNumberEntryText.Length < 9)
+                return AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
             else if (compareStringFlag)
                 return AppResources.ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber;
             else
@@ -265,61 +248,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.EnteredOTP = string.Empty;
 
             // Defualt
-            viewModel.BtnEnableFlag = false;
+            //viewModel.BtnEnableFlag = false;
             viewModel.IsLoading = false;
 
             viewModel.NewMobileNumberEntryText = string.Empty;
             btn.Text = AppResources.TPUpdate;
         }
 
-        private void Mobile_entry_Unfocused(object sender, FocusEventArgs e)
-        {
-            StringBuilder Message = new StringBuilder();
-            PopUp popUp = new PopUp();
-            if (!string.IsNullOrEmpty(viewModel.NewMobileNumberEntryText))
-            {
-
-                if (viewModel.NewMobileNumberEntryText.Substring(0, 1) == "0")
-                {
-                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
-                }
-                if (viewModel.NewMobileNumberEntryText.Length < 9)
-                {
-                    if (Message.Length > 0)
-                    {
-                        Message.Append(Environment.NewLine);
-                    }
-                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
-                }
-                if (Message.Length > 0)
-                {
-                    popUp.Message = Message.ToString();
-                    popUp.IsLinkAvailable = false;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    //Frm_mobile.HasError = true;
-                    viewModel.NewMobileNumberEntryText = string.Empty;
-                }
-                else
-                {
-                    //Frm_mobile.HasError = false;
-                }
-            }
-            else
-            {
-                Message.Append(AppResources.EnterMobileNumber);
-                popUp.Message = Message.ToString();
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-            }
-        }
+        private void Mobile_entry_Unfocused(object sender, FocusEventArgs e) { }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {

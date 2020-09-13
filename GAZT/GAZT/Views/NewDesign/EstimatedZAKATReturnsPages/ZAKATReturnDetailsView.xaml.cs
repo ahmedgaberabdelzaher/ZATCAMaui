@@ -44,7 +44,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             base.OnAppearing();
             //date.Text = viewModel.Abrzu;
            await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
-            if(viewModel.isThresholdValueLessThanTotalVATSales)
+            viewModel.ZAKATReturnsPagName = AppResources.FORM5ReturnDetails;
+
+            if (viewModel.isThresholdValueLessThanTotalVATSales)
             {
                 TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");

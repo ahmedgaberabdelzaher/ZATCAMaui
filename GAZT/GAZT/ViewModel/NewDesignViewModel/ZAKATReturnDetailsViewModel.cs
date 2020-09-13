@@ -463,6 +463,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _zAKATReturnsPagName =AppResources.FORM5ReturnDetails;
+        public string ZAKATReturnsPagName
+        {
+            get
+            {
+                return _zAKATReturnsPagName;
+            }
+            set
+            {
+                _zAKATReturnsPagName = value;
+                RaisePropertyChanged("ZAKATReturnsPagName");
+            }
+        }
+        
         #endregion
 
         #region Constructor
@@ -631,9 +645,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         SetICRStatus();
                         DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
                         DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
-                                                                                                                           //  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
-                        FromDate = FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        ToDate =" - "  +  toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                        string CalenderType = ZakatReturnDetail.Incotyp.Substring(0, 1);
+                        if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        {
+                            FromDate =UtilityManager.Converthijri(fromDate);// fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            ToDate = UtilityManager.Converthijri(toDate);// " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        }
+                        else
+                        {
+                            FromDate = FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            ToDate = " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        }
+
+
+
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
                          isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales(ZakatReturnDetails.d.TvtslI);
@@ -809,8 +835,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                      //  GetUpdatedDataAfterRemovingComma();
-                        ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+                        //  GetUpdatedDataAfterRemovingComma();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                          ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
 
                         ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
                         if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
@@ -866,19 +893,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //    _navigationService.GoBack();
                             //});
                         }
-                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
-                        PopToRootPage();
-                        //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                        if (zakatReturnDetails != null)
+                        if(string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                         {
-                            ZakatReturnDetails = zakatReturnDetails;
-                            if (zakatReturnDetails.d != null)
+                            ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                            PopToRootPage();
+                            //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                            if (zakatReturnDetails != null)
                             {
-                                ZakatReturnDetail = zakatReturnDetails.d;
-                                GetUpdatedDataAfterAddingComma();
-                                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                                ZakatReturnDetails = zakatReturnDetails;
+                                if (zakatReturnDetails.d != null)
+                                {
+                                    ZakatReturnDetail = zakatReturnDetails.d;
+                                    GetUpdatedDataAfterAddingComma();
+                                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                                }
                             }
                         }
+                        
                     }
                     catch (InternetException ex)
                     {
@@ -1745,6 +1776,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetConfirmButtonVisibility = false;
             ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
             DesClaimerVisibility = true;
+            ZAKATReturnsPagName = AppResources.NDReturnAmendments;
             //if (isThresholdValueLessThanTotalVATSales)
             //{
             //    SetReadOnlyToOtherThanTotalVATSales = true;
@@ -1769,6 +1801,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;
             DesClaimerVisibility = false;
+        }
+
+        public string Converthijri(DateTime FormatedFaedn)
+        {
+            // FormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+            var calendar = new HijriCalendar();
+            var day = calendar.GetDayOfMonth(FormatedFaedn);
+            var year = calendar.GetYear(FormatedFaedn);
+            var month = calendar.GetMonth(FormatedFaedn);
+          string hijriDate =   UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
+            return hijriDate;
+
         }
         #endregion
 

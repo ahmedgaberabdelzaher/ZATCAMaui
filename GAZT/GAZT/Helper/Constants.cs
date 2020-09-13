@@ -234,13 +234,14 @@ namespace GAZT.Helper
         public static string VATGetFormGUIDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
         public static string downloadFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
 
+        
         #endregion
 
         #region ZAKAT
         public static string ZakatListOfInstalmentplanRequestUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/HdrSet(";
         public static string ZakatRevokeRequestListUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/HdrSet(";
         public static string ZakatOldInstalmentsListUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TP_DASHBOARD_SRV/HeaderSet(";
-        public static string ZakatRequestDisplayUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet(";
+        public static string ZakatRequestDisplayUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(";
         public static string ZakatValidateRevokeListUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/RevChkSet(";
         public static string ZakateRevokeSendOTPUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/OtpSendCheckSet?$filter=";
         #endregion
@@ -248,10 +249,12 @@ namespace GAZT.Helper
 
 
         #region ZakatInstalment
+        public static string ZakatInstalmentInvoiceURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=";
         public static string GetZAKATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(";
         public static string GetZAKATPostdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet";
         public static string GetZAKATInvoices = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=";
         public static string GetZAKATSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(";
+        public static string ZakatInstalmentValidateNewRequestURL = BaseUrlOfODataServices + "/sap/opu/odata//SAP/ZDP_IPRF_WI_SRV/HdrSet(";
         #endregion
 
         #region Contract Release
@@ -263,6 +266,7 @@ namespace GAZT.Helper
         public static string ContractReleaseSummaryData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set(";
         public static string GAZTSaveAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachSet(OutletRef=";
         public static string GAZTDeteleAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachMedSet(OutletRef=";
+        public static string downloadFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum=";
 
         #endregion
 
@@ -307,6 +311,48 @@ namespace GAZT.Helper
         //API10 To generate SADAD && API11 On press of refresh button for SADAD
         public static string GetVATObjectionGenrateorRefreshSADADURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_GEN_SADAD_SRV/GetSADADSet(";
         public static string GetVATObjectionViewBillURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/BillDtlSet?$filter=";
+        public static string PostVATObjectionURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/HeaderSet";
+        public static string VATObjectionSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+
+        #endregion
+
+        #region ZAKATObjections
+        public static string GetZAKATObjectionListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TP_DASHBOARD_SRV/HeaderSet(";
+        public static string GetZakatObjectionDataURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set(";
+       
+        //API-2
+        public static string GetZAKATObjectionCreateNewURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+        //API-5
+        public static string GetZAKATObjectionDetailsByReferenceNumberURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_AMT_SRV/ZNOB_AmtSet(";
+        //API-6
+        public static string GetZAKATObjectionDetailsToAmendReturnURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ZNOBREF_SRV/Ref_NoSet(";
+        //API-7 
+        public static string GetZAKATObjectionAmendReturnAndCloseURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_REV_AMT_SRV/ZNOB_RevAmtSet(";
+        //API-8
+        public static string GetZAKATObjectionOnPaymentMethodSelectionURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_REV_AMT_SRV/secamtSet(";
+        //API-9
+        public static string GetZAKATObjectionApplicationDetailsIfStatusIP017URL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ZNOB_FB_DETAILS_SRV/ZFBSet(";
+        //API-10
+        public static string GetZAKATObjectionGenerateSADADNumberURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_REV_AMT_SRV/sadadnumberSet(";
+        //API-12
+        public static string GetZAKATObjectionBusyIndicatorURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_BUSY_INDICATOR_SRV/ZBUSYINDSet(";
+
+        public static string ZakatObjectionLoadBankListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_REV_AMT_SRV/bankListSet?$filter=Langz eq 'EN'";
+        public static string ZakatObjectionIntialLoadURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_SRV/ZNOB_HeaderSet(";
+        public static string ZakatObjectionRemoveobjectionURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_RMV_OBJ_SRV/HeaderSet(";
+        public static string ZakatObjectionRemoveObjAckURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(";
+
+
+
+        public static string ZakatObjectionWDMaindataRL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set(";
+        public static string ZakatObjectionWDListRL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/zvaluesSet?$filter=";
+        // get the data of objection number when the objection number is selected from the dropdown
+        public static string ZakatObjectionWDSelectedDDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/object_itmsSet?$filter=";
+        //attachment API
+        public static string ZakatObjectionWDAttachmentURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SAVE_ATTACH_SRV/AttachSet(";
+        public static string ZakatObjectionRequestSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_SRV/ZNOB_HeaderSet(";
+        public static string ZakatObjectionWDPostURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set";
+        public static string ZakatObjectionSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set(";
         #endregion
 
     }

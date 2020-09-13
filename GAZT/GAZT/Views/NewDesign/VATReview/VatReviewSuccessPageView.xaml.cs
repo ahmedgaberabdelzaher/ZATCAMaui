@@ -4,6 +4,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Application = Xamarin.Forms.Application;
+using Xamarin.Essentials;
+using GAZT.Helper;
+using GAZT.Manager;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
@@ -43,7 +46,51 @@ namespace EGAZT.Views.NewDesign.VatReview
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-        
+
+        private async void Instalment_copy_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.VATReferanceNumber != null)
+                {
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsLoading = true;
+                    });
+
+                    await Clipboard.SetTextAsync(viewModel.VATReferanceNumber);
+                    if (Clipboard.HasText)
+                    {
+                        var text = await Clipboard.GetTextAsync();
+                        await viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
+
+
+
+                    }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+        }
+
+        private async void Download_Acknowledgement(object sender, EventArgs e)
+        {
+            if (viewModel.VATReferanceNumber != null)
+            {
+
+                String downloadurl = Constants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
+                await WebServiceManager.FileDownload(downloadurl, "pdf");
+            }
+        }
         private async void VatReview_Tapped(object sender, EventArgs e)
         {
             var _navigation = Application.Current.MainPage.Navigation;

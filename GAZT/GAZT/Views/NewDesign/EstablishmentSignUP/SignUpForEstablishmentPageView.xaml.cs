@@ -73,25 +73,25 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 if (!App.IsArabic)
                 {
                     string url = Path.Combine(path, "TermsAndConditionsEN.html");
-                   // TCWebView.Source = url;
+                    TCWebView.Source = url;
 
                 }
                 else
                 {
                     string url = Path.Combine(path, "TermsAndConditionsAR.html");
-                    //TCWebView.Source = url;
+                    TCWebView.Source = url;
                 }
             }
             else
             {
                 if (!App.IsArabic)
                 {
-                    //   TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+                       TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
                     
                 }
                 else
                 {
-                  //  TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
+                    TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
                 }
             }
 
@@ -253,6 +253,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
+                viewModel.TxtMobileNumber = string.Empty;
                 // IntnlCodes.Text = arg;
                 viewModel.TxtCountryCode = arg;
             });
@@ -651,58 +652,70 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             StringBuilder Message = new StringBuilder();
             PopUp popUp = new PopUp();
-            //if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
-            //{
-
-            //    if (EntryMobileNumber.Text.Substring(0, 1) == "0")
-            //    {
-            //        Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
-            //    }
-            //    if (EntryMobileNumber.Text.Length < 9)
-            //    {
-            //        if (Message.Length > 0)
-            //        {
-            //            Message.Append(Environment.NewLine);
-            //        }
-
-            //        Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
-            //    }
-            //    if (Message.Length > 0)
-            //    {
-            //        popUp.Message = Message.ToString();
-            //        popUp.IsLinkAvailable = false;
-            //        if (App.IsArabic)
-            //        {
-            //            popUp.FlowDirections = "RightToLeft";
-            //            popUp.isFontSet = true;
-            //        }
-            //        else
-            //        {
-            //            popUp.FlowDirections = "LeftToRight";
-            //        }
-            //        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-            //       // FrmMobileNumber.HasError = true;
-            //        viewModel.IsAllValidContactDataEnteredMobileNbr = false;
-
-            //        EntryMobileNumber.Text = string.Empty;
-            //    }
-            //    else
-            //    {
-            //        viewModel.IsAllValidContactDataEnteredMobileNbr = true;
-            //        // FrmMobileNumber.HasError = false;
-            //    }
-            //}
-            //else
-            //{
-            //    Message.Append(AppResources.EnterMobileNumber);
-            //    popUp.Message = Message.ToString();
-            //    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-            //}
             if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
             {
-                viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryMobileNumber.Text;
-                FrmMobile.BorderColor = Color.LightGray;
+
+                if (EntryMobileNumber.Text.Substring(0, 1) == "0")
+                {
+                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
+                }
+                if (viewModel.TxtCountryCode == "+966")
+                {
+                    if (EntryMobileNumber.Text.Substring(0, 1) != "5")
+                    {
+                        Message.AppendLine(AppResources.ZZMobilenumberhastostartwithnumber5);
+                    }
+                }
+                if (EntryMobileNumber.Text.Length < 9)
+                {
+                    if (Message.Length > 0)
+                    {
+                        Message.AppendLine(Environment.NewLine);
+                    }
+
+                    Message.AppendLine(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                }
+                if (Message.Length > 0)
+                {
+                    popUp.Message = Message.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                    // FrmMobileNumber.HasError = true;
+                    FrmMobile.BorderColor = Color.DarkRed;
+                    viewModel.IsAllValidContactDataEnteredMobileNbr = false;
+
+                    EntryMobileNumber.Text = string.Empty;
+                }
+                else
+                {
+                    viewModel.IsAllValidContactDataEnteredMobileNbr = true;
+                    // FrmMobileNumber.HasError = false;
+                    FrmMobile.BorderColor = Color.LightGray;
+                    viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryMobileNumber.Text;
+                }
             }
+            else
+            {
+                Message.AppendLine(AppResources.EnterMobileNumber);
+                popUp.Message = Message.ToString();
+              ///  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+            }
+            //if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
+            //{
+            //    viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryMobileNumber.Text;
+            //    FrmMobile.BorderColor = Color.LightGray;
+            //}
 
            // EntryPhoneNumber.Focus();
         }
@@ -935,11 +948,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            ValidateIDNumber();
+          //  ValidateIDNumber();
         }
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-            ValidateIDNumber();
+            //ValidateIDNumber();
         }
         public async void ValidateIDNumber()
         {
@@ -989,7 +1002,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         }
                         else
                         {
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " "+ SignupIsIDTypeValid.d.FamilyName;
                             //EntryName.IsEnabled = false;
                             viewModel.IsAllValidDataEntered = true;
                             FrmIDNumber.HasError = false;
@@ -1118,8 +1131,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         else
                         {
                             viewModel.IsAllValidDataEntered = true;
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                           // EntryName.IsEnabled = false;
+                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                            // EntryName.IsEnabled = false;
                             FrmIDNumber.HasError = false;
                         }
                     }
@@ -1307,385 +1320,386 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
-                try
-                {
-                    //EntryIDNumber.IsEnabled = true; //commented because bydefault it was coming red border 
-                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                    // DateTime selecteDate = Convert.ToDateTime(selectedItem);
-                    if (selectedItem != null && selectedItem[0] != null)
-                    {
-                        // int a = DateTime.Compare(viewModel.TodayDate, selecteDate);
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
-                        string _month = DateTime.Now.Month.ToString();
-                        string _day = DateTime.Now.Day.ToString();
-                        string _year = DateTime.Now.Year.ToString();
-                        string DBO = year + month + day;
-                        //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
-                        if (!string.IsNullOrEmpty(EntryIDNumber.Text))
-                        {
-                            if (viewModel.SelectedSignUpUsing.ID == 1)
-                            {
-                                if (EntryIDNumber.Text.Substring(0, 1) != "1")
-                                {
-                                    viewModel.IsAllValidDataEntered = false;
-                                     FrmIDNumber.HasError = true;
-                                    EntryName.Text = string.Empty;
-                                }
-                                else
-                                {
-                                    viewModel.IsAllValidDataEntered = true;
-                                     FrmIDNumber.HasError = false;
-                                    if (EntryIDNumber.Text.Length == 10)
-                                    {
-                                        try
-                                        {
-                                            string Result = string.Empty;
-                                            if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
-                                            {
-                                                Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                                                IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                                                if (SignupIsIDTypeValid.d == null)
-                                                {
-                                                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                                                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                                                    {
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                         FrmIDNumber.HasError = true;
-                                                        EntryName.Text = string.Empty;
-                                                       // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                      PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                                                        //  viewModel.TxtIDNumber = string.Empty;
-                                                    }
-                                                    else
-                                                    {
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                         FrmIDNumber.HasError = false;
-                                                        //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                     FrmIDNumber.HasError = false;
-                                                    viewModel.IsAllValidDataEntered = true;
-                                                   // EntryName.IsEnabled = false;
-                                                }
-                                            }
-                                        }
-                                        catch
-                                        {
-                                            try
-                                            {
-                                                string Result = string.Empty;
-                                                if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
-                                                {
-                                                    Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                                                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                                                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                                                    {
-                                                         FrmIDNumber.HasError = true;
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                        EntryName.Text = string.Empty;
-                                                     //   viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                                                        // viewModel.TxtIDNumber = string.Empty;
-                                                    }
-                                                    else
-                                                    {
-                                                         FrmIDNumber.HasError = false;
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                      //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                                                    }
-                                                }
-                                            }
-                                            catch (GAZTException gex)
-                                            {
-                                                // Handle the GAZT custom exception.
-                                                string MessageForTheUser = gex.Message;
-                                                if (gex is GAZTInvalidDataException)
-                                                {
-                                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                                }
-                                                if (gex is GAZTNetworkConnectivityIssueException)
-                                                {
-                                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                                                }
-                                                else if (gex is GAZTInternetException)
-                                                {
-                                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                                                }
-                                                else if (gex is GAZTSessionExpiredException)
-                                                {
-                                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                                                }
+                FrmIDNumber.HasError = false;
+                //try
+                //{
+                //    //EntryIDNumber.IsEnabled = true; //commented because bydefault it was coming red border 
+                //    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                //    // DateTime selecteDate = Convert.ToDateTime(selectedItem);
+                //    if (selectedItem != null && selectedItem[0] != null)
+                //    {
+                //        // int a = DateTime.Compare(viewModel.TodayDate, selecteDate);
+                //        string month = selectedItem[1].ToString();
+                //        string day = selectedItem[0].ToString();
+                //        string year = selectedItem[2].ToString();
+                //        string _month = DateTime.Now.Month.ToString();
+                //        string _day = DateTime.Now.Day.ToString();
+                //        string _year = DateTime.Now.Year.ToString();
+                //        string DBO = year + month + day;
+                //        //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+                //        if (!string.IsNullOrEmpty(EntryIDNumber.Text))
+                //        {
+                //            if (viewModel.SelectedSignUpUsing.ID == 1)
+                //            {
+                //                if (EntryIDNumber.Text.Substring(0, 1) != "1")
+                //                {
+                //                    viewModel.IsAllValidDataEntered = false;
+                //                     FrmIDNumber.HasError = true;
+                //                    EntryName.Text = string.Empty;
+                //                }
+                //                else
+                //                {
+                //                    viewModel.IsAllValidDataEntered = true;
+                //                     FrmIDNumber.HasError = false;
+                //                    if (EntryIDNumber.Text.Length == 10)
+                //                    {
+                //                        try
+                //                        {
+                //                            string Result = string.Empty;
+                //                            if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                //                            {
+                //                                Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                //                                IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+                //                                if (SignupIsIDTypeValid.d == null)
+                //                                {
+                //                                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                //                                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                //                                    {
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                         FrmIDNumber.HasError = true;
+                //                                        EntryName.Text = string.Empty;
+                //                                       // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                      PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                //                                        //  viewModel.TxtIDNumber = string.Empty;
+                //                                    }
+                //                                    else
+                //                                    {
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                         FrmIDNumber.HasError = false;
+                //                                        //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                //                                    }
+                //                                }
+                //                                else
+                //                                {
+                //                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                //                                    FrmIDNumber.HasError = false;
+                //                                    viewModel.IsAllValidDataEntered = true;
+                //                                   // EntryName.IsEnabled = false;
+                //                                }
+                //                            }
+                //                        }
+                //                        catch
+                //                        {
+                //                            try
+                //                            {
+                //                                string Result = string.Empty;
+                //                                if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                //                                {
+                //                                    Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                //                                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                //                                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                //                                    {
+                //                                         FrmIDNumber.HasError = true;
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                        EntryName.Text = string.Empty;
+                //                                     //   viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                //                                        // viewModel.TxtIDNumber = string.Empty;
+                //                                    }
+                //                                    else
+                //                                    {
+                //                                         FrmIDNumber.HasError = false;
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                      //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                //                                    }
+                //                                }
+                //                            }
+                //                            catch (GAZTException gex)
+                //                            {
+                //                                // Handle the GAZT custom exception.
+                //                                string MessageForTheUser = gex.Message;
+                //                                if (gex is GAZTInvalidDataException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //                                }
+                //                                if (gex is GAZTNetworkConnectivityIssueException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                //                                }
+                //                                else if (gex is GAZTInternetException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                //                                }
+                //                                else if (gex is GAZTSessionExpiredException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                //                                }
 
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    viewModel.IsLoading = false;
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                    viewModel.IsLoading = false;
 
-                                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                                    //viewModel._navigationService.GoBack();
-                                                });
-                                            }
-                                            catch (InternetException ex)
-                                            {
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                 //   viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                                });
-                                            }
-                                            catch (HttpRequestException ex)
-                                            {
-                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //                                    //viewModel._navigationService.GoBack();
+                //                                });
+                //                            }
+                //                            catch (InternetException ex)
+                //                            {
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                 //   viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                //                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                //                                });
+                //                            }
+                //                            catch (HttpRequestException ex)
+                //                            {
+                //                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    // IsLoading = false;
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                    // IsLoading = false;
 
-                                                    //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                                    //_navigationService.GoBack();
-                                                });
-                                            }
-                                            catch (Exception ex)
-                                            {
+                //                                    //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //                                    //_navigationService.GoBack();
+                //                                });
+                //                            }
+                //                            catch (Exception ex)
+                //                            {
 
-                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    // IsLoading = false;
+                //                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                    // IsLoading = false;
 
-                                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                                    //_navigationService.GoBack();
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            else if (viewModel.SelectedSignUpUsing.ID == 2)
-                            {
-                                if (EntryIDNumber.Text.Substring(0, 1) != "2")
-                                {
-                                    viewModel.IsAllValidDataEntered = false;
-                                     FrmIDNumber.HasError = true;
-                                    EntryName.Text = string.Empty;
-                                }
-                                else
-                                {
-                                     FrmIDNumber.HasError = false;
-                                    viewModel.IsAllValidDataEntered = true;
-                                    if (EntryIDNumber.Text.Length == 10)
-                                    {
-                                        try
-                                        {
-                                            string Result = string.Empty; ;
-                                            if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
-                                            {
-                                                Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                                                IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                                                if (SignupIsIDTypeValid.d == null)
-                                                {
-                                                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                                                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                                                    {
-                                                         FrmIDNumber.HasError = true;
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                        EntryName.Text = string.Empty;
-                                                        //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                                                        //  viewModel.TxtIDNumber = string.Empty;
-                                                    }
-                                                    else
-                                                    {
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                         FrmIDNumber.HasError = false;
-                                                       // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                   // EntryName.IsEnabled = false;
-                                                    viewModel.IsAllValidDataEntered = true;
-                                                    FrmIDNumber.HasError = false;
-                                                }
-                                            }
-                                        }
-                                        catch
-                                        {
-                                            try
-                                            {
-                                                string Result = string.Empty;
-                                                if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
-                                                {
-                                                    Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                                                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                                                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                                                    {
-                                                         FrmIDNumber.HasError = true;
-                                                        EntryName.Text = string.Empty;
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                        //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                                                        // viewModel.TxtIDNumber = string.Empty;
-                                                    }
-                                                    else
-                                                    {
-                                                         FrmIDNumber.HasError = false;
-                                                        viewModel.IsAllValidDataEntered = false;
-                                                        // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                                                    }
-                                                }
-                                            }
-                                            catch (GAZTException gex)
-                                            {
-                                                // Handle the GAZT custom exception.
-                                                string MessageForTheUser = gex.Message;
-                                                if (gex is GAZTInvalidDataException)
-                                                {
-                                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                                }
-                                                if (gex is GAZTNetworkConnectivityIssueException)
-                                                {
-                                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                                                }
-                                                else if (gex is GAZTInternetException)
-                                                {
-                                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                                                }
-                                                else if (gex is GAZTSessionExpiredException)
-                                                {
-                                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                                                }
+                //                                  //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //                                    //_navigationService.GoBack();
+                //                                });
+                //                            }
+                //                        }
+                //                    }
+                //                }
+                //            }
+                //            else if (viewModel.SelectedSignUpUsing.ID == 2)
+                //            {
+                //                if (EntryIDNumber.Text.Substring(0, 1) != "2")
+                //                {
+                //                    viewModel.IsAllValidDataEntered = false;
+                //                     FrmIDNumber.HasError = true;
+                //                    EntryName.Text = string.Empty;
+                //                }
+                //                else
+                //                {
+                //                     FrmIDNumber.HasError = false;
+                //                    viewModel.IsAllValidDataEntered = true;
+                //                    if (EntryIDNumber.Text.Length == 10)
+                //                    {
+                //                        try
+                //                        {
+                //                            string Result = string.Empty; ;
+                //                            if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                //                            {
+                //                                Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                //                                IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+                //                                if (SignupIsIDTypeValid.d == null)
+                //                                {
+                //                                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                //                                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                //                                    {
+                //                                         FrmIDNumber.HasError = true;
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                        EntryName.Text = string.Empty;
+                //                                        //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                //                                        //  viewModel.TxtIDNumber = string.Empty;
+                //                                    }
+                //                                    else
+                //                                    {
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                         FrmIDNumber.HasError = false;
+                //                                       // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                //                                    }
+                //                                }
+                //                                else
+                //                                {
+                //                                    viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
+                //                                    // EntryName.IsEnabled = false;
+                //                                    viewModel.IsAllValidDataEntered = true;
+                //                                    FrmIDNumber.HasError = false;
+                //                                }
+                //                            }
+                //                        }
+                //                        catch
+                //                        {
+                //                            try
+                //                            {
+                //                                string Result = string.Empty;
+                //                                if (!(Convert.ToUInt16(_month) == Convert.ToUInt16(viewModel.DefaultMonth) && Convert.ToUInt16(_day) == Convert.ToUInt16(day) && Convert.ToUInt16(year) == Convert.ToUInt16(_year)))
+                //                                {
+                //                                    Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                //                                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                //                                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                //                                    {
+                //                                         FrmIDNumber.HasError = true;
+                //                                        EntryName.Text = string.Empty;
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                        //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                //                                        // viewModel.TxtIDNumber = string.Empty;
+                //                                    }
+                //                                    else
+                //                                    {
+                //                                         FrmIDNumber.HasError = false;
+                //                                        viewModel.IsAllValidDataEntered = false;
+                //                                        // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                //                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                //                                    }
+                //                                }
+                //                            }
+                //                            catch (GAZTException gex)
+                //                            {
+                //                                // Handle the GAZT custom exception.
+                //                                string MessageForTheUser = gex.Message;
+                //                                if (gex is GAZTInvalidDataException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //                                }
+                //                                if (gex is GAZTNetworkConnectivityIssueException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                //                                }
+                //                                else if (gex is GAZTInternetException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                //                                }
+                //                                else if (gex is GAZTSessionExpiredException)
+                //                                {
+                //                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                //                                }
 
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    viewModel.IsLoading = false;
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                    viewModel.IsLoading = false;
 
-                                                   // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                                    // viewModel._navigationService.GoBack();
-                                                });
-                                            }
-                                            catch (InternetException ex)
-                                            {
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                   // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                                                });
-                                            }
-                                            catch (HttpRequestException ex)
-                                            {
-                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //                                   // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //                                    // viewModel._navigationService.GoBack();
+                //                                });
+                //                            }
+                //                            catch (InternetException ex)
+                //                            {
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                   // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                //                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                //                                });
+                //                            }
+                //                            catch (HttpRequestException ex)
+                //                            {
+                //                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    // IsLoading = false;
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                    // IsLoading = false;
 
-                                                 //   await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                                    //_navigationService.GoBack();
-                                                });
-                                            }
-                                            catch (Exception ex)
-                                            {
+                //                                 //   await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //                                    //_navigationService.GoBack();
+                //                                });
+                //                            }
+                //                            catch (Exception ex)
+                //                            {
 
-                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                                Device.BeginInvokeOnMainThread(async () =>
-                                                {
-                                                    // IsLoading = false;
+                //                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //                                Device.BeginInvokeOnMainThread(async () =>
+                //                                {
+                //                                    // IsLoading = false;
 
-                                                    //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                                    //_navigationService.GoBack();
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                 FrmIDNumber.HasError = false;
-                            }
-                        }
-                    }
-                }
-                catch (GAZTException gex)
-                {
-                    // Handle the GAZT custom exception.
-                    string MessageForTheUser = gex.Message;
-                    if (gex is GAZTInvalidDataException)
-                    {
-                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                    }
-                    if (gex is GAZTNetworkConnectivityIssueException)
-                    {
-                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                    }
-                    else if (gex is GAZTInternetException)
-                    {
-                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                    }
-                    else if (gex is GAZTSessionExpiredException)
-                    {
-                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                    }
+                //                                    //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //                                    //_navigationService.GoBack();
+                //                                });
+                //                            }
+                //                        }
+                //                    }
+                //                }
+                //            }
+                //            else
+                //            {
+                //                 FrmIDNumber.HasError = false;
+                //            }
+                //        }
+                //    }
+                //}
+                //catch (GAZTException gex)
+                //{
+                //    // Handle the GAZT custom exception.
+                //    string MessageForTheUser = gex.Message;
+                //    if (gex is GAZTInvalidDataException)
+                //    {
+                //        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //    }
+                //    if (gex is GAZTNetworkConnectivityIssueException)
+                //    {
+                //        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                //    }
+                //    else if (gex is GAZTInternetException)
+                //    {
+                //        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                //    }
+                //    else if (gex is GAZTSessionExpiredException)
+                //    {
+                //        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                //    }
 
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        viewModel.IsLoading = false;
+                //    Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //        viewModel.IsLoading = false;
 
-                        //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                        // viewModel._navigationService.GoBack();
-                    });
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                      //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                      PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    });
-                }
-                catch (HttpRequestException ex)
-                {
-                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //        //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //        // viewModel._navigationService.GoBack();
+                //    });
+                //}
+                //catch (InternetException ex)
+                //{
+                //    Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //      //  viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                //      PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                //    });
+                //}
+                //catch (HttpRequestException ex)
+                //{
+                //    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        // IsLoading = false;
+                //    Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //        // IsLoading = false;
 
-                        //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                        //_navigationService.GoBack();
-                    });
-                }
-                catch (Exception ex)
-                {
+                //        //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //        //_navigationService.GoBack();
+                //    });
+                //}
+                //catch (Exception ex)
+                //{
 
-                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        // IsLoading = false;
+                //    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                //    Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //        // IsLoading = false;
 
-                     //   await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                        //_navigationService.GoBack();
-                    });
-                }
+                //     //   await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                //        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                //        //_navigationService.GoBack();
+                //    });
+                //}
             }
         }
         private void OnInCTapped(object sender, EventArgs e)
@@ -2211,6 +2225,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     FrmlicenceNumberIssuedbyframe.HasError = true;
                        flag = false;
                 }
+                if (string.IsNullOrEmpty(viewModel.TxtLOrCIssuedByCity))
+                {
+                    FrmIssuedByCity.HasError = true;
+                    flag = false;
+                }
+               
                 if (flag)
                 {
                     viewModel.PageTitle = AppResources.ZZZContactInformation;
@@ -3998,6 +4018,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 FrmDBO.HasError = false;
             }
                 
+        }
+
+        private void IssuedByCity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.TxtLOrCIssuedByCity))
+            {
+                FrmIssuedByCity.HasError = false;
+            }
         }
     }
 

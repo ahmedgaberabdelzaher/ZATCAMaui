@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Helper;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -75,9 +78,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
 
-                //
-
-                Console.WriteLine(arg);
+                if(arg.PickerId == "DeregOutletSingleDatePicker")
+                {
+                    viewModel.SingleDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                }
             });
         }
 
@@ -108,10 +112,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             if(viewModel.SelectedPermitOutletOptionIndex == 2)
             {
-                viewModel.IsMultiplePermitsVisible = true;
+                if(viewModel.SelectedOutletForCloseTranser.PermitTypes != null && viewModel.SelectedOutletForCloseTranser.PermitTypes.Count > 0)
+                {
+                    viewModel.IsNodataAvailableVisible = false;
+
+                    viewModel.IsMultiplePermitsVisible = true;
+                }
+                else
+                {
+                    viewModel.IsNodataAvailableVisible = true;
+                }
             }
             else
-            {
+            { 
+                viewModel.IsNodataAvailableVisible = false;
                 viewModel.IsMultiplePermitsVisible = false;
             }
         }
@@ -324,6 +338,74 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             }
         }
+
+        void BorderlessEntryPermittype_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            if (!string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                if (EntryTIN.Text.Substring(0, 1) != "3")
+                {
+                    Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                    EntryTIN.Focus();
+                }
+                if (EntryTIN.Text.Length != 10)
+                {
+                    if (Messages.Length > 0)
+                    {
+                        Messages.Append(Environment.NewLine);
+                    }
+                    Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                }
+                if (Messages.Length > 0)
+                {
+                    popUp.Message = Messages.ToString();
+                    popUp.IsLinkAvailable = false;
+
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    EntryTIN.Text = string.Empty;
+                }
+                else
+                {
+                    viewModel.FrameTinError = false;
+                    viewModel.ValidateIdNumberForPermitTypes (EntryTIN.Text);
+                }
+            }
+            else
+            {
+                viewModel.FrameTinError = true;
+                Messages.Append(AppResources.AccountUnlockedCompleteRequiedFields);
+
+                popUp.Message = Messages.ToString();
+                popUp.IsLinkAvailable = false;
+
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                EntryTIN.Text = string.Empty;
+            }
+        }
+
         void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -389,5 +471,117 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 EntryTIN.Text = string.Empty;
             }
         }
+
+        async void TapGestureRecognizerSingleDeregDate_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
+                genericDatePickerModel.PickerId = "DeregOutletSingleDatePicker";
+
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+
+                }
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                });
+            }
+        }
+
+
+        async void TapGestureRecognizerSelectSingleOutleDate_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
+                genericDatePickerModel.PickerId = "DeregPermitOutletDatePicker";
+
+                if ((e as TappedEventArgs).Parameter != null)
+                {
+                    var parameterVal = (e as TappedEventArgs).Parameter.ToString();
+                    viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
+                }
+
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                   
+                }
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                   
+                });
+            }
+        }
+
+        async void TapGestureRecognizerSelectPermitType_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                reasonData.Add(AppResources.TinDeregistrationClosed);
+                reasonData.Add(AppResources.TinDeregistrationTransfer);
+
+                if ((e as TappedEventArgs).Parameter != null)
+                {
+                    var parameterVal = (e as TappedEventArgs).Parameter.ToString();
+                    viewModel.OnOutletPermitTypeReasonTapped.Execute(parameterVal);
+                }
+
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = reasonData;
+                genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                genericPickerModel.PickerId = "permitTypeReasonPicker";
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+       
     }
 }

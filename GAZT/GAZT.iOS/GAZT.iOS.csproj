@@ -266,6 +266,7 @@
     <BundleResource Include="Resources\refund%402x.png" />
     <BundleResource Include="Resources\refund%403x.png" />
     <BundleResource Include="Resources\Generic_attachment_icon.png" />
+    <Compile Include="IOSDownloader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -551,7 +552,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
+      <Project>{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>

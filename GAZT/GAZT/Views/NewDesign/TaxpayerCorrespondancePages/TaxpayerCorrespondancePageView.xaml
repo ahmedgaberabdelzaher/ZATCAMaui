@@ -38,7 +38,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDMyNotifications}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZZZZMyCorrespondence}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource ImageReverse}" >
                             <Image.GestureRecognizers>
@@ -71,7 +71,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackLayout Spacing="-5" Grid.Row="0" Padding="15,15,15,0">
-                <Grid>
+                <!--<Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
@@ -81,8 +81,8 @@
                     </Grid.ColumnDefinitions>
                     <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                     </custom:CustomLabel>
-                    <!--<Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-                    </Image>-->
+                    --><!--<Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                    </Image>--><!--
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     </custom:CustomButton>
                     <syncfusion:SfPicker x:Name="CorrespondanceDownPicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
@@ -94,7 +94,7 @@
                             <custom1:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
-                </Grid>
+                </Grid>-->
 
                 <Grid>
                     <Grid.RowDefinitions>

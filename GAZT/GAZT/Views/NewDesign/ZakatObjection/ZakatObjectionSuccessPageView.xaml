@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background"
+             x:Class="EGAZT.Views.NewDesign.ZakatObjection.ZakatObjectionSuccessPageView">
+   
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <StackLayout Padding="40" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+
+                <Image HeightRequest="120" WidthRequest="120"
+                       HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                       Source="Forget_ic_success" />
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatObjection}" Margin="0,20,0,0"
+                                    FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatObjectionIsSubmittedSuccessfully}"
+                                    Margin="0,15,0,0"
+                                    TextColor="White" HorizontalOptions="Center" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <ScrollView>
+                <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False"
+                                   VerticalOptions="EndAndExpand">
+                    <StackLayout>
+
+                      
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"
+                               HasShadow="False">
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.VRApplicationNumber}"
+                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
+                                                    HorizontalOptions="Start" />
+
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" FontSize="16"
+                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding VATReferanceNumber}" />
+
+                                <Image Grid.Row="0" Grid.Column="2">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="25"
+                                                         Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
+                                    </Image.Source>
+                                </Image>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="Instalment_copy_Tapped"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </Frame>
+                        
+                      
+                        
+                       <buttons:SfButton
+                                          Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"
+                            Clicked="Download_Acknowledgement"
+                                          CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
+                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
+                                          BackgroundColor="#d49504" TextColor="White" />
+                        <buttons:SfButton 
+                                          Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
+                                          CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
+                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
+                                          BackgroundColor="#d49504" TextColor="White" />
+
+                        <custom:CustomLabel Margin="10,0,10,15"
+                                            Text="{x:Static ResourceManager:AppResources.ZakatObjection}"
+                                            TextColor="#d49504" HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center">
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ZAkat_Objections_Tapped" />
+                            </custom:CustomLabel.GestureRecognizers>
+                        </custom:CustomLabel>
+                    </StackLayout>
+                </yummy:PancakeView>
+            </ScrollView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

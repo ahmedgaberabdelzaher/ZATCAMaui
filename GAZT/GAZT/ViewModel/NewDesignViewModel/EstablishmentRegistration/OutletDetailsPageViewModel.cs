@@ -21,10 +21,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
         //public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
-        public bool editModeEnabled { get; set; } = false;
+        //public bool editModeEnabled { get; set; } = false;
         private OutletNumber newNumber = null;
         private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
         private ValidateCR validateCR = null;
+        private Nreg_ActivityItem PreLoadedLicenseItem = null;
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
@@ -471,7 +472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
-            editModeEnabled = false;
+            //editModeEnabled = false;
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
@@ -582,30 +583,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public void OnAppearing()
         {
-            //if(string.IsNullOrEmpty(OutletActNumber))
-            //    fetchTabDataAndBind(currentTab);
         }
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
             Console.WriteLine(_enum);
 
-            if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-            {
-                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "BUP002").ToList();
+            //if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+            //{
+            //    var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "BUP002").ToList();
 
-                if (mainactivity.Count() == 1 && editModeEnabled == false)
-                {
-                    return;
-                }
-            }
+            //    if (mainactivity.Count() == 1 && editModeEnabled == false)
+            //    {
+            //        return;
+            //    }
+            //}
             if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
-                if (mainactivity.Count() == 4 && editModeEnabled == false)
-                {
-                    return;
-                }
-                if (editModeEnabled == true || mainactivity.Count > 0)
+                //if (mainactivity.Count() == 4 && editModeEnabled == false)
+                //{
+                //    return;
+                //}
+                if (/*editModeEnabled == true ||*/ mainactivity.Count > 0)
                 {
                     _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                 }
@@ -617,7 +616,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
-                EditEnabledMode = editModeEnabled,
+                //EditEnabledMode = editModeEnabled,
                 //newActivityItems = activityItems,
                 goBackAction = (List<Nreg_ActivityItem> list) =>
                 {
@@ -633,21 +632,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
-                    if (!string.IsNullOrEmpty(validateCR?.Crname))
+                    if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
                         _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
-                            openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
+                            openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
                             validateCR = validateCR,
+                            validateLicense = PreLoadedLicenseItem,
                             //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
                             //newActivityItems = activityItems,
                             goBackAction = (List<Nreg_ActivityItem> list) =>
                             {
                                 addActivities(list);
-                                currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                                currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
                             }
                         });
                     }
@@ -727,7 +727,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Console.WriteLine(ex.StackTrace);
                         if (ex is HTTPBadRequestException)
                         {
-                            editModeEnabled = true;
+                            //editModeEnabled = true;
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         }
                     }
@@ -799,23 +799,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
-                    OutletActNumber = string.Empty;
+                    clearFormData();
                     newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                     if (OutletActNumber == "000")
                     {
-                        var CRNum = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault()?.Idnumber;
-                        validateCR = await WebServiceManager.ESTValidateCRNum(CRNum);
-                        if (!string.IsNullOrEmpty(validateCR?.Crname))
+                        var preLoadedItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).FirstOrDefault();
+                        if (preLoadedItem?.Type == "BUP002")
                         {
-                            OutletName = validateCR?.Crname;
-                            validateCR.Crnum = CRNum;
+                            validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                            if (!string.IsNullOrEmpty(validateCR?.Crname))
+                            {
+                                OutletName = validateCR?.Crname;
+                                validateCR.Crnum = preLoadedItem?.Idnumber;
+                            }
+                            PreLoadedLicenseItem = null;
+                        }
+                        else if (preLoadedItem?.Type == "ZS0004")
+                        {
+                            validateCR = null;
+                            PreLoadedLicenseItem = preLoadedItem;
+                        }
+                        else
+                        {
+                            validateCR = null;
+                            PreLoadedLicenseItem = null;
                         }
                     }
                     else
                     {
                         validateCR = null;
+                        PreLoadedLicenseItem = null;
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
@@ -855,6 +870,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
+                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count == 0)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
+                    return false;
+                }
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M").ToList();
                 var count = mainactivity.Count();
                 if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
@@ -865,59 +885,124 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
-                if (string.IsNullOrWhiteSpace(HouseNumber) && string.IsNullOrWhiteSpace(HouseNumberSame))
+                if (string.IsNullOrWhiteSpace(HouseNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddHouseNumber));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(BuildingNumber) && string.IsNullOrWhiteSpace(BuildingNumberSame))
+                else if (string.IsNullOrWhiteSpace(BuildingNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(FloorNumber) && string.IsNullOrWhiteSpace(FloorNumber))
+                else if (string.IsNullOrWhiteSpace(FloorNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddFloorNumber));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(Street) && string.IsNullOrWhiteSpace(StreetSame))
+                else if (string.IsNullOrWhiteSpace(Street))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddStreet));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(Quarter) && string.IsNullOrWhiteSpace(QuarterSame))
+                else if (string.IsNullOrWhiteSpace(Quarter))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddQuarter));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(PostalCode) && string.IsNullOrWhiteSpace(PostalCodeSame))
+                else if (string.IsNullOrWhiteSpace(PostalCode))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostal));
                     return false;
                 }
-                else if (PostalCode.Length != 5 && PostalCodeSame.Length != 5)
+                else if (PostalCode.Length != 5)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostalCode5));
                     return false;
                 }
-                else if (Country == null && CountrySame == null)
+                else if (PostalCode == "12345")
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal codes"));
                     return false;
                 }
-                else if (Provinance == null && ProvinanceSame == null)
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddProvinance));
-                    return false;
-                }
-                else if (string.IsNullOrWhiteSpace(AddNumber) && string.IsNullOrWhiteSpace(AddNumberSame))
+                else if (string.IsNullOrWhiteSpace(AddNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddAdditional));
                     return false;
                 }
-                else if (City == null && CitySame == null)
+                else if (Country == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
+                    return false;
+                }
+                else if (Provinance == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddProvinance));
+                    return false;
+                }
+                else if (City == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
+                    return false;
+                }
+                if (string.IsNullOrWhiteSpace(HouseNumberSame))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddHouseNumber));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(BuildingNumberSame))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddBuildingNumber));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(FloorNumberSame))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddFloorNumber));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(StreetSame))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddStreet));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(QuarterSame))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddQuarter));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(PostalCodeSame))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostal));
+                    return false;
+                }
+                else if (PostalCodeSame.Length != 5)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostalCode5));
+                    return false;
+                }
+                else if (PostalCodeSame == "12345")
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
+                    return false;
+                }
+                else if (string.IsNullOrWhiteSpace(AddNumberSame))
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddAdditional));
+                    return false;
+                }
+                else if (CountrySame == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));
+                    return false;
+                }
+                else if (ProvinanceSame == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddProvinance));
+                    return false;
+                }
+                else if (CitySame == null)
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCity));
                     return false;
                 }
             }
@@ -930,6 +1015,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
             return true;
+        }
+        private void clearFormData()
+        {
+            OutletName = string.Empty;
+            taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+            PostalAsPhysical = false;
+
+            HouseNumber = string.Empty;
+            BuildingNumber = string.Empty;
+            FloorNumber = string.Empty;
+            Street = string.Empty;
+            Quarter = string.Empty;
+            PostalCode = string.Empty;
+            AddNumber = string.Empty;
+            Country = null;
+            Provinance = null;
+            City = null;
+            HouseNumberSame = string.Empty;
+            BuildingNumberSame = string.Empty;
+            FloorNumberSame = string.Empty;
+            StreetSame = string.Empty;
+            QuarterSame = string.Empty;
+            PostalCode = string.Empty;
+            AddNumberSame = string.Empty;
+            CountrySame = null;
+            ProvinanceSame = null;
+            CitySame = null;
         }
         #endregion
     }

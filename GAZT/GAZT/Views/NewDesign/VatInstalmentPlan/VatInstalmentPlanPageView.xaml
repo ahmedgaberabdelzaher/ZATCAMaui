@@ -127,6 +127,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0"  Margin="0,10,0,0">
@@ -183,11 +184,39 @@
                                 </Grid>
                             </border:SfBorder>
 
-                            <buttons:SfButton Grid.Row="2" Grid.Column="0"
+                        <StackLayout Grid.Row="2" Margin="0,10,0,10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+ 
+
+                                <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                                      IsChecked="{Binding IsFirstCheckboxChecked}">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox" Value="false">
+                                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+                                <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" VerticalOptions="Fill">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span
+                                Text="{x:Static ResourceManager:AppResources.VatInstalmentContinueCheckboxText}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+ 
+
+                            </StackLayout>
+
+ 
+
+                            <buttons:SfButton Grid.Row="3" Grid.Column="0"
                                           Margin="0,10,0,20" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding ReasonContinueBtnTapped}"
-                                          IsEnabled="{Binding IsContinueButtonEnable}" />
+                                              BackgroundColor="{Binding IsSelectionContinueBackGroundColor}"
+                                          IsEnabled="{Binding IsFirstCheckboxChecked}" />
 
                         </Grid>
                     </Grid>
@@ -252,10 +281,13 @@
                                     </Frame>
                                     <StackLayout Padding="10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel Text="{Binding MinInstalments,StringFormat='Min. {0}'}" HorizontalOptions="StartAndExpand"
+                                       
+                                        <custom:CustomLabel Text="{Binding MinInstalmentsTitle}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                        <custom:CustomLabel  Text="{Binding MaxInstalments,StringFormat='Max. {0}'}" HorizontalOptions="EndAndExpand"
+ 
+
+                                        <custom:CustomLabel  Text="{Binding MaxInstalmentsTitle}" HorizontalOptions="EndAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -478,21 +510,38 @@
                                 </DataTemplate>
                             </listView:SfListView.HeaderTemplate>
 
-                            <listView:SfListView.FooterTemplate>
+                           <listView:SfListView.FooterTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <ViewCell.View>
 
+ 
+
                                             <StackLayout>
-                                                <Frame Grid.Row="0"  HorizontalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,20,0,0" Padding="0">
-                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
-                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                                        <custom:CustomLabel Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
-                                                    </StackLayout>
+                                                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,20,0,0" Padding="0">
+                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"  />
+                                                    </Grid>
                                                 </Frame>
 
-                                                <buttons:SfButton  Margin="0,16,0,16"  x:Name="btnVATBillsContinue" Command="{Binding BillContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
+ 
+
+                                                <buttons:SfButton  Margin="0,16,0,16" x:Name="btnVATBillsContinue"
+                                                   Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                                                   Style="{StaticResource PrimaryButtonStyle}"
+                                                   BackgroundColor="{Binding IsBillContinueBackGroundColor}"
+                                                   IsEnabled="{Binding IsBillContinueEnabled}"
+                                                   Command="{Binding BillContinueBtnTapped}"/>
+
+ 
 
                                             </StackLayout>
                                         </ViewCell.View>
@@ -520,18 +569,18 @@
                                                         <ColumnDefinition Width="50*"></ColumnDefinition>
                                                         <ColumnDefinition Width="50*"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-                                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZVAT}" HorizontalOptions="StartAndExpand"
+                                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.ZZVAT}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" />
-                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageAmendment}" HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MiniNewGrayLabelStyle}"/>
-                                                    <BoxView Grid.Row="2"  Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1"/>
-                                                    <custom:CustomLabel Grid.Row="3" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                    <custom:CustomLabel Grid.Row="4" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
+                                                    <!--<custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageAmendment}" HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource MiniNewGrayLabelStyle}"/>-->
+                                                    <BoxView Grid.Row="1"  Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1"/>
+                                                    <custom:CustomLabel Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                    <custom:CustomLabel Grid.Row="3" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
-                                                    <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                    <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
-                                                    <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                    <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                    <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                    <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                    <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                    <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 </Grid>
                                             </Grid>
                                         </cards:SfCardView>
@@ -561,18 +610,18 @@
                                                         <ColumnDefinition Width="50*"></ColumnDefinition>
                                                         <ColumnDefinition Width="50*"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZVAT}" HorizontalOptions="StartAndExpand"
+                                                    <custom:CustomLabel TextColor="White" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.ZZVAT}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" />
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageAmendment}" HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MiniNewGrayLabelStyle}"/>
-                                                    <BoxView Grid.Row="2"  Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1"/>
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="3" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="4" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
+                                                    <!--<custom:CustomLabel TextColor="White" Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageAmendment}" HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource MiniNewGrayLabelStyle}"/>-->
+                                                    <BoxView Grid.Row="1"  Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1"/>
+                                                    <custom:CustomLabel TextColor="White" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                    <custom:CustomLabel TextColor="White" Grid.Row="3" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="6" Grid.Column="0" Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                    <custom:CustomLabel TextColor="White" Grid.Row="6" Grid.Column="1" Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                    <custom:CustomLabel TextColor="White" Grid.Row="4" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                    <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="0" Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                    <custom:CustomLabel TextColor="White" Grid.Row="4" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                    <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="1" Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 </Grid>
                                             </Grid>
                                         </cards:SfCardView>

@@ -288,9 +288,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 viewModel.VATBillDueAmount = string.Format("{0:N2}", totalAmountDue) + " " + dataItem.Waers;
                 viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
+                viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + viewModel.MaxAmount;
                 viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                 viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-
+                viewModel.MinAmountTitle = AppResources.ZakatMax + " " + viewModel.MinAmount;
             }
             catch (Exception ex)
             {
@@ -318,7 +319,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 base.OnAppearing();
 
-             
+                viewModel.IsZakat = Preferences.Get("isZakat", false);
+                viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -344,6 +346,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         }
                         viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                         viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                        viewModel.MinAmountTitle = AppResources.ZakatMax + " " + viewModel.MinAmount;
                         viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);
 
 

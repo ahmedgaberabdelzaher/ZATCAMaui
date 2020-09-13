@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using EGAZT.Models;
@@ -13,6 +15,8 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -50,10 +54,29 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var attachement = new Attachments();
             attachement.results = attachments;
             onPageLoad(attachement, whichAttachment, returnIdz);
+           
         }
 
         public void onPageLoad(Attachments attachments,WhichAttachment whichAttachment,string returnIdz)
         {
+
+
+            if (whichAttachment == WhichAttachment.ZakatInstalmentBankStatements || whichAttachment == WhichAttachment.ZakatInstalmentFinance)
+
+            {
+                viewModel.TitleOne = "";
+                viewModel.TitleTwo = AppResources.ZakatAttachmentTitle;
+            }
+            else if (whichAttachment == WhichAttachment.ContractReleaseCopy || whichAttachment == WhichAttachment.ContractReleaseInvoice)
+            {
+                viewModel.TitleOne = AppResources.ESTAttachmentSizeNotfication;
+                viewModel.TitleTwo = AppResources.ZContractReleaseChooseonlyfilewithextension;
+            }
+            else
+            {
+                viewModel.TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
+                viewModel.TitleTwo = AppResources.ZChooseonlyfilewithextension;
+            }
             viewModel.IsComeForWhichAttachment = whichAttachment;
             viewModel.returnIdz = returnIdz;
             if (attachments!=null )
@@ -142,6 +165,23 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = dmsTypeString;
             }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewAttachments)
+            {
+                viewModel.DocTypeString = "RAGA";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
+            {
+                viewModel.DocTypeString = "RVBT";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
+            {
+                viewModel.DocTypeString = "N03A";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+            {
+                viewModel.DocTypeString = "N03B";
+            }
+
         }
 
         private void SetLTR()
@@ -151,11 +191,88 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        //private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+        //}
+
+
+        public async Task email(string doguid, VATAttachment attachment)
         {
-            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                    byte[] PdfBytes;
+                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                    WebResponse myResp = myReq.GetResponse();
+                    using (Stream streams = myResp.GetResponseStream())
+                    using (MemoryStream Ms = new MemoryStream())
+                    {
+                        int count = 0;
+                        do
+                        {
+                            byte[] buf = new byte[1024];
+                            count = streams.Read(buf, 0, 1024);
+                            Ms.Write(buf, 0, count);
+                        } while (streams.CanRead && count > 0);
+                        PdfBytes = Ms.ToArray();
+                    }
+                    var message = new EmailMessage
+                    {
+                        Subject = "Attached Form :",
+                    };
+                    var fn = attachment.Filename;
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                    File.WriteAllBytes(file, PdfBytes);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = Title,
+                            File = new ShareFile(file)
+                        });
+                    });
+
+                }
+                catch (Exception ex)
+                {
+                }
+            });
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
-        
+
+        private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+            Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
+            VATAttachment attachment = (VATAttachment)Document.SelectedItem;
+            //attachment.DocUrl;
+            if (attachment.Filename.Contains("."));
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await email(attachment.Doguid, attachment);
+            }
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+        }
+
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
             try

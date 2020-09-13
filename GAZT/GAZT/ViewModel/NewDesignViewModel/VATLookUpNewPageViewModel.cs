@@ -232,8 +232,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (!string.IsNullOrEmpty(Name))
                     {
-                        ResetFormData();
-                        return;
+                        // ResetFormData();
+                        Name = string.Empty;
+                        IsNameVisible = false;
                     }
                     ValidateFormData();
                     if (isMandatoryDataEntered)
@@ -250,6 +251,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
             OnScanButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+                IsNameVisible = false;
                 ZXingScannerPage scanPage = new ZXingScannerPage();
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -374,7 +376,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                   //  _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVATCerNumberisnotequalto15));
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVATNumberisnotequalto15));
                                 });
                                 return;
                             }
@@ -435,7 +437,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 NameOrNoResultLabel = AppResources.Name;
                                 Name = vatLookUp.d.results[0].Name;
                                 IsNameVisible = true;
-                                LookUpButtonText = AppResources.ZVATLookUpNewSearchButtonText;
+                                LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
                             }
                             else
                             {

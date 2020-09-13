@@ -24,8 +24,9 @@
 
     </pages:PopupPage.Resources>
 
+    <ScrollView>
     <Grid>
-
+        
         <yummy:PancakeView IsVisible="{Binding IsInstructions}" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
             <Grid RowSpacing="15">
                 <Grid.RowDefinitions>
@@ -70,7 +71,7 @@
 
                         <StackLayout Orientation="Horizontal">
                             <CheckBox Color="{StaticResource NewDarkGreenColor}"
-                                      VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstuctionsChecked}">
+                                      VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsInstuctionsChecked}">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
@@ -87,8 +88,11 @@
                             </custom:CustomLabel>
                         </StackLayout>
 
-                        <buttons:SfButton  Text="{Binding ButtonTitle}" Margin="0,24,0,24" Command="{Binding InstructionsContinueClick}"
-                              Style="{StaticResource PrimaryButtonStyle}" VerticalOptions="End"/>
+                        <buttons:SfButton  Text="{Binding ButtonTitle}" Margin="0,24,0,24"  BackgroundColor="{Binding ContinueBackGroundColor}"
+                                                   IsEnabled="{Binding IsContinueEnabled}"
+                                           Command="{Binding InstructionsContinueClick}"
+                              Style="{StaticResource PrimaryButtonStyle}" VerticalOptions="End"
+                                           />
                     </StackLayout>
                 </ScrollView>
 
@@ -143,7 +147,7 @@
                         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
 
                             <CheckBox Color="{StaticResource NewDarkGreenColor}"
-                                      VerticalOptions="CenterAndExpand" IsChecked="{Binding IsTermsChecked}">
+                                      VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsTermsChecked}">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
@@ -160,7 +164,8 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                         </StackLayout>
-                        <buttons:SfButton Text="{Binding ButtonTitle}" Margin="0,24,0,24" Command="{Binding TermsContinueClick}" VerticalOptions="End"
+                        <buttons:SfButton Text="{Binding ButtonTitle}" BackgroundColor="{Binding ContinueBackGroundColor}"
+                                                   IsEnabled="{Binding IsContinueEnabled}" Margin="0,24,0,24" Command="{Binding TermsContinueClick}" VerticalOptions="End"
                               Style="{StaticResource PrimaryButtonStyle}"/>
                     </StackLayout>
 
@@ -170,4 +175,5 @@
         </yummy:PancakeView>
 
     </Grid>
+     </ScrollView>
 </pages:PopupPage>

@@ -87,7 +87,6 @@ using EGAZT.Views.SyncFusionEnabledViews.CreditCarried;
 using EGAZT.Views.SyncFusionEnabledViews.DisplayNotes;
 using EGAZT.Views.SyncFusionEnabledViews.FAQPage;
 using EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword;
-using EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus;
 using EGAZT.Views.SyncFusionEnabledViews.ICRList;
 using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
 using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
@@ -163,6 +162,8 @@ using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 using EGAZT.Views.NewDesign;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using EGAZT.Views.NewDesign.VatReview;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
+using EGAZT.Views.NewDesign.ZakatObjection;
 
 namespace EGAZT
 {
@@ -249,6 +250,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<ChangeFillingPeriodSuccessPage>();
             SimpleIoc.Default.Register<VatReviewViewModel>();
             SimpleIoc.Default.Register<VatReviewListViewModel>();
+            SimpleIoc.Default.Register<ObjectionViewModel>();
+            SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
+            SimpleIoc.Default.Register<ZakatObjectionViewModel>();
             #endregion
 
             #region OldIOC
@@ -2213,9 +2217,13 @@ namespace EGAZT
             navigationService.Configure(App.VatReviewListPageView, typeof(VatReviewListPageView));
             navigationService.Configure(App.VatReviewSuccessPageView, typeof(VatReviewSuccessPageView));
             navigationService.Configure(App.VatReviewViewApplicationPageView, typeof(VatReviewViewApplicationPageView));
-
-
+            navigationService.Configure(App.ObjectionsSelectionPageView, typeof(ObjectionsSelectionPageView));
+            navigationService.Configure(App.ZakatObjectionsListPageView, typeof(ZakatObjectionsListPageView));
+            navigationService.Configure(App.ObjectionsSelectionPageView, typeof(ObjectionsSelectionPageView));
+            navigationService.Configure(App.ZakatObjectionPageView, typeof(ZakatObjectionPageView));
+            navigationService.Configure(App.ZakatObjectionSuccessPageView, typeof(ZakatObjectionSuccessPageView));
             #endregion
+
 
             #region SYNCFUSION INTEGRATION
 
@@ -2561,7 +2569,66 @@ namespace EGAZT
                 }
             }
         }
+
+
+        public ObjectionViewModel ObjectionsSelectionPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ObjectionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+    
+
+
+
         #endregion
+
+
+
+        #endregion
+
+
+        #region ZakatObjection
+
+
+
+        public ZakatObjectionsListViewModel ZakatObjectionListView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatObjectionsListViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatObjectionViewModel ZakatObjectionView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         #endregion
 

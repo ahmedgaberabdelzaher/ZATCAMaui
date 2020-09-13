@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         //public int DefaultMonth;
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
-        private OutletNumber number;
+        //private OutletNumber number;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
         {
@@ -1145,7 +1145,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
-            OnDeleteOutletButtonClick = new Command((item) => Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem)));
+            OnDeleteOutletButtonClick = new Command(async (item) => {
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText)
+                {
+                    CloseWhenBackgroundIsClicked = false
+                };
+                confirmPopup.OnSelect = (str) =>
+                {
+                    if (str == "Yes")
+                    {
+                        Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+                    }
+                };
+                await PopupNavigation.Instance.PushAsync(confirmPopup);
+            });
             #endregion
 
             #region Financial Details Tabs variable initialization
@@ -1241,6 +1254,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         taxPayerDetails.Operationx = "04";
                                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                                         taxPayerDetails.UserTypx = "TP";
+                                        taxPayerDetails.StepNumberx = string.Empty;
                                         var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                         navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                                     }
@@ -1278,6 +1292,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
                 fetchTabDataAndBind(currentTab);
+                //bindingOutletList();
             }
         }
 
@@ -1985,8 +2000,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     bindingOutletList();
 
-                    number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
-                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, $"{Int16.Parse(number?.Actno):000}", taxPayerDetails?.Fbnumx);
+                    //number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    //taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, $"{Int16.Parse(number?.Actno):000}", taxPayerDetails?.Fbnumx);
+
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+
                     //await WebServiceManager.ESTOutletDropDowns();
                     //await WebServiceManager.ESTOutletGetActivitySetsList();
                     //ValidateCR crItem = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results?.FirstOrDefault()?.Idnumber);
@@ -2035,7 +2053,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 ACaltype = _calendarType,
                 ADateComm = taxPayerDetails?.Commdt
             });
-            CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
+            if (_calendarType == "H")
+            {
+                string dd = financialDetail?.ACommDate.Substring(6, 2);
+                string mm = financialDetail?.ACommDate.Substring(4, 2);
+                string yy = financialDetail?.ACommDate.Substring(0, 4);
+                CommDate = $"{Int16.Parse(yy) - 1:0000}/{Int16.Parse(mm):00}/{Int16.Parse(dd):00}";
+            }
+            else {
+                CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
+            }
 
 
             if (selectedDate == null)
@@ -2327,6 +2354,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAttachCopy));
                         return false;
+                    }
+                    else
+                    {
+                        DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
+                        DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issue);
+                        DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expiry);
+                        if (DateTime.Compare(issue, dob) < 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("passport issue date not before dob"));
+                            return false;
+                        }else if (DateTime.Compare(expiry, dob) < 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before dob"));
+                            return false;
+                        }
+                        else if (DateTime.Compare(expiry, issue) < 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before passport issue"));
+                            return false;
+                        }
                     }
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)

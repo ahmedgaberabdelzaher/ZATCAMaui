@@ -123,7 +123,7 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="{Binding SelectedReason.ReasonDesc}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding SelectedReason.ReasonDesc}" x:Name="selectedReasonLbl" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
@@ -156,7 +156,7 @@
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start">
                                                 </Label>
                                             </Grid>
                                     </cards:SfCardView> 
@@ -168,7 +168,7 @@
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start">
                                                 </Label>
                                             </Grid> 
                                     </cards:SfCardView>
@@ -209,7 +209,7 @@
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                    <Setter Property="IsVisible" Value="true" />
+                                    <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                  </StackLayout>
@@ -223,7 +223,7 @@
                                     <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                    <Setter Property="IsVisible" Value="true" />
+                                    <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
@@ -247,7 +247,7 @@
                                         </StackLayout>
 
                                         <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                             <TapGestureRecognizer Command="{Binding OnTinRegistrationDateTapped}" ></TapGestureRecognizer>
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
@@ -300,6 +300,9 @@
                                     <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                         <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -467,7 +470,7 @@
                         
                         <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
                                              IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
+                                SelectionMode="Single" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -497,7 +500,7 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -548,7 +551,25 @@
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitTypeTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
+                                                                    <Label.Triggers>
+                                                                       <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0001">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANNationalID}" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="BUP002">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANCommercialRegistrationID}" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0005">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANCompanyID}" />
+                                                                        </DataTrigger>
+                                                                         <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0002">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZIqamaID}" />
+                                                                        </DataTrigger>
+                                                                         <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0004">
+                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" />
+                                                                        </DataTrigger>
+                                                                    </Label.Triggers>
+                                                                </Label>
                                                             </StackLayout>
                                                                 <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
@@ -560,26 +581,25 @@
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitValfrDtHTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Text="{Binding APermitValfrDtHTb,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                             </StackLayout>
                                                                 <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="04 August 2020" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Text="{Binding APermitDeregDisplayDate, StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                             </StackLayout>
                                                                 <StackLayout Grid.Row="5" Grid.Column="0" Spacing="-5">
                                                                 <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeregReason}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="5" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="Bankruptcy" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                <Label Text="{Binding ReasonDescription}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                             </StackLayout>
                                                         </Grid>
                                                 </DataTemplate>
                                             </listView:SfListView.ItemTemplate>
                                          </listView:SfListView>
-                                           
-                                      
+                                       
                                     </Grid>
                                 </StackLayout>
                         </border:SfBorder >
@@ -715,7 +735,7 @@
                         </listView:SfListView.ItemTemplate>
                  </listView:SfListView>
 
-                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
+                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="48" VerticalOptions="Center"  Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
@@ -795,8 +815,11 @@
                                         </inputLayout:SfTextInputLayout.LeadingView>
                                         
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" 
-                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
+                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" MaxLength="10">
+                                                <Entry.Behaviors>
+                                                    <custom1:OnlyNumericValuesBehaviour/>
+                                                </Entry.Behaviors>
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
@@ -914,10 +937,10 @@
                                 </Frame> 
                                 <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="Hardy Store" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.Attachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
                             </Grid>
-
+                            
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                              <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding TinDeregistrationData.AttDetSet.Results}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
@@ -1009,7 +1032,7 @@
                                 </Frame> 
                                 <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="declaration"/>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ZDeclaration}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.FORM5Declaration}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
                             </Grid>
 

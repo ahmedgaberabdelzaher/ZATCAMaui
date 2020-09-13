@@ -20,13 +20,14 @@ namespace EGAZT.Views.NewDesign.VATLookUp
 
             viewModel = App.Locator.VATLookUpNewPageView;
             this.BindingContext = viewModel;
+          
 
             ChangeAeroIcon();
             SetLTR();
             //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
         
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
+            viewModel.ResetFormData();
             viewModel.IsTooltipEnableVisible = false;
             viewModel.TxtSearchParameter = string.Empty;
             viewModel.OnPageLoad();
@@ -60,9 +61,9 @@ namespace EGAZT.Views.NewDesign.VATLookUp
         
         void PPicker_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            if (viewModel.IsNameVisible)
-                return;
-
+            //if (viewModel.IsNameVisible)
+            //    return;
+            viewModel.IsNameVisible = false;
             PPicker.IsOpen = true;
         }
 
@@ -92,6 +93,10 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             PPicker.SelectedItem = vATParameterType;
             viewModel.SelectedParameterType = vATParameterType;
         }
- 
+
+        private void BorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+          viewModel.IsNameVisible = false;
+        }
     }
 }

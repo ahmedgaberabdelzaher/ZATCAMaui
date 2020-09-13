@@ -27,7 +27,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private ActivitySetsList activityList = null;
         public OutletNumber newNumber { get; set; } = null;
         public ValidateCR validateCR { get; set; } = null;
-        public bool editModeEnabled { get; set; } = false;
+        public Nreg_ActivityItem validateLicense { get; set; } = null;
+        //public bool editModeEnabled { get; set; } = false;
         public List<Nreg_ActivityItem> NregActivityList = new List<Nreg_ActivityItem>();
         private Nreg_ActivityItem SelectedLicenseItem = null;
         private Nreg_ActivityItem SelectedCRItem = null;
@@ -738,6 +739,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         CanExecute = true;
                         goBackAction?.Invoke(NregActivityList);
+                        NregActivityList = new List<Nreg_ActivityItem>();
                         _navigationService.GoBack();
                     }
                 }
@@ -870,10 +872,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     };
                     CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     EnableCRInputField = string.IsNullOrEmpty(validateCR?.Crname);
-                    if (editModeEnabled == true)
-                    {
+                    //if (editModeEnabled == true)
+                    //{
                         //RemoveCRFromList();
                         SelectedCRItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "BUP002");
+                    if (SelectedCRItem != null)
+                    {
                         EnableIssueByDropDown = false;
                         CRNumber = SelectedCRItem?.Idnumber;
                         CRIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedCRItem?.Country).FirstOrDefault();
@@ -898,53 +902,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
                         CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
                         CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
-                        //var docPassportResult = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG19").ToList();
-                        List<Attachment> list = new List<Attachment>();
-                        var lists = taxPayerDetails.AttDetSet.results.Where(x => {
-                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
-                            var outRef = x.OutletRef == docIdentifier;
-                            return x.Dotyp == "RG01" && outRef;
-                        }).ToList();
-                        if (lists.Count > 0)
-                        {
-                            foreach (AttDetItem attDetItem in lists)
-                            {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
-                                list.Add(obj);
-                            }
-                            CRsCopies = new ObservableCollection<Attachment>(list);
-                        }
-
-                        lists = taxPayerDetails.AttDetSet.results.Where(x => {
-                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
-                            var outRef = x.OutletRef == docIdentifier;
-                            return x.Dotyp == "RG12" && outRef;
-                        }).ToList();
-                        if (lists.Count > 0)
-                        {
-                            foreach (AttDetItem attDetItem in lists)
-                            {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
-                                list.Add(obj);
-                            }
-
-                            TransferCRsCopies = new ObservableCollection<Attachment>(list);
-                        }
+                        updateCRAttachments();
                     }
+                    //}
                     if(!string.IsNullOrEmpty(CRNumber))
                         validateCRNumber();
                 }
@@ -953,10 +913,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
                     activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
 
-                    if (editModeEnabled == true && SelectedLicenseItem != null)
+                    if ((/*editModeEnabled == true &&*/ SelectedLicenseItem != null) || validateLicense != null)
                     {
-                        //SelectedLicenseItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "ZS0004");
-
+                        if(SelectedLicenseItem == null && validateLicense != null)
+                        {
+                            SelectedLicenseItem = validateLicense;
+                        }
                         LicenseNumber = SelectedLicenseItem?.Idnumber;
                         LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedLicenseItem?.Country).FirstOrDefault();
                         LicenseIssueBy = EnIssueBy[SelectedLicenseItem?.Institute];
@@ -1021,7 +983,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             IsLoading = true;
             validateCR = await WebServiceManager.ESTValidateCRNum(CRNumber);
             IsLoading = false;
-
+            updateCRAttachments();
             if (validateCR?.NotFound == "X")
             {
                 await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
@@ -1038,6 +1000,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             };
             CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
+
+        }
+        private void updateCRAttachments()
+        {
+            List<Attachment> list = new List<Attachment>();
+            var lists = taxPayerDetails.AttDetSet.results.Where(x =>
+            {
+                var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
+                var outRef = x.OutletRef == docIdentifier;
+                return x.Dotyp == "RG01" && outRef;
+            }).ToList();
+            foreach (AttDetItem attDetItem in lists)
+            {
+                var obj = new Attachment();
+                obj.Filename = attDetItem.Filename;
+                obj.FileExtn = attDetItem.FileExtn;
+                obj.Mimetype = attDetItem.Mimetype;
+                obj.RetGuid = attDetItem.RetGuid;
+                obj.DocUrl = attDetItem.DocUrl;
+                obj.Dotyp = attDetItem.Dotyp;
+                obj.Doguid = attDetItem.Doguid;
+                list.Add(obj);
+            }
+            CRsCopies = new ObservableCollection<Attachment>(list);
+
+            lists = taxPayerDetails.AttDetSet.results.Where(x =>
+            {
+                var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
+                var outRef = x.OutletRef == docIdentifier;
+                return x.Dotyp == "RG12" && outRef;
+            }).ToList();
+            foreach (AttDetItem attDetItem in lists)
+            {
+                var obj = new Attachment();
+                obj.Filename = attDetItem.Filename;
+                obj.FileExtn = attDetItem.FileExtn;
+                obj.Mimetype = attDetItem.Mimetype;
+                obj.RetGuid = attDetItem.RetGuid;
+                obj.DocUrl = attDetItem.DocUrl;
+                obj.Dotyp = attDetItem.Dotyp;
+                obj.Doguid = attDetItem.Doguid;
+                list.Add(obj);
+            }
+
+            TransferCRsCopies = new ObservableCollection<Attachment>(list);
         }
         private void resetForm()
         {
@@ -1173,14 +1180,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
-                else if (CRsCopies == null && CRsCopies.Count == 0)
+                else if (CRsCopies == null || CRsCopies.Count == 0)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
                     return false;
                 }
                 else if (CRMainGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
                 else if (CRSubGroup == null)
@@ -1225,7 +1232,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
                     return false;
                 }
-                else if (LicensesCopies == null && LicensesCopies.Count == 0)
+                else if (LicensesCopies == null || LicensesCopies.Count == 0)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachLicense));
                     return false;
@@ -1261,11 +1268,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         public void OpenLicenseFormInEditMode(Nreg_ActivityItem LicenseData)
         {
-            if (editModeEnabled == true)
-            {
+            //if (editModeEnabled == true)
+            //{
                 CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails;
                 SelectedLicenseItem = LicenseData;
-            }
+            //}
         }
 
         //private void PopulateExistingCR(Nreg_ActivityItem CRItem)

@@ -81,7 +81,7 @@ xmlns:custom2="clr-namespace:EGAZT"
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.VatInstalmentDownload}"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" Command="{Binding DownloadConfirmationTapped}"/>
+                                          BackgroundColor="#d49504" TextColor="White" Clicked="SfButton_Clicked"/>
 
                   <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.VatDeregistrationRegistrationServices}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                        Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 

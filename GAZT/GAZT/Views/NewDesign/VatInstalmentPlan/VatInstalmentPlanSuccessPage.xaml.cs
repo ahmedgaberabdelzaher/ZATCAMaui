@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using GAZT.Helper;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -151,11 +152,18 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
         }
 
-        private void Download_Button_Tapped(object sender, EventArgs e)
-        {
-            viewModel.downloadConfirmation();
 
+        private async void Download_Acknowledgement(object sender, EventArgs e)
+        {
+            if (viewModel.VATReferanceNumber != null)
+            {
+
+                String downloadurl = Constants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
+                await WebServiceManager.FileDownload(downloadurl, "pdf");
+            }
         }
+
+      
 
         protected override void OnAppearing()
         {

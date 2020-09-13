@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
+using GAZT.Helper;
+using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -114,6 +116,28 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
 
+            }
+        }
+
+        private async void Download_Acknowledgement(object sender, EventArgs e)
+        {
+            if (viewModel.ContractReleaseData.d.Fbnumz != null)
+            {
+
+                String downloadurl = Constants.downloadFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
+                await WebServiceManager.FileDownload(downloadurl, "pdf");
+            }
+        }
+
+        
+
+         private async void Download_AcknowledgementForm(object sender, EventArgs e)
+        {
+            if (viewModel.ContractReleaseData.d.Fbnumz != null)
+            {
+
+                String downloadurl = Constants.downloadFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
+                await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
         }
 

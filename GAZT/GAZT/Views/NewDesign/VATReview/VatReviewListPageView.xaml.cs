@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Models.VatReviewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -12,15 +13,15 @@ using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 namespace EGAZT.Views.NewDesign.VatReview
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    
+
     public partial class VatReviewListPageView : ContentPage
     {
         private VatReviewListViewModel _viewModel;
-        
+
         public VatReviewListPageView()
         {
             InitializeComponent();
-            
+
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -31,8 +32,9 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             _viewModel.ResetListData();
 
+            _viewModel.VATObjectionList();
         }
-        
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -54,7 +56,13 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         private void Reviews_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            //string formguid = "005056B1F8FB1EDABC99B9AFD7873DBB"; //string.Empty;
+            //string euser = "00000010000008327086"; //string.Empty;
+
+            var item = e.ItemData as VATObjectionListModel.Result3;
+            var index = _viewModel.VATobjListViewData.IndexOf(item);
             _viewModel.EnableSummaryView();
+            _viewModel.OnPageLoad1(index);
         }
     }
 }

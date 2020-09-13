@@ -200,7 +200,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+            viewModel.SelectedOutletOptionIndex = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -222,8 +222,44 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //    //viewModel.AddAttachmentEx();
             //}
         }
+        private void EntryMobileNo_Unfocused(object sender, FocusEventArgs e)
+        {
 
-        private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            if (!string.IsNullOrEmpty(viewModel.TinDeregistrationData.ADecTelNo))
+            {
+                if (viewModel.TinDeregistrationData.ADecTelNo.Substring(0, 1) != "5")
+                {
+                    popUp.Message = AppResources.ZZMobilenumberhastostartwithnumber5;
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                }
+                else
+                {
+                    if (viewModel.TinDeregistrationData.ADecTelNo.Length != 10)
+                    {
+                        if (Messages.Length > 0)
+                        {
+                            Messages.Append(Environment.NewLine);
+                        }
+                        Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                    }
+                }
+            }
+
+         }
+            private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
             try
             {
@@ -508,19 +544,28 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void outletsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            if(viewModel.TinDeregistrationData.ADregOpt == "3")
+            try
             {
-                OutletSetResult selectedItem = e.AddedItems[0] as OutletSetResult;
-                viewModel.SelectedOutletForCloseTranser = selectedItem;
-                viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+                if (viewModel.TinDeregistrationData.ADregOpt == "3")
+                {
+                    OutletSetResult selectedItem = e.AddedItems[0] as OutletSetResult;
+                    viewModel.SelectedOutletForCloseTranser = selectedItem;
+                    viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
 
-                viewModel.AddPermitOutletDecisionOptions();
-                viewModel.AddPopUpPage();
+                    viewModel.AddPermitOutletDecisionOptions();
+                    viewModel.AddPopUpPage();
+                    var view = sender as SfListView;
+                    view.SelectedItem = null;
+                }
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
   
-
-       async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
         {
             var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
             if (!result)
@@ -530,16 +575,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                     if (viewModel.TinDeregistrationData.Fbnum != string.Empty)
                     {
-
                         await viewModel.VoidForm();
-
                     }
                     else
                     {
                         viewModel._navigationService.GoBack();
-
                     }
-
                 }
             }
         }

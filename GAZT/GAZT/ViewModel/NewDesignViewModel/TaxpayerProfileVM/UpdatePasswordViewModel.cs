@@ -79,38 +79,5 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
             _dialogService = dialogService;
         }
-
-        public async Task<bool> ChangePassword()
-        {
-            /*await Task.Run(() =>
-            {
-                IsLoading = true;
-            });*/
-
-            IsLoading = true;
-            bool APIResponse = false;
-            string lang = "EN";
-            if (App.IsArabic == true) { lang = "AR"; }
-
-            try
-            {
-                APIResponse = await WebServiceManager.GAZTValidateAndChangePassword(lang,
-                                                                                    App.TP.Tin,
-                                                                                    CurrentPasswordEntry,
-                                                                                    NewPasswordEntry);
-                IsLoading = false;
-            }
-            catch (Exception ex)
-            {
-                IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                });
-            }
-
-            return APIResponse;
-        }
     }
 }

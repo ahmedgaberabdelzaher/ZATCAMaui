@@ -7,7 +7,8 @@
                   xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
                   xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
                   x:Class="EGAZT.Views.NewDesign.GenericPickers.PickerPageView"
-                  xmlns:ResourceManager="clr-namespace:EGAZT" BackgroundClicked="PopupPage_BackgroundClicked">
+                  
+                  xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" BackgroundClicked="PopupPage_BackgroundClicked">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,12 +19,21 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
-             <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0" Spacing="0">
-                <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-                <Label Text="{Binding PickerTitle}" 
+             <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Spacing="0">
+                <border:SfBorder Margin="0,0,0,5" HasShadow="False" Padding="0"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Orientation="Vertical">
+                    <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
+                        <Button  TextColor="{StaticResource Primary}" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.CRDone}" Clicked="PopupClose_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="StartAndExpand">
+                    </Button>
+                    </StackLayout>
+                </border:SfBorder>
+                <StackLayout Margin="24,8,24,0" >
+
+                    <Label Text="{Binding PickerTitle}" 
                                     HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                 Margin="0,16,0,0" BackgroundColor="Transparent" />
-                 <syncfusion:SfPicker IsOpen="True" Style="{StaticResource PickerStyle}" ItemsSource="{Binding PickerItemSource}"
+                    <syncfusion:SfPicker IsOpen="True" Style="{StaticResource PickerStyle}" ItemsSource="{Binding PickerItemSource}"
 								Margin="2" HeaderBackgroundColor="Aqua"
 								x:Name="genericPicker" SelectionChanged="genericPicker_SelectionChanged"
 								ItemHeight="36">
@@ -31,7 +41,8 @@
                                 <customcontrol:SfPickerBehavior/>
                             </syncfusion:SfPicker.Behaviors>
                   </syncfusion:SfPicker>
-               </StackLayout>
+                </StackLayout>
+            </StackLayout>
           </yummy:PancakeView>
     </ContentPage.Content>
 </pages:PopupPage>

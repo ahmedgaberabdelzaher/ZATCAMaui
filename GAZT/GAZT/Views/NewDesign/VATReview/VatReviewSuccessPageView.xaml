@@ -43,37 +43,7 @@
                                    VerticalOptions="EndAndExpand">
                     <StackLayout>
 
-                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"
-                               HasShadow="False">
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                    Text="{x:Static ResourceManager:AppResources.VRTaxPayersName}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
-                                                    HorizontalOptions="Start" />
-
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding ReferenceNumber}" />
-
-                                <Image Grid.Row="0" Grid.Column="2">
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="25"
-                                                         Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
-                                    </Image.Source>
-                                </Image>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer />
-                                </Grid.GestureRecognizers>
-                            </Grid>
-                        </Frame>
-                        
+                      
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"
                                HasShadow="False">
                             <Grid Padding="10">
@@ -91,7 +61,7 @@
                                                     HorizontalOptions="Start" />
 
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding ReferenceNumber}" />
+                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding VATReferanceNumber}" />
 
                                 <Image Grid.Row="0" Grid.Column="2">
                                     <Image.Source>
@@ -100,44 +70,16 @@
                                     </Image.Source>
                                 </Image>
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer />
+                                    <TapGestureRecognizer  Tapped="Instalment_copy_Tapped"/>
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
                         
-                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"
-                               HasShadow="False">
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                    Text="{x:Static ResourceManager:AppResources.VRDate}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
-                                                    HorizontalOptions="Start" />
-
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding ReferenceNumber}" />
-
-                                <Image Grid.Row="0" Grid.Column="2">
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="25"
-                                                         Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
-                                    </Image.Source>
-                                </Image>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer />
-                                </Grid.GestureRecognizers>
-                            </Grid>
-                        </Frame>
+                      
                         
                         <buttons:SfButton 
                                           Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
+                            Clicked="Download_Acknowledgement"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" />

@@ -13,24 +13,24 @@ namespace EGAZT.Views.NewDesign.VatReview
     public partial class VatReviewPageView : ContentPage
     {
         private VatReviewViewModel viewModel;
-        
+
         public VatReviewPageView()
         {
             InitializeComponent();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            
+
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
             viewModel = App.Locator.VatReviewView;
             this.BindingContext = viewModel;
-            
+
             viewModel.ResetData();
 
             viewModel.VatReviewReasonDropDownData();
         }
-        
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -65,7 +65,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                     viewModel.PickedDate = arg.SelectedValue;
                     viewModel.ValidateIdNumber();
                 });
-            
+
             Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
             {
                 if (arg != null)
@@ -74,7 +74,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                 }
             });
         }
-        
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -91,7 +91,8 @@ namespace EGAZT.Views.NewDesign.VatReview
             if (selectedITem.SelectionTitle.Equals(AppResources.VRSADAD))
             {
                 viewModel.EnableSadadSecurityView();
-            }else if (selectedITem.SelectionTitle.Equals(AppResources.VRBANKGURANTEE))
+            }
+            else if (selectedITem.SelectionTitle.Equals(AppResources.VRBANKGURANTEE))
             {
                 viewModel.EnablebankGuranteeSecurityView();
             }
@@ -100,12 +101,13 @@ namespace EGAZT.Views.NewDesign.VatReview
         private void Report_Details_UnFocused(object sender, FocusEventArgs e)
         {
             viewModel.ReportDetails = Report_Details_Tx.Text;
+            viewModel.EnableReviewDetailsConButton();
         }
 
         private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)
         {
             viewModel.ContactPersonName = ContactPersonEntry.Text;
-            viewModel.EnableDeclaration();
+            viewModel.EnableDeclarationConButton();
         }
 
         private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
@@ -116,6 +118,11 @@ namespace EGAZT.Views.NewDesign.VatReview
         private void OnIDNumberFocusChanged(object sender, FocusEventArgs e)
         {
             viewModel.ValidateIdNumber();
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            viewModel.EnableSecurityPaymentsConButton();
         }
     }
 }

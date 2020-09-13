@@ -24,7 +24,7 @@
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" />
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ContractRelease}" Margin="0,20,0,0"
-                                    FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                                    FontAttributes="Bold" FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CRYourContractisreleasedsuccessfully}"
                                     Margin="0,15,0,0"
                                     TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
@@ -101,12 +101,14 @@
 
                         <buttons:SfButton 
                                 Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
+                            Clicked="Download_AcknowledgementForm"
                                 CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                 HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
                                  BackgroundColor="#d49504" TextColor="White" />
 
                          <buttons:SfButton x:Name="btnDashboard"
                                           Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
+                                           Clicked="Download_Acknowledgement"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" />

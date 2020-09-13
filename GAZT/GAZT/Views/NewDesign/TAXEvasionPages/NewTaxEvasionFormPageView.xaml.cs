@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -174,7 +175,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                         var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
                         viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
-                    }
+                    mapView.Pins.Add(pin);
+                }
                     catch (FeatureNotSupportedException fnsEx)
                     {
                         // Handle not supported on device exception
@@ -217,7 +219,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                  //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidTinNumber));
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     // TxtTIN.Focus();
@@ -247,7 +250,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         //{
                         //    popUp.FlowDirections = "LeftToRight";
                         //}
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                      //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidVatNumber));
                         FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
                     }
@@ -395,7 +399,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidMobileNoError));
                         FrmNumber.HasError = true;
                         TMobNumber.Text = string.Empty;
                     }
@@ -422,7 +427,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                       // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidMobileNoError));
                         FrmNumber.HasError = true;
                         TMobNumber.Text = string.Empty;
                     }
@@ -496,6 +502,11 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 viewModel.IsFSHasError = false;
             }
+        }
+
+        private void mapView_MapClicked(object sender, MapClickedEventArgs e)
+        {
+
         }
 
         //private void mapView_MapClicked(object sender, MapClickedEventArgs e)
