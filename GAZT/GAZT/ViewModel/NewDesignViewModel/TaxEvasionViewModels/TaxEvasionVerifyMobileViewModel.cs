@@ -241,6 +241,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 _oTPSentOnThisMobileNumber = value;
                 RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
+        }  
+        private string _EncriptedMobileNumber = string.Empty;
+        public string EncriptedMobileNumber
+        {
+            get
+            {
+                return _EncriptedMobileNumber;
+            }
+            set
+            {
+                _EncriptedMobileNumber = value;
+                RaisePropertyChanged("EncriptedMobileNumber");
+            }
         }
         //timer
         
@@ -429,7 +442,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
                         App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
                         App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
-                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
+                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " "  ;
+                       EncriptedMobileNumber = "xxxxxxxxxx"+ MobileNumber.Substring(MobileNumber.Length - 4, 4);
 
                         ShowOTPForm();
                         //_navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);

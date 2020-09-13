@@ -784,7 +784,7 @@
     <value>Please enter lookup number</value>
   </data>
   <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>الرجاء إدخال الرقم التسلسلي    </value>
+    <value>الرجاء إدخال الرقم المرجعي</value>
   </data>
   <data name="ZPleaseentertheCRcomposedof10digits" xml:space="preserve">
     <value>يرجى ادخال رقم السجل التجاري المؤلف من 10 ارقام</value>
@@ -6623,7 +6623,7 @@
   <data name="VRNewAttachment" xml:space="preserve">
     <value>مرفق جديد</value>
   </data>
- <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>خطة التقسيط لضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
