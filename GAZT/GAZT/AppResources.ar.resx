@@ -6624,8 +6624,8 @@
   <data name="VRNewAttachment" xml:space="preserve">
     <value>مرفق جديد</value>
   </data>
-  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
-    <value>طلب او عرض خطة تقسيط الزكاة</value>
+ <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+    <value>خطة التقسيط لضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
     <value>إلغاء خطة تقسيط الزكاة</value>
