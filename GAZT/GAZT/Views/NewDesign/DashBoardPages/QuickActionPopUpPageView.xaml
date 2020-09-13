@@ -93,7 +93,7 @@
                                                         <TapGestureRecognizer Tapped="OnMyBillsClicked"/>
                                                     </Image.GestureRecognizers>
                    </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZMyBillsTitle}" VerticalOptions="Center" FontSize="16">
+                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBMyPayments}" VerticalOptions="Center" FontSize="16">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyBillsClicked"/>
                                                     </custom:CustomLabel.GestureRecognizers>
@@ -115,7 +115,7 @@
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
                                                     </Image.GestureRecognizers>
                    </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZCorrespondenceTitle}" VerticalOptions="Center" FontSize="16">
+                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZMyCorrespondence}" VerticalOptions="Center" FontSize="16">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
                                                     </custom:CustomLabel.GestureRecognizers>
