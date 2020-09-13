@@ -27,7 +27,6 @@ using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
-using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using GAZT.Helper;
 
@@ -359,7 +358,7 @@ namespace EGAZT
 
             if (!hasKey)
             {
-                navigationPage = new CustomNavigation(new VATDeclarationAttachmentPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
             }
             else
             {
