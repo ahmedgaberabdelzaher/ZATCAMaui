@@ -1952,6 +1952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             Year3 = "";
             BankStatementsAttachmentsListViewData = null;
             FinanceAttachmentsListViewData = null;
+            isSubmitClicked = false;
 
             EnableDeclarationContinue();
 

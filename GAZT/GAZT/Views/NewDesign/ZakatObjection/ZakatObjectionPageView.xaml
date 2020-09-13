@@ -1483,12 +1483,14 @@
                             </StackLayout>
 
                         </border:SfBorder>
-                        
-                         <buttons:SfButton Margin="0,16,0,16"
+
+                        <buttons:SfButton Margin="0,16,0,16"
                                            IsEnabled="{Binding IsWithDrawEnable}"
+                                           BackgroundColor="{Binding WithdrawBackgroundColor}"
                                           Text="{x:Static ResourceManager:AppResources.ZOReasonWithDraw}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding WithdrawBtnTapped}" />
+                        
                         <buttons:SfButton Margin="0,16,0,16"
                                           Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                           Style="{StaticResource PrimaryButtonStyle}"
