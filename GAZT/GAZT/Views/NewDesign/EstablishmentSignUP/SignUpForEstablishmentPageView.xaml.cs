@@ -663,17 +663,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     if (EntryMobileNumber.Text.Substring(0, 1) != "5")
                     {
-                        Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+                        Message.AppendLine(AppResources.ZZMobilenumberhastostartwithnumber5);
                     }
                 }
                 if (EntryMobileNumber.Text.Length < 9)
                 {
                     if (Message.Length > 0)
                     {
-                        Message.Append(Environment.NewLine);
+                        Message.AppendLine(Environment.NewLine);
                     }
 
-                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                    Message.AppendLine(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                 }
                 if (Message.Length > 0)
                 {
@@ -706,7 +706,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             else
             {
-                Message.Append(AppResources.EnterMobileNumber);
+                Message.AppendLine(AppResources.EnterMobileNumber);
                 popUp.Message = Message.ToString();
               ///  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));

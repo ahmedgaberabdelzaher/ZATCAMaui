@@ -5131,7 +5131,7 @@
     <value>الصندوق الوارد</value>
   </data>
   <data name="NDReferenceNumber" xml:space="preserve">
-    <value>الرقم المرجعي</value>
+    <value>الرقم التسلسلي</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
@@ -5712,8 +5712,7 @@
     <value>أسباب أخرى</value>
   </data>
   <data name="ZakatInstructions" xml:space="preserve">
-    <value>
-            1. اقر بأنه لا يوجد لدي سيولة مالية كافيه لسداد المبلغ كاملاً.
+    <value> 1. اقر بأنه لا يوجد لدي سيولة مالية كافيه لسداد المبلغ كاملاً.
 2. اتعهد بأن ازود الهيئة العامة للزكاة والدخل بكشوفات حديثة لجميع حسابات النشاط البنكية وكذلك حساباتي الشخصية لآخر ثلاثة أشهر.
 3. أتعهد بتزويد الهيئة العامة للزكاة والدخل بأي مستندات يتم طلبها لأغراض دراسة الطلب.
 4. للهيئة العامة للزكاة و الدخل الحق في تقدير مبلغ وفترة الاقساط حسب ما تراه مناسباً.
@@ -6624,8 +6623,8 @@
   <data name="VRNewAttachment" xml:space="preserve">
     <value>مرفق جديد</value>
   </data>
-  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
-    <value>طلب او عرض خطة تقسيط الزكاة</value>
+ <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+    <value>خطة التقسيط لضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
     <value>إلغاء خطة تقسيط الزكاة</value>
