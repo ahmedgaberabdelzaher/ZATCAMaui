@@ -187,6 +187,7 @@
                 <!--Input for OTP Verification-->
                 <StackLayout Grid.Row="1" Padding="0,15,0,0" Margin="10,0,10,0" IsVisible="{Binding IsShowOTPInput}">
                     <custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
+                    <custom:CustomLabel FlowDirection="LeftToRight" Text="{Binding EncriptedMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
 
                     <Grid ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
 
