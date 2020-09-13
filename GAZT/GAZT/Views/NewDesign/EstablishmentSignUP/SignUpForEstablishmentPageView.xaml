@@ -255,7 +255,13 @@
 
                             </control:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Image Source="arrowDropdown.png"/>
+                                        <!--<Image Source="arrowDropdown.png"/>-->
+                                        <Image HorizontalOptions="EndAndExpand">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                            </Image.Source>
+                                        </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
                             <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
