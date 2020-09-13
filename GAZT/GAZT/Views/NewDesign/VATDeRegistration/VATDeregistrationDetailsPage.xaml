@@ -311,7 +311,7 @@
                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,23,5,23">
-                                         <Label Text="{Binding NextFilingDueDate }" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+                                         <Label Text="{Binding NextFilingDueDate ,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
                      
                                     </StackLayout>
                                 </border:SfBorder >
@@ -534,8 +534,7 @@
                                         </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </border:SfBorder >
-                      
-
+               
                     </StackLayout>
                     <StackLayout x:Name="IDNumberField" Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand">
                         <StackLayout >
@@ -547,8 +546,8 @@
                                 <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
                                                         TextColor="Black" HorizontalOptions="FillAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
                                     <Entry.Behaviors>
-                                                            <custom1:OnlyNumericValuesBehaviour/>
-                                                        </Entry.Behaviors> 
+                                      <custom1:OnlyNumericValuesBehaviour/>
+                                    </Entry.Behaviors> 
                                 </Entry>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>

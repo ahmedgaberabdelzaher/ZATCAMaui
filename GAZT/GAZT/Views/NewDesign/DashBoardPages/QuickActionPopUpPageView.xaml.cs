@@ -26,6 +26,37 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        private async void OnMyReturnsClickedForZAKAT(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 5);
+
+        }
+
+
+        private async void OnMyReturnsClickedForVATDeclaration(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 6);
+
+        }
+
+        private async void OnCorrespondanceClicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+            viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+
+        }
+
+        private async void OnGetSupportClicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+            viewModel._navigationService.NavigateTo(App.SupportPageView);
+            //viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+
+        }
+
         private void OnCloseTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync();
@@ -48,11 +79,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         }
 
-        private async void OnCorrespondanceClicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PopAsync();
-            viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
-
-        }
+       
     }
 }

@@ -902,7 +902,7 @@
     <value>التعليمات</value>
   </data>
   <data name="ZSummary" xml:space="preserve">
-    <value>Summary</value>
+    <value>الملخص</value>
   </data>
   <data name="ZTPDetails" xml:space="preserve">
     <value>TPDetails</value>
@@ -4495,7 +4495,10 @@
     <value>المرفقات - شهادة الوفاة</value>
   </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
-    <value>المرفقات - قرار وزاري لبدء إجراءات التصفية يحدد الشخص المخول بالتصفية</value>
+    <value>المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
+  </data>
+       <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
+    <value>قرار وزاري للموافقة على عملية الاندماج</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
     <value>المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
@@ -7400,16 +7403,16 @@
   <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
   </data>
-  <data name="SubmitZakatReturn" xml:space="preserve">
-    <value>- Submit Zakat return</value>
+   <data name="SubmitZakatReturn" xml:space="preserve">
+    <value>رفع اقرار الزكاة التقديري</value>
   </data>
   <data name="DeclareVATReturn" xml:space="preserve">
-    <value>- Declare VAT return</value>
+    <value>رفع اقرار ضريبة القيمة المضافة</value>
   </data>
   <data name="ReadInbox" xml:space="preserve">
-    <value>- Read inbox</value>
+    <value>قراءة المراسلات</value>
   </data>
-  <data name="GetSupport" xml:space="preserve">
-    <value>- Get Support</value>
+<data name="GetSupport" xml:space="preserve">
+    <value>الدعم الفني</value>
   </data>
 </root>

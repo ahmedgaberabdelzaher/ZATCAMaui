@@ -373,7 +373,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void OnQuickActionClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new QuickActionPopUpPageView());
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new QuickActionPopUpPageView());
+
+            }
+            catch (Exception Ex)
+            {
+
+            }
 
         }
 
