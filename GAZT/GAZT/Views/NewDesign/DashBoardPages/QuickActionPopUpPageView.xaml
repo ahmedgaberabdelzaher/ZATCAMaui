@@ -86,36 +86,36 @@
         
 
 
-         <border:SfBorder  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False">
-               <StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="50">
-                   <!--<Image Source="ic_Payments" VerticalOptions="Center">
-                       <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyBillsClicked"/>
-                                                    </Image.GestureRecognizers>
-                   </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBMyPayments}" VerticalOptions="Center" FontSize="16">
-                       <custom:CustomLabel.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyBillsClicked"/>
-                                                    </custom:CustomLabel.GestureRecognizers>
-                   </custom:CustomLabel>
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyReturnsClicked}" BackgroundColor="White" TextColor="Black"  WidthRequest="150"/>-->
-
-                <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyBillsClicked"/>
-                                                    </StackLayout.GestureRecognizers>
-                 </StackLayout>
-              </border:SfBorder>
-
-
-
-          <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False">
+         <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
-                   <!--<Image Source="message.png" VerticalOptions="Center">
+                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
                        <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
+                                                        <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
                                                     </Image.GestureRecognizers>
                    </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZMyCorrespondence}" VerticalOptions="Center" FontSize="16">
+                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DeclareVATReturn}" VerticalOptions="Center" FontSize="16">
+                       <custom:CustomLabel.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForVATDeclaration"/>
+                                                    </custom:CustomLabel.GestureRecognizers>
+                   </custom:CustomLabel>
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyReturnsClicked}" BackgroundColor="White" TextColor="Black"  WidthRequest="150"/>-->
+
+                <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForVATDeclaration"/>
+                                                    </StackLayout.GestureRecognizers>
+                 </StackLayout>
+              </border:SfBorder>
+
+
+
+          <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
+               <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
+                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
+                       <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
+                                                    </Image.GestureRecognizers>
+                   </Image>-->
+                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ReadInbox}" VerticalOptions="Center" FontSize="16">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
                                                     </custom:CustomLabel.GestureRecognizers>
@@ -129,7 +129,27 @@
               </border:SfBorder>
 
 
-                                    <!--<StackLayout>
+ <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
+               <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
+                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
+                       <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
+                                                    </Image.GestureRecognizers>
+                   </Image>-->
+                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.GetSupport}" VerticalOptions="Center" FontSize="16">
+                       <custom:CustomLabel.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnGetSupportClicked"/>
+                                                    </custom:CustomLabel.GestureRecognizers>
+                   </custom:CustomLabel>
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyReturnsClicked}" BackgroundColor="White" TextColor="Black"  WidthRequest="150"/>-->
+
+                <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnGetSupportClicked"/>
+                                                    </StackLayout.GestureRecognizers>
+                 </StackLayout>
+              </border:SfBorder>
+
+         <!--<StackLayout>
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZMyBillsTitle}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyBillsClicked}" />
                     </StackLayout>
 
