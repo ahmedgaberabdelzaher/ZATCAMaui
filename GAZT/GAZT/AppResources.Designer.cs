@@ -13457,5 +13457,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("VatInstalmentSearchPlaceholder", resourceCulture);
             }
         }
+        
+        public static string TypeYourUserName {
+            get {
+                return ResourceManager.GetString("TypeYourUserName", resourceCulture);
+            }
+        }
     }
 }

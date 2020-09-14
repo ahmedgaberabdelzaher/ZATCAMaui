@@ -7508,4 +7508,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
 <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
     <value>Search by SADAD Number</value>
   </data>
+  <data name="TypeYourUserName" xml:space="preserve">
+    <value>Type your user name</value>
+  </data>
+  
 </root>

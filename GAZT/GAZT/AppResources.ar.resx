@@ -7421,4 +7421,7 @@
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
   </data>
+   <data name="TypeYourUserName" xml:space="preserve">
+    <value>Type your user name</value>
+  </data>
 </root>
