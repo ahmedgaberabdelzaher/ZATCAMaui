@@ -13476,6 +13476,18 @@ namespace EGAZT {
             }
         }
         
+        public static string TypeYourUserName {
+            get {
+                return ResourceManager.GetString("TypeYourUserName", resourceCulture);
+            }
+        }
+        
+        public static string questionmark {
+            get {
+                return ResourceManager.GetString("questionmark", resourceCulture);
+            }
+        }
+
         public static string ESTSelectedEntityTypeLabel {
             get {
                 return ResourceManager.GetString("ESTSelectedEntityTypeLabel", resourceCulture);

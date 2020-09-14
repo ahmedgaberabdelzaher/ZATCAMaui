@@ -1772,7 +1772,14 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    if (_vATDeclarationD != null && _vATDeclarationD.d == null)
+                    {
+                        return _vATDeclarationD;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             else
@@ -8813,7 +8820,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public async static Task<ZakatInstalmentPlanResponse> GetZakatInstalmentPostData()
+        public async static Task<ZakatInstalmentPlanResponse> GetZakatInstalmentPostData(string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8825,8 +8832,17 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     string formMode = "N";
+                    if (fbnum == "") {
+                         formMode = "N";
+                    }
+                    else {
+                         formMode = "S";
+                    }
+
+
+                   
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(Tin='3102206579',Euser='',Fbguid='',Fbnum='',FormMode='N',Langz='EN')?&$format=json
-                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
+                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + fbnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -8891,7 +8907,7 @@ namespace GAZT.Manager
         }
 
        
-        public async static Task<ZakatInvoiceList> GetZakatInvoicesList(bool IsZakat)
+        public async static Task<ZakatInvoiceList> GetZakatInvoicesList(bool IsZakat , string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8906,11 +8922,11 @@ namespace GAZT.Manager
                     String url = "";
                     if (IsZakat)
                     {
-                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
+                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
                     }
                     else
                     {
-                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
+                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
                     }
                     url = System.Web.HttpUtility.UrlPathEncode(url);
 

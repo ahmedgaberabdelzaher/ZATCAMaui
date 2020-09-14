@@ -497,19 +497,19 @@
 
                     </Grid>
               
-               
-                     <StackLayout Grid.Row="2" IsVisible="{Binding ShowAttachments}" Grid.Column="0" Grid.ColumnSpan="2">
-                        
+
+                    <StackLayout Grid.Row="2" IsVisible="{Binding ShowAttachments}" Grid.Column="0" Grid.ColumnSpan="2">
+                       
                          <Grid Grid.Row="0" IsVisible="{Binding IsTwoYearsAtachmentsVisible}" HorizontalOptions="FillAndExpand">
 
-                        <listView:SfListView HorizontalOptions="Center" 
+                        <listView:SfListView HorizontalOptions="Center"
                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                              VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                              ItemsSource="{Binding YearsattachmentsListViewData}"
                                              TapCommand="{Binding NewAttachmentTapped}"
                                              SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
 
-                          
+                         
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid HorizontalOptions="FillAndExpand">
@@ -550,11 +550,7 @@
                                                 </Image>
                                             </Grid>
                                         </border:SfBorder>
-                                        <custom:CustomLabel Grid.Row="1"
-                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MicroGrayLabelStyle}" />
-
+                                     
                                     </Grid>
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
@@ -563,14 +559,14 @@
 
                           <Grid Grid.Row="0" IsVisible="{Binding IsMonthsAtachmentsVisible}" HorizontalOptions="FillAndExpand">
 
-                        <listView:SfListView HorizontalOptions="Center" 
+                        <listView:SfListView HorizontalOptions="Center"
                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                              VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                              ItemsSource="{Binding MonthsattachmentsListViewData}"
                                              TapCommand="{Binding NewAttachmentTapped}"
                                              SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
 
-                          
+                         
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid HorizontalOptions="FillAndExpand">
@@ -611,10 +607,7 @@
                                                 </Image>
                                             </Grid>
                                         </border:SfBorder>
-                                        <custom:CustomLabel Grid.Row="1"
-                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                                       
 
                                     </Grid>
                                 </DataTemplate>
@@ -624,14 +617,14 @@
 
                           <Grid Grid.Row="0" IsVisible="{Binding IsOthersAtachmentsVisible}" HorizontalOptions="FillAndExpand">
 
-                        <listView:SfListView HorizontalOptions="Center" 
+                        <listView:SfListView HorizontalOptions="Center"
                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                              VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                              ItemsSource="{Binding OtherAttachmentsListViewData}"
                                              TapCommand="{Binding NewAttachmentTapped}"
                                              SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
 
-                          
+                         
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid HorizontalOptions="FillAndExpand">
@@ -672,10 +665,7 @@
                                                 </Image>
                                             </Grid>
                                         </border:SfBorder>
-                                        <custom:CustomLabel Grid.Row="1"
-                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                                       
 
                                     </Grid>
                                 </DataTemplate>
@@ -717,7 +707,7 @@
                             </Grid>
                         </border:SfBorder>
                         <custom:CustomLabel Grid.Row="2"
-                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
+                                            Text="{x:Static ResourceManager:AppResources.VatInstalment5MB}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
