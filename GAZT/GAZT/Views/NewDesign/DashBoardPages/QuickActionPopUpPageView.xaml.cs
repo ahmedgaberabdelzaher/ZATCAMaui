@@ -16,11 +16,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             InitializeComponent();
             viewModel = App.Locator.QuickActionPopUpPageView;
             this.BindingContext = viewModel;
-            ZAKATReturn.IsVisible = false;
-            VATReturn.IsVisible = false;
-            ReadInbox.IsVisible = false;
-            GetSupport.IsVisible = false;
-            CloseIcon.IsVisible = false;
+            //ZAKATReturn.IsVisible = false;
+            //VATReturn.IsVisible = false;
+            //ReadInbox.IsVisible = false;
+            //GetSupport.IsVisible = false;
+            //CloseIcon.IsVisible = false;
 
             
 
@@ -35,16 +35,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            ZAKATReturn.IsVisible = true;
-            await ZAKATReturn.TranslateTo(0, -100, 2000);
-            VATReturn.IsVisible = true;
-            await VATReturn.TranslateTo(0, -100, 2000);
-            ReadInbox.IsVisible = true;
-            await ReadInbox.TranslateTo(0, -100, 2000);
-            GetSupport.IsVisible = true;
-            await GetSupport.TranslateTo(0, -100, 2000);
-            CloseIcon.IsVisible = true;
-            await CloseIcon.TranslateTo(0, -100, 2000);
+            //ZAKATReturn.IsVisible = true;
+            //await ZAKATReturn.TranslateTo(0, -100, 2000);
+            //VATReturn.IsVisible = true;
+            //await VATReturn.TranslateTo(0, -100, 2000);
+            //ReadInbox.IsVisible = true;
+            //await ReadInbox.TranslateTo(0, -100, 2000);
+            //GetSupport.IsVisible = true;
+            //await GetSupport.TranslateTo(0, -100, 2000);
+            //CloseIcon.IsVisible = true;
+            //await CloseIcon.TranslateTo(0, -100, 2000);
 
 
         }
