@@ -734,6 +734,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
             });
         }
+
+        private async void VATReactivation_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+            });
+        }
+
         protected override bool OnBackButtonPressed()
         {
             return true;

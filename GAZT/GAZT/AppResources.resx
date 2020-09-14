@@ -4712,6 +4712,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
   </data>
+    
+  <data name="VatReactivationDashboardTitle" xml:space="preserve">
+    <value>Reactivation of VAT Account</value>
+  </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
   </data>
