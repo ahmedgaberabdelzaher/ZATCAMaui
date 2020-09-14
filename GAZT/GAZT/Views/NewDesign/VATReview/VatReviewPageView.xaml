@@ -91,7 +91,11 @@
                     <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
                 </Grid>
 
+
+
                 <Grid Grid.Row="1">
+
+
 
                 <!--Review Reason-->
 
@@ -284,11 +288,12 @@
                     </custom:CustomLabel>
 
                 </Grid>
-                
-                <StackLayout IsVisible="{Binding ReviewDetailsVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+
+
+
+                                <StackLayout IsVisible="{Binding ReviewDetailsVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                   
-                    <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
+                             <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -306,82 +311,6 @@
 
                     </Grid>
 
-                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                            Text="{x:Static ResourceManager:AppResources.VRTaxPeriodofCase}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
-
-                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry IsEnabled="False"
-                                                    Text="{Binding TaxPeriodOfCase}"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
-                        </border:SfBorder>
-                        
-                    </Grid>
-                    
-                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                            Text="{x:Static ResourceManager:AppResources.VRPeriodFrom}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
-
-                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry IsEnabled="False"
-                                                    Text="{Binding TaxPeriodFrom,StringFormat='{0:dd MMM yyyy}'}"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
-                        </border:SfBorder>
-                        
-                    </Grid>
-                    
-                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                            Text="{x:Static ResourceManager:AppResources.VRPeriodTo}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
-
-                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry IsEnabled="False"
-                                                    Text="{Binding TaxPeriodTo,StringFormat='{0:dd MMM yyyy}'}"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
-                        </border:SfBorder>
-                        
-                    </Grid>
-                    
-                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                            Text="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
-
-                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry IsEnabled="False"
-                                                    Text="{Binding PenalityAmountInQuestion}"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
-                        </border:SfBorder>
-                        
-                    </Grid>
-                    
                     <Grid HorizontalOptions="FillAndExpand">
 
                         <Grid.RowDefinitions>
@@ -469,9 +398,9 @@
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
                         </listView:SfListView>
-                         </Grid>
-                         
-                          <Grid HorizontalOptions="FillAndExpand">
+                    </Grid>
+                    
+                    <Grid HorizontalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -514,14 +443,92 @@
                         </Grid.GestureRecognizers>
 
                     </Grid>
+                    
+                   
 
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.VRTaxPeriodofCase}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry IsEnabled="False"
+                                                    Text="{Binding TaxPeriodOfCase}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+                        
+                    </Grid>
+                    
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.VRPeriodFrom}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry IsEnabled="False"
+                                                    Text="{Binding TaxPeriodFrom,StringFormat='{0:dd MMM yyyy}'}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+                        
+                    </Grid>
+                    
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.VRPeriodTo}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry IsEnabled="False"
+                                                    Text="{Binding TaxPeriodTo,StringFormat='{0:dd MMM yyyy}'}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+                        
+                    </Grid>
+                    
+                    <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry IsEnabled="False"
+                                                    Text="{Binding PenalityAmountInQuestion}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+                        
+                    </Grid>
+                    
                     <buttons:SfButton Grid.Row="8" Margin="0,16,0,16"  VerticalOptions="End"
                                       Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ReviewDetailsButtonBackGroundColor}"
                                       Command="{Binding ReviewDetailsConBtnTapped}" />
 
                 </StackLayout>
-                
+
                 <StackLayout IsVisible="{Binding SecurityPaymentVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     
