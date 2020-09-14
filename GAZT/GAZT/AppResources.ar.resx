@@ -6774,7 +6774,7 @@
     <value>اكمل البيانات التالية</value>
   </data>
   <data name="VRSelectAReason" xml:space="preserve">
-    <value>الرجاء اختيار سبب المراجعة</value>
+    <value>طلب المراجعة</value>
   </data>
   <data name="VRReviewSubReason" xml:space="preserve">
     <value>السبب الفرعي للمراجعة</value>
@@ -6783,7 +6783,7 @@
     <value>الرجاء اختيار السبب الفرعي للمراجعة</value>
   </data>
   <data name="VRApplicationReferenceNumber" xml:space="preserve">
-    <value>الرقم المرجعي للطلب</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="VRRequestDate" xml:space="preserve">
     <value>تاريخ الطلب</value>
