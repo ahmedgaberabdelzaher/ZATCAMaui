@@ -435,6 +435,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
                 else
                 {
+                    App.selectedZakatItem = "";
                     _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
                 }
 
@@ -459,6 +460,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void ResetData()
         {
             NumberOfInstalmentPlans = "" + AppResources.ZakatInstalmetPlan;
+            App.selectedZakatItem = "";
 
         }
 
@@ -1208,10 +1210,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 IsZakat = Preferences.Get("isZakat", false);
                 if (IsZakat) {
 
-                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NZ").ToList();
+                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NZ" || x.IptypeFg == "").ToList();
                 }
                 else {
-                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NI").ToList();
+                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NI" || x.IptypeFg == "").ToList();
 
 
                 }
@@ -1256,7 +1258,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                     }
+                    else {
 
+                        IsZakat = Preferences.Get("isZakat", false);
+                        if (IsZakat) {
+                            zakatbill = AppResources.ZakatInstalmetSelectTypeZakat;
+
+                        }
+                        else {
+                            zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+
+                        }
+
+
+                    }
+
+
+                    
+                    
 
                     zakatListData.Add(new ZakatListModel()
                     {
@@ -1267,9 +1286,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         noOfInstalments = RequestForInstalmentPlanList[i].PlanDur,
                         downpayment = string.Format("{0:N2}", Convert.ToDouble(RequestForInstalmentPlanList[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
                         dateOfSubmission = submitDate,
-                        Fbtyp = zakatbill
-
-
+                        Fbtyp = zakatbill,
+                        statusType = RequestForInstalmentPlanList[i].Fbust,
+                        fbNum = RequestForInstalmentPlanList[i].Fbnum
+                        
 
                     });
 
@@ -1821,8 +1841,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     dateOfSubmission = submitDate,
                                     Fbtyp = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
                                     frequency = revokResult.d.WorklistSet.results[i].PymntFreq,
-                                    SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
-                                });
+                                    SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                                    statusType = revokResult.d.WorklistSet.results[i].Fbust,
+                                    fbNum = revokResult.d.WorklistSet.results[i].Fbnum
+                                }) ;
 
                                 if (ZakatListData.Count > 0)
                                 {

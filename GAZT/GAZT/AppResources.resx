@@ -4550,6 +4550,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value>Select Start Date</value>
   </data>
+      <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>
@@ -4711,6 +4717,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
+  </data>
+    
+  <data name="VatReactivationDashboardTitle" xml:space="preserve">
+    <value>Reactivation of VAT Account</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
@@ -7511,5 +7521,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="TypeYourUserName" xml:space="preserve">
     <value>Type your user name</value>
   </data>
-  
+      <data name="questionmark" xml:space="preserve">
+  <value>?</value>
+</data>
 </root>

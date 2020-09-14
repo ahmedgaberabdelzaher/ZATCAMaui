@@ -35,9 +35,9 @@
                 <StackLayout Orientation="Vertical" Margin="0,16,0,0">
                     <Editor  MaxLength="999" HeightRequest="200"
                                                 IsSpellCheckEnabled="False"
-                                                Text="Hello"
                                                 FontSize= "Small"
                                                 x:Name="NoteDetail"
+                                                Text="{Binding NoteText}"
                                                 HorizontalOptions="FillAndExpand"
                                                 AutoSize="TextChanges"
                                                 Unfocused="NoteDetail_Unfocused"></Editor>
@@ -53,8 +53,8 @@
             </inputLayout:SfTextInputLayout>
 
 
-            <buttons:SfButton VerticalOptions="CenterAndExpand" Margin="0,8,0,0" Text="{x:Static ResourceManager:AppResources.ZVatNotesSaveandClose}" Style="{StaticResource PrimaryButtonStyle}"/>
-            <buttons:SfButton VerticalOptions="CenterAndExpand" Margin="0,8,0,0" Text="{x:Static ResourceManager:AppResources.ZZClearAndClosed}" Style="{StaticResource PrimaryButtonStyle}"/>
+            <buttons:SfButton VerticalOptions="CenterAndExpand" Margin="0,8,0,0" Text="{x:Static ResourceManager:AppResources.ZVatNotesSaveandClose}" Command="{Binding OnAddButtonClicked}" Style="{StaticResource PrimaryButtonStyle}"/>
+            <buttons:SfButton VerticalOptions="CenterAndExpand" Margin="0,8,0,0" Text="{x:Static ResourceManager:AppResources.ZVatNotesClearandClose}"  Command="{Binding OnClearButtonClicked}" Style="{StaticResource PrimaryButtonStyle}"/>
         </StackLayout>
     </yummy:PancakeView>
 </pages:PopupPage>

@@ -1008,7 +1008,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             for (int i = 0; i < RequestForScheduleDetails.Count; i++)
                             {
                                 DateTime dateStart = new DateTime();
-                                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                
                                 string apiDate = @"""" + RequestForScheduleDetails[i].DueDate + @"""";
                                 dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 

@@ -7692,6 +7692,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRegistrationDetails {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetails", resourceCulture);
+            }
+        }
+        
+        public static string VATRegistrationDetailsTitle {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetailsTitle", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistration {
             get {
                 return ResourceManager.GetString("VATDeregistration", resourceCulture);
@@ -8013,6 +8025,12 @@ namespace EGAZT {
         public static string VatDeregistrationVoidMessage {
             get {
                 return ResourceManager.GetString("VatDeregistrationVoidMessage", resourceCulture);
+            }
+        }
+        
+        public static string VatReactivationDashboardTitle {
+            get {
+                return ResourceManager.GetString("VatReactivationDashboardTitle", resourceCulture);
             }
         }
         
@@ -13461,6 +13479,9 @@ namespace EGAZT {
         public static string TypeYourUserName {
             get {
                 return ResourceManager.GetString("TypeYourUserName", resourceCulture);
+        public static string questionmark {
+            get {
+                return ResourceManager.GetString("questionmark", resourceCulture);
             }
         }
     }

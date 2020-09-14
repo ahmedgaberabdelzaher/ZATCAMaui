@@ -36,8 +36,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public ICommand ChangeRegistrationClicked { get; set; }
 
-        
 
+        public static bool IsFirstTimeForNote = false;
 
 
 
@@ -2690,6 +2690,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Device.BeginInvokeOnMainThread(async () => {
+
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                });
             }
         }
 
@@ -5212,10 +5234,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
             }
-            //else if (ButtonName == "DisplayNotes")
-            //{
-            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZDisplayNotes);
-            //}
+            else if (ButtonName == "DisplayNotes")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZDisplayNotes);
+            }
             //else if (ButtonName == "Validate")
             //{
             //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZValidate);
@@ -5228,10 +5250,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZReset);
             }
-            //else if (ButtonName == "CreateNotes")
-            //{
-            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCreateNote);
-            //}
+            else if (ButtonName == "CreateNotes")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCreateNote);
+            }
             //else if (ButtonName == "Amend")
             //{
             //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZAmend);

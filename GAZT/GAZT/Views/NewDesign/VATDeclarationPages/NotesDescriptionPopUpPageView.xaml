@@ -18,26 +18,29 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView VerticalOptions="End" Style="{StaticResource CommonTopCurves}">
+    <yummy:PancakeView VerticalOptions="End" Style="{StaticResource CommonTopCurves}" Margin="0,150,0,0">
         <StackLayout>
-            <!--<ListView
+            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDisplayNotes}" Style="{StaticResource SectionTitleBlack}"/>
+            <ListView
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"                           
+            HasUnevenRows="True" 
+                IsVisible="{Binding IsDisplayNoteVisible}"
+                 ItemsSource="{Binding NoteList}"
             BackgroundColor="White"
             SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>-->
+                        <ViewCell>
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Padding="20" Spacing="-5">
                                     <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.Number}"/>
-                                                    <Span Text=" : "/>
-                                                    <Span Text="{Binding LineNo}"  Style="{StaticResource ValueLabelGrey}"/>
+                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.Number}"/>
+                                                    <Span Text=" : "/>-->
+                                                    <Span Text="{Binding Sect}" Style="{StaticResource ValueLabelGrey}"/>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -47,19 +50,46 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZDescription}"/>
-                                                    <Span Text=" : "/>
-                                                    <Span Text="{Binding LineNo}"  Style="{StaticResource ValueLabelGrey}"/>
+                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.ZDescription}"/>
+                                                    <Span Text=" : "/>-->
+                                                    <Span Text="{Binding Strline}"  Style="{StaticResource ValueLabelGrey}"/>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
+
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.ZDescription}"/>
+                                                    <Span Text=" : "/>-->
+                                                    <Span Text="{Binding Namez}"  Style="{StaticResource ValueLabelGrey}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="{Binding Strdt}" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Span Text="  "/>
+                                                    <Span Text="{Binding Strtime}"  Style="{StaticResource ValueLabelGrey}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
                                 </StackLayout>
                             </border:SfBorder>
-                        <!--</ViewCell>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>-->
+            </ListView>
+            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Nodataavailable}" IsVisible="{Binding IsNoDataLabelVisible}" Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="Center" VerticalOptions="Center" >
+            </custom:CustomLabel>
         </StackLayout>
     </yummy:PancakeView>
 </pages:PopupPage>
