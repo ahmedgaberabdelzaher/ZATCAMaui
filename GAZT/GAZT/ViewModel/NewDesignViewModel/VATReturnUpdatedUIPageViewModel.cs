@@ -2639,7 +2639,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                 headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = string.Format(AppResources.ZZSomethingwentwrong, "  " + res.d.Fbnum);
+                                headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
 
                                 headerWithInfos.Add(headerAmountInfo);
 
