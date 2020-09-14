@@ -529,7 +529,7 @@
     <value>كلمة التحقق غير صالحة</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>لا يوجد فواتير</value>
+    <value>لا توجد فواتير</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>...تحميل</value>
@@ -4892,7 +4892,7 @@
     <value>عدد الأقساط</value>
   </data>
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
-    <value>القسط الدوري</value>
+    <value>القسط الشهري</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
     <value>طلب خطة التقسيط</value>
@@ -4946,8 +4946,8 @@
     <value>طلب خطة التقسيط</value>
     <comment>Title</comment>
   </data>
-  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+ <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>اختر الفاتورة</value>
@@ -4988,8 +4988,8 @@
   <data name="ZakatInstallmentSummaryTaxPeriod" xml:space="preserve">
     <value>الفترة الضريبية</value>
   </data>
-  <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
-    <value>الغرامة</value>
+<data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
+    <value>العقوبات</value>
   </data>
   <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
     <value>Zakat/IncomeTax</value>
@@ -5735,8 +5735,8 @@
   <data name="ZakatClearedAmount" xml:space="preserve">
     <value>المبلغ المدفوع</value>
   </data>
-  <data name="ZakatDueAmount" xml:space="preserve">
-    <value> (المبلغ المستحق (ريال سعودي </value>
+ <data name="ZakatDueAmount" xml:space="preserve">
+    <value>المبلغ المستحق (ريال سعودي)</value>
   </data>
   <data name="ZZZDBMyCertificates" xml:space="preserve">
     <value>شهاداتي</value>
@@ -6157,7 +6157,7 @@
     <value>المبلغ المتبقي</value>
   </data>
   <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
-    <value>الرجاء اختيار فاتورة واحده على الاقل للمتابعة</value>
+    <value>الرجاء اختيار فاتورة واحدة على الاقل للمتابعة</value>
   </data>
   <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
     <value>تم استلام خطة التقسيط بنجاح</value>
@@ -6184,7 +6184,7 @@
     <value>حالة الإقامة؟</value>
   </data>
   <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
-    <value>مقيم لـ 183 يوم او اكثر في الممكلة العربية السعودية</value>
+    <value>مقيم لـ 183 يوم او اكثر في المملكة العربية السعودية</value>
   </data>
   <data name="ESTNationalyStatusOptionTwoValue" xml:space="preserve">
     <value>مالك او مستأجر لمنزل اكثر من 30 يوم</value>
@@ -6639,7 +6639,7 @@
     <value>لا يمكن أن يتجاوز المبلغ </value>
   </data>
   <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
-    <value> (إجمالي طلب الأقساط المبلغ (ريال سعودي </value>
+    <value>إجمالي طلب الأقساط المبلغ (ريال سعودي)</value>
   </data>
   <data name="ZakatInstalmentNumberOfInstalments" xml:space="preserve">
     <value>عدد الأقساط</value>
@@ -7048,7 +7048,7 @@
     <value>الرجاء ادخال المدينة للبريد</value>
   </data>
   <data name="ESTValidateOutletName" xml:space="preserve">
-    <value>v</value>
+    <value>الرجاء ادخل الاسم</value>
   </data>
   <data name="NDOldPasswordAndNewPasswordSame" xml:space="preserve">
     <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
@@ -7414,5 +7414,11 @@
   </data>
 <data name="GetSupport" xml:space="preserve">
     <value>الدعم الفني</value>
+ </data>
+     <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+    <value>البحث بالرقم المرجعي</value>
+  </data>
+    <data name="VatInstalment5MB" xml:space="preserve">
+    <value>5MB</value>
   </data>
 </root>

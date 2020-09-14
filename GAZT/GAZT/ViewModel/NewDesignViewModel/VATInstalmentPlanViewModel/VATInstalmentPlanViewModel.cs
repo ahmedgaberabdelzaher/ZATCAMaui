@@ -1010,7 +1010,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     saadNumber = selectedList[i].SadadNo,
                     taxPeriod = selectedList[i].Taxperioddsc,
                     isSelected = false,
-                    billType = "Zakat"
+                    billType = AppResources.ZakatInstalmetSelectTypeVAT
                 });
             }
             SummarySelectedBillsList = summarySelectedBillsList;
@@ -1394,7 +1394,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
 
         string minInstalmentsTitle = AppResources.ZakatMin + " " + 2;
-        string maxInstalmentsTitle = AppResources.ZakatMin + " " + 12;
+        string maxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
 
         public string MaxInstalmentsTitle
         {
@@ -1549,7 +1549,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             EnableBillsContinue();
             AddOutletDecisionOptions();
             AddFrequencyOptions();
-           
+
         }
 
         public void AddOutletDecisionOptions()
@@ -1910,7 +1910,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             inputData = "";
             TotalAmountSAR = "0.00 SAR";
             MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
-            MaxInstalmentsTitle = AppResources.ZakatMin + " " + 12;
+            MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
             selectedList.Clear();
             selectedPage = (int)PagesEnum.ZakatSelectionView;
         }
@@ -2032,17 +2032,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 VatInstalments.d.Operationz = "10";
 
-                
+
                 for (int i = 0; i < VatInstalments.d.VTIASet.results.ToList().Count; i++)
                 {
 
-                   
+
                     VatInstalments.d.VTIASet.results[i].Xsele = "";
 
                 }
 
 
-                    VatInstalments = await SubmitClicked();
+                VatInstalments = await SubmitClicked();
 
 
                 EnableStatementsView();
@@ -2567,37 +2567,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             request.d.NOTESSet = VatInstalments.d.NotesSet.results;
 
 
-           
+
 
 
             for (int i = 0; i < selectedList.Count; i++)
             {
                 var dataItem = selectedList[i] as VATResults4;
 
-               
+
                 int index = VatInstalments.d.VTIASet.results.ToList().FindIndex(item => item.SadadNo == dataItem.SadadNo);
 
                 VatInstalments.d.VTIASet.results[index].Xsele = "X";
 
-                
+
             }
 
 
 
 
-                //if (selectedList.Contains(dataItem.SadadNo))
-                //    {
-                //    VatInstalments.d.VTIASet.results[i].Xsele = "X";
+            //if (selectedList.Contains(dataItem.SadadNo))
+            //    {
+            //    VatInstalments.d.VTIASet.results[i].Xsele = "X";
 
-                //    }
-                //    else
-                //    {
-                //    VatInstalments.d.VTIASet.results[i].Xsele = "";
+            //    }
+            //    else
+            //    {
+            //    VatInstalments.d.VTIASet.results[i].Xsele = "";
 
-                //    }
+            //    }
 
 
-                //}
+            //}
 
             request.d.VTIASet = VatInstalments.d.VTIASet.results;
 
@@ -2660,7 +2660,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsLoading = true;
                 });
 
-                
+
 
                 request = BuildRequestObject();
 
@@ -2750,41 +2750,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             Stream stream = null;
             try
             {
-                
-                    var dependency = DependencyService.Get<ILocalFileProvider>();
-                    if (dependency == null)
-                    {
-                        // DisplayAlert("Error loading PDF", "Computer says no", "OK");
-                        return;
-                    }
-                    var fileName = Guid.NewGuid().ToString();
-                    // Download PDF locally for viewing
-                    using (System.Net.WebClient client = new System.Net.WebClient())
-                    {
-                        try
-                        {
 
-                            String downloadurl = Constants.downloadFile + "'" + VATReferanceNumber + "')/$value";
+                var dependency = DependencyService.Get<ILocalFileProvider>();
+                if (dependency == null)
+                {
+                    // DisplayAlert("Error loading PDF", "Computer says no", "OK");
+                    return;
+                }
+                var fileName = Guid.NewGuid().ToString();
+                // Download PDF locally for viewing
+                using (System.Net.WebClient client = new System.Net.WebClient())
+                {
+                    try
+                    {
 
-                       // String downloadurl = "http://www.africau.edu/images/default/sample.pdf";
+                        String downloadurl = Constants.downloadFile + "'" + VATReferanceNumber + "')/$value";
+
+                        // String downloadurl = "http://www.africau.edu/images/default/sample.pdf";
 
                         StreamForDownloadURL = client.OpenRead(downloadurl);
-                            BinaryReader br = new BinaryReader(StreamForDownloadURL);
-                            byte[] result = br.ReadBytes((int)StreamForDownloadURL.Length);
-                            string strBase64 = Convert.ToBase64String(result);
-                            if (string.IsNullOrEmpty(strBase64) != true)
-                            {
-                                byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
-                                stream = new MemoryStream(sPDFDecoded);
-                                StreamForDownloadURL = stream;
-                            }
-                            localPath =
-                          Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
-                        }
-                        catch (Exception)
+                        BinaryReader br = new BinaryReader(StreamForDownloadURL);
+                        byte[] result = br.ReadBytes((int)StreamForDownloadURL.Length);
+                        string strBase64 = Convert.ToBase64String(result);
+                        if (string.IsNullOrEmpty(strBase64) != true)
                         {
+                            byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
+                            stream = new MemoryStream(sPDFDecoded);
+                            StreamForDownloadURL = stream;
                         }
-                    
+                        localPath =
+                      Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
+                    }
+                    catch (Exception)
+                    {
+                    }
+
                     //    using (var httpClient = new HttpClient())
                     //{
                     //    var pdfStream = Task.Run(() => httpClient.GetStreamAsync("https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value")).Result;
@@ -2804,10 +2804,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
                 else
                 {
-                   
+
                 }
 
-                   
+
             }
             catch (Exception e)
             {

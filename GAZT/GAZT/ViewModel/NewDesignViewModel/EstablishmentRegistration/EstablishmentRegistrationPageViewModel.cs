@@ -801,6 +801,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Outlet variables
+        private string _searchText = string.Empty;
+        public string SearchText {
+            get => _searchText;
+            set
+            {
+                _searchText = value == null ? string.Empty : value;
+                SearchableOutletData?.Clear();
+                OutletData.Where(i => i.Actnm.StartsWith(_searchText)).ToList().ForEach(j => {
+                    SearchableOutletData.Add(j);
+                });
+                RaisePropertyChanged(SearchText);
+            }
+        }
         private ObservableCollection<OutletItem> _outletData = new ObservableCollection<OutletItem>();
         public ObservableCollection<OutletItem> OutletData
         {
@@ -811,6 +824,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     _outletData = value;
                     RaisePropertyChanged(nameof(OutletData));
+                }
+            }
+        }
+        private ObservableCollection<OutletItem> _searchableOutletData = new ObservableCollection<OutletItem>();
+        public ObservableCollection<OutletItem> SearchableOutletData
+        {
+            get => _searchableOutletData;
+            private set
+            {
+                if (value != null && value.Count > 0)
+                {
+                    _searchableOutletData = value;
+                    RaisePropertyChanged(nameof(SearchableOutletData));
                 }
             }
         }
@@ -2137,7 +2163,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             //if (_outletTempData.Count > 0)
             //{
                 OutletData.Clear();
-                _outletTempData.ForEach(_out => OutletData.Add(_out));
+                _outletTempData.ForEach(_out => {
+                    OutletData.Add(_out);
+                    SearchableOutletData.Add(_out);
+                });
             //}
         }
         private void openNewOutlet()
@@ -2657,13 +2686,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
                     SelectedDOB = string.Empty;
                     FirstName = string.Empty;
+                    LastName = string.Empty;
+                    FatherName = string.Empty;
+                    GrandFatherName = string.Empty;
+                    FamilyName = string.Empty;
+                    Initial = string.Empty;
                     SelectedGender = string.Empty;
                     SelectedTaxpayerPDNationality = null;
                     SelectedCitizen = null;
                     SelectedResidence = null;
-                    SelectedEntityType = string.Empty;
-                    SelectedTaxPayerType = string.Empty;
-                    SelectedRegNationalityType = string.Empty;
+                    GCCIDType = string.Empty;
+                    GCCIDTypeIdNumberValue = string.Empty;
                     break;
                 case EstablishmentRegistrationTabsEnum.PassportDetails:
                     PassportNumber = string.Empty;
@@ -2687,7 +2720,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 case EstablishmentRegistrationTabsEnum.RegistrationType:
                 default:
                     SelectedReportingBranch = null;
+                    SelectedEntityType = string.Empty;
+                    SelectedTaxPayerType = string.Empty;
                     SelectedTpresidence = string.Empty;
+                    SelectedRegNationalityType = string.Empty;
                     SelectedOrgNonResident = string.Empty;
                     SelectedOrgNonResidentOptions = string.Empty;
                     SelectedOrgNonResidentActivity = string.Empty;
