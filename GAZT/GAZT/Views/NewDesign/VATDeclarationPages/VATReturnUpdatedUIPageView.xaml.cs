@@ -597,7 +597,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
         }
+        public void VATViewAttachments()
+        {
+            try
+            {
+                PopupNavigation.Instance.PushAsync(new VATDeclarationAttachmentPageView(viewModel.VATDeclarationData));
+            }
+            catch(Exception ex)
+            {
 
+            }
+        }
         public async void getRefundClickedCommand()
         {
             try
@@ -719,7 +729,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     DisplayNotePopUp();
                                     break;
                                 case ArButtons.المرفقات:
-                                // viewModel.VATViewAttachments();
+                                    VATViewAttachments();
                                 break;
                                 case ArButtons.إلغاء:
                                     viewModel.VoidMsg();
@@ -790,8 +800,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     DisplayNotePopUp();
                                 break;
                                 case Buttons.Attachments:
-                                // viewModel.VATViewAttachments();
-                                break;
+                                    VATViewAttachments();
+                                    break;
                                 case Buttons.Void:
                                     viewModel.VoidMsg();
                                 break;

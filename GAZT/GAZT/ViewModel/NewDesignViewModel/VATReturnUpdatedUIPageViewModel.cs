@@ -5242,10 +5242,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //{
             //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZValidate);
             //}
-            //else if (ButtonName == "Attachments")
-            //{
-            //    DummyListOfActionButtonsApplicable.Add(AppResources.Attachments);
-            //}
+            else if (ButtonName == "Attachments")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.Attachments);
+            }
             else if (ButtonName == "Reset")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZReset);
