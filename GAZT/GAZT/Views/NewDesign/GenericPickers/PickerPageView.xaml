@@ -30,8 +30,8 @@
                 </border:SfBorder>
                 <StackLayout Margin="24,8,24,0" >
 
-                    <Label Text="{Binding PickerTitle}" 
-                                    HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
+                   <Label Text="{Binding PickerTitle}" 
+                                    HorizontalOptions="EndAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                 Margin="0,16,0,0" BackgroundColor="Transparent" />
                     <syncfusion:SfPicker IsOpen="True" Style="{StaticResource PickerStyle}" ItemsSource="{Binding PickerItemSource}"
 								Margin="2" HeaderBackgroundColor="Aqua"
