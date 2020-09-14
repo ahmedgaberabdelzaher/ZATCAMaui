@@ -4497,7 +4497,7 @@
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
     <value>المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
   </data>
-       <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
+  <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
     <value>قرار وزاري للموافقة على عملية الاندماج</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
@@ -4946,7 +4946,7 @@
     <value>طلب خطة التقسيط</value>
     <comment>Title</comment>
   </data>
- <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
     <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
@@ -4988,7 +4988,7 @@
   <data name="ZakatInstallmentSummaryTaxPeriod" xml:space="preserve">
     <value>الفترة الضريبية</value>
   </data>
-<data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
+  <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
     <value>العقوبات</value>
   </data>
   <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
@@ -5735,7 +5735,7 @@
   <data name="ZakatClearedAmount" xml:space="preserve">
     <value>المبلغ المدفوع</value>
   </data>
- <data name="ZakatDueAmount" xml:space="preserve">
+  <data name="ZakatDueAmount" xml:space="preserve">
     <value>المبلغ المستحق (ريال سعودي)</value>
   </data>
   <data name="ZZZDBMyCertificates" xml:space="preserve">
@@ -6133,7 +6133,7 @@
     <value>رمز التحقق غير صحيح</value>
   </data>
   <data name="SameTincantbeaddedasfinancialrepresentative" xml:space="preserve">
-    <value>نفس المكلف لا يمكن إضافته كممثل مجموعة</value>
+    <value>نفس المكلف لا يمكن إضافته كممثل مالي</value>
   </data>
   <data name="NDBranchLocator" xml:space="preserve">
     <value>Branch Locator</value>
@@ -7403,7 +7403,7 @@
   <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
   </data>
-   <data name="SubmitZakatReturn" xml:space="preserve">
+  <data name="SubmitZakatReturn" xml:space="preserve">
     <value>رفع اقرار الزكاة التقديري</value>
   </data>
   <data name="DeclareVATReturn" xml:space="preserve">
@@ -7412,13 +7412,13 @@
   <data name="ReadInbox" xml:space="preserve">
     <value>قراءة المراسلات</value>
   </data>
-<data name="GetSupport" xml:space="preserve">
+  <data name="GetSupport" xml:space="preserve">
     <value>الدعم الفني</value>
- </data>
-     <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+  </data>
+  <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
     <value>البحث بالرقم المرجعي</value>
   </data>
-    <data name="VatInstalment5MB" xml:space="preserve">
+  <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
   </data>
 </root>
