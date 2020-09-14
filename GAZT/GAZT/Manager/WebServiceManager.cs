@@ -1772,7 +1772,14 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    if (_vATDeclarationD != null && _vATDeclarationD.d == null)
+                    {
+                        return _vATDeclarationD;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             else

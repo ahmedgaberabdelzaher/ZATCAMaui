@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -49,6 +50,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                  
                 }
+
+                NotesPopUpPageViewModel.NoteString = string.Empty;
+                NotesPopUpPageViewModel.NoteCount = 0;
+                GAZTNewDesignVATReturnUpdatedUIPageViewModel.IsFirstTimeForNote = true;
+
                 viewModel.IsAmendClicked = false;
                 viewModel.IsVoidClicked = false;
                 viewModel.IsResetClicked = false;
@@ -627,6 +633,36 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        public async void getAddNoteCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "AddNoteForVATDeclaration", async (sender, arg) =>
+                {
+                    AddNote();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void getClearNoteCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "ClearNoteForVATDeclaration", async (sender, arg) =>
+                {
+                    AddNote();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public async void getNoCommand()
         {
             try
@@ -677,11 +713,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             switch (buttonId)
                             {
                                 case ArButtons.إضافةملاحظات:
-                                //viewModel.VATReturnAddNote();
-                                break;
+                                    AddNotePopUp();
+                                    break;
                                 case ArButtons.عرضملاحظات:
-                                //  viewModel.VATReturnGetNotes();
-                                break;
+                                    DisplayNotePopUp();
+                                    break;
                                 case ArButtons.المرفقات:
                                 // viewModel.VATViewAttachments();
                                 break;
@@ -748,10 +784,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             switch (buttonId)
                             {
                                 case Buttons.CreateNotes:
-                                //viewModel.VATReturnAddNote();
+                                    AddNotePopUp();
                                 break;
                                 case Buttons.DisplayNotes:
-                                //viewModel.VATReturnGetNotes();
+                                    DisplayNotePopUp();
                                 break;
                                 case Buttons.Attachments:
                                 // viewModel.VATViewAttachments();
@@ -818,6 +854,30 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        public void AddNotePopUp()
+        {
+            try
+            {
+                PopupNavigation.Instance.PushAsync(new NotesPopUpPageView(viewModel.VATDeclarationData));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void DisplayNotePopUp()
+        {
+            try
+            {
+                PopupNavigation.Instance.PushAsync(new NotesDescriptionPopUpPageView(viewModel.VATDeclarationData));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         protected override void OnDisappearing()
         {
             try
@@ -829,6 +889,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Unsubscribe<object, string>(this, "RefundClicked");
                 MessagingCenter.Unsubscribe<object, string>(this, "RefundClickedForStop");
                 MessagingCenter.Unsubscribe<object, string>(this, "Refundsubmitted");
+                MessagingCenter.Unsubscribe<object, string>(this, "AddNoteForVATDeclaration");
+                MessagingCenter.Unsubscribe<object, string>(this, "ClearNoteForVATDeclaration");
 
 
 
@@ -859,6 +921,255 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             getRefundClickedCommand();
             getSubmittedFromRefundCommand();
             getRefundClickedForStopLoaderCommand();
+            getAddNoteCommand();
+            getClearNoteCommand();
+
+
+            AddNote();
+        }
+
+        public void AddNote()
+        {
+            try
+            {
+                if (NotesPopUpPageViewModel.IsComingFromNotePage == true && !string.IsNullOrEmpty(NotesPopUpPageViewModel.NoteString))
+                {
+                    if (App.ICRStatus == "E0001")
+                    {
+                        SetNote();
+                    }
+                    if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057" || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                    {
+                        Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                        if (note != null)
+                        {
+                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                            {
+                                item.Strline = NotesPopUpPageViewModel.NoteString;
+                                item.Tdline = NotesPopUpPageViewModel.NoteString;
+                            }
+                            NotesPopUpPageViewModel.IsComingFromNotePage = false;
+                        }
+                        else
+                        {
+                            SetNoteForDraftModes();
+                        }
+                    }
+                    //if(App.ICRStatus == "E0045" && viewModel.IsAmendClicked==true && AddNotePageViewModel.ClearNoteClicked == false)
+                    //{
+                    //    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                    //    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+                    //    if (note != null)
+                    //    {
+                    //        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    //        //{
+                    //        //    item.DataVersionz = "00001";
+                    //        //}
+                    //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    //        if (noteForEdited != null)
+                    //        {
+                    //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    //            {
+                    //                item.Strline = AddNotePageViewModel.NoteString;
+                    //                item.Tdline = AddNotePageViewModel.NoteString;
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            SetNoteForBilledAndAmend();
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    //        if (noteForEdited != null)
+                    //        {
+                    //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    //            {
+                    //                item.Strline = AddNotePageViewModel.NoteString;
+                    //                item.Tdline = AddNotePageViewModel.NoteString;
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            SetNoteForBilledAndAmend();
+                    //        }
+                    //    }
+                    //}
+                    //if (App.ICRStatus == "E0006" && viewModel.IsAmendClicked == true && AddNotePageViewModel.ClearNoteClicked == false)
+                    //{
+                    //    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                    //    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+                    //    if (note != null)
+                    //    {
+                    //        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    //        //{
+                    //        //    item.DataVersionz = "00001";
+                    //        //}
+                    //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    //        if (noteForEdited != null)
+                    //        {
+                    //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    //            {
+                    //                item.Strline = AddNotePageViewModel.NoteString;
+                    //                item.Tdline = AddNotePageViewModel.NoteString;
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            SetNoteForBilledAndAmend();
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                    //        if (noteForEdited != null)
+                    //        {
+                    //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                    //            {
+                    //                item.Strline = AddNotePageViewModel.NoteString;
+                    //                item.Tdline = AddNotePageViewModel.NoteString;
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            SetNoteForBilledAndAmend();
+                    //        }
+                    //    }
+                    //}
+                    if (NotesPopUpPageViewModel.ClearNoteClicked == true)
+                    {
+                        Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                        if (note != null)
+                        {
+                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                            {
+                                item.Strline = NotesPopUpPageViewModel.NoteString;
+                                item.Tdline = NotesPopUpPageViewModel.NoteString;
+                            }
+                            NotesPopUpPageViewModel.IsComingFromNotePage = false;
+                            NotesPopUpPageViewModel.NoteString = string.Empty;
+                        }
+                        NotesPopUpPageViewModel.ClearNoteClicked = false;
+                    }
+                    NotesPopUpPageViewModel.NoteString = string.Empty;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        public void SetNote()
+        {
+            try
+            {
+                //if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.NOTESSet != null && viewModel.VATDeclarationData.d.NOTESSet.results != null && viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
+                //{
+
+                //}
+                //else
+                //{
+                //    viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                //}
+                viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                Note objNote = new Note();
+                int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+                objNote.__metadata = new Metadata2();
+                objNote.__metadata.id = Url;
+                objNote.__metadata.uri = Url;
+                objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+                objNote.Notenoz = (count + 1).ToString();
+                objNote.DataVersionz = "00000";
+                objNote.Refnamez = String.Empty;
+                objNote.XInvoicez = String.Empty;
+                objNote.XObsoletez = string.Empty;
+                objNote.Rcodez = "VATR";
+                objNote.ByPusrz = string.Empty;
+                objNote.Tdformat = string.Empty;
+                objNote.Tdline = string.Empty;
+                objNote.Erfusrz = viewModel.VATDeclarationData.d.Gpartz;
+                objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
+                objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
+                objNote.AttByz = "TP";
+                objNote.Noteno = (count + 1).ToString();
+                objNote.Lineno = 1;
+                objNote.ElemNo = 0;
+                objNote.Strdt = string.Empty;
+                objNote.Strtime = string.Empty;
+                objNote.Sect = "VAT Return General Note";
+                objNote.Strline = NotesPopUpPageViewModel.NoteString;
+                objNote.Tdline = NotesPopUpPageViewModel.NoteString;
+                viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
+                NotesPopUpPageViewModel.IsComingFromNotePage = false;
+                //AddNotePageViewModel.NoteString = string.Empty;
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        public void SetNoteForDraftModes()
+        {
+            try
+            {
+                if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.NOTESSet != null && viewModel.VATDeclarationData.d.NOTESSet.results != null && viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
+                {
+                    if (App.ICRStatus == "E0056" || App.ICRStatus == "E0057" || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                    {
+
+                    }
+                    else
+                    {
+                        viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                    }
+                }
+                else
+                {
+                    viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                }
+
+
+              //  viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                Note objNote = new Note();
+                int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+                objNote.__metadata = new Metadata2();
+                objNote.__metadata.id = Url;
+                objNote.__metadata.uri = Url;
+                objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+                objNote.Notenoz = (count + 1).ToString();
+                objNote.DataVersionz = "00000";
+                objNote.Refnamez = String.Empty;
+                objNote.XInvoicez = String.Empty;
+                objNote.XObsoletez = string.Empty;
+                objNote.Rcodez = "VATR";
+                objNote.ByPusrz = string.Empty;
+                objNote.Tdformat = string.Empty;
+                objNote.Tdline = string.Empty;
+                objNote.Erfusrz = viewModel.VATDeclarationData.d.Gpartz;
+                objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
+                objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
+                objNote.AttByz = "TP";
+                objNote.Noteno = (count + 1).ToString();
+                objNote.Lineno = 1;
+                objNote.ElemNo = 0;
+                objNote.Strdt = string.Empty;
+                objNote.Strtime = string.Empty;
+                objNote.Sect = "VAT Return General Note";
+                objNote.Strline = NotesPopUpPageViewModel.NoteString;
+                objNote.Tdline = NotesPopUpPageViewModel.NoteString;
+                viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
+                NotesPopUpPageViewModel.IsComingFromNotePage = false;
+                //AddNotePageViewModel.NoteString = string.Empty;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public async Task IntilizeAsync()
