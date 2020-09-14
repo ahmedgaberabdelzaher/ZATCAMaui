@@ -64,29 +64,31 @@
         </Grid>
      <StackLayout Padding="10" Spacing="10" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalOptions="End">
 
-          <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
+          <border:SfBorder x:Name="ZAKATReturn"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
                    <!--<Image Source="menu_return.png" VerticalOptions="Center">
                        <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
                                                     </Image.GestureRecognizers>
                    </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SubmitZakatReturn}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
+                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SubmitZakatReturn}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center">
                        <custom:CustomLabel.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClickedForZAKAT"/>
                                                     </custom:CustomLabel.GestureRecognizers>
                    </custom:CustomLabel>
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyReturnsClicked}" BackgroundColor="White" TextColor="Black"  WidthRequest="150"/>-->
-
                 <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClickedForZAKAT"/>
                                                     </StackLayout.GestureRecognizers>
                  </StackLayout>
+              <border:SfBorder.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForZAKAT"/>
+                                                    </border:SfBorder.GestureRecognizers>
+         
               </border:SfBorder>             
         
 
 
-         <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
+         <border:SfBorder x:Name="VATReturn"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
                    <!--<Image Source="menu_return.png" VerticalOptions="Center">
                        <Image.GestureRecognizers>
@@ -104,11 +106,15 @@
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClickedForVATDeclaration"/>
                                                     </StackLayout.GestureRecognizers>
                  </StackLayout>
+              <border:SfBorder.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForVATDeclaration"/>
+                                                    </border:SfBorder.GestureRecognizers>
+              
               </border:SfBorder>
 
 
 
-          <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
+          <border:SfBorder x:Name="ReadInbox"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
                    <!--<Image Source="menu_return.png" VerticalOptions="Center">
                        <Image.GestureRecognizers>
@@ -129,7 +135,7 @@
               </border:SfBorder>
 
 
- <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
+ <border:SfBorder x:Name="GetSupport"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
                    <!--<Image Source="menu_return.png" VerticalOptions="Center">
                        <Image.GestureRecognizers>
@@ -157,7 +163,7 @@
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZCorrespondenceTitle}"  Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnCorrespondanceClicked}" />
                     </StackLayout>-->
 
-                <Image Source="ic_Close_Circle.png" HorizontalOptions="Center" >
+                <Image x:Name="CloseIcon" Source="ic_Close_Circle.png" HorizontalOptions="Center" >
                     
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>
