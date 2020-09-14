@@ -6702,7 +6702,7 @@
     <value>طلب خطة تقسيط للزكاة</value>
   </data>
   <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
-    <value>الرقم المرجعي</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
     <value>مدة الخطة</value>
@@ -7430,4 +7430,7 @@
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
   </data>
+    <data name="questionmark" xml:space="preserve">
+  <value>؟</value>
+</data>
 </root>
