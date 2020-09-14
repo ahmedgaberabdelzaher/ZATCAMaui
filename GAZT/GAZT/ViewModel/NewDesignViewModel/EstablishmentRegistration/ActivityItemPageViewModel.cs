@@ -587,7 +587,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnMainGroupSelectButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(activityList?.act_groupSet?.results);
+                var dropDownData = activityList?.act_groupSet?.results?.ToList();
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
@@ -610,16 +611,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         Console.WriteLine(e.StackTrace);
                     }
-                    finally
-                    {
-                        updateActivityList((item as ActivityGroupSubGroup).IndSector);
-                    }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             OnSubGroupSelectButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(activityList?.act_subgroupSet?.results);
+                var dropDownData = new List<ActivityGroupSubGroup>();
+                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                    dropDownData = activityList?.act_subgroupSet?.results?.Where(i => i.IndSector.StartsWith(CRMainGroup?.IndSector)).ToList();
+                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                    dropDownData = activityList?.act_subgroupSet?.results?.Where(i => i.IndSector.StartsWith(LicenseMainGroup?.IndSector)).ToList();
+
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
@@ -639,32 +642,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         Console.WriteLine(e.StackTrace);
                     }
-                    finally
-                    {
-                        updateActivityList((item as ActivityGroupSubGroup).IndSector);
-                    }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             OnAcitivitySelectButtonClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(activityList?.activitySet?.results);
+                var dropDownData = new List<ActivityGroupSubGroup>();
+                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                    dropDownData = activityList?.activitySet?.results?.Where(i => i.IndSector.StartsWith(CRSubGroup?.IndSector)).ToList();
+                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                    dropDownData = activityList?.activitySet?.results?.Where(i => i.IndSector.StartsWith(LicenseSubGroup?.IndSector)).ToList();
+
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
                     {
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                        {
                             CRAcitivity = item as ActivityGroupSubGroup;
+                            CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
+                            CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0,4))).FirstOrDefault();
+                        }
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                        {
                             LicenseAcitivity = item as ActivityGroupSubGroup;
+                            LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
+                            LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
+                        }
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.StackTrace);
-                    }
-                    finally
-                    {
-                        updateActivityList((item as ActivityGroupSubGroup).IndSector);
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -938,7 +947,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             MainActivity = false;
                         }
                         updateActivityList(SelectedLicenseItem?.Activity);
-                        var a = activityList;
+                        //var a = activityList;
                         LicenseAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedLicenseItem?.Activity).FirstOrDefault();
                         LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActMgrp).FirstOrDefault();
                         LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActSgrp).FirstOrDefault();

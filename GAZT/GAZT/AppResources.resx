@@ -518,7 +518,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Invalid captcha</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>No invoices available</value>
+    <value>There are no bills available</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>Loading...</value>
@@ -770,7 +770,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>CR Number</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>reference number has to be 10 digits</value>
+    <value>Reference number has to be 10 digits</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
@@ -806,7 +806,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>reference number has to be 15 digits</value>
+    <value>Reference number has to be 15 digits</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>Welcome,</value>
@@ -4508,6 +4508,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
     <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
   </data>
+      <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
+    <value>Attachments - Ministerial Resolution to approve Merger</value>
+  </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
     <value>Attachments - Ministerial Resolution to approve the Acquisition process</value>
   </data>
@@ -4546,6 +4549,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value>Select Start Date</value>
+  </data>
+      <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
   </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
@@ -4708,6 +4717,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
+  </data>
+    
+  <data name="VatReactivationDashboardTitle" xml:space="preserve">
+    <value>Reactivation of VAT Account</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
@@ -4915,7 +4928,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Number of Instalments</value>
   </data>
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
-    <value>Periodic Instalment</value>
+    <value>Monthly Instalment</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
     <value>Request Instalment Plan</value>
@@ -5800,7 +5813,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>The Value of Zakat dues</value>
   </data>
   <data name="CRYourContractisreleasedsuccessfully" xml:space="preserve">
-     <value>We have received your Contract Release Application</value>
+    <value>We have received your Contract Release Application</value>
   </data>
   <data name="CRReferenceNumber" xml:space="preserve">
     <value>Reference Number</value>
@@ -6771,7 +6784,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Contact Person Name</value>
   </data>
   <data name="VRVatReviewRequest" xml:space="preserve">
-    <value>Vat Review Request</value>
+    <value>VAT Review Request</value>
   </data>
   <data name="VRNewObjectionorReview" xml:space="preserve">
     <value>New Objection or Review</value>
@@ -7350,87 +7363,6 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZOWithdrawlTaxType" xml:space="preserve">
     <value>Tax Type</value>
   </data>
-    <data name="ZOAttachments" xml:space="preserve">
-    <value>Attachments</value>
-  </data>
-  <data name="ZOCompletebelowdetails" xml:space="preserve">
-    <value>Complete below details</value>
-  </data>
-  <data name="ZODeclaration" xml:space="preserve">
-    <value>Declaration</value>
-  </data>
-  <data name="ZOObjectionDetails" xml:space="preserve">
-    <value>Objection Details</value>
-  </data>
-  <data name="ZOObjectionReason" xml:space="preserve">
-    <value>Objection Reason</value>
-  </data>
-  <data name="ZOWritteyourObjectionReason" xml:space="preserve">
-    <value>Write your Objection Reason</value>
-  </data>
-  <data name="ZOReturnDetails" xml:space="preserve">
-    <value>Return Details</value>
-  </data>
-  <data name="ZOFiscalYear" xml:space="preserve">
-    <value>Fiscal Year</value>
-  </data>
-  <data name="ZOFinancialPeriod" xml:space="preserve">
-    <value>Financial Period</value>
-  </data>
-  <data name="ZOReturnReferenceNumber" xml:space="preserve">
-    <value>Return Reference Number</value>
-  </data>
-  <data name="ZOTaxType" xml:space="preserve">
-    <value>Tax Type</value>
-  </data>
-  <data name="ZOAssessmentAmountGAZT" xml:space="preserve">
-    <value>Assessment Amount GAZT</value>
-  </data>
-  <data name="ZOViewReturn" xml:space="preserve">
-    <value>View Return</value>
-  </data>
-  <data name="ZORevisedAmount" xml:space="preserve">
-    <value>Revised Amount</value>
-  </data>
-  <data name="ZODisputeAmount" xml:space="preserve">
-    <value>Dispute Amount</value>
-  </data>
-  <data name="ZOWithdrawlAssessmentAmount" xml:space="preserve">
-    <value>Assessment Amount</value>
-  </data>
-  <data name="ZOWithdrawlAssessmentYear" xml:space="preserve">
-    <value>Assessment Year</value>
-  </data>
-  <data name="ZOWithdrawlCurrency" xml:space="preserve">
-    <value>Currency</value>
-  </data>
-  <data name="ZOWithdrawlDetailDescription" xml:space="preserve">
-    <value>Detail Description</value>
-  </data>
-  <data name="ZOWithdrawlDisputeAmount" xml:space="preserve">
-    <value>Dispute Amount</value>
-  </data>
-  <data name="ZOWithdrawlObjectionDetails" xml:space="preserve">
-    <value>Objection Details</value>
-  </data>
-  <data name="ZOWithdrawlObjectionNo" xml:space="preserve">
-    <value>Objection No</value>
-  </data>
-  <data name="ZOWithdrawlPeriodFrom" xml:space="preserve">
-    <value>Period From</value>
-  </data>
-  <data name="ZOWithdrawlPeriodTo" xml:space="preserve">
-    <value>Period To</value>
-  </data>
-  <data name="ZOWithdrawlRefNumberOfAssessmen" xml:space="preserve">
-    <value>Ref Number of Assessmen</value>
-  </data>
-  <data name="ZOWithdrawlRevisedAmount" xml:space="preserve">
-    <value>Revised Amount</value>
-  </data>
-  <data name="ZOWithdrawlTaxType" xml:space="preserve">
-    <value>Tax Type</value>
-  </data>
   <data name="ZOTerms" xml:space="preserve">
     <value>1. Taxpayer can object within 60 days from the notice of assessment or reassessment.
 2. Taxpayer should pay the full undisputed amount (Revised Amount) before objecting.
@@ -7475,47 +7407,23 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZOSearchReturnReferenceNumber" xml:space="preserve">
     <value>Search Return Reference Number</value>
   </data>
-    <data name="OZObjectionDate" xml:space="preserve">
-    <value>Objection Date</value>
-  </data>
-  <data name="ZOObjectionType" xml:space="preserve">
-    <value>Objection Type</value>
-  </data>
-    <data name="ZOReasonOfObjection" xml:space="preserve">
-  <value>Reason of the Objection</value>
-</data>
-    <data name="ZOReasonWithDraw" xml:space="preserve">
-  <value>Withdraw</value>
-</data>
-    <data name="ZOFaxNo" xml:space="preserve">
-    <value>Fax No.</value>
-  </data>
-  <data name="ZOFullName" xml:space="preserve">
-    <value>Full Name</value>
-  </data>
-  <data name="ZOLevelStreetNumber" xml:space="preserve">
-    <value>Level &amp; Street Number</value>
-  </data>
-  <data name="ZONameOfTheApplicant" xml:space="preserve">
-   <value>Name of the applicant</value>
-  </data>
-  <data name="ZOPhoneNo" xml:space="preserve">
-    <value>Phone No.</value>
-  </data>
-  <data name="ZOPositionCapacity" xml:space="preserve">
-   <value>Position/ Capacity</value>
-  </data>
-  <data name="ZOSearchReturnReferenceNumber" xml:space="preserve">
-    <value>Search Return Reference Number</value>
-  </data>
-  <data name="ZOSelectReturn" xml:space="preserve">
-    <value>Select Return</value>
-  </data>
   <data name="OZObjectionDate" xml:space="preserve">
     <value>Objection Date</value>
   </data>
   <data name="ZOObjectionType" xml:space="preserve">
     <value>Objection Type</value>
+  </data>
+  <data name="ZOReasonOfObjection" xml:space="preserve">
+    <value>Reason of the Objection</value>
+  </data>
+  <data name="ZOReasonWithDraw" xml:space="preserve">
+    <value>Withdraw</value>
+  </data>
+  <data name="ZONameOfTheApplicant" xml:space="preserve">
+    <value>Name of the applicant</value>
+  </data>
+  <data name="ZOSelectReturn" xml:space="preserve">
+    <value>Select Return</value>
   </data>
   <data name="ZakatInstalmentBillAmount" xml:space="preserve">
     <value>Bill Amount</value>
@@ -7571,19 +7479,19 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZOWithdrawGeneralAttachmentTwo" xml:space="preserve">
     <value>General Attachment 2</value>
   </data>
-    <data name="ZOObjectionissubmittedsuccessfully" xml:space="preserve">
-  <value>Your Zakat Objection is submitted successfully</value>
-</data>
-    <data name="ZOWIthdrawInstructions" xml:space="preserve">
+  <data name="ZOObjectionissubmittedsuccessfully" xml:space="preserve">
+    <value>Your Zakat Objection is submitted successfully</value>
+  </data>
+  <data name="ZOWIthdrawInstructions" xml:space="preserve">
     <value>1. Attach a request letter displaying the with a reason for this request</value>
   </data>
-    <data name="ZONameOfTheApplicantStar" xml:space="preserve">
- <value>Name of the applicant * </value>
-</data>
-<data name="ZOPositionCapacityStar" xml:space="preserve">
- <value>Position/ Capacity * </value>
-</data>
-    <data name="ZaaktInstalmentReturnDueDate" xml:space="preserve">
+  <data name="ZONameOfTheApplicantStar" xml:space="preserve">
+    <value>Name of the applicant * </value>
+  </data>
+  <data name="ZOPositionCapacityStar" xml:space="preserve">
+    <value>Position/ Capacity * </value>
+  </data>
+  <data name="ZaaktInstalmentReturnDueDate" xml:space="preserve">
     <value>Return Due date</value>
   </data>
   <data name="ZakatInstalmentReturnCreationDate" xml:space="preserve">
@@ -7592,4 +7500,25 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
     <value>Return Tax Type</value>
   </data>
+  <data name="SubmitZakatReturn" xml:space="preserve">
+    <value>Submit Zakat return</value>
+  </data>
+  <data name="DeclareVATReturn" xml:space="preserve">
+    <value>Declare VAT return</value>
+  </data>
+  <data name="ReadInbox" xml:space="preserve">
+    <value>Read inbox</value>
+  </data>
+<data name="GetSupport" xml:space="preserve">
+    <value>Get Support</value>
+  </data>
+    <data name="VatInstalment5MB" xml:space="preserve">
+    <value>5MB</value>
+  </data>
+<data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+    <value>Search by SADAD Number</value>
+  </data>
+    <data name="questionmark" xml:space="preserve">
+  <value>?</value>
+</data>
 </root>

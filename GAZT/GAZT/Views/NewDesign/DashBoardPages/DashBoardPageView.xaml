@@ -474,10 +474,20 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="amount_white.png">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VatReactivationDashboardTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="VATReactivation_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>-->
+
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="ic_Installplan.png">
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
                                     </StackLayout.GestureRecognizers>
@@ -571,6 +581,16 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                   <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Vat_Registration_Details_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
                                  <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
@@ -799,7 +819,8 @@
                                 CornerRadius="12"
                                 BorderWidth="0"
                                 HorizontalOptions="Center"
-                                WidthRequest="24" HeightRequest="24" />
+                                WidthRequest="24" HeightRequest="24"
+                                Clicked="OnQuickActionClicked"/>
 
                             <!--<Image Source="quick_action_2.png"
                                    BackgroundColor="{StaticResource Primary}"
@@ -853,6 +874,8 @@
                     </DataTrigger>
                 </StackLayout.Triggers>
             </StackLayout>
+
+
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>

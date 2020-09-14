@@ -106,9 +106,26 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var item = e.ItemData as ZakatListModel;
-            var index = viewModel.ZakatListData.IndexOf(item);
-            viewModel.GetSummaryDetailsClickedAsync(index);
-            viewModel.EnableZakatInstalmentSummary();
+
+            if(item.statusType == "E0013")
+            {
+                App.selectedZakatItem = item.fbNum;
+
+
+                viewModel._navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+
+            }
+            else {
+
+                var index = viewModel.ZakatListData.IndexOf(item);
+
+                viewModel.GetSummaryDetailsClickedAsync(index);
+                viewModel.EnableZakatInstalmentSummary();
+            }
+
+
+
+            
         }
 
         private void RevokListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)

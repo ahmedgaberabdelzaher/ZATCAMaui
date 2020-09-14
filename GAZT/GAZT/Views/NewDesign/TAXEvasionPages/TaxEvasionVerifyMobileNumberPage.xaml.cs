@@ -87,7 +87,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 StringBuilder Message = new StringBuilder();
                 frmMobile.HasError = true;
-                Message.Append(AppResources.ZZPleasefillthemandatoryfields);
+                Message.AppendLine(AppResources.ZZPleasefillthemandatoryfields);
                 PopUp popUp = new PopUp();
                 popUp.Message = Message.ToString();
                 //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
@@ -152,25 +152,21 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
                 if (viewModel.MobileNumber.Substring(0, 1) == "0")
                 {
-                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
+                    Message.AppendLine(AppResources.ZZMobilenumberCannotStartWith0);
 
                 }
                 if (viewModel.MobileNumber.Substring(0, 1) != "5")
                 {
-                    Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+                    Message.AppendLine(AppResources.ZZMobilenumberhastostartwithnumber5);
 
-                }
-                if (viewModel.MobileNumber.Substring(0, 1) == "0")
-                {
-                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
                 }
                 if (viewModel.MobileNumber.Length < 9)
                 {
-                    if (Message.Length > 0)
-                    {
-                        Message.Append(Environment.NewLine);
-                    }
-                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                    //if (Message.Length > 0)
+                    //{
+                    //    Message.AppendLine(Environment.NewLine);
+                    //}
+                    Message.AppendLine(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                 }
                 if (Message.Length > 0)
                 {

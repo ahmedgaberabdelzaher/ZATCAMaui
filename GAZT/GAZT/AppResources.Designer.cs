@@ -7608,6 +7608,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationAttachmentMerger {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentMerger", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationAttachmentMinisterialResponse {
             get {
                 return ResourceManager.GetString("TinDeregistrationAttachmentMinisterialResponse", resourceCulture);
@@ -7683,6 +7689,18 @@ namespace EGAZT {
         public static string VatDeregStartDatePickerTitle {
             get {
                 return ResourceManager.GetString("VatDeregStartDatePickerTitle", resourceCulture);
+            }
+        }
+        
+        public static string VATRegistrationDetails {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetails", resourceCulture);
+            }
+        }
+        
+        public static string VATRegistrationDetailsTitle {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetailsTitle", resourceCulture);
             }
         }
         
@@ -8007,6 +8025,12 @@ namespace EGAZT {
         public static string VatDeregistrationVoidMessage {
             get {
                 return ResourceManager.GetString("VatDeregistrationVoidMessage", resourceCulture);
+            }
+        }
+        
+        public static string VatReactivationDashboardTitle {
+            get {
+                return ResourceManager.GetString("VatReactivationDashboardTitle", resourceCulture);
             }
         }
         
@@ -13413,6 +13437,48 @@ namespace EGAZT {
         public static string ZakatInstalmentReturnTaxType {
             get {
                 return ResourceManager.GetString("ZakatInstalmentReturnTaxType", resourceCulture);
+            }
+        }
+        
+        public static string SubmitZakatReturn {
+            get {
+                return ResourceManager.GetString("SubmitZakatReturn", resourceCulture);
+            }
+        }
+        
+        public static string DeclareVATReturn {
+            get {
+                return ResourceManager.GetString("DeclareVATReturn", resourceCulture);
+            }
+        }
+        
+        public static string ReadInbox {
+            get {
+                return ResourceManager.GetString("ReadInbox", resourceCulture);
+            }
+        }
+        
+        public static string GetSupport {
+            get {
+                return ResourceManager.GetString("GetSupport", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalment5MB {
+            get {
+                return ResourceManager.GetString("VatInstalment5MB", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentSearchPlaceholder {
+            get {
+                return ResourceManager.GetString("VatInstalmentSearchPlaceholder", resourceCulture);
+            }
+        }
+        
+        public static string questionmark {
+            get {
+                return ResourceManager.GetString("questionmark", resourceCulture);
             }
         }
     }

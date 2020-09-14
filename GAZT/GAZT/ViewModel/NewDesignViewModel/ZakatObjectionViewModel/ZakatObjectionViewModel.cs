@@ -797,7 +797,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
 
 
-                        await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.NDZakatObjection,
+                        await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
                     _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                         .Instructions));
 
@@ -865,7 +865,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 case (int)PagesEnum.Summary:
                     EnableDeclarationView();
                     break;
-
+                case (int)PagesEnum.WithdrawObjectiondetails:
+                    EnableSummaryView();
+                    break;
 
 
             }
@@ -1909,7 +1911,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         if (_withdrawSubmitted != null && _withdrawSubmitted.d != null)
                         {
 
-                            VATReferanceNumber = _withdrawSubmitted.d.Fbnum;
+                            VATReferanceNumber = _withdrawSubmitted.d.Fbnumz;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());

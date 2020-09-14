@@ -129,6 +129,10 @@ namespace EGAZT
         public static string ZakatObjectionPageView = "ZakatObjectionPageView";
         public static string ZakatObjectionListPageView = "ZakatObjectionListPageView";
         public static string ZakatObjectionSuccessPageView = "ZakatObjectionSuccessPageView";
+        public static string VATDeclarationAttachmentPageView = "VATDeclarationAttachmentPageView";
+        public static string VATRegistrationDisplayDetails = "VATRegistrationDisplayDetails";
+        public static string MoreMenuPopUpPageViewRTwo = "MoreMenuPopUpPageViewRTwo";
+
 
         #endregion
 
@@ -222,6 +226,8 @@ namespace EGAZT
         public static string MorePopUpPageView = "MorePopUpPageView";
         public static string ShowVatInformationConfirmationPageView = "ShowVatInformationConfirmationPageView";
         public static string InfoPopUpPage = "InfoPopUpPage";
+        public static string QuickActionPopUpPageView = "QuickActionPopUpPageView";
+
 
 
 
@@ -271,6 +277,11 @@ namespace EGAZT
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
         public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData;
+        #endregion
+
+        #region Zakat Instalment
+        public static string selectedZakatItem = "";
+
         #endregion
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
@@ -609,7 +620,7 @@ namespace EGAZT
                     PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

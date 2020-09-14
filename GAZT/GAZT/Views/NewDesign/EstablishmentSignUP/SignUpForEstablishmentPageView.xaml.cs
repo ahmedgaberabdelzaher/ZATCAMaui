@@ -657,7 +657,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                 if (EntryMobileNumber.Text.Substring(0, 1) == "0")
                 {
-                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
+                    Message.AppendLine(AppResources.ZZMobilenumberCannotStartWith0+" ");
                 }
                 if (viewModel.TxtCountryCode == "+966")
                 {
@@ -668,10 +668,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 if (EntryMobileNumber.Text.Length < 9)
                 {
-                    if (Message.Length > 0)
-                    {
-                        Message.AppendLine(Environment.NewLine);
-                    }
+                    //if (Message.Length > 0)
+                    //{
+                    //    Message.AppendLine(Environment.NewLine);
+                    //}
 
                     Message.AppendLine(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                 }

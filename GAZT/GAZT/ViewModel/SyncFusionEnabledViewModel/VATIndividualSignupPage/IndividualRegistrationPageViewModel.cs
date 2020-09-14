@@ -1,4 +1,6 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -1440,8 +1442,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                   _navigationService.GoBack();
+                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    _navigationService.GoBack();
                 });
             }
             catch (HttpRequestException ex)
@@ -1452,7 +1455,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     // IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -1462,7 +1466,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
             catch (Exception ex)
@@ -1473,7 +1478,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     // IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
             }
@@ -1580,7 +1586,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             if (showErrorMessage)
             {
-                _dialogService.ShowMessage(messageforuserr, AppResources.Information);
+                //_dialogService.ShowMessage(messageforuserr, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageforuserr));
             }
             else 
             {
@@ -1627,7 +1634,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             if (showErrorMesage)
             {
-                _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
             }
             else
             {
@@ -1728,7 +1736,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 {
                                     IsLoading = false;
 
-                                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                     _navigationService.GoBack();
                                 });
                             }
@@ -1740,7 +1749,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 {
                                     // IsLoading = false;
 
-                                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                     //_navigationService.GoBack();
                                 });
                             }
@@ -1750,7 +1760,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                    //_dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
                             catch (Exception ex)
@@ -1761,7 +1772,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 {
                                     // IsLoading = false;
 
-                                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                                 });
                             }
@@ -1781,8 +1793,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                 FrameIDError = true;
                                 FrameDOBError = true;
-                                _dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
-                               //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                                //_dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Wrong Id"));
+                                //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
 
                             });
 
@@ -1794,7 +1807,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             else
             {
-              _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
             }
         }
         public  async Task StepfivedataValidation()
@@ -2242,68 +2256,68 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             if (itemerror.code.Contains("ZD_ZVTX/006"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage6);
+                                Message.AppendLine(AppResources.ZZZZErroMessage6);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/007"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage7);
+                                Message.AppendLine(AppResources.ZZZZErroMessage7);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/008"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage8);
+                                Message.AppendLine(AppResources.ZZZZErroMessage8);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/009"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage9);
+                                Message.AppendLine(AppResources.ZZZZErroMessage9);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/0010"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage10);
+                                Message.AppendLine(AppResources.ZZZZErroMessage10);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/0011"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage11);
+                                Message.AppendLine(AppResources.ZZZZErroMessage11);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/001"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage1);
+                                Message.AppendLine(AppResources.ZZZZErroMessage1);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/002"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage2);
+                                Message.AppendLine(AppResources.ZZZZErroMessage2);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/003"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage3);
+                                Message.AppendLine(AppResources.ZZZZErroMessage3);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/004"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage4);
+                                Message.AppendLine(AppResources.ZZZZErroMessage4);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/005"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage5);
+                                Message.AppendLine(AppResources.ZZZZErroMessage5);
                             }
                            
                             if (itemerror.code.Contains("ZD_ZREG/303"))
                             {
 
-                                Message.Append(AppResources.ZZZZErrorMessage303);
+                                Message.AppendLine(AppResources.ZZZZErrorMessage303);
                             }
 
                         }
-                        _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-
+                    //_dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
 
 
                 }
@@ -2435,71 +2449,72 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             if (itemerror.code.Contains("ZD_ZVTX/006"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage6);
+                                Message.AppendLine(AppResources.ZZZZErroMessage6);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/007"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage7);
+                                Message.AppendLine(AppResources.ZZZZErroMessage7);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/008"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage8);
+                                Message.AppendLine(AppResources.ZZZZErroMessage8);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/009"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage9);
+                                Message.AppendLine(AppResources.ZZZZErroMessage9);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/0010"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage10);
+                                Message.AppendLine(AppResources.ZZZZErroMessage10);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/0011"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage11);
+                                Message.AppendLine(AppResources.ZZZZErroMessage11);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/001"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage1);
+                                Message.AppendLine(AppResources.ZZZZErroMessage1);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/002"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage2);
+                                Message.AppendLine(AppResources.ZZZZErroMessage2);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/003"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage3);
+                                Message.AppendLine(AppResources.ZZZZErroMessage3);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/004"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage4);
+                                Message.AppendLine(AppResources.ZZZZErroMessage4);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/005"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage5);
+                                Message.AppendLine(AppResources.ZZZZErroMessage5);
                             }
                             if (itemerror.code.Contains("ZD_ZVTX/005"))
                             {
 
-                                Message.Append(AppResources.ZZZZErroMessage5);
+                                Message.AppendLine(AppResources.ZZZZErroMessage5);
                             }
                             if (itemerror.code.Contains("ZD_ZREG/303"))
                             {
 
-                                Message.Append(AppResources.ZZZZErrorMessage303);
+                                Message.AppendLine(AppResources.ZZZZErrorMessage303);
                             }
 
                         }
-                        _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                    //_dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                 }
                 else
                 {

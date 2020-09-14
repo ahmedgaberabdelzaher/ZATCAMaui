@@ -40,6 +40,9 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Fbtyp { get; set; }
         public string frequency { get; set; }
         public string SelectedType { get; set; }
+        public string statusType { get; set; }
+        public string fbNum { get; set; }
+
 
 
     }

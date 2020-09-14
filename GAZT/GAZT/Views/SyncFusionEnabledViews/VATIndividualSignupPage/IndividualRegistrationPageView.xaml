@@ -21,6 +21,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
+                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10"/>
@@ -38,7 +39,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <yummy:PancakeView Grid.Row="0" Grid.Column="0" BackgroundColor="White" CornerRadius="32,32,0,0" Padding="0,20,0,0">
+            <yummy:PancakeView Grid.Row="0" Grid.Column="0" BackgroundColor="White" CornerRadius="14,14,0,0" Padding="0,20,0,0">
 
 
                 <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
@@ -133,22 +134,22 @@
                                                         </custom:CustomButton>
 
                                                         <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
-                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZIDType}"
+                                    HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}" 
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
-                        SelectedItemTextColor="#006450"
+                        
                         BorderColor="Black"
-                                                         
+                             SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"                            
                                                  OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
-                                                 ShowFooter="True"
+                                                 ShowFooter="False"
                                                  OKButtonBackgroundColor="#EAF7CC"
                                                  CancelButtonBackgroundColor="#EAF7CC"
-                                                 BackgroundColor="#EAF7CC"
+                                                 BackgroundColor="White"
                        ItemHeight="40"
                          DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
@@ -224,15 +225,17 @@
                                                         <custom1:CustomDatePicker Grid.Row="1"
 								ShowHeader="false"
 								Margin="2" 
-                              BackgroundColor="#EAF7CC"
+                              BackgroundColor="White"
+
                                 OKButtonBackgroundColor="#EAF7CC"
                                 CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
+                                     HeaderBackgroundColor="White"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
                     BorderColor="Black"
-								ShowFooter="True"
+                                                                                  
+								ShowFooter="False"
 								 ShowColumnHeader="True"
-                                             ColumnHeaderBackgroundColor="#EAF7CC"
+                                             ColumnHeaderBackgroundColor="White"
 								ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
 								HeaderText="Date of Birth"
@@ -518,21 +521,22 @@
                                                             </custom:CustomButton>
 
                                                             <syncfusion:SfPicker x:Name="GCCPicker_Country" Grid.Row="1" IsEnabled="{Binding SetEnabilityToCountryList}" IsVisible="{Binding SetGCCCountryVisibility}"
-                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZCountry}"
+                                    HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZZZCountry}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedGCCCountryIndex}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
-                        SelectedItemTextColor="#006450"
-                        BorderColor="Black"
+                        
+                        BorderColor="Black"                                                       SelectedItemTextColor="{StaticResource NeutralBlack}"
+UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                   OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
-                                                 ShowFooter="True"
+                                                 ShowFooter="False"
                                                  OKButtonBackgroundColor="#EAF7CC"
                                                  CancelButtonBackgroundColor="#EAF7CC"
-                                                 BackgroundColor="#EAF7CC"
+                                                 BackgroundColor="White"
                        ItemHeight="40"
                          DisplayMemberPath="CountryName" ItemsSource="{Binding GCCCountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
@@ -579,21 +583,23 @@
                                                             </custom:CustomButton>
 
                                                             <syncfusion:SfPicker x:Name="Picker_Region" Grid.Row="1" IsVisible="{Binding SetStateListVisibility}"
-                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZProvinceRegion}"
+                                    HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZZZProvinceRegion}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedRegionIndex}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
-                        SelectedItemTextColor="#006450"
-                        BorderColor="Black"
+                        
+                        BorderColor="Black" 
+                        SelectedItemTextColor="{StaticResource NeutralBlack}"
+UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                   OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
-                                                 ShowFooter="True"
+                                                 ShowFooter="False"
                                                  OKButtonBackgroundColor="#EAF7CC"
                                                  CancelButtonBackgroundColor="#EAF7CC"
-                                                 BackgroundColor="#EAF7CC"
+                                                 BackgroundColor="White"
                        ItemHeight="40"
                          DisplayMemberPath="Bezei" ItemsSource="{Binding RegionList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
@@ -641,21 +647,22 @@
                                                             <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_City" Clicked="PickerBtn_City_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
                                                             <syncfusion:SfPicker x:Name="Picker_City" Grid.Row="1" IsVisible="{Binding SetCityListVisibility}"
-                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZCity}"
+                                    HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZZZCity}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedCityIndex}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
-                        SelectedItemTextColor="#006450"
+                        SelectedItemTextColor="{StaticResource NeutralBlack}"
+UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                         BorderColor="Black"
                                                   OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
-                                                 ShowFooter="True"
+                                                 ShowFooter="False"
                                                  OKButtonBackgroundColor="#EAF7CC"
                                                  CancelButtonBackgroundColor="#EAF7CC"
-                                                 BackgroundColor="#EAF7CC"
+                                                 BackgroundColor="White"
                        ItemHeight="40"
                          DisplayMemberPath="CityName" ItemsSource="{Binding CityList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"

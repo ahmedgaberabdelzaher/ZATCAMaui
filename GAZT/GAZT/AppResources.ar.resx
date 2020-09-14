@@ -339,6 +339,12 @@
   <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
     <value>25% من المبلغ المعترض عليه</value>
   </data>
+          <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
     <value>شهادة تسجيل في ضريبة القيمة المضافة</value>
   </data>
@@ -529,7 +535,7 @@
     <value>كلمة التحقق غير صالحة</value>
   </data>
   <data name="NoBillsAvailable" xml:space="preserve">
-    <value>لا يوجد فواتير</value>
+    <value>لا توجد فواتير</value>
   </data>
   <data name="ActivityIndicatorTitle" xml:space="preserve">
     <value>...تحميل</value>
@@ -784,7 +790,7 @@
     <value>Please enter lookup number</value>
   </data>
   <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>الرجاء إدخال الرقم التسلسلي    </value>
+    <value>الرجاء إدخال الرقم المرجعي</value>
   </data>
   <data name="ZPleaseentertheCRcomposedof10digits" xml:space="preserve">
     <value>يرجى ادخال رقم السجل التجاري المؤلف من 10 ارقام</value>
@@ -902,7 +908,7 @@
     <value>التعليمات</value>
   </data>
   <data name="ZSummary" xml:space="preserve">
-    <value>Summary</value>
+    <value>الملخص</value>
   </data>
   <data name="ZTPDetails" xml:space="preserve">
     <value>TPDetails</value>
@@ -4495,7 +4501,10 @@
     <value>المرفقات - شهادة الوفاة</value>
   </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
-    <value>المرفقات - قرار وزاري لبدء إجراءات التصفية يحدد الشخص المخول بالتصفية</value>
+    <value>المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
+  </data>
+  <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
+    <value>قرار وزاري للموافقة على عملية الاندماج</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
     <value>المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
@@ -4698,6 +4707,9 @@
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>تم استلام طلب إيقاف التسجيل في ضريبة القيمة المضافة بنجاح</value>
   </data>
+  <data name="VatReactivationDashboardTitle" xml:space="preserve">
+    <value>تنشيط حساب ضريبة القيمة المضافة</value>
+  </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
   </data>
@@ -4889,7 +4901,7 @@
     <value>عدد الأقساط</value>
   </data>
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
-    <value>القسط الدوري</value>
+    <value>القسط الشهري</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
     <value>طلب خطة التقسيط</value>
@@ -4944,7 +4956,7 @@
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>اختر الفاتورة</value>
@@ -4986,7 +4998,7 @@
     <value>الفترة الضريبية</value>
   </data>
   <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
-    <value>الغرامة</value>
+    <value>العقوبات</value>
   </data>
   <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
     <value>Zakat/IncomeTax</value>
@@ -5733,7 +5745,7 @@
     <value>المبلغ المدفوع</value>
   </data>
   <data name="ZakatDueAmount" xml:space="preserve">
-    <value> (المبلغ المستحق (ريال سعودي </value>
+    <value>المبلغ المستحق (ريال سعودي)</value>
   </data>
   <data name="ZZZDBMyCertificates" xml:space="preserve">
     <value>شهاداتي</value>
@@ -6130,7 +6142,7 @@
     <value>رمز التحقق غير صحيح</value>
   </data>
   <data name="SameTincantbeaddedasfinancialrepresentative" xml:space="preserve">
-    <value>نفس المكلف لا يمكن إضافته كممثل مجموعة</value>
+    <value>نفس المكلف لا يمكن إضافته كممثل مالي</value>
   </data>
   <data name="NDBranchLocator" xml:space="preserve">
     <value>Branch Locator</value>
@@ -6154,7 +6166,7 @@
     <value>المبلغ المتبقي</value>
   </data>
   <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
-    <value>الرجاء اختيار فاتورة واحده على الاقل للمتابعة</value>
+    <value>الرجاء اختيار فاتورة واحدة على الاقل للمتابعة</value>
   </data>
   <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
     <value>تم استلام خطة التقسيط بنجاح</value>
@@ -6181,7 +6193,7 @@
     <value>حالة الإقامة؟</value>
   </data>
   <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
-    <value>مقيم لـ 183 يوم او اكثر في الممكلة العربية السعودية</value>
+    <value>مقيم لـ 183 يوم او اكثر في المملكة العربية السعودية</value>
   </data>
   <data name="ESTNationalyStatusOptionTwoValue" xml:space="preserve">
     <value>مالك او مستأجر لمنزل اكثر من 30 يوم</value>
@@ -6623,7 +6635,7 @@
   <data name="VRNewAttachment" xml:space="preserve">
     <value>مرفق جديد</value>
   </data>
- <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>خطة التقسيط لضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
@@ -6636,7 +6648,7 @@
     <value>لا يمكن أن يتجاوز المبلغ </value>
   </data>
   <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
-    <value> (إجمالي طلب الأقساط المبلغ (ريال سعودي </value>
+    <value>إجمالي طلب الأقساط المبلغ (ريال سعودي)</value>
   </data>
   <data name="ZakatInstalmentNumberOfInstalments" xml:space="preserve">
     <value>عدد الأقساط</value>
@@ -6690,7 +6702,7 @@
     <value>طلب خطة تقسيط للزكاة</value>
   </data>
   <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
-    <value>الرقم المرجعي</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
     <value>مدة الخطة</value>
@@ -6771,7 +6783,7 @@
     <value>اكمل البيانات التالية</value>
   </data>
   <data name="VRSelectAReason" xml:space="preserve">
-    <value>الرجاء اختيار سبب المراجعة</value>
+    <value>طلب المراجعة</value>
   </data>
   <data name="VRReviewSubReason" xml:space="preserve">
     <value>السبب الفرعي للمراجعة</value>
@@ -6780,7 +6792,7 @@
     <value>الرجاء اختيار السبب الفرعي للمراجعة</value>
   </data>
   <data name="VRApplicationReferenceNumber" xml:space="preserve">
-    <value>الرقم المرجعي للطلب</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="VRRequestDate" xml:space="preserve">
     <value>تاريخ الطلب</value>
@@ -7045,7 +7057,7 @@
     <value>الرجاء ادخال المدينة للبريد</value>
   </data>
   <data name="ESTValidateOutletName" xml:space="preserve">
-    <value>v</value>
+    <value>الرجاء ادخل الاسم</value>
   </data>
   <data name="NDOldPasswordAndNewPasswordSame" xml:space="preserve">
     <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
@@ -7400,4 +7412,25 @@
   <data name="ZakatInstalmentReturnTaxType" xml:space="preserve">
     <value>نوع الضريبة</value>
   </data>
+  <data name="SubmitZakatReturn" xml:space="preserve">
+    <value>رفع اقرار الزكاة التقديري</value>
+  </data>
+  <data name="DeclareVATReturn" xml:space="preserve">
+    <value>رفع اقرار ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ReadInbox" xml:space="preserve">
+    <value>قراءة المراسلات</value>
+  </data>
+  <data name="GetSupport" xml:space="preserve">
+    <value>الدعم الفني</value>
+  </data>
+  <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+    <value>البحث بالرقم المرجعي</value>
+  </data>
+  <data name="VatInstalment5MB" xml:space="preserve">
+    <value>5MB</value>
+  </data>
+    <data name="questionmark" xml:space="preserve">
+  <value>؟</value>
+</data>
 </root>
