@@ -13475,5 +13475,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("VatInstalmentSearchPlaceholder", resourceCulture);
             }
         }
+        
+        public static string ESTSelectedEntityTypeLabel {
+            get {
+                return ResourceManager.GetString("ESTSelectedEntityTypeLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTSelectedTaxPayerType {
+            get {
+                return ResourceManager.GetString("ESTSelectedTaxPayerType", resourceCulture);
+            }
+        }
     }
 }
