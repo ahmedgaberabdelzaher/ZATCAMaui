@@ -13,7 +13,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         //============================start===================================================
-        public ICommand OnMyReturnsClicked { get; set; }
+        public ICommand OnMyReturnsClickedForZAKAT { get; set; }
         public ICommand OnMyBillsClicked { get; set; }
         public ICommand OnCorrespondanceClicked { get; set; }
 
@@ -47,10 +47,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
-            OnMyReturnsClicked = new Xamarin.Forms.Command(async() =>
+            OnMyReturnsClickedForZAKAT = new Xamarin.Forms.Command(async() =>
             {
                 await PopupNavigation.Instance.PopAsync();
-                _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
+                _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 5);
 
             });
             OnMyBillsClicked = new Xamarin.Forms.Command(async() =>
