@@ -4701,6 +4701,9 @@
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>تم استلام طلب إيقاف التسجيل في ضريبة القيمة المضافة بنجاح</value>
   </data>
+  <data name="VatReactivationDashboardTitle" xml:space="preserve">
+    <value>تنشيط حساب ضريبة القيمة المضافة</value>
+  </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
   </data>

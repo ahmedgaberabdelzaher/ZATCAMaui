@@ -8016,6 +8016,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatReactivationDashboardTitle {
+            get {
+                return ResourceManager.GetString("VatReactivationDashboardTitle", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);
