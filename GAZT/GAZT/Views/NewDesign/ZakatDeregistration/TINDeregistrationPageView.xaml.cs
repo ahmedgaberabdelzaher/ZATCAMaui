@@ -259,7 +259,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
          }
-            private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
+       private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
             try
             {
@@ -426,6 +426,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                             //EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                        }
+                        else
+                        {
+                            viewModel.FrameIDError = false;
+                            viewModel.ValidateIDNumber();
                         }
                     }
 

@@ -339,6 +339,12 @@
   <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
     <value>25% من المبلغ المعترض عليه</value>
   </data>
+          <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
     <value>شهادة تسجيل في ضريبة القيمة المضافة</value>
   </data>

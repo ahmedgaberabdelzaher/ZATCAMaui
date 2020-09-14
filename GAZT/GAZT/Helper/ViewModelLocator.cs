@@ -164,6 +164,7 @@ using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using EGAZT.Views.NewDesign.VatReview;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using EGAZT.Views.NewDesign.ZakatObjection;
+using EGAZT.Views.NewDesign.VATRegistrationDetails;
 
 namespace EGAZT
 {
@@ -256,8 +257,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatObjectionViewModel>();
             SimpleIoc.Default.Register<QuickActionPopUpPageViewModel>();
             SimpleIoc.Default.Register<VATDeclarationAttachmentPageViewModel>();
+            SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
 
-            
+
 
             #endregion
 
@@ -1923,6 +1925,20 @@ namespace EGAZT
                 }
             }
         }
+        public VATRegistrationDisplayDetailsPageViewModel VATRegistrationDisplayDetails
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRegistrationDisplayDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public VATRegistrationSuccessfullPageViewModel VATRegistrationSuccessfullPageView
         {
             get
@@ -2406,7 +2422,8 @@ namespace EGAZT
             navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
             navigationService.Configure(App.MorePopUpPageView, typeof(MorePopUpPageView));
             navigationService.Configure(App.ShowVatInformationConfirmationPageView, typeof(ShowVatInformationConfirmationPageView));
-
+            
+            navigationService.Configure(App.VATRegistrationDisplayDetails, typeof(VATRegistrationDisplayDetails));
 
             // * Taxpayer Profile
             navigationService.Configure(App.TaxpayerProfilePageView, typeof(TaxpayerProfilePageView));
