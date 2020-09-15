@@ -1134,6 +1134,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                DDlIDType.BackgroundColor = Color.FromHex("#f7f7f7");
+                GCCPicker_Country.BackgroundColor = Color.FromHex("#f7f7f7");
+                Picker_Region.BackgroundColor = Color.FromHex("#f7f7f7");
+                Picker_City.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                DDlIDType.BackgroundColor = Color.FromHex("#FFFFFF");
+                GCCPicker_Country.BackgroundColor = Color.FromHex("#FFFFFF");
+                Picker_Region.BackgroundColor = Color.FromHex("#FFFFFF");
+                Picker_City.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                 IntnlCodes.Text = arg;
