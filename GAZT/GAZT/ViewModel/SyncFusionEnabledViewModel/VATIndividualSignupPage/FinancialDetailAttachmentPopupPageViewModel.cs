@@ -455,6 +455,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                         uploadedDate = uploadedDate.Replace("UTC", "GMT");
                                                         _attachment.d.Erfdt = uploadedDate;
                                                         _attachment.d.Dotyp = DocTypeString;
+                                                        try
+                                                        {
+                                                            ResultsItemForDOCSetforsubmit _eligibledocset = new ResultsItemForDOCSetforsubmit();
+                                                            _eligibledocset.DmsTp = DocTypeString;
+                                                            _eligibledocset.DmsTxt = AttachmentTypeTxt;
+                                                            _eligibledocset.TxnTp = "CRE_RGVT";
+                                                            _eligibledocset.LineNo = 0;
+                                                            _eligibledocset.Mandt = "";
+                                                            _eligibledocset.DataVersion = "";
+                                                            _eligibledocset.FormGuid = "";
+                                                            _eligibledocset.Fbtyp = "";
+                                                            _eligibledocset.RankingOrder = "";
+                                                            VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Add(_eligibledocset);
+
+                                                        }
+                                                        catch (Exception ex)
+                                                        { 
+                                                        
+                                                        }
                                                         VATRegistrationDetailsForAttach.d.ATTDETSet.results.Add(_attachment.d);
                                                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
                                                         Device.BeginInvokeOnMainThread(async () =>

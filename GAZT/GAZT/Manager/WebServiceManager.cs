@@ -1844,7 +1844,9 @@ namespace GAZT.Manager
                     string lang = UtilityManager.GetLanguageParameter();
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
+
+                    string url = Constants.GAZTInternationalMobileData + " eq " + "'" + lang + "'" + "&$format=json";
+                    // string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
                     //String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras%20eq%20%27AR%27&$format=json";
                     //String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
@@ -6337,10 +6339,13 @@ namespace GAZT.Manager
                             //    //}
                             //}
                             RequestVATRegistration = vATRegistration;
+                            if (vATRegistration.d.ELGBL_DOCSet == null || vATRegistration.d.ELGBL_DOCSet.results == null)
+                            {
+                                ELGBL_DOCSetforsubmit eLGBL_DOCSet = new ELGBL_DOCSetforsubmit();
+                                eLGBL_DOCSet.results = new List<ResultsItemForDOCSetforsubmit>();
+                                RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
 
-                            ELGBL_DOCSet eLGBL_DOCSet = new ELGBL_DOCSet();
-                            eLGBL_DOCSet.results = new List<ResultsItemForElgblDocSet>();
-                            RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
+                            }
                             //RequestVATDeclaration.d.SubmitFg = "";
                             ATTDETSet aTTACHSet = new ATTDETSet();
                             aTTACHSet.results = new List<Attachment>();
@@ -6416,8 +6421,8 @@ namespace GAZT.Manager
                                 }
                                 if (_vATRegistration.d.ELGBL_DOCSet == null)
                                 {
-                                    ELGBL_DOCSet eLGBL_DOC = new ELGBL_DOCSet();
-                                    eLGBL_DOC.results = new List<ResultsItemForElgblDocSet>();
+                                    ELGBL_DOCSetforsubmit eLGBL_DOC = new ELGBL_DOCSetforsubmit();
+                                    eLGBL_DOC.results = new List<ResultsItemForDOCSetforsubmit>();
                                     _vATRegistration.d.ELGBL_DOCSet = eLGBL_DOC;
                                 }
                                 if (_vATRegistration.d.QUESTIONSSet == null)
@@ -6461,10 +6466,10 @@ namespace GAZT.Manager
                     }
                     return _vATRegistration;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
-                }
+                //catch (GAZTVATRegistrationInProcessException ex)
+                //{
+                //    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                //}
 
                 catch (Exception ex)
                 {
@@ -8504,6 +8509,8 @@ namespace GAZT.Manager
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+
+
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -8576,7 +8583,10 @@ namespace GAZT.Manager
 
                     VatInstalmentPlanResponse _vatResponseObject = new VatInstalmentPlanResponse();
                     string LangZ = GetLangZParameterAREN();
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+                   // String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+
+                    String url = Constants.SaveVATInstalmentdata;
+
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
