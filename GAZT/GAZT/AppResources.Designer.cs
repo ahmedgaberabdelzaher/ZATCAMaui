@@ -7692,6 +7692,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRegistrationDetails {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetails", resourceCulture);
+            }
+        }
+        
+        public static string VATRegistrationDetailsTitle {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetailsTitle", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistration {
             get {
                 return ResourceManager.GetString("VATDeregistration", resourceCulture);
@@ -13461,6 +13473,42 @@ namespace EGAZT {
         public static string VatInstalmentSearchPlaceholder {
             get {
                 return ResourceManager.GetString("VatInstalmentSearchPlaceholder", resourceCulture);
+            }
+        }
+        
+        public static string TypeYourUserName {
+            get {
+                return ResourceManager.GetString("TypeYourUserName", resourceCulture);
+            }
+        }
+        
+        public static string questionmark {
+            get {
+                return ResourceManager.GetString("questionmark", resourceCulture);
+            }
+        }
+        
+        public static string ESTSelectedEntityTypeLabel {
+            get {
+                return ResourceManager.GetString("ESTSelectedEntityTypeLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTSelectedTaxPayerType {
+            get {
+                return ResourceManager.GetString("ESTSelectedTaxPayerType", resourceCulture);
+            }
+        }
+        
+        public static string ZakatDraftSaved {
+            get {
+                return ResourceManager.GetString("ZakatDraftSaved", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_ZakatCancelled {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ZakatCancelled", resourceCulture);
             }
         }
     }

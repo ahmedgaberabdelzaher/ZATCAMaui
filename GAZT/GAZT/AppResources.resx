@@ -4550,6 +4550,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value>Select Start Date</value>
   </data>
+      <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>
@@ -7511,5 +7517,24 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
 <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
     <value>Search by SADAD Number</value>
+  </data>
+  <data name="TypeYourUserName" xml:space="preserve">
+    <value>Type your user name</value>
+  </data>
+      <data name="questionmark" xml:space="preserve">
+  <value>?</value>
+</data>
+<data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+    <data name="ESTSelectedTaxPayerType" xml:space="preserve">
+    <value>Trade/Business</value>
+     </data>
+     <data name="ZakatDraftSaved" xml:space="preserve">
+    <value>Zakat Instalment Form Saved successfully{0}</value>
+  </data>
+    <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+    <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
+    <comment>Zakat instalment general message</comment>
   </data>
 </root>

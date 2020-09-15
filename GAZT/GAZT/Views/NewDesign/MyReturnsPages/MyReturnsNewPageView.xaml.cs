@@ -51,8 +51,15 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     viewModel.IsLoading = true;
                 });
 
-
-               await viewModel.OnPageLoad();
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                }
+                else
+                {
+                    TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                }
+                await viewModel.OnPageLoad();
                 if (TaxTypePicker.SelectedItem != null)
                 {
                     viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;

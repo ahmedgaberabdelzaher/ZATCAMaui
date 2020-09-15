@@ -1911,7 +1911,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         if (_withdrawSubmitted != null && _withdrawSubmitted.d != null)
                         {
 
-                            VATReferanceNumber = _withdrawSubmitted.d.Fbnum;
+                            VATReferanceNumber = _withdrawSubmitted.d.Fbnumz;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());

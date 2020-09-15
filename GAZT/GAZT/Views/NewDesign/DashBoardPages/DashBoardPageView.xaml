@@ -581,6 +581,16 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                   <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Vat_Registration_Details_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
                                  <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
