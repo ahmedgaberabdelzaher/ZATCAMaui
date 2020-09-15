@@ -105,7 +105,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
       
     private void DpEStartDate_Closed(object sender, EventArgs e)
         {
+            try
+            {
+                var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                //          string DOB = year + month + day;
 
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void DpEStartDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -1349,7 +1362,53 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DDlIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            //ClearFinancialRepresentativeData();
+            try
+            {
+                ClearFinancialRepresentativeData();
+                if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
+                {
+                    EntryTINNumber.IsEnabled = true;
+                    viewModel.IDTypeIndexFR = 0;
+                    viewModel.TxtIDTypeFR = string.Empty;
+
+                    viewModel.IDNumberNonMandatoryVisibility = true;
+                    viewModel.IDNumberMandatoryVisibility = false;
+
+                    viewModel.DOBNonMandatoryVisibility = true;
+                    viewModel.DOBMandatoryVisibility = false;
+                }
+                else
+                {
+                    viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
+                    viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
+                    EntryTINNumber.Text = string.Empty;
+                    EntryIDNo.Text = string.Empty;
+                    EntryTINNumber.IsEnabled = false;
+
+                    viewModel.IDNumberNonMandatoryVisibility = false;
+                    viewModel.IDNumberMandatoryVisibility = true;
+
+
+                    // For GCC ID DOB is not mandatory
+                    if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("ZS0003"))
+                    {
+                        viewModel.DOBNonMandatoryVisibility = true;
+                        viewModel.DOBMandatoryVisibility = false;
+                    }
+                    else
+                    {
+                        viewModel.DOBNonMandatoryVisibility = false;
+                        viewModel.DOBMandatoryVisibility = true;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
@@ -3697,6 +3756,60 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     //FrmMobileNumber.HasError = false;
                
                 }
+            }
+        }
+
+        private void DDlContactIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
+                viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void SignUpDOB_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.DOB = year + "/" + month + "/" + day;
+                string DOB = year + month + day;
+                //viewModel.DOBPrev = viewModel.DOB;
+
+
+                ValidateIDNumber();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void ContactDOBPicker_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedItem = ContactDOBPicker.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.ContactDOB = year + "/" + month + "/" + day;
+                string DOB = year + month + day;
+                //viewModel.DOBPrev = viewModel.DOB;
+
+
+                ValidateIDNumberContact();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }
