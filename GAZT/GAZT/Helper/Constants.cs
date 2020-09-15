@@ -233,8 +233,11 @@ namespace GAZT.Helper
         public static string GetInstallmentSchedule = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_DISPLAY_SRV/VTIA_HEADERSet(";
         public static string VATGetFormGUIDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
         public static string downloadFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
+        public static string SaveVATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+        public static string VATObjectionsNotesSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/NotesSet('001')";
+        public static string ZakatObjectionsNotesSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotesSet(1)";
 
-        
+
         #endregion
 
         #region ZAKAT

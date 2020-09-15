@@ -3084,10 +3084,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
             Metadata _metdata = new Metadata();
-            _metdata.uri = "HTTPS://SAPGATEWAYQA.GAZT.GOV.SA/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/NotesSet('001')";
-            _metdata.type = "ZDP_VAT_NW_REV_SRV.Notes";
-            _metdata.id = "HTTPS://SAPGATEWAYQA.GAZT.GOV.SA/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/NotesSet('001')";
 
+            _metdata.uri = Constants.VATObjectionsNotesSet;
+            _metdata.type = "ZDP_VAT_NW_REV_SRV.Notes";
+            _metdata.id = Constants.VATObjectionsNotesSet;
             notes.__metadata = _metdata;
             notes.AttByz = "TP";
             notes.ElemNo = 0;

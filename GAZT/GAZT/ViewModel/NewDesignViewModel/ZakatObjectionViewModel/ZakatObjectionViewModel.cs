@@ -1860,9 +1860,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         ZakatObjectionWithdrawPostModel.Metadata2 metaData2 = new ZakatObjectionWithdrawPostModel.Metadata2();
                         ZnotesSet obj = new ZnotesSet();
-                        metaData2.uri = "HTTPS://SAPGATEWAYQA.GAZT.GOV.SA/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotesSet(1)";
+                        metaData2.uri = Constants.ZakatObjectionsNotesSet;
                         metaData2.type = "Z_TP_NOTES_TP09_SRV.znotes";
-                        metaData2.id = "HTTPS://SAPGATEWAYQA.GAZT.GOV.SA/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotesSet(1)";
+                        metaData2.id = Constants.ZakatObjectionsNotesSet;
                         obj.__metadata = metaData2;
                         obj.Notenoz = "001";
                         obj.AttByz = "TP";

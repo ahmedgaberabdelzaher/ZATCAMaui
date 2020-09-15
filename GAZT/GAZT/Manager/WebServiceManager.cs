@@ -8504,6 +8504,8 @@ namespace GAZT.Manager
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+
+
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -8576,7 +8578,10 @@ namespace GAZT.Manager
 
                     VatInstalmentPlanResponse _vatResponseObject = new VatInstalmentPlanResponse();
                     string LangZ = GetLangZParameterAREN();
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+                   // String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+
+                    String url = Constants.SaveVATInstalmentdata;
+
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
