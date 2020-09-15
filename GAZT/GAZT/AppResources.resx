@@ -7529,5 +7529,12 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
     <data name="ESTSelectedTaxPayerType" xml:space="preserve">
     <value>Trade/Business</value>
+     </data>
+     <data name="ZakatDraftSaved" xml:space="preserve">
+    <value>Zakat Instalment Form Saved successfully{0}</value>
+  </data>
+    <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+    <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
+    <comment>Zakat instalment general message</comment>
   </data>
 </root>

@@ -13487,7 +13487,7 @@ namespace EGAZT {
                 return ResourceManager.GetString("questionmark", resourceCulture);
             }
         }
-
+        
         public static string ESTSelectedEntityTypeLabel {
             get {
                 return ResourceManager.GetString("ESTSelectedEntityTypeLabel", resourceCulture);
@@ -13497,6 +13497,18 @@ namespace EGAZT {
         public static string ESTSelectedTaxPayerType {
             get {
                 return ResourceManager.GetString("ESTSelectedTaxPayerType", resourceCulture);
+            }
+        }
+        
+        public static string ZakatDraftSaved {
+            get {
+                return ResourceManager.GetString("ZakatDraftSaved", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_ZakatCancelled {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ZakatCancelled", resourceCulture);
             }
         }
     }

@@ -3206,7 +3206,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                 headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = string.Format(AppResources.DraftSaved, "  " + ZakatInstalments.d.Fbnum);
+                                headerAmountInfo.Message = string.Format(AppResources.ZakatDraftSaved, "  " + ZakatInstalments.d.Fbnum);
 
                                 headerWithInfos.Add(headerAmountInfo);
 
@@ -3909,6 +3909,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                 DownPaymentSliderValue = DownPaymentAmount;
                             }
 
+
+                            if(ZakatInstalments.d.DpAmt != null && Double.Parse(ZakatInstalments.d.DpAmt) > 0) {
+
+                                DownPaymentSliderValue = Double.Parse(ZakatInstalments.d.DpAmt);
+                            }
+
+                            if(ZakatInstalments.d.TotAmt != null && Double.Parse(ZakatInstalments.d.TotAmt) > 0) {
+                                TotalAmountSAR = ZakatInstalments.d.TotAmt;
+                            }
+
+                            if (ZakatInstalments.d.PlanDur != null && int.Parse(ZakatInstalments.d.PlanDur) > 0)
+                            {
+                                NumberOFInstalmentSliderValue = int.Parse(ZakatInstalments.d.PlanDur);
+                            }
+
+                            if (ZakatInstalments.d.PymntFreq != null && Double.Parse(ZakatInstalments.d.PymntFreq) > 0)
+                            {
+                                SelectedFrequencyType = ZakatInstalments.d.PymntFreq;
+                            }
+
+
+
+
+                          
+                            //if (IsZakat)
+                            //{
+                            //    ZakatInstalments.d.InstReqFor = "01";
+
+                            //}
+                            //else
+                            //{
+                            //    ZakatInstalments.d.InstReqFor = "02";
+                            //}
+                            //if (IDType == AppResources.ZakatFinancialCrisis)
+                            //{
+                            //    ZakatInstalments.d.InstReqReason = "01";
+                            //}
+                            //else if (IDType == AppResources.ZakatDisputeInFavorOfGAZT)
+                            //{
+                            //    ZakatInstalments.d.InstReqReason = "02";
+                            //}
+                            //else if (IDType == AppResources.ZakatOtherReason)
+                            //{
+                            //    ZakatInstalments.d.InstReqReason = "03";
+                            //}
+                            //else
+                            //{
+                            //    ZakatInstalments.d.InstReqReason = "01";
+                            //}
 
                             //MessagingCenter.Send<Object, Boolean>(this, "InvoiceBillsLoaded", true);
 

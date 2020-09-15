@@ -304,7 +304,7 @@
 
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                                Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
-                               Margin="0,20,0,0" Padding="0">
+                               Margin="0,20,0,0" Padding="0" IsVisible="False">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                     <custom:CustomLabel
                                     Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}"

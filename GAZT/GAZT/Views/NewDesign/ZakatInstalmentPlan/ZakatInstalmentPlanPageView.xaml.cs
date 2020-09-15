@@ -311,8 +311,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, bool>(this, "InvoiceBillsLoaded");
-            MessagingCenter.Unsubscribe<object, bool>(this, "SaveCommandReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
+
 
 
 
@@ -326,7 +328,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
 
-                getActionCommand();
+                //getActionCommand();
                 getYesCommand();
                 getNoCommand();
 
@@ -362,6 +364,96 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                     }
                 });
+
+
+                MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                    if (arg != null)
+                    {
+                        string message = arg;
+
+                        if (App.IsArabic)
+                        {
+                            ArButtons buttonId = ArButtons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case ArButtons.إضافةملاحظات:
+                                    //viewModel.VATReturnAddNote();
+                                    break;
+                                case ArButtons.عرضملاحظات:
+                                    //  viewModel.VATReturnGetNotes();
+                                    break;
+                                case ArButtons.المرفقات:
+                                    // viewModel.VATViewAttachments();
+                                    break;
+                                case ArButtons.إلغاء:
+                                    //viewModel.VoidMsg();
+                                    break;
+                                case ArButtons.عادةتعيين:
+                                    //await viewModel.VATReturnResetAsync();
+                                    break;
+                                case ArButtons.تعديل:
+                                    // await viewModel.VATReturnAmendAsync();
+                                    break;
+                                case ArButtons.حفظكمسودة:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.OnSaveDraftClicked();
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Buttons buttonId = Buttons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case Buttons.CreateNotes:
+                                    //viewModel.VATReturnAddNote();
+                                    break;
+                                case Buttons.DisplayNotes:
+                                    //viewModel.VATReturnGetNotes();
+                                    break;
+                                case Buttons.Attachments:
+                                    // viewModel.VATViewAttachments();
+                                    break;
+                                case Buttons.Void:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                case Buttons.Reset:
+                                    //await viewModel.VATReturnResetAsync();
+                                    break;
+                                case Buttons.Amend:
+                                    // await viewModel.VATReturnAmendAsync();
+                                    break;
+                                case Buttons.SaveasDraft:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.OnSaveDraftClicked();
+
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                    }
+                });
+
 
                 if (Device.RuntimePlatform == Device.iOS)
                 {
@@ -461,6 +553,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             try
             {
+
+
                 MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
                 {
                     await PopupNavigation.Instance.PopAsync();
@@ -525,7 +619,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                     // viewModel.VATViewAttachments();
                                     break;
                                 case Buttons.Void:
+                                    viewModel.isDraftClicked = true;
                                     viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = false;
                                     break;
                                 case Buttons.Reset:
                                     //await viewModel.VATReturnResetAsync();
