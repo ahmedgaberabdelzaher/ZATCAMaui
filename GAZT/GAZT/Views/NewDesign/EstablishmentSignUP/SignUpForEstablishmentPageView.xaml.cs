@@ -251,6 +251,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             base.OnAppearing();
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IDTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                ddlLIssuedBy.BackgroundColor = Color.FromHex("#f7f7f7");
+                ddlLIssuedByCity.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                IDTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                ddlLIssuedBy.BackgroundColor = Color.FromHex("#FFFFFF");
+                ddlLIssuedByCity.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
+
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                 viewModel.TxtMobileNumber = string.Empty;
