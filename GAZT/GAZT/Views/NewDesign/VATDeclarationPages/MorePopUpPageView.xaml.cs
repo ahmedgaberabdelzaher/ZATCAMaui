@@ -33,7 +33,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     viewModel.VatReturnUIButtons = ListOfActionButtonsApplicable;
                 }
+                btnList.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+                    // don't do anything if we just de-selected the row.
+                    if (e.Item == null) return;
 
+                    if (sender is ListView lv) lv.SelectedItem = null;
+                };
             }
             catch(Exception ex)
             {
