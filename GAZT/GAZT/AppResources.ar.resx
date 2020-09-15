@@ -7449,4 +7449,10 @@
     <value>نموذج الإقرار غير مقبول. يرجى بدء العملية مرة أخرى لتقديم تقسيط الزكاة</value>
     <comment>Zakat instalment general message</comment>
   </data>
+    <data name="VRDECCheckBox" xml:space="preserve">
+  <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
+</data>
+  <data name="VRDECDesc" xml:space="preserve">
+  <value>أشهد بأنني مخول بإكمال هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
+</data>
 </root>

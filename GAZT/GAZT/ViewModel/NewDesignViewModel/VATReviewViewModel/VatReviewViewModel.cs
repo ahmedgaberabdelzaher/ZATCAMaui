@@ -984,6 +984,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        private bool isDECCheckBox = false;
+        public bool IsDECCheckBox
+        {
+            get { return isDECCheckBox; }
+            set
+            {
+                isDECCheckBox = value;
+                RaisePropertyChanged("IsDECCheckBox");
+            }
+        }
+
         public string _vACorrrections = "";
         public string VACorrrections
         {
@@ -2322,7 +2333,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public void EnableDeclarationConButton()
         {
-            if (ContactPersonName == "" || !IsIDVerified)
+            if (ContactPersonName == "" || !IsIDVerified || !IsDECCheckBox)
             {
                 IsDeclarationEnabled = false;
             }
