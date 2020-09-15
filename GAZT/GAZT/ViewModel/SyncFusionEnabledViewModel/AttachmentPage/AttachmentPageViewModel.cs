@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
@@ -530,7 +531,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
             AttachmentName = string.Empty;
             if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
             {
-                if (VATReturnsPageViewModelEX.IsAmend == true)
+                if (GAZTNewDesignVATReturnUpdatedUIPageViewModel.IsAmend == true)
                 {
                     IsShowAttachmentButton = true;
                 }

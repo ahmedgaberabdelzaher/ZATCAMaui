@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
+using EGAZT.ViewModel.NewDesignViewModel;
 
 namespace EGAZT
 {
@@ -597,7 +598,7 @@ namespace EGAZT
             else
             {
                 NumberOfAttachmentComingFromServer = NumberOfAttachmentComingFromServer - 1;
-                ICRListPageViewModel.numberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer - 1;
+                GAZTNewDesignMyReturnsNewPageViewModel.numberOfAttachmentComingFromServer = GAZTNewDesignMyReturnsNewPageViewModel.numberOfAttachmentComingFromServer - 1;
             }
         }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
@@ -48,9 +49,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.VatAttachmentsList = null;
                 viewModel.ClearData();
                 if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
-                    viewModel.NumberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
+                    viewModel.NumberOfAttachmentComingFromServer = GAZTNewDesignMyReturnsNewPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
-                viewModel.IsAmendClickedOnVAT = VATReturnsPageViewModelEX.IsAmend;
+                viewModel.IsAmendClickedOnVAT = GAZTNewDesignVATReturnUpdatedUIPageViewModel.IsAmend;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
@@ -63,7 +64,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         {
                             if (!App.ICRStatus.Equals("E0001"))
                             {
-                                if (AttachmentCount < ICRListPageViewModel.numberOfAttachmentComingFromServer)
+                                if (AttachmentCount < GAZTNewDesignMyReturnsNewPageViewModel.numberOfAttachmentComingFromServer)
                                 {
                                     AttachmentCount++;
                                     if (item.Erfdt != null)

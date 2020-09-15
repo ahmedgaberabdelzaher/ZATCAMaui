@@ -199,8 +199,8 @@
 
                         <!-- Display Submitted list-->
 
-                        <listView:SfListView  Grid.Row="2" x:Name="VATInstalmentPlanListViewPage" HorizontalOptions="CenterAndExpand" IsScrollBarVisible="False" Margin="0" Padding="0"
-                                                  IsScrollingEnabled="False" VerticalOptions="StartAndExpand" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="SummaryattachmentsListView_ItemTapped"
+                        <listView:SfListView  Grid.Row="2" x:Name="VATInstalmentPlanListViewPage" HorizontalOptions="CenterAndExpand" Margin="0" Padding="0"
+                                                   VerticalOptions="StartAndExpand" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="SummaryattachmentsListView_ItemTapped"
                                       ItemsSource="{Binding ZakatListData}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
