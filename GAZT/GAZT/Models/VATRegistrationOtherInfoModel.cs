@@ -90,6 +90,13 @@ namespace EGAZT.Models
         /// 
         /// </summary>
         public List<ResultsItemForElgblDocSet> results { get; set; }
+    }  
+    public class ELGBL_DOCSetforsubmit
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<ResultsItemForDOCSetforsubmit> results { get; set; }
     }
 
     public class VATRegistrationWithOtherInformation

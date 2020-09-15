@@ -983,6 +983,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "EligibilitySetAttachmentReceived");
+            
         }
 
         protected async override void OnAppearing()
@@ -1033,6 +1035,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.VATRegistrationDetailsData.d.ATTDETSet = arg;
                         FrmNewAttachment.HasError = false;
+                    }
+                });
+                Xamarin.Forms.MessagingCenter.Subscribe<object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        viewModel.VATRegistrationDetailsData.d.ELGBL_DOCSet = arg;
+                      //  FrmNewAttachment.HasError = false;
                     }
                 });
 

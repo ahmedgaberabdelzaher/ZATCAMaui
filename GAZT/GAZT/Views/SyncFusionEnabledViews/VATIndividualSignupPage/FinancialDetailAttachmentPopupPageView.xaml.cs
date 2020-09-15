@@ -115,7 +115,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 MessagingCenter.Send<Object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
+                //if (viewModel.VATRegistrationDetailsForAttach != null && viewModel.VATRegistrationDetailsForAttach.d != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results != null)
+                //{
+                //    foreach (var item in viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results)
+                //    {
+                //        ResultsItemForElgblDocSet _eligibledocset = new ResultsItemForElgblDocSet();
+                //        _eligibledocset.DmsTp = item.Dotyp;
+                //        _eligibledocset.DmsTxt = viewModel.ResultsItemForDOCSet.Where(X => X.DmsTp == item.Dotyp).FirstOrDefault().Txt50;
+                //        //AttachmentTypeTxt = _selectedResultsItemForDOCSet.Txt50;
+                //        //DocTypeString = _selectedResultsItemForDOCSet.DmsTp;
+                //        _eligibledocset.TxnTp = "CRE_RGVT";
+                //        viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Add(_eligibledocset);
 
+                //    }
+                    
+                    
+                //}
+                
+                MessagingCenter.Send<Object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet);
+                //viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet
             }
             catch(Exception ex)
             { 
@@ -204,6 +222,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.VatAttachmentsList.Remove(listitem);
                             viewModel.AttachmentList.Remove(listitemTwo);
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            try
+                            {
+
+                                ResultsItemForDOCSetforsubmit _eligibledocset = new
+ResultsItemForDOCSetforsubmit();
+                                _eligibledocset.DmsTp = listitem.Dotyp;
+                                _eligibledocset.DmsTxt = viewModel.ResultsItemForDOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault().Txt50;
+                                _eligibledocset.TxnTp = "CRE_RGVT";
+                                _eligibledocset.LineNo = 0;
+                                _eligibledocset.Mandt = "";
+                                _eligibledocset.DataVersion = "";
+                                _eligibledocset.FormGuid = "";
+                                _eligibledocset.Fbtyp = "";
+                                _eligibledocset.RankingOrder = "";
+ 
+                                viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Remove(_eligibledocset);
+                            }
+                            catch(Exception ex)
+                            { 
+                            
+                            }
                             //if (indexToReduceTheSize != -1)
                             // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
