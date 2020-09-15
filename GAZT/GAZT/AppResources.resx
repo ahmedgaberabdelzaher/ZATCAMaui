@@ -2322,7 +2322,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
-    <value>Mobile number has to start with number 5</value>
+    <value>Mobile number should start with 5.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
@@ -4550,6 +4550,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value>Select Start Date</value>
   </data>
+      <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>
@@ -4711,6 +4717,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
+  </data>
+    
+  <data name="VatReactivationDashboardTitle" xml:space="preserve">
+    <value>Reactivation of VAT Account</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
@@ -7508,4 +7518,29 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
 <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
     <value>Search by SADAD Number</value>
   </data>
+  <data name="TypeYourUserName" xml:space="preserve">
+    <value>Type your user name</value>
+  </data>
+      <data name="questionmark" xml:space="preserve">
+  <value>?</value>
+</data>
+<data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+    <data name="ESTSelectedTaxPayerType" xml:space="preserve">
+    <value>Trade/Business</value>
+     </data>
+     <data name="ZakatDraftSaved" xml:space="preserve">
+    <value>Zakat Instalment Form Saved successfully{0}</value>
+  </data>
+    <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+    <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
+    <comment>Zakat instalment general message</comment>
+  </data>
+    <data name="VRDECCheckBox" xml:space="preserve">
+  <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
+</data>
+  <data name="VRDECDesc" xml:space="preserve">
+  <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
+</data>
 </root>

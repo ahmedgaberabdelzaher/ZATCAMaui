@@ -98,6 +98,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             try
             {
                 base.OnAppearing();
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    TaxTypeDownPicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                }
+                else
+                {
+                    TaxTypeDownPicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                }
+
                 await PageLoad();
                 if (TaxTypeDownPicker.SelectedItem != null)
                 {

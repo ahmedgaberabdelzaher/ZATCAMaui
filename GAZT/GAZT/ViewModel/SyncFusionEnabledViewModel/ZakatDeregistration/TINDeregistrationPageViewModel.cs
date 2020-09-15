@@ -1809,6 +1809,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 idTypeCode = "ZS0005";
             }
+            else if (SelectedIdtype == AppResources.ZZGCCID)
+            {
+                idTypeCode = "ZS0003";
+            }
 
             if (!string.IsNullOrEmpty(SelectedIdNumber))
             {

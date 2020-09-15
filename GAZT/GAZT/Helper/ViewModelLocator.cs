@@ -164,6 +164,8 @@ using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using EGAZT.Views.NewDesign.VatReview;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using EGAZT.Views.NewDesign.ZakatObjection;
+using EGAZT.Views.NewDesign.VATRegistrationDetails;
+using EGAZT.Views.NewDesign.Common;
 
 namespace EGAZT
 {
@@ -233,6 +235,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
             SimpleIoc.Default.Register<ZakatInstalmentPlanListViewModel>();
 
+            SimpleIoc.Default.Register<MorePopUpViewModelRTwo>();
             SimpleIoc.Default.Register<InstalmentPlanViewModel>();
             SimpleIoc.Default.Register<VATInstalmentPlanViewModel>();
             SimpleIoc.Default.Register<VATInstalmentPlanListViewModel>();
@@ -256,8 +259,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatObjectionViewModel>();
             SimpleIoc.Default.Register<QuickActionPopUpPageViewModel>();
             SimpleIoc.Default.Register<VATDeclarationAttachmentPageViewModel>();
+            SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
 
-            
+
 
             #endregion
 
@@ -580,7 +584,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        }  
+        }
         public GAZTNewDesignDashBoardPageViewModel InfoPopUpPage
         {
             get
@@ -1923,6 +1927,20 @@ namespace EGAZT
                 }
             }
         }
+        public VATRegistrationDisplayDetailsPageViewModel VATRegistrationDisplayDetails
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRegistrationDisplayDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public VATRegistrationSuccessfullPageViewModel VATRegistrationSuccessfullPageView
         {
             get
@@ -2224,7 +2242,7 @@ namespace EGAZT
             }
         }
 
-        
+
 
 
         //SYNC FUSION INTEGRATION
@@ -2262,7 +2280,7 @@ namespace EGAZT
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
             navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));
 
-            
+
             #endregion
 
             #region NewDesignRelease2
@@ -2292,8 +2310,8 @@ namespace EGAZT
             navigationService.Configure(App.ZakatObjectionPageView, typeof(ZakatObjectionPageView));
             navigationService.Configure(App.ZakatObjectionSuccessPageView, typeof(ZakatObjectionSuccessPageView));
             navigationService.Configure(App.VATDeclarationAttachmentPageView, typeof(VATDeclarationAttachmentPageView));
+            navigationService.Configure(App.MoreMenuPopUpPageViewRTwo, typeof(MoreMenuPopUpPageViewRTwo));
 
-            
             #endregion
 
 
@@ -2407,6 +2425,7 @@ namespace EGAZT
             navigationService.Configure(App.MorePopUpPageView, typeof(MorePopUpPageView));
             navigationService.Configure(App.ShowVatInformationConfirmationPageView, typeof(ShowVatInformationConfirmationPageView));
 
+            navigationService.Configure(App.VATRegistrationDisplayDetails, typeof(VATRegistrationDisplayDetails));
 
             // * Taxpayer Profile
             navigationService.Configure(App.TaxpayerProfilePageView, typeof(TaxpayerProfilePageView));
@@ -2507,6 +2526,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<InstructionsBottomPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public MorePopUpViewModelRTwo MoreMenuPopUpPageViewRTwo
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MorePopUpViewModelRTwo>();
                 }
                 catch (Exception ex)
                 {
@@ -2657,7 +2691,7 @@ namespace EGAZT
                 }
             }
         }
-    
+
 
 
 
@@ -2871,5 +2905,5 @@ namespace EGAZT
         //
     }
 
- 
+
 }

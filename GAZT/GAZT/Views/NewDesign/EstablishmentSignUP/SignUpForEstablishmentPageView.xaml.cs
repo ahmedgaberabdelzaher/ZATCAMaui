@@ -251,6 +251,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             base.OnAppearing();
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IDTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                ddlLIssuedBy.BackgroundColor = Color.FromHex("#f7f7f7");
+                ddlLIssuedByCity.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                IDTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                ddlLIssuedBy.BackgroundColor = Color.FromHex("#FFFFFF");
+                ddlLIssuedByCity.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
+
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                 viewModel.TxtMobileNumber = string.Empty;
@@ -488,7 +501,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (Result.d.NotFound == "X")
                                 {
                                     FrmCR.HasError = true;
-                                   // viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                                    viewModel.IsAllValidCRNumberEntered = false;
+                                    viewModel.TxtCRNumber = string.Empty;
+                                    // viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRnumber));
                                 }
                                 else
@@ -522,6 +537,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                    // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialReiterationNumbershouddbe10digits));
                     FrmCR.HasError = true;
+                    viewModel.IsAllValidCRNumberEntered = false;
                     EntryCRNumber.Text = string.Empty;
                    // EntryCRNumber.Focus();
                 }
@@ -2195,7 +2211,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             //CRNumber Tile
             if (viewModel.IsCRChecked == true)
             {
-                if (viewModel.IsAllValidCRNumberEntered)
+                if (!string.IsNullOrEmpty(viewModel.TxtCRNumber))
                 {
                     viewModel.PageTitle = AppResources.ZZZContactInformation;
                     viewModel.BodyText = AppResources.ZZZZCompletethebelowdetails;
@@ -2203,6 +2219,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
+                    viewModel.TxtCRNumber = string.Empty;
                     FrmCR.HasError = true;
                    // viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
@@ -3957,9 +3974,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryCRNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(EntryCRNumber.Text.Length == 10)
+            if(!string.IsNullOrEmpty(EntryCRNumber.Text))
             {
-              //  EntryCRNumber.Unfocus();
+                FrmCR.HasError = false;
+                //  EntryCRNumber.Unfocus();
             }
         }
 

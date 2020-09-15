@@ -1469,7 +1469,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TypeYourUserName));
 
                                  //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 

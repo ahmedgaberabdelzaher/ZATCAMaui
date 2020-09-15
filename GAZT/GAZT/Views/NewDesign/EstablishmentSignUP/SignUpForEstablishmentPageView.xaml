@@ -404,12 +404,12 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout x:Name="FrmLicenseNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <control:BorderlessEntry x:Name="EntryLicenceNumber" Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding TxtLicenseNumber}"  MaxLength="20" 
+                                    <control:BorderlessEntry x:Name="EntryLicenceNumber" Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding TxtLicenseNumber}"  MaxLength="20" Keyboard="Numeric"
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
                                                      VerticalTextAlignment="End" 
                                                      IsSpellCheckEnabled="False" Unfocused="EntryLicenceNumber_Unfocused">
                                         <control:BorderlessEntry.Behaviors>
-                                            <custom1:RestrictSpecialCharactorsBehaviour/>
+                                            <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
 
                                     </control:BorderlessEntry>

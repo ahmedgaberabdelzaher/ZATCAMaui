@@ -34,7 +34,19 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             viewModel.MaxDigids = "15";
             viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
         }
-     
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                PPicker.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                PPicker.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
+        }
         private void SetLTR()
         {
             if (App.IsArabic)

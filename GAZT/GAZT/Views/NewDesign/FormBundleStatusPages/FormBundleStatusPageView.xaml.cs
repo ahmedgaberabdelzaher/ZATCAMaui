@@ -26,6 +26,20 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
             OnPageLoad();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                BundleType.BackgroundColor = Color.FromHex("#f7f7f7");
+                BundleNumber.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                BundleType.BackgroundColor = Color.FromHex("#FFFFFF");
+                BundleNumber.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

@@ -51,6 +51,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 GetZakatInstalmentData();
                 outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
+                viewModel.setMoreOptioButtons();
 
             }
             catch (Exception ex)
@@ -310,6 +311,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, bool>(this, "InvoiceBillsLoaded");
+            MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "SelectedFrequencyType");
+
 
 
         }
@@ -321,6 +327,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
+
+                //getActionCommand();
+                getYesCommand();
+                getNoCommand();
+
+
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -350,6 +362,146 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);
 
 
+                    }
+                });
+
+
+                MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                    if (arg != null)
+                    {
+                        string message = arg;
+
+                        if (App.IsArabic)
+                        {
+                            ArButtons buttonId = ArButtons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case ArButtons.إضافةملاحظات:
+                                    //viewModel.VATReturnAddNote();
+                                    break;
+                                case ArButtons.عرضملاحظات:
+                                    //  viewModel.VATReturnGetNotes();
+                                    break;
+                                case ArButtons.المرفقات:
+                                    // viewModel.VATViewAttachments();
+                                    break;
+                                case ArButtons.إلغاء:
+                                    //viewModel.VoidMsg();
+                                    break;
+                                case ArButtons.عادةتعيين:
+                                    //await viewModel.VATReturnResetAsync();
+                                    break;
+                                case ArButtons.تعديل:
+                                    // await viewModel.VATReturnAmendAsync();
+                                    break;
+                                case ArButtons.حفظكمسودة:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.OnSaveDraftClicked();
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Buttons buttonId = Buttons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case Buttons.CreateNotes:
+                                    //viewModel.VATReturnAddNote();
+                                    break;
+                                case Buttons.DisplayNotes:
+                                    //viewModel.VATReturnGetNotes();
+                                    break;
+                                case Buttons.Attachments:
+                                    // viewModel.VATViewAttachments();
+                                    break;
+                                case Buttons.Void:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                case Buttons.Reset:
+                                    //await viewModel.VATReturnResetAsync();
+                                    break;
+                                case Buttons.Amend:
+                                    // await viewModel.VATReturnAmendAsync();
+                                    break;
+                                case Buttons.SaveasDraft:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.OnSaveDraftClicked();
+
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                    }
+                });
+
+
+                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "SelectedFrequencyType", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        switch (arg)
+                        {
+                            case "01":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetMonthly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                            case "02":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[1];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetQuarterly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                            case "03":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[2];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetHalfYearly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                            case "04":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[3];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetYearly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                        }
                     }
                 });
 
@@ -445,6 +597,161 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         private void calculation3_TextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.calculateYear3Data();
+        }
+
+        public async void getActionCommand()
+        {
+            try
+            {
+
+
+                MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                    if (arg != null)
+                    {
+                        string message = arg;
+
+                        if (App.IsArabic)
+                        {
+                            ArButtons buttonId = ArButtons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case ArButtons.إضافةملاحظات:
+                                    //viewModel.VATReturnAddNote();
+                                    break;
+                                case ArButtons.عرضملاحظات:
+                                    //  viewModel.VATReturnGetNotes();
+                                    break;
+                                case ArButtons.المرفقات:
+                                    // viewModel.VATViewAttachments();
+                                    break;
+                                case ArButtons.إلغاء:
+                                    //viewModel.VoidMsg();
+                                    break;
+                                case ArButtons.عادةتعيين:
+                                    //await viewModel.VATReturnResetAsync();
+                                    break;
+                                case ArButtons.تعديل:
+                                   // await viewModel.VATReturnAmendAsync();
+                                    break;
+                                case ArButtons.حفظكمسودة:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.OnSaveDraftClicked();
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Buttons buttonId = Buttons.None;
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                message = message.Replace(" ", "");
+                            }
+                            Enum.TryParse(message, out buttonId);
+                            switch (buttonId)
+                            {
+                                case Buttons.CreateNotes:
+                                    //viewModel.VATReturnAddNote();
+                                    break;
+                                case Buttons.DisplayNotes:
+                                    //viewModel.VATReturnGetNotes();
+                                    break;
+                                case Buttons.Attachments:
+                                    // viewModel.VATViewAttachments();
+                                    break;
+                                case Buttons.Void:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                case Buttons.Reset:
+                                    //await viewModel.VATReturnResetAsync();
+                                    break;
+                                case Buttons.Amend:
+                                   // await viewModel.VATReturnAmendAsync();
+                                    break;
+                                case Buttons.SaveasDraft:
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.OnSaveDraftClicked();
+                                   
+                                    viewModel.isDraftClicked = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void getYesCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                            viewModel.VATSetReturnVoidAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void getNoCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+
+                    //await PopupNavigation.Instance.PopAsync();
+                    // await viewModel.VATSetReturnVoidAsync();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

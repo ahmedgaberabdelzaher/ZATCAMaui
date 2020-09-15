@@ -62,6 +62,14 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
             viewModel.IsLoading  = false;
         }
         private void SetLTR()

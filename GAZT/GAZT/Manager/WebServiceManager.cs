@@ -1772,7 +1772,14 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    if (_vATDeclarationD != null && _vATDeclarationD.d == null)
+                    {
+                        return _vATDeclarationD;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             else
@@ -1837,7 +1844,9 @@ namespace GAZT.Manager
                     string lang = UtilityManager.GetLanguageParameter();
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
+
+                    string url = Constants.GAZTInternationalMobileData + " eq " + "'" + lang + "'" + "&$format=json";
+                    // string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
                     //String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras%20eq%20%27AR%27&$format=json";
                     //String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
@@ -8500,6 +8509,8 @@ namespace GAZT.Manager
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+
+
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -8572,7 +8583,10 @@ namespace GAZT.Manager
 
                     VatInstalmentPlanResponse _vatResponseObject = new VatInstalmentPlanResponse();
                     string LangZ = GetLangZParameterAREN();
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+                   // String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+
+                    String url = Constants.SaveVATInstalmentdata;
+
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -8816,7 +8830,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public async static Task<ZakatInstalmentPlanResponse> GetZakatInstalmentPostData()
+        public async static Task<ZakatInstalmentPlanResponse> GetZakatInstalmentPostData(string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8828,8 +8842,17 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     string formMode = "N";
+                    if (fbnum == "") {
+                         formMode = "N";
+                    }
+                    else {
+                         formMode = "S";
+                    }
+
+
+                   
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(Tin='3102206579',Euser='',Fbguid='',Fbnum='',FormMode='N',Langz='EN')?&$format=json
-                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
+                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + fbnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -8894,7 +8917,7 @@ namespace GAZT.Manager
         }
 
        
-        public async static Task<ZakatInvoiceList> GetZakatInvoicesList(bool IsZakat)
+        public async static Task<ZakatInvoiceList> GetZakatInvoicesList(bool IsZakat , string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8909,11 +8932,11 @@ namespace GAZT.Manager
                     String url = "";
                     if (IsZakat)
                     {
-                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
+                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
                     }
                     else
                     {
-                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
+                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
                     }
                     url = System.Web.HttpUtility.UrlPathEncode(url);
 

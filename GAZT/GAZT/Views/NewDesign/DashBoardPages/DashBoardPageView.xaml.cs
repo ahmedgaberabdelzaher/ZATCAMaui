@@ -690,6 +690,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
+        //private async void Vat_Registration_Details_Tapped(object sender, EventArgs e)
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        viewModel.IsLoading = true;
+
+        //    });
+        //    Device.BeginInvokeOnMainThread(() =>
+        //    {
+        //         viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails);
+
+        //    });
+
+        //}
 
         private async void ZakatInstalmentPlan_Tapped(object sender, EventArgs e)
         {
@@ -734,6 +748,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
             });
         }
+
+        private async void VATReactivation_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+            });
+        }
+
         protected override bool OnBackButtonPressed()
         {
             return true;
@@ -776,7 +804,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
            
         }
-
+        
         private void OnSupportTapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.SupportPageView);

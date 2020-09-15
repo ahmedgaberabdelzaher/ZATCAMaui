@@ -276,6 +276,15 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         {
             base.OnAppearing();
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Picker_Tins.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                Picker_Tins.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
+
             // Reset values
             viewModel.currentAttempts = 0;
             viewModel.Enabled = true;

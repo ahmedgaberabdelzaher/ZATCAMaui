@@ -474,6 +474,16 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="amount_white.png">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VatReactivationDashboardTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="VATReactivation_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>-->
+
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="ic_Installplan.png">
                                     </Image>
@@ -571,6 +581,16 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                   <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Vat_Registration_Details_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
                                  <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 

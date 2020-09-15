@@ -75,6 +75,18 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)

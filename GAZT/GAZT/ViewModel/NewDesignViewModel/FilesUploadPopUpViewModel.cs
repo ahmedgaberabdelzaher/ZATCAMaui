@@ -437,6 +437,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                             return;
                         }
+
+                        else if (IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count();
+                                if (count >= 5)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    return;
+                                }
+
+                            }
+                        }
+                        else if ((IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements && VatAttachmentCount >= 10) || (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance && VatAttachmentCount >= 10))
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZakatInstalmentAttachmentLimitReached, AppResources.Information);
+                            await PopupNavigation.Instance.PopAsync();
+                            return;
+                        }
                         VatAttachmentCount++;
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
@@ -567,7 +587,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                             {
                                                 IsLoading = false;
                                             });
-                                            await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                            await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan5MB, AppResources.Information);
                                         }
                                     }
                                     else

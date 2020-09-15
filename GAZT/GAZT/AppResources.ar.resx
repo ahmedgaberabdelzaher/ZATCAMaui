@@ -339,6 +339,12 @@
   <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
     <value>25% من المبلغ المعترض عليه</value>
   </data>
+          <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
     <value>شهادة تسجيل في ضريبة القيمة المضافة</value>
   </data>
@@ -2344,7 +2350,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
-    <value>رقم الجوال يجب أن يبدأ بالرقم 5</value>
+    <value>رقم الجوال يجب ان يبدأ برقم ٥</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberlengthcannotbelessthan9digits" xml:space="preserve">
@@ -3226,7 +3232,7 @@
     <comment>VAT Declaration</comment>
   </data>
   <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
-    <value>الموافقة على الشروط والأحكام</value>
+    <value>الرجاء الموافقة على الشروط و الاحكام</value>
     <comment>Signup</comment>
   </data>
   <data name="InvalidEmailFormat" xml:space="preserve">
@@ -4700,6 +4706,9 @@
   </data>
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>تم استلام طلب إيقاف التسجيل في ضريبة القيمة المضافة بنجاح</value>
+  </data>
+  <data name="VatReactivationDashboardTitle" xml:space="preserve">
+    <value>تنشيط حساب ضريبة القيمة المضافة</value>
   </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
@@ -6211,19 +6220,19 @@
     <value>نوع المنشأة الدائمة</value>
   </data>
   <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
-    <value>فرع لشركة غير مقيمة</value>
+    <value>فرع شركة غير مقيمة مصرح لها بمزاولة الأعمال بالمملكة.</value>
   </data>
   <data name="ESTConstuctionSiteLabel" xml:space="preserve">
-    <value>موقع العمل</value>
+    <value>مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها.</value>
   </data>
   <data name="ESTInstallationLabel" xml:space="preserve">
-    <value>التركيب</value>
+    <value>التركيبات والمواقع المستخدمة في أعمال المسح للموارد الطبيعية, ومعدات الحفر, والسفن المستخدمة في مسح الموارد الطبيعية, وممارسة الأعمال الإشرافية المتعلقة بها.</value>
   </data>
   <data name="ESTAFixedBaseLabel" xml:space="preserve">
-    <value>قاعدة ثابته</value>
+    <value>قاعدة ثابتة يمارس منها الشخص الطبيعي غير المقيم نشاطة.</value>
   </data>
   <data name="ESTANonResidentPartnerLabel" xml:space="preserve">
-    <value>شريك غير مقيم</value>
+    <value>يعد الشريك غير المقيم في شركة أشخاص مقيمة مالكاً لمنشأة دائمة بالمملكة على شكل حصة في شركة الاشخاص.</value>
   </data>
   <data name="ESTSelectTaxableIncomeSourceLabel" xml:space="preserve">
     <value>اختر مصدر الدخل الخاضع للضريبة</value>
@@ -6693,7 +6702,7 @@
     <value>طلب خطة تقسيط للزكاة</value>
   </data>
   <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
-    <value>الرقم المرجعي</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
     <value>مدة الخطة</value>
@@ -7421,4 +7430,29 @@
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
   </data>
+   <data name="TypeYourUserName" xml:space="preserve">
+    <value>Type your user name</value>
+  </data>
+    <data name="questionmark" xml:space="preserve">
+  <value>؟</value>
+</data>
+<data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
+    <value>افراد</value>
+  </data>
+    <data name="ESTSelectedTaxPayerType" xml:space="preserve">
+    <value>تجارة</value>
+    </data>
+    <data name="ZakatDraftSaved" xml:space="preserve">
+        <value>{0}تم حفظ نموذج الإقرار الضريبي  بنجاح</value>
+  </data>
+    <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+    <value>نموذج الإقرار غير مقبول. يرجى بدء العملية مرة أخرى لتقديم تقسيط الزكاة</value>
+    <comment>Zakat instalment general message</comment>
+  </data>
+    <data name="VRDECCheckBox" xml:space="preserve">
+  <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
+</data>
+  <data name="VRDECDesc" xml:space="preserve">
+  <value>أشهد بأنني مخول بإكمال هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
+</data>
 </root>
