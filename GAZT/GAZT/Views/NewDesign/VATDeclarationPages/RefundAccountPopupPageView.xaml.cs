@@ -116,6 +116,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         protected async override void OnAppearing()
         {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IDTypeDropdown.BackgroundColor = Color.FromHex("#f7f7f7");
+                IDNumberDropdown.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                IDTypeDropdown.BackgroundColor = Color.FromHex("#FFFFFF");
+                IDNumberDropdown.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
             getIban();
         }
         protected override void OnDisappearing()
