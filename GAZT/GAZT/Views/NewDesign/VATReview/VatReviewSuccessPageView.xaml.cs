@@ -91,6 +91,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
         }
+
         private async void VatReview_Tapped(object sender, EventArgs e)
         {
             var _navigation = Application.Current.MainPage.Navigation;

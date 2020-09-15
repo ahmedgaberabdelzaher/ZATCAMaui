@@ -7543,4 +7543,31 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="VRDECDesc" xml:space="preserve">
   <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
 </data>
+ <data name="VRDECCheckBox" xml:space="preserve">
+  <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
+</data>
+  <data name="VRDECDesc" xml:space="preserve">
+  <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
+</data>
+  <data name="VRRequesttoReviewtheAmount" xml:space="preserve">
+  <value>Request to Review the Amount</value>
+</data>
+  <data name="VRTotalTaxLiability" xml:space="preserve">
+  <value>Total Tax Liability</value>
+</data>
+  <data name="VRTaxPaid" xml:space="preserve">
+  <value>Tax Paid</value>
+</data>
+  <data name="VRInfull" xml:space="preserve">
+  <value>In full</value>
+</data>
+  <data name="VRInpartial" xml:space="preserve">
+  <value>In partial</value>
+</data>
+  <data name="VRDisputeDetails" xml:space="preserve">
+  <value>Dispute Details</value>
+</data>
+  <data name="VRPleasespecifytheparticularamount" xml:space="preserve">
+  <value>Please specify the particular amount</value>
+</data> 
 </root>

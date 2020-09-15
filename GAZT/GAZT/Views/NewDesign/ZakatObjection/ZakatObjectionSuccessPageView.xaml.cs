@@ -128,13 +128,50 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
 
         private async void Download_Acknowledgement(object sender, EventArgs e)
         {
-           if(_viewModel.VATReferanceNumber != null) {
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = true;
+
+
+            });
+            if (_viewModel.VATReferanceNumber != null)
+            {
 
                 String downloadurl = Constants.downloadFile + "'" + _viewModel.VATReferanceNumber + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
 
-            
+
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = false;
+
+
+            });
+        }
+
+        private async void Download_Form(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = true;
+
+
+            });
+            if (_viewModel.VATReferanceNumber != null)
+            {
+
+                String downloadurl = Constants.downloadFormFile + "'" + _viewModel.VATReferanceNumber + "')/$value";
+                await WebServiceManager.FileDownload(downloadurl, "pdf");
+            }
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = false;
+
+
+            });
+
+
         }
     }
 }

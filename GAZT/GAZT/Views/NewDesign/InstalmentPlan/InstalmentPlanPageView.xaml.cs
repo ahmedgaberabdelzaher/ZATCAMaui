@@ -72,29 +72,26 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
         }
 
 
-        async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        public async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             //            viewModel.ReasonContinueBtnClicked();
 
 
-
-
-            if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
+            if (selectedItem.ActiveOutletDecisionOptions == AppResources.ZakatInstalmetSelectTypeZakat)
             {
                 viewModel.IsZakatSelected = true;
                 viewModel.IsIncomeTaxViewEnabled = false;
                 Preferences.Set("isZakat", true);
                 viewModel.ZakatBtnClicked();
             }
-            else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
+            else if (selectedItem.ActiveOutletDecisionOptions == AppResources.ZakatInstalmetSelectTypeIncomeTax)
             {
                 viewModel.IsZakatSelected = false;
                 viewModel.IsIncomeTaxViewEnabled = true;
                 Preferences.Set("isZakat", false);
                 viewModel.IncomeTaxBtnClicked();
-
 
 
             }
@@ -103,12 +100,11 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             {
                 viewModel.IsZakatSelected = false;
                 viewModel.IsIncomeTaxViewEnabled = false;
-
-
-
                 viewModel.VatBtnClicked();
                 //PopupNavigation.Instance.PushAsync(new ZakatInstalmentPlanBottomPopup());
             }
+
+
 
         }
 

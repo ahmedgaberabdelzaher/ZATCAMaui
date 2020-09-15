@@ -1050,6 +1050,111 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        public string _totalTaxLiability = "";
+        public string TotalTaxLiability
+        {
+            get { return _totalTaxLiability; }
+            set
+            {
+                _totalTaxLiability = value;
+                RaisePropertyChanged("TotalTaxLiability");
+            }
+        }
+        public string _taxPaid = "";
+        public string TaxPaid
+        {
+            get { return _taxPaid; }
+            set
+            {
+                _taxPaid = value;
+                RaisePropertyChanged("TaxPaid");
+            }
+        }
+
+        public string requestedReviewAmount = "";
+        public string RequestedReviewAmount
+        {
+            get
+            {
+                return requestedReviewAmount;
+            }
+            set
+            {
+                requestedReviewAmount = value;
+                RaisePropertyChanged("RequestedReviewAmount");
+            }
+        }
+        public string disputeDetailsDesc = "";
+        public string DisputeDetailsDesc
+        {
+            get
+            {
+                return disputeDetailsDesc;
+            }
+            set
+            {
+                disputeDetailsDesc = value;
+                RaisePropertyChanged("DisputeDetailsDesc");
+            }
+        }
+
+        private bool isPenlaityAmountVisible = false;
+        public bool IsPenlaityAmountVisible
+        {
+            get
+            {
+                return isPenlaityAmountVisible;
+            }
+            set
+            {
+                isPenlaityAmountVisible = value;
+                RaisePropertyChanged("IsPenlaityAmountVisible");
+            }
+        }
+
+        private bool _isAssessPayOptionVisible = false;
+        public bool IsAssessPayOptionVisible
+        {
+            get { return _isAssessPayOptionVisible; }
+            set
+            {
+                _isAssessPayOptionVisible = value;
+                RaisePropertyChanged("IsAssessPayOptionVisible");
+            }
+        }
+        private bool _isRRAmountEdit = false;
+        public bool IsRRAmountEdit
+        {
+            get { return _isRRAmountEdit; }
+            set
+            {
+                _isRRAmountEdit = value;
+                RaisePropertyChanged("IsRRAmountEdit");
+            }
+        }
+
+        private bool partialAmountCheckBox = false;
+        public bool PartialAmountCheckBox
+        {
+            get { return partialAmountCheckBox; }
+            set
+            {
+                partialAmountCheckBox = value;
+                RaisePropertyChanged("PartialAmountCheckBox");
+            }
+        }
+
+        private bool fullPaymentCheckBox = false;
+        public bool FullPaymentCheckBox
+        {
+            get { return fullPaymentCheckBox; }
+            set
+            {
+                fullPaymentCheckBox = value;
+                RaisePropertyChanged("FullPaymentCheckBox");
+            }
+        }
+
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 5;
 
@@ -1069,6 +1174,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("DeclarationButtonBackGroundColor");
             }
         }
+
+        public ObservableCollection<SelectionModel> disputeAmountPaymentOptions { get; set; }
+        public ObservableCollection<SelectionModel> DisputeAmountPaymentOptions
+        {
+            get { return disputeAmountPaymentOptions; }
+            set
+            {
+                if (disputeAmountPaymentOptions == value)
+                {
+                    return;
+                }
+                disputeAmountPaymentOptions = value;
+                RaisePropertyChanged("DisputeAmountPaymentOptions");
+            }
+        }
+
+
 
         public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
 
@@ -1133,6 +1255,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("SecurityPaymentOptions");
             }
         }
+
+
 
         private Dictionary<string, string> IDTypeDictionary = new Dictionary<string, string>
         {
@@ -1331,10 +1455,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             if (selectedReviewReason.ProcCD == "VTPC" || selectedReviewReason.ProcCD == "VTPN" || selectedReviewReason.ProcCD == "VTAS")
             {
                 IsSecurityPaymentsTabVisible = true;
+                IsPenlaityAmountVisible = true;
             }
             else
             {
                 IsSecurityPaymentsTabVisible = false;
+                IsPenlaityAmountVisible = false;
             }
             if (selectedReviewReason.ProcCD == "VTPC" || selectedReviewReason.ProcCD == "VTPN")
             {
@@ -1344,6 +1470,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 ViewApplicationTypeText = AppResources.VRViewApplication;
             }
+            if (selectedReviewReason.ProcCD == "VTAS")
+            {
+                IsAssessPayOptionVisible = true;
+                IsPenlaityAmountVisible = false;
+            }
+            else
+            {
+                IsAssessPayOptionVisible = false;
+            }
+
+
         }
 
         private void setApplicationRefPickerModel(List<VATObjectionRejectedFormModel.AppRefNumResult> results)
@@ -1984,13 +2121,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 TaxPeriodFrom = selectedApplicationRef.Abrzu;
                 TaxPeriodTo = selectedApplicationRef.Abrzo;
                 PenalityAmountInQuestion = selectedApplicationRef.Penamount;
+
+                TotalTaxLiability = selectedApplicationRef.Liaamt;
+                TaxPaid = selectedApplicationRef.Clramt;
+                RequestedReviewAmount = selectedApplicationRef.Liaamt;
+
+
                 EnableReviewReasonConButton();
             }
 
+        }
 
-
-
-
+        private void AddDisputeAmountPaymentOptions()
+        {
+            var disputeAmountPaymentOptions = new ObservableCollection<SelectionModel>();
+            disputeAmountPaymentOptions.Add(new SelectionModel
+            {
+                SelectionTitle = AppResources.VRInfull,
+                IsSelected = true
+            });
+            disputeAmountPaymentOptions.Add(new SelectionModel
+            {
+                SelectionTitle = AppResources.VRInpartial,
+                IsSelected = false
+            });
+            DisputeAmountPaymentOptions = disputeAmountPaymentOptions;
         }
 
         public void updateIdTypePicker()
@@ -2207,10 +2362,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+
+
         public void ResetData()
         {
             EnableReviewReasonView();
             ShowInstructionsDialog();
+
 
             IsSadadSecuritySelected = false;
             IsBankGurantSecuritySelected = false;
@@ -2256,7 +2414,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             AddSecurityPaymentOptions();
             setIdPickerModel();
 
-
+            AddDisputeAmountPaymentOptions();
 
 
 
@@ -2279,7 +2437,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         }
         public void EnableReviewDetailsConButton()
         {
-            if (ReportDetails == "")
+            if (ReportDetails == "" || (IsAssessPayOptionVisible && (DisputeDetailsDesc == "" || RequestedReviewAmount == "")))
             {
                 IsReviewDetailsEnabled = false;
             }
