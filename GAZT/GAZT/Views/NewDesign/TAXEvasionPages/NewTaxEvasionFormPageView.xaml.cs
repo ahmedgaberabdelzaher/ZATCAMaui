@@ -42,7 +42,18 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                RegionPicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                CityPicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                ReportTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                RegionPicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                CityPicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                ReportTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
         }
         private void SetLTR()
         {
