@@ -6330,10 +6330,13 @@ namespace GAZT.Manager
                             //    //}
                             //}
                             RequestVATRegistration = vATRegistration;
+                            if (vATRegistration.d.ELGBL_DOCSet == null || vATRegistration.d.ELGBL_DOCSet.results == null)
+                            {
+                                ELGBL_DOCSetforsubmit eLGBL_DOCSet = new ELGBL_DOCSetforsubmit();
+                                eLGBL_DOCSet.results = new List<ResultsItemForDOCSetforsubmit>();
+                                RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
 
-                            ELGBL_DOCSet eLGBL_DOCSet = new ELGBL_DOCSet();
-                            eLGBL_DOCSet.results = new List<ResultsItemForElgblDocSet>();
-                            RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
+                            }
                             //RequestVATDeclaration.d.SubmitFg = "";
                             ATTDETSet aTTACHSet = new ATTDETSet();
                             aTTACHSet.results = new List<Attachment>();
@@ -6409,8 +6412,8 @@ namespace GAZT.Manager
                                 }
                                 if (_vATRegistration.d.ELGBL_DOCSet == null)
                                 {
-                                    ELGBL_DOCSet eLGBL_DOC = new ELGBL_DOCSet();
-                                    eLGBL_DOC.results = new List<ResultsItemForElgblDocSet>();
+                                    ELGBL_DOCSetforsubmit eLGBL_DOC = new ELGBL_DOCSetforsubmit();
+                                    eLGBL_DOC.results = new List<ResultsItemForDOCSetforsubmit>();
                                     _vATRegistration.d.ELGBL_DOCSet = eLGBL_DOC;
                                 }
                                 if (_vATRegistration.d.QUESTIONSSet == null)
@@ -6454,10 +6457,10 @@ namespace GAZT.Manager
                     }
                     return _vATRegistration;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
-                }
+                //catch (GAZTVATRegistrationInProcessException ex)
+                //{
+                //    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                //}
 
                 catch (Exception ex)
                 {
