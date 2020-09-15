@@ -44,7 +44,7 @@
         <Grid>
             <yummy:PancakeView BackgroundColor="Black" CornerRadius="42,42,0,0" Padding="0">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                  Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRDMainGrid">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*" />
@@ -127,11 +127,11 @@
                                                         </Grid.ColumnDefinitions>
 
                                                         <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
                                                          <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRImportExport}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding ImportExportText}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
                                                          <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.Attachment}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
 
 
@@ -201,17 +201,31 @@
                                                         <Label Text="{x:Static custom2:AppResources.FORM5FinancialInfo}"   Style="{StaticResource GAZTSmallBlackLbl}"/>
                                                     </StackLayout>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
-                                                    <StackLayout Padding="10,5,10,10">
+                                                     <Grid Padding="10,5,10,10">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="40*"/>
+                                                            <ColumnDefinition Width="50*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                
                                                         <!--SliderLable1-->
-                                                        <Label Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}" Margin="0,20,0,0" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                          <Label Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Margin="0,20,0,0"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                    </StackLayout>
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                         </Grid>
                                                 </StackLayout>
                                             </Frame>
 
@@ -242,33 +256,26 @@
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
 
                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.LastnmFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.LastnmFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <!--<Label Grid.Row="5" Grid.Column="1" Text="{Binding MobNumberFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
-                                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" >
-                                                            <custom:CustomLabel.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="(0966)" TextColor="Black"  />
-                                                                    <Span   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.MobNumberFR}" />
-                                                                </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                                                   
+                                                        <Label Grid.Row="5" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.MobNumberFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
                                                     </Grid>
                                                 </StackLayout>
                                             </Frame>
@@ -306,16 +313,16 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                              <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding IDType}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                              <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                             <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                             <Label Grid.Row="1" Grid.Column="1"  Text="{Binding IDNumber}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                              <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VatDeregDOBTitle}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding DOB}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRContactPersonName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding ContactPersonName}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                             </Grid>
 			                      
