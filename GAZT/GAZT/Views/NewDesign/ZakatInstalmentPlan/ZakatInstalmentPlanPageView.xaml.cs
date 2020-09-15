@@ -314,7 +314,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
-
+            MessagingCenter.Unsubscribe<object, string>(this, "SelectedFrequencyType");
 
 
 
@@ -454,6 +454,56 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
 
+
+                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "SelectedFrequencyType", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        switch (arg)
+                        {
+                            case "01":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetMonthly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                            case "02":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[1];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetQuarterly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                            case "03":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[2];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetHalfYearly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                            case "04":
+                                {
+                                    frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[3];
+                                    viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
+                                    {
+                                        FrequencyOptions = AppResources.ZakatInstalmetYearly,
+                                        IsSelected = true
+                                    });
+                                    break;
+                                }
+                        }
+                    }
+                });
 
                 if (Device.RuntimePlatform == Device.iOS)
                 {
