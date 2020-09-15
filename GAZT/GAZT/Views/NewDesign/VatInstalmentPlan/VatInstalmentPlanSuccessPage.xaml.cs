@@ -158,8 +158,19 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             if (viewModel.VATReferanceNumber != null)
             {
 
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
                 String downloadurl = Constants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
+
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+
+                });
             }
         }
 

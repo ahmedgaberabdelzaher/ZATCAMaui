@@ -33,7 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        private bool _isLoading = true;
+        private bool _isLoading = false;
         bool _bankStatementsAttachment = true;
         private bool _isNoDataLableVisible = false;
 

@@ -1986,7 +1986,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else
             {
-                await GetViewApplication(App.LoginDataRetrieved.FbGuid, "", modelVATReview.d.Euserx);
+
+                await GetViewApplication(App.LoginDataRetrieved.FbGuid, selectedApplicationRef.Fbnum, modelVATReview.d.Euserx);
             }
             _isDialog = !_isDialog;
         }
@@ -3516,7 +3517,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = true;
 
-                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(Fbguid, Fbnumz, EUser, "");
+                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVRVATReturns(Fbguid, Fbnumz, EUser, "");
                     PopToRootPage();
                     if (_vATDeclaration != null && _vATDeclaration.d != null)
                     {
