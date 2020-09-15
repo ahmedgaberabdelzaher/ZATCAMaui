@@ -177,6 +177,10 @@ namespace GAZT.Helper
         public static string GAZTUnlockAccountAllOperations = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_UNLOCK_USER_SRV/HeaderSet";
         #endregion
 
+        #region InternationalMobileNumber
+        public static string GAZTInternationalMobileData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras";
+        #endregion
+
         #region Form5
         #endregion
         #region ZakatForm5

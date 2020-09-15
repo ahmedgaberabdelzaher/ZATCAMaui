@@ -1844,7 +1844,9 @@ namespace GAZT.Manager
                     string lang = UtilityManager.GetLanguageParameter();
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
+
+                    string url = Constants.GAZTInternationalMobileData + " eq " + "'" + lang + "'" + "&$format=json";
+                    // string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
                     //String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras%20eq%20%27AR%27&$format=json";
                     //String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
