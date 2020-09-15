@@ -522,7 +522,7 @@
                         
                     </Grid>
                     
-                    <buttons:SfButton Grid.Row="8" Margin="0,16,0,16"  VerticalOptions="End"
+                    <buttons:SfButton Grid.Row="8" Margin="0,16,0,16"  VerticalOptions="EndAndExpand"
                                       Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ReviewDetailsButtonBackGroundColor}"
                                       Command="{Binding ReviewDetailsConBtnTapped}" />
@@ -849,6 +849,8 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
 
                     </Grid.RowDefinitions>
@@ -871,7 +873,37 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="DecCheckBox_CheckedChanged" IsChecked="{Binding IsDECCheckBox}">
+                            <CheckBox.Triggers>
+                                <DataTrigger TargetType="CheckBox"  Value="false">
+                                    <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                                </DataTrigger>
+                            </CheckBox.Triggers>
+                        </CheckBox>
+                        <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VRDECCheckBox}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
+
+                        <Frame HorizontalOptions="FillAndExpand"
+                               Style="{StaticResource GreyBorderFrame}" HasShadow="False" CornerRadius="12"
+                               Margin="0,20,0,0" Padding="10,3,10,3">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRDECDesc}"
+                                                HorizontalOptions="StartAndExpand" 
+                                                Style="{StaticResource BodyLabelBlack}" />
+
+                        </Frame>
+                    </Grid>
+                    
+                    <Grid Grid.Row="3" HorizontalOptions="FillAndExpand">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -898,7 +930,7 @@
                         </border:SfBorder>
                     </Grid>
 
-                     <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
+                     <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
 
                          <Grid.RowDefinitions>
                              <RowDefinition Height="auto" />
@@ -954,7 +986,7 @@
                          </Grid>
                      </Grid>
 
-                     <Grid Grid.Row="3" HorizontalOptions="FillAndExpand">
+                     <Grid Grid.Row="5" HorizontalOptions="FillAndExpand">
 
                          <Grid.RowDefinitions>
                              <RowDefinition Height="auto" />
@@ -975,12 +1007,13 @@
                          </border:SfBorder>
                      </Grid>
                      
-                    <buttons:SfButton Grid.Row="4" Margin="0,16,0,16"  VerticalOptions="End" BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
+                    <buttons:SfButton Grid.Row="6" Margin="0,16,0,16"  VerticalOptions="End" BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
                                       Text="{x:Static ResourceManager:AppResources.VRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"
                                       Command="{Binding DeclarationConBtnTapped}" />
 
                 </Grid>
+                
                 
                 <Grid IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

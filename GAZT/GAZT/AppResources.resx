@@ -7537,4 +7537,10 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
     <comment>Zakat instalment general message</comment>
   </data>
+    <data name="VRDECCheckBox" xml:space="preserve">
+  <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
+</data>
+  <data name="VRDECDesc" xml:space="preserve">
+  <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
+</data>
 </root>

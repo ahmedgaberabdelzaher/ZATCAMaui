@@ -13511,5 +13511,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_ZakatCancelled", resourceCulture);
             }
         }
+        
+        public static string VRDECCheckBox {
+            get {
+                return ResourceManager.GetString("VRDECCheckBox", resourceCulture);
+            }
+        }
+        
+        public static string VRDECDesc {
+            get {
+                return ResourceManager.GetString("VRDECDesc", resourceCulture);
+            }
+        }
     }
 }

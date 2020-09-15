@@ -124,5 +124,9 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             viewModel.EnableSecurityPaymentsConButton();
         }
+        private void DecCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            viewModel.EnableDeclarationConButton();
+        }
     }
 }
