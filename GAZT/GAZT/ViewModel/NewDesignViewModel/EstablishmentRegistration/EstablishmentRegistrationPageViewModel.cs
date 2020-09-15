@@ -1978,8 +1978,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
-                    SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
-                    SelectedTaxPayerType = "Trade/Business";
+                    SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
+                    SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
 
                     ResidenceTypePrePopulateData(taxPayerDetails);
@@ -2444,7 +2444,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     //return true;
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
-                    taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
+                    taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
                     taxPayerDetails.Taxtpdetermination = "1";
                     taxPayerDetails.Tpresidence = SelectedTpresidence;

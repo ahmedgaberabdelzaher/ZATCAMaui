@@ -990,6 +990,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 base.OnAppearing();
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    DDlIDType.BackgroundColor = Color.FromHex("#f7f7f7");
+                    DDlContactIDType.BackgroundColor = Color.FromHex("#f7f7f7");
+                 }
+                else
+                {
+                    DDlIDType.BackgroundColor = Color.FromHex("#FFFFFF");
+                    DDlContactIDType.BackgroundColor = Color.FromHex("#FFFFFF");
+                }
+
                 string message = string.Empty;
                 Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {

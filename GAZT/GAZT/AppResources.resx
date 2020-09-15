@@ -2322,7 +2322,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
-    <value>Mobile number has to start with number 5</value>
+    <value>Mobile number should start with 5.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
@@ -7523,5 +7523,24 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
       <data name="questionmark" xml:space="preserve">
   <value>?</value>
+</data>
+<data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+    <data name="ESTSelectedTaxPayerType" xml:space="preserve">
+    <value>Trade/Business</value>
+     </data>
+     <data name="ZakatDraftSaved" xml:space="preserve">
+    <value>Zakat Instalment Form Saved successfully{0}</value>
+  </data>
+    <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+    <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
+    <comment>Zakat instalment general message</comment>
+  </data>
+    <data name="VRDECCheckBox" xml:space="preserve">
+  <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
+</data>
+  <data name="VRDECDesc" xml:space="preserve">
+  <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
 </data>
 </root>
