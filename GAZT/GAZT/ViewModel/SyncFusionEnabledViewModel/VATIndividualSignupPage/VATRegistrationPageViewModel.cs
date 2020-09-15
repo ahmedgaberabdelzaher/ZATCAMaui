@@ -1588,7 +1588,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     VATRegistrationDetailsData.d.DecidTy = SelectedIdTypeSR.ID;
                 }
 
-                VATRegistrationDetailsData.d.Decconno = IdNumberSR;
+                VATRegistrationDetailsData.d.DecidNo = IdNumberSR;
                 VATRegistrationDetailsData.d.Decname = FirstNameSR;
 
               
@@ -1886,7 +1886,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             if(vATRegistration.d.Decconno!=null)
 
 
-                              IdNumberSR= vATRegistration.d.Decconno;
+                              IdNumberSR= vATRegistration.d.DecidNo;
                             FirstNameSR = vATRegistration.d.Decname; 
 
                             //Added By Divya to display Start Date in TaxPayer Details page 1303,1304

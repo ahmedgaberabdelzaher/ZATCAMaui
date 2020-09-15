@@ -242,7 +242,7 @@
 								x:Name="SignUpDOB"
                           
                              OKButtonTextColor="#006450" 
-                                
+Closed="SignUpDOB_Closed"                                
                                              CancelButtonTextColor="#006450"
                            
                             SelectedItem="{Binding TodayDate}"
@@ -538,7 +538,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="CountryName" ItemsSource="{Binding GCCCountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="CountryName" ItemsSource="{Binding GCCCountryList}"  SelectionChanged="GCCPicker_Country_SelectionChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="GCCCountry_OkayButtonClicked"  CancelButtonClicked="GCCCountry_CancelButtonClicked">

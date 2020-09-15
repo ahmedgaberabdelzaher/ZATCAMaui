@@ -92,7 +92,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _isAttachmentEnable = value;
-                RaisePropertyChanged("IsAttachmentEnable");
+                RaisePropertyChanged("IsAttachmentEnabled");
             }
         }
         public TaxpayerCorrespondanceDetailPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)

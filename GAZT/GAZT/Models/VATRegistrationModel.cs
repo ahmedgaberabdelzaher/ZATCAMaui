@@ -130,6 +130,20 @@ public class ResultsItemForQuestion
         public string DmsTxt { get; set; }
         public string Txt50 { get; set; }
     }
+    public class ResultsItemForDOCSetforsubmit
+    {
+   //     public __metadata __metadata { get; set; }
+        public string Mandt { get; set; }
+        public string FormGuid { get; set; }
+        public string DataVersion { get; set; }
+        public int LineNo { get; set; }
+        public string RankingOrder { get; set; }
+        public string Fbtyp { get; set; }
+        public string TxnTp { get; set; }
+        public string DmsTp { get; set; }
+        public string DmsTxt { get; set; }
+        //public string Txt50 { get; set; }
+    }
 
     public class QUESTIONSSet
 {
@@ -235,7 +249,7 @@ public class ResultsItemForQuestion
         public ADDRESSSet ADDRESSSet { get; set; }
         public NOTESSet NOTESSet { get; set; }
         public CONTACTDTSet CONTACTDTSet { get; set; }
-        public ELGBL_DOCSet ELGBL_DOCSet { get; set; }
+        public ELGBL_DOCSetforsubmit ELGBL_DOCSet { get; set; }
         public CONTACT_PERSONSet CONTACT_PERSONSet { get; set; }
         public QUESTIONSSet QUESTIONSSet { get; set; }
         public QUESCONFIG_MSet QUESCONFIG_MSet { get; set; }
