@@ -2115,7 +2115,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatInstalments.d.retmsgSet = new EGAZT.Models.ZakatInstalationModels.RetmsgSet();
                 ZakatInstalments.d.FnDtlSet = new EGAZT.Models.ZakatInstalationModels.FnDtlSet();
                 ZakatInstalments.d.AttachSet = new EGAZT.Models.ZakatInstalationModels.AttachSet();
-
+               
 
                 ZakatInstalments = await SubmitClicked();
 
@@ -3171,7 +3171,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     ZakatInstalments.d.OffPlanDur = "00";
                     ZakatInstalments.d.OffPymntFreq = "00";
                     ZakatInstalments.d.OffPymntFreq = "00";
-                    ZakatInstalments.d.Status = ZakatInstalments.d.Status;
                     if (CurrentIndex == 1)
                     {
                         ZakatInstalments.d.StepNumber = "01";
@@ -3190,6 +3189,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
                     ZakatInstalments.d.Operation = "05";
+
+                        ZakatInstalments.d.Status = "E0013";
+
+                   
+
+
                     if (!isDraftClicked)
                     {
                         isDraftClicked = true;
@@ -3360,7 +3365,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     ZakatInstalments.d.OffPlanDur = "00";
                     ZakatInstalments.d.OffPymntFreq = "00";
                     ZakatInstalments.d.OffPymntFreq = "00";
-                    ZakatInstalments.d.Status = ZakatInstalments.d.Status;
+
                     if (CurrentIndex == 1)
                     {
                         ZakatInstalments.d.StepNumber = "01";
@@ -3379,6 +3384,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
                     ZakatInstalments.d.Operation = "04";
+                    ZakatInstalments.d.Status = "E0001";
+
                     if (!isDraftClicked)
                     {
                         isDraftClicked = true;
@@ -3820,7 +3827,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 3;
                 SelectedFrequencyType = "04";
             }
-            NumberOFInstalmentSliderValue = 1;
+
+            if (ZakatInstalments.d.PlanDur != null && int.Parse(ZakatInstalments.d.PlanDur) > 0)
+            {
+                NumberOFInstalmentSliderValue = int.Parse(ZakatInstalments.d.PlanDur);
+            }
+            else {
+                NumberOFInstalmentSliderValue = 1;
+            }
+
+            
         }
 
 
@@ -3927,12 +3943,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                             if (ZakatInstalments.d.PymntFreq != null && Double.Parse(ZakatInstalments.d.PymntFreq) > 0)
                             {
                                 SelectedFrequencyType = ZakatInstalments.d.PymntFreq;
+                                MessagingCenter.Send<Object, string>(this, "SelectedFrequencyType", SelectedFrequencyType);
+
+
+
                             }
 
 
 
 
-                          
                             //if (IsZakat)
                             //{
                             //    ZakatInstalments.d.InstReqFor = "01";
@@ -4239,6 +4258,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.PaymtDt = ZakatInstalments.d.PaymtDt;
             _postData.PenlAmt = ZakatInstalments.d.PenlAmt;
             _postData.InsDtOff = ZakatInstalments.d.InsDtOff;
+
+
+            
 
             if (ZakatInstalments.d.NotesSet.results == null)
             {
