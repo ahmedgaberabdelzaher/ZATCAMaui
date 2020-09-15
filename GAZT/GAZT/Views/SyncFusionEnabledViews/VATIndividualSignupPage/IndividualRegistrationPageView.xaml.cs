@@ -792,7 +792,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
+                viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
+                viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
+                viewModel.IdNumber = string.Empty;
+                if (!viewModel.SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    if (string.IsNullOrEmpty(viewModel.DOB) && string.IsNullOrEmpty(viewModel.IdNumber))
+                    {
+                        ValidateIDNumber();
+                    }
 
+                }
             }
             catch (Exception ex)
             {
@@ -1448,6 +1458,42 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                  
          
+            }
+        }
+
+        private void GCCPicker_Country_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                viewModel.CountryName = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex].CountryName;
+                viewModel.SelectedGCCCountry = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex];
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        private void SignUpDOB_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.DOB = year + "/" + month + "/" + day;
+                viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                string DOB = year + month + day;
+                viewModel.DOBPrev = viewModel.DOB;
+
+
+                ValidateIDNumber();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }
