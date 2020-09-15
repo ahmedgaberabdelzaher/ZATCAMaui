@@ -2322,7 +2322,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
-    <value>Mobile number has to start with number 5</value>
+    <value>Mobile number should start with 5.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">

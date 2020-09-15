@@ -2350,7 +2350,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
-    <value>رقم الجوال يجب أن يبدأ بالرقم 5</value>
+    <value>رقم الجوال يجب ان يبدأ برقم ٥</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberlengthcannotbelessthan9digits" xml:space="preserve">
@@ -3232,7 +3232,7 @@
     <comment>VAT Declaration</comment>
   </data>
   <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
-    <value>الموافقة على الشروط والأحكام</value>
+    <value>الرجاء الموافقة على الشروط و الاحكام</value>
     <comment>Signup</comment>
   </data>
   <data name="InvalidEmailFormat" xml:space="preserve">
