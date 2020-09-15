@@ -2117,7 +2117,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                              OKButtonTextColor="#006450" 
                                 
                                              CancelButtonTextColor="#006450"
-                           
+                           Closed="SignUpDOB_Closed"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="DOB_OkButtonClicked"
@@ -2469,7 +2469,9 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                      DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListSR}" Margin="0,0,0,0"
                                                     PickerHeight="200"
                                                     PickerWidth="270"
-                                                     FooterHeight="46" OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"  CancelButtonClicked="IDTypeSR_CancelButtonClicked">
+                                                     FooterHeight="46"
+
+SelectionChanged="DDlContactIDType_SelectionChanged" OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"  CancelButtonClicked="IDTypeSR_CancelButtonClicked">
                                                                 <syncfusion:SfPicker.Behaviors>
                                                                     <custom1:SfPickerBehavior />
                                                                 </syncfusion:SfPicker.Behaviors>
@@ -2556,7 +2558,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                              OKButtonTextColor="#006450" 
                                 
                                              CancelButtonTextColor="#006450"
-                           
+                           Closed="ContactDOBPicker_Closed"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="ContactDOBPicker_OkButtonClicked"
