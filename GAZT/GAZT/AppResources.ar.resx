@@ -7482,4 +7482,10 @@
   <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
     <value>المبلغ المطلوب الإفراج عنه يجب ان يكون اقل من إجمالي مبلغ العقد</value>
   </data>
+  <data name="NDAccounting" xml:space="preserve">
+    <value>Accounting</value>
+  </data>
+  <data name="NDEstimated" xml:space="preserve">
+    <value>Estimated</value>
+  </data>
 </root>

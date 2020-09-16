@@ -857,8 +857,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private Dictionary<string, string> EnMethodList = new Dictionary<string, string>()
         {
-            {"A", "Accounting" },
-            {"E", "Estimated" }
+            {"A", AppResources.NDAccounting },
+            {"E", AppResources.NDEstimated }
         };
         private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
         {
