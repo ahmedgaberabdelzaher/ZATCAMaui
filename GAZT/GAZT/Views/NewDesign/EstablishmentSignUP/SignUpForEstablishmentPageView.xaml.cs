@@ -1783,6 +1783,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void OnYesTapped(object sender, EventArgs e)
         {
+            viewModel.IsTIN = true;
             viewModel.ImgBackgroundNo = "re_Property_Tile_Background_White";
             viewModel.ImgBackgroundYes = "re_Tile_Background";
             viewModel.TxtTIN = string.Empty;
@@ -1792,6 +1793,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         private void OnNoTapped(object sender, EventArgs e)
         {
+            viewModel.IsTIN = false;
             viewModel.ImgBackgroundNo = "re_Tile_Background";
 
             viewModel.ImgBackgroundYes = "re_Property_Tile_Background_White";

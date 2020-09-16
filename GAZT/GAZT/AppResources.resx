@@ -4508,7 +4508,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
     <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
   </data>
-      <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
+  <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
     <value>Attachments - Ministerial Resolution to approve Merger</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
@@ -4550,10 +4550,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value>Select Start Date</value>
   </data>
-      <data name="VATRegistrationDetails" xml:space="preserve">
+  <data name="VATRegistrationDetails" xml:space="preserve">
     <value>VAT Registration Details</value>
   </data>
-          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+  <data name="VATRegistrationDetailsTitle" xml:space="preserve">
     <value>VAT Registration</value>
   </data>
   <data name="VATDeregistration" xml:space="preserve">
@@ -4718,7 +4718,6 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
   </data>
-    
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>Reactivation of VAT Account</value>
   </data>
@@ -5789,8 +5788,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Edit</value>
   </data>
   <data name="CRContractonName" xml:space="preserve">
-       <value>Contracting Name</value>
-    </data>
+    <value>Contracting Name</value>
+  </data>
   <data name="CRIDType" xml:space="preserve">
     <value>ID Type</value>
   </data>
@@ -7509,68 +7508,68 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ReadInbox" xml:space="preserve">
     <value>Read inbox</value>
   </data>
-<data name="GetSupport" xml:space="preserve">
+  <data name="GetSupport" xml:space="preserve">
     <value>Get Support</value>
   </data>
-    <data name="VatInstalment5MB" xml:space="preserve">
+  <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
   </data>
-<data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
+  <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
     <value>Search by SADAD Number</value>
   </data>
   <data name="TypeYourUserName" xml:space="preserve">
     <value>Type your user name</value>
   </data>
-      <data name="questionmark" xml:space="preserve">
-  <value>?</value>
-</data>
-<data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
+  <data name="questionmark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
     <value>Individual</value>
   </data>
-    <data name="ESTSelectedTaxPayerType" xml:space="preserve">
+  <data name="ESTSelectedTaxPayerType" xml:space="preserve">
     <value>Trade/Business</value>
-     </data>
-     <data name="ZakatDraftSaved" xml:space="preserve">
+  </data>
+  <data name="ZakatDraftSaved" xml:space="preserve">
     <value>Zakat Instalment Form Saved successfully{0}</value>
   </data>
-    <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+  <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
     <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
     <comment>Zakat instalment general message</comment>
   </data>
-    <data name="VRDECCheckBox" xml:space="preserve">
-  <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
-</data>
+  <data name="VRDECCheckBox" xml:space="preserve">
+    <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
+  </data>
   <data name="VRDECDesc" xml:space="preserve">
-  <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
-</data>
- <data name="VRDECCheckBox" xml:space="preserve">
-  <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
-</data>
-  <data name="VRDECDesc" xml:space="preserve">
-  <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
-</data>
+    <value>I hereby certify that I am authorized to complete this form for the taxable person and that all information contained is correct</value>
+  </data>
   <data name="VRRequesttoReviewtheAmount" xml:space="preserve">
-  <value>Request to Review the Amount</value>
-</data>
+    <value>Request to Review the Amount</value>
+  </data>
   <data name="VRTotalTaxLiability" xml:space="preserve">
-  <value>Total Tax Liability</value>
-</data>
+    <value>Total Tax Liability</value>
+  </data>
   <data name="VRTaxPaid" xml:space="preserve">
-  <value>Tax Paid</value>
-</data>
+    <value>Tax Paid</value>
+  </data>
   <data name="VRInfull" xml:space="preserve">
-  <value>In full</value>
-</data>
+    <value>In full</value>
+  </data>
   <data name="VRInpartial" xml:space="preserve">
-  <value>In partial</value>
-</data>
+    <value>In partial</value>
+  </data>
   <data name="VRDisputeDetails" xml:space="preserve">
-  <value>Dispute Details</value>
-</data>
+    <value>Dispute Details</value>
+  </data>
   <data name="VRPleasespecifytheparticularamount" xml:space="preserve">
-  <value>Please specify the particular amount</value>
-</data> 
+    <value>Please specify the particular amount</value>
+  </data>
   <data name="CRRequestDetails" xml:space="preserve">
-  <value>Request Details</value>
-</data>
+    <value>Request Details</value>
+  </data>
+  <data name="NDAccounting" xml:space="preserve">
+    <value>Accounting</value>
+  </data>
+  <data name="NDEstimated" xml:space="preserve">
+    <value>Estimated</value>
+  </data>
 </root>

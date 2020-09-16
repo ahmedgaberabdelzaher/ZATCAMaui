@@ -70,10 +70,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 fetchTabDataAndBind(_currentTab);
             }
         }
-        public ObservableCollection<string> TabList { get; set; }
+        public ObservableCollection<string> _tabList { get; set; }
             = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
                 AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
                 AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
+
+        public ObservableCollection<string> TabList
+        {
+            get => _tabList;
+            set
+            {
+                _tabList = value;
+                RaisePropertyChanged(nameof(TabList));
+            }
+        }
         public bool MarkComplete { get; set; } = false;
         private int _maxIndex = 6;
         public int MaxIndex
@@ -847,8 +857,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private Dictionary<string, string> EnMethodList = new Dictionary<string, string>()
         {
-            {"A", "Accounting" },
-            {"E", "Estimated" }
+            {"A", AppResources.NDAccounting },
+            {"E", AppResources.NDEstimated }
         };
         private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
         {
@@ -1312,6 +1322,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public void OnAppearing()
         {
+            TabList 
+            = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
+                AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
+                AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
             //await Task.WhenAll(branchTask, nationalityTask);
@@ -1991,7 +2005,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     Nreg_IdItem idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
-                    GCCIDType = EnIDType[idItem?.Type];
+                    if (App.IsArabic)
+                    {
+                        GCCIDType = ArIDType[idItem?.Type];
+                    }
+                    else
+                    {
+                        GCCIDType = EnIDType[idItem?.Type];
+                    }
                     GCCIDTypeIdNumberValue = idItem.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
