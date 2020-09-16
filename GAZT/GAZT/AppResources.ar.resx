@@ -339,10 +339,10 @@
   <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
     <value>25% من المبلغ المعترض عليه</value>
   </data>
-          <data name="VATRegistrationDetails" xml:space="preserve">
+  <data name="VATRegistrationDetails" xml:space="preserve">
     <value>VAT Registration Details</value>
   </data>
-          <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+  <data name="VATRegistrationDetailsTitle" xml:space="preserve">
     <value>VAT Registration</value>
   </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
@@ -2112,7 +2112,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZET" xml:space="preserve">
-    <value>ضريبة السلع الإنتقائية</value>
+    <value>الضريبة الانتقائية</value>
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFavoriteAscending" xml:space="preserve">
@@ -5949,7 +5949,7 @@
     <value>تعديل</value>
   </data>
   <data name="CRContractonName" xml:space="preserve">
-    <value>الاسم المسجل في العقد</value>
+    <value>الجهة المتعاقدة</value>
   </data>
   <data name="CRIDType" xml:space="preserve">
     <value>نوع الهوية</value>
@@ -6665,36 +6665,36 @@
   <data name="ZakatYear" xml:space="preserve">
     <value>سنة</value>
   </data>
-   <data name="ZakatCashBank" xml:space="preserve">
-        <value>النقدية + البنك .2 </value>
-   </data>
+  <data name="ZakatCashBank" xml:space="preserve">
+    <value>النقدية + البنك .2 </value>
+  </data>
   <data name="ZakatShortTermInvestment" xml:space="preserve">
     <value>استثمار قصير المدى .3</value>
   </data>
-     <data name="ZakatDebitors" xml:space="preserve">
+  <data name="ZakatDebitors" xml:space="preserve">
     <value>المدينين .4</value>
   </data>
-    <data name="ZakatInventory" xml:space="preserve">
+  <data name="ZakatInventory" xml:space="preserve">
     <value>المخزون .5</value>
-     </data>
-    <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
+  </data>
+  <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
     <value>إجمالي الأصول الحالية .6</value>
-    </data>
-    <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-        <value>الزكاة والضريبة .7</value>
-      </data>
-     <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-        <value>إجمالي الالتزامات الحالية .8</value>
-      </data>
-    <data name="ZakatRevenue" xml:space="preserve">
-        <value>إيرادات .9</value>
-      </data>
-    <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-        <value>صافي الدخل .10</value>
-    </data>
-   <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-        <value>صافي التدفق النقدي من العملية .11</value>
-    </data>
+  </data>
+  <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
+    <value>الزكاة والضريبة .7</value>
+  </data>
+  <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
+    <value>إجمالي الالتزامات الحالية .8</value>
+  </data>
+  <data name="ZakatRevenue" xml:space="preserve">
+    <value>إيرادات .9</value>
+  </data>
+  <data name="ZakatInstalmentNetIncome" xml:space="preserve">
+    <value>صافي الدخل .10</value>
+  </data>
+  <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
+    <value>صافي التدفق النقدي من العملية .11</value>
+  </data>
   <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
   </data>
@@ -6753,7 +6753,7 @@
     <value>الرقم التسلسلي</value>
   </data>
   <data name="NDWhatisYourNationality" xml:space="preserve">
-    <value>What is your Nationality?</value>
+    <value>جنسية المنشأة</value>
   </data>
   <data name="ZakatYearOne" xml:space="preserve">
     <value>سنة 1</value>
@@ -6874,7 +6874,7 @@
     <value>الاعتراضات و المراجعات</value>
   </data>
   <data name="VRAll" xml:space="preserve">
-    <value>الجميع</value>
+    <value>الكل</value>
   </data>
   <data name="VRTaxPayersName" xml:space="preserve">
     <value>اسم المكلف</value>
@@ -7430,56 +7430,56 @@
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
   </data>
-   <data name="TypeYourUserName" xml:space="preserve">
+  <data name="TypeYourUserName" xml:space="preserve">
     <value>Type your user name</value>
   </data>
-    <data name="questionmark" xml:space="preserve">
-  <value>؟</value>
-</data>
-<data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
+  <data name="questionmark" xml:space="preserve">
+    <value>؟</value>
+  </data>
+  <data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
     <value>افراد</value>
   </data>
-    <data name="ESTSelectedTaxPayerType" xml:space="preserve">
+  <data name="ESTSelectedTaxPayerType" xml:space="preserve">
     <value>تجارة</value>
-    </data>
-    <data name="ZakatDraftSaved" xml:space="preserve">
-        <value>{0}تم حفظ نموذج الإقرار الضريبي  بنجاح</value>
   </data>
-    <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+  <data name="ZakatDraftSaved" xml:space="preserve">
+    <value>{0}تم حفظ نموذج الإقرار الضريبي  بنجاح</value>
+  </data>
+  <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
     <value>نموذج الإقرار غير مقبول. يرجى بدء العملية مرة أخرى لتقديم تقسيط الزكاة</value>
     <comment>Zakat instalment general message</comment>
   </data>
-    <data name="VRDECCheckBox" xml:space="preserve">
-  <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
-</data>
+  <data name="VRDECCheckBox" xml:space="preserve">
+    <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
+  </data>
   <data name="VRDECDesc" xml:space="preserve">
-  <value>أشهد بأنني مخول بإكمال هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
-</data>
-    <data name="VRDECCheckBox" xml:space="preserve">
-  <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
-</data>
-  <data name="VRDECDesc" xml:space="preserve">
-  <value>أشهد بأنني مخول بإكمال هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
-</data>
+    <value>أشهد بأنني مخول بإكمال هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
+  </data>
   <data name="VRRequesttoReviewtheAmount" xml:space="preserve">
-  <value>طلب لمراجعة المبلغ</value>
-</data>
+    <value>طلب لمراجعة المبلغ</value>
+  </data>
   <data name="VRTotalTaxLiability" xml:space="preserve">
-  <value>مبلغ الضريبة المستحقة</value>
-</data>
+    <value>مبلغ الضريبة المستحقة</value>
+  </data>
   <data name="VRTaxPaid" xml:space="preserve">
-  <value>الضريبة المدفوعة</value>
-</data>
+    <value>الضريبة المدفوعة</value>
+  </data>
   <data name="VRInfull" xml:space="preserve">
-  <value>بشكل كامل</value>
-</data>
+    <value>بشكل كامل</value>
+  </data>
   <data name="VRInpartial" xml:space="preserve">
-  <value>بشكل جزئي</value>
-</data>
+    <value>بشكل جزئي</value>
+  </data>
   <data name="VRDisputeDetails" xml:space="preserve">
-  <value> تفاصيل النزاع</value>
-</data>
- <data name="VRPleasespecifytheparticularamount" xml:space="preserve">
-  <value>المبلغ المطلوب مراجعته</value>
-</data>
+    <value> تفاصيل النزاع</value>
+  </data>
+  <data name="VRPleasespecifytheparticularamount" xml:space="preserve">
+    <value>المبلغ المطلوب مراجعته</value>
+  </data>
+  <data name="CRRequestDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+    <value>المبلغ المطلوب الإفراج عنه يجب ان يكون اقل من إجمالي مبلغ العقد</value>
+  </data>
 </root>

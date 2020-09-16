@@ -2081,7 +2081,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Correspondence</comment>
   </data>
   <data name="ZZET" xml:space="preserve">
-    <value>ET</value>
+    <value>Excise Tax</value>
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFavoriteAscending" xml:space="preserve">
@@ -5789,8 +5789,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Edit</value>
   </data>
   <data name="CRContractonName" xml:space="preserve">
-    <value>Contract on Name</value>
-  </data>
+       <value>Contracting Name</value>
+    </data>
   <data name="CRIDType" xml:space="preserve">
     <value>ID Type</value>
   </data>
@@ -7570,4 +7570,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="VRPleasespecifytheparticularamount" xml:space="preserve">
   <value>Please specify the particular amount</value>
 </data> 
+  <data name="CRRequestDetails" xml:space="preserve">
+  <value>Request Details</value>
+</data>
 </root>
