@@ -13565,5 +13565,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("VRPleasespecifytheparticularamount", resourceCulture);
             }
         }
+        
+        public static string CRRequestDetails {
+            get {
+                return ResourceManager.GetString("CRRequestDetails", resourceCulture);
+            }
+        }
     }
 }
