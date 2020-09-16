@@ -7433,7 +7433,6 @@
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
   </data>
-  
   <data name="TypeYourUserName" xml:space="preserve">
     <value>الرجاء ادخال اسم المستخدم</value>
   </data>
@@ -7500,5 +7499,8 @@
   </data>
     <data name="ESTInValidPostalCode" xml:space="preserve">
     <value>12345 هو رمز بريدي غير صالح</value>
+  </data>
+  <data name="ZZExplore" xml:space="preserve">
+    <value>استعرض</value>
   </data>
 </root>
