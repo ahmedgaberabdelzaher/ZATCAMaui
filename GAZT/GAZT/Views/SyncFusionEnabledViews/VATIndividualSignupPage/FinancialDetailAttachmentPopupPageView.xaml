@@ -151,7 +151,7 @@
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                         <StackLayout Orientation="Horizontal" x:Name="ExploreAttachmentLayout">
-                                            <custom:BorderlessEntry  x:Name="EntryExploreAttachment"  IsEnabled="False" Placeholder="{x:Static custom2:AppResources.ZZExplore}" FontSize="Small">
+                                            <custom:BorderlessEntry  x:Name="EntryExploreAttachment"  IsEnabled="False" FontFamily="{StaticResource SSTArBold}" Placeholder="{x:Static custom2:AppResources.ZZExplore}" FontSize="Small">
                                             </custom:BorderlessEntry>
                                             <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                 <Image.Source>
