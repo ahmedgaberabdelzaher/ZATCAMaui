@@ -596,9 +596,22 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 if (monthDiff < 1)
                 {
-                    isValid = false;
 
-                    popUp.Message = AppResources.VatDeregSuspendedDateMismatchException;
+                    int daysDiff = (viewModel.ToDate.Date - viewModel.FromDate.Date).Days + 1;
+                    int daysInMonth = System.DateTime.DaysInMonth(viewModel.ToDate.Year, viewModel.ToDate.Month);
+                    if (daysDiff < daysInMonth)
+                    {
+                        isValid = false;
+
+                        popUp.Message = AppResources.VatDeregSuspendedDateMismatchException;
+
+                    }
+                    else
+                    {
+
+                        isValid = true;
+                    }
+
                 }
             }
             else
