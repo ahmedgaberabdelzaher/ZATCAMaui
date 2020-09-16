@@ -266,7 +266,7 @@
                                 </inputLayout:SfTextInputLayout>
                             <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
                         </Button>
-                            <custom1:CustomDatePicker 
+                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
 								ShowHeader="False"
 								Margin="10,0,10,0" 
                               BackgroundColor="White"

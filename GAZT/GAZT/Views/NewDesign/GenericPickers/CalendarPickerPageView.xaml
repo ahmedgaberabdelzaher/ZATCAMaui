@@ -30,7 +30,8 @@
                     <Label Text="{Binding DatePickerTitle}"
                                         HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                     Margin="0,16,0,16"  />
-                     <custom11:GenericCustomDatePicker IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
+
+                     <custom11:GenericCustomDatePicker FlowDirection="RightToLeft"  IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
 								    Margin="2" SelectionChanged="genericPicker_SelectionChanged"
 								    x:Name="calendarPicker" SelectedItem="{Binding SelectedDate}"
 								    ItemHeight="36" >
