@@ -1,6 +1,9 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
+using GAZT.Models;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -61,8 +64,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 var text = await Clipboard.GetTextAsync();
                 var displayText = AppResources.VATRSAppNumber + " " + text;
-                viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+              //  viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                headerAmountInfo.IsLinkAvailable = false;
+                headerAmountInfo.Message = displayText;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
                 }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+                headerWithInfos.Add(headerAmountInfo);
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.Copied;
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+            }
            
         }
     }
