@@ -2005,7 +2005,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     Nreg_IdItem idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
-                    GCCIDType = EnIDType[idItem?.Type];
+                    if (App.IsArabic)
+                    {
+                        GCCIDType = ArIDType[idItem?.Type];
+                    }
+                    else
+                    {
+                        GCCIDType = EnIDType[idItem?.Type];
+                    }
                     GCCIDTypeIdNumberValue = idItem.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
