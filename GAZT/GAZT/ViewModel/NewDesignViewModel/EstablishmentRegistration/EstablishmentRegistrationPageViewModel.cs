@@ -70,10 +70,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 fetchTabDataAndBind(_currentTab);
             }
         }
-        public ObservableCollection<string> TabList { get; set; }
+        public ObservableCollection<string> _tabList { get; set; }
             = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
                 AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
                 AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
+
+        public ObservableCollection<string> TabList
+        {
+            get => _tabList;
+            set
+            {
+                _tabList = value;
+                RaisePropertyChanged(nameof(TabList));
+            }
+        }
         public bool MarkComplete { get; set; } = false;
         private int _maxIndex = 6;
         public int MaxIndex
@@ -1312,6 +1322,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public void OnAppearing()
         {
+            TabList 
+            = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
+                AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
+                AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
             //await Task.WhenAll(branchTask, nationalityTask);
