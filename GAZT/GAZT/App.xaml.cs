@@ -29,6 +29,7 @@ using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using GAZT.Helper;
+using GAZT.Manager;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -273,6 +274,7 @@ namespace EGAZT
         public static bool IsUserLoggedIn = false;
         //HttpClientHandlerForSSL Certificate Issue
         public static string IncomingChannel = string.Empty;
+        public static bool DoesLoginNeedToBeRefreshed;
 
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
@@ -371,6 +373,28 @@ namespace EGAZT
             {
                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
+
+            MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", async (sender, arg) =>
+            {
+                if (App.DoesLoginNeedToBeRefreshed == true)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        try
+                        {
+                            await WebServiceManager.GAZTLogOff();
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+                        App.DoesLoginNeedToBeRefreshed = false;
+                        var _navigation = Application.Current.MainPage.Navigation;
+                        await _navigation.PopToRootAsync();
+                    });
+                }
+            });
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
@@ -593,6 +617,7 @@ namespace EGAZT
         protected override void OnSleep()
         {
             TimeAtSleep = DateTime.Now;
+
             //TimeAtSleep = dt.ToLongTimeString();
             // Handle when your app sleeps
         }
@@ -625,8 +650,6 @@ namespace EGAZT
                 Console.WriteLine(ex.Message);
             }
         }
-
-
 
         public static void StartTimer(int h, int m, int sec)
         {
@@ -678,7 +701,64 @@ namespace EGAZT
                 // }
             });
         }
+        public static bool ShouldStopTimer = false;
 
+        public static void StartTimerForBackground(int h, int m, int sec)
+        {
+            int hour = h;
+            int mins = m;
+            int counter = sec;
+
+            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                //if (IsTimerCancel)
+                //{
+                //    return false;
+                //}
+                //else
+                //{
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    counter = counter - 1;
+                    if (counter < 0)
+                    {
+                        counter = 59;
+                        mins = mins - 1;
+                        if (mins < 0)
+                        {
+                            mins = 59;
+                            hour = hour - 1;
+                            if (hour < 0)
+                            {
+                                hour = 0;
+                                mins = 0;
+                                counter = 0;
+                            }
+                        }
+                    }
+
+                    
+                    // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+                });
+
+                if (ShouldStopTimer == true)
+                {
+                    return false;
+                }
+
+                if (hour == 0 && mins == 0 && counter == 0)
+                {
+                    App.DoesLoginNeedToBeRefreshed = true;
+                    MessagingCenter.Send<Object, string>(Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                // }
+            });
+        }
 
         public static async void HideProgressView()
         {
