@@ -881,6 +881,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                  //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                                     _navigationService.GoBack();
                                     WebServiceManager.ErrorMessage = string.Empty;
+                                    IsLoading = false;
+
                                     //}
                                 });
                                 //}
@@ -928,6 +930,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                IsLoading = false;
             }
         }
         public async Task SubmitReturn()

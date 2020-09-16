@@ -2441,7 +2441,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
                     if (_zakatReturnDetailsD == null || _zakatReturnDetailsD.d == null)
