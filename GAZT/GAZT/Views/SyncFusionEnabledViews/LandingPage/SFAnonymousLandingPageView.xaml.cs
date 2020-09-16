@@ -207,7 +207,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                             if (page.GetType().Name != App.SFAnonymousLandingPageView)
                             {
                                 Navigation.RemovePage(page);
-
                             }
 
                         }

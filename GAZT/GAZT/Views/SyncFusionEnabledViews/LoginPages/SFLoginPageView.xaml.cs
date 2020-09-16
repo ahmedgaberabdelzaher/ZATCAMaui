@@ -73,6 +73,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     OnAppearing();
                 });
 
+                MessagingCenter.Subscribe<object, string>(this, "RefreshLoginPage", async (sender, arg) =>
+                {
+                    Console.WriteLine("RefreshLoginPage");
+                    OnAppearing();
+                });
+
                 MessagingCenter.Subscribe<string>(this, "OnActivated", message =>
                 {
                     Console.WriteLine("OnActivated");

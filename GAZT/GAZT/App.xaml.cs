@@ -30,6 +30,7 @@ using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using GAZT.Helper;
 using GAZT.Manager;
+using System.Linq;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -276,6 +277,8 @@ namespace EGAZT
         public static string IncomingChannel = string.Empty;
         public static bool DoesLoginNeedToBeRefreshed;
 
+        public static bool IsLoginPageRefreshed;
+
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
         public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData;
@@ -392,9 +395,16 @@ namespace EGAZT
                         App.DoesLoginNeedToBeRefreshed = false;
                         var _navigation = Application.Current.MainPage.Navigation;
                         await _navigation.PopToRootAsync();
+
+                        //if (App.IsLoginPageVisible() == true)
+                        //{
+                        //    App.ShouldStopLoginRefreshTimer = false;
+                        //    App.StartTimerForLoginRefresh(0, 3, 0);
+                        //}
                     });
                 }
             });
+            
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
@@ -651,6 +661,19 @@ namespace EGAZT
             }
         }
 
+        public static bool IsLoginPageVisible()
+        {
+            var _navigation = Application.Current.MainPage.Navigation;
+            Page topPage = _navigation.NavigationStack.ToList().LastOrDefault();
+
+            if(topPage.GetType().Name == App.SFLoginPageView)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static void StartTimer(int h, int m, int sec)
         {
             int hour = h;
@@ -759,6 +782,67 @@ namespace EGAZT
                 // }
             });
         }
+
+        public static bool ShouldStopLoginRefreshTimer = false;
+
+        public static void StartTimerForLoginRefresh(int h, int m, int sec)
+        {
+            int hour = h;
+            int mins = m;
+            int counter = sec;
+
+            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                //if (IsTimerCancel)
+                //{
+                //    return false;
+                //}
+                //else
+                //{
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    counter = counter - 1;
+                    if (counter < 0)
+                    {
+                        counter = 59;
+                        mins = mins - 1;
+                        if (mins < 0)
+                        {
+                            mins = 59;
+                            hour = hour - 1;
+                            if (hour < 0)
+                            {
+                                hour = 0;
+                                mins = 0;
+                                counter = 0;
+                            }
+                        }
+                    }
+
+
+                    // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+                });
+
+                if (ShouldStopLoginRefreshTimer == true)
+                {
+                    return false;
+                }
+
+                if (hour == 0 && mins == 0 && counter == 0)
+                {
+                    App.IsLoginPageRefreshed = true;
+                    MessagingCenter.Send<Object, string>(Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+                    mins = m;
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+                // }
+            });
+        }
+
 
         public static async void HideProgressView()
         {

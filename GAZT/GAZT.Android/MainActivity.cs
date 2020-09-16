@@ -74,15 +74,32 @@ namespace GAZT.Droid
 
         protected override void OnStop()
         {
-            App.ShouldStopTimer = false;
-            App.DoesLoginNeedToBeRefreshed = false;
-            App.StartTimerForBackground(0, 100, 0);
+            if (App.IsLoginPageVisible() == false)
+            {
+                App.ShouldStopTimer = false;
+                App.DoesLoginNeedToBeRefreshed = false;
+                App.StartTimerForBackground(0, 100, 0);
+            }
+            else
+            {
+                App.ShouldStopLoginRefreshTimer = false;
+                App.StartTimerForLoginRefresh(0, 100, 0);
+            }
+
             base.OnStop();
         }
 
         protected override void OnRestart()
         {
-            App.ShouldStopTimer = true;
+            if (App.IsLoginPageVisible() == false)
+            {
+                App.ShouldStopTimer = true;
+            }
+            else
+            {
+                App.ShouldStopLoginRefreshTimer = true;
+            }
+
             base.OnRestart();
         }
 

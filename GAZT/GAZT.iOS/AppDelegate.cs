@@ -122,7 +122,15 @@ namespace GAZT.iOS
 
         public override void WillEnterForeground(UIApplication application)
         {
-            App.ShouldStopTimer = true;
+            if (App.IsLoginPageVisible() == false)
+            {
+                App.ShouldStopTimer = true;
+            }
+            else
+            {
+                App.ShouldStopLoginRefreshTimer = true;
+            }
+           
             Console.WriteLine("App will enter foreground");
         }
 
@@ -133,10 +141,18 @@ namespace GAZT.iOS
 
         public override void DidEnterBackground(UIApplication application)
         {
-            App.ShouldStopTimer = false;
-            App.DoesLoginNeedToBeRefreshed = false;
-            App.StartTimerForBackground(0, 100, 0);
-            Console.WriteLine("App entering background state.");
+            if(App.IsLoginPageVisible() == false)
+            {
+                App.ShouldStopTimer = false;
+                App.DoesLoginNeedToBeRefreshed = false;
+                App.StartTimerForBackground(0, 100, 0);
+                Console.WriteLine("App entering background state.");
+            }
+            else
+            {
+                App.ShouldStopLoginRefreshTimer = false;
+                App.StartTimerForLoginRefresh(0, 100, 0);
+            }
         }
 
         // not guaranteed that this will run
