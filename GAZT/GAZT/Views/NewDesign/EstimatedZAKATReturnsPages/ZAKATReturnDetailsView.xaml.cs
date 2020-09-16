@@ -38,6 +38,16 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             base.OnDisappearing();
             viewModel.ClearData();
+            try
+            {
+                MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToReleaseTheReturn");
+                MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToAmendheReturn");
+            }
+            catch (Exception ex)
+            {
+
+            }
+              
         }
         protected async override void OnAppearing()
         {
