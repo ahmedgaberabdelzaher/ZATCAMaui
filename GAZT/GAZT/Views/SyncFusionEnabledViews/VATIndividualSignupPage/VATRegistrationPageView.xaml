@@ -625,7 +625,7 @@
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>
                                                         <Button Grid.Row="1" x:Name="btn1" BackgroundColor="Transparent" Clicked="btn1_Clicked" Margin="0,0,0,0" />
-                                                        <custom1:CustomDatePicker Grid.Row="1"
+                                                        <custom1:CustomDatePicker  FlowDirection="RightToLeft"  Grid.Row="1"
 								ShowHeader="false"
 								Margin="2" 
                               BackgroundColor="White"
@@ -1211,7 +1211,7 @@
 
 
                                                                                 <custom:CustomButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="btnDocuments" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"/>
-                                                                                <syncfusion:SfPicker x:Name="dpDocuments" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3"
+                                                                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="dpDocuments" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3"
                                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                                     HeaderTextColor="White"
                                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}"
@@ -1823,7 +1823,7 @@
 
 
                                                                                 <custom:CustomButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="btnDocuments" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"/>
-                                                                                <syncfusion:SfPicker x:Name="dpDocuments" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3"
+                                                                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="dpDocuments" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="3"
                                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                                     HeaderTextColor="White"
                                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}"
@@ -2000,7 +2000,7 @@
 
                                                             <custom:CustomButton  Grid.Row="1" x:Name="btnID" Clicked="btnID_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="10,0,10,0"/>
 
-                                                            <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
+                                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="DDlIDType" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndexFR}"
@@ -2097,7 +2097,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                             <Button Grid.Row="1" x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked" Margin="0,0,0,0" />
 
-                                                            <custom1:CustomDatePicker  Grid.Row="1"
+                                                            <custom1:CustomDatePicker  FlowDirection="RightToLeft"   Grid.Row="1"
 								ShowHeader="false"
 								Margin="2" 
                               BackgroundColor="White"
@@ -2448,7 +2448,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="btnContactID" FontSize="Small" Clicked="btnContactID_Clicked" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
-                                                            <syncfusion:SfPicker x:Name="DDlContactIDType" Grid.Row="1"
+                                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="DDlContactIDType" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZIDType}" 
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndexSR}"
@@ -2538,7 +2538,7 @@ SelectionChanged="DDlContactIDType_SelectionChanged" OkButtonClicked="DDlIDTypeS
 
                                                             <Button Grid.Row="1" x:Name="btnSR" BackgroundColor="Transparent" Clicked="btn4_Clicked" Margin="0,0,0,0" />
 
-                                                            <custom1:CustomDatePicker Grid.Row="1"
+                                                            <custom1:CustomDatePicker FlowDirection="RightToLeft"  Grid.Row="1"
 								ShowHeader="false"
 								Margin="2" 
                               BackgroundColor="White"

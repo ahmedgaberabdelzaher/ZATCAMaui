@@ -117,7 +117,7 @@
                                 <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                 </custom:CustomButton>
                                 <!--SelectedIndex="{Binding IDTypeIndex}"-->
-                                <syncfusion:SfPicker x:Name="AttachmentTypePicker" Grid.Row="1"
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="AttachmentTypePicker" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static custom2:AppResources.VATRAttachmentCategory}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" 

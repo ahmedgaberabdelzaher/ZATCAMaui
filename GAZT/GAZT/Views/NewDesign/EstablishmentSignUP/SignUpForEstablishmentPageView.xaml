@@ -196,7 +196,7 @@
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
                                     <Button Clicked="OnIDTypeClicked" BackgroundColor="Transparent"/>
-                                    <syncfusion:SfPicker x:Name="IDTypePicker" 
+                                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="IDTypePicker" 
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
@@ -437,7 +437,7 @@
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
                                 <Button Clicked="LIssuedBy_Clicked" BackgroundColor="Transparent"/>
-                                <!--<syncfusion:SfPicker x:Name="ddlLIssuedBy" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
+                                <!--<syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ddlLIssuedBy" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="true" ItemHeight="40" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" 
@@ -454,7 +454,7 @@
                             </syncfusion:SfPicker>-->
 
 
-                                <syncfusion:SfPicker x:Name="ddlLIssuedBy" 
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ddlLIssuedBy" 
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
@@ -495,7 +495,7 @@
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
                                 <Button Clicked="LIssuedByCity_Clicked" BackgroundColor="Transparent"/>
-                                <!--<syncfusion:SfPicker x:Name="ddlLIssuedByCity"
+                                <!--<syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ddlLIssuedByCity"
                                                      HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" 
                                                      HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
@@ -513,7 +513,7 @@
                             </syncfusion:SfPicker>-->
 
 
-                                <syncfusion:SfPicker x:Name="ddlLIssuedByCity" 
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ddlLIssuedByCity" 
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 

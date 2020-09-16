@@ -2107,7 +2107,7 @@
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomButton x:Name="btnIban" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" Clicked="btnIban_Clicked" FontSize="13" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
                                                 </custom:CustomButton>
-                                                <syncfusion:SfPicker x:Name="BPicker"
+                                                <syncfusion:SfPicker   x:Name="BPicker"
                     HeaderHeight="60"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZVatRefundInformationSelectIBAN}"
@@ -2159,7 +2159,7 @@
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomButton x:Name="btnIban1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" Clicked="btnIban1_Clicked" FontSize="13" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
                                                 </custom:CustomButton>
-                                                <syncfusion:SfPicker x:Name="BPicker1"
+                                                <syncfusion:SfPicker  x:Name="BPicker1"
                     HeaderHeight="80"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZVatRefundInformationSelectIBANID}"
@@ -2207,7 +2207,7 @@
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomButton x:Name="btnIban2" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" Clicked="btnIban2_Clicked" FontSize="13" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
                                                 </custom:CustomButton>
-                                                <syncfusion:SfPicker x:Name="BPicker2"
+                                                <syncfusion:SfPicker  x:Name="BPicker2"
                     HeaderHeight="80"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZVatRefundInformationSelectIBANIDNumber}"

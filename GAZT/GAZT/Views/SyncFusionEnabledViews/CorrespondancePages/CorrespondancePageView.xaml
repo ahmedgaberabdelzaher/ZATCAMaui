@@ -83,7 +83,7 @@
                                 </inputLayout:SfTextInputLayout>
                                 <local:CustomButton x:Name="BPickerButtonZakat" Clicked="BPickerButtonZakat_Clicked"  BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
                                 </local:CustomButton>
-                                <syncfusion:SfPicker 
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  
                    HeaderText="{x:Static custom2:AppResources.ZZSort}"
                     HeaderHeight="40"
                                     HeaderTextColor="White"
@@ -502,7 +502,7 @@
                                 </inputLayout:SfTextInputLayout>
                                 <local:CustomButton x:Name="BPickerButtonET" Clicked="BPickerButtonET_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
                                 </local:CustomButton>
-                                <syncfusion:SfPicker 
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  
                     HeaderHeight="40"
                     ShowHeader="true"
                                     HeaderTextColor="White"

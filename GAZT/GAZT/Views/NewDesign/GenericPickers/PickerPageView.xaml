@@ -33,7 +33,7 @@
                    <Label Text="{Binding PickerTitle}" 
                                     HorizontalOptions="EndAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                 Margin="0,16,0,0" BackgroundColor="Transparent" />
-                    <syncfusion:SfPicker IsOpen="True" Style="{StaticResource PickerStyle}" ItemsSource="{Binding PickerItemSource}"
+                    <syncfusion:SfPicker FlowDirection="RightToLeft"  IsOpen="True" Style="{StaticResource PickerStyle}" ItemsSource="{Binding PickerItemSource}"
 								Margin="2" HeaderBackgroundColor="Aqua"
 								x:Name="genericPicker" SelectionChanged="genericPicker_SelectionChanged"
 								ItemHeight="36">

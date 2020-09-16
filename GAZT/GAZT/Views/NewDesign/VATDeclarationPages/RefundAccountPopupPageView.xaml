@@ -67,7 +67,7 @@
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
                         <custom:CustomButton BackgroundColor="Transparent" Clicked="SfButton_Clicked"/>
-                        <syncfusion:SfPicker x:Name="IDTypeDropdown"  HeaderHeight="55" HeaderText="Picker1" HeaderTextColor="Black"
+                        <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="IDTypeDropdown"  HeaderHeight="55" HeaderText="Picker1" HeaderTextColor="Black"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="Text"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" ItemsSource="{Binding IBANTypesList}"  SelectionChanged="IDType_SelectionChanged"
@@ -99,7 +99,7 @@
 
                         <buttons:SfButton BackgroundColor="Transparent" Clicked="SfButton_Clicked1"/>
 
-                        <syncfusion:SfPicker x:Name="IDNumberDropdown" HeaderHeight="55" HeaderText="Picker2" HeaderTextColor="White" 
+                        <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="IDNumberDropdown" HeaderHeight="55" HeaderText="Picker2" HeaderTextColor="White" 
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="Idnumber"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectionChanged="IDNumber_SelectionChanged"  OkButtonClicked="IDNumberDropdown_OkButtonClicked"

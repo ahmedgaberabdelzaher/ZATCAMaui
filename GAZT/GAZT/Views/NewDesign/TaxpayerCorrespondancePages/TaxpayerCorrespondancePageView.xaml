@@ -85,7 +85,7 @@
                     </Image>--><!--
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     </custom:CustomButton>
-                    <syncfusion:SfPicker x:Name="CorrespondanceDownPicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
+                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CorrespondanceDownPicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
                     ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                     ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding FilterListForDropDown}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                     PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
@@ -110,7 +110,7 @@
                     </Image>
                     <custom:CustomButton x:Name="btnForTaxType" Grid.Column="0" Grid.Row="0"  Clicked="btn_TaxTypeClicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     </custom:CustomButton>
-                    <syncfusion:SfPicker x:Name="TaxTypeDownPicker" HeaderHeight="55" HeaderTextColor="White"
+                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypeDownPicker" HeaderHeight="55" HeaderTextColor="White"
                     ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                     ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeListForDropDown}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                     PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"

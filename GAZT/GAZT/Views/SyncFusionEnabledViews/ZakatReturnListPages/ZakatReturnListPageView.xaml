@@ -189,7 +189,7 @@
                 </inputLayout:SfTextInputLayout>
                 <custom:CustomButton x:Name="BPickerButton" Clicked="BPickerButton_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
                 </custom:CustomButton>
-                <syncfusion:SfPicker 
+                <syncfusion:SfPicker FlowDirection="RightToLeft"  
                     HeaderHeight="40"
                     ShowHeader="true"
                    HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
