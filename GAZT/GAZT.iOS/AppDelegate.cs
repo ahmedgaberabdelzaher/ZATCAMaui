@@ -145,13 +145,13 @@ namespace GAZT.iOS
             {
                 App.ShouldStopTimer = false;
                 App.DoesLoginNeedToBeRefreshed = false;
-                App.StartTimerForBackground(0, 100, 0);
+                App.StartTimerForBackground(0, 5, 0);
                 Console.WriteLine("App entering background state.");
             }
             else
             {
                 App.ShouldStopLoginRefreshTimer = false;
-                App.StartTimerForLoginRefresh(0, 100, 0);
+                App.StartTimerForLoginRefresh(0, 3, 0);
             }
         }
 

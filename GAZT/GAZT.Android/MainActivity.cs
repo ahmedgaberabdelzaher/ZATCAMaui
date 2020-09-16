@@ -78,12 +78,12 @@ namespace GAZT.Droid
             {
                 App.ShouldStopTimer = false;
                 App.DoesLoginNeedToBeRefreshed = false;
-                App.StartTimerForBackground(0, 100, 0);
+                App.StartTimerForBackground(0, 5, 0);
             }
             else
             {
                 App.ShouldStopLoginRefreshTimer = false;
-                App.StartTimerForLoginRefresh(0, 100, 0);
+                App.StartTimerForLoginRefresh(0, 3, 0);
             }
 
             base.OnStop();
