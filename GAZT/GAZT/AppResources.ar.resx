@@ -5949,7 +5949,7 @@
     <value>تعديل</value>
   </data>
   <data name="CRContractonName" xml:space="preserve">
-    <value>الاسم المسجل في العقد</value>
+    <value>الجهة المتعاقدة</value>
   </data>
   <data name="CRIDType" xml:space="preserve">
     <value>نوع الهوية</value>
@@ -7481,5 +7481,11 @@
 </data>
  <data name="VRPleasespecifytheparticularamount" xml:space="preserve">
   <value>المبلغ المطلوب مراجعته</value>
+</data>
+  <data name="CRRequestDetails" xml:space="preserve">
+  <value>تفاصيل الطلب</value>
+</data>
+    <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+  <value>المبلغ المطلوب الإفراج عنه يجب ان يكون اقل من إجمالي مبلغ العقد</value>
 </data>
 </root>
