@@ -169,7 +169,7 @@
                             <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
                             </Button>
 
-                            <custom1:CustomDatePicker 
+                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
 								ShowHeader="false"
 								Margin="2" 
                               BackgroundColor="#EAF7CC"
