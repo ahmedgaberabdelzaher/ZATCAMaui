@@ -6253,7 +6253,7 @@
     <value>اسم العائلة</value>
   </data>
   <data name="ESTInitialLabel" xml:space="preserve">
-    <value>في البداية</value>
+    <value>الاسم المختصر</value>
   </data>
   <data name="ESTGenderLabel" xml:space="preserve">
     <value>الجنس</value>
@@ -6286,7 +6286,7 @@
     <value>رقم الجواز</value>
   </data>
   <data name="ESTIssueCountryLabel" xml:space="preserve">
-    <value>جهة الإصدار</value>
+    <value>مكان الإصدار</value>
   </data>
   <data name="ESTIssueDateLabel" xml:space="preserve">
     <value>تاريخ الإصدار</value>

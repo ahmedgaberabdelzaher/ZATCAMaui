@@ -89,7 +89,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
 
             }
-            _navigationService.NavigateTo(App.SFLoginPageView);
+            _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
             //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
             //_navigation.NavigationStack.ToList().Clear();
             //var _navigation = Application.Current.MainPage.Navigation;
