@@ -263,7 +263,7 @@ namespace EGAZT.Droid.CustomRenderer
                 {
                     if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
                     {
-                        _hybridWebView.InvokeAction("displayLoadingIndicator");
+                        _hybridWebView.InvokeAction("displayLoginLoadingIndicator");
                     }
                 }
                 catch (Exception ex)

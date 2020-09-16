@@ -72,13 +72,23 @@ namespace GAZT.Droid
             base.OnResume();
         }
 
+        protected override void OnStop()
+        {
+            App.ShouldStopTimer = false;
+            App.DoesLoginNeedToBeRefreshed = false;
+            App.StartTimerForBackground(0, 100, 0);
+            base.OnStop();
+        }
+
         protected override void OnRestart()
         {
+            App.ShouldStopTimer = true;
             base.OnRestart();
         }
 
         protected override void OnPause()
         {
+           
             base.OnPause();
         }
 
