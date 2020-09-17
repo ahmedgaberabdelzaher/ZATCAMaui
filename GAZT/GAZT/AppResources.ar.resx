@@ -5541,7 +5541,8 @@
     <value>الرجاء إدخال رمز التحقق المرسل الى بريدك الإلكتروني</value>
   </data>
   <data name="TPOldAndNewPasswordSame" xml:space="preserve">
-    <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
+    <value>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</value>
+    <comment>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</comment>
   </data>
   <data name="TPOldNewPasswordEmpty" xml:space="preserve">
     <value>الرجاء ادخال كلمة المرور القديمة والجديدة</value>
@@ -7063,7 +7064,8 @@
     <value>الرجاء ادخل الاسم</value>
   </data>
   <data name="NDOldPasswordAndNewPasswordSame" xml:space="preserve">
-    <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
+    <value>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</value>
+    <comment>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</comment>
   </data>
   <data name="ZZZZAdjustmentWithSAR" xml:space="preserve">
     <value>مبلغ التعديل ( بالريال)</value>

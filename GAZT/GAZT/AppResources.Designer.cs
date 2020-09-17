@@ -1750,7 +1750,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Declare VAT return.
+        ///   Looks up a localized string similar to Declare VAT Return.
         /// </summary>
         public static string DeclareVATReturn {
             get {
@@ -6907,7 +6907,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Read inbox.
+        ///   Looks up a localized string similar to Read Inbox.
         /// </summary>
         public static string ReadInbox {
             get {
@@ -7213,7 +7213,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submit Zakat return.
+        ///   Looks up a localized string similar to Submit Zakat Return.
         /// </summary>
         public static string SubmitZakatReturn {
             get {
