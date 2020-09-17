@@ -33,7 +33,7 @@
                 <custom:CustomLabel Text="{x:Static custom2:AppResources.NAIBAN}" Style="{StaticResource ValueLabelBlackBold}"/>
             </StackLayout>
 
-            <StackLayout Padding="0,0,0,15">
+            <StackLayout Padding="0,0,0,15" FlowDirection="LeftToRight">
                 <Frame Padding="0" BorderColor="LightGray" CornerRadius="8" HasShadow="False">
                     <StackLayout Orientation="Horizontal" >
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5,8,0,8">
