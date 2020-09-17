@@ -64,6 +64,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.VatAttachmentCount = attachments.results.Count;
             }
+            else if (whichAttachment == WhichAttachment.ZakatInstalmentBankStatements || whichAttachment == WhichAttachment.ZakatInstalmentFinance)
+            {
+                viewModel.VatAttachmentCount = attachments.results.Count;
+            }
 
             if (whichAttachment == WhichAttachment.ZakatInstalmentBankStatements || whichAttachment == WhichAttachment.ZakatInstalmentFinance)
 
@@ -289,16 +293,21 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     });
                     Image arrowImage = sender as Image;
                     VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+
+
                     //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                     //{
 
+                   
+
                     if (attachment != null)
                     {//ZZNotification
-                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                        var confirmation = AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + AppResources.questionmark;
+
+                        var result = await this.DisplayAlert(AppResources.ZZNotification, confirmation, AppResources.ZZZOkayText, AppResources.ZZCancel);
 
                         await viewModel.DeleteAttachment(result, attachment);
                     }
-
                     //}
                     await Task.Run(() =>
                     {

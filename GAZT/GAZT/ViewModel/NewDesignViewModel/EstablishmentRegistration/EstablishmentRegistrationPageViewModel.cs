@@ -70,10 +70,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 fetchTabDataAndBind(_currentTab);
             }
         }
-        public ObservableCollection<string> TabList { get; set; }
+        public ObservableCollection<string> _tabList { get; set; }
             = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
                 AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
                 AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
+
+        public ObservableCollection<string> TabList
+        {
+            get => _tabList;
+            set
+            {
+                _tabList = value;
+                RaisePropertyChanged(nameof(TabList));
+            }
+        }
         public bool MarkComplete { get; set; } = false;
         private int _maxIndex = 6;
         public int MaxIndex
@@ -843,12 +853,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Financial Details Tabs variables
-        private List<string> dates = new List<string> { "LD", "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" };
+        private List<string> dates = new List<string> { AppResources.ESTFinLastDay, "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" };
 
         private Dictionary<string, string> EnMethodList = new Dictionary<string, string>()
         {
-            {"A", "Accounting" },
-            {"E", "Estimated" }
+            {"A", AppResources.NDAccounting },
+            {"E", AppResources.NDEstimated }
         };
         private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
         {
@@ -1312,6 +1322,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public void OnAppearing()
         {
+            TabList 
+            = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
+                AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
+                AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
             //await Task.WhenAll(branchTask, nationalityTask);
@@ -1978,8 +1992,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
-                    SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
-                    SelectedTaxPayerType = "Trade/Business";
+                    SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
+                    SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
 
                     ResidenceTypePrePopulateData(taxPayerDetails);
@@ -1991,7 +2005,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     Nreg_IdItem idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
-                    GCCIDType = EnIDType[idItem?.Type];
+                    if (App.IsArabic)
+                    {
+                        GCCIDType = ArIDType[idItem?.Type];
+                    }
+                    else
+                    {
+                        GCCIDType = EnIDType[idItem?.Type];
+                    }
                     GCCIDTypeIdNumberValue = idItem.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
@@ -2118,13 +2139,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (dd == "01" && mm == "01")
                 {
                     FiscalMonth = "12";
-                    FiscalDay = "LD";
+                    FiscalDay = AppResources.ESTFinLastDay;
                 }
                 else
                 {
                     mm = $"{Int16.Parse(mm) - 1:00}";
                     FiscalMonth = mm;
-                    FiscalDay = "LD";
+                    FiscalDay = AppResources.ESTFinLastDay;
                 }
                 //FiscalMonth = mm;
                 //FiscalDay = dd;
@@ -2133,7 +2154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 ACaltype = _calendarType,
                 AMonth = FiscalMonth,
-                EIslmedate = FiscalDay == "LD" ? "32" : FiscalDay,
+                EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
                 ADateComm = taxPayerDetails?.Commdt
             });
             TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_calendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
@@ -2444,7 +2465,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     //return true;
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
-                    taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
+                    taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
                     taxPayerDetails.Taxtpdetermination = "1";
                     taxPayerDetails.Tpresidence = SelectedTpresidence;
@@ -2543,7 +2564,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
                     taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
                     taxPayerDetails.Fdmonth = FiscalMonth;
-                    taxPayerDetails.Fdday = FiscalDay;
+                    taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
                     taxPayerDetails.Fdenddt = Fdenddt;
 

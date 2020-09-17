@@ -113,7 +113,7 @@
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTValidFrom}"/>
                                     <Span Text="*" TextColor="{StaticResource Secondary}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
@@ -127,9 +127,10 @@
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
                         <syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
+                                                           FlowDirection="RightToLeft"
                                                              ShowHeader="False"
                                                              Format="yyyy_MM_dd"
-                                                             HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
                                                              PickerMode="Dialog"
                                                              IsOpen="False"
                                                              DateSelected="crValidFromPicker_DateSelected" />
@@ -333,7 +334,7 @@
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTValidFrom}"/>
                                     <Span Text="*" TextColor="{StaticResource Secondary}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
@@ -348,8 +349,9 @@
                         </buttons:SfButton>
                         <syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
                                                              ShowHeader="False"
+                                                           FlowDirection="RightToLeft"
                                                              Format="yyyy_MM_dd"
-                                                             HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
                                                              PickerMode="Dialog"
                                                              IsOpen="False"
                                                              DateSelected="validFromPicker_DateSelected" />

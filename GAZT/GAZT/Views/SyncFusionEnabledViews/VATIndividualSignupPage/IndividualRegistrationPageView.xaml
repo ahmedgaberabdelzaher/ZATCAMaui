@@ -133,7 +133,7 @@
                                                         <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                         </custom:CustomButton>
 
-                                                        <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
+                                                        <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="DDlIDType" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}" 
@@ -222,7 +222,7 @@
 
                                                         <Button Grid.Row="1" x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked" Margin="0,0,0,0" />
 
-                                                        <custom1:CustomDatePicker Grid.Row="1"
+                                                        <custom1:CustomDatePicker  FlowDirection="RightToLeft"   Grid.Row="1"
 								ShowHeader="false"
 								Margin="2" 
                               BackgroundColor="White"
@@ -242,7 +242,7 @@
 								x:Name="SignUpDOB"
                           
                              OKButtonTextColor="#006450" 
-                                
+Closed="SignUpDOB_Closed"                                
                                              CancelButtonTextColor="#006450"
                            
                             SelectedItem="{Binding TodayDate}"
@@ -455,7 +455,7 @@
                                                             <!--<custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Country" Clicked="PickerBtn_Country_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                         </custom:CustomButton>
 
-                                                        <syncfusion:SfPicker x:Name="Picker_Country" Grid.Row="1" IsEnabled="{Binding SetEnabilityToCountryList}"
+                                                        <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="Picker_Country" Grid.Row="1" IsEnabled="{Binding SetEnabilityToCountryList}"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZCountry}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedCountryIndex}"
@@ -520,7 +520,7 @@
                                                             <custom:CustomButton  Grid.Row="1" x:Name="GCCPickerBtn_Country" Clicked="GCCPickerBtn_Country_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
 
-                                                            <syncfusion:SfPicker x:Name="GCCPicker_Country" Grid.Row="1" IsEnabled="{Binding SetEnabilityToCountryList}" IsVisible="{Binding SetGCCCountryVisibility}"
+                                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="GCCPicker_Country" Grid.Row="1" IsEnabled="{Binding SetEnabilityToCountryList}" IsVisible="{Binding SetGCCCountryVisibility}"
                                     HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZZZCountry}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedGCCCountryIndex}"
@@ -538,7 +538,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="CountryName" ItemsSource="{Binding GCCCountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="CountryName" ItemsSource="{Binding GCCCountryList}"  SelectionChanged="GCCPicker_Country_SelectionChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="GCCCountry_OkayButtonClicked"  CancelButtonClicked="GCCCountry_CancelButtonClicked">
@@ -582,7 +582,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Region" Clicked="PickerBtn_Region_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
 
-                                                            <syncfusion:SfPicker x:Name="Picker_Region" Grid.Row="1" IsVisible="{Binding SetStateListVisibility}"
+                                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="Picker_Region" Grid.Row="1" IsVisible="{Binding SetStateListVisibility}"
                                     HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZZZProvinceRegion}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedRegionIndex}"
@@ -646,7 +646,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_City" Clicked="PickerBtn_City_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
-                                                            <syncfusion:SfPicker x:Name="Picker_City" Grid.Row="1" IsVisible="{Binding SetCityListVisibility}"
+                                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="Picker_City" Grid.Row="1" IsVisible="{Binding SetCityListVisibility}"
                                     HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZZZCity}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedCityIndex}"

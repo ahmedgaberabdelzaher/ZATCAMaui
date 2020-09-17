@@ -210,7 +210,7 @@
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                                    <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ResponseVATDeclarationD}">
+                                    <StackLayout Padding="10" Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturnType}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Text="{Binding VAVATReturnType}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>

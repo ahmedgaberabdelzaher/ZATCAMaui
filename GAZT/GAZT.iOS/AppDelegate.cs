@@ -117,21 +117,44 @@ namespace GAZT.iOS
 
         public override void OnActivated(UIApplication application)
         {
-            //MessagingCenter.Send("OnActivated", "OnActivated");
             Console.WriteLine("OnActivated called, App is active.");
         }
+
         public override void WillEnterForeground(UIApplication application)
         {
+            if (App.IsLoginPageVisible() == false)
+            {
+                App.ShouldStopTimer = true;
+            }
+            else
+            {
+                App.ShouldStopLoginRefreshTimer = true;
+            }
+           
             Console.WriteLine("App will enter foreground");
         }
+
         public override void OnResignActivation(UIApplication application)
         {
             Console.WriteLine("OnResignActivation called, App moving to inactive state.");
         }
+
         public override void DidEnterBackground(UIApplication application)
         {
-            Console.WriteLine("App entering background state.");
+            if(App.IsLoginPageVisible() == false)
+            {
+                App.ShouldStopTimer = false;
+                App.DoesLoginNeedToBeRefreshed = false;
+                App.StartTimerForBackground(0, 5, 0);
+                //Console.WriteLine("App entering background state.");
+            }
+            else
+            {
+                App.ShouldStopLoginRefreshTimer = false;
+                App.StartTimerForLoginRefresh(0, 3, 0);
+            }
         }
+
         // not guaranteed that this will run
         public override void WillTerminate(UIApplication application)
         {

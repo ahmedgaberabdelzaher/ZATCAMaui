@@ -234,7 +234,7 @@
                             </inputLayout:SfTextInputLayout>
                             <custom:CustomButton   Clicked="RegionBtnClicked" BackgroundColor="Transparent"  />
 
-                                <syncfusion:SfPicker x:Name="RegionPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="RegionPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
@@ -266,7 +266,7 @@
                                 </inputLayout:SfTextInputLayout>
                                 <custom:CustomButton Clicked="CityPickerButton_Clicked" BackgroundColor="Transparent"  />
 
-                                <syncfusion:SfPicker x:Name="CityPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CityPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
@@ -298,7 +298,7 @@
                                 </inputLayout:SfTextInputLayout>
                                 <!--<custom:CustomButton Clicked="DistrictPickerButton_Clicked" BackgroundColor="Transparent"  />-->
 
-                                <!--<syncfusion:SfPicker x:Name="DistrictPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
+                                <!--<syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="DistrictPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
@@ -354,7 +354,7 @@
                                 </inputLayout:SfTextInputLayout>
                                 <custom:CustomButton Clicked="ReportTypeButton_Clicked" BackgroundColor="Transparent"  />
 
-                                <syncfusion:SfPicker x:Name="ReportTypePicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ReportTypePicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"

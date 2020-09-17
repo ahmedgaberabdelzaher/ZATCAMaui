@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -104,7 +105,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
       
     private void DpEStartDate_Closed(object sender, EventArgs e)
         {
+            try
+            {
+                var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                //          string DOB = year + month + day;
 
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void DpEStartDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -411,7 +425,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else
                 {
-                viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                    //viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                 }
 
             }
@@ -432,7 +447,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.IsLoading = false;
                 });
-                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATRAcceptDeclarationToSubmit));
                 chkDeclaration.Focus();
                 //viewModel.IsContinueButtonEnable = false;
             }
@@ -489,7 +505,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.IsLoading = false;
                 });
-                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
                 chkDeclaration.Focus();
             }
 
@@ -979,6 +996,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "EligibilitySetAttachmentReceived");
+            
         }
 
         protected async override void OnAppearing()
@@ -986,6 +1005,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 base.OnAppearing();
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    DDlIDType.BackgroundColor = Color.FromHex("#f7f7f7");
+                    DDlContactIDType.BackgroundColor = Color.FromHex("#f7f7f7");
+                 }
+                else
+                {
+                    DDlIDType.BackgroundColor = Color.FromHex("#FFFFFF");
+                    DDlContactIDType.BackgroundColor = Color.FromHex("#FFFFFF");
+                }
+
                 string message = string.Empty;
                 Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {
@@ -1017,6 +1048,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.VATRegistrationDetailsData.d.ATTDETSet = arg;
                         FrmNewAttachment.HasError = false;
+                    }
+                });
+                Xamarin.Forms.MessagingCenter.Subscribe<object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        viewModel.VATRegistrationDetailsData.d.ELGBL_DOCSet = arg;
+                      //  FrmNewAttachment.HasError = false;
                     }
                 });
 
@@ -1100,7 +1139,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
@@ -1129,7 +1169,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
                                 viewModel.IdnumberFR = string.Empty;
@@ -1164,7 +1205,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
@@ -1192,7 +1234,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
                                 viewModel.IdnumberFR = string.Empty;
@@ -1226,7 +1269,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
@@ -1244,7 +1288,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
@@ -1317,7 +1362,53 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DDlIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            //ClearFinancialRepresentativeData();
+            try
+            {
+                ClearFinancialRepresentativeData();
+                if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
+                {
+                    EntryTINNumber.IsEnabled = true;
+                    viewModel.IDTypeIndexFR = 0;
+                    viewModel.TxtIDTypeFR = string.Empty;
+
+                    viewModel.IDNumberNonMandatoryVisibility = true;
+                    viewModel.IDNumberMandatoryVisibility = false;
+
+                    viewModel.DOBNonMandatoryVisibility = true;
+                    viewModel.DOBMandatoryVisibility = false;
+                }
+                else
+                {
+                    viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
+                    viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
+                    EntryTINNumber.Text = string.Empty;
+                    EntryIDNo.Text = string.Empty;
+                    EntryTINNumber.IsEnabled = false;
+
+                    viewModel.IDNumberNonMandatoryVisibility = false;
+                    viewModel.IDNumberMandatoryVisibility = true;
+
+
+                    // For GCC ID DOB is not mandatory
+                    if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("ZS0003"))
+                    {
+                        viewModel.DOBNonMandatoryVisibility = true;
+                        viewModel.DOBMandatoryVisibility = false;
+                    }
+                    else
+                    {
+                        viewModel.DOBNonMandatoryVisibility = false;
+                        viewModel.DOBMandatoryVisibility = true;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
@@ -1859,13 +1950,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
                                 //FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -1899,13 +1992,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -1933,7 +2028,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 viewModel.IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -1941,7 +2037,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -1956,7 +2053,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -1968,7 +2066,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -1993,13 +2092,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2026,13 +2127,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2060,7 +2163,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 viewModel.IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -2068,7 +2172,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -2083,7 +2188,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -2095,7 +2201,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -2424,7 +2531,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 if (EntryTINNumber.Text.Substring(0, 1) != "3")
                 {
-                    Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                    Messages.AppendLine(AppResources.ZZTINnumberhastostartwithnumber3);
                     EntryTINNumber.Focus();
                 }
                 if (EntryTINNumber.Text.Length != 10)
@@ -2433,7 +2540,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         Messages.Append(Environment.NewLine);
                     }
-                    Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                    Messages.AppendLine(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
                 }
                 if (Messages.Length > 0)
                 {
@@ -2448,8 +2555,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    
+                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                     EntryTINNumber.Text = string.Empty;
                 }
                 else
@@ -2459,7 +2567,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         if (viewModel.VATRegistrationDetailsData.d.Gpartz.Equals(EntryTINNumber.Text))
                         {
                             /// have to change the message
-                            Messages.Append(AppResources.SameTincantbeaddedasfinancialrepresentative);
+                            Messages.AppendLine(AppResources.SameTincantbeaddedasfinancialrepresentative);
 
                             if (Messages.Length > 0)
                             {
@@ -2474,8 +2582,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                
+                                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                                 EntryTINNumber.Text = string.Empty;
                             }
                         }
@@ -2522,7 +2631,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
                         //FrmIDNumber.HasError = true;
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
@@ -2551,7 +2661,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameContactIDError = true;
                             EntryContactIDNumber.Text = string.Empty;
@@ -2586,7 +2697,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
                         //FrmIDNumber.HasError = true;
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
@@ -2599,7 +2711,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 Messages.Append(Environment.NewLine);
                             }
-                            Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            Messages.AppendLine(AppResources.ZZIqamaIDlengthis10digit);
                         }
                         if (Messages.Length > 0)
                         {
@@ -2614,7 +2726,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameContactIDError = true;
                             viewModel.IdNumberSR = string.Empty;
@@ -2648,7 +2761,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
                         //FrmIDNumber.HasError = true;
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
@@ -2666,7 +2780,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
                         //FrmIDNumber.HasError = true;
                         viewModel.FrameContactIDError = true;
                         viewModel.IdNumberSR = string.Empty;
@@ -2742,13 +2857,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 //FrmIDNumber.HasError = true;
 
                                 viewModel.FrameContactIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 viewModel.FrameContactIDError = false;
                                 //FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2770,14 +2887,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameContactIDError = false;
                                 
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2805,7 +2924,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 viewModel.IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -2813,7 +2933,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -2828,7 +2949,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -2840,7 +2962,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -2866,13 +2989,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 // FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameContactIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                             }
                         }
                         else
@@ -2894,13 +3019,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
                                 viewModel.IdNumberSR = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameContactIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                             }
                         }
                         catch (GAZTException gex)
@@ -2928,7 +3055,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 viewModel.IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -2936,7 +3064,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -2951,7 +3080,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -2963,7 +3093,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 //_navigationService.GoBack();
                             });
                         }
@@ -3000,7 +3131,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         //FrmIDNumber.HasError = true;
                         FrmTINNumber.HasError = true;
                         //viewModel.FrameIDError = true;
-                       await viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        //await viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                         EntryTINNumber.Text = string.Empty;
                     }
                     else
@@ -3008,7 +3140,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         FrmTINNumber.HasError = false;
                         //viewModel.FrameIDError = false;
                         //FrmIDNumber.HasError = false;
-                      await   viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        //await   viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                         EntryTINNumber.Text = string.Empty;
                     }
                 }
@@ -3035,15 +3168,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                     {
                         //FrmIDNumber.HasError = true;
-                       // FrmTINNumber.HasError = true;
-                       await  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        // FrmTINNumber.HasError = true;
+                        //await  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                         EntryTINNumber.Text = string.Empty;
                     }
                     else
                     {
                         //FrmIDNumber.HasError = false;
-                     //   FrmTINNumber.HasError = false;
-                   await      viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        //   FrmTINNumber.HasError = false;
+                        //await      viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
                         EntryTINNumber.Text = string.Empty;
 
                     }
@@ -3073,7 +3208,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.IsLoading = false;
 
-                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         viewModel._navigationService.GoBack();
                     });
                 }
@@ -3081,7 +3217,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                         await Task.Run(() =>
                         {
                             viewModel.IsLoading = false;
@@ -3096,7 +3233,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         // IsLoading = false;
 
-                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         //_navigationService.GoBack();
                     });
                 }
@@ -3108,7 +3246,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         // IsLoading = false;
 
-                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         //_navigationService.GoBack();
                     });
                 }
@@ -3591,7 +3730,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         Message.Append(Environment.NewLine);
                     }
-                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                    Message.AppendLine(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                 }
                 if (Message.Length > 0)
                 {
@@ -3606,7 +3745,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                     //FrmMobileNumber.HasError = true;
 
                     EntryPhoneNumber.Text = string.Empty;
@@ -3616,6 +3756,60 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     //FrmMobileNumber.HasError = false;
                
                 }
+            }
+        }
+
+        private void DDlContactIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
+                viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void SignUpDOB_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.DOB = year + "/" + month + "/" + day;
+                string DOB = year + month + day;
+                //viewModel.DOBPrev = viewModel.DOB;
+
+
+                ValidateIDNumber();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void ContactDOBPicker_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedItem = ContactDOBPicker.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.ContactDOB = year + "/" + month + "/" + day;
+                string DOB = year + month + day;
+                //viewModel.DOBPrev = viewModel.DOB;
+
+
+                ValidateIDNumberContact();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

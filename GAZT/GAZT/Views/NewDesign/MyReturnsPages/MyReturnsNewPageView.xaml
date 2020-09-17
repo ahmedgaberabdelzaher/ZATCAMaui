@@ -106,8 +106,8 @@
                             <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                             </custom:CustomButton>
 
-                            <syncfusion:SfPicker x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                            <syncfusion:SfPicker FlowDirection="RightToLeft"   x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         FooterHeight="46" SelectionChanged="TaxTypePicker_SelectionChanged">

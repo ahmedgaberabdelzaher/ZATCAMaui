@@ -26,6 +26,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public MyReturnsRootObject MyReturns { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
+
+        public static int numberOfAttachmentComingFromServer = 0;
         #region Property
         public List<ReturnTypes> _returnTypeForFilter;
         public List<ReturnTypes> ReturnTypeForFilter
@@ -417,8 +419,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     _vATDeclaration.d.Fbguid = SelectedICRGUID;
                                     VATDeclaration vATDeclaration = new VATDeclaration();
                                     VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                                    //if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
-                                    //   numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
+                                    if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
+                                        numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
                                     Result5 result5 = new Result5();
                                     List<Result5> lst = new List<Result5>();
                                     ADRSet _aDRSet = new ADRSet();

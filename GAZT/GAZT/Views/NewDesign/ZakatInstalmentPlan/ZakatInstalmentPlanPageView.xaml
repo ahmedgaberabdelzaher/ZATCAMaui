@@ -16,6 +16,8 @@
              x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.ZakatInstalmentPlanPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
+ 
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,7 +25,11 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+ 
+
         </ResourceDictionary>
+
+ 
 
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -61,16 +67,24 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>
+                       
+                        <StackLayout  Grid.Row="0" Grid.Column="2">
+                            <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Rotation="90">
+                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                            </StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.onMoreOptionClicked }"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
                     </Grid>
                 </Grid>
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
+
+ 
 
     <ContentPage.Content>
 
@@ -968,7 +982,7 @@
                         </Grid>
 
                         <listView:SfListView Grid.Row="3" x:Name="frequencyOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding ZakatAgreementOptions}"  SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" ItemTapped="Frequncy_Selected" >
+                                      ItemsSource="{Binding ZakatAgreementOptions}"  SelectionMode="Single" SelectionBackgroundColor="Transparent" ItemTapped="Frequncy_Selected" >
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
@@ -1197,10 +1211,7 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                                            
 
                                         </Grid>
                                     </DataTemplate>
@@ -1241,10 +1252,7 @@
                                     </Image>
                                 </Grid>
                             </border:SfBorder>
-                            <custom:CustomLabel Grid.Row="2" 
-                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                           
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding BankStatementsAttachmentTapped}"/>
@@ -1299,10 +1307,7 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                                           
 
                                         </Grid>
                                     </DataTemplate>
@@ -1342,10 +1347,7 @@
                                     </Image>
                                 </Grid>
                             </border:SfBorder>
-                            <custom:CustomLabel Grid.Row="2" 
-                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                       
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding FinanceAttachmentTapped}"/>
@@ -1514,7 +1516,7 @@
 
                                                 <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInvoiceNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="0" Text="{Binding InvNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="1" Text="{Binding DueDt}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="9" TextColor="White" Grid.Column="0" Text="{Binding InvAmt}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>

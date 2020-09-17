@@ -339,6 +339,12 @@
   <data name="TwentyFivePercentageObjectedAmount" xml:space="preserve">
     <value>25% من المبلغ المعترض عليه</value>
   </data>
+  <data name="VATRegistrationDetails" xml:space="preserve">
+    <value>VAT Registration Details</value>
+  </data>
+  <data name="VATRegistrationDetailsTitle" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
     <value>شهادة تسجيل في ضريبة القيمة المضافة</value>
   </data>
@@ -2106,7 +2112,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZET" xml:space="preserve">
-    <value>ضريبة السلع الإنتقائية</value>
+    <value>الضريبة الانتقائية</value>
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFavoriteAscending" xml:space="preserve">
@@ -2344,7 +2350,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
-    <value>رقم الجوال يجب أن يبدأ بالرقم 5</value>
+    <value>رقم الجوال يجب ان يبدأ برقم ٥</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberlengthcannotbelessthan9digits" xml:space="preserve">
@@ -3226,7 +3232,7 @@
     <comment>VAT Declaration</comment>
   </data>
   <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
-    <value>الموافقة على الشروط والأحكام</value>
+    <value>الرجاء الموافقة على الشروط و الاحكام</value>
     <comment>Signup</comment>
   </data>
   <data name="InvalidEmailFormat" xml:space="preserve">
@@ -4459,7 +4465,7 @@
     <value>رقم الترخيص</value>
   </data>
   <data name="TinDeregistrationValidFrom" xml:space="preserve">
-    <value>صالحة من</value>
+    <value>تاريخ الإصدار</value>
   </data>
   <data name="TinDeregistrationDeregReason" xml:space="preserve">
     <value>سبب الإيقاف</value>
@@ -5943,7 +5949,7 @@
     <value>تعديل</value>
   </data>
   <data name="CRContractonName" xml:space="preserve">
-    <value>الاسم المسجل في العقد</value>
+    <value>الجهة المتعاقدة</value>
   </data>
   <data name="CRIDType" xml:space="preserve">
     <value>نوع الهوية</value>
@@ -6205,28 +6211,28 @@
     <value>المرفقات - نسخة من عقد الإيجار</value>
   </data>
   <data name="ESTChooseLegalEntityBelowTitleLabel" xml:space="preserve">
-    <value>إذا كان غير ذلك الرجاء إختيار الكيان القانوني ادناه</value>
+    <value>(اختيار حالة الكيان القانوني (لغير السعودي</value>
   </data>
   <data name="ESTOtherTaxableIncomeFromSourcesWithinTheKSA" xml:space="preserve">
     <value>الدخل الخاضع للضريبة من مصادر داخل المملكة العربية السعودية</value>
   </data>
   <data name="ESTPermanentEstablishmentTypeLabel" xml:space="preserve">
-    <value>نوع المنشأة الدائمة</value>
+    <value>منشأة دائمة</value>
   </data>
   <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
-    <value>فرع لشركة غير مقيمة</value>
+    <value>.فرع شركة غير مقيمة مصرح لها بمزاولة الأعمال بالمملكة</value>
   </data>
   <data name="ESTConstuctionSiteLabel" xml:space="preserve">
-    <value>موقع العمل</value>
+    <value>.مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها</value>
   </data>
   <data name="ESTInstallationLabel" xml:space="preserve">
-    <value>التركيب</value>
+    <value>التركيبات والمواقع المستخدمة في أعمال المسح للموارد الطبيعية, ومعدات الحفر, والسفن المستخدمة في مسح الموارد الطبيعية, وممارسة الأعمال الإشرافية المتعلقة بها</value>
   </data>
   <data name="ESTAFixedBaseLabel" xml:space="preserve">
-    <value>قاعدة ثابته</value>
+    <value>.قاعدة ثابتة يمارس منها الشخص الطبيعي غير المقيم نشاطة</value>
   </data>
   <data name="ESTANonResidentPartnerLabel" xml:space="preserve">
-    <value>شريك غير مقيم</value>
+    <value>.يعد الشريك غير المقيم في شركة أشخاص مقيمة مالكاً لمنشأة دائمة بالمملكة على شكل حصة في شركة الاشخاص</value>
   </data>
   <data name="ESTSelectTaxableIncomeSourceLabel" xml:space="preserve">
     <value>اختر مصدر الدخل الخاضع للضريبة</value>
@@ -6247,7 +6253,7 @@
     <value>اسم العائلة</value>
   </data>
   <data name="ESTInitialLabel" xml:space="preserve">
-    <value>في البداية</value>
+    <value>الاسم المختصر</value>
   </data>
   <data name="ESTGenderLabel" xml:space="preserve">
     <value>الجنس</value>
@@ -6262,10 +6268,10 @@
     <value>الدولة</value>
   </data>
   <data name="ESTCitizenLabel" xml:space="preserve">
-    <value>مواطن</value>
+    <value>مكان الموطن</value>
   </data>
   <data name="ESTResidenceLabel" xml:space="preserve">
-    <value>مقيم</value>
+    <value>الإقامة</value>
   </data>
   <data name="ESTContinueLabel" xml:space="preserve">
     <value>التالي</value>
@@ -6280,7 +6286,7 @@
     <value>رقم الجواز</value>
   </data>
   <data name="ESTIssueCountryLabel" xml:space="preserve">
-    <value>جهة الإصدار</value>
+    <value>مكان الإصدار</value>
   </data>
   <data name="ESTIssueDateLabel" xml:space="preserve">
     <value>تاريخ الإصدار</value>
@@ -6370,10 +6376,13 @@
     <value>تستطيع ربط سجل تجاري واحد و الرخص التجارية المرتبطه بالنشاط الرئيسي</value>
   </data>
   <data name="ESTIssueBy" xml:space="preserve">
+    <value>جهة الاصدار</value>
+  </data>
+    <data name="ESTValidFrom" xml:space="preserve">
     <value>تاريخ الإصدار</value>
   </data>
   <data name="ESTIssueCity" xml:space="preserve">
-    <value>جهة الإصدار</value>
+    <value>مدينة الاصدار</value>
   </data>
   <data name="ESTMainActivity" xml:space="preserve">
     <value>النشاط الرئيسي</value>
@@ -6651,7 +6660,7 @@
     <value>تاريخ التقديم</value>
   </data>
   <data name="VoidReasonHint" xml:space="preserve">
-    <value>Reason for void</value>
+    <value>سبب الحذف</value>
   </data>
   <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
     <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value>
@@ -6660,13 +6669,13 @@
     <value>سنة</value>
   </data>
   <data name="ZakatCashBank" xml:space="preserve">
-    <value>المدينون .2 </value>
+    <value>النقدية + البنك .2 </value>
   </data>
   <data name="ZakatShortTermInvestment" xml:space="preserve">
     <value>استثمار قصير المدى .3</value>
   </data>
   <data name="ZakatDebitors" xml:space="preserve">
-    <value>المدينون .4</value>
+    <value>المدينين .4</value>
   </data>
   <data name="ZakatInventory" xml:space="preserve">
     <value>المخزون .5</value>
@@ -6678,10 +6687,10 @@
     <value>الزكاة والضريبة .7</value>
   </data>
   <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>إجمالي الإلتزامات الحالية .8</value>
+    <value>إجمالي الالتزامات الحالية .8</value>
   </data>
   <data name="ZakatRevenue" xml:space="preserve">
-    <value>الايرادات .9</value>
+    <value>إيرادات .9</value>
   </data>
   <data name="ZakatInstalmentNetIncome" xml:space="preserve">
     <value>صافي الدخل .10</value>
@@ -6696,7 +6705,7 @@
     <value>طلب خطة تقسيط للزكاة</value>
   </data>
   <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
-    <value>الرقم المرجعي</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
     <value>مدة الخطة</value>
@@ -6747,7 +6756,7 @@
     <value>الرقم التسلسلي</value>
   </data>
   <data name="NDWhatisYourNationality" xml:space="preserve">
-    <value>What is your Nationality?</value>
+    <value>جنسية المنشأة</value>
   </data>
   <data name="ZakatYearOne" xml:space="preserve">
     <value>سنة 1</value>
@@ -6868,7 +6877,7 @@
     <value>الاعتراضات و المراجعات</value>
   </data>
   <data name="VRAll" xml:space="preserve">
-    <value>الجميع</value>
+    <value>الكل</value>
   </data>
   <data name="VRTaxPayersName" xml:space="preserve">
     <value>اسم المكلف</value>
@@ -7423,5 +7432,75 @@
   </data>
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
+  </data>
+  <data name="TypeYourUserName" xml:space="preserve">
+    <value>الرجاء ادخال اسم المستخدم</value>
+  </data>
+  <data name="questionmark" xml:space="preserve">
+    <value>؟</value>
+  </data>
+  <data name="ESTSelectedEntityTypeLabel" xml:space="preserve">
+    <value>افراد</value>
+  </data>
+  <data name="ESTSelectedTaxPayerType" xml:space="preserve">
+    <value>تجارة</value>
+  </data>
+  <data name="ZakatDraftSaved" xml:space="preserve">
+    <value>{0}تم حفظ نموذج الإقرار الضريبي  بنجاح</value>
+  </data>
+  <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
+    <value>نموذج الإقرار غير مقبول. يرجى بدء العملية مرة أخرى لتقديم تقسيط الزكاة</value>
+    <comment>Zakat instalment general message</comment>
+  </data>
+  <data name="VRDECCheckBox" xml:space="preserve">
+    <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
+  </data>
+  <data name="VRDECDesc" xml:space="preserve">
+    <value>أشهد بأنني مخول بإكمال هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
+  </data>
+  <data name="VRRequesttoReviewtheAmount" xml:space="preserve">
+    <value>طلب لمراجعة المبلغ</value>
+  </data>
+  <data name="VRTotalTaxLiability" xml:space="preserve">
+    <value>مبلغ الضريبة المستحقة</value>
+  </data>
+  <data name="VRTaxPaid" xml:space="preserve">
+    <value>الضريبة المدفوعة</value>
+  </data>
+  <data name="VRInfull" xml:space="preserve">
+    <value>بشكل كامل</value>
+  </data>
+  <data name="VRInpartial" xml:space="preserve">
+    <value>بشكل جزئي</value>
+  </data>
+  <data name="VRDisputeDetails" xml:space="preserve">
+    <value> تفاصيل النزاع</value>
+  </data>
+  <data name="VRPleasespecifytheparticularamount" xml:space="preserve">
+    <value>المبلغ المطلوب مراجعته</value>
+  </data>
+  <data name="CRRequestDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+    <value>المبلغ المطلوب الإفراج عنه يجب ان يكون اقل من إجمالي مبلغ العقد</value>
+  </data>
+  <data name="NDAccounting" xml:space="preserve">
+    <value>حسابات</value>
+  </data>
+  <data name="NDEstimated" xml:space="preserve">
+    <value>تقديري</value>
+  </data>
+    <data name="ESTFinLastDay" xml:space="preserve">
+    <value>اليوم الأخير</value>
+  </data>
+    <data name="ESTZZVoid" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+    <data name="ESTInValidPostalCode" xml:space="preserve">
+    <value>12345 هو رمز بريدي غير صالح</value>
+  </data>
+  <data name="ZZExplore" xml:space="preserve">
+    <value>استعرض</value>
   </data>
 </root>

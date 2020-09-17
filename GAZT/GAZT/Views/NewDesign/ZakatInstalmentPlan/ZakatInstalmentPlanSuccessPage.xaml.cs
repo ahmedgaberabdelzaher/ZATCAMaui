@@ -154,12 +154,19 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-      
+
+
 
         private async void Download_Acknowledgement(object sender, EventArgs e)
         {
 
-            
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+
+
+            });
 
             if (viewModel.ZakatReferanceNumber != null)
             {
@@ -167,6 +174,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 String downloadurl = Constants.downloadFile + "'" + viewModel.ZakatReferanceNumber + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+
+
+
+            });
         }
 
         protected override void OnAppearing()

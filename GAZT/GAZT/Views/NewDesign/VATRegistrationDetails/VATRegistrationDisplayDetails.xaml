@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:EGAZT"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"             
+             BackgroundColor="#005e4b"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:custom2="clr-namespace:EGAZT"
+             NavigationPage.BackButtonTitle = ""
+              Title="{x:Static custom2:AppResources.VATRegistrationDetails}"
+             xmlns:local1="clr-namespace:GAZT"
+             xmlns:syncfusion1="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="EGAZT.Views.NewDesign.VATRegistrationDetails.VATRegistrationDisplayDetails">
+   <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+     <ContentPage.Content>
+        <Grid>
+            <yummy:PancakeView BackgroundColor="Black" CornerRadius="42,42,0,0" Padding="0">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRDMainGrid">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="80*" />
+                        <RowDefinition Height="10*" />
+                    </Grid.RowDefinitions>
+
+
+
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"  Margin="0" 
+                  Padding="15,15,15,0" BackgroundColor="White" RowSpacing="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="98*" />
+                            <RowDefinition Height="2*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ScrollView Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand">
+                            <StackLayout BackgroundColor="White">
+
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="0,15,0,10" BackgroundColor="White" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                  
+                                    <!--Summery-->
+                                    <Grid Grid.Row="0" Grid.Column="0"  Padding="0,0,0,0" IsVisible="{Binding IsSummaryVisible}"
+                              x:Name="SummeryView">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Grid.Row="0">
+                                            <Label Text="{x:Static custom2:AppResources.VATRegistrationDetailsTitle}" Style="{StaticResource GAZTMediumBlackLabel}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                            <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1">
+                                            
+                                            <!--<Frame BackgroundColor="#ff0000" Padding="0" CornerRadius="10">
+                                            <StackLayout Orientation="Horizontal" Padding="10">
+                                                <Image>
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.CloseCircle}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                                <Label Text="Not Your Eligible For VAT" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="Black"/>
+                                            </StackLayout>
+                                        </Frame>-->
+                                            <!--Taxpayer Details Summery-->
+                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                        <!--<Image>
+                                                        <Image.Source>
+                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
+                                                        </Image.Source>
+                                                    </Image>-->
+                                                        <!--<Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>-->
+                                                        <!--<Label  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>-->
+                                                        <Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
+                                                        <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                    </StackLayout>
+                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                    <Grid Padding="10,5,10,10">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50*"/>
+                                                            <ColumnDefinition Width="50*"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRImportExport}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding ImportExportText}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                         <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.Attachment}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding AttachmentName}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+
+
+
+                                                        <!--<Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
+
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+                                            <!--Bank Details Summery-->
+                                            <Frame BorderColor="LightGray"  HasShadow="False" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,5,10,5">
+       
+                                                    <Image>
+                                                        <Image.Source>
+                                                            <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
+                                                        </Image.Source>
+                                                    </Image>
+                                            
+                                                    <StackLayout BackgroundColor="Transparent" WidthRequest="30">
+
+                                                    </StackLayout>
+                                                        
+                                                    <Label  Text="Al Rajhi Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
+                                            
+                                                </StackLayout>
+                              <BoxView Style="{StaticResource lineSeperator}"/>
+                              <listView:SfListView Grid.Row="1"  HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                                    VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IbanList}"
+                                                    SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                              <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+					                        <Grid Padding="0" RowSpacing="0" >
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                               <ColumnDefinition Width="40*"/>
+                                                 <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                                    <Label Text="IBAN" Style="{StaticResource ValueLabelBlack}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                    <Label Text="{Binding Iban}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                </StackLayout>
+                                            </Grid>
+			                        </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                              </listView:SfListView>
+
+                                                <!--<CollectionView Grid.Row="1" HeightRequest="100" ItemsSource="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IbanList}" x:Name="IbansetToDisplayForConfirmation"
+                                                                ItemsLayout="HorizontalList" Margin="0" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <CollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Padding="5,0,5,0">
+                                                                <cards:SfCardView  HasShadow="True"   ShadowColor="#5d6770" 
+                                                                        BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                                                    <Grid>
+                                                                        <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
+                                                                        </Image>
+                                                                        <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="*"/>
+                                                                                <RowDefinition Height="auto"/>
+                                                                            </Grid.RowDefinitions>
+                                                                                 <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="40*"/>
+                                                                                    <ColumnDefinition Width="50*"/>
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <Label Grid.Row="0" Grid.Column="1" BackgroundColor="Red" Text="SA123456789987654323456788"  FontFamily="{StaticResource SSTArabicMedium}" />
+                                                                                <Label Grid.Row="0" Grid.Column="0" BackgroundColor="Red" Text="{x:Static custom2:AppResources.NAIBAN}"  FontFamily="{StaticResource SSTArabicMedium}"  />
+                                                                            
+                                                                        </Grid>
+                                                                    </Grid>
+                                                                </cards:SfCardView>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>-->
+                                            </StackLayout>
+                                        </Frame>
+                                            <!--Sales Details Summery-->
+                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                        <Image>
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Label Text="{x:Static custom2:AppResources.FORM5FinancialInfo}"   Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                    </StackLayout>
+                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                     <Grid Padding="10,5,10,10">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="40*"/>
+                                                            <ColumnDefinition Width="50*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                
+                                                        <!--SliderLable1-->
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsComming12months}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SliderLable1}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfSalesDetailsLast12months}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SliderLable2}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryofExpenseDetailsComming12Months}"  Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion3answerSelected}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSummeryOfExpenseDetailsLast12Months}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion4answerSelected}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                         </Grid>
+                                                </StackLayout>
+                                            </Frame>
+
+                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                        <Image>
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                    </StackLayout>
+                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                    <Grid Padding="10,5,10,10">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="40*"/>
+                                                            <ColumnDefinition Width="50*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+
+                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                                        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                                        <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.LastnmFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                                        <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                   
+                                                        <Label Grid.Row="5" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.MobNumberFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                                        <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
+                         <StackLayout Padding="0">
+                            <Grid Padding="15" RowSpacing="0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                </Frame> 
+                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                       VerticalOptions="Center"  Aspect="AspectFit"  Source="declaration"/>
+                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                    <Label Text="{x:Static custom2:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                </StackLayout>
+                            </Grid>
+
+                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                            
+					                        <Grid Padding="10,5,10,10" RowSpacing="0">
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                             <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding IDType}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                             <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                             <Label Grid.Row="1" Grid.Column="1"  Text="{Binding IDNumber}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                             <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.VatDeregDOBTitle}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                             <Label Grid.Row="2" Grid.Column="1"  Text="{Binding DOB}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                             <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRContactPersonName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                             <Label Grid.Row="3" Grid.Column="1"  Text="{Binding ContactPersonName}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
+                                            </Grid>
+			                      
+                                            </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                    </Grid>
+
+                                </Grid>
+                            </StackLayout>
+                        </ScrollView>
+
+                    </Grid>
+                </Grid>
+            </yummy:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

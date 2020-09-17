@@ -24,13 +24,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" HeightRequest="400">
-
-        <Grid>
+      <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
 
+    <yummy:PancakeView Grid.Row="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" HeightRequest="400">
+
+      
             <StackLayout Spacing="0" Grid.Row="0">
                 <Image HorizontalOptions="End">
                     <Image.Source>
@@ -137,8 +138,12 @@
 
             </StackLayout>
 
-            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}" Margin="-20">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+          
+
+       
+    </yummy:PancakeView>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"   IsVisible="{Binding IsLoading}" >
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.5" VerticalOptions="FillAndExpand" Margin="-30">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
@@ -157,7 +162,5 @@
                 </StackLayout>
             </Grid>
 
-
-        </Grid>
-    </yummy:PancakeView>
+           </Grid>
 </pages:PopupPage>

@@ -1,5 +1,4 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
-using GAZT.Manager;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -11,40 +10,36 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EGAZT.Views.NewDesign.VATDeclarationPages
+namespace EGAZT.Views.NewDesign.Common
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MorePopUpPageView : PopupPage
+    public partial class MoreMenuPopUpPageViewRTwo : PopupPage
     {
-
         #region Variable
-        public MorePopUpPageViewModel viewModel;
+        public MorePopUpViewModelRTwo viewModel;
         #endregion
 
-        public MorePopUpPageView(List<String> ListOfActionButtonsApplicable)
+       
+        public MoreMenuPopUpPageViewRTwo(List<String> ListOfActionButtonsApplicable)
         {
             try
             {
                 InitializeComponent();
-                viewModel = App.Locator.MorePopUpPageView;
+                viewModel = App.Locator.MoreMenuPopUpPageViewRTwo;
                 this.BindingContext = viewModel;
                 SetLTR();
-                if(ListOfActionButtonsApplicable!=null)
+                if (ListOfActionButtonsApplicable != null)
                 {
                     viewModel.VatReturnUIButtons = ListOfActionButtonsApplicable;
                 }
-                btnList.ItemTapped += (object sender, ItemTappedEventArgs e) => {
-                    // don't do anything if we just de-selected the row.
-                    if (e.Item == null) return;
 
-                    if (sender is ListView lv) lv.SelectedItem = null;
-                };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
+
         private void SetLTR()
         {
 
@@ -62,12 +57,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             PopupNavigation.Instance.PopAsync();
         }
 
-        private void OnAttachmentTapped(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PopAsync();
-            PopupNavigation.Instance.PushAsync(new FileAttachmentPopupPageView());
-
-        }
 
         private async void SelectButton(object sender, SelectedItemChangedEventArgs e)
         {
@@ -76,15 +65,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 var selected = (string)e.SelectedItem;
                 if (selected != null)
                 {
-                   
+
                     //NewAccountPopUpPageViewModel.ValidTypeIban = viewModel.IbanNumberText;
-                    MessagingCenter.Send<Object, string>(this, "CommandReceived", selected);
-                   
+                    MessagingCenter.Send<Object, string>(this, "SaveCommandReceived", selected);
+
 
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }

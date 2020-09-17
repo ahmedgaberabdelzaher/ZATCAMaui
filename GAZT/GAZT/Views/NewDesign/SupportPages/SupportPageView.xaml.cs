@@ -26,6 +26,16 @@ namespace EGAZT.Views.NewDesign
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                BranchLocation.BackgroundColor = Color.FromHex("#f7f7f7");
+            }
+            else
+            {
+                BranchLocation.BackgroundColor = Color.FromHex("#FFFFFF");
+            }
+
             if (App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.RightToLeft;

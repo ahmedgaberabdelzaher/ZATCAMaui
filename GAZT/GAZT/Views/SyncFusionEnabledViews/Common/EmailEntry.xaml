@@ -82,7 +82,7 @@
                 </inputLayout:SfTextInputLayout>
                 <custom:CustomButton x:Name="TinsButton" FontSize="Small" IsVisible="{Binding IsVisibleTinIds}" Clicked="TINs_Clicked" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" Margin="10,0,10,0" TextColor="White">
                 </custom:CustomButton>
-                <syncfusion:SfPicker x:Name="TinsPicker"
+                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TinsPicker"
                                      HeaderTextColor="White"
                     HeaderHeight="40"
                     ShowHeader="true"

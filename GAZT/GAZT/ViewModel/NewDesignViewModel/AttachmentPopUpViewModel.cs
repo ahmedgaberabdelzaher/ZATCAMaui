@@ -39,10 +39,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _zakatReturnAttachmentsList = value;
-                //if(ZakatReturnAttachmentsList != null)
+//if(ZakatReturnAttachmentsList != null)
                 //{
                 //    SetSaveButtonVisibility();
-                //}
+                                //}
                 RaisePropertyChanged("ZakatReturnAttachmentsList");
             }
         }

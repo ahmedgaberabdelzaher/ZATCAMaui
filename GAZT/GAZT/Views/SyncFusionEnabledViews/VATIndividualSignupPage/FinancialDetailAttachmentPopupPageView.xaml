@@ -117,7 +117,7 @@
                                 <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                 </custom:CustomButton>
                                 <!--SelectedIndex="{Binding IDTypeIndex}"-->
-                                <syncfusion:SfPicker x:Name="AttachmentTypePicker" Grid.Row="1"
+                                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="AttachmentTypePicker" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static custom2:AppResources.VATRAttachmentCategory}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" 
@@ -151,7 +151,7 @@
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                         <StackLayout Orientation="Horizontal" x:Name="ExploreAttachmentLayout">
-                                            <custom:BorderlessEntry  x:Name="EntryExploreAttachment"  IsEnabled="False" Placeholder="Explore" FontSize="Small">
+                                            <custom:BorderlessEntry  x:Name="EntryExploreAttachment"  IsEnabled="False" FontFamily="{StaticResource SSTArBold}" Placeholder="{x:Static custom2:AppResources.ZZExplore}" FontSize="Small">
                                             </custom:BorderlessEntry>
                                             <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                 <Image.Source>

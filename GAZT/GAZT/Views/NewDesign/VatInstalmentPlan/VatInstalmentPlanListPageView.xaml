@@ -602,7 +602,7 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
-                        
+                       
                         <custom:CustomLabel Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
                         <custom:CustomLabel Grid.Row="1"  Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" HorizontalOptions="StartAndExpand"
@@ -612,7 +612,7 @@
 
                     </Grid>
 
-                  
+                 
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -701,7 +701,7 @@
 
                     </Grid>
 
-                    <StackLayout Grid.Row="2" Grid.Column="0" Margin="0,10,0,0">
+                    <StackLayout Grid.Row="2" Grid.ColumnSpan="2"  Margin="0,10,0,0">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
@@ -716,14 +716,10 @@
                                 <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalNumberOfMonths}" Style="{StaticResource BodyLabelBlack}"/>
                                 <custom:CustomLabel Grid.Column="1" Text="{Binding ScheduleNoOfMonths}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                             </Grid>
-                            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                                <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalNumberOfMonths}"
-                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                <Label Text="{Binding ScheduleNoOfMonths}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
-                            </StackLayout>-->
+                           
                         </Frame>
                     </StackLayout>
-                    <StackLayout Grid.Row="3" Grid.Column="0" Margin="0,10,0,0">
+                    <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
@@ -746,7 +742,7 @@
                             </StackLayout>-->
                         </Frame>
                     </StackLayout>
-                    <StackLayout Grid.Row="4" Grid.Column="0" Margin="0,10,0,0">
+                    <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Margin="0,10,0,0">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
@@ -769,7 +765,7 @@
                             </StackLayout>-->
                         </Frame>
                     </StackLayout>
-                    <StackLayout Grid.Row="5" Grid.Column="0" Margin="0,10,0,20">
+                    <StackLayout Grid.Row="5" Grid.ColumnSpan="2"  Margin="0,10,0,20">
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
@@ -794,6 +790,7 @@
                     </StackLayout>
 
                 </Grid>
+
 
                     <!-- Loadig Indiacatr -->
 

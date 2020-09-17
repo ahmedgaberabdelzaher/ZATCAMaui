@@ -99,8 +99,8 @@
                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatAmount}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Start"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >                                       
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatAmount}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" VerticalOptions="Center">                                       
                                         <custom:CustomLabel>
                                             <Label.FormattedText>
                                                 <FormattedString>

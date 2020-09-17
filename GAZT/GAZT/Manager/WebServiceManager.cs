@@ -41,7 +41,6 @@ using EGAZT.Models.VatReviewModel;
 using static EGAZT.Models.VatReviewModel.VATObjectionFormModel;
 using EGAZT.Models.ZakatObjectionsModel;
 using EGAZT.Helper;
-using EGAZT.Models.TPProfile;
 
 namespace GAZT.Manager
 {
@@ -1773,7 +1772,14 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    if (_vATDeclarationD != null && _vATDeclarationD.d == null)
+                    {
+                        return _vATDeclarationD;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             else
@@ -1838,7 +1844,9 @@ namespace GAZT.Manager
                     string lang = UtilityManager.GetLanguageParameter();
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
+
+                    string url = Constants.GAZTInternationalMobileData + " eq " + "'" + lang + "'" + "&$format=json";
+                    // string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
                     //String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras%20eq%20%27AR%27&$format=json";
                     //String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
@@ -2113,6 +2121,8 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(contentType))
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
@@ -2433,7 +2443,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
                     if (_zakatReturnDetailsD == null || _zakatReturnDetailsD.d == null)
@@ -2601,6 +2611,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     //MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
@@ -6162,6 +6173,79 @@ namespace GAZT.Manager
             }
         }
 
+        public async static Task<VATRegistrationDetails> GAZTGetVATRegistrationDisplayDetailsData()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
+                string NewToken = string.Empty;
+                try
+                {
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "06" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATRegistrationDataResponse = await client.GetAsync(uri);
+                    if (GAZTVATRegistrationDataResponse != null)
+                    {
+                        if (GAZTVATRegistrationDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATRegistrationDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String VatRegistrationData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
+                        vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
+                        if (!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return vATRegistrationDetails;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
         public async static Task<VATDeRegistrationDetails> GAZTGetVATDeRegistrationData()
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -6331,10 +6415,13 @@ namespace GAZT.Manager
                             //    //}
                             //}
                             RequestVATRegistration = vATRegistration;
+                            if (vATRegistration.d.ELGBL_DOCSet == null || vATRegistration.d.ELGBL_DOCSet.results == null)
+                            {
+                                ELGBL_DOCSetforsubmit eLGBL_DOCSet = new ELGBL_DOCSetforsubmit();
+                                eLGBL_DOCSet.results = new List<ResultsItemForDOCSetforsubmit>();
+                                RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
 
-                            ELGBL_DOCSet eLGBL_DOCSet = new ELGBL_DOCSet();
-                            eLGBL_DOCSet.results = new List<ResultsItemForElgblDocSet>();
-                            RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
+                            }
                             //RequestVATDeclaration.d.SubmitFg = "";
                             ATTDETSet aTTACHSet = new ATTDETSet();
                             aTTACHSet.results = new List<Attachment>();
@@ -6410,8 +6497,8 @@ namespace GAZT.Manager
                                 }
                                 if (_vATRegistration.d.ELGBL_DOCSet == null)
                                 {
-                                    ELGBL_DOCSet eLGBL_DOC = new ELGBL_DOCSet();
-                                    eLGBL_DOC.results = new List<ResultsItemForElgblDocSet>();
+                                    ELGBL_DOCSetforsubmit eLGBL_DOC = new ELGBL_DOCSetforsubmit();
+                                    eLGBL_DOC.results = new List<ResultsItemForDOCSetforsubmit>();
                                     _vATRegistration.d.ELGBL_DOCSet = eLGBL_DOC;
                                 }
                                 if (_vATRegistration.d.QUESTIONSSet == null)
@@ -6455,10 +6542,10 @@ namespace GAZT.Manager
                     }
                     return _vATRegistration;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
-                }
+                //catch (GAZTVATRegistrationInProcessException ex)
+                //{
+                //    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                //}
 
                 catch (Exception ex)
                 {
@@ -8084,6 +8171,8 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(contentType))
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
@@ -8498,6 +8587,8 @@ namespace GAZT.Manager
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+
+
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -8570,7 +8661,10 @@ namespace GAZT.Manager
 
                     VatInstalmentPlanResponse _vatResponseObject = new VatInstalmentPlanResponse();
                     string LangZ = GetLangZParameterAREN();
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+                   // String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+
+                    String url = Constants.SaveVATInstalmentdata;
+
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -8814,7 +8908,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public async static Task<ZakatInstalmentPlanResponse> GetZakatInstalmentPostData()
+        public async static Task<ZakatInstalmentPlanResponse> GetZakatInstalmentPostData(string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8826,8 +8920,17 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     string formMode = "N";
+                    if (fbnum == "") {
+                         formMode = "N";
+                    }
+                    else {
+                         formMode = "S";
+                    }
+
+
+                   
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(Tin='3102206579',Euser='',Fbguid='',Fbnum='',FormMode='N',Langz='EN')?&$format=json
-                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
+                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + fbnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -8892,7 +8995,7 @@ namespace GAZT.Manager
         }
 
        
-        public async static Task<ZakatInvoiceList> GetZakatInvoicesList(bool IsZakat)
+        public async static Task<ZakatInvoiceList> GetZakatInvoicesList(bool IsZakat , string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8907,11 +9010,11 @@ namespace GAZT.Manager
                     String url = "";
                     if (IsZakat)
                     {
-                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
+                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
                     }
                     else
                     {
-                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
+                        url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + fbnum + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "02" + "'&$format=json";
                     }
                     url = System.Web.HttpUtility.UrlPathEncode(url);
 
@@ -12655,6 +12758,8 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(contentType))
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
@@ -14679,6 +14784,8 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(contentType))
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
@@ -15028,168 +15135,64 @@ namespace GAZT.Manager
             }
         }
 
-        // * TP PROFILE WEB API MANAGER
-        public static Task<TaxPayerProfile> GetTPProfileDataAPICall(string TIN)
+        public static async Task<VATDeclaration> GAZTGetVRVATReturns(string Fbguid, string Fbnumz, string EUser, string PeriodCode)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                string lang = string.Empty;
-                if (App.IsArabic) { lang = "A"; }
-                else { lang = "E"; }
-
-                HttpClient client = new HttpClient(App.httpClientHandler);
-                string URL = Constants.TPProfileURL
-                            + "(" + "Taxpayerz=" + "'" + TIN + "'"
-                            + ",Langz=" + "'" + lang + "'"
-                            + ",Euser=" + "'null'"
-                            + ",Fbguid=" + "'null'"
-                            + ",Euser1=" + "''"
-                            + ",Euser2=" + "''"
-                            + ",Euser3=" + "''"
-                            + ",Euser4=" + "''"
-                            + ",Euser5=" + "''" + ")?$format=json";
-
-                var URI = new Uri(URL);
-                Task<TaxPayerProfile> TPProfileData = GetTPProfileAndUpdatePasswordAPICall(URI);
-                return TPProfileData;
-            }
-            else
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
-        }
-
-        public static Task<TaxPayerProfile> ChangeTPProfilePasswordAPICall(string oldPassword, string newPassword)
-        {
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                string lang = string.Empty;
-                if (App.IsArabic) { lang = "A"; }
-                else { lang = "E"; }
-
-                string URL = Constants.GetTPProfileChangePWDURL
-                            + "(" + "Email=" + "'" + App.TP.Email + "'"
-                            + ",PasswordOld=" + "'" + oldPassword + "'"
-                            + ",PasswordNew=" + "'" + newPassword + "'"
-                            + ",Partner=" + "'" + App.TP.Tin + "'"
-                            + ",PasswordConf=" + "'" + newPassword + "'"
-                            + ",Euser1=" + "''"
-                            + ",Euser2=" + "''"
-                            + ",Euser3=" + "''"
-                            + ",Euser4=" + "''"
-                            + ",Euser5=" + "''" + ")?$format=json";
-
-                var URI = new Uri(URL);
-                Task<TaxPayerProfile> TPProfileData = GetTPProfileAndUpdatePasswordAPICall(URI);
-                return TPProfileData;
-            }
-            else
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
-        }
-
-        private static async Task<TaxPayerProfile> GetTPProfileAndUpdatePasswordAPICall(Uri GetURL)
-        {
-            TaxPayerProfile TPProfileData = null;
-            string NewToken = string.Empty;
-
-            try
-            {
-                HttpClient client = new HttpClient(App.httpClientHandler);
-                HttpResponseMessage UpdatePWDResponse = await client.GetAsync(GetURL);
-                if (UpdatePWDResponse != null)
+                string NewToken = string.Empty;
+                string FbGuid = App.LoginDataRetrieved.FbGuid;
+                try
                 {
-                    if (UpdatePWDResponse.StatusCode == HttpStatusCode.Unauthorized)
-                    {
-                        App.IsSessionExpired = true;
-                        return null;
-                    }
+                    VATDeclaration _vATDeclaration = new VATDeclaration();
+                    char LangZ = GetLangZParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/    ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
+                    // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "',SrcAppz='MB'" + ")?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                    // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + Fbnumz + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + "'" + ")?&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet,VATPERITEMSet&$format=json";
 
-                    if (UpdatePWDResponse.Headers != null)
+                    //String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'"  + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATReturnStatus = await client.GetAsync(uri);
+                    if (GAZTVATReturnStatus != null)
                     {
-                        HttpHeaders headers = UpdatePWDResponse.Headers;
+                        if (GAZTVATReturnStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = GAZTVATReturnStatus.Headers;
                         IEnumerable<string> values;
-
-                        if (headers.TryGetValues("token", out values)) { NewToken = values.First(); }
-
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
-                                return null;
+                                throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
-
-                        string GAZTTPProfileResponseJSON = UpdatePWDResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
-                        {
-                            GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["d"].ToString();
-                            TPProfileData = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTTPProfileResponseJSON);
-                        }
+                        String VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
+                        _vATDeclaration = JsonConvert.DeserializeObject<VATDeclaration>(VATReturn);
                     }
-                }
-                else
-                    throw new Exception(AppResources.NetworkConnectivityIssue);
-
-                //return tPProfileData;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
-                throw new Exception(AppResources.InvalidPassword);
-            }
-
-            return TPProfileData;
-        }
-
-        public static async Task<TaxPayerProfile> POSTTPProfileAPICalls(TPProfileAPIRequest TPProfileAPIRequestPOSTData, string APIType)
-        {
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                TaxPayerProfile TP = null;
-
-                try
-                {
-                    string url = Constants.TPProfileURL;
-                    var uri = new Uri(url);
-
-                    try { App.httpClientHandler.CookieContainer = null; }
-                    catch (Exception ex) { }
-
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    var serilized = JsonConvert.SerializeObject(TPProfileAPIRequestPOSTData);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-
-                    string GAZTTPProfileResponseJSON = res.Content.ReadAsStringAsync().Result;
-                    if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
-                    {
-                        GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["d"].ToString();
-                        TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTTPProfileResponseJSON);
-                    }
+                    return _vATDeclaration;
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
-                    if (APIType.Equals("GETOTPMOBILE"))
-                        throw new Exception(AppResources.EnterValidMobileNumber);
-                    else if(APIType.Equals("VERIFYOTPMOBILE"))
-                        throw new Exception(AppResources.InvalidOTP);
-                    else if (APIType.Equals("GETOTPEMAIL"))
-                        throw new Exception(AppResources.InvalidEmail);
-                    else if (APIType.Equals("VERIFYOTPEMAIL"))
-                        throw new Exception(AppResources.InvalidOTP);
+                    return null;
                 }
-
-                return TP;
             }
             else
+            {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
         }
-        // * End
 
         #endregion
     }

@@ -38,19 +38,30 @@
                 </Image>
 
                
-                <!--Start of Attachment Visible-->
                 <StackLayout Spacing="0">
-                    <custom:CustomLabel Margin="0,0,0,0" Text="{x:Static ResourceManager:AppResources.ZTERReportDetailAttachment}" Style="{StaticResource CaptionLabelGrey}"/>
-
-                    <!--<custom:CustomLabel Margin="0,-5,0,0" Text="20MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
-                      <!--<custom:CustomLabel Text="{x:Static local:AppResources.ZNote}" />-->
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZFilesizeshouldnotbemorethan5MB}" Style="{StaticResource CaptionLabelGrey}"/>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZChooseonlyfilewithextensionForZAKAT}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Style="{StaticResource CaptionLabelGrey}"/>
-                          
+                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </custom:CustomLabel>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <!--<Frame Grid.Row="4" IsVisible="{Binding AttachmentSizeVisibility}" CornerRadius="8" Margin="20,0,20,0" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
+                        </Frame>-->
+                        <!--<custom:CustomLabel  IsVisible="{Binding AttachmentSizeVisibility}" FontFamily="{StaticResource SSTArBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="10,0,10,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding TotalAttachmentSize}"  />
+                                    <Span Text="     "/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.OfText}"/>
+                                    <Span Text="     "/>
+                                    <Span Text="300 MB"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>-->
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                        </custom:CustomLabel>
                     <border:SfBorder   Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}">
                         <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                            <Label Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentInputPlaceholder}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                            <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
 
                             <Image HorizontalOptions="EndAndExpand" Rotation="90">
                                 <Image.Source>
@@ -58,18 +69,18 @@
                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
                                 </Image.Source>
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnAttachmentClicked"/>
+                                    <TapGestureRecognizer Command="{Binding OnAttachmentClick}"/>
                                 </Image.GestureRecognizers>
                             </Image>
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnAttachmentClicked"/>
+                                <TapGestureRecognizer Command="{Binding OnAttachmentClick}"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </border:SfBorder>
 
                     <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
-                        <ListView  x:Name="Attachmentlist" 
-           ItemsSource="{Binding ZakatReturnAttachmentsList}"
+                        <ListView   x:Name="List"
+           ItemsSource="{Binding AttachmentList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -84,19 +95,19 @@
                                         <border:SfBorder  Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}" >
 
                                             <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
-                                                <Image Source="{Binding FileImage}"  HeightRequest="25" WidthRequest="25" Margin="5">
+                                                <Image Source="Generic_attachment_icon.png"  HeightRequest="25" WidthRequest="25" Margin="5">
                                                   
                                                 </Image>
 
-                                                <Label Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                                <Label Text="{Binding Filename}" LineBreakMode="TailTruncation"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
 
-                                                <Image HorizontalOptions="EndAndExpand">
+                                                <Image HorizontalOptions="EndAndExpand" Margin="5">
                                                     <Image.Source>
                                                         <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Close}"/>
                                                     </Image.Source>
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClickedTapped"/>
+                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked"/>
                                                     </Image.GestureRecognizers>
                                                 </Image>
 
@@ -112,14 +123,11 @@
                     </StackLayout>
                     <!--<custom:CustomLabel Margin="0,-5,0,0" Text="50MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
 
-                    <!--Footer Section Starts-->
                     <StackLayout Grid.Row="2" BackgroundColor="White">
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
                     </StackLayout>
-                    <!--Footer Section Ends-->
                 </StackLayout>
 
-                <!--End of Attachment Visible-->
 
 
             </StackLayout>

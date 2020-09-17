@@ -368,7 +368,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
                         result2.Abrzu = dt2;
 
-
+                        result2.Betrh = string.Format("{0:N2}", double.Parse(result2.Betrh.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR;
 
                         dueInvoicesList.Add(result2);
                     }
@@ -435,6 +435,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
                 else
                 {
+                    App.selectedZakatItem = "";
                     _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
                 }
 
@@ -459,6 +460,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void ResetData()
         {
             NumberOfInstalmentPlans = "" + AppResources.ZakatInstalmetPlan;
+            App.selectedZakatItem = "";
 
         }
 
@@ -1180,6 +1182,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("RequestForInstalmentPlanList");
             }
         }
+        private List<Models.ZakatInstalationModels.ZakatInstalmentPlanRequestListModel.Result> _RevokeListItem;
+        public List<Models.ZakatInstalationModels.ZakatInstalmentPlanRequestListModel.Result> RevokeListItem
+        {
+            get
+            {
+                return _RevokeListItem;
+            }
+            set
+            {
+                _RevokeListItem = value;
+                RaisePropertyChanged("RevokeListItem");
+            }
+        }
+
         private List<Models.ZakatInstalationModels.ZakatInstalmentPlanRequestListModel.RevokeListResult> _requestForRevokeList;
         public List<Models.ZakatInstalationModels.ZakatInstalmentPlanRequestListModel.RevokeListResult> RequestForRevokeList
         {
@@ -1208,10 +1224,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 IsZakat = Preferences.Get("isZakat", false);
                 if (IsZakat) {
 
-                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NZ").ToList();
+                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NZ" || x.IptypeFg == "").ToList();
                 }
                 else {
-                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NI").ToList();
+                    RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.WorklistSet.results.Where(x => x.IptypeFg == "NI" || x.IptypeFg == "").ToList();
 
 
                 }
@@ -1256,7 +1272,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                     }
+                    else {
 
+                        IsZakat = Preferences.Get("isZakat", false);
+                        if (IsZakat) {
+                            zakatbill = AppResources.ZakatInstalmetSelectTypeZakat;
+
+                        }
+                        else {
+                            zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+
+                        }
+
+
+                    }
+
+
+                    
+                    
 
                     zakatListData.Add(new ZakatListModel()
                     {
@@ -1267,9 +1300,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         noOfInstalments = RequestForInstalmentPlanList[i].PlanDur,
                         downpayment = string.Format("{0:N2}", Convert.ToDouble(RequestForInstalmentPlanList[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
                         dateOfSubmission = submitDate,
-                        Fbtyp = zakatbill
-
-
+                        Fbtyp = zakatbill,
+                        statusType = RequestForInstalmentPlanList[i].Fbust,
+                        fbNum = RequestForInstalmentPlanList[i].Fbnum
+                        
 
                     });
 
@@ -1779,21 +1813,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             RequestForRevokeList = revokResult.d.RevokeListSet.results;
 
-
-
-
-                            for (int i = 0; i < revokResult.d.WorklistSet.results.Count; i++)
+                            IsZakat = Preferences.Get("isZakat", false);
+                            if (IsZakat)
                             {
-                                revokResult.d.WorklistSet.results[i].DpAmt = string.Format("{0:N2}", revokResult.d.WorklistSet.results[i].DpAmt) + " " + AppResources.FORM5SAR;
-                                revokResult.d.WorklistSet.results[i].TotAmt = string.Format("{0:N2}", revokResult.d.WorklistSet.results[i].TotAmt) + " " + AppResources.FORM5SAR;
+
+                                RevokeListItem = revokResult.d.WorklistSet.results.Where(x => x.IptypeFg == "NZ").ToList();
+                            }
+                            else
+                            {
+                                RevokeListItem = revokResult.d.WorklistSet.results.Where(x => x.IptypeFg == "NI").ToList();
+
+                            }
+
+
+                            for (int i = 0; i < RevokeListItem.Count; i++)
+                            {
+                                RevokeListItem[i].DpAmt = string.Format("{0:N2}", RevokeListItem[i].DpAmt) + " " + AppResources.FORM5SAR;
+                                RevokeListItem[i].TotAmt = string.Format("{0:N2}", RevokeListItem[i].TotAmt) + " " + AppResources.FORM5SAR;
 
                                 string submitDate = "";
-                                if (revokResult.d.WorklistSet.results[i].SubmitDt != null)
+                                if (RevokeListItem[i].SubmitDt != null)
                                 {
 
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                                    string apiDate = @"""" + revokResult.d.WorklistSet.results[i].SubmitDt + @"""";
+                                    string apiDate = @"""" + RevokeListItem[i].SubmitDt + @"""";
                                     dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
@@ -1812,16 +1856,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                                 ZakatListData.Add(new ZakatListModel()
                                 {
-                                    referanceNumber = revokResult.d.WorklistSet.results[i].Fbnum,
-                                    status = revokResult.d.WorklistSet.results[i].Status,
-                                    dueamount = string.Format("{0:N2}", double.Parse(revokResult.d.WorklistSet.results[i].TotAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
-                                    instalmentAmount = string.Format("{0:N2}", double.Parse(revokResult.d.WorklistSet.results[i].DueAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
-                                    noOfInstalments = revokResult.d.WorklistSet.results[i].PlanDur,
-                                    downpayment = string.Format("{0:N2}", double.Parse(revokResult.d.WorklistSet.results[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                                    referanceNumber = RevokeListItem[i].Fbnum,
+                                    status = RevokeListItem[i].Status,
+                                    dueamount = string.Format("{0:N2}", double.Parse(RevokeListItem[i].TotAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                                    instalmentAmount = string.Format("{0:N2}", double.Parse(RevokeListItem[i].DueAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                                    noOfInstalments = RevokeListItem[i].PlanDur,
+                                    downpayment = string.Format("{0:N2}", double.Parse(RevokeListItem[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
                                     dateOfSubmission = submitDate,
                                     Fbtyp = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
-                                    frequency = revokResult.d.WorklistSet.results[i].PymntFreq,
-                                    SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
+                                    frequency = RevokeListItem[i].PymntFreq,
+                                    SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                                    statusType = RevokeListItem[i].Fbust,
+                                    fbNum = RevokeListItem[i].Fbnum
                                 });
 
                                 if (ZakatListData.Count > 0)

@@ -36,6 +36,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
+            if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
+            {
+                viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+                viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+            }
             viewModel?.OnAppearing();
         }
 

@@ -1,10 +1,12 @@
 ﻿using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -1586,7 +1588,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     VATRegistrationDetailsData.d.DecidTy = SelectedIdTypeSR.ID;
                 }
 
-                VATRegistrationDetailsData.d.Decconno = IdNumberSR;
+                VATRegistrationDetailsData.d.DecidNo = IdNumberSR;
                 VATRegistrationDetailsData.d.Decname = FirstNameSR;
 
               
@@ -1620,15 +1622,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 string number = response.d.Fbnumz;
                                 string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                                 _navigationService.GoBack();
                             }
                             if (response.d.Operationz.Equals("05"))
                             {
                                 //  string number = response.d.Fbnumz;
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
-                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-
+                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                             }
 
 
@@ -1659,9 +1662,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     //_navigationService.GoBack();
-                   
+
                 });
                 return response;
             }
@@ -1882,7 +1886,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             if(vATRegistration.d.Decconno!=null)
 
 
-                              IdNumberSR= vATRegistration.d.Decconno;
+                              IdNumberSR= vATRegistration.d.DecidNo;
                             FirstNameSR = vATRegistration.d.Decname; 
 
                             //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
@@ -1982,7 +1986,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                                 _navigationService.GoBack();
                             });
                         }
@@ -1996,7 +2001,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
@@ -2020,7 +2026,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 }); 
 
@@ -2033,7 +2040,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //_dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }

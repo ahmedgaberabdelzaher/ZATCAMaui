@@ -115,7 +115,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
+                                <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"   HorizontalOptions="StartAndExpand">
                                 </Image>
 
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
@@ -140,7 +140,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
+                                <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"   HorizontalOptions="StartAndExpand">
                                 </Image>
 
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.NDRegisterZAKAT}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
@@ -581,6 +581,16 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                   <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Vat_Registration_Details_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
                                  <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 

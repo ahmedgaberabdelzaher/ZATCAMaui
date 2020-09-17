@@ -48,6 +48,12 @@ namespace GAZT.Helper
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
+
+        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = PreprodDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+
         //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = PreprodDomainForCookies;
@@ -177,6 +183,10 @@ namespace GAZT.Helper
         public static string GAZTUnlockAccountAllOperations = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_UNLOCK_USER_SRV/HeaderSet";
         #endregion
 
+        #region InternationalMobileNumber
+        public static string GAZTInternationalMobileData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras";
+        #endregion
+
         #region Form5
         #endregion
         #region ZakatForm5
@@ -233,8 +243,11 @@ namespace GAZT.Helper
         public static string GetInstallmentSchedule = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_DISPLAY_SRV/VTIA_HEADERSet(";
         public static string VATGetFormGUIDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
         public static string downloadFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
+        public static string SaveVATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+        public static string VATObjectionsNotesSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/NotesSet('001')";
+        public static string ZakatObjectionsNotesSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotesSet(1)";
 
-        
+
         #endregion
 
         #region ZAKAT

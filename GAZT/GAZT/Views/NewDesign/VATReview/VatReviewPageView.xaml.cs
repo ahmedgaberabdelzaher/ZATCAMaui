@@ -124,5 +124,32 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             viewModel.EnableSecurityPaymentsConButton();
         }
+      
+        private void DecCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            viewModel.EnableDeclarationConButton();
+        }
+        private void Dispute_Details_UnFocused(object sender, FocusEventArgs e)
+        {
+            viewModel.DisputeDetailsDesc = Dispute_Details_Tx.Text;
+            viewModel.EnableReviewDetailsConButton();
+        }
+        private void RRAmountUnfocused(object sender, FocusEventArgs e)
+        {
+            viewModel.requestedReviewAmount = rrAmountTxt.Text;
+            viewModel.EnableReviewDetailsConButton();
+        }
+        private void Dispute_Amount_ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedITem = e.ItemData as VatReviewViewModel.SelectionModel;
+            if (selectedITem.SelectionTitle.Equals(AppResources.VRInfull))
+            {
+                viewModel.IsRRAmountEdit = false;
+            }
+            else if (selectedITem.SelectionTitle.Equals(AppResources.VRInpartial))
+            {
+                viewModel.IsRRAmountEdit = true;
+            }
+        }
     }
 }

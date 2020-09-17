@@ -11,7 +11,7 @@
              FlowDirection="RightToLeft"
              mc:Ignorable="d"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background"
              x:Class="EGAZT.Views.NewDesign.ZakatObjection.ZakatObjectionSuccessPageView">
    
@@ -24,10 +24,14 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    <ContentPage.Content>
+   <ContentPage.Content>
         
         <StackLayout>
+           
+               
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+
+ 
 
                 <Image HeightRequest="120" WidthRequest="120"
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
@@ -39,9 +43,12 @@
                                     TextColor="White" HorizontalOptions="Center" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>
-                <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False"
+                <Grid>
+                    <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False"
                                    VerticalOptions="EndAndExpand">
                     <StackLayout>
+
+ 
 
                       
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"
@@ -60,8 +67,12 @@
                                                     VerticalOptions="Center" FontSize="12" TextColor="#909090"
                                                     HorizontalOptions="Start" />
 
+ 
+
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" FontSize="16"
                                                     VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding VATReferanceNumber}" />
+
+ 
 
                                 <Image Grid.Row="0" Grid.Column="2">
                                     <Image.Source>
@@ -83,11 +94,14 @@
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" />
-                        <buttons:SfButton 
+                        <buttons:SfButton
+                            Clicked="Download_Form"
                                           Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" />
+
+ 
 
                         <custom:CustomLabel Margin="10,0,10,15"
                                             Text="{x:Static ResourceManager:AppResources.ZakatObjection}"
@@ -99,7 +113,32 @@
                         </custom:CustomLabel>
                     </StackLayout>
                 </yummy:PancakeView>
+
+ 
+
+                    <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
+                                     Opacity="0.4" VerticalOptions="FillAndExpand" />
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                                     Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                                               EnableAnimation="True"
+                                                               AnimationType="SingleCircle"
+                                                               HorizontalOptions="CenterAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               IsBusy="True"
+                                                               ViewBoxWidth="70"
+                                                               TitlePlacement="Bottom"
+                                                               ViewBoxHeight="70"
+                                                               TextColor="#D99A29" />
+                                <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+            </Grid>
             </ScrollView>
+               
         </StackLayout>
         
     </ContentPage.Content>

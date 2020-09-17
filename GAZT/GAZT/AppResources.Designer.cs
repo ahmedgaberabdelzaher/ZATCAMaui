@@ -7692,6 +7692,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRegistrationDetails {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetails", resourceCulture);
+            }
+        }
+        
+        public static string VATRegistrationDetailsTitle {
+            get {
+                return ResourceManager.GetString("VATRegistrationDetailsTitle", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistration {
             get {
                 return ResourceManager.GetString("VATDeregistration", resourceCulture);
@@ -11550,6 +11562,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ESTValidFrom {
+            get {
+                return ResourceManager.GetString("ESTValidFrom", resourceCulture);
+            }
+        }
+        
         public static string ESTIssueCity {
             get {
                 return ResourceManager.GetString("ESTIssueCity", resourceCulture);
@@ -13461,6 +13479,138 @@ namespace EGAZT {
         public static string VatInstalmentSearchPlaceholder {
             get {
                 return ResourceManager.GetString("VatInstalmentSearchPlaceholder", resourceCulture);
+            }
+        }
+        
+        public static string TypeYourUserName {
+            get {
+                return ResourceManager.GetString("TypeYourUserName", resourceCulture);
+            }
+        }
+        
+        public static string questionmark {
+            get {
+                return ResourceManager.GetString("questionmark", resourceCulture);
+            }
+        }
+        
+        public static string ESTSelectedEntityTypeLabel {
+            get {
+                return ResourceManager.GetString("ESTSelectedEntityTypeLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTSelectedTaxPayerType {
+            get {
+                return ResourceManager.GetString("ESTSelectedTaxPayerType", resourceCulture);
+            }
+        }
+        
+        public static string ZakatDraftSaved {
+            get {
+                return ResourceManager.GetString("ZakatDraftSaved", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_ZakatCancelled {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_ZakatCancelled", resourceCulture);
+            }
+        }
+        
+        public static string VRDECCheckBox {
+            get {
+                return ResourceManager.GetString("VRDECCheckBox", resourceCulture);
+            }
+        }
+        
+        public static string VRDECDesc {
+            get {
+                return ResourceManager.GetString("VRDECDesc", resourceCulture);
+            }
+        }
+        
+        public static string VRRequesttoReviewtheAmount {
+            get {
+                return ResourceManager.GetString("VRRequesttoReviewtheAmount", resourceCulture);
+            }
+        }
+        
+        public static string VRTotalTaxLiability {
+            get {
+                return ResourceManager.GetString("VRTotalTaxLiability", resourceCulture);
+            }
+        }
+        
+        public static string VRTaxPaid {
+            get {
+                return ResourceManager.GetString("VRTaxPaid", resourceCulture);
+            }
+        }
+        
+        public static string VRInfull {
+            get {
+                return ResourceManager.GetString("VRInfull", resourceCulture);
+            }
+        }
+        
+        public static string VRInpartial {
+            get {
+                return ResourceManager.GetString("VRInpartial", resourceCulture);
+            }
+        }
+        
+        public static string VRDisputeDetails {
+            get {
+                return ResourceManager.GetString("VRDisputeDetails", resourceCulture);
+            }
+        }
+        
+        public static string VRPleasespecifytheparticularamount {
+            get {
+                return ResourceManager.GetString("VRPleasespecifytheparticularamount", resourceCulture);
+            }
+        }
+        
+        public static string CRRequestDetails {
+            get {
+                return ResourceManager.GetString("CRRequestDetails", resourceCulture);
+            }
+        }
+        
+        public static string NDAccounting {
+            get {
+                return ResourceManager.GetString("NDAccounting", resourceCulture);
+            }
+        }
+        
+        public static string NDEstimated {
+            get {
+                return ResourceManager.GetString("NDEstimated", resourceCulture);
+            }
+        }
+        
+        public static string ZZExplore {
+            get {
+                return ResourceManager.GetString("ZZExplore", resourceCulture);
+            }
+        }
+        
+        public static string ESTFinLastDay {
+            get {
+                return ResourceManager.GetString("ESTFinLastDay", resourceCulture);
+            }
+        }
+        
+        public static string ESTZZVoid {
+            get {
+                return ResourceManager.GetString("ESTZZVoid", resourceCulture);
+            }
+        }
+        
+        public static string ESTInValidPostalCode {
+            get {
+                return ResourceManager.GetString("ESTInValidPostalCode", resourceCulture);
             }
         }
     }

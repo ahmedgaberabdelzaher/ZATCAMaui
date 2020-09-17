@@ -59,7 +59,7 @@
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
                             <Button Clicked="OnBundleTypeClicked" BackgroundColor="Transparent"/>
-                            <syncfusion:SfPicker x:Name="BundleType"
+                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="BundleType"
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
@@ -98,7 +98,7 @@ SelectedIndex="{Binding IDTypeIndex}"  OkButtonClicked="BundleType_OkButtonClick
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
                             <Button Clicked="OnBundleNumberClicked" BackgroundColor="Transparent"/>
-                            <syncfusion:SfPicker x:Name="BundleNumber"
+                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="BundleNumber"
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
