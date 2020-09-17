@@ -1226,7 +1226,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
     <value>Select Taxpayer Type</value>
   </data>
   <data name="ZSadadNumber" xml:space="preserve">
-    <value>Sadad Number</value>
+    <value>SADAD Number</value>
   </data>
   <data name="ZAmountPayable" xml:space="preserve">
     <value>Amount Payable (including penalties)</value>
@@ -7243,9 +7243,6 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZZZZMyCorrespondence" xml:space="preserve">
     <value>My correspondence</value>
   </data>
-  <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
-    <value>Amount Required to Release must be less than Total Amount of Contract</value>
-  </data>
   <data name="CRContractStartDate" xml:space="preserve">
     <value>Contract Start Date</value>
   </data>
@@ -7593,4 +7590,46 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="CRContactPersonFullName" xml:space="preserve">
     <value>Full Name</value>
   </data>
+    <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+  <value>The amount requested to be released must be equal to or less than the total contract</value>
+</data>
+    <data name="VRTIDInstruction1" xml:space="preserve">
+  <value>Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields have been completed.</value>
+</data>
+  <data name="VRTIDInstruction2" xml:space="preserve">
+  <value>Please note that GAZT reserves the right to validate the implied split between taxable and exempt purchases and will only approve the input tax deduction method.</value>
+</data>
+  <data name="VRTIDInstruction3" xml:space="preserve">
+  <value>Please refer to the FAQ section before filling out the application form.</value>
+</data>
+  <data name="VRTIDEffectiveDateFrom" xml:space="preserve">
+  <value>Effective Date From</value>
+</data>
+  <data name="VRTIDEffectiveDateTo" xml:space="preserve">
+  <value>Effective Date To</value>
+</data>
+  <data name="VRTIDProxyforTaxablePurchases" xml:space="preserve">
+  <value>Proxy for Taxable Purchases</value>
+</data>
+  <data name="VRTIDProxyforExemptPurchases" xml:space="preserve">
+  <value>Proxy for Exempt Purchases</value>
+</data>
+  <data name="VRTIDTaxablePurchases" xml:space="preserve">
+  <value>Taxable Purchases</value>
+</data>
+  <data name="VRTIDExemptPurchases" xml:space="preserve">
+  <value>Exempt Purchases</value>
+</data>
+    <data name="VRRequestDetails" xml:space="preserve">
+  <value>Request Details</value>
+</data>
+  <data name="VREffectiveDateforinputtaxdeductionmethod" xml:space="preserve">
+  <value>Effective Date for input tax deduction method</value>
+</data>
+  <data name="VRCurrentinputtaxdeductionmethod" xml:space="preserve">
+  <value>Current input tax deduction method for appropriation of non-attributable input tax</value>
+</data>
+  <data name="VRProposedinputtaxdeductionmethod" xml:space="preserve">
+  <value>Proposed input tax deduction method for appropriation of non-attributable input tax</value>
+</data>
 </root>

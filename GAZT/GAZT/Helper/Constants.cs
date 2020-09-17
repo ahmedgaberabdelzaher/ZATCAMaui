@@ -326,6 +326,12 @@ namespace GAZT.Helper
         public static string GetVATObjectionViewBillURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/BillDtlSet?$filter=";
         public static string PostVATObjectionURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/HeaderSet";
         public static string VATObjectionSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+        public static string GetVATReviewRequestTPFVURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TPFV_M_SRV/HeaderSet(";
+        public static string GetVATReviewRequestTPFVOn1stAPISuccessURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TPFV_UH_SRV/UI_HDRSet(";
+        public static string GetVATReviewRequestVTGRURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_GRP_REG_SRV/VRNHSet(";
+        public static string GetVATReviewRequestVTGROn1stAPISuccessURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VGR_UH_SRV/VR_UI_HDRSet(";
+
+
 
         #endregion
 

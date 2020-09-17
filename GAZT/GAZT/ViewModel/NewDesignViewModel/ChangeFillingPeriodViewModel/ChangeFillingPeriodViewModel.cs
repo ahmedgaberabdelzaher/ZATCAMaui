@@ -2065,7 +2065,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.DecidTy = IDTypeDictionary[IDType];
                 request.d.Decname = ContactPersonName;
                 request.d.Decdesignation = "";
-                request.d.Decfg = ChangeFillingResponse.d.Decfg;
+                request.d.Decfg = "1";
                 request.d.DecidNo = IDNumber;
                 request.d.TransType = "CRE_TPCV";
                 request.d.UserTypz = "TP";

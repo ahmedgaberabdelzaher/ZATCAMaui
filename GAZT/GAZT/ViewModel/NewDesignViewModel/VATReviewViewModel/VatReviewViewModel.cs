@@ -21,6 +21,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
 using Metadata = EGAZT.Models.VatReviewModel.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
@@ -1187,6 +1188,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+
+        public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryDeclarationData { get; set; }
+        public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryDeclarationData
+        {
+            get
+            {
+                return _vatDeregistrationSummaryDeclarationData;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    _vatDeregistrationSummaryDeclarationData = value;
+                }
+                RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
+            }
+        }
+        public ObservableCollection<Attachment> vatDeRegAttachmentsList { get; set; }
+        public ObservableCollection<Attachment> VatDeRegAttachmentsList
+        {
+            get
+            {
+                return vatDeRegAttachmentsList;
+            }
+            set
+            {
+                if (value != null)
+                    vatDeRegAttachmentsList = value;
+                RaisePropertyChanged("VatDeRegAttachmentsList");
+            }
+        }
+        public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryReasonData { get; set; }
+        public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryReasonData
+        {
+            get
+            {
+                return _vatDeregistrationSummaryReasonData;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    _vatDeregistrationSummaryReasonData = value;
+                }
+                RaisePropertyChanged("VATDeregistrationSummaryReasonData");
+            }
+        }
+
         public ObservableCollection<SelectionModel> disputeAmountPaymentOptions { get; set; }
         public ObservableCollection<SelectionModel> DisputeAmountPaymentOptions
         {
@@ -2012,10 +2061,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 await FetchViewBill(selectedApplicationRef.Opbel, "");
             }
+
             else
             {
+                if (selectedApplicationRef.Fbtyp == "RGVT")
+                {
 
-                await GetViewApplication(App.LoginDataRetrieved.FbGuid, selectedApplicationRef.Fbnum, modelVATReview.d.Euserx);
+                }
+                else if (selectedApplicationRef.Fbtyp == "DGVT")
+                {
+
+                }
+                else if (selectedApplicationRef.Fbtyp == "VTGR")
+                {
+
+                }
+                else if (selectedApplicationRef.Fbtyp == "VTIN" || selectedApplicationRef.Fbtyp == "TPFV")
+                {
+                    await GetVATReviewRequestTPFV(modelVATReview.d.Officerx, modelVATReview.d.Gpartx, modelVATReview.d.Euserx, App.LoginDataRetrieved.FbGuid);
+                }
+                else if (selectedApplicationRef.Fbtyp == "VATR")
+                {
+                    await GetViewApplication(App.LoginDataRetrieved.FbGuid, selectedApplicationRef.Fbnum, modelVATReview.d.Euserx);
+                }
             }
             _isDialog = !_isDialog;
         }
@@ -2040,6 +2108,79 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 AttachmentsListViewData = attachmentsListViewData;
             }
 
+        }
+
+        public void PopulateVatDeRegSummaryReasonData(string requestType, string reasonTitle)
+        {
+            VATDeregistrationSummaryReasonData = null;
+            List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
+            try
+            {
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregRequestType,
+                    SummaryData = requestType,
+                    IsEditVisible = true
+                });
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregReasonTitle,
+                    SummaryData = reasonTitle,
+                    IsEditVisible = true
+                });
+                VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void PopulateVatDeRegAttachments(List<Attachment> attachments)
+        {
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
+            foreach (Attachment attachemnt in attachments)
+            {
+                attachmentsListViewData.Add(attachemnt);
+            }
+            VatDeRegAttachmentsList = attachmentsListViewData;
+        }
+
+        public void PopulateVatDeRegSummaryDeclarationData(string idType, string iDNumber, string dateOfBirth, string contactPersonName)
+        {
+            //VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
+            List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
+            try
+            {
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.IDType,
+                    SummaryData = idType,
+                    IsEditVisible = true
+                });
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.IDNumber,
+                    SummaryData = iDNumber,
+                    IsEditVisible = true
+                });
+
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregDOBTitle,
+                    SummaryData = dateOfBirth,
+                    IsEditVisible = true
+                });
+
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregContactPerson,
+                    SummaryData = contactPersonName,
+                    IsEditVisible = true
+                });
+                VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void BackNavigations()
@@ -3666,6 +3807,216 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             catch (GAZTVATRegistrationInProcessException ex)
             {
 
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task VatDeregistration()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+
+                    VATDeRegistrationDetails vATDeRegistration = null;
+
+                    try
+                    {
+                        vATDeRegistration = await WebServiceManager.GAZTGetVATDeRegistrationData();
+
+
+                        if (vATDeRegistration != null && vATDeRegistration.d != null)
+                        {
+
+                            if (vATDeRegistration.d.Idnumbr != null)
+
+                                if (string.IsNullOrEmpty(IDType))
+                                {
+
+                                    PopulateVatDeRegSummaryDeclarationData(vATDeRegistration.d.Type, vATDeRegistration.d.Idnumbr, vATDeRegistration.d.Declaredt, vATDeRegistration.d.Contactnm);
+                                }
+
+                            PopulateVatDeRegAttachments(vATDeRegistration.d.AttdetSet.results);
+
+                            PopulateVatDeRegSummaryReasonData(vATDeRegistration.d.Type, vATDeRegistration.d.Reason);
+                            //populateAttachments(vATDeRegistration);
+
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                });
+            }
+        }
+
+        public async Task GetVATReviewRequestTPFV(string strOfficerz, string strGpartz, string strEuser, string strFbguid, string strReviewFg = "true")
+        {
+            try
+            {
+                strOfficerz = "3102452201";
+                strGpartz = "3102452201";
+                strEuser = "00000001000008331567";
+                strFbguid = "005056B1F8FB1EEABDFEB2E0181E473D";
+
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    VATReviewRequestTPFVModel _VATReviewRequestTPFV = new VATReviewRequestTPFVModel();
+                    VATReviewRequestTPFVReturnModel _VATReviewRequestTPFVReturn = new VATReviewRequestTPFVReturnModel();
+                    try
+                    {
+                        _VATReviewRequestTPFV = await WebServiceManager.GAZTGetVATReviewRequestTPFV(strOfficerz, strGpartz, strEuser, strFbguid, strReviewFg);
+
+                        if (_VATReviewRequestTPFV != null && _VATReviewRequestTPFV.d != null)
+                        {
+                            _VATReviewRequestTPFVReturn.AgreeFlag = _VATReviewRequestTPFV.d.Inschk;
+                            _VATReviewRequestTPFVReturn.EffectiveDateFrom = _VATReviewRequestTPFV.d.Edtfr;
+                            _VATReviewRequestTPFVReturn.EffectiveDateTo = _VATReviewRequestTPFV.d.Edtto;
+                            _VATReviewRequestTPFVReturn.CurPrxTaxablePurchases = _VATReviewRequestTPFV.d.Cptp;
+                            _VATReviewRequestTPFVReturn.CurPrxExemptPurchases = _VATReviewRequestTPFV.d.Cpep;
+                            _VATReviewRequestTPFVReturn.CurTaxablePurchases = _VATReviewRequestTPFV.d.Ctpp;
+                            _VATReviewRequestTPFVReturn.CurExemptPurchases = _VATReviewRequestTPFV.d.Cepp;
+                            _VATReviewRequestTPFVReturn.ProPrxTaxablePurchases = _VATReviewRequestTPFV.d.Pcptp;
+                            _VATReviewRequestTPFVReturn.ProPrxExemptPurchases = _VATReviewRequestTPFV.d.Pcpep;
+                            _VATReviewRequestTPFVReturn.ProTaxablePurchases = _VATReviewRequestTPFV.d.Pctpp;
+                            _VATReviewRequestTPFVReturn.ProExemptPurchases = _VATReviewRequestTPFV.d.Pcepp;
+
+                            if (_VATReviewRequestTPFV.d.NotesSet.results.Where(x => x.AttByz.ToUpper() == "TP").Count() > 0)
+                            {
+                                _VATReviewRequestTPFVReturn.ExplanationNotes = _VATReviewRequestTPFV.d.NotesSet.results.Where(x => x.AttByz.ToUpper() == "TP").FirstOrDefault().ToString();
+                            }
+
+                            if (_VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").Count() > 0)
+                                _VATReviewRequestTPFVReturn.ProExemptPurchases = _VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").FirstOrDefault().Filename;
+
+                            _VATReviewRequestTPFVReturn.DeclarationFlag = _VATReviewRequestTPFV.d.Decchk1;
+                            _VATReviewRequestTPFVReturn.IDType = _VATReviewRequestTPFV.d.Idtp;
+                            _VATReviewRequestTPFVReturn.IDNumber = _VATReviewRequestTPFV.d.Idno;
+                            _VATReviewRequestTPFVReturn.ContactPersonName = _VATReviewRequestTPFV.d.Cnpr;
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _navigationService.NavigateTo(App.VatReviewViewApplicationPageView);
+
+                            });
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;

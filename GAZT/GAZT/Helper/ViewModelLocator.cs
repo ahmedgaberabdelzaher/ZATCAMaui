@@ -166,6 +166,7 @@ using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using EGAZT.Views.NewDesign.ZakatObjection;
 using EGAZT.Views.NewDesign.VATRegistrationDetails;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.VATReview;
 
 namespace EGAZT
 {
@@ -2311,6 +2312,8 @@ namespace EGAZT
             navigationService.Configure(App.ZakatObjectionSuccessPageView, typeof(ZakatObjectionSuccessPageView));
             navigationService.Configure(App.VATDeclarationAttachmentPageView, typeof(VATDeclarationAttachmentPageView));
             navigationService.Configure(App.MoreMenuPopUpPageViewRTwo, typeof(MoreMenuPopUpPageViewRTwo));
+            navigationService.Configure(App.VRVatDeRegViewAppPageView, typeof(VRVatDeRegViewAppPageView));
+            navigationService.Configure(App.VRInputTDViewAppPageViewApp, typeof(VRInputTDViewAppPageViewApp));
 
             #endregion
 

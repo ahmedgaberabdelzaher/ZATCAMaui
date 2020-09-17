@@ -339,6 +339,26 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     if (arg != null)
                     {
                         viewModel.PopulateAttachments(arg.results);
+
+
+
+                        if (viewModel.BankStatementsAttachmentsListViewData != null)
+                        {
+                            attachmentsListView.ItemsSource = viewModel.BankStatementsAttachmentsListViewData;
+                        }
+                        if (viewModel.FinanceAttachmentsListViewData != null)
+                        {
+                            FinancialAttachmentsList.ItemsSource = viewModel.FinanceAttachmentsListViewData;
+                        }
+
+
+
+
+                        if (viewModel.AttachmentsListViewData != null && viewModel.FinanceAttachmentsListViewData != null && viewModel.BankStatementsAttachmentsListViewData != null)
+                        {
+                            viewModel.PopulateSummaryAttachments();
+                            SummaryAttachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;
+                        }
                     }
                 });
 
