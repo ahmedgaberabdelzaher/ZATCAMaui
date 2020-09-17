@@ -156,11 +156,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (item.TestDueAmount != null)
                             {
                                 Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+
                             }
                         }
-                        
-                        AmountLabel = Amount.ToString()+" "+AppResources.ZSAR ;
-                        
+                        string format = "$#,##0.00;-$#,##0.00;Zero";
+                        decimal d = Convert.ToDecimal(Amount.ToString());
+                        decimal positiveMoney = d;
+                        positiveMoney.ToString(format);  //will return $24,508,975.94
+                        string TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
+                        AmountLabel = TestDueAmount + " "+AppResources.ZSAR ;
+                 
                         IsListVisible = true;
                         isNoDataLableVisible = false;
                     }
