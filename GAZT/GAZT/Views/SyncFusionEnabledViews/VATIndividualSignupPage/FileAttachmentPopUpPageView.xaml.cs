@@ -4,6 +4,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -75,6 +76,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             base.OnDisappearing();
             MessagingCenter.Send<Object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
+            MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToDeleteAttachment");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToDeleteAttachment");
             //comment because main button remains enabled
             //  viewModel.IsSwichButtonEnable = false;
             viewModel.IsLoading = false;
@@ -159,27 +162,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                     try
                     {
-                    await Task.Run(() =>
+                    if (sender != null)
                     {
-                       viewModel.IsLoading = true;
-                    });
-                    Image arrowImage = sender as Image;
-                        VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-                        //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
-                        //{
-                           
-                                if (attachment != null)
-                    {//ZZNotification
-                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                    
-                                    await DeleteAttachment(result, attachment);
-                                }
-
-                    //}
-                    await Task.Run(() =>
-                    {
-                       viewModel.IsLoading = false;
-                    });
+                        viewModel.VATAttachmentObj = new VATAttachment();
+                        Image arrowImage = sender as Image;
+                        viewModel.VATAttachmentObj = (VATAttachment)arrowImage.BindingContext;
+                        string var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
+                        await PopupNavigation.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FileAttachmentPopUpPageView"));
+                    }
+                   
                 }
                     catch (Exception ex)
                 {
@@ -204,6 +195,79 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             });
         }
 
+        public async void DeleteAttachmentForMessagingCenterCall()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                // Image arrowImage = sender as Image;
+                if (viewModel.VATAttachmentObj != null)
+                {
+                    VATAttachment attachment = viewModel.VATAttachmentObj;
+                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                    //{
+
+                    if (attachment != null)
+                    {//ZZNotification
+                     // var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+
+                        await DeleteAttachment(true, attachment);
+                    }
+                }
+                //}
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            getYesForDeleteAttachment();
+            getNoForDeleteAttachment();
+        }
+
+        
+
+        public async void getYesForDeleteAttachment()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToDeleteAttachment", async (sender, arg) =>
+                {
+                    DeleteAttachmentForMessagingCenterCall();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void getNoForDeleteAttachment()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoPressedToDeleteAttachment", async (sender, arg) =>
+                {
+
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
         public async Task DeleteAttachment(bool result, VATAttachment attachment)
         {

@@ -47,6 +47,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private VATAttachment _vATAttachmentObj;
+        public VATAttachment VATAttachmentObj
+        {
+            get
+            {
+                return _vATAttachmentObj;
+            }
+            set
+            {
+                _vATAttachmentObj = value;
+                RaisePropertyChanged("VATAttachmentObj");
+            }
+        }
+
+
+        
+
         private bool _isImpoterAndExporter = false;
         public bool IsImpoterAndExporter
         {

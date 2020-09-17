@@ -115,6 +115,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 MessagingCenter.Send<Object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
+                MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToDeleteFinancialAttachment");
+                MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToDeleteFinancialAttachment");
+
                 //if (viewModel.VATRegistrationDetailsForAttach != null && viewModel.VATRegistrationDetailsForAttach.d != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results != null)
                 //{
                 //    foreach (var item in viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results)
@@ -128,10 +131,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 //        viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Add(_eligibledocset);
 
                 //    }
-                    
-                    
+
+
                 //}
-                
+
                 MessagingCenter.Send<Object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet);
                 //viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet
             }
@@ -166,16 +169,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 try
                 {
-                    Image arrowImage = sender as Image;
-                    VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
-                    //{
 
-                    if (attachment != null)
+
+                    if (sender != null)
                     {
-                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                        DeleteAttachment(result, attachment);
+                        viewModel.VATAttachmentObj = new VATAttachment();
+                        Image arrowImage = sender as Image;
+                        viewModel.VATAttachmentObj = (VATAttachment)arrowImage.BindingContext;
+                        string var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
+                        await PopupNavigation.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FinancialDetailAttachmentPopupPageView"));
                     }
+
+                    //Image arrowImage = sender as Image;
+                    //VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+                    ////if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                    ////{
+
+                    //if (attachment != null)
+                    //{
+                    //    var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                    //    DeleteAttachment(result, attachment);
+                    //}
 
                     //}
                 }
@@ -305,10 +319,78 @@ ResultsItemForDOCSetforsubmit();
 
 
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            getYesForDeleteAttachment();
+            getNoForDeleteAttachment();
+        }
 
 
+        public async void getYesForDeleteAttachment()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToDeleteFinancialAttachment", async (sender, arg) =>
+                {
+                    DeleteAttachmentForMessagingCenterCall();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void DeleteAttachmentForMessagingCenterCall()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                // Image arrowImage = sender as Image;
+                if (viewModel.VATAttachmentObj != null)
+                {
+                    VATAttachment attachment = viewModel.VATAttachmentObj;
+                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                    //{
+
+                    if (attachment != null)
+                    {//ZZNotification
+                     // var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+
+                        await DeleteAttachment(true, attachment);
+                    }
+                }
+                //}
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void getNoForDeleteAttachment()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoPressedToDeleteFinancialAttachment", async (sender, arg) =>
+                {
 
 
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
 
 
