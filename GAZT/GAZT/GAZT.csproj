@@ -94,6 +94,7 @@
     <Folder Include="GAZTDLL\" />
     <Folder Include="GAZTDLL\Droid\" />
     <Folder Include="GAZTDLL\iOS\" />
+    <Folder Include="Models\TPProfile\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

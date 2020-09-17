@@ -46,10 +46,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     return;
                 }
 
-                bool OTPSuccess = await viewModel.VarifyEmail();
-                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", OTPSuccess);
-
-                if (OTPSuccess)
+                TaxPayerProfile TPAPIResponse = await viewModel.VarifyEmail();
+                if (TPAPIResponse != null)
                 {
                     // Navigating to Verification Screen
                     this.CloseAllPopup();   

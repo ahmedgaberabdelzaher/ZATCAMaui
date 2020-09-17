@@ -129,8 +129,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 viewModel.OTPFourthDigit = string.Empty;
 
                 viewModel.StartOTPTimer();
-                bool OTPSuccess = await viewModel.VarifyEmail();
-                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", OTPSuccess);
+                TaxPayerProfile TPAPIResponse = await viewModel.VarifyEmail();
             }
         }
 
@@ -202,10 +201,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
+            RefreshControlsData();
+
             viewModel.OTPSentOnThisMobileNumber = AppResources.Email + " " + viewModel._updateEmailData.NewEmail;
             viewModel.StartOTPTimer();
-
-            RefreshControlsData();
 
             // * Set
             OTPThirdEntry.Unfocus();
