@@ -158,6 +158,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
+            //Test check in
             try
             {
                     try
