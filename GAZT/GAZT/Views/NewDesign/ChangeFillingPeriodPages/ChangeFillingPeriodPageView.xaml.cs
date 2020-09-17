@@ -214,5 +214,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             viewModel.ContactPersonName = ContactPersonEntry.Text;
             viewModel.EnableDeclaration();
         }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            viewModel.EnableDeclaration();
+        }
     }
 }

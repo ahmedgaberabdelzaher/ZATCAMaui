@@ -430,12 +430,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                             }
                         }
-                        else if (IsComeForWhichAttachment == WhichAttachment.VATInstalment && VatAttachmentCount >= 5)
+                        else if (IsComeForWhichAttachment == WhichAttachment.VATInstalment)
                         {
-                            await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
-                            await PopupNavigation.Instance.PopAsync();
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count();
+                                if (count >= 5)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
 
-                            return;
                         }
 
                         else if (IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
@@ -710,6 +717,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
                         else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
+                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
+                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
                         {
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }

@@ -1302,6 +1302,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        public void EnableDeclaration()
+        {
+            if (ContactPersonName == "" || !IsIDVerified)
+            {
+                IsDeclarationEnabled = false;
+            }
+            else
+            {
+                IsDeclarationEnabled = true;
+            }
+        }
+
+        private bool _IsCheckboxChecked = false;
+        public bool IsCheckboxChecked
+        {
+            get
+            {
+                return _IsCheckboxChecked;
+            }
+            set
+            {
+                _IsCheckboxChecked = value;
+                RaisePropertyChanged("IsCheckboxChecked");
+            }
+        }
+
         public async void AttachmentsContinueBtnClicked()
         {
             try
@@ -1463,17 +1489,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 IsAttachmentsEnabled = false;
             }
         }
-        public void EnableDeclaration()
-        {
-            if (ContactPersonName == "" || !IsIDVerified)
-            {
-                IsDeclarationEnabled = false;
-            }
-            else
-            {
-                IsDeclarationEnabled = true;
-            }
-        }
+    
 
 
         public async void DeclarationContinueBtnClicked()

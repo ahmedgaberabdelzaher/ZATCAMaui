@@ -23,6 +23,12 @@
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
                 <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10"/>
                 <Setter Property="WidthRequest" Value="10"/>
@@ -115,20 +121,17 @@
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
-                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"  TrailingViewPosition="Inside"
                                 ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <StackLayout Orientation="Horizontal">
+                                                            
                                                                 <custom:BorderlessEntry Text="{Binding TxtIDType}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" 
                                                         Placeholder="{x:Static local:AppResources.ZZIDType}"  IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
-                                                                <Image HorizontalOptions="EndAndExpand" Rotation="270" ><!--Rotation="270"-->
-                                                                    <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                                    </Image.Source>
-                                                                </Image>
-                                                            </StackLayout>
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <Image Source="arrowDropdown.png"/>
+
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
                                                         </inputLayout:SfTextInputLayout>
                                                         <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                         </custom:CustomButton>
@@ -208,16 +211,17 @@
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
-                                                            <StackLayout Orientation="Horizontal">
+                                                         
                                                                 <custom:BorderlessEntry  x:Name="DateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding DOBddyymm}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged" Placeholder="dd/MM/yyyy" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry> <!--Placeholder="yyyy/MM/dd"-->
-                                                                <Image HorizontalOptions="EndAndExpand">
+                                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <Image>
                                                                     <Image.Source>
                                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                     Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                                                                     </Image.Source>
                                                                 </Image>
-                                                            </StackLayout>
+                                                   </inputLayout:SfTextInputLayout.TrailingView>
                                                         </inputLayout:SfTextInputLayout>
 
                                                         <Button Grid.Row="1" x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked" Margin="0,0,0,0" />
@@ -439,18 +443,16 @@ Closed="SignUpDOB_Closed"
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                 ContainerType="Outlined" x:Name="Frame_Country"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                                <StackLayout Orientation="Horizontal">
+
                                                                     <custom:BorderlessEntry  FontFamily="{StaticResource SSTArLight}"  Text="{Binding CountryName}" FontSize="Small"
                                                         Placeholder="{x:Static local:AppResources.ZZZZCountry}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="{Binding SetEnabilityToCountryList}" >
 
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
-                                                                        <Image.Source>
-                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                                        </Image.Source>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                               <Image Source="arrowDropdown.png">
+                                                                        
                                                                     </Image>
-                                                                </StackLayout>
+                                                  </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <!--<custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Country" Clicked="PickerBtn_Country_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                         </custom:CustomButton>
@@ -505,17 +507,15 @@ Closed="SignUpDOB_Closed"
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                 ContainerType="Outlined" x:Name="GCCFrame_Country"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameGccCountyError}" >
-                                                                <StackLayout Orientation="Horizontal">
+                                                                
                                                                     <custom:BorderlessEntry   FontFamily="{StaticResource SSTArLight}" x:Name="GccCountryName" Text="{Binding CountryName}" FontSize="Small"
                                                         Placeholder="{x:Static local:AppResources.ZZZZCountry}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="{Binding SetEnabilityToCountryList}" TextChanged="GccCountryName_TextChanged">
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
-                                                                        <Image.Source>
-                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                                        </Image.Source>
-                                                                    </Image>
-                                                                </StackLayout>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                                    <Image Source="arrowDropdown.png">
+                                                                        
+                                            </Image>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="GCCPickerBtn_Country" Clicked="GCCPickerBtn_Country_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
@@ -567,17 +567,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"  IsVisible="{Binding SetStateListVisibility}"
                                 ContainerType="Outlined" x:Name="Frame_Region"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameRegionError}" >
-                                                                <StackLayout Orientation="Horizontal">
+                                                             
                                                                     <custom:BorderlessEntry x:Name="Entry_Region"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding Region}" FontSize="Small"
                                                         Placeholder="{x:Static local:AppResources.ZZZZProvinceRegion}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" TextChanged="Entry_Region_TextChanged">
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
-                                                                        <Image.Source>
-                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                                        </Image.Source>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                              <Image Source="arrowDropdown.png">
                                                                     </Image>
-                                                                </StackLayout>
+                                  </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Region" Clicked="PickerBtn_Region_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
@@ -589,7 +586,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
-                        
+
                         BorderColor="Black" 
                         SelectedItemTextColor="{StaticResource NeutralBlack}"
 UnSelectedItemTextColor="{StaticResource NeutralGreay}"
@@ -601,7 +598,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="Bezei" ItemsSource="{Binding RegionList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Bezei" ItemsSource="{Binding RegionList}"  SelectionChanged="Region_OkayButtonClicked" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="Region_OkayButtonClicked"  CancelButtonClicked="Region_CancelButtonClicked">
@@ -632,17 +629,16 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding SetCityListVisibility}"
                                 ContainerType="Outlined" x:Name="Frame_City"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameCityError}" >
-                                                                <StackLayout Orientation="Horizontal">
+                                                                
                                                                     <custom:BorderlessEntry x:Name="Entry_City"  FontFamily="{StaticResource SSTArLight}" Text="{Binding CityName}" FontSize="Small" IsVisible="{Binding SetCityListVisibility}" TextChanged="Entry_City_TextChanged"
                                                         Placeholder="{x:Static local:AppResources.ZZZZCity} " IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
-                                                                        <Image.Source>
-                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                                        </Image.Source>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                                    <Image Source="arrowDropdown.png">
+                                                                        
                                                                     </Image>
-                                                                </StackLayout>
+
+                                 </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_City" Clicked="PickerBtn_City_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
@@ -664,7 +660,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="CityName" ItemsSource="{Binding CityList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="CityName" ItemsSource="{Binding CityList}"  SelectionChanged="City_OkayButtonClicked" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="City_OkayButtonClicked"  CancelButtonClicked="City_CancelButtonClicked">
@@ -820,11 +816,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameMobileNumberError}" >-->
                                                             <Frame BorderColor="LightGray"  Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
                                                             <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
-                                                                    <Image HorizontalOptions="Start" Rotation="270" >
-                                                                    <Image.Source>
-                                                                     <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
-                                                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                                    </Image.Source>
+                                                                <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
+                                                                    
                                                                         <Image.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="CountryCodes_Clicked"/>
                                                                 </Image.GestureRecognizers>
@@ -1128,11 +1121,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
                                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                                    <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeePassword" >
-                                                                        <Image.Source>
-                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
-                                                                                Glyph="{x:Static FontImage:IconFonts.Eye}"/>
-                                                                        </Image.Source>
+                                                                    <Image x:Name="ImageSeePassword" Source="showPassword.png">
+                                                                        
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
                                                                         </Image.GestureRecognizers>
@@ -1159,11 +1149,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 Placeholder="{x:Static local:AppResources.ZZZZRepeatPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
                                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                                    <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeConfirmPassword" >
-                                                                        <Image.Source>
-                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
-                                                                                Glyph="{x:Static FontImage:IconFonts.Eye}"/>
-                                                                        </Image.Source>
+                                                                    <Image  x:Name="ImageSeeConfirmPassword" Source="showPassword.png">
+                                                                        
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
                                                                         </Image.GestureRecognizers>
@@ -1175,39 +1162,27 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                         <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image HorizontalOptions="Start">
-                                                                    <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                                                    </Image.Source>
+                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                   
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZAtleast8characterslong}" TextColor="#010101"/>
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image HorizontalOptions="Start">
-                                                                    <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                                                    </Image.Source>
+                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                    
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZEnglishcapitalandsmallletters}" TextColor="#010101"  />
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image HorizontalOptions="Start">
-                                                                    <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                                                    </Image.Source>
+                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                    
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZNotexceed16characters}" TextColor="#010101"  />
                                                             </StackLayout>
 
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image HorizontalOptions="Start">
-                                                                    <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                                                    </Image.Source>
+                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                    
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZZNumbersandsymbols}" TextColor="#010101" />
                                                             </StackLayout>
@@ -1229,11 +1204,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding EncriptedMobileNumber}"/>
 
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image>
-                                                                    <Image.Source>
-                                                                        <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="20"
-                                         Glyph="{x:Static FontImage:IconFonts.TimerOutline}"/>
-                                                                    </Image.Source>
+                                                                <Image Source="clock.png">
+                                                                    
                                                                 </Image>
                                                                 <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding OTPValidDuration}"/>
                                                             </StackLayout>
@@ -1289,44 +1261,67 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                             </StackLayout>
                         </ScrollView>
                         <!--</Grid> VerifyButtonDisableTextColor BackgroundColor="#d49504"-->
-                        <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{Binding VerifyButtonDisableColor}" Margin="0,0,0,-2" VerticalOptions="End"   >
-                            <buttons:SfButton x:Name="btnContinue" Text="{Binding ContinueButtonText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 
-                                  HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding VerifyButtonDisableColor}"  />
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="20,8,20,10">
+                            <!--<buttons:SfButton x:Name="btnContinue" Text="{Binding ContinueButtonText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 
+                                  HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding VerifyButtonDisableColor}"  />-->
+                            <buttons:SfButton  x:Name="btnContinue" Text="{Binding ContinueButtonText}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueButtonClick}"/>
                         </StackLayout>
                     </Grid>
-                        <!-- Dot Images -->
+                        
                         <StackLayout BackgroundColor="White" Grid.Row="0" >
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
-                               
-                                <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                               
-                                <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
+                       
+                        <Grid Padding="15,0,15,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" Padding="0,8,0,0">
+                                <Image Source="arrowLeft.png" HorizontalOptions="Start" IsVisible="{Binding BackArrowVisible}" Style="{DynamicResource BackButtonArrow}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Image HeightRequest="40" WidthRequest="34" Source="ic_logo_gazt.png">
 
-                            </Grid>
+                                </Image>
+                            </StackLayout>
+                            <StackLayout Grid.Column="2" Padding="0,8,0,0">
+                                <Image Source="closeGrey.png" HorizontalOptions="End" IsVisible="{Binding BackArrowVisible}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </Grid>
+
+                        <!--<Grid Padding="15,5,15,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
+
+                            <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                        </Grid>-->
+
                         <commonView:PageIndicatorView Padding="10,0,0,0" Margin="10,0,10,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12"/>
-                        <!--<StackLayout Orientation="Horizontal" Padding="10,0,0,10" Margin="10,0,10,0">
-                                <BoxView x:Name="BoxOne" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorOne}"/>
-                                <BoxView x:Name="BoxTwo" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorTwo}"/>
-                                <BoxView x:Name="BoxThree" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorThree}"/>
-                                <BoxView x:Name="BoxFour" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorFour}"/>
-                                <BoxView x:Name="BoxFive" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorFive}"/>
-                            </StackLayout>-->
-                        </StackLayout>
-                        <!-- Dot Images End-->
+                    </StackLayout>
+                        
                     </Grid>
                 <!--</StackLayout>-->
             </yummy:PancakeView>

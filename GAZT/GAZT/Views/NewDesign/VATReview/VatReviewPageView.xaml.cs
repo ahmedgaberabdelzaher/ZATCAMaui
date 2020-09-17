@@ -138,6 +138,8 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             viewModel.requestedReviewAmount = rrAmountTxt.Text;
             viewModel.EnableReviewDetailsConButton();
+            viewModel.FetchSecurityAmount();
+
         }
         private void Dispute_Amount_ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -149,7 +151,11 @@ namespace EGAZT.Views.NewDesign.VatReview
             else if (selectedITem.SelectionTitle.Equals(AppResources.VRInpartial))
             {
                 viewModel.IsRRAmountEdit = true;
+                viewModel.FetchSecurityAmount();
+
             }
+
         }
+
     }
 }

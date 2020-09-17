@@ -2630,65 +2630,22 @@ SelectionChanged="DDlContactIDType_SelectionChanged" OkButtonClicked="DDlIDTypeS
                             </Image>-->
                             <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="50" HeightRequest="50" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 
-                            <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Menu}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer  Tapped="onMoreOptionClicked"></TapGestureRecognizer>
-                                </Label.GestureRecognizers>
-                            </Label>
-                            <!--Temp added Starts-->
-                            <!--         <StackLayout Grid.Row="0" Grid.Column="2" HeightRequest="21" Spacing="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="CenterAndExpand" BackgroundColor="White">
-                                    <BoxView BackgroundColor="Black" CornerRadius="5" HeightRequest="7" WidthRequest="7" />
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="CenterAndExpand" BackgroundColor="White">
-                                    <BoxView BackgroundColor="Black" CornerRadius="25" HeightRequest="7" WidthRequest="7" />
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="CenterAndExpand" BackgroundColor="White">
-                                    <BoxView BackgroundColor="Black" CornerRadius="25" HeightRequest="7" WidthRequest="7" />
+                            <StackLayout  Grid.Row="0" Grid.Column="2">
+                                <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Rotation="90">
+                                    <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource NeutralGreay}"/>
+                                    <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource NeutralGreay}"/>
+                                    <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource NeutralGreay}"/>
                                 </StackLayout>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer  Tapped="onMoreOptionClicked"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
-                            </StackLayout>-->
-                            <!--Temp Added Ends-->
+                            </StackLayout>
                             <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Padding="10,0,0,10" BackgroundColor="White" HorizontalOptions="FillAndExpand">
                                 <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12"/>
   
                             </StackLayout>
 
-                            <!--<StackLayout Orientation="Horizontal">
-                        <Image HorizontalOptions="Start" VerticalOptions="Start" Rotation="270">
-                            <Image.Source>
-                                <FontImageSource Color="Gray" FontFamily="UserIconFont"
-                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                            </Image.Source>
-                        </Image>
-                        <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                        -->
-                            <!--<Image HorizontalOptions="End" VerticalOptions="Start">
-                            <Image.Source>
-                                <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
-                                         Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                            </Image.Source>
-                        </Image>-->
-
-
-                            <!--<Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="5"/>
-                            </Grid.RowDefinitions>
-                            -->
-                            <!--<StackLayout Grid.Row="0">
-                                <BoxView  HeightRequest="5" WidthRequest="5" CornerRadius="10" BackgroundColor="LightGray"/>
-                                <BoxView  HeightRequest="5" WidthRequest="5" CornerRadius="10" BackgroundColor="LightGray"/>
-                                <BoxView  HeightRequest="5" WidthRequest="5" CornerRadius="10" BackgroundColor="LightGray"/>
-                            </StackLayout>-->
-                            <!--
-                            <Button x:Name="SideMenu" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="Transparent" Clicked="SideMenu_Clicked"/>
-                        </Grid>-->
-                            <!--
-                    </StackLayout>-->
-                        </Grid>
+                                                    </Grid>
                     </StackLayout>
                     <StackLayout Grid.Row="2" Grid.Column="0"  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                         <buttons:SfButton x:Name="MainButtonName"  Text="{Binding CurrentStep}"  Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"    CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />

@@ -7587,4 +7587,10 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <data name="ESTInValidPostalCode" xml:space="preserve">
     <value>12345 is invalid postal code</value>
   </data>
+    <data name="CFPDeclarationCheckbox" xml:space="preserve">     
+    <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>  
+    </data>
+     <data name="CRContactPersonFullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
 </root>

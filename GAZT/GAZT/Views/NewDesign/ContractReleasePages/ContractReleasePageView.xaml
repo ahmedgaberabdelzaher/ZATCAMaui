@@ -1109,7 +1109,7 @@
 
 
                     <custom:CustomLabel Grid.Row="1"
-                                        Text="{x:Static ResourceManager:AppResources.CRContactPersonName}"
+                                        Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" />
 

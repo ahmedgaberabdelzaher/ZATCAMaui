@@ -112,8 +112,11 @@ namespace GAZT.iOS.CustomRenderer
             }
         }
 
+        private static bool isUserLogingApiCalled = false;
+
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
+            isUserLogingApiCalled = false;
             Uri apiUrl = webView.Url;
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
@@ -219,59 +222,68 @@ namespace GAZT.iOS.CustomRenderer
                             //    App.LoginDataRetrieved = JsonConvert.DeserializeObject<LoginModel>(LoginConfirmation.ToString());
                             //}
 
-                            App.LoginCookiesRetrieved = new List<CookieModel>();
-
-                            foreach (NSHttpCookie cookie in cookies)
+                            if(isUserLogingApiCalled == false)
                             {
-                                CookieModel cookieModel = new CookieModel();
-                                cookieModel.CName = cookie.Name;
-                                cookieModel.CValue = cookie.Value;
-                                cookieModel.Comment = cookie.Comment;
-                                cookieModel.IsHttpOnly = cookie.IsHttpOnly;
-                                cookieModel.Path = cookie.Comment;
-                                cookieModel.Secure = cookie.IsSecure;
-                                cookieModel.Comment = cookie.Comment;
-                                cookieModel.Version = (int)cookie.Version;
-                                cookieModel.Domain = cookie.Domain;
+                                isUserLogingApiCalled = true;
 
-                                App.LoginCookiesRetrieved.Add(cookieModel);
-                                Console.WriteLine("FinishNav: Cookie Name: " + cookieModel.CName);
-                            }
+                                App.LoginCookiesRetrieved = new List<CookieModel>();
 
-                            try
-                            {
-                                App.httpClientHandler = new HttpClientHandler();
-                                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
-
-                            App.LoginDataRetrieved = new LoginModel();
-                            App.LoginDataRetrieved = await WebServiceManager.SFGAZTGetLoginData(url.ToString());
-
-                            if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.ResponseStatusMessage == null)
-                            {
-                                if (App.LoginDataRetrieved.MsgTitle != null && App.LoginDataRetrieved.MsgTitle.Length >= 2)
+                                foreach (NSHttpCookie cookie in cookies)
                                 {
-                                    IsError = true;
-                                    App.IsLoginCalled = false;
-                                    App.LoginDataRetrieved.ResponseStatusMessage = "error";
-                                    element.InvokeAction("error");
+                                    CookieModel cookieModel = new CookieModel();
+                                    cookieModel.CName = cookie.Name;
+                                    cookieModel.CValue = cookie.Value;
+                                    cookieModel.Comment = cookie.Comment;
+                                    cookieModel.IsHttpOnly = cookie.IsHttpOnly;
+                                    cookieModel.Path = cookie.Comment;
+                                    cookieModel.Secure = cookie.IsSecure;
+                                    cookieModel.Comment = cookie.Comment;
+                                    cookieModel.Version = (int)cookie.Version;
+                                    cookieModel.Domain = cookie.Domain;
+
+                                    App.LoginCookiesRetrieved.Add(cookieModel);
+                                    Console.WriteLine("FinishNav: Cookie Name: " + cookieModel.CName);
+                                }
+
+                                try
+                                {
+                                    App.httpClientHandler = new HttpClientHandler();
+                                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+
+                                App.LoginDataRetrieved = new LoginModel();
+                                App.LoginDataRetrieved = await WebServiceManager.SFGAZTGetLoginData(url.ToString());
+
+                                if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.ResponseStatusMessage == null)
+                                {
+                                    if (App.LoginDataRetrieved.MsgTitle != null && App.LoginDataRetrieved.MsgTitle.Length >= 2)
+                                    {
+                                        IsError = true;
+                                        App.IsLoginCalled = false;
+                                        App.LoginDataRetrieved.ResponseStatusMessage = "error";
+                                        element.InvokeAction("error");
+                                    }
+                                    else
+                                    {
+                                        App.LoginDataRetrieved.ResponseStatusMessage = "success";
+                                        element.InvokeAction("success");
+                                    }
                                 }
                                 else
                                 {
-                                    App.LoginDataRetrieved.ResponseStatusMessage = "success";
-                                    element.InvokeAction("success");
+                                    IsError = true;
+                                    App.IsLoginCalled = false;
+                                    App.LoginDataRetrieved.ResponseStatusMessage = "errorGeneric";
+                                    element.InvokeAction("errorGeneric");
                                 }
                             }
                             else
                             {
-                                IsError = true;
-                                App.IsLoginCalled = false;
-                                App.LoginDataRetrieved.ResponseStatusMessage = "errorGeneric";
-                                element.InvokeAction("errorGeneric");
+
                             }
                         }
                     }
