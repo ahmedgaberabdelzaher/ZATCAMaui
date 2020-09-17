@@ -211,7 +211,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
 
         public class ATTACHSet
         {
-            public List<Result> results { get; set; }
+            public List<Attachment> results { get; set; }
         }
 
         public class ATTTYPSet

@@ -662,6 +662,7 @@
                                 <custom:BorderlessEntry x:Name="rrAmountTxt"
                                                         IsEnabled="{Binding IsRRAmountEdit}"
                                                         Text="{Binding RequestedReviewAmount}"
+                                                        Keyboard="Numeric"
                                                         Unfocused="RRAmountUnfocused"
                                                         HorizontalOptions="FillAndExpand"
                                                         Style="{StaticResource BodyLabelBlack}" />
@@ -719,6 +720,7 @@
                             <BoxView Grid.Row="1" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         </Grid>
+                        <StackLayout Orientation="Vertical" IsVisible="{Binding IsSecurityAmountMorethanZero}">
 
                         <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
 
@@ -1042,7 +1044,7 @@
                             </Grid>
 
                         </StackLayout>
-
+                       </StackLayout>
                         <Frame HorizontalOptions="FillAndExpand"
                                Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                                Margin="0,20,0,0" Padding="0">
@@ -1055,6 +1057,7 @@
                                                     HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                         </Frame>
+                       
 
                         <buttons:SfButton Margin="0,16,0,16" VerticalOptions="End"
                                           BackgroundColor="{Binding SecurityPaymentButtonBackGroundColor}"

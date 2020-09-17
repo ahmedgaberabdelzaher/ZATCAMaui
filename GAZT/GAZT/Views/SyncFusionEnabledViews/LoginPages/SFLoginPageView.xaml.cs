@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -299,7 +300,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                                 try
                                 {
-                                    LogoffUser();
+                                    await LogoffUser();
                                     GoBackToOnaboardingScreen();
                                 }
                                 catch (Exception ex)
@@ -316,6 +317,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 try
                                 {
                                     string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
+
                                     if (minMaxVersions.Count() > 1)
                                     {
                                         double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
@@ -333,11 +335,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                             viewModel.IsLoading = false;
 
                                             await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                            LogoffUser();
+                                            await LogoffUser();
                                         }
                                     }
                                     else
                                     {
+                                        App.LoginDataRetrieved.AppVersion = string.Empty;
+
                                         if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
                                         {
                                             App.IsUserLoggedIn = true;
@@ -349,7 +353,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                             viewModel.IsLoading = false;
 
                                             await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                            LogoffUser();
+                                            await LogoffUser();
                                         }
                                     }
                                 }
@@ -412,13 +416,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
                                 else
                                 {
+
+                                }
+                                {
                                     await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                    LogoffUser();
+                                    await LogoffUser();
                                 }
 
                                 //hybridWebView.RefreshCommand();
-
-
                             }
 
                             if (data == "errorGeneric")
@@ -501,7 +506,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             }
         }
 
-        private async void LogoffUser()
+        private async Task LogoffUser()
         {
             viewModel.IsLoading = true;
 

@@ -63,8 +63,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             try
             {
                 String Url = string.Empty;
-
-                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + FBNumber + "',Utype=')$value?saml2=enabled";
+            //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='62000006372')/$value
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + FBNumber + "')/$value?saml2=enabled";
                 ShowPdf(Url);
             }
             catch (Exception e)

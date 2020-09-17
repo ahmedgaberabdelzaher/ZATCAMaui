@@ -236,7 +236,11 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             var dataItem = e.ItemData as VATResults4;
 
 
+
+
             totalAmount = 0.0;
+
+
 
             try
             {
@@ -254,51 +258,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
 
 
-                    //    for (int i = 0; i < viewModel.BillsListVAT.Length; i++)
-                    //{
-
-                    //    if (viewModel.selectedList.Contains(dataItem))
-                    //    {
-                    //        //int index = viewModel.BillsListVAT.IndexOf(dataItem);
-
-                    //       // viewModel.BillsListVAT[i].Xsele = "X";
-                    //        // totalAmount -= Convert.ToDouble(dataItem.Betrh);
-                    //        //viewModel.selectedList.Remove(dataItem);
-
-                    //        //viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
-                    //    }
-                    //    else
-                    //    {
-                    //       // int index = viewModel.BillsListVAT.IndexOf(dataItem);
-                    //        //viewModel.BillsListVAT[i].Xsele = "";
-                    //        //viewModel.selectedList.Add(dataItem);
-
-                    //    }
 
 
-                    //}
-
-                    //foreach (VATResults4 listItem in viewModel.selectedList.ToList())
-                    //{
-                    //    if (viewModel.selectedList.Contains(dataItem))
-                    //    {
-                    //        int index = viewModel.BillsListVAT.IndexOf(dataItem);
-
-                    //        viewModel.BillsListVAT[index].Xsele = "";
-                    //       // totalAmount -= Convert.ToDouble(dataItem.Betrh);
-                    //        viewModel.selectedList.Remove(dataItem);
-
-                    //        //viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
-                    //    }
-                    //    else
-                    //    {
-                    //        int index = viewModel.BillsListVAT.IndexOf(dataItem);
-                    //        viewModel.BillsListVAT[index].Xsele = "X";
-                    //        viewModel.selectedList.Add(dataItem);
-
-                    //    }
-
-                    //}
                 }
                 else
                 {
@@ -308,20 +269,32 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     // viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
                 }
 
+
+
                 Double dueAmount = 0.0;
                 for (int i = 0; i < viewModel.selectedList.Count; i++)
                 {
+                    if (viewModel.selectedList[i] != null)
+                    {
+                        dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
+                    }
+                    else
+                    {
+                        viewModel.selectedList.Remove(viewModel.selectedList[i]);
+                    }
 
-                    dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
 
 
                 }
 
 
+
+
                 viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;
 
-                viewModel.EnableBillsContinue();
 
+
+                viewModel.EnableBillsContinue();
 
             }
 
@@ -330,10 +303,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             {
 
 
-
             }
         }
-
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             // PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(viewModel.VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));

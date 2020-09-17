@@ -7503,4 +7503,11 @@
   <data name="ZZExplore" xml:space="preserve">
     <value>استعرض</value>
   </data>
+    <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
+    <value>الفترات الضريبية ذات الصلة</value>
+    </data>
+    <data name="CFPDeclarationCheckbox" xml:space="preserve">    
+    <value>أتعهد بأن المعلومات المذكورة أعلاه صحيحة وحقيقية على حد علمي</value>   
+    </data>
+    
 </root>

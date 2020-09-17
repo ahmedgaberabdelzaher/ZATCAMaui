@@ -23,11 +23,11 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-             viewModel = App.Locator.ChangeFillingPeriodPageView;
+            viewModel = App.Locator.ChangeFillingPeriodPageView;
 
             this.BindingContext = viewModel;
 
-           // ReferenceNumberTxt.Text = viewModel.ChangeFillingResponse.d.Fbnumz;
+            // ReferenceNumberTxt.Text = viewModel.ChangeFillingResponse.d.Fbnumz;
         }
 
         private void SetLTR()

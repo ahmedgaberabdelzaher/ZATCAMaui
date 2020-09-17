@@ -218,6 +218,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        private bool _isSecurityAmountMorethanZero = false;
+
+        public bool IsSecurityAmountMorethanZero
+        {
+            get { return _isSecurityAmountMorethanZero; }
+            set
+            {
+                _isSecurityAmountMorethanZero = value;
+                RaisePropertyChanged("IsSecurityAmountMorethanZero");
+            }
+        }
+
         private string _pickedDate = "";
 
         public string PickedDate
@@ -1661,9 +1673,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                     if (IsSecurityPaymentsTabVisible)
                     {
-                        VATObjectionSecurityAmount(Convert.ToDecimal(selectedApplicationRef.Penamount),
-                            Convert.ToDecimal(selectedApplicationRef.Liaamt),
-                            Convert.ToDecimal(selectedApplicationRef.Clramt));
                         EnableSecurityPaymentsView();
                     }
                     else
@@ -1768,6 +1777,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+        }
+
+        public async void FetchSecurityAmount()
+        {
+            if (RequestedReviewAmount == "" || RequestedReviewAmount == "0")
+            {
+                return;
+            }
+
+            try
+            {
+                VATObjectionSecurityAmount(Convert.ToDecimal(RequestedReviewAmount),
+                    Convert.ToDecimal(selectedApplicationRef.Liaamt),
+                    Convert.ToDecimal(selectedApplicationRef.Clramt));
+            }
+            catch (Exception e)
+            {
+
             }
         }
 
@@ -2127,6 +2155,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 TaxPaid = selectedApplicationRef.Clramt;
                 RequestedReviewAmount = selectedApplicationRef.Liaamt;
 
+                SecurityAmount =
+                    (Double.Parse(selectedApplicationRef.Liaamt) - Double.Parse(selectedApplicationRef.Clramt))
+                    .ToString();
+
+                if (Double.Parse(SecurityAmount) < 0)
+                {
+                    SecurityAmount = "0.0";
+                }
+
+                if (modelVATReview.d.SecurityDtl.SeczeroFlg == "S")
+                {
+                    SecurityAmount = "0.0";
+                }
+
+                try
+                {
+                    if (Double.Parse(SecurityAmount) == 0)
+                    {
+                        IsSecurityAmountMorethanZero = false;
+                    }
+                    else
+                    {
+                        IsSecurityAmountMorethanZero = true;
+                    }
+                    EnableSecurityPaymentsConButton();
+                }
+                catch (Exception e)
+                { }
+
 
                 EnableReviewReasonConButton();
             }
@@ -2450,26 +2507,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void EnableSecurityPaymentsConButton()
         {
 
-            if (IsSadadSecuritySelected)
+            if (!IsSecurityAmountMorethanZero)
+            {
+                IsSecurityPaymentEnabled = true;
+            }
+            else if (IsSadadSecuritySelected)
             {
 
-                if (SecurityAmount == "" || !IsSadadCheckBox3)
+                /*if (SecurityAmount == "" || !IsSadadCheckBox3)
                 {
 
                     IsSecurityPaymentEnabled = false;
 
 
+                }*/
+                if (SecurityAmount == "" || !IsSadadCheckBox3)
+                {
+                    IsSecurityPaymentEnabled = false;
                 }
                 else
                 {
-
                     IsSecurityPaymentEnabled = true;
-
                 }
 
 
             }
-            else
+            else if (IsBankGurantSecuritySelected)
             {
                 if (BankGuranteeAttachmentsListViewData == null || !IsSadadCheckBox1 || !IsSadadCheckBox2)
                 {
@@ -2965,6 +3028,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (_VATObjectionSecurityAmount != null && _VATObjectionSecurityAmount.d != null)
                 {
                     SecurityAmount = _VATObjectionSecurityAmount.d.Secamt;
+                    try
+                    {
+                        if (Double.Parse(SecurityAmount) == 0)
+                        {
+                            IsSecurityAmountMorethanZero = false;
+                        }
+                        else
+                        {
+                            IsSecurityAmountMorethanZero = true;
+                        }
+
+                        EnableSecurityPaymentsConButton();
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+
                 }
 
                 await Task.Run(() =>
