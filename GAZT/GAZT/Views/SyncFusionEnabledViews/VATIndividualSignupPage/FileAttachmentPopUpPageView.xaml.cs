@@ -168,7 +168,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.VATAttachmentObj = new VATAttachment();
                         Image arrowImage = sender as Image;
                         viewModel.VATAttachmentObj = (VATAttachment)arrowImage.BindingContext;
-                        string var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
+                        string var = string.Empty;
+                        if (App.IsArabic)
+                        {
+                            var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ؟ ";
+                        }
+                        else
+                        {
+                            var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
+                        }
                         await PopupNavigation.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FileAttachmentPopUpPageView"));
                     }
                    
