@@ -827,6 +827,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
         private void HamburgerMenuClicked()
         {
+           
             _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
             //_navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
             //_dialogService.ShowMessage("Anonymous menu will appear", "Menu");
