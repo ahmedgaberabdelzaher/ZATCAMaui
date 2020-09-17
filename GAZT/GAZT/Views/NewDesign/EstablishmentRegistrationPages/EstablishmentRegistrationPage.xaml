@@ -559,6 +559,7 @@
                                         </StackLayout>
                                     </border:SfBorder >
                                     <syncfusion:SfDatePicker x:Name="dobPicker"
+                                                             FlowDirection="RightToLeft"
                                                              ShowHeader="False"
                                                              Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
@@ -844,6 +845,7 @@
                                 </border:SfBorder >
 
                                 <syncfusion:SfDatePicker x:Name="PassportIssueDatePicker" IsOpen="False"
+                                                         FlowDirection="RightToLeft"
                                                          Format="yyyy_MM_dd"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
                                                          ShowHeader="False"  
@@ -880,6 +882,7 @@
                                     </StackLayout>
                                 </border:SfBorder >
                                 <syncfusion:SfDatePicker x:Name="PassportExpiryDatePicker" ShowHeader="False"
+                                                         FlowDirection="RightToLeft"
                                                              Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
                                                              PickerMode="Dialog"                                                            

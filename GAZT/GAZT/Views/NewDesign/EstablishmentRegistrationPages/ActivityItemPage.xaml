@@ -127,6 +127,7 @@
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
                         <syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
+                                                           FlowDirection="RightToLeft"
                                                              ShowHeader="False"
                                                              Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
@@ -348,6 +349,7 @@
                         </buttons:SfButton>
                         <syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
                                                              ShowHeader="False"
+                                                           FlowDirection="RightToLeft"
                                                              Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
                                                              PickerMode="Dialog"
