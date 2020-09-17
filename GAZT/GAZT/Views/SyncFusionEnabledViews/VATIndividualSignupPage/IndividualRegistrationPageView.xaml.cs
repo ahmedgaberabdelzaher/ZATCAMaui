@@ -73,7 +73,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-                Image_backArrow.Rotation = 0;
+                //Image_backArrow.Rotation = 0;
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 //Label_MobileInitialAr.IsVisible = false;
                 //Label_MobileInitialEng.IsVisible = true;
                 EntryMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
@@ -84,7 +85,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
-                Image_backArrow.Rotation = 180;
+                //Image_backArrow.Rotation = 180;
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
                 EntryMobileNumber.HorizontalTextAlignment = TextAlignment.End;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;

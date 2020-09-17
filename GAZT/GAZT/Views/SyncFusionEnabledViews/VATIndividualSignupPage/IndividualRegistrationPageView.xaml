@@ -23,6 +23,12 @@
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
                 <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10"/>
                 <Setter Property="WidthRequest" Value="10"/>
@@ -1263,27 +1269,56 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                     </Grid>
                         
                         <StackLayout BackgroundColor="White" Grid.Row="0" >
-                            <Grid >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
-                               
-                                <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                               
-                                <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
+                       
+                        <Grid Padding="15,0,15,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20*"/>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" Padding="0,8,0,0">
+                                <Image Source="arrowLeft.png" HorizontalOptions="Start" IsVisible="{Binding BackArrowVisible}" Style="{DynamicResource BackButtonArrow}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Image HeightRequest="40" WidthRequest="34" Source="ic_logo_gazt.png">
 
-                            </Grid>
+                                </Image>
+                            </StackLayout>
+                            <StackLayout Grid.Column="2" Padding="0,8,0,0">
+                                <Image Source="closeGrey.png" HorizontalOptions="End" IsVisible="{Binding BackArrowVisible}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </Grid>
+
+                        <!--<Grid Padding="15,5,15,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
+
+                            <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                        </Grid>-->
+
                         <commonView:PageIndicatorView Padding="10,0,0,0" Margin="10,0,10,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12"/>
                     </StackLayout>
                         
