@@ -13,7 +13,7 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:custom2="clr-namespace:EGAZT.CustomControl"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.IndividualRegistrationPageView"
              BackgroundColor="#005e4b"
              NavigationPage.HasNavigationBar="False">
@@ -712,7 +712,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <custom:BorderlessEntry x:Name="EntryBuildingNumber"  FontFamily="{StaticResource SSTArLight}" Text="{Binding BuildingNumber}" MaxLength="20" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZBuildingNumber}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
-                                                                    <custom:AlphaNumericValidatorBehaviour/>
+                                                                    <!--<custom:AlphaNumericValidatorBehaviour/>-->
+                                                                    <custom2:ArabicCharEnglishCharAndNumberNoSpclChar/>
                                                                 </Entry.Behaviors>
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
@@ -725,7 +726,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <custom:BorderlessEntry x:Name="EntryUnitNumber" MaxLength="10"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding UnitNumber}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZUnitNumber}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
-                                                                    <custom:AlphaNumericValidatorBehaviour/>
+                                                                    <!--<custom:AlphaNumericValidatorBehaviour/>-->
+                                                                    <custom2:ArabicCharEnglishCharAndNumberNoSpclChar/>
                                                                 </Entry.Behaviors>
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>

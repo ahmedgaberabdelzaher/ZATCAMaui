@@ -859,7 +859,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             string _currentAttempts = CurrentAttempt.ToString();
             string languag = UtilityManager.GetLanguageParameter();
 
-            TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
+            // * OLD TP PROFILE API
+            //TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
+
+            // * NEW TP PROFILE API
+            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(UserId);
 
             if (TPProfile != null)
             {

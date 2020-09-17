@@ -54,7 +54,7 @@
                         <ScrollView Grid.Row="1">
                             <StackLayout >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource PageTitleBlack}" />
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" Style="{StaticResource BodyLabelGrey}" Padding="0,0,0,16"/>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPOTPSentToEmail}" Style="{StaticResource BodyLabelGrey}" Padding="0,0,0,16"/>
                                 <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1"/>
 
                                 <StackLayout Padding="0,15,0,0" >

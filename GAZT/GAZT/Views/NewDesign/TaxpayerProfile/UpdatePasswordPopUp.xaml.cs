@@ -36,21 +36,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             try
             {
-                string lang = "EN";
-                if (App.IsArabic == true) { lang = "AR"; }
                 WebServiceManager.ErrorMessage = string.Empty;
-
                 bool callAPIFlag = TaxpayerProfilePasswordUpdateValidation(viewModel.CurrentPasswordEntry,
                                                                             viewModel.NewPasswordEntry,
                                                                             viewModel.ConfirmPasswordEntry);
                 if (callAPIFlag)
                 {
-
-                    bool APIResponse = await WebServiceManager.GAZTValidateAndChangePassword(lang,
-                                                                App.TP.Tin,
-                                                                viewModel.CurrentPasswordEntry,
-                                                                viewModel.NewPasswordEntry);
-                    if (APIResponse)
+                    // * NEW TP PROFILE API
+                    viewModel.IsLoading = true;
+                    TaxPayerProfile TPProfile = await WebServiceManager.ChangeTPProfilePasswordAPICall(viewModel.CurrentPasswordEntry, viewModel.NewPasswordEntry);
+                    if (TPProfile != null)
                     {
                         // * Navigating to Verification Screen
                         this.CloseAllPopup();
@@ -67,10 +62,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         else
                             ShowValidationPopup(AppResources.InvalidPassword);
                     }
+                    viewModel.IsLoading = false;
                 }
             }
             catch (Exception ex)
             {
+                viewModel.IsLoading = false;
                 ShowValidationPopup(ex.Message);
             }
         }

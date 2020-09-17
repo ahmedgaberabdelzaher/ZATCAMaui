@@ -459,7 +459,7 @@
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
                                                          PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" 
-                                                         BackgroundColor="White" SelectedItemFontSize="15"
+                                                         BackgroundColor="White"      SelectedItemFontSize="10"   
                                                          ShowFooter="False" ItemHeight="40" 
                                                          Margin="10,0,10,0" PickerHeight="250" 
                                                          SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" 
