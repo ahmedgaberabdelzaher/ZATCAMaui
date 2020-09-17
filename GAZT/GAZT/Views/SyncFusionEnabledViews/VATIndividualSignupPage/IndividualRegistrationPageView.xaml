@@ -122,6 +122,7 @@
                                                                 <custom:BorderlessEntry Text="{Binding TxtIDType}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" 
                                                         Placeholder="{x:Static local:AppResources.ZZIDType}"  IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
+                                                                
                                                                 <Image HorizontalOptions="EndAndExpand" Rotation="270" ><!--Rotation="270"-->
                                                                     <Image.Source>
                                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
@@ -589,7 +590,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
-                        
+
                         BorderColor="Black" 
                         SelectedItemTextColor="{StaticResource NeutralBlack}"
 UnSelectedItemTextColor="{StaticResource NeutralGreay}"
@@ -601,7 +602,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="Bezei" ItemsSource="{Binding RegionList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Bezei" ItemsSource="{Binding RegionList}"  SelectionChanged="Region_OkayButtonClicked" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="Region_OkayButtonClicked"  CancelButtonClicked="Region_CancelButtonClicked">
@@ -664,7 +665,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="CityName" ItemsSource="{Binding CityList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="CityName" ItemsSource="{Binding CityList}"  SelectionChanged="City_OkayButtonClicked" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="City_OkayButtonClicked"  CancelButtonClicked="City_CancelButtonClicked">
