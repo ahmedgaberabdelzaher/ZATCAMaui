@@ -146,7 +146,7 @@ namespace GAZT.iOS
                 App.ShouldStopTimer = false;
                 App.DoesLoginNeedToBeRefreshed = false;
                 App.StartTimerForBackground(0, 5, 0);
-                Console.WriteLine("App entering background state.");
+                //Console.WriteLine("App entering background state.");
             }
             else
             {
