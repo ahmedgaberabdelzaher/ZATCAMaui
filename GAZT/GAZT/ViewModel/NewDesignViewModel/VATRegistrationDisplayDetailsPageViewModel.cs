@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -264,6 +265,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("GpartFR");
             }
         }
+        private string _Iban = string.Empty;
+        public string Iban
+        {
+            get
+            {
+                return _Iban;
+            }
+            set
+            {
+                _Iban = value;
+                RaisePropertyChanged("Iban");
+            }
+        }
         private string _smtpAddrFR = string.Empty;
         public string SmtpAddrFR
         {
@@ -289,6 +303,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _importExportText = value;
                 RaisePropertyChanged("ImportExportText");
+            }
+        }
+        private string _AttachmentName = string.Empty;
+        public string AttachmentName
+        {
+            get
+            {
+                return _AttachmentName;
+            }
+            set
+            {
+                _AttachmentName = value;
+                RaisePropertyChanged("AttachmentName");
             }
         }
         private VATRegistrationDetails _vATRegistrationDetailsData;
@@ -319,6 +346,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private ObservableCollection<Result2> _ibanList;
+        public ObservableCollection<Result2> IbanList
+        {
+            get
+            {
+                return _ibanList;
+            }
+            set
+            {
+                _ibanList = value;
+                RaisePropertyChanged("IbanList");
+            }
+        }
         public async Task onPageLoad()
         {
             try
@@ -332,7 +372,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     VATRegistrationDetailsData = null;
 
                     VATRegistrationDetails vATRegistration = null;
-       
+
                     try
                     {
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
@@ -384,15 +424,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
                             //MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
                         }
-                            if (vATRegistration.d.ExFg=="1")
+                        IbanList = new ObservableCollection<Result2>();
+                        if (vATRegistration.d.ATTDETSet != null)
+                        { 
+                            foreach (Attachment ItemA in vATRegistration.d.ATTDETSet.results)
+                            {
+                                AttachmentName = ItemA.Filename;
+                            }
+                         }
+                      
+                        if (vATRegistration.d.IBANSet != null)
+                        {
+                            IbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet.results);
+                             Iban = IbanList.FirstOrDefault().Iban;
+                        }
+                        if (vATRegistration.d.ExFg=="1")
                         {
                             ImportExportText = "Exporter";
                         }
-                        else if(VATRegistrationDetailsData.d.ImFg == "1")
+                        else if(vATRegistration.d.ImFg == "1")
                         {
                             ImportExportText = "Importer";
 
                         }
+
                         IdnumberFR = idnumber;
 
 

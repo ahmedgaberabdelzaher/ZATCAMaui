@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using EGAZT.Models.TPProfile;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
@@ -76,29 +77,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         }
 
         #region Method
-        public async Task<bool> VarifyEmail()
+        public async Task<TaxPayerProfile> VarifyEmail()
         {
             IsLoading = true;
-            bool APIResponse = false;
-            string lang = "EN";
-            if (App.IsArabic == true) { lang = "AR"; }
+            TaxPayerProfile TP = null;
 
             try
             {
                 // API Calls
                 await Task.Run(async () =>
                 {
-                    System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", NewEmailText);
-                    System.Diagnostics.Debug.WriteLine("CONFIRM EMAIL : ", ConfirmEmailText);
+                    TPProfileAPIRequestDataModel APIRequestDataModel = new TPProfileAPIRequestDataModel();
+                    APIRequestDataModel.RequestType = "GETOTPEMAIL";
+                    APIRequestDataModel.NewEmail = NewEmailText;
+                    APIRequestDataModel.OldEmail = CurrentEmailText;
 
-                    APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, CurrentEmailText, NewEmailText);
+                    TPProfileAPIRequest TPProfileAPIRequestData = TPProfileAPIRequest.PrepareRequestData(APIRequestDataModel);
+                    TP = await WebServiceManager.POSTTPProfileAPICalls(TPProfileAPIRequestData, "GETOTPEMAIL");
 
                     // setup updated email's
                     UpdateEmailDataModel updateEmailData = new UpdateEmailDataModel();
                     updateEmailData.CurrentEmail = CurrentEmailText;
                     updateEmailData.NewEmail = NewEmailText;
                     IsLoading = false;
-
                 });
             }
             catch (Exception ex)
@@ -108,7 +109,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 ShowValidationPopup(ex.Message);
             }
 
-            return APIResponse;
+            return TP;
         }
 
         public void ShowValidationPopup(string sourceString)

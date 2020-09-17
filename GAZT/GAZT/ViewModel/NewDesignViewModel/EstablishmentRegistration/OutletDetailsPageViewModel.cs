@@ -922,7 +922,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (PostalCode == "12345")
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal codes"));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTInValidPostalCode));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(AddNumber))

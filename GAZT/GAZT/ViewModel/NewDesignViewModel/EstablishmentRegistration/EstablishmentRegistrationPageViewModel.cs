@@ -853,7 +853,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Financial Details Tabs variables
-        private List<string> dates = new List<string> { "LD", "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" };
+        private List<string> dates = new List<string> { AppResources.ESTFinLastDay, "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" };
 
         private Dictionary<string, string> EnMethodList = new Dictionary<string, string>()
         {
@@ -2139,13 +2139,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (dd == "01" && mm == "01")
                 {
                     FiscalMonth = "12";
-                    FiscalDay = "LD";
+                    FiscalDay = AppResources.ESTFinLastDay;
                 }
                 else
                 {
                     mm = $"{Int16.Parse(mm) - 1:00}";
                     FiscalMonth = mm;
-                    FiscalDay = "LD";
+                    FiscalDay = AppResources.ESTFinLastDay;
                 }
                 //FiscalMonth = mm;
                 //FiscalDay = dd;
@@ -2154,7 +2154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 ACaltype = _calendarType,
                 AMonth = FiscalMonth,
-                EIslmedate = FiscalDay == "LD" ? "32" : FiscalDay,
+                EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
                 ADateComm = taxPayerDetails?.Commdt
             });
             TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_calendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
@@ -2564,7 +2564,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
                     taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
                     taxPayerDetails.Fdmonth = FiscalMonth;
-                    taxPayerDetails.Fdday = FiscalDay;
+                    taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
                     taxPayerDetails.Fdenddt = Fdenddt;
 

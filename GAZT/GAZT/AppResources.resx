@@ -6535,6 +6535,9 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ESTIssueBy" xml:space="preserve">
     <value>Issue By</value>
   </data>
+    <data name="ESTValidFrom" xml:space="preserve">
+    <value>Valid From</value>
+  </data>
   <data name="ESTIssueCity" xml:space="preserve">
     <value>Issue City</value>
   </data>
@@ -7574,5 +7577,14 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="ZZExplore" xml:space="preserve">
     <value>Explore</value>
+  </data>
+    <data name="ESTFinLastDay" xml:space="preserve">
+    <value>Last Day</value>
+  </data>
+    <data name="ESTZZVoid" xml:space="preserve">
+    <value>Void</value>
+  </data>
+    <data name="ESTInValidPostalCode" xml:space="preserve">
+    <value>12345 is invalid postal code</value>
   </data>
 </root>

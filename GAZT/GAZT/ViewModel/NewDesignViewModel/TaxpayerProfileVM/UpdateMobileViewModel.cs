@@ -9,9 +9,9 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
-
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Models.TPProfile;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -41,6 +41,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged(() => IsLoading);
             }
         }
+
         private string _maxDigids = "9";
         public string MaxDigids
         {
@@ -54,6 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("MaxDigids");
             }
         }
+
         private string _CountryCode = "+966";
         public string CountryCode
         {
@@ -76,6 +78,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("CountryCode");
             }
         }
+
         private string _mobileCountryCode = string.Empty;
         public string MobileCountryCode
         {
@@ -89,6 +92,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("MobileCountryCode");
             }
         }
+
         private string _CurrentMobileNumberEntryText;
         public string CurrentMobileNumberEntryText
         {
@@ -101,7 +105,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         }
 
         private string _NewMobileNumberEntryText;
-
         public string NewMobileNumberEntryText
         {
             get { return _NewMobileNumberEntryText; }
@@ -124,9 +127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             {
                                 NewMobileNumberEntryText = string.Empty;
                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDMobileNumberMustStartWithFive));
-
                             }
-
                         }
                         else
                         {
@@ -136,21 +137,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                                 if (firstlettorOfNewMobileNumberEntryText.Equals("0"))
                                 {
                                     NewMobileNumberEntryText = string.Empty;
-
                                 }
                             }
-                           
                         }
                     }
-                    catch (Exception ex)
-                    {
-
-                    }
-
+                    catch (Exception ex) { }
                 }
                 RaisePropertyChanged("NewMobileNumberEntryText");
-
-
             }
         }
 
@@ -344,70 +337,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             if (countDownSeconds == 0) { otpTimer.Stop(); }
         }
 
-        public async Task<bool> VarifyMobileNumber()
-        {
-            IsLoading = true;
-            bool callAPIFlag = false;
-            string lang = "EN";
-            if (App.IsArabic == true) { lang = "AR"; }
-
-            string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
-            string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
-            string MobileCountry = string.Empty;
-            if (MobileCountryCode == string.Empty)
-            {
-                MobileCountry = "SA";
-            }
-            else
-            {
-                MobileCountry = MobileCountryCode;
-            }
-            try
-            {
-                await Task.Run(async () =>
-                {
-                    callAPIFlag = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin,
-                                                                                currentMobileNumber,
-                                                                                newMobileNumber, MobileCountry);
-                    IsLoading = false;
-                });
-            }
-            catch (Exception ex)
-            {
-                IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                ShowValidationPopup(ex.Message);
-            }
-
-            return callAPIFlag;
-        }
-
-        public async Task<TaxPayerProfile> VarifyOTPToUpdateMobileNumber()
+        public async Task<TaxPayerProfile> VarifyMobileNumber()
         {
             IsLoading = true;
             TaxPayerProfile TP = null;
-            string lang = "EN";
-            if (App.IsArabic == true) { lang = "AR"; }
-
+            
             try
             {
                 await Task.Run(async () =>
                 {
-                    string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
                     string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
                     string MobileCountry = string.Empty;
+
                     if (MobileCountryCode == string.Empty)
-                    {
                         MobileCountry = "SA";
-                    }
                     else
-                    {
-                       MobileCountry = MobileCountryCode;
-                    }
-                    TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, EnteredOTP,
-                                                                                App.TP.Tin,
-                                                                                currentMobileNumber,
-                                                                                newMobileNumber, MobileCountry);
+                        MobileCountry = MobileCountryCode;
+
+                    TPProfileAPIRequestDataModel APIRequestDataModel = new TPProfileAPIRequestDataModel();
+                    APIRequestDataModel.RequestType = "GETOTPMOBILE";
+                    APIRequestDataModel.NewMobile = newMobileNumber;
+                    APIRequestDataModel.CountryCode = MobileCountry;
+
+                    TPProfileAPIRequest TPProfileAPIRequestData = TPProfileAPIRequest.PrepareRequestData(APIRequestDataModel);
+                    TP = await WebServiceManager.POSTTPProfileAPICalls(TPProfileAPIRequestData, "GETOTPMOBILE");
                     IsLoading = false;
                 });
             }
@@ -421,14 +374,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             return TP;
         }
 
-        private string MobileNumberFormate(string mobileNumber)
+        public async Task<TaxPayerProfile> VarifyOTPToUpdateMobileNumber()
         {
-            return App.TP.Mobile;
+            IsLoading = true;
+            TaxPayerProfile TP = null;
+
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    string MobileCountry = string.Empty;
+                    if (MobileCountryCode == string.Empty)
+                        MobileCountry = "SA";
+                    else
+                        MobileCountry = MobileCountryCode;
+
+                    string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
+                    TPProfileAPIRequestDataModel APIRequestDataModel = new TPProfileAPIRequestDataModel();
+                    APIRequestDataModel.RequestType = "VERIFYOTPMOBILE";
+                    APIRequestDataModel.OTP = EnteredOTP;
+                    APIRequestDataModel.NewMobile = newMobileNumber;
+
+                    TPProfileAPIRequest TPProfileAPIRequestData = TPProfileAPIRequest.PrepareRequestData(APIRequestDataModel);
+                    TP = await WebServiceManager.POSTTPProfileAPICalls(TPProfileAPIRequestData, "VERIFYOTPMOBILE");
+
+                    IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+                System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.Message);
+                ShowValidationPopup(ex.Message);
+            }
+
+            return TP;
         }
 
         private string NewMobileNumberFormate(string mobileNumber)
         {
-            string formatedCountryCode = CountryCode.Replace("+", "");
+            string formatedCountryCode = CountryCode.Replace("+", "00");
             return formatedCountryCode + NewMobileNumberEntryText;
         }
 

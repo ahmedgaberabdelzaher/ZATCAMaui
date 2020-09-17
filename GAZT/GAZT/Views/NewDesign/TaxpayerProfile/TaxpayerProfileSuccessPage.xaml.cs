@@ -57,7 +57,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                if (viewModel.TPProfileSuccessId != 4) // Need to check
+                if (viewModel.TPProfileSuccessId == 1)
                 {
                     await Task.Run(() =>
                     {
@@ -80,10 +80,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     {
                         await WebServiceManager.GAZTLogOff();
                     }
-                    catch
-                    {
-
-                    }
+                    catch { }
 
                     await Task.Run(() =>
                     {
@@ -100,10 +97,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                         App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
                     }
-                    catch (Exception ex)
-                    {
-
-                    }
+                    catch (Exception ex) { }
                     viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                 }
                 else { viewModel._navigationService.GoBack(); }

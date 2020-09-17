@@ -9,10 +9,6 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>fa-brands-400.ttf</string>

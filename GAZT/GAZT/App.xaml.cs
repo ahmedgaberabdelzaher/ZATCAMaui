@@ -278,6 +278,8 @@ namespace EGAZT
         public static bool DoesLoginNeedToBeRefreshed;
 
         public static bool IsLoginPageRefreshed;
+        private INavigationService _navigationService;
+        private IDialogService _dialogService;
 
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
@@ -392,14 +394,50 @@ namespace EGAZT
 
                         }
 
+                        //to be reverted code
+
+                        //App.DoesLoginNeedToBeRefreshed = false;
+                        //var _navigation = Application.Current.MainPage.Navigation;
+                        //await _navigation.PopToRootAsync();
+
+                        //Test and Revert
+                        //await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+
                         App.DoesLoginNeedToBeRefreshed = false;
                         var _navigation = Application.Current.MainPage.Navigation;
-                        await _navigation.PopToRootAsync();
 
-                        //if (App.IsLoginPageVisible() == true)
+                        foreach (var item in _navigation.NavigationStack)
+                        {
+                            if (item.GetType().Name == App.SFLoginPageView)
+                            {
+                                _navigation.RemovePage(item);
+                                break;
+                            }
+                        }
+
+                        _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                        _navigation.NavigationStack.ToList().Clear();
+                        await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+
+                        //if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
                         //{
-                        //    App.ShouldStopLoginRefreshTimer = false;
-                        //    App.StartTimerForLoginRefresh(0, 3, 0);
+                        //    foreach (var item in _navigation.NavigationStack)
+                        //    {
+                        //        if (item.GetType().Name == App.SFLoginPageView)
+                        //        {
+                        //            _navigation.RemovePage(item);
+                        //            break;
+                        //        }
+                        //    }
+
+                        //    //_navigation.PushAsync(App.SFLoginPageView);
+                        //    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                        //    _navigation.NavigationStack.ToList().Clear();
+                        //}
+                        //else
+                        //{
+                        //    await _navigation.PopToRootAsync();
+                        //    await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
                         //}
                     });
                 }
@@ -410,12 +448,17 @@ namespace EGAZT
             //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
+            _navigationService = navigationService;
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
+            _dialogService = dialogService;
+
             InitializeAppDynamics();
 
             MainPage = navigationPage;
         }
+
+
         public static void CreateClientHandler()
         {
             httpClientHandler = new HttpClientHandler();

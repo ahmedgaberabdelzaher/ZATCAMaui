@@ -6268,10 +6268,10 @@
     <value>الدولة</value>
   </data>
   <data name="ESTCitizenLabel" xml:space="preserve">
-    <value>مواطن</value>
+    <value>مكان الموطن</value>
   </data>
   <data name="ESTResidenceLabel" xml:space="preserve">
-    <value>مقيم</value>
+    <value>الإقامة</value>
   </data>
   <data name="ESTContinueLabel" xml:space="preserve">
     <value>التالي</value>
@@ -6376,7 +6376,10 @@
     <value>تستطيع ربط سجل تجاري واحد و الرخص التجارية المرتبطه بالنشاط الرئيسي</value>
   </data>
   <data name="ESTIssueBy" xml:space="preserve">
-    <value>جهة الإصدار</value>
+    <value>جهة الاصدار</value>
+  </data>
+    <data name="ESTValidFrom" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
   </data>
   <data name="ESTIssueCity" xml:space="preserve">
     <value>مدينة الاصدار</value>
@@ -6657,7 +6660,7 @@
     <value>تاريخ التقديم</value>
   </data>
   <data name="VoidReasonHint" xml:space="preserve">
-    <value>Reason for void</value>
+    <value>سبب الحذف</value>
   </data>
   <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
     <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value>
@@ -7483,10 +7486,19 @@
     <value>المبلغ المطلوب الإفراج عنه يجب ان يكون اقل من إجمالي مبلغ العقد</value>
   </data>
   <data name="NDAccounting" xml:space="preserve">
-    <value>Accounting</value>
+    <value>حسابات</value>
   </data>
   <data name="NDEstimated" xml:space="preserve">
-    <value>Estimated</value>
+    <value>تقديري</value>
+  </data>
+    <data name="ESTFinLastDay" xml:space="preserve">
+    <value>اليوم الأخير</value>
+  </data>
+    <data name="ESTZZVoid" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+    <data name="ESTInValidPostalCode" xml:space="preserve">
+    <value>12345 هو رمز بريدي غير صالح</value>
   </data>
   <data name="ZZExplore" xml:space="preserve">
     <value>استعرض</value>

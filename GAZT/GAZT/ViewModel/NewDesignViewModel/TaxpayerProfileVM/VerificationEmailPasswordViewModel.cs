@@ -9,6 +9,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Models.TPProfile;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -276,7 +277,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             else
                 LblCountDownTimer = "0:" + countDownSeconds.ToString();
 
-
             // Stop timer
             if (countDownSeconds == 0) { otpTimer.Stop(); }
         }
@@ -286,19 +286,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         {
             IsLoading = true;
             TaxPayerProfile TP = null;
-            string lang = "EN";
-            if (App.IsArabic == true) { lang = "AR"; }
 
             try
             {
-                System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", _updateEmailData.NewEmail);
-                System.Diagnostics.Debug.WriteLine("CONFIRM EMAIL : ", _updateEmailData.CurrentEmail);
-                System.Diagnostics.Debug.WriteLine("CURRENT PWD : ", CurrentPasswordEntry);
-                System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", NewPasswordEntry);
+                TPProfileAPIRequestDataModel APIRequestDataModel = new TPProfileAPIRequestDataModel();
+                APIRequestDataModel.RequestType = "VERIFYOTPEMAIL";
+                APIRequestDataModel.OTP = EnteredOTP;
+                APIRequestDataModel.OldEmail = _updateEmailData.CurrentEmail;
+                APIRequestDataModel.NewEmail = _updateEmailData.NewEmail;
+                APIRequestDataModel.OldPassword = CurrentPasswordEntry;
+                APIRequestDataModel.NewPassword = NewPasswordEntry;
 
-                TP = await WebServiceManager.GAZTValidateOTPForEmail(lang, EnteredOTP, App.TP.Tin,
-                                                                    _updateEmailData.CurrentEmail, _updateEmailData.NewEmail,
-                                                                    CurrentPasswordEntry, NewPasswordEntry);
+                TPProfileAPIRequest TPProfileAPIRequestData = TPProfileAPIRequest.PrepareRequestData(APIRequestDataModel);
+                TP = await WebServiceManager.POSTTPProfileAPICalls(TPProfileAPIRequestData, "VERIFYOTPEMAIL");
+
                 IsLoading = false;
             }
             catch (Exception ex)
@@ -311,19 +312,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             return TP;
         }
 
-        public async Task<bool> VarifyEmail()
+        public async Task<TaxPayerProfile> VarifyEmail()
         {
             IsLoading = true;
-            bool APIResponse = false;
-            string lang = "EN";
-            if (App.IsArabic == true) { lang = "AR"; }
+            TaxPayerProfile TP = null;
 
             try
             {
                 // API Calls
                 await Task.Run(async () =>
                 {
-                    APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, _updateEmailData.CurrentEmail, _updateEmailData.NewEmail);
+                    TPProfileAPIRequestDataModel APIRequestDataModel = new TPProfileAPIRequestDataModel();
+                    APIRequestDataModel.RequestType = "GETOTPEMAIL";
+                    APIRequestDataModel.NewEmail = _updateEmailData.NewEmail;
+                    APIRequestDataModel.OldEmail = _updateEmailData.CurrentEmail;
+
+                    TPProfileAPIRequest TPProfileAPIRequestData = TPProfileAPIRequest.PrepareRequestData(APIRequestDataModel);
+                    TP = await WebServiceManager.POSTTPProfileAPICalls(TPProfileAPIRequestData, "GETOTPEMAIL");
+
                     IsLoading = false;
                 });
             }
@@ -334,7 +340,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 ShowValidationPopup(ex.Message);
             }
 
-            return APIResponse;
+            return TP;
         }
 
         public void ShowValidationPopup(string sourceString)

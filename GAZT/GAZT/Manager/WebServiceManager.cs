@@ -41,6 +41,7 @@ using EGAZT.Models.VatReviewModel;
 using static EGAZT.Models.VatReviewModel.VATObjectionFormModel;
 using EGAZT.Models.ZakatObjectionsModel;
 using EGAZT.Helper;
+using EGAZT.Models.TPProfile;
 
 namespace GAZT.Manager
 {
@@ -15193,6 +15194,170 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+
+        // * TP PROFILE WEB API MANAGER
+        public static Task<TaxPayerProfile> GetTPProfileDataAPICall(string TIN)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string lang = string.Empty;
+                if (App.IsArabic) { lang = "A"; }
+                else { lang = "E"; }
+
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                string URL = Constants.TPProfileURL
+                            + "(" + "Taxpayerz=" + "'" + TIN + "'"
+                            + ",Langz=" + "'" + lang + "'"
+                            + ",Euser=" + "'null'"
+                            + ",Fbguid=" + "'null'"
+                            + ",Euser1=" + "''"
+                            + ",Euser2=" + "''"
+                            + ",Euser3=" + "''"
+                            + ",Euser4=" + "''"
+                            + ",Euser5=" + "''" + ")?$format=json";
+
+                var URI = new Uri(URL);
+                Task<TaxPayerProfile> TPProfileData = GetTPProfileAndUpdatePasswordAPICall(URI);
+                return TPProfileData;
+            }
+            else
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+        }
+
+        public static Task<TaxPayerProfile> ChangeTPProfilePasswordAPICall(string oldPassword, string newPassword)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string lang = string.Empty;
+                if (App.IsArabic) { lang = "A"; }
+                else { lang = "E"; }
+
+                string URL = Constants.GetTPProfileChangePWDURL
+                            + "(" + "Email=" + "'" + App.TP.Email + "'"
+                            + ",PasswordOld=" + "'" + oldPassword + "'"
+                            + ",PasswordNew=" + "'" + newPassword + "'"
+                            + ",Partner=" + "'" + App.TP.Tin + "'"
+                            + ",PasswordConf=" + "'" + newPassword + "'"
+                            + ",Euser1=" + "''"
+                            + ",Euser2=" + "''"
+                            + ",Euser3=" + "''"
+                            + ",Euser4=" + "''"
+                            + ",Euser5=" + "''" + ")?$format=json";
+
+                var URI = new Uri(URL);
+                Task<TaxPayerProfile> TPProfileData = GetTPProfileAndUpdatePasswordAPICall(URI);
+                return TPProfileData;
+            }
+            else
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+        }
+
+        private static async Task<TaxPayerProfile> GetTPProfileAndUpdatePasswordAPICall(Uri GetURL)
+        {
+            TaxPayerProfile TPProfileData = null;
+            string NewToken = string.Empty;
+
+            try
+            {
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                HttpResponseMessage UpdatePWDResponse = await client.GetAsync(GetURL);
+                if (UpdatePWDResponse != null)
+                {
+                    if (UpdatePWDResponse.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        App.IsSessionExpired = true;
+                        return null;
+                    }
+
+                    if (UpdatePWDResponse.Headers != null)
+                    {
+                        HttpHeaders headers = UpdatePWDResponse.Headers;
+                        IEnumerable<string> values;
+
+                        if (headers.TryGetValues("token", out values)) { NewToken = values.First(); }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        string GAZTTPProfileResponseJSON = UpdatePWDResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                        {
+                            GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["d"].ToString();
+                            TPProfileData = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTTPProfileResponseJSON);
+                        }
+                    }
+                }
+                else
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
+
+                //return tPProfileData;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
+                throw new Exception(AppResources.InvalidPassword);
+            }
+
+            return TPProfileData;
+        }
+
+        public static async Task<TaxPayerProfile> POSTTPProfileAPICalls(TPProfileAPIRequest TPProfileAPIRequestPOSTData, string APIType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TaxPayerProfile TP = null;
+
+                try
+                {
+                    string url = Constants.TPProfileURL;
+                    var uri = new Uri(url);
+
+                    try { App.httpClientHandler.CookieContainer = null; }
+                    catch (Exception ex) { }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var serilized = JsonConvert.SerializeObject(TPProfileAPIRequestPOSTData);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+
+                    string GAZTTPProfileResponseJSON = res.Content.ReadAsStringAsync().Result;
+                    if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                    {
+                        GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["d"].ToString();
+                        TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTTPProfileResponseJSON);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
+                    if (APIType.Equals("GETOTPMOBILE"))
+                        throw new Exception(AppResources.EnterValidMobileNumber);
+                    else if (APIType.Equals("VERIFYOTPMOBILE"))
+                        throw new Exception(AppResources.InvalidOTP);
+                    else if (APIType.Equals("GETOTPEMAIL"))
+                        throw new Exception(AppResources.InvalidEmail);
+                    else if (APIType.Equals("VERIFYOTPEMAIL"))
+                        throw new Exception(AppResources.InvalidOTP);
+                }
+
+                return TP;
+            }
+            else
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+        }
+        // * End
 
         #endregion
     }

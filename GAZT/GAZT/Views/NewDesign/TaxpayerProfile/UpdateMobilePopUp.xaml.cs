@@ -89,18 +89,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (callAPIFlag)
             {
-                //if (Label_InternationalnoCode.Text.Equals("+966"))
-                //{
-                //    if (!viewModel.NewMobileNumberEntryText.StartsWith("5"))
-                //    {
-                //        viewModel.ShowValidationPopup(AppResources.ZZMobilenumberhastostartwithnumber5);
-                //        return;
-                //    }
-                //}
-
-                bool PWDSuccess = await viewModel.VarifyMobileNumber();
-
-                if (PWDSuccess)
+                TaxPayerProfile TPAPIResponse = await viewModel.VarifyMobileNumber();
+                if (TPAPIResponse != null)
                 {
                     UpdateMobile.IsVisible = false;
                     VerificationView.IsVisible = true;
@@ -110,7 +100,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
                     viewModel.OTPSentOnThisMobileNumber = "********" + result;
 
-                    // * Start timer period for valid OTP
+                    // Start timer period for valid OTP
                     viewModel.StartOTPTimer();
                 }
             }
@@ -135,6 +125,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (TPAPIResponse != null)
             {
+                // * Update TP Profile Object
+                App.TP = TPAPIResponse;
+                App.TP.Userid = TPAPIResponse.Tin;
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     this.CloseAllPopup();
@@ -147,10 +141,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             if (viewModel.countDownSeconds == 0)
             {
-                bool PWDSuccess = await viewModel.VarifyMobileNumber();
-                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
-
-                if (PWDSuccess)
+                TaxPayerProfile TPAPIResponse = await viewModel.VarifyMobileNumber();
+                if (TPAPIResponse != null)
                 {
                     // * Start timer period for valid OTP
                     viewModel.StartOTPTimer();
@@ -201,13 +193,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             base.OnAppearing();
 
             if (Device.RuntimePlatform == Device.Android)
-            {
                 Label_InternationalnoCode.Margin = new Thickness(0);
-            }
             else
-            {
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
-            }
 
             if (App.TP.Mobile.Length < 12)
                 viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
