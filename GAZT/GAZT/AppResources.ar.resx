@@ -360,7 +360,7 @@
 </value>
   </data>
   <data name="Bills" xml:space="preserve">
-    <value>الفواتير</value>
+    <value>فواتيري</value>
   </data>
   <data name="AmendmentsDoNotMatchText" xml:space="preserve">
     <value>
@@ -6378,7 +6378,7 @@
   <data name="ESTIssueBy" xml:space="preserve">
     <value>جهة الاصدار</value>
   </data>
-    <data name="ESTValidFrom" xml:space="preserve">
+  <data name="ESTValidFrom" xml:space="preserve">
     <value>تاريخ الإصدار</value>
   </data>
   <data name="ESTIssueCity" xml:space="preserve">
@@ -7491,13 +7491,13 @@
   <data name="NDEstimated" xml:space="preserve">
     <value>تقديري</value>
   </data>
-    <data name="ESTFinLastDay" xml:space="preserve">
+  <data name="ESTFinLastDay" xml:space="preserve">
     <value>اليوم الأخير</value>
   </data>
-    <data name="ESTZZVoid" xml:space="preserve">
+  <data name="ESTZZVoid" xml:space="preserve">
     <value>حذف</value>
   </data>
-    <data name="ESTInValidPostalCode" xml:space="preserve">
+  <data name="ESTInValidPostalCode" xml:space="preserve">
     <value>12345 هو رمز بريدي غير صالح</value>
   </data>
   <data name="ZZExplore" xml:space="preserve">
