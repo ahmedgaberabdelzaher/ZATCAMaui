@@ -6286,7 +6286,7 @@
     <value>رقم الجواز</value>
   </data>
   <data name="ESTIssueCountryLabel" xml:space="preserve">
-    <value>مكان الإصدار</value>
+    <value>مكان الاصدار</value>
   </data>
   <data name="ESTIssueDateLabel" xml:space="preserve">
     <value>تاريخ الإصدار</value>
