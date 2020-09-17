@@ -739,127 +739,149 @@
            
                 <!--Declaration screen-->
 
-            
                 <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclaration}" HorizontalOptions="StartAndExpand"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclaration}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclarationSub}" HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclarationSub}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
-                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
-                    </Grid>
-                    <Grid Grid.Row="1" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" Margin="0,25,0,0"  >
+                        </Grid>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="1" Margin="0,25,0,10"  Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"
+                                     >
 
-                        <custom:CustomLabel Grid.Row="0" Padding="10" Text="{x:Static ResourceManager:AppResources.VFCIDType}" HorizontalOptions="StartAndExpand"
+                            <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                                      IsChecked="{Binding IsCheckboxChecked}" CheckedChanged="CheckBox_CheckedChanged">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Value="false">
+                                        <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" VerticalOptions="Fill">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                        </StackLayout>
+                        <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0"   >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <custom:CustomLabel Grid.Row="0" Padding="10" Text="{x:Static ResourceManager:AppResources.VFCIDType}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
-                        <Frame Grid.Row="1" HasShadow="False"   HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding IDType}" 
+                            <Frame Grid.Row="1" HasShadow="False"   HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding IDType}"
                                        FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
-                                <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding IdTypeSpinnerTapped}"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-                        </Frame>
+                                    <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding IdTypeSpinnerTapped}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </Frame>
 
-                    </Grid>
-                    
-                    <Grid Grid.Row="2" Grid.Column="0"  Margin="0,25,10,0"  >
+                        </Grid>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="3" Grid.Column="0"  Margin="0,25,10,0"  >
 
-                        <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="{x:Static ResourceManager:AppResources.VFCIDNumber}" HorizontalOptions="StartAndExpand"
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="{x:Static ResourceManager:AppResources.VFCIDNumber}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
-                        <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                               <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged" Text="{Binding IDNumber}" Unfocused="OnIDNumberFocusChanged" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
+                            <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                                    <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged" Text="{Binding IDNumber}" Unfocused="OnIDNumberFocusChanged" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
 
-                            </StackLayout>
-                        </Frame>
+                                </StackLayout>
+                            </Frame>
 
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Row="2" IsVisible="{Binding IsDOBVisible}" Grid.Column="1"  Margin="10,25,0,0"  >
+                        <Grid Grid.Row="3" IsVisible="{Binding IsDOBVisible}" Grid.Column="1"  Margin="10,25,0,0"  >
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}" HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
-                        <Frame Grid.Row="1" HasShadow="False"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}" 
+                            <Frame Grid.Row="1" HasShadow="False"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                                    <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
                                                             FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
-                                <Image Source="calendar.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ShowDatePicker}"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-                        </Frame>
+                                    <Image Source="calendar.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ShowDatePicker}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </Frame>
 
-                    </Grid>
+                        </Grid>
 
-                    <Grid Grid.Row="3" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" Margin="0,25,0,0"  >
+                        <Grid Grid.Row="4" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" Margin="0,25,0,0"  >
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0" Padding="0,0,0,10" Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}" HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Grid.Row="0" Padding="0,0,0,10" Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
-                        <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                <custom:GAZTBorderlessEntry x:Name="ContactPersonEntry" Unfocused="ContactPersonTextUnFocus" Text="{Binding ContactPersonName}" IsEnabled="{Binding ContractPersonEditable}"
+                            <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                                    <custom:GAZTBorderlessEntry x:Name="ContactPersonEntry" Unfocused="ContactPersonTextUnFocus" Text="{Binding ContactPersonName}" IsEnabled="{Binding ContractPersonEditable}"
                                                    FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
-                            </StackLayout>
-                        </Frame>
+                                </StackLayout>
+                            </Frame>
 
-                    </Grid>
+                        </Grid>
 
-                    <Frame Margin="-20,0,-20,0" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="End" HasShadow="False" HorizontalOptions="FillAndExpand">
+                       
+                        <Frame Margin="-20,0,-20,0" Grid.Row="5" Grid.ColumnSpan="2" VerticalOptions="End" HasShadow="False" HorizontalOptions="FillAndExpand">
 
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
+
+                            <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding DeclarationContinueBtnTapped}" HorizontalOptions="FillAndExpand" />
 
-                    </Frame>
-                </Grid>
-              
+                        </Frame>
+                    </Grid>
 
                 <!--Summary screens-->
                 

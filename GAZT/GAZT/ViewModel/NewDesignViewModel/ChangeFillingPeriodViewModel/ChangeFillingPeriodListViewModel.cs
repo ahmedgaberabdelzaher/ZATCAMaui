@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models;
 using EGAZT.Models.ChageFillingPeriodModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -34,6 +35,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 _isBackVisible = value;
                 RaisePropertyChanged("IsBackVisible");
+            }
+        }
+
+        private bool _isDobVisible = false;
+        public bool IsDobVisible
+        {
+            get
+            {
+                return _isDobVisible;
+            }
+            set
+            {
+                _isDobVisible = value;
+                RaisePropertyChanged("IsDobVisible");
             }
         }
 
@@ -168,6 +183,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 _myRequestsListViewData = value;
                 RaisePropertyChanged("MyRequestsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> yearsattachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> YearsattachmentsListViewData
+        {
+            get { return yearsattachmentsListViewData; }
+
+            set
+            {
+                if (yearsattachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                yearsattachmentsListViewData = value;
+                RaisePropertyChanged("YearsattachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> monthsattachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> MonthsattachmentsListViewData
+        {
+            get { return monthsattachmentsListViewData; }
+
+            set
+            {
+                if (monthsattachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                monthsattachmentsListViewData = value;
+                RaisePropertyChanged("MonthsattachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> otherAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> OtherAttachmentsListViewData
+        {
+            get { return otherAttachmentsListViewData; }
+
+            set
+            {
+                if (otherAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                otherAttachmentsListViewData = value;
+                RaisePropertyChanged("OtherAttachmentsListViewData");
             }
         }
 
@@ -379,9 +448,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             NewFrequency = vATChangingSummaryData.FilingF;
                             EffectiveDatePicked = vATChangingSummaryData.Persl;
                             IDType = IDTypeDictionary[vATChangingSummaryData.DecidTy];
+                            if (vATChangingSummaryData.DecidTy == "ZS0001" || vATChangingSummaryData.DecidTy == "ZS0002")
+                            {
+                                IsDobVisible = true;
+                            }
+                            else
+                            {
+                                IsDobVisible = false;
+                            }
                             IDNumber = vATChangingSummaryData.DecidNo;
                             PickedDate = vATChangingSummaryData.Decfg;
                             ContactPersonName = vATChangingSummaryData.Decname;
+
+                            PopulateAttachentsListData(resultData.d.ATTACHSet);
                         }
                         else
                         {
@@ -436,6 +515,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     _navigationService.GoBack();
                 });
             }
+        }
+
+        private void PopulateAttachentsListData(VATChangeFillingSummaryModel.ATTACHSet dAttachSet)
+        {
+            var yearsAttachmentsListViewData = new ObservableCollection<Attachment>();
+            var monthsAttachmentsListViewData = new ObservableCollection<Attachment>();
+            var othersAttachmentsListViewData = new ObservableCollection<Attachment>();
+
+            foreach (var attachment in dAttachSet.results)
+            {
+                if (attachment.Dotyp == "ZTPA")
+                {
+                    yearsAttachmentsListViewData.Add(attachment);
+                }
+                else if (attachment.Dotyp == "ZTPB")
+                {
+                    monthsAttachmentsListViewData.Add(attachment);
+                }
+                else if (attachment.Dotyp == "ZTPC")
+                {
+                    othersAttachmentsListViewData.Add(attachment);
+                }
+
+               
+            }
+
+            YearsattachmentsListViewData = yearsAttachmentsListViewData;
+            MonthsattachmentsListViewData = monthsAttachmentsListViewData;
+            OtherAttachmentsListViewData = othersAttachmentsListViewData;
         }
     }
 }

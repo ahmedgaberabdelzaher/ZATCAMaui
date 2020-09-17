@@ -13613,5 +13613,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ESTInValidPostalCode", resourceCulture);
             }
         }
+        
+        public static string CFPDeclarationCheckbox {
+            get {
+                return ResourceManager.GetString("CFPDeclarationCheckbox", resourceCulture);
+            }
+        }
     }
 }
