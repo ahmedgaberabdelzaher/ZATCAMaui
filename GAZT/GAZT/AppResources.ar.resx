@@ -6379,7 +6379,7 @@
     <value>جهة الاصدار</value>
   </data>
   <data name="ESTValidFrom" xml:space="preserve">
-    <value>تاريخ الإصدار</value>
+    <value>تاريخ الاصدار</value>
   </data>
   <data name="ESTIssueCity" xml:space="preserve">
     <value>مدينة الاصدار</value>
@@ -7503,13 +7503,13 @@
   <data name="ZZExplore" xml:space="preserve">
     <value>استعرض</value>
   </data>
-    <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
+  <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
     <value>الفترات الضريبية ذات الصلة</value>
-    </data>
-    <data name="CFPDeclarationCheckbox" xml:space="preserve">    
-    <value>أتعهد بأن المعلومات المذكورة أعلاه صحيحة وحقيقية على حد علمي</value>   
-    </data>
-     <data name="CRContactPersonFullName" xml:space="preserve">
+  </data>
+  <data name="CFPDeclarationCheckbox" xml:space="preserve">
+    <value>أتعهد بأن المعلومات المذكورة أعلاه صحيحة وحقيقية على حد علمي</value>
+  </data>
+  <data name="CRContactPersonFullName" xml:space="preserve">
     <value>الإسم رباعي</value>
   </data>
 </root>
