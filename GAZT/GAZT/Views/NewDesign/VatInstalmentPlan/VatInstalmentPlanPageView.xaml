@@ -534,7 +534,7 @@
 
  
 
-                                                <buttons:SfButton  Margin="0,16,0,16" x:Name="btnVATBillsContinue"
+                                                <buttons:SfButton  Margin="0,16,0,40" x:Name="btnVATBillsContinue"
                                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
                                                    Style="{StaticResource PrimaryButtonStyle}"
                                                    BackgroundColor="{Binding IsBillContinueBackGroundColor}"
