@@ -5937,7 +5937,7 @@
     <value>اسم جهة الاتصال</value>
   </data>
   <data name="CRDesignation" xml:space="preserve">
-    <value>تعيين</value>
+    <value>المسمى الوظيفي</value>
   </data>
   <data name="CRSummary" xml:space="preserve">
     <value>الملخص</value>
@@ -7509,5 +7509,7 @@
     <data name="CFPDeclarationCheckbox" xml:space="preserve">    
     <value>أتعهد بأن المعلومات المذكورة أعلاه صحيحة وحقيقية على حد علمي</value>   
     </data>
-    
+     <data name="CRContactPersonFullName" xml:space="preserve">
+    <value>الإسم رباعي</value>
+  </data>
 </root>

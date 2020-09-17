@@ -13619,5 +13619,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("CFPDeclarationCheckbox", resourceCulture);
             }
         }
+        
+        public static string CRContactPersonFullName {
+            get {
+                return ResourceManager.GetString("CRContactPersonFullName", resourceCulture);
+            }
+        }
     }
 }
