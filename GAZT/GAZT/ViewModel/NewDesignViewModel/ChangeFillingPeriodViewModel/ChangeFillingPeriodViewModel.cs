@@ -1569,6 +1569,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 });
 
 
+                
+                foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
+                {
+                    int index = EffectiveDateResponse.d.EffDateSet.results.ToList().FindIndex(item => date.Txt50 == EffectiveDatePicked);
+
+                    if(index != -1)
+                    {
+                        ChangeFillingResponse.d.Persl = EffectiveDateResponse.d.EffDateSet.results[index].Persl;
+
+                    }
+                }
+
 
                 request = BuildRequestObject();
 
@@ -2045,6 +2057,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.ATTACHSet = ChangeFillingResponse.d.ATTACHSet.results;
                 request.d.ATT_TYPSet = ChangeFillingResponse.d.ATT_TYPSet.results;
                 request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
+
+       
+
+
 
 
                 var todayDate = DateTime.Now.ToString();

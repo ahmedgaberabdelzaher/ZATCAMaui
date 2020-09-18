@@ -1935,7 +1935,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     }
                     else
                     {
-                        EnableStatementsView();
+                        EnableAgreementView();
                     }
                     break;
                 case (int)PagesEnum.InstalmentPlanAgreementsVisible:
