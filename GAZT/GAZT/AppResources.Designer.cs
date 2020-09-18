@@ -13709,5 +13709,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATReviewAttachmentLimitReached", resourceCulture);
             }
         }
+        
+        public static string VATInstalmentsAttachmentTitle {
+            get {
+                return ResourceManager.GetString("VATInstalmentsAttachmentTitle", resourceCulture);
+            }
+        }
     }
 }

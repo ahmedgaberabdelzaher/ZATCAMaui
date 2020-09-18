@@ -7635,4 +7635,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
      <data name="VATReviewAttachmentLimitReached" xml:space="preserve">
     <value>Maximum no. of allowed attachments are 1.</value>
   </data>
+    <data name="VATInstalmentsAttachmentTitle" xml:space="preserve">
+    <value>1. File size should be less than 5 MB.
+2. Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls.</value>
+  </data>
 </root>

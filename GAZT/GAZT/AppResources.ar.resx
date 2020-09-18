@@ -4876,8 +4876,8 @@
   <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
     <value>الزكاة</value>
   </data>
-  <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
-    <value>ضريبة الدخل</value>
+ <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
+    <value>خطة تقسيط ضريبة الدخل</value>
   </data>
   <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
     <value>ضريبة القيمة المضافة</value>
@@ -4965,7 +4965,7 @@
     <value>يرجى تحديد فواتير سداد التي ترغب بتضمينها في اتفاقية التقسيط</value>
   </data>
   <data name="ZakatBillAmount" xml:space="preserve">
-    <value> (المبلغ المستحق (ريال سعودي </value>
+    <value>المبلغ المستحق (ريال سعودي)</value>
   </data>
   <data name="ZakatInstalmentDownloadConfirmation" xml:space="preserve">
     <value>تحميل إشعار تسليم الطلب</value>
@@ -6749,7 +6749,7 @@
     <value>عرض تفاصيل القسط</value>
   </data>
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>(معدل الربحية (10/9</value>
+    <value>معدل الربحية (10/9)</value>
   </data>
   <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -7520,5 +7520,10 @@
 </data>
    <data name="VATReviewAttachmentLimitReached" xml:space="preserve">
      <value>يجب أن لا يزيد عدد المرفقات عن 1 ملفات.</value>
+  </data>
+   <data name="VATInstalmentsAttachmentTitle" xml:space="preserve">
+   <value>1. يجب أن يكون حجم الملف أقل من 5 ميغابايت.
+2. الصيغ المسموحة Doc, Docx, Jpg, PDF, xlsx, xls
+</value>
   </data>
 </root>
