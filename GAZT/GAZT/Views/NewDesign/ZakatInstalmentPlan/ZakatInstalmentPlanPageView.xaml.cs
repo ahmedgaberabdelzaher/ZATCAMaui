@@ -413,7 +413,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                     // viewModel.VATViewAttachments();
                                     break;
                                 case ArButtons.إلغاء:
-                                    //viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = false;
                                     break;
                                 case ArButtons.عادةتعيين:
                                     //await viewModel.VATReturnResetAsync();
@@ -652,7 +654,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                     // viewModel.VATViewAttachments();
                                     break;
                                 case ArButtons.إلغاء:
-                                    //viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = true;
+                                    viewModel.VoidMsg();
+                                    viewModel.isDraftClicked = false;
                                     break;
                                 case ArButtons.عادةتعيين:
                                     //await viewModel.VATReturnResetAsync();
