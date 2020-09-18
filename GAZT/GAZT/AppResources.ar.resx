@@ -6734,7 +6734,7 @@
     <value>سبب طلب خطة التقسيط</value>
   </data>
   <data name="BPInstructionsAndConditionsAlert" xml:space="preserve">
-    <value>الرجاء الموافقة على الشروط والتعليمات</value>
+    <value>الرجاء الموافقة على التعليمات والشروط</value>
   </data>
   <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
     <value>المرفقات - كشف حساب بنكي لآخر 3 أشهر</value>
@@ -6785,7 +6785,7 @@
     <value>إعتراضات الزكاة</value>
   </data>
   <data name="VRReviewReason" xml:space="preserve">
-    <value>سبب المراجعة</value>
+    <value>طلب المراجعة</value>
   </data>
   <data name="VRCompleteTheBelowDetails" xml:space="preserve">
     <value>اكمل البيانات التالية</value>
@@ -7136,7 +7136,7 @@
     <value>تفاصيل الفاتورة</value>
   </data>
   <data name="VRDocumentNo" xml:space="preserve">
-    <value>رقم الملف .</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="VRDateofPenalty" xml:space="preserve">
     <value>تاريخ الغرامة</value>
@@ -7148,10 +7148,10 @@
     <value>الفترة</value>
   </data>
   <data name="VRStartDate" xml:space="preserve">
-    <value>تاريخ البدء</value>
+    <value>تاريخ البداية</value>
   </data>
   <data name="VREndDate" xml:space="preserve">
-    <value>تاريخ الانتهاء</value>
+    <value>تاريخ النهاية</value>
   </data>
   <data name="VRDueDate" xml:space="preserve">
     <value>تاريخ الاستحقاق</value>

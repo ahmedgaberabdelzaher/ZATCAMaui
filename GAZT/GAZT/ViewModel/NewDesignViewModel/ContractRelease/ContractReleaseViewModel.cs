@@ -1673,7 +1673,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             ContractNumber = "";
             FromDate = DateTime.Now;
             ToDate = DateTime.Now;
-
+            PickerModel = null;
+            setPickerModel();
             ContractCopyAttachmentsListViewData = null;
             InvoiceAttachmentsListViewData = null;
         }
