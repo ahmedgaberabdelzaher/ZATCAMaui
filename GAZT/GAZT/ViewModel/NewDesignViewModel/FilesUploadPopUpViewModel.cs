@@ -464,12 +464,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             await PopupNavigation.Instance.PopAsync();
                             return;
                         }
-                        else if ((IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach && VatAttachmentCount > 1) )
-                        {
-                            await _dialogService.ShowMessage(AppResources.VATReviewAttachmentLimitReached, AppResources.Information);
-                            await PopupNavigation.Instance.PopAsync();
-                            return;
-                        }
+                       
                         VatAttachmentCount++;
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
