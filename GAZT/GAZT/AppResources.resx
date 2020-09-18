@@ -7632,4 +7632,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="VRProposedinputtaxdeductionmethod" xml:space="preserve">
   <value>Proposed input tax deduction method for appropriation of non-attributable input tax</value>
 </data>
+     <data name="VATReviewAttachmentLimitReached" xml:space="preserve">
+    <value>Maximum no. of allowed attachments are 1.</value>
+  </data>
 </root>

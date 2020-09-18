@@ -1107,7 +1107,7 @@
 
 
                     <custom:CustomLabel Grid.Row="1"
-                                        Text="{x:Static ResourceManager:AppResources.CRContactPersonName}"
+                                        Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" />
 
@@ -1469,7 +1469,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContactPersonName}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding ContactPersonName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     

@@ -917,7 +917,7 @@ namespace EGAZT.Models.VatReviewModel
 
             public class AttdetSet
             {
-                public List<Result> results { get; set; }
+                public List<Attachment> results { get; set; }
             }
 
             public class Metadata3

@@ -7518,4 +7518,7 @@
     <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
   <value>المبلغ المطلوب الافراج عنه يجب ان يساوي او أقل من إجمالي مبلغ العقد</value>
 </data>
+   <data name="VATReviewAttachmentLimitReached" xml:space="preserve">
+     <value>يجب أن لا يزيد عدد المرفقات عن 1 ملفات.</value>
+  </data>
 </root>

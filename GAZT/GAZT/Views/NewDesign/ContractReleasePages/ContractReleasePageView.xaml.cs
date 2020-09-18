@@ -205,7 +205,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             try
             {
-                viewModel._contractTotalAmount = Double.Parse(ContractTotalAmountText.Text);
+                viewModel.ContractTotalAmount = Double.Parse(ContractTotalAmountText.Text);
                 viewModel.MakeCalculations();
             }
             catch (Exception ex)
@@ -223,9 +223,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 if (viewModel.ContractTotalAmount < Double.Parse(AmountoReleaseTxt.Text))
                 {
                     viewModel._dialogService.ShowMessageBox(AppResources.CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract, AppResources.Information);
-                    return;
+                    //return;
                 }
-                viewModel._amountToRelease = Double.Parse(AmountoReleaseTxt.Text);
+                viewModel.AmountToRelease = Double.Parse(AmountoReleaseTxt.Text);
                 viewModel.MakeCalculations();
             }
             catch (Exception ex)

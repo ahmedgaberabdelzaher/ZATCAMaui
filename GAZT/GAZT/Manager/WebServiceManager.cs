@@ -15382,7 +15382,7 @@ namespace GAZT.Manager
                     String url = Constants.GetVATReviewRequestTPFVURL
                         + "Fbnumz='"
                         + "',PortalUsrz='"
-                        + "',Lang='" + lang
+                        + "',Langz='" + lang
                         + "',Officerz='" + strOfficerz
                         + "',Gpartz='" + strGpartz
                         + "',UserTypz='"

@@ -186,7 +186,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRTIDEffectiveDateFrom}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VAAccNumber}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding VRTIDEffectiveDateFrom,StringFormat='{0:dd MMM yyyy}'}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" />
                             </Grid>
@@ -194,7 +194,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRTIDEffectiveDateTo}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Text="{Binding VAIdnumber}"
+                                <custom:CustomLabel Text="{Binding VRTIDEffectiveDateTo,StringFormat='{0:dd MMM yyyy}'}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand" />
                             </StackLayout>
@@ -209,7 +209,7 @@
                                 <custom:CustomLabel
                                     Text="{x:Static ResourceManager:AppResources.VRTIDProxyforTaxablePurchases}"
                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Text="{Binding VATaxpayerName}"
+                                <custom:CustomLabel Text="{Binding CIPFTxablePurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand" />
                             </StackLayout>
@@ -224,7 +224,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRTIDProxyforExemptPurchases}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VAAddress}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding CIPFExemptPurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                             </Grid>
@@ -240,7 +240,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRTIDTaxablePurchases}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VAAddress}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding CITxablePurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                             </Grid>
@@ -257,7 +257,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRTIDExemptPurchases}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VAAddress}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding CIExemptPurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                             </Grid>
@@ -265,16 +265,17 @@
 
                         <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="LightGray" />
                         
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRProposedinputtaxdeductionmethod}" 
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}" />
                         <StackLayout Padding="10" Spacing="10">
 
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRProposedinputtaxdeductionmethod}" 
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelBlack}" />
+                            
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel
                                     Text="{x:Static ResourceManager:AppResources.VRTIDProxyforTaxablePurchases}"
                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Text="{Binding VATaxpayerName}"
+                                <custom:CustomLabel Text="{Binding PIPFTxablePurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand" />
                             </StackLayout>
@@ -289,7 +290,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRTIDProxyforExemptPurchases}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VAAddress}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding PIPFExemptPurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                             </Grid>
@@ -305,7 +306,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRTIDTaxablePurchases}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VAAddress}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding PITxablePurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                             </Grid>
@@ -321,7 +322,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRTIDExemptPurchases}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VAAddress}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding PIExemptPurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                             </Grid>
@@ -341,7 +342,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRReportDetails}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding ReportDetails}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding VITDReportDetails}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End" />
@@ -349,8 +350,8 @@
 
                             <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
                                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
-                                                 VerticalOptions="Center"
-                                                 ItemsSource="{Binding ContractCopyAttachmentsListViewData}"
+                                                 VerticalOptions="Center" AutoFitMode="Height"
+                                                 ItemsSource="{Binding VITDAttachmentsListViewData}"
                                                  SelectionMode="None"
                                                  SelectionBackgroundColor="Transparent">
                                 <listView:SfListView.ItemTemplate>
@@ -428,7 +429,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRIDType}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding IDType}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding VITDIDType}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End" />
@@ -445,13 +446,13 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRIDNumber}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding IDNumber}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding VITDIDNumber}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End" />
                             </Grid>
 
-                            <Grid IsVisible="{Binding IsDOBVisible}">
+                            <Grid IsVisible="{Binding IsVITDDOBVisible}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
@@ -463,7 +464,7 @@
                                                     Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}"
                                                     Style="{StaticResource ValueLabelGrey}" />
                                 <custom:CustomLabel Grid.Column="1"
-                                                    Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
+                                                    Text="{Binding VITDDateOfBirth,StringFormat='{0:dd MMM yyyy}'}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End" />
@@ -480,7 +481,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding ContactPersonName}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding VITDContactPersonName}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End" />
