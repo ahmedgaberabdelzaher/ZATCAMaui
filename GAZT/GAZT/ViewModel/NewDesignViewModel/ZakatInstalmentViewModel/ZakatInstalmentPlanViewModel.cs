@@ -2735,9 +2735,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public async Task EnableSucessScreenAsync()
         {
+
             Preferences.Set("IsFromRevok", false);
             Preferences.Set("RevokeRef", "");
-
+            await App.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + ZakatInstalments.d.DpAmt + " " + AppResources.FORM5SAR, AppResources.CRContinue);
             await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
 
         }
@@ -3626,6 +3627,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     {
 
                         ZakatReferanceNumber = ZakatInstalments.d.Fbnum;
+                        
 
                         EnableSucessScreenAsync();
                     }

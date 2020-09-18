@@ -7526,4 +7526,7 @@
 2. الصيغ المسموحة Doc, Docx, Jpg, PDF, xlsx, xls
 </value>
   </data>
+    <data name="ZakatInstalmentPlanSubmittedPopUpMsg" xml:space="preserve">
+    <value>لتتمكن من الاستمرار في تقديم طلب التقسيط ، يلزم عليكم سداد الدفعة المقدمة ريال سعودي</value>
+  </data>
 </root>

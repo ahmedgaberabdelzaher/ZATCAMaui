@@ -4125,6 +4125,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             PopulateVatDeRegSummaryReasonData(vATDeRegistration.d.Type, vATDeRegistration.d.Reason);
                             //populateAttachments(vATDeRegistration);
 
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _navigationService.NavigateTo(App.VRVatDeRegViewAppPageView);
+
+                            });
 
                         }
                         else
@@ -4191,10 +4196,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             try
             {
-                strOfficerz = "3102452201";
-                strGpartz = "3102452201";
-                strEuser = "00000001000008331567";
-                strFbguid = "005056B1F8FB1EEABDFEB2E0181E473D";
+                //strOfficerz = "3102452201";
+                //strGpartz = "3102452201";
+                //strEuser = "00000001000008331567";
+                //strFbguid = "005056B1F8FB1EEABDFEB2E0181E473D";
 
                 await Task.Run(() =>
                 {
@@ -4207,55 +4212,64 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     VATReviewRequestTPFVReturnModel _VATReviewRequestTPFVReturn = new VATReviewRequestTPFVReturnModel();
                     try
                     {
-                        _VATReviewRequestTPFV = await WebServiceManager.GAZTGetVATReviewRequestTPFV(strOfficerz, strGpartz, strEuser, strFbguid, strReviewFg);
+                        var vatReviewFBguid = await WebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "TPFV");
 
-                        if (_VATReviewRequestTPFV != null && _VATReviewRequestTPFV.d != null)
-                        {
-                            _VATReviewRequestTPFVReturn.AgreeFlag = _VATReviewRequestTPFV.d.Inschk;
-                            VRTIDEffectiveDateFrom = _VATReviewRequestTPFV.d.Edtfr;
-                            VRTIDEffectiveDateTo = _VATReviewRequestTPFV.d.Edtto;
-                            CIPFTxablePurchases = _VATReviewRequestTPFV.d.Cptp;
-                            CIPFExemptPurchases = _VATReviewRequestTPFV.d.Cpep;
-                            CITxablePurchases = _VATReviewRequestTPFV.d.Ctpp;
-                            CIExemptPurchases = _VATReviewRequestTPFV.d.Cepp;
-                            PIPFTxablePurchases = _VATReviewRequestTPFV.d.Pcptp;
-                            PIPFExemptPurchases = _VATReviewRequestTPFV.d.Pcpep;
-                            PITxablePurchases = _VATReviewRequestTPFV.d.Pctpp;
-                            PIExemptPurchases = _VATReviewRequestTPFV.d.Pcepp;
-                            if (_VATReviewRequestTPFV.d.NotesSet.results.Where(x => x.AttByz.ToUpper() == "TP").Count() > 0)
+                        if(vatReviewFBguid != null && vatReviewFBguid.d != null) {
+
+
+                            _VATReviewRequestTPFV = await WebServiceManager.GAZTGetVATReviewRequestTPFV(strOfficerz, strGpartz, strEuser, vatReviewFBguid.d.Fbguid, strReviewFg);
+
+                            if (_VATReviewRequestTPFV != null && _VATReviewRequestTPFV.d != null)
                             {
-                                VITDReportDetails =
-                                    _VATReviewRequestTPFV.d.NotesSet.results.First(x => x.AttByz.ToUpper() == "TP").Strline;
+                                _VATReviewRequestTPFVReturn.AgreeFlag = _VATReviewRequestTPFV.d.Inschk;
+                                VRTIDEffectiveDateFrom = _VATReviewRequestTPFV.d.Edtfr;
+                                VRTIDEffectiveDateTo = _VATReviewRequestTPFV.d.Edtto;
+                                CIPFTxablePurchases = _VATReviewRequestTPFV.d.Cptp;
+                                CIPFExemptPurchases = _VATReviewRequestTPFV.d.Cpep;
+                                CITxablePurchases = _VATReviewRequestTPFV.d.Ctpp;
+                                CIExemptPurchases = _VATReviewRequestTPFV.d.Cepp;
+                                PIPFTxablePurchases = _VATReviewRequestTPFV.d.Pcptp;
+                                PIPFExemptPurchases = _VATReviewRequestTPFV.d.Pcpep;
+                                PITxablePurchases = _VATReviewRequestTPFV.d.Pctpp;
+                                PIExemptPurchases = _VATReviewRequestTPFV.d.Pcepp;
+                                if (_VATReviewRequestTPFV.d.NotesSet.results.Where(x => x.AttByz.ToUpper() == "TP").Count() > 0)
+                                {
+                                    VITDReportDetails =
+                                        _VATReviewRequestTPFV.d.NotesSet.results.First(x => x.AttByz.ToUpper() == "TP").Strline;
+                                }
+                                var attachmentList = new ObservableCollection<Attachment>();
+                                foreach (var attachment in _VATReviewRequestTPFV.d.AttdetSet.results)
+                                {
+                                    attachmentList.Add(attachment);
+                                }
+                                VITDAttachmentsListViewData = attachmentList;
+
+                                /*if (_VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").Count() > 0)
+                                    VITDAttachmentsListViewData = _VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").FirstOrDefault().Filename;*/
+                                // _VATReviewRequestTPFVReturn.DeclarationFlag = _VATReviewRequestTPFV.d.Decchk1;
+                                //VITDIDType = IDToNameDictionary[_VATReviewRequestTPFV.d.Idtp];
+                                VITDIDNumber = _VATReviewRequestTPFV.d.Idno;
+                                //VITDDateOfBirth = _VATReviewRequestTPFV.d.
+                                VITDContactPersonName = _VATReviewRequestTPFV.d.Cnpr;
+
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.VRInputTDViewAppPageViewApp);
+                                });
                             }
-                            var attachmentList = new ObservableCollection<Attachment>();
-                            foreach (var attachment in _VATReviewRequestTPFV.d.AttdetSet.results)
+                            else
                             {
-                                attachmentList.Add(attachment);
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
                             }
-                            VITDAttachmentsListViewData = attachmentList;
-
-                            /*if (_VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").Count() > 0)
-                                VITDAttachmentsListViewData = _VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").FirstOrDefault().Filename;*/
-                            // _VATReviewRequestTPFVReturn.DeclarationFlag = _VATReviewRequestTPFV.d.Decchk1;
-                            //VITDIDType = IDToNameDictionary[_VATReviewRequestTPFV.d.Idtp];
-                            VITDIDNumber = _VATReviewRequestTPFV.d.Idno;
-                            //VITDDateOfBirth = _VATReviewRequestTPFV.d.
-                            VITDContactPersonName = _VATReviewRequestTPFV.d.Cnpr;
-
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                _navigationService.NavigateTo(App.VRInputTDViewAppPageViewApp);
-                            });
+                            IsLoading = false;
                         }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        IsLoading = false;
+
+                       
+                       
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {

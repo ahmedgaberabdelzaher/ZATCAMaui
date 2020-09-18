@@ -366,7 +366,7 @@ namespace GAZT.Manager
                     string _language = "EN";
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='" + "',CurrAttmps=" + currentAttempts + ")?&saml2=enabled&sap-" + "language='" + _language + "" + "'" + "&$format=json"; //)?&saml2=disabled&$format=json";
-                                                                                                                                                                                                                                   //  https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='E',Userid='',Otp='34455',CurrAttmps=1)?&saml2=disabled&sap-language='EN'&$format=xml
+                                                                                                                                                                                                                                   //  https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/_P_USRLOGIN_OTP_SRV/HEADERSet(Langz='E',Userid='',Otp='34455',CurrAttmps=1)?&saml2=disabled&sap-language='EN'&$format=xml
                     var uri = new Uri(url);
                     ////client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
@@ -13290,7 +13290,7 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<VATObjectionSummaryInputModel> GAZTVATObjectionSummaryInputData(string fbNum, string status)
+        public static async Task<VATObjectionSummaryInputModel> GAZTVATObjectionSummaryInputData(string fbNum, string status, string fbtyp)
         {
             VATObjectionSummaryInputModel _vATObjectionSummaryInputModel = new VATObjectionSummaryInputModel();
             if (CrossConnectivity.Current.IsConnected)
@@ -13308,7 +13308,7 @@ namespace GAZT.Manager
 
 
                     String url = Constants.VATObjectionSummaryInputURL + "Euser1='00000000000000000000',Fbguid='undefined',Fbnum='" + fbNum + "'," +
-                        "Fbtyp='RAVT',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
+                        "Fbtyp='"+ fbtyp + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
                     var uri = new Uri(url);
 
 

@@ -13715,5 +13715,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATInstalmentsAttachmentTitle", resourceCulture);
             }
         }
+        
+        public static string ZakatInstalmentPlanSubmittedPopUpMsg {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentPlanSubmittedPopUpMsg", resourceCulture);
+            }
+        }
     }
 }
