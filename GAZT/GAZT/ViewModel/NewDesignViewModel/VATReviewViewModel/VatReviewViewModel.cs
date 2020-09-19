@@ -21,6 +21,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
 using Metadata = EGAZT.Models.VatReviewModel.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
@@ -1123,7 +1124,229 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsPenlaityAmountVisible");
             }
         }
+        public DateTime? vRTIDEffectiveDateFrom = null;
+        public DateTime? VRTIDEffectiveDateFrom
+        {
+            get
+            {
+                return vRTIDEffectiveDateFrom;
+            }
+            set
+            {
+                vRTIDEffectiveDateFrom = value;
+                RaisePropertyChanged("VRTIDEffectiveDateFrom");
+            }
+        }
 
+        public DateTime? vRTIDEffectiveDateTo = null;
+        public DateTime? VRTIDEffectiveDateTo
+        {
+            get
+            {
+                return vRTIDEffectiveDateTo;
+            }
+            set
+            {
+                vRTIDEffectiveDateTo = value;
+                RaisePropertyChanged("VRTIDEffectiveDateTo");
+            }
+        }
+
+        public string cIPFTxablePurchases = "";
+        public string CIPFTxablePurchases
+        {
+            get
+            {
+                return cIPFTxablePurchases;
+            }
+            set
+            {
+                cIPFTxablePurchases = value;
+                RaisePropertyChanged("CIPFTxablePurchases");
+            }
+        }
+
+        public string cIPFExemptPurchases = "";
+        public string CIPFExemptPurchases
+        {
+            get
+            {
+                return cIPFExemptPurchases;
+            }
+            set
+            {
+                cIPFExemptPurchases = value;
+                RaisePropertyChanged("CIPFExemptPurchases");
+            }
+        }
+
+        public string cITxablePurchases = "";
+        public string CITxablePurchases
+        {
+            get
+            {
+                return cITxablePurchases;
+            }
+            set
+            {
+                cITxablePurchases = value;
+                RaisePropertyChanged("CITxablePurchases");
+            }
+        }
+
+        public string cIExemptPurchases = "";
+        public string CIExemptPurchases
+        {
+            get
+            {
+                return cIExemptPurchases;
+            }
+            set
+            {
+                cIExemptPurchases = value;
+                RaisePropertyChanged("CIExemptPurchases");
+            }
+        }
+
+        public string pIPFTxablePurchases = "";
+        public string PIPFTxablePurchases
+        {
+            get
+            {
+                return pIPFTxablePurchases;
+            }
+            set
+            {
+                pIPFTxablePurchases = value;
+                RaisePropertyChanged("PIPFTxablePurchases");
+            }
+        }
+
+        public string pIPFExemptPurchases = "";
+        public string PIPFExemptPurchases
+        {
+            get
+            {
+                return pIPFExemptPurchases;
+            }
+            set
+            {
+                pIPFExemptPurchases = value;
+                RaisePropertyChanged("PIPFExemptPurchases");
+            }
+        }
+
+        public string pITxablePurchases = "";
+        public string PITxablePurchases
+        {
+            get
+            {
+                return pITxablePurchases;
+            }
+            set
+            {
+                pITxablePurchases = value;
+                RaisePropertyChanged("PITxablePurchases");
+            }
+        }
+
+        public string pIExemptPurchases = "";
+        public string PIExemptPurchases
+        {
+            get
+            {
+                return pIExemptPurchases;
+            }
+            set
+            {
+                pIExemptPurchases = value;
+                RaisePropertyChanged("PIExemptPurchases");
+            }
+        }
+
+        public string vITDReportDetails = "";
+        public string VITDReportDetails
+        {
+            get
+            {
+                return vITDReportDetails;
+            }
+            set
+            {
+                vITDReportDetails = value;
+                RaisePropertyChanged("VITDReportDetails");
+            }
+        }
+
+        public string vITDIDType = "";
+        public string VITDIDType
+        {
+            get
+            {
+                return vITDIDType;
+            }
+            set
+            {
+                vITDIDType = value;
+                RaisePropertyChanged("VITDIDType");
+            }
+        }
+
+        public string vITDIDNumber = "";
+        public string VITDIDNumber
+        {
+            get
+            {
+                return vITDIDNumber;
+            }
+            set
+            {
+                vITDIDNumber = value;
+                RaisePropertyChanged("VITDIDNumber");
+            }
+        }
+
+        public string vITDDateOfBirth = "";
+        public string VITDDateOfBirth
+        {
+            get
+            {
+                return vITDDateOfBirth;
+            }
+            set
+            {
+                vITDDateOfBirth = value;
+                RaisePropertyChanged("VITDDateOfBirth");
+            }
+        }
+
+        public string vITDContactPersonName = "";
+        public string VITDContactPersonName
+        {
+            get
+            {
+                return vITDContactPersonName;
+            }
+            set
+            {
+                vITDContactPersonName = value;
+                RaisePropertyChanged("VITDContactPersonName");
+            }
+        }
+
+        private bool isVITDDOBVisible = false;
+        public bool IsVITDDOBVisible
+        {
+            get
+            {
+                return isVITDDOBVisible;
+            }
+            set
+            {
+                isVITDDOBVisible = value;
+                RaisePropertyChanged("IsVITDDOBVisible");
+            }
+        }
         private bool _isAssessPayOptionVisible = false;
         public bool IsAssessPayOptionVisible
         {
@@ -1166,6 +1389,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("FullPaymentCheckBox");
             }
         }
+        private Dictionary<string, string> IDToNameDictionary = new Dictionary<string, string>
+        {
+            {"ZS0001",AppResources.VFCNationalID},
+            { "ZS0002",AppResources.VFCIqamaID},
+            {AppResources.VFCGCCID, "ZS0003"},
+         };
 
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 5;
@@ -1184,6 +1413,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 _declarationButtonBackGroundColor = value;
                 RaisePropertyChanged("DeclarationButtonBackGroundColor");
+            }
+        }
+
+
+        public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryDeclarationData { get; set; }
+        public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryDeclarationData
+        {
+            get
+            {
+                return _vatDeregistrationSummaryDeclarationData;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    _vatDeregistrationSummaryDeclarationData = value;
+                }
+                RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
+            }
+        }
+
+        public ObservableCollection<Attachment> vITDAttachmentsListViewData { get; set; }
+        public ObservableCollection<Attachment> VITDAttachmentsListViewData
+        {
+            get { return vITDAttachmentsListViewData; }
+            set
+            {
+                if (vITDAttachmentsListViewData == value)
+                {
+                    return;
+                }
+                vITDAttachmentsListViewData = value;
+                RaisePropertyChanged("VITDAttachmentsListViewData");
+            }
+        }
+        public ObservableCollection<Attachment> vatDeRegAttachmentsList { get; set; }
+        public ObservableCollection<Attachment> VatDeRegAttachmentsList
+        {
+            get
+            {
+                return vatDeRegAttachmentsList;
+            }
+            set
+            {
+                if (value != null)
+                    vatDeRegAttachmentsList = value;
+                RaisePropertyChanged("VatDeRegAttachmentsList");
+            }
+        }
+        public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryReasonData { get; set; }
+        public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryReasonData
+        {
+            get
+            {
+                return _vatDeregistrationSummaryReasonData;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    _vatDeregistrationSummaryReasonData = value;
+                }
+                RaisePropertyChanged("VATDeregistrationSummaryReasonData");
             }
         }
 
@@ -1389,13 +1681,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 _isBankGuranteeAttachments = true;
 
-                if (BankGuranteeAttachmentsListViewData.Count == 0)
-                {
+               
                     await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
                         BankGuranteeAttachmentsListViewData.ToList(),
                         Models.ZakatInstalationModels.WhichAttachment.VatReviewBankGuranteeAttach,
                         modelVATReview.d.ReturnIdx));
-                }
+                
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -2012,12 +2303,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 await FetchViewBill(selectedApplicationRef.Opbel, "");
             }
+
             else
             {
 
-                await GetViewApplication(App.LoginDataRetrieved.FbGuid, selectedApplicationRef.Fbnum, modelVATReview.d.Euserx);
+                if (selectedApplicationRef.Fbtyp == "RGVT")
+                {
+
+                }
+                else if (selectedApplicationRef.Fbtyp == "DGVT")
+                {
+                    await VatDeregistration();
+                }
+                else if (selectedApplicationRef.Fbtyp == "VTGR")
+                {
+
+                }
+                else if (selectedApplicationRef.Fbtyp == "VTIN" || selectedApplicationRef.Fbtyp == "TPFV")
+                {
+                    await GetVATReviewRequestTPFV(modelVATReview.d.Officerx, modelVATReview.d.Gpartx, modelVATReview.d.Euserx, App.LoginDataRetrieved.FbGuid);
+
+                }
+                else if (selectedApplicationRef.Fbtyp == "VATR")
+                {
+                    await GetViewApplication(App.LoginDataRetrieved.FbGuid, selectedApplicationRef.Fbnum, modelVATReview.d.Euserx);
+                }
+
+                
             }
-            _isDialog = !_isDialog;
+            
         }
 
         public void PopulateAttachments(List<Attachment> attachments)
@@ -2034,12 +2348,87 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 BankGuranteeAttachmentsListViewData = attachmentsListViewData;
 
+                EnableSecurityPaymentsConButton();
             }
             else
             {
                 AttachmentsListViewData = attachmentsListViewData;
             }
 
+
+        }
+
+        public void PopulateVatDeRegSummaryReasonData(string requestType, string reasonTitle)
+        {
+            VATDeregistrationSummaryReasonData = null;
+            List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
+            try
+            {
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregRequestType,
+                    SummaryData = requestType,
+                    IsEditVisible = true
+                });
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregReasonTitle,
+                    SummaryData = reasonTitle,
+                    IsEditVisible = true
+                });
+                VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void PopulateVatDeRegAttachments(List<Attachment> attachments)
+        {
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
+            foreach (Attachment attachemnt in attachments)
+            {
+                attachmentsListViewData.Add(attachemnt);
+            }
+            VatDeRegAttachmentsList = attachmentsListViewData;
+        }
+
+        public void PopulateVatDeRegSummaryDeclarationData(string idType, string iDNumber, string dateOfBirth, string contactPersonName)
+        {
+            //VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
+            List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
+            try
+            {
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.IDType,
+                    SummaryData = idType,
+                    IsEditVisible = true
+                });
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.IDNumber,
+                    SummaryData = iDNumber,
+                    IsEditVisible = true
+                });
+
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregDOBTitle,
+                    SummaryData = dateOfBirth,
+                    IsEditVisible = true
+                });
+
+                check.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregContactPerson,
+                    SummaryData = contactPersonName,
+                    IsEditVisible = true
+                });
+                VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void BackNavigations()
@@ -2534,7 +2923,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else if (IsBankGurantSecuritySelected)
             {
-                if (BankGuranteeAttachmentsListViewData == null || !IsSadadCheckBox1 || !IsSadadCheckBox2)
+                if (BankGuranteeAttachmentsListViewData == null || BankGuranteeAttachmentsListViewData.Count == 0 || !IsSadadCheckBox1 || !IsSadadCheckBox2)
                 {
 
                     IsSecurityPaymentEnabled = false;
@@ -3355,7 +3744,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             _postData.NotesSet = modelVATReview.d.NotesSet.results;
 
-            _postData.SecurityDtl.Amttp = "F";
+
+            if (IsRRAmountEdit) {
+
+                _postData.SecurityDtl.Amttp = "P";
+
+            }
+            else {
+
+                _postData.SecurityDtl.Amttp = "F";
+
+            }
+
+
 
             _postData.MainReasonSet = modelVATReview.d.MainReasonSet.results;
 
@@ -3471,12 +3872,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     modelVATReview.d.SecurityDtl.ChkBank = "X";
                     modelVATReview.d.SecurityDtl.ChkCash = "X";
                     modelVATReview.d.SecurityDtl.DataVersion = "00001";
-                    modelVATReview.d.SecurityDtl.Disamt = SecurityAmount;
+                    modelVATReview.d.SecurityDtl.Disamt = RequestedReviewAmount;
                     modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
                     modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
                     modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
                     modelVATReview.d.SecurityDtl.Perslt = selectedApplicationRef.Perslt;
                     modelVATReview.d.SecurityDtl.Secamt = SecurityAmount;
+                    modelVATReview.d.SecurityDtl.Clramt = selectedApplicationRef.Clramt;
+                    
 
 
 
@@ -3666,6 +4069,235 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             catch (GAZTVATRegistrationInProcessException ex)
             {
 
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task VatDeregistration()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+
+                    VATDeRegistrationDetails vATDeRegistration = null;
+
+                    try
+                    {
+                        vATDeRegistration = await WebServiceManager.GAZTGetVATDeRegistrationData();
+
+
+                        if (vATDeRegistration != null && vATDeRegistration.d != null)
+                        {
+
+                            if (vATDeRegistration.d.Idnumbr != null)
+
+                                if (string.IsNullOrEmpty(IDType))
+                                {
+
+                                    PopulateVatDeRegSummaryDeclarationData(vATDeRegistration.d.Type, vATDeRegistration.d.Idnumbr, vATDeRegistration.d.Declaredt, vATDeRegistration.d.Contactnm);
+                                }
+
+                            PopulateVatDeRegAttachments(vATDeRegistration.d.AttdetSet.results);
+
+                            PopulateVatDeRegSummaryReasonData(vATDeRegistration.d.Type, vATDeRegistration.d.Reason);
+                            //populateAttachments(vATDeRegistration);
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _navigationService.NavigateTo(App.VRVatDeRegViewAppPageView);
+
+                            });
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                });
+            }
+        }
+
+        public async Task GetVATReviewRequestTPFV(string strOfficerz, string strGpartz, string strEuser, string strFbguid, string strReviewFg = "true")
+        {
+            try
+            {
+                //strOfficerz = "3102452201";
+                //strGpartz = "3102452201";
+                //strEuser = "00000001000008331567";
+                //strFbguid = "005056B1F8FB1EEABDFEB2E0181E473D";
+
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    VATReviewRequestTPFVModel _VATReviewRequestTPFV = new VATReviewRequestTPFVModel();
+                    VATReviewRequestTPFVReturnModel _VATReviewRequestTPFVReturn = new VATReviewRequestTPFVReturnModel();
+                    try
+                    {
+                        var vatReviewFBguid = await WebServiceManager.GAZTVATObjectionSummaryInputData(selectedApplicationRef.Fbnum, "", "TPFV");
+
+                        if(vatReviewFBguid != null && vatReviewFBguid.d != null) {
+
+
+                            _VATReviewRequestTPFV = await WebServiceManager.GAZTGetVATReviewRequestTPFV(strOfficerz, strGpartz, strEuser, vatReviewFBguid.d.Fbguid, strReviewFg);
+
+                            if (_VATReviewRequestTPFV != null && _VATReviewRequestTPFV.d != null)
+                            {
+                                _VATReviewRequestTPFVReturn.AgreeFlag = _VATReviewRequestTPFV.d.Inschk;
+                                VRTIDEffectiveDateFrom = _VATReviewRequestTPFV.d.Edtfr;
+                                VRTIDEffectiveDateTo = _VATReviewRequestTPFV.d.Edtto;
+                                CIPFTxablePurchases = _VATReviewRequestTPFV.d.Cptp;
+                                CIPFExemptPurchases = _VATReviewRequestTPFV.d.Cpep;
+                                CITxablePurchases = _VATReviewRequestTPFV.d.Ctpp;
+                                CIExemptPurchases = _VATReviewRequestTPFV.d.Cepp;
+                                PIPFTxablePurchases = _VATReviewRequestTPFV.d.Pcptp;
+                                PIPFExemptPurchases = _VATReviewRequestTPFV.d.Pcpep;
+                                PITxablePurchases = _VATReviewRequestTPFV.d.Pctpp;
+                                PIExemptPurchases = _VATReviewRequestTPFV.d.Pcepp;
+                                if (_VATReviewRequestTPFV.d.NotesSet.results.Where(x => x.AttByz.ToUpper() == "TP").Count() > 0)
+                                {
+                                    VITDReportDetails =
+                                        _VATReviewRequestTPFV.d.NotesSet.results.First(x => x.AttByz.ToUpper() == "TP").Strline;
+                                }
+                                var attachmentList = new ObservableCollection<Attachment>();
+                                foreach (var attachment in _VATReviewRequestTPFV.d.AttdetSet.results)
+                                {
+                                    attachmentList.Add(attachment);
+                                }
+                                VITDAttachmentsListViewData = attachmentList;
+
+                                /*if (_VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").Count() > 0)
+                                    VITDAttachmentsListViewData = _VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").FirstOrDefault().Filename;*/
+                                // _VATReviewRequestTPFVReturn.DeclarationFlag = _VATReviewRequestTPFV.d.Decchk1;
+                                //VITDIDType = IDToNameDictionary[_VATReviewRequestTPFV.d.Idtp];
+                                VITDIDNumber = _VATReviewRequestTPFV.d.Idno;
+                                //VITDDateOfBirth = _VATReviewRequestTPFV.d.
+                                VITDContactPersonName = _VATReviewRequestTPFV.d.Cnpr;
+
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.VRInputTDViewAppPageViewApp);
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
+                            }
+                            IsLoading = false;
+                        }
+
+                       
+                       
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;

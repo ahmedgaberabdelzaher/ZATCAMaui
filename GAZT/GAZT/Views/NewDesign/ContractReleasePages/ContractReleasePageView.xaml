@@ -1048,26 +1048,24 @@
 
 
                     <border:SfBorder Grid.Row="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry x:Name="RemarksText" 
-                                                     HorizontalOptions="FillAndExpand" TextChanged="RemarksTextChanged"
-                                                     Style="{StaticResource BodyLabelBlack}"/>
-               
-                      
+        
+                  <custom:GAZTBorderlessEditor TextChanged="RemarksTextChanged" MaxLength="1000"
+                                         AutoSize="TextChanges"
+                                         PlaceholderColor="Gray" FontSize="Small" x:Name="RemarksText"
+                                         HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
+  
                     </border:SfBorder>
+                 <custom:CustomLabel Grid.Row="3"
+                        Text="{x:Static ResourceManager:AppResources.CRDetailDescription}"
+                        HorizontalOptions="StartAndExpand" 
+                        Style="{StaticResource BodyLabelGrey}" />
 
-                    <custom:CustomLabel Grid.Row="3"
-                                        Text="{x:Static ResourceManager:AppResources.CRDetailDescription}"
-                                        HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}" />
-
-
-                     <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                           
-                            <custom:GAZTBorderlessEditor TextChanged="DetailDescriptionTextChanged" MaxLength="1000"
-                                                        PlaceholderColor="Gray" FontSize="Small"
-                                    MinimumHeightRequest="150" HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
-
-                    </border:SfBorder>
+                 <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+       
+                        <custom:GAZTBorderlessEditor TextChanged="DetailDescriptionTextChanged" MaxLength="1000"
+                                                    PlaceholderColor="Gray" FontSize="Small" AutoSize="TextChanges"
+                                MinimumHeightRequest="150" HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
+                </border:SfBorder>
 
 
                     <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
@@ -1213,54 +1211,45 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                <StackLayout Padding="15,15,15,0">
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContractonName}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding ContractName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContractNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding ContractNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContractType}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding PickedContract}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContractPeriod}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <Label Grid.Column="1" FontSize="14" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+
+                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+
+                                </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                    <Label Text="{x:Static ResourceManager:AppResources.CRContractonName}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="0" Grid.Column="1" >
+                                    <Label Text="{Binding ContractName}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                </StackLayout>
+                                    <StackLayout Grid.Row="1" Grid.Column="0">
+                                    <Label Text="{x:Static ResourceManager:AppResources.CRContractNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Grid.Column="1" >
+                                    <Label Text="{Binding ContractNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                </StackLayout>
+                                   <StackLayout Grid.Row="2" Grid.Column="0">
+                                    <Label Text="{x:Static ResourceManager:AppResources.CRContractType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" Grid.Column="1" >
+                                    <Label Text="{Binding PickedContract}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                </StackLayout>
+                                    <StackLayout Grid.Row="3" Grid.Column="0">
+                                    <Label Text="{x:Static ResourceManager:AppResources.CRContractPeriod}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="3" Grid.Column="1">
+                                     <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
@@ -1271,33 +1260,23 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                    </Grid>
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding ContractTotalAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding AmountToRelease,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-
                                 </StackLayout>
+
+                                      <StackLayout Grid.Row="4" Grid.Column="0">
+                                    <Label Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="4" Grid.Column="1" >
+                                    <Label Text="{Binding ContractTotalAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                </StackLayout>
+
+                                  <StackLayout Grid.Row="5" Grid.Column="0">
+                                    <Label Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="5" Grid.Column="1" >
+                                    <Label Text="{Binding AmountToRelease,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                </StackLayout>
+                                </Grid>
+ 
                             </StackLayout>
 
                         </border:SfBorder>
@@ -1490,7 +1469,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContactPersonName}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding ContactPersonName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     

@@ -101,6 +101,7 @@ namespace EGAZT
         public static string SupportPageView = "SupportPageView";
         public static string NotesDescriptionPopUpPageView = "NotesDescriptionPopUpPageView";
         public static string NotesPopUpPageView = "NotesPopUpPageView";
+        public static string TaxManagementPageView = "TaxManagementPageView";
         // * End
 
         #endregion
@@ -221,7 +222,8 @@ namespace EGAZT
         public static string VATRefundDetailsPageView = "VATRefundDetailsPageView";
         public static string VATRefundsNewRequestPageView = "VATRefundsNewRequestPageView";
         public static string GAZTNewDesignShowVatInformationPopUpPageView = "GAZTNewDesignShowVatInformationPopUpPageView";
-
+        public static string VRInputTDViewAppPageViewApp = "VRInputTDViewAppPageViewApp";
+        public static string VRVatDeRegViewAppPageView = "VRVatDeRegViewAppPageView";
 
 
         public static string VATRefundsInstructionsPageView = "VATRefundsInstructionsPageView";

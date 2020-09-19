@@ -1943,8 +1943,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             try
             {
-                if (FirstTerms)
-                {
+                //if (FirstTerms)
+                //{
                     if (IsFirstCheckboxChecked)
                     {
                         EnableVATBillView();
@@ -1953,14 +1953,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         await _dialogService.ShowMessage(AppResources.ZZZZConfirmAndCarryForward, AppResources.Information);
                     }
-                }
-                else
-                {
-                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
-                        _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType.Instructions));
+                //}
+                //else
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
+                //        _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType.Instructions));
 
 
-                }
+                //}
 
 
             }

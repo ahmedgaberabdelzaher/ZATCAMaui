@@ -464,6 +464,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             await PopupNavigation.Instance.PopAsync();
                             return;
                         }
+                       
                         VatAttachmentCount++;
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {

@@ -545,6 +545,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             IsDisplayDetailsVisible = true;
         }
 
+        public void ResetData()
+        {
+            RequestForInstalmentPlanList = null;
+            RequestForScheduleDetails = null;
+        }
+
 
         #region Button Action Declaration
 

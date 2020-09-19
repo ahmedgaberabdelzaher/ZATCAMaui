@@ -4876,8 +4876,8 @@
   <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
     <value>الزكاة</value>
   </data>
-  <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
-    <value>ضريبة الدخل</value>
+ <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
+    <value>خطة تقسيط ضريبة الدخل</value>
   </data>
   <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
     <value>ضريبة القيمة المضافة</value>
@@ -4956,7 +4956,7 @@
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>البحث برقم فاتورة سداد</value>
+   <value>البحث بالرقم المرجعي</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>اختر الفاتورة</value>
@@ -4965,7 +4965,7 @@
     <value>يرجى تحديد فواتير سداد التي ترغب بتضمينها في اتفاقية التقسيط</value>
   </data>
   <data name="ZakatBillAmount" xml:space="preserve">
-    <value> (المبلغ المستحق (ريال سعودي </value>
+    <value>المبلغ المستحق (ريال سعودي)</value>
   </data>
   <data name="ZakatInstalmentDownloadConfirmation" xml:space="preserve">
     <value>تحميل إشعار تسليم الطلب</value>
@@ -5540,8 +5540,13 @@
   <data name="TPOTPSentToEmail" xml:space="preserve">
     <value>الرجاء إدخال رمز التحقق المرسل الى بريدك الإلكتروني</value>
   </data>
+  <!--<data name="TPOldAndNewPasswordSame" xml:space="preserve">
+    <value>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</value>
+    <comment>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</comment>
+  </data>-->
   <data name="TPOldAndNewPasswordSame" xml:space="preserve">
-    <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
+    <value>ر الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</value>
+    <comment>ر الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</comment>
   </data>
   <data name="TPOldNewPasswordEmpty" xml:space="preserve">
     <value>الرجاء ادخال كلمة المرور القديمة والجديدة</value>
@@ -6379,7 +6384,7 @@
     <value>جهة الاصدار</value>
   </data>
   <data name="ESTValidFrom" xml:space="preserve">
-    <value>تاريخ الإصدار</value>
+    <value>تاريخ الاصدار</value>
   </data>
   <data name="ESTIssueCity" xml:space="preserve">
     <value>مدينة الاصدار</value>
@@ -6729,7 +6734,7 @@
     <value>سبب طلب خطة التقسيط</value>
   </data>
   <data name="BPInstructionsAndConditionsAlert" xml:space="preserve">
-    <value>الرجاء الموافقة على الشروط والتعليمات</value>
+    <value>الرجاء الموافقة على التعليمات والشروط</value>
   </data>
   <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
     <value>المرفقات - كشف حساب بنكي لآخر 3 أشهر</value>
@@ -6744,7 +6749,7 @@
     <value>عرض تفاصيل القسط</value>
   </data>
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>(معدل الربحية (10/9</value>
+    <value>معدل الربحية (10/9)</value>
   </data>
   <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -6780,7 +6785,7 @@
     <value>إعتراضات الزكاة</value>
   </data>
   <data name="VRReviewReason" xml:space="preserve">
-    <value>سبب المراجعة</value>
+    <value>طلب المراجعة</value>
   </data>
   <data name="VRCompleteTheBelowDetails" xml:space="preserve">
     <value>اكمل البيانات التالية</value>
@@ -7063,7 +7068,8 @@
     <value>الرجاء ادخل الاسم</value>
   </data>
   <data name="NDOldPasswordAndNewPasswordSame" xml:space="preserve">
-    <value>كلمة المرور الجديدة يجب ان تختلف عن كلمة المرور القديمة</value>
+    <value>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</value>
+    <comment>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</comment>
   </data>
   <data name="ZZZZAdjustmentWithSAR" xml:space="preserve">
     <value>مبلغ التعديل ( بالريال)</value>
@@ -7130,7 +7136,7 @@
     <value>تفاصيل الفاتورة</value>
   </data>
   <data name="VRDocumentNo" xml:space="preserve">
-    <value>رقم الملف .</value>
+    <value>رقم الفاتورة</value>
   </data>
   <data name="VRDateofPenalty" xml:space="preserve">
     <value>تاريخ الغرامة</value>
@@ -7142,10 +7148,10 @@
     <value>الفترة</value>
   </data>
   <data name="VRStartDate" xml:space="preserve">
-    <value>تاريخ البدء</value>
+    <value>تاريخ البداية</value>
   </data>
   <data name="VREndDate" xml:space="preserve">
-    <value>تاريخ الانتهاء</value>
+    <value>تاريخ النهاية</value>
   </data>
   <data name="VRDueDate" xml:space="preserve">
     <value>تاريخ الاستحقاق</value>
@@ -7428,7 +7434,7 @@
     <value>الدعم الفني</value>
   </data>
   <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+   <value>البحث بالرقم المرجعي</value>
   </data>
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
@@ -7482,9 +7488,6 @@
   <data name="CRRequestDetails" xml:space="preserve">
     <value>تفاصيل الطلب</value>
   </data>
-  <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
-    <value>المبلغ المطلوب الإفراج عنه يجب ان يكون اقل من إجمالي مبلغ العقد</value>
-  </data>
   <data name="NDAccounting" xml:space="preserve">
     <value>حسابات</value>
   </data>
@@ -7503,13 +7506,27 @@
   <data name="ZZExplore" xml:space="preserve">
     <value>استعرض</value>
   </data>
-    <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
+  <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
     <value>الفترات الضريبية ذات الصلة</value>
-    </data>
-    <data name="CFPDeclarationCheckbox" xml:space="preserve">    
-    <value>أتعهد بأن المعلومات المذكورة أعلاه صحيحة وحقيقية على حد علمي</value>   
-    </data>
-     <data name="CRContactPersonFullName" xml:space="preserve">
+  </data>
+  <data name="CFPDeclarationCheckbox" xml:space="preserve">
+    <value>أتعهد بأن المعلومات المذكورة أعلاه صحيحة وحقيقية على حد علمي</value>
+  </data>
+  <data name="CRContactPersonFullName" xml:space="preserve">
     <value>الإسم رباعي</value>
+  </data>
+    <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+  <value>المبلغ المطلوب الافراج عنه يجب ان يساوي او أقل من إجمالي مبلغ العقد</value>
+</data>
+   <data name="VATReviewAttachmentLimitReached" xml:space="preserve">
+     <value>يجب أن لا يزيد عدد المرفقات عن 1 ملفات.</value>
+  </data>
+   <data name="VATInstalmentsAttachmentTitle" xml:space="preserve">
+   <value>1. يجب أن يكون حجم الملف أقل من 5 ميغابايت.
+2. الصيغ المسموحة Doc, Docx, Jpg, PDF, xlsx, xls
+</value>
+  </data>
+    <data name="ZakatInstalmentPlanSubmittedPopUpMsg" xml:space="preserve">
+    <value>لتتمكن من الاستمرار في تقديم طلب التقسيط ، يلزم عليكم سداد الدفعة المقدمة ريال سعودي</value>
   </data>
 </root>

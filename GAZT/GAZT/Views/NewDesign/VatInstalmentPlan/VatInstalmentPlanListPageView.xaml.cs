@@ -37,7 +37,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
                 viewModel = App.Locator.VatInstalmentPlanListPageView;
                 this.BindingContext = viewModel;
-
+                viewModel.ResetData();
 
             }
             catch (Exception ex)
