@@ -98,7 +98,7 @@
                                                              HorizontalOptions="FillAndExpand"
                                                              IsSpellCheckEnabled="False"
                                                              Keyboard="Telephone" TextColor="Black"
-                                                             FontSize="Small" Style="{StaticResource DefaultEntry}"
+                                                      Style="{StaticResource DefaultEntry}"
                                                              Unfocused="Mobile_entry_Unfocused">
                                         <custom1:MyEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
@@ -106,7 +106,7 @@
                                     </custom1:MyEntry>
 
 
-                                </StackLayout>
+                                </StackLayout>e
                             </Frame>
                         </StackLayout>
                     </StackLayout>
