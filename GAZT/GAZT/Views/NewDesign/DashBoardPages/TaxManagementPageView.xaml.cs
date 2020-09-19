@@ -20,5 +20,49 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel = App.Locator.TaxManagementPageView;
             BindingContext = viewModel;
         }
+
+        private void OnRealStateTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnTaxEvasionTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnFillingFrequencyTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnVATRegVerTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnReqForRullingTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnZakatTaxCertificateTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnContractReleaseTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnVATRegDetailsTapped(object sender, EventArgs e)
+        {
+
+        }
+        private void OnVATCertificateTapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }
