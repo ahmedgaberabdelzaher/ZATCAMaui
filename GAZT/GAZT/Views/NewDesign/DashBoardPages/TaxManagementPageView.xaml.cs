@@ -21,19 +21,45 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             BindingContext = viewModel;
         }
 
+        protected override void OnAppearing()
+        {
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
         private void OnRealStateTapped(object sender, EventArgs e)
         {
 
         }
 
-        private void OnTaxEvasionTapped(object sender, EventArgs e)
+        private async void OnTaxEvasionTapped(object sender, EventArgs e)
         {
+            await Task.Run(() =>
+            {
+                //viewModel.IsLoading = true;
 
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+
+            });
         }
 
         private void OnFillingFrequencyTapped(object sender, EventArgs e)
         {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
 
+            });
         }
 
         private void OnVATRegVerTapped(object sender, EventArgs e)
@@ -46,23 +72,76 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         }
 
-        private void OnZakatTaxCertificateTapped(object sender, EventArgs e)
+        private async void OnZakatTaxCertificateTapped(object sender, EventArgs e)
         {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
 
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
+
+            });
         }
 
         private void OnContractReleaseTapped(object sender, EventArgs e)
         {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
 
+            });
         }
 
-        private void OnVATRegDetailsTapped(object sender, EventArgs e)
+        private async void OnVATRegDetailsTapped(object sender, EventArgs e)
         {
+            await Task.Run(() =>
+            {
+                //viewModel.IsLoading = true;
 
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+
+            });
         }
-        private void OnVATCertificateTapped(object sender, EventArgs e)
+        private async void OnVATCertificateTapped(object sender, EventArgs e)
         {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
 
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
+
+            });
+        }
+
+        private async void OnLogOutTapped(object sender, EventArgs e)
+        {
+            if (App.IsArabic)
+            {
+                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
+                if (!result)
+                {
+                    App.TP = null;
+                    await viewModel.LogOut();
+                }
+            }
+            else
+            {
+                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                    App.TP = null;
+                    await viewModel.LogOut();
+                }
+            }
         }
     }
 }

@@ -85,6 +85,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
             viewModel.UnPaidString = AppResources.UnPaid;
             viewModel.TotalString = AppResources.NDTotal;
+            ChangeArrowDirection();
         }
 
         public void OnDataLoad()
