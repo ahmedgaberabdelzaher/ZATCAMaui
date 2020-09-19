@@ -8,7 +8,7 @@ namespace EGAZT.Models.VatReviewModel
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
 
-       
+
 
         public class Metadata2
         {
@@ -42,7 +42,7 @@ namespace EGAZT.Models.VatReviewModel
             public string type { get; set; }
         }
 
-       
+
 
         public class D
         {
@@ -72,12 +72,12 @@ namespace EGAZT.Models.VatReviewModel
 
     }
 
- 
+
     public class VATObjectionEnableSubmitModel
     {
         public D d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-       
+
 
         public class D
         {
@@ -93,7 +93,7 @@ namespace EGAZT.Models.VatReviewModel
 
     }
 
-     public  class VATObjectionFormModel
+    public class VATObjectionFormModel
     {
         public class VATReviewsReturnModel
         {
@@ -133,8 +133,8 @@ namespace EGAZT.Models.VatReviewModel
         }
         public class ReviewReason
         {
-         public string ProcCD { get; set; }
-          public string Reasons { get; set; }
+            public string ProcCD { get; set; }
+            public string Reasons { get; set; }
 
             public List<SubReason> ListSubReason { get; set; }
         }
@@ -144,41 +144,41 @@ namespace EGAZT.Models.VatReviewModel
             public string SubReasons { get; set; }
         }
     }
-     
-     public class VATObjectionGenrateSadadModel
-     {
+
+    public class VATObjectionGenrateSadadModel
+    {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 
         public D d { get; set; }
 
-         public class D
-         {
-             public Metadata __metadata { get; set; }
-             public object BnkValto { get; set; }
-             public string Persl { get; set; }
-             public string Secamt { get; set; }
-             public bool Flag { get; set; }
-             public string Fbnum { get; set; }
-             public string FormGuid { get; set; }
-             public object BnkValfm { get; set; }
-             public string DataVersion { get; set; }
-             public DateTime Abrzu { get; set; }
-             public DateTime Abrzo { get; set; }
-             public string Disamt { get; set; }
-             public string Liaamt { get; set; }
-             public string Sectp { get; set; }
-             public string Bnkid { get; set; }
-             public string Bkext { get; set; }
-             public string Sopbel { get; set; }
-             public string Security { get; set; }
-             public string ChkCash { get; set; }
-             public string ChkBank { get; set; }
-             public string Perslt { get; set; }
-             public string Gpart { get; set; }
-             
-         }
+        public class D
+        {
+            public Metadata __metadata { get; set; }
+            public object BnkValto { get; set; }
+            public string Persl { get; set; }
+            public string Secamt { get; set; }
+            public bool Flag { get; set; }
+            public string Fbnum { get; set; }
+            public string FormGuid { get; set; }
+            public object BnkValfm { get; set; }
+            public string DataVersion { get; set; }
+            public DateTime Abrzu { get; set; }
+            public DateTime Abrzo { get; set; }
+            public string Disamt { get; set; }
+            public string Liaamt { get; set; }
+            public string Sectp { get; set; }
+            public string Bnkid { get; set; }
+            public string Bkext { get; set; }
+            public string Sopbel { get; set; }
+            public string Security { get; set; }
+            public string ChkCash { get; set; }
+            public string ChkBank { get; set; }
+            public string Perslt { get; set; }
+            public string Gpart { get; set; }
 
-     }
+        }
+
+    }
 
     public class Metadata
     {
@@ -192,7 +192,7 @@ namespace EGAZT.Models.VatReviewModel
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
         public D d { get; set; }
-       
+
 
         public class Metadata2
         {
@@ -315,11 +315,11 @@ namespace EGAZT.Models.VatReviewModel
 
     }
 
-     public class VATObjectionRejectedFormModel
+    public class VATObjectionRejectedFormModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
-      
+
 
         public class Metadata2
         {
@@ -381,23 +381,23 @@ namespace EGAZT.Models.VatReviewModel
             public RejectedFormSet RejectedFormSet { get; set; }
         }
     }
-     
-     public class VATObjectionSecurityAmountModel
-     {
-         public D d { get; set; }
-         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-       
 
-         public class D
-         {
-             public Metadata __metadata { get; set; }
-             public string Disamt { get; set; }
-             public string Clramt { get; set; }
-             public string Amttp { get; set; }
-             public string Liaamt { get; set; }
-             public string Secamt { get; set; }
-         }
-     }
+    public class VATObjectionSecurityAmountModel
+    {
+        public D d { get; set; }
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+
+
+        public class D
+        {
+            public Metadata __metadata { get; set; }
+            public string Disamt { get; set; }
+            public string Clramt { get; set; }
+            public string Amttp { get; set; }
+            public string Liaamt { get; set; }
+            public string Secamt { get; set; }
+        }
+    }
 
 
     public class ReasonSetResult
@@ -543,7 +543,7 @@ namespace EGAZT.Models.VatReviewModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
-      
+
 
         public class Metadata2
         {
@@ -552,7 +552,7 @@ namespace EGAZT.Models.VatReviewModel
             public string type { get; set; }
         }
 
-        
+
 
         public class ReasonSet
         {
@@ -566,9 +566,9 @@ namespace EGAZT.Models.VatReviewModel
             public string type { get; set; }
         }
 
-     
 
-        
+
+
 
         public class Metadata4
         {
@@ -577,7 +577,7 @@ namespace EGAZT.Models.VatReviewModel
             public string type { get; set; }
         }
 
-     
+
 
         public class Metadata5
         {
@@ -586,7 +586,7 @@ namespace EGAZT.Models.VatReviewModel
             public string type { get; set; }
         }
 
-       
+
 
         public class D
         {
@@ -649,13 +649,13 @@ namespace EGAZT.Models.VatReviewModel
         }
 
     }
-     
-     public class VATObjectionValidateTaxpayerModel
+
+    public class VATObjectionValidateTaxpayerModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
         public D d { get; set; }
-      
+
 
         public class D
         {
@@ -703,51 +703,51 @@ namespace EGAZT.Models.VatReviewModel
             public string BpkindDesc { get; set; }
             public string RegionDesc { get; set; }
         }
-        
+
     }
-     
-     public class VATObjectionViewbillModel
-     {
-         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-         public D d { get; set; }
-        
 
-         public class Result
-         {
-             public Metadata __metadata { get; set; }
-             public string Perslt { get; set; }
-             public string Opbel { get; set; }
-             public string Vtre2 { get; set; }
-             public string Hvorg { get; set; }
-             public string Tvorg { get; set; }
-             public DateTime Bldat { get; set; }
-             public DateTime Studt { get; set; }
-             public string Betrh { get; set; }
-             public string Persl { get; set; }
-             public DateTime Abrzu { get; set; }
-             public DateTime Abrzo { get; set; }
-             public string Desc { get; set; }
-         }
+    public class VATObjectionViewbillModel
+    {
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        public D d { get; set; }
 
-         public class D
-         {
-             public List<Result> results { get; set; }
-         }
-     }
 
-     public class VATObjectionFormViewBillModel
-     {
-         public string DocumentNumber { get; set; }
-         public string SadadNumber { get; set; }
-         public string DateofPenality { get; set; }
-         public string DescriptionOfPenality { get; set; }
-         public string Periodkey { get; set; }
-         public string StartDate { get; set; }
-         public string EndDate { get; set; }
-         public string DueDate { get; set; }
-         public string Amount { get; set; }
+        public class Result
+        {
+            public Metadata __metadata { get; set; }
+            public string Perslt { get; set; }
+            public string Opbel { get; set; }
+            public string Vtre2 { get; set; }
+            public string Hvorg { get; set; }
+            public string Tvorg { get; set; }
+            public DateTime Bldat { get; set; }
+            public DateTime Studt { get; set; }
+            public string Betrh { get; set; }
+            public string Persl { get; set; }
+            public DateTime Abrzu { get; set; }
+            public DateTime Abrzo { get; set; }
+            public string Desc { get; set; }
+        }
 
-     }
+        public class D
+        {
+            public List<Result> results { get; set; }
+        }
+    }
+
+    public class VATObjectionFormViewBillModel
+    {
+        public string DocumentNumber { get; set; }
+        public string SadadNumber { get; set; }
+        public string DateofPenality { get; set; }
+        public string DescriptionOfPenality { get; set; }
+        public string Periodkey { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string DueDate { get; set; }
+        public string Amount { get; set; }
+
+    }
 
     public partial class VatObjectionsRequest
     {
@@ -1451,6 +1451,326 @@ namespace EGAZT.Models.VatReviewModel
             }
         }
 
+        public class VATDREGViewApllicationViewModel
+        {
+            public AttdetSet AttachmentSet { get; set; }
+            public string RequestType { get; set; }
+            public string ReasonforDeRegistration { get; set; }
+            public string ContactPersonName { get; set; }
+            public string DeclarationId { get; set; }
+            public class AttdetSet
+            {
+
+                public List<Attachment> results { get; set; }
+
+            }
+
+            public DateTime StartDate { get; set; }
+            public DateTime EndDate { get; set; }
+            public DateTime Duedate { get; set; }
+            public DateTime SuspDtfrom { get; set; }
+            public DateTime SuspDtto { get; set; }
+            public DateTime NextDtfrom { get; set; }
+            public DateTime NextDtto { get; set; }
+
+            public class Result3
+            {
+
+                public Metadata4 __metadata { get; set; }
+                public int Srno { get; set; }
+                public DateTime Erfdt { get; set; }
+                public string SchGuid { get; set; }
+                public string Doguid { get; set; }
+                public string RetGuid { get; set; }
+                public string Seqno { get; set; }
+                public string Dotyp { get; set; }
+                public string AttBy { get; set; }
+                public string Filename { get; set; }
+                public string FileExtn { get; set; }
+                public string Mimetype { get; set; }
+                public string ByPusr { get; set; }
+                public string DataVersion { get; set; }
+                public string DocUrl { get; set; }
+                public string OutletRef { get; set; }
+                public string Enbedit { get; set; }
+                public string Enbdele { get; set; }
+                public string Visedit { get; set; }
+                public string Visdel { get; set; }
+                public string Erftm { get; set; }
+            }
+
+        }
+
+        public class VATObjectionDREGReasonModel
+        {
+            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+            public D d { get; set; }
+            public class Metadata
+            {
+                public string id { get; set; }
+                public string uri { get; set; }
+                public string type { get; set; }
+            }
+
+            public class Result
+            {
+                public Metadata __metadata { get; set; }
+                public string TxnTp { get; set; }
+                public string Lang { get; set; }
+                public string Reason { get; set; }
+                public string Rdesc { get; set; }
+            }
+
+            public class D
+            {
+                public List<Result> results { get; set; }
+            }
+
+
+        }
+
+        public class VATReviewDREGViewApplicationModel
+        {
+            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+            public D d { get; set; }
+            public class Metadata
+            {
+                public string id { get; set; }
+                public string uri { get; set; }
+                public string type { get; set; }
+            }
+
+            public class Metadata2
+            {
+                public string id { get; set; }
+                public string uri { get; set; }
+                public string type { get; set; }
+            }
+
+            public class Result
+            {
+                public Metadata2 __metadata { get; set; }
+                public string Mandt { get; set; }
+                public string FormGuid { get; set; }
+                public string DataVersion { get; set; }
+                public int LineNo { get; set; }
+                public string RankingOrder { get; set; }
+                public string AddrType { get; set; }
+                public string Srcidentify { get; set; }
+                public DateTime Begda { get; set; }
+                public DateTime Endda { get; set; }
+                public string Gpart { get; set; }
+                public string Street { get; set; }
+                public string HouseNum1 { get; set; }
+                public string HouseNum2 { get; set; }
+                public string Building { get; set; }
+                public string Floor { get; set; }
+                public string PostCode1 { get; set; }
+                public string City1 { get; set; }
+                public string City2 { get; set; }
+                public string Country { get; set; }
+                public string Region { get; set; }
+                public string RegionDesc { get; set; }
+            }
+
+            public class AddressSet
+            {
+                public List<Result> results { get; set; }
+            }
+
+            public class Metadata3
+            {
+                public string id { get; set; }
+                public string uri { get; set; }
+                public string type { get; set; }
+            }
+
+            public class Result2
+            {
+                public Metadata3 __metadata { get; set; }
+                public string Notenoz { get; set; }
+                public string Refnamez { get; set; }
+                public string XInvoicez { get; set; }
+                public string XObsoletez { get; set; }
+                public string Rcodez { get; set; }
+                public string Erfusrz { get; set; }
+                public DateTime Erfdtz { get; set; }
+                public string Erftmz { get; set; }
+                public string AttByz { get; set; }
+                public string ByPusrz { get; set; }
+                public string ByGpartz { get; set; }
+                public string DataVersionz { get; set; }
+                public string Namez { get; set; }
+                public string Noteno { get; set; }
+                public int Lineno { get; set; }
+                public int ElemNo { get; set; }
+                public string Tdformat { get; set; }
+                public string Tdline { get; set; }
+                public string Sect { get; set; }
+                public string Strdt { get; set; }
+                public string Strtime { get; set; }
+                public string Strline { get; set; }
+            }
+
+            public class NotesSet
+            {
+                public List<Result2> results { get; set; }
+            }
+
+            public class Metadata4
+            {
+                public string id { get; set; }
+                public string uri { get; set; }
+                public string type { get; set; }
+            }
+
+            public class Result3
+            {
+                public Metadata4 __metadata { get; set; }
+                public int Srno { get; set; }
+                public DateTime Erfdt { get; set; }
+                public string SchGuid { get; set; }
+                public string Doguid { get; set; }
+                public string RetGuid { get; set; }
+                public string Seqno { get; set; }
+                public string Dotyp { get; set; }
+                public string AttBy { get; set; }
+                public string Filename { get; set; }
+                public string FileExtn { get; set; }
+                public string Mimetype { get; set; }
+                public string ByPusr { get; set; }
+                public string DataVersion { get; set; }
+                public string DocUrl { get; set; }
+                public string OutletRef { get; set; }
+                public string Enbedit { get; set; }
+                public string Enbdele { get; set; }
+                public string Visedit { get; set; }
+                public string Visdel { get; set; }
+                public string Erftm { get; set; }
+            }
+
+            public class AttdetSet
+            {
+                public List<Attachment> results { get; set; }
+            }
+
+            public class QuesListSet
+            {
+                public List<object> results { get; set; }
+            }
+
+            public class D
+            {
+                public Metadata __metadata { get; set; }
+                public bool CaseFg { get; set; }
+                public string CaseReason { get; set; }
+                public bool OpenCaseFg { get; set; }
+                public bool ReviewFg { get; set; }
+                public bool Agreeflg { get; set; }
+                public bool Auditatt { get; set; }
+                public bool Certatt { get; set; }
+                public bool Chkdt { get; set; }
+                public bool Contractatt { get; set; }
+                public bool Declareflg { get; set; }
+                public bool Declareflg2 { get; set; }
+                public bool Incomatt { get; set; }
+                public bool Incstmtatt { get; set; }
+                public bool Insatt { get; set; }
+                public bool Legatt { get; set; }
+                public bool Otheratt { get; set; }
+                public DateTime Dregdt { get; set; }
+                public object Duedate { get; set; }
+                public object SuspDtfrom { get; set; }
+                public object SuspDtto { get; set; }
+                public object NextDtfrom { get; set; }
+                public object NextDtto { get; set; }
+                public DateTime Declaredt { get; set; }
+                public object EndDate { get; set; }
+                public object Lasticrdt { get; set; }
+                public object StartDate { get; set; }
+                public DateTime Taxdt { get; set; }
+                public string Actnm { get; set; }
+                public string CaseId { get; set; }
+                public string SuspPeriod { get; set; }
+                public string Atype { get; set; }
+                public string NextPeriod { get; set; }
+                public string Branchx { get; set; }
+                public string Caltp { get; set; }
+                public string Contactnm { get; set; }
+                public string Crno { get; set; }
+                public string DataVersion { get; set; }
+                public string Designation { get; set; }
+                public string Euser { get; set; }
+                public string Fbnumx { get; set; }
+                public string Fbstax { get; set; }
+                public string Fbustx { get; set; }
+                public string FormGuid { get; set; }
+                public string Formprocx { get; set; }
+                public string Forwardx { get; set; }
+                public string FullName { get; set; }
+                public string Gpart { get; set; }
+                public string Gpartx { get; set; }
+                public string Idnumbr { get; set; }
+                public string Langx { get; set; }
+                public string Mandt { get; set; }
+                public string Mandtx { get; set; }
+                public string NameFirst { get; set; }
+                public string NameLast { get; set; }
+                public string NameOrg1 { get; set; }
+                public string NameOrg2 { get; set; }
+                public string Officerx { get; set; }
+                public string Operationx { get; set; }
+                public string Other { get; set; }
+                public string PortalUsrx { get; set; }
+                public string Reason { get; set; }
+                public string Reqtp { get; set; }
+                public string ReturnIdx { get; set; }
+                public string Srcidentifyx { get; set; }
+                public string Statusx { get; set; }
+                public string StepNumber { get; set; }
+                public string StepNumberx { get; set; }
+                public string TxnTpx { get; set; }
+                public string Type { get; set; }
+                public string UserTypx { get; set; }
+                public AddressSet AddressSet { get; set; }
+                public NotesSet NotesSet { get; set; }
+                public AttdetSet AttdetSet { get; set; }
+                public QuesListSet QuesListSet { get; set; }
+            }
+
+        }
+
+        public class VATReviewDREGSuspensionListModel
+        {
+            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+            public D d { get; set; }
+            public class Metadata
+            {
+                public string id { get; set; }
+                public string uri { get; set; }
+                public string type { get; set; }
+            }
+
+            public class Result
+            {
+                public Metadata __metadata { get; set; }
+                public string Gpart { get; set; }
+                public DateTime StartDate { get; set; }
+                public DateTime EndDate { get; set; }
+                public DateTime Duedate { get; set; }
+                public DateTime SuspDtfrom { get; set; }
+                public DateTime SuspDtto { get; set; }
+                public DateTime NextDtfrom { get; set; }
+                public DateTime NextDtto { get; set; }
+            }
+
+            public class D
+            {
+                public List<Result> results { get; set; }
+            }
+
         }
 
     }
+
+}

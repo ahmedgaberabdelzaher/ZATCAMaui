@@ -22,6 +22,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
+using static EGAZT.Models.ChageFillingPeriodModel.VATChangeFillingPeriodRequestModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -2013,7 +2014,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.Fbnumz = ChangeFillingResponse.d.Fbnumz;
                 request.d.Iagrfg = "1";
                 request.d.Reqfg = "1";
-                request.d.StepNumber = ChangeFillingResponse.d.StepNumber;
+                request.d.StepNumber = "03";
                 request.d.Begda = ChangeFillingResponse.d.Begda;
                 request.d.PortalUsrz = ChangeFillingResponse.d.PortalUsrz;
                 request.d.Langz = ChangeFillingResponse.d.Langz;
@@ -2021,7 +2022,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 request.d.Operationz = "01";
                 request.d.Fbtyp = ChangeFillingResponse.d.Fbtyp;
-                request.d.StepNumberz = ChangeFillingResponse.d.StepNumberz;
+                request.d.StepNumberz = "03";
                 request.d.Fbust = ChangeFillingResponse.d.Fbust;
 
 
@@ -2055,10 +2056,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.UI_BTNSet = ChangeFillingResponse.d.UI_BTNSet;
                 request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet.results;
                 request.d.ATTACHSet = ChangeFillingResponse.d.ATTACHSet.results;
-                request.d.ATT_TYPSet = ChangeFillingResponse.d.ATT_TYPSet.results;
                 request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
 
-       
+
+                if (IsAttachmentsEnabled) {
+
+                    var attTypeSet = new AttTypSetList();
+                    attTypeSet.__metadata = new Models.ChageFillingPeriodModel.Metadata();
+                    attTypeSet.__metadata.id = ChangeFillingResponse.d.__metadata.id;
+                    attTypeSet.__metadata.type = ChangeFillingResponse.d.__metadata.type;
+                    attTypeSet.__metadata.uri = ChangeFillingResponse.d.__metadata.uri;
+                    attTypeSet.DmsTp = "ZTPA";
+                    attTypeSet.Txt50 = "Previous 2 Years Monthly Returns";
+
+                    var attTypeSet1 = new AttTypSetList();
+                    // attTypeSet1.__metadata = ChangeFillingResponse.d.__metadata;
+                    attTypeSet1.__metadata = new Models.ChageFillingPeriodModel.Metadata();
+                    attTypeSet1.__metadata.id = ChangeFillingResponse.d.__metadata.id;
+                    attTypeSet1.__metadata.type = ChangeFillingResponse.d.__metadata.type;
+                    attTypeSet1.__metadata.uri = ChangeFillingResponse.d.__metadata.uri;
+                    attTypeSet1.DmsTp = "ZTPB";
+                    attTypeSet1.Txt50 = "Previous 12 Months Taxable Revenue";
+
+                    var attSet = new List<AttTypSetList>();
+                    attSet.Add(attTypeSet);
+                    attSet.Add(attTypeSet1);
+
+
+                    request.d.ATT_TYPSet = attSet;
+
+                }
+                else {
+
+                    request.d.ATT_TYPSet = ChangeFillingResponse.d.ATT_TYPSet.results;
+
+                }
+
 
 
 

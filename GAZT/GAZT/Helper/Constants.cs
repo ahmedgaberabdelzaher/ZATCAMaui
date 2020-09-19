@@ -330,8 +330,12 @@ namespace GAZT.Helper
         public static string GetVATReviewRequestTPFVOn1stAPISuccessURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TPFV_UH_SRV/UI_HDRSet(";
         public static string GetVATReviewRequestVTGRURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_GRP_REG_SRV/VRNHSet(";
         public static string GetVATReviewRequestVTGROn1stAPISuccessURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VGR_UH_SRV/VR_UI_HDRSet(";
+        public static string GetVATObjViewApplicationDREGURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet(";
 
+        public static string GetVATObjViewApplicationDREGReasonSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetReasonSet?$filter=TxnTp eq 'VT_DREG' and Lang eq 'E'&$format=json";
+        public static string GetVATObjViewApplicationDREGSuspensionReasonSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetReasonSet?$filter=TxnTp eq 'VT_SUSP' and Lang eq 'E'&$format=json";
 
+        public static string GetVATObjSuspensionDetailSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=";
 
         #endregion
 

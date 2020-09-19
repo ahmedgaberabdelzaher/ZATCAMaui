@@ -1453,31 +1453,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
 
         }
+
         public void BindZakatSummaryData(SummaryDisplayModel zakatRequestDisplayModel, ZakatInstalmentInvListModel invoiceResult)
         {
 
-            var summarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
+
+
+            SummarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
+
             foreach (var bill in invoiceResult.d.results)
             {
 
+
+
+
                 string submitDate = "";
 
-                if (bill.DueDt != null)
 
+
+                if (bill.DueDt != null)
                 {
                     DateTime dateStart = new DateTime();
                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                     string apiDate = @"""" + bill.DueDt + @"""";
                     dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
+
+
                     GregorianCalendar hjCalendar = new GregorianCalendar();
                     int year = hjCalendar.GetYear(dateStart);
                     int month = hjCalendar.GetMonth(dateStart);
                     int day = hjCalendar.GetDayOfMonth(dateStart);
 
+
+
                     string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
 
+
+
                     bill.DueDt = dateStr;
+
+
 
                     string dt1 = string.Empty;
                     string[] dts = null;
@@ -1486,51 +1502,68 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     submitDate = dt1;
                 }
 
-                summarySelectedBillsList.Add(new ZakatSelectBillModel()
+
+
+                SummarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
-                    billNumber = AppResources.Bill + (summarySelectedBillsList.Count + 1).ToString("00"),
+                    billNumber = AppResources.Bill + (SummarySelectedBillsList.Count + 1).ToString("00"),
                     amount = bill.DueAmt,
                     saadNumber = bill.InvNo,
                     taxPeriod = bill.DueDt,
                     isSelected = false,
                     billType = bill.Abtyp
 
+
+
                 });
             }
-            SummarySelectedBillsList = summarySelectedBillsList;
+            // SummarySelectedBillsList = summarySelectedBillsList;
 
 
-            var attachments = new ObservableCollection<SummaryDisplayModel.Result>();
+
+
+            Attachments = new ObservableCollection<SummaryDisplayModel.Result>();
+
+
 
 
             for (int i = 0; i < zakatRequestDisplayModel.d.AttachSet.results.Count; i++)
             {
-                attachments.Add(zakatRequestDisplayModel.d.AttachSet.results[i]);
+                Attachments.Add(zakatRequestDisplayModel.d.AttachSet.results[i]);
             }
 
-            Attachments = attachments;
+
+
+            // Attachments = attachments;
+
+
 
             if (Attachments != null && Attachments.Count > 0)
             {
                 IsSummaryAttachmentsVisible = true;
             }
 
+
+
             TotalAmount = string.Format("{0:N2}", zakatRequestDisplayModel.d.TotAmt) + " SAR";
             InstalmentAmount = string.Format("{0:N2}", zakatRequestDisplayModel.d.DpAmt) + " SAR";
             SummaryNoOfInstalments = zakatRequestDisplayModel.d.PlanDur;
-            if (zakatRequestDisplayModel.d.PymntFreq == "01")
+
+
+
+            if (zakatRequestDisplayModel.d.PymntFreq != null && zakatRequestDisplayModel.d.PymntFreq == "01")
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
             }
-            else if (zakatRequestDisplayModel.d.PymntFreq == "02")
+            else if (zakatRequestDisplayModel.d.PymntFreq != null && zakatRequestDisplayModel.d.PymntFreq == "02")
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetQuarterly;
             }
-            else if (zakatRequestDisplayModel.d.PymntFreq == "03")
+            else if (zakatRequestDisplayModel.d.PymntFreq != null && zakatRequestDisplayModel.d.PymntFreq == "03")
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetHalfYearly;
             }
-            else if (zakatRequestDisplayModel.d.PymntFreq == "04")
+            else if (zakatRequestDisplayModel.d.PymntFreq != null && zakatRequestDisplayModel.d.PymntFreq == "04")
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetYearly;
             }
@@ -1538,6 +1571,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
             }
+
+
+
         }
 
         #endregion

@@ -416,9 +416,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
                                 else
                                 {
-
-                                }
-                                {
                                     await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
                                     await LogoffUser();
                                 }
