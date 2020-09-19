@@ -7590,56 +7590,74 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="CRContactPersonFullName" xml:space="preserve">
     <value>Full Name</value>
   </data>
-    <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
-  <value>The amount requested to be released must be equal to or less than the total contract</value>
-</data>
-    <data name="VRTIDInstruction1" xml:space="preserve">
-  <value>Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields have been completed.</value>
-</data>
+  <data name="CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract" xml:space="preserve">
+    <value>The amount requested to be released must be equal to or less than the total contract</value>
+  </data>
+  <data name="VRTIDInstruction1" xml:space="preserve">
+    <value>Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields have been completed.</value>
+  </data>
   <data name="VRTIDInstruction2" xml:space="preserve">
-  <value>Please note that GAZT reserves the right to validate the implied split between taxable and exempt purchases and will only approve the input tax deduction method.</value>
-</data>
+    <value>Please note that GAZT reserves the right to validate the implied split between taxable and exempt purchases and will only approve the input tax deduction method.</value>
+  </data>
   <data name="VRTIDInstruction3" xml:space="preserve">
-  <value>Please refer to the FAQ section before filling out the application form.</value>
-</data>
+    <value>Please refer to the FAQ section before filling out the application form.</value>
+  </data>
   <data name="VRTIDEffectiveDateFrom" xml:space="preserve">
-  <value>Effective Date From</value>
-</data>
+    <value>Effective Date From</value>
+  </data>
   <data name="VRTIDEffectiveDateTo" xml:space="preserve">
-  <value>Effective Date To</value>
-</data>
+    <value>Effective Date To</value>
+  </data>
   <data name="VRTIDProxyforTaxablePurchases" xml:space="preserve">
-  <value>Proxy for Taxable Purchases</value>
-</data>
+    <value>Proxy for Taxable Purchases</value>
+  </data>
   <data name="VRTIDProxyforExemptPurchases" xml:space="preserve">
-  <value>Proxy for Exempt Purchases</value>
-</data>
+    <value>Proxy for Exempt Purchases</value>
+  </data>
   <data name="VRTIDTaxablePurchases" xml:space="preserve">
-  <value>Taxable Purchases</value>
-</data>
+    <value>Taxable Purchases</value>
+  </data>
   <data name="VRTIDExemptPurchases" xml:space="preserve">
-  <value>Exempt Purchases</value>
-</data>
-    <data name="VRRequestDetails" xml:space="preserve">
-  <value>Request Details</value>
-</data>
+    <value>Exempt Purchases</value>
+  </data>
+  <data name="VRRequestDetails" xml:space="preserve">
+    <value>Request Details</value>
+  </data>
   <data name="VREffectiveDateforinputtaxdeductionmethod" xml:space="preserve">
-  <value>Effective Date for input tax deduction method</value>
-</data>
+    <value>Effective Date for input tax deduction method</value>
+  </data>
   <data name="VRCurrentinputtaxdeductionmethod" xml:space="preserve">
-  <value>Current input tax deduction method for appropriation of non-attributable input tax</value>
-</data>
+    <value>Current input tax deduction method for appropriation of non-attributable input tax</value>
+  </data>
   <data name="VRProposedinputtaxdeductionmethod" xml:space="preserve">
-  <value>Proposed input tax deduction method for appropriation of non-attributable input tax</value>
-</data>
-     <data name="VATReviewAttachmentLimitReached" xml:space="preserve">
+    <value>Proposed input tax deduction method for appropriation of non-attributable input tax</value>
+  </data>
+  <data name="VATReviewAttachmentLimitReached" xml:space="preserve">
     <value>Maximum no. of allowed attachments are 1.</value>
   </data>
-    <data name="VATInstalmentsAttachmentTitle" xml:space="preserve">
+  <data name="VATInstalmentsAttachmentTitle" xml:space="preserve">
     <value>1. File size should be less than 5 MB.
 2. Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls.</value>
   </data>
-    <data name="ZakatInstalmentPlanSubmittedPopUpMsg" xml:space="preserve">
+  <data name="ZakatInstalmentPlanSubmittedPopUpMsg" xml:space="preserve">
     <value>To be able to proceed in the instalments plan request, you have to pay the down payment amount</value>
+  </data>
+  <data name="NDRequestforRuling" xml:space="preserve">
+    <value>Request for Ruling</value>
+  </data>
+  <data name="NDVATRegistrationVerification" xml:space="preserve">
+    <value>VAT Registration Verification</value>
+  </data>
+  <data name="NDVATServices" xml:space="preserve">
+    <value>VAT Services</value>
+  </data>
+  <data name="NDVATTaxCertificate" xml:space="preserve">
+    <value>VAT Tax Certificate</value>
+  </data>
+  <data name="NDZakatServices" xml:space="preserve">
+    <value>Zakat Services</value>
+  </data>
+  <data name="NDZakatTaxCertificate" xml:space="preserve">
+    <value>Zakat Tax Certificate</value>
   </data>
 </root>

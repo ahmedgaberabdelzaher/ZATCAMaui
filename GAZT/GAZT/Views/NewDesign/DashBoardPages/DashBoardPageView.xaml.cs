@@ -85,6 +85,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
             viewModel.UnPaidString = AppResources.UnPaid;
             viewModel.TotalString = AppResources.NDTotal;
+            ChangeArrowDirection();
         }
 
         public void OnDataLoad()
@@ -238,19 +239,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
-            { 
-            viewModel.MenuViewVisible = true;
-            viewModel.HomeViewVisible = false;
-            viewModel.HomeIndicatorColor = Color.White;
+            {
+//                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
+                viewModel.MenuViewVisible = true;
+                viewModel.HomeViewVisible = false;
+                viewModel.HomeIndicatorColor = Color.White;
 
-            viewModel.MenuIndicatorColor = Color.DarkGreen;
-            viewModel.StackMenuColor = Color.Transparent;
-            viewModel.TabbarColor = Color.Transparent;
-                //HomeView.IsVisible = false;
-                //MenuView.IsVisible = true;
-                //HomeIndicator.BackgroundColor = Color.White;
-                //MenuIndicator.BackgroundColor = Color.DarkGreen;
-                //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+                viewModel.MenuIndicatorColor = Color.DarkGreen;
+                viewModel.StackMenuColor = Color.Transparent;
+                viewModel.TabbarColor = Color.Transparent;
+
             }
             else
             {

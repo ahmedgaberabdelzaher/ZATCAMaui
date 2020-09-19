@@ -167,6 +167,7 @@ using EGAZT.Views.NewDesign.ZakatObjection;
 using EGAZT.Views.NewDesign.VATRegistrationDetails;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.VATReview;
+using EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 
 namespace EGAZT
 {
@@ -230,6 +231,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<SupportPageViewModel>();
             SimpleIoc.Default.Register<NotesDescriptionPopUpPageViewModel>();
             SimpleIoc.Default.Register<NotesPopUpPageViewModel>();
+            SimpleIoc.Default.Register<TaxManagementPageViewModel>();
             #endregion
 
             #region NewDesignRelease2IOC
@@ -370,6 +372,20 @@ namespace EGAZT
         }
 
         #region NewDesignViewModel
+        public TaxManagementPageViewModel TaxManagementPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxManagementPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public NotesPopUpPageViewModel NotesPopUpPageView
         {
             get
@@ -2277,6 +2293,7 @@ namespace EGAZT
             navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
             navigationService.Configure(App.NotesPopUpPageView, typeof(NotesPopUpPageView));
             navigationService.Configure(App.NotesDescriptionPopUpPageView, typeof(NotesDescriptionPopUpPageView));
+            navigationService.Configure(App.TaxManagementPageView, typeof(TaxManagementPageView));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
             navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));

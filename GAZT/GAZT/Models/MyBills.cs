@@ -68,11 +68,21 @@ namespace EGAZT.Models
 
                     string[] partsofperid = _Period.Split('-');
                     {
-                            PeriodPart1 = partsofperid[1];
-                            PeriodPart2 = partsofperid[0];
-                     
-                      
-                        
+                        //if (!App.IsArabic)
+                        //{
+                        //    PeriodPart1 = partsofperid[0];
+                        //    PeriodPart2 = partsofperid[1];
+                        //}
+                        //else
+                        //{
+                        //    PeriodPart1 = partsofperid[1];
+                        //    PeriodPart2 = partsofperid[0];
+
+                        //}
+                        PeriodPart1 = partsofperid[0];
+                         PeriodPart2 = partsofperid[1];
+
+
                         if (CalTyp != null)
                         {
                             
