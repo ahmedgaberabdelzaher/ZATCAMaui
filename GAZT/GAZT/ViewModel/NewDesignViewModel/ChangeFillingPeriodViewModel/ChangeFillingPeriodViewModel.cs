@@ -2071,15 +2071,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                     var attTypeSet1 = new AttTypSetList();
                     // attTypeSet1.__metadata = ChangeFillingResponse.d.__metadata;
-                    attTypeSet.__metadata = new Models.ChageFillingPeriodModel.Metadata();
+                    attTypeSet1.__metadata = new Models.ChageFillingPeriodModel.Metadata();
                     attTypeSet1.__metadata.id = ChangeFillingResponse.d.__metadata.id;
                     attTypeSet1.__metadata.type = ChangeFillingResponse.d.__metadata.type;
                     attTypeSet1.__metadata.uri = ChangeFillingResponse.d.__metadata.uri;
                     attTypeSet1.DmsTp = "ZTPB";
                     attTypeSet1.Txt50 = "Previous 12 Months Taxable Revenue";
-
-
-
 
                     var attSet = new List<AttTypSetList>();
                     attSet.Add(attTypeSet);
