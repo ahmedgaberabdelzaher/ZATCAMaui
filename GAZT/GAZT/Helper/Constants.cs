@@ -293,6 +293,8 @@ namespace GAZT.Helper
         public static string VATChangeFillingListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";
         public static string VATChangeFillingSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV/UI_HDRSet(";
         public static string VATChangeFillingSummaryInputsURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+        public static string VATChangeFillingPostATTTYSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV/ATT_TYPSet(0)";
+
         #endregion
 
         #region TIN Deregistration
