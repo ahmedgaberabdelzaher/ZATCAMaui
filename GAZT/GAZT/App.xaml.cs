@@ -101,6 +101,7 @@ namespace EGAZT
         public static string SupportPageView = "SupportPageView";
         public static string NotesDescriptionPopUpPageView = "NotesDescriptionPopUpPageView";
         public static string NotesPopUpPageView = "NotesPopUpPageView";
+        public static string TaxManagementPageView = "TaxManagementPageView";
         // * End
 
         #endregion

@@ -238,7 +238,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
-            { 
+            {
+                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
             //viewModel.MenuViewVisible = true;
             //viewModel.HomeViewVisible = false;
             //viewModel.HomeIndicatorColor = Color.White;
