@@ -25,6 +25,9 @@
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="border:SfBorder">
+                <Setter Property="HasShadow" Value="False"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -37,12 +40,12 @@
             <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
                 <ScrollView>
                     <StackLayout>
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxManagement}" Style="{StaticResource SectionTitleBlack}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatServices}" Style="{StaticResource SectionTitleBlack}"/>
                         <StackLayout Spacing="16">                        
                         <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                 <Image Source="faQs.png"/>
-                                <custom:CustomLabel Text="Zakat Tax Certificate" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatTaxCertificate}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                 <!--<Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>-->
                             </StackLayout>
                             <border:SfBorder.GestureRecognizers>
@@ -62,7 +65,7 @@
                         </border:SfBorder>
                         </StackLayout>
                         
-                        <custom:CustomLabel Padding="0,8,0,0" Text="{x:Static ResourceManager:AppResources.NDTaxManagement}" Style="{StaticResource SectionTitleBlack}"/>
+                        <custom:CustomLabel Padding="0,8,0,0" Text="{x:Static ResourceManager:AppResources.NDVATServices}" Style="{StaticResource SectionTitleBlack}"/>
                         <StackLayout Spacing="16">
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
@@ -78,7 +81,7 @@
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="faQs.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ContractRelease}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                     <!--<Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>-->
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>
@@ -89,7 +92,7 @@
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="faQs.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ContractRelease}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATTaxCertificate}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                     <!--<Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>-->
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>
@@ -100,7 +103,7 @@
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="faQs.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ContractRelease}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRequestforRuling}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                     <!--<Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>-->
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>
