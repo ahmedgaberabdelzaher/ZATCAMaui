@@ -5541,8 +5541,8 @@
     <value>الرجاء إدخال رمز التحقق المرسل الى بريدك الإلكتروني</value>
   </data>
   <data name="TPOldAndNewPasswordSame" xml:space="preserve">
-    <value>ر الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</value>
-    <comment>ر الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</comment>
+    <value>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</value>
+    <comment>كلمة المرور الجديدة يجب أن لاتتطابق مع كلمة المرور القديمة</comment>
   </data>
   <data name="TPOldNewPasswordEmpty" xml:space="preserve">
     <value>الرجاء ادخال كلمة المرور القديمة والجديدة</value>
