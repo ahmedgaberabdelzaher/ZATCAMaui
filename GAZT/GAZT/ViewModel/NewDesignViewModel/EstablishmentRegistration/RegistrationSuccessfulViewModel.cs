@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             Fbnumx = taxPayerDetails?.Fbnumx;
             Name = string.Format("{0} {1}", taxPayerDetails?.NameFirst, taxPayerDetails?.NameLast);
-            DateText = DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo(App.IsArabic ? "ar-sa" : "en-US"));
+            DateText = DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
         }
     }
 }

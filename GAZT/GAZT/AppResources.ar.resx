@@ -6188,6 +6188,15 @@
   <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
     <value>فرع الهيئة الرئيسي؟</value>
   </data>
+    <data name="ESTNationalitySAUDI" xml:space="preserve">
+    <value>سعودي</value>
+</data>
+    <data name="ESTNationalityGCC" xml:space="preserve">
+    <value>خليجي</value>
+</data>
+    <data name="ESTNationalityFOREIGN" xml:space="preserve">
+    <value>أجنبي</value>
+</data>
   <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
     <value>نوع الكيان ؟</value>
   </data>

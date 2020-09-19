@@ -11124,6 +11124,24 @@ namespace EGAZT {
             }
         }
         
+        public static string ESTNationalitySAUDI {
+            get {
+                return ResourceManager.GetString("ESTNationalitySAUDI", resourceCulture);
+            }
+        }
+        
+        public static string ESTNationalityGCC {
+            get {
+                return ResourceManager.GetString("ESTNationalityGCC", resourceCulture);
+            }
+        }
+        
+        public static string ESTNationalityFOREIGN {
+            get {
+                return ResourceManager.GetString("ESTNationalityFOREIGN", resourceCulture);
+            }
+        }
+        
         public static string ESTEntityTypeQuestionLabel {
             get {
                 return ResourceManager.GetString("ESTEntityTypeQuestionLabel", resourceCulture);

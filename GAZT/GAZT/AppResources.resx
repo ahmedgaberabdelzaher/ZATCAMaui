@@ -6315,6 +6315,15 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
     <value>What is your reporting branch?</value>
   </data>
+<data name="ESTNationalitySAUDI" xml:space="preserve">
+    <value>Saudi</value>
+</data>
+    <data name="ESTNationalityGCC" xml:space="preserve">
+    <value>GCC</value>
+</data>
+    <data name="ESTNationalityFOREIGN" xml:space="preserve">
+    <value>Foreign</value>
+</data>
   <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
     <value>What is your entity type (from signup)?</value>
   </data>
