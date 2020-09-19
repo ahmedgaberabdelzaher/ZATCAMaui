@@ -239,18 +239,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
             { 
-            viewModel.MenuViewVisible = true;
-            viewModel.HomeViewVisible = false;
-            viewModel.HomeIndicatorColor = Color.White;
+            //viewModel.MenuViewVisible = true;
+            //viewModel.HomeViewVisible = false;
+            //viewModel.HomeIndicatorColor = Color.White;
 
-            viewModel.MenuIndicatorColor = Color.DarkGreen;
-            viewModel.StackMenuColor = Color.Transparent;
-            viewModel.TabbarColor = Color.Transparent;
-                //HomeView.IsVisible = false;
-                //MenuView.IsVisible = true;
-                //HomeIndicator.BackgroundColor = Color.White;
-                //MenuIndicator.BackgroundColor = Color.DarkGreen;
-                //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+            //viewModel.MenuIndicatorColor = Color.DarkGreen;
+            //viewModel.StackMenuColor = Color.Transparent;
+            //viewModel.TabbarColor = Color.Transparent;
+                
             }
             else
             {
