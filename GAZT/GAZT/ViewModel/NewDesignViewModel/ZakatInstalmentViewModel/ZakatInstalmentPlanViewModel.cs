@@ -1926,10 +1926,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     EnableAgreementView();
                     break;
                 case (int)PagesEnum.ZakatAttachmentsView:
-                    EnableInstalmentsScheduleView();
+                    
+                    if (ZakatInstalments.d.AccMethod == "A")
+                    {
+                        
+                        EnableInstalmentsScheduleView();
+
+                    }
+                    else
+                    {
+                        EnableAgreementView();
+                    }
                     break;
                 case (int)PagesEnum.InstalmentPlanAgreementsVisible:
                     EnableDisplayInstalmentsView();
+
                     //EnableAgreementView();
                     break;
                 case (int)PagesEnum.ZakatEnableStatementsView:
@@ -2137,8 +2148,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatInstalments.d.retmsgSet = new EGAZT.Models.ZakatInstalationModels.RetmsgSet();
                 ZakatInstalments.d.FnDtlSet = new EGAZT.Models.ZakatInstalationModels.FnDtlSet();
                 ZakatInstalments.d.AttachSet = new EGAZT.Models.ZakatInstalationModels.AttachSet();
-               
 
+                if (IsInitialDraft || App.selectedZakatItem != "")
+                {
+
+                }
+                else
+                {
+                    ZakatInstalments.d.Fbnum = "";
+                    ZakatInstalments.d.Status = "E0001";
+                }
                 ZakatInstalments = await SubmitClicked();
 
                 if (ZakatInstalments.d != null)
@@ -2716,9 +2735,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public async Task EnableSucessScreenAsync()
         {
+
             Preferences.Set("IsFromRevok", false);
             Preferences.Set("RevokeRef", "");
-
+            await App.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + ZakatInstalments.d.DpAmt + " " + AppResources.FORM5SAR, AppResources.CRContinue);
             await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
 
         }
@@ -2991,7 +3011,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             try
             {
 
-                EnableInstalmentsScheduleView();
+                if(ZakatInstalments.d.AccMethod == "A") {
+
+                    EnableInstalmentsScheduleView();
+                }
+                else {
+                   
+                    EnableAttachmentsView();
+
+                }
+
+
+
                 // EnableSummaryView();
                 //PopulateSummaryReasonData();
             }
@@ -3596,6 +3627,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     {
 
                         ZakatReferanceNumber = ZakatInstalments.d.Fbnum;
+                        
 
                         EnableSucessScreenAsync();
                     }
@@ -4320,7 +4352,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.DecCb = ZakatInstalments.d.DecCb;
             _postData.Waers = ZakatInstalments.d.Waers;
             _postData.AccMethod = ZakatInstalments.d.AccMethod;
-            _postData.Sopbel = ZakatInstalments.d.Sopbel;
+            _postData.Sopbel = "";
             _postData.OffAmt = ZakatInstalments.d.OffAmt;
             _postData.PaymtDt = ZakatInstalments.d.PaymtDt;
             _postData.PenlAmt = ZakatInstalments.d.PenlAmt;
@@ -4394,6 +4426,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             else
             {
                 _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
+
+            }
+
+
+            for (int i = 0; i < selectedList.Count; i++)
+            {
+                var dataItem = selectedList[i] as ZakatInvoicesResult;
+
+                
+                int index = ZakatInvoicesList.ToList().FindIndex(item => item.InvNo == dataItem.InvNo);
+
+              
+                ZakatInvoicesList[index].InvCb = "X";
+
 
             }
 

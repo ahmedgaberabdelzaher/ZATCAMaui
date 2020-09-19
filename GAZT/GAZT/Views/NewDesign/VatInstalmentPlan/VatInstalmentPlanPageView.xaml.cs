@@ -333,10 +333,14 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     if (arg != null)
                     {
 
-                        //viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
+
+
                         viewModel.PopulateAttachments(arg.results);
-
-
+                        if (viewModel.AttachmentsListViewData != null)
+                        {
+                            attachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;
+                            SummaryattachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;
+                        }
                     }
                 });
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "TermsContinueSecond", (sender, arg) =>
@@ -363,6 +367,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                         //viewModel.EnableSucessScreenAsync();
                     }
                 });
+
+
               
 
 

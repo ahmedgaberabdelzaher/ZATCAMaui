@@ -1569,6 +1569,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 });
 
 
+                
+                foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
+                {
+                    int index = EffectiveDateResponse.d.EffDateSet.results.ToList().FindIndex(item => date.Txt50 == EffectiveDatePicked);
+
+                    if(index != -1)
+                    {
+                        ChangeFillingResponse.d.Persl = EffectiveDateResponse.d.EffDateSet.results[index].Persl;
+
+                    }
+                }
+
 
                 request = BuildRequestObject();
 
@@ -2046,6 +2058,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.ATT_TYPSet = ChangeFillingResponse.d.ATT_TYPSet.results;
                 request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
 
+       
+
+
+
 
                 var todayDate = DateTime.Now.ToString();
 
@@ -2065,7 +2081,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.DecidTy = IDTypeDictionary[IDType];
                 request.d.Decname = ContactPersonName;
                 request.d.Decdesignation = "";
-                request.d.Decfg = ChangeFillingResponse.d.Decfg;
+                request.d.Decfg = "1";
                 request.d.DecidNo = IDNumber;
                 request.d.TransType = "CRE_TPCV";
                 request.d.UserTypz = "TP";

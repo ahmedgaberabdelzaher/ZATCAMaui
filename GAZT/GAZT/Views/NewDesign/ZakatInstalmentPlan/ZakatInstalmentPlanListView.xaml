@@ -63,7 +63,7 @@
                             <ColumnDefinition Width="60*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" TextColor="White" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" />
                         <Label Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
@@ -155,7 +155,7 @@
                     </Grid>
                 </Grid>
 
-               <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}" Margin="20">
+                <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}" Margin="20">
 
 
                     <!-- Display Submitted list-->
@@ -225,7 +225,7 @@
                                             <custom:CustomLabel Text="{Binding Fbtyp}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" Margin="0" />
 
-                                            <Label  Text="{Binding referanceNumber}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start"
+                                            <Label  Text="{Binding referanceNumber}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
                                                HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">

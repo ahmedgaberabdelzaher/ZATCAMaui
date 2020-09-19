@@ -12948,12 +12948,6 @@ namespace EGAZT {
             }
         }
         
-        public static string CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract {
-            get {
-                return ResourceManager.GetString("CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract", resourceCulture);
-            }
-        }
-        
         public static string CRContractStartDate {
             get {
                 return ResourceManager.GetString("CRContractStartDate", resourceCulture);
@@ -13617,6 +13611,114 @@ namespace EGAZT {
         public static string CFPDeclarationCheckbox {
             get {
                 return ResourceManager.GetString("CFPDeclarationCheckbox", resourceCulture);
+            }
+        }
+        
+        public static string CRContactPersonFullName {
+            get {
+                return ResourceManager.GetString("CRContactPersonFullName", resourceCulture);
+            }
+        }
+        
+        public static string CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract {
+            get {
+                return ResourceManager.GetString("CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDInstruction1 {
+            get {
+                return ResourceManager.GetString("VRTIDInstruction1", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDInstruction2 {
+            get {
+                return ResourceManager.GetString("VRTIDInstruction2", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDInstruction3 {
+            get {
+                return ResourceManager.GetString("VRTIDInstruction3", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDEffectiveDateFrom {
+            get {
+                return ResourceManager.GetString("VRTIDEffectiveDateFrom", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDEffectiveDateTo {
+            get {
+                return ResourceManager.GetString("VRTIDEffectiveDateTo", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDProxyforTaxablePurchases {
+            get {
+                return ResourceManager.GetString("VRTIDProxyforTaxablePurchases", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDProxyforExemptPurchases {
+            get {
+                return ResourceManager.GetString("VRTIDProxyforExemptPurchases", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDTaxablePurchases {
+            get {
+                return ResourceManager.GetString("VRTIDTaxablePurchases", resourceCulture);
+            }
+        }
+        
+        public static string VRTIDExemptPurchases {
+            get {
+                return ResourceManager.GetString("VRTIDExemptPurchases", resourceCulture);
+            }
+        }
+        
+        public static string VRRequestDetails {
+            get {
+                return ResourceManager.GetString("VRRequestDetails", resourceCulture);
+            }
+        }
+        
+        public static string VREffectiveDateforinputtaxdeductionmethod {
+            get {
+                return ResourceManager.GetString("VREffectiveDateforinputtaxdeductionmethod", resourceCulture);
+            }
+        }
+        
+        public static string VRCurrentinputtaxdeductionmethod {
+            get {
+                return ResourceManager.GetString("VRCurrentinputtaxdeductionmethod", resourceCulture);
+            }
+        }
+        
+        public static string VRProposedinputtaxdeductionmethod {
+            get {
+                return ResourceManager.GetString("VRProposedinputtaxdeductionmethod", resourceCulture);
+            }
+        }
+        
+        public static string VATReviewAttachmentLimitReached {
+            get {
+                return ResourceManager.GetString("VATReviewAttachmentLimitReached", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentsAttachmentTitle {
+            get {
+                return ResourceManager.GetString("VATInstalmentsAttachmentTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentPlanSubmittedPopUpMsg {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentPlanSubmittedPopUpMsg", resourceCulture);
             }
         }
     }

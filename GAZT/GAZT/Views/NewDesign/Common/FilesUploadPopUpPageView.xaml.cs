@@ -80,6 +80,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.TitleOne = AppResources.ESTAttachmentSizeNotfication;
                 viewModel.TitleTwo = AppResources.ZContractReleaseChooseonlyfilewithextension;
             }
+            else if (whichAttachment == WhichAttachment.VATInstalment)
+            {
+                viewModel.TitleOne = "";
+                viewModel.TitleTwo = AppResources.VATInstalmentsAttachmentTitle;
+            }
             else
             {
                 viewModel.TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
