@@ -239,15 +239,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
             {
-                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
-            //viewModel.MenuViewVisible = true;
-            //viewModel.HomeViewVisible = false;
-            //viewModel.HomeIndicatorColor = Color.White;
+//                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
+                viewModel.MenuViewVisible = true;
+                viewModel.HomeViewVisible = false;
+                viewModel.HomeIndicatorColor = Color.White;
 
-            //viewModel.MenuIndicatorColor = Color.DarkGreen;
-            //viewModel.StackMenuColor = Color.Transparent;
-            //viewModel.TabbarColor = Color.Transparent;
-                
+                viewModel.MenuIndicatorColor = Color.DarkGreen;
+                viewModel.StackMenuColor = Color.Transparent;
+                viewModel.TabbarColor = Color.Transparent;
+
             }
             else
             {

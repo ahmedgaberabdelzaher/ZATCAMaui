@@ -418,7 +418,7 @@
 
             <!--Menu Starts-->
 
-            <!--<Grid IsVisible="{Binding MenuViewVisible}">
+            <Grid IsVisible="{Binding MenuViewVisible}">
                 <ScrollView>
                     <Grid  Grid.Row="0" >
 
@@ -675,7 +675,7 @@
                     </Grid>
                 </ScrollView>
 
-            </Grid>-->
+            </Grid>
 
             <!--Menu Ends-->
 
