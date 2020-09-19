@@ -421,7 +421,7 @@
     <value>ارجو إدخال رقم جوال صحيح</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>اشعار</value>
+    <value>التعليمات</value>
   </data>
   <data name="OKText" xml:space="preserve">
     <value>Ok</value>
@@ -5999,7 +5999,7 @@
     <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
   </data>
   <data name="CRDone" xml:space="preserve">
-    <value>النهاية</value>
+    <value>إغلاق</value>
   </data>
   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
     <value>نسبة الربح التقديرية بناء على نوع العقد</value>

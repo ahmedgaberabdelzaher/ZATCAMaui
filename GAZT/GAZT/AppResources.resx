@@ -7669,4 +7669,37 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDZakatTaxCertificate" xml:space="preserve">
     <value>Zakat Tax Certificate</value>
   </data>
+    <data name="VRVSInstruction1" xml:space="preserve">
+  <value>Note: If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from the Direct Tax Dashboard -> Taxpayer Details -> Deregister Taxpayer.</value>
+</data>
+  <data name="VRVSInstruction2" xml:space="preserve">
+  <value>Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. </value>
+</data>
+  <data name="VRVSInstruction3" xml:space="preserve">
+  <value>Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
+</data>
+  <data name="VRVSRequestType" xml:space="preserve">
+    <value>Request Type</value>
+  </data>
+  <data name="VRVSStartofSuspensionPeriod" xml:space="preserve">
+    <value>Start of Suspension Period</value>
+  </data>
+  <data name="VRVSEndofSuspensionPeriod" xml:space="preserve">
+    <value>End of Suspension Period</value>
+  </data>
+  <data name="VRVSSuspendedfilingperiod" xml:space="preserve">
+    <value>Suspended filing period</value>
+  </data>
+  <data name="VRVSNextfilingperiod" xml:space="preserve">
+    <value>Next filing period</value>
+  </data>
+  <data name="VRVSNextfilingduedate" xml:space="preserve">
+    <value>Next filing due date</value>
+  </data>
+  <data name="VRVSReasonforSuspensionofFiling" xml:space="preserve">
+    <value>Reason for Suspension of Filing</value>
+  </data>
+  <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
+    <value>VAT Return Filing Obligation Suspension</value>
+  </data>
 </root>

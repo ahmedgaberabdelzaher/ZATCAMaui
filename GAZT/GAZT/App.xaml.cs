@@ -135,7 +135,7 @@ namespace EGAZT
         public static string VATDeclarationAttachmentPageView = "VATDeclarationAttachmentPageView";
         public static string VATRegistrationDisplayDetails = "VATRegistrationDisplayDetails";
         public static string MoreMenuPopUpPageViewRTwo = "MoreMenuPopUpPageViewRTwo";
-
+        public static string VRSuspensionViewAppPageView = "VRSuspensionViewAppPageView";
 
         #endregion
 

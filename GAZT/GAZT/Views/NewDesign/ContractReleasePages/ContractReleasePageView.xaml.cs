@@ -191,7 +191,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             viewModel.ContractNumber = e.NewTextValue;
         }
 
-        private void ContractNameUnfocused(object sender, FocusEventArgs e)
+        private void ContractNameFiledUnfocused(object sender, FocusEventArgs e)
         {
             viewModel.ContractName = ContractNameText.Text;
         }

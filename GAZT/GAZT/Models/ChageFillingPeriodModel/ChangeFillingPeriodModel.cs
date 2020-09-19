@@ -116,13 +116,26 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public VATChangeFillingPeriodRequestModel.UIBTNSet UI_BTNSet { get; set; }
             public List<object> NOTESSet { get; set; }
             public List<object> ATTACHSet { get; set; }
-            public List<object> ATT_TYPSet { get; set; }
+            public List<AttTypSetList> ATT_TYPSet { get; set; }
             public VATChangeFillingPeriodRequestModel.QuesListSet QuesListSet { get; set; }
         }
 
 
     }
     #endregion
+
+
+    public class ATTTYPSet
+    {
+        public List<AttTypSetList> results { get; set; }
+    }
+
+    public partial class AttTypSetList
+    {
+        public Metadata __metadata { get; set; }
+        public string DmsTp { get; set; }
+        public string Txt50 { get; set; }
+    }
     #region VATChangeFillingPeriodRequestModel
     public class VATChangeFillingPeriodRequestModel
     {
@@ -155,10 +168,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public List<object> results { get; set; }
         }
 
-        public class ATTTYPSet
-        {
-            public List<object> results { get; set; }
-        }
+       
 
         public class QuesListSet
         {
