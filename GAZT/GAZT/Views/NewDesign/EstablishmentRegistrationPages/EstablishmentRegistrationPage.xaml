@@ -61,8 +61,8 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="20,10,20,0">
-                <StackLayout x:Name="RegistrationTabMainGrid"  Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
-                    <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" VerticalScrollBarVisibility="Never">
+                <StackLayout x:Name="RegistrationTabMainGrid" VerticalOptions="StartAndExpand" Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
+                    <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                         <Grid x:Name="RegistrationTab"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <!--IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">-->
                             <Grid.RowDefinitions>

@@ -62,7 +62,7 @@
                         <custom:CustomLabel.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCommercialName}"/>
-                                <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                             </FormattedString>
                         </custom:CustomLabel.FormattedText>
                     </custom:CustomLabel>
@@ -146,19 +146,12 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Column="0" Grid.Row="0" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTHouseNumber}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                            <custom:CustomLabel Grid.Column="0" Grid.Row="0" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.ESTHouseNumber}" />
                             <custom:CustomLabel Grid.Column="1" Grid.Row="0" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -173,7 +166,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -184,7 +177,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -195,7 +188,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTQuarter}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -206,25 +199,18 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
-                            <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCode}" MaxLength="5" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCode}" MaxLength="6" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
                                 <customOne:GAZTBorderlessEntry.Behaviors>
                                     <customOne:NumericValidationBehavior />
                                 </customOne:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
-                            <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"/>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
                             <custom:GAZTBorderlessEntry  VerticalTextAlignment="Center" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding AddNumber}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
                                   <!--<customOne:GAZTBorderlessEntry.Behaviors>
@@ -236,7 +222,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span  Text="{x:Static ResourceManager:AppResources.CountryText}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -247,7 +233,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTProvinance}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -258,7 +244,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCity}"/>
-                                    <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -280,19 +266,12 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel Grid.Column="0" Grid.Row="0" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
-                                    <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTHouseNumber}"/>
-                                            <Span Text="*" TextColor="{StaticResource Secondary}"/>
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                <custom:CustomLabel Grid.Column="0" Grid.Row="0" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.ESTHouseNumber}" />
                                 <custom:CustomLabel Grid.Column="1" Grid.Row="0" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span  Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"/>
-                                            <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                            <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
@@ -307,7 +286,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -318,7 +297,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -329,7 +308,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTQuarter}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -340,25 +319,18 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
-                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCodeSame}" MaxLength="5" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding PostalCodeSame}" MaxLength="6" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
                                      <customOne:GAZTBorderlessEntry.Behaviors>
                                         <custom:NumericValidationBehavior/>
                                     </customOne:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.ESTAddNumber}" />
                             <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
                                 <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding AddNumberSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
                                   <!--<customOne:GAZTBorderlessEntry.Behaviors>
@@ -370,7 +342,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span  Text="{x:Static ResourceManager:AppResources.CountryText}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -381,7 +353,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTProvinance}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -392,7 +364,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCity}"/>
-                                        <Span Text="*" TextColor="{StaticResource Secondary}"/>
+                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>

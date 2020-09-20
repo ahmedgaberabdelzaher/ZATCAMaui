@@ -7022,7 +7022,7 @@
     <value>الرجاء ادخال الرمز البريدي</value>
   </data>
   <data name="ESTValidateAddPostalCode5" xml:space="preserve">
-    <value>الرجاء ادخال رمز بريدي مكون من 5 ارقام</value>
+    <value>الرجاء ادخال رمز بريدي مكون من 1 ارقام</value>
   </data>
   <data name="ESTValidateAddCountry" xml:space="preserve">
     <value>الرجاء ادخال اسم الدولة</value>
