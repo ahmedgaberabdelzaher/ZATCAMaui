@@ -48,7 +48,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-
+        public bool _IsAttachmentVisibile=true;
+        public bool IsAttachmentVisibile
+        {
+            get
+            {
+                return _IsAttachmentVisibile;
+            }
+            set
+            {
+                _IsAttachmentVisibile = value;
+                RaisePropertyChanged("IsAttachmentVisibile");
+            }
+        }
         private VATRegistrationDetails _vATRegistrationDetailsForAttach;
         public VATRegistrationDetails VATRegistrationDetailsForAttach
         {
@@ -314,6 +326,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _attachmentList = value;
+                if (_attachmentList != null)
+                {
+                    if (_attachmentList.Count >= 1)
+                    {
+                        IsAttachmentVisibile = false;
+                    }
+                    else
+                    {
+                        IsAttachmentVisibile = true; ;
+                    }
+                }
+                else
+                {
+                    IsAttachmentVisibile = true;
+                }
                 RaisePropertyChanged("AttachmentList");
             }
         }

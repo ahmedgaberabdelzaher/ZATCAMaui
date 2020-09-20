@@ -13,7 +13,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              
              
-             x:Class="EGAZT.Views.NewDesign.Template.DashboardAnonymousMenuPageView">
+             x:Class="EGAZT.Views.NewDesign.Template.DashboardAnonymousMenuPageView1">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
