@@ -117,7 +117,6 @@
     <Compile Include="CustomRenderer\RoundCornersEffectIOS.cs" />
     <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
-    <Compile Include="CustomRenderer\Main.cs" />
     <BundleResource Include="Resources\UIFontIcons.ttf" />
     <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
     <BundleResource Include="Resources\sf_Tax_Evasion.png" />
@@ -277,6 +276,7 @@
     <BundleResource Include="Resources\ic_menu_vfp.png" />
     <BundleResource Include="Resources\ic_menu_vfp%402x.png" />
     <BundleResource Include="Resources\ic_menu_vfp%403x.png" />
+    <Compile Include="Main.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

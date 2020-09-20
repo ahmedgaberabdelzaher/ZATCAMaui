@@ -491,7 +491,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                         {
                             CRIssueCountry = item as CountryDropdownItem;
-                            CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                            if (App.IsArabic)
+                            {
+                                CRIssueBy = CRIssueCountry.Land1 == "SA" ? ArIssueBy["90702"] : ArIssueBy["90718"];
+                            }
+                            else
+                            {
+                                CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                            }
                             CRIssueCity = null;
                         }
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
@@ -507,7 +514,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnIssueBySelectButtonClick = new Command((object o) =>
             {
 
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(EnIssueBy.Values);
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(App.IsArabic ? ArIssueBy.Values : EnIssueBy.Values);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
@@ -526,7 +533,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }, CanIssueByExecuteClickCommand);
             OnIssueCitySelectButtonClick = new Command((object o) =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.city_dropdownSet?.results.Where(i =>
+                var filterCities = OutletDropDowns?.city_dropdownSet?.results.Where(i =>
                 {
                     if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                     {
@@ -536,23 +543,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         return i.Country == LicenseIssueCountry.Land1;
                     }
-                }).ToList());
-
-                poupWindow.OnItemSelect = (item) =>
+                }).ToList();
+                if (filterCities.Count > 0)
                 {
-                    try
+                    ListPopUpViewPage poupWindow = new ListPopUpViewPage(filterCities);
+
+                    poupWindow.OnItemSelect = (item) =>
                     {
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                            CRIssueCity = item as CityDropdownItem;
-                        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                            LicenseIssueCity = item as CityDropdownItem;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                        try
+                        {
+                            if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                                CRIssueCity = item as CityDropdownItem;
+                            if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                                LicenseIssueCity = item as CityDropdownItem;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.StackTrace);
+                        }
+                    };
+                    PopupNavigation.Instance.PushAsync(poupWindow);
+                }
             }, CanExecuteClickCommand);
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
@@ -721,7 +732,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             ValidDateTo = maxDate,
                             Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
                             Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry.Land1 : LicenseIssueCountry.Land1,
-                            Institute = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? EnIssueBy.FirstOrDefault(i => i.Value == CRIssueBy).Key : EnIssueBy.FirstOrDefault(i => i.Value == LicenseIssueBy).Key,
                             City = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityName : LicenseIssueCity.CityName,
                             CityCode = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityCode : LicenseIssueCity.CityCode,
                             Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector,
@@ -731,6 +741,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             Actno = $"{Int16.Parse(newNumber?.Actno):000}",
                             Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty
                         };
+
+                        if (App.IsArabic)
+                        {
+                            item.Institute = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? ArIssueBy.FirstOrDefault(i => i.Value == CRIssueBy).Key : ArIssueBy.FirstOrDefault(i => i.Value == LicenseIssueBy).Key;
+                        }
+                        else
+                        {
+                            item.Institute = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? EnIssueBy.FirstOrDefault(i => i.Value == CRIssueBy).Key : EnIssueBy.FirstOrDefault(i => i.Value == LicenseIssueBy).Key;
+                        }
 
                         CanExecute = true;
                         if(SelectedCRItem != null) {
@@ -873,7 +892,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     EnableIssueByDropDown = false;
                     CRNumber = validateCR?.Crnum;
                     CRIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == "SA").FirstOrDefault();
-                    CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                    if (App.IsArabic)
+                    {
+                        CRIssueBy = CRIssueCountry.Land1 == "SA" ? ArIssueBy["90702"] : ArIssueBy["90718"];
+                    }
+                    else
+                    {
+                        CRIssueBy = CRIssueCountry.Land1 == "SA" ? EnIssueBy["90702"] : EnIssueBy["90718"];
+                    }
                     CRIssueCity = new CityDropdownItem()
                     {
                         CityName = validateCR?.CityAry,
@@ -890,7 +916,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         EnableIssueByDropDown = false;
                         CRNumber = SelectedCRItem?.Idnumber;
                         CRIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedCRItem?.Country).FirstOrDefault();
-                        CRIssueBy = EnIssueBy[SelectedCRItem?.Institute];
+                        CRIssueBy = App.IsArabic ? ArIssueBy[SelectedCRItem?.Institute] : EnIssueBy[SelectedCRItem?.Institute];
                         CRValidFrom = SelectedCRItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
 
                         CRIssueCity = new CityDropdownItem()
@@ -930,7 +956,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                         LicenseNumber = SelectedLicenseItem?.Idnumber;
                         LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedLicenseItem?.Country).FirstOrDefault();
-                        LicenseIssueBy = EnIssueBy[SelectedLicenseItem?.Institute];
+                        LicenseIssueBy = App.IsArabic ? ArIssueBy[SelectedLicenseItem?.Institute] : EnIssueBy[SelectedLicenseItem?.Institute];
                         ValidFrom = SelectedLicenseItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                         LicenseIssueCity = new CityDropdownItem()
                         {

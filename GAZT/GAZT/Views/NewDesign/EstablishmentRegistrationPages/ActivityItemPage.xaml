@@ -65,7 +65,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -76,7 +76,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTIssueBy}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -87,7 +87,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCity}" />
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -98,7 +98,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZCRNumber}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -114,7 +114,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTValidFrom}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -144,7 +144,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span   Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfCRLabel}"/>
-                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -219,7 +219,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTMainGroup}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -230,7 +230,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTSubGroup}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -241,7 +241,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTActivity}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -284,7 +284,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -295,7 +295,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTIssueBy}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -306,7 +306,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCity}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -317,7 +317,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -335,7 +335,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTValidFrom}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -365,7 +365,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfLicense}"/>
-                                        <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -413,7 +413,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTMainGroup}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -424,7 +424,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTSubGroup}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -435,7 +435,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTActivity}"/>
-                                    <Span Text="*" TextColor="{StaticResource MandatoryRedColorLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
