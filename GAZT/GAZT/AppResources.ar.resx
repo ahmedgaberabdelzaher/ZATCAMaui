@@ -5590,7 +5590,8 @@
     <value>تعديل</value>
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
-    <value>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</value>
+    <value>الرجاء اكمال عملية التسجيل في ضريبة القيمة المضافة</value>
+    <comment>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</comment>
   </data>
   <data name="FORM5GeneralTradingInternal" xml:space="preserve">
     <value>المشتريات من الداخل للتجارة العامة</value>
@@ -6184,15 +6185,15 @@
   <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
     <value>فرع الهيئة الرئيسي؟</value>
   </data>
-    <data name="ESTNationalitySAUDI" xml:space="preserve">
+  <data name="ESTNationalitySAUDI" xml:space="preserve">
     <value>سعودي</value>
-</data>
-    <data name="ESTNationalityGCC" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityGCC" xml:space="preserve">
     <value>خليجي</value>
-</data>
-    <data name="ESTNationalityFOREIGN" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityFOREIGN" xml:space="preserve">
     <value>أجنبي</value>
-</data>
+  </data>
   <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
     <value>نوع الكيان ؟</value>
   </data>
@@ -6640,7 +6641,8 @@
     <value>سجل في الزكاة</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
-    <value>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</value>
+    <value>الرجاء اكمال عملية التسجيل في ضريبة القيمة المضافة</value>
+    <comment>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</comment>
   </data>
   <data name="VRUploadYourDocument" xml:space="preserve">
     <value>الرجاء رفع الملف</value>
