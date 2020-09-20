@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -13,10 +12,10 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.Template
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DashboardAnonymousMenuPageView1 : ContentPage
+    public partial class DashboardAnonymousMenuPageView : ContentPage
     {
         DashboardAnonymousMenuPageViewModel viewModel;
-        public DashboardAnonymousMenuPageView1()
+        public DashboardAnonymousMenuPageView()
         {
             InitializeComponent();
             viewModel = App.Locator.DashboardAnonymousMenuPageView;
@@ -35,11 +34,6 @@ namespace EGAZT.Views.NewDesign.Template
             }
         }
 
-        private void GoBackTapped(object sender, EventArgs e)
-        {
-            viewModel._navigationService.GoBack();
-        }
-
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {
             if (App.IsArabic)
@@ -47,6 +41,7 @@ namespace EGAZT.Views.NewDesign.Template
                 App.IsArabic = false;
                 App.changeFontFamily(App.appObj);
                 SetLTRDirection();
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
                 var vUpdatedPage = new DashboardAnonymousMenuPageView();
                 Navigation.InsertPageBefore(vUpdatedPage, this);
                 Navigation.PopAsync();
@@ -61,7 +56,6 @@ namespace EGAZT.Views.NewDesign.Template
                 Navigation.PopAsync();
             }
         }
-
         public void SetRTLDirection()
         {
             try
@@ -76,10 +70,8 @@ namespace EGAZT.Views.NewDesign.Template
             {
 
             }
-            
+
         }
-
-
         public void SetLTRDirection()
         {
             try
@@ -95,6 +87,7 @@ namespace EGAZT.Views.NewDesign.Template
 
             }
         }
+
         private void OnTaxEvasionTapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
@@ -107,7 +100,20 @@ namespace EGAZT.Views.NewDesign.Template
 
         private void OnVATRefundTapped(object sender, EventArgs e)
         {
-        viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);    
+            viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
         }
+        private void PrivacyPolicy_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+        }
+        private void Aboutus_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.AboutUsPageView);
+        }
+        private void GoBackTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
+        }
+
     }
 }

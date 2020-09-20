@@ -14,6 +14,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
     {
         public ICommand OnBackButtonClicked { get; set; }
 
+        private string _appVersion = App.AppVersion;
+        #region Property
+        public string AppVersion
+        {
+            get
+            {
+                return _appVersion;
+            }
+            set
+            {
+                _appVersion = value;
+                RaisePropertyChanged("AppVersion");
+            }
+        }
+        #endregion
+
         #region Constructor
         public TaxManagementPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
