@@ -3045,7 +3045,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZZIndividualInformation" xml:space="preserve">
-    <value>Individual Information</value>
+    <value>Owner Information</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZOR" xml:space="preserve">
