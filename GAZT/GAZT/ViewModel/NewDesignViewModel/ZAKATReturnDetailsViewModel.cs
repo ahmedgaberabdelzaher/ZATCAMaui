@@ -1511,7 +1511,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             isLabelVisible = false;
             IsEditTextVisible = false;
             SetSubmitButtonVisibility = false;
-        //    ConfirmAndGenerateSADADBillLabelVisibility = false;
+            isEditVisible = false;
+            isLabelVisible = false;
+            IsEditTextVisible = false;
+
+            //    ConfirmAndGenerateSADADBillLabelVisibility = false;
             SetConfirmButtonVisibility = false;
             SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;

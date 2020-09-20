@@ -8,6 +8,7 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
@@ -23,7 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         //public bool editModeEnabled { get; set; } = false;
         private OutletNumber newNumber = null;
-        private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
+        public Nreg_IdItem idItem { get; set; } = null;
         private ValidateCR validateCR = null;
         private Nreg_ActivityItem PreLoadedLicenseItem = null;
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
@@ -836,19 +837,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
-                    Nreg_ActivityItem idItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault();
                     if (idItem != null)
                     {
                         List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, App.LoginDataRetrieved.TIN);
                         if (addressess.Count > 0)
                         {
-                            var address = addressess.FirstOrDefault();
-                            BuildingNumber = address.BuildingNo;
-                            FloorNumber = address.UnitNo;
-                            Street = address.StreetName;
-                            Quarter = address.DistrictName;
-                            PostalCode = address.Zipcode;
-                            AddNumber = address.AdditionalNo;
+                            if (addressess.Count == 1)
+                            {
+                                populateAddress(addressess.FirstOrDefault());
+                            }
+                            else
+                            {
+                                AddressPickerPopPage addressPickerPopPage = new AddressPickerPopPage(addressess) {
+                                    CloseWhenBackgroundIsClicked = false
+                                };
+                                addressPickerPopPage.OnItemSelect = (item) => {
+                                    populateAddress(item as OutletAddress);
+                                };
+                                await PopupNavigation.Instance.PushAsync(addressPickerPopPage);
+                            }
                         }
                     }
                 }
@@ -865,6 +872,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 IsLoading = false;
             }
+        }
+        private void populateAddress(OutletAddress address)
+        {
+            BuildingNumber = address.BuildingNo;
+            FloorNumber = address.UnitNo;
+            Street = address.StreetName;
+            Quarter = address.DistrictName;
+            PostalCode = address.Zipcode;
+            AddNumber = address.AdditionalNo;
         }
         private async Task<bool> validateForm()
         {
@@ -885,12 +901,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
-                if (string.IsNullOrWhiteSpace(HouseNumber))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddHouseNumber));
-                    return false;
-                }
-                else if (string.IsNullOrWhiteSpace(BuildingNumber))
+                //if (string.IsNullOrWhiteSpace(HouseNumber))
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddHouseNumber));
+                //    return false;
+                //}
+                //else
+                if (string.IsNullOrWhiteSpace(BuildingNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
                     return false;
@@ -915,7 +932,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostal));
                     return false;
                 }
-                else if (PostalCode.Length != 5)
+                else if (PostalCode.Length <= 1)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostalCode5));
                     return false;
@@ -925,11 +942,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTInValidPostalCode));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(AddNumber))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddAdditional));
-                    return false;
-                }
+                //else if (string.IsNullOrWhiteSpace(AddNumber))
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddAdditional));
+                //    return false;
+                //}
                 else if (Country == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
@@ -945,12 +962,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
                     return false;
                 }
-                if (string.IsNullOrWhiteSpace(HouseNumberSame))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddHouseNumber));
-                    return false;
-                }
-                else if (string.IsNullOrWhiteSpace(BuildingNumberSame))
+                //if (string.IsNullOrWhiteSpace(HouseNumberSame))
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddHouseNumber));
+                //    return false;
+                //}
+                else
+                if (string.IsNullOrWhiteSpace(BuildingNumberSame))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddBuildingNumber));
                     return false;
@@ -975,7 +993,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostal));
                     return false;
                 }
-                else if (PostalCodeSame.Length != 5)
+                else if (PostalCodeSame.Length <= 1)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostalCode5));
                     return false;
@@ -985,11 +1003,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(AddNumberSame))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddAdditional));
-                    return false;
-                }
+                //else if (string.IsNullOrWhiteSpace(AddNumberSame))
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddAdditional));
+                //    return false;
+                //}
                 else if (CountrySame == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));

@@ -7182,7 +7182,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Please provide postal code</value>
   </data>
   <data name="ESTValidateAddPostalCode5" xml:space="preserve">
-    <value>Please provide postal codes in 5 digit</value>
+    <value>Please provide postal codes in 1 digit</value>
   </data>
   <data name="ESTValidateAddCountry" xml:space="preserve">
     <value>Please provide country</value>
