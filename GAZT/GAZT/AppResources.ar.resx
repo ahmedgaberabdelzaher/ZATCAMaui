@@ -7497,9 +7497,11 @@
   </data>
   <data name="NDAccounting" xml:space="preserve">
     <value>حسابات</value>
+    <comment>حسابات</comment>
   </data>
   <data name="NDEstimated" xml:space="preserve">
     <value>تقديري</value>
+    <comment>تقديري</comment>
   </data>
   <data name="ESTFinLastDay" xml:space="preserve">
     <value>اليوم الأخير</value>
