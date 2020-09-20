@@ -28,14 +28,14 @@
             </Grid.RowDefinitions>
 
             <StackLayout Spacing="0" Grid.Row="0">
-                <Image HorizontalOptions="End">
+                <!--<Image HorizontalOptions="End">
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
 
                
                 <StackLayout Spacing="0">
@@ -124,7 +124,9 @@
                     <!--<custom:CustomLabel Margin="0,-5,0,0" Text="50MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
 
                     <StackLayout Grid.Row="2" BackgroundColor="White">
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />-->
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
+
                     </StackLayout>
                 </StackLayout>
 

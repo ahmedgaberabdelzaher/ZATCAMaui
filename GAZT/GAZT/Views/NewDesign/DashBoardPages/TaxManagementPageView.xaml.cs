@@ -27,7 +27,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override void OnAppearing()
         {
             ChangeFlowDirection();
-            
+            viewModel.IsLoading = false;
         }
 
         public void ChangeFlowDirection()
@@ -237,8 +237,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                  
                     App.HasToRefreshLoaderOnDashboard = true;
                 }
-
-                OnAppearing();
             }
             catch (Exception ex)
             {

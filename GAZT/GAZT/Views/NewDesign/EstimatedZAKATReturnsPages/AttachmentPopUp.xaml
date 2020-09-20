@@ -33,19 +33,19 @@
 
       
             <StackLayout Spacing="0" Grid.Row="0">
-                <Image HorizontalOptions="End">
+                <!--<Image HorizontalOptions="End">
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
 
                 <!--Start Of Objection Reason-->
                 <StackLayout>
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDWriteYourObjectionReason}" Style="{StaticResource CaptionLabelGrey}"/>
-                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" HorizontalOptions="FillAndExpand">
                         <custom:GAZTBorderlessEntry x:Name="ObjectionReason" Text="{Binding ObjectionReason}"  Style="{StaticResource InputTableEntryLayoutStyle}" Focused="OnObjectionReasonFocused"  Unfocused="OnObjectionReasonUnFocused">
                         </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
@@ -95,6 +95,8 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
+                                                                                    <StackLayout  Padding="0,5,0,5" HorizontalOptions="FillAndExpand">
+
                                         <border:SfBorder  Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}" >
 
                                             <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
@@ -118,6 +120,8 @@
                                             </StackLayout>
 
                                         </border:SfBorder>
+                                                                                                                                    </StackLayout>
+
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -128,7 +132,9 @@
 
                     <!--Footer Section Starts-->
                     <StackLayout Grid.Row="2" BackgroundColor="White">
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />-->
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />
+
                     </StackLayout>
                     <!--Footer Section Ends-->
                 </StackLayout>
@@ -142,7 +148,8 @@
 
        
     </yummy:PancakeView>
-            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"   IsVisible="{Binding IsLoading}" >
+
+          <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"   IsVisible="{Binding IsLoading}" >
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.5" VerticalOptions="FillAndExpand" Margin="-30">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
