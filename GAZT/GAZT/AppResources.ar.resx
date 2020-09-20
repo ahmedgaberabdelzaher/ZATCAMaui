@@ -5590,7 +5590,7 @@
     <value>تعديل</value>
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
-    <value>الرجاء اكمال عملية التسجيل في ضريبة القيمة المضافة</value>
+    <value>الرجاء اكمال عملية التسجيل</value>
     <comment>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</comment>
   </data>
   <data name="FORM5GeneralTradingInternal" xml:space="preserve">
@@ -6641,7 +6641,7 @@
     <value>سجل في الزكاة</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
-    <value>الرجاء اكمال عملية التسجيل في ضريبة القيمة المضافة</value>
+    <value>الرجاء اكمال عملية التسجيل</value>
     <comment>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</comment>
   </data>
   <data name="VRUploadYourDocument" xml:space="preserve">

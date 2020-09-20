@@ -5626,7 +5626,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Edit</value>
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
-    <value>Please complete VAT registration</value>
+    <value>Please complete registration</value>
     <comment>Register now for Value Added Tax in less than 5 minutes</comment>
   </data>
   <data name="FORM5GeneralTradingInternal" xml:space="preserve">
@@ -6730,7 +6730,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Register in ZAKAT</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
-    <value>please complete ZAKAT registration</value>
+    <value>Please complete registration</value>
     <comment>Register now for Zakat in less than 5 minutes</comment>
   </data>
   <data name="VatReview" xml:space="preserve">
