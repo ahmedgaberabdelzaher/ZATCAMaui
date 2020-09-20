@@ -661,7 +661,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                        SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
+                      //  SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
                          isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales(ZakatReturnDetails.d.TvtslI);
                         if (isThresholdValueLessThanTotalVATSales)
                         {
@@ -1568,17 +1568,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
-        public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
-        {
-            if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("E0002") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0004"))
-            {
-                ChangeFromEstimateTAccountringBasisButtonVisibility = true;
-            }
-            else
-            {
-                ChangeFromEstimateTAccountringBasisButtonVisibility = false;
-            }
-        }
+        //public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
+        //{
+        //    if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("E0002") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0004"))
+        //    {
+        //        ChangeFromEstimateTAccountringBasisButtonVisibility = true;
+        //    }
+        //    else
+        //    {
+        //        ChangeFromEstimateTAccountringBasisButtonVisibility = false;
+        //    }
+        //}
 
 
         public bool IsThresholdValueLessThanTotalVATSales(string TotalVATSales)
