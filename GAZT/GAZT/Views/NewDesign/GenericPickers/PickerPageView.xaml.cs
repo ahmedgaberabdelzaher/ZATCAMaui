@@ -19,9 +19,30 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
             viewModel = App.Locator.PickerPageView;
             viewModel.PickerItemSource = _pickerSource;
-
+            ChangeAeroIcon();
+            SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+        }
+
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
 
         public PickerPageView(GenericPickerModel _pickerSource)

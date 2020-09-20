@@ -573,13 +573,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsTwoYearsAtachmentsVisible = false;
             IsMonthsAtachmentsVisible = false;
             IsOthersAtachmentsVisible = false;
+
+           // IDTypePickerModel = null;
+            setIdPickerModel();
         }
 
         public void PopulateDraftData() {
 
 
 
-            EffectiveDatePicked = ChangeFillingResponse.d.Persl;
+            //EffectiveDatePicked = ChangeFillingResponse.d.Persl;
 
             IDType = IDValueDictionary[ChangeFillingResponse.d.DecidTy];
             IsIDVerified = true;
@@ -944,7 +947,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = iDTypes;
             genericPickerModel.PickerTitle = AppResources.VFCIDType;
-            genericPickerModel.PickerId = "ID Type";
+            genericPickerModel.PickerId = AppResources.ZZIDType;
 
             IDTypePickerModel = genericPickerModel;
         }

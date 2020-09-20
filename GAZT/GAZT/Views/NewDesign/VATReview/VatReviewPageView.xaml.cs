@@ -10,7 +10,7 @@ using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 namespace EGAZT.Views.NewDesign.VatReview
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VatReviewPageView : ContentPage
+    public partial class VatReviewPageView : ContentPage, VatReviewInterface
     {
         private VatReviewViewModel viewModel;
 
@@ -25,6 +25,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             viewModel = App.Locator.VatReviewView;
             this.BindingContext = viewModel;
+            viewModel.vRInterface = this;
 
             viewModel.ResetData();
 
@@ -124,7 +125,7 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             viewModel.EnableSecurityPaymentsConButton();
         }
-      
+
         private void DecCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.EnableDeclarationConButton();
@@ -147,15 +148,25 @@ namespace EGAZT.Views.NewDesign.VatReview
             if (selectedITem.SelectionTitle.Equals(AppResources.VRInfull))
             {
                 viewModel.IsRRAmountEdit = false;
+                viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInfull;
             }
             else if (selectedITem.SelectionTitle.Equals(AppResources.VRInpartial))
             {
                 viewModel.IsRRAmountEdit = true;
                 viewModel.FetchSecurityAmount();
-
+                viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInpartial;
             }
 
         }
 
+        public void SelectDefaultPaymentOption()
+        {
+            DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[0];
+        }
+    }
+
+    public interface VatReviewInterface
+    {
+        void SelectDefaultPaymentOption();
     }
 }
