@@ -3190,7 +3190,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide postal codes in 5 digit.
+        ///   Looks up a localized string similar to Please provide postal codes in 1 digit.
         /// </summary>
         public static string ESTValidateAddPostalCode5 {
             get {
@@ -5521,6 +5521,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact Email.
+        /// </summary>
+        public static string NDContactEmail {
+            get {
+                return ResourceManager.GetString("NDContactEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract Release Request.
         /// </summary>
         public static string NDContractReleaseRequest {
@@ -5719,6 +5728,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GAZT.
+        /// </summary>
+        public static string NDGAZT {
+            get {
+                return ResourceManager.GetString("NDGAZT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prince Abdulrahman Bin Abdulaziz St, Riyadh 1268.
+        /// </summary>
+        public static string NDHeadQAddress {
+            get {
+                return ResourceManager.GetString("NDHeadQAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Headquaeter Riyadh.
+        /// </summary>
+        public static string NDHeadquaeterRiyadh {
+            get {
+                return ResourceManager.GetString("NDHeadquaeterRiyadh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID Number.
         /// </summary>
         public static string NDIDNumber {
@@ -5778,6 +5814,15 @@ namespace EGAZT {
         public static string NDInstallmentPlan {
             get {
                 return ResourceManager.GetString("NDInstallmentPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to International Phone.
+        /// </summary>
+        public static string NDInternationalPhone {
+            get {
+                return ResourceManager.GetString("NDInternationalPhone", resourceCulture);
             }
         }
         
@@ -6268,6 +6313,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Social.
+        /// </summary>
+        public static string NDSocial {
+            get {
+                return ResourceManager.GetString("NDSocial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Street Name.
         /// </summary>
         public static string NDStreetName {
@@ -6480,6 +6534,15 @@ namespace EGAZT {
         public static string NDTPActive {
             get {
                 return ResourceManager.GetString("NDTPActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twitter.
+        /// </summary>
+        public static string NDTwitter {
+            get {
+                return ResourceManager.GetString("NDTwitter", resourceCulture);
             }
         }
         
