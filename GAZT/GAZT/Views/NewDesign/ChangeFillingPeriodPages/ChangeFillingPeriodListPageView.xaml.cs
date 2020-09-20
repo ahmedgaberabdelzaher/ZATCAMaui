@@ -63,8 +63,23 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
         private void Request_Item_Tapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.ItemData as VATChangeFillingListModel.ChangeFillingFrequency;
-            viewModel.GetVATChangeFillingSummary(item);
-            viewModel.EnableSummaryView();
+
+
+            if(item.Fbust == "E0018") {
+
+                App.selectedVatFillingItem = item.Fbnum;
+                viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
+
+            }
+            else {
+
+                viewModel.GetVATChangeFillingSummary(item);
+                viewModel.EnableSummaryView();
+            }
+
+
+
+           
         }
     }
 }
