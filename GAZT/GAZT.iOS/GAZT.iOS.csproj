@@ -277,6 +277,9 @@
     <BundleResource Include="Resources\ic_menu_vfp%402x.png" />
     <BundleResource Include="Resources\ic_menu_vfp%403x.png" />
     <Compile Include="Main.cs" />
+    <BundleResource Include="Resources\finances.png" />
+    <BundleResource Include="Resources\finances%402x.png" />
+    <BundleResource Include="Resources\finances%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

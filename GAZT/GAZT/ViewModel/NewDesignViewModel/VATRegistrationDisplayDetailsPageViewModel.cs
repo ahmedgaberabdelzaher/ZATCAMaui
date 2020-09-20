@@ -212,6 +212,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("quesTion4answerSelected");
             }
         }
+        private string _quesTion1answerSelected = string.Empty;
+        public string quesTion1answerSelected
+        {
+            get
+            {
+                return _quesTion1answerSelected;
+            }
+            set
+            {
+                _quesTion1answerSelected = value;
+
+                RaisePropertyChanged("quesTion1answerSelected");
+            }
+        }
+        private string _quesTion2answerSelected = string.Empty;
+        public string quesTion2answerSelected
+        {
+            get
+            {
+                return _quesTion2answerSelected;
+            }
+            set
+            {
+                _quesTion2answerSelected = value;
+
+                RaisePropertyChanged("quesTion2answerSelected");
+            }
+        }
         private string _idnumberFR = string.Empty;
         public string IdnumberFR
         {
@@ -402,6 +430,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         if (vATRegistration.d.QUESTIONSSet != null)
                         {
+                            List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
+                            quesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+
+                            List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
+                            quesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+
                             List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
                             quesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
 
@@ -436,7 +470,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (vATRegistration.d.IBANSet != null)
                         {
                             IbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet.results);
-                             Iban = IbanList.FirstOrDefault().Iban;
+                            for (int i = 0; i < IbanList.Count; i++)
+                            {
+                                if(IbanList.ElementAt(i).Iban != string.Empty)
+                                {
+                                    Iban = IbanList.FirstOrDefault().Iban;
+
+                                }
+                            }
+                      
                         }
                         if (vATRegistration.d.ExFg=="1")
                         {
