@@ -1989,12 +1989,13 @@
                                                                     <custom:BorderlessEntry Text="{Binding TxtIDTypeFR}" 
                                                         Placeholder="{x:Static custom2:AppResources.ZZIDType}"  HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" >
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="End" Rotation="270">
+                                                                    <!--<Image HorizontalOptions="End" Rotation="270">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                                         </Image.Source>
-                                                                    </Image>
+                                                                    </Image>-->
+                                                                    <Image Source="arrowDropdown.png"/>
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
 
@@ -2438,12 +2439,13 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                     <custom:BorderlessEntry Text="{Binding TxtIDTypeSR}" 
                                                         Placeholder="{x:Static custom2:AppResources.VATRIDType}"  HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}">
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="End" Rotation="270">
+                                                                    <!--<Image HorizontalOptions="End" Rotation="270">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                                         </Image.Source>
-                                                                    </Image>
+                                                                    </Image>-->
+                                                                    <Image Source="arrowDropdown.png"/>
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="btnContactID" FontSize="Small" Clicked="btnContactID_Clicked" BackgroundColor="Transparent" Margin="0,0,0,0"  >

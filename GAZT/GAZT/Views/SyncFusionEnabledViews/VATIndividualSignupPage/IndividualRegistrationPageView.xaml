@@ -215,11 +215,7 @@
                                                                 <custom:BorderlessEntry  x:Name="DateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding DOBddyymm}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged" Placeholder="dd/MM/yyyy" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry> <!--Placeholder="yyyy/MM/dd"-->
                                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                                <Image>
-                                                                    <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                                    </Image.Source>
+                                                                <Image Source="calendar.png">
                                                                 </Image>
                                                    </inputLayout:SfTextInputLayout.TrailingView>
                                                         </inputLayout:SfTextInputLayout>

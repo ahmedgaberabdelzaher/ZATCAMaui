@@ -2014,7 +2014,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.Fbnumz = ChangeFillingResponse.d.Fbnumz;
                 request.d.Iagrfg = "1";
                 request.d.Reqfg = "1";
-                request.d.StepNumber = "03";
+                request.d.StepNumber = "02";
                 request.d.Begda = ChangeFillingResponse.d.Begda;
                 request.d.PortalUsrz = ChangeFillingResponse.d.PortalUsrz;
                 request.d.Langz = ChangeFillingResponse.d.Langz;
@@ -2022,7 +2022,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 request.d.Operationz = "01";
                 request.d.Fbtyp = ChangeFillingResponse.d.Fbtyp;
-                request.d.StepNumberz = "03";
+                request.d.StepNumberz = "02";
                 request.d.Fbust = ChangeFillingResponse.d.Fbust;
 
 
@@ -2032,7 +2032,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.Gpartz = ChangeFillingResponse.d.Gpartz;
                 request.d.TransactionType = ChangeFillingResponse.d.TransactionType;
                 request.d.EditFg = ChangeFillingResponse.d.EditFg;
-                request.d.Statusz = ChangeFillingResponse.d.Statusz;
+                request.d.Statusz = "E0001";
                 request.d.Euser = ChangeFillingResponse.d.Euser;
 
                 request.d.Fbguid = ChangeFillingResponse.d.Fbguid;
@@ -2063,24 +2063,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                     var attTypeSet = new AttTypSetList();
                     attTypeSet.__metadata = new Models.ChageFillingPeriodModel.Metadata();
-                    attTypeSet.__metadata.id = ChangeFillingResponse.d.__metadata.id;
-                    attTypeSet.__metadata.type = ChangeFillingResponse.d.__metadata.type;
-                    attTypeSet.__metadata.uri = ChangeFillingResponse.d.__metadata.uri;
+                    attTypeSet.__metadata.id = Constants.VATChangeFillingPostATTTYSetURL;
+                    attTypeSet.__metadata.type = "ZDP_VAT_TPCV_SRV.ATT_TYP";
+                    attTypeSet.__metadata.uri = Constants.VATChangeFillingPostATTTYSetURL;
                     attTypeSet.DmsTp = "ZTPA";
-                    attTypeSet.Txt50 = "Previous 2 Years Monthly Returns";
+                    attTypeSet.Txt50 = AppResources.ChangeFillingPeriodAttachmentsTwoYears;
+
+
+
 
                     var attTypeSet1 = new AttTypSetList();
                     // attTypeSet1.__metadata = ChangeFillingResponse.d.__metadata;
                     attTypeSet1.__metadata = new Models.ChageFillingPeriodModel.Metadata();
-                    attTypeSet1.__metadata.id = ChangeFillingResponse.d.__metadata.id;
-                    attTypeSet1.__metadata.type = ChangeFillingResponse.d.__metadata.type;
-                    attTypeSet1.__metadata.uri = ChangeFillingResponse.d.__metadata.uri;
+                    attTypeSet1.__metadata.id = Constants.VATChangeFillingPostATTTYSetURL;
+                    attTypeSet1.__metadata.type = "ZDP_VAT_TPCV_SRV.ATT_TYP";
+                    attTypeSet1.__metadata.uri = Constants.VATChangeFillingPostATTTYSetURL;
                     attTypeSet1.DmsTp = "ZTPB";
-                    attTypeSet1.Txt50 = "Previous 12 Months Taxable Revenue";
+                    attTypeSet1.Txt50 = AppResources.ChangeFillingPeriodAttachmentsTwelveMonths;
 
                     var attSet = new List<AttTypSetList>();
                     attSet.Add(attTypeSet);
                     attSet.Add(attTypeSet1);
+
+                    if(OtherAttachmentsListViewData != null) {
+                        var attTypeSet2 = new AttTypSetList();
+                        // attTypeSet1.__metadata = ChangeFillingResponse.d.__metadata;
+                        attTypeSet2.__metadata = new Models.ChageFillingPeriodModel.Metadata();
+                        attTypeSet2.__metadata.id = Constants.VATChangeFillingPostATTTYSetURL;
+                        attTypeSet2.__metadata.type = "ZDP_VAT_TPCV_SRV.ATT_TYP";
+                        attTypeSet2.__metadata.uri = Constants.VATChangeFillingPostATTTYSetURL;
+                        attTypeSet2.DmsTp = "ZTPC";
+                        attTypeSet2.Txt50 = AppResources.ChangeFillingPeriodAttachmentsOtherDocuments;
+                        attSet.Add(attTypeSet2);
+                    }
 
 
                     request.d.ATT_TYPSet = attSet;
@@ -2110,7 +2125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 jsonDateTime2 = jsonDateTime2 + ")/";
                 var convretedTodayate = jsonDateTime2;
 
-                request.d.Decdate = convretedTodayate;
+                //request.d.Decdate = convretedTodayate;
                 request.d.DecidTy = IDTypeDictionary[IDType];
                 request.d.Decname = ContactPersonName;
                 request.d.Decdesignation = "";

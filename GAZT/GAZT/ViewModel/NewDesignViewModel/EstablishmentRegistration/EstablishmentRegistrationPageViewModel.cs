@@ -2201,11 +2201,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
             //if (_outletTempData.Count > 0)
             //{
-                OutletData.Clear();
-                _outletTempData.ForEach(_out => {
-                    OutletData.Add(_out);
-                    SearchableOutletData.Add(_out);
-                });
+            OutletData.Clear();
+            SearchableOutletData?.Clear();
+            _outletTempData.ForEach(_out =>
+            {
+                OutletData.Add(_out);
+                SearchableOutletData.Add(_out);
+            });
             //}
         }
         private void openNewOutlet()
