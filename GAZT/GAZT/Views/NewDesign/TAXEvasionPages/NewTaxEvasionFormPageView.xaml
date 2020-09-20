@@ -75,7 +75,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Start Of Reporter Information-->
-                    <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.ReporterInfo}}">
+                        <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.ReporterInfo}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                         <StackLayout >
                                 <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource CaptionLabelGrey}"/>-->
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
@@ -175,7 +175,7 @@
                     <!--End Of Reporter Information-->
                     
                     <!--Facility Information Starts-->
-                    <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.FacilityInfo}}">
+                        <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.FacilityInfo}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                         <StackLayout>
                             <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource CaptionLabelGrey}"/>-->
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
@@ -331,7 +331,7 @@
                     <!--Facility Information Ends-->
 
                     <!--Start Of Report Details-->
-                    <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.ReportDetails}}">
+                        <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.ReportDetails}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                         <StackLayout>
                             <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource CaptionLabelGrey}"/>-->
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
@@ -454,7 +454,7 @@
                     <!--End Of Reporter Details-->
 
                     <!--Start Of Summary-->
-                    <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.Summary}}">
+                        <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.Summary}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                         <StackLayout>
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
