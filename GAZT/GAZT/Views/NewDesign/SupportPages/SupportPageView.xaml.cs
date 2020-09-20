@@ -112,11 +112,11 @@ namespace EGAZT.Views.NewDesign
             viewModel.setContactUs();
             if (App.IsArabic)
             {
-                ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+                //ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
             }
             else
             {
-                ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+                //ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
             }
         }
 
