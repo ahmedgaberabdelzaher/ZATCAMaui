@@ -25,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ZakatReturnDetailsD ZakatReturnDetail;
         public static List<SalesDetails> SalesDetailList = new List<SalesDetails>();
         byte[] attachment;
-        int SelectedSalesTypeIndex;
+       public int SelectedSalesTypeIndex;
         #region Property
 
 
@@ -441,6 +441,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = false;
             });
         }
+
+
+        public async Task ClearAllAttachment(string filename, string dougUD)
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(() =>
+            {
+                try
+                {
+                    string res = WebServiceManager.GAZTDeleteEstimatedZAKATRAttachment(filename, dougUD);
+                    PopToRootPage();
+                    if (res.Equals("X") && ZakatReturnAttachmentsList.Count > 0)
+                    {
+                        for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
+                        {
+                            if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
+                            {
+                                //AttachmentPopUpViewModel.SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
+                              //  ZakatReturnAttachmentsList.RemoveAt(i);
+                                //    SelectedSalesDetails.estimateZakatAttachment.RemoveAt(i);
+                            }
+                        }
+                        //IsValueChanged();
+                        //SetSaveButtonVisibility();
+                    }
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                        //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+        }
+
 
         private ObservableCollection<ZakatAttachment> CloneAttachmmentListInLocalList(ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment)
         {

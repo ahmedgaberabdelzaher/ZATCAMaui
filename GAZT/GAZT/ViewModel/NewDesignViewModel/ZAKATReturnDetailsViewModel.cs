@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
-        public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
+       // public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
         List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
         public static string Fbguid { get; set; }
         public bool IsCurrentZAKATTaxLess = false;
@@ -559,18 +559,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
-            OnChangeFromEstimateToAccountingBasisButtonClicked = new Xamarin.Forms.Command(async () =>
-            {
-                try
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
+            //OnChangeFromEstimateToAccountingBasisButtonClicked = new Xamarin.Forms.Command(async () =>
+            //{
+            //    try
+            //    {
+            //        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
 
-                  //  await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
-                }
-                catch (Exception ex)
-                {
-                }
-            });
+            //      //  await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //    }
+            //});
 
             OnAmendClick = new Xamarin.Forms.Command(async () =>
             {
