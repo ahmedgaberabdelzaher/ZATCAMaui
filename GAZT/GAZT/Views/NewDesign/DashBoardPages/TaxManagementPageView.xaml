@@ -27,8 +27,6 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="ShadowLvl0">#EFEFEF</Color>
-            <Color x:Key="ShadowLvl1">#232323</Color>
-            <Color x:Key="ShadowLvl2">#232323</Color>
             <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="CornerRadius" Value="14" />
@@ -328,7 +326,7 @@
                 </Image>
             </Grid>
 
-            <Grid Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}" Margin="0,-20,0,0">
+            <!--<Grid Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}" Margin="0,-20,0,0">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -346,7 +344,7 @@
                                        TextColor="#D99A29"/>
                     </StackLayout>
                 </StackLayout>
-            </Grid>
+            </Grid>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
