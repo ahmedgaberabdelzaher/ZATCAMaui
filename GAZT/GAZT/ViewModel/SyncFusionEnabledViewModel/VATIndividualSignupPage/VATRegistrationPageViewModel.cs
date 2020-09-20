@@ -87,6 +87,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("answer1selectedcount");
             }
         }
+        private ATTDETSet _ATTDETSetObject;
+        public ATTDETSet ATTDETSetObject
+        {
+            get
+            {
+                return _ATTDETSetObject;
+            }
+            set
+            {
+                _ATTDETSetObject = value;
+                RaisePropertyChanged("ATTDETSetObject");
+            }
+        }
         private int _answer2selectedcount = 0;
         public int answer2selectedcount
         {
@@ -1609,8 +1622,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IsLoading = true;
                 });
                 setDATA();
+                ATTDETSet ATTDETSetnew = new ATTDETSet();
+                ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
                 //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
-                 response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
+                response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
                 if (response != null && response.d != null)
                 {
@@ -1636,9 +1651,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-
                             VATRegistrationDetailsData = response;
-
+                            VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetnew;
+                            VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetObject;
                             //Set data after api call 
                             setDataAfterSubmitAPIAsync(response);
 
@@ -1850,7 +1865,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 SmtpAddrFR= vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr ;
 
                                 SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
-                              
+                                ATTDETSetObject = new ATTDETSet();
+                                ATTDETSetObject = vATRegistration.d.ATTDETSet;
 
                             }
 

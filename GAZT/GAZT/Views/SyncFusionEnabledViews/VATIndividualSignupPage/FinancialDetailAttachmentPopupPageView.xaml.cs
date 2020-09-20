@@ -244,6 +244,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.VatAttachmentsList.Remove(listitem);
                             viewModel.AttachmentList.Remove(listitemTwo);
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            viewModel.VatAttachmentsList.Clear();
+                            viewModel.filterList();
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                             try
                             {
 
