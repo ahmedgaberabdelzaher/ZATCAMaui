@@ -7589,4 +7589,7 @@
   <data name="NDNewProfile" xml:space="preserve">
     <value>الملف الشخصي</value>
   </data>
+  <data name="NDSuggestionsandComplaints" xml:space="preserve">
+    <value>الاقتراحات والشكاوى</value>
+  </data>
 </root>
