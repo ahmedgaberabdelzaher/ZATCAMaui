@@ -101,7 +101,7 @@
                         </Grid>
 
 
-                        <cards:SfCardView Grid.Row="1" Margin="0,20,0,0" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
+                        <cards:SfCardView Grid.Row="1" Margin="0,20,0,0" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15" IsVisible="false">
 
                             <Grid >
                                 <Grid.RowDefinitions>
@@ -235,7 +235,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto" />
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
+                                        
                                     </Grid.ColumnDefinitions>
 
                                     <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
@@ -252,8 +252,8 @@
                                                VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource SectionTitleBlackBold}" />
                                     </StackLayout>
-                                    <StackLayout HorizontalOptions="End" Grid.Row="0" Grid.Column="2" Padding="3,0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZOViewReturn}"
+                                    <StackLayout HorizontalOptions="End" Grid.Row="0" Grid.Column="2" Padding="3,0" IsVisible="false">
+                                        <Label  Text="{x:Static ResourceManager:AppResources.ZOViewReturn}"
                                                VerticalOptions="CenterAndExpand" HorizontalOptions="End"
                                                Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
                                         </Label>

@@ -105,20 +105,22 @@
                                         <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}"  FontSize="Small" 
                                                         TextColor="Black"  IsSpellCheckEnabled="False" HorizontalOptions="FillAndExpand" >
                                         </custom:BorderlessEntry>
-                                        <Image HorizontalOptions="EndAndExpand" Rotation="270" >
-                                            <!--Rotation="270"-->
+                                        <!--<Image HorizontalOptions="EndAndExpand" Rotation="270" >
+                                            --><!--Rotation="270"--><!--
                                             <Image.Source>
                                                 <FontImageSource FontFamily="UserIconFont" Color="Black" Size="20"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                             </Image.Source>
-                                        </Image>
+                                        </Image>-->
+                                        <Image Source="arrowDropdown.png"/>
+
                                     </StackLayout>
                                 </inputLayout:SfTextInputLayout>
                                 <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                 </custom:CustomButton>
                                 <!--SelectedIndex="{Binding IDTypeIndex}"-->
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="AttachmentTypePicker" Grid.Row="1"
-                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static custom2:AppResources.VATRAttachmentCategory}"
+                                    HeaderHeight="40" HeaderText="{x:Static custom2:AppResources.VATRAttachmentCategory}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" 
                                     ColumnHeaderHeight="46"
@@ -132,20 +134,22 @@
                                                  OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
-                                                 ShowFooter="True"
+                                               
                                                  OKButtonBackgroundColor="#EAF7CC"
                                                  CancelButtonBackgroundColor="#EAF7CC"
-                                                 BackgroundColor="#EAF7CC"
+                                                 BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="Txt50" ItemsSource="{Binding ResultsItemForDOCSet}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Txt50" ItemsSource="{Binding ResultsItemForDOCSet}"  SelectionChanged="DDlIDTypee_OkButtonClicked" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
-                         FooterHeight="46" OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
+                                    ShowHeader="False" ShowFooter="False"                 
+                         FooterHeight="46" >
                                     <syncfusion:SfPicker.Behaviors>
                                         <custom1:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
                                 </syncfusion:SfPicker>
-                                <StackLayout Grid.Row="2">
+                                <!--OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"-->
+                                <StackLayout Grid.Row="2" IsVisible="{Binding IsAttachmentVisibile}">
                                     <Label  Text="{x:Static custom2:AppResources.Attachment}"  Grid.Row="2"  FontFamily="{StaticResource SSTArBold}"/>
                                     <inputLayout:SfTextInputLayout Grid.Row="3" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"

@@ -4,6 +4,7 @@ using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -29,6 +30,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 InitializeComponent();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel;
+                viewModel.ClearData();
+                ZAKATReturnDetailsView.IsComingFromAttachmentPage = true;
                 viewModel.ZakatReturnDetail = ZakatReturnDetail;
                 viewModel.OnPageLoad();
                 SetLTR();
@@ -73,11 +76,38 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        private void OnCloseTapped(object sender, EventArgs e)
+        private async void OnCloseTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            try
+            {
+                if (viewModel.ZakatReturnAttachmentsList != null && viewModel.ZakatReturnAttachmentsList.Count > 0)
+                {
+                    ObservableCollection<ZakatAttachment> LocalZakatReturnAttachmentsList = new ObservableCollection<ZakatAttachment>();
+                    LocalZakatReturnAttachmentsList = viewModel.ZakatReturnAttachmentsList;
+                    foreach (ZakatAttachment obj in LocalZakatReturnAttachmentsList)
+                    {
+                        await viewModel.ClearAllAttachment(obj.Filename, obj.Doguid);
+                    }
+                    viewModel.ZakatReturnAttachmentsList.Clear();
+                    AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].ChangeReason = string.Empty;
+                    AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].estimateZakatAttachment.Clear();
+                }
+                viewModel.ObjectionReason = string.Empty;
+                await PopupNavigation.Instance.PopAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
+        private void OnSaveClicked(object sender, EventArgs e)
+        {
+            viewModel.ObjectionReason = string.Empty;
+            PopupNavigation.Instance.PopAsync();
+        }
+        
         private async void OnAttachmentClicked(object sender, EventArgs e)
         {
           await  viewModel.AddAttachment();
@@ -191,5 +221,35 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             //await PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
            //    await PopupNavigation.Instance.PopAsync();
         }
+
+    //protected override bool OnBackgroundClicked()
+    //{
+    //        //ClearAttachments();
+    //        return false;
+    //}
+
+        //public async void ClearAttachments()
+        //{
+        //    if (viewModel.ZakatReturnAttachmentsList != null && viewModel.ZakatReturnAttachmentsList.Count > 0)
+        //    {
+        //        ObservableCollection<ZakatAttachment> LocalZakatReturnAttachmentsList = new ObservableCollection<ZakatAttachment>();
+        //        LocalZakatReturnAttachmentsList = viewModel.ZakatReturnAttachmentsList;
+        //        foreach (ZakatAttachment obj in LocalZakatReturnAttachmentsList)
+        //        {
+        //            await viewModel.ClearAllAttachment(obj.Filename, obj.Doguid);
+        //            //if (viewModel.ZakatReturnAttachmentsList.Count == 0)
+        //            //{
+        //            //    
+        //            //    break;
+        //            //}
+        //        }
+        //        viewModel.ZakatReturnAttachmentsList.Clear();
+        //        AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].ChangeReason = string.Empty;
+        //        AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].estimateZakatAttachment.Clear();
+        //    }
+        //    viewModel.ObjectionReason = string.Empty;
+
+        //}
+
     }
 }

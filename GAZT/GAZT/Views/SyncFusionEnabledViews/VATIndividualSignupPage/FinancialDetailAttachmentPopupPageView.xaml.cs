@@ -244,6 +244,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.VatAttachmentsList.Remove(listitem);
                             viewModel.AttachmentList.Remove(listitemTwo);
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            viewModel.VatAttachmentsList.Clear();
+                            viewModel.filterList();
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                             try
                             {
 
@@ -296,7 +299,7 @@ ResultsItemForDOCSetforsubmit();
             { 
             }
         }
-        private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void DDlIDTypee_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
@@ -471,6 +474,11 @@ ResultsItemForDOCSetforsubmit();
         private    void  Close_Tapped(object sender, EventArgs e)
         {
              PopupNavigation.Instance.PopAsync();
+        }
+
+        private void DDlIDType_OkButtonClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

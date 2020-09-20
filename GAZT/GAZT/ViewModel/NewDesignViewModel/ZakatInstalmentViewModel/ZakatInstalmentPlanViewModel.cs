@@ -2156,7 +2156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 else
                 {
                     ZakatInstalments.d.Fbnum = "";
-                    ZakatInstalments.d.Status = "E0001";
+                    //ZakatInstalments.d.Status = "E0001";
                 }
                 ZakatInstalments = await SubmitClicked();
 
@@ -2904,67 +2904,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     await _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields + "(" + AppResources.ZakatYearOne + ", " + AppResources.ZakatYearTwo + ", " + AppResources.ZakatYearThree + ")", AppResources.Information);
                     return;
                 }
-                var fdData = new FnDtlSetObject();
-                fdData.CashBankY1 = CashBankY1;
-                fdData.CashBankY2 = CashBankY2;
-                fdData.CashBankY3 = CashBankY3;
-                fdData.CashRatioY1 = CashRatioY1;
-                fdData.CashRatioY2 = CashRatioY2;
-                fdData.CashRatioY3 = CashRatioY3;
-                fdData.DebitorsY1 = DebitorsY1;
-                fdData.DebitorsY2 = DebitorsY2;
-                fdData.DebitorsY3 = DebitorsY3;
-                fdData.InventoryY1 = InventoryY1;
-                fdData.InventoryY2 = InventoryY2;
-                fdData.InventoryY3 = InventoryY3;
-                fdData.NcFlowY1 = NcFlowY1;
-                fdData.NcFlowY2 = NcFlowY2;
-                fdData.NcFlowY3 = NcFlowY3;
-                fdData.NetIncomeY1 = NetIncomeY1;
-                fdData.NetIncomeY2 = NetIncomeY2;
-                fdData.NetIncomeY3 = NetIncomeY3;
-                fdData.ProfitRatioY1 = profitRatioY1;
-                fdData.ProfitRatioY2 = profitRatioY2;
-                fdData.ProfitRatioY3 = profitRatioY3;
-                fdData.RevenueY1 = RevenueY1;
-                fdData.RevenueY2 = RevenueY2;
-                fdData.RevenueY3 = RevenueY3;
-                fdData.StiY1 = StiY1;
-                fdData.StiY2 = StiY2;
-                fdData.StiY3 = StiY3;
-                fdData.TcAssetsY1 = TcAssetsY1;
-                fdData.TcAssetsY2 = TcAssetsY2;
-                fdData.TcAssetsY3 = TcAssetsY3;
-                fdData.TcLiabltyY1 = TcLiabltyY1;
-                fdData.TcLiabltyY2 = TcLiabltyY2;
-                fdData.TcLiabltyY3 = TcLiabltyY3;
-                fdData.Year1 = Year1;
-                fdData.Year2 = Year2;
-                fdData.Year3 = Year3;
-                fdData.ZakatY1 = ZakatY1;
-                fdData.ZakatY2 = ZakatY2;
-                fdData.ZakatY3 = ZakatY3;
-                fdData.Euser = "";
-                fdData.Fbguid = ZakatInstalments.d.Fbguid;
-                fdData.Fbnum = ZakatInstalments.d.Fbnum;
-                fdData.FormGuid = ZakatInstalments.d.FormGuid;
-                fdData.Formproc = "";
-                fdData.Gpart = "";
-                fdData.LineNo = 0;
-                fdData.Mandt = "";
-                fdData.ReturnId = "";
-                fdData.UserTyp = "";
-                fdData.Status = "";
-                fdData.TxnTp = "";
-                fdData.RankingOrder = "";
-                fdData.ReturnId = ZakatInstalments.d.ReturnId;
-                fdData.DataVersion = "00001";
-                fdData.Waers = "";
-
-
-                var FDDetails = new FnDtlSetObject[1];
-                FDDetails[0] = fdData;
-                ZakatInstalments.d.FnDtlSet.results = FDDetails;
+                
 
 
 
@@ -3246,11 +3186,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                         if (IsInitialDraft || App.selectedZakatItem != "") {
 
-                            ZakatInstalments.d.Status = "E0013";
+                            ZakatInstalments.d.Status = ZakatInstalments.d.Status;
                         }
                         else {
                             ZakatInstalments.d.Fbnum = "";
-                            ZakatInstalments.d.Status = "E0001";
+                            ZakatInstalments.d.Status = ZakatInstalments.d.Status;
                         }
 
 
@@ -3455,7 +3395,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     ZakatInstalments.d.DataVersion = "00000";
 
                     ZakatInstalments.d.Operation = "04";
-                    ZakatInstalments.d.Status = "E0001";
+                  
 
                     if (!isDraftClicked)
                     {
@@ -3605,7 +3545,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatInstalments.d.OffPlanDur = "00";
                 ZakatInstalments.d.OffPymntFreq = "00";
                 ZakatInstalments.d.OffPymntFreq = "00";
-                ZakatInstalments.d.Status = "E0001";
                 ZakatInstalments.d.StepNumber = "04";
                 ZakatInstalments.d.Operation = "58";
                 ZakatInstalments.d.DataVersion = "00001";
@@ -4327,7 +4266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.Fbnum = ZakatInstalments.d.Fbnum;
             _postData.DataVersion = ZakatInstalments.d.DataVersion;
             _postData.Operation = ZakatInstalments.d.Operation;
-            _postData.Euser = App.LoginDataRetrieved.Euser;
+            _postData.Euser = "";
             _postData.StepNumber = ZakatInstalments.d.StepNumber;
             _postData.Email = ZakatInstalments.d.Email;
             _postData.Officer = ZakatInstalments.d.Officer;
@@ -4416,18 +4355,83 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
             }
-            if (ZakatInstalments.d.FnDtlSet.results == null)
-            {
+            //if (ZakatInstalments.d.FnDtlSet.results == null)
+            //{
 
 
-                _postData.FnDtlSet = new FnDtlSetObject[0];
+            //    _postData.FnDtlSet = new FnDtlSetObject[0];
 
-            }
-            else
-            {
-                _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
+            //}
+            //else
+            //{
+            //    _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
 
-            }
+            //}
+
+
+            var fdData = new FnDtlSetObject();
+            fdData.CashBankY1 = CashBankY1;
+            fdData.CashBankY2 = CashBankY2;
+            fdData.CashBankY3 = CashBankY3;
+            fdData.CashRatioY1 = CashRatioY1;
+            fdData.CashRatioY2 = CashRatioY2;
+            fdData.CashRatioY3 = CashRatioY3;
+            fdData.DebitorsY1 = DebitorsY1;
+            fdData.DebitorsY2 = DebitorsY2;
+            fdData.DebitorsY3 = DebitorsY3;
+            fdData.InventoryY1 = InventoryY1;
+            fdData.InventoryY2 = InventoryY2;
+            fdData.InventoryY3 = InventoryY3;
+            fdData.NcFlowY1 = NcFlowY1;
+            fdData.NcFlowY2 = NcFlowY2;
+            fdData.NcFlowY3 = NcFlowY3;
+            fdData.NetIncomeY1 = NetIncomeY1;
+            fdData.NetIncomeY2 = NetIncomeY2;
+            fdData.NetIncomeY3 = NetIncomeY3;
+            fdData.ProfitRatioY1 = profitRatioY1;
+            fdData.ProfitRatioY2 = profitRatioY2;
+            fdData.ProfitRatioY3 = profitRatioY3;
+            fdData.RevenueY1 = RevenueY1;
+            fdData.RevenueY2 = RevenueY2;
+            fdData.RevenueY3 = RevenueY3;
+            fdData.StiY1 = StiY1;
+            fdData.StiY2 = StiY2;
+            fdData.StiY3 = StiY3;
+            fdData.TcAssetsY1 = TcAssetsY1;
+            fdData.TcAssetsY2 = TcAssetsY2;
+            fdData.TcAssetsY3 = TcAssetsY3;
+            fdData.TcLiabltyY1 = TcLiabltyY1;
+            fdData.TcLiabltyY2 = TcLiabltyY2;
+            fdData.TcLiabltyY3 = TcLiabltyY3;
+            fdData.Year1 = Year1;
+            fdData.Year2 = Year2;
+            fdData.Year3 = Year3;
+            fdData.ZakatY1 = ZakatY1;
+            fdData.ZakatY2 = ZakatY2;
+            fdData.ZakatY3 = ZakatY3;
+            fdData.Euser = "";
+            fdData.Fbguid = ZakatInstalments.d.Fbguid;
+            fdData.Fbnum = ZakatInstalments.d.Fbnum;
+            fdData.FormGuid = ZakatInstalments.d.FormGuid;
+            fdData.Formproc = "";
+            fdData.Gpart = "";
+            fdData.LineNo = 0;
+            fdData.Mandt = "";
+            fdData.ReturnId = "";
+            fdData.UserTyp = "";
+            fdData.Status = "";
+            fdData.TxnTp = "";
+            fdData.RankingOrder = "";
+            fdData.ReturnId = ZakatInstalments.d.ReturnId;
+            fdData.DataVersion = "00001";
+            fdData.Waers = "";
+
+
+            var FDDetails = new FnDtlSetObject[1];
+            FDDetails[0] = fdData;
+            ZakatInstalments.d.FnDtlSet.results = FDDetails;
+
+            _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
 
 
             for (int i = 0; i < selectedList.Count; i++)

@@ -3069,7 +3069,7 @@
     <comment>Sign up</comment>
   </data>
   <data name="ZZZIndividualInformation" xml:space="preserve">
-    <value>بيانات الأفراد</value>
+    <value>بيانات المالك</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZOR" xml:space="preserve">
@@ -5590,7 +5590,8 @@
     <value>تعديل</value>
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
-    <value>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</value>
+    <value>الرجاء اكمال عملية التسجيل</value>
+    <comment>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</comment>
   </data>
   <data name="FORM5GeneralTradingInternal" xml:space="preserve">
     <value>المشتريات من الداخل للتجارة العامة</value>
@@ -6184,15 +6185,15 @@
   <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
     <value>فرع الهيئة الرئيسي؟</value>
   </data>
-    <data name="ESTNationalitySAUDI" xml:space="preserve">
+  <data name="ESTNationalitySAUDI" xml:space="preserve">
     <value>سعودي</value>
-</data>
-    <data name="ESTNationalityGCC" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityGCC" xml:space="preserve">
     <value>خليجي</value>
-</data>
-    <data name="ESTNationalityFOREIGN" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityFOREIGN" xml:space="preserve">
     <value>أجنبي</value>
-</data>
+  </data>
   <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
     <value>نوع الكيان ؟</value>
   </data>
@@ -6275,7 +6276,7 @@
     <value>انثى</value>
   </data>
   <data name="ESTNationalityLabel" xml:space="preserve">
-    <value>الدولة</value>
+    <value>الجنسية</value>
   </data>
   <data name="ESTCitizenLabel" xml:space="preserve">
     <value>مكان الموطن</value>
@@ -6407,10 +6408,10 @@
     <value>نشاطات العمل التجاري</value>
   </data>
   <data name="ESTMainGroup" xml:space="preserve">
-    <value>المجموعة الرئيسية</value>
+    <value>قطاع النشاط</value>
   </data>
   <data name="ESTSubGroup" xml:space="preserve">
-    <value>المجموعة الفرعية</value>
+    <value>مجموعة الانشطة الفرعية</value>
   </data>
   <data name="ESTActivity" xml:space="preserve">
     <value>النشاط</value>
@@ -6640,7 +6641,8 @@
     <value>سجل في الزكاة</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
-    <value>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</value>
+    <value>الرجاء اكمال عملية التسجيل</value>
+    <comment>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</comment>
   </data>
   <data name="VRUploadYourDocument" xml:space="preserve">
     <value>الرجاء رفع الملف</value>
@@ -7495,9 +7497,11 @@
   </data>
   <data name="NDAccounting" xml:space="preserve">
     <value>حسابات</value>
+    <comment>حسابات</comment>
   </data>
   <data name="NDEstimated" xml:space="preserve">
     <value>تقديري</value>
+    <comment>تقديري</comment>
   </data>
   <data name="ESTFinLastDay" xml:space="preserve">
     <value>اليوم الأخير</value>
@@ -7538,10 +7542,10 @@
     <value>Request for Ruling</value>
   </data>
   <data name="NDVATRegistrationVerification" xml:space="preserve">
-    <value>VAT Registration Verification</value>
+    <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="NDVATServices" xml:space="preserve">
-    <value>VAT Services</value>
+    <value>خدمات ضريبة القيمة المضافة</value>
   </data>
   <data name="NDVATTaxCertificate" xml:space="preserve">
     <value>VAT Tax Certificate</value>
@@ -7551,5 +7555,41 @@
   </data>
   <data name="NDZakatTaxCertificate" xml:space="preserve">
     <value>Zakat Tax Certificate</value>
+  </data>
+  <data name="NDBills" xml:space="preserve">
+    <value>الفواتير</value>
+  </data>
+  <data name="NDCertificates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="NDContractReleaseRequest" xml:space="preserve">
+    <value>طلب الافراج عن عقد</value>
+  </data>
+  <data name="NDProfile" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
+  <data name="NDRegistertoVAT" xml:space="preserve">
+    <value>التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="NDRegistrationDetails" xml:space="preserve">
+    <value>تفاصيل التسجيل</value>
+  </data>
+  <data name="NDDeregistration" xml:space="preserve">
+    <value>إلغاء التسجيل</value>
+  </data>
+  <data name="NDFillingFrequency" xml:space="preserve">
+    <value>تغيير فترة تقديم الإقرارات</value>
+  </data>
+  <data name="NDPrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="NDRefundsRequest" xml:space="preserve">
+    <value>طلب الاسترداد</value>
+  </data>
+  <data name="NDNewProfile" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
+  <data name="NDSuggestionsandComplaints" xml:space="preserve">
+    <value>الاقتراحات والشكاوى</value>
   </data>
 </root>

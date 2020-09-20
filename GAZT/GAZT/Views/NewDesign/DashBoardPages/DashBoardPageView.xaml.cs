@@ -762,7 +762,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         protected override bool OnBackButtonPressed()
         {
+
+            if (VATServices.IsVisible)
+            {
+                GoBackStep();
+            }
+
+
             return true;
+            
             //if (viewModel.MenuViewVisible)
             //{
             //    setDashBoardVisible();
@@ -819,6 +827,40 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void OnApplicationStatus_Tapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+        }
+
+        private void OnVATServiceTapped(object sender, EventArgs e)
+        {
+            ParentMenu.IsVisible = false;
+            ButtomTab.IsVisible = false;
+
+            VATServices.IsVisible = true;
+            MenuTitleName.Text = AppResources.NDVATServices;
+        }
+
+        private void OnBackTapped(object sender, EventArgs e)
+        {
+            GoBackStep();
+        }
+        public void GoBackStep()
+        {
+            if (ParentMenu.IsVisible)
+            {
+                viewModel.MenuViewVisible = false;
+                viewModel.HomeViewVisible = true;
+            }
+            else if (VATServices.IsVisible)
+            {
+                SetParentMenuVisible();
+            }
+        }
+
+        public void SetParentMenuVisible()
+        {
+            VATServices.IsVisible = false;
+            ParentMenu.IsVisible = true;
+            MenuTitleName.Text = AppResources.NDTaxManagement;
+            ButtomTab.IsVisible = true;
         }
     }
 }

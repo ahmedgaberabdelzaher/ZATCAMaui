@@ -273,6 +273,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             MyRequestsButtonTapped = new Command(async () =>
             {
+
+                App.selectedVatFillingItem = "";
                 _navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
             });
         }
