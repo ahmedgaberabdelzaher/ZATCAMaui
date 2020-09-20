@@ -597,11 +597,16 @@
                                 
                                 <Frame BorderColor="LightGray" x:Name="FrmMobile"  HorizontalOptions="FillAndExpand" Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8"  Margin="0,-6,0,0">
                                     <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
-                                        <Image HorizontalOptions="Start" Rotation="270" >
+                                        <!--<Image HorizontalOptions="Start" Rotation="270" >
                                             <Image.Source>
                                                 <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
                                                                          Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                             </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CountryCodeTapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>-->
+                                        <Image Source="arrowDropdown.png">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="CountryCodeTapped"/>
                                             </Image.GestureRecognizers>
