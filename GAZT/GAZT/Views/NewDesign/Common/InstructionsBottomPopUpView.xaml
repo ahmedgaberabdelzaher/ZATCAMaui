@@ -33,32 +33,42 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid Margin="8">
+                <Grid Margin="8" HorizontalOptions="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
+
+ 
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Image Grid.Row="0" Grid.Column="0">
+ 
+
+                    <Image Grid.Row="0" VerticalOptions="Center" Margin="0,5,5,0"  Grid.Column="0" HorizontalOptions="End">
                         <Image.Source>
                             <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
                                                  Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
                         </Image.Source>
                     </Image>
-                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VATDeregistrationInstructionsTitle}" HorizontalOptions="Center" Style="{StaticResource SectionTitleBlack}"/>
+                    <custom:CustomLabel Grid.Row="0" VerticalOptions="Center" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.VATDeregistrationInstructionsTitle}" HorizontalOptions="Center" Style="{StaticResource SectionTitleBlack}"/>
                 </Grid>
                
+
+ 
 
                 <ScrollView Grid.Row="1">
                     <StackLayout Orientation="Vertical" Padding="5">
 
+ 
+
                         <border:SfBorder Grid.Row="0" BorderColor="#B1B1B1" BorderWidth="1" Margin="0,0,0,10"
                              Style="{StaticResource GreyBorderFrame}">
+
+ 
 
                             <Grid Margin="8">
                                 <Grid.RowDefinitions>
@@ -66,10 +76,14 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
 
+ 
+
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+
+ 
 
                                 <Image Grid.Row="0" Grid.Column="0" IsVisible="false">
                                     <Image.Source>
@@ -85,6 +99,8 @@
                                         Style="{StaticResource CaptionLabelGrey}" />
                             </Grid>
                         </border:SfBorder>
+
+ 
 
                         <Grid>
                             <Grid.RowDefinitions>
@@ -104,6 +120,8 @@
                             <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                         </Grid>
 
+ 
+
                         <buttons:SfButton  Text="{Binding ButtonTitle}" Margin="0,24,0,24"  BackgroundColor="{Binding ContinueBackGroundColor}"
                                                    IsEnabled="{Binding IsContinueEnabled}"
                                            Command="{Binding InstructionsContinueClick}"
@@ -112,10 +130,11 @@
                     </StackLayout>
                 </ScrollView>
 
+ 
+
 
             </Grid>
         </yummy:PancakeView>
-
         <yummy:PancakeView IsVisible="{Binding IsTerms}" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
             <Grid RowSpacing="15">
                 <Grid.RowDefinitions>

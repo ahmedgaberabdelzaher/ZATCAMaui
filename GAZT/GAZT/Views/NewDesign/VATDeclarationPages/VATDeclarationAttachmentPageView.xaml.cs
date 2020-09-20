@@ -11,6 +11,7 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
@@ -210,7 +211,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                   // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }
@@ -324,7 +327,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             viewModel.IsLoading = false;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await viewModel._dialogService.ShowMessageBox(AppResources.ZZDownloadAttachmentMessg, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZDownloadAttachmentMessg));
+
+                                //await viewModel._dialogService.ShowMessageBox(AppResources.ZZDownloadAttachmentMessg, AppResources.Information);
                             });
                         }
                     }
