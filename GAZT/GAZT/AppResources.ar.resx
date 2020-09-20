@@ -7584,4 +7584,7 @@
   <data name="NDRefundsRequest" xml:space="preserve">
     <value>طلب الاسترداد</value>
   </data>
+  <data name="NDNewProfile" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
 </root>

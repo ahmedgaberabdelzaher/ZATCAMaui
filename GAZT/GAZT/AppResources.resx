@@ -7734,4 +7734,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDRegistrationDetails" xml:space="preserve">
     <value>Registration Details</value>
   </data>
+  <data name="NDNewProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
 </root>

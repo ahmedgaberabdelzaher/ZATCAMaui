@@ -51,7 +51,7 @@
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="15" Padding="16,8,16,8">
                                     <Image Source="user_profile.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDProfile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNewProfile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                    
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>
