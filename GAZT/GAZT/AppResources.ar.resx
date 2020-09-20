@@ -3069,7 +3069,7 @@
     <comment>Sign up</comment>
   </data>
   <data name="ZZZIndividualInformation" xml:space="preserve">
-    <value>بيانات الأفراد</value>
+    <value>بيانات المالك</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZOR" xml:space="preserve">
@@ -5590,7 +5590,7 @@
     <value>تعديل</value>
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
-    <value>الرجاء اكمال عملية التسجيل في ضريبة القيمة المضافة</value>
+    <value>الرجاء اكمال عملية التسجيل</value>
     <comment>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</comment>
   </data>
   <data name="FORM5GeneralTradingInternal" xml:space="preserve">
@@ -6276,7 +6276,7 @@
     <value>انثى</value>
   </data>
   <data name="ESTNationalityLabel" xml:space="preserve">
-    <value>الدولة</value>
+    <value>الجنسية</value>
   </data>
   <data name="ESTCitizenLabel" xml:space="preserve">
     <value>مكان الموطن</value>
@@ -6408,10 +6408,10 @@
     <value>نشاطات العمل التجاري</value>
   </data>
   <data name="ESTMainGroup" xml:space="preserve">
-    <value>المجموعة الرئيسية</value>
+    <value>قطاع النشاط</value>
   </data>
   <data name="ESTSubGroup" xml:space="preserve">
-    <value>المجموعة الفرعية</value>
+    <value>مجموعة الانشطة الفرعية</value>
   </data>
   <data name="ESTActivity" xml:space="preserve">
     <value>النشاط</value>
@@ -6641,7 +6641,7 @@
     <value>سجل في الزكاة</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
-    <value>الرجاء اكمال عملية التسجيل في ضريبة القيمة المضافة</value>
+    <value>الرجاء اكمال عملية التسجيل</value>
     <comment>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</comment>
   </data>
   <data name="VRUploadYourDocument" xml:space="preserve">
@@ -7497,9 +7497,11 @@
   </data>
   <data name="NDAccounting" xml:space="preserve">
     <value>حسابات</value>
+    <comment>حسابات</comment>
   </data>
   <data name="NDEstimated" xml:space="preserve">
     <value>تقديري</value>
+    <comment>تقديري</comment>
   </data>
   <data name="ESTFinLastDay" xml:space="preserve">
     <value>اليوم الأخير</value>

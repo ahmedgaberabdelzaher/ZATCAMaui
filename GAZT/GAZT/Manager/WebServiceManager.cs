@@ -10570,7 +10570,7 @@ namespace GAZT.Manager
         #endregion
 
         #region VAT Filling Change
-        public async static Task<VATChangeFillingPeriodRequestModel> GAZTGetVATChangeFillingPeriodRequestData()
+        public async static Task<VATChangeFillingPeriodRequestModel> GAZTGetVATChangeFillingPeriodRequestData(string fbNum)
         {
             VATChangeFillingPeriodRequestModel _vATChangeFillingPeriodRequestModel = new VATChangeFillingPeriodRequestModel();
 
@@ -10589,7 +10589,7 @@ namespace GAZT.Manager
                     ////(Fbnumz = '', PortalUsrz = '', Langz = 'E', Operationz = '', Gpartz = '', Euser = '00000001000000088130', UserTypz = '', Fbguid = '005056B1365C1EDAB5B1CBE1861076A3')
                     ////? &$expand = EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet
 
-                    String url = Constants.VATChangeFillingPeriodGetURL + "Fbnumz='" + "',PortalUsrz='" + "',Langz='" + lang + "',Operationz='" + "'," +
+                    String url = Constants.VATChangeFillingPeriodGetURL + "Fbnumz='" + fbNum + "',PortalUsrz='" + "',Langz='" + lang + "',Operationz='" + "'," +
                    "Gpartz='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',UserTypz='" + "',Fbguid='" + "')?$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _vATChangeFillingPeriodGetResponse = await client.GetAsync(uri);
