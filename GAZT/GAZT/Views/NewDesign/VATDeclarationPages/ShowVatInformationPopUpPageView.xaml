@@ -42,7 +42,7 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="15" Margin="0,0,0,7">
-                                    <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                                    <Frame CornerRadius="12" HasShadow="False" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
                                         <StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <Image Source="ic_vat_info">

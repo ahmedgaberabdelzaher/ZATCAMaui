@@ -5626,7 +5626,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Edit</value>
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
-    <value>Register now for Value Added Tax in less than 5 minutes</value>
+    <value>Please complete VAT registration</value>
+    <comment>Register now for Value Added Tax in less than 5 minutes</comment>
   </data>
   <data name="FORM5GeneralTradingInternal" xml:space="preserve">
     <value>General Trading Internal</value>
@@ -6315,15 +6316,15 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
     <value>What is your reporting branch?</value>
   </data>
-<data name="ESTNationalitySAUDI" xml:space="preserve">
+  <data name="ESTNationalitySAUDI" xml:space="preserve">
     <value>Saudi</value>
-</data>
-    <data name="ESTNationalityGCC" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityGCC" xml:space="preserve">
     <value>GCC</value>
-</data>
-    <data name="ESTNationalityFOREIGN" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityFOREIGN" xml:space="preserve">
     <value>Foreign</value>
-</data>
+  </data>
   <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
     <value>What is your entity type (from signup)?</value>
   </data>
@@ -6729,7 +6730,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Register in ZAKAT</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
-    <value>Register now for Zakat in less than 5 minutes</value>
+    <value>please complete ZAKAT registration</value>
+    <comment>Register now for Zakat in less than 5 minutes</comment>
   </data>
   <data name="VatReview" xml:space="preserve">
     <value>VAT Review</value>
@@ -7669,15 +7671,15 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDZakatTaxCertificate" xml:space="preserve">
     <value>Zakat Tax Certificate</value>
   </data>
-    <data name="VRVSInstruction1" xml:space="preserve">
-  <value>Note: If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from the Direct Tax Dashboard -> Taxpayer Details -> Deregister Taxpayer.</value>
-</data>
+  <data name="VRVSInstruction1" xml:space="preserve">
+    <value>Note: If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from the Direct Tax Dashboard -&gt; Taxpayer Details -&gt; Deregister Taxpayer.</value>
+  </data>
   <data name="VRVSInstruction2" xml:space="preserve">
-  <value>Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. </value>
-</data>
+    <value>Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. </value>
+  </data>
   <data name="VRVSInstruction3" xml:space="preserve">
-  <value>Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
-</data>
+    <value>Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
+  </data>
   <data name="VRVSRequestType" xml:space="preserve">
     <value>Request Type</value>
   </data>
@@ -7701,5 +7703,38 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
     <value>VAT Return Filing Obligation Suspension</value>
+  </data>
+  <data name="NDBills" xml:space="preserve">
+    <value>Bills</value>
+  </data>
+  <data name="NDCertificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="NDContractReleaseRequest" xml:space="preserve">
+    <value>Contract Release Request</value>
+  </data>
+  <data name="NDDeregistration" xml:space="preserve">
+    <value>Deregistration</value>
+  </data>
+  <data name="NDFillingFrequency" xml:space="preserve">
+    <value>Filling Frequency</value>
+  </data>
+  <data name="NDPrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="NDProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="NDRefundsRequest" xml:space="preserve">
+    <value>Refunds Request</value>
+  </data>
+  <data name="NDRegistertoVAT" xml:space="preserve">
+    <value>Register to VAT</value>
+  </data>
+  <data name="NDRegistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
+  <data name="NDNewProfile" xml:space="preserve">
+    <value>Profile</value>
   </data>
 </root>

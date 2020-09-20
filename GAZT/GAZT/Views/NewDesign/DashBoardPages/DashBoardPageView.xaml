@@ -532,7 +532,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
+                                    <Image Source="ic_menu_vfp.png">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -542,7 +542,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
+                                    <Image Source="ic_menu_cr.png">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ContractRelease}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>

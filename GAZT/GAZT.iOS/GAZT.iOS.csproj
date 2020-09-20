@@ -271,6 +271,12 @@
     <BundleResource Include="Resources\ic_Close_Circle.png" />
     <BundleResource Include="Resources\ic_Close_Circle%402x.png" />
     <BundleResource Include="Resources\ic_Close_Circle%403x.png" />
+    <BundleResource Include="Resources\ic_menu_cr.png" />
+    <BundleResource Include="Resources\ic_menu_cr%402x.png" />
+    <BundleResource Include="Resources\ic_menu_cr%403x.png" />
+    <BundleResource Include="Resources\ic_menu_vfp.png" />
+    <BundleResource Include="Resources\ic_menu_vfp%402x.png" />
+    <BundleResource Include="Resources\ic_menu_vfp%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
