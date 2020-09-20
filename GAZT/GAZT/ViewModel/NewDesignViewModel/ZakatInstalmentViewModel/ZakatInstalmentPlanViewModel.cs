@@ -2156,7 +2156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 else
                 {
                     ZakatInstalments.d.Fbnum = "";
-                    ZakatInstalments.d.Status = "E0001";
+                    //ZakatInstalments.d.Status = "E0001";
                 }
                 ZakatInstalments = await SubmitClicked();
 
@@ -3246,11 +3246,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                         if (IsInitialDraft || App.selectedZakatItem != "") {
 
-                            ZakatInstalments.d.Status = "E0013";
+                            ZakatInstalments.d.Status = ZakatInstalments.d.Status;
                         }
                         else {
                             ZakatInstalments.d.Fbnum = "";
-                            ZakatInstalments.d.Status = "E0001";
+                            ZakatInstalments.d.Status = ZakatInstalments.d.Status;
                         }
 
 
@@ -3455,7 +3455,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     ZakatInstalments.d.DataVersion = "00000";
 
                     ZakatInstalments.d.Operation = "04";
-                    ZakatInstalments.d.Status = "E0001";
+                  
 
                     if (!isDraftClicked)
                     {
@@ -3605,7 +3605,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatInstalments.d.OffPlanDur = "00";
                 ZakatInstalments.d.OffPymntFreq = "00";
                 ZakatInstalments.d.OffPymntFreq = "00";
-                ZakatInstalments.d.Status = "E0001";
                 ZakatInstalments.d.StepNumber = "04";
                 ZakatInstalments.d.Operation = "58";
                 ZakatInstalments.d.DataVersion = "00001";
@@ -4327,7 +4326,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.Fbnum = ZakatInstalments.d.Fbnum;
             _postData.DataVersion = ZakatInstalments.d.DataVersion;
             _postData.Operation = ZakatInstalments.d.Operation;
-            _postData.Euser = App.LoginDataRetrieved.Euser;
+            _postData.Euser = "";
             _postData.StepNumber = ZakatInstalments.d.StepNumber;
             _postData.Email = ZakatInstalments.d.Email;
             _postData.Officer = ZakatInstalments.d.Officer;

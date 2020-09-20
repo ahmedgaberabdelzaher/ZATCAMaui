@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -1110,7 +1111,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.UserTin = ContractReleaseData.d.UserTin;
                 request.d.Xvoidz = ContractReleaseData.d.Xvoidz;
                 request.d.AContDtFg = ContractReleaseData.d.AContDtFg;
-                request.d.AContEndDtFg = "G";
+                request.d.AContEndDtFg = ContractReleaseData.d.AContEndDtFg;
                 request.d.AContNm = ContractName;
                 request.d.AContNo = ContractNumber;
                 request.d.AContProfit = ProfitEstimatedContract.ToString();
@@ -1184,12 +1185,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 //var toDate = (ToDate.Year + "/" + ToDate.Month + "/" + ToDate.Day).ToString();
 
 
+
+
                 var todayDate = DateTime.Now.ToString();
 
                 DateTime dt2 = Convert.ToDateTime(todayDate);
                 JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                   
                 };
                 //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                 var jsonDateTime2 = JsonConvert.SerializeObject(dt2, microsoftDateFormatSettings2);
@@ -1226,10 +1230,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 var convretedToDate = jsonDateTime1;
                 request.d.AContDt = convretedFromDate;
                 request.d.AContEndDt = convretedToDate;
-                request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd");
+                //request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd");
+
 
                 //request.d.AContEndDtCh = (ToDate.Year + "/" + ToDate.Month. + "/" + ToDate.Day).ToString();
-                request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
+                //request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
+
+                if (ContractReleaseData.d.ACalTp == "H")
+                {
+                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                    request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd" , cultureInfo);
+                    request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd", cultureInfo);
+
+                }
+                else
+                {
+
+                    request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd");
+                    request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
+
+                }
                 request.d.Savez = "X";
                 request.d.Submitz = "X";
 

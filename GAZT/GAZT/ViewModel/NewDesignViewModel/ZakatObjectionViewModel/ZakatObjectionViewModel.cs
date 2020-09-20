@@ -77,6 +77,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         public ICommand WithdrawAttachmentTapped { get; set; }
         public ICommand WithdrawAttachmentTappedTwo { get; set; }
         public ICommand WithdrAttachmentsContinueTapped { get; set; }
+        public ICommand Download_Acknowledgement { get; set; }
+        public ICommand ZDownloadForm { get; set; }
 
         public ICommand CloseClick { get; set; }
         public ICommand GoBackClick { get; set; }
@@ -683,7 +685,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
         }
 
-     
+
 
         public ObservableCollection<SelectionModel> securityPaymentOptions { get; set; }
 
@@ -758,78 +760,127 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
 
 
-            
+
 
 
             CloseClick = new Command(async () => { _navigationService.GoBack(); });
 
             GoBackClick = new Command(async () => { BackNavigations(); });
-            BillContinueBtnTapped = new Command(async () => {
-                EnableDetailsView();
+            BillContinueBtnTapped = new Command(async () =>
+            {
+                //EnableDetailsView();
+                await GetWithdrawFBNums();
+                VATReferanceNumber = SelectedFbNum;
+                EnableSummaryView();
             });
 
-            IsObjectionDetailsTapped = new Command(async () => {
+            IsObjectionDetailsTapped = new Command(async () =>
+            {
                 EnableSecurityPaymentsView();
             });
-            SecurityPaymentConBtnTapped = new Command(async () => {
+            SecurityPaymentConBtnTapped = new Command(async () =>
+            {
                 EnableAttachmentsView();
             });
 
-            AttachmentsContinueTapped = new Command(async () => {
+            AttachmentsContinueTapped = new Command(async () =>
+            {
 
                 EnableDeclarationView();
             });
 
-            DeclarationContinueBtnTapped = new Command(async () => {
+            DeclarationContinueBtnTapped = new Command(async () =>
+            {
 
                 await GetWithdrawFBNums();
+                VATReferanceNumber = SelectedFbNum;
                 EnableSummaryView();
             });
 
-
-            
-
-                WithdrawBtnTapped = new Command(async () => {
-
-
-                    if (IsWithDrawEnable)
-                    {
-
-
-
-                        await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
-                    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-                        .Instructions));
+            Download_Acknowledgement = new Command(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (VATReferanceNumber != null)
+                {
+                    String downloadurl = Constants.downloadFile + "'" + VATReferanceNumber + "')/$value";
+                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                }
 
 
-
-
-                        //GAZTGetZakatWithDrawDDData
-                        await GetWithdrawReviewReason();
-                        EnableWithdrawObjectionDetails();
-                    }
-                    else
-                    {
-
-                        /*
-                                            VATReferanceNumber = SelectedFbNum;
-                                            await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());*/
-                    }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
                 });
 
-            SummaryConBtnTapped = new Command(async () => {
+            });
+            ZDownloadForm = new Command(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (VATReferanceNumber != null)
+                {
+                    String downloadurl = Constants.downloadFormFile + "'" + VATReferanceNumber + "')/$value";
+                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
 
-                   VATReferanceNumber = SelectedFbNum;
-                    await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());
-                
             });
 
-            IsWithDrawDetailsTapped = new Command(async () => {
+
+
+
+            WithdrawBtnTapped = new Command(async () =>
+            {
+
+
+                if (IsWithDrawEnable)
+                {
+
+
+
+                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
+                _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                    .Instructions));
+
+
+
+
+                    //GAZTGetZakatWithDrawDDData
+                    await GetWithdrawReviewReason();
+                    EnableWithdrawObjectionDetails();
+                }
+                else
+                {
+
+                    /*
+                                        VATReferanceNumber = SelectedFbNum;
+                                        await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());*/
+                }
+            });
+
+            SummaryConBtnTapped = new Command(async () =>
+            {
+
+                VATReferanceNumber = SelectedFbNum;
+                await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());
+
+            });
+
+            IsWithDrawDetailsTapped = new Command(async () =>
+            {
 
 
                 EnableWithdrawAttachments();
-               // await WithdrawSubmitClicked();
-                
+                // await WithdrawSubmitClicked();
+
 
             });
 
@@ -863,7 +914,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     EnableAttachmentsView();
                     break;
                 case (int)PagesEnum.Summary:
-                    EnableDeclarationView();
+                    //EnableDeclarationView();
+                    //EnableBillContinue();
+                    _navigationService.GoBack();
                     break;
                 case (int)PagesEnum.WithdrawObjectiondetails:
                     EnableSummaryView();
@@ -960,7 +1013,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
         }
 
-      
+
 
 
         public ObservableCollection<Attachment> _WithdrawAttachmentsListViewData { get; set; }
@@ -1268,9 +1321,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             ZakatRequestObjectionSummary(SelectedFbNum);
 
-            EnableBillContinue();
 
-           
+          
+            EnableSummaryView();
+
+            //EnableBillContinue();
+
+           // EnableSummaryView();
+
+
 
         }
 
@@ -1296,12 +1355,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                             var isRefnumberAvilable = _ZAKATObjectionWithDraw.d.results.Find(appRef => (appRef.ObjFbnum == SelectedFbNum));
 
-                            if(isRefnumberAvilable != null) {
+                            if (isRefnumberAvilable != null)
+                            {
 
                                 IsSubmitEnable = false;
                                 IsWithDrawEnable = true;
                             }
-                            else {
+                            else
+                            {
                                 IsSubmitEnable = true;
                                 IsWithDrawEnable = false;
                             }
@@ -1591,6 +1652,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             _ZAKATObjectionReviewReturn.Capacity = _ZakatObjectionRequestSummary.d.ACapacity;
 
                             BindData(_ZakatObjectionRequestSummary);
+
+
+                            await GetWithdrawFBNums();
+                            VATReferanceNumber = SelectedFbNum;
                         }
 
                         else
@@ -1751,7 +1816,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         ZakatObjectionWithdrawPostModel.Root postData = new ZakatObjectionWithdrawPostModel.Root();
                         ZakatObjectionWithdrawPostModel.Metadata metaData = new ZakatObjectionWithdrawPostModel.Metadata();
 
-                        
+
                         metaData.uri = result.d.__metadata.uri;
                         metaData.type = result.d.__metadata.type;
                         metaData.id = result.d.__metadata.id;
@@ -1815,7 +1880,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             metaData1.type = item.__metadata.type;
                             metaData1.id = item.__metadata.id;
                             obj1.__metadata = metaData1;
-                           
+
                             obj1.ASel = item.ASel;
                             obj1.ACurr = "SAR";
                             obj1.ARefNo = item.ARefNo;
@@ -1826,7 +1891,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             obj1.ADisputeAmt = item.ADisputeAmt;
                             obj1.ARetDet = item.ARetDet;
 
-                        
+
                             DateTime dt1 = Convert.ToDateTime(item.APeriodTo);
                             JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
                             {
@@ -1851,7 +1916,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                             obj1.APeriodFrom = jsonDateTime2;
 
-                         
+
                             zobjItemsSet.Add(obj1);
 
                         }
@@ -1876,18 +1941,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         obj.Lineno = 1;
                         obj.Tdformat = "";
 
-                        if(DetailDescriptionNote != null) {
+                        if (DetailDescriptionNote != null)
+                        {
                             obj.Tdline = DetailDescriptionNote;
                         }
-                        else {
+                        else
+                        {
                             obj.Tdline = "";
                         }
-                       
+
                         List<ZnotesSet> _znotesSet = new List<ZnotesSet>();
                         _znotesSet.Add(obj);
                         postData.znotesSet = _znotesSet;
 
-                         postData.Submitz = "X";
+                        postData.Submitz = "X";
                         postData.Savez = "X";
 
 
