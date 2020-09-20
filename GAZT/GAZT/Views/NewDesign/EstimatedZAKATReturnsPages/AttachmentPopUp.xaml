@@ -33,14 +33,14 @@
 
       
             <StackLayout Spacing="0" Grid.Row="0">
-                <Image HorizontalOptions="End">
+                <!--<Image HorizontalOptions="End">
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
 
                 <!--Start Of Objection Reason-->
                 <StackLayout>
@@ -132,8 +132,8 @@
 
                     <!--Footer Section Starts-->
                     <StackLayout Grid.Row="2" BackgroundColor="White">
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.OKText}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />-->
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />-->
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />
 
                     </StackLayout>
                     <!--Footer Section Ends-->
