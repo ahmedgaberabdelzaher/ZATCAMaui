@@ -77,7 +77,8 @@
                                 <Label x:Name="Label_Date"  FontSize="16" TextColor="#010101" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
-                        <buttons:SfButton x:Name="btnDashboard" Text="{x:Static custom2:AppResources.VATRgotologinpage}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                        <!--VATRgotologinpage-->
+                        <buttons:SfButton x:Name="btnDashboard" Text="{x:Static custom2:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"   Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" TextColor="White" />
                 </StackLayout>
