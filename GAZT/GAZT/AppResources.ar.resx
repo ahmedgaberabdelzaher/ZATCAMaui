@@ -6408,10 +6408,10 @@
     <value>نشاطات العمل التجاري</value>
   </data>
   <data name="ESTMainGroup" xml:space="preserve">
-    <value>المجموعة الرئيسية</value>
+    <value>قطاع النشاط</value>
   </data>
   <data name="ESTSubGroup" xml:space="preserve">
-    <value>المجموعة الفرعية</value>
+    <value>مجموعة الانشطة الفرعية</value>
   </data>
   <data name="ESTActivity" xml:space="preserve">
     <value>النشاط</value>
