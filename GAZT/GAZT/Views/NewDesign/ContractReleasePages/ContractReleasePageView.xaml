@@ -148,7 +148,7 @@
                                             Style="{StaticResource ValueLabelBlack}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry x:Name="ContractNameText" Unfocused="ContractNameUnfocused"
+                            <custom:BorderlessEntry x:Name="ContractNameText" Unfocused="ContractNameFiledUnfocused"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
                         </border:SfBorder>
@@ -1253,9 +1253,9 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="{Binding FromDate,StringFormat='{0:MMM yyyy}'}"  />
+                                                        <Span Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"  />
                                                         <Span Text=" - "  />
-                                                        <Span Text="{Binding ToDate,StringFormat='{0:MMM yyyy}'}"  />
+                                                        <Span Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"  />
                                                     </FormattedString.Spans>
                                                 </FormattedString>
                                             </Label.FormattedText>

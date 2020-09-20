@@ -310,41 +310,35 @@
                             <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         </StackLayout>
-                        <border:SfBorder Margin="0,16,0,0" Grid.Row="3" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Padding="0">
+                                <Grid Padding="15" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                    <listView:SfListView  HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False" VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding SummarySelectedBillsList}" SelectionMode="None" SelectionBackgroundColor="Transparent">
-                                    <listView:SfListView.HeaderTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <ViewCell.View>
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                    HasShadow="False">
+                                    </Frame>
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                                    <StackLayout  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.Bills}" VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                </Grid>
 
-                                                    <Grid Padding="15" RowSpacing="0" >
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="auto"/>
-                                                            <ColumnDefinition Width="*"/>
-                                                        </Grid.ColumnDefinitions>
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                               HasShadow="False">
-                                                        </Frame>
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
-                                                        <StackLayout  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="{x:Static ResourceManager:AppResources.Bills}" VerticalOptions="CenterAndExpand"
-                                                                   Style="{StaticResource SectionTitleBlackBold}"/>
-                                                        </StackLayout>
 
-                                                        <BoxView Grid.Row="1" Margin="0,10,0,0" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"/>
-                                                    </Grid>
-                                                </ViewCell.View>
-                                            </ViewCell>
-                                        </DataTemplate>
-                                    </listView:SfListView.HeaderTemplate>
+                                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                      SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent"
+                                      ItemsSource="{Binding SummarySelectedBillsList}"  >
+                                   
 
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
@@ -421,10 +415,8 @@
                         <!--Summary Attachments-->
 
 
-                        <border:SfBorder IsVisible="{Binding IsSummaryAttachmentsVisible}" Margin="0,16,0,10" Grid.Row="5" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-
+                        <border:SfBorder  Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Padding="0">
-
                                 <Grid Padding="15" RowSpacing="0" >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
@@ -440,73 +432,35 @@
                                     </Frame>
                                     <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_attachment"/>
                                     <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.Attachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                     </StackLayout>
-                                   
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-
-                                <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center"
+                                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="SummaryattachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding Attachments}" SelectionMode="None" SelectionBackgroundColor="Transparent">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid Padding="0" RowSpacing="0">
+                                            <Grid Padding="0" RowSpacing="0" Margin="10,5,10,0">
                                                 <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-
-
-                                                <Grid Grid.Row="0" Grid.Column="0">
-                                                    <Image Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
-
-                                                </Grid>
-
-                                                <Grid Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Style="{StaticResource BodyLabelBlack}" />
-                                                </Grid>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                    <Label Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
                                             </Grid>
                                         </DataTemplate>
                                     </listView:SfListView.ItemTemplate>
                                 </listView:SfListView>
-
-                                <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center"
-                                      ItemsSource="{Binding MonthsattachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
-                                    <listView:SfListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid Padding="0" RowSpacing="0">
-                                                <Grid.RowDefinitions >
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwelveMonths}"
-                                                               HorizontalOptions="Start"
-                                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                                </Grid>
-
-                                                <Grid Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Style="{StaticResource BodyLabelBlack}" />
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </listView:SfListView.ItemTemplate>
-                                </listView:SfListView>
-
-
                             </StackLayout>
                         </border:SfBorder >
 

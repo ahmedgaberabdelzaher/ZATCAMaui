@@ -123,7 +123,7 @@
                                 </Label>
                                 <custom:CustomLabel Text="{Binding SelectedRegNationalityType}"  HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
-                            <Grid  Grid.Row="4" Margin="0,0,0,10">
+                            <Grid  Grid.Row="4" Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -142,7 +142,7 @@
                                 <buttons:SfButton ImageWidth="25" VerticalOptions="CenterAndExpand"  Grid.Row="0"  Grid.Column="1" IsVisible="{Binding IsClickedStayMoreThanKSAOption}" TextColor=" DarkGreen" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTResidentOptionValue}"  BorderWidth="1" BackgroundColor="#cee0dd"  CornerRadius="20"  HorizontalOptions="EndAndExpand"/>
 
                             </Grid>
-                            <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10">
+                            <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                 <Grid  Margin="0,0,0,10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -1105,7 +1105,7 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <!--<RowDefinition Height="auto"/>-->
                                         </Grid.RowDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTReportBranchQuestionLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding SelectedReportingBranch}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
@@ -1117,8 +1117,8 @@
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding SelectedRegNationalityType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="{x:Static ResourceManager:AppResources.ESTResidencyStatus}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="{Binding SelectedTpresidence, Converter={StaticResource residentialStatusConverter}}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 
-                                                        ImageSource="Generic_attachment_icon.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />
+                                        <!--<buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 
+                                                        ImageSource="Generic_attachment_icon.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />-->
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
@@ -1222,7 +1222,7 @@
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <cards:SfCardView x:Name="PassportSummaryView"  HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
+                        <cards:SfCardView x:Name="PassportSummaryView"  HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16">
                                     <Grid.ColumnDefinitions>

@@ -89,7 +89,7 @@
                 </StackLayout>
 
                 <!--Start step 2-->
-                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}">
+                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <StackLayout>
                     
                             <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
@@ -323,7 +323,7 @@
                 </ScrollView>
     <!--End-->
                 <!--Start step 3-->
-                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}" >
+                    <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <StackLayout>
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}" Style="{StaticResource CaptionLabelGrey}"/>
                     <Grid>
@@ -539,7 +539,7 @@
                     </StackLayout>
                 </ScrollView>
                 <!--Step 4-->
-                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}">
+                    <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <StackLayout>
                         <!-- Email -->
 
@@ -637,7 +637,7 @@
                 </ScrollView>
 
                 <!--Start step 5-->
-                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EmailVerification}}">
+                    <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EmailVerification}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <StackLayout>
                         <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
@@ -1045,7 +1045,7 @@
                     </StackLayout>
                 </ScrollView>
                 <!--Start step 6-->
-                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.MobileVerification}}">
+                    <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.MobileVerification}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <StackLayout>
 
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">

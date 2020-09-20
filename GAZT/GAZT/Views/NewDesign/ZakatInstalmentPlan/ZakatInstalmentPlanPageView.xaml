@@ -1164,7 +1164,7 @@
                             <BoxView Grid.Row="2" Margin="0,15,0,0" Grid.Column="0" BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1"/>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <listView:SfListView HeightRequest="250" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="True"   VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                            <listView:SfListView HeightRequest="180" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="True"   VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                               ItemsSource="{Binding BankStatementsAttachmentsListViewData}" 
                                               SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" 
                                               SelectionChanged="attachmentsListView_SelectionChanged"
@@ -1260,7 +1260,7 @@
                         </Grid>
 
                         <Grid Grid.Row="4" >
-                            <listView:SfListView x:Name="FinancialAttachmentsList" HorizontalOptions="Center" IsScrollBarVisible="False" HeightRequest="250" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                            <listView:SfListView x:Name="FinancialAttachmentsList" HorizontalOptions="Center" IsScrollBarVisible="False" HeightRequest="180" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                               ItemsSource="{Binding FinanceAttachmentsListViewData}" 
                                               SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" 
                                                TapCommand="{Binding FinanceAttachmentTapped}">

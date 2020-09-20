@@ -533,7 +533,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class TaxpayerNationality : TaxpayerNationalityLandx50
     {
-        public override string ToString() => Natio50;
+        public override string ToString() => Landx50;
     }
 
     public class TaxpayerNationalityLandx50

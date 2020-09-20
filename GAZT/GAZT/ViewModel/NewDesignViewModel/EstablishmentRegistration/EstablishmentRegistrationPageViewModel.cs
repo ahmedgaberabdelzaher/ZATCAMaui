@@ -399,7 +399,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedTaxPayerType));
             }
         }
-
+        private Dictionary<string, string> NationalityMapping = new Dictionary<string, string>() {
+            { "SAUDI", AppResources.ESTNationalitySAUDI },
+            { "GCC", AppResources.ESTNationalityGCC },
+            { "FOREIGN", AppResources.ESTNationalityFOREIGN }
+        };
         private string _selectedRegNationalityType = string.Empty;
         public string SelectedRegNationalityType
         {
@@ -412,6 +416,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
         private string _selectedLegalEntity;
+        private bool _isSaudi = false;
+        public bool IsSaudi
+        {
+            get => _isSaudi;
+            set
+            {
+                _isSaudi = value;
+                RaisePropertyChanged(nameof(IsSaudi));
+            }
+        }
         public string SelectedLegalEntity
         {
             get => _selectedLegalEntity;
@@ -1322,7 +1336,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public void OnAppearing()
         {
-            TabList 
+            TabList
             = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
                 AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
                 AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
@@ -1366,7 +1380,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         if (await PushDatatoServer(currentTab))
                         {
-                            currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                            currentTab = IsSaudi ? EstablishmentRegistrationTabsEnum.Outlets : EstablishmentRegistrationTabsEnum.PassportDetails;
                         }
                         //else
                         //{
@@ -1479,7 +1493,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
-                currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                currentTab = IsSaudi ? EstablishmentRegistrationTabsEnum.TaxpayerDetail: EstablishmentRegistrationTabsEnum.PassportDetails;
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
             {
@@ -1994,8 +2008,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
-                    SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
-
+                    SelectedRegNationalityType = NationalityMapping[taxPayerDetails?.Tpnationality];
+                    IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";
+                    if (IsSaudi)
+                    {
+                        TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
+                    }
                     ResidenceTypePrePopulateData(taxPayerDetails);
                     RentAttachmentPrePopulateCheck(taxPayerDetails);
                 }
@@ -2183,11 +2201,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
             //if (_outletTempData.Count > 0)
             //{
-                OutletData.Clear();
-                _outletTempData.ForEach(_out => {
-                    OutletData.Add(_out);
-                    SearchableOutletData.Add(_out);
-                });
+            OutletData.Clear();
+            SearchableOutletData?.Clear();
+            _outletTempData.ForEach(_out =>
+            {
+                OutletData.Add(_out);
+                SearchableOutletData.Add(_out);
+            });
             //}
         }
         private void openNewOutlet()
@@ -2466,7 +2486,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     //return true;
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
-                    taxPayerDetails.Tpnationality = SelectedRegNationalityType;
+                    taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
                     taxPayerDetails.Taxtpdetermination = "1";
                     taxPayerDetails.Tpresidence = SelectedTpresidence;
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
@@ -2748,6 +2768,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedOrgNonResident = string.Empty;
                     SelectedOrgNonResidentOptions = string.Empty;
                     SelectedOrgNonResidentActivity = string.Empty;
+                    IsSaudi = false;
                     UploadedRentDocumentsList?.Clear();
                     break;
             }
