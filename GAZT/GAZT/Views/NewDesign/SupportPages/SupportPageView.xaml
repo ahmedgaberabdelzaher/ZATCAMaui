@@ -109,8 +109,8 @@
                     <!--Chat View Ends-->
 
                     <!--ContactUs View Starts-->
-                    <StackLayout IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
-                        <Grid>
+                    <Grid IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
+                        <Grid x:Name="ContactUsMainPage">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="auto"/>
@@ -118,8 +118,8 @@
                             <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never" >
                             <StackLayout>
                         <!--<WebView x:Name="ContactUsWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />-->
-                        <custom:CustomLabel Grid.Column="1" Text="General Authority of Zakat and Tax" Style="{StaticResource PageTitleBlack}" />
-                        <custom:CustomLabel Grid.Column="1" Text="Headquaeter Riyadh" Style="{StaticResource SectionTitleBlack}" />
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZLandingPageTitle}" Style="{StaticResource PageTitleBlack}" />
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadquaeterRiyadh}" Style="{StaticResource SectionTitleBlack}" />
                         <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">
                             <Grid Padding="16">
                                 <Grid.ColumnDefinitions>
@@ -130,7 +130,7 @@
                                     <Image Source="ic_location_Outline.png" VerticalOptions="Start" Margin="0,3,0,0"/>
                                     <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
-                                <custom:CustomLabel Grid.Column="1" Text="Prince Abdulrahman Bin Abdulaziz St, Riyadh 1268" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadQAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
                                     <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="0" Margin="0,10,0,0">
@@ -160,7 +160,7 @@
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
                                     <Image Source="phone_Green.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
-                                    <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="international Phone" Style="{StaticResource BodyLabelGrey}"/>
+                                                <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDInternationalPhone}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
                                 <custom:CustomLabel VerticalTextAlignment="Center" Grid.Column="1" Text="+966 112 048 998" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
@@ -174,13 +174,13 @@
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
                                     <Image Source="phone_Green.png" VerticalOptions="Start" Margin="0,3,0,0"/>
-                                    <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="Contact Email" Style="{StaticResource BodyLabelGrey}"/>
+                                                <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDContactEmail}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
                                 <custom:CustomLabel Grid.Column="1" Text="info@gazt.gov.sa" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
 
-                        <custom:CustomLabel Grid.Column="1" Text="Social" Style="{StaticResource SectionTitleBlack}" />
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDSocial}" Style="{StaticResource SectionTitleBlack}" />
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="16">
                                     
@@ -193,8 +193,8 @@
                                         </border:SfBorder>
                                     
                                     <StackLayout VerticalOptions="CenterAndExpand">
-                                        <custom:CustomLabel Text="GAZT" Style="{StaticResource ButtonLabelBlackBold}"/>
-                                        <custom:CustomLabel Margin="0,-16,0,0" Text="Twitter" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGAZT}" Style="{StaticResource ButtonLabelBlackBold}"/>
+                                                <custom:CustomLabel Margin="0,-16,0,0" Text="{x:Static ResourceManager:AppResources.NDTwitter}" Style="{StaticResource CaptionLabelGrey}"/>
                                     </StackLayout>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Margin="0,0,16,0"/>
                                 </StackLayout>
@@ -212,8 +212,8 @@
                                     </border:SfBorder>
 
                                     <StackLayout VerticalOptions="CenterAndExpand">
-                                        <custom:CustomLabel Text="VAT" Style="{StaticResource ButtonLabelBlackBold}"/>
-                                        <custom:CustomLabel Margin="0,-16,0,0" Text="Twitter" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetSelectTypeVAT}" Style="{StaticResource ButtonLabelBlackBold}"/>
+                                                <custom:CustomLabel Margin="0,-16,0,0" Text="{x:Static ResourceManager:AppResources.NDTwitter}" Style="{StaticResource CaptionLabelGrey}"/>
                                     </StackLayout>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Margin="0,0,16,0"/>
                                 </StackLayout>
@@ -221,10 +221,12 @@
                         </StackLayout>
                             </ScrollView>
                             <StackLayout Grid.Row="1" BackgroundColor="White" Padding="0,8,0,10">
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDSuggestionsandComplaints}" Style="{StaticResource PrimaryButtonStyle}"/>
+                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDSuggestionsandComplaints}" Style="{StaticResource PrimaryButtonStyle}" Clicked="SuggestionsandComplaintsClicked"/>
                             </StackLayout>
                         </Grid>
-                    </StackLayout>
+
+                        <WebView x:Name="ContactUsWebView" IsVisible="False"  WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />
+                    </Grid>
                     <!--ContactUs View End-->
 
                     <!--Branch Locator Starts-->
@@ -317,9 +319,9 @@
 
             <Grid Grid.Row="0" Padding="20,5,20,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="0">
                     <Image Source="arrowLeftwhite.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}"/>
@@ -327,7 +329,7 @@
                         <TapGestureRecognizer Tapped="OnBackArrowTapped" NumberOfTapsRequired="1"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel Grid.Column="1" Text="{Binding PageTitle}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <custom:CustomLabel Grid.Column="1" Text="{Binding PageTitle}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
             </Grid>
         </Grid>
     </ContentPage.Content>
