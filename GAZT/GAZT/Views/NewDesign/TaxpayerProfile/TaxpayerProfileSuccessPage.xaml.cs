@@ -57,7 +57,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                if (viewModel.TPProfileSuccessId == 1)
+                if (viewModel.TPProfileSuccessId == 1 || viewModel.TPProfileSuccessId == 3)
                 {
                     await Task.Run(() =>
                     {
