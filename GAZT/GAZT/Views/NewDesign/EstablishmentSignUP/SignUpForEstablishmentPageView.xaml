@@ -256,11 +256,8 @@
                             </control:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <!--<Image Source="arrowDropdown.png"/>-->
-                                        <Image HorizontalOptions="EndAndExpand">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                            </Image.Source>
+                                        <Image Source="calendar.png" HorizontalOptions="EndAndExpand">
+                                            
                                         </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
@@ -597,16 +594,8 @@
                                 
                                 <Frame BorderColor="LightGray" x:Name="FrmMobile"  HorizontalOptions="FillAndExpand" Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8"  Margin="0,-6,0,0">
                                     <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
-                                        <!--<Image HorizontalOptions="Start" Rotation="270" >
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
-                                                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                            </Image.Source>
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="CountryCodeTapped"/>
-                                            </Image.GestureRecognizers>
-                                        </Image>-->
-                                        <Image Source="arrowDropdown.png">
+                                        <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
+                                            
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="CountryCodeTapped"/>
                                             </Image.GestureRecognizers>
