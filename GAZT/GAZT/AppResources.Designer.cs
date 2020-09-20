@@ -5395,6 +5395,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bills.
+        /// </summary>
+        public static string NDBills {
+            get {
+                return ResourceManager.GetString("NDBills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Branch Location.
         /// </summary>
         public static string NDBranchLocation {
@@ -5427,6 +5436,15 @@ namespace EGAZT {
         public static string NDBranchType {
             get {
                 return ResourceManager.GetString("NDBranchType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificates.
+        /// </summary>
+        public static string NDCertificates {
+            get {
+                return ResourceManager.GetString("NDCertificates", resourceCulture);
             }
         }
         
@@ -5503,6 +5521,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contract Release Request.
+        /// </summary>
+        public static string NDContractReleaseRequest {
+            get {
+                return ResourceManager.GetString("NDContractReleaseRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Corporate ID must start with 7.
         /// </summary>
         public static string NDCorporateIDMustStartWithSeven {
@@ -5526,6 +5553,15 @@ namespace EGAZT {
         public static string NDCountinue {
             get {
                 return ResourceManager.GetString("NDCountinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deregistration.
+        /// </summary>
+        public static string NDDeregistration {
+            get {
+                return ResourceManager.GetString("NDDeregistration", resourceCulture);
             }
         }
         
@@ -5661,6 +5697,15 @@ namespace EGAZT {
         public static string NDFacilityInformation {
             get {
                 return ResourceManager.GetString("NDFacilityInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filling Frequency.
+        /// </summary>
+        public static string NDFillingFrequency {
+            get {
+                return ResourceManager.GetString("NDFillingFrequency", resourceCulture);
             }
         }
         
@@ -5881,6 +5926,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        public static string NDNewProfile {
+            get {
+                return ResourceManager.GetString("NDNewProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Numbers and Symbols.
         /// </summary>
         public static string NDNumbersAndSymbols {
@@ -5989,6 +6043,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string NDPrivacyPolicy {
+            get {
+                return ResourceManager.GetString("NDPrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        public static string NDProfile {
+            get {
+                return ResourceManager.GetString("NDProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Real State VAT with Ministry of Justice.
         /// </summary>
         public static string NDRealStateVATMinistryJustice {
@@ -6016,11 +6088,38 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refunds Request.
+        /// </summary>
+        public static string NDRefundsRequest {
+            get {
+                return ResourceManager.GetString("NDRefundsRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register to VAT.
+        /// </summary>
+        public static string NDRegistertoVAT {
+            get {
+                return ResourceManager.GetString("NDRegistertoVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register in ZAKAT.
         /// </summary>
         public static string NDRegisterZAKAT {
             get {
                 return ResourceManager.GetString("NDRegisterZAKAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Details.
+        /// </summary>
+        public static string NDRegistrationDetails {
+            get {
+                return ResourceManager.GetString("NDRegistrationDetails", resourceCulture);
             }
         }
         

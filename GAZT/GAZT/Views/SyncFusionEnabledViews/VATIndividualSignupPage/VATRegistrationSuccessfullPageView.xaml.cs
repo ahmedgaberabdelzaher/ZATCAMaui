@@ -53,8 +53,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             // Added by Divya
             //  viewModel._navigationService.NavigateTo(App.SFLandingPageView);
-            App.TP = null;
-            viewModel.LogOut();
+            //App.TP = null;
+            //viewModel.LogOut();
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                //Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
+                //Navigation.RemovePage(pg);
+                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg1);
+            }
+            viewModel._navigationService.GoBack();
         }
 
         private async void Image_Copy_Tapped(object sender, EventArgs e)
