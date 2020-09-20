@@ -7540,7 +7540,7 @@
     <value>Request for Ruling</value>
   </data>
   <data name="NDVATRegistrationVerification" xml:space="preserve">
-    <value>VAT Registration Verification</value>
+    <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="NDVATServices" xml:space="preserve">
     <value>VAT Services</value>
@@ -7553,5 +7553,35 @@
   </data>
   <data name="NDZakatTaxCertificate" xml:space="preserve">
     <value>Zakat Tax Certificate</value>
+  </data>
+  <data name="NDBills" xml:space="preserve">
+    <value>الفواتير</value>
+  </data>
+  <data name="NDCertificates" xml:space="preserve">
+    <value>الشهادات</value>
+  </data>
+  <data name="NDContractReleaseRequest" xml:space="preserve">
+    <value>طلب الافراج عن عقد</value>
+  </data>
+  <data name="NDProfile" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
+  <data name="NDRegistertoVAT" xml:space="preserve">
+    <value>التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="NDRegistrationDetails" xml:space="preserve">
+    <value>تفاصيل التسجيل</value>
+  </data>
+  <data name="NDDeregistration" xml:space="preserve">
+    <value>إلغاء التسجيل</value>
+  </data>
+  <data name="NDFillingFrequency" xml:space="preserve">
+    <value>تغيير فترة تقديم الإقرارات</value>
+  </data>
+  <data name="NDPrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="NDRefundsRequest" xml:space="preserve">
+    <value>طلب الاسترداد</value>
   </data>
 </root>

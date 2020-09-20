@@ -7704,4 +7704,34 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
     <value>VAT Return Filing Obligation Suspension</value>
   </data>
+  <data name="NDBills" xml:space="preserve">
+    <value>Bills</value>
+  </data>
+  <data name="NDCertificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="NDContractReleaseRequest" xml:space="preserve">
+    <value>Contract Release Request</value>
+  </data>
+  <data name="NDDeregistration" xml:space="preserve">
+    <value>Deregistration</value>
+  </data>
+  <data name="NDFillingFrequency" xml:space="preserve">
+    <value>Filling Frequency</value>
+  </data>
+  <data name="NDPrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="NDProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="NDRefundsRequest" xml:space="preserve">
+    <value>Refunds Request</value>
+  </data>
+  <data name="NDRegistertoVAT" xml:space="preserve">
+    <value>Register to VAT</value>
+  </data>
+  <data name="NDRegistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
 </root>
