@@ -2228,8 +2228,8 @@
                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" Style="{StaticResource CaptionLabelGrey}" />
 
                                 <StackLayout HorizontalOptions="Start" WidthRequest="150"  VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
-                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  Margin="0" Padding="0"/>
-                                    <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  />
+                                    <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  Margin="0,5,0,5" Padding="0"/>
+                                    <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Margin="0,5,0,5"  />
                                 </StackLayout>
 
                                 <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" UnfocusedColor="#B1B1B1" x:Name="EntryPreperiodcorrFrame" ErrorColor="#B00020" HasError="False" Margin="0">
@@ -2359,7 +2359,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}" Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                     </StackLayout>
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
