@@ -1232,11 +1232,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             string FaqUrl = string.Empty;
             if (App.IsArabic)
             {
-                FaqUrl = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                FaqUrl = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
             }
             else
             {
-                FaqUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                FaqUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
             }
             Device.OpenUri(new Uri(FaqUrl));
         }
@@ -1319,11 +1319,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
 
                 if (App.IsArabic)
@@ -7307,11 +7307,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
 
                 if (App.IsArabic)
@@ -7373,11 +7373,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
 
                 if (App.IsArabic)
@@ -7493,11 +7493,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7554,11 +7554,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7614,11 +7614,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7673,11 +7673,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7731,11 +7731,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7789,11 +7789,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7847,11 +7847,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7906,11 +7906,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -7963,11 +7963,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -8021,11 +8021,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -8078,11 +8078,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -8136,11 +8136,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -8193,11 +8193,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
@@ -8251,11 +8251,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 else
                 {
-                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                    headerAmountInfo.Link = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
                 }
                 if (App.IsArabic)
                 {
