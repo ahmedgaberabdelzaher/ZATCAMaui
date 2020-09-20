@@ -2101,4 +2101,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\installment_planColor%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR%403x.png" />
+  </ItemGroup>
 </Project>
