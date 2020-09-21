@@ -124,19 +124,20 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
 
-                String downloadurl = Constants.downloadFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
+
+
+                String downloadurl = Constants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
         }
 
-        
 
-         private async void Download_AcknowledgementForm(object sender, EventArgs e)
+
+        private async void Download_AcknowledgementForm(object sender, EventArgs e)
         {
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
-
-                String downloadurl = Constants.downloadFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
+                String downloadurl = Constants.CRDownloadCoverFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
         }
