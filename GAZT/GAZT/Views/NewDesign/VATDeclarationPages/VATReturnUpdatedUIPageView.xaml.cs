@@ -75,20 +75,40 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             if (viewModel.VATDeclarationData.d.StepNumber == "01" || viewModel.VATDeclarationData.d.StepNumber == "1" || viewModel.VATDeclarationData.d.StepNumber == "0" || viewModel.VATDeclarationData.d.StepNumber == "00")
             {
-                viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
-                viewModel.ManageButtonsNameOnViewModel();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (viewModel.IsFifteenPercentChange)
+                    {
+                        viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
+                    }
+                    else
+                    {
+                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+                    }
+                    viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                    viewModel.ManageButtonsNameOnViewModel();
+                });
             }
             else if (viewModel.VATDeclarationData.d.StepNumber == "02" || viewModel.VATDeclarationData.d.StepNumber == "2")
             {
-                Instrunctionsclicked();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Instrunctionsclicked();
+                });
             }
             else if (viewModel.VATDeclarationData.d.StepNumber == "03" || viewModel.VATDeclarationData.d.StepNumber == "3")
             {
-                Instrunctionsclicked();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    Instrunctionsclicked();
+                });
             }
             else if (viewModel.VATDeclarationData.d.StepNumber == "04" || viewModel.VATDeclarationData.d.StepNumber == "4")
             {
-                VatTotalAmountclicked();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    VatTotalAmountclicked();
+                });
             }
         }
 
@@ -450,14 +470,20 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsNewReturn = true;
                 ShowHideContent(viewModel.IsNewReturn);
                 SetNewVATRate();
-               // viewModel.MaxIndex = 6;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.MaxIndex = 6;
+                });
             }
             else
             {
                 viewModel.IsFifteenPercentChange = false;
                 viewModel.IsNewReturn = false;
                 ShowHideContent(viewModel.IsNewReturn);
-               // viewModel.MaxIndex = 5;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.MaxIndex = 5;
+                });
             }
 
         }
@@ -1194,7 +1220,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 try
                 {
                     await viewModel.pageLoad();
-                    NavigationtoStep();
+
+                    await Task.Run(() =>
+                    {
+                        NavigationtoStep();
+                    });
                     viewModel.ListOfActionButtonsApplicable = new List<string>();
                     await viewModel.SetButtons(viewModel.VATDeclarationData);
                     if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")

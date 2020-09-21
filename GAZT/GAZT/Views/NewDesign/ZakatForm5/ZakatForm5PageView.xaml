@@ -129,7 +129,7 @@
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <!--<custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>-->
                                                 <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
-                                                <custom:CustomLabel Text="{Binding ZakatFromDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding ZakatFromDate}" Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
 
@@ -139,7 +139,7 @@
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <!--<custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>-->
                                                 <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
-                                                <custom:CustomLabel Text="{Binding ZakatToDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding ZakatToDate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
 
@@ -2507,7 +2507,7 @@
                                         <custom:CustomLabel Text="{Binding ZakatToDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>
                                     </StackLayout>-->
                                     <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"></custom:CustomLabel>-->
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" ></custom:CustomLabel>
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" ></custom:CustomLabel>
 
 
                                 </StackLayout>
