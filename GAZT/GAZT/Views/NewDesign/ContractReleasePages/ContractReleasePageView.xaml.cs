@@ -219,11 +219,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             try
             {
-
                 if (viewModel.ContractTotalAmount < Double.Parse(AmountoReleaseTxt.Text))
                 {
-                    viewModel._dialogService.ShowMessageBox(AppResources.CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract, AppResources.Information);
-                    //return;
+                    viewModel._dialogService.ShowMessageBox(AppResources.CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract, AppResources.CRWarning);
                 }
                 viewModel.AmountToRelease = Double.Parse(AmountoReleaseTxt.Text);
                 viewModel.MakeCalculations();

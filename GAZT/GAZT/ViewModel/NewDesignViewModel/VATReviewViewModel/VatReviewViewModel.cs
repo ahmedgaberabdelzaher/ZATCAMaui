@@ -3102,7 +3102,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public void EnableReviewReasonConButton()
         {
-            if (ReviewReason == "" || SubReviewReason == "" || ApplicationRefNumber == "" || RequestDate == null)
+            if (ReviewReason == "" || SubReviewReason == "" || ApplicationRefNumber == "" || RequestDate == null || ReportDetails == "")
             {
                 IsReviewReasonEnabled = false;
             }
@@ -3110,13 +3110,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 IsReviewReasonEnabled = true;
             }
-
-
-
         }
         public void EnableReviewDetailsConButton()
         {
-            if (ReportDetails == "" || (IsAssessPayOptionVisible && (DisputeDetailsDesc == "" || RequestedReviewAmount == "")))
+            if ((IsAssessPayOptionVisible && (DisputeDetailsDesc == "" || RequestedReviewAmount == "")))
             {
                 IsReviewDetailsEnabled = false;
             }

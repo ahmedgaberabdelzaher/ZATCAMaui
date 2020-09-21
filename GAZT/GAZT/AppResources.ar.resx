@@ -7626,4 +7626,12 @@
   <data name="NDV" xml:space="preserve">
     <value>v</value>
   </data>
+   <data name="ZakatIncomeTaxObjection" xml:space="preserve">     <value>اعتراضات الزكاة/ضريبة الدخل</value>   </data>
+    <data name="CRWarning" xml:space="preserve">
+    <value>تنبيه</value>
+  </data>
+ <data name="VRHelperText" xml:space="preserve">
+    <value>المستندات والأدلة المساندة:
+يرجى تزويدنا بالوثائق المساندة لدعم أسباب المراجعة</value>
+  </data>
 </root>

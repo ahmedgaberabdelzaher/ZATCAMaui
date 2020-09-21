@@ -1112,7 +1112,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
                 Note objNote = new Note();
                 int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+                string Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
                 objNote.__metadata = new Metadata2();
                 objNote.__metadata.id = Url;
                 objNote.__metadata.uri = Url;
@@ -1172,7 +1172,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
               //  viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
                 Note objNote = new Note();
                 int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+                string Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
                 objNote.__metadata = new Metadata2();
                 objNote.__metadata.id = Url;
                 objNote.__metadata.uri = Url;
