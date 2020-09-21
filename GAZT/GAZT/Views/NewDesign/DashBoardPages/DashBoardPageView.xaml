@@ -818,7 +818,7 @@
 
                                     </StackLayout>
                                     <border:SfBorder.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped"/>
+                                        <TapGestureRecognizer Tapped="OnVATNowTapped"/>
                                 </border:SfBorder.GestureRecognizers>
                                 </border:SfBorder>
 
@@ -829,7 +829,7 @@
 
                                     </StackLayout>
                                     <border:SfBorder.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped"/>
+                                        <TapGestureRecognizer Tapped="VATLookUp_Tapped"/>
                                 </border:SfBorder.GestureRecognizers>
                                 </border:SfBorder>
 
