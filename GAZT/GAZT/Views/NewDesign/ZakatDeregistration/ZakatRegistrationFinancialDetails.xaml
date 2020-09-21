@@ -77,52 +77,7 @@
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1">
-                                            
-                               
-                                            <!--Taxpayer Details Summery-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
-                                                <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
-                                                        <!--<Image>
-                                                        <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
-                                                        </Image.Source>
-                                                    </Image>-->
-                                                        <!--<Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>-->
-                                                        <!--<Label  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>-->
-                                                        <Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
-                                                        <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  Style="{StaticResource GAZTSmallBlackLbl}"/>
-                                                    </StackLayout>
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
-                                                    <Grid Padding="10,5,10,10">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="50*"/>
-                                                            <ColumnDefinition Width="50*"/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
-                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.VATRImportExport}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding ImportExportText}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
-                                                         <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.Attachment}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding AttachmentName}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
-
-
-
-
-                                                        <!--<Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
-
-                                                    </Grid>
-                                                </StackLayout>
-                                            </Frame>
-                                     
-                                   
+                             
                                             <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
@@ -149,39 +104,28 @@
                                                             <ColumnDefinition Width="40*"/>
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.FORM5AccountingMethod}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
 
-                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.FORM5CalendarType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
-                                                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.ESTEndOfFiscalMonth}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
-                                                        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ESTEndOfFiscalDay}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
-                                                        <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ESTBusinessCommencementDate}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Grid.Row="4" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.LastnmFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
-                                                        <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.ESTTaxableDate}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                    
                                                         <Label Grid.Row="5" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.MobNumberFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
-                                                        <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                       
                                                     </Grid>
                                                 </StackLayout>
-                                            </Frame>
-                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
-                         <StackLayout Padding="0">
-                 
-
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                            
-					              
-			                      
-                                            </StackLayout>
                                             </Frame>
                                         </StackLayout>
                                     </Grid>

@@ -411,6 +411,9 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>رمز مرور خاطئ</value>
   </data>
+       <data name="InvalidEntry" xml:space="preserve">
+    <value>ادخال غير صحيح</value>
+  </data>
   <data name="EnterMobileNumber" xml:space="preserve">
     <value>الرجاء إدخال رقم الجوال</value>
   </data>
@@ -3777,6 +3780,9 @@
   <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
     <value>الممثل المالي</value>
   </data>
+     <data name="ZZZZVATRFinancialDelegate" xml:space="preserve">
+    <value>مندوب مالي</value>
+  </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>تاريخ البداية</value>
   </data>
@@ -4447,7 +4453,7 @@
     <value>الاسم 2</value>
   </data>
   <data name="TinDeregistrationOutletDetails" xml:space="preserve">
-    <value>معلومات الفرع</value>
+    <value>معلومات الفروع</value>
   </data>
   <data name="TinDeregistrationOutletReviewMessage" xml:space="preserve">
     <value>مراجعة معلومات الفرع الذي سيتم إلغاء تسجيله</value>

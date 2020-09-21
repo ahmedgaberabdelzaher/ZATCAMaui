@@ -2722,7 +2722,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-                genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
+                genericDatePickerModel.DatePickerTitle = AppResources.TinDeregistrationDate;
                 genericDatePickerModel.PickerId = "DeregDatePicker";
 
                 try

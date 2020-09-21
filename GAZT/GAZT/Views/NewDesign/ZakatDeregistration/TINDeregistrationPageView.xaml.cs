@@ -249,11 +249,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     if (viewModel.TinDeregistrationData.ADecTelNo.Length != 10)
                     {
-                        if (Messages.Length > 0)
+                        if (viewModel.TinDeregistrationData.ADecTelNo.Length < 9)
                         {
-                            Messages.Append(Environment.NewLine);
+                            Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                         }
-                        Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+               
                     }
                 }
             }
@@ -494,11 +494,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 if (EntryTIN.Text.Length != 10)
                 {
-                    if (Messages.Length > 0)
+                    if (EntryTIN.Text.Length > 10)
                     {
-                        Messages.Append(Environment.NewLine);
+                        Messages.Append(AppResources.InvalidEntry);
                     }
-                    Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                    else
+                    {
+                        Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                    }
                 }
                 if (Messages.Length > 0)
                 {

@@ -385,6 +385,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="InvalidEmail" xml:space="preserve">
     <value>Invalid email</value>
   </data>
+      <data name="InvalidEntry" xml:space="preserve">
+    <value>Invalid entry</value>
+  </data>
   <data name="LogoutConfirmationMessage" xml:space="preserve">
     <value>Are you sure you want to log off?</value>
   </data>
@@ -3767,6 +3770,9 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   </data>
   <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
     <value>Financial Representative</value>
+  </data>
+      <data name="ZZZZVATRFinancialDelegate" xml:space="preserve">
+    <value>Financial Delegate</value>
   </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>Start Date</value>

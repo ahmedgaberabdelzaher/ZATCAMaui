@@ -581,6 +581,12 @@ namespace EGAZT {
             }
         }
         
+        public static string InvalidEntry {
+            get {
+                return ResourceManager.GetString("InvalidEntry", resourceCulture);
+            }
+        }
+        
         public static string LogoutConfirmationMessage {
             get {
                 return ResourceManager.GetString("LogoutConfirmationMessage", resourceCulture);
@@ -6273,6 +6279,12 @@ namespace EGAZT {
         public static string ZZZZVATRFinancialRepresentative {
             get {
                 return ResourceManager.GetString("ZZZZVATRFinancialRepresentative", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATRFinancialDelegate {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFinancialDelegate", resourceCulture);
             }
         }
         
