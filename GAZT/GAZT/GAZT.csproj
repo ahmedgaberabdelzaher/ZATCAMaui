@@ -99,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
-    <EmbeddedResource Remove="Views\NewDesign\EstablishmentRegistrationPages\AddressPickerPopPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="AppResources.ar.Designer.cs">
