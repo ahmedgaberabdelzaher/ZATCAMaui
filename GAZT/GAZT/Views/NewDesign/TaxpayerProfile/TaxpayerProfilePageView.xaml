@@ -185,7 +185,7 @@
                     </Grid.ColumnDefinitions>
 
                     <custom:CustomLabel Grid.Column="1"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZMyProfile}"
+                                    Text="{x:Static ResourceManager:AppResources.NDProfile}"
                                     Style="{StaticResource SectionTitleWhiteBold}"
                                     HorizontalOptions="Center"
                                     VerticalTextAlignment="Center"/>
