@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:calendar="clr-namespace:CalendarView;assembly=MECalendar"
              xmlns:local="clr-namespace:EGAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
@@ -254,6 +255,21 @@ Closed="SignUpDOB_Closed"
                                                                 <custom1:SfPickerBehavior />
                                                             </custom1:CustomDatePicker.Behaviors>
                                                         </custom1:CustomDatePicker>
+
+                                                        <calendar:CalendarView x:Name="HijriCal"
+                             
+                    CalendarType="Gregorian"
+                    DisablePreviousDates="True"
+                    StartDayOfWeek="Sunday"
+                    WeekendDays="Friday,Saturday"
+                          BackgroundColor="Transparent"
+                                TodayLabel="text"
+                    DateSelected="{Binding DateSelectedCommand}"
+                    
+                    DayColor="Black"
+                    WeekendDayColor="Gray"
+                    SelectedDayColor="Red" />
+
                                                     </Grid>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="3" Grid.Column="0" >

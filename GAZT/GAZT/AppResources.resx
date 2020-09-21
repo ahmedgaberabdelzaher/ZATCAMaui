@@ -4805,10 +4805,11 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>new Design OnBoarding Screen</comment>
   </data>
   <data name="NDDontMissObligation" xml:space="preserve">
-    <value>Don't miss any obligation with the new commitments calendar</value>
+    <value>Don’t miss any obligation with new commitments calendar</value>
   </data>
   <data name="NDInboxnNotification" xml:space="preserve">
-    <value>Inbox &amp; Notifications</value>
+    <value>Inbox</value>
+    <comment>Inbox &amp; Notifications</comment>
   </data>
   <data name="NDMakeTransactionsFast" xml:space="preserve">
     <value>Make all your transactions fast and simple with MADA &amp; Apple Pay</value>
@@ -4826,7 +4827,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Username sent to mobile number</value>
   </data>
   <data name="NDVATZAKATReturnSubmission" xml:space="preserve">
-    <value>VAT, ZAKAT and other return submissions made easy</value>
+    <value>ZATAK and VAT return submissions made easy</value>
+    <comment>VAT, ZAKAT and other return submissions made easy</comment>
   </data>
   <data name="NDIndividualSaudi" xml:space="preserve">
     <value>Individual Saudi(Resident)</value>
@@ -7760,5 +7762,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="NDTwitter" xml:space="preserve">
     <value>Twitter</value>
+  </data>
+    <data name="ZakatIncomeTaxObjection" xml:space="preserve">
+    <value>Zakat\Income Tax Objections</value>
   </data>
 </root>

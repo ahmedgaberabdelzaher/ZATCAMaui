@@ -2589,7 +2589,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             var attachmentsListViewData = new ObservableCollection<Attachment>();
             foreach (Attachment attachemnt in attachments)
             {
-                attachmentsListViewData.Add(attachemnt);
+                if (attachemnt.Dotyp == "ZVTD")
+                {
+                    attachmentsListViewData.Add(attachemnt);
+                }
             }
             VatDeRegAttachmentsList = attachmentsListViewData;
         }
@@ -4585,13 +4588,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 _vATDREGViewApllicationViewModel.ContactPersonName = dregresult.d.Contactnm;
                                 _vATDREGViewApllicationViewModel.DeclarationId = dregresult.d.Idnumbr;
 
-
-                                PopulateVatDeRegSummaryDeclarationData(dregresult.d.Type, dregresult.d.Idnumbr, dregresult.d.Declaredt.ToString("dd MM yyyy"), dregresult.d.Contactnm);
-
-
+                                PopulateVatDeRegSummaryDeclarationData(IDToNameDictionary[dregresult.d.Type], dregresult.d.Idnumbr, dregresult.d.Declaredt.ToString("dd MM yyyy"), dregresult.d.Contactnm);
                                 PopulateVatDeRegAttachments(dregresult.d.AttdetSet.results);
-
-                                PopulateVatDeRegSummaryReasonData(_vATDREGViewApllicationViewModel.RequestType, _vATDREGViewApllicationViewModel.ReasonforDeRegistration);
+                                PopulateVatDeRegSummaryReasonData(dregresult.d.Reqtp, _vATDREGViewApllicationViewModel.ReasonforDeRegistration);
 
                                 Device.BeginInvokeOnMainThread(() =>
                                 {

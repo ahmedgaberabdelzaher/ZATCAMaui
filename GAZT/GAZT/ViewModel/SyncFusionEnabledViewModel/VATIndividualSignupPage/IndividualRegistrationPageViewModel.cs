@@ -1,4 +1,5 @@
-﻿using EGAZT.Models;
+﻿using CalendarView;
+using EGAZT.Models;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
@@ -31,6 +32,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public ICommand OnContinueButtonClick { get; set; }
         public ICommand OnBackButtonClick { get; set; }
         public ICommand OnResendButtonClick { get; set; }
+        public ICommand DateSelectedCommand { get; set; }
         public ICommand GoButtonClick { get; set; }
         public int currentStep { get; set; }
         public VATSignUpData vATSignUpData { get; set; }
@@ -75,6 +77,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #endregion
 
         #region Properties
+        public string _dateselected;
+        public string dateselected
+        {
+            get
+            {
+                return _dateselected;
+            }
+            set
+            {
+                _dateselected = value;
+                RaisePropertyChanged("dateselected");
+            }
+        }
         private ObservableCollection<object> _todayDate;
         public ObservableCollection<object> TodayDate
         {
@@ -1300,6 +1315,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 throw new ArgumentNullException("dialogService");
             }
 
+            this.DateSelectedCommand = new Command<DateSelectionArgs>(this.HandleDateSelected);
+
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
             {
                 if (IsVerifyOTPEnabled) 
@@ -1338,6 +1355,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #endregion
 
         #region Method
+        private void HandleDateSelected(DateSelectionArgs obj)
+        {
+            var obj1 = obj.SelectedDate;
+            DOBddyymm = obj.SelectedDate.ToString();
+           // App.Current.MainPage.DisplayAlert("Date Selected", "Selected Date = " + dateselected, "Ok");
+        }
         public void ClearData()
         {
             SetDefaultDate();
