@@ -7617,4 +7617,7 @@
   <data name="NDTwitter" xml:space="preserve">
     <value>Twitter</value>
   </data>
+    <data name="ZakatIncomeTaxObjection" xml:space="preserve">
+    <value>اعتراضات الزكاة/ضريبة الدخل</value>
+  </data>
 </root>

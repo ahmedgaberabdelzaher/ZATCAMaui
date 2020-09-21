@@ -225,11 +225,11 @@
                                                 <Label Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <Label Text="{Binding VTRE2}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout> 
-                                            <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
+                                            <!--<StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
                                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDBillDate}"  Style="{StaticResource CaptionLabelGrey}"/>
                                                 <custom:CustomLabel Text="{Binding Faednar}" Style="{StaticResource ValueLabelBlack}" />
-                                            </StackLayout>
-                                            <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
+                                            </StackLayout>-->
+                                            <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <StackLayout HorizontalOptions="Start">
                                                     <custom:CustomLabel Text="{Binding FormatedFaedn}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>

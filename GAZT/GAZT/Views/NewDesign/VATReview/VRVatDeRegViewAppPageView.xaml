@@ -139,7 +139,7 @@
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                             <!--<listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding VATDeregistrationSummaryReasonData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
@@ -161,7 +161,36 @@
                                             </Grid>
 			                        </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
-                              </listView:SfListView>
+                              </listView:SfListView>-->
+                            <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
+                                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                                             VerticalOptions="Center" AutoFitMode="Height"
+                                                             ItemsSource="{Binding VATDeregistrationSummaryReasonData}"
+                                                             SelectionMode="None" Margin="8"
+                                                             SelectionBackgroundColor="Transparent">
+                                            <listView:SfListView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel Grid.Column="0"
+                                                                            Text="{Binding SummaryTitle}"
+                                                                            Style="{StaticResource ValueLabelGrey}" />
+                                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SummaryData}"
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            HorizontalOptions="EndAndExpand"
+                                                                            HorizontalTextAlignment="End" />
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </listView:SfListView.ItemTemplate>
+                                        </listView:SfListView>
                         </StackLayout>
                     </border:SfBorder >
                      <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -187,7 +216,7 @@
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryAttachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                             <!--<listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryAttachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
@@ -209,7 +238,36 @@
                                             </Grid>
 			                        </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
-                              </listView:SfListView>
+                              </listView:SfListView>-->
+                            <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
+                                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                                             VerticalOptions="Center" AutoFitMode="Height"
+                                                             ItemsSource="{Binding VatDeRegAttachmentsList}"
+                                                             SelectionMode="None" Margin="8"
+                                                             SelectionBackgroundColor="Transparent">
+                                            <listView:SfListView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel Grid.Column="0"
+                                                                            Text="{x:Static ResourceManager:AppResources.Attachment}"
+                                                                            Style="{StaticResource ValueLabelGrey}" />
+                                                        <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}"
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            HorizontalOptions="EndAndExpand"
+                                                                            HorizontalTextAlignment="End" />
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </listView:SfListView.ItemTemplate>
+                                        </listView:SfListView>
                         </StackLayout>
                     </border:SfBorder >
                                           <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -235,7 +293,7 @@
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             <listView:SfListView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryDeclarationListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                             <!--<listView:SfListView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryDeclarationListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding VATDeregistrationSummaryDeclarationData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
@@ -257,7 +315,36 @@
                                             </Grid>
 			                        </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
-                              </listView:SfListView>
+                              </listView:SfListView>-->
+                            <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
+                                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                                             VerticalOptions="Center" AutoFitMode="Height"
+                                                             ItemsSource="{Binding VATDeregistrationSummaryDeclarationData}"
+                                                             SelectionMode="None" Margin="8"
+                                                             SelectionBackgroundColor="Transparent">
+                                            <listView:SfListView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel Grid.Column="0"
+                                                                            Text="{Binding SummaryTitle}"
+                                                                            Style="{StaticResource ValueLabelGrey}" />
+                                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SummaryData}"
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            HorizontalOptions="EndAndExpand"
+                                                                            HorizontalTextAlignment="End" />
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </listView:SfListView.ItemTemplate>
+                                        </listView:SfListView>
                         </StackLayout>
                     </border:SfBorder >
                     </Grid>

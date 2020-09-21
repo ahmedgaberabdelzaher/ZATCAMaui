@@ -62,7 +62,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 _viewModel._navigationService.NavigateTo(App.VatReviewListPageView);
 
             }
-            else if (selectedItem.SelectionTitle == AppResources.ZakatObjection)
+            else if (selectedItem.SelectionTitle == AppResources.ZakatIncomeTaxObjection)
             {
                 _viewModel._navigationService.NavigateTo(App.ZakatObjectionsListPageView);
             }

@@ -38,6 +38,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         public IndividualRegistrationPageView()
         {
             InitializeComponent();
+            HijriCal.IsVisible = false;
             viewModel = App.Locator.IndividualRegistrationPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
@@ -757,6 +758,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void btnDate_Clicked(object sender, EventArgs e)
         {
             SignUpDOB.IsOpen = true;
+            //HijriCal.IsVisible = true;
         }
         private  void CountryCodes_Clicked(object sender, EventArgs e)
         {
@@ -1497,6 +1499,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
 
             }
+        }
+
+        private void HijriCal_OnDateSelected(object sender, CalendarView.DateSelectionArgs e)
+        {
+            var date = HijriCal.DateSelected;
+            Console.WriteLine("Hi Your Hijri Date : " + date);
         }
     }
 }

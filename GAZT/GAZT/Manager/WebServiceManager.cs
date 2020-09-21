@@ -5170,6 +5170,14 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
                     var serilized = JsonConvert.SerializeObject(sendSmsModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);

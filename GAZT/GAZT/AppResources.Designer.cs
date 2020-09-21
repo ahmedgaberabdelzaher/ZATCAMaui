@@ -21033,5 +21033,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
             }
         }
+        
+        public static string ZakatIncomeTaxObjection {
+            get {
+                return ResourceManager.GetString("ZakatIncomeTaxObjection", resourceCulture);
+            }
+        }
     }
 }
