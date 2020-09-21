@@ -88,13 +88,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             get => _currenrIndex;
             set
             {
-                _currenrIndex = value;
+                
+                 if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
+                 {
+                    _currenrIndex = value;
+                 }
+                 else
+                 {
+
+                    _currenrIndex = value > 1 ? value - 1 : value;
+                 }
+                
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
-                {
-                    MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
-                }
+                    {
+                        MarkComplete = true;
+                        RaisePropertyChanged(nameof(MarkComplete));
+                    }
+                    else
+                    {
+                        MarkComplete = false;
+                        RaisePropertyChanged(nameof(MarkComplete));
+                    }
             }
         }
         public bool MarkComplete { get; private set; } = false;
