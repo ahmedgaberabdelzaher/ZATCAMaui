@@ -2696,8 +2696,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 else
                                 {
                                     ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    string[] dts = ZakatFromDate.Split('-');
+                                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                    ZakatFromDate = date;
                                     ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
+                                    string[] dts2 = ZakatToDate.Split('-');
+                                    string date2 = dts2[0] + "-" + UtilityManager.GetMonthName(dts2[1]) + "-" + dts2[2];
+                                    ZakatToDate = date2;
                                 }
                                 /// use same period property for which is used in Basic Information section.
 

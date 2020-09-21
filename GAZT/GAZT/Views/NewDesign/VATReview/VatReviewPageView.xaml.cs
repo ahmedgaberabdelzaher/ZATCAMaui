@@ -102,7 +102,7 @@ namespace EGAZT.Views.NewDesign.VatReview
         private void Report_Details_UnFocused(object sender, FocusEventArgs e)
         {
             viewModel.ReportDetails = Report_Details_Tx.Text;
-            viewModel.EnableReviewDetailsConButton();
+            viewModel.EnableReviewReasonConButton();
         }
 
         private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)

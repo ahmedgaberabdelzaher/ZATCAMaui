@@ -13973,5 +13973,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDV", resourceCulture);
             }
         }
+        
+        public static string CRWarning {
+            get {
+                return ResourceManager.GetString("CRWarning", resourceCulture);
+            }
+        }
     }
 }
