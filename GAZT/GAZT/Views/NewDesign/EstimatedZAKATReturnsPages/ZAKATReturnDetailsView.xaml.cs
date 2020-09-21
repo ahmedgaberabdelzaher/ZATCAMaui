@@ -97,7 +97,25 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 PurchaseValueApplicableLayout.IsVisible = false;
                 PurchaseValueNotApplicableLayout.IsVisible = true;
 
+                TotalVATSalesInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.TvtslI;
+                TotalVATSalesEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.TvtslE;
 
+
+                AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                AverageNumberOfLabourEstmatedSalesLabel.Text = AppResources.ZNA;
+
+                ImportValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                ImportValueEstimatedSalesLabel.Text = AppResources.ZNA;
+
+                SalesFromPointOfSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+
+                ContactFromETIMADSystemInfoInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                ContractsFromETIMADSystemEstimatedSalesLabel.Text = AppResources.ZNA;
+
+                PurchaceValueInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                PurchaseValueEstmatedSalesLabel.Text = AppResources.ZNA;
+
+                
                 //AverageNumberOfLabour.Text = AppResources.ZNA;
                 //ImportValue.Text = AppResources.ZNA;
                 //SalesFromPointOfSales.Text = AppResources.ZNA;
@@ -138,6 +156,30 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
                 PurchaseValueApplicableLayout.IsVisible = true;
                 PurchaseValueNotApplicableLayout.IsVisible = false;
+
+               
+                TotalVATSalesInformationFromRelatedPartiesLabel.Text = AppResources.ZNA;
+                TotalVATSalesEstimatedSalesLabel.Text = AppResources.ZNA;
+
+
+                AverageNumberOfLabourInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.LabnoI;
+                AverageNumberOfLabourEstmatedSalesLabel.Text = viewModel.ZakatReturnDetail.LabnoE;
+
+                ImportValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.ImpvalI;
+                ImportValueEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.ImpvalE;
+                SalesFromPointOfSalesInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.PtoslI;
+                ContactFromETIMADSystemInfoInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.EtimadI;
+                ContractsFromETIMADSystemEstimatedSalesLabel.Text = viewModel.ZakatReturnDetail.Sumcnt;
+                ExportValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.ExamtI;
+                PurchaceValueInformationFromRelatedPartiesLabel.Text = viewModel.ZakatReturnDetail.PramtI;
+                PurchaseValueEstmatedSalesLabel.Text = viewModel.ZakatReturnDetail.PramtE;
+
+
+
+
+
+
+
             }
             getYesCommandToReleaseTheReturn();
             getYesCommandToAmendTheReturn();
