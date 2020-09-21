@@ -4795,6 +4795,7 @@
   </data>
   <data name="NDDontMissObligation" xml:space="preserve">
     <value>لا تفوت أي التزام مع تقويم الالتزامات الجديد</value>
+    <comment>لا تفوت أي التزام مع تقويم الالتزامات الجديد</comment>
   </data>
   <data name="NDReturnSubmission" xml:space="preserve">
     <value>رفع الاقرارات</value>
@@ -4803,16 +4804,19 @@
     <value>اسم المستخدم تم إرساله الى البريد الالكتروني ورقم الجوال المسجل</value>
   </data>
   <data name="NDVATZAKATReturnSubmission" xml:space="preserve">
-    <value>أصبحت ضريبة القيمة المضافة والزكاة وغيرها من عمليات الإرجاع سهلة</value>
+    <value>رفع إقرار الزكاة وضريبة القيمة المضافة اصبح اسهل</value>
+    <comment>أصبحت ضريبة القيمة المضافة والزكاة وغيرها من عمليات الإرجاع سهلة</comment>
   </data>
   <data name="NDInboxnNotification" xml:space="preserve">
-    <value>الرسائل والتنبيهات</value>
+    <value>الرسائل</value>
+    <comment>الرسائل والتنبيهات</comment>
   </data>
   <data name="NDMakeTransactionsFast" xml:space="preserve">
     <value>Make all your transactions fast and simple with MADA &amp; Apple Pay</value>
   </data>
   <data name="NDNewEasyWayToCommunicate" xml:space="preserve">
-    <value>جميع الرسائل والتنبيهات في مكان واحد</value>
+    <value>طريقة سهلة لمتابعة مراسلاتك</value>
+    <comment>جميع الرسائل والتنبيهات في مكان واحد</comment>
   </data>
   <data name="NDIndividualSaudi" xml:space="preserve">
     <value>Individual Saudi(Resident)</value>
