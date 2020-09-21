@@ -69,7 +69,7 @@
                                 </custom:CustomLabel.GestureRecognizers>
                             </custom:CustomLabel>
                                      <commonView:PageIndicatorView Margin="0,35,0,0"  
-                                                              Grid.Row="1" Grid.Column="0" MaxNum="{TemplateBinding BindingContext.MaxIndex}"
+                                                              Grid.Row="1" Grid.Column="0" MaxNum="{TemplateBinding BindingContext.MaxIndex}" DotSize="12"
                                                               MinNum="{TemplateBinding BindingContext.CurrentIndex}"
                                                               Completed="{TemplateBinding BindingContext.MarkComplete}" VerticalOptions="CenterAndExpand"/>
 
@@ -87,7 +87,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VATDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.NDDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
                         <Image Grid.Row="0" Grid.Column="0" Style="{DynamicResource BackButtonArrow}"  IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>

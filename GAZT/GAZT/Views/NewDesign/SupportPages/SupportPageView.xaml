@@ -196,7 +196,7 @@
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGAZT}" Style="{StaticResource ButtonLabelBlackBold}"/>
                                                 <custom:CustomLabel Margin="0,-16,0,0" Text="{x:Static ResourceManager:AppResources.NDTwitter}" Style="{StaticResource CaptionLabelGrey}"/>
                                     </StackLayout>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Margin="0,0,16,0"/>
+                                            <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Style="{DynamicResource BackButtonArrow}" Margin="16,0,16,0"/>
                                 </StackLayout>
                             </border:SfBorder>
 
@@ -215,7 +215,7 @@
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetSelectTypeVAT}" Style="{StaticResource ButtonLabelBlackBold}"/>
                                                 <custom:CustomLabel Margin="0,-16,0,0" Text="{x:Static ResourceManager:AppResources.NDTwitter}" Style="{StaticResource CaptionLabelGrey}"/>
                                     </StackLayout>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Margin="0,0,16,0"/>
+                                            <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Style="{DynamicResource BackButtonArrow}" Margin="16,0,16,0"/>
                                 </StackLayout>
                             </border:SfBorder>
                         </StackLayout>
