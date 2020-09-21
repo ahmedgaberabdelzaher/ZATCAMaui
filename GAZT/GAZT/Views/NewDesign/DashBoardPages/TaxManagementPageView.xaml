@@ -64,7 +64,7 @@
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                                     <Image Source="ic_vat_return.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MyBills}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>
