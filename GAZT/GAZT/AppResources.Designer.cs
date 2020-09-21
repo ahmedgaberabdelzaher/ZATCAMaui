@@ -5584,7 +5584,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t miss any obligation with the new commitments calendar.
+        ///   Looks up a localized string similar to Don’t miss any obligation with new commitments calendar.
         /// </summary>
         public static string NDDontMissObligation {
             get {
@@ -5773,7 +5773,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inbox &amp; Notifications.
+        ///   Looks up a localized string similar to Inbox.
         /// </summary>
         public static string NDInboxnNotification {
             get {
@@ -6520,15 +6520,6 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TIN Deregestration.
-        /// </summary>
-        public static string NDTINDeregestration {
-            get {
-                return ResourceManager.GetString("NDTINDeregestration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string NDTotal {
@@ -6592,15 +6583,6 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V.
-        /// </summary>
-        public static string NDV {
-            get {
-                return ResourceManager.GetString("NDV", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to VAT LookUP.
         /// </summary>
         public static string NDVATLookUP {
@@ -6637,7 +6619,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT, ZAKAT and other return submissions made easy.
+        ///   Looks up a localized string similar to ZATAK and VAT return submissions made easy.
         /// </summary>
         public static string NDVATZAKATReturnSubmission {
             get {
@@ -11386,15 +11368,6 @@ namespace EGAZT {
         public static string ZakatFinancialCrisis {
             get {
                 return ResourceManager.GetString("ZakatFinancialCrisis", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zakat\Income Tax Objections.
-        /// </summary>
-        public static string ZakatIncomeTaxObjection {
-            get {
-                return ResourceManager.GetString("ZakatIncomeTaxObjection", resourceCulture);
             }
         }
         
@@ -21058,6 +21031,12 @@ namespace EGAZT {
         public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
             get {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
+            }
+        }
+        
+        public static string ZakatIncomeTaxObjection {
+            get {
+                return ResourceManager.GetString("ZakatIncomeTaxObjection", resourceCulture);
             }
         }
     }
