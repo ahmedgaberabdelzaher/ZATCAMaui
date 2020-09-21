@@ -7316,7 +7316,7 @@
     <value>اكتب سبب الإعتراض</value>
   </data>
   <data name="ZOReasonWithDraw" xml:space="preserve">
-    <value>Withdraw</value>
+    <value>سحب الإعتراض</value>
   </data>
   <data name="ZakatInstalmentBillAmount" xml:space="preserve">
     <value>مبلغ الفاتورة</value>
