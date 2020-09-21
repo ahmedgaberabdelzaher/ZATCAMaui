@@ -22,7 +22,8 @@ namespace EGAZT.Models
             }
         }
         private string _BETRW = string.Empty;
-        public string BETRW { 
+        public string BETRW
+        {
             get
             {
                 return _BETRW;
@@ -36,14 +37,14 @@ namespace EGAZT.Models
                     decimal d = Convert.ToDecimal(_BETRW);
                     decimal positiveMoney = d;
                     positiveMoney.ToString(format);  //will return $24,508,975.94
-                    TestDueAmount =  UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
+                    TestDueAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
                 }
-            } 
+            }
         } //DueAmount
         public string _TestDueAmount = String.Empty;
         public string TestDueAmount
         {
-            get 
+            get
             {
                 return _TestDueAmount;
             }
@@ -68,29 +69,19 @@ namespace EGAZT.Models
 
                     string[] partsofperid = _Period.Split('-');
                     {
-                        //if (!App.IsArabic)
-                        //{
-                        //    PeriodPart1 = partsofperid[0];
-                        //    PeriodPart2 = partsofperid[1];
-                        //}
-                        //else
-                        //{
-                        //    PeriodPart1 = partsofperid[1];
-                        //    PeriodPart2 = partsofperid[0];
-
-                        //}
                         PeriodPart1 = partsofperid[0];
-                         PeriodPart2 = partsofperid[1];
+                        PeriodPart2 = partsofperid[1];
+
 
 
                         if (CalTyp != null)
                         {
-                            
-                                if(PeriodPart1!=null)
-                                { 
-                                    string year = PeriodPart1.Substring(0, 4);
-                                    string month = PeriodPart1.Substring(4, 2);
-                                    string day = PeriodPart1.Substring(6, 2);
+
+                            if (PeriodPart1 != null)
+                            {
+                                string year = PeriodPart1.Substring(0, 4);
+                                string month = PeriodPart1.Substring(4, 2);
+                                string day = PeriodPart1.Substring(6, 2);
                                 if (CalTyp.Equals("G"))
                                 {
                                     PeriodPart1 = UtilityManager.FormatAccordingToDeviceForVAT(day + "/" + month + "/" + year);
@@ -100,7 +91,7 @@ namespace EGAZT.Models
                                     PeriodPart1 = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
                                 }
 
-                                }
+                            }
                             if (PeriodPart2 != null)
                             {
                                 string year = PeriodPart2.Substring(0, 4);
@@ -127,9 +118,9 @@ namespace EGAZT.Models
 
         private string _PeriodPart1;
         public string PeriodPart1 { get; set; }
-        
-        
-        
+
+
+
         private string _PeriodPart2;
         public string PeriodPart2 { get; set; }
         public string Txt30 { get; set; }
@@ -156,21 +147,21 @@ namespace EGAZT.Models
                             {
                                 FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriEnglish(_Faednar);
                             }
-                            
-                          
+
+
                         }
-                      
+
                     }
-                   
+
                 }
-            } 
+            }
         } //DueDate
-                                            // public string Faedn { get; set; } //DueDate
+          // public string Faedn { get; set; } //DueDate
         public string FormattedFaednar { get; set; } //DueDate
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
-       // FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-        public DateTime _faedn ;
+        // FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+        public DateTime _faedn;
         public DateTime Faedn
         {
             get
@@ -186,14 +177,18 @@ namespace EGAZT.Models
                     if (CalTyp.Equals("G"))
                     {
                         FormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        string[] dts = FormatedFaedn.Split('-');
+                        string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                        FormatedFaedn = date;
                     }
-                    
+
                 }
             }
         }
         public string FormatedFaedn { get; set; }
         private string _status = string.Empty;
-        public string Status {
+        public string Status
+        {
             get
             {
                 return _status;
@@ -201,7 +196,7 @@ namespace EGAZT.Models
             set
             {
                 _status = value;
-                if(_status==Enum.GetName(typeof(BillStatus),0))
+                if (_status == Enum.GetName(typeof(BillStatus), 0))
                 {
                     StatusImage = "ic_check_circle.png";
                     Colorcode = "#006450";
@@ -217,7 +212,7 @@ namespace EGAZT.Models
                 {
                     StatusImage = "ic_money.png";
                     Colorcode = " #AA0C19";
-                   
+
                 }
             }
         }
@@ -227,7 +222,7 @@ namespace EGAZT.Models
         //{
         //    get
         //    {
-                
+
         //        return _cal_typ;
         //    }
         //    set

@@ -1024,21 +1024,33 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         message = arg;
                         // firebasemessage = JsonConvert.DeserializeObject<PushnotificationMessage>(arg);
-                        if (message == "SA")
+                        try
                         {
-                            if (viewModel.IbanList != null)
+                            if (message == "SA")
                             {
-                                viewModel.IbanList.Clear();
+                                if (viewModel.IbanList != null)
+                                {
+                                    viewModel.IbanList.Clear();
+                                }
+                                viewModel.IbanList = null;
+                                if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
+                                {
+                                    viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
+                                }
+                                viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
+                                viewModel.NewAccountText = AppResources.ZTERNewAccount;
                             }
-                            viewModel.IbanList = null;
-                            viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
-                            viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
-                            viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                            else
+                            {
+                                triggerIban(message);
+                            }
                         }
-                        else
-                        {
-                            triggerIban(message);
+                        catch (Exception ex)
+                        { 
+                        
                         }
+
+                        
                     }
                 });
 
@@ -1903,7 +1915,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
         {
-                ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            try
+            {
+                ((Xamarin.Forms.CollectionView)sender).SelectedItem = null;
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+            
          
         }
 

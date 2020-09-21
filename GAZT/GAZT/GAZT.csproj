@@ -8,6 +8,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MECalendar" Version="0.1.5" />
     <PackageReference Include="Microsoft.AppCenter" Version="3.2.2" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.2" />
     <PackageReference Include="NodaTime" Version="3.0.0" />
@@ -327,6 +328,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\VATServices\VATServicesPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">

@@ -13955,5 +13955,23 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDTwitter", resourceCulture);
             }
         }
+        
+        public static string ZakatIncomeTaxObjection {
+            get {
+                return ResourceManager.GetString("ZakatIncomeTaxObjection", resourceCulture);
+            }
+        }
+        
+        public static string NDTINDeregestration {
+            get {
+                return ResourceManager.GetString("NDTINDeregestration", resourceCulture);
+            }
+        }
+        
+        public static string NDV {
+            get {
+                return ResourceManager.GetString("NDV", resourceCulture);
+            }
+        }
     }
 }

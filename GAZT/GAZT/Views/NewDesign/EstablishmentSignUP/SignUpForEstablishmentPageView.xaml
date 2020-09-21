@@ -314,14 +314,14 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout x:Name="FrmName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <Entry x:Name="EntryName"  IsSpellCheckEnabled="False"
+                                    <control:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding TxtName}" IsSpellCheckEnabled="False"
                                                      Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
                                                      VerticalTextAlignment="End" >
-                                    <Entry.Behaviors>
-                                        <custom1:AlphabetandArabicCharacters/>
-                                    </Entry.Behaviors>
-                                </Entry>
-                        </inputLayout:SfTextInputLayout>
+                                        <control:BorderlessEntry.Behaviors>
+                                            <custom1:AlphabetandArabicCharacters/>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
                             <!--<inputLayout:SfTextInputLayout IsVisible="false" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <control:BorderlessEntry  Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" VerticalTextAlignment="End"
                                                            Keyboard="Numeric" MaxLength="10" TextChanged="EntryTIN_TextChanged" 

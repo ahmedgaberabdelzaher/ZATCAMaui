@@ -2571,7 +2571,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             IsLoading = false;
                         });
                         //est signup user created succesfully
-                        _navigationService.NavigateTo(App.AccountCreatedSuccessfullyPageView);
+                        string tin = string.Empty;
+                        tin = ResultFirstSubmitModel.d.ATin;
+
+                        _navigationService.NavigateTo(App.AccountCreatedSuccessfullyPageView, tin);
                     }
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -137,6 +138,9 @@ namespace GAZT.Models
                         {
 
                             FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            string[] dts = FormatedAbrzu.Split('-');
+                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                            FormatedAbrzu = date;
                         }
 
                     }  
@@ -187,6 +191,9 @@ namespace GAZT.Models
                         {
 
                             FormatedAbrzo = _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            string[] dts = FormatedAbrzo.Split('-');
+                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                            FormatedAbrzo = date;
                         }
                         
                     }
@@ -240,6 +247,9 @@ namespace GAZT.Models
                         if (CalendarTyp.Equals("G"))
                         {
                             FormatedSingleDueDate = _dueDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            string[] dts = FormatedSingleDueDate.Split('-');
+                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                            FormatedSingleDueDate = date;
                         }
                     }
                     

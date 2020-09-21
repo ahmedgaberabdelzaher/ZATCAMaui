@@ -45,7 +45,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid x:Name="NewMenu">
+            <!--<Grid x:Name="NewMenu">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
@@ -174,8 +174,8 @@
                         </StackLayout>
                     </StackLayout>
                 </Grid>
-            </Grid>
-            <!--<Grid x:Name="OldMenu">
+            </Grid>-->
+            <Grid x:Name="OldMenu">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*" />
                 <RowDefinition Height="70*" />
@@ -197,30 +197,30 @@
                        
 
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
+                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Image Source="ic_menu_Tax_check.png">
 
-                        <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="ic_ReportTaxEvasion.png">
+                                </Image>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnVATRefundTapped" NumberOfTapsRequired="1"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
 
-                            </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBTaxEvasion}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnTaxEvasionTapped" NumberOfTapsRequired="1"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                        <BoxView Style="{StaticResource WhiteLineSeperator}"/>
+                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
-                        <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="ic_menu_Tax_check.png">
+                        
+                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Image Source="ic_ReportTaxEvasion.png">
 
-                            </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBTaxCheck}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnVATRefundTapped" NumberOfTapsRequired="1"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
+                                </Image>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnTaxEvasionTapped" NumberOfTapsRequired="1"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
 
-
-                        <BoxView Style="{StaticResource WhiteLineSeperator}"/>
+                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="customerService">
@@ -244,7 +244,7 @@
                         </StackLayout>
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
-                        <StackLayout Orientation="Horizontal" Spacing="20">
+                        <!--<StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="ic_Version.png"></Image>
                             <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
                                 <Label.FormattedText>
@@ -256,7 +256,7 @@
                                 </Label.FormattedText>
                             </custom:CustomLabel>
                         </StackLayout>
-                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                         
                     </StackLayout>
                 </ScrollView>
@@ -281,7 +281,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-        </Grid>-->
+        </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

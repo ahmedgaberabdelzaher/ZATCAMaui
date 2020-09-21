@@ -14,6 +14,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public readonly IDialogService _dialogService;
         public ICommand OnLoginPageLinkClicked;
         #endregion
+        #region Properties 
+        private string _tINnumber;
+        public string TINnumber
+        {
+            get
+            {
+                return _tINnumber;
+            }
+            set
+            {
+                _tINnumber = value;
+
+                RaisePropertyChanged("TINnumber");
+            }
+        }
+        #endregion
         #region Constructor
         public AccountCreatedSuccessfullyPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {

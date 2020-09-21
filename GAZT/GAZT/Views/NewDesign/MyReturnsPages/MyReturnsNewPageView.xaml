@@ -221,9 +221,9 @@
                                                     <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
                                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZReturnPeriod}" Style="{StaticResource CaptionLabelGrey}"/>
                                                         <StackLayout Orientation="Horizontal">
-                                                            <custom:CustomLabel Text="{Binding FormatedAbrzu}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                            <custom:CustomLabel Text="{Binding FormatedAbrzu}"  Style="{StaticResource ValueLabelBlack}" />
                                                             <custom:CustomLabel Text="-" Style="{StaticResource ValueLabelBlack}" />
-                                                            <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding FormatedAbrzo}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                            <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding FormatedAbrzo}"  Style="{StaticResource ValueLabelBlack}" />
                                                         </StackLayout>
 
                                                     </StackLayout>
@@ -238,7 +238,7 @@
                                                     <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
                                                         <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDPeriod}" Style="{StaticResource CaptionLabelGrey}"/>
                                                         <StackLayout HorizontalOptions="StartAndExpand">
-                                                            <custom:CustomLabel HorizontalTextAlignment="Start" FlowDirection="LeftToRight"  Text="{Binding Persl}" Style="{StaticResource ValueLabelBlack}" />
+                                                            <custom:CustomLabel HorizontalTextAlignment="Start"   Text="{Binding Persl}" Style="{StaticResource ValueLabelBlack}" />
                                                         </StackLayout>
                                                     </StackLayout>
 
@@ -249,7 +249,7 @@
                                                     <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
                                                         <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                         <StackLayout HorizontalOptions="Start">
-                                                            <custom:CustomLabel HorizontalTextAlignment="Start" FlowDirection="LeftToRight"  Text="{Binding FormatedSingleDueDate}" Style="{StaticResource ValueLabelBlack}" />
+                                                            <custom:CustomLabel HorizontalTextAlignment="Start"   Text="{Binding FormatedSingleDueDate}" Style="{StaticResource ValueLabelBlack}" />
                                                         </StackLayout>
 
                                                     </StackLayout>
