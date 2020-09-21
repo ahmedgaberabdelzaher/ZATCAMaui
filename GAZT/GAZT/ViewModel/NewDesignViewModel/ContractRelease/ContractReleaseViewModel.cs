@@ -1034,9 +1034,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 if (!isSubmitted)
                 {
                     isSubmitted = true;
+                    await Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
                     ContractReleaseData = await SubmitClicked();
                     if (ContractReleaseData.d != null)
                     {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                         await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView());
                         //_navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
                     }
@@ -1282,16 +1290,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
 
 
-
-
-
-
-            await Task.Run(() => { IsLoading = true; });
-
             try
             {
 
-                IsLoading = true;
+
+               
+               
+
+
                 request = BuildRequestObject();
 
 
@@ -1302,31 +1308,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     try
                     {
-                        if (response != null && response.d != null)
+                       
+                        await Task.Run(() =>
                         {
-
-
-
-                        }
-                        IsLoading = false;
+                            IsLoading = false;
+                        });
                         return response;
 
                     }
                     catch (Exception ex)
                     {
-                        IsLoading = false;
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                         return null;
 
                     }
                 }
-                IsLoading = false;
+              
                 return response;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                    await Task.Run(() =>
+                    {
+                        //IsLoading = false;
+                    });
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
 
@@ -1336,7 +1346,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
             catch (Exception ex)
             {
-                IsLoading = false;
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
                 return response;
             }
 

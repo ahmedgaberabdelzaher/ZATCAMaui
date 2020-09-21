@@ -7182,7 +7182,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Please provide postal code</value>
   </data>
   <data name="ESTValidateAddPostalCode5" xml:space="preserve">
-    <value>Please provide postal codes in 5 digit</value>
+    <value>Please provide postal codes in 1 digit</value>
   </data>
   <data name="ESTValidateAddCountry" xml:space="preserve">
     <value>Please provide country</value>
@@ -7736,5 +7736,29 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="NDNewProfile" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="NDSuggestionsandComplaints" xml:space="preserve">
+    <value>Suggestions and Complaints</value>
+  </data>
+  <data name="NDContactEmail" xml:space="preserve">
+    <value>Contact Email</value>
+  </data>
+  <data name="NDGAZT" xml:space="preserve">
+    <value>GAZT</value>
+  </data>
+  <data name="NDHeadQAddress" xml:space="preserve">
+    <value>Prince Abdulrahman Bin Abdulaziz St, Riyadh 1268</value>
+  </data>
+  <data name="NDHeadquaeterRiyadh" xml:space="preserve">
+    <value>Headquaeter Riyadh</value>
+  </data>
+  <data name="NDInternationalPhone" xml:space="preserve">
+    <value>International Phone</value>
+  </data>
+  <data name="NDSocial" xml:space="preserve">
+    <value>Social</value>
+  </data>
+  <data name="NDTwitter" xml:space="preserve">
+    <value>Twitter</value>
   </data>
 </root>

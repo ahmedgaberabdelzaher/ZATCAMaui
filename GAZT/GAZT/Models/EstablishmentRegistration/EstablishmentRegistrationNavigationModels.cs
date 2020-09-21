@@ -9,6 +9,7 @@ namespace EGAZT.Models
     {
         public EstablishmentRegistrationOutletTabsEnum openedTab { get; set; } = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public Nreg_IdItem idItem { get; set; } = null;
     }
 
     public class ActivityNavigationModels

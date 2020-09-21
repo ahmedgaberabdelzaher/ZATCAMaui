@@ -3123,7 +3123,7 @@
     <value>غير مقدمة</value>
   </data>
   <data name="ZZZLandingPageTitle" xml:space="preserve">
-    <value>General Authority Of Zakat And Tax</value>
+    <value>الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="ZZZTaxpayerServices" xml:space="preserve">
     <value>الخدمات الالكترونية للمكلفين</value>
@@ -7024,7 +7024,7 @@
     <value>الرجاء ادخال الرمز البريدي</value>
   </data>
   <data name="ESTValidateAddPostalCode5" xml:space="preserve">
-    <value>الرجاء ادخال رمز بريدي مكون من 5 ارقام</value>
+    <value>الرجاء ادخال رمز بريدي مكون من 1 ارقام</value>
   </data>
   <data name="ESTValidateAddCountry" xml:space="preserve">
     <value>الرجاء ادخال اسم الدولة</value>
@@ -7588,5 +7588,29 @@
   </data>
   <data name="NDNewProfile" xml:space="preserve">
     <value>الملف الشخصي</value>
+  </data>
+  <data name="NDSuggestionsandComplaints" xml:space="preserve">
+    <value>الاقتراحات والشكاوى</value>
+  </data>
+  <data name="NDContactEmail" xml:space="preserve">
+    <value>Contact Email</value>
+  </data>
+  <data name="NDGAZT" xml:space="preserve">
+    <value>GAZT</value>
+  </data>
+  <data name="NDHeadQAddress" xml:space="preserve">
+    <value>شارع الأمير عبدالرحمن بن عبد العزيز الرياض 12628​</value>
+  </data>
+  <data name="NDHeadquaeterRiyadh" xml:space="preserve">
+    <value>الإدارة العامة - الرياض</value>
+  </data>
+  <data name="NDInternationalPhone" xml:space="preserve">
+    <value>International Phone</value>
+  </data>
+  <data name="NDSocial" xml:space="preserve">
+    <value>Social</value>
+  </data>
+  <data name="NDTwitter" xml:space="preserve">
+    <value>Twitter</value>
   </data>
 </root>

@@ -283,6 +283,7 @@
                                           Command="{Binding ReviewReasonConBtnTapped}" />
 
                         <custom:CustomLabel Grid.Row="6" Margin="10,0,10,15"
+                                            IsVisible="{Binding IsApplicationVisible}"
                                             Text="{Binding ViewApplicationTypeText}"
                                             TextColor="#d49504" HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
@@ -582,7 +583,7 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
-                            <listView:SfListView HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"
+                            <listView:SfListView x:Name="DisputeAmountListView" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"
                                                  IsScrollingEnabled="False" VerticalOptions="StartAndExpand"
                                                  AutoFitMode="Height" ItemSpacing="5"
                                                  ItemsSource="{Binding DisputeAmountPaymentOptions}"
@@ -1563,6 +1564,58 @@
                                                 </DataTemplate>
                                             </listView:SfListView.ItemTemplate>
                                         </listView:SfListView>
+                                        
+                                        <Grid IsVisible="{Binding IsAssessPayOptionVisible}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Column="0"
+                                                                Text="{x:Static ResourceManager:AppResources.VRRequesttoReviewtheAmount}"
+                                                                Style="{StaticResource ValueLabelGrey}" />
+                                            <custom:CustomLabel Grid.Column="1"
+                                                                Text="{Binding VRRequesttoReviewtheAmountValue}"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                HorizontalTextAlignment="End" />
+                                        </Grid>
+                                        <Grid IsVisible="{Binding IsAssessPayOptionVisible}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Column="0"
+                                                                Text="{x:Static ResourceManager:AppResources.VRPleasespecifytheparticularamount}"
+                                                                Style="{StaticResource ValueLabelGrey}" />
+                                            <custom:CustomLabel Grid.Column="1"
+                                                                Text="{Binding RequestedReviewAmount}"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                HorizontalTextAlignment="End" />
+                                        </Grid>
+                                        <Grid IsVisible="{Binding IsAssessPayOptionVisible}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Column="0"
+                                                                Text="{x:Static ResourceManager:AppResources.VRDisputeDetails}"
+                                                                Style="{StaticResource ValueLabelGrey}" />
+                                            <custom:CustomLabel Grid.Column="1"
+                                                                Text="{Binding DisputeDetailsDesc}"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                HorizontalOptions="EndAndExpand"
+                                                                HorizontalTextAlignment="End" />
+                                        </Grid>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -1632,7 +1685,7 @@
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
 
-                                        <Grid>
+                                        <Grid IsVisible="{Binding IsSecurityAmountMorethanZero}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>

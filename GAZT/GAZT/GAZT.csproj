@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
+    <EmbeddedResource Remove="Views\NewDesign\EstablishmentRegistrationPages\AddressPickerPopPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="AppResources.ar.Designer.cs">
@@ -174,6 +175,15 @@
     </Compile>
     <Compile Update="Views\NewDesign\TAXEvasionPages\NewTaxEvasionFormSuccessPaveView.xaml.cs">
       <DependentUpon>NewTaxEvasionFormSuccessPaveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationTaxPayerDetails.xaml.cs">
+      <DependentUpon>ZakatRegistrationTaxPayerDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationOutletsDetails.xaml.cs">
+      <DependentUpon>ZakatRegistrationOutletsDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml.cs">
+      <DependentUpon>ZakatRegistrationFinancialDetails.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

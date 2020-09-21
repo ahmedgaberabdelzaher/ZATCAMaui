@@ -119,23 +119,23 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
             if (LicenseMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
-                var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
-                if (_mainItem != null)
-                {
-                    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
-                    {
-                        CloseWhenBackgroundIsClicked = false
-                    };
-                    confirmPopup.OnSelect = (str) =>
-                    {
-                        LicenseMainActivity.IsOn = str == "Yes";
-                        if (str == "Yes")
-                        {
+                //var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
+                //if (_mainItem != null)
+                //{
+                //    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
+                //    {
+                //        CloseWhenBackgroundIsClicked = false
+                //    };
+                //    confirmPopup.OnSelect = (str) =>
+                //    {
+                //        LicenseMainActivity.IsOn = str == "Yes";
+                //        if (str == "Yes")
+                //        {
                             viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
-                        }
-                    };
-                    await PopupNavigation.Instance.PushAsync(confirmPopup);
-                }
+                //        }
+                //    };
+                //    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                //}
             }
         }
 

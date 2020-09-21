@@ -15,6 +15,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         ZAKATReturnDetailsViewModel viewModel;
         public static string salesType;
         public static bool IsGoingFirstTimeOnAttachmentPage;
+        public static bool IsComingFromAttachmentPage;
         public ZAKATReturnDetailsView(string fbguid)
         {
             InitializeComponent();
@@ -30,14 +31,16 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
             SetLTR();
+            IsComingFromAttachmentPage = false;
 
+           
 
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            viewModel.ClearData();
+          //  viewModel.ClearData();
             try
             {
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToReleaseTheReturn");
@@ -53,8 +56,15 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             base.OnAppearing();
             //date.Text = viewModel.Abrzu;
-           await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
-            viewModel.ZAKATReturnsPagName = AppResources.FORM5ReturnDetails;
+            if(ZAKATReturnDetailsView.IsComingFromAttachmentPage == false)
+            {
+                await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
+                viewModel.ZAKATReturnsPagName = AppResources.FORM5ReturnDetails;
+            }
+            else
+            {
+                IsComingFromAttachmentPage = false;
+            }
 
             if (viewModel.isThresholdValueLessThanTotalVATSales)
             {
