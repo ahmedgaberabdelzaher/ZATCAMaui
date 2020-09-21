@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAZT.Helper;
+using System;
 namespace EGAZT.Models.TPProfile
 {
     public class TPProfileAPIRequest
@@ -62,8 +63,8 @@ namespace EGAZT.Models.TPProfile
         public static TPProfileAPIRequest PrepareRequestData(TPProfileAPIRequestDataModel APIRequestDataModel)
         {
             var metaData = new Metadata();
-            metaData.id = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
-            metaData.uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
+            metaData.id = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
+            metaData.uri = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet(Euser1='00000000000000000000',Euser='',Euser2='00000000000000000000',Euser3='00000000000000000000',Euser4='00000000000000000000',Fbguid='',Euser5='00000000000000000000',Taxpayerz='" + App.TP.Tin + "',Langz='E')";
             metaData.type = "Z_TP_PROFILE_N_SRV.TPFL_HEADER";
 
             string lang = "E";
