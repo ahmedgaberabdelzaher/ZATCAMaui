@@ -1041,7 +1041,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                 string dt1 = string.Empty;
                                 string[] dts = null;
                                 dts = RequestForScheduleDetails[i].DueDate.Split('/');
-                                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                                //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                                dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
                                 RequestForScheduleDetails[i].DueDate = dt1;
 
                             }

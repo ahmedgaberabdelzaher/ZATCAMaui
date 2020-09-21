@@ -4546,7 +4546,7 @@
     <value>إيقاف التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="VATDeregistrationInstructionsTitle" xml:space="preserve">
-    <value>التعليمات والشروط</value>
+   <value>التعليمات</value>
   </data>
   <data name="VATDeregistrationReasonType1" xml:space="preserve">
     <value>إلغاء تسجيل ضريبة القيمة المضافة</value>
@@ -5646,7 +5646,7 @@
     <value>إنتظار الموافقة</value>
   </data>
   <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
-    <value>الشهور المتبقية</value>
+    <value>عدد الأشهر</value>
   </data>
   <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
     <value>عدد الاقساط الشهرية</value>
@@ -5856,7 +5856,7 @@
     <value>إجمالي المبلغ المدفوع</value>
   </data>
   <data name="ZakatInstalmentTotalAmountRemaining" xml:space="preserve">
-    <value>إجمالي المبلغ المتبقي</value>
+   <value>المبلغ المتبقي</value>
   </data>
   <data name="ForOfficerAssignmentPool" xml:space="preserve">
     <value>For Officer Assignment (Pool)</value>
@@ -7451,7 +7451,7 @@
     <value>الدعم الفني</value>
   </data>
   <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
@@ -7632,12 +7632,14 @@
   <data name="NDV" xml:space="preserve">
     <value>v</value>
   </data>
-   <data name="ZakatIncomeTaxObjection" xml:space="preserve">     <value>اعتراضات الزكاة/ضريبة الدخل</value>   </data>
     <data name="CRWarning" xml:space="preserve">
     <value>تنبيه</value>
   </data>
  <data name="VRHelperText" xml:space="preserve">
     <value>المستندات والأدلة المساندة:
 يرجى تزويدنا بالوثائق المساندة لدعم أسباب المراجعة</value>
+  </data>
+    <data name="BPTermsAndConditions" xml:space="preserve">
+    <value>الشروط والأحكام</value>
   </data>
 </root>

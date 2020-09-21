@@ -1038,6 +1038,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     {
                         IsLoading = true;
                     });
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                    });
                     ContractReleaseData = await SubmitClicked();
                     if (ContractReleaseData.d != null)
                     {
