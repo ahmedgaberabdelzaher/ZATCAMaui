@@ -76,6 +76,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
                 PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
 
+                TVSA.IsVisible = true;
+                TVSNA.IsVisible = false;
+
                 TotalVATSalesApplicableLayout.IsVisible = true;
                 TotalVATSalesNotApplicableLayout.IsVisible = false;
 
@@ -135,6 +138,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
                 PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+
+                TVSA.IsVisible = false;
+                TVSNA.IsVisible = true;
 
                 TotalVATSalesApplicableLayout.IsVisible = false;
                 TotalVATSalesNotApplicableLayout.IsVisible = true;

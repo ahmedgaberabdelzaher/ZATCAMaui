@@ -271,7 +271,7 @@
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
-                                            <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
+                                            <StackLayout x:Name="TVSA" Spacing="0" Grid.Row="2" Grid.Column="0">
                                                 <inputLayout:SfTextInputLayout ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
                                                     <custom:GAZTBorderlessEntry x:Name="TotalVATSalesNew" Text="{Binding TvtslI}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
@@ -286,6 +286,20 @@
                                                 <custom:CustomLabel x:Name="TotalVATSalesInformationFromRelatedPartiesLabel"  Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
+
+                                             <StackLayout x:Name="TVSNA" Spacing="0" Grid.Row="2" Grid.Column="0" >
+                                                <inputLayout:SfTextInputLayout ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
+
+                                                    <custom:GAZTBorderlessEntry  Text="{x:Static local:AppResources.ZNA}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                             </custom:GAZTBorderlessEntry>
+
+                                                   </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="{x:Static local:AppResources.ZNA}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+
+
                                             <custom:CustomLabel Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Margin="0,0,0,0" Grid.Row="2" Grid.Column="1">
@@ -322,7 +336,7 @@
                                             <StackLayout x:Name="TotalVATSalesNotApplicableLayout"  Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                                 <inputLayout:SfTextInputLayout ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
-                                                    <custom:GAZTBorderlessEntry  Text="{x:Static local:AppResources.ZNA}" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="0.00" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
