@@ -6520,6 +6520,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TIN Deregestration.
+        /// </summary>
+        public static string NDTINDeregestration {
+            get {
+                return ResourceManager.GetString("NDTINDeregestration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string NDTotal {
@@ -6579,6 +6588,15 @@ namespace EGAZT {
         public static string NDUsernameSenttoMobile {
             get {
                 return ResourceManager.GetString("NDUsernameSenttoMobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V.
+        /// </summary>
+        public static string NDV {
+            get {
+                return ResourceManager.GetString("NDV", resourceCulture);
             }
         }
         
@@ -11368,6 +11386,15 @@ namespace EGAZT {
         public static string ZakatFinancialCrisis {
             get {
                 return ResourceManager.GetString("ZakatFinancialCrisis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat\Income Tax Objections.
+        /// </summary>
+        public static string ZakatIncomeTaxObjection {
+            get {
+                return ResourceManager.GetString("ZakatIncomeTaxObjection", resourceCulture);
             }
         }
         
@@ -21031,12 +21058,6 @@ namespace EGAZT {
         public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
             get {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
-            }
-        }
-        
-        public static string ZakatIncomeTaxObjection {
-            get {
-                return ResourceManager.GetString("ZakatIncomeTaxObjection", resourceCulture);
             }
         }
     }
