@@ -557,7 +557,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         cities.AddRange(OutletDropDowns?.city_dropdownSet?.results.Where(i => i.Country == Country.Land1 && i.Region == Provinance.Bland));
                     }
                 }
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.city_dropdownSet?.results);
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(cities);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
