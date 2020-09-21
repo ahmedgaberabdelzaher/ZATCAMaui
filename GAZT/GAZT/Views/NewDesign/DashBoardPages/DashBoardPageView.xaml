@@ -742,8 +742,8 @@
 
                                 <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                                        <Image Source="ic_vat_return.png"/>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRegistrationDetails}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                        <Image Source="ic_RegistrationDetails.png"/>
+                                        <custom:CustomLabel Margin="8,0,0,0" Text="{x:Static ResourceManager:AppResources.NDRegistrationDetails}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                     </StackLayout>
                                     <border:SfBorder.GestureRecognizers>
@@ -769,8 +769,8 @@
 
                                 <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                                        <Image Source="ic_vat_return.png"/>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                        <Image Margin="4,0,0,0" Source="installment_planColor.png"/>
+                                        <custom:CustomLabel Margin="5,0,0,0" Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                     </StackLayout>
                                     <border:SfBorder.GestureRecognizers>
@@ -780,7 +780,7 @@
 
                                 <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                                        <Image Source="ic_vat_return.png"/>
+                                        <Image Source="menu_objectionsColor.png"/>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRObjectionsReviews}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                     </StackLayout>
@@ -919,7 +919,7 @@
                             <StackLayout x:Name="VATServices" IsVisible="False" Spacing="16">
                                 <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                                        <Image Source="ic_vat_return.png"/>
+                                        <Image Source="ic_RefundR.png"/>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                     </StackLayout>
@@ -941,7 +941,7 @@
 
                                 <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                                        <Image Source="ic_vat_return.png"/>
+                                        <Image Source="deregistration.png"/>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDDeregistration}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                     </StackLayout>
