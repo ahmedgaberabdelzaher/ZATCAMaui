@@ -23,7 +23,7 @@
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
         <yummy:PancakeView VerticalOptions="EndAndExpand" HeightRequest="300" BackgroundColor="White">
-            <CollectionView x:Name="PopupList" VerticalOptions="Start" HorizontalOptions="Fill" SelectionMode="Single" SelectionChanged="PopupList_SelectionChanged" Margin="10" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+            <CollectionView x:Name="PopupList" VerticalOptions="Start" HorizontalOptions="Fill" SelectionMode="Single" SelectionChanged="PopupList_SelectionChanged" Margin="10" VerticalScrollBarVisibility="Default" HorizontalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
