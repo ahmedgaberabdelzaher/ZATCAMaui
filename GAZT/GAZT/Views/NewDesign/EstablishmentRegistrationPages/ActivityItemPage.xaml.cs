@@ -75,27 +75,29 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel?.validateCRNumber();
         }
 
-        async void CRSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
+        void CRSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
             Console.WriteLine("CR Main " + CRMainActivity.IsOn);
             if (CRMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
-                var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
-                if (_mainItem != null)
-                {
-                    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
-                    {
-                        CloseWhenBackgroundIsClicked = false
-                    };
-                    confirmPopup.OnSelect = (str) =>
-                    {
-                        CRMainActivity.IsOn = str == "Yes";
-                        if (str == "Yes") {
-                            viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
-                        }
-                    };
-                    await PopupNavigation.Instance.PushAsync(confirmPopup);
-                }
+                viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
+                
+                //var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
+                //if (_mainItem != null)
+                //{
+                //    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
+                //    {
+                //        CloseWhenBackgroundIsClicked = false
+                //    };
+                //    confirmPopup.OnSelect = (str) =>
+                //    {
+                //        CRMainActivity.IsOn = str == "Yes";
+                //        if (str == "Yes") {
+                //            viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
+                //        }
+                //    };
+                //    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                //}
             }
         }
 
@@ -117,23 +119,23 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
             if (LicenseMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
-                var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
-                if (_mainItem != null)
-                {
-                    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
-                    {
-                        CloseWhenBackgroundIsClicked = false
-                    };
-                    confirmPopup.OnSelect = (str) =>
-                    {
-                        LicenseMainActivity.IsOn = str == "Yes";
-                        if (str == "Yes")
-                        {
+                //var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
+                //if (_mainItem != null)
+                //{
+                //    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
+                //    {
+                //        CloseWhenBackgroundIsClicked = false
+                //    };
+                //    confirmPopup.OnSelect = (str) =>
+                //    {
+                //        LicenseMainActivity.IsOn = str == "Yes";
+                //        if (str == "Yes")
+                //        {
                             viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
-                        }
-                    };
-                    await PopupNavigation.Instance.PushAsync(confirmPopup);
-                }
+                //        }
+                //    };
+                //    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                //}
             }
         }
 

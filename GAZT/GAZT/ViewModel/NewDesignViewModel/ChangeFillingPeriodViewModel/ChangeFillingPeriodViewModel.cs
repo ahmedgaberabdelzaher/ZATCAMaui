@@ -476,6 +476,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {AppResources.VFCGCCID,"ZS0003"},
         };
 
+        private Dictionary<string, string> IDValueDictionary = new Dictionary<string, string>
+        {
+            {"ZS0001",AppResources.VFCNationalID},
+            {"ZS0002",AppResources.VFCIqamaID},
+            {"ZS0003",AppResources.VFCGCCID},
+        };
+
         public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService)
         {
 
@@ -566,7 +573,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsTwoYearsAtachmentsVisible = false;
             IsMonthsAtachmentsVisible = false;
             IsOthersAtachmentsVisible = false;
+
+           // IDTypePickerModel = null;
+            setIdPickerModel();
         }
+
+        public void PopulateDraftData() {
+
+
+
+            //EffectiveDatePicked = ChangeFillingResponse.d.Persl;
+
+            IDType = IDValueDictionary[ChangeFillingResponse.d.DecidTy];
+            IsIDVerified = true;
+            ContactPersonName = ChangeFillingResponse.d.Decname;
+            IDNumber = ChangeFillingResponse.d.DecidNo;
+            if (IDType == AppResources.VFCGCCID)
+            {
+                IsDOBVisible = false;
+                ContractPersonEditable = true;
+            }
+            else
+            {
+                IsDOBVisible = true;
+                ContractPersonEditable = false;
+            }
+
+            EnableFrequencyDetails();
+            EnableDeclaration();
+            EnableAttachments();
+
+        }
+
 
         public void ValidateIdNumber()
         {
@@ -909,7 +947,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = iDTypes;
             genericPickerModel.PickerTitle = AppResources.VFCIDType;
-            genericPickerModel.PickerId = "ID Type";
+            genericPickerModel.PickerId = AppResources.ZZIDType;
 
             IDTypePickerModel = genericPickerModel;
         }
@@ -1305,7 +1343,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void EnableDeclaration()
         {
-            if (ContactPersonName == "" || !IsIDVerified)
+            if (ContactPersonName == "" || !IsIDVerified || !IsCheckboxChecked)
             {
                 IsDeclarationEnabled = false;
             }
@@ -1770,7 +1808,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                     try
                     {
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodRequestData();
+                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodRequestData(App.selectedVatFillingItem);
                         if (resultData != null && resultData.d != null)
                         {
                             //resultData.d;
@@ -1870,6 +1908,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             showInstructionDialog();
                             setEffectiveDatePickerModel();
                             AddAttachmentOptions();
+                            if(App.selectedVatFillingItem != "") {
+
+                                PopulateDraftData();
+                            }
+
+                            
                         }
                         else
                         {
@@ -2032,7 +2076,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.Gpartz = ChangeFillingResponse.d.Gpartz;
                 request.d.TransactionType = ChangeFillingResponse.d.TransactionType;
                 request.d.EditFg = ChangeFillingResponse.d.EditFg;
-                request.d.Statusz = "E0001";
+                request.d.Statusz = ChangeFillingResponse.d.Statusz;
                 request.d.Euser = ChangeFillingResponse.d.Euser;
 
                 request.d.Fbguid = ChangeFillingResponse.d.Fbguid;

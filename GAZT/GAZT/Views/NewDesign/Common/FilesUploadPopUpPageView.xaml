@@ -10,21 +10,42 @@
                  xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:ResourceManager="clr-namespace:EGAZT"
+                 xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
                  x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.FilesUploadPopUpPageView">
 
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
         <Grid>
-            <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
-                
-                <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
+             <StackLayout Padding="0,0,0,0" Margin="10,0,10,0"> 
+                <!--<StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Spacing="0">-->
+                    
+                <!--<Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
 
+                <border:SfBorder Margin="0,10,0,10" HasShadow="False" Padding="0"
+                                 Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Orientation="Vertical">
+                        <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
+                        <Button  TextColor="{StaticResource Primary}" Margin="10,0,10,0" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.CRDone}" Command="{Binding GoButtonClick}"    BackgroundColor="Transparent" HorizontalOptions="End">
+                        </Button>
+                    </StackLayout>
+                </border:SfBorder>
+                
                 <Label HorizontalTextAlignment="Center" Text="{Binding TitleOne}" Margin="0,0,0,0" TextColor="#005e4b"  />
                 <Label HorizontalTextAlignment="Center" Text="{Binding TitleTwo}" Margin="0,0,0,0" TextColor="#005e4b"  />
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>

@@ -28,6 +28,9 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             viewModel.Index = Index;
             viewModel.PopulateReturnTypeList();
             viewModel.PopulateDataInChips();
+            viewModel.SelectedReturnTypeForFilter = viewModel.ReturnTypeForFilter.FirstOrDefault();
+            TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
+            viewModel.SelectedChipFilterItem = null;
             ListView_Returns.ItemTapped += (sender, e) =>
             {
                 MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;

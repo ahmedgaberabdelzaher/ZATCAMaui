@@ -31,6 +31,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel;
                 viewModel.ClearData();
+                ZAKATReturnDetailsView.IsComingFromAttachmentPage = true;
                 viewModel.ZakatReturnDetail = ZakatReturnDetail;
                 viewModel.OnPageLoad();
                 SetLTR();

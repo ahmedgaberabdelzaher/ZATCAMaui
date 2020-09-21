@@ -13907,5 +13907,53 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDNewProfile", resourceCulture);
             }
         }
+        
+        public static string NDSuggestionsandComplaints {
+            get {
+                return ResourceManager.GetString("NDSuggestionsandComplaints", resourceCulture);
+            }
+        }
+        
+        public static string NDContactEmail {
+            get {
+                return ResourceManager.GetString("NDContactEmail", resourceCulture);
+            }
+        }
+        
+        public static string NDGAZT {
+            get {
+                return ResourceManager.GetString("NDGAZT", resourceCulture);
+            }
+        }
+        
+        public static string NDHeadQAddress {
+            get {
+                return ResourceManager.GetString("NDHeadQAddress", resourceCulture);
+            }
+        }
+        
+        public static string NDHeadquaeterRiyadh {
+            get {
+                return ResourceManager.GetString("NDHeadquaeterRiyadh", resourceCulture);
+            }
+        }
+        
+        public static string NDInternationalPhone {
+            get {
+                return ResourceManager.GetString("NDInternationalPhone", resourceCulture);
+            }
+        }
+        
+        public static string NDSocial {
+            get {
+                return ResourceManager.GetString("NDSocial", resourceCulture);
+            }
+        }
+        
+        public static string NDTwitter {
+            get {
+                return ResourceManager.GetString("NDTwitter", resourceCulture);
+            }
+        }
     }
 }

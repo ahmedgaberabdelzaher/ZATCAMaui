@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:custom="clr-namespace:GAZT"
+                 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                 ios:Page.UseSafeArea="true"
+                 NavigationPage.HasNavigationBar="False"
+                 xmlns:ResourceManager="clr-namespace:EGAZT"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                 x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.AddressPickerPopPage">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <yummy:PancakeView VerticalOptions="EndAndExpand"  BackgroundColor="White" Padding="10" BorderThickness="1" BorderColor="Black">
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <CollectionView x:Name="addressList" Grid.Row="0"  Margin="10" SelectionMode="Single" SelectionChanged="AddressList_SelectionChanged" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnSpacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Text="{Binding BuildingNo}"/>
+                                <BoxView Grid.Column="1" VerticalOptions="Fill" WidthRequest="1" BackgroundColor="Black"/>
+                                <custom:CustomLabel Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Start" Text="{Binding DistrictName}" />
+                                <BoxView Grid.Column="3" VerticalOptions="Fill" WidthRequest="1" BackgroundColor="Black" />
+                                <custom:CustomLabel Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Start" Text="{Binding StreetName}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout HorizontalOptions="End" VerticalOptions="EndAndExpand" Grid.Row="1" Orientation="Horizontal">
+                    <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Padding="20,0" Text="{x:Static ResourceManager:AppResources.ZZZCancelText}" HorizontalOptions="Center" Clicked="CancelButton_Clicked" />
+                </StackLayout>
+            </Grid>
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

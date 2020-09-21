@@ -117,7 +117,6 @@
     <Compile Include="CustomRenderer\RoundCornersEffectIOS.cs" />
     <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
-    <Compile Include="CustomRenderer\Main.cs" />
     <BundleResource Include="Resources\UIFontIcons.ttf" />
     <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
     <BundleResource Include="Resources\sf_Tax_Evasion.png" />
@@ -277,6 +276,10 @@
     <BundleResource Include="Resources\ic_menu_vfp.png" />
     <BundleResource Include="Resources\ic_menu_vfp%402x.png" />
     <BundleResource Include="Resources\ic_menu_vfp%403x.png" />
+    <Compile Include="Main.cs" />
+    <BundleResource Include="Resources\finances.png" />
+    <BundleResource Include="Resources\finances%402x.png" />
+    <BundleResource Include="Resources\finances%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -2064,5 +2067,68 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Application_Status%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_certificateColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_certificateColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_certificateColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VATservices.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VATservices%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_VATservices%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_FillingFrequency.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_FillingFrequency%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_FillingFrequency%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\installment_planColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\installment_planColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\installment_planColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\menu_objectionsColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RegistrationDetails%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_RefundR%403x.png" />
   </ItemGroup>
 </Project>

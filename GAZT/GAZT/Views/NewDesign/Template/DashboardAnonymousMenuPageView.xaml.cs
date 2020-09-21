@@ -13,10 +13,10 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.Template
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DashboardAnonymousMenuPageView1 : ContentPage
+    public partial class DashboardAnonymousMenuPageView : ContentPage
     {
         DashboardAnonymousMenuPageViewModel viewModel;
-        public DashboardAnonymousMenuPageView1()
+        public DashboardAnonymousMenuPageView()
         {
             InitializeComponent();
             viewModel = App.Locator.DashboardAnonymousMenuPageView;
@@ -32,6 +32,7 @@ namespace EGAZT.Views.NewDesign.Template
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
         }
 
@@ -89,6 +90,7 @@ namespace EGAZT.Views.NewDesign.Template
                 AppResources.Culture = ci;
                 //InitializeComponent();
                 this.FlowDirection = FlowDirection.LeftToRight;
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             catch (Exception e)
             {
@@ -108,6 +110,15 @@ namespace EGAZT.Views.NewDesign.Template
         private void OnVATRefundTapped(object sender, EventArgs e)
         {
         viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);    
+        }
+        private void Aboutus_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.AboutUsPageView);
+        }
+
+        private void PrivacyPolicy_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
         }
     }
 }

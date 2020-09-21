@@ -48,12 +48,25 @@ namespace EGAZT.Views.NewDesign
         }
         protected override bool OnBackButtonPressed()
         {
-            viewModel.ChcekCurrentTab();
+            GoToBackStep();
             return true;
         }
         private void OnBackArrowTapped(object sender, EventArgs e)
         {
-            viewModel.ChcekCurrentTab();
+            GoToBackStep();
+        }
+
+        public void GoToBackStep()
+        {
+            if (ContactUsWebView.IsVisible)
+            {
+                ContactUsWebView.IsVisible = false;
+                viewModel.setContactUs();
+            }
+            else
+            {
+                viewModel.ChcekCurrentTab();
+            }
         }
 
         private void OnBranchLocatorTapped(object sender, EventArgs e)
@@ -112,11 +125,11 @@ namespace EGAZT.Views.NewDesign
             viewModel.setContactUs();
             if (App.IsArabic)
             {
-                ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+                //ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
             }
             else
             {
-                ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+                //ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
             }
         }
 
@@ -128,6 +141,20 @@ namespace EGAZT.Views.NewDesign
         private void ChatWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
 
+        }
+
+        private void SuggestionsandComplaintsClicked(object sender, EventArgs e)
+        {
+            viewModel.PageTitle = AppResources.NDSuggestionsandComplaints;
+            ContactUsWebView.IsVisible = true;
+            if (App.IsArabic)
+            {
+                ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+            }
+            else
+            {
+                ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+            }
         }
     }
 }

@@ -1474,6 +1474,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        public string vRRequesttoReviewtheAmountValue = "";
+        public string VRRequesttoReviewtheAmountValue
+        {
+            get
+            {
+                return vRRequesttoReviewtheAmountValue;
+            }
+            set
+            {
+                vRRequesttoReviewtheAmountValue = value;
+                RaisePropertyChanged("VRRequesttoReviewtheAmountValue");
+            }
+        }
+
         private bool isVITDDOBVisible = false;
         public bool IsVITDDOBVisible
         {
@@ -1547,7 +1561,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             {"ZS0001",AppResources.VFCNationalID},
             { "ZS0002",AppResources.VFCIqamaID},
-            {AppResources.VFCGCCID, "ZS0003"},
+            { "ZS0003",AppResources.VFCGCCID},
          };
 
         public bool MarkComplete { get; private set; } = false;
@@ -1729,8 +1743,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-
-
         private Dictionary<string, string> IDTypeDictionary = new Dictionary<string, string>
         {
             {AppResources.VFCNationalID, "ZS0001"},
@@ -1748,6 +1760,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private List<VATObjectionRejectedFormModel.AppRefNumResult> appRefNumList;
         private VATObjectionSummaryModel modelVATReview;
         private VATObjectionRejectedFormModel _VATObjectionRejected;
+
+        public VatReviewInterface vRInterface { get; set; }
 
         public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(
             navigationService, dialogService)
@@ -1797,7 +1811,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = AppResources.VRDateOfBirth;
             genericDatePickerModel.PickerId = "DatePicker";
-
 
             //setIdPickerModel();
         }
@@ -2479,28 +2492,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (selectedApplicationRef.Fbtyp == "RGVT")
                 {
                     //GetVATDREGSuspensionViewApplication();
-                   
+
 
                 }
                 else if (selectedApplicationRef.Fbtyp == "DGVT")
                 {
                     //await VatDeregistration();
 
-                    if(selectedSubReviewReason.Code == "0012") {
+                    if (selectedSubReviewReason.Code == "0012")
+                    {
 
                         GetVATDREGSuspensionViewApplication();
                     }
                     else if (selectedSubReviewReason.Code == "0011")
-                     {
+                    {
                         await GetVATDREGViewApplication();
                     }
-                    else {
+                    else
+                    {
 
                     }
 
 
 
-                    
+
                 }
                 else if (selectedApplicationRef.Fbtyp == "VTGR")
                 {
@@ -2806,6 +2821,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsSelected = false
             });
             DisputeAmountPaymentOptions = disputeAmountPaymentOptions;
+            vRInterface.SelectDefaultPaymentOption();
         }
 
         public void updateIdTypePicker()
@@ -4463,7 +4479,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 /*if (_VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").Count() > 0)
                                     VITDAttachmentsListViewData = _VATReviewRequestTPFV.d.AttdetSet.results.Where(x => x.Dotyp.ToUpper() == "TPFB").FirstOrDefault().Filename;*/
                                 // _VATReviewRequestTPFVReturn.DeclarationFlag = _VATReviewRequestTPFV.d.Decchk1;
-                                //VITDIDType = IDToNameDictionary[_VATReviewRequestTPFV.d.Idtp];
+                                VITDIDType = IDToNameDictionary[_VATReviewRequestTPFV.d.Idtp];
                                 VITDIDNumber = _VATReviewRequestTPFV.d.Idno;
                                 //VITDDateOfBirth = _VATReviewRequestTPFV.d.
                                 VITDContactPersonName = _VATReviewRequestTPFV.d.Cnpr;
@@ -4667,6 +4683,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             {
 
                                 VRVSRequestType = AppResources.VRVSVATReturnFilingObligationSuspension;
+
 
                                 VRVSRFSuspensionofFiling = dregReasonset.d.results.
                                 Where(x => x.Reason == dregresult.d.Reason).FirstOrDefault().Rdesc;

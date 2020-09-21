@@ -12,10 +12,10 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.Template
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DashboardAnonymousMenuPageView : ContentPage
+    public partial class DashboardAnonymousMenuPageView1 : ContentPage
     {
         DashboardAnonymousMenuPageViewModel viewModel;
-        public DashboardAnonymousMenuPageView()
+        public DashboardAnonymousMenuPageView1()
         {
             InitializeComponent();
             viewModel = App.Locator.DashboardAnonymousMenuPageView;
