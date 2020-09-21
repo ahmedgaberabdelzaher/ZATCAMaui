@@ -10,6 +10,7 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
              BackgroundImageSource="partials_background"             
              xmlns:custom="clr-namespace:GAZT"
+               xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.AccountCreatedSuccessfullyPageView">
     <ContentPage.Resources>
@@ -21,11 +22,37 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="24,0,24,16">
-            <Image Source="Forget_ic_success.png" Margin="0,75,0,0"/>
-            <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZAccountCreatedSuccessfully}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
-            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDYouSuccessfullyRegisteredGAZTServies}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>-->
-            <buttons:SfButton x:Name="btnprimary" VerticalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.Clickhereforlogin}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnGoToLoginClicked"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Padding="24,0,24,16">
+                    <Image Source="Forget_ic_success.png" Margin="0,75,0,0"/>
+                    <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZAccountCreatedSuccessfully}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDYouSuccessfullyRegisteredGAZTServies}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>-->
+
+                </StackLayout>
+                <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" VerticalOptions="EndAndExpand">
+                    <StackLayout>
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" HasShadow="False" Margin="0,20,0,0">
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label   Text="{x:Static ResourceManager:AppResources.TINS}" VerticalOptions="Center" FontSize="12" TextColor="#909090" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand"/>
+                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                    <Label x:Name="Label_Tin" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="#010101" Text="{Binding TINnumber}" />
+                                    <Image x:Name="Image_Copy">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentPaste}"/>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer  Tapped="Image_Copy_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                        <buttons:SfButton x:Name="btnprimary" VerticalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.Clickhereforlogin}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnGoToLoginClicked"/>
+                    </StackLayout>
+                </yummy:PancakeView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
