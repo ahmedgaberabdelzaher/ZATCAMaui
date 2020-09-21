@@ -6592,7 +6592,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to V.
+        ///   Looks up a localized string similar to v.
         /// </summary>
         public static string NDV {
             get {
