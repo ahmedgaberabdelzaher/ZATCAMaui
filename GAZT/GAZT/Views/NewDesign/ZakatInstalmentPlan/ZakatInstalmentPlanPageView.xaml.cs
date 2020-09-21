@@ -315,6 +315,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "SelectedFrequencyType");
+            MessagingCenter.Unsubscribe<object, string>(this, "SelectedReason");
 
 
 
@@ -473,6 +474,30 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                             }
                         }
 
+                    }
+                });
+
+                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "SelectedReason", (sender, arg) => {
+                    if (arg != null)
+                    {
+                        Device.BeginInvokeOnMainThread(() => {
+
+                            try
+                            {
+
+                                switch (arg)
+                                {
+                                    case "01": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatFinancialCrisis]; break; }
+                                    case "02": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[1]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatDisputeInFavorOfGAZT]; break; }
+                                    case "03": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[2]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatOtherReason]; break; }
+
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                        });
                     }
                 });
 
