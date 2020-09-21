@@ -43,26 +43,25 @@ namespace GAZT.Helper
         //public static string DomainUrlForCookies = DevDomainForCookies;
         //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        public static string DomainUrlForCookies = QADomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
-
-        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = PreprodDomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
-        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = PreprodDomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
         //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         //public static string DomainUrlForCookies = QADomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+
+        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = PreprodDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+
+        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = PreprodDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+
+        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string DomainUrlForCookies = QADomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
@@ -280,7 +279,8 @@ namespace GAZT.Helper
         public static string GAZTSaveAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachSet(OutletRef=";
         public static string GAZTDeteleAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachMedSet(OutletRef=";
         public static string downloadFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum=";
-
+        public static string CRDownloadCoverFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum=";
+        public static string CRDownloadAcknowledementFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
         #endregion
 
         #region Change Filling Period
@@ -382,7 +382,8 @@ namespace GAZT.Helper
         // * TP PROFILE API - V2
         public static string TPProfileURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet";
         public static string GetTPProfileChangePWDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/ChangePasswordSet";
-            
+        public static string ZOdownloadAckLetter = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
+        public static string ZOdownloadCoverFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum=";
         #endregion
 
     }

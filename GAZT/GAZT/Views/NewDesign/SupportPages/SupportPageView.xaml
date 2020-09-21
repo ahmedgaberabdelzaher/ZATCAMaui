@@ -49,6 +49,28 @@
                     <!--Parent View Starts-->
                     <ScrollView Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Parent}}">
                         <StackLayout Spacing="16" Padding="0,24,0,0">
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
+                                    <Image Source="ic_logo_gazt.png" HeightRequest="25" WidthRequest="25"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Aboutus_Tapped"/>
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
+                                    <Image Source="ic_vat_return.png"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPrivacyPolicy}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped"/>
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="faQs.png"/>
@@ -60,7 +82,7 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <!--<border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ColorChat.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDChat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
@@ -69,7 +91,7 @@
                                 <border:SfBorder.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnChatTapped"/>
                                 </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                            </border:SfBorder>-->
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
@@ -182,26 +204,32 @@
 
                                     <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDSocial}" Style="{StaticResource SectionTitleBlack}" />
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout Orientation="Horizontal" Spacing="16">
-                                    
-                                        <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False" BorderWidth="0" BackgroundColor="{StaticResource Primary}" Padding="12">
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="White" Size="30" Glyph="{x:Static FontImage:IconFonts.Twitter}"/>
-                                            </Image.Source>
-                                        </Image>
-                                        </border:SfBorder>
-                                    
-                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <border:SfBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnTwitterGAZTTapped"/>
+                                        </border:SfBorder.GestureRecognizers>
+                                        <StackLayout Orientation="Horizontal" Spacing="16">
+
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False" BorderWidth="0" BackgroundColor="{StaticResource Primary}" Padding="12">
+                                                <Image>
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="White" Size="30" Glyph="{x:Static FontImage:IconFonts.Twitter}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                            </border:SfBorder>
+
+                                            <StackLayout VerticalOptions="CenterAndExpand">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGAZT}" Style="{StaticResource ButtonLabelBlackBold}"/>
                                                 <custom:CustomLabel Margin="0,-16,0,0" Text="{x:Static ResourceManager:AppResources.NDTwitter}" Style="{StaticResource CaptionLabelGrey}"/>
-                                    </StackLayout>
+                                            </StackLayout>
                                             <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Style="{DynamicResource BackButtonArrow}" Margin="16,0,16,0"/>
-                                </StackLayout>
-                            </border:SfBorder>
+                                        </StackLayout>
+                                    </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout Orientation="Horizontal" Spacing="16">
+                                        <border:SfBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnTwitterVATTapped"/>
+                                        </border:SfBorder.GestureRecognizers>
+                                        <StackLayout Orientation="Horizontal" Spacing="16">
 
                                     <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False" BorderWidth="0" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="12">
                                         <Image>

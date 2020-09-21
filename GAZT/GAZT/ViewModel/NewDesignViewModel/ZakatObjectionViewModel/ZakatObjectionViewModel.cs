@@ -805,15 +805,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 if (VATReferanceNumber != null)
                 {
-                    String downloadurl = Constants.downloadFile + "'" + VATReferanceNumber + "')/$value";
+                    String downloadurl = Constants.ZOdownloadAckLetter + "'" + VATReferanceNumber + "')/$value";
                     await WebServiceManager.FileDownload(downloadurl, "pdf");
                 }
+
+
 
 
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
+
+
 
             });
             ZDownloadForm = new Command(async () =>
@@ -824,13 +828,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 });
                 if (VATReferanceNumber != null)
                 {
-                    String downloadurl = Constants.downloadFormFile + "'" + VATReferanceNumber + "')/$value";
+                    String downloadurl = Constants.ZOdownloadCoverFormFile + "'" + VATReferanceNumber + "')/$value";
                     await WebServiceManager.FileDownload(downloadurl, "pdf");
                 }
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
+
+
 
             });
 

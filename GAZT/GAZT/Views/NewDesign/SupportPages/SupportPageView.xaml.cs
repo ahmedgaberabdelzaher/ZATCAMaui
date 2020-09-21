@@ -123,14 +123,14 @@ namespace EGAZT.Views.NewDesign
         private void OnContactUsTapped(object sender, EventArgs e)
         {
             viewModel.setContactUs();
-            if (App.IsArabic)
-            {
-                //ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
-            }
-            else
-            {
-                //ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
-            }
+            //if (App.IsArabic)
+            //{
+            //    //ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+            //}
+            //else
+            //{
+            //    //ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+            //}
         }
 
         private void ChatWebView_Navigating(object sender, WebNavigatingEventArgs e)
@@ -156,5 +156,33 @@ namespace EGAZT.Views.NewDesign
                 ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
             }
         }
+
+        private void PrivacyPolicy_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+        }
+
+        private void Aboutus_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.AboutUsPageView);
+        }
+        private void OnTwitterGAZTTapped(object sender, EventArgs e)
+        {
+            viewModel.PageTitle = AppResources.NDGAZT;
+            ContactUsWebView.IsVisible = true;
+           
+                ContactUsWebView.Source = "https://twitter.com/GAZT_KSA";
+           
+        }
+        private void OnTwitterVATTapped(object sender, EventArgs e)
+        {
+            viewModel.PageTitle = AppResources.ZakatInstalmetSelectTypeVAT;
+            ContactUsWebView.IsVisible = true;
+            
+            ContactUsWebView.Source = "https://twitter.com/saudivat";
+
+        }
+        
+
     }
 }

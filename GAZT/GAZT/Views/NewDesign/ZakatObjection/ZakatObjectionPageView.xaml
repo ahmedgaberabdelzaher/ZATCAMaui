@@ -1920,13 +1920,13 @@
                         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                      Opacity="0.4" VerticalOptions="FillAndExpand" />
                         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
-                                     Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                                     Opacity="0.8" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Padding="15,15">
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                                 <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
                                                                EnableAnimation="True"
                                                                AnimationType="SingleCircle"
                                                                HorizontalOptions="CenterAndExpand"
-                                                               VerticalOptions="CenterAndExpand"
+                                                               VerticalOptions="EndAndExpand"
                                                                IsBusy="True"
                                                                ViewBoxWidth="70"
                                                                TitlePlacement="Bottom"

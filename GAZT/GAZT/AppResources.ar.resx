@@ -4795,6 +4795,7 @@
   </data>
   <data name="NDDontMissObligation" xml:space="preserve">
     <value>لا تفوت أي التزام مع تقويم الالتزامات الجديد</value>
+    <comment>لا تفوت أي التزام مع تقويم الالتزامات الجديد</comment>
   </data>
   <data name="NDReturnSubmission" xml:space="preserve">
     <value>رفع الاقرارات</value>
@@ -4803,16 +4804,19 @@
     <value>اسم المستخدم تم إرساله الى البريد الالكتروني ورقم الجوال المسجل</value>
   </data>
   <data name="NDVATZAKATReturnSubmission" xml:space="preserve">
-    <value>أصبحت ضريبة القيمة المضافة والزكاة وغيرها من عمليات الإرجاع سهلة</value>
+    <value>رفع إقرار الزكاة وضريبة القيمة المضافة اصبح اسهل</value>
+    <comment>أصبحت ضريبة القيمة المضافة والزكاة وغيرها من عمليات الإرجاع سهلة</comment>
   </data>
   <data name="NDInboxnNotification" xml:space="preserve">
-    <value>الرسائل والتنبيهات</value>
+    <value>الرسائل</value>
+    <comment>الرسائل والتنبيهات</comment>
   </data>
   <data name="NDMakeTransactionsFast" xml:space="preserve">
     <value>Make all your transactions fast and simple with MADA &amp; Apple Pay</value>
   </data>
   <data name="NDNewEasyWayToCommunicate" xml:space="preserve">
-    <value>جميع الرسائل والتنبيهات في مكان واحد</value>
+    <value>طريقة سهلة لمتابعة مراسلاتك</value>
+    <comment>جميع الرسائل والتنبيهات في مكان واحد</comment>
   </data>
   <data name="NDIndividualSaudi" xml:space="preserve">
     <value>Individual Saudi(Resident)</value>
@@ -6153,7 +6157,7 @@
     <value>محادثة</value>
   </data>
   <data name="NDLocalPhone" xml:space="preserve">
-    <value>Local Phone</value>
+    <value>الرقم المحلي</value>
   </data>
   <data name="NDOpeningHours" xml:space="preserve">
     <value>Opening Hours</value>
@@ -7593,10 +7597,10 @@
     <value>الاقتراحات والشكاوى</value>
   </data>
   <data name="NDContactEmail" xml:space="preserve">
-    <value>Contact Email</value>
+    <value>البريد الإلكتروني</value>
   </data>
   <data name="NDGAZT" xml:space="preserve">
-    <value>GAZT</value>
+    <value>الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="NDHeadQAddress" xml:space="preserve">
     <value>شارع الأمير عبدالرحمن بن عبد العزيز الرياض 12628​</value>
@@ -7605,12 +7609,21 @@
     <value>الإدارة العامة - الرياض</value>
   </data>
   <data name="NDInternationalPhone" xml:space="preserve">
-    <value>International Phone</value>
+    <value>لرقم الدولي</value>
   </data>
   <data name="NDSocial" xml:space="preserve">
-    <value>Social</value>
+    <value>التواصل الإجتماعي</value>
   </data>
   <data name="NDTwitter" xml:space="preserve">
-    <value>Twitter</value>
+    <value>تويتر</value>
+  </data>
+  <data name="ZakatIncomeTaxObjection" xml:space="preserve">
+    <value>اعتراضات الزكاة/ضريبة الدخل</value>
+  </data>
+  <data name="NDTINDeregestration" xml:space="preserve">
+    <value>إيقاف الرقم المميز</value>
+  </data>
+  <data name="NDV" xml:space="preserve">
+    <value>V</value>
   </data>
 </root>
