@@ -1222,6 +1222,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                     SetSubmitButtonVisibility = false;
                     SetConfirmButtonVisibility = false;
+                    SetAmendButtonVisibility = false;
                 }
                 else if (ButtonStatus.Equals("IP014"))
                 {
