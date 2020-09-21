@@ -40,7 +40,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDRefunds}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
                         <Image x:Name="btnBack" Grid.Row="0" Style="{DynamicResource BackButtonArrow}" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
                             <Image.GestureRecognizers>

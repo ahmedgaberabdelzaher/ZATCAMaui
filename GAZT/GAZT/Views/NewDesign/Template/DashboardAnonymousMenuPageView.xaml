@@ -60,7 +60,9 @@
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                     </StackLayout>
-                                    
+                                    <border:SfBorder.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnVATRefundTapped"/>
+                                    </border:SfBorder.GestureRecognizers>
                                 </border:SfBorder>
 
                                 <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
