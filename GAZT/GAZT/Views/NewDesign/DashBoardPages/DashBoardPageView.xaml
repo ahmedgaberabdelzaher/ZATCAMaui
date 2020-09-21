@@ -633,7 +633,7 @@
 
                                 </StackLayout >
                                 <custom:CustomLabel Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
-                                <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
+                                <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.NDV}"/>
