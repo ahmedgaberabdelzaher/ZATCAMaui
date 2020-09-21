@@ -9,6 +9,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
     public partial class AttachmentInformationPopUp : PopupPage
     {
+        public delegate void OnDoneDelegate();
+        public OnDoneDelegate OnDone { get; set; } = null;
+
         public AttachmentInformationPopUp(string infromationText)
         {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void DoneButtonClicked(object sender, EventArgs e)
         {
+            OnDone?.Invoke();
             PopupNavigation.Instance.PopAsync();
         }
 

@@ -2014,6 +2014,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
                     SelectedRegNationalityType = NationalityMapping[taxPayerDetails?.Tpnationality];
+                    if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality))
+                    {
+                        var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong) {
+                            CloseWhenBackgroundIsClicked = false
+                        };
+                        someThingWhentWrong.OnDone = () =>
+                        {
+                            _navigationService.GoBack();
+                        };
+                        await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
+                        return;
+                    }
                     IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";
                     if (IsSaudi)
                     {
