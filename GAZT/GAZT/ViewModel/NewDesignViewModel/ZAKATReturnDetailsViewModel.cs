@@ -726,8 +726,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            FromDate = FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            string[] dts = FromDate.Split('-');
+                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                            FromDate = date;
+
                             ToDate = " - " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                            string[] dts2 = ToDate.Split('-');
+                            string date2 = dts2[0] + "-" + UtilityManager.GetMonthName(dts2[1]) + "-" + dts2[2];
+                            ToDate = date2;
+
                         }
 
 

@@ -90,7 +90,7 @@
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" HorizontalOptions="End" HorizontalTextAlignment="End" Style="{StaticResource ValueLabelGrey}"/>
                                             <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" WidthRequest="160" StyleId="ValueLabel">
-                                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.FromDate}"  Style="{StaticResource HorizontalEnd}" FlowDirection="LeftToRight">
+                                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.FromDate}"  Style="{StaticResource HorizontalEnd}" >
 
                                                 <!--<Label.FormattedText>
                                         <FormattedString>
@@ -100,7 +100,7 @@
                                              </FormattedString>
                                     </Label.FormattedText>-->
                                             </custom:CustomLabel>
-                        <custom:CustomLabel Margin="0,-10,0,0" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  Style="{StaticResource HorizontalEnd}" StyleId="ValueLabel" FlowDirection="LeftToRight">
+                        <custom:CustomLabel Margin="0,-10,0,0" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  Style="{StaticResource HorizontalEnd}" StyleId="ValueLabel" >
                             </custom:CustomLabel>
                                         
                                             </StackLayout>
