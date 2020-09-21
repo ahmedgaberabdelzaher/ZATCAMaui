@@ -216,9 +216,9 @@
                                                 <Label Text="{x:Static ResourceManager:AppResources.NDPeriod}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <!--<Label Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" />-->
                                                 <StackLayout Orientation="Horizontal">
-                                                    <custom:CustomLabel Text="{Binding PeriodPart1}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                    <custom:CustomLabel Text="{Binding PeriodPart1}" Style="{StaticResource ValueLabelBlack}" />
                                                     <custom:CustomLabel Text="-" Style="{StaticResource ValueLabelBlack}" />
-                                                    <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding PeriodPart2}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                    <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding PeriodPart2}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5" Grid.ColumnSpan="2">
@@ -232,7 +232,7 @@
                                             <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <StackLayout HorizontalOptions="Start">
-                                                    <custom:CustomLabel Text="{Binding FormatedFaedn}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>
+                                                    <custom:CustomLabel Text="{Binding FormatedFaedn}" Style="{StaticResource ValueLabelBlack}"/>
                                                 </StackLayout>
                                                
                                             </StackLayout> 

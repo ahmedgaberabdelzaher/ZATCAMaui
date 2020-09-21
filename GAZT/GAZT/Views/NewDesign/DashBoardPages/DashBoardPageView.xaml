@@ -490,7 +490,7 @@
 
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="ic_Installplan.png">
+                                        <Image Source="installment_plan.png">
                                         </Image>
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
@@ -499,7 +499,7 @@
                                     </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="menu_return">
+                                        <Image Source="ic_ReportTaxEvasion">
                                         </Image>
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VRObjectionsReviews}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
@@ -511,7 +511,7 @@
 
 
                                     <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="menu_return">
+                                        <Image Source="ic_menu_cr">
                                         </Image>
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
@@ -633,7 +633,7 @@
 
                                 </StackLayout >
                                 <custom:CustomLabel Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
-                                <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
+                                <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.NDV}"/>
