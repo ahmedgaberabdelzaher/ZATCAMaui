@@ -2032,17 +2032,17 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2">
 
-                                                        <Label Text="{x:Static custom2:AppResources.IDNumber}" IsVisible="{Binding IDNumberVisibility}" Style="{StaticResource GAZTCaptionBlackLabel}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static custom2:AppResources.IDNumber}" IsVisible="{Binding IDNumberVisibility}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
 
 
-                                                        <Label  Style="{StaticResource GAZTCaptionBlackLabel}" IsVisible="{Binding IDNumberMandatoryVisibility}">
+                                                        <custom:CustomLabel  Style="{StaticResource GAZTCaptionBlackLabel}" IsVisible="{Binding IDNumberMandatoryVisibility}">
                                                               <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static local:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                        </Label>
+                                                        </custom:CustomLabel>
 
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmIDNo" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"

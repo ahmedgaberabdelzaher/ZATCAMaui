@@ -31,7 +31,7 @@
                 <StackLayout Margin="24,8,24,0" >
 
                    <Label Text="{Binding PickerTitle}" 
-                                    HorizontalOptions="EndAndExpand" Style="{StaticResource SectionTitleBlackBold}"
+                                    HorizontalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                 Margin="0,16,0,0" BackgroundColor="Transparent" />
                     <syncfusion:SfPicker FlowDirection="RightToLeft"  IsOpen="True" Style="{StaticResource PickerStyle}" ItemsSource="{Binding PickerItemSource}"
 								Margin="2" HeaderBackgroundColor="Aqua"

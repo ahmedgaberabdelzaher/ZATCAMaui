@@ -196,11 +196,15 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (attachment.DocUrl != null)
                 {
                     viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    await PopupNavigation.Instance.PopAsync();
+
                 }
             }
             else
             {
                 await email(attachment.Doguid, attachment);
+                await PopupNavigation.Instance.PopAsync();
+
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }

@@ -502,7 +502,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             CRIssueCity = null;
                         }
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                        {
                             LicenseIssueCountry = item as CountryDropdownItem;
+                            LicenseIssueCity = null;
+                        }
                     }
                     catch (Exception e)
                     {
