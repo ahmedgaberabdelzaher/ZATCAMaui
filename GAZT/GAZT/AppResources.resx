@@ -7761,7 +7761,13 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDTwitter" xml:space="preserve">
     <value>Twitter</value>
   </data>
-    <data name="ZakatIncomeTaxObjection" xml:space="preserve">
+  <data name="ZakatIncomeTaxObjection" xml:space="preserve">
     <value>Zakat\Income Tax Objections</value>
+  </data>
+  <data name="NDTINDeregestration" xml:space="preserve">
+    <value>TIN Deregestration</value>
+  </data>
+  <data name="NDV" xml:space="preserve">
+    <value>V</value>
   </data>
 </root>
