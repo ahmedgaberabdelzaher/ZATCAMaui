@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             ReviewReason,
             ReviewDetails,
+            ReportDetails,
             SecurityPayments,
             Declaration,
             Summary
@@ -53,6 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public ICommand ReviewReasonConBtnTapped { get; set; }
         public ICommand ReviewDetailsConBtnTapped { get; set; }
+        public ICommand ReportDetailsConBtnTapped { get; set; }
         public ICommand SecurityPaymentConBtnTapped { get; set; }
         public ICommand DeclarationConBtnTapped { get; set; }
         public ICommand SummaryConBtnTapped { get; set; }
@@ -70,6 +73,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand IdTypeSpinnerTapped { get; set; }
         public ICommand ApplicationNumRefCommand { get; set; }
         public ICommand SadadGenerateBtnTapped { get; set; }
+        public ICommand GoBackToReportDetails { get; set; }
+
+
 
 
 
@@ -125,6 +131,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 _reviewDetailsVisible = value;
                 RaisePropertyChanged("ReviewDetailsVisible");
+            }
+        }
+
+        private bool _reportDetailsVisible = false;
+
+        public bool ReportDetailsVisible
+        {
+            get { return _reportDetailsVisible; }
+            set
+            {
+                _reportDetailsVisible = value;
+                RaisePropertyChanged("ReportDetailsVisible");
             }
         }
 
@@ -644,6 +662,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 _reviewReasonButtonBackGroundColor = value;
                 RaisePropertyChanged("ReviewReasonButtonBackGroundColor");
+            }
+        }
+
+        private bool _isReportDetailsEnabled = false;
+
+        public bool IsReportDetailsEnabled
+        {
+            get { return _isReportDetailsEnabled; }
+            set
+            {
+                _isReportDetailsEnabled = value;
+                ReportDetailsButtonBackGroundColor = Color.FromHex(_isReportDetailsEnabled ? "#d49504" : "#9EA4A9");
+                RaisePropertyChanged("IsReportDetailsEnabled");
+            }
+        }
+
+        private Color _reportDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
+
+        public Color ReportDetailsButtonBackGroundColor
+        {
+            get { return _reportDetailsButtonBackGroundColor; }
+            set
+            {
+                if (_reportDetailsButtonBackGroundColor == value)
+                {
+                    return;
+                }
+
+                _reportDetailsButtonBackGroundColor = value;
+                RaisePropertyChanged("ReportDetailsButtonBackGroundColor");
             }
         }
 
@@ -1565,7 +1613,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
          };
 
         public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 5;
+        public int MaxIndex { get; private set; } = 6;
 
         private Color _declarationButtonBackGroundColor = Color.FromHex("#9EA4A9");
 
@@ -1743,6 +1791,346 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        string vrVRIdnumber { get; set; }
+
+        private string _VrVRDOB = string.Empty;
+        public string VrVRDOB
+        {
+            get
+            {
+                return _VrVRDOB;
+            }
+            set
+            {
+                _VrVRDOB = value;
+                RaisePropertyChanged("VrVRDOB");
+            }
+        }
+        private string _VrVRIDType = string.Empty;
+        public string VrVRIDType
+        {
+            get
+            {
+                return _VrVRIDType;
+            }
+            set
+            {
+                _VrVRIDType = value;
+                RaisePropertyChanged("VrVRIDType");
+            }
+        }
+        private string _VrVRIDNumber = string.Empty;
+        public string VrVRIDNumber
+        {
+            get
+            {
+                return _VrVRIDNumber;
+            }
+            set
+            {
+                _VrVRIDNumber = value;
+                RaisePropertyChanged("VrVRIDNumber");
+            }
+        }
+        private string _VrVRContactPersonName = string.Empty;
+        public string VrVRContactPersonName
+        {
+            get
+            {
+                return _VrVRContactPersonName;
+            }
+            set
+            {
+                _VrVRContactPersonName = value;
+                RaisePropertyChanged("VrVRContactPersonName");
+            }
+        }
+
+        private string _VrVRcontactDOB = string.Empty;
+        public string VrVRContactDOB
+        {
+            get
+            {
+                return _VrVRcontactDOB;
+            }
+            set
+            {
+                _VrVRcontactDOB = value;
+                RaisePropertyChanged("VrVRContactDOB");
+            }
+        }
+        private string _VrVRidNumberSR = string.Empty;
+        public string VrVRIdNumberSR
+        {
+            get
+            {
+                return _VrVRidNumberSR;
+            }
+            set
+            {
+                _VrVRidNumberSR = value;
+                RaisePropertyChanged("VrVRIdNumberSR");
+            }
+        }
+
+        private string _VrVRfirstNameSR = string.Empty;
+        public string VrVRFirstNameSR
+        {
+            get
+            {
+                return _VrVRfirstNameSR;
+            }
+            set
+            {
+                _VrVRfirstNameSR = value;
+                RaisePropertyChanged("VrVRFirstNameSR");
+            }
+        }
+        private string _VrVRlastnmFR = string.Empty;
+        public string VrVRLastnmFR
+        {
+            get
+            {
+                return _VrVRlastnmFR;
+            }
+            set
+            {
+                _VrVRlastnmFR = value;
+                RaisePropertyChanged("VrVRLastnmFR");
+            }
+        }
+
+        private string _VrVRmobNumberFR = string.Empty;
+        public string VrVRMobNumberFR
+        {
+            get
+            {
+                return _VrVRmobNumberFR;
+            }
+            set
+            {
+                _VrVRmobNumberFR = value;
+                RaisePropertyChanged("VrVRMobNumberFR");
+            }
+        }
+        private string _VrVRvatEligibleStartDate = string.Empty;
+        public string VrVRVatEligibleStartDate
+        {
+            get
+            {
+                return _VrVRvatEligibleStartDate;
+            }
+            set
+            {
+                _VrVRvatEligibleStartDate = value;
+                RaisePropertyChanged("VrVRVatEligibleStartDate");
+            }
+        }
+
+        private string _VrVRquesTion3answerSelected = string.Empty;
+        public string VrVRquesTion3answerSelected
+        {
+            get
+            {
+                return _VrVRquesTion3answerSelected;
+            }
+            set
+            {
+                _VrVRquesTion3answerSelected = value;
+
+                RaisePropertyChanged("VrVRquesTion3answerSelected");
+            }
+        }
+        private string _VrVRquesTion4answerSelected = string.Empty;
+        public string VrVRquesTion4answerSelected
+        {
+            get
+            {
+                return _VrVRquesTion4answerSelected;
+            }
+            set
+            {
+                _VrVRquesTion4answerSelected = value;
+
+                RaisePropertyChanged("VrVRquesTion4answerSelected");
+            }
+        }
+        private string _VrVRquesTion1answerSelected = string.Empty;
+        public string VrVRquesTion1answerSelected
+        {
+            get
+            {
+                return _VrVRquesTion1answerSelected;
+            }
+            set
+            {
+                _VrVRquesTion1answerSelected = value;
+
+                RaisePropertyChanged("VrVRquesTion1answerSelected");
+            }
+        }
+        private string _VrVRquesTion2answerSelected = string.Empty;
+        public string VrVRquesTion2answerSelected
+        {
+            get
+            {
+                return _VrVRquesTion2answerSelected;
+            }
+            set
+            {
+                _VrVRquesTion2answerSelected = value;
+
+                RaisePropertyChanged("VrVRquesTion2answerSelected");
+            }
+        }
+        private string _VrVRidnumberFR = string.Empty;
+        public string VrVRIdnumberFR
+        {
+            get
+            {
+                return _VrVRidnumberFR;
+            }
+            set
+            {
+                _VrVRidnumberFR = value;
+                RaisePropertyChanged("VrVRIdnumberFR");
+            }
+        }
+        private string _VrVRtypeFR = string.Empty;
+        public string VrVRTypeFR
+        {
+            get
+            {
+                return _VrVRtypeFR;
+            }
+            set
+            {
+                _VrVRtypeFR = value;
+                RaisePropertyChanged("VrVRTypeFR");
+            }
+        }
+
+        private string _VrVRfirstnmFR = string.Empty;
+        public string VrVRFirstnmFR
+        {
+            get
+            {
+                return _VrVRfirstnmFR;
+            }
+            set
+            {
+                _VrVRfirstnmFR = value;
+                RaisePropertyChanged("VrVRFirstnmFR");
+            }
+        }
+        private string _VrVRgpartFR = string.Empty;
+        public string VrVRGpartFR
+        {
+            get
+            {
+                return _VrVRgpartFR;
+            }
+            set
+            {
+                _VrVRgpartFR = value;
+                RaisePropertyChanged("VrVRGpartFR");
+            }
+        }
+        private string _VrVRIban = string.Empty;
+        public string VrVRIban
+        {
+            get
+            {
+                return _VrVRIban;
+            }
+            set
+            {
+                _VrVRIban = value;
+                RaisePropertyChanged("VrVRIban");
+            }
+        }
+        private string _VrVRsmtpAddrFR = string.Empty;
+        public string VrVRSmtpAddrFR
+        {
+            get
+            {
+                return _VrVRsmtpAddrFR;
+            }
+            set
+            {
+                _VrVRsmtpAddrFR = value;
+                RaisePropertyChanged("VrVRSmtpAddrFR");
+            }
+        }
+
+        private string _VrVRimportExportText = string.Empty;
+        public string VrVRImportExportText
+        {
+            get
+            {
+                return _VrVRimportExportText;
+            }
+            set
+            {
+                _VrVRimportExportText = value;
+                RaisePropertyChanged("VrVRImportExportText");
+            }
+        }
+        private string _VrVRAttachmentName = string.Empty;
+        public string VrVRAttachmentName
+        {
+            get
+            {
+                return _VrVRAttachmentName;
+            }
+            set
+            {
+                _VrVRAttachmentName = value;
+                RaisePropertyChanged("VrVRAttachmentName");
+            }
+        }
+        private VATRegistrationDetails _VrVRvATRegistrationDetailsData;
+        public VATRegistrationDetails VrVRVATRegistrationDetailsData
+        {
+            get
+            {
+                return _VrVRvATRegistrationDetailsData;
+            }
+            set
+            {
+                _VrVRvATRegistrationDetailsData = value;
+                RaisePropertyChanged("VrVRVATRegistrationDetailsData");
+            }
+        }
+        private List<QuestionNumberWithMinMaxRange> _VrVRminMaxRanges;
+        public List<QuestionNumberWithMinMaxRange> VrVRMinMaxRanges
+        {
+            get
+            {
+                return _VrVRminMaxRanges;
+            }
+            set
+            {
+                _VrVRminMaxRanges = value;
+                RaisePropertyChanged("VrVRMinMaxRanges");
+            }
+        }
+
+
+        private ObservableCollection<Result2> _VrVRibanList;
+        public ObservableCollection<Result2> VrVRIbanList
+        {
+            get
+            {
+                return _VrVRibanList;
+            }
+            set
+            {
+                _VrVRibanList = value;
+                RaisePropertyChanged("VrVRIbanList");
+            }
+        }
+
         private Dictionary<string, string> IDTypeDictionary = new Dictionary<string, string>
         {
             {AppResources.VFCNationalID, "ZS0001"},
@@ -1786,6 +2174,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ReviewReasonConBtnTapped = new Command(async () => { ReviewReasonConBtnClicked(); });
 
             ReviewDetailsConBtnTapped = new Command(async () => { ReviewDetailsConBtnClicked(); });
+            ReportDetailsConBtnTapped = new Command(async () => { ReportDetailsConBtnClicked(); });
             SecurityPaymentConBtnTapped = new Command(async () => { SecurityPaymentConBtnClicked(); });
 
             DeclarationConBtnTapped = new Command(async () => { DeclarationConBtnClicked(); });
@@ -1804,6 +2193,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SadadGenerateBtnTapped = new Command(async () => { GenerateSadadNumberAsync(); });
             ShowDatePicker = new Command(async () => { showDatePickerDialog(); });
             IdTypeSpinnerTapped = new Command(async () => { showIdTypePickerDialog(); });
+            GoBackToReportDetails = new Command(async () => { EnableReportDetailsView(); });
+
 
             //AddSecurityPaymentOptions();
 
@@ -1965,7 +2356,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsAssessPayOptionVisible = false;
             }
 
-
+            EnableReviewDetailsConButton();
         }
 
         private void setApplicationRefPickerModel(List<VATObjectionRejectedFormModel.AppRefNumResult> results)
@@ -2119,7 +2510,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (IsReviewReasonEnabled)
                 {
 
-                    EnableReviewDetailsView();
+                    EnableReportDetailsView();
+
+                }
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        private void ReportDetailsConBtnClicked()
+        {
+            try
+            {
+                if (IsReportDetailsEnabled)
+                {
+                    if (IsSecurityPaymentsTabVisible)
+                    {
+                        EnableReviewDetailsView();
+                    }
+                    else
+                    {
+                        EnableDeclarationView();
+                    }
 
                 }
 
@@ -2152,7 +2574,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
                         EnableDeclarationView();
                     }
-
 
                 }
 
@@ -2339,6 +2760,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             IsBackVisible = false;
             ReviewReasonVisible = true;
             ReviewDetailsVisible = false;
+            ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
@@ -2347,21 +2769,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableReviewDetailsView()
         {
-            CurrentIndex = 2;
+            CurrentIndex = 3;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = true;
+            ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.ReviewDetails;
         }
 
-        private void EnableSecurityPaymentsView()
+        private void EnableReportDetailsView()
         {
-            CurrentIndex = 3;
+            CurrentIndex = 2;
             IsBackVisible = true;
             ReviewReasonVisible = false;
+            ReportDetailsVisible = true;
+            ReviewDetailsVisible = false;
+            SecurityPaymentVisible = false;
+            DeclarationVisible = false;
+            SummaryVisible = false;
+            selectedPage = (int)PagesEnum.ReportDetails;
+        }
+
+        private void EnableSecurityPaymentsView()
+        {
+            CurrentIndex = 4;
+            IsBackVisible = true;
+            ReviewReasonVisible = false;
+            ReportDetailsVisible = false;
             ReviewDetailsVisible = false;
             SecurityPaymentVisible = true;
             DeclarationVisible = false;
@@ -2371,10 +2808,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableDeclarationView()
         {
-            CurrentIndex = 4;
+            CurrentIndex = 5;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = false;
+            ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = true;
             SummaryVisible = false;
@@ -2383,9 +2821,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void EnableSummaryView()
         {
-            CurrentIndex = 5;
+            CurrentIndex = 6;
             IsBackVisible = true;
             ReviewReasonVisible = false;
+            ReportDetailsVisible = false;
             ReviewDetailsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
@@ -2512,10 +2951,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
 
                     }
-
-
-
-
                 }
                 else if (selectedApplicationRef.Fbtyp == "VTGR")
                 {
@@ -2641,6 +3076,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             switch (selectedPage)
             {
                 case (int)PagesEnum.ReviewDetails:
+                    EnableReportDetailsView();
+                    break;
+                case (int)PagesEnum.ReportDetails:
                     EnableReviewReasonView();
                     break;
                 case (int)PagesEnum.SecurityPayments:
@@ -2653,7 +3091,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     }
                     else
                     {
-                        EnableReviewDetailsView();
+                        EnableReportDetailsView();
                     }
                     break;
                 case (int)PagesEnum.Summary:
@@ -3092,19 +3530,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             IsSadadCheckBox1 = false;
             IsSadadCheckBox2 = false;
             IsApplicationVisible = false;
+            DisputeDetailsDesc = "";
+            RequestedReviewAmount = "";
+            TotalTaxLiability = "";
+            TaxPaid = "";
+
             AddSecurityPaymentOptions();
             setIdPickerModel();
 
             AddDisputeAmountPaymentOptions();
 
-
-
-
         }
 
         public void EnableReviewReasonConButton()
         {
-            if (ReviewReason == "" || SubReviewReason == "" || ApplicationRefNumber == "" || RequestDate == null || ReportDetails == "")
+            if (ReviewReason == "" || SubReviewReason == "" || ApplicationRefNumber == "" || RequestDate == null)
             {
                 IsReviewReasonEnabled = false;
             }
@@ -3113,6 +3553,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsReviewReasonEnabled = true;
             }
         }
+
+        public void EnableReportDetailsConButton()
+        {
+            if (ReportDetails == "")
+            {
+                IsReportDetailsEnabled = false;
+            }
+            else
+            {
+                IsReportDetailsEnabled = true;
+            }
+        }
+
         public void EnableReviewDetailsConButton()
         {
             if ((IsAssessPayOptionVisible && (DisputeDetailsDesc == "" || RequestedReviewAmount == "")))
@@ -3941,8 +4394,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             }
 
-
-
             Metadata _metdata = new Metadata();
 
             _metdata.uri = Constants.VATObjectionsNotesSet;
@@ -4113,12 +4564,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     modelVATReview.d.SecurityDtl.Secamt = SecurityAmount;
                     modelVATReview.d.SecurityDtl.Clramt = selectedApplicationRef.Clramt;
 
-
-
-
-
                 }
-
 
                 request = BuildRequestObject();
 
@@ -4319,6 +4765,168 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task VatRegistrationData()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    VrVRVATRegistrationDetailsData = null;
+
+                    VATRegistrationDetails vATRegistration = null;
+
+                    try
+                    {
+                        vATRegistration = await WebServiceManager.GAZTGetVATRegistrationDisplayDetailsData();
+                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                        if (vATRegistration != null && vATRegistration.d != null)
+                        {
+
+                            //step 4 and 5 data set
+                            if (vATRegistration.d.CONTACT_PERSONSet != null)
+                            {
+                                VrVRGpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
+                                //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
+                                vrVRIdnumber = string.Empty;
+                                vrVRIdnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
+                                VrVRFirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
+                                VrVRLastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
+                                VrVRMobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
+                                VrVRSmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
+                                VrVRDOB = vATRegistration.d.CONTACT_PERSONSet.results[0].Dobdt;
+
+                            }
+
+                            VrVRIDType = vATRegistration.d.DecidTy;
+                            VrVRIDNumber = vATRegistration.d.DecidNo;
+                            VrVRContactPersonName = vATRegistration.d.Decname;
+                        }
+                        if (vATRegistration.d.QUESTIONSSet != null)
+                        {
+                            List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
+                            VrVRquesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+
+                            List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
+                            VrVRquesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+
+                            List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
+                            VrVRquesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+
+                            List<ResultsItemForQuestion> quest4AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToList();
+
+                            VrVRquesTion4answerSelected = quest3AnsList.FirstOrDefault().QoptTxt;//vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToString();
+                        }
+                        if (vATRegistration.d.VatTaxDt != null)
+                        {
+                            string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            VrVRVatEligibleStartDate = Convert.ToDateTime(convertedDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                        }
+                        if (vATRegistration.d.QUESCONFIG_MSet.results.Count != 0)
+                        {
+                            VrVRMinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
+                            VrVRMinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(vATRegistration.d.QUESCONFIG_MSet);
+                            //MaximumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();
+                            //MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
+
+                            //MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
+                            //MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
+                        }
+                        VrVRIbanList = new ObservableCollection<Result2>();
+                        if (vATRegistration.d.ATTDETSet != null)
+                        {
+                            foreach (Attachment ItemA in vATRegistration.d.ATTDETSet.results)
+                            {
+                                VrVRAttachmentName = ItemA.Filename;
+                            }
+                        }
+
+                        if (vATRegistration.d.IBANSet != null)
+                        {
+                            VrVRIbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet.results);
+                            for (int i = 0; i < VrVRIbanList.Count; i++)
+                            {
+                                if (VrVRIbanList.ElementAt(i).Iban != string.Empty)
+                                {
+                                    VrVRIban = VrVRIbanList.FirstOrDefault().Iban;
+
+                                }
+                            }
+
+                        }
+                        if (vATRegistration.d.ExFg == "1")
+                        {
+                            VrVRImportExportText = "Exporter";
+                        }
+                        else if (vATRegistration.d.ImFg == "1")
+                        {
+                            VrVRImportExportText = "Importer";
+
+                        }
+
+                        VrVRIdnumberFR = vrVRIdnumber;
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _navigationService.NavigateTo(App.VRVatRegViewPageView);
+
+                        });
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            //_navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    // _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    // _navigationService.GoBack();
                 });
             }
         }

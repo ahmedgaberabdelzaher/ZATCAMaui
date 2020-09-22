@@ -7345,9 +7345,6 @@
 	<data name="ZakatInstalmentSADADBillNo" xml:space="preserve">
     <value>رقم فاتورة سداد</value>
   </data>
-	<data name="ZOWIthdrawInstructions" xml:space="preserve">
-    <value>1. Attach a request letter displaying the with a reason for this request</value>
-  </data>
 	<data name="OZObjectionDate" xml:space="preserve">
     <value>تاريخ الاعتراض</value>
   </data>
@@ -7355,7 +7352,7 @@
     <value>نوع الاعتراض</value>
   </data>
 	<data name="ZORevisedAmount" xml:space="preserve">
-    <value>مسودة الربط بناء على الاعتراض (المكلف</value>
+    <value>المبلغ الغير معترض عليه من المكلف</value>
   </data>
 	<data name="ZOSelectReturn" xml:space="preserve">
     <value>حدد العودة</value>
@@ -7409,7 +7406,7 @@
     <value>العملة</value>
   </data>
 	<data name="ZOObjectionRefNo" xml:space="preserve">
-    <value>Objection Ref No</value>
+    <value>الرقم المرجعي للإعتراض</value>
   </data>
 	<data name="ZOPeriodFrom" xml:space="preserve">
     <value>الفترة من</value>
@@ -7656,5 +7653,28 @@
 	<data name="VATAmendRegistrationFinancialDetailsChangeSection" xml:space="preserve">
     <value>هل تريد تغيير هذا القسم؟</value>
     <comment>VATRegistration</comment>
-		</data>
+	</data>
+    <data name="ZOReasonOfObjection" xml:space="preserve">
+    <value>سبب الإعتراض</value>
+  </data>
+  <data name="ZOWIthdrawInstructions" xml:space="preserve">
+    <value>ارفاق خطاب طلب مع ذكر سبب هذا الطلب</value>
+  </data>
+ <data name="ZOWithdrawGeneralAttachmentOne" xml:space="preserve">
+    <value>خطاب الطلب</value>ZOObjectionRefNo
+  </data>
+  <data name="ZOWithdrawGeneralAttachmentTwo" xml:space="preserve">
+    <value>اعتماد الفرع</value>
+  </data>
+<data name="ZOAttachmentsTitleOne" xml:space="preserve">
+    <value>حجم الملف المسموح به في المرفقات 10 MB</value>
+  </data>
+<data name="ZOAttachmentsTitleTwo" xml:space="preserve">
+    <value>تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من MB10
+اعدادات الماسح الضوئي الموصى بها : 745*1024
+صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
+  </data>
+     <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
+    <value>تم استلام طلب إلغاء الزكاة بنجاح</value>
+  </data>
 </root>
