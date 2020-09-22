@@ -972,8 +972,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             string _currentAttempts = CurrentAttempt.ToString();
             string languag = UtilityManager.GetLanguageParameter();
 
-            TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
-
+            //  TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
+            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(UserId);
             if (TPProfile != null)
             {
                 //if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
