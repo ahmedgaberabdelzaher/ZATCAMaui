@@ -145,8 +145,8 @@
                             <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                 <Grid  Margin="0,0,0,10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="120"/>
+                                        <RowDefinition Height="120"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -163,7 +163,7 @@
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" 
                                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                            HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            HorizontalOptions="CenterAndExpand"  Padding="5" 
                                                             VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                             LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                         <Image Grid.Row="0" Source="vat_tile_listofsignup.png" 
@@ -171,7 +171,7 @@
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}"  
                                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption}" 
-                                                            HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            HorizontalOptions="CenterAndExpand"  Padding="5" 
                                                             VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                             LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                     </Grid>

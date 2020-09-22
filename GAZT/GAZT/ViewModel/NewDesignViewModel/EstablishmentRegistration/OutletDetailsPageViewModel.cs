@@ -471,7 +471,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public OutletDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
+            OnNextButtonClick = new Command(() => {
+                navigateToNext();
+            }, () =>
+            {
+                return CanExecute;
+            });
             OnPreButtonClick = new Command(() => _navigationService.GoBack());
             //editModeEnabled = false;
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
@@ -738,6 +743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
+            CanExecute = true;
             //else
             //{
             //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
@@ -1036,6 +1042,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private void clearFormData()
         {
+            CanExecute = true;
             OutletName = string.Empty;
             taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
             PostalAsPhysical = false;

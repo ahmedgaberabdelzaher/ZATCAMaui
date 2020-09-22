@@ -97,5 +97,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             return EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         }
+
+        void SfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
+        {
+            e.Cancel = true;
+        }
     }
 }
