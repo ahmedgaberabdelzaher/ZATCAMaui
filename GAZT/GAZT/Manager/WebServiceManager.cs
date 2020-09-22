@@ -15232,8 +15232,57 @@ namespace GAZT.Manager
                 string lang = string.Empty;
                 if (App.IsArabic) { lang = "A"; }
                 else { lang = "E"; }
+                try
+                {
+                    CookieContainer cookieContainer = new CookieContainer();
 
-                HttpClient client = new HttpClient(App.httpClientHandler);
+                    try
+                    {
+                        foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                        {
+                            Cookie cookie = new Cookie();
+
+                            if (Device.RuntimePlatform == Device.iOS)
+                            {
+                                if (cookieModel.Domain.StartsWith(".") == false)
+                                {
+                                    cookie.Domain = "." + cookieModel.Domain;
+                                }
+                                else
+                                {
+                                    cookie.Domain = cookieModel.Domain;
+                                }
+                            }
+                            else if (Device.RuntimePlatform == Device.Android)
+                            {
+                                cookie.Domain = Constants.PartialDomainUrlForCookies;
+                            }
+
+                            cookie.Comment = cookieModel.Comment;
+                            cookie.Version = cookieModel.Version;
+                            cookie.HttpOnly = cookieModel.IsHttpOnly;
+                            cookie.Path = cookieModel.Path;
+                            cookie.Name = cookieModel.CName;
+                            cookie.Value = cookieModel.CValue;
+                            cookie.Secure = cookieModel.Secure;
+                            cookieContainer.Add(cookie);
+                        }
+
+                        App.httpClientHandler.CookieContainer = cookieContainer;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                
+                }
+                catch (Exception ex)
+                { 
+                
+                }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                 string URL = Constants.TPProfileURL
                             + "(" + "Taxpayerz=" + "'" + TIN + "'"
                             + ",Langz=" + "'" + lang + "'"
@@ -15288,7 +15337,7 @@ namespace GAZT.Manager
 
             try
             {
-                HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                 HttpResponseMessage UpdatePWDResponse = await client.GetAsync(GetURL);
                 if (UpdatePWDResponse != null)
                 {
