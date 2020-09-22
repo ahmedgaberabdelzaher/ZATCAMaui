@@ -757,7 +757,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
-            SignUpDOB.IsOpen = true;
+            if (viewModel.IsHijriCal)
+            {
+                SignUpDOBHijri.IsOpen = true;
+            }
+            else
+            {
+                SignUpDOB.IsOpen = true;
+            }
+            
             //HijriCal.IsVisible = true;
         }
         private  void CountryCodes_Clicked(object sender, EventArgs e)
@@ -1032,14 +1040,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.DOB = year + "/" + month + "/" + day;
-                viewModel.DOBddyymm= day + "/" + month + "/" + year;
-                string DOB = year + month + day;
-                viewModel.DOBPrev = viewModel.DOB;
+                if (viewModel.IsHijriCal)
+                {
+                    var selectedItem = SignUpDOBHijri.SelectedItem as ObservableCollection<object>;
+                    string month = selectedItem[1].ToString();
+                    string day = selectedItem[0].ToString();
+                    string year = selectedItem[2].ToString();
+                    viewModel.DOB = year + "/" + month + "/" + day;
+                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                    string DOB = year + month + day;
+                    viewModel.DOBPrev = viewModel.DOB;
+                }
+                else
+                {
+
+                    var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                    string month = selectedItem[1].ToString();
+                    string day = selectedItem[0].ToString();
+                    string year = selectedItem[2].ToString();
+                    viewModel.DOB = year + "/" + month + "/" + day;
+                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                    string DOB = year + month + day;
+                    viewModel.DOBPrev = viewModel.DOB;
+
+                }
+
+
 
 
                 ValidateIDNumber();
@@ -1483,14 +1509,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.DOB = year + "/" + month + "/" + day;
-                viewModel.DOBddyymm = day + "/" + month + "/" + year;
-                string DOB = year + month + day;
-                viewModel.DOBPrev = viewModel.DOB;
+                if (viewModel.IsHijriCal)
+                {
+                    
+                        var selectedItem = SignUpDOBHijri.SelectedItem as ObservableCollection<object>;
+                    string month = selectedItem[1].ToString();
+                    string day = selectedItem[0].ToString();
+                    string year = selectedItem[2].ToString();
+                    viewModel.DOB = year + "/" + month + "/" + day;
+                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                    string DOB = year + month + day;
+                    viewModel.DOBPrev = viewModel.DOB;
+
+                }
+                else
+                {
+                    var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                    string month = selectedItem[1].ToString();
+                    string day = selectedItem[0].ToString();
+                    string year = selectedItem[2].ToString();
+                    viewModel.DOB = year + "/" + month + "/" + day;
+                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                    string DOB = year + month + day;
+                    viewModel.DOBPrev = viewModel.DOB;
+
+                }
 
 
                 ValidateIDNumber();

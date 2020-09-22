@@ -243,7 +243,7 @@ namespace GAZT.CustomControl
             //populate year
             
             var year = calender.GetYear(DateTime.Today);
-            for (int i = 600; i <= year; i++)
+            for (int i = 1000; i <= year; i++)
             {
                 Year.Add(i.ToString());
             }
