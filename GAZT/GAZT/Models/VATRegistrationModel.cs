@@ -5,16 +5,16 @@ using System.Text;
 namespace EGAZT.Models
 {
     public class __metadata
-{
+    {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
-}
+    }
 
 
 
-public class ResultsItem
-{
+    public class ResultsItem
+    {
         public __metadata __metadata { get; set; }
         public string Addrnumber { get; set; }
         public string City { get; set; }
@@ -25,22 +25,22 @@ public class ResultsItem
         public string BuildingNo { get; set; }
         public string Region { get; set; }
         public string RegionDesc { get; set; }
-}
+    }
 
-public class ADDRESSSet
-{
-        public List <ResultsItem> results { get; set; }
-}
+    public class ADDRESSSet
+    {
+        public List<ResultsItem> results { get; set; }
+    }
 
-//public class NOTESSet
-//{
-//        public List <string> results { get; set; }
-//}
+    //public class NOTESSet
+    //{
+    //        public List <string> results { get; set; }
+    //}
 
 
 
-public class ResultsItemForContact
-{
+    public class ResultsItemForContact
+    {
         public __metadata __metadata { get; set; }
         public string TransactionType { get; set; }
         public string FormGuid { get; set; }
@@ -55,19 +55,19 @@ public class ResultsItemForContact
         public string R3User { get; set; }
         public string SmtpAddr { get; set; }
         public string MobNumber { get; set; }
-}
+    }
 
-public class CONTACTDTSet
-{
-        public List <ResultsItemForContact> results { get; set; }
-}
-
-
+    public class CONTACTDTSet
+    {
+        public List<ResultsItemForContact> results { get; set; }
+    }
 
 
 
-public class ResultsItemForContactPerson
-{
+
+
+    public class ResultsItemForContactPerson
+    {
         public __metadata __metadata { get; set; }
         public string TransactionType { get; set; }
         public string FormGuid { get; set; }
@@ -92,17 +92,17 @@ public class ResultsItemForContactPerson
         public string Idnumber { get; set; }
         public string Title { get; set; }
         public string Initials { get; set; }
-}
+    }
 
-public class CONTACT_PERSONSet
-{
-        public List <ResultsItemForContactPerson> results { get; set; }
-}
+    public class CONTACT_PERSONSet
+    {
+        public List<ResultsItemForContactPerson> results { get; set; }
+    }
 
 
 
-public class ResultsItemForQuestion
-{
+    public class ResultsItemForQuestion
+    {
         public __metadata __metadata { get; set; }
         public string Mandt { get; set; }
         public string FormGuid { get; set; }
@@ -114,7 +114,7 @@ public class ResultsItemForQuestion
         public string QoptNo { get; set; }
         public string QoptTxt { get; set; }
         public string QoptAns { get; set; }
-}
+    }
 
     public class ResultsItemForElgblDocSet
     {
@@ -146,9 +146,9 @@ public class ResultsItemForQuestion
     }
 
     public class QUESTIONSSet
-{
-        public List <ResultsItemForQuestion> results { get; set; }
-}
+    {
+        public List<ResultsItemForQuestion> results { get; set; }
+    }
 
 
     public class ResultsForATTDETSet
@@ -178,9 +178,9 @@ public class ResultsItemForQuestion
     }
 
     public class ATTDETSet
-{
-        public List <Attachment> results { get; set; }
-}
+    {
+        public List<Attachment> results { get; set; }
+    }
 
 
 
@@ -190,7 +190,8 @@ public class ResultsItemForQuestion
     }
 
     public class vATRegistration
-{
+    {
+        // public RegistrationViewAvailability MyModel = new RegistrationViewAvailability();
         public __metadata __metadata { get; set; }
         public string SmartReg { get; set; }
         public string Source { get; set; }
@@ -256,7 +257,7 @@ public class ResultsItemForQuestion
         public ATTDETSet ATTDETSet { get; set; }
         public IBANSet IBANSet { get; set; }
         public QUESLISTSet QUESLISTSet { get; set; }
-}
+    }
     public class QUESCONFIG_MSet
     {
         public IList<QuestionsetWithMinMax> results { get; set; }
@@ -283,15 +284,15 @@ public class ResultsItemForQuestion
     }
 
     public class VATRegistrationDetails
-{
+    {
         public vATRegistration d { get; set; }
-}
+    }
     public enum IsComeFromForAttachment
     {
-       Import=0,
-       Export=1,
-       General=3,
-       FinancialReprsentative=4
+        Import = 0,
+        Export = 1,
+        General = 3,
+        FinancialReprsentative = 4
     }
 
     public class QuestionNumberWithMinMaxRange
@@ -300,5 +301,107 @@ public class ResultsItemForQuestion
         public double MinRangeValue = -1;
         public double MaxRangeValue = -1;
         public int CountOfProbableAnswersForThisQuestions = -1;
+    }
+
+
+    //public class RegistrationViewAvailability
+    //{
+
+    //    public RegistrationViewAvailability()
+    //    {
+    //        InstAndCondition = new InstAndCondition();
+    //        TaxPayerDetails = new TaxPayer_Details();
+    //        FinancialDetails = new FinancialDetails();
+    //        FinancialRepresentative = new FinancialRepresentative();
+    //        Declaration = new Declaration();
+    //    }
+    //}
+    public class InstAndConditionAvailability
+    {
+        public bool Parent { get; set; }
+        public bool CBAgreeCondition { get; set; }
+    }
+    public class TaxPayer_DetailsAvailability
+    {
+        public bool Parent { get; set; }
+        public bool TaxPayerDetailsParent { get; set; }
+        public bool AdditionalInfoParent { get; set; }
+        public bool TinEntry1 { get; set; }
+        public bool TinEntry2 { get; set; }
+        public bool MainOutletEntry1 { get; set; }
+        public bool MainOutletEntry2 { get; set; }
+        public bool StartDateEntry { get; set; }
+        public bool AddressEntry1 { get; set; }
+        public bool AddressEntry2 { get; set; }
+        public bool SourceEntry { get; set; }
+        public bool AddInformationCB { get; set; }
+        public bool AddInformationCBVisible { get; set; }
+        public bool AddInformationParent { get; set; }
+        public bool ImporterYesRB { get; set; }
+        public bool ImporterNoRB { get; set; }
+        public bool ImporterAttachmentsBtn { get; set; }
+        public bool ExporterYesRB { get; set; }
+        public bool ExporterNoRB { get; set; }
+        public bool ExporterrAttachmentsBtn { get; set; }
+        public bool ExistingIBANPicker { get; set; }
+        public bool NewIBANPicker { get; set; }
+        public bool CommencementDate { get; set; }
+    }
+    public class FinancialDetailsAvailability
+    {
+        public bool Parent { get; set; }
+        public bool VATEligibilityPoint1Parent { get; set; }
+        public bool VATEligibilityPoint2Parent { get; set; }
+        public bool VATEligibilityPoint3Parent { get; set; }
+        public bool VATEligibilityPoint4Parent { get; set; }
+
+        public bool AttachSectionCB { get; set; }
+        public bool AttachSectionCBVisible { get; set; }
+        public bool AttachSectionAddNewType { get; set; }
+    }
+    public class FinancialRepresentativeAvailability
+    {
+        public bool Parent { get; set; }
+        public bool ChangeMobileEmailCB { get; set; }
+        public bool AddNewFinRepresentativeCB { get; set; }
+        public bool AddNewFinRepCBVisible { get; set; }
+        public bool SkipBtn { get; set; }
+        public bool TinEntry { get; set; }
+        public bool IDTypeEntry { get; set; }
+        public bool IDNoEntry { get; set; }
+        public bool FNameEntry { get; set; }
+        public bool SurnameEntry { get; set; }
+        public bool MobileNoEntry { get; set; }
+        public bool EmailIDEntry { get; set; }
+       // public List<NewFinancialRepresentative> ListNewFinRepresentative { get; set; }
+    }
+    //public class NewFinancialRepresentative
+    //{
+    //    public bool TinEntry { get; set; }
+    //    public bool IDTypeEntry { get; set; }
+    //    public bool IDNoEntry { get; set; }
+    //    public bool FNameEntry { get; set; }
+    //    public bool SurnameEntry { get; set; }
+    //    public bool MobileNoEntry { get; set; }
+    //    public bool EmailIDEntry { get; set; }
+    //}
+    public class DeclarationAvailability
+    {
+        public bool Parent { get; set; }
+        public bool AcknowledgementCB { get; set; }
+        public bool IDTypeOrNoPicker { get; set; }
+        public bool IDTypeOrNoEntry { get; set; }
+        public bool DOBEntry { get; set; }
+        public bool ContactNameEntry { get; set; }
+    }
+    public class FinancialRepresentativesModel
+    {
+        public string GpartFR { get; set; }
+        public string TxtIDTypeFR { get; set; }
+        public string IdnumberFR { get; set; }
+        public string FirstnmFR { get; set; }
+        public string LastnmFR { get; set; }
+        public string SmtpAddrFR { get; set; }
+        public string MobNumberFR { get; set; }
     }
 }

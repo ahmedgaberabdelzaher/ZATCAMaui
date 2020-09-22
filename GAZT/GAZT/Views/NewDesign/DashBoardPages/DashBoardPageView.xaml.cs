@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Enums;
+using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using GAZT.Models;
@@ -23,7 +24,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         #endregion
 
         public GAZTNewDesignDashBoardPageView()
-             {
+        {
             try
             {
                 InitializeComponent();
@@ -69,7 +70,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
             else
             {
-             
+
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
@@ -90,19 +91,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         public void OnDataLoad()
         {
-              if (viewModel != null)
-                {
-                    viewModel.IsLoading = false;
-                    // viewModel.MenuViewVisible = false;
-                    // viewModel.HomeViewVisible = true;
-                    //viewModel.StackMenuColor = Color.White;
-                    //viewModel.TabbarColor = Color.DarkGray;
-                    //viewModel.HomeIndicatorColor= Color.DarkGreen;
-                }
+            if (viewModel != null)
+            {
+                viewModel.IsLoading = false;
+                // viewModel.MenuViewVisible = false;
+                // viewModel.HomeViewVisible = true;
+                //viewModel.StackMenuColor = Color.White;
+                //viewModel.TabbarColor = Color.DarkGray;
+                //viewModel.HomeIndicatorColor= Color.DarkGreen;
+            }
             if (App.HasToRefreshLoaderOnDashboard == true)
             {
                 App.IsComingFromSleepMode = false;
-              
+
 
                 Task.Run(async () =>
                 {
@@ -138,7 +139,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }
                 ChangeArrowDirection();
                 App.HasToRefreshLoaderOnDashboard = false;
-                App.StartTimer(0,2,0);
+                App.StartTimer(0, 2, 0);
             }
             else
             {
@@ -176,18 +177,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 });
                 await viewModel.LoadDashboardData();
-                Device.BeginInvokeOnMainThread( () =>
-                {
-                    viewModel.BillCount = string.Empty;
-                    viewModel.BillsAndReturnsCommitments = null;
+                Device.BeginInvokeOnMainThread(() =>
+               {
+                   viewModel.BillCount = string.Empty;
+                   viewModel.BillsAndReturnsCommitments = null;
 
-                    viewModel.PopulateBillsInformation();
-                    viewModel.PopulateReturnsInformation();
-                    viewModel.PopualateCommittmentsInformation();
-                  
-                    viewModel.IsLoading = false;
+                   viewModel.PopulateBillsInformation();
+                   viewModel.PopulateReturnsInformation();
+                   viewModel.PopualateCommittmentsInformation();
 
-                });
+                   viewModel.IsLoading = false;
+
+               });
 
                 // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
@@ -240,7 +241,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
             {
-//                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
+                //                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
                 viewModel.MenuViewVisible = true;
                 viewModel.HomeViewVisible = false;
                 viewModel.HomeIndicatorColor = Color.White;
@@ -498,7 +499,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
             //        App.DisplayProgressView();
-             viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
 
         }
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
@@ -618,7 +619,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
 
             });
-           
+
         }
         private async void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
         {
@@ -675,7 +676,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async  void VatRegistrationTile_Tapped(object sender, EventArgs e)
+        private async void VatRegistrationTile_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>
             {
@@ -747,18 +748,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async void VATReactivation_Tapped(object sender, EventArgs e)
-        {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
-            });
-        }
 
         protected override bool OnBackButtonPressed()
         {
@@ -770,7 +759,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
 
             return true;
-            
+
             //if (viewModel.MenuViewVisible)
             //{
             //    setDashBoardVisible();
@@ -782,7 +771,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             //}
         }
 
-        private async  void TaxEvasion_Tapped(object sender, EventArgs e)
+        private async void TaxEvasion_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>
             {
@@ -796,8 +785,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private async  void OnVATNowTapped(object sender, EventArgs e)
+        private async void OnVATNowTapped(object sender, EventArgs e)
         {
+            App.VATType = VATRegDetailsExecutionType.Register;
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
@@ -808,9 +798,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
 
             });
-           
+
         }
-        
+
         private void OnSupportTapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.SupportPageView);
@@ -819,7 +809,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void OnZakatNowTapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
-            Device.BeginInvokeOnMainThread(() => {
+            Device.BeginInvokeOnMainThread(() =>
+            {
                 viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
             });
         }
@@ -827,6 +818,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void OnApplicationStatus_Tapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+        }
+
+        private async void VATAment_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() => viewModel.IsLoading = true);
+            App.VATType = VATRegDetailsExecutionType.Amend;
+            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+        }
+
+        private async void VATReactivation_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() => viewModel.IsLoading = true);
+            App.VATType = VATRegDetailsExecutionType.Reactivation;
+            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationPageView));
+
         }
 
         private void OnVATServiceTapped(object sender, EventArgs e)
