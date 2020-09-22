@@ -28,6 +28,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public ICommand ReqInstalmentBtnTapped { get; set; }
         public ICommand CloseClick { get; set; }
         public ICommand GoBackClick { get; set; }
+        public ICommand Download_Acknowledgement { get; set; }
+        public ICommand ZDownloadForm { get; set; }
 
         #endregion
 
@@ -51,6 +53,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             CloseClick = new Command(async () => { _navigationService.GoBack(); });
 
             GoBackClick = new Command(async () => { BackNavigations(); });
+
+            Download_Acknowledgement = new Command(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (objRefNumber != null)
+                {
+                    String downloadurl = Constants.ZOdownloadAckLetter + "'" + objRefNumber + "')/$value";
+                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            });
+
+
+            ZDownloadForm = new Command(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (objRefNumber != null)
+                {
+                    String downloadurl = Constants.ZOdownloadCoverFormFile + "'" + objRefNumber + "')/$value";
+                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            });
         }
         private void BackNavigations()
         {
@@ -354,6 +391,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 attachmentsListViewData = value;
                 RaisePropertyChanged("AttachmentsListViewData");
             }
+        }
+
+        public void ResetData()
+        {
+            ObjectionsList = null;
         }
 
 
