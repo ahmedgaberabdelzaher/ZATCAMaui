@@ -2502,7 +2502,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            //return true;
+            return true;
             try
             {
                 IsLoading = true;
