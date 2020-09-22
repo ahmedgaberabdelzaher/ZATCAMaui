@@ -2711,6 +2711,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ApplicationRefPickerModel = null;
             ApplicationRefNumber = "";
             RequestDate = null;
+            IsApplicationVisible = false;
             EnableReviewReasonConButton();
 
         }
@@ -3090,6 +3091,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             IsSadadCheckBox3 = false;
             IsSadadCheckBox1 = false;
             IsSadadCheckBox2 = false;
+            IsApplicationVisible = false;
             AddSecurityPaymentOptions();
             setIdPickerModel();
 
