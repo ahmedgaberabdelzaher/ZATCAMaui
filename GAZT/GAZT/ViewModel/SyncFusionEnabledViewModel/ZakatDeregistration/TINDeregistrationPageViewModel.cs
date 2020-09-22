@@ -678,42 +678,53 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         if (PickerModel.PickerId == "reasonPicker")
                         {
                             string tempSelectedReason = PickerModel.SelectedValue;
-                            SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
-                            TinDeregistrationData.ADregReason = SelectedReason.ReasonCd;
-                            TinDeregistrationData.ADeregSelectedReasonValue = SelectedReason.ReasonDesc;
-
-                            List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
-
-                            foreach (OutletSetResult outletInfo in AllOutlets)
+                            if (tempSelectedReason != string.Empty)
+                           
                             {
-                                outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
-                                outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
-                                foreach (PermitSetResult permitInfo in allPermitTypes)
+                                SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
+                                TinDeregistrationData.ADregReason = SelectedReason.ReasonCd;
+                                TinDeregistrationData.ADeregSelectedReasonValue = SelectedReason.ReasonDesc;
+
+                                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
+
+                                foreach (OutletSetResult outletInfo in AllOutlets)
                                 {
+                                    outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                                    outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
-                                    if (permitInfo.APermitDregRsnTb == null)
-                                        permitInfo.APermitDregRsnTb = string.Empty;
-
-                                    if (permitInfo.APermitIdNoTb == null)
-                                        permitInfo.APermitIdNoTb = "";
-
-                                    if (permitInfo.APermitTransTinTb == null)
-                                        permitInfo.APermitTransTinTb = "";
-
-                                    if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                                    foreach (PermitSetResult permitInfo in allPermitTypes)
                                     {
-                                        permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
 
-                                        if (outletInfo.PermitTypes == null)
-                                            outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                                        if (permitInfo.APermitDregRsnTb == null)
+                                            permitInfo.APermitDregRsnTb = string.Empty;
+
+                                        if (permitInfo.APermitIdNoTb == null)
+                                            permitInfo.APermitIdNoTb = "";
+
+                                        if (permitInfo.APermitTransTinTb == null)
+                                            permitInfo.APermitTransTinTb = "";
+
+                                        if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                                        {
+                                            permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
+                                            if (outletInfo.PermitTypes == null)
+                                                outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
 
-                                        outletInfo.PermitTypes.Add(permitInfo);
+                                            outletInfo.PermitTypes.Add(permitInfo);
+                                        }
                                     }
                                 }
-                            }
+                                DateField.IsVisible = true;
 
+                                
+
+                            }else
+                            {
+                                DateField.IsVisible = false;
+                            }
                             AddOutletDecisionOptions();
                             PopulateAttachmentsListViewTemplate();
                         }
@@ -1017,6 +1028,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _tinText = value;
                 RaisePropertyChanged("TinText");
+            }
+        }
+        private FieldValidations _DateField { get; set; }
+        public FieldValidations DateField
+        {
+            get
+            {
+                return _DateField;
+            }
+            set
+            {
+                _DateField = value;
+                RaisePropertyChanged("DateField");
             }
         }
 
@@ -2208,6 +2232,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         });
                     }
                     OutletDecisionOptions = new ObservableCollection<TINDeregistrationModel>(tempValues);
+                }
+                else
+                {
+
                 }
 
             }
