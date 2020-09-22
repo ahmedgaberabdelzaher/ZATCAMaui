@@ -103,10 +103,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
@@ -3918,6 +3920,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsFDChangeSectionEnabled = ((CheckBox)sender).IsChecked;
+        }
+
+        private void OnBackTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
         }
     }
 }
