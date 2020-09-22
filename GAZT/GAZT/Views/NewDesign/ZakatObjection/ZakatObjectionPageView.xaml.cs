@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
+using GAZT.Manager;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -71,7 +73,38 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
         {
 
         }
+        private async void SummaryAttachments_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            var attachment = e.ItemData as Attachment;
 
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await WebServiceManager.email(attachment.Doguid, attachment);
+            }
+
+
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+
+
+        }
 
 
         public async Task GetZakatObjectionsData()

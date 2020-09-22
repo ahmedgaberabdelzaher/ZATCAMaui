@@ -6403,7 +6403,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Family Name</value>
   </data>
   <data name="ESTInitialLabel" xml:space="preserve">
-    <value>Initial</value>
+    <value>Acronym</value>
   </data>
   <data name="ESTGenderLabel" xml:space="preserve">
     <value>Gender</value>

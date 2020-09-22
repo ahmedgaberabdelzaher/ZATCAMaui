@@ -43,6 +43,7 @@ using EGAZT.Models.ZakatObjectionsModel;
 using EGAZT.Helper;
 using EGAZT.Models.TPProfile;
 using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
+using Xamarin.Essentials;
 
 namespace GAZT.Manager
 {
@@ -7663,13 +7664,14 @@ namespace GAZT.Manager
 
         #region VATDeregistration Reason
 
-        public static VATDeregistrationSuspendedDateRootObject GAZTGETVATDeregReturnFilingDateList(DateTime StartDate, DateTime EndDate)
+        public static string GAZTGETVATDeregReturnFilingDateList(DateTime StartDate, DateTime EndDate)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeregistrationSuspendedDateRootObject reasonData = new VATDeregistrationSuspendedDateRootObject();
                 // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
                 string NewToken = string.Empty;
+                string GAZTVATDeregreasonDataResponseJSON = string.Empty;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -7709,21 +7711,10 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
-                        {
-                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
-                            if (reasonData.d == null)
-                            {
-                                throw new Exception(AppResources.VatDeregSuspendedDateMismatchException);
-                            }
-                        }
-                        else
-                        {
-                            throw new Exception(AppResources.NoBillsAvailable);
-                        }
+                         GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
+         
                     }
-                    return reasonData;
+                    return GAZTVATDeregreasonDataResponseJSON;
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
@@ -16029,6 +16020,55 @@ namespace GAZT.Manager
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
+        }
+
+        public async static Task email(string doguid, Attachment attachment)
+        {
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                    byte[] PdfBytes;
+                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                    WebResponse myResp = myReq.GetResponse();
+                    using (Stream streams = myResp.GetResponseStream())
+                    using (MemoryStream Ms = new MemoryStream())
+                    {
+                        int count = 0;
+                        do
+                        {
+                            byte[] buf = new byte[1024];
+                            count = streams.Read(buf, 0, 1024);
+                            Ms.Write(buf, 0, count);
+                        } while (streams.CanRead && count > 0);
+                        PdfBytes = Ms.ToArray();
+                    }
+                    var message = new EmailMessage
+                    {
+                        Subject = "Attached Form :",
+                    };
+                    var fn = attachment.Filename;
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                    File.WriteAllBytes(file, PdfBytes);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = "",
+                            File = new ShareFile(file)
+                        });
+                    });
+
+
+
+                }
+                catch (Exception ex)
+                {
+                }
+            });
+
         }
 
         #endregion

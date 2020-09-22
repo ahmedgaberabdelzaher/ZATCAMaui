@@ -1325,7 +1325,7 @@
                                     <StackLayout Padding="15,15,15,0">
 
                                         <listView:SfListView  Grid.Row="0" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
-                                                          ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent" AutoFitMode="Height" >
+                                                          ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent" AutoFitMode="Height"  ItemTapped="SummaryAttachments_ItemTapped">
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
 
@@ -1655,6 +1655,7 @@
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                      ItemsSource="{Binding WithdrawAttachmentsListViewData}"
                                                      TapCommand="{Binding WithdrawAttachmentTapped}"
+                                                    HeightRequest="100"
                                                      SelectionMode="SingleDeselect"
                                                      SelectionBackgroundColor="Transparent">
 
@@ -1757,6 +1758,7 @@
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                      ItemsSource="{Binding WithdrawAttachmentsListViewDataTwo}"
                                                      TapCommand="{Binding WithdrawAttachmentTappedTwo}"
+                                                     HeightRequest="100"
                                                      SelectionMode="SingleDeselect"
                                                      SelectionBackgroundColor="Transparent">
 

@@ -1703,7 +1703,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     string dt1 = string.Empty;
                     string[] dts = null;
                     dts = statementList[i].Faedn.Split('/');
-                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                    if (App.IsArabic) {
+                        dt1 = dts[2] + "-" + dts[1] + "-" + dts[0];
+
+                    }
+                    else {
+                        dt1 = dts[0] + "-" + dts[1] + "-" + dts[1];
+
+                    }
+
+
+
+                    //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
                     statementList[i].Faedn = dt1;
 
 
@@ -2612,7 +2625,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     for (int i = 0; i < VatInstalments.d.VTISSet.results.Length; i++)
                     {
 
-                        DateTime dt = Convert.ToDateTime(VatInstalments.d.VTISSet.results[i].Faedn);
+                        string dateformat = "dd-MM-yyyy";
+
+                        if (App.IsArabic) {
+
+                            dateformat = "yyyy-MM-dd";
+                        }
+                        else {
+                            dateformat = "dd-MM-yyyy";
+                        }
+
+
+
+                        DateTime dt = DateTime.ParseExact(VatInstalments.d.VTISSet.results[i].Faedn, dateformat, null);
+
+                        //DateTime dt = Convert.ToDateTime(VatInstalments.d.VTISSet.results[i].Faedn);
                         JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
                         {
                             DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
