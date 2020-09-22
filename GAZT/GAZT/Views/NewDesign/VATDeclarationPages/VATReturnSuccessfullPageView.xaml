@@ -33,10 +33,10 @@
             <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
 
                 <Image Source="Forget_ic_success"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturn}" Margin="0,20,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalTextAlignment="Center"/>
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATReturnsubmitted}" IsVisible="{Binding IsCreditCarriedTextVisible}" TextColor="White"  HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}">
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturn}" Margin="0,20,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATReturnsubmitted}" IsVisible="{Binding IsCreditCarriedTextVisible}" TextColor="White"  HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}" StyleId="OnBoardText">
                     </custom:CustomLabel>
-                    <custom:CustomLabel  TextColor="White" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}">
+                    <custom:CustomLabel  TextColor="White" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}" StyleId="OnBoardText" >
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZZZZSadadGeneratedSuccessfully}" />
