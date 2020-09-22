@@ -1434,7 +1434,7 @@
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="TabScrollView">
-                    <buttons:SfChipGroup Type="Choice" x:Name="TabSfChipGroup" SelectedItem="{Binding SelectedTabText}" ItemsSource="{x:Binding TabList}" SelectionChanged="SfChipGroup_SelectionChanged" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
+                    <buttons:SfChipGroup Type="Choice" x:Name="TabSfChipGroup" SelectedItem="{Binding SelectedTabText}" ItemsSource="{x:Binding TabList}" SelectionChanged="SfChipGroup_SelectionChanged" SelectionChanging="SfChipGroup_SelectionChanging" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
                         <!--<buttons:SfChipGroup.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Registration/Taxpayer type</x:String>

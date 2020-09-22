@@ -472,7 +472,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public OutletDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnPreButtonClick = new Command(() => navigateToPre());
+            OnPreButtonClick = new Command(() => _navigationService.GoBack());
             //editModeEnabled = false;
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>

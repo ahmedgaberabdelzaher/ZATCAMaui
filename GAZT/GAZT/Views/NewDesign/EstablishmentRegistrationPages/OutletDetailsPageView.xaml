@@ -416,7 +416,7 @@
                     </buttons:SfChipGroup.ItemsSource>-->
                 </buttons:SfChipGroup>
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="OutletTabScrollView">
-                <buttons:SfChipGroup Type="Choice" SelectedItem="{Binding SelectedOutletTabText}" x:Name="OutletTabSfChipGroup" ItemsSource="{x:Binding OutletTabSfChipTabList}"  SelectionChanged="SfChipGroup_SelectionChanged" Margin="0,10" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
+                <buttons:SfChipGroup Type="Choice" SelectedItem="{Binding SelectedOutletTabText}" x:Name="OutletTabSfChipGroup" ItemsSource="{x:Binding OutletTabSfChipTabList}"  SelectionChanged="SfChipGroup_SelectionChanged" SelectionChanging="OutletTabSfChipGroup_SelectionChanging" Margin="0,10" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
                     <!--<buttons:SfChipGroup.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Outlet Details</x:String>

@@ -1116,7 +1116,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnPreButtonClick = new Command(() => navigateToPre());
+            OnPreButtonClick = new Command(() => _navigationService.GoBack());
 
             #region Registration Tab Variable initialization
 

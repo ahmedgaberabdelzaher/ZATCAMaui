@@ -66,5 +66,36 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             catch (Exception) { }
         }
+
+        void OutletTabSfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
+        {
+            try
+            {
+                var tt = e.AddedItem as string;
+                EstablishmentRegistrationOutletTabsEnum newselectedTab = getEnumFromChipsLabel(tt);
+                if (!string.IsNullOrWhiteSpace(tt) && (int)newselectedTab >= (int)viewModel?.currentTab)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    viewModel.currentTab = newselectedTab;
+                }
+            }
+            catch (Exception) { }
+        }
+
+        private EstablishmentRegistrationOutletTabsEnum getEnumFromChipsLabel(string label)
+        {
+            if (label.Equals(AppResources.ESTActivityDetails))
+            {
+                return EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+            }
+            if (label.Equals(AppResources.ESTAddressDetails))
+            {
+                return EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+            }
+            return EstablishmentRegistrationOutletTabsEnum.OutletDetail;
+        }
     }
 }
