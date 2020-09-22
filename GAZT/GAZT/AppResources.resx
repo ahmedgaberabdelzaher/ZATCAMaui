@@ -385,7 +385,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="InvalidEmail" xml:space="preserve">
     <value>Invalid email</value>
   </data>
-      <data name="InvalidEntry" xml:space="preserve">
+  <data name="InvalidEntry" xml:space="preserve">
     <value>Invalid entry</value>
   </data>
   <data name="LogoutConfirmationMessage" xml:space="preserve">
@@ -3771,7 +3771,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
     <value>Financial Representative</value>
   </data>
-      <data name="ZZZZVATRFinancialDelegate" xml:space="preserve">
+  <data name="ZZZZVATRFinancialDelegate" xml:space="preserve">
     <value>Financial Delegate</value>
   </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
@@ -6781,7 +6781,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Report Details</value>
   </data>
   <data name="VRHelperText" xml:space="preserve">
-    <value>Helper text</value>
+    <value>Supporting Evidence and Documents:
+Please provide us with supporting documents to support your reasons for a review.</value>
   </data>
   <data name="VRAttachment" xml:space="preserve">
     <value>Attachment</value>
@@ -7778,11 +7779,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDV" xml:space="preserve">
     <value>v</value>
   </data>
-    <data name="VRHelperText" xml:space="preserve">
-    <value>Supporting Evidence and Documents:
-Please provide us with supporting documents to support your reasons for a review.</value>
-  </data>
- <data name="CRWarning" xml:space="preserve">
+  <data name="CRWarning" xml:space="preserve">
     <value>Warning</value>
   </data>
   <data name="VATChangeRegistrationAddFinancialRepresentative" xml:space="preserve">
@@ -7803,5 +7800,11 @@ Please provide us with supporting documents to support your reasons for a review
   </data>
   <data name="NDVATRegistrationReactivation" xml:space="preserve">
     <value>VAT Reactivation</value>
+  </data>
+  <data name="NDGregorian" xml:space="preserve">
+    <value>Gregorian</value>
+  </data>
+  <data name="NDHijri" xml:space="preserve">
+    <value>Hijri</value>
   </data>
 </root>

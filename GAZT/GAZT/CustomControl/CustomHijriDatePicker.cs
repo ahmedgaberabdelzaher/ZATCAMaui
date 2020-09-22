@@ -249,7 +249,7 @@ namespace GAZT.CustomControl
             }
             //populate Days
             var days = calender.GetDayOfMonth(DateTime.Today);
-            for (int i = 1; i <= DateTime.Today.Day; i++)
+            for (int i = 1; i <= days; i++)
             {
                 if (i < 10)
                 {
