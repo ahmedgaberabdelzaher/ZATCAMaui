@@ -2082,7 +2082,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="True"
-                                                 ShowFooter="True"
+                                                 ShowFooter="False"
                                                  OKButtonBackgroundColor="#EAF7CC"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
@@ -2777,7 +2777,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                   OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="true"
-                                                 ShowFooter="true"
+                                                 ShowFooter="False"
                                                  OKButtonBackgroundColor="#EAF7CC"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
@@ -2787,12 +2787,12 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                     PickerWidth="270"
                                                      FooterHeight="46"
 
-SelectionChanged="DDlContactIDType_SelectionChanged" OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"  CancelButtonClicked="IDTypeSR_CancelButtonClicked">
+SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"  CancelButtonClicked="IDTypeSR_CancelButtonClicked">
                                                                 <syncfusion:SfPicker.Behaviors>
                                                                     <custom1:SfPickerBehavior />
                                                                 </syncfusion:SfPicker.Behaviors>
                                                             </syncfusion:SfPicker>
-                                                            <!--SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"-->
+                                                            <!-- DDlContactIDType_SelectionChanged SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"-->
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="1">
