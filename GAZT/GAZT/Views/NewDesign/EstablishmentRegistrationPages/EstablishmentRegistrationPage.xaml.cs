@@ -148,5 +148,46 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             viewModel.PassportExpireDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
         }
+
+        void SfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
+        {
+            try
+            {
+                var tt = e.AddedItem as string;
+                EstablishmentRegistrationTabsEnum newselectedTab = getEnumFromChipsLabel(tt);
+                if (!string.IsNullOrWhiteSpace(tt) && (int)newselectedTab >= (int)viewModel?.currentTab)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    viewModel.currentTab = newselectedTab;
+                }
+            }catch(Exception){ }
+        }
+
+        private EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)
+        {
+            if (label.Equals(AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel)){
+                return EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+            }
+            if (label.Equals(AppResources.ESTPassportDetailsTabTitleLabel))
+            {
+                return EstablishmentRegistrationTabsEnum.PassportDetails;
+            }
+            if (label.Equals(AppResources.ESTOutletsTabTitleLabel))
+            {
+                return EstablishmentRegistrationTabsEnum.Outlets;
+            }
+            if (label.Equals(AppResources.VATRFinancialDetails))
+            {
+                return EstablishmentRegistrationTabsEnum.FinancialDetail;
+            }
+            if (label.Equals(AppResources.ZVatSummary))
+            {
+                return EstablishmentRegistrationTabsEnum.Declaration;
+            }
+            return EstablishmentRegistrationTabsEnum.RegistrationType;
+        }
     }
 }

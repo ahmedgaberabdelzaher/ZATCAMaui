@@ -385,6 +385,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="InvalidEmail" xml:space="preserve">
     <value>Invalid email</value>
   </data>
+      <data name="InvalidEntry" xml:space="preserve">
+    <value>Invalid entry</value>
+  </data>
   <data name="LogoutConfirmationMessage" xml:space="preserve">
     <value>Are you sure you want to log off?</value>
   </data>
@@ -3768,6 +3771,9 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
     <value>Financial Representative</value>
   </data>
+      <data name="ZZZZVATRFinancialDelegate" xml:space="preserve">
+    <value>Financial Delegate</value>
+  </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>Start Date</value>
   </data>
@@ -4560,7 +4566,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>VAT Deregistration</value>
   </data>
   <data name="VATDeregistrationInstructionsTitle" xml:space="preserve">
-    <value>Instructions &amp; Conditions</value>
+    <value>Instructions</value>
   </data>
   <data name="VATDeregistrationReasonType1" xml:space="preserve">
     <value>De-Registration of VAT Account</value>
@@ -7778,5 +7784,24 @@ Please provide us with supporting documents to support your reasons for a review
   </data>
  <data name="CRWarning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="VATChangeRegistrationAddFinancialRepresentative" xml:space="preserve">
+    <value>Add new Financial Representative</value>
+    <comment>VATRegistration</comment>
+  </data>
+  <data name="VATAmendRegistrationFinancialDetailsChangeSection" xml:space="preserve">
+    <value>Do you want to change this section?</value>
+  </data>
+  <data name="ZZZZVatRegistrationAmendmentTile" xml:space="preserve">
+    <value>Amendment of VAT Registration</value>
+  </data>
+  <data name="ZZZZVatRegistrationReactivationTile" xml:space="preserve">
+    <value>Reactivation of VAT account</value>
+  </data>
+  <data name="NDVATRegistrationAmend" xml:space="preserve">
+    <value>VAT Amendment</value>
+  </data>
+  <data name="NDVATRegistrationReactivation" xml:space="preserve">
+    <value>VAT Reactivation</value>
   </data>
 </root>

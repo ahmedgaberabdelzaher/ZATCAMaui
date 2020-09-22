@@ -540,6 +540,26 @@
                                     </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
+                                    <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                        <Image Source="menu_return.png">
+                                        </Image>
+                                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationReactivationTile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VATReactivation_Tapped" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+                                    <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                        <Image Source="menu_return.png">
+                                        </Image>
+                                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationAmendmentTile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VATAment_Tapped" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="menu_return.png">
                                         </Image>

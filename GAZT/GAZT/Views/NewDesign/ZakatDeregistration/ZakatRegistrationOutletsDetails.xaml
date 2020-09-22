@@ -110,88 +110,17 @@
                                             <Label Text="{Binding AOutletNoTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                         </StackLayout>
                                          <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletCommercialName}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                            <Label Text="{x:Static ResourceManager:AppResources.ESTOutletCity}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                             <Label Text="{Binding AOutletNameTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                         </StackLayout>
                                          <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZVatAddress}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                            <Label Text="{x:Static ResourceManager:AppResources.ESTAddCRAndOrLicenseDetails}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
                                             <Label Text="{Binding AOutletCompAddr}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                         </StackLayout>
-                                         <listView:SfListView Margin="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding PermitTypes}" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="FillAndExpand" AutoFitMode="Height" ItemSpacing="5"
-                                            SelectionMode="None" SelectionBackgroundColor="Transparent" >
-                                            <listView:SfListView.ItemTemplate>
-                                                <DataTemplate>
-                                                        <Grid>
-                                                             <Grid.RowDefinitions >
-                                                                <RowDefinition Height="auto"/>
-                                                                <RowDefinition Height="auto"/>
-                                                                <RowDefinition Height="auto"/>
-                                                                 <RowDefinition Height="auto"/>
-                                                                 <RowDefinition Height="auto"/>
-                                                                 <RowDefinition Height="auto"/>
-                                                            </Grid.RowDefinitions>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                             <border:SfBorder  Grid.Row="0" Grid.Column="0" HeightRequest="1" Grid.ColumnSpan="2" Margin="-4,8,-4,0" Padding="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}"/>
-
-                                                             <StackLayout  Grid.Row="1" Grid.Column="0">
-                                                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                                <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
-                                                                    <Label.Triggers>
-                                                                       <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0001">
-                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANNationalID}" />
-                                                                        </DataTrigger>
-                                                                        <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="BUP002">
-                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANCommercialRegistrationID}" />
-                                                                        </DataTrigger>
-                                                                        <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0005">
-                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZIBANCompanyID}" />
-                                                                        </DataTrigger>
-                                                                         <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0002">
-                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZIqamaID}" />
-                                                                        </DataTrigger>
-                                                                         <DataTrigger TargetType="Label" Binding="{Binding APermitTypeTb}" Value="ZS0004">
-                                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" />
-                                                                        </DataTrigger>
-                                                                    </Label.Triggers>
-                                                                </Label>
-                                                            </StackLayout>
-                                                                <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
-                                                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationPermitNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitNoTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                            </StackLayout>
-                                                                <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
-                                                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitValfrDtHTb,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                            </StackLayout>
-                                                                <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
-                                                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding APermitDeregDisplayDate, StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                            </StackLayout>
-                                                                <StackLayout Grid.Row="5" Grid.Column="0" Spacing="-5">
-                                                                <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeregReason}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Row="5" Grid.Column="1" Spacing="-5">
-                                                                <Label Text="{Binding ReasonDescription}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                            </StackLayout>
-                                                        </Grid>
-                                                </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
-                                         </listView:SfListView>
                                        
                                     </Grid>
                                 </StackLayout>

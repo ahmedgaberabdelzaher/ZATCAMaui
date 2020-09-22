@@ -145,8 +145,8 @@
                             <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                 <Grid  Margin="0,0,0,10">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="120"/>
+                                        <RowDefinition Height="120"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -163,7 +163,7 @@
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}" 
                                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                            HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            HorizontalOptions="CenterAndExpand"  Padding="5" 
                                                             VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                             LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                         <Image Grid.Row="0" Source="vat_tile_listofsignup.png" 
@@ -171,7 +171,7 @@
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusOptionOneValue}"  
                                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption}" 
-                                                            HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            HorizontalOptions="CenterAndExpand"  Padding="5" 
                                                             VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                             LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                     </Grid>
@@ -1434,7 +1434,7 @@
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="TabScrollView">
-                    <buttons:SfChipGroup Type="Choice" x:Name="TabSfChipGroup" SelectedItem="{Binding SelectedTabText}" ItemsSource="{x:Binding TabList}" SelectionChanged="SfChipGroup_SelectionChanged" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
+                    <buttons:SfChipGroup Type="Choice" x:Name="TabSfChipGroup" SelectedItem="{Binding SelectedTabText}" ItemsSource="{x:Binding TabList}" SelectionChanged="SfChipGroup_SelectionChanged" SelectionChanging="SfChipGroup_SelectionChanging" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
                         <!--<buttons:SfChipGroup.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Registration/Taxpayer type</x:String>
