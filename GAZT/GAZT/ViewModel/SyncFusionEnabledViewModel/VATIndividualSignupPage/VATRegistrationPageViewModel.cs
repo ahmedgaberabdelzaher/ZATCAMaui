@@ -25,6 +25,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public static IsComeFromForAttachment IsComeFromForAttachment;
+        public string PageTitle { get; set; }
 
         #region Variable
 
@@ -155,6 +156,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsFDNameMobEmailEnable");
             }
         }
+
         private bool _IsBackStepButtonVisible = true;
         public bool IsBackStepButtonVisible
         {
@@ -195,13 +197,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _iDNumberMandatoryVisibility = value;
-                if(_iDNumberMandatoryVisibility)
+                if (_iDNumberMandatoryVisibility)
                 {
-                    IDNumberVisibility = false; 
+                    IDNumberVisibility = false;
                 }
                 else
                 {
-                    IDNumberVisibility = true; 
+                    IDNumberVisibility = true;
                 }
 
                 RaisePropertyChanged("IDNumberMandatoryVisibility");
@@ -267,7 +269,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private bool _isContinueButtonEnable =false;
+        private bool _isContinueButtonEnable = false;
         public bool IsContinueButtonEnable
         {
             get
@@ -298,7 +300,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _startdateToshow = value;
-              
+
                 RaisePropertyChanged("StartdateToshow");
             }
         }
@@ -356,7 +358,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("DOB");
             }
         }
-         
+
         private string _contactDOB = string.Empty;
         public string ContactDOB
         {
@@ -383,7 +385,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _maxLengthID = value;
                 RaisePropertyChanged("MaxLengthID");
             }
-        } 
+        }
         private int _maxLengthIDSR = 10;
         public int MaxLengthIDSR
         {
@@ -527,6 +529,57 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsFinancialVisible");
             }
         }
+
+        private bool _isNewFinancialRepVisible;
+        public bool IsNewFinancialRepVisible
+        {
+            get => _isNewFinancialRepVisible;
+            set
+            {
+                _isNewFinancialRepVisible = value;
+                RaisePropertyChanged(nameof(IsNewFinancialRepVisible));
+            }
+        }
+        private bool _isDeclarationDOBVisible;
+        public bool IsDeclarationDOBVisible
+        {
+            get => _isDeclarationDOBVisible;
+            set
+            {
+                _isDeclarationDOBVisible = value;
+                RaisePropertyChanged(nameof(IsDeclarationDOBVisible));
+            }
+        }
+        private bool _isTaxPayerIBANEnabled;
+        public bool IsTaxPayerIBANEnabled
+        {
+            get => _isTaxPayerIBANEnabled;
+            set
+            {
+                _isTaxPayerIBANEnabled = value;
+                RaisePropertyChanged(nameof(IsTaxPayerIBANEnabled));
+            }
+        }
+        private bool _isTaxPayerEligDateEnabled;
+        public bool IsTaxPayerEligDateEnabled
+        {
+            get => _isTaxPayerEligDateEnabled;
+            set
+            {
+                _isTaxPayerEligDateEnabled = value;
+                RaisePropertyChanged(nameof(IsTaxPayerEligDateEnabled));
+            }
+        }
+        private bool _isFDChangeSectionEnabled;
+        public bool IsFDChangeSectionEnabled
+        {
+            get => _isFDChangeSectionEnabled;
+            set
+            {
+                _isFDChangeSectionEnabled = value;
+                RaisePropertyChanged(nameof(IsFDChangeSectionEnabled));
+            }
+        }
         private bool _isSummaryVisible = false;
         public bool IsSummaryVisible
         {
@@ -581,7 +634,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _ListOfActionButtonsApplicableForRegistration = value;
                 if (_ListOfActionButtonsApplicableForRegistration != null && _ListOfActionButtonsApplicableForRegistration.Count() != 0)
                 {
-                   // OnMoreOptionsEnabled = true;
+                    // OnMoreOptionsEnabled = true;
                 }
                 else
                 {
@@ -620,7 +673,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
 
 
-        private Double _minimumDisplayValueOfSlider1=0.0;
+        private Double _minimumDisplayValueOfSlider1 = 0.0;
         public Double MinimumDisplayValueOfSlider1
         {
             get
@@ -714,7 +767,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _sliderLable1EligibilityText = value;
-                
+
                 RaisePropertyChanged("SliderLable1EligibilityText");
             }
         }
@@ -813,15 +866,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _isInstrunctionChecked = value;
                 if (_isInstrunctionChecked != null)
-                { 
-                if (_isInstrunctionChecked)
                 {
-                    IsContinueButtonEnable = true;
-                }
-                else
-                {
-                    IsContinueButtonEnable = false;
-                }
+                    if (_isInstrunctionChecked)
+                    {
+                        IsContinueButtonEnable = true;
+                    }
+                    else
+                    {
+                        IsContinueButtonEnable = false;
+                    }
                 }
                 RaisePropertyChanged("IsInstrunctionChecked");
             }
@@ -837,16 +890,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isDeclarationChecked = value;
-               if(_isDeclarationChecked!=null)
-                {  
-                if (_isDeclarationChecked)
+                if (_isDeclarationChecked != null)
                 {
-                    IsContinueButtonEnable = true;
-                }
-                else
-                {
-                    IsContinueButtonEnable = false;
-                }
+                    if (_isDeclarationChecked)
+                    {
+                        IsContinueButtonEnable = true;
+                    }
+                    else
+                    {
+                        IsContinueButtonEnable = false;
+                    }
                 }
                 RaisePropertyChanged("IsDeclarationChecked");
             }
@@ -922,7 +975,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private String _vatEligibleStartDate=string.Empty;
+        private String _vatEligibleStartDate = string.Empty;
         public String VatEligibleStartDate
         {
             get
@@ -1158,7 +1211,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        
+
 
         private SignUpIdType _selectedIdTypeFR = null;
         public SignUpIdType SelectedIdTypeFR
@@ -1173,7 +1226,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_selectedIdTypeFR != null)
                 {
                     TxtIDTypeFR = _selectedIdTypeFR.Name;
-                    try 
+                    try
                     {
                         if (_selectedIdTypeFR.ID.Equals("ZS0001"))
                         {
@@ -1193,7 +1246,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             IsFDNameMobEmailEnable = true;
 
                         }
-                            TxtIDTypeFR = _selectedIdTypeFR.Name;
+                        TxtIDTypeFR = _selectedIdTypeFR.Name;
                     }
                     catch (Exception Ex)
                     {
@@ -1216,9 +1269,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _selectedIdTypeSR = value;
                 if (_selectedIdTypeSR != null)
                 {
-                    
-                    
-                    
+
+
+
                     try
                     {
                         TxtIDTypeSR = _selectedIdTypeSR.Name;
@@ -1305,7 +1358,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _selectedIban ;
+        private string _selectedIban;
         public string SelectedIban
         {
             get
@@ -1528,6 +1581,122 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private List<FinancialRepresentativesModel> _listFinanceRepresenatives { get; set; }
+        public List<FinancialRepresentativesModel> ListFinanceRepresenatives
+        {
+            get => _listFinanceRepresenatives;
+            set
+            {
+                _listFinanceRepresenatives = value;
+                RaisePropertyChanged(nameof(ListFinanceRepresenatives));
+            }
+        }
+
+        #region Item Availability Properties
+
+        private InstAndConditionAvailability _instAndCondition = new InstAndConditionAvailability();
+        public InstAndConditionAvailability InstAndCondition
+        {
+            get
+            {
+                _instAndCondition.CBAgreeCondition = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                return _instAndCondition;
+            }
+        }
+        private TaxPayer_DetailsAvailability _taxPayerDetails = new TaxPayer_DetailsAvailability();
+        public TaxPayer_DetailsAvailability TaxPayerDetails
+        {
+            get
+            {
+                _taxPayerDetails.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.TaxPayerDetailsParent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+
+                _taxPayerDetails.TinEntry1 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.TinEntry2 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.MainOutletEntry1 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.MainOutletEntry2 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.StartDateEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.AddressEntry1 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.AddressEntry2 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.SourceEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+
+                _taxPayerDetails.AddInformationCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
+                _taxPayerDetails.AddInformationCBVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
+                _taxPayerDetails.AddInformationParent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                IsTaxPayerIBANEnabled = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                IsTaxPayerEligDateEnabled = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+
+                _taxPayerDetails.ImporterYesRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ImporterNoRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ImporterAttachmentsBtn = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExporterYesRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExporterNoRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExporterrAttachmentsBtn = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExistingIBANPicker = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.NewIBANPicker = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.CommencementDate = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                return _taxPayerDetails;
+            }
+        }
+        private FinancialDetailsAvailability _financialDetails = new FinancialDetailsAvailability();
+        public FinancialDetailsAvailability FinancialDetails
+        {
+            get
+            {
+                _financialDetails.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint1Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint2Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint3Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint4Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialDetails.AttachSectionCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
+                _financialDetails.AttachSectionCBVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
+                IsFDChangeSectionEnabled = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialDetails.AttachSectionAddNewType = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                return _financialDetails;
+            }
+        }
+        private FinancialRepresentativeAvailability _financialRepresentative = new FinancialRepresentativeAvailability();
+        public FinancialRepresentativeAvailability FinancialRepresentative
+        {
+            get
+            {
+                _financialRepresentative.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.ChangeMobileEmailCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.AddNewFinRepresentativeCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
+                _financialRepresentative.AddNewFinRepCBVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
+                IsNewFinancialRepVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.SkipBtn = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+
+
+                _financialRepresentative.TinEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.IDTypeEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.IDNoEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.FNameEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.SurnameEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true);
+                _financialRepresentative.MobileNoEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true);
+                _financialRepresentative.EmailIDEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true);
+
+                return _financialRepresentative;
+            }
+        }
+        private DeclarationAvailability _declaration = new DeclarationAvailability();
+        public DeclarationAvailability Declaration
+        {
+            get
+            {
+                _declaration.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                _declaration.AcknowledgementCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                _declaration.IDTypeOrNoPicker = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                _declaration.IDTypeOrNoEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                _declaration.DOBEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                IsDeclarationDOBVisible= App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
+                _declaration.ContactNameEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                return _declaration;
+            }
+        }
+
+        #endregion
+
 
         #endregion
 
@@ -1538,7 +1707,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 throw new ArgumentNullException("navigationService");
             }
             _navigationService = navigationService;
-            
+
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -1549,6 +1718,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #region Method
 
+
+        void SetUIAvailability()
+        {
+            // to be added, currently not using
+            switch (App.VATType)
+            {
+                case Enums.VATRegDetailsExecutionType.Amend:
+                    InstAndCondition.CBAgreeCondition = false;
+                    break;
+                case Enums.VATRegDetailsExecutionType.Reactivation:
+                    InstAndCondition.CBAgreeCondition = true;
+                    break;
+                default:
+                    InstAndCondition.CBAgreeCondition = true;
+                    break;
+
+            }
+        }
         public void setDATA()
         {
             try
@@ -1569,9 +1756,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     // Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                        string[] date1 = VatEligibleStartDate.Split('/');
-                        Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
-                    
+                    string[] date1 = VatEligibleStartDate.Split('/');
+                    Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
+
                 }
                 VATRegistrationDetailsData.d.VatTaxDt = Bdt;
                 VATRegistrationDetailsData.d.StepNumberz = "2";
@@ -1579,14 +1766,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 //Step 4
 
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
-                if(SelectedIdTypeFR!=null )
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
+                if (SelectedIdTypeFR != null)
+                    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Idnumber = IdnumberFR;
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Firstnm = FirstnmFR;
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
-                
+
                 //Step 5
                 if (IsDeclarationChecked)
                 {
@@ -1604,9 +1791,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 VATRegistrationDetailsData.d.DecidNo = IdNumberSR;
                 VATRegistrationDetailsData.d.Decname = FirstNameSR;
 
-              
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -1689,7 +1876,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 return response;
             }
-    }
+        }
 
         public async Task setDataAfterSubmitAPIAsync(VATRegistrationDetails vATRegistration)
         {
@@ -1711,13 +1898,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     SetApplicableButtons();
                 }
-               IsLoading = false;
+                IsLoading = false;
             });
         }
 
         public void setQuestionImage()
         {
-            if(VATRegistrationDetailsData.d.QUESTIONSSet.results!=null)
+            if (VATRegistrationDetailsData.d.QUESTIONSSet.results != null)
             {
 
                 string value1forimage3first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptAns).FirstOrDefault();
@@ -1726,7 +1913,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 string value1forimage4first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptAns).FirstOrDefault();
                 string value2forimage4second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptAns).FirstOrDefault();
 
-                if (value1forimage3first=="1")
+                if (value1forimage3first == "1")
                 {
                     ImageforTextQuestion3First = "vat_tile_IbanCard_background.png";
                     TextQuestion3FirstTextColor = Color.White;
@@ -1783,7 +1970,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             IsSummaryVisible = false;
         }
 
-       
+
 
         public void PopToRootPage()
         {
@@ -1805,7 +1992,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             //{
             //    LocalisedButtonString = AppResources.Submit;
             //}
-            
+
             if (0 == String.Compare(ButtonName, "SaveasDraft"))
             {
                 LocalisedButtonString = AppResources.ZZSaveAsDraft;
@@ -1845,24 +2032,61 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     VATRegistrationOtherDetails vATRegistrationOther = null;
                     try
                     {
-                        vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData();
+                        string pageType = string.Empty;
+                        if (App.VATType == Enums.VATRegDetailsExecutionType.Amend)
+                            pageType = "05";
+                        else if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation)
+                            pageType = "07";
+                        else
+                            pageType = "04";
+
+                        vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
-                            
+
                             //step 4 and 5 data set
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
+                                ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
                                 GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                                 idnumber = string.Empty;
-                                 idnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
+                                idnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                                 FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
-                                LastnmFR= vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm ;
-                                MobNumberFR= vATRegistration.d.CONTACTDTSet.results[0].MobNumber ;
-                                SmtpAddrFR= vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr ;
+                                LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
+                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
+                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
+                                if (App.VATType==Enums.VATRegDetailsExecutionType.Amend)
+                                {
+                                    GpartFR= string.Empty;
+                                    idnumber= string.Empty;
+                                    FirstnmFR = string.Empty;
+                                    LastnmFR = string.Empty;
+                                    SmtpAddrFR= string.Empty;
+                                    MobNumberFR= string.Empty;
+                                    TxtIDTypeFR = string.Empty;
+                                }
+                                if (App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Reactivation)
+                                {
+                                    int count = 0;
+                                    foreach (var item in vATRegistration.d.CONTACT_PERSONSet.results)
+                                    {
+                                        ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
+                                        {
+                                            GpartFR = item.Gpart,
+                                            IdnumberFR = item.Idnumber,
+                                            FirstnmFR = item.Firstnm,
+                                            LastnmFR = item.Lastnm,
+                                            MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
+                                            SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
+                                            TxtIDTypeFR = IdTypeListFR[IDTypeIndexFR].Name
+                                        });
+                                        count++;
+                                    }
+                                }
 
                                 SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
                                 ATTDETSetObject = new ATTDETSet();
@@ -1871,7 +2095,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             }
 
                             //Step 5
-                            
+
                             if (vATRegistration.d.Decfg == "1")
                             {
                                 IsDeclarationChecked = true;
@@ -1894,12 +2118,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 }
 
                             }
-                            if (vATRegistration.d.DecidTy != null && vATRegistration.d.DecidTy!="")
+                            if (vATRegistration.d.DecidTy != null && vATRegistration.d.DecidTy != "")
                             {
-                              
-                              SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy).FirstOrDefault();
+
+                                SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy).FirstOrDefault();
                             }
-                            if(vATRegistration.d.Decconno!=null)
+                            if (vATRegistration.d.Decconno != null)
 
 
                               IdNumberSR= vATRegistration.d.DecidNo;
@@ -1913,8 +2137,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             VATRegistrationDetailsData = vATRegistration;
                             setIban();
                             if (VATRegistrationDetailsData.d.AgrFg != null)
-                            {}
-                            
+                            { }
+
 
                             if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count != 0)
                             {
@@ -1977,10 +2201,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 setQuestionImage();
 
                             }
-                            if (VATRegistrationDetailsData.d.QUESTIONSSet!=null)
-                            { 
-                             answer1selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns=="1").Count();
-                                 answer2selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").Count();
+                            if (VATRegistrationDetailsData.d.QUESTIONSSet != null)
+                            {
+                                answer1selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns == "1").Count();
+                                answer2selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").Count();
                                 answer3selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").Count();
                                 answer4selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").Count();
                             }
@@ -2007,7 +2231,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 _navigationService.GoBack();
                             });
                         }
-                        IsLoading = false; 
+                        IsLoading = false;
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
@@ -2037,7 +2261,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 //await Task.Run(() =>
                 //{
-                
+
                 //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -2045,7 +2269,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
-                }); 
+                });
 
             }
             catch (Exception ex)
@@ -2080,11 +2304,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     Enum.TryParse(button.Button, out buttonEnumId);
                     String localisedString = GetLocalisedButtonString(buttonEnumId.ToString());
-                    
+
                     if (false == String.IsNullOrEmpty(localisedString))
                         ListOfActionButtonsApplicableForRegistration.Add(localisedString);
 
-                    
+
                 }
             }
             //Parag
@@ -2094,7 +2318,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             IbanList = new ObservableCollection<Result2>();
 
-            if(VATRegistrationDetailsData.d.IBANSet!=null)
+            if (VATRegistrationDetailsData.d.IBANSet != null)
             {
                 IbanList = new ObservableCollection<Result2>(VATRegistrationDetailsData.d.IBANSet.results);
             }
@@ -2117,14 +2341,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IDTypeIndexFR = 0;
                 IDTypeIndexSR = 0;
                 TxtIDType = AppResources.ZZNationalID;
-              //  SelectedIdTypeFR = IdTypeListFR.FirstOrDefault();
+                //  SelectedIdTypeFR = IdTypeListFR.FirstOrDefault();
 
                 TxtIDTypeFR = IdTypeListFR[IDTypeIndexFR].Name;
                 TxtIDTypeSR = IdTypeListSR[IDTypeIndexSR].Name;
                 SelectedIdTypeFR = IdTypeListFR[IDTypeIndexFR];
                 SelectedIdTypeSR = IdTypeListSR[IDTypeIndexSR];
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }

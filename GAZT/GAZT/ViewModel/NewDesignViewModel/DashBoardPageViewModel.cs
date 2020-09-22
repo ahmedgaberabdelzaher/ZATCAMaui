@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private Color _homeIndicatorColor = Color.FromHex("#005e4b");
         private Color _menuIndicatorColor = Color.White;
         private Color _tabbarColor = Color.DarkGray;
-        private Color _stackMenuColor=Color.White;
+        private Color _stackMenuColor = Color.White;
 
         private string _NextCommitmentsString = AppResources.ZZZZNextCommitments;
         private string _ReturnString = AppResources.NDReturns;
@@ -120,7 +120,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private int _rotation=0;
+        private int _rotation = 0;
         public int Rotation
         {
             get
@@ -313,7 +313,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._Bills = value;
                 this.RaisePropertyChanged("Bills");
             }
-        }        
+        }
         public ObservableCollection<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypesAndCorrepsondingCounts
         {
             get
@@ -367,12 +367,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             get
             {
+                IsVatAmendmentTileVisible = !_isVatRegistrationTileVisible;
                 return _isVatRegistrationTileVisible;
             }
             set
             {
                 _isVatRegistrationTileVisible = value;
                 RaisePropertyChanged("IsVatRegistrationTileVisible");
+            }
+        }
+        private bool _isVatAmendmentTileVisible = false;
+        public bool IsVatAmendmentTileVisible
+        {
+            get
+            {
+                return _isVatAmendmentTileVisible;
+            }
+            set
+            {
+                _isVatAmendmentTileVisible = value;
+                RaisePropertyChanged("IsVatAmendmentTileVisible");
             }
         }
 
@@ -400,7 +414,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._menuViewVisible = value;
                 this.RaisePropertyChanged("MenuViewVisible");
             }
-        }       
+        }
         public bool HomeViewVisible
         {
             get
@@ -410,7 +424,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 this._homeViewVisible = value;
-               if(_homeViewVisible!=null)
+                if (_homeViewVisible != null)
                 {
                     if (_homeViewVisible)
                     {
@@ -421,7 +435,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 this.RaisePropertyChanged("HomeViewVisible");
             }
-        }        
+        }
         public Color HomeIndicatorColor
         {
             get
@@ -433,7 +447,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._homeIndicatorColor = value;
                 this.RaisePropertyChanged("HomeIndicatorColor");
             }
-        } 
+        }
         public Color MenuIndicatorColor
         {
             get
@@ -457,7 +471,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._tabbarColor = value;
                 this.RaisePropertyChanged("TabbarColor");
             }
-        }       
+        }
         public Color StackMenuColor
         {
             get
@@ -571,7 +585,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Task GetDashboardDataTask = null;
             Task GetBillsTask = null;
             Task GetReturnsTask = null;
-          
+
             if (App.TP != null)
             {
                 GetDashboardDataTask = Task.Run(() =>
@@ -583,11 +597,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
                     List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                    foreach(OverduePaymentAndUnSubmittedReturn ee in TempBills){
+                    foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
+                    {
                         Bills.Add(ee);
                     }
                     //Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
-                    System.Diagnostics.Debug.WriteLine("Bills "+ Bills.Count);
+                    System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
                 });
 
                 GetReturnsTask = Task.Run(async () =>
@@ -680,7 +695,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                List< OverduePaymentAndUnSubmittedReturn> OverduePaymentsAndUnSubmittedReturns = new List<OverduePaymentAndUnSubmittedReturn>();
+                List<OverduePaymentAndUnSubmittedReturn> OverduePaymentsAndUnSubmittedReturns = new List<OverduePaymentAndUnSubmittedReturn>();
 
                 if (BillsAndReturnsCommitments == null)
                     BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
@@ -691,7 +706,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Bill.IsUnSubmittedReturn = false;
                     Bill.IsPaymentOverdue = true;
                     Bill.ColorCode = Color.FromHex("#AA0C19");
-                    
+
                     BillsAndReturnsCommitments.Add(Bill);
                 }
                 foreach (var UnsubmittedReturn in Returns)
@@ -709,7 +724,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
                     try
                     {
-                       
+
 
                         if (BillsAndReturnsCommitmentsOverdurItems != null && BillsAndReturnsCommitmentsOverdurItems.Count > 0)
                         {
@@ -720,7 +735,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
@@ -767,7 +782,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(i => DateTime.Parse(i.DueDate)).ToList();
 
                     BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
-                    if(BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
+                    if (BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
                     {
                         SetNoCommitmentsAvailableLabelVisibility = false;
                         SetMyCommitmentsCollectionVisibility = true;
@@ -877,29 +892,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string TotalPaidAmount = PaidBillsAmountstr;
                         try
                         {
-                            
-                                
-                                PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
-                                PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
-                                PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
 
-                                SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
-                                MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
 
-                                MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
-                                BillCount = PaidBillCountAndAmount.BillCount.ToString();
+                            PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
+                            PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
+                            PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
+
+                            SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
+                            MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
+
+                            MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
+                            BillCount = PaidBillCountAndAmount.BillCount.ToString();
                             // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
-                                ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
+                            ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
 
-                                iBillsCount = Convert.ToInt32(BillCount);
+                            iBillsCount = Convert.ToInt32(BillCount);
 
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
 
                         }
-                      
-                     
+
+
                     }
                     //Partially Paid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
@@ -971,7 +986,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         MyBillsChartModels.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#EC0000") });
                         BillCount = UnPaidBillCountAndAmount.BillCount.ToString();
                         // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(UnPaidBillCountAndAmount.BillCount)).ToString();
-                        ColorsChild.Add(System.Drawing.Color.FromArgb(236,0,0));
+                        ColorsChild.Add(System.Drawing.Color.FromArgb(236, 0, 0));
 
                         iBillsCount += Convert.ToInt32(BillCount);
 
@@ -1028,7 +1043,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             SubmittedReturnTypeAndCorrepsondingCount.ReturnCount = RtnTotstr;
                             SubmittedReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.Submitted;
-                            
+
                             SegregatedReturnTypeAndCorrepsondingCount.Add(SubmittedReturnTypeAndCorrepsondingCount);
                         }
 
@@ -1074,7 +1089,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             SegregatedReturnTypeAndCorrepsondingCount.Add(UnSubmittedReturnTypeAndCorrepsondingCount);
                         }
 
-                       
+
 
                         if (SegregatedReturnTypesAndCorrepsondingCounts == null)
                             SegregatedReturnTypesAndCorrepsondingCounts = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
@@ -1116,7 +1131,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
 
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZRealEstateServiceTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Service_6.png" });
-            
+
             //Tax Evasion Section
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
             //Tax Evasion Section
