@@ -703,6 +703,16 @@
                                             <TapGestureRecognizer Tapped="VATReactivation_Tapped"/>
                                         </border:SfBorder.GestureRecognizers>
                                     </border:SfBorder>
+                                           <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
+                                            <Image Source="details.png"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+
+                                        </StackLayout>
+                                        <border:SfBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VATRegistration_Details_Tapped"/>
+                                        </border:SfBorder.GestureRecognizers>
+                                    </border:SfBorder>
                                 </StackLayout>
                             </yummy:PancakeView>
                             <Grid Grid.Row="0" Padding="15,5,15,5">

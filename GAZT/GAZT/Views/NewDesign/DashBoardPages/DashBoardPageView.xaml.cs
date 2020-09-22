@@ -834,7 +834,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationPageView));
 
         }
+        
+        private async void VATRegistration_Details_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() => viewModel.IsLoading = true);
+            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails));
 
+        }
         private void OnVATServiceTapped(object sender, EventArgs e)
         {
             ParentMenu.IsVisible = false;
