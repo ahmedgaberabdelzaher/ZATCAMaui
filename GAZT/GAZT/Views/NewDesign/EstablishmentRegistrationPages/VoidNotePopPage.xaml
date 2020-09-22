@@ -38,7 +38,7 @@
                     <Entry x:Name="notes" IsSpellCheckEnabled="false"  MaxLength="132" TextChanged="notes_TextChanged"/>
                 </inputLayout:SfTextInputLayout>
                 <StackLayout HorizontalOptions="End" VerticalOptions="EndAndExpand" Grid.Row="1" Orientation="Horizontal">
-                    <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Padding="20,0" Text="{x:Static ResourceManager:AppResources.ZZVoid}" HorizontalOptions="Center" Clicked="Void_Button_Clicked" />
+                    <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Padding="20,0" Text="{x:Static ResourceManager:AppResources.ESTZZVoid}" HorizontalOptions="Center" Clicked="Void_Button_Clicked" />
                     <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Padding="20,0" Text="{x:Static ResourceManager:AppResources.ZZCancel}" HorizontalOptions="Center" Clicked="CancelButton_Clicked" />
                 </StackLayout>
             </Grid>

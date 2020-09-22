@@ -85,11 +85,18 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.VATInstalmentsAttachmentTitle;
             }
+            else if (whichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment || whichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+            {
+                viewModel.TitleOne = AppResources.ZOAttachmentsTitleOne;
+                viewModel.TitleTwo = AppResources.ZOAttachmentsTitleTwo;
+            }
             else
             {
                 viewModel.TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
                 viewModel.TitleTwo = AppResources.ZChooseonlyfilewithextension;
             }
+
+            viewModel.VatAttachmentsList = null;
             viewModel.IsComeForWhichAttachment = whichAttachment;
             viewModel.returnIdz = returnIdz;
             if (attachments != null)

@@ -2131,4 +2131,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_RefundR%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\registration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\registration%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\registration%403x.png" />
+  </ItemGroup>
 </Project>

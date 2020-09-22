@@ -12,6 +12,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -30,6 +31,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public int DefaultMonth;
+        public int DefaultMonthHijri;
         public int countDownSeconds;
         public DateTime dateTime { get; set; }
         public int numberOfSeconds = 120;
@@ -325,6 +327,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 _isDeclarationCheckEnabled = value;
                 RaisePropertyChanged("IsDeclarationCheckEnabled");
+            }
+        }
+        private bool _IsHijriCal = false;
+        public bool IsHijriCal
+        {
+            get
+            {
+                return _IsHijriCal;
+            }
+            set
+            {
+                _IsHijriCal = value;
+                RaisePropertyChanged("IsHijriCal");
             }
         }
         private bool _isDeclarationCheckedForInstruction = false;
@@ -1386,6 +1401,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _todayDate = value;
                 RaisePropertyChanged("TodayDate");
             }
+        }  
+        private ObservableCollection<object> _todayDateinHijri;
+        public ObservableCollection<object> TodayDateinHijri
+        {
+            get
+            {
+                return _todayDateinHijri;
+            }
+            set
+            {
+                _todayDateinHijri = value;
+                RaisePropertyChanged("TodayDateinHijri");
+            }
         }
         private string _newPassword = string.Empty;
         public string NewPassword
@@ -2003,6 +2031,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             todaycollection.Add(DateTime.Now.Date.Year.ToString());
             TodayDate = todaycollection;
             DefaultMonth = DateTime.Now.Date.Month;
+
+            //TodayDateinHijri
+            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+            var calendar = new HijriCalendar();
+            if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            else
+                todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            if (calendar.GetMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
+            else
+                todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
+            todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+            TodayDateinHijri = todaycollectionHijri;
+       //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
+
+
         }
 
         private bool CheckOnlyNumber(char letter)
