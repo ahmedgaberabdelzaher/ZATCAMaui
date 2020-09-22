@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -45,7 +46,43 @@ namespace EGAZT.Views.NewDesign
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+
+            SetLocationToMap();
+
         }
+
+        private async void SetLocationToMap()
+        {
+            try
+            {
+                //double lat = 24.655933, lon = 46.713687;
+                //Position position = new Position(lat, lon);
+                //MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                //mapView.MoveToRegion(mapSpan);
+                //Pin pin = new Pin();
+                //pin.Label = "Report Location";
+                //pin.Type = PinType.Place;
+                //pin.Position = position;
+                //mapView.Pins.Add(pin);
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Handle not supported on device exception
+            }
+            catch (FeatureNotEnabledException fneEx)
+            {
+                // Handle not enabled on device exception
+            }
+            catch (PermissionException pEx)
+            {
+                // Handle permission exception
+            }
+            catch (Exception ex)
+            {
+                // Unable to get location
+            }
+        }
+
         protected override bool OnBackButtonPressed()
         {
             GoToBackStep();
