@@ -1996,6 +1996,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             isSubmitClicked = false;
             isDraftClicked = false;
 
+
             IDTypeDictionary = new Dictionary<string, string>
         {
             {"","oBlak"},
@@ -2048,19 +2049,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatTitle = AppResources.ZakatInstalmetSelectTypeIncomeTax;
             }
 
-
-
-            if (Preferences.Get("IsFromRevok", false))
-            {
-                SuccessMessage = AppResources.ZakatInstalmentRevokedSuccessfully;
-                ZakatReferanceNumber = Preferences.Get("RevokeRef", "");
-            }
-
-
-            else
-            {
-                SuccessMessage = AppResources.VatInstalmentPlanSubmittedSuccess;
-            }
             _dialogService = dialogService;
             GoBackClick = new Command(async () =>
             {

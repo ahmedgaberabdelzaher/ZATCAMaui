@@ -24,7 +24,9 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ZakatObjectionListView;
             this.BindingContext = viewModel;
+            viewModel.ResetData();
             viewModel.ZAKATObjectionList();
+            
 
         }
 
