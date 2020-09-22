@@ -7663,13 +7663,14 @@ namespace GAZT.Manager
 
         #region VATDeregistration Reason
 
-        public static VATDeregistrationSuspendedDateRootObject GAZTGETVATDeregReturnFilingDateList(DateTime StartDate, DateTime EndDate)
+        public static string GAZTGETVATDeregReturnFilingDateList(DateTime StartDate, DateTime EndDate)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeregistrationSuspendedDateRootObject reasonData = new VATDeregistrationSuspendedDateRootObject();
                 // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
                 string NewToken = string.Empty;
+                string GAZTVATDeregreasonDataResponseJSON = string.Empty;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -7709,21 +7710,10 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
-                        {
-                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
-                            if (reasonData.d == null)
-                            {
-                                throw new Exception(AppResources.VatDeregSuspendedDateMismatchException);
-                            }
-                        }
-                        else
-                        {
-                            throw new Exception(AppResources.NoBillsAvailable);
-                        }
+                         GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
+         
                     }
-                    return reasonData;
+                    return GAZTVATDeregreasonDataResponseJSON;
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
