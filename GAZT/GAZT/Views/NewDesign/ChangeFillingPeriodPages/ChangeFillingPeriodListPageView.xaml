@@ -64,7 +64,7 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Style="{StaticResource IconLabelStyle}" TextColor="White"
+                        <Label Grid.Row="0" Grid.Column="2" Style="{StaticResource IconLabelStyle}" TextColor="White"
                                Text="{StaticResource Close}" VerticalOptions="CenterAndExpand"
                                HorizontalOptions="EndAndExpand">
                             <Label.GestureRecognizers>
