@@ -237,7 +237,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void btnContinue_Clicked(object sender, EventArgs e)
         {
-            IsSubmitClicked = false;
+          //  IsSubmitClicked = false;
             if (viewModel.IsContinueButtonEnable)
             {
                 if (viewModel.CurrentStep == AppResources.VATRStep1)
@@ -326,7 +326,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     if (viewModel.IsContinueButtonEnable)
                     {
-                        IsSubmitClicked = true;
+                      //  IsSubmitClicked = true;
                         step5Validation();
                     }
 
@@ -422,11 +422,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 if (flag)
                 {
-                    if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                    else
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                    //else
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "01";
 
                     VATRegistrationDetails response = await viewModel.SubmitClicked();
                     if (response != null)
@@ -597,11 +598,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
                 viewModel.setQuestionImage();
-                if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                else
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                //else
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                 VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
@@ -661,11 +663,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
                 viewModel.setQuestionImage();
-                if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                else
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                //else
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                 VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
@@ -734,11 +737,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             }
                         }
                     }
-                    if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                    else
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                    //else
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                     VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
@@ -814,11 +818,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             }
                         }
                     }
-                    if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                    else
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                    //else
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                     VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
@@ -898,11 +903,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             }
                         }
                     }
-                    if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                    else
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                    //else
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                     VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
@@ -975,11 +981,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             }
                         }
                     }
-                    if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                    else
-                        viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                    viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                    //else
+                    //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                     VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                     if (registrationDetails != null & registrationDetails.d != null)
                     {
@@ -1082,11 +1089,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             }
                         }
                         catch (Exception ex)
-                        { 
-                        
+                        {
+
                         }
 
-                        
+
                     }
                 });
 
@@ -1967,11 +1974,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 ((Xamarin.Forms.CollectionView)sender).SelectedItem = null;
             }
             catch (Exception ex)
-            { 
-            
+            {
+
             }
-            
-         
+
+
         }
 
         private void DateEntry_Focused_1(object sender, FocusEventArgs e)
@@ -3366,11 +3373,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                 }
-                if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                else
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                //else
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                 VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
@@ -3446,11 +3454,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                 }
-                if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-                else
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-                viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                //else
+                //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                 VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
@@ -3508,11 +3517,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
             viewModel.setQuestionImage();
-            if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-            else
-                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+            //else
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
@@ -3571,12 +3581,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
             viewModel.setQuestionImage();
-            viewModel.quesTion3answerSelected = viewModel.TextQuestion3Second;
-            if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-            else
-                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            //viewModel.quesTion3answerSelected = viewModel.TextQuestion3Second;
+            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+            //else
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
@@ -3636,11 +3647,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
             viewModel.setQuestionImage();
-            if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-            else
-                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+            //else
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
@@ -3699,11 +3711,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             viewModel.setQuestionImage();
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4Second;
-            if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
-                viewModel.VATRegistrationDetailsData.d.Operationz = "05";
-            else
-                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
-            viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+            //else
+            //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
             if (registrationDetails != null & registrationDetails.d != null)
             {
