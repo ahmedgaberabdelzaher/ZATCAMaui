@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             viewModel = App.Locator.ZakatObjectionView;
             this.BindingContext = viewModel;
             //viewModel.showInstructionsDialog();
-            //viewModel.ResetData();
+            viewModel.ResetData();
             GetZakatObjectionsData();
 
 
