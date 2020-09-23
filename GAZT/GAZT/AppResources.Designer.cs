@@ -7398,6 +7398,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationDeclarationCheck {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDeclarationCheck", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationReason {
             get {
                 return ResourceManager.GetString("TinDeregistrationReason", resourceCulture);

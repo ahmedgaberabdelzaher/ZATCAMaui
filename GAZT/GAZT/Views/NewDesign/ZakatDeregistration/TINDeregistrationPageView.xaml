@@ -787,7 +787,7 @@
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecName}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                              <custom:BorderlessEntry.Behaviors>
-                                            <custom1:OnlyNumericValuesBehaviour/>
+                                            <custom1:OnlyAlphabatesBehaviour/>
                                         </custom:BorderlessEntry.Behaviors>
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -849,8 +849,24 @@
                                                  </StackLayout>
                                             </border:SfBorder >
                                       </StackLayout>
-                                <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnDeclarationContinue"
-                                   Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                 <!--<StackLayout Orientation="Horizontal">
+                                                    <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsDeclarationChecked}">
+                                                        <CheckBox.Triggers>
+                                                            <DataTrigger TargetType="CheckBox"  Value="false">
+                                                                <Setter Property="Color" Value="#ff0000" />
+                                                            </DataTrigger>
+                                                        </CheckBox.Triggers>
+                                                    </CheckBox>
+                                                    <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{x:Static custom2:AppResources.TinDeregistrationDeclarationCheck}"  />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                    </custom:CustomLabel>
+                                  </StackLayout>-->
+                                <buttons:SfButton Grid.Row="4" IsEnabled="{Binding IsDeclarationContinueButtonEnabled}" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnDeclarationContinue"
+                                   Command="{Binding DeclarationContinueBtnTapped}" BackgroundColor="{Binding DeclarationContinueButtonnBackroundColor}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                             </StackLayout>
                          </Grid>
