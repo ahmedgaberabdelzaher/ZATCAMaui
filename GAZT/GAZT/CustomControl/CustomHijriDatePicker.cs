@@ -16,10 +16,10 @@ namespace GAZT.CustomControl
         public ObservableCollection<object> Day;
         public ObservableCollection<object> Month;
         public ObservableCollection<object> Year;
-        public ObservableCollection<object> Time { get; set; }
-        public ObservableCollection<object> Minute;
-        public ObservableCollection<object> Hour;
-        public ObservableCollection<object> Format;
+        //public ObservableCollection<object> Time { get; set; }
+        //public ObservableCollection<object> Minute;
+        //public ObservableCollection<object> Hour;
+        //public ObservableCollection<object> Format;
         // Resolving Issue of Date of Birth to prevent selecting future date
         // @Divya Jannapureddy added line number 28
         private String selectedYear;
@@ -94,7 +94,14 @@ namespace GAZT.CustomControl
                     Headers.Add("عام");
                 }
             }
-            
+            if (FutureDay)
+            {
+                PopulateFutureDateCollection();
+            }
+            else
+            {
+                PopulateDateCollection();
+            }
             this.ItemsSource = Date;
             this.ColumnHeaderText = Headers;
             this.SelectionChanged += CustomDatePicker_SelectionChanged;
@@ -253,6 +260,10 @@ namespace GAZT.CustomControl
         }
         private void PopulateDateCollection()
         {
+            Date?.Clear();
+            months?.Clear();
+            Day?.Clear();
+            Year?.Clear();
             //populate months
             HijriCalendar calender = new HijriCalendar();
             var monthHijri = calender.GetMonth(DateTime.Today);
@@ -412,27 +423,26 @@ namespace GAZT.CustomControl
         }
         private void PopulateFutureDateCollection()
         {
+            Date?.Clear();
+            months?.Clear();
+            Day?.Clear();
+            Year?.Clear();
             //populate months
             HijriCalendar calender = new HijriCalendar();
             var monthHijri = calender.GetMonth(DateTime.Today);
             for (int i = monthHijri; i <= 12; i++)
             {
-                if (i < 10)
+
+                var m = $"{i:00}";
+                if (!Month.Contains(m))
                 {
-                    Month.Add("0" + i);
-                    if (!months.ContainsKey("0" + i))
-                    {
-                        months.Add("0" + i, "0" + i);
-                    }
+                    Month.Add(m);
                 }
-                else
+                if (!months.ContainsKey(m))
                 {
-                    Month.Add(i.ToString());
-                    if (!months.ContainsKey(i.ToString()))
-                    {
-                        months.Add(i.ToString(), i.ToString());
-                    }
+                    months.Add(m, m);
                 }
+
                 // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
             }
             //populate year
@@ -446,12 +456,7 @@ namespace GAZT.CustomControl
             var dayHijri = calender.GetDaysInMonth(year, monthHijri);
             for (int i = days; i <= dayHijri; i++)
             {
-                if (i < 10)
-                {
-                    Day.Add("0" + i);
-                }
-                else
-                    Day.Add(i.ToString());
+                Day.Add($"{i:00}");
             }
             Date.Add(Day);
             Date.Add(Month);
