@@ -24,7 +24,7 @@ namespace EGAZT.Views.NewDesign
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -47,13 +47,15 @@ namespace EGAZT.Views.NewDesign
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
 
-            SetLocationToMap();
+            
 
         }
 
         private async void SetLocationToMap()
         {
             try
+            {
+                try
             {
                 //double lat = 24.655933, lon = 46.713687;
                 //Position position = new Position(lat, lon);
@@ -64,6 +66,11 @@ namespace EGAZT.Views.NewDesign
                 //pin.Type = PinType.Place;
                 //pin.Position = position;
                 //mapView.Pins.Add(pin);
+
+
+                mapView.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
+
+
             }
             catch (FeatureNotSupportedException fnsEx)
             {
@@ -80,6 +87,10 @@ namespace EGAZT.Views.NewDesign
             catch (Exception ex)
             {
                 // Unable to get location
+            }
+             }catch(Exception e)
+            {
+
             }
         }
 
