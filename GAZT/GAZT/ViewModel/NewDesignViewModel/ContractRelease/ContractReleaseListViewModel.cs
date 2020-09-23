@@ -401,8 +401,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             FromDate = ContractReLeaseSummaryData.ContractDate;
             ToDate = ContractReLeaseSummaryData.ContractEnddate;
-            ContractTotalAmount = ContractReLeaseSummaryData.TotalAmountofContract;
-            AmountToRelease = ContractReLeaseSummaryData.AmountRequiredtoRelease;
+            ContractTotalAmount = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.TotalAmountofContract);
+            AmountToRelease = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.AmountRequiredtoRelease);
             PickedContract = ContractTypeIdDictionary[ContractReLeaseSummaryData.Type];
             ContractName = ContractReLeaseSummaryData.ContractingName;
             ContractNumber = ContractReLeaseSummaryData.Number;
