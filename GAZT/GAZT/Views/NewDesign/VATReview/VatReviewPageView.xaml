@@ -138,9 +138,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                                Text="{x:Static ResourceManager:AppResources.VRReviewReason}"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                 <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRReviewReason}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
@@ -179,9 +185,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                                Text="{x:Static ResourceManager:AppResources.VRReviewSubReason}"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                 <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRReviewSubReason}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
@@ -219,9 +231,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                                Text="{x:Static ResourceManager:AppResources.VRApplicationReferenceNumber}"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRApplicationReferenceNumber}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
@@ -322,9 +340,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0"
-                                                Text="{x:Static ResourceManager:AppResources.VRReportDetails}"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                 <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRReportDetails}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
@@ -1166,9 +1190,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0"
-                                                Text="{x:Static ResourceManager:AppResources.VRIDType}"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRIDType}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
@@ -1204,9 +1234,15 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
                                 <custom:CustomLabel Grid.Row="0"
-                                                    Text="{x:Static ResourceManager:AppResources.VRIDNumber}"
                                                     HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyle}" />
+                                                    Style="{StaticResource MicroGrayLabelStyle}" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRIDNumber}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                                 <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                                  Style="{StaticResource GreyBorderFrame}">
@@ -1229,9 +1265,15 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
                                 <custom:CustomLabel Grid.Row="0"
-                                                    Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}"
                                                     HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyle}" />
+                                                    Style="{StaticResource MicroGrayLabelStyle}" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                                 <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                                  Style="{StaticResource GreyBorderFrame}">
@@ -1258,9 +1300,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0"
-                                                Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRContactPersonName}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">

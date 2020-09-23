@@ -14,6 +14,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -193,6 +194,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _frameConfirmPasswordError = value;
                 RaisePropertyChanged("FrameConfirmPasswordError");
+            }
+        }
+        private ObservableCollection<object> _todayDateinHijri;
+        public ObservableCollection<object> TodayDateinHijri
+        {
+            get
+            {
+                return _todayDateinHijri;
+            }
+            set
+            {
+                _todayDateinHijri = value;
+                RaisePropertyChanged("TodayDateinHijri");
             }
         }
         private bool _frameOTPError = false;
@@ -635,7 +649,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("TxtIDType");
             }
         }
-
+        private bool _IsHijriCal = false;
+        public bool IsHijriCal
+        {
+            get
+            {
+                return _IsHijriCal;
+            }
+            set
+            {
+                _IsHijriCal = value;
+                RaisePropertyChanged("IsHijriCal");
+            }
+        }
         private SignUpIdType _selectedIdType = null;
         public SignUpIdType SelectedIdType
         {
@@ -2819,6 +2845,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             todaycollection.Add(DateTime.Now.Date.Year.ToString());
             TodayDate = todaycollection;
             DefaultMonth = DateTime.Now.Date.Month;
+
+
+            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+            var calendar = new HijriCalendar();
+            if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            else
+                todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            if (calendar.GetMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
+            else
+                todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
+            todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+            TodayDateinHijri = todaycollectionHijri;
+            //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
         }
     }
 }

@@ -158,6 +158,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public void ClearFields()
         {
+            viewModel.IsHijriCal = false;
+            HijriCalSwitch.IsToggled = false;
           viewModel.PageTitle = AppResources.ZVatTermsAndConditions;
             viewModel.BodyText = "";
             viewModel.NextBTN = AppResources.ZZProceedtoindividualSignup;
@@ -384,8 +386,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
 
         private void OnDOBClicked(object sender, EventArgs e)
-        {
-            DpDbo.IsOpen = true;
+        {if (!viewModel.IsHijriCal)
+            {
+                DpDbo.IsOpen = true;
+            }
+            else
+            {
+                DpDboHijri.IsOpen = true;
+            }
         }
 
         private void CountryCodeTapped(object sender, EventArgs e)
@@ -960,7 +968,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public void OnDateEntryFocussed(object sender, EventArgs args)
         {
-            DpDbo.IsOpen = true;
+            if (viewModel.IsHijriCal)
+            {
+                DpDboHijri.IsOpen = true;
+            }
+            else
+            {
+                DpDbo.IsOpen = true;
+            }
+            
         }
         private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -980,12 +996,27 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     viewModel.IsLoading = true;
                 });
             });
-            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-            string month = selectedItem[1].ToString();
-            string day = selectedItem[0].ToString();
-            string year = selectedItem[2].ToString();
-            viewModel.PkrDBO = year + "/" + month + "/" + day;
-            string DBO = year + month + day;
+            string DBO = string.Empty;
+            if (viewModel.IsHijriCal)
+            {
+
+                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.PkrDBO = year + "/" + month + "/" + day;
+                 DBO = year + month + day;
+            }
+            else
+            {
+                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.PkrDBO = year + "/" + month + "/" + day;
+                 DBO = year + month + day;
+            }
+            
             viewModel.PkrDBOPrev = viewModel.PkrDBO;
             //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
             EntryName.IsEnabled = true;
@@ -1308,16 +1339,33 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             try
             {
-                if (DpDbo.SelectedItem != null)
+                if (viewModel.IsHijriCal)
                 {
-                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                    string month = selectedItem[1].ToString();
-                    string day = selectedItem[0].ToString();
-                    string year = selectedItem[2].ToString();
-                    viewModel.PkrDBO = year + "/" + month + "/" + day;
-                    viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                    if (DpDboHijri.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
 
+                    }
                 }
+                else
+                {
+                    if (DpDbo.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+
+                    }
+                }
+                
 
             }
             catch (Exception ex)
@@ -1956,11 +2004,25 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 SiguupModel.ALang = "E";
             }
-            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-            string month = selectedItem[1].ToString();
-            string day = selectedItem[0].ToString();
-            string year = selectedItem[2].ToString();
-            SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+            if (viewModel.IsHijriCal)
+            {
+                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+            }
+            else
+            {
+                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+            }
+            
+
+            
             SiguupModel.AType = "1";
             SiguupModel.AFirstname = viewModel.TxtName;
             SiguupModel.ALastname = ".";
@@ -2528,12 +2590,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         {
                                             SiguupModel.ALang = "E";
                                         }
+                                    //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    //string month = selectedItem[1].ToString();
+                                    //string day = selectedItem[0].ToString();
+                                    //string year = selectedItem[2].ToString();
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    if (viewModel.IsHijriCal)
+                                    {
+                                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                        string month = selectedItem[1].ToString();
+                                        string day = selectedItem[0].ToString();
+                                        string year = selectedItem[2].ToString();
+                                        SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    }
+                                    else
+                                    {
                                         var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                         string month = selectedItem[1].ToString();
                                         string day = selectedItem[0].ToString();
                                         string year = selectedItem[2].ToString();
                                         SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                        SiguupModel.AType = "1";
+                                    }
+                                    SiguupModel.AType = "1";
                                         SiguupModel.AFirstname = viewModel.TxtName;
                                         SiguupModel.ALastname = ".";
                                         if (viewModel.IsTIN)
@@ -2780,12 +2858,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     {
                                         SiguupModel.ALang = "E";
                                     }
+                                    //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    //string month = selectedItem[1].ToString();
+                                    //string day = selectedItem[0].ToString();
+                                    //string year = selectedItem[2].ToString();
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                if (viewModel.IsHijriCal)
+                                {
+                                    var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[1].ToString();
+                                    string day = selectedItem[0].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                }
+                                else
+                                {
                                     var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                     string month = selectedItem[1].ToString();
                                     string day = selectedItem[0].ToString();
                                     string year = selectedItem[2].ToString();
                                     SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                    SiguupModel.AType = "1";
+                                }
+                                SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
                                     if (viewModel.IsTIN)
@@ -3057,12 +3151,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     {
                                         SiguupModel.ALang = "E";
                                     }
+                                //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                //string month = selectedItem[1].ToString();
+                                //string day = selectedItem[0].ToString();
+                                //string year = selectedItem[2].ToString();
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                if (viewModel.IsHijriCal)
+                                {
+                                    var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[1].ToString();
+                                    string day = selectedItem[0].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                }
+                                else
+                                {
                                     var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                     string month = selectedItem[1].ToString();
                                     string day = selectedItem[0].ToString();
                                     string year = selectedItem[2].ToString();
                                     SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                    SiguupModel.AType = "1";
+                                }
+                                SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
                                     if (viewModel.IsTIN)
@@ -3299,12 +3409,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.ALang = "E";
                                 }
+                            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                            //string month = selectedItem[1].ToString();
+                            //string day = selectedItem[0].ToString();
+                            //string year = selectedItem[2].ToString();
+                            //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            if (viewModel.IsHijriCal)
+                            {
+                                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
+                                string year = selectedItem[2].ToString();
+                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            }
+                            else
+                            {
                                 var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                 string month = selectedItem[1].ToString();
                                 string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
                                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                SiguupModel.AType = "1";
+                            }
+                            SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
                                 if (viewModel.IsTIN)
@@ -3505,12 +3631,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     {
                                         SiguupModel.ALang = "E";
                                     }
+                                //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                //string month = selectedItem[1].ToString();
+                                //string day = selectedItem[0].ToString();
+                                //string year = selectedItem[2].ToString();
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                if (viewModel.IsHijriCal)
+                                {
+                                    var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[1].ToString();
+                                    string day = selectedItem[0].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                }
+                                else
+                                {
                                     var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                     string month = selectedItem[1].ToString();
                                     string day = selectedItem[0].ToString();
                                     string year = selectedItem[2].ToString();
                                     SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                    SiguupModel.AType = "1";
+                                }
+                                SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
                                     if (viewModel.IsTIN)
@@ -3747,12 +3889,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.ALang = "E";
                                 }
+                            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                            //string month = selectedItem[1].ToString();
+                            //string day = selectedItem[0].ToString();
+                            //string year = selectedItem[2].ToString();
+                            //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            if (viewModel.IsHijriCal)
+                            {
+                                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
+                                string year = selectedItem[2].ToString();
+                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                            }
+                            else
+                            {
                                 var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                                 string month = selectedItem[1].ToString();
                                 string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
                                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
-                                SiguupModel.AType = "1";
+                            }
+                            SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
                                 if (viewModel.IsTIN)
@@ -4046,6 +4204,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 FrmIssuedByCity.HasError = false;
             }
+        }
+
+        private void OnDateEntryFocussed(object sender, FocusEventArgs e)
+        {
+
         }
     }
 

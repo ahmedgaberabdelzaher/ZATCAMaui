@@ -14045,5 +14045,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDZakatWithdrawSubmittedSuccessfully", resourceCulture);
             }
         }
+        
+        public static string NDGregorian {
+            get {
+                return ResourceManager.GetString("NDGregorian", resourceCulture);
+            }
+        }
+        
+        public static string NDHijri {
+            get {
+                return ResourceManager.GetString("NDHijri", resourceCulture);
+            }
+        }
     }
 }
