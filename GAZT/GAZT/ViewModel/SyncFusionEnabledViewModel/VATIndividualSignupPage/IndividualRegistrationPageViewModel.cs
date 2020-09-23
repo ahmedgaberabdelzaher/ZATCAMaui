@@ -2174,7 +2174,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                 //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                 Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                var Bdt = date1[0] + "-" + date1[1] + "-" + date1[2] + "T00:00:00";
+                var Bdt=string.Empty;
+                if (IsHijriCal)
+                {
+                    string date = UtilityManager.HijriToGreg(date1[0] + "/" + date1[1] + "/" + date1[2]);
+                    string[] SplitDate = date.Split('/');
+                    Bdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
+                }
+                else
+                {
+                 Bdt = date1[0] + "-" + date1[1] + "-" + date1[2] + "T00:00:00";
+                }
+
                 string _City = string.Empty;
                 string _Region = string.Empty;
                 string _Country = string.Empty;

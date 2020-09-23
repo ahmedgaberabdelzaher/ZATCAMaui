@@ -152,8 +152,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             // await _navigation.PopToRootAsync();
             //_navigation.NavigationStack.ToList().Clear();
           //  viewModel._navigationService.GoBack();
-          viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-           
+         // viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+           viewModel._navigationService.GoBack();
+
         }
 
         private void OnZakatNowTapped(object sender, EventArgs e)

@@ -553,6 +553,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        private bool isSadadRefeshVisible = false;
+
+        public bool IsSadadRefeshVisible
+        {
+            get { return isSadadRefeshVisible; }
+            set
+            {
+                isSadadRefeshVisible = value;
+                RaisePropertyChanged("IsSadadRefeshVisible");
+            }
+        }
+
 
         public string securityType = "";
         public string SecurityType
@@ -2650,6 +2662,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
 
                 IsGeneratingFormbundle = false;
+                IsSadadRefeshVisible = false;
                 modelVATReview = await SubmitClicked();
 
                 if (modelVATReview != null && modelVATReview.d != null)
@@ -2891,6 +2904,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
 
                 IsGeneratingFormbundle = true;
+                IsSadadRefeshVisible = true;
 
                 SaveClicked();
 
@@ -2901,20 +2915,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void ShowSadadGenerateButton()
         {
             SadadGenerateBtnVisible = true;
+            IsSadadRefeshVisible = false;
+            SadadGenerateProgressVisible = false;
+            SadadAmountVisible = false;
+        }
+        public void ShowRefreshButton()
+        {
+            SadadGenerateBtnVisible = false;
+            IsSadadRefeshVisible = true;
             SadadGenerateProgressVisible = false;
             SadadAmountVisible = false;
         }
         public void ShowSadadProgressLabel()
         {
             SadadGenerateBtnVisible = false;
+            IsSadadRefeshVisible = false;
             SadadGenerateProgressVisible = true;
             SadadAmountVisible = false;
         }
         public void ShowSadadAmount()
         {
             SadadGenerateBtnVisible = false;
+            IsSadadRefeshVisible = false;
             SadadGenerateProgressVisible = false;
             SadadAmountVisible = true;
+            EnableSecurityPaymentsConButton();
         }
 
         private async void ViewApplicationClicked()
@@ -3187,6 +3212,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsApplicationVisible = false;
 
                 }
+                else if (selectedApplicationRef.Fbtyp == "VTGR") {
+
+                    IsApplicationVisible = false;
+                }
+
                 else if (selectedApplicationRef.Fbtyp == "DGVT")
                 {
                     //await VatDeregistration();
@@ -3594,7 +3624,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
                 }*/
-                if (SecurityAmount == "" || !IsSadadCheckBox3)
+                if (SADADNumber == "" || !IsSadadCheckBox3 )
                 {
                     IsSecurityPaymentEnabled = false;
                 }
@@ -4039,13 +4069,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 if (_VATObjectionGenrateSadad != null && _VATObjectionGenrateSadad.d != null)
                 {
-                    ShowSadadAmount();
+                    
+
+                    
+                    
                     SADADNumber = _VATObjectionGenrateSadad.d.Sopbel;
                     SecurityNumber = _VATObjectionGenrateSadad.d.Security;
+
+                    if (string.IsNullOrEmpty(SADADNumber)) {
+                        ShowRefreshButton();
+
+                    }
+                    else {
+                        ShowSadadAmount();
+                    }
+
+
+
                 }
                 else
                 {
-                    ShowSadadGenerateButton();
+
+                    ShowRefreshButton();
                 }
 
                 await Task.Run(() =>

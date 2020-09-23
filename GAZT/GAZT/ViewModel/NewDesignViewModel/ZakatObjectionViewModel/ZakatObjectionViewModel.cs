@@ -1757,8 +1757,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             FiscalYear = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
 
-            FinancialPeriod = String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
-                  String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
+            if (!App.IsArabic)
+            {
+                FinancialPeriod = String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
+                  String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
+            }
+            else
+            {
+                FinancialPeriod = String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo) + " - " +
+                    String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom);
+            }
             ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
             TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
             AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;

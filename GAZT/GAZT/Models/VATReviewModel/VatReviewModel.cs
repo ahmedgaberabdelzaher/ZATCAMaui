@@ -447,7 +447,7 @@ namespace EGAZT.Models.VatReviewModel
 
     public class AttdetSet1
     {
-        public List<object> results { get; set; }
+        public List<Attachment> results { get; set; }
     }
 
     public class IdDetailSet
@@ -803,7 +803,7 @@ namespace EGAZT.Models.VatReviewModel
         public List<AddressResults> AddressSet { get; set; }
         public List<NotesSetResults> NotesSet { get; set; }
         public List<object> QuesListSet { get; set; }
-        public List<object> AttdetSet { get; set; }
+        public List<Attachment> AttdetSet { get; set; }
         public List<object> IdDetailSet { get; set; }
         public List<MainReasonSetResults> MainReasonSet { get; set; }
         public SecurityDtl SecurityDtl { get; set; }

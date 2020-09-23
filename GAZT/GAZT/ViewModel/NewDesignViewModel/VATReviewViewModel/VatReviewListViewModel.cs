@@ -310,6 +310,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        public string requestedReviewAmount = "";
+        public string RequestedReviewAmount
+        {
+            get
+            {
+                return requestedReviewAmount;
+            }
+            set
+            {
+                requestedReviewAmount = value;
+                RaisePropertyChanged("RequestedReviewAmount");
+            }
+        }
+
         private string _contactPersonName = "";
 
         public string ContactPersonName
@@ -389,6 +403,150 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 _vatReviewAttachments = value;
                 RaisePropertyChanged("VatReviewAttachments");
+            }
+        }
+
+        private bool _isBankGurantSecuritySelected = false;
+
+        public bool IsBankGurantSecuritySelected
+        {
+            get { return _isBankGurantSecuritySelected; }
+            set
+            {
+                _isBankGurantSecuritySelected = value;
+                RaisePropertyChanged("IsBankGurantSecuritySelected");
+            }
+        }
+
+        public string disputeDetailsDesc = "";
+        public string DisputeDetailsDesc
+        {
+            get
+            {
+                return disputeDetailsDesc;
+            }
+            set
+            {
+                disputeDetailsDesc = value;
+                RaisePropertyChanged("DisputeDetailsDesc");
+            }
+        }
+
+        private bool _isSadadSecuritySelected = false;
+
+        public bool IsSadadSecuritySelected
+        {
+            get { return _isSadadSecuritySelected; }
+            set
+            {
+                _isSadadSecuritySelected = value;
+                RaisePropertyChanged("IsSadadSecuritySelected");
+            }
+        }
+
+        private bool isPenlaityAmountVisible = false;
+        public bool IsPenlaityAmountVisible
+        {
+            get
+            {
+                return isPenlaityAmountVisible;
+            }
+            set
+            {
+                isPenlaityAmountVisible = value;
+                RaisePropertyChanged("IsPenlaityAmountVisible");
+            }
+        }
+
+        private bool _isAssessPayOptionVisible = false;
+        public bool IsAssessPayOptionVisible
+        {
+            get { return _isAssessPayOptionVisible; }
+            set
+            {
+                _isAssessPayOptionVisible = value;
+                RaisePropertyChanged("IsAssessPayOptionVisible");
+            }
+        }
+
+        private bool _isSecurityAmountMorethanZero = false;
+
+        public bool IsSecurityAmountMorethanZero
+        {
+            get { return _isSecurityAmountMorethanZero; }
+            set
+            {
+                _isSecurityAmountMorethanZero = value;
+                RaisePropertyChanged("IsSecurityAmountMorethanZero");
+            }
+        }
+
+        public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> AttachmentsListViewData
+        {
+            get { return attachmentsListViewData; }
+
+            set
+            {
+                if (attachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                attachmentsListViewData = value;
+                RaisePropertyChanged("AttachmentsListViewData");
+            }
+        }
+
+        private bool isSecurityPaymentsTabVisible = false;
+        public bool IsSecurityPaymentsTabVisible
+        {
+            get
+            {
+
+
+                return isSecurityPaymentsTabVisible;
+
+            }
+            set
+            {
+                isSecurityPaymentsTabVisible = value;
+                RaisePropertyChanged("IsSecurityPaymentsTabVisible");
+            }
+        }
+        private bool isDOBVisible = false;
+        public bool IsDOBVisible
+        {
+            get
+            {
+
+
+                return isDOBVisible;
+
+            }
+            set
+            {
+                isDOBVisible = value;
+                RaisePropertyChanged("IsDOBVisible");
+            }
+        }
+
+        public ObservableCollection<Attachment> bankGuranteeAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> BankGuranteeAttachmentsListViewData
+        {
+            get { return bankGuranteeAttachmentsListViewData; }
+
+            set
+            {
+                if (bankGuranteeAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                bankGuranteeAttachmentsListViewData = value;
+                RaisePropertyChanged("BankGuranteeAttachmentsListViewData");
             }
         }
 
@@ -712,15 +870,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             if (responseModel.d.SecurityDtl.Sectp == "C")
             {
                 SecurityType = AppResources.VRSADAD;
+                IsSadadSecuritySelected = true;
+                IsBankGurantSecuritySelected = false;
             }
             else
             {
                 SecurityType = AppResources.VRBANKGURANTEE;
+                IsSadadSecuritySelected = false;
+                IsBankGurantSecuritySelected = true;
             }
 
             //Step3 Details
 
             var selectedReason = reasonList.First(x => x.ProcCD == responseModel.d.RvRsn);
+
+            if (selectedReason.ProcCD == "VTPC" || selectedReason.ProcCD == "VTPN" || selectedReason.ProcCD == "VTAS")
+            {
+                IsSecurityPaymentsTabVisible = true;
+                IsPenlaityAmountVisible = true;
+            }
+            else
+            {
+                IsSecurityPaymentsTabVisible = false;
+                IsPenlaityAmountVisible = false;
+            }
+
+            if (selectedReason.ProcCD == "VTAS")
+            {
+                IsAssessPayOptionVisible = true;
+                IsPenlaityAmountVisible = false;
+            }
+            else
+            {
+                IsAssessPayOptionVisible = false;
+            }
 
             ReviewReason = selectedReason.Reasons;
             SubReviewReason = selectedReason.ListSubReason.First(x => x.Code == responseModel.d.RvSubRsn).SubReasons;
@@ -752,7 +935,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 strRequestedDate = dt1;
             }
 
-            PickedDate = strRequestedDate;
+            //PickedDate = strRequestedDate;
             RequestDate = strRequestedDate;
 
             TaxPeriodOfCase = responseModel.d.SecurityDtl.Perslt;
@@ -783,7 +966,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             TaxPeriodFrom = strTaxPeriodFromDate;
 
-
+            ReportDetails = responseModel.d.NotesSet.results[0].Tdline;
+            RequestedReviewAmount = responseModel.d.SecurityDtl.Disamt;
             string strTaxPeriodToDate = "";
             if (responseModel.d.SecurityDtl.Abrzo != null)
             {
@@ -824,6 +1008,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             //Step 5 Security Payments
 
             SecurityAmount = responseModel.d.SecurityDtl.Secamt;
+            if (Double.Parse(SecurityAmount) == 0)
+            {
+                IsSecurityAmountMorethanZero = false;
+                IsSadadSecuritySelected = false;
+                IsBankGurantSecuritySelected = false;
+            }
+            else
+            {
+                IsSecurityAmountMorethanZero = true;
+            }
             //Security Type field If Value modelVATReview.d.SecurityDtl.Sectp=="C" then Sadad payment and B then Bank Guarantee
             modelVATReviewsReturn.MethodSubmitSecurity = responseModel.d.SecurityDtl.Sectp;
             //Checkbox Value is "X"  checked  
@@ -836,11 +1030,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             modelVATReviewsReturn.ChkBankGuarantee = responseModel.d.SecurityDtl.ChkBank;
             modelVATReviewsReturn.ChkInfoCorrect = responseModel.d.DecFlg1;
             if (responseModel.d.IdType == "ZS0001")
+            {
                 IDType = AppResources.VFCNationalID;
+                IsDOBVisible = true;
+            }
             else if (responseModel.d.IdType == "ZS0002")
+            {
                 IDType = AppResources.VFCIqamaID;
+                IsDOBVisible = true;
+            }
             else if (responseModel.d.IdType == "ZS0003")
+            {
                 IDType = AppResources.VFCGCCID;
+                IsDOBVisible = false;
+            }
 
             IDNumber = responseModel.d.DecIdNo;
             ContactPersonName = responseModel.d.Decnm;
@@ -853,8 +1056,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 ? responseModel.d.Declarationdt.ToString()
                 : "";
 
-            SADADNumber = modelVATReviewsReturn.SADADNumber;
-            SecurityAmount = modelVATReviewsReturn.SecurityAmount;
+            var bankAttachments = new ObservableCollection<Attachment>();
+            var attachments = new ObservableCollection<Attachment>();
+
+            foreach (var attach in responseModel.d.AttdetSet.results)
+            {
+                if (attach.Dotyp == "RAGA")
+                {
+                    attachments.Add(attach);
+                }
+                else if (attach.Dotyp == "RVBT")
+                {
+                    bankAttachments.Add(attach);
+                }
+
+            }
+
+            BankGuranteeAttachmentsListViewData = bankAttachments;
+            AttachmentsListViewData = attachments;
+            // SADADNumber = modelVATReviewsReturn.SADADNumber;
+            // SecurityAmount = modelVATReviewsReturn.SecurityAmount;
 
 
             /*

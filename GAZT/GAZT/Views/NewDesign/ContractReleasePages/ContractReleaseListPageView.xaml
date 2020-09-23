@@ -283,11 +283,10 @@
                                 </StackLayout>
                                 <StackLayout Grid.Row="2" Grid.Column="1" >
                                     <Label Text="{Binding PickedContract}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                </StackLayout>
-                                    <StackLayout Grid.Row="3" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.CRContractPeriod}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="3" Grid.Column="1">
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <Label Text="{x:Static ResourceManager:AppResources.CRContractPeriod}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
+                               
                                      <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                             <Label.FormattedText>
                                                 <FormattedString>
