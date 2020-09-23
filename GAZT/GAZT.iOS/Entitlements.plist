@@ -4,10 +4,6 @@
 <dict>
 	<key>com.apple.developer.default-data-protection</key>
 	<string>NSFileProtectionComplete</string>
-	<key>com.apple.developer.user-fonts</key>
-	<array>
-		<string>app-usage</string>
-	</array>
 	<key>aps-environment</key>
 	<string>production</string>
 </dict>
