@@ -97,15 +97,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         }
 
 
-        private bool _isLoading = false;
+        private bool _isLoading1 = false;
 
-        public bool IsLoading
+        public bool IsLoading1
         {
-            get { return _isLoading; }
+            get { return _isLoading1; }
             set
             {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
+                _isLoading1 = value;
+                RaisePropertyChanged("IsLoading1");
             }
         }
 
@@ -1055,10 +1055,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         private async void SummaryConBtnClicked()
         {
 
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                IsLoading = true;
-            });
+           
 
             try
             {
@@ -1068,12 +1065,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     isSubmitted = true;
 
                   
+
                     ContractReleaseData = await SubmitClicked();
                     if (ContractReleaseData.d != null)
                     {
-                        await Task.Run(() =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            IsLoading = false;
+                            IsLoading1 = false;
                         });
                         await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView());
                         //_navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
@@ -1083,16 +1081,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    IsLoading = false;
+                    IsLoading1 = false;
                 });
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    IsLoading = false;
+                    IsLoading1 = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -1412,46 +1410,58 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             ContractReleaseFormResponse response = new ContractReleaseFormResponse();
 
+
+
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
+
 
 
             try
             {
 
 
-               
-
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading1 = true;
+                });
 
 
                 request = BuildRequestObject();
 
 
 
-                response = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
-                PopToRootPage();
-                if (response != null && response.d != null)
+
+                await Task.Run(async () =>
                 {
-                    try
+                    response = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
+
+
+
+                    PopToRootPage();
+                    if (response != null && response.d != null)
                     {
-
-                        await Task.Run(() =>
+                        try
                         {
-                            IsLoading = false;
-                        });
-                        return response;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        await Task.Run(() =>
+                            await Task.Run(() =>
+                            {
+                                IsLoading1 = false;
+                            });
+                            return response;
+                        }
+                        catch (Exception ex)
                         {
-                            IsLoading = false;
-                        });
-                        return null;
-
+                            await Task.Run(() =>
+                            {
+                                IsLoading1 = false;
+                            });
+                            return null;
+                        }
                     }
-                }
 
+
+
+                    return response;
+                });
                 return response;
             }
             catch (GAZTVATRegistrationInProcessException ex)
@@ -1465,18 +1475,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
 
+
+
                 });
                 return response;
             }
+
+
 
             catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
-                    IsLoading = false;
+                    IsLoading1 = false;
                 });
                 return response;
             }
+
+
 
         }
 
@@ -1569,10 +1585,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                await Task.Run(() => { IsLoading = true; });
                 await Task.Run(async () =>
                 {
-                    IsLoading = true;
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        IsLoading1 = true;
+                    });
                     ContractReleaseData = null;
                     try
                     {
@@ -1595,7 +1614,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                             await SetDefaultDate();
 
-
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                IsLoading1 = false;
+                            });
 
                         }
                         else
@@ -1608,10 +1630,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                             });
                         }
 
-                        IsLoading = false;
+                        
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading1 = false;
+                        });
                         throw ex;
                     }
                     catch (InternetException ex)
@@ -1619,7 +1645,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
+                           
                             _navigationService.GoBack();
                         });
                         //   await Task.Run(() =>
@@ -1627,7 +1653,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         //  });
                     }
                 });
-                await Task.Run(() => { IsLoading = false; });
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading1 = false;
+                });
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -1637,14 +1667,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                    
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
+                });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading1 = false;
                 });
             }
             catch (Exception ex)
             {
-                await Task.Run(() => { IsLoading = false; });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading1 = false;
+                });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);

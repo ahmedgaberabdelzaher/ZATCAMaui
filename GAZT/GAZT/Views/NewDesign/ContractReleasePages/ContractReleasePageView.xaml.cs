@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             Task.Run(async () =>
             {
-                viewModel.IsLoading = true;
+                viewModel.IsLoading1 = true;
                 await GetContractReleaseData();
 
             });
@@ -51,7 +51,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 await Task.Run(() =>
                 {
-                    viewModel.IsLoading = true;
+                    viewModel.IsLoading1 = true;
                 });
                 await Task.Run(async () =>
                 {
