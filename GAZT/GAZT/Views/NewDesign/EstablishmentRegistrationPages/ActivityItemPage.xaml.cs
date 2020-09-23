@@ -199,13 +199,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             ObservableCollection<object> selectedItem = null;
             if (viewModel?.DatePickerInGregorian == true)
             {
-                selectedItem = crValidFromPicker.SelectedItem as ObservableCollection<object>;
+                selectedItem = validFromPicker.SelectedItem as ObservableCollection<object>;
             }
             else
             {
-                selectedItem = crValidFromHijiriPicker.SelectedItem as ObservableCollection<object>;
+                selectedItem = validFromHijiriPicker.SelectedItem as ObservableCollection<object>;
             }
-            viewModel.CRValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+            viewModel.ValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
     }
 }
