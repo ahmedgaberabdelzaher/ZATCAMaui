@@ -874,7 +874,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             SummaryConBtnTapped = new Command(async () =>
             {
-
+                SuccessMessage = AppResources.NDZakatObjectionIsSubmittedSuccessfully;
                 VATReferanceNumber = SelectedFbNum;
                 await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());
 
@@ -982,6 +982,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             {
                 _SummaryVisible = value;
                 RaisePropertyChanged("SummaryVisible");
+            }
+        }
+
+        private string _successMessage = AppResources.NDZakatObjectionIsSubmittedSuccessfully;
+        public string SuccessMessage
+        {
+            get
+            {
+                return _successMessage;
+            }
+            set
+            {
+                _successMessage = value;
+                RaisePropertyChanged("SuccessMessage");
             }
         }
 
@@ -1277,10 +1291,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         public void ResetData()
         {
-            AddSecurityPaymentOptions();
-            EnableBillContinue();
-            IsSadadSecuritySelected = false;
-            IsBankGurantSecuritySelected = true;
+            //AddSecurityPaymentOptions();
+            //EnableBillContinue();
+            //IsSadadSecuritySelected = false;
+            //IsBankGurantSecuritySelected = true;
+            WithdrawAttachmentsListViewDataTwo = null;
+            WithdrawAttachmentsListViewData = null;
         }
 
 
@@ -1984,14 +2000,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         if (_withdrawSubmitted != null && _withdrawSubmitted.d != null)
                         {
 
+
+
                             VATReferanceNumber = _withdrawSubmitted.d.Fbnumz;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                SuccessMessage = AppResources.NDZakatWithdrawSubmittedSuccessfully;
                                 await Application.Current.MainPage.Navigation.PushAsync(new ZakatObjectionSuccessPageView());
+
+
 
                             });
                         }
-
                         else
                         {
                             Device.BeginInvokeOnMainThread(async () =>

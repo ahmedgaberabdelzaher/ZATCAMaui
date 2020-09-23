@@ -196,19 +196,25 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
+                                                        <StackLayout Grid.Row="0">
+                                                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}"    Padding="0,0,0,0" HorizontalOptions="Start" >
 
-                                                        <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static local:AppResources.ZZDateofBirth}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:CustomLabel Text="{x:Static local:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                                                <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
+                                                                <custom:CustomLabel  Text="{x:Static local:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                                            </StackLayout>
 
-                                                            <custom:CustomLabel.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{x:Static local:AppResources.ZZDateofBirth}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
-                                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                                                </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
 
-
-
+                                                        </StackLayout>
+                                                        
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
@@ -255,6 +261,35 @@ Closed="SignUpDOB_Closed"
                                                                 <custom1:SfPickerBehavior />
                                                             </custom1:CustomDatePicker.Behaviors>
                                                         </custom1:CustomDatePicker>
+                                                        <custom1:CustomHijriDatePicker  FlowDirection="RightToLeft"   Grid.Row="1"
+								ShowHeader="false"
+								Margin="2" 
+                              BackgroundColor="White"
+
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="White"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    BorderColor="Black"
+                                                                                  
+								ShowFooter="False"
+								 ShowColumnHeader="True"
+                                             ColumnHeaderBackgroundColor="White"
+								ColumnHeaderHeight="50"
+                                PickerMode="Dialog"
+								HeaderText="Date of Birth"
+								x:Name="SignUpDOBHijri"
+                          
+                             OKButtonTextColor="#006450" 
+Closed="SignUpDOB_Closed"                                
+                                             CancelButtonTextColor="#006450"
+                           
+                            SelectedItem="{Binding TodayDateinHijri}"
+                            HorizontalOptions="FillAndExpand"
+                                OkButtonClicked="DOB_OkButtonClicked"
+                                CancelButtonClicked="DOB_CancelButtonClicked"
+								ItemHeight="45" >
+                                                        </custom1:CustomHijriDatePicker>
 
                                                         <calendar:CalendarView x:Name="HijriCal"
                              

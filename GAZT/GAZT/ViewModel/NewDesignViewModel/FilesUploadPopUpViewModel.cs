@@ -458,13 +458,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                             }
                         }
-                        else if ((IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements && VatAttachmentCount >= 10) || (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance && VatAttachmentCount >= 10))
+                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements || IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
                         {
-                            await _dialogService.ShowMessage(AppResources.ZakatInstalmentAttachmentLimitReached, AppResources.Information);
-                            await PopupNavigation.Instance.PopAsync();
-                            return;
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count();
+                                if (count >= 10)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZakatInstalmentAttachmentLimitReached, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
                         }
-                       
+                        else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment || IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count();
+                                if (count >= 1)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.VATReviewAttachmentLimitReached, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
+                        }
+
                         VatAttachmentCount++;
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {

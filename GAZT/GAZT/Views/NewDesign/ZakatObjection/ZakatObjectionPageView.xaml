@@ -432,11 +432,6 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    Style="{StaticResource MicroGrayLabelStyle}" />
-
                                         </Grid>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
@@ -477,11 +472,6 @@
                                     </Image>
                                 </Grid>
                             </border:SfBorder>
-                            <custom:CustomLabel Grid.Row="2"
-                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyle}" />
-
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding NewAttachmentTapped}" />
                             </Grid.GestureRecognizers>
@@ -649,11 +639,6 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MicroGrayLabelStyle}" />
-
                                         </Grid>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
@@ -692,11 +677,6 @@
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>
-                                <custom:CustomLabel Grid.Row="2"
-                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
-
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NewBankGuranteeAttachmentTapped}" />
                                 </Grid.GestureRecognizers>
@@ -1345,7 +1325,7 @@
                                     <StackLayout Padding="15,15,15,0">
 
                                         <listView:SfListView  Grid.Row="0" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
-                                                          ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                                          ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent" AutoFitMode="Height"  ItemTapped="SummaryAttachments_ItemTapped">
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
 
@@ -1675,6 +1655,7 @@
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                      ItemsSource="{Binding WithdrawAttachmentsListViewData}"
                                                      TapCommand="{Binding WithdrawAttachmentTapped}"
+                                                    HeightRequest="100"
                                                      SelectionMode="SingleDeselect"
                                                      SelectionBackgroundColor="Transparent">
 
@@ -1722,11 +1703,6 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    Style="{StaticResource MicroGrayLabelStyle}" />
-
                                         </Grid>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
@@ -1764,11 +1740,6 @@
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>
-                                <custom:CustomLabel Grid.Row="2"
-                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyle}" />
-
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding WithdrawAttachmentTapped}" />
                                 </Grid.GestureRecognizers>
@@ -1787,6 +1758,7 @@
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                      ItemsSource="{Binding WithdrawAttachmentsListViewDataTwo}"
                                                      TapCommand="{Binding WithdrawAttachmentTappedTwo}"
+                                                     HeightRequest="100"
                                                      SelectionMode="SingleDeselect"
                                                      SelectionBackgroundColor="Transparent">
 
@@ -1834,11 +1806,6 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    Style="{StaticResource MicroGrayLabelStyle}" />
-
                                         </Grid>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
@@ -1876,11 +1843,6 @@
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>
-                                <custom:CustomLabel Grid.Row="2"
-                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyle}" />
-
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding WithdrawAttachmentTappedTwo}" />
                                 </Grid.GestureRecognizers>

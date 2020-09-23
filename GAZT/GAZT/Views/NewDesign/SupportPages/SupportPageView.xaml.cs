@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -23,7 +24,7 @@ namespace EGAZT.Views.NewDesign
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -45,7 +46,54 @@ namespace EGAZT.Views.NewDesign
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+
+            
+
         }
+
+        private async void SetLocationToMap()
+        {
+            try
+            {
+                try
+            {
+                //double lat = 24.655933, lon = 46.713687;
+                //Position position = new Position(lat, lon);
+                //MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                //mapView.MoveToRegion(mapSpan);
+                //Pin pin = new Pin();
+                //pin.Label = "Report Location";
+                //pin.Type = PinType.Place;
+                //pin.Position = position;
+                //mapView.Pins.Add(pin);
+
+
+                mapView.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
+
+
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Handle not supported on device exception
+            }
+            catch (FeatureNotEnabledException fneEx)
+            {
+                // Handle not enabled on device exception
+            }
+            catch (PermissionException pEx)
+            {
+                // Handle permission exception
+            }
+            catch (Exception ex)
+            {
+                // Unable to get location
+            }
+             }catch(Exception e)
+            {
+
+            }
+        }
+
         protected override bool OnBackButtonPressed()
         {
             GoToBackStep();
