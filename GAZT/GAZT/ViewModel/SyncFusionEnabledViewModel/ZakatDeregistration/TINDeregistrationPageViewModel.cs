@@ -191,7 +191,63 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsDeclarationViewEnabled");
             }
         }
-
+        private bool _isDeclarationChecked;
+        public bool IsDeclarationChecked
+        {
+            get
+            {
+                return _isDeclarationChecked;
+            }
+            set
+            {
+                _isDeclarationChecked = value;
+               
+                    if (_isDeclarationChecked)
+                    {
+                    IsDeclarationContinueButtonEnabled = true;
+                    }
+                    else
+                    {
+                    IsDeclarationContinueButtonEnabled = false;
+                    }
+                
+                RaisePropertyChanged("IsDeclarationChecked");
+            }
+        }
+        private Color _declarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color DeclarationContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _declarationContinueButtonnBackroundColor;
+            }
+            set
+            {
+                _declarationContinueButtonnBackroundColor = value;
+                RaisePropertyChanged("DeclarationContinueButtonnBackroundColor");
+            }
+        }
+        private bool _iSDeclarationContinueButtonEnabled = false;
+        public bool IsDeclarationContinueButtonEnabled
+        {
+            get
+            {
+                return _iSDeclarationContinueButtonEnabled;
+            }
+            set
+            {
+                _iSDeclarationContinueButtonEnabled = value;
+                if (_iSDeclarationContinueButtonEnabled)
+                {
+                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
+            }
+        }
         private bool _isSummaryViewEnabled = false;
         public bool IsSummaryViewEnabled
         {
