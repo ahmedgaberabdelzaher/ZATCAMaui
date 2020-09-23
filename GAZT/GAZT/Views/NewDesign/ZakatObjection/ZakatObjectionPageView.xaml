@@ -1651,7 +1651,6 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" />
                             <listView:SfListView HorizontalOptions="Center"
-                                                     IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                      ItemsSource="{Binding WithdrawAttachmentsListViewData}"
                                                      TapCommand="{Binding WithdrawAttachmentTapped}"
@@ -1754,7 +1753,6 @@
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <listView:SfListView HorizontalOptions="Center"
-                                                     IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                      ItemsSource="{Binding WithdrawAttachmentsListViewDataTwo}"
                                                      TapCommand="{Binding WithdrawAttachmentTappedTwo}"
