@@ -376,7 +376,7 @@
                                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                  ItemsSource="{Binding AttachmentsListViewData}"
-                                                 TapCommand="{Binding NewAttachmentTapped}"
+                                                 TapCommand="{Binding NewAttachmentTapped}" 
                                                  SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
 
 
@@ -1037,7 +1037,7 @@
                                               Style="{StaticResource PrimaryButtonStyle}"
                                               Command="{Binding SadadGenerateBtnTapped}" />
 
-                            <buttons:SfButton Margin="0,16,0,16" IsVisible="{Binding IsGeneratingFormbundle}"
+                            <buttons:SfButton Margin="0,16,0,16" IsVisible="{Binding IsSadadRefeshVisible}"
                                               VerticalOptions="End"
                                               Text="{x:Static ResourceManager:AppResources.ZVatRefresh}"
                                               Style="{StaticResource PrimaryButtonStyle}"
@@ -1602,7 +1602,7 @@
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"
                                                      Padding="8,0">
-                                            <Label TextColor="ForestGreen"
+                                            <Label 
                                                    Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                    VerticalOptions="CenterAndExpand"
                                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"
@@ -1689,7 +1689,7 @@
                                                                 HorizontalTextAlignment="End" />
                                         </Grid>
                                         
-                                        <Grid IsVisible="{Binding IsAssessPayOptionVisible}">
+                                        <!--<Grid IsVisible="{Binding IsAssessPayOptionVisible}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
@@ -1705,7 +1705,7 @@
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
-                                        </Grid>
+                                        </Grid>-->
                                         <Grid IsVisible="{Binding IsAssessPayOptionVisible}">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
@@ -1776,7 +1776,7 @@
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"
                                                      Padding="8,0">
-                                            <Label TextColor="ForestGreen"
+                                            <Label 
                                                    Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                    VerticalOptions="CenterAndExpand"
                                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"
@@ -1845,7 +1845,7 @@
 
                                          <listView:SfListView IsVisible="{Binding IsBankGurantSecuritySelected}" HorizontalOptions="Center"
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
-                                                             VerticalOptions="Center"
+                                                             VerticalOptions="Center" AutoFitMode="Height"
                                                              ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
                                                              SelectionMode="None"
                                                              SelectionBackgroundColor="Transparent">
@@ -1907,7 +1907,7 @@
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"
                                                      Padding="8,0">
-                                            <Label TextColor="ForestGreen"
+                                            <Label 
                                                    Text="{x:Static ResourceManager:AppResources.CREdit}"
                                                    VerticalOptions="CenterAndExpand"
                                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"
