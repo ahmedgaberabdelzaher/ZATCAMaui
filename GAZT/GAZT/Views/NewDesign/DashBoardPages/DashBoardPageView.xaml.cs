@@ -177,7 +177,32 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             {
                                 viewModel.IsEstablishmentRegistrationTileVisible = false;
                                 viewModel.IsVatRegistrationTileVisible = true;
+                                viewModel.IfSignUpnNotRegInVAT = true;
                             }
+                        }
+
+                        
+                        if((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
+                        {
+                            viewModel.IfnotRegInVATAndZakat = false;
+                        }
+                        if(App.LoginDataRetrieved.VtReg == "X")
+                        {
+                            viewModel.IfnotRegInVATAndZakat = true;
+                            viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                            viewModel.IfSignUpnNotRegInVAT = false;
+                        }
+                        else if(App.LoginDataRetrieved.VtReg == string.Empty)
+                        {
+                            viewModel.IfSignUpnNotRegInVATShowVATServie = false;
+                            viewModel.IfSignUpnNotRegInVAT = true;
+                        }else if(App.LoginDataRetrieved.ZkReg == "X")
+                        {
+                            viewModel.IfSignUpnNotRegInVAT = true;
+                        }
+                        if (App.LoginDataRetrieved.ZkReg == "X")
+                        {
+                            viewModel.IfnotRegInVATAndZakat = true;
                         }
 
                     }
@@ -289,7 +314,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
+            //if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
+            if(true)
             {
                 //                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
                 viewModel.MenuViewVisible = true;

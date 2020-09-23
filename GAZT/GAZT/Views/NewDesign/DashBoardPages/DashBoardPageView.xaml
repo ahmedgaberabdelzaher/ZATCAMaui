@@ -115,7 +115,7 @@
                 <yummy:PancakeView Grid.Row="1" Padding="0" CornerRadius="12,12,0,0" VerticalOptions="FillAndExpand">
                     <ScrollView BackgroundColor="White">
                         <StackLayout Spacing="0">
-                            <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsVatRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="15,16,15,8">
+                            <!--<Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsVatRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="15,16,15,8">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -137,7 +137,7 @@
                                 </Image>
 
                                 <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
-                            </Grid>
+                            </Grid>-->
 
                             <!--<BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                             <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsEstablishmentRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="15,16,15,8">
@@ -449,7 +449,7 @@
                                     </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                    <StackLayout x:Name="ifUserNotRegisteredtoZakat" Spacing="20" >
+                                    <StackLayout x:Name="ifUserNotRegisteredtoZakatAndVAT" Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_Payments"></Image>
@@ -481,8 +481,8 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                     </StackLayout>
+                                    <StackLayout Spacing="20" IsVisible="{Binding IfSignUpnNotRegInVATShowVATServie}" >
 
-                                    <StackLayout x:Name="ifUserRegisteredforVAT" Spacing="20" >
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="menu_return">
                                             </Image>
@@ -493,13 +493,8 @@
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
-                                        <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsVatRegistrationTileVisible}" Value="True">
-                                                <Setter Property="IsVisible" Value="False"/>
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
                                     </StackLayout>
-                                    <StackLayout x:Name="ifUserNotRegisteredtoZakat1" Spacing="20" >
+                                    <StackLayout Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="installment_plan.png">
                                             </Image>
@@ -541,26 +536,19 @@
                                         </StackLayout>
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     </StackLayout>
-
-                                    <StackLayout x:Name="ifusernotRegforVat" Spacing="20" >
-                                    <StackLayout Orientation="Horizontal" Spacing="20">
-                                        <Image Source="menu_return.png">
-                                        </Image>
-                                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDRegistertoVAT}" Style="{StaticResource ButtonLabelWhiteBold}"/>
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnVATNowTapped" />
-                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout Spacing="20" IsVisible="{Binding IsVatRegistrationTileVisible}" >
+                                        <StackLayout Orientation="Horizontal" Spacing="20">
+                                            <Image Source="menu_return.png">
+                                            </Image>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDRegistertoVAT}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnVATNowTapped" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     </StackLayout>
-                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />
-                                        <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsVatRegistrationTileVisible}" Value="False">
-                                                <Setter Property="IsVisible" Value="False"/>
-                                            </DataTrigger>
-                                        </StackLayout.Triggers>
-                                    </StackLayout>
-                                    
-                                    <StackLayout x:Name="ifUserNotRegisteredtoZakat2" Spacing="20" >
-                                    <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <StackLayout x:Name="ifUserNotRegisteredtoZakatAndVAT1" Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
+                                            <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="menu_return.png">
                                         </Image>
                                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -1131,11 +1119,7 @@
 
                             </yummy:PancakeView>
 
-                            <Image Source="ic_burger.png">
-                                <!--<Image.Source>
-                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Menu}"/>
-                                </Image.Source>-->
-                            </Image>
+                            <Image Source="ic_burger.png"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                             </StackLayout.GestureRecognizers>
