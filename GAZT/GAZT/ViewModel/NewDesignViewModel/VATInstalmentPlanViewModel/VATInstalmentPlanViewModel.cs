@@ -1709,7 +1709,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     }
                     else {
-                        dt1 = dts[0] + "-" + dts[1] + "-" + dts[1];
+                        dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
 
                     }
 
@@ -2637,7 +2637,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-                        DateTime dt = DateTime.ParseExact(VatInstalments.d.VTISSet.results[i].Faedn, dateformat, null);
+
+                        string DateAsString;
+
+                        DateTime ValidDate = DateTime.Now;
+
+
+                        CultureInfo provider = CultureInfo.InvariantCulture;
+
+                        DateAsString = VatInstalments.d.VTISSet.results[i].Faedn;  //which is in the format dd/MM/yyyy
+
+                        ValidDate = DateTime.ParseExact(DateAsString, dateformat, provider);
+
+
+                      //  DateTime dt = DateTime.ParseExact(VatInstalments.d.VTISSet.results[i].Faedn, dateformat, provider);
 
                         //DateTime dt = Convert.ToDateTime(VatInstalments.d.VTISSet.results[i].Faedn);
                         JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
@@ -2645,7 +2658,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                         };
                         //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                        var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                        var jsonDateTime = JsonConvert.SerializeObject(ValidDate.Date, microsoftDateFormatSettings);
                         string[] dateList = jsonDateTime.Split('+');
                         jsonDateTime = dateList[0].Replace("\"\\", "");
                         jsonDateTime = jsonDateTime + ")/";

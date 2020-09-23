@@ -1413,6 +1413,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        
+
+        public string _refundButtonText;
+        public string RefundButtonText
+        {
+            get
+            {
+                return _refundButtonText;
+            }
+            set
+            {
+                _refundButtonText = value;
+                RaisePropertyChanged("RefundButtonText");
+            }
+        }
+
         public bool _isBtnVisible;
         public bool isBtnVisible
         {
@@ -1719,6 +1735,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _isVisibleAmendButton = value;
+                if(_isVisibleAmendButton==true)
+                {
+                    RefundButtonText = AppResources.ZZZZViewRefund;
+                }
+                else
+                {
+                    RefundButtonText = AppResources.ZZZZConfirmAndRefundRequest;
+                }
                 RaisePropertyChanged("IsVisibleAmendButton");
             }
         }
@@ -2103,26 +2127,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (checkforrefundclicked())
                             {
-                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                if (App.ICRStatus == "E0001" || App.ICRStatus == "E0013")
+                                {
+                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                                headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
+                                    headerAmountInfo.IsLinkAvailable = false;
+                                    headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
 
-                                headerWithInfos.Add(headerAmountInfo);
-
-
-                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
-
-                                PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+                                    headerWithInfos.Add(headerAmountInfo);
 
 
+                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                    newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
 
+                                    PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+                                }
+                                else
+                                {
+                                SetDataForRefundPopup();
+                                PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(VATDeclarationData));
+                                }
                             }
-
                         }
                         else
                         {

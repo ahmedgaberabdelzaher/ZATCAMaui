@@ -7679,4 +7679,7 @@
   <data name="NDHijri" xml:space="preserve">
     <value>ميلادي</value>
   </data>
+  <data name="ZZZZViewRefund" xml:space="preserve">
+    <value>عرض بيانات الاسترداد</value>
+  </data>
 </root>
