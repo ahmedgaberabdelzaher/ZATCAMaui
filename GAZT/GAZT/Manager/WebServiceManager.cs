@@ -43,6 +43,7 @@ using EGAZT.Models.ZakatObjectionsModel;
 using EGAZT.Helper;
 using EGAZT.Models.TPProfile;
 using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
+using Xamarin.Essentials;
 
 namespace GAZT.Manager
 {
@@ -7663,13 +7664,14 @@ namespace GAZT.Manager
 
         #region VATDeregistration Reason
 
-        public static VATDeregistrationSuspendedDateRootObject GAZTGETVATDeregReturnFilingDateList(DateTime StartDate, DateTime EndDate)
+        public static string GAZTGETVATDeregReturnFilingDateList(DateTime StartDate, DateTime EndDate)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeregistrationSuspendedDateRootObject reasonData = new VATDeregistrationSuspendedDateRootObject();
                 // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
                 string NewToken = string.Empty;
+                string GAZTVATDeregreasonDataResponseJSON = string.Empty;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -7681,6 +7683,7 @@ namespace GAZT.Manager
                     string url = Constants.GAZTGETVATDeregReturnFilingDateList + "Gpart" + " eq " + "'" + App.LoginDataRetrieved.TIN + "'" + " and " + "StartDate" + " eq datetime" + "'" + startDate + "'" + " and " + "EndDate" + " eq datetime" + "'" + endDate + "'" + "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATDeregreasonDataResponse = client.GetAsync(uri).Result;
@@ -7708,21 +7711,10 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
-                        {
-                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
-                            if (reasonData.d == null)
-                            {
-                                throw new Exception(AppResources.VatDeregSuspendedDateMismatchException);
-                            }
-                        }
-                        else
-                        {
-                            throw new Exception(AppResources.NoBillsAvailable);
-                        }
+                         GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
+         
                     }
-                    return reasonData;
+                    return GAZTVATDeregreasonDataResponseJSON;
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
@@ -7759,6 +7751,7 @@ namespace GAZT.Manager
 
                     string url = Constants.VatRefundList + "(TaxType='VT',Lang='" + lang + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Euser='',Flag='W',Fbguid='')?&$expand=STATUSSet,WI_DTLSet,VatRef_HeaderSet,VatRef_SubItemsSet&$format=json";
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     HttpResponseMessage VatRefundsResponse = await client.GetAsync(uri);
@@ -7836,6 +7829,7 @@ namespace GAZT.Manager
                     //HeaderSet(Euser='',FormGuid='',Formprocx='ZTAX_VAT_MAISC_PROC',";
                     string url = Constants.VatRefundDisplayData + "FormGuid='" + formguid + "',Formprocx='ZTAX_VAT_MAISC_PROC',Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "',Officerx='',TxnTpx='')?$expand=AttdetSet,BankDtlSet,NotesSet&$format=json";
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     HttpResponseMessage VatRefundsResponse = await client.GetAsync(uri);
@@ -7921,6 +7915,7 @@ namespace GAZT.Manager
 
                     string url = Constants.VatRefundGetIbanData + "Gpart='" + App.LoginDataRetrieved.TIN + "',Status='',TxnTp='',Formproc='')?&$expand=VR_UI_BTNSet,IBANSet&$format=json";
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     HttpResponseMessage VatRefundsResponse = await client.GetAsync(uri);
@@ -7994,6 +7989,7 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     var serilized = JsonConvert.SerializeObject(_newRequestSummaryData);
@@ -11376,6 +11372,8 @@ namespace GAZT.Manager
                     //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
 
                     String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     var uri = new Uri(url);
 
                     HttpResponseMessage _tinDeregNewRequestResponse = await client.GetAsync(uri);
@@ -11649,6 +11647,7 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     var serilized = JsonConvert.SerializeObject(tinDeregistrationSendResponseModel);
@@ -11754,6 +11753,7 @@ namespace GAZT.Manager
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
                     //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
@@ -15223,8 +15223,57 @@ namespace GAZT.Manager
                 string lang = string.Empty;
                 if (App.IsArabic) { lang = "A"; }
                 else { lang = "E"; }
+                try
+                {
+                    CookieContainer cookieContainer = new CookieContainer();
 
-                HttpClient client = new HttpClient(App.httpClientHandler);
+                    try
+                    {
+                        foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                        {
+                            Cookie cookie = new Cookie();
+
+                            if (Device.RuntimePlatform == Device.iOS)
+                            {
+                                if (cookieModel.Domain.StartsWith(".") == false)
+                                {
+                                    cookie.Domain = "." + cookieModel.Domain;
+                                }
+                                else
+                                {
+                                    cookie.Domain = cookieModel.Domain;
+                                }
+                            }
+                            else if (Device.RuntimePlatform == Device.Android)
+                            {
+                                cookie.Domain = Constants.PartialDomainUrlForCookies;
+                            }
+
+                            cookie.Comment = cookieModel.Comment;
+                            cookie.Version = cookieModel.Version;
+                            cookie.HttpOnly = cookieModel.IsHttpOnly;
+                            cookie.Path = cookieModel.Path;
+                            cookie.Name = cookieModel.CName;
+                            cookie.Value = cookieModel.CValue;
+                            cookie.Secure = cookieModel.Secure;
+                            cookieContainer.Add(cookie);
+                        }
+
+                        App.httpClientHandler.CookieContainer = cookieContainer;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                
+                }
+                catch (Exception ex)
+                { 
+                
+                }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                 string URL = Constants.TPProfileURL
                             + "(" + "Taxpayerz=" + "'" + TIN + "'"
                             + ",Langz=" + "'" + lang + "'"
@@ -15279,7 +15328,7 @@ namespace GAZT.Manager
 
             try
             {
-                HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                 HttpResponseMessage UpdatePWDResponse = await client.GetAsync(GetURL);
                 if (UpdatePWDResponse != null)
                 {
@@ -15971,6 +16020,55 @@ namespace GAZT.Manager
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
+        }
+
+        public async static Task email(string doguid, Attachment attachment)
+        {
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                    byte[] PdfBytes;
+                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                    WebResponse myResp = myReq.GetResponse();
+                    using (Stream streams = myResp.GetResponseStream())
+                    using (MemoryStream Ms = new MemoryStream())
+                    {
+                        int count = 0;
+                        do
+                        {
+                            byte[] buf = new byte[1024];
+                            count = streams.Read(buf, 0, 1024);
+                            Ms.Write(buf, 0, count);
+                        } while (streams.CanRead && count > 0);
+                        PdfBytes = Ms.ToArray();
+                    }
+                    var message = new EmailMessage
+                    {
+                        Subject = "Attached Form :",
+                    };
+                    var fn = attachment.Filename;
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                    File.WriteAllBytes(file, PdfBytes);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = "",
+                            File = new ShareFile(file)
+                        });
+                    });
+
+
+
+                }
+                catch (Exception ex)
+                {
+                }
+            });
+
         }
 
         #endregion

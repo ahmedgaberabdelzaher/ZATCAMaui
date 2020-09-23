@@ -1996,12 +1996,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             isSubmitClicked = false;
             isDraftClicked = false;
 
+
             IDTypeDictionary = new Dictionary<string, string>
         {
             {"","oBlak"},
-            {AppResources.ZakatFinancialCrisis,"oFin"},
-            {AppResources.ZakatDisputeInFavorOfGAZT,"oDisp"},
-            {AppResources.ZakatOtherReason,"3"},
+            {AppResources.ZakatFinancialCrisis,"00"},
+            {AppResources.ZakatDisputeInFavorOfGAZT,"01"},
+            {AppResources.ZakatOtherReason,"02"},
         };
 
             EnableDeclarationContinue();
@@ -2048,19 +2049,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatTitle = AppResources.ZakatInstalmetSelectTypeIncomeTax;
             }
 
-
-
-            if (Preferences.Get("IsFromRevok", false))
-            {
-                SuccessMessage = AppResources.ZakatInstalmentRevokedSuccessfully;
-                ZakatReferanceNumber = Preferences.Get("RevokeRef", "");
-            }
-
-
-            else
-            {
-                SuccessMessage = AppResources.VatInstalmentPlanSubmittedSuccess;
-            }
             _dialogService = dialogService;
             GoBackClick = new Command(async () =>
             {
@@ -2110,37 +2098,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 var totalamount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
                 var instalmentamount = VATBillDueAmount.Replace(" SAR", "").Replace(",", "");
                 ZakatInstalments.d.DpAmt = DownPaymentAmount.ToString();
-                ZakatInstalments.d.TotAmt = totalamount.ToString();
+                ZakatInstalments.d.TotAmt = instalmentamount.ToString(); 
                 ZakatInstalments.d.Operation = "51";
                 ZakatInstalments.d.StepNumber = "03";
                 ZakatInstalments.d.PlanDur = noOfInstalments.ToString();
                 ZakatInstalments.d.PymntFreq = SelectedFrequencyType;
-                if (IsZakat)
-                {
-                    ZakatInstalments.d.InstReqFor = "01";
-
-                }
-                else
-                {
-                    ZakatInstalments.d.InstReqFor = "02";
-                }
-                if (IDType == AppResources.ZakatFinancialCrisis)
-                {
-                    ZakatInstalments.d.InstReqReason = "01";
-                }
-                else if (IDType == AppResources.ZakatDisputeInFavorOfGAZT)
-                {
-                    ZakatInstalments.d.InstReqReason = "02";
-                }
-                else if (IDType == AppResources.ZakatOtherReason)
-                {
-                    ZakatInstalments.d.InstReqReason = "03";
-                }
-                else
-                {
-                    ZakatInstalments.d.InstReqReason = "01";
-                }
-
+               
 
                 ZakatInstalments.d.insPlan_OffSet = new InsPlanOffSet();
                 ZakatInstalments.d.NotesSet = new EGAZT.Models.ZakatInstalationModels.NotesSetResult();
@@ -2155,7 +2118,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    ZakatInstalments.d.Fbnum = "";
+                    //ZakatInstalments.d.Fbnum = "";
                     //ZakatInstalments.d.Status = "E0001";
                 }
                 ZakatInstalments = await SubmitClicked();
@@ -2297,7 +2260,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         public void setMoreOptioButtons()
         {
             var listOfActionButtonsApplicable = new List<string>();
-            listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            if(App.selectedZakatItem != "") {
+
+                listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            }
+
+           
             listOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
             ListOfActionButtonsApplicable = listOfActionButtonsApplicable;
         }
@@ -2738,7 +2706,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             Preferences.Set("IsFromRevok", false);
             Preferences.Set("RevokeRef", "");
-            await App.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + ZakatInstalments.d.DpAmt + " " + AppResources.FORM5SAR, AppResources.CRContinue);
+            await App.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + " " +ZakatInstalments.d.DpAmt + " " + AppResources.FORM5SAR, AppResources.CRContinue);
             await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
 
         }
@@ -2827,6 +2795,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 if (IsZakatSelected || IsIncomeTaxViewEnabled || IsVATAmountVisible)
                 {
+                    if (IsZakat)
+                    {
+                        ZakatInstalments.d.InstReqFor = "01";
+
+                    }
+                    else
+                    {
+                        ZakatInstalments.d.InstReqFor = "02";
+                    }
+
+                    
+
+                    if (IDType == IDTypeDictionary[AppResources.ZakatFinancialCrisis])
+                    {
+                        ZakatInstalments.d.InstReqReason = "01";
+                    }
+                    else if (IDType == IDTypeDictionary[AppResources.ZakatDisputeInFavorOfGAZT])
+                    {
+                        ZakatInstalments.d.InstReqReason = "02";
+                    }
+                    else if (IDType == IDTypeDictionary[AppResources.ZakatOtherReason])
+                    {
+                        ZakatInstalments.d.InstReqReason = "03";
+                    }
+                    else
+                    {
+                        ZakatInstalments.d.InstReqReason = "01";
+                    }
+
+
                     GetZaktaInvoiceList();
                 }
                 else
@@ -3189,7 +3187,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                             ZakatInstalments.d.Status = ZakatInstalments.d.Status;
                         }
                         else {
-                            ZakatInstalments.d.Fbnum = "";
+                            //ZakatInstalments.d.Fbnum = "";
                             ZakatInstalments.d.Status = ZakatInstalments.d.Status;
                         }
 
@@ -3210,7 +3208,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                 IsInitialDraft = true;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-
+                                    App.selectedZakatItem = ZakatInstalments.d.Fbnum;
+                                    setMoreOptioButtons();
 
                                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
@@ -3555,7 +3554,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    ZakatInstalments.d.Fbnum = "";
+                   // ZakatInstalments.d.Fbnum = "";
                 }
                 if (!isSubmitClicked)
                 {
@@ -4109,7 +4108,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                             }
 
-                            if (ZakatInstalments.d.InstReqReason != null && Double.Parse(ZakatInstalments.d.InstReqReason) > 0)
+                            if (ZakatInstalments.d.InstReqReason != null && App.selectedZakatItem != "")
                             {
 
                                 MessagingCenter.Send<Object, string>(this, "SelectedReason", ZakatInstalments.d.InstReqReason);

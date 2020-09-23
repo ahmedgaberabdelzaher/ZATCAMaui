@@ -411,6 +411,9 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>رمز مرور خاطئ</value>
   </data>
+  <data name="InvalidEntry" xml:space="preserve">
+    <value>ادخال غير صحيح</value>
+  </data>
   <data name="EnterMobileNumber" xml:space="preserve">
     <value>الرجاء إدخال رقم الجوال</value>
   </data>
@@ -3777,6 +3780,9 @@
   <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
     <value>الممثل المالي</value>
   </data>
+  <data name="ZZZZVATRFinancialDelegate" xml:space="preserve">
+    <value>مندوب مالي</value>
+  </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>تاريخ البداية</value>
   </data>
@@ -4447,7 +4453,7 @@
     <value>الاسم 2</value>
   </data>
   <data name="TinDeregistrationOutletDetails" xml:space="preserve">
-    <value>معلومات الفرع</value>
+    <value>معلومات الفروع</value>
   </data>
   <data name="TinDeregistrationOutletReviewMessage" xml:space="preserve">
     <value>مراجعة معلومات الفرع الذي سيتم إلغاء تسجيله</value>
@@ -4540,7 +4546,7 @@
     <value>إيقاف التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="VATDeregistrationInstructionsTitle" xml:space="preserve">
-    <value>التعليمات والشروط</value>
+    <value>التعليمات</value>
   </data>
   <data name="VATDeregistrationReasonType1" xml:space="preserve">
     <value>إلغاء تسجيل ضريبة القيمة المضافة</value>
@@ -5640,7 +5646,7 @@
     <value>إنتظار الموافقة</value>
   </data>
   <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
-    <value>الشهور المتبقية</value>
+    <value>عدد الأشهر</value>
   </data>
   <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
     <value>عدد الاقساط الشهرية</value>
@@ -5850,7 +5856,7 @@
     <value>إجمالي المبلغ المدفوع</value>
   </data>
   <data name="ZakatInstalmentTotalAmountRemaining" xml:space="preserve">
-    <value>إجمالي المبلغ المتبقي</value>
+    <value>المبلغ المتبقي</value>
   </data>
   <data name="ForOfficerAssignmentPool" xml:space="preserve">
     <value>For Officer Assignment (Pool)</value>
@@ -6829,7 +6835,8 @@
     <value>تفاصيل التقرير</value>
   </data>
   <data name="VRHelperText" xml:space="preserve">
-    <value>النص المساعد</value>
+    <value>المستندات والأدلة المساندة:
+يرجى تزويدنا بالوثائق المساندة لدعم أسباب المراجعة</value>
   </data>
   <data name="VRAttachment" xml:space="preserve">
     <value>المرفقات</value>
@@ -7310,7 +7317,7 @@
     <value>اكتب سبب الإعتراض</value>
   </data>
   <data name="ZOReasonWithDraw" xml:space="preserve">
-    <value>Withdraw</value>
+    <value>سحب الإعتراض</value>
   </data>
   <data name="ZakatInstalmentBillAmount" xml:space="preserve">
     <value>مبلغ الفاتورة</value>
@@ -7339,9 +7346,6 @@
   <data name="ZakatInstalmentSADADBillNo" xml:space="preserve">
     <value>رقم فاتورة سداد</value>
   </data>
-  <data name="ZOWIthdrawInstructions" xml:space="preserve">
-    <value>1. Attach a request letter displaying the with a reason for this request</value>
-  </data>
   <data name="OZObjectionDate" xml:space="preserve">
     <value>تاريخ الاعتراض</value>
   </data>
@@ -7349,7 +7353,7 @@
     <value>نوع الاعتراض</value>
   </data>
   <data name="ZORevisedAmount" xml:space="preserve">
-    <value>مسودة الربط بناء على الاعتراض (المكلف</value>
+    <value>المبلغ الغير معترض عليه من المكلف</value>
   </data>
   <data name="ZOSelectReturn" xml:space="preserve">
     <value>حدد العودة</value>
@@ -7403,7 +7407,7 @@
     <value>العملة</value>
   </data>
   <data name="ZOObjectionRefNo" xml:space="preserve">
-    <value>Objection Ref No</value>
+    <value>الرقم المرجعي للإعتراض</value>
   </data>
   <data name="ZOPeriodFrom" xml:space="preserve">
     <value>الفترة من</value>
@@ -7445,7 +7449,7 @@
     <value>الدعم الفني</value>
   </data>
   <data name="VatInstalmentSearchPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="VatInstalment5MB" xml:space="preserve">
     <value>5MB</value>
@@ -7625,5 +7629,54 @@
   </data>
   <data name="NDV" xml:space="preserve">
     <value>v</value>
+  </data>
+  <data name="CRWarning" xml:space="preserve">
+    <value>تنبيه</value>
+  </data>
+  <data name="BPTermsAndConditions" xml:space="preserve">
+    <value>الشروط والأحكام</value>
+  </data>
+  <data name="VATChangeRegistrationAddFinancialRepresentative" xml:space="preserve">
+    <value>هل تريد إضافة ممثل مالي جديد</value>
+    <comment>VATRegistration</comment>
+  </data>
+  <data name="ZZZZVatRegistrationAmendmentTile" xml:space="preserve">
+    <value>تعديل تفاصيل تسجيل ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVatRegistrationReactivationTile" xml:space="preserve">
+    <value>تنشيط حساب ضريبة القيمة المضافة</value>
+  </data>
+  <data name="VATAmendRegistrationFinancialDetailsChangeSection" xml:space="preserve">
+    <value>هل تريد تغيير هذا القسم؟</value>
+    <comment>VATRegistration</comment>
+  </data>
+  <data name="ZOReasonOfObjection" xml:space="preserve">
+    <value>سبب الإعتراض</value>
+  </data>
+  <data name="ZOWIthdrawInstructions" xml:space="preserve">
+    <value>ارفاق خطاب طلب مع ذكر سبب هذا الطلب</value>
+  </data>
+  <data name="ZOWithdrawGeneralAttachmentOne" xml:space="preserve">
+    <value>ZOObjectionRefNo</value>
+  </data>
+  <data name="ZOWithdrawGeneralAttachmentTwo" xml:space="preserve">
+    <value>اعتماد الفرع</value>
+  </data>
+  <data name="ZOAttachmentsTitleOne" xml:space="preserve">
+    <value>حجم الملف المسموح به في المرفقات 10 MB</value>
+  </data>
+  <data name="ZOAttachmentsTitleTwo" xml:space="preserve">
+    <value>تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من MB10
+اعدادات الماسح الضوئي الموصى بها : 745*1024
+صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
+  </data>
+  <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
+    <value>تم استلام طلب إلغاء الزكاة بنجاح</value>
+  </data>
+  <data name="NDGregorian" xml:space="preserve">
+    <value>هجري</value>
+  </data>
+  <data name="NDHijri" xml:space="preserve">
+    <value>ميلادي</value>
   </data>
 </root>

@@ -136,7 +136,7 @@ namespace EGAZT
         public static string VATRegistrationDisplayDetails = "VATRegistrationDisplayDetails";
         public static string MoreMenuPopUpPageViewRTwo = "MoreMenuPopUpPageViewRTwo";
         public static string VRSuspensionViewAppPageView = "VRSuspensionViewAppPageView";
-
+        public static string VRVatRegViewPageView = "VRVatRegViewPageView";
         #endregion
 
         #region old view strings
@@ -238,6 +238,7 @@ namespace EGAZT
         //VATRefundsListPageView
         #endregion
 
+        public static Enums.VATRegDetailsExecutionType VATType { get; set; }
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
@@ -445,7 +446,7 @@ namespace EGAZT
                     });
                 }
             });
-            
+
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
@@ -712,7 +713,7 @@ namespace EGAZT
             var _navigation = Application.Current.MainPage.Navigation;
             Page topPage = _navigation.NavigationStack.ToList().LastOrDefault();
 
-            if(topPage.GetType().Name == App.SFLoginPageView)
+            if (topPage.GetType().Name == App.SFLoginPageView)
             {
                 return true;
             }
@@ -806,7 +807,7 @@ namespace EGAZT
                         }
                     }
 
-                    
+
                     // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
                 });
 

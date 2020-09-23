@@ -2332,6 +2332,7 @@ namespace EGAZT
             navigationService.Configure(App.VRVatDeRegViewAppPageView, typeof(VRVatDeRegViewAppPageView));
             navigationService.Configure(App.VRInputTDViewAppPageViewApp, typeof(VRInputTDViewAppPageViewApp));
             navigationService.Configure(App.VRSuspensionViewAppPageView, typeof(VRSuspensionViewAppPageView));
+            navigationService.Configure(App.VRVatRegViewPageView, typeof(VRVatRegViewPageView));
             #endregion
 
 

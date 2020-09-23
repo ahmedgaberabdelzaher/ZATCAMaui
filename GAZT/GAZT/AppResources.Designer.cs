@@ -581,6 +581,12 @@ namespace EGAZT {
             }
         }
         
+        public static string InvalidEntry {
+            get {
+                return ResourceManager.GetString("InvalidEntry", resourceCulture);
+            }
+        }
+        
         public static string LogoutConfirmationMessage {
             get {
                 return ResourceManager.GetString("LogoutConfirmationMessage", resourceCulture);
@@ -6273,6 +6279,12 @@ namespace EGAZT {
         public static string ZZZZVATRFinancialRepresentative {
             get {
                 return ResourceManager.GetString("ZZZZVATRFinancialRepresentative", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATRFinancialDelegate {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFinancialDelegate", resourceCulture);
             }
         }
         
@@ -13971,6 +13983,78 @@ namespace EGAZT {
         public static string NDV {
             get {
                 return ResourceManager.GetString("NDV", resourceCulture);
+            }
+        }
+        
+        public static string CRWarning {
+            get {
+                return ResourceManager.GetString("CRWarning", resourceCulture);
+            }
+        }
+        
+        public static string VATChangeRegistrationAddFinancialRepresentative {
+            get {
+                return ResourceManager.GetString("VATChangeRegistrationAddFinancialRepresentative", resourceCulture);
+            }
+        }
+        
+        public static string VATAmendRegistrationFinancialDetailsChangeSection {
+            get {
+                return ResourceManager.GetString("VATAmendRegistrationFinancialDetailsChangeSection", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVatRegistrationAmendmentTile {
+            get {
+                return ResourceManager.GetString("ZZZZVatRegistrationAmendmentTile", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVatRegistrationReactivationTile {
+            get {
+                return ResourceManager.GetString("ZZZZVatRegistrationReactivationTile", resourceCulture);
+            }
+        }
+        
+        public static string NDVATRegistrationAmend {
+            get {
+                return ResourceManager.GetString("NDVATRegistrationAmend", resourceCulture);
+            }
+        }
+        
+        public static string NDVATRegistrationReactivation {
+            get {
+                return ResourceManager.GetString("NDVATRegistrationReactivation", resourceCulture);
+            }
+        }
+        
+        public static string ZOAttachmentsTitleOne {
+            get {
+                return ResourceManager.GetString("ZOAttachmentsTitleOne", resourceCulture);
+            }
+        }
+        
+        public static string ZOAttachmentsTitleTwo {
+            get {
+                return ResourceManager.GetString("ZOAttachmentsTitleTwo", resourceCulture);
+            }
+        }
+        
+        public static string NDZakatWithdrawSubmittedSuccessfully {
+            get {
+                return ResourceManager.GetString("NDZakatWithdrawSubmittedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string NDGregorian {
+            get {
+                return ResourceManager.GetString("NDGregorian", resourceCulture);
+            }
+        }
+        
+        public static string NDHijri {
+            get {
+                return ResourceManager.GetString("NDHijri", resourceCulture);
             }
         }
     }

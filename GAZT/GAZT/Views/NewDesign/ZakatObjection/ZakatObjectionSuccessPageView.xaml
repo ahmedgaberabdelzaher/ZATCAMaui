@@ -38,7 +38,7 @@
                        Source="Forget_ic_success" />
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatObjection}" Margin="0,20,0,0"
                                     FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatObjectionIsSubmittedSuccessfully}"
+                <custom:CustomLabel Text="{Binding SuccessMessage}"
                                     Margin="0,15,0,0"
                                     TextColor="White" HorizontalOptions="Center" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             </StackLayout>

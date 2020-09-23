@@ -1116,7 +1116,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnPreButtonClick = new Command(() => navigateToPre());
+            OnPreButtonClick = new Command(() => _navigationService.GoBack());
 
             #region Registration Tab Variable initialization
 
@@ -2014,14 +2014,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
                     SelectedRegNationalityType = NationalityMapping[taxPayerDetails?.Tpnationality];
-                    if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality))
+                    
+                    if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                     {
                         var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong) {
                             CloseWhenBackgroundIsClicked = false
                         };
                         someThingWhentWrong.OnDone = () =>
                         {
-                            _navigationService.GoBack();
+                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         };
                         await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
                         return;
@@ -2501,7 +2502,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            //return true;
+            return true;
             try
             {
                 IsLoading = true;

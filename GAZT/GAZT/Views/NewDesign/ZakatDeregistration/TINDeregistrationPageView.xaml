@@ -202,6 +202,7 @@
                                 </StackLayout>
                             </border:SfBorder >
                             <StackLayout.Triggers>
+                         
                                  <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
@@ -229,7 +230,7 @@
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
 
                         <StackLayout>
-                            <StackLayout>
+                            <StackLayout IsVisible="{Binding DateField.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -785,6 +786,9 @@
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecName}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                             <custom:BorderlessEntry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </custom:BorderlessEntry.Behaviors>
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
@@ -797,6 +801,9 @@
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecDesig}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                             <custom:BorderlessEntry.Behaviors>
+                                            <custom1:OnlyAlphabatesBehaviour/>
+                                        </custom:BorderlessEntry.Behaviors>
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>

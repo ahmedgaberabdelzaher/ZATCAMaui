@@ -41,6 +41,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             if (App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
@@ -302,5 +303,9 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
                 viewModel.otpTimer.Stop();
         }
 
+        private void OnBackTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
+        }
     }
 }

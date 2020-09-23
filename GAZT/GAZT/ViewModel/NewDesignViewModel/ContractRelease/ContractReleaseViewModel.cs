@@ -603,85 +603,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private Dictionary<string, double> ContractTypeDictionary = new Dictionary<string, double>
-        {
-            {AppResources.CRSupplyforAramco, 3.0},
-            {AppResources.CRSupplyandmaintenance, 10.50},
-            {AppResources.CRsupplymaintenanceandoperating, 10.50},
-            {AppResources.CRDisassembleinstallationandoperate, 10.50},
-            {AppResources.CRsupplyinstallationandoperate, 10.50},
-            {AppResources.CRDisassembleinstallationandtransport, 10.50},
-            {AppResources.CRCleanlinessandmaintenance, 10.50},
-            {AppResources.CRSupplyinstallationanddeliver, 10.50},
-            {AppResources.CRmaintenanceandoperate, 10.50},
-            {AppResources.CRtransport, 10.50},
-            {AppResources.CRsupplyandwatertransport, 10.50},
-            {AppResources.CRconstruction, 10.50},
-            {AppResources.CRmaintenance, 10.50},
-            {AppResources.CRoperate, 10.50},
-            {AppResources.CRDesignandconstruction, 10.50},
-            {AppResources.CRsupplyanddesign, 10.50},
-            {AppResources.CRsupplyandoprate, 10.50},
-            {AppResources.CRsupplyandinstallation, 10.50},
-            {AppResources.CRdesignsupplyandinstallation, 10.50},
-            {AppResources.CRdesignsupplyandopratemaintenance, 10.50},
-            {AppResources.CRequipmentrental, 10.50},
-            {AppResources.CRmaintenancecleanlinessandoprate, 10.50},
-            {AppResources.CRcleanliness, 10.50},
-            {AppResources.CRcatering, 10.50},
-            {AppResources.CRSecurityguards, 10.50},
-            {AppResources.CRRoadsmaintenance, 10.50},
-            {AppResources.CRLaborrecruiting, 10.50},
-            {AppResources.CRContractingRoadsandTransport, 10.50},
-            {AppResources.CRSupply, 15.00},
-            {AppResources.CRSupplyanddeliverytowarehouses, 15.00},
-            {AppResources.CRSupplyanddeliveryport, 15.00},
-            {AppResources.CROperationofservicesattheport, 15.00},
-            {AppResources.CRConsultations, 20.00},
-            {AppResources.CRPrivateConsultante, 20.00},
-            {AppResources.CRStudiesandConsulting, 20.00},
-            {AppResources.CROther, 15.00},
-        };
+        private Dictionary<string, double> ContractTypeDictionary = null;
 
-        private Dictionary<string, string> ContractTypeIdDictionary = new Dictionary<string, string>
-            {
-                {AppResources.CRSupplyforAramco,"1" },
-                {AppResources.CRSupplyandmaintenance, "2"},
-                {AppResources.CRsupplymaintenanceandoperating, "3"},
-                {AppResources.CRDisassembleinstallationandoperate, "4"},
-                {AppResources.CRsupplyinstallationandoperate, "5"},
-                {AppResources.CRDisassembleinstallationandtransport, "6"},
-                {AppResources.CRCleanlinessandmaintenance, "7"},
-                {AppResources.CRSupplyinstallationanddeliver, "8"},
-                {AppResources.CRmaintenanceandoperate, "9"},
-                {AppResources.CRtransport, "10"},
-                {AppResources.CRsupplyandwatertransport, "11"},
-                {AppResources.CRconstruction, "12"},
-                {AppResources.CRmaintenance, "13"},
-                {AppResources.CRoperate, "14"},
-                {AppResources.CRDesignandconstruction, "15"},
-                {AppResources.CRsupplyanddesign, "16"},
-                {AppResources.CRsupplyandoprate, "17"},
-                {AppResources.CRsupplyandinstallation, "18"},
-                {AppResources.CRdesignsupplyandinstallation, "19"},
-                {AppResources.CRdesignsupplyandopratemaintenance, "20"},
-                {AppResources.CRequipmentrental, "21"},
-                {AppResources.CRmaintenancecleanlinessandoprate, "22"},
-                {AppResources.CRcleanliness, "23"},
-                {AppResources.CRcatering, "24"},
-                {AppResources.CRSecurityguards, "25"},
-                {AppResources.CRRoadsmaintenance, "26"},
-                {AppResources.CRLaborrecruiting, "27"},
-                {AppResources.CRContractingRoadsandTransport, "28"},
-                {AppResources.CRSupply, "29"},
-                {AppResources.CRSupplyanddeliverytowarehouses, "30"},
-                {AppResources.CRSupplyanddeliveryport, "31"},
-                {AppResources.CROperationofservicesattheport,"32"},
-                {AppResources.CRConsultations, "34"},
-                {AppResources.CRPrivateConsultante, "35"},
-                {AppResources.CRStudiesandConsulting, "36"},
-                {AppResources.CROther, "33"},
-            };
+
+        private Dictionary<string, string> ContractTypeIdDictionary = null;
+            
         private ContractReleaseFormResponse _contractReleaseData;
 
         public ContractReleaseFormResponse ContractReleaseData
@@ -857,6 +783,93 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             MakeCalculations();
         }
 
+        public void updatePickerContractType() {
+
+
+        ContractTypeDictionary = new Dictionary<string, double>
+        {
+            {AppResources.CRSupplyforAramco, 3.0},
+            {AppResources.CRSupplyandmaintenance, 10.50},
+            {AppResources.CRsupplymaintenanceandoperating, 10.50},
+            {AppResources.CRDisassembleinstallationandoperate, 10.50},
+            {AppResources.CRsupplyinstallationandoperate, 10.50},
+            {AppResources.CRDisassembleinstallationandtransport, 10.50},
+            {AppResources.CRCleanlinessandmaintenance, 10.50},
+            {AppResources.CRSupplyinstallationanddeliver, 10.50},
+            {AppResources.CRmaintenanceandoperate, 10.50},
+            {AppResources.CRtransport, 10.50},
+            {AppResources.CRsupplyandwatertransport, 10.50},
+            {AppResources.CRconstruction, 10.50},
+            {AppResources.CRmaintenance, 10.50},
+            {AppResources.CRoperate, 10.50},
+            {AppResources.CRDesignandconstruction, 10.50},
+            {AppResources.CRsupplyanddesign, 10.50},
+            {AppResources.CRsupplyandoprate, 10.50},
+            {AppResources.CRsupplyandinstallation, 10.50},
+            {AppResources.CRdesignsupplyandinstallation, 10.50},
+            {AppResources.CRdesignsupplyandopratemaintenance, 10.50},
+            {AppResources.CRequipmentrental, 10.50},
+            {AppResources.CRmaintenancecleanlinessandoprate, 10.50},
+            {AppResources.CRcleanliness, 10.50},
+            {AppResources.CRcatering, 10.50},
+            {AppResources.CRSecurityguards, 10.50},
+            {AppResources.CRRoadsmaintenance, 10.50},
+            {AppResources.CRLaborrecruiting, 10.50},
+            {AppResources.CRContractingRoadsandTransport, 10.50},
+            {AppResources.CRSupply, 15.00},
+            {AppResources.CRSupplyanddeliverytowarehouses, 15.00},
+            {AppResources.CRSupplyanddeliveryport, 15.00},
+            {AppResources.CROperationofservicesattheport, 15.00},
+            {AppResources.CRConsultations, 20.00},
+            {AppResources.CRPrivateConsultante, 20.00},
+            {AppResources.CRStudiesandConsulting, 20.00},
+            {AppResources.CROther, 15.00},
+        };
+
+
+            ContractTypeIdDictionary = new Dictionary<string, string>
+            {
+                {AppResources.CRSupplyforAramco,"1" },
+                {AppResources.CRSupplyandmaintenance, "2"},
+                {AppResources.CRsupplymaintenanceandoperating, "3"},
+                {AppResources.CRDisassembleinstallationandoperate, "4"},
+                {AppResources.CRsupplyinstallationandoperate, "5"},
+                {AppResources.CRDisassembleinstallationandtransport, "6"},
+                {AppResources.CRCleanlinessandmaintenance, "7"},
+                {AppResources.CRSupplyinstallationanddeliver, "8"},
+                {AppResources.CRmaintenanceandoperate, "9"},
+                {AppResources.CRtransport, "10"},
+                {AppResources.CRsupplyandwatertransport, "11"},
+                {AppResources.CRconstruction, "12"},
+                {AppResources.CRmaintenance, "13"},
+                {AppResources.CRoperate, "14"},
+                {AppResources.CRDesignandconstruction, "15"},
+                {AppResources.CRsupplyanddesign, "16"},
+                {AppResources.CRsupplyandoprate, "17"},
+                {AppResources.CRsupplyandinstallation, "18"},
+                {AppResources.CRdesignsupplyandinstallation, "19"},
+                {AppResources.CRdesignsupplyandopratemaintenance, "20"},
+                {AppResources.CRequipmentrental, "21"},
+                {AppResources.CRmaintenancecleanlinessandoprate, "22"},
+                {AppResources.CRcleanliness, "23"},
+                {AppResources.CRcatering, "24"},
+                {AppResources.CRSecurityguards, "25"},
+                {AppResources.CRRoadsmaintenance, "26"},
+                {AppResources.CRLaborrecruiting, "27"},
+                {AppResources.CRContractingRoadsandTransport, "28"},
+                {AppResources.CRSupply, "29"},
+                {AppResources.CRSupplyanddeliverytowarehouses, "30"},
+                {AppResources.CRSupplyanddeliveryport, "31"},
+                {AppResources.CROperationofservicesattheport,"32"},
+                {AppResources.CRConsultations, "34"},
+                {AppResources.CRPrivateConsultante, "35"},
+                {AppResources.CRStudiesandConsulting, "36"},
+                {AppResources.CROther, "33"},
+            };
+
+        }
+
+
         private async void showDatePickerDialog(string title)
         {
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
@@ -1027,6 +1040,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         private async void SummaryConBtnClicked()
         {
+
+           
             try
             {
 
@@ -1034,10 +1049,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 if (!isSubmitted)
                 {
                     isSubmitted = true;
-                    await Task.Run(() =>
-                    {
-                        IsLoading = true;
-                    });
+                   
+                   
                     ContractReleaseData = await SubmitClicked();
                     if (ContractReleaseData.d != null)
                     {
@@ -1058,9 +1071,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
             catch (InternetException ex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -1294,8 +1315,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
 
 
-               
-               
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = true;
+                });
+
 
 
                 request = BuildRequestObject();
@@ -1678,6 +1702,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public void ResetData()
         {
+
+            updatePickerContractType();
             _isInvoiceAttachments = true;
             IsReleaseDetailsEnabled = false;
             IsAttachmentsEnabled = false;
@@ -1710,6 +1736,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             setPickerModel();
             ContractCopyAttachmentsListViewData = null;
             InvoiceAttachmentsListViewData = null;
+           
         }
 
 

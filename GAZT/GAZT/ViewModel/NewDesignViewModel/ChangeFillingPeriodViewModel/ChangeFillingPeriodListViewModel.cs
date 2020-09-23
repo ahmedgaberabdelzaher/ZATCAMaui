@@ -261,16 +261,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
 
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
-            {
-                EnableFrequencyListView();
-            });
+          
 
             CloseClick = new Command(async () =>
             {
                 _navigationService.GoBack();
             });
 
+
+            GoBackClick = new Command(async () =>
+            {
+                if (IsMyRequestsViewEnabled)
+                {
+                    _navigationService.GoBack();
+                }
+                else
+                {
+                    EnableFrequencyListView();
+                }
+            });
             MyRequestsButtonTapped = new Command(async () =>
             {
 

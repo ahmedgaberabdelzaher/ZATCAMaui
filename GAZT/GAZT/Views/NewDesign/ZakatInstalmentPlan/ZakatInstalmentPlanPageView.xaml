@@ -150,11 +150,17 @@
                                     </Grid.ColumnDefinitions>
 
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                Text="{x:Static ResourceManager:AppResources.ZakatYearOne}"
                                                 HorizontalOptions="StartAndExpand"
                                                 Margin="0,0,0,10"
                                                 VerticalOptions="FillAndExpand"
-                                                Style="{StaticResource ValueLabelBlack}" />
+                                                Style="{StaticResource ValueLabelBlack}" >
+                                          <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatYearOne}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                                     <!--ZakatYear-->
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Orientation="Vertical">
@@ -389,10 +395,16 @@
                                     </Grid.ColumnDefinitions>
 
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                Text="{x:Static ResourceManager:AppResources.ZakatYearTwo}"
                                                 HorizontalOptions="StartAndExpand"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource ValueLabelBlack}" />
+                                                Style="{StaticResource ValueLabelBlack}" >
+                                           <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatYearTwo}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                                     <!--ZakatYear-->
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
@@ -628,10 +640,16 @@
                                     </Grid.ColumnDefinitions>
 
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                Text="{x:Static ResourceManager:AppResources.ZakatYearThree}"
                                                 HorizontalOptions="StartAndExpand"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource ValueLabelBlack}" />
+                                                Style="{StaticResource ValueLabelBlack}" >
+                                           <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatYearThree}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                                     <!--ZakatYear-->
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
@@ -1225,9 +1243,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentBankSettlement}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                                            Style="{StaticResource MicroGrayLabelStyle}" >
+                                 <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentBankSettlement}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                          Style="{StaticResource SfStyleGreyBorderFrame}">
 
@@ -1321,9 +1345,15 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentFInancialStatement}"
                                             HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                                            Style="{StaticResource MicroGrayLabelStyle}" >
+                                      <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentFInancialStatement}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                          Style="{StaticResource SfStyleGreyBorderFrame}">
                                 <Grid>
@@ -1703,7 +1733,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.InstalmentSchedule}" HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSummary}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlackBold}" />
                             <custom:CustomLabel IsVisible="false" Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />

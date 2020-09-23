@@ -566,74 +566,26 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         public void suspendedDateValidation()
             {
-            bool isValid = false;
-            int result;
-            PopUp popUp = new PopUp();
-            StringBuilder Messages = new StringBuilder();
-            popUp.IsLinkAvailable = false;
-
-            if (viewModel.LastIcrDate < viewModel.FromDate)
+            if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
             {
-                isValid = true;
-            }
-            else
-            {
-                popUp.Message = AppResources.VatDeregistrationSuspendedDateValidation;
-                isValid = false;
-            }
-
-            double quarterrDiff = quarterDiff(viewModel.FromDate, viewModel.ToDate);
-            int monthDiff = GetMonthDifference(viewModel.FromDate, viewModel.ToDate);
-            result = DateTime.Compare(viewModel.ToDate, viewModel.FromDate);
-
-            if (result == 0 || result < 0)
-            {
-                isValid = false;
-                popUp.Message = AppResources.VatDeregSuspendedEndDateMismatchException;
-
-            }
-            if (viewModel.VATDeRegistrationDetailsData.d.Atype == "2")
-            {
-                if (monthDiff < 1)
+                if(viewModel.LastIcrDate > viewModel.FromDate)
                 {
-
-                    int daysDiff = (viewModel.ToDate.Date - viewModel.FromDate.Date).Days + 1;
-                    int daysInMonth = System.DateTime.DaysInMonth(viewModel.ToDate.Year, viewModel.ToDate.Month);
-                    if (daysDiff < daysInMonth)
-                    {
-                        isValid = false;
-
-                        popUp.Message = AppResources.VatDeregSuspendedDateMismatchException;
-
-                    }
-                    else
-                    {
-
-                        isValid = true;
-                    }
+                    viewModel._dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Information);
 
                 }
-            }
-            else
-            {
-                if (quarterrDiff <= 1)
+               else if (viewModel.ToDate <= viewModel.FromDate)
                 {
-                    isValid = false;
 
-                    popUp.Message = AppResources.VatDeregSuspendedDateMismatchException;
+                    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Information);
 
                 }
-            }
-
-            if (isValid == true)
-            {
-                if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                else
                 {
                     DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
                     DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
-
-                    VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
-                    if (obj != null)
+                    string validateSuspendedDate = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
+                    VATDeregistrationSuspendedDateRootObject obj = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(validateSuspendedDate);
+                    if (obj.d != null)
                     {
                         if (obj.d.dateResults[0].SuspDtfrom != null)
                         {
@@ -669,27 +621,30 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             viewModel.NextFilingDueDate = date.ToString("dd MMM yyyy", new CultureInfo("en-US"));
                         }
                     }
-                    isValid = false;
-                }
-            }
-            else
-            {
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                    popUp.isFontSet = true;
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
+                    else
+                    {
 
-                if (isCalled == false)
-                {
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    isCalled = true;
+                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(validateSuspendedDate);
+                        StringBuilder Message = new StringBuilder();
+                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                        {
+                            if (itemerror.code.Contains("ZD_DGVT/019"))
+                            {
+                                if (Message.Length > 0)
+                                {
+                                    Message.Append(Environment.NewLine);
+                                }
+                                Message.Append(itemerror.message);
+                            }
+                        }
+                        viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+
+
+                    }
+
                 }
             }
+
 
         }
         public static double quarterDiff(DateTime first, DateTime second)
