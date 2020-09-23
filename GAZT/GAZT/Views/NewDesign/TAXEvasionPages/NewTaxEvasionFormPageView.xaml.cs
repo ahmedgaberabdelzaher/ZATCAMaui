@@ -166,16 +166,16 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     double lat = 24.7136, lon = 46.6753;
                     try
                     {
-                        //var timeout = TimeSpan.FromSeconds(4);
-                        var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                        var location = await Geolocation.GetLocationAsync(request);
-                        if (location != null)
-                        {
-                            lat = location.Latitude;
-                            lon = location.Longitude;
-                        }
+                    //var timeout = TimeSpan.FromSeconds(4);
 
-                        Position position = new Position(lat, lon);
+                    //var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                    //var location = await Geolocation.GetLocationAsync(request);
+                    //if (location != null)
+                    //{
+                    //    lat = location.Latitude;
+                    //    lon = location.Longitude;
+                    //}
+                    Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
                         mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
@@ -184,9 +184,13 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         pin.Label = "Report Location";
                         pin.Type = PinType.Place;
                         pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-                        var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                        var addrs = (await Geocoding.GetPlacemarksAsync(new Location(viewModel.Latitude, viewModel.Longitude))).FirstOrDefault();
                         viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
                     mapView.Pins.Add(pin);
+
+                    setCurrentLocationtomap();
+
+
                 }
                     catch (FeatureNotSupportedException fnsEx)
                     {
@@ -211,6 +215,59 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
             //});
            
+        }
+        private async  void setCurrentLocationtomap()
+        {
+            try
+            {
+                double lat = 24.7136, lon = 46.6753;
+                try
+                {
+                    //var timeout = TimeSpan.FromSeconds(4);
+
+                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                    var location = await Geolocation.GetLocationAsync(request);
+                    if (location != null)
+                    {
+                        lat = location.Latitude;
+                        lon = location.Longitude;
+                    }
+                    Position position = new Position(lat, lon);
+                    MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
+                    mapView.MoveToRegion(mapSpan);
+                    viewModel.Latitude = lat;
+                    viewModel.Longitude = lon;
+                    Pin pin = new Pin();
+                    pin.Label = "Report Location";
+                    pin.Type = PinType.Place;
+                    pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+                    var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                    viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
+                    mapView.Pins.Add(pin);
+
+
+
+                }
+                catch (FeatureNotSupportedException fnsEx)
+                {
+                    // Handle not supported on device exception
+                }
+                catch (FeatureNotEnabledException fneEx)
+                {
+                    // Handle not enabled on device exception
+                }
+                catch (PermissionException pEx)
+                {
+                    // Handle permission exception
+                }
+                catch (Exception ex)
+                {
+                    // Unable to get location
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void TxtTIN_Unfocused(object sender, FocusEventArgs e)
@@ -303,17 +360,17 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             try
             {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                var location = await Geolocation.GetLocationAsync(request);
-                if (location != null)
-                {
-                    Position position = new Position(location.Latitude, location.Longitude);
-                    MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                    //mapView.MoveToRegion(mapSpan);
-                    viewModel.Latitude = location.Latitude;
-                    // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
-                    viewModel.Longitude = location.Longitude;
-                }
+                //var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                //var location = await Geolocation.GetLocationAsync(request);
+                //if (location != null)
+                //{
+                //    Position position = new Position(location.Latitude, location.Longitude);
+                //    MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                //    //mapView.MoveToRegion(mapSpan);
+                //    viewModel.Latitude = location.Latitude;
+                //    // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
+                //    viewModel.Longitude = location.Longitude;
+                //}
 
             }
             catch (FeatureNotSupportedException fnsEx)
