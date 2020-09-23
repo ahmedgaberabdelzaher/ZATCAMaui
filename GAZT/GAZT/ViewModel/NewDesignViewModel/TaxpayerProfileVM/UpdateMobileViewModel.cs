@@ -394,6 +394,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     APIRequestDataModel.RequestType = "VERIFYOTPMOBILE";
                     APIRequestDataModel.OTP = EnteredOTP;
                     APIRequestDataModel.NewMobile = newMobileNumber;
+                    APIRequestDataModel.CountryCode = MobileCountry;
 
                     TPProfileAPIRequest TPProfileAPIRequestData = TPProfileAPIRequest.PrepareRequestData(APIRequestDataModel);
                     TP = await WebServiceManager.POSTTPProfileAPICalls(TPProfileAPIRequestData, "VERIFYOTPMOBILE");
