@@ -1683,6 +1683,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //    App.DisplayProgressView();
                 //});
 
+
+
                 TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
                 TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
 
@@ -1704,6 +1706,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
                         SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
+
+                        MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
                     }
                     catch (Exception ex)
                     {
@@ -2376,6 +2380,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsAttachmentsViewEnabled = false;
                     IsDeclarationViewEnabled = true;
                     IsSummaryViewEnabled = false;
+
+                   if( TinDeregistrationData.ADeclarationChkbox == "1")
+                    {
+                        IsDeclarationChecked = true;
+                    }
+                    else
+                    {
+                        IsDeclarationChecked = false;
+                    }
                 }
                 else
                 {
@@ -3297,6 +3310,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     TinDeregistrationData.ADecDate = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
+                    if (IsDeclarationChecked)
+                    {
+                        TinDeregistrationData.ADeclarationChkbox = "1";
+                    }
+                    else
+                    {
+                        TinDeregistrationData.ADeclarationChkbox = "0";
+                    }
 
                     //try
                     //{
