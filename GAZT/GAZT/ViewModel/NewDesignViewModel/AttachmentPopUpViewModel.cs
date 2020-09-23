@@ -90,10 +90,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _objectionReason = value;
-                if(!string.IsNullOrEmpty(ObjectionReason))
-                {
-                    SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
-                }
+                //if(!string.IsNullOrEmpty(ObjectionReason))
+                //{
+                //    SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
+                //}
 
 
                 RaisePropertyChanged("ObjectionReason");

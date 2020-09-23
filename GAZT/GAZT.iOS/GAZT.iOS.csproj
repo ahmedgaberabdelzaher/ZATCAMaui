@@ -29,10 +29,10 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
+    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
-    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
+    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

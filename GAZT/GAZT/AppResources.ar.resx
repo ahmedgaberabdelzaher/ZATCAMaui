@@ -4383,6 +4383,9 @@
   <data name="TinDeregistrationTransfer" xml:space="preserve">
     <value>نقل</value>
   </data>
+      <data name="TinDeregistrationContactNumber" xml:space="preserve">
+    <value>رقم الاتصال</value>
+  </data>
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
   </data>

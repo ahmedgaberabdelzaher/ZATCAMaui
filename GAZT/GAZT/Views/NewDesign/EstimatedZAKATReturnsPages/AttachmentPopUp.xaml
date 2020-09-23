@@ -29,10 +29,10 @@
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
 
-    <yummy:PancakeView Grid.Row="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" HeightRequest="400">
-
-      
-            <StackLayout Spacing="0" Grid.Row="0">
+    <yummy:PancakeView Padding="0" Grid.Row="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" HeightRequest="400">
+        <StackLayout>
+            <ScrollView >
+          <StackLayout Spacing="0" Grid.Row="0" Padding="15">
                 <!--<Image HorizontalOptions="End">
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
@@ -82,7 +82,7 @@
                     </border:SfBorder>
 
                     <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
-                        <ListView  x:Name="Attachmentlist" 
+                        <ListView  x:Name="Attachmentlist" HeightRequest="300"
            ItemsSource="{Binding ZakatReturnAttachmentsList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -130,14 +130,7 @@
                     </StackLayout>
                     <!--<custom:CustomLabel Margin="0,-5,0,0" Text="50MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
 
-                    <!--Footer Section Starts-->
-                    <StackLayout Grid.Row="2" BackgroundColor="White">
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />-->
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />
-
-                    </StackLayout>
-                    <!--Footer Section Ends-->
-                </StackLayout>
+                     </StackLayout>
 
                 <!--End of Attachment Visible-->
 
@@ -146,7 +139,17 @@
 
           
 
-       
+       </ScrollView>
+             <!--Footer Section Starts-->
+                    <StackLayout Grid.Row="2" BackgroundColor="White" Padding="10">
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />-->
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />
+
+                    </StackLayout>
+                    <!--Footer Section Ends-->
+              
+</StackLayout>
+
     </yummy:PancakeView>
 
           <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"   IsVisible="{Binding IsLoading}" >
