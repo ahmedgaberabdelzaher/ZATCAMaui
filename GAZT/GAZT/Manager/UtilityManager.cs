@@ -1071,7 +1071,20 @@ namespace GAZT.Manager
             //return AnswersGroupedByQuestionNo.FindIndex(qmm);
             return index;
         }
-
+        private static  string[] allFormats ={"yyyy/MM/dd","yyyy/M/d",
+        "dd/MM/yyyy","d/M/yyyy",
+        "dd/M/yyyy","d/MM/yyyy","yyyy-MM-dd",
+        "yyyy-M-d","dd-MM-yyyy","d-M-yyyy",
+        "dd-M-yyyy","d-MM-yyyy","yyyy MM dd",
+        "yyyy M d","dd MM yyyy","d M yyyy",
+        "dd M yyyy","d MM yyyy"};
+        public static  string HijriToGreg(string hijri)
+        {
+            CultureInfo arCul = new CultureInfo("ar-SA");
+            CultureInfo enCul = new CultureInfo("en-US");
+            DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
+            return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
+        }
         // * New Password Validation
         public static bool ValidateNewPassword(string password)
         {
