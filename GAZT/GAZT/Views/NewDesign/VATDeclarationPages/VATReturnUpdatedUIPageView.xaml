@@ -2780,7 +2780,7 @@
 
                 <buttons:SfButton x:Name="btnprimary"   VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmAndRefundRequest}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <buttons:SfButton Text="{Binding RefundButtonText}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
 
                 <buttons:SfButton Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
 

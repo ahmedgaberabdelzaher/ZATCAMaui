@@ -47,6 +47,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsCheckedTaxPayerDetailsInfo = false;
                     viewModel.IsRefundButtonEnabled = true;
                     viewModel.IsNavigatedToSubmitted = false;
+                    viewModel.RefundButtonText = AppResources.ZZZZConfirmAndRefundRequest;
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                  
                 }

@@ -7818,4 +7818,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="NDHijri" xml:space="preserve">
     <value>Hijri</value>
   </data>
+  <data name="ZZZZViewRefund" xml:space="preserve">
+    <value>View Refund Information</value>
+  </data>
 </root>
