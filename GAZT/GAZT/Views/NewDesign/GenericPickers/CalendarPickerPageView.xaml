@@ -43,7 +43,7 @@
                  <StackLayout IsVisible="{Binding IsFutureDatePickerVisible}" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
 
                     <Label Text="{Binding DatePickerTitle}"
-                                        HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
+                                        HorizontalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                     Margin="0,16,0,16"  />
                      <custom11:GenericCustomDatePicker FlowDirection="RightToLeft"  IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
 								    Margin="2" SelectionChanged="genericPicker_SelectionChanged"

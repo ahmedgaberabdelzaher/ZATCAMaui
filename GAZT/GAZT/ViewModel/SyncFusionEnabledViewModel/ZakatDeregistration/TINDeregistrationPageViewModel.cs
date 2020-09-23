@@ -201,16 +201,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _isDeclarationChecked = value;
-               
-                    if (_isDeclarationChecked)
-                    {
+
+                if (_isDeclarationChecked)
+                {
                     IsDeclarationContinueButtonEnabled = true;
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     IsDeclarationContinueButtonEnabled = false;
-                    }
-                
+                }
+
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
@@ -1683,6 +1683,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //    App.DisplayProgressView();
                 //});
 
+
+
                 TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
                 TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
 
@@ -1704,6 +1706,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
                         SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
+
+                        MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
                     }
                     catch (Exception ex)
                     {
@@ -2376,6 +2380,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsAttachmentsViewEnabled = false;
                     IsDeclarationViewEnabled = true;
                     IsSummaryViewEnabled = false;
+
+                    if (TinDeregistrationData.ADeclarationChkbox == "1")
+                    {
+                        IsDeclarationChecked = true;
+                    }
+                    else
+                    {
+                        IsDeclarationChecked = false;
+                    }
                 }
                 else
                 {
@@ -2545,7 +2558,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (SelectedOutletOptionIndex == 1)
                 {
-                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null)
+                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.FamilyName) || string.IsNullOrEmpty(IDTypeDataModel.Name1))
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                     }
@@ -2838,7 +2851,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -3150,7 +3163,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 summaryDeclarationData.Add(new TINDeregistrationSummaryModel
                 {
-                    SummaryTitle = AppResources.TinDeregistrationContactPersonName,
+                    SummaryTitle = AppResources.ZZName,
                     SummaryData = TinDeregistrationData.ADecName,
                     IsEditVisible = true
                 });
@@ -3297,6 +3310,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     TinDeregistrationData.ADecDate = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
+                    if (IsDeclarationChecked)
+                    {
+                        TinDeregistrationData.ADeclarationChkbox = "1";
+                    }
+                    else
+                    {
+                        TinDeregistrationData.ADeclarationChkbox = "0";
+                    }
 
                     //try
                     //{
@@ -3318,8 +3339,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     //TinDeregistrationData.AttDetSet = new AttachmentSet();
 
-                    AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                    OutletSetResult[] oldOutlets = new OutletSetResult[AllOutlets.Count];
+                    AllOutlets.CopyTo(oldOutlets, 0);
+                    ObservableCollection<OutletSetResult> listOutlets;
+                    listOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                     List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
+                    for (int i = 0; i < oldOutlets.Count(); i++)
+                    {
+                        listOutlets[i].PermitTypes = oldOutlets[i].PermitTypes;
+                    }
+                    AllOutlets = listOutlets;
 
                     foreach (OutletSetResult outletInfo in AllOutlets)
                     {

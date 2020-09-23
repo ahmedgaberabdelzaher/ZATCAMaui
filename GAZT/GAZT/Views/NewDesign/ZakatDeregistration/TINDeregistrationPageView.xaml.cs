@@ -33,6 +33,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
+
+            MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
+            {
+                outletDecisionOptionsListView.SelectedItem = x;
+            });
         }
 
         public void ChangeArrowDirection()

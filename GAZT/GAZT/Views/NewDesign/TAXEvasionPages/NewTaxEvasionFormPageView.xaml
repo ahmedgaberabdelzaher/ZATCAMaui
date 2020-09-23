@@ -136,13 +136,13 @@
                         </inputLayout:SfTextInputLayout.LeadingView>
                         <Entry x:Name="TMobNumber" FlowDirection="LeftToRight"
                                                         Text="{Binding TMobNumber}"
-                                                        FontSize="Medium"
+                                                        FontSize="Medium" 
                                                         HorizontalOptions="FillAndExpand"
                                                         TextColor="Black"
                                                         PlaceholderColor="Gray"
                                                         Keyboard="Telephone"
                                                         IsReadOnly="True"
-                                                        MaxLength="9">
+                                                        >
                                                         
                         </Entry>
                     </inputLayout:SfTextInputLayout>

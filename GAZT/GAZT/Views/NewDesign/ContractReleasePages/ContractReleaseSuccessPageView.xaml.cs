@@ -126,8 +126,22 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
 
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
+
+
                 String downloadurl = Constants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
+
+
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
         }
 
@@ -137,8 +151,16 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
                 String downloadurl = Constants.CRDownloadCoverFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
         }
 

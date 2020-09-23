@@ -630,7 +630,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 RaisePropertyChanged("UploadedDocumentsListObj");
             }
         }
-        private double _latitude = 00.00;
+        private double _latitude = 24.7136;
         public double Latitude
         {
             get
@@ -643,7 +643,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 RaisePropertyChanged("Latitude");
             }
         }
-        private double _longitude = 00.00;
+        private double _longitude = 46.6753;
         public double Longitude
         {
             get
@@ -1327,7 +1327,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 TaxEvasionReportTobeUsedToSubmit.Content = TReportDetail;
 
                 TaxEvasionReportTobeUsedToSubmit.Facilities = TFaciName;
-                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = "+966"+TMobNumber;
+                string mob = "+966" + TMobNumber;
+                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = App.TaxEvasionUserData.Mobile;
                 TaxEvasionReportTobeUsedToSubmit.Id = TID;
                 TaxEvasionReportTobeUsedToSubmit.VatNumber = TVatNumber;
                 TaxEvasionReportTobeUsedToSubmit.Longitude = Longitude.ToString();
