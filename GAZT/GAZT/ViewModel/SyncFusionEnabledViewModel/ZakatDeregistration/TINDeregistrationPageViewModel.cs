@@ -201,16 +201,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _isDeclarationChecked = value;
-               
-                    if (_isDeclarationChecked)
-                    {
+
+                if (_isDeclarationChecked)
+                {
                     IsDeclarationContinueButtonEnabled = true;
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     IsDeclarationContinueButtonEnabled = false;
-                    }
-                
+                }
+
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
@@ -2381,7 +2381,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsDeclarationViewEnabled = true;
                     IsSummaryViewEnabled = false;
 
-                   if( TinDeregistrationData.ADeclarationChkbox == "1")
+                    if (TinDeregistrationData.ADeclarationChkbox == "1")
                     {
                         IsDeclarationChecked = true;
                     }
@@ -2558,7 +2558,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (SelectedOutletOptionIndex == 1)
                 {
-                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null)
+                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.FamilyName) || string.IsNullOrEmpty(IDTypeDataModel.Name1))
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                     }
@@ -3163,7 +3163,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 summaryDeclarationData.Add(new TINDeregistrationSummaryModel
                 {
-                    SummaryTitle = AppResources.TinDeregistrationContactPersonName,
+                    SummaryTitle = AppResources.ZZName,
                     SummaryData = TinDeregistrationData.ADecName,
                     IsEditVisible = true
                 });
