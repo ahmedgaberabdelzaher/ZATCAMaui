@@ -22,12 +22,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel = App.Locator.ZAKATReturnDetailsView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.ClearData();
             if (AttachmentPopUpViewModel.SalesDetailList != null)
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
             TotalVATSales.Text = "NA";
-
+           
             ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
             SetLTR();
@@ -37,7 +38,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-          //  viewModel.ClearData();
+            //  viewModel.ClearData();
+            viewModel.DesClaimerVisibility = false;
             try
             {
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToReleaseTheReturn");
@@ -45,9 +47,11 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             catch (Exception ex)
             {
+                scrollView.ScrollToAsync(0, 500, true);
+
 
             }
-              
+
         }
         protected async override void OnAppearing()
         {
@@ -350,6 +354,17 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel.SetConfirmButtonVisibility = false;
             viewModel.SetEditImage();
             //  PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+
+        }
+
+        private async void OnAmendClick(object sender, EventArgs e)
+        {
+            viewModel.SetLayoutVisibilityAfterTappingOnAmendButton();
+
+           //await scrollView.ScrollToAsync(0, ScrollToPosition.Start, true);
+           await scrollView.ScrollToAsync(0, (double)ScrollToPosition.Start, true);
+
+
 
         }
 
