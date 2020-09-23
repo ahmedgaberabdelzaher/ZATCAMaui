@@ -62,6 +62,15 @@ namespace GAZT.Models
         [JsonProperty("Emailid")]
         public string Emailid { get; set; }
 
+        [JsonProperty("ZkSignup")]
+        public string ZkSignup { get; set; }
+        [JsonProperty("VtSignup")]
+        public string VtSignup { get; set; }
+        [JsonProperty("EpSignup")]
+        public string EpSignup { get; set; }
+        [JsonProperty("EtSignup")]
+        public string EtSignup { get; set; }
+
         public string ResponseStatusMessage { get; set; }
 
         public string ResponseStatusCode { get; set; }
