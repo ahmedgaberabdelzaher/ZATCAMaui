@@ -831,7 +831,7 @@
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                  <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Date}" HorizontalOptions="StartAndExpand"
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 

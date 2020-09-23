@@ -14057,5 +14057,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDHijri", resourceCulture);
             }
         }
+        
+        public static string ZZZZViewRefund {
+            get {
+                return ResourceManager.GetString("ZZZZViewRefund", resourceCulture);
+            }
+        }
     }
 }
