@@ -4403,6 +4403,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
+  <data name="TinDeregistrationDeclarationCheck" xml:space="preserve">
+    <value>I declare that all entered data are Valid</value>
+  </data>
+  
   <data name="TinDeregistrationReason" xml:space="preserve">
     <value>Reason</value>
   </data>

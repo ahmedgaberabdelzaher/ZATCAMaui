@@ -87,6 +87,7 @@ namespace EGAZT.Models.TPProfile
                     TPProfileAPIRequestData.Conf = "X";
                     TPProfileAPIRequestData.MobileLoginCd = APIRequestDataModel.OTP;
                     TPProfileAPIRequestData.MobileChk = "1";
+                    TPProfileAPIRequestData.MobileCountry = APIRequestDataModel.CountryCode;
                     break;
 
                 case "GETOTPEMAIL":

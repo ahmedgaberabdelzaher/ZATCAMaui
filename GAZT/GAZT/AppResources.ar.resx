@@ -4392,6 +4392,9 @@
   <data name="TinDeregistrationDetails" xml:space="preserve">
     <value>تفاصيل التسجيل</value>
   </data>
+  <data name="TinDeregistrationDeclarationCheck" xml:space="preserve">
+    <value>أتعهد بأن جميع البيانات المدخلة صحيحة</value>
+  </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>إيقاف الرقم المميز</value>
   </data>

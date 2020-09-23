@@ -2010,7 +2010,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
-                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+               string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                string[] SplitDate = date.Split('/');
+                SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
             }
             else
             {
@@ -2601,7 +2603,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         string month = selectedItem[1].ToString();
                                         string day = selectedItem[0].ToString();
                                         string year = selectedItem[2].ToString();
-                                        SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                        string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                        string[] SplitDate = date.Split('/');
+                                        SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
                                     }
                                     else
                                     {
@@ -2869,7 +2873,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     string month = selectedItem[1].ToString();
                                     string day = selectedItem[0].ToString();
                                     string year = selectedItem[2].ToString();
-                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                    string[] SplitDate = date.Split('/');
+                                    SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
                                 }
                                 else
                                 {
@@ -3162,7 +3169,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     string month = selectedItem[1].ToString();
                                     string day = selectedItem[0].ToString();
                                     string year = selectedItem[2].ToString();
-                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                    string[] SplitDate = date.Split('/');
+                                    SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
                                 }
                                 else
                                 {
@@ -3420,7 +3430,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string month = selectedItem[1].ToString();
                                 string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
-                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                string[] SplitDate = date.Split('/');
+                                SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
                             }
                             else
                             {
@@ -3642,7 +3655,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     string month = selectedItem[1].ToString();
                                     string day = selectedItem[0].ToString();
                                     string year = selectedItem[2].ToString();
-                                    SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                    string[] SplitDate = date.Split('/');
+                                    SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
                                 }
                                 else
                                 {
@@ -3900,7 +3916,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string month = selectedItem[1].ToString();
                                 string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
-                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+                                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                                string[] SplitDate = date.Split('/');
+                                SiguupModel.ABirthdt = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
                             }
                             else
                             {

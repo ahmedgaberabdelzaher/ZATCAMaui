@@ -103,13 +103,13 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <DefineConstants></DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
     <MtouchVerbosity></MtouchVerbosity>
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
+    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
