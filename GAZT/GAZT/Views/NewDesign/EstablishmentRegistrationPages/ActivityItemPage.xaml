@@ -9,7 +9,7 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:customOne="clr-namespace:GAZT"
                xmlns:GAZTBehaviors="clr-namespace:EGAZT"
-
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -126,14 +126,65 @@
                                                              Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
-                        <syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
+                        <!--<syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
                                                            FlowDirection="RightToLeft"
                                                              ShowHeader="False"
                                                              Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
                                                              PickerMode="Dialog"
                                                              IsOpen="False"
-                                                             DateSelected="crValidFromPicker_DateSelected" />
+                                                             DateSelected="crValidFromPicker_DateSelected" />-->
+                        <custom1:CustomDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="crValidFromPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedCRValidFromDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="crValidFromPicker_Closed"
+								                ItemHeight="40">
+                                <custom1:CustomDatePicker.Behaviors>
+                                    <custom1:SfPickerBehavior />
+                                </custom1:CustomDatePicker.Behaviors>
+                            </custom1:CustomDatePicker>
+                            <custom1:CustomHijriDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="crValidFromHijiriPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedCRValidFromHijiriDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="crValidFromPicker_Closed"
+								                ItemHeight="40">
+                            </custom1:CustomHijriDatePicker>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                             <syncfusion:SfSwitch VisualType="Material" x:Name="CRMainActivity"  IsOn="{Binding MainActivity}" StateChanged="CRSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -347,14 +398,65 @@
                                                              Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
-                        <syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
+                        <!--<syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
                                                              ShowHeader="False"
                                                            FlowDirection="RightToLeft"
                                                              Format="yyyy_MM_dd"
                                                              HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
                                                              PickerMode="Dialog"
                                                              IsOpen="False"
-                                                             DateSelected="validFromPicker_DateSelected" />
+                                                             DateSelected="validFromPicker_DateSelected" />-->
+                        <custom1:CustomDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="validFromPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedValidFromDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="validFromPicker_Closed"
+								                ItemHeight="40">
+                                <custom1:CustomDatePicker.Behaviors>
+                                    <custom1:SfPickerBehavior />
+                                </custom1:CustomDatePicker.Behaviors>
+                            </custom1:CustomDatePicker>
+                            <custom1:CustomHijriDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="validFromHijiriPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedValidFromHijiriDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="validFromPicker_Closed"
+								                ItemHeight="40">
+                            </custom1:CustomHijriDatePicker>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                             <syncfusion:SfSwitch VisualType="Material" x:Name="LicenseMainActivity" IsOn="{Binding MainActivity}" StateChanged="LicenseSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
