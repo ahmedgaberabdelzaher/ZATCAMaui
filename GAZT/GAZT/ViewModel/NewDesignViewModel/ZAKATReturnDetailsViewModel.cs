@@ -644,10 +644,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //    }
             //});
 
-            OnAmendClick = new Xamarin.Forms.Command(async () =>
-            {
-                SetLayoutVisibilityAfterTappingOnAmendButton();
-            });
+            //OnAmendClick = new Xamarin.Forms.Command(async () =>
+            //{
+            //    SetLayoutVisibilityAfterTappingOnAmendButton();
+            //});
 
             
             //OnSubmitButtonClicked = new Command(async () =>
@@ -1597,7 +1597,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             isEditVisible = false;
             isLabelVisible = false;
             IsEditTextVisible = false;
-
+            CheckBoxStatus = false;
             //    ConfirmAndGenerateSADADBillLabelVisibility = false;
             SetConfirmButtonVisibility = false;
             SetAmendButtonVisibility = false;

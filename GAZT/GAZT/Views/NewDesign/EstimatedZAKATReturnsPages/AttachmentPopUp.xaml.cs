@@ -104,6 +104,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void OnSaveClicked(object sender, EventArgs e)
         {
+            AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].ChangeReason = viewModel.ObjectionReason;
+
             viewModel.ObjectionReason = string.Empty;
             PopupNavigation.Instance.PopAsync();
         }

@@ -7404,6 +7404,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationContactNumber {
+            get {
+                return ResourceManager.GetString("TinDeregistrationContactNumber", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationReason {
             get {
                 return ResourceManager.GetString("TinDeregistrationReason", resourceCulture);
