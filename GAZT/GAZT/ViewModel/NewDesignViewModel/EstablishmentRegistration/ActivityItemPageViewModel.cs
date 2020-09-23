@@ -33,6 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private Nreg_ActivityItem SelectedLicenseItem = null;
         private Nreg_ActivityItem SelectedCRItem = null;
         public ActicityListDelegate goBackAction = null;
+        public bool DatePickerInGregorian { get; set; }
         private EstablishmentOutletActivitiesTabsEnum _currentTab = EstablishmentOutletActivitiesTabsEnum.CRDetails;
         public EstablishmentOutletActivitiesTabsEnum CurrentTab
         {
@@ -224,6 +225,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //}
             }
         }
+        private ObservableCollection<object> _selectedCRValidFromDate;
+        public ObservableCollection<object> SelectedCRValidFromDate
+        {
+            get
+            {
+                return _selectedCRValidFromDate;
+            }
+            set
+            {
+                _selectedCRValidFromDate = value;
+                RaisePropertyChanged(nameof(SelectedCRValidFromDate));
+            }
+        }
+        private ObservableCollection<object> _selectedCRValidFromHijiriDate;
+        public ObservableCollection<object> SelectedCRValidFromHijiriDate
+        {
+            get
+            {
+                return _selectedCRValidFromHijiriDate;
+            }
+            set
+            {
+                _selectedCRValidFromHijiriDate = value;
+                RaisePropertyChanged(nameof(SelectedCRValidFromHijiriDate));
+            }
+        }
         private string _cRValidFrom = string.Empty;
         public string CRValidFrom
         {
@@ -322,7 +349,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-
+        private ObservableCollection<object> _selectedValidFromDate;
+        public ObservableCollection<object> SelectedValidFromDate
+        {
+            get
+            {
+                return _selectedValidFromDate;
+            }
+            set
+            {
+                _selectedValidFromDate = value;
+                RaisePropertyChanged(nameof(SelectedValidFromDate));
+            }
+        }
+        private ObservableCollection<object> _selectedValidFromHijiriDate;
+        public ObservableCollection<object> SelectedValidFromHijiriDate
+        {
+            get
+            {
+                return _selectedValidFromHijiriDate;
+            }
+            set
+            {
+                _selectedValidFromHijiriDate = value;
+                RaisePropertyChanged(nameof(SelectedValidFromHijiriDate));
+            }
+        }
         private string _validFrom = string.Empty;
         public string ValidFrom
         {
@@ -1014,6 +1066,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             finally
             {
                 IsLoading = false;
+                updateDatePickers(CurrentTab);
+            }
+        }
+        private void updateDatePickers(EstablishmentOutletActivitiesTabsEnum _enum)
+        {
+            DateTime dob = DateTime.Now;
+            ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
+            if (DatePickerInGregorian)
+            {
+                _selectedDOBDate?.Clear();
+                _selectedDOBDate.Add($"{dob.Day:00}");
+                _selectedDOBDate.Add($"{dob.Month:00}");
+                _selectedDOBDate.Add(dob.Year.ToString());
+            }
+            else
+            {
+                _selectedDOBDate?.Clear();
+                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                var arr = hijiriDate.Split('/');
+                _selectedDOBDate.Add(arr[2]);
+                _selectedDOBDate.Add(arr[1]);
+                _selectedDOBDate.Add(arr[0]);
+            }
+            if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+            {
+                if (DatePickerInGregorian)
+                {
+                    SelectedCRValidFromDate = _selectedDOBDate;
+                }
+                else
+                {
+                    SelectedCRValidFromHijiriDate = _selectedDOBDate;
+                }
+            }
+            else if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            {
+                if (DatePickerInGregorian)
+                {
+                    SelectedValidFromDate = _selectedDOBDate;
+                }
+                else
+                {
+                    SelectedValidFromHijiriDate = _selectedDOBDate;
+                }
             }
         }
         public async void validateCRNumber()

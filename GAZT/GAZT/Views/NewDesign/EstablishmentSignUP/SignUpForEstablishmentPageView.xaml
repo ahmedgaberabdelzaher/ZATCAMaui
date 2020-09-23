@@ -280,7 +280,6 @@
                     SelectedItemTextColor="{StaticResource NeutralBlack}"
                     BorderColor="Black"
                                 
-                                
 								ShowFooter="False"
 								 ShowColumnHeader="True"
                                  ColumnHeaderBackgroundColor="White"

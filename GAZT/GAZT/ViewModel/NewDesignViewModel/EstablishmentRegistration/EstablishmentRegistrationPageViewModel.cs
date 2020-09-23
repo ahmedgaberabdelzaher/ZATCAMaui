@@ -100,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-
+        public bool DatePickerInGregorian { get; set; } = true;
 
         private int _currenrIndex;
         public int CurrentIndex
@@ -567,7 +567,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedDOB));
             }
         }
-
+        private ObservableCollection<object> _selectedDOBDate;
+        public ObservableCollection<object> SelectedDOBDate
+        {
+            get
+            {
+                return _selectedDOBDate;
+            }
+            set
+            {
+                _selectedDOBDate = value;
+                RaisePropertyChanged(nameof(SelectedDOBDate));
+            }
+        }
+        private ObservableCollection<object> _selectedDOBHijiriDate;
+        public ObservableCollection<object> SelectedDOBHijiriDate
+        {
+            get
+            {
+                return _selectedDOBHijiriDate;
+            }
+            set
+            {
+                _selectedDOBHijiriDate = value;
+                RaisePropertyChanged(nameof(SelectedDOBHijiriDate));
+            }
+        }
         private string _firstName;
         public string FirstName
         {
@@ -761,7 +786,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-
+        private ObservableCollection<object> _selectedPassportIssueDate;
+        public ObservableCollection<object> SelectedPassportIssueDate
+        {
+            get
+            {
+                return _selectedPassportIssueDate;
+            }
+            set
+            {
+                _selectedPassportIssueDate = value;
+                RaisePropertyChanged(nameof(SelectedPassportIssueDate));
+            }
+        }
+        private ObservableCollection<object> _selectedPassportIssueHijiriDate;
+        public ObservableCollection<object> SelectedPassportIssueHijiriDate
+        {
+            get
+            {
+                return _selectedPassportIssueHijiriDate;
+            }
+            set
+            {
+                _selectedPassportIssueHijiriDate = value;
+                RaisePropertyChanged(nameof(SelectedPassportIssueHijiriDate));
+            }
+        }
         private string _passportIssueDate;
         public string PassportIssueDate
         {
@@ -772,7 +822,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(PassportIssueDate));
             }
         }
-
+        private ObservableCollection<object> _selectedPassportExpireDate;
+        public ObservableCollection<object> SelectedPassportExpireDate
+        {
+            get
+            {
+                return _selectedPassportExpireDate;
+            }
+            set
+            {
+                _selectedPassportExpireDate = value;
+                RaisePropertyChanged(nameof(SelectedPassportExpireDate));
+            }
+        }
+        private ObservableCollection<object> _selectedPassportExpireHijiriDate;
+        public ObservableCollection<object> SelectedPassportExpireHijiriDate
+        {
+            get
+            {
+                return _selectedPassportExpireHijiriDate;
+            }
+            set
+            {
+                _selectedPassportExpireHijiriDate = value;
+                RaisePropertyChanged(nameof(SelectedPassportExpireHijiriDate));
+            }
+        }
         private string _passportExpireDate;
         public string PassportExpireDate
         {
@@ -1255,12 +1330,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 currentTab = (EstablishmentRegistrationTabsEnum)_enum;
             });
             OutletList.Clear();
-            OutletList.Add("1");
-            OutletList.Add("2");
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid, AppResources.FORM5CalendarType });
                 poupWindow.OnItemSelect = async (item) =>
                 {
                     var actionName = item as string;
@@ -1328,6 +1401,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 }
                             };
                             await PopupNavigation.Instance.PushAsync(voidNotePop);
+                        });
+                    }
+                    if (actionName == AppResources.FORM5CalendarType)
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            ListPopUpViewPage cal = new ListPopUpViewPage(new List<string> { AppResources.NDGregorian, AppResources.NDHijri });
+                            cal.OnItemSelect = (_cal) => {
+                                if (_cal as string == AppResources.NDGregorian)
+                                {
+                                    DatePickerInGregorian = true;
+                                }
+                                else if (_cal as string == AppResources.NDHijri)
+                                {
+                                    DatePickerInGregorian = false;
+                                }
+                                updateDatePickers(currentTab);
+                            };
+                            await PopupNavigation.Instance.PushAsync(cal);
                         });
                     }
                 };
@@ -2121,15 +2212,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             finally
             {
                 IsLoading = false;
+                Device.BeginInvokeOnMainThread(() => updateDatePickers(_enum));
             }
         }
-        //private void updateDatesAccordingMethods()
-        //{
-        //    DateTime _new = new DateTime((long)(taxPayerDetails.Commdt?.AddDays(-1).AddYears(1).Ticks));
-        //    TaxDate = _new.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        //    FiscalMonth = _new.Month.ToString();
-        //    FiscalDay = _new.Day.ToString();
-        //}
+        private void updateDatePickers(EstablishmentRegistrationTabsEnum _enum)
+        {
+            DateTime dob = DateTime.Now;
+            ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
+            if (DatePickerInGregorian)
+            {
+                _selectedDOBDate?.Clear();
+                _selectedDOBDate.Add($"{dob.Day:00}");
+                _selectedDOBDate.Add($"{dob.Month:00}");
+                _selectedDOBDate.Add(dob.Year.ToString());
+            }
+            else
+            {
+                _selectedDOBDate?.Clear();
+                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                var arr = hijiriDate.Split('/');
+                _selectedDOBDate.Add(arr[2]);
+                _selectedDOBDate.Add(arr[1]);
+                _selectedDOBDate.Add(arr[0]);
+            }
+            if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail) {
+                if (DatePickerInGregorian)
+                {
+                    SelectedDOBDate = _selectedDOBDate;
+                }
+                else
+                {
+                    SelectedDOBHijiriDate = _selectedDOBDate;
+                }
+            }
+            else if(_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
+            {
+                if (DatePickerInGregorian)
+                {
+                    SelectedPassportIssueDate = _selectedDOBDate;
+                }
+                else
+                {
+                    SelectedPassportIssueHijiriDate = _selectedDOBDate;
+                }
+                if (DatePickerInGregorian)
+                {
+                    SelectedPassportExpireDate = _selectedDOBDate;
+                }
+                else
+                {
+                    SelectedPassportExpireHijiriDate = _selectedDOBDate;
+                }
+            }
+        }
         private async void udpdateDates(string selectedDate = null)
         {
             IsLoading = true;
@@ -2236,6 +2371,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             outletNavigationModels.idItem = idItem;
+            outletNavigationModels.IsDatePickerInGregorian = DatePickerInGregorian;
             _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
         }
         private void deleteOutlet(OutletItem item)
@@ -2502,7 +2638,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            //return true;
             try
             {
                 IsLoading = true;
