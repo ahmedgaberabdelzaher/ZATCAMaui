@@ -396,6 +396,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public void ResetData()
         {
             ObjectionsList = null;
+            ObjectionsCount = 0 + " " + AppResources.ZakatObjection;
+            AttachmentsListViewData = null;
+            EnableListView();
         }
 
 

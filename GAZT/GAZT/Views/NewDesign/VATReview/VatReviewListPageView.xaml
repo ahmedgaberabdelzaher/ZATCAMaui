@@ -176,17 +176,16 @@
                                                            VerticalOptions="CenterAndExpand" />
 
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="1" Grid.Column="1"
-                                                             Orientation="Horizontal" VerticalOptions="FillAndExpand"
-                                                             HorizontalOptions="FillAndExpand">
+                                               
 
 
-                                                    <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14"
+                                                    <yummy:PancakeView Grid.Row="1" Grid.Column="1" CornerRadius="14"
                                                                        BorderThickness="1" BackgroundColor="#E5EFED"
                                                                        VerticalOptions="CenterAndExpand"
                                                                        HorizontalOptions="EndAndExpand">
 
                                                         <Label Style="{StaticResource CaptionLabelBlack}"
+                                                               Padding="8,3,8,3"
                                                                TextColor="DarkGoldenrod" Text="{Binding FbustTxt}"
                                                                HorizontalTextAlignment="Center"
                                                                HorizontalOptions="CenterAndExpand"
@@ -206,7 +205,6 @@
                                                             </Label.Triggers>
                                                         </Label>
                                                     </yummy:PancakeView>
-                                                </StackLayout>
                                             </Grid>
                                         </border:SfBorder>
                                     </DataTemplate>
