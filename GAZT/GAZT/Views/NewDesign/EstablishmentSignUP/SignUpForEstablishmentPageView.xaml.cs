@@ -4279,6 +4279,29 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
             }
         }
+
+        private void Btn_Edit_indiviadualInfo_Clicked(object sender, EventArgs e)
+        {
+          viewModel.PageTitle = AppResources.ZZZIndividualInformation;
+            viewModel.BodyText = AppResources.ZZZZCompletethebelowdetails;
+            viewModel.NextBTN = AppResources.ZZZZContinue;
+            viewModel.CurrentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+        }
+
+        private void Btn_Edit_BusinessInfo_Clicked(object sender, EventArgs e)
+        {
+
+            viewModel.PageTitle = AppResources.ZZZBusinessInformation;
+            viewModel.BodyText = AppResources.ZZZZCompletethebelowdetails;
+            viewModel.CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+        }
+
+        private void Btn_Edit_ContactInfo_Clicked(object sender, EventArgs e)
+        {
+            viewModel.PageTitle = AppResources.ZZZContactInformation;
+            viewModel.BodyText = AppResources.ZZZZCompletethebelowdetails;
+            viewModel.CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
+        }
     }
 
 }

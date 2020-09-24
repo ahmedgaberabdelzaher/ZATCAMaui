@@ -22,111 +22,128 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         #endregion
         public VATReturnSuccessfullPageView(VATDeclaration vATDeclaration)
         {
-            InitializeComponent();
-            viewModel = App.Locator.VATReturnSuccessfullPageView;
-            this.BindingContext = viewModel;
-            SetLTR();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            if (vATDeclaration!=null && vATDeclaration.d!=null)
+            try
             {
-                viewModel.SadadNumber = string.Empty;
-                viewModel.IsSadadNumberVisible = false;
-                viewModel.IsButtonVisible = false;
-                viewModel.IsAcknowledgementButtonVisible = false;
-                viewModel.IsCreditCarriedTextVisible = false;
-                viewModel.VATDeclarationData = vATDeclaration;
-                viewModel.ReturnReferenceNumber = vATDeclaration.d.Fbnum;
-                viewModel.TaxablePeriod = vATDeclaration.d.Perslt;
-
-                //if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
-                //{
-                //    viewModel.IsSadadNumberVisible = false;
-                //    viewModel.IsRefreshButtonVisible = false;
-                //    viewModel.IsButtonVisible = true;
-                //    if (vATDeclaration.d.EstimatedFg == "X")
-                //    {
-                //        viewModel.IsAcknowledgementButtonVisible = false;
-                //    }
-                //    else
-                //    {
-                //        viewModel.IsAcknowledgementButtonVisible = true;
-                //    }
-                //}
-                //else
-                //{
-                //    RefreshForSadad();
-                //}
-
-                if ((App.ICRStatus == "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
+                InitializeComponent();
+                viewModel = App.Locator.VATReturnSuccessfullPageView;
+                this.BindingContext = viewModel;
+                SetLTR();
+                ChangeAeroIcon();
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                if (vATDeclaration != null && vATDeclaration.d != null)
                 {
-                    if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                    viewModel.SadadNumber = string.Empty;
+                    viewModel.IsSadadNumberVisible = false;
+                    viewModel.IsButtonVisible = false;
+                    viewModel.IsAcknowledgementButtonVisible = false;
+                    viewModel.IsCreditCarriedTextVisible = false;
+                    viewModel.VATDeclarationData = vATDeclaration;
+                    viewModel.ReturnReferenceNumber = vATDeclaration.d.Fbnum;
+                    viewModel.TaxablePeriod = vATDeclaration.d.Perslt;
+
+                    //if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                    //{
+                    //    viewModel.IsSadadNumberVisible = false;
+                    //    viewModel.IsRefreshButtonVisible = false;
+                    //    viewModel.IsButtonVisible = true;
+                    //    if (vATDeclaration.d.EstimatedFg == "X")
+                    //    {
+                    //        viewModel.IsAcknowledgementButtonVisible = false;
+                    //    }
+                    //    else
+                    //    {
+                    //        viewModel.IsAcknowledgementButtonVisible = true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    RefreshForSadad();
+                    //}
+
+                    if ((App.ICRStatus == "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
                     {
-                        viewModel.IsSadadNumberVisible = false;
-                        viewModel.IsRefreshButtonVisible = false;
-                        viewModel.IsButtonVisible = true;
-                        if (vATDeclaration.d.EstimatedFg == "X")
+                        if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
                         {
-                            viewModel.IsAcknowledgementButtonVisible = false;
+                            viewModel.IsSadadNumberVisible = false;
+                            viewModel.IsRefreshButtonVisible = false;
+                            viewModel.IsButtonVisible = true;
+                            if (vATDeclaration.d.EstimatedFg == "X")
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = false;
+                            }
+                            else
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = true;
+                            }
                         }
                         else
-                        {
-                            viewModel.IsAcknowledgementButtonVisible = true;
-                        }
-                    }
-                    else
-                    {
-                        RefreshForSadad();
-                    }
-                }
-                else
-                {
-                    if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0) || ((App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)) || (App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0))
-                    {
-                        viewModel.IsSadadNumberVisible = false;
-                        viewModel.IsRefreshButtonVisible = false;
-                        viewModel.IsButtonVisible = true;
-                        viewModel.IsCreditCarriedTextVisible = true;
-                        if (vATDeclaration.d.EstimatedFg == "X")
-                        {
-                            viewModel.IsAcknowledgementButtonVisible = false;
-                        }
-                        else
-                        {
-                            viewModel.IsAcknowledgementButtonVisible = true;
-                        }
-                    }
-                    else
-                    {
-                        if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0001" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0013" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
                         {
                             RefreshForSadad();
                         }
-                        else
-                        {
-                            viewModel.IsRefreshButtonVisible = true;
-                        }
-                    }
-                }
-                if (viewModel.VATDeclarationData.d.RefundFg == "1")
-                {
-                    viewModel.IsSadadNumberVisible = false;
-                    viewModel.IsRefreshButtonVisible = false;
-                    viewModel.IsButtonVisible = true;
-                    if (vATDeclaration.d.EstimatedFg == "X")
-                    {
-                        viewModel.IsAcknowledgementButtonVisible = false;
                     }
                     else
                     {
-                        viewModel.IsAcknowledgementButtonVisible = true;
+                        if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0) || ((App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)) || (App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0))
+                        {
+                            viewModel.IsSadadNumberVisible = false;
+                            viewModel.IsRefreshButtonVisible = false;
+                            viewModel.IsButtonVisible = true;
+                            viewModel.IsCreditCarriedTextVisible = true;
+                            if (vATDeclaration.d.EstimatedFg == "X")
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = false;
+                            }
+                            else
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = true;
+                            }
+                        }
+                        else
+                        {
+                            if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0001" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0013" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
+                            {
+                                RefreshForSadad();
+                            }
+                            else
+                            {
+                                viewModel.IsRefreshButtonVisible = true;
+                            }
+                        }
                     }
-                }
+                    if (viewModel.VATDeclarationData.d.RefundFg == "1")
+                    {
+                        viewModel.IsSadadNumberVisible = false;
+                        viewModel.IsRefreshButtonVisible = false;
+                        viewModel.IsButtonVisible = true;
+                        if (vATDeclaration.d.EstimatedFg == "X")
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = false;
+                        }
+                        else
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = true;
+                        }
+                    }
 
+
+                }
+            }
+            catch(Exception ex)
+            {
 
             }
-
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         private void SetLTR()
         {
 

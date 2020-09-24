@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,5 +85,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
         #endregion
+
+        private async void OnCloseTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                await PopupNavigation.Instance.PopAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }
