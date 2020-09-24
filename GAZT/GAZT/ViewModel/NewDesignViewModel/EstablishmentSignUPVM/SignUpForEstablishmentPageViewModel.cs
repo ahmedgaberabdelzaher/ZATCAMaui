@@ -2606,7 +2606,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                        // _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
                       PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                        OTPFirstDigit = string.Empty;
+                       OTPSecondDigit = string.Empty;
+                        OTPThirdDigit = string.Empty;
+                        OTPFourthDigit = string.Empty;
 
+                        MOTPFirstDigit = string.Empty;
+                        MOTPSecondDigit = string.Empty;
+                        MOTPThirdDigit = string.Empty;
+                        MOTPFourthDigit = string.Empty;
 
                     }
                     else
