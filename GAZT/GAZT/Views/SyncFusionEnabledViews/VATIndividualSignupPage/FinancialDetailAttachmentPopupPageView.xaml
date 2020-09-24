@@ -74,7 +74,7 @@
                     <StackLayout>
 
                         <StackLayout Padding="22,22,22,0">
-                            <Image HorizontalOptions="EndAndExpand" >
+                            <!--<Image HorizontalOptions="EndAndExpand" >
                                 <Image.Source>
                                     <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25"
                                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
@@ -82,7 +82,7 @@
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Close_Tapped"/>
                                 </Image.GestureRecognizers>
-                            </Image>
+                            </Image>-->
                             <!--VATRMPAttachments-->
                             <Label  Text="{x:Static custom2:AppResources.VATRMPAttachments}"  HorizontalOptions="Center"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
                             <StackLayout Grid.Row="2">
@@ -237,9 +237,9 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <!--<buttons:SfButton x:Name="btnAddAccount" Text="Add Account" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                  HeightRequest="56" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                              BackgroundColor="#d49504" Clicked="btnAddAccount_Clicked" BorderWidth="0" />-->
+                        <buttons:SfButton x:Name="btnDone" Text="{x:Static custom2:AppResources.ZZZZDone}" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
+                                  HeightRequest="48" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                              BackgroundColor="#d49504" Clicked="Close_Tapped" BorderWidth="0" />
 
 
                     </StackLayout>

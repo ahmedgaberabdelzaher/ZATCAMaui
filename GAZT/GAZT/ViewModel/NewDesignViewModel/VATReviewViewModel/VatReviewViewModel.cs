@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -5347,7 +5348,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 VRVSIDNumber = dregresult.d.Idnumbr;
                                 VRVSIDType = dregresult.d.Type;
 
-                                var _suspensionResult = await WebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet("", "");
+                                var settings = new JsonSerializerSettings
+                                {
+                                    DateFormatString = "yyyy-MM-ddTH:mm:ss",
+                                    DateTimeZoneHandling = DateTimeZoneHandling.Utc
+                                };
+
+                                var startDate = "";
+                                var endDate = "";
+
+                                try {
+
+                                    var jsonstartDate = JsonConvert.SerializeObject(dregresult.d.StartDate, settings);
+                                    startDate = Regex.Replace(jsonstartDate, "[@,\\.\";'\\\\]", string.Empty);
+
+                                    var jsonEndDate = JsonConvert.SerializeObject(dregresult.d.EndDate, settings);
+                                    endDate = Regex.Replace(jsonEndDate, "[@,\\.\";'\\\\]", string.Empty);
+
+                                }
+                                catch {
+
+                                }
+
+
+
+                                var _suspensionResult = await WebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(startDate, endDate);
                                 if (_suspensionResult != null & _suspensionResult.d.results.Count > 0)
                                 {
                                     VRVSStartofSuspensionPeriod = _suspensionResult.d.results[0].StartDate.ToString("dd MMM yyyy");
