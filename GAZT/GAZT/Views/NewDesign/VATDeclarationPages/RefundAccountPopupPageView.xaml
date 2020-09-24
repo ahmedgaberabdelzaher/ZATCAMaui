@@ -128,15 +128,15 @@
                 </border:SfBorder>
                 </StackLayout>
 
-                    <StackLayout Grid.Row="4" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" IsEnabled="{Binding IsIbansEnabled}">
+                    <StackLayout Grid.Row="4" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                         <listView:SfListView Orientation="Horizontal" x:Name="OtherIbanlist"   AutoFitMode="Height" 
                                          HeightRequest="100"
-                                            
+                                           
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
                                                  ItemsSource="{Binding IBANList, Mode=TwoWay}"  SelectedItem="{Binding SelectedIBAN, Mode=TwoWay}"
-                                                 SelectionMode="Single" Margin="0"  IsScrollBarVisible="False">
+                                                  Margin="0"  IsScrollBarVisible="False">
                             <listView:SfListView.LayoutManager>
                                 <listView:LinearLayout   />
                             </listView:SfListView.LayoutManager>
