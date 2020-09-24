@@ -2851,7 +2851,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -3339,8 +3339,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     //TinDeregistrationData.AttDetSet = new AttachmentSet();
 
-                    AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                    OutletSetResult[] oldOutlets = new OutletSetResult[AllOutlets.Count];
+                    AllOutlets.CopyTo(oldOutlets, 0);
+                    ObservableCollection<OutletSetResult> listOutlets;
+                    listOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                     List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
+                    for (int i = 0; i < oldOutlets.Count(); i++)
+                    {
+                        listOutlets[i].PermitTypes = oldOutlets[i].PermitTypes;
+                    }
+                    AllOutlets = listOutlets;
 
                     foreach (OutletSetResult outletInfo in AllOutlets)
                     {

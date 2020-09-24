@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,12 +35,14 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             Task.Run(async () =>
             {
-                viewModel.IsLoading = true;
+                viewModel.IsLoading1 = true;
                 await GetContractReleaseData();
 
             });
             viewModel.ResetData();
             viewModel.showInstructionDialog();
+
+           
         }
 
         public async Task GetContractReleaseData()
@@ -48,7 +51,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 await Task.Run(() =>
                 {
-                    viewModel.IsLoading = true;
+                    viewModel.IsLoading1 = true;
                 });
                 await Task.Run(async () =>
                 {
@@ -74,11 +77,11 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 {
                     if (viewModel.fromDatePicker)
                     {
-                        viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
+                        // viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
                     else
                     {
-                        viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
+                        // viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
                     }
                 });
 
@@ -231,6 +234,148 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             }
 
+        }
+
+        private void NormalCalendar_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsHijriCal)
+            {
+                HijriCalendar.IsOpen = true;
+            }
+            else
+            {
+                NormalCalendar.IsOpen = true;
+            }
+        }
+
+        private void EndNormalCalendar_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsHijriCal)
+            {
+                EndDateHijriCalendar.IsOpen = true;
+            }
+            else
+            {
+                EndDateNormalCalendar.IsOpen = true;
+            }
+        }
+
+        private void NormalCalendar_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (HijriCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = HijriCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.FromDate = year + "/" + month + "/" + day;
+                    }
+                }
+                else
+                {
+                    if (NormalCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = NormalCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.FromDate = year + "/" + month + "/" + day;
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        private void EndDateNormalCalendar_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (EndDateHijriCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = EndDateHijriCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.ToDate = year + "/" + month + "/" + day;
+                    }
+                }
+                else
+                {
+                    if (EndDateNormalCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = EndDateNormalCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.ToDate = year + "/" + month + "/" + day;
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        private void NormalCalendar_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+        private void EndDateNormalCalendar_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void NormalCalendar_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //  ValidateIDNumber();
+        }
+        private void EndDateNormalCalendar_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //  ValidateIDNumber();
+        }
+        private void NormalCalendar_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            /* viewModel.PkrDBO = viewModel.PkrDBOPrev;
+             if (!string.IsNullOrEmpty(viewModel.PkrDBOPrev))
+             {
+                 string[] Date = viewModel.PkrDBOPrev.Split('/');
+                 ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                 //Select today dates
+                 todaycollection.Add(Date[2]);
+                 todaycollection.Add(Date[1]);//day
+                 todaycollection.Add(Date[0]);
+
+                 DpDbo.SelectedItem = todaycollection;
+             }*/
+        }
+        private void EndDateNormalCalendar_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            /* viewModel.PkrDBO = viewModel.PkrDBOPrev;
+             if (!string.IsNullOrEmpty(viewModel.PkrDBOPrev))
+             {
+                 string[] Date = viewModel.PkrDBOPrev.Split('/');
+                 ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                 //Select today dates
+                 todaycollection.Add(Date[2]);
+                 todaycollection.Add(Date[1]);//day
+                 todaycollection.Add(Date[0]);
+
+                 DpDbo.SelectedItem = todaycollection;
+             }*/
         }
     }
 }

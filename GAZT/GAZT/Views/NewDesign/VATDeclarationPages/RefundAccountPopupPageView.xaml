@@ -128,21 +128,21 @@
                 </border:SfBorder>
                 </StackLayout>
 
-                    <StackLayout Grid.Row="4" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" IsEnabled="{Binding IsIbansEnabled}">
+                    <StackLayout Grid.Row="4" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" >
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
-                        <CollectionView  x:Name="OtherIbanlist"   ItemSizingStrategy="MeasureFirstItem" 
+                        <listView:SfListView Orientation="Horizontal" x:Name="OtherIbanlist"   AutoFitMode="Height" 
                                          HeightRequest="100"
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
                                                  ItemsSource="{Binding IBANList, Mode=TwoWay}"  SelectedItem="{Binding SelectedIBAN, Mode=TwoWay}"
-                                                 SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
-                            <CollectionView.ItemsLayout>
-                                <LinearItemsLayout Orientation="Horizontal"   />
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
+                                                 SelectionMode="Single" Margin="0"  IsScrollBarVisible="False">
+                            <listView:SfListView.LayoutManager>
+                                <listView:LinearLayout   />
+                            </listView:SfListView.LayoutManager>
+                            <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
-                                        <VisualStateManager.VisualStateGroups>
+                                        <!--<VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup x:Name="CommonStates">
                                                 <VisualState x:Name="Normal">
                                                     <VisualState.Setters>
@@ -159,8 +159,8 @@
                                                     </VisualState.Setters>
                                                 </VisualState>
                                             </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
-                                        <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
+                                        </VisualStateManager.VisualStateGroups>-->
+                                        <Image Source="vat_tile_listofsignup_W" x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
                                         <custom:CustomLabel Text="{Binding Iban}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
                                                                     FontFamily="{StaticResource SSTArabicMedium}"
                                                                       HorizontalOptions="Start"  Padding="20" 
@@ -168,8 +168,40 @@
                                                                 />
                                     </Grid>
                                 </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                            </listView:SfListView.ItemTemplate>
+
+                               <listView:SfListView.SelectedItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
+                                        <!--<VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                        <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
+                                                        <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="Gray" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                        <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
+                                                        <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>-->
+                                        <Image x:Name="cardBackGroundImage" Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding Iban}" TextColor="White" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
+                                                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                                      HorizontalOptions="Start"  Padding="20" 
+                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
+                                                                />
+                                    </Grid>
+                                </DataTemplate>
+                            </listView:SfListView.SelectedItemTemplate>
+                        
+                        </listView:SfListView>
 
                         <!--<listView:SfListView VerticalOptions="Start"   HorizontalOptions="Fill" ItemsSource="{Binding IBANList, Mode=TwoWay}" SelectedItem="{Binding SelectedIBAN, Mode=TwoWay}"  AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" IsScrollingEnabled="False">
                         <listView:SfListView.LayoutManager>

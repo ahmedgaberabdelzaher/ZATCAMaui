@@ -63,6 +63,76 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _ifnotRegInVATAndZakat;
+        public bool IfnotRegInVATAndZakat
+        {
+            get
+            {
+                return _ifnotRegInVATAndZakat;
+            }
+            set
+            {
+                _ifnotRegInVATAndZakat = value;
+                RaisePropertyChanged("IfnotRegInVATAndZakat");
+            }
+        }
+
+        private bool _ifRegInZakat;
+        public bool IfRegInZakat
+        {
+            get
+            {
+                return _ifRegInZakat;
+            }
+            set
+            {
+                _ifRegInZakat = value;
+                RaisePropertyChanged("IfRegInZakat");
+            }
+        }
+
+        private bool _ifRegInVAT;
+        public bool IfRegInVAT
+        {
+            get
+            {
+                return _ifRegInVAT;
+            }
+            set
+            {
+                _ifRegInVAT = value;
+                RaisePropertyChanged("IfRegInVAT");
+            }
+        }
+
+        private bool _ifSignUpnNotRegInVAT;
+        public bool IfSignUpnNotRegInVAT
+        {
+            get
+            {
+                return _ifSignUpnNotRegInVAT;
+            }
+            set
+            {
+                _ifSignUpnNotRegInVAT = value;
+                RaisePropertyChanged("IfSignUpnNotRegInVAT");
+            }
+        }
+
+        private bool _ifSignUpnNotRegInVATShowVATServie;
+        public bool IfSignUpnNotRegInVATShowVATServie
+        {
+            get
+            {
+                return _ifSignUpnNotRegInVATShowVATServie;
+            }
+            set
+            {
+                _ifSignUpnNotRegInVATShowVATServie = value;
+                RaisePropertyChanged("IfSignUpnNotRegInVATShowVATServie");
+            }
+        }
+
         public CalendarEventCollection CommittmentsSchedule
         {
             get

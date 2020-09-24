@@ -1,8 +1,14 @@
 ﻿using System;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
 using EGAZT.Models.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
+using GAZT.Manager;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using static EGAZT.Models.ContractRelease.ContractReleaseSummaryModel;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
@@ -72,5 +78,88 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             var item = e.ItemData as ContractReLeaseApplicationFormModel.ContractResult;
             viewModel.GetContractReleaseSummaryData(item);
         }
+
+        private async void SummaryAttachments_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            var attachment = e.ItemData as Attachment;
+
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await email(attachment.Doguid, attachment);
+            }
+
+
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+
+
+        }
+
+        public async static Task email(string doguid, Attachment attachment)
+        {
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                    byte[] PdfBytes;
+                    HttpWebRequest myReq = (System.Net.HttpWebRequest)WebRequest.Create(attachmentURL);
+                    WebResponse myResp = myReq.GetResponse();
+                    using (Stream streams = myResp.GetResponseStream())
+                    using (MemoryStream Ms = new MemoryStream())
+                    {
+                        int count = 0;
+                        do
+                        {
+                            byte[] buf = new byte[1024];
+                            count = streams.Read(buf, 0, 1024);
+                            Ms.Write(buf, 0, count);
+                        } while (streams.CanRead && count > 0);
+                        PdfBytes = Ms.ToArray();
+                    }
+                    var message = new EmailMessage
+                    {
+                        Subject = "Attached Form :",
+                    };
+                    var fn = attachment.Filename;
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                    File.WriteAllBytes(file, PdfBytes);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = "",
+                            File = new ShareFile(file)
+                        });
+                    });
+
+
+
+                }
+                catch (Exception ex)
+                {
+                }
+            });
+
+        }
+
     }
 }

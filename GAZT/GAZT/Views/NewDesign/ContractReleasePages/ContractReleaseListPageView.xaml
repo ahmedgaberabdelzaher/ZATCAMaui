@@ -382,7 +382,7 @@
                                <StackLayout Padding="15,15,15,0">
     
                                <listView:SfListView  Grid.Row="0" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" 
-                                                      ItemsSource="{Binding ContractCopyAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                                      ItemsSource="{Binding ContractCopyAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent" ItemTapped="SummaryAttachments_ItemTapped">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -406,7 +406,7 @@
                                 </listView:SfListView>
     
                                 <listView:SfListView  Grid.Row="1" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height"
-                                  ItemsSource="{Binding InvoiceAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                  ItemsSource="{Binding InvoiceAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent" ItemTapped="SummaryAttachments_ItemTapped">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
                

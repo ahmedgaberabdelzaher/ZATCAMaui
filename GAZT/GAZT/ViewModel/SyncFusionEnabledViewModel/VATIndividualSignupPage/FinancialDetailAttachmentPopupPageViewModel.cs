@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -558,57 +559,66 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                     else
                                                     {
                                                         AttachmentName = string.Empty;
-                                                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                        //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                                     }
                                                 }
                                                 else
                                                 {
                                                     AttachmentName = string.Empty;
-                                                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                    //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
                                                 }
                                             }
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-                                                _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
-                                            _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                            //_dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                        //_dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
-                                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                    //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
-                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                //_dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                             }
                         }
                     }
                     else
                     {
                         AttachmentName = string.Empty;
-                        _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                        //_dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
                     }
                 }
                 catch (InternetException ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //_dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     });
                 }
             }

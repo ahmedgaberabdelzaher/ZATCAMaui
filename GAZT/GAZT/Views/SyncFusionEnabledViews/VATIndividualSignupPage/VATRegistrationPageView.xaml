@@ -2630,11 +2630,11 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
                                 <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                                <Label.GestureRecognizers>
+                            <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{DynamicResource BackButtonArrow}"  VerticalOptions="CenterAndExpand" Source="arrowLeft.png" HorizontalOptions="StartAndExpand">
+                                <Image.GestureRecognizers>
                                     <TapGestureRecognizer  Tapped="TappedOnBackButton"></TapGestureRecognizer>
-                                </Label.GestureRecognizers>
-                            </Label>
+                                </Image.GestureRecognizers>
+                            </Image>
 
                             <!--<Image  Grid.Row="0" Grid.Column="0"  Rotation="270"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                                 <Image.Source>

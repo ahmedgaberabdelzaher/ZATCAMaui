@@ -254,8 +254,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 else if (viewModel.CurrentStep == AppResources.VATRStep3)
                 {
                     step3Validation();
-                    //if (viewModel.CurrentIndex == 2)
-                    //    viewModel.CurrentIndex++;
+                    
 
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep4)
@@ -271,11 +270,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.SetVisibility();
                             //viewModel.IsFinancialVisible = true;
                             viewModel.IsFinancialVisible = true;
-                            //SetfifthBoxColor();
+                            //viewModel.CurrentIndex = 4;
                             SetfourthBoxColor();
-                            if (viewModel.CurrentIndex == 3)
-                                viewModel.CurrentIndex++;
-                        }
+                                                    }
                         else
                         {
                             FrmNewAttachment.HasError = true;
@@ -288,6 +285,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         
                         //viewModel.IsFinancialVisible = true;
                         viewModel.IsFinancialVisible = true;
+                        //viewModel.CurrentIndex = 4;
                         //SetfifthBoxColor();
                         SetfourthBoxColor();
                     }
@@ -301,10 +299,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SetVisibility();
                     //viewModel.IsSummaryVisible = true;
                     viewModel.IsSummaryVisible = true;
-                    //SetfifthBoxColor();
+                    //viewModel.CurrentIndex = 5;
                     SetfifthBoxColor();
-                    if (viewModel.CurrentIndex == 4)
-                        viewModel.CurrentIndex++;
+                    
                     if (viewModel.IsDeclarationChecked)
                     {
                     viewModel.IsContinueButtonEnable = true;
@@ -465,8 +462,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
                 SetsecondBoxColor();
-                if (viewModel.CurrentIndex == 1)
-                    viewModel.CurrentIndex++;
+                
                 setdefaultvalueforTPDetailscreen();
                 if (string.IsNullOrEmpty(viewModel.VatEligibleStartDate))
                 {
@@ -529,8 +525,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsSalesVisible = true;
                     //SetfourthBoxColor();
                     SetthirdBoxColor();
-                    if (viewModel.CurrentIndex == 2)
-                        viewModel.CurrentIndex++;
+                    
                     viewModel.IsFDNameMobEmailEnable = false;
 
                     viewModel.Attachments = AppResources.Attachments;
@@ -1508,7 +1503,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
-                viewModel.CurrentIndex = 1;
+                //viewModel.CurrentIndex = 1;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
                 if (viewModel.IsInstrunctionChecked)
@@ -1520,7 +1515,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
-                viewModel.CurrentIndex = 2;
+                //viewModel.CurrentIndex = 2;
                 viewModel.CurrentStep = AppResources.VATRStep3;
                 SetsecondBoxColor();
                 setAttachmentImporterExporterVisibility();
@@ -1529,7 +1524,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsSalesVisible = true;
-                viewModel.CurrentIndex = 3;
+                //viewModel.CurrentIndex = 3;
                 viewModel.CurrentStep = AppResources.VATRStep4;
                 SetthirdBoxColor();
             }
@@ -1537,7 +1532,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
-                viewModel.CurrentIndex = 4;
+                //viewModel.CurrentIndex = 4;
                 viewModel.CurrentStep = AppResources.VATRStep5;
                 SetfourthBoxColor();
             }
