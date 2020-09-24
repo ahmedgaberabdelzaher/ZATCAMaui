@@ -606,7 +606,10 @@
                                 <control:BorderlessEntry x:Name="EntryEmail" Style="{StaticResource InputTableEntryLayoutStyle}" 
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" 
                                 Text="{Binding TxtEmailAddress}" Unfocused="EntryEmail_TextChanged">
-                            </control:BorderlessEntry>
+                                    <control:BorderlessEntry.Behaviors>
+                                        <custom:AlphaNumericValidatorBehaviour/>
+                                    </control:BorderlessEntry.Behaviors>
+                                </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
 <!-- Mobile number-->
@@ -1022,8 +1025,10 @@
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
 
                                 <control:BorderlessEntry Text="{Binding TxtPassword}" TextColor="{StaticResource NeutralBlack}" TextChanged="EntryPass_TextChanged"  x:Name="EntryPass" IsPassword="{Binding IsPasswordEncripted}">
-
-                                </control:BorderlessEntry>
+                                        <control:BorderlessEntry.Behaviors>
+                                            <ResourceManager:PasswordTextBehaviour/>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
 
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Image Source="showPassword.png" x:Name="imageNewPassword">
@@ -1046,7 +1051,10 @@
 
                                     <control:BorderlessEntry TextChanged="EntryCfrmPass_TextChanged" TextColor="{StaticResource NeutralBlack}" Text="{Binding TxtConfirmPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" x:Name="EntryCfrmPass">
 
-                                </control:BorderlessEntry>
+                                        <control:BorderlessEntry.Behaviors>
+                                            <ResourceManager:PasswordTextBehaviour/>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
 
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Image Source="showPassword.png" x:Name="imageConfirmPassword">
