@@ -33,13 +33,14 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
 
+            viewModel.ResetData();
+
             Task.Run(async () =>
             {
                 viewModel.IsLoading1 = true;
                 await GetContractReleaseData();
 
             });
-            viewModel.ResetData();
             viewModel.showInstructionDialog();
 
            

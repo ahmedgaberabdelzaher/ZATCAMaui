@@ -1191,16 +1191,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             TodayDateinHijriEnd = todaycollectionHijri;
             //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
 
-            if (ContractReleaseData.d.ACalTp == "H")
-            {
-                FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
-                ToDate = (TodayDateinHijriEnd[2] + "/" + TodayDateinHijriEnd[1] + "/" + TodayDateinHijriEnd[0]).ToString();
+
+            if(ContractReleaseData != null) {
+
+
+                if (ContractReleaseData.d.ACalTp == "H")
+                {
+                    FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
+                    ToDate = (TodayDateinHijriEnd[2] + "/" + TodayDateinHijriEnd[1] + "/" + TodayDateinHijriEnd[0]).ToString();
+                }
+                else
+                {
+                    FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
+                    ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
+                }
+
             }
-            else
-            {
-                FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
-                ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
-            }
+
+
+          
 
         }
         public ContractReleaseFormRequest BuildRequestObject()
@@ -1854,10 +1863,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public void ResetData()
         {
+
+            TodayDateEnd = null;
+            TodayDateinHijriEnd = null;
+            TodayDateStart = null;
+            TodayDateinHijriStart = null;
             IsHijriCal = false;
             FromDate = "";
             ToDate = "";
-            //SetDefaultDate();
+            SetDefaultDate();
             updatePickerContractType();
             _isInvoiceAttachments = true;
             IsReleaseDetailsEnabled = false;
@@ -1889,6 +1903,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             setPickerModel();
             ContractCopyAttachmentsListViewData = null;
             InvoiceAttachmentsListViewData = null;
+
 
         }
 
