@@ -89,5 +89,7 @@
 	<string>1.0.71</string>
 	<key>CFBundleShortVersionString</key>
 	<string>3.2.1.11</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>
