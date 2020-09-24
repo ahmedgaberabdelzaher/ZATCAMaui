@@ -26,8 +26,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnConfirmClicked { get; set; }
         public ICommand OnAmendClick { get; set; }
+        public static bool IsBillsButtonTapped { get; set; }
 
-        
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
        // public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
@@ -850,6 +850,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //IsAmendButtonPressed = true;
                     //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                    IsBillsButtonTapped = true;
                     _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
                 }
@@ -859,6 +860,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
+                    IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
@@ -867,6 +869,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
                 {
                     // AmedmentButtonVisibility = true;
+                    IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
@@ -874,6 +877,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
+                    IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
@@ -881,6 +885,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0005"))// In Processing
                 {
+                    IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
@@ -888,6 +893,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
+                    IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
