@@ -1470,7 +1470,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             BackArrowVisible = true;
             ConfirmPassword = string.Empty;
             DOBddyymm = string.Empty;
-         
+            OTP = string.Empty;
+
+
         }
         public async Task SetBackFormVisibility()
         {
