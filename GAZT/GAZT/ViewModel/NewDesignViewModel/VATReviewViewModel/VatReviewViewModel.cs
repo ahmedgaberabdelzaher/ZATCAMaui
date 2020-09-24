@@ -2143,12 +2143,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        private Dictionary<string, string> IDTypeDictionary = new Dictionary<string, string>
-        {
-            {AppResources.VFCNationalID, "ZS0001"},
-            {AppResources.VFCIqamaID, "ZS0002"},
-            {AppResources.VFCGCCID, "ZS0003"},
-        };
+        private Dictionary<string, string> IDTypeDictionary = null;
+        
 
         private bool _isDialog = true;
         private bool _isBankGuranteeAttachments = false;
@@ -3516,6 +3512,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             EnableReviewReasonView();
             ShowInstructionsDialog();
+
+
+              IDTypeDictionary = new Dictionary<string, string>
+            {
+                {AppResources.VFCNationalID, "ZS0001"},
+                {AppResources.VFCIqamaID, "ZS0002"},
+                {AppResources.VFCGCCID, "ZS0003"},
+            };
 
 
             IsSadadSecuritySelected = false;

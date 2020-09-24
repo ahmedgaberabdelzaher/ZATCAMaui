@@ -166,10 +166,15 @@ namespace GAZT.Models
         {
             get
             {
-                if (string.IsNullOrEmpty(NameFirst) && string.IsNullOrEmpty(NameLast))                
-                    return NameOrg1;
+                if (0 == String.Compare(TypeChk, "X"))
+                    return NameFirst + NameLast;
                 else
-                    return NameFirst + " " + NameLast; 
+                    return NameOrg1;
+
+                //if (string.IsNullOrEmpty(NameFirst) && string.IsNullOrEmpty(NameLast))                
+                //    return NameOrg1;
+                //else
+                //    return NameFirst + " " + NameLast; 
             }
         }
 
@@ -189,8 +194,8 @@ namespace GAZT.Models
 
         public string Tin
         {
-            get { return Partner; }
-            set { Partner = value; }
+            get { return Taxpayerz; }
+            set { Taxpayerz = Partner = value; }
         }
 
         /*private string _Mobile = string.Empty;

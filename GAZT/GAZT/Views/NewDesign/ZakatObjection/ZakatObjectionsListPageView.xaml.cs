@@ -56,23 +56,31 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
 
 
 
-            var item = e.ItemData as ZakatObjectionListModel.Result;
-            Preferences.Set("ZakatObjectionSelectedValue", item.Fbnum);
-            Preferences.Set("ZakatObjectionSelectedType", item.Fbtyp);
 
-            
-            if(item.Fbtyp == "TP09") {
 
-                viewModel.GetWithdrawReviewReason(item.Fbnum);
+            try
+            {
+                var item = e.ItemData as ZakatObjectionListModel.Result;
+                Preferences.Set("ZakatObjectionSelectedValue", item.Fbnum);
+                Preferences.Set("ZakatObjectionSelectedType", item.Fbtyp);
+
+                if (item.Fbtyp == "TP09")
+                {
+                    viewModel.GetWithdrawReviewReason(item.Fbnum);
+                }
+                else
+                {
+                    viewModel.ReqInstalmentBtnClickedAsync();
+                }
+            }
+            catch (Exception exception)
+            {
 
             }
-            else {
-                viewModel.ReqInstalmentBtnClickedAsync();
-            }
 
 
 
-             
+
 
 
 
