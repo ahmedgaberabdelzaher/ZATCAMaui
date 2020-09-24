@@ -138,7 +138,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             {
 
                 String downloadurl = Constants.downloadFile + "'" + _viewModel.VATReferanceNumber + "')/$value";
-                await WebServiceManager.FileDownload(downloadurl, "pdf");
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 _viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
             }
@@ -164,7 +164,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             {
 
                 String downloadurl = Constants.downloadFormFile + "'" + _viewModel.VATReferanceNumber + "')/$value";
-                await WebServiceManager.FileDownload(downloadurl, "pdf");
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 _viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
             }

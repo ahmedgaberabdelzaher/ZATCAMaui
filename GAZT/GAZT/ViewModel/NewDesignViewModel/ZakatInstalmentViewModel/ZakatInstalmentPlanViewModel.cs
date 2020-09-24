@@ -3159,8 +3159,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         }
 
 
+                        var fdData = new FnDtlSetObject();
+                        fdData.CashBankY1 = CashBankY1;
+                        fdData.CashBankY2 = CashBankY2;
+                        fdData.CashBankY3 = CashBankY3;
+                        fdData.CashRatioY1 = CashRatioY1;
+                        fdData.CashRatioY2 = CashRatioY2;
+                        fdData.CashRatioY3 = CashRatioY3;
+                        fdData.DebitorsY1 = DebitorsY1;
+                        fdData.DebitorsY2 = DebitorsY2;
+                        fdData.DebitorsY3 = DebitorsY3;
+                        fdData.InventoryY1 = InventoryY1;
+                        fdData.InventoryY2 = InventoryY2;
+                        fdData.InventoryY3 = InventoryY3;
+                        fdData.NcFlowY1 = NcFlowY1;
+                        fdData.NcFlowY2 = NcFlowY2;
+                        fdData.NcFlowY3 = NcFlowY3;
+                        fdData.NetIncomeY1 = NetIncomeY1;
+                        fdData.NetIncomeY2 = NetIncomeY2;
+                        fdData.NetIncomeY3 = NetIncomeY3;
+                        fdData.ProfitRatioY1 = profitRatioY1;
+                        fdData.ProfitRatioY2 = profitRatioY2;
+                        fdData.ProfitRatioY3 = profitRatioY3;
+                        fdData.RevenueY1 = RevenueY1;
+                        fdData.RevenueY2 = RevenueY2;
+                        fdData.RevenueY3 = RevenueY3;
+                        fdData.StiY1 = StiY1;
+                        fdData.StiY2 = StiY2;
+                        fdData.StiY3 = StiY3;
+                        fdData.TcAssetsY1 = TcAssetsY1;
+                        fdData.TcAssetsY2 = TcAssetsY2;
+                        fdData.TcAssetsY3 = TcAssetsY3;
+                        fdData.TcLiabltyY1 = TcLiabltyY1;
+                        fdData.TcLiabltyY2 = TcLiabltyY2;
+                        fdData.TcLiabltyY3 = TcLiabltyY3;
+                        fdData.Year1 = Year1;
+                        fdData.Year2 = Year2;
+                        fdData.Year3 = Year3;
+                        fdData.ZakatY1 = ZakatY1;
+                        fdData.ZakatY2 = ZakatY2;
+                        fdData.ZakatY3 = ZakatY3;
+                        fdData.Euser = "";
+                        fdData.Fbguid = ZakatInstalments.d.Fbguid;
+                        fdData.Fbnum = ZakatInstalments.d.Fbnum;
+                        fdData.FormGuid = ZakatInstalments.d.FormGuid;
+                        fdData.Formproc = "";
+                        fdData.Gpart = "";
+                        fdData.LineNo = 0;
+                        fdData.Mandt = "";
+                        fdData.ReturnId = "";
+                        fdData.UserTyp = "";
+                        fdData.Status = "";
+                        fdData.TxnTp = "";
+                        fdData.RankingOrder = "";
+                        fdData.ReturnId = ZakatInstalments.d.ReturnId;
+                        fdData.DataVersion = "00001";
+                        fdData.Waers = "";
 
 
+                        var FDDetails = new FnDtlSetObject[1];
+                        FDDetails[0] = fdData;
+                        ZakatInstalments.d.FnDtlSet.results = FDDetails;
+
+                        
                         ZakatInstalments.d.DecCb = "X";
                         ZakatInstalments.d.OffPlanDur = "00";
                         ZakatInstalments.d.OffPymntFreq = "00";
@@ -3543,6 +3604,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
                 }
+
+
+                var fdData = new FnDtlSetObject();
+                fdData.CashBankY1 = CashBankY1;
+                fdData.CashBankY2 = CashBankY2;
+                fdData.CashBankY3 = CashBankY3;
+                fdData.CashRatioY1 = CashRatioY1;
+                fdData.CashRatioY2 = CashRatioY2;
+                fdData.CashRatioY3 = CashRatioY3;
+                fdData.DebitorsY1 = DebitorsY1;
+                fdData.DebitorsY2 = DebitorsY2;
+                fdData.DebitorsY3 = DebitorsY3;
+                fdData.InventoryY1 = InventoryY1;
+                fdData.InventoryY2 = InventoryY2;
+                fdData.InventoryY3 = InventoryY3;
+                fdData.NcFlowY1 = NcFlowY1;
+                fdData.NcFlowY2 = NcFlowY2;
+                fdData.NcFlowY3 = NcFlowY3;
+                fdData.NetIncomeY1 = NetIncomeY1;
+                fdData.NetIncomeY2 = NetIncomeY2;
+                fdData.NetIncomeY3 = NetIncomeY3;
+                fdData.ProfitRatioY1 = profitRatioY1;
+                fdData.ProfitRatioY2 = profitRatioY2;
+                fdData.ProfitRatioY3 = profitRatioY3;
+                fdData.RevenueY1 = RevenueY1;
+                fdData.RevenueY2 = RevenueY2;
+                fdData.RevenueY3 = RevenueY3;
+                fdData.StiY1 = StiY1;
+                fdData.StiY2 = StiY2;
+                fdData.StiY3 = StiY3;
+                fdData.TcAssetsY1 = TcAssetsY1;
+                fdData.TcAssetsY2 = TcAssetsY2;
+                fdData.TcAssetsY3 = TcAssetsY3;
+                fdData.TcLiabltyY1 = TcLiabltyY1;
+                fdData.TcLiabltyY2 = TcLiabltyY2;
+                fdData.TcLiabltyY3 = TcLiabltyY3;
+                fdData.Year1 = Year1;
+                fdData.Year2 = Year2;
+                fdData.Year3 = Year3;
+                fdData.ZakatY1 = ZakatY1;
+                fdData.ZakatY2 = ZakatY2;
+                fdData.ZakatY3 = ZakatY3;
+                fdData.Euser = "";
+                fdData.Fbguid = ZakatInstalments.d.Fbguid;
+                fdData.Fbnum = ZakatInstalments.d.Fbnum;
+                fdData.FormGuid = ZakatInstalments.d.FormGuid;
+                fdData.Formproc = "";
+                fdData.Gpart = "";
+                fdData.LineNo = 0;
+                fdData.Mandt = "";
+                fdData.ReturnId = "";
+                fdData.UserTyp = "";
+                fdData.Status = "";
+                fdData.TxnTp = "";
+                fdData.RankingOrder = "";
+                fdData.ReturnId = ZakatInstalments.d.ReturnId;
+                fdData.DataVersion = "00001";
+                fdData.Waers = "";
+
+
+                var FDDetails = new FnDtlSetObject[1];
+                FDDetails[0] = fdData;
+                ZakatInstalments.d.FnDtlSet.results = FDDetails;
 
                 ZakatInstalments.d.DecCb = "X";
                 ZakatInstalments.d.OffPlanDur = "00";
@@ -4290,8 +4414,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.TxnTp = ZakatInstalments.d.TxnTp;
             _postData.MobNo = ZakatInstalments.d.MobNo;
             _postData.FormGuid = "";
-
-
             _postData.Fbnum = ZakatInstalments.d.Fbnum;
             _postData.DataVersion = ZakatInstalments.d.DataVersion;
             _postData.Operation = ZakatInstalments.d.Operation;
@@ -4304,7 +4426,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.SuAmt = ZakatInstalments.d.SuAmt;
             _postData.SuAmtFg = ZakatInstalments.d.SuAmtFg;
             _postData.Formproc = ZakatInstalments.d.Formproc;
-            _postData.Tin = ZakatInstalments.d.Tin;
+            _postData.Tin = App.LoginDataRetrieved.TIN;
             _postData.Periodkey = ZakatInstalments.d.Periodkey;
             _postData.ReturnId = ZakatInstalments.d.ReturnId;
             _postData.TinNm = ZakatInstalments.d.TinNm;
@@ -4357,7 +4479,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             else
             {
-                _postData.AttachSet = ZakatInstalments.d.AttachSet.results.ToArray();
+                //_postData.AttachSet = ZakatInstalments.d.AttachSet.results.ToArray();
+                _postData.AttachSet = new Array[0];
+
+
 
             }
 
@@ -4384,83 +4509,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
             }
-            //if (ZakatInstalments.d.FnDtlSet.results == null)
-            //{
+            if (ZakatInstalments.d.FnDtlSet.results == null || ZakatInstalments.d.Operation == "04")
+            {
 
 
-            //    _postData.FnDtlSet = new FnDtlSetObject[0];
+                _postData.FnDtlSet = new FnDtlSetObject[0];
 
-            //}
-            //else
-            //{
-            //    _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
+            }
+            else
+            {
+                _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
 
-            //}
-
-
-            var fdData = new FnDtlSetObject();
-            fdData.CashBankY1 = CashBankY1;
-            fdData.CashBankY2 = CashBankY2;
-            fdData.CashBankY3 = CashBankY3;
-            fdData.CashRatioY1 = CashRatioY1;
-            fdData.CashRatioY2 = CashRatioY2;
-            fdData.CashRatioY3 = CashRatioY3;
-            fdData.DebitorsY1 = DebitorsY1;
-            fdData.DebitorsY2 = DebitorsY2;
-            fdData.DebitorsY3 = DebitorsY3;
-            fdData.InventoryY1 = InventoryY1;
-            fdData.InventoryY2 = InventoryY2;
-            fdData.InventoryY3 = InventoryY3;
-            fdData.NcFlowY1 = NcFlowY1;
-            fdData.NcFlowY2 = NcFlowY2;
-            fdData.NcFlowY3 = NcFlowY3;
-            fdData.NetIncomeY1 = NetIncomeY1;
-            fdData.NetIncomeY2 = NetIncomeY2;
-            fdData.NetIncomeY3 = NetIncomeY3;
-            fdData.ProfitRatioY1 = profitRatioY1;
-            fdData.ProfitRatioY2 = profitRatioY2;
-            fdData.ProfitRatioY3 = profitRatioY3;
-            fdData.RevenueY1 = RevenueY1;
-            fdData.RevenueY2 = RevenueY2;
-            fdData.RevenueY3 = RevenueY3;
-            fdData.StiY1 = StiY1;
-            fdData.StiY2 = StiY2;
-            fdData.StiY3 = StiY3;
-            fdData.TcAssetsY1 = TcAssetsY1;
-            fdData.TcAssetsY2 = TcAssetsY2;
-            fdData.TcAssetsY3 = TcAssetsY3;
-            fdData.TcLiabltyY1 = TcLiabltyY1;
-            fdData.TcLiabltyY2 = TcLiabltyY2;
-            fdData.TcLiabltyY3 = TcLiabltyY3;
-            fdData.Year1 = Year1;
-            fdData.Year2 = Year2;
-            fdData.Year3 = Year3;
-            fdData.ZakatY1 = ZakatY1;
-            fdData.ZakatY2 = ZakatY2;
-            fdData.ZakatY3 = ZakatY3;
-            fdData.Euser = "";
-            fdData.Fbguid = ZakatInstalments.d.Fbguid;
-            fdData.Fbnum = ZakatInstalments.d.Fbnum;
-            fdData.FormGuid = ZakatInstalments.d.FormGuid;
-            fdData.Formproc = "";
-            fdData.Gpart = "";
-            fdData.LineNo = 0;
-            fdData.Mandt = "";
-            fdData.ReturnId = "";
-            fdData.UserTyp = "";
-            fdData.Status = "";
-            fdData.TxnTp = "";
-            fdData.RankingOrder = "";
-            fdData.ReturnId = ZakatInstalments.d.ReturnId;
-            fdData.DataVersion = "00001";
-            fdData.Waers = "";
+            }
 
 
-            var FDDetails = new FnDtlSetObject[1];
-            FDDetails[0] = fdData;
-            ZakatInstalments.d.FnDtlSet.results = FDDetails;
+        
 
-            _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
+
+
+            // _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();
 
 
             for (int i = 0; i < selectedList.Count; i++)
@@ -4477,42 +4544,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
 
 
-            var invoicesList = ZakatInvoicesList.ToList();
+            if(ZakatInvoicesList != null) {
+
+                var invoicesList = ZakatInvoicesList.ToList();
 
 
 
 
 
-            if (invoicesList.Count != 0)
-            {
-
-                string apiDate = invoicesList[0].DueDt;
-                if (!apiDate.Contains("Date"))
+                if (invoicesList.Count != 0)
                 {
 
-                    for (int i = 0; i < invoicesList.Count; i++)
+                    string apiDate = invoicesList[0].DueDt;
+                    if (!apiDate.Contains("Date"))
                     {
 
-                        DateTime dt = Convert.ToDateTime(invoicesList[i].DueDt);
-                        JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                        for (int i = 0; i < invoicesList.Count; i++)
                         {
-                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                        };
-                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                        var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                        string[] dateList = jsonDateTime.Split('+');
-                        jsonDateTime = dateList[0].Replace("\"\\", "");
-                        jsonDateTime = jsonDateTime + ")/";
-                        invoicesList[i].DueDt = jsonDateTime;
 
+                            DateTime dt = Convert.ToDateTime(invoicesList[i].DueDt);
+                            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                            var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                            string[] dateList = jsonDateTime.Split('+');
+                            jsonDateTime = dateList[0].Replace("\"\\", "");
+                            jsonDateTime = jsonDateTime + ")/";
+                            invoicesList[i].DueDt = jsonDateTime;
+
+                        }
                     }
+
+
+                    _postData.invDtlsSet = invoicesList.ToArray();
+                }
+                else {
+
+                    _postData.invDtlsSet = new ZakatInvoicesResult[0];
                 }
 
-
-
-
-                _postData.invDtlsSet = invoicesList.ToArray();
             }
+            else
+            {
+
+                _postData.invDtlsSet = new ZakatInvoicesResult[0];
+            }
+
+
 
 
 

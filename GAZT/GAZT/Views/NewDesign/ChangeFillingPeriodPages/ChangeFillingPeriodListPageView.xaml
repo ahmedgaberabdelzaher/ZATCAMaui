@@ -384,14 +384,7 @@
                                     <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
                                         <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                     </StackLayout>
-                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryEdit}"
-                                           VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding GoBackToAttachments}" ></TapGestureRecognizer>
-                                            </Label.GestureRecognizers>
-                                        </Label>
-                                    </StackLayout>
+                                  
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />

@@ -63,7 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (objRefNumber != null)
                 {
                     String downloadurl = Constants.ZOdownloadAckLetter + "'" + objRefNumber + "')/$value";
-                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -83,7 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (objRefNumber != null)
                 {
                     String downloadurl = Constants.ZOdownloadCoverFormFile + "'" + objRefNumber + "')/$value";
-                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }

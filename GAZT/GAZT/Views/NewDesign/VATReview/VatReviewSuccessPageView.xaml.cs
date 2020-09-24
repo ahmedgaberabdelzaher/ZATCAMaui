@@ -92,7 +92,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             {
 
                 String downloadurl = Constants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
-                await WebServiceManager.FileDownload(downloadurl, "pdf");
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
             }

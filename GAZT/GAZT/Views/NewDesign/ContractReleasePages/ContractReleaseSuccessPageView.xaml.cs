@@ -134,7 +134,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
                 String downloadurl = Constants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
-                await WebServiceManager.FileDownload(downloadurl, "pdf");
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
@@ -157,7 +157,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     viewModel.IsLoading1 = true;
                 });
                 String downloadurl = Constants.CRDownloadCoverFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
-                await WebServiceManager.FileDownload(downloadurl, "pdf");
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 Device.BeginInvokeOnMainThread(() =>

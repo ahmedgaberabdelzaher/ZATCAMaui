@@ -806,7 +806,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (VATReferanceNumber != null)
                 {
                     String downloadurl = Constants.ZOdownloadAckLetter + "'" + VATReferanceNumber + "')/$value";
-                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
@@ -831,7 +831,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (VATReferanceNumber != null)
                 {
                     String downloadurl = Constants.ZOdownloadCoverFormFile + "'" + VATReferanceNumber + "')/$value";
-                    await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
