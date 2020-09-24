@@ -1,4 +1,6 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -122,7 +124,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
+                                //viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThefileisstillloading));
                             });
                             //await viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
                         }
