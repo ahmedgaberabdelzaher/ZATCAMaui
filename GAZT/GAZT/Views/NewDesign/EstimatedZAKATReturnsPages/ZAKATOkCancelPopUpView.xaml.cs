@@ -14,8 +14,16 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         public ZAKATOkCancelPopUpView(string ConfirmationText)
         {
             InitializeComponent();
-            _confirmationText =  confirmationText.Text = ConfirmationText;
             SetLTR();
+            if(ConfirmationText.Equals("DeleteVATAttachment"))
+            {
+                _confirmationText = "DeleteVATAttachment";
+                confirmationText.Text = AppResources.ZZDeleteAttachmentConfirmationText;
+            }
+            else
+            {
+                _confirmationText = confirmationText.Text = ConfirmationText;
+            }
 
         }
 
@@ -35,6 +43,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             else if(_confirmationText.Equals(AppResources.ZZDeleteAttachmentConfirmationText))
             {
                 MessagingCenter.Send<Object, string>(this, "YesCommandToDeleteTheAttachment", "Yes");
+            }
+            else if(_confirmationText.Equals("DeleteVATAttachment"))
+            {
+                MessagingCenter.Send<Object, string>(this, "YesCommandToDeleteVATAttachment", "Yes");
             }
             else
             {
