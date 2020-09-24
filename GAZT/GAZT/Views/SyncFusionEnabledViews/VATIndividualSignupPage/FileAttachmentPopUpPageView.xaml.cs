@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
@@ -195,7 +196,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     viewModel.IsLoading = false;
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
             await Task.Run(() =>

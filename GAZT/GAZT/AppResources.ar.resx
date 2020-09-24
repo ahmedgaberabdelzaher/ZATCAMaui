@@ -7688,4 +7688,43 @@
   <data name="ZZZZViewRefund" xml:space="preserve">
     <value>عرض بيانات الاسترداد</value>
   </data>
+    <data name="VRCurrentinputtaxdeductionmethod" xml:space="preserve">
+    <value>طريقة خصم ضريبة المدخلات المستخدمة حاليا لتحديد ضريبة المدخلات الغير مخصصة</value>
+  </data>
+    <data name="VREffectiveDateforinputtaxdeductionmethod" xml:space="preserve">
+    <value>تاريخ استخدام طريقة الخصم النسبي لضريبة للمدخلات</value>
+  </data>
+    <data name="VRProposedinputtaxdeductionmethod" xml:space="preserve">
+    <value>طريقة خصم ضريبة المدخلات المقترحة لتحديد ضريبة المدخلات الغير مخصصة.</value>
+  </data>
+    <data name="VRRequestDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+    <data name="VRTIDEffectiveDateFrom" xml:space="preserve">
+    <value>من تاريخ</value>
+  </data>
+    <data name="VRTIDEffectiveDateTo" xml:space="preserve">
+    <value>الي تاريخ</value>
+  </data>
+    <data name="VRTIDExemptPurchases" xml:space="preserve">
+    <value>نسبة المشتريات المخصصة للتوريدات المعفاة</value>
+  </data>
+    <data name="VRTIDInstruction1" xml:space="preserve">
+    <value>يرجى تعبئة المعلومات المطلوبة لكل خطوة. لا يمكن تقديم الطلب بنجاح حتى يتم الانتهاء من جميع الحقول الإلزامية.</value>
+  </data>
+    <data name="VRTIDInstruction2" xml:space="preserve">
+    <value>يرجى الملاحظة أن الهيئة تحتفظ بكافة الحقوق الخاصة بالتأكد من النسب الواردة بطلبكم كما أن الهيئة لديها الحق في الزامكم باتباع طريقة أخرى والفترة التي سيتم اتباع تلك الطريقة فيها والرجوع عليكم بالأثار المترتبة إذا رأت الهيئة أن الطريقة التي وافقت عليها لا تعكس بدقة استخدام الشخص الخاضع للضريبة للسلع والخدمات.</value>
+  </data>
+    <data name="VRTIDInstruction3" xml:space="preserve">
+    <value>يرجى الاطلاع على قسم الأسئلة الشائعة قبل ملء استمارة الطلب</value>
+  </data>
+    <data name="VRTIDProxyforExemptPurchases" xml:space="preserve">
+    <value>الطريقة الحالية للخصم النسبي للمشتريات المخصصة للتوريدات المعفاة</value>
+  </data>
+    <data name="VRTIDProxyforTaxablePurchases" xml:space="preserve">
+    <value>الطريقة الحالية للخصم النسبي للمشتريات المخصصة للتوريدات الخاضعة</value>
+  </data>
+    <data name="VRTIDTaxablePurchases" xml:space="preserve">
+    <value>نسبة المشتريات المخصصة للتوريدات الخاضعة للضريبة</value>
+  </data>
 </root>
