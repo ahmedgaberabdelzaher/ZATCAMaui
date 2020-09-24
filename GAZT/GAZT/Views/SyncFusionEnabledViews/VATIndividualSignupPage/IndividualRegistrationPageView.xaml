@@ -1162,13 +1162,10 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </custom:CustomLabel>
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FramePasswordError}"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
-                                                                <custom:BorderlessEntry x:Name="EntryPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}"
-                                                                                        FontSize="Small" WidthRequest="128" MaxLength="16"
-                                                                        
-                                                                Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                <custom:BorderlessEntry x:Name="EntryPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}" FontSize="Small" WidthRequest="128" MaxLength="16" Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}" TextChanged="EntryPassword_TextChanged">
                                                                 </custom:BorderlessEntry>
                                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                                    <Image x:Name="ImageSeePassword" Source="showPassword.png">
+                                                                    <Image x:Name="ImageSeePassword" Source="hidePassword.png">
                                                                         
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
@@ -1196,7 +1193,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 Placeholder="{x:Static local:AppResources.ZZZZRepeatPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
                                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                                    <Image  x:Name="ImageSeeConfirmPassword" Source="showPassword.png">
+                                                                    <Image  x:Name="ImageSeeConfirmPassword" Source="hidePassword.png">
                                                                         
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
@@ -1209,26 +1206,26 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                         <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding MinEight}" HorizontalOptions="Start">
                                                                    
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZAtleast8characterslong}" TextColor="#010101"/>
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding CapsSmall}" HorizontalOptions="Start">
                                                                     
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZEnglishcapitalandsmallletters}" TextColor="#010101"  />
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding MaxSixteen}" HorizontalOptions="Start">
                                                                     
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZNotexceed16characters}" TextColor="#010101"  />
                                                             </StackLayout>
 
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding NumSymbol}" HorizontalOptions="Start">
                                                                     
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZZNumbersandsymbols}" TextColor="#010101" />

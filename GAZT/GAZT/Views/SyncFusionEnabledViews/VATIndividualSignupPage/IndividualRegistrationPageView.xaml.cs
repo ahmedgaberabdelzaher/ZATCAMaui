@@ -1387,10 +1387,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (viewModel.IsPasswordEncripted)
             {
                 viewModel.IsPasswordEncripted = false;
+                ImageSeePassword.Source = "showPassword";
             }
             else
             {
                 viewModel.IsPasswordEncripted = true;
+                ImageSeePassword.Source = "hidePassword";
             }
         }
 
@@ -1399,10 +1401,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (viewModel.IsConfirmPasswordEncripted)
             {
                 viewModel.IsConfirmPasswordEncripted = false;
+                ImageSeeConfirmPassword.Source = "showPassword";
             }
             else
             {
                 viewModel.IsConfirmPasswordEncripted = true;
+                ImageSeeConfirmPassword.Source = "hidePassword";
             }
             
         }
@@ -1548,6 +1552,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             var date = HijriCal.DateSelected;
             Console.WriteLine("Hi Your Hijri Date : " + date);
+        }
+
+        private void EntryPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -78,6 +78,64 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #endregion
 
         #region Properties
+
+        public string _MinEight = "error";
+        public string MinEight
+        {
+            get
+            {
+                return _MinEight;
+            }
+            set
+            {
+                _MinEight = value;
+                RaisePropertyChanged("MinEight");
+            }
+        }
+
+        public string _CapsSmall = "error";
+        public string CapsSmall
+        {
+            get
+            {
+                return _CapsSmall;
+            }
+            set
+            {
+                _CapsSmall = value;
+                RaisePropertyChanged("CapsSmall");
+            }
+        }
+
+        public string _MaxSixteen = "error";
+        public string MaxSixteen
+        {
+            get
+            {
+                return _MaxSixteen;
+            }
+            set
+            {
+                _MaxSixteen = value;
+                RaisePropertyChanged("MaxSixteen");
+            }
+        }
+
+        public string _NumSymbol = "error";
+        public string NumSymbol 
+        {
+            get
+            {
+                return _NumSymbol;
+            }
+            set
+            {
+                _NumSymbol = value;
+                RaisePropertyChanged("NumSymbol");
+            }
+        }
+
+
         public string _dateselected;
         public string dateselected
         {
