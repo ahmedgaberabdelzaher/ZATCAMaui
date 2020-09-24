@@ -20,7 +20,7 @@
                         <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
                     </Label.GestureRecognizers>
                 </Label>-->
-                <Image HorizontalOptions="EndAndExpand" Margin="15,10,15,0" >
+                <!--<Image HorizontalOptions="EndAndExpand" Margin="15,10,15,0" >
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25"
                                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
@@ -28,7 +28,7 @@
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Close_Tapped"/>
                     </Image.GestureRecognizers>
-                </Image>
+                </Image>-->
 
                 <StackLayout Padding="22,22,22,0">
                 
@@ -94,8 +94,11 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            <buttons:SfButton x:Name="btnAddAccount" Text="{x:Static custom2:AppResources.Save}" Clicked="IbanAddButtonClicked" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                  HeightRequest="56" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+            <buttons:SfButton x:Name="btnAddAccount" Text="{x:Static custom2:AppResources.Save}" Clicked="IbanAddButtonClicked" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
+                                  HeightRequest="48" Margin="10,0,10,10" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                              BackgroundColor="#d49504" BorderWidth="0" />
+                <buttons:SfButton x:Name="btnDone" Text="{x:Static custom2:AppResources.ZZZZDone}" Clicked="Close_Tapped" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
+                                  HeightRequest="48" Margin="10,0,10,10" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                               BackgroundColor="#d49504" BorderWidth="0" />
         </StackLayout>
           

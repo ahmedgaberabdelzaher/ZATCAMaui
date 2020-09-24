@@ -1387,12 +1387,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (viewModel.IsPasswordEncripted)
             {
                 viewModel.IsPasswordEncripted = false;
-                ImageSeePassword.Source = "showPassword";
             }
             else
             {
                 viewModel.IsPasswordEncripted = true;
-                ImageSeePassword.Source = "hidePassword";
             }
         }
 
@@ -1401,12 +1399,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (viewModel.IsConfirmPasswordEncripted)
             {
                 viewModel.IsConfirmPasswordEncripted = false;
-                ImageSeeConfirmPassword.Source = "showPassword";
             }
             else
             {
                 viewModel.IsConfirmPasswordEncripted = true;
-                ImageSeeConfirmPassword.Source = "hidePassword";
             }
             
         }
@@ -1554,9 +1550,52 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             Console.WriteLine("Hi Your Hijri Date : " + date);
         }
 
-        private void EntryPassword_TextChanged(object sender, TextChangedEventArgs e)
+        private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
         {
+            if (viewModel.IsHijriCal)
+            {
 
+                var selectedItem = SignUpDOBHijri.SelectedItem as ObservableCollection<object>;
+                if (selectedItem != null)
+                {
+                    string month = selectedItem[1].ToString();
+                    string day = selectedItem[0].ToString();
+                    string year = selectedItem[2].ToString();
+                    viewModel.DOB = year + "/" + month + "/" + day;
+                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                    string DOB = year + month + day;
+                    viewModel.DOBPrev = viewModel.DOB;
+
+                }
+                else
+                {
+                    viewModel.DOB =string.Empty;
+                    viewModel.DOBddyymm = string.Empty;
+
+                }
+
+            }
+            else
+            {
+                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                if (selectedItem != null)
+                {
+                    string month = selectedItem[1].ToString();
+                    string day = selectedItem[0].ToString();
+                    string year = selectedItem[2].ToString();
+                    viewModel.DOB = year + "/" + month + "/" + day;
+                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                    string DOB = year + month + day;
+                    viewModel.DOBPrev = viewModel.DOB;
+
+                }
+                else
+                {
+                    viewModel.DOB = string.Empty;
+                    viewModel.DOBddyymm = string.Empty;
+                }
+
+            }
         }
     }
 }

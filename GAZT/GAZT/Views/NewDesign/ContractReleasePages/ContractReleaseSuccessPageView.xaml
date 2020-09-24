@@ -123,7 +123,7 @@
                             </custom:CustomLabel>
                         </StackLayout>
                     </yummy:PancakeView>
-                    <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                    <Grid IsVisible="{Binding IsLoading1}" BackgroundColor="Transparent">
                         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                      Opacity="0.4" VerticalOptions="FillAndExpand" />
                         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"

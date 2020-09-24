@@ -451,6 +451,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public void ResetData()
         {
+            ContractListViewData = null;
             EnableContractListView();
         }
 

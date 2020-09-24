@@ -1678,8 +1678,8 @@ namespace EGAZT.Models.VatReviewModel
                 public bool Insatt { get; set; }
                 public bool Legatt { get; set; }
                 public bool Otheratt { get; set; }
-                public DateTime Dregdt { get; set; }
-                public object Duedate { get; set; }
+                public DateTime? Dregdt { get; set; }
+                public DateTime? Duedate { get; set; }
                 public object SuspDtfrom { get; set; }
                 public object SuspDtto { get; set; }
                 public object NextDtfrom { get; set; }

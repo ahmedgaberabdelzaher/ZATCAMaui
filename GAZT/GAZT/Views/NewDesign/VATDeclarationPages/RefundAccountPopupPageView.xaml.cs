@@ -3,6 +3,7 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.ListView.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -40,15 +41,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         if (viewModel.VATDeclarationDetails.d.EstimatedFg == "A")
                         {
                             ManageEnabledProperties(true);
+                            //OtherIbanlist.SelectionMode = Syncfusion.ListView.XForms.SelectionMode.Single;
                         }
                         else
                         {
                             ManageEnabledProperties(false);
+                           // OtherIbanlist.SelectionMode = Syncfusion.ListView.XForms.SelectionMode.None;
+                            OtherIbanlist.SelectionGesture = TouchGesture.Hold;
                         }
                     }
                     else
                     {
                         ManageEnabledProperties(true);
+                       // OtherIbanlist.SelectionMode = Syncfusion.ListView.XForms.SelectionMode.Single;
                     }
 
                 }
@@ -335,7 +340,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    viewModel.SelectedIBAN = viewModel.IBANList[0];// viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                                    viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
 
                                 });
                             }
@@ -734,5 +739,32 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
         }
+
+        //private void IbanTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (sender != null)
+        //        {
+        //            if (viewModel.IsIbansEnabled)
+        //            {
+        //                Result2 selectediban = (Result2)sender;
+        //                viewModel.SelectedIBAN = selectediban;
+        //            }
+        //            else
+        //            {
+        //               ((SfListView)sender).SelectedItem = null;
+        //            }
+        //        }
+        //        else
+        //        {
+
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+
+        //    }
+        //}
     }
 }
