@@ -57,6 +57,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
 
             }
+
         }
         public void ManageEnabledProperties(bool value)
         {
@@ -332,7 +333,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             }
                             if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
                             {
-                                viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    viewModel.SelectedIBAN = viewModel.IBANList[0];// viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+
+                                });
                             }
                             if (viewModel.IBANList != null && viewModel.IBANList.Count > 0)
                             {
