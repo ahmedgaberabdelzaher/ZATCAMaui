@@ -463,6 +463,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isInstrunctionVisible)
                 {
                     IsBackStepButtonVisible = false;
+                    CurrentIndex = 1;
                 }
                 else
                 {
@@ -481,6 +482,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isTaxPayersVisible = value;
+                if (_isTaxPayersVisible)
+                {
+                    CurrentIndex = 2;
+                }
                 RaisePropertyChanged("IsTaxPayersVisible");
             }
         }
@@ -494,6 +499,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isSalesVisible = value;
+                if (_isSalesVisible) 
+                { 
+                CurrentIndex = 3;
+                }
                 RaisePropertyChanged("IsSalesVisible");
             }
         }
@@ -523,6 +532,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isFinancialVisible)
                 {
                     IsContinueButtonEnable = true;
+                    CurrentIndex = 4;
                 }
                 RaisePropertyChanged("IsFinancialVisible");
             }
@@ -537,6 +547,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isSummaryVisible = value;
+                if (_isSummaryVisible)
+                {
+                    CurrentIndex = 5;
+                }
                 RaisePropertyChanged("IsSummaryVisible");
             }
         }
