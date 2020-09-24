@@ -168,7 +168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _resendOTPTextColor = Color.FromHex("#c7c7c7");
+        private Color _resendOTPTextColor = Color.FromHex("#909090");
         public Color ResendOTPTextColor
         {
             get
@@ -1849,7 +1849,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ContinueButtonEnability = true;
                             IsResendOTPEnabled = false;
                             StartOTPTimer();
-                            ResendOTPTextColor = Color.FromHex("#c7c7c7");
+                            ResendOTPTextColor = Color.FromHex("#909090");
                             IsAPICalledSuccessfully = true;
 
                             //StartPage = StartPage + 1;
