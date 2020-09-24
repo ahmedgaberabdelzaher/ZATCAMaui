@@ -175,7 +175,7 @@
                     <!--End Of Reporter Information-->
                     
                     <!--Facility Information Starts-->
-                        <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.FacilityInfo}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                        <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.FacilityInfo}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" Padding="0,0,0,50">
                         <StackLayout>
                             <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource CaptionLabelGrey}"/>-->
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
