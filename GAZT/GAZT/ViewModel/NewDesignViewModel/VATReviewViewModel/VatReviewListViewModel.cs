@@ -602,6 +602,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public void ResetListData()
         {
+           
+            VATobjListViewData = null;
             IsLoading = false;
             SetFilterOptions((int)FilterOptions.All);
             NumberOfObjAndReviews = "0 " + AppResources.VatReview;

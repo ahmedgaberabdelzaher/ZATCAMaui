@@ -2121,7 +2121,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     //ZakatInstalments.d.Fbnum = "";
                     //ZakatInstalments.d.Status = "E0001";
                 }
-                ZakatInstalments = await SubmitClicked();
+
+                await Task.Run(async () =>
+                {
+                    ZakatInstalments = await SubmitClicked();
+                });
 
                 if (ZakatInstalments.d != null)
                 {
