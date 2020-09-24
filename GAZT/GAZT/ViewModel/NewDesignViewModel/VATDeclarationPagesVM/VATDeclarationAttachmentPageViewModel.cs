@@ -36,11 +36,12 @@ namespace EGAZT
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public static Decimal AttachmentUploadedSize = 0;
-        public static bool IsToBeFilled = false;
+        public static bool isToBeFilled = false;
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
         byte[] attachment;
         public int NumberOfAttachmentComingFromServer = 0;
+
         #endregion
 
         #region Property
@@ -530,16 +531,16 @@ namespace EGAZT
                     {
                         if (App.ICRStatus.Equals("E0001"))
                         {
-                            if (AttachmentPageViewModel.IsToBeFilled == true)
+                            if (VATDeclarationAttachmentPageViewModel.isToBeFilled == true)
                             {
-                                AttachmentPageViewModel.IsToBeFilled = false;
+                                VATDeclarationAttachmentPageViewModel.isToBeFilled = false;
                                 AttachmentList.Clear();
                             }
 
                         }
                         else
                         {
-                            AttachmentPageViewModel.IsToBeFilled = false;
+                            VATDeclarationAttachmentPageViewModel.isToBeFilled = false;
                             AttachmentList.Clear();
                         }
                     }
@@ -548,9 +549,9 @@ namespace EGAZT
                 {
                     if (App.ICRStatus.Equals("E0001"))
                     {
-                        if (AttachmentPageViewModel.IsToBeFilled == true)
+                        if (VATDeclarationAttachmentPageViewModel.isToBeFilled == true)
                         {
-                            AttachmentPageViewModel.IsToBeFilled = false;
+                            VATDeclarationAttachmentPageViewModel.isToBeFilled = false;
                         }
                     }
 

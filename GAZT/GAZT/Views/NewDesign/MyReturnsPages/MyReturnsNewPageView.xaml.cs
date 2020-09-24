@@ -49,6 +49,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         { 
             try
             {
+                VATDeclarationAttachmentPageViewModel.isToBeFilled = true;
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
