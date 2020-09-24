@@ -7398,6 +7398,18 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationDeclarationCheck {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDeclarationCheck", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationContactNumber {
+            get {
+                return ResourceManager.GetString("TinDeregistrationContactNumber", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationReason {
             get {
                 return ResourceManager.GetString("TinDeregistrationReason", resourceCulture);
@@ -14055,6 +14067,12 @@ namespace EGAZT {
         public static string NDHijri {
             get {
                 return ResourceManager.GetString("NDHijri", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZViewRefund {
+            get {
+                return ResourceManager.GetString("ZZZZViewRefund", resourceCulture);
             }
         }
     }

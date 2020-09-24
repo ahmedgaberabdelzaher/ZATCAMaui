@@ -78,20 +78,38 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
-            dobPicker.MaximumDate = DateTime.Now;
-            dobPicker.IsOpen = true;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                dobPicker.IsOpen = true;
+            }
+            else
+            {
+                dobHijiriPicker.IsOpen = true;
+            }
         }
 
         void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
         {
-            PassportIssueDatePicker.MaximumDate = DateTime.Now;
-            PassportIssueDatePicker.IsOpen = true;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                passportIssuePicker.IsOpen = true;
+            }
+            else
+            {
+                passportIssueHijiriPicker.IsOpen = true;
+            }
         }
 
         void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            PassportExpiryDatePicker.MinimumDate = DateTime.Now;
-            PassportExpiryDatePicker.IsOpen = true;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                passportExpiryPicker.IsOpen = true;
+            }
+            else
+            {
+                passportExpiryHijiriPicker.IsOpen = true;
+            }
         }
 
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
@@ -134,20 +152,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
-        private void dobPicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        {
-            viewModel.SelectedDOB = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        }
+        //private void dobPicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        //{
+        //    viewModel.SelectedDOB = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        //}
 
-        private void PassportIssueDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        {
-            viewModel.PassportIssueDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        }
+        //private void PassportIssueDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        //{
+        //    viewModel.PassportIssueDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        //}
 
-        private void PassportExpiryDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        {
-            viewModel.PassportExpireDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        }
+        //private void PassportExpiryDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        //{
+        //    viewModel.PassportExpireDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        //}
 
         void SfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {
@@ -188,6 +206,48 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 return EstablishmentRegistrationTabsEnum.Declaration;
             }
             return EstablishmentRegistrationTabsEnum.RegistrationType;
+        }
+
+        void dobPicker_Closed(System.Object sender, System.EventArgs e)
+        {
+            ObservableCollection<object> selectedItem = null;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
+            }
+            else
+            {
+                selectedItem = dobHijiriPicker.SelectedItem as ObservableCollection<object>;
+            }
+            viewModel.SelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+        }
+
+        void passportIssuePicker_Closed(System.Object sender, System.EventArgs e)
+        {
+            ObservableCollection<object> selectedItem = null;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
+            }
+            else
+            {
+                selectedItem = passportIssueHijiriPicker.SelectedItem as ObservableCollection<object>;
+            }
+            viewModel.PassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+        }
+
+        void passportExpiryPicker_Closed(System.Object sender, System.EventArgs e)
+        {
+            ObservableCollection<object> selectedItem = null;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
+            }
+            else
+            {
+                selectedItem = passportExpiryHijiriPicker.SelectedItem as ObservableCollection<object>;
+            }
+            viewModel.PassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
     }
 }

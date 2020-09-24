@@ -95,7 +95,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        viewModel.IsLoading = true;
+                        viewModel.IsLoading1 = true;
                     });
 
                     await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.Fbnumz);
@@ -107,7 +107,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     }
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        viewModel.IsLoading = false;
+                        viewModel.IsLoading1 = false;
                     });
                 }
             }
@@ -126,8 +126,22 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
 
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading1 = true;
+                });
+
+
+
                 String downloadurl = Constants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
+
+
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading1 = false;
+                });
             }
         }
 
@@ -137,8 +151,16 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         {
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading1 = true;
+                });
                 String downloadurl = Constants.CRDownloadCoverFormFile + "'" + viewModel.ContractReleaseData.d.Fbnumz + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading1 = false;
+                });
             }
         }
 
@@ -151,7 +173,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        viewModel.IsLoading = true;
+                        viewModel.IsLoading1 = true;
                     });
 
                     await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.AContNo);
@@ -163,7 +185,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     }
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        viewModel.IsLoading = false;
+                        viewModel.IsLoading1 = false;
                     });
                 }
             }

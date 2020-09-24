@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using EGAZT.Models;
@@ -22,7 +23,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.ActivityItemPage;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             viewModel.newNumber = _activityNavigation.nextNumber;
-            //viewModel.editModeEnabled = activityNavigation.EditEnabledMode;
+            viewModel.DatePickerInGregorian = activityNavigation.IsDatePickerInGregorian;
             viewModel.validateCR = _activityNavigation.validateCR;
             viewModel.validateLicense = _activityNavigation.validateLicense;
             //viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
@@ -139,17 +140,23 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
         }
 
-        void validFromPicker_DateSelected(System.Object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
-        {
-            viewModel.ValidFrom = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-        }
+        //void validFromPicker_DateSelected(System.Object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        //{
+        //    viewModel.ValidFrom = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        //}
 
         void validFromButtonClick(System.Object sender, System.EventArgs e)
         {
             if (viewModel?.EnableInputFields == true)
             {
-                validFromPicker.IsOpen = true;
-                validFromPicker.MaximumDate = DateTime.Now;
+                if (viewModel?.DatePickerInGregorian == true)
+                {
+                    validFromPicker.IsOpen = true;
+                }
+                else
+                {
+                    validFromHijiriPicker.IsOpen = true;
+                }
             }
         }
 
@@ -157,14 +164,48 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (viewModel?.EnableInputFields == true)
             {
-                crValidFromPicker.IsOpen = true;
-                crValidFromPicker.MaximumDate = DateTime.Now;
+                if (viewModel?.DatePickerInGregorian == true)
+                {
+                    crValidFromPicker.IsOpen = true;
+                }
+                else
+                {
+                    crValidFromHijiriPicker.IsOpen = true;
+                }
             }
         }
 
-        void crValidFromPicker_DateSelected(System.Object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        //void crValidFromPicker_DateSelected(System.Object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        //{
+        //    viewModel.CRValidFrom = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        //}
+
+        void crValidFromPicker_Closed(System.Object sender, System.EventArgs e)
         {
-            viewModel.CRValidFrom = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+            ObservableCollection<object> selectedItem = null;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                selectedItem = crValidFromPicker.SelectedItem as ObservableCollection<object>;
+            }
+            else
+            {
+                selectedItem = crValidFromHijiriPicker.SelectedItem as ObservableCollection<object>;
+            }
+            viewModel.CRValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+        }
+
+        void validFromPicker_Closed(System.Object sender, System.EventArgs e)
+        {
+            ObservableCollection<object> selectedItem = null;
+            if (viewModel?.DatePickerInGregorian == true)
+            {
+                selectedItem = validFromPicker.SelectedItem as ObservableCollection<object>;
+            }
+            else
+            {
+                selectedItem = validFromHijiriPicker.SelectedItem as ObservableCollection<object>;
+            }
+            viewModel.ValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
     }
 }

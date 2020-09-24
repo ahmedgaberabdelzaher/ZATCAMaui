@@ -9,7 +9,7 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleasePageView"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>
@@ -255,7 +255,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding FromDate}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
                             
@@ -265,14 +265,74 @@
                                                      Glyph="{x:Static FontImage:IconFonts.Calendar}" />
                                 </Image.Source>
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ShowStartDatePicker}"/>
+                                    <TapGestureRecognizer Tapped="NormalCalendar_Tapped" />
                                 </Image.GestureRecognizers>
                             </Image>
 
                             </Grid>
                         </border:SfBorder>
 
-                    </Grid>
+                                <custom1:CustomDatePicker FlowDirection="LeftToRight" 
+                                                          ShowHeader="False"
+                                                          Margin="10,0,10,0" 
+                                                          BackgroundColor="White"                             
+                                                          OKButtonBackgroundColor="#EAF7CC"
+                                                          CancelButtonBackgroundColor="#EAF7CC"
+                                                          HeaderBackgroundColor="#EAF7CC"
+                                                          SelectedItemTextColor="{StaticResource                                     NeutralBlack}"
+                                                          BorderColor="Black"
+                                                          ShowFooter="False"
+                                                          ShowColumnHeader="True"
+                                                          ColumnHeaderBackgroundColor="White"
+                                                          ColumnHeaderHeight="46"
+                                                          PickerMode="Dialog"
+                                                          HeaderText="{x:Static 
+                                    ResourceManager:AppResources.CRContractStartDate}"
+                                                          x:Name="NormalCalendar"
+                                                          OKButtonTextColor="#006450" 
+                                                          CancelButtonTextColor="#006450"
+                                                          SelectedItem="{Binding TodayDateStart}"
+                                                          HorizontalOptions="FillAndExpand"
+                                                          Closed="NormalCalendar_Closed"
+                                                          SelectionChanged="NormalCalendar_SelectionChanged"
+                                                          OkButtonClicked="NormalCalendar_OkButtonClicked"       
+                                                         CancelButtonClicked="NormalCalendar_CancelButtonClicked"
+                                                          ItemHeight="40">
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
+                                
+                        <!--HijriDatePicker-->
+
+                                <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
+                                                       ShowHeader="False"
+                                                       Margin="10,0,10,0" 
+                                                       BackgroundColor="White"
+                                                       OKButtonBackgroundColor="#EAF7CC"
+                                                       CancelButtonBackgroundColor="#EAF7CC"
+                                                       HeaderBackgroundColor="#EAF7CC"
+                                                       SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                       BorderColor="Black"
+                                                       SelectedItem="{Binding TodayDateinHijriStart}"                
+                                                       ShowFooter="False"
+                                                       ShowColumnHeader="True"
+                                                       ColumnHeaderBackgroundColor="White"
+                                                       ColumnHeaderHeight="46"
+                                                       PickerMode="Dialog"
+                                                       HeaderText="{x:Static 
+                                    ResourceManager:AppResources.CRContractStartDate}"
+                                                       x:Name="HijriCalendar"
+                                                       OKButtonTextColor="#006450"    
+                                                       CancelButtonTextColor="#006450"
+                                                       HorizontalOptions="FillAndExpand"
+                                                       Closed="NormalCalendar_Closed"
+                                                       SelectionChanged="NormalCalendar_SelectionChanged"
+                                                       OkButtonClicked="NormalCalendar_OkButtonClicked"
+                                                       CancelButtonClicked="NormalCalendar_CancelButtonClicked"
+                                                       ItemHeight="40">
+                                </custom1:CustomHijriDatePicker>
+                            </Grid>
                     <Grid Grid.Row="5" Margin="0,10,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -299,7 +359,7 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                   
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding ToDate}"
                                                 HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" />
                             
@@ -309,14 +369,71 @@
                                                      Glyph="{x:Static FontImage:IconFonts.Calendar}" />
                                 </Image.Source>
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ShowEndDatePicker}"/>
+                                    <TapGestureRecognizer Tapped="EndNormalCalendar_Tapped" />
                                 </Image.GestureRecognizers>
                             </Image>
 
                             </Grid>
                         </border:SfBorder>
+                                <custom1:CustomDatePicker FlowDirection="LeftToRight" 
+                                                          ShowHeader="False"
+                                                          Margin="10,0,10,0" 
+                                                          BackgroundColor="White"                             
+                                                          OKButtonBackgroundColor="#EAF7CC"
+                                                          CancelButtonBackgroundColor="#EAF7CC"
+                                                          HeaderBackgroundColor="#EAF7CC"
+                                                          SelectedItemTextColor="{StaticResource                                     NeutralBlack}"
+                                                          BorderColor="Black"
+                                                          ShowFooter="False"
+                                                          ShowColumnHeader="True"
+                                                          ColumnHeaderBackgroundColor="White"
+                                                          ColumnHeaderHeight="46"
+                                                          PickerMode="Dialog"
+                                                          HeaderText="{x:Static 
+                                    ResourceManager:AppResources.CRContractEndDate}"
+                                                          x:Name="EndDateNormalCalendar"
+                                                          OKButtonTextColor="#006450" 
+                                                          CancelButtonTextColor="#006450"
+                                                          SelectedItem="{Binding TodayDateEnd}"
+                                                          HorizontalOptions="FillAndExpand"
+                                                          Closed="EndDateNormalCalendar_Closed"
+                                       SelectionChanged="EndDateNormalCalendar_SelectionChanged"
+                                                          OkButtonClicked="EndDateNormalCalendar_OkButtonClicked" CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
+                                                          ItemHeight="40">
+                                    <custom1:CustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                    </custom1:CustomDatePicker.Behaviors>
+                                </custom1:CustomDatePicker>
 
-                    </Grid>
+                                <!--HijriDatePicker-->
+
+                                <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
+                                                       ShowHeader="False"
+                                                       Margin="10,0,10,0" 
+                                                       BackgroundColor="White"
+                                                       OKButtonBackgroundColor="#EAF7CC"
+                                                       CancelButtonBackgroundColor="#EAF7CC"
+                                                       HeaderBackgroundColor="#EAF7CC"
+                                                       SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                       BorderColor="Black"
+                                                       SelectedItem="{Binding TodayDateinHijriEnd}"                
+                                                       ShowFooter="False"
+                                                       ShowColumnHeader="True"
+                                                       ColumnHeaderBackgroundColor="White"
+                                                       ColumnHeaderHeight="46"
+                                                       PickerMode="Dialog"
+                                                       HeaderText="{x:Static 
+                                    ResourceManager:AppResources.CRContractEndDate}"
+                                                       x:Name="EndDateHijriCalendar"
+                                                       OKButtonTextColor="#006450"    
+                                                       CancelButtonTextColor="#006450"
+                                                       HorizontalOptions="FillAndExpand"
+                                                       Closed="EndDateNormalCalendar_Closed"
+                                                       SelectionChanged="EndDateNormalCalendar_SelectionChanged"
+                                                       OkButtonClicked="EndDateNormalCalendar_OkButtonClicked"                       CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
+                                                       ItemHeight="40">
+                                </custom1:CustomHijriDatePicker>
+                            </Grid>
                     <Grid Grid.Row="6" Margin="0,10,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -1613,7 +1730,7 @@
                     
         </ScrollView>
 
-            <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+            <Grid IsVisible="{Binding IsLoading1}" BackgroundColor="Transparent">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                  Opacity="0.4" VerticalOptions="FillAndExpand" />
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"

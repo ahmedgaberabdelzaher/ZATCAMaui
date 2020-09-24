@@ -114,22 +114,97 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 });
                 try
                 {
-                    if (App.LoginDataRetrieved.VtReg == null)
-                    {
-                        viewModel.IsVatRegistrationTileVisible = true;
-                    }
-                    else if (App.LoginDataRetrieved.VtReg != "X")
-                    {
-                        viewModel.IsVatRegistrationTileVisible = true;
-                    }
+                    //if (App.LoginDataRetrieved.VtReg == null)
+                    //{
+                    //    viewModel.IsVatRegistrationTileVisible = true;
+                    //}
+                    //else if (App.LoginDataRetrieved.VtReg != "X")
+                    //{
+                    //    viewModel.IsVatRegistrationTileVisible = true;
+                    //}
 
-                    if (App.LoginDataRetrieved.ZkReg == null)
+                    //if (App.LoginDataRetrieved.ZkReg == null)
+                    //{
+                    //    viewModel.IsEstablishmentRegistrationTileVisible = true;
+                    //}
+                    //else if (App.LoginDataRetrieved.ZkReg != "X")
+                    //{
+                    //    viewModel.IsEstablishmentRegistrationTileVisible = true;
+                    //}
+
+
+                    //New Code For Manage VAT Registration and Zakat Registration Tile
+
+                    if (App.LoginDataRetrieved != null)
                     {
-                        viewModel.IsEstablishmentRegistrationTileVisible = true;
-                    }
-                    else if (App.LoginDataRetrieved.ZkReg != "X")
-                    {
-                        viewModel.IsEstablishmentRegistrationTileVisible = true;
+
+                        if (App.LoginDataRetrieved.ZkReg == "X")
+                        {
+                            viewModel.IsEstablishmentRegistrationTileVisible = false;
+                        }
+                        else if(App.LoginDataRetrieved.ZkReg == "U")
+                        {
+                            viewModel.IsEstablishmentRegistrationTileVisible = false;
+                        }
+                        else if(App.LoginDataRetrieved.ZkReg == "N")
+                        {
+                            viewModel.IsEstablishmentRegistrationTileVisible = false;
+                        }
+
+
+                        if (App.LoginDataRetrieved.VtReg == "X")
+                        {
+                            viewModel.IsVatRegistrationTileVisible = false;
+                        }
+                        else if (App.LoginDataRetrieved.VtReg == "R")
+                        {
+                            viewModel.IsVatRegistrationTileVisible = false;
+                        }
+
+
+                        if (App.LoginDataRetrieved.ZkSignup == "X")
+                        {
+                            if (App.LoginDataRetrieved.ZkReg == string.Empty)
+                            {
+                                viewModel.IsVatRegistrationTileVisible = false;
+                                viewModel.IsEstablishmentRegistrationTileVisible = true;
+                            }
+
+                        }
+                        else if(App.LoginDataRetrieved.VtSignup == "X")
+                        {
+                            if (App.LoginDataRetrieved.VtReg == string.Empty)
+                            {
+                                viewModel.IsEstablishmentRegistrationTileVisible = false;
+                                viewModel.IsVatRegistrationTileVisible = true;
+                                viewModel.IfSignUpnNotRegInVAT = true;
+                            }
+                        }
+
+                        
+                        if((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
+                        {
+                            viewModel.IfnotRegInVATAndZakat = false;
+                        }
+                        if(App.LoginDataRetrieved.VtReg == "X")
+                        {
+                            viewModel.IfnotRegInVATAndZakat = true;
+                            viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                            viewModel.IfSignUpnNotRegInVAT = false;
+                        }
+                        else if(App.LoginDataRetrieved.VtReg == string.Empty)
+                        {
+                            viewModel.IfSignUpnNotRegInVATShowVATServie = false;
+                            viewModel.IfSignUpnNotRegInVAT = true;
+                        }else if(App.LoginDataRetrieved.ZkReg == "X")
+                        {
+                            viewModel.IfSignUpnNotRegInVAT = true;
+                        }
+                        if (App.LoginDataRetrieved.ZkReg == "X")
+                        {
+                            viewModel.IfnotRegInVATAndZakat = true;
+                        }
+
                     }
 
                 }
@@ -239,7 +314,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
+            //if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
+            if(true)
             {
                 //                viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
                 viewModel.MenuViewVisible = true;

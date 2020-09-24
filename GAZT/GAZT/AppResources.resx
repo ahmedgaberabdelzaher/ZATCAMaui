@@ -4403,6 +4403,13 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
+  <data name="TinDeregistrationDeclarationCheck" xml:space="preserve">
+    <value>I declare that all entered data are Valid</value>
+  </data>
+ 
+      <data name="TinDeregistrationContactNumber" xml:space="preserve">
+    <value> Contact Number</value>
+  </data>
   <data name="TinDeregistrationReason" xml:space="preserve">
     <value>Reason</value>
   </data>
@@ -7774,7 +7781,7 @@ Please provide us with supporting documents to support your reasons for a review
     <value>Zakat\Income Tax Objections</value>
   </data>
   <data name="NDTINDeregestration" xml:space="preserve">
-    <value>TIN Deregestration</value>
+    <value>TIN Deregistration</value>
   </data>
   <data name="NDV" xml:space="preserve">
     <value>v</value>
@@ -7817,5 +7824,8 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
   <data name="NDHijri" xml:space="preserve">
     <value>Hijri</value>
+  </data>
+  <data name="ZZZZViewRefund" xml:space="preserve">
+    <value>View Refund Information</value>
   </data>
 </root>

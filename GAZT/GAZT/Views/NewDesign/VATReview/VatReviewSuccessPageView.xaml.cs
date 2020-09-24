@@ -84,12 +84,20 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         private async void Download_Acknowledgement(object sender, EventArgs e)
         {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = true;
+            });
             if (viewModel.VATReferanceNumber != null)
             {
 
                 String downloadurl = Constants.downloadFile + "'" + viewModel.VATReferanceNumber + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
             }
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
 
         private async void VatReview_Tapped(object sender, EventArgs e)

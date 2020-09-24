@@ -254,111 +254,124 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         public async void onPageLoad()
         {
-            viewModel.createIBANType();
-            if (App.ICRStatus == "E0001")
+            try
             {
-                if (viewModel.VATDeclarationDetails.d.IBANSet.results != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count() != 0)
+                viewModel.createIBANType();
+                if (App.ICRStatus == "E0001")
                 {
-                    viewModel.IBANList = new ObservableCollection<Result2>();
-                    viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
-                    viewModel.IsVATRefunCheckedVisible = false;
-                    viewModel.IsEnableCheckedRefund = false;
-                    viewModel.IsNewAccountButtonVisible = false;
-                    viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
-                    viewModel.IsDeclarationCheckedForRefund = false;
-                }
-                else
-                {
-                    viewModel.IBANList = new ObservableCollection<Result2>();
-                    viewModel.IsVATRefunCheckedVisible = true;
-                    viewModel.IsEnableCheckedRefund = true;
-                    viewModel.IsNewAccountButtonVisible = true;
-                    viewModel.NewAccountText = AppResources.ZTERNewAccount;
-                    viewModel.IsDeclarationCheckedForRefund = false;
-                }
-            }
-            bool value=IsCheckedDraftMode();
-            if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
-            {
-                if(viewModel.VATDeclarationDetails.d.TcFlg=="1")
-                {
-                    viewModel.IsDeclarationCheckedForRefund = true;
-                }
-                else
-                {
-                    viewModel.IsDeclarationCheckedForRefund = false;
-                }
-
-                if (viewModel.VATDeclarationDetails.d.RefundFg == "1")
-                {
-                    viewModel.IsSwichButtonEnable = true;
-                  
-                    //IsVisibleDropdownForRefund = true;
-                    //IsVisiblechkRefundDeclaration = true;
-                    //  IsDropdownVisibleForIban = true;
-                    if (viewModel.VATDeclarationDetails.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
+                    if (viewModel.VATDeclarationDetails.d.IBANSet.results != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count() != 0)
                     {
-                        //IsTextBoxVisibleForIban = true;
-                        //IsDropdownVisibleForIban = false;
-                        //IsCheckedRefund = true;
+                        viewModel.IBANList = new ObservableCollection<Result2>();
+                        viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
+                        viewModel.IsVATRefunCheckedVisible = false;
+                        viewModel.IsEnableCheckedRefund = false;
+                        viewModel.IsNewAccountButtonVisible = false;
+                        viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
+                        viewModel.IsDeclarationCheckedForRefund = false;
+                    }
+                    else
+                    {
+                        viewModel.IBANList = new ObservableCollection<Result2>();
+                        viewModel.IsVATRefunCheckedVisible = true;
+                        viewModel.IsEnableCheckedRefund = true;
                         viewModel.IsNewAccountButtonVisible = true;
-                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
+                        viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                        viewModel.IsDeclarationCheckedForRefund = false;
+                    }
+                }
+                bool value = IsCheckedDraftMode();
+                if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                {
+                    if (viewModel.VATDeclarationDetails.d.TcFlg == "1")
+                    {
+                        viewModel.IsDeclarationCheckedForRefund = true;
+                    }
+                    else
+                    {
+                        viewModel.IsDeclarationCheckedForRefund = false;
+                    }
+
+                    if (viewModel.VATDeclarationDetails.d.RefundFg == "1")
+                    {
+                        viewModel.IsSwichButtonEnable = true;
+
+                        //IsVisibleDropdownForRefund = true;
+                        //IsVisiblechkRefundDeclaration = true;
+                        //  IsDropdownVisibleForIban = true;
+                        if (viewModel.VATDeclarationDetails.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
                         {
-                            viewModel.IbanNumberText = viewModel.VATDeclarationDetails.d.Iban;
-                            viewModel.IBANList = new ObservableCollection<Result2>();
-                            Result2 result = new Result2();
-                            result.Iban = viewModel.VATDeclarationDetails.d.Iban;
-                            viewModel.IBANList.Add(result);
-                            viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
-                            viewModel.NewAccountText = AppResources.VATREditAccount;
+                            //IsTextBoxVisibleForIban = true;
+                            //IsDropdownVisibleForIban = false;
+                            //IsCheckedRefund = true;
+                            viewModel.IsNewAccountButtonVisible = true;
+                            if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
+                            {
+                                viewModel.IbanNumberText = viewModel.VATDeclarationDetails.d.Iban;
+                                viewModel.IBANList = new ObservableCollection<Result2>();
+                                Result2 result = new Result2();
+                                result.Iban = viewModel.VATDeclarationDetails.d.Iban;
+                                viewModel.IBANList.Add(result);
+                                viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                                viewModel.NewAccountText = AppResources.VATREditAccount;
+                            }
+                            else
+                            {
+                                viewModel.IBANList = new ObservableCollection<Result2>();
+                            }
                         }
                         else
                         {
-                            viewModel.IBANList = new ObservableCollection<Result2>();
+
+                            viewModel.IsTextBoxVisibleForIban = false;
+                            viewModel.IsDropdownVisibleForIban = true;
+                            viewModel.IsNewAccountButtonVisible = false;
+                            if (viewModel.VATDeclarationDetails.d.IBANSet.results != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count() != 0)
+                            {
+                                viewModel.IBANList = new ObservableCollection<Result2>();
+                                viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
+                            }
+                            if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
+                            {
+                                viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                            }
+                            if (viewModel.IBANList != null && viewModel.IBANList.Count > 0)
+                            {
+                                viewModel.IsVATRefunCheckedVisible = false;
+                            }
+                            else
+                            {
+                                viewModel.IsVATRefunCheckedVisible = true;
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idtype))
+                        {
+                            viewModel.SelectedIBANType = viewModel.IBANTypesList.Where(x => x.key == viewModel.VATDeclarationDetails.d.Idtype).FirstOrDefault();
+                            if (viewModel.SelectedIBANType != null)
+                            {
+                                await viewModel.SetIBANIdNumber();
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idnum))
+                        {
+                            if (viewModel.IBANIDNumberList != null && viewModel.IBANIDNumberList.Count != 0)
+                            {
+                                viewModel.SelectedIBANIDNumber = viewModel.IBANIDNumberList.Where(x => x.Idnumber == viewModel.VATDeclarationDetails.d.Idnum).FirstOrDefault();
+                            }
                         }
                     }
                     else
                     {
-                        viewModel.IsTextBoxVisibleForIban = false;
-                        viewModel.IsDropdownVisibleForIban = true;
-                        viewModel.IsNewAccountButtonVisible = false;
-                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
-                        {
-                            viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
-                        }
-                        if (viewModel.IBANList != null && viewModel.IBANList.Count > 0)
-                        {
-                            viewModel.IsVATRefunCheckedVisible = false;
-                        }
-                        else
-                        {
-                            viewModel.IsVATRefunCheckedVisible = true;
-                        }
-                    }
-                    if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idtype))
-                    {
-                        viewModel.SelectedIBANType = viewModel.IBANTypesList.Where(x => x.key == viewModel.VATDeclarationDetails.d.Idtype).FirstOrDefault();
-                        if (viewModel.SelectedIBANType != null)
-                        {
-                            await viewModel.SetIBANIdNumber();
-                        }
-                    }
-                    if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idnum))
-                    {
-                        if (viewModel.IBANIDNumberList != null && viewModel.IBANIDNumberList.Count != 0)
-                        {
-                            viewModel.SelectedIBANIDNumber = viewModel.IBANIDNumberList.Where(x => x.Idnumber == viewModel.VATDeclarationDetails.d.Idnum).FirstOrDefault();
-                        }
+                        //viewModel.IsSwichButtonEnableToTap = true;
+                        viewModel.IsSwichButtonEnable = false;
+                        viewModel.IsDropdownVisibleForIban = false;
+                        viewModel.IsVisibleDropdownForRefund = false;
+                        viewModel.IsVisiblechkRefundDeclaration = false;
                     }
                 }
-                else
-                {
-                    //viewModel.IsSwichButtonEnableToTap = true;
-                    viewModel.IsSwichButtonEnable = false;
-                    viewModel.IsDropdownVisibleForIban = false;
-                    viewModel.IsVisibleDropdownForRefund = false;
-                    viewModel.IsVisiblechkRefundDeclaration = false;
-                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
         public void ManageValidations()

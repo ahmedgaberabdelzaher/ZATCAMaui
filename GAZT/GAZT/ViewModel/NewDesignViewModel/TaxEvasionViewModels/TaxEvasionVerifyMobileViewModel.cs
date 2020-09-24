@@ -2,10 +2,12 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
@@ -452,7 +454,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         });
                     }
                 }
@@ -485,7 +488,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             IsLoading = false;
                         });
 
-                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         //viewModel._navigationService.GoBack();
                     });
                 }
@@ -498,7 +502,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             IsLoading = false;
                         });
 
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                      //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         //viewModel._navigationService.GoBack();
                     });
                 }
@@ -510,8 +515,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-
-                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
+               // await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
                 _navigationService.GoBack();
             });
         }
@@ -519,7 +524,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+              //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 _navigationService.GoBack();
             });
         }
@@ -588,7 +594,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await _dialogService.ShowMessageBox(AppResources.ZZPleaseenteraccessCode, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseenteraccessCode));
+              //  await _dialogService.ShowMessageBox(AppResources.ZZPleaseenteraccessCode, AppResources.Information);
             });
         }
         else
@@ -646,7 +653,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     else
                     {
                         ClearOTPForm();
-                        await _dialogService.ShowMessageBox(taxEvasionVerifySmsResponseModel.SmsResponse.Message, AppResources.Information);
+                       // await _dialogService.ShowMessageBox(taxEvasionVerifySmsResponseModel.SmsResponse.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(taxEvasionVerifySmsResponseModel.SmsResponse.Message));
                     }
                 }
                 catch (GAZTException gex)
@@ -675,7 +683,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         {
                             IsLoading = false;
                         });
-                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         ClearOTPForm();
                     });
                 }
@@ -691,10 +700,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         if (ex.Message.Contains("The entered code is incorrect") || ex.Message.Contains("الرمز المدخل غير صحيح"))
                         {
                             await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InvalidOTP));
                         }
                         else
                         {
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         }
                         ClearOTPForm();
                     });

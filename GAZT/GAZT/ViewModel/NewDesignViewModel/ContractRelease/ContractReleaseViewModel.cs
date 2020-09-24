@@ -97,15 +97,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         }
 
 
-        private bool _isLoading = false;
+        private bool _isLoading1 = false;
 
-        public bool IsLoading
+        public bool IsLoading1
         {
-            get { return _isLoading; }
+            get { return _isLoading1; }
             set
             {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
+                _isLoading1 = value;
+                RaisePropertyChanged("IsLoading1");
             }
         }
 
@@ -505,10 +505,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("ContractNumber");
             }
         }
+        private bool _IsHijriCal = false;
+        public bool IsHijriCal
+        {
+            get
+            {
+                return _IsHijriCal;
+            }
+            set
+            {
+                _IsHijriCal = value;
+                RaisePropertyChanged("IsHijriCal");
+            }
+        }
+        private string _fromDate = "";
 
-        private DateTime _fromDate = DateTime.Now;
-
-        public DateTime FromDate
+        public string FromDate
         {
             get { return _fromDate; }
             set
@@ -518,9 +530,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private DateTime _toDate = DateTime.Now;
+        private string _toDate = "";
 
-        public DateTime ToDate
+        public string ToDate
         {
             get { return _toDate; }
             set
@@ -607,7 +619,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
 
         private Dictionary<string, string> ContractTypeIdDictionary = null;
-            
+
         private ContractReleaseFormResponse _contractReleaseData;
 
         public ContractReleaseFormResponse ContractReleaseData
@@ -783,10 +795,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             MakeCalculations();
         }
 
-        public void updatePickerContractType() {
+        public void updatePickerContractType()
+        {
 
 
-        ContractTypeDictionary = new Dictionary<string, double>
+            ContractTypeDictionary = new Dictionary<string, double>
         {
             {AppResources.CRSupplyforAramco, 3.0},
             {AppResources.CRSupplyandmaintenance, 10.50},
@@ -935,19 +948,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                if (FromDate > DateTime.Now)
+
+                if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", null) > DateTime.Now)
                 {
                     await _dialogService.ShowMessage(AppResources.CRContractDateshouldnotbegreaterfromcurentdate,
                         AppResources.Information);
                     return;
                 }
-                else if (ToDate > DateTime.Now)
+                else if (DateTime.ParseExact(ToDate, "yyyy/MM/dd", null) > DateTime.Now)
                 {
                     await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbegreaterfromcurentdate,
                         AppResources.Information);
                     return;
                 }
-                else if (FromDate > ToDate)
+                else if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", null) > DateTime.ParseExact(ToDate, "yyyy/MM/dd", null))
                 {
                     await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbelessfromcontractdate,
                         AppResources.Information);
@@ -1042,45 +1056,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
 
            
+
             try
             {
-
 
                 if (!isSubmitted)
                 {
                     isSubmitted = true;
-                   
-                   
+
+                  
+
                     ContractReleaseData = await SubmitClicked();
                     if (ContractReleaseData.d != null)
                     {
-                        await Task.Run(() =>
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            IsLoading = false;
+                            IsLoading1 = false;
                         });
                         await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView());
                         //_navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
                     }
                 }
 
-
-
-
-
-
             }
             catch (GAZTUnlockAccountException ex)
             {
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    IsLoading = false;
+                    IsLoading1 = false;
                 });
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    IsLoading = false;
+                    IsLoading1 = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -1092,7 +1102,107 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         #region ApiIntegration
 
+        private ObservableCollection<object> _todayDateStart;
+        public ObservableCollection<object> TodayDateStart
+        {
+            get
+            {
+                return _todayDateStart;
+            }
+            set
+            {
+                _todayDateStart = value;
+                RaisePropertyChanged("TodayDateStart");
+            }
+        }
+        private ObservableCollection<object> _todayDateinHijriStart;
+        public ObservableCollection<object> TodayDateinHijriStart
+        {
+            get
+            {
+                return _todayDateinHijriStart;
+            }
+            set
+            {
+                _todayDateinHijriStart = value;
+                RaisePropertyChanged("TodayDateinHijriStart");
+            }
+        }
+        private ObservableCollection<object> _todayDateEnd;
+        public ObservableCollection<object> TodayDateEnd
+        {
+            get
+            {
+                return _todayDateEnd;
+            }
+            set
+            {
+                _todayDateEnd = value;
+                RaisePropertyChanged("TodayDateEnd");
+            }
+        }
+        private ObservableCollection<object> _todayDateinHijriEnd;
+        public ObservableCollection<object> TodayDateinHijriEnd
+        {
+            get
+            {
+                return _todayDateinHijriEnd;
+            }
+            set
+            {
+                _todayDateinHijriEnd = value;
+                RaisePropertyChanged("TodayDateinHijriEnd");
+            }
+        }
 
+        public int DefaultMonth;
+        public int DefaultMonthHijri;
+        public async Task SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDateStart = todaycollection;
+            TodayDateEnd = todaycollection;
+            DefaultMonth = DateTime.Now.Date.Month;
+
+            //TodayDateinHijri
+            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+            var calendar = new HijriCalendar();
+            if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            else
+                todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            if (calendar.GetMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
+            else
+                todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
+            todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+            TodayDateinHijriStart = todaycollectionHijri;
+            TodayDateinHijriEnd = todaycollectionHijri;
+            //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
+
+            if (ContractReleaseData.d.ACalTp == "H")
+            {
+                FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
+                ToDate = (TodayDateinHijriEnd[2] + "/" + TodayDateinHijriEnd[1] + "/" + TodayDateinHijriEnd[0]).ToString();
+            }
+            else
+            {
+                FromDate = (TodayDateStart[2] + "/" + TodayDateStart[1] + "/" + TodayDateStart[0]).ToString();
+                ToDate = (TodayDateEnd[2] + "/" + TodayDateEnd[1] + "/" + TodayDateEnd[0]).ToString();
+            }
+
+        }
         public ContractReleaseFormRequest BuildRequestObject()
         {
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
@@ -1222,7 +1332,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                   
+
                 };
                 //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                 var jsonDateTime2 = JsonConvert.SerializeObject(dt2, microsoftDateFormatSettings2);
@@ -1233,7 +1343,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                 request.d.AReceiveDt = convretedTodayate;
 
-                DateTime dt = Convert.ToDateTime(FromDate.ToString());
+                DateTime dt = DateTime.ParseExact(FromDate, "yyyy/MM/dd", null);
                 JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
@@ -1246,7 +1356,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 var convretedFromDate = jsonDateTime;
 
 
-                DateTime dt1 = Convert.ToDateTime(ToDate.ToString());
+                DateTime dt1 = DateTime.ParseExact(ToDate, "yyyy/MM/dd", null);
                 JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
@@ -1265,20 +1375,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 //request.d.AContEndDtCh = (ToDate.Year + "/" + ToDate.Month. + "/" + ToDate.Day).ToString();
                 //request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
 
-                if (ContractReleaseData.d.ACalTp == "H")
-                {
-                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                    request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd" , cultureInfo);
-                    request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd", cultureInfo);
+             
 
-                }
-                else
-                {
+                    request.d.AContEndDtCh = DateTime.ParseExact(ToDate, "yyyy/MM/dd", null).ToString("yyyy/MM/dd");
+                    request.d.AContDt1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", null).ToString("yyyy/MM/dd");
 
-                    request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd");
-                    request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
-
-                }
+                
                 request.d.Savez = "X";
                 request.d.Submitz = "X";
 
@@ -1308,7 +1410,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             ContractReleaseFormResponse response = new ContractReleaseFormResponse();
 
+
+
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
+
 
 
             try
@@ -1317,40 +1422,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = true;
+                    IsLoading1 = true;
                 });
-
 
 
                 request = BuildRequestObject();
 
 
 
-                response = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
-                PopToRootPage();
-                if (response != null && response.d != null)
+
+                await Task.Run(async () =>
                 {
-                    try
-                    {
-                       
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-                        return response;
+                    response = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
 
-                    }
-                    catch (Exception ex)
-                    {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-                        return null;
 
+
+                    PopToRootPage();
+                    if (response != null && response.d != null)
+                    {
+                        try
+                        {
+                            await Task.Run(() =>
+                            {
+                                IsLoading1 = false;
+                            });
+                            return response;
+                        }
+                        catch (Exception ex)
+                        {
+                            await Task.Run(() =>
+                            {
+                                IsLoading1 = false;
+                            });
+                            return null;
+                        }
                     }
-                }
-              
+
+
+
+                    return response;
+                });
                 return response;
             }
             catch (GAZTVATRegistrationInProcessException ex)
@@ -1364,18 +1475,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
 
+
+
                 });
                 return response;
             }
+
+
 
             catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
-                    IsLoading = false;
+                    IsLoading1 = false;
                 });
                 return response;
             }
+
+
 
         }
 
@@ -1468,10 +1585,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                await Task.Run(() => { IsLoading = true; });
                 await Task.Run(async () =>
                 {
-                    IsLoading = true;
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        IsLoading1 = true;
+                    });
                     ContractReleaseData = null;
                     try
                     {
@@ -1482,6 +1602,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         if (ContractReleaseData != null && ContractReleaseData.d != null)
                         {
                             bindDataToUI();
+
+                            if (ContractReleaseData.d.ACalTp == "H") {
+
+                                IsHijriCal = true;
+                            }
+                            else {
+
+                                IsHijriCal = false;
+                            }
+
+                            await SetDefaultDate();
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                IsLoading1 = false;
+                            });
+
                         }
                         else
                         {
@@ -1493,10 +1630,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                             });
                         }
 
-                        IsLoading = false;
+                        
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading1 = false;
+                        });
                         throw ex;
                     }
                     catch (InternetException ex)
@@ -1504,7 +1645,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
+                           
                             _navigationService.GoBack();
                         });
                         //   await Task.Run(() =>
@@ -1512,7 +1653,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         //  });
                     }
                 });
-                await Task.Run(() => { IsLoading = false; });
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading1 = false;
+                });
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -1522,14 +1667,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                    
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
+                });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading1 = false;
                 });
             }
             catch (Exception ex)
             {
-                await Task.Run(() => { IsLoading = false; });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading1 = false;
+                });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -1702,7 +1854,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public void ResetData()
         {
-
+            IsHijriCal = false;
+            FromDate = "";
+            ToDate = "";
+            //SetDefaultDate();
             updatePickerContractType();
             _isInvoiceAttachments = true;
             IsReleaseDetailsEnabled = false;
@@ -1730,13 +1885,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             Designation = "";
             ContractName = "";
             ContractNumber = "";
-            FromDate = DateTime.Now;
-            ToDate = DateTime.Now;
             PickerModel = null;
             setPickerModel();
             ContractCopyAttachmentsListViewData = null;
             InvoiceAttachmentsListViewData = null;
-           
+
         }
 
 

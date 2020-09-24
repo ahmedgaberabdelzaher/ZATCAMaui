@@ -33,6 +33,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
+
+            MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
+            {
+                outletDecisionOptionsListView.SelectedItem = x;
+            });
         }
 
         public void ChangeArrowDirection()
@@ -71,9 +76,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg != null)
                 {
                     viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
-                    foreach(Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
+                    foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
                     {
-                        if(attachment.Dotyp == "DR01")
+                        if (attachment.Dotyp == "DR01")
                         {
                             viewModel.TinDeregistrationData.ADocumnt1 = "1";
                         }
@@ -137,7 +142,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                     if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
                     {
-                        if(!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
+                        if (!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
                         {
                             viewModel.ValidateIDNumber();
                         }
@@ -200,7 +205,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
+            int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
             viewModel.SelectedOutletOptionIndex = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
+            viewModel.IsOption1Visible = index == 0 ? true : false;
+            viewModel.IsOption2Visible = index == 1 ? true : false;
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -253,13 +261,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         {
                             Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                         }
-               
+
                     }
                 }
             }
 
-         }
-       private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
+        }
+        private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
             try
             {
@@ -566,13 +574,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     view.SelectedItem = null;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            
+
         }
-  
+
         async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
         {
             var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);

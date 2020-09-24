@@ -4383,6 +4383,9 @@
   <data name="TinDeregistrationTransfer" xml:space="preserve">
     <value>نقل</value>
   </data>
+      <data name="TinDeregistrationContactNumber" xml:space="preserve">
+    <value>رقم الاتصال</value>
+  </data>
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
   </data>
@@ -4391,6 +4394,9 @@
   </data>
   <data name="TinDeregistrationDetails" xml:space="preserve">
     <value>تفاصيل التسجيل</value>
+  </data>
+  <data name="TinDeregistrationDeclarationCheck" xml:space="preserve">
+    <value>أتعهد بأن جميع البيانات المدخلة صحيحة</value>
   </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>إيقاف الرقم المميز</value>
@@ -7657,7 +7663,7 @@
     <value>ارفاق خطاب طلب مع ذكر سبب هذا الطلب</value>
   </data>
   <data name="ZOWithdrawGeneralAttachmentOne" xml:space="preserve">
-    <value>ZOObjectionRefNo</value>
+      <value>خطاب الطلب</value>
   </data>
   <data name="ZOWithdrawGeneralAttachmentTwo" xml:space="preserve">
     <value>اعتماد الفرع</value>
@@ -7678,5 +7684,8 @@
   </data>
   <data name="NDHijri" xml:space="preserve">
     <value>ميلادي</value>
+  </data>
+  <data name="ZZZZViewRefund" xml:space="preserve">
+    <value>عرض بيانات الاسترداد</value>
   </data>
 </root>
