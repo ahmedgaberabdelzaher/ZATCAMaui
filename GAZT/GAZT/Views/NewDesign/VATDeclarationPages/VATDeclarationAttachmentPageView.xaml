@@ -20,9 +20,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView  Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand"  >
-
-        <Grid>
+    <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" HeightRequest="400" >
+         <StackLayout>
+            <ScrollView >
+        <Grid Padding="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
@@ -92,6 +93,8 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
+                                                    <StackLayout  Padding="0,5,0,5" HorizontalOptions="FillAndExpand">
+
                                         <border:SfBorder  Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}" >
 
                                             <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
@@ -115,6 +118,7 @@
                                             </StackLayout>
 
                                         </border:SfBorder>
+                                                        </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -123,11 +127,7 @@
                     </StackLayout>
                     <!--<custom:CustomLabel Margin="0,-5,0,0" Text="50MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
 
-                    <StackLayout Grid.Row="2" BackgroundColor="White">
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />-->
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
-
-                    </StackLayout>
+                   
                 </StackLayout>
 
 
@@ -156,5 +156,12 @@
 
 
         </Grid>
+                </ScrollView>
+              <StackLayout Grid.Row="2" BackgroundColor="White" Padding="10">
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />-->
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
+
+                    </StackLayout>
+         </StackLayout>    
     </yummy:PancakeView>
 </pages:PopupPage>
