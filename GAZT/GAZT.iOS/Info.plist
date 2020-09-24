@@ -35,10 +35,8 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>11.0</string>
-	<key>CFBundleDisplayName</key>
-	<string>E-GAZT</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.egazt</string>
+	<string>com.gazt.enterprise.egazt</string>
 	<key>CFBundleName</key>
 	<string>E-GAZT</string>
 	<key>XSAppIconAssets</key>
@@ -89,5 +87,7 @@
 	<string>1.0.73</string>
 	<key>CFBundleShortVersionString</key>
 	<string>3.2.1.13</string>
+	<key>CFBundleDisplayName</key>
+	<string>E-GAZT</string>
 </dict>
 </plist>
