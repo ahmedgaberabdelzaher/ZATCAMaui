@@ -335,7 +335,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    viewModel.SelectedIBAN = viewModel.IBANList[0];// viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                                    viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
 
                                 });
                             }
