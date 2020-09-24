@@ -1,9 +1,11 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using pdfjs.Interfaces;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.IO;
 using System.Net;
@@ -205,7 +207,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                     {
                         IsShareButtonEnable = false;
                         String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
-                        await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
+                        //await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(OnSuccessfulAuthentication));
                     }
                     IsLoading = false;
                 });
@@ -323,7 +326,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                             IsShareButtonEnable = false;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                               // await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                             });
                         }
 
@@ -333,7 +337,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                         IsShareButtonEnable = false;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                         //   await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                         });
                     }
                 }
@@ -342,7 +347,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                     IsShareButtonEnable = false;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                        //await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                     });
                 }
 

@@ -287,15 +287,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #endregion
 
-        public void setDashBoardVisible()
-        {
-            viewModel.MenuViewVisible = false;
-            viewModel.HomeViewVisible = true;
-            viewModel.HomeIndicatorColor = Color.DarkGreen;
-            viewModel.MenuIndicatorColor = Color.White;
-            viewModel.TabbarColor = Color.DarkGray;
-            viewModel.StackMenuColor = Color.White;
-        }
+        
         private void OnHomeTapped(object sender, EventArgs e)
         {
             viewModel.MenuViewVisible = false;
@@ -322,7 +314,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.HomeViewVisible = false;
                 viewModel.HomeIndicatorColor = Color.White;
 
-                viewModel.MenuIndicatorColor = Color.DarkGreen;
+                viewModel.MenuIndicatorColor = Color.FromHex("#006450");
                 viewModel.StackMenuColor = Color.Transparent;
                 viewModel.TabbarColor = Color.Transparent;
 

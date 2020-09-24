@@ -1048,7 +1048,7 @@
                             <yummy:PancakeView Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding HomeViewVisible}" Value="True">
-                                        <Setter Property="BackgroundColor" Value="DarkGreen"/>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
                                     </DataTrigger>
                                 </yummy:PancakeView.Triggers>
                             </yummy:PancakeView>
@@ -1079,7 +1079,9 @@
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
-
+                            <!--<Frame Padding="12" CornerRadius="100" BackgroundColor="{StaticResource Primary}">
+                            <Image Source="quick_action_2.png"/>
+                            </Frame>-->
                             <buttons:SfButton
                                 BackgroundColor="{StaticResource Primary}"
                                 BackgroundImage="quick_action_2.png"
@@ -1088,16 +1090,12 @@
                                 HorizontalOptions="Center"
                                 WidthRequest="24" HeightRequest="24"
                                 Clicked="OnQuickActionClicked"/>
-
+                            
                             <!--<Image Source="quick_action_2.png"
                                    BackgroundColor="{StaticResource Primary}"
                                    WidthRequest="30"
                                    HeightRequest="30"
-                                   HorizontalOptions="Center"
-                                   custom:RoundCornersEffect.CornerRadius="15">-->      
-                                <!--<Image.Source>
-                                    <FontImageSource Color="Green" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.LightningBolt}"/>
-                                </Image.Source>-->
+                                   HorizontalOptions="Center">-->      
                             <!--</Image>-->
 
                         </StackLayout>

@@ -58,6 +58,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+        private bool _setSuccessMessageVisibility = false;
+        public bool SetSuccessMessageVisibility
+        {
+            get
+            {
+                return _setSuccessMessageVisibility;
+            }
+            set
+            {
+                _setSuccessMessageVisibility = value;
+                RaisePropertyChanged("SetSuccessMessageVisibility");
+            }
+        }
 
         private string _refreshIconImageSource = "";
         public string RefreshIconImageSource
@@ -119,6 +132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 try
                 {
+                    SetSuccussMessageVisibility();
                     EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(ZakatReturnDetail.Fbnum, ZAKATReturnDetailsViewModel.Fbguid); // Method to get the invoice
                     PopToRootPage();
                     if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
@@ -247,6 +261,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+        private void SetSuccussMessageVisibility()
+        {
+            if (ZAKATReturnDetailsViewModel.IsBillsButtonTapped == true)
+            {
+                SetSuccessMessageVisibility = false;
+            }
+            else
+            {
+                SetSuccessMessageVisibility = true;
+            }
+        }
 
         #endregion
     }

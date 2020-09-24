@@ -10,6 +10,7 @@
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
@@ -941,19 +942,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                         </StackLayout>
                                         <StackLayout Grid.Row="1" Margin="10,0,10,0">
                                             <!--Personal Information-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                            <!--border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}"-->
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0" Margin="0,10,0,0">
                                                 <StackLayout >
                                                     <StackLayout Orientation="Horizontal" VerticalOptions="Start" Padding="10,5,10,5"  >
-                                                        <!--<Image VerticalOptions="Center" >
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
-                                                            </Image.Source>
-                                                        </Image>-->
                                                         <Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
                                                         <Label  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZPersonalInformation}"   FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
                                                     </StackLayout>
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -981,21 +977,16 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                     </Grid>
                                                 </StackLayout>
-                                            </Frame>
+                                            </border:SfBorder>
                                             <!--National Address-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0"  Margin="0,20,0,0">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5" VerticalOptions="Start">
-                                                       <!--<Image VerticalOptions="Center" >
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="#51a997" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.CrosshairsGps}" />
-                                                            </Image.Source>
-                                                        </Image>-->
+                                                     
                                                         <Image Source="vat_new_Iconmetrolocation.png" Aspect="AspectFit" HeightRequest="30"/>
                                                         <Label Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZZNationalAddress}"    FontSize="Medium" TextColor="Black"/>
                                                     </StackLayout>
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -1032,21 +1023,16 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                     </Grid>
                                                 </StackLayout>
-                                            </Frame>
+                                            </border:SfBorder>
                                             <!--Contact Information-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0" Margin="0,20,0,0">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5" VerticalOptions="Start">
-                                                        <!--<Image VerticalOptions="Center" >
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="#51a997" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Phone}"/>
-                                                            </Image.Source>
-                                                        </Image>-->
+                                                        
                                                         <Image Source="vat_new_Iconawesomephonealt.png" Aspect="AspectFit" HeightRequest="30"/>
                                                         <Label  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZContactInformation}"  FontSize="Medium" TextColor="Black"/>
                                                     </StackLayout>
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -1071,7 +1057,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                     </Grid>
                                                 </StackLayout>
-                                            </Frame>
+                                            </border:SfBorder>
                                         </StackLayout>
                                     </Grid>
                                     <!--Password-->
@@ -1165,17 +1151,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </custom:CustomLabel>
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FramePasswordError}"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
-                                                                <custom:BorderlessEntry x:Name="EntryPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}"
-                                                                                        FontSize="Small" WidthRequest="128" MaxLength="16"
-                                                                        
-                                                                Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                <custom:BorderlessEntry x:Name="EntryPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}" FontSize="Small" WidthRequest="128" MaxLength="16" TextChanged="EntryPassword_TextChanged" Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                                                     <custom:BorderlessEntry.Behaviors>
                                                                         <local:PasswordTextBehaviour/>
                                                                     </custom:BorderlessEntry.Behaviors>
                                                                 </custom:BorderlessEntry>
                                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                                    <Image x:Name="ImageSeePassword" Source="showPassword.png">
+                                                                    <Image x:Name="ImageSeePassword" Source="hidePassword.png">
                                                                         
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
@@ -1206,7 +1189,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                     </custom:BorderlessEntry.Behaviors>
                                                                 </custom:BorderlessEntry>
                                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                                    <Image  x:Name="ImageSeeConfirmPassword" Source="showPassword.png">
+                                                                    <Image  x:Name="ImageSeeConfirmPassword" Source="hidePassword.png">
                                                                         
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
@@ -1219,26 +1202,26 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                         <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding MinEight}" HorizontalOptions="Start">
                                                                    
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZAtleast8characterslong}" TextColor="#010101"/>
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding CapsSmall}" HorizontalOptions="Start">
                                                                     
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZEnglishcapitalandsmallletters}" TextColor="#010101"  />
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding MaxSixteen}" HorizontalOptions="Start">
                                                                     
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZNotexceed16characters}" TextColor="#010101"  />
                                                             </StackLayout>
 
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Image Source="check_oval.png" HorizontalOptions="Start">
+                                                                <Image Source="{Binding NumSymbol}" HorizontalOptions="Start">
                                                                     
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZZNumbersandsymbols}" TextColor="#010101" />
