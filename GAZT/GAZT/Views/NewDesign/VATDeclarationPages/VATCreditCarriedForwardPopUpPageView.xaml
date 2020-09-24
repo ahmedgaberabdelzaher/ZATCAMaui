@@ -19,7 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView VerticalOptions="End" Style="{StaticResource CommonTopCurves}">
+    <yummy:PancakeView VerticalOptions="End" Style="{StaticResource CommonTopCurves}" Margin="0,150,0,0">
         <StackLayout>
             <!--<Image HorizontalOptions="EndAndExpand" Source="closeGrey.png">
                 <Image.GestureRecognizers>

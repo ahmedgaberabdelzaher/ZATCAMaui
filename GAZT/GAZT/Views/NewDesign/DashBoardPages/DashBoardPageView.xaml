@@ -438,6 +438,7 @@
                             <StackLayout Grid.Row="1" Padding="15,0,0,0" >
 
                                 <StackLayout Spacing="20" Padding="0,0,0,10">
+                                    <StackLayout x:Name="ifUserNotRegisteredtoZakatAndVAT" Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="user_profile.png">
 
@@ -449,7 +450,7 @@
                                     </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                    <StackLayout x:Name="ifUserNotRegisteredtoZakatAndVAT" Spacing="20" IsVisible="{Binding IfnotRegInVATAndZakat}" >
+                                    
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_Payments"></Image>
