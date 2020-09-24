@@ -168,6 +168,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private Color _resendOTPTextColor = Color.FromHex("#c7c7c7");
+        public Color ResendOTPTextColor
+        {
+            get
+            {
+                return _resendOTPTextColor;
+            }
+            set
+            {
+                _resendOTPTextColor = value;
+                RaisePropertyChanged("ResendOTPTextColor");
+            }
+        }
+
+        
 
         private bool _passwordLayoutVisibility = false;
         public bool PasswordLayoutVisibility
@@ -1834,6 +1849,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ContinueButtonEnability = true;
                             IsResendOTPEnabled = false;
                             StartOTPTimer();
+                            ResendOTPTextColor = Color.FromHex("#c7c7c7");
                             IsAPICalledSuccessfully = true;
 
                             //StartPage = StartPage + 1;
@@ -2632,6 +2648,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
+                ResendOTPTextColor = Color.FromHex("#005e4b");
 
                 otpTimer.Stop();
             }
