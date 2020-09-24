@@ -1,7 +1,9 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -295,12 +297,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                //_dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 _navigationService.GoBack();
             }
             catch (Exception ex)
             {
-                _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+             //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
         public void FilterCertificateOnBasisOfType()
@@ -382,7 +386,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsLoading = false;
-                            await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                            //await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                         });
                     }
                 }
@@ -398,7 +403,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsLoading = false;
-                            await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                       //     await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                         });
                     }
                 }
