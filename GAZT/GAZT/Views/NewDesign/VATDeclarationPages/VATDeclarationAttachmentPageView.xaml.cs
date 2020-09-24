@@ -28,6 +28,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
     {
         VATDeclarationAttachmentPageViewModel viewModel;
         VATDeclaration vatDec;
+        VATAttachment attachment;
 
         string downloadFilePath;
         public VATDeclarationAttachmentPageView(VATDeclaration vATDeclaration)
@@ -115,6 +116,32 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            getYesCommandToDeleteTheAttachment();
+
+        }
+
+        public async void getYesCommandToDeleteTheAttachment()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesCommandToDeleteVATAttachment", async (sender, arg) =>
+                {
+                    if(attachment != null)
+                    {
+                      await  DeleteAttachment(attachment);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -155,7 +182,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     try
                     {
                         Image arrowImage = sender as Image;
-                        VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+                         attachment = (VATAttachment)arrowImage.BindingContext;
                         if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         {
                             int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
@@ -163,8 +190,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             {
                                 if (attachment != null)
                                 {
-                                    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                    DeleteAttachment(result, attachment);
+                                    //  var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                                    await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
+                                   // DeleteAttachment(result, attachment);
                                 }
                             }
                         }
@@ -183,14 +211,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     try
                     {
                         Image arrowImage = sender as Image;
-                        VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+                         attachment = (VATAttachment)arrowImage.BindingContext;
 
                         if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         {
                             if (attachment != null)
                             {
-                                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                DeleteAttachment(result, attachment);
+                                // var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                                await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
+                                //DeleteAttachment(result, attachment);
                             }
                         }
                         //if (attachment != null)
@@ -217,7 +246,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
         }
-        public async Task DeleteAttachment(bool result, VATAttachment attachment)
+        public async Task DeleteAttachment(VATAttachment attachment)
         {
             try
             {
@@ -227,8 +256,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
                 await Task.Run(() =>
                 {
-                    if (result)
-                    {
+                    
                         int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
                         string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
                         PopToRootPage(); 
@@ -250,7 +278,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             if (indexToReduceTheSize != -1)
                                 viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
-                    }
+                    
                 });
                 await Task.Run(() =>
                 {

@@ -1863,7 +1863,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             VatInstalments.d.Operationz = "01";
             VatInstalments.d.Decflg = "1";
-            VatInstalments = await SubmitClicked();
+
+            await Task.Run(async () =>
+            {
+                VatInstalments = await SubmitClicked();
+            });
 
             if (VatInstalments != null && VatInstalments.d != null)
             {
@@ -2055,7 +2059,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
 
-                VatInstalments = await SubmitClicked();
+                await Task.Run(async () =>
+                {
+                    VatInstalments = await SubmitClicked();
+
+                });
 
 
                 EnableStatementsView();
@@ -2647,10 +2655,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                         DateAsString = VatInstalments.d.VTISSet.results[i].Faedn;  //which is in the format dd/MM/yyyy
 
-                        ValidDate = DateTime.ParseExact(DateAsString, dateformat, provider);
 
+                        try
+                        {
+                            ValidDate = DateTime.ParseExact(DateAsString, dateformat, provider);
+                        }
+                        catch (Exception e)
+                        {
+                            ValidDate = DateTime.ParseExact(DateAsString, dateformat.Replace("MM", "M"), provider);
+                        }
 
-                      //  DateTime dt = DateTime.ParseExact(VatInstalments.d.VTISSet.results[i].Faedn, dateformat, provider);
+                        //  DateTime dt = DateTime.ParseExact(VatInstalments.d.VTISSet.results[i].Faedn, dateformat, provider);
 
                         //DateTime dt = Convert.ToDateTime(VatInstalments.d.VTISSet.results[i].Faedn);
                         JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
