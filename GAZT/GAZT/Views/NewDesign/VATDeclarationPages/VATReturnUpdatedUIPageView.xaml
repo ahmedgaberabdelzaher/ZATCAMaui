@@ -105,7 +105,7 @@
                             </custom:CustomLabel>
 
 
-                            <commonView:PageIndicatorView Margin="0,15,0,0" Grid.Row="0" Grid.Column="0" MaxNum="{TemplateBinding BindingContext.MaxIndex}" MinNum="{TemplateBinding BindingContext.CurrentIndex}" Completed="{TemplateBinding BindingContext.MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                            <commonView:PageIndicatorView DotSize="12" Margin="0,15,0,0" Grid.Row="0" Grid.Column="0" MaxNum="{TemplateBinding BindingContext.MaxIndex}" MinNum="{TemplateBinding BindingContext.CurrentIndex}" Completed="{TemplateBinding BindingContext.MarkComplete}" VerticalOptions="CenterAndExpand"/>
 
                             <!-- <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                 <Grid BackgroundColor="White" Margin="0,15,0,0">
