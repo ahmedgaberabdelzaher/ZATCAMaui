@@ -25,8 +25,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             // * Update UI
             viewModel.TPProfileSuccessId = SuccessId;
             UpdateUI();
-
-            // * Need to update - Taxpayer Profile Data
         }
 
         private void UpdateUI()
@@ -57,8 +55,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                if (viewModel.TPProfileSuccessId == 1 || viewModel.TPProfileSuccessId == 3)
-                {
+                // * Passing success id's : Mobile - 2 ; Email - 1 ; Password - 3
+                /*if (viewModel.TPProfileSuccessId == 1 || viewModel.TPProfileSuccessId == 3)
+                {*/
                     await Task.Run(() =>
                     {
                         App.DisplayProgressView();
@@ -76,10 +75,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         AppResources.Culture = new CultureInfo(langName);
                     }
 
-                    try
-                    {
-                        await WebServiceManager.GAZTLogOff();
-                    }
+                    try { await WebServiceManager.GAZTLogOff(); }
                     catch { }
 
                     await Task.Run(() =>
@@ -99,8 +95,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     }
                     catch (Exception ex) { }
                     viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                }
-                else { viewModel._navigationService.GoBack(); }
+                /*}
+                else { viewModel._navigationService.GoBack(); }*/
             });
         }
     }
