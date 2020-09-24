@@ -42,7 +42,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.IndividualRegistrationPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-
+            viewModel.IsHijriCal = false;
+            HijriCalSwitch.IsToggled = false;
             viewModel.ClearData();
              Task.Run(async() =>
             {
@@ -1630,6 +1631,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.CapsSmall = "error";
             viewModel.MaxSixteen = "error";
             viewModel.NumSymbol = "error";
+        }
+
+        private void Btn_Edit_PersonalInformation_Clicked(object sender, EventArgs e)
+        {
+
+            viewModel.IndividualRegistrationView = true;
+            viewModel.NationalAddressView = false;
+            viewModel.ContactInformationView = false;
+            viewModel.SummeryView = false;
+        }
+
+        private void Btn_Edit_NationalAddress_Clicked(object sender, EventArgs e)
+        {
+            viewModel.IndividualRegistrationView = false;
+            viewModel.NationalAddressView = true;
+            viewModel.ContactInformationView = false;
+            viewModel.SummeryView = false;
+        }
+
+        private void Btn_Edit_ContactInformation_Clicked(object sender, EventArgs e)
+        {
+            viewModel.IndividualRegistrationView = false;
+            viewModel.NationalAddressView = false;
+            viewModel.ContactInformationView = true;
+            viewModel.SummeryView = false;
         }
     }
 }

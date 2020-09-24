@@ -32,7 +32,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
-
+              viewModel.IndividualBackImg=  "FP_unselected_tile.png";
+              viewModel.EstablishmentBackImg = "FP_unselected_tile.png";
             });
             if (App.IsArabic)
             {

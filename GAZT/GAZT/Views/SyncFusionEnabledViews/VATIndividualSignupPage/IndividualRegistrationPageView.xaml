@@ -740,7 +740,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="PostalCode" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry x:Name="EntryPostalCode" MaxLength="5"  Unfocused="EntryPostalCode_Unfocused" FontFamily="{StaticResource SSTArLight}" Text="{Binding PostalCode}" IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry x:Name="EntryPostalCode" MaxLength="5"  Unfocused="EntryPostalCode_Unfocused" FontFamily="{StaticResource SSTArLight}" Text="{Binding PostalCode}" IsSpellCheckEnabled="False" Keyboard="Numeric"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZPostalCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
@@ -943,12 +943,21 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                         <StackLayout Grid.Row="1" Margin="10,0,10,0">
                                             <!--Personal Information-->
                                             <!--border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}"-->
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0" Margin="0,10,0,0">
-                                                <StackLayout >
-                                                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" Padding="10,5,10,5"  >
-                                                        <Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
-                                                        <Label  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZPersonalInformation}"   FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
-                                                    </StackLayout>
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False" Padding="0" Margin="0,10,0,0">
+                                                <StackLayout Padding="0,5,0,5">
+                                                    <Grid  Padding="10,0,10,0"  >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZPersonalInformation}"   FontSize="Medium" TextColor="Black" VerticalOptions="Center"/>
+                                                        <buttons:SfButton  Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_PersonalInformation" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static local:AppResources.NDEdit}" Clicked="Btn_Edit_PersonalInformation_Clicked"  HorizontalOptions="End"/>
+                                                    </Grid>
                                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
@@ -979,13 +988,22 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                 </StackLayout>
                                             </border:SfBorder>
                                             <!--National Address-->
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0"  Margin="0,20,0,0">
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False"  Padding="0"  Margin="0,20,0,0">
                                                 <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5" VerticalOptions="Start">
-                                                     
-                                                        <Image Source="vat_new_Iconmetrolocation.png" Aspect="AspectFit" HeightRequest="30"/>
-                                                        <Label Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZZNationalAddress}"    FontSize="Medium" TextColor="Black"/>
-                                                    </StackLayout>
+                                                    <Grid  Padding="10,0,10,0"  >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_new_Iconmetrolocation.png" Aspect="AspectFit" HeightRequest="30"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZZNationalAddress}"    FontSize="Medium" TextColor="Black"/>
+                                                        <buttons:SfButton  Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_NationalAddress" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static local:AppResources.NDEdit}" Clicked="Btn_Edit_NationalAddress_Clicked"  HorizontalOptions="End"/>
+                                                    </Grid>
                                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
@@ -1025,13 +1043,22 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                 </StackLayout>
                                             </border:SfBorder>
                                             <!--Contact Information-->
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" Padding="0" Margin="0,20,0,0">
-                                                <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5" VerticalOptions="Start">
-                                                        
-                                                        <Image Source="vat_new_Iconawesomephonealt.png" Aspect="AspectFit" HeightRequest="30"/>
-                                                        <Label  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZContactInformation}"  FontSize="Medium" TextColor="Black"/>
-                                                    </StackLayout>
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False"  Padding="0" Margin="0,20,0,0">
+                                                <StackLayout Padding="0,5,0,5">
+                                                    <Grid  Padding="10,0,10,0"  >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_new_Iconawesomephonealt.png" Aspect="AspectFit" HeightRequest="30"/>
+                                                        <Label Grid.Row="0" Grid.Column="1"  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZContactInformation}"  FontSize="Medium" TextColor="Black"/>
+                                                        <buttons:SfButton  Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_ContactInformation" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static local:AppResources.NDEdit}" Clicked="Btn_Edit_ContactInformation_Clicked"  HorizontalOptions="End"/>
+                                                    </Grid>
                                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
