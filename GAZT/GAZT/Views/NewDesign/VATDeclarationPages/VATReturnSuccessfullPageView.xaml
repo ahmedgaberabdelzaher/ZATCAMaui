@@ -19,17 +19,37 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-
-        <Grid>
+        <!--<Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="70*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>-->
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="65*"/>
             </Grid.RowDefinitions>
 
-            <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+            <StackLayout Grid.Row="0" Padding="15,0,15,0">
+                <Image  Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+
+                </Image>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnBackButtonClicked}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="1" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
             <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
 
                 <Image Source="Forget_ic_success"/>
@@ -52,7 +72,7 @@
             </StackLayout>
             </ScrollView>
 
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+            <yummy:PancakeView Grid.Row="2" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
 
                 <Grid HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand">
@@ -116,6 +136,38 @@
 
         </Grid>
 
+
+        <!--<Grid Padding="15,0,15,0" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+
+            --><!--<custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />--><!--
+
+            <StackLayout Grid.Row="0" Grid.Column="0">
+                <Image  Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+
+                </Image>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnBackButtonClicked}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>-->
+
+            <!--<StackLayout Grid.Row="0" Grid.Column="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}">
+                <Image IsVisible="{Binding IsBackBtnVisible}" Source="{Binding RefreshIconImageSource}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+
+                </Image>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRefreshButtonClicked"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>-->
+
+        <!--</Grid>-->
 
         <!--<StackLayout Spacing="20">
             <StackLayout Margin="0,80,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
@@ -181,5 +233,6 @@
                 </ScrollView>
             </yummy:PancakeView>
         </StackLayout>-->
+        <!--</Grid>-->
     </ContentPage.Content>
 </ContentPage>
