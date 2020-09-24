@@ -249,7 +249,7 @@
                             </custom:CustomLabel>
                                 <StackLayout Orientation="Horizontal">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                                    <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
+                                    <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled"/>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                 </StackLayout>
                                 

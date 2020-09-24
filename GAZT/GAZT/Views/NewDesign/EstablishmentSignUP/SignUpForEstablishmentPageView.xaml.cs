@@ -4229,6 +4229,56 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
 
         }
+
+        private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (DpDbo.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 
 }
