@@ -122,14 +122,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             if( viewModel.countDownSeconds == 0 )
             {
                 viewModel.BtnEnableFlag = false;
-                viewModel.EnteredOTP = string.Empty;
-                viewModel.OTPFirstDigit = string.Empty;
-                viewModel.OTPSecondDigit = string.Empty;
-                viewModel.OTPThirdDigit = string.Empty;
-                viewModel.OTPFourthDigit = string.Empty;
-
-                viewModel.StartOTPTimer();
+                RefreshOTPFieldsData();
                 TaxPayerProfile TPAPIResponse = await viewModel.VarifyEmail();
+
+                if (TPAPIResponse != null)
+                {
+                    // * Start timer period for valid OTP
+                    viewModel.StartOTPTimer();
+                }
             }
         }
 
@@ -225,11 +225,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         // * // Reset Enteried
         private void RefreshControlsData()
         {
-            viewModel.OTPFirstDigit = string.Empty;
-            viewModel.OTPSecondDigit = string.Empty;
-            viewModel.OTPThirdDigit = string.Empty;
-            viewModel.OTPFourthDigit = string.Empty;
-            viewModel.EnteredOTP = string.Empty;
+            RefreshOTPFieldsData();
 
             // Defualt
             viewModel.BtnEnableFlag = false;
@@ -238,6 +234,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.CurrentPasswordEntry = string.Empty;
             viewModel.NewPasswordEntry = string.Empty;
             viewModel.ConfirmPasswordEntry = string.Empty;
+        }
+
+        private void RefreshOTPFieldsData()
+        {
+            viewModel.OTPFirstDigit = string.Empty;
+            viewModel.OTPSecondDigit = string.Empty;
+            viewModel.OTPThirdDigit = string.Empty;
+            viewModel.OTPFourthDigit = string.Empty;
+            viewModel.EnteredOTP = string.Empty;
         }
 
         void OnBackArrowTapped(System.Object sender, System.EventArgs e)

@@ -141,7 +141,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             if (viewModel.countDownSeconds == 0)
             {
+                RefreshOTPFieldsData();
+                OTPFirstEntry.Focus();
                 TaxPayerProfile TPAPIResponse = await viewModel.VarifyMobileNumber();
+
                 if (TPAPIResponse != null)
                 {
                     // * Start timer period for valid OTP
@@ -229,11 +232,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         // * // Reset Enteried
         private void RefreshControlsData()
         {
-            viewModel.OTPFirstDigit = string.Empty;
-            viewModel.OTPSecondDigit = string.Empty;
-            viewModel.OTPThirdDigit = string.Empty;
-            viewModel.OTPFourthDigit = string.Empty;
-            viewModel.EnteredOTP = string.Empty;
+            RefreshOTPFieldsData();
 
             // Defualt
             //viewModel.BtnEnableFlag = false;
@@ -241,6 +240,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             viewModel.NewMobileNumberEntryText = string.Empty;
             btn.Text = AppResources.TPUpdate;
+        }
+
+        private void RefreshOTPFieldsData()
+        {
+            viewModel.OTPFirstDigit = string.Empty;
+            viewModel.OTPSecondDigit = string.Empty;
+            viewModel.OTPThirdDigit = string.Empty;
+            viewModel.OTPFourthDigit = string.Empty;
+            viewModel.EnteredOTP = string.Empty;
         }
 
         private void Mobile_entry_Unfocused(object sender, FocusEventArgs e) { }
