@@ -361,8 +361,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             viewModel.SetLayoutVisibilityAfterTappingOnAmendButton();
 
-           //await scrollView.ScrollToAsync(0, ScrollToPosition.Start, true);
-           await scrollView.ScrollToAsync(0, (double)ScrollToPosition.Start, true);
+            //await scrollView.ScrollToAsync(0, ScrollToPosition.Start, true);
+            ZAKATReturnDetailsViewModel.IsBillsButtonTapped = false;
+            await scrollView.ScrollToAsync(0, (double)ScrollToPosition.Start, true);
 
 
 
