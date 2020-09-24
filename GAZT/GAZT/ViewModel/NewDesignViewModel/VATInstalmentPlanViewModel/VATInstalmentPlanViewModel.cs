@@ -1704,11 +1704,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     string[] dts = null;
                     dts = statementList[i].Faedn.Split('/');
 
-                    if (App.IsArabic) {
+                    if (App.IsArabic)
+                    {
                         dt1 = dts[2] + "-" + dts[1] + "-" + dts[0];
 
                     }
-                    else {
+                    else
+                    {
                         dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
 
                     }
@@ -1914,7 +1916,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void ResetData()
         {
             EnableSlectionView();
-
+            NoOfInstalments = 0;
             _isLoading = false;
             SecondTerms = false;
             _vATPenalityAmount = "0.00";
@@ -1962,14 +1964,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 //if (FirstTerms)
                 //{
-                    if (IsFirstCheckboxChecked)
-                    {
-                        EnableVATBillView();
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZZZConfirmAndCarryForward, AppResources.Information);
-                    }
+                if (IsFirstCheckboxChecked)
+                {
+                    EnableVATBillView();
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZZZConfirmAndCarryForward, AppResources.Information);
+                }
                 //}
                 //else
                 //{
@@ -2251,7 +2253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await App.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
+                //   await App.Current.MainPage.DisplayAlert("Alert", "Instalment details schedule is displayed here.", "OK");
 
 
 
@@ -2360,8 +2362,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     VatInstalmentPlanResponse vATInstalment = null;
                     try
                     {
-                        vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData();
-                        VatInstalments = vATInstalment;
+                        if (App.selectedVATItem != "")
+                        {
+                            var selectedItemFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
+                            //vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData();
+                            //VatInstalments = vATInstalment;
+                            if (selectedItemFormID.d != null)
+                            {
+
+                                vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData(selectedItemFormID.d.Fbguid, selectedItemFormID.d.Euser);
+                                VatInstalments = vATInstalment;
+                            }
+                        }
+                        else
+                        {
+                            vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData("", "");
+                            VatInstalments = vATInstalment;
+                        }
 
                         PopToRootPage();
                         // If seesion Expired it will navigate to Dashboard page
@@ -2373,11 +2390,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         {
 
                             await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
-    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-        .Instructions));
+                                _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                                .Instructions));
                             BindVATSelectionView();
                             BindBillsListView();
-
 
                             if (VatInstalments.d.Xstep1Conf != null)
                             {
@@ -2392,6 +2408,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                 }
 
                             }
+
+                            if (App.selectedVATItem != "")
+                            {
+                                MessagingCenter.Send<Object, string>(this, "RejectScenario", App.selectedVATItem);
+                                if (VatInstalments.d.Noofinstallment != null)
+                                {
+                                    NoOfInstalments = int.Parse(VatInstalments.d.Noofinstallment);
+                                }
+                            }
+
 
                         }
                         else
@@ -2635,11 +2661,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                         string dateformat = "dd-MM-yyyy";
 
-                        if (App.IsArabic) {
+                        if (App.IsArabic)
+                        {
 
                             dateformat = "yyyy-MM-dd";
                         }
-                        else {
+                        else
+                        {
                             dateformat = "dd-MM-yyyy";
                         }
 

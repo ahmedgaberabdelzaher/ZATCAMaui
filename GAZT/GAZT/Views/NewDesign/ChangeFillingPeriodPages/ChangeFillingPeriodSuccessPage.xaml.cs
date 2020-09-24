@@ -113,6 +113,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 String downloadurl = Constants.downloadFile + "'" + viewModel.ChangeFillingResponse.d.Fbnumz + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
+                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+
             }
         }
     }

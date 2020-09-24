@@ -183,6 +183,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 String downloadurl = Constants.downloadFile + "'" + viewModel.ZakatReferanceNumber + "')/$value";
                 await WebServiceManager.FileDownload(downloadurl, "pdf");
+                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+
+
             }
             await Task.Run(() =>
             {

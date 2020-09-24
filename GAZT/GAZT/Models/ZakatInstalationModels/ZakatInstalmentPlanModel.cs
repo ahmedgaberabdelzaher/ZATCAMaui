@@ -160,7 +160,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
     public partial class AttachSet
     {
-        public AttachSetResults[] results { get; set; }
+        public Attachment[] results { get; set; }
     }
 
     public partial class FnDtlSet

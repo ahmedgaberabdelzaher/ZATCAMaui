@@ -270,7 +270,7 @@
                                         <StackLayout>
                                             <Slider  
                                             Maximum="{Binding MaxInstalments}" 
-                                            Margin="5,5,5,10"                                                                                              
+                                            Margin="5,5,5,10"                                                                      Value="{Binding NoOfInstalments}"                        
                                             MinimumTrackColor="{StaticResource Primary}"
                                                 MaximumTrackColor="LightSlateGray"
                                                 ThumbColor="{StaticResource Primary}"

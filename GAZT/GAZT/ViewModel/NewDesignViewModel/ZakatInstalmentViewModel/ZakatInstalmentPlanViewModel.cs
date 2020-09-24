@@ -3976,10 +3976,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                                 {
                                     SelectedFrequencyType = ZakatInstalments.d.PymntFreq;
                                     MessagingCenter.Send<Object, string>(this, "SelectedFrequencyType", SelectedFrequencyType);
+                                }
 
+                                if (ZakatInstalments.d.AttachSet != null && ZakatInstalments.d.AttachSet.results != null)
+                                {
+                                    var bankAttachmentListViewData = new ObservableCollection<Attachment>();
+                                    var financialAttachmentListViewData = new ObservableCollection<Attachment>();
+                                    foreach (var attach in ZakatInstalments.d.AttachSet.results)
+                                    {
+                                        if (attach.Dotyp == "ZIP2")
+                                        {
+                                            bankAttachmentListViewData.Add(attach);
+                                        }
+                                        else if (attach.Dotyp == "ZIP3")
+                                        {
+                                            financialAttachmentListViewData.Add(attach);
+                                        }
 
+                                    }
+                                    BankStatementsAttachmentsListViewData = bankAttachmentListViewData;
+                                    FinanceAttachmentsListViewData = financialAttachmentListViewData;
+
+                                    if(BankStatementsAttachmentsListViewData != null && FinanceAttachmentsListViewData != null) {
+
+                                        IsDeclarationEnabled = true;
+
+                                    }
 
                                 }
+
+
 
                             }
 
@@ -4313,7 +4339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 _postData.NotesSet = ZakatInstalments.d.NotesSet.results;
             }
 
-            if (ZakatInstalments.d.AttachSet.results == null)
+            if (ZakatInstalments.d.insPlanSet.results == null)
             {
 
                 _postData.insPlanSet = new Array[0];

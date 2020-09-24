@@ -291,6 +291,7 @@ namespace EGAZT
 
         #region Zakat Instalment
         public static string selectedZakatItem = "";
+        public static string selectedVATItem = "";
         public static string selectedVatFillingItem = "";
 
         #endregion

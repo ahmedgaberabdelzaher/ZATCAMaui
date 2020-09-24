@@ -8582,7 +8582,7 @@ namespace GAZT.Manager
         }
 
 
-        public async static Task<VatInstalmentPlanResponse> GAZTGetVATInstalmentData()
+        public async static Task<VatInstalmentPlanResponse> GAZTGetVATInstalmentData(string formGuid , string euser)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8592,7 +8592,23 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+                    // String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+
+
+                    String url = "";
+
+                    if (formGuid == "") {
+
+                         url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+
+                    }
+                    else {
+
+                         url = Constants.GetVATInstalmentdata + "FormGuid='" + formGuid + "',Euser='" + euser + "',Gpartz='" + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+
+                    }
+
+
 
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
@@ -8940,7 +8956,7 @@ namespace GAZT.Manager
 
 
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(Tin='3102206579',Euser='',Fbguid='',Fbnum='',FormMode='N',Langz='EN')?&$format=json
-                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + fbnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
+                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + fbnum + "',FormMode='" + formMode + "',Langz='" + lang + "')?$expand=AttachSet%2cNotesSet%2cFnDtlSet&$format=json";
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);

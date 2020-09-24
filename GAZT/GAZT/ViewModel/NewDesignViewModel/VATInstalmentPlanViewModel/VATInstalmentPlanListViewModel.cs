@@ -559,6 +559,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             try
             {
 
+                App.selectedVATItem = "";
+
                 // _navigationService.NavigateTo(App.VatInstalmentPlanSuccessPage);
 
                 _navigationService.NavigateTo(App.VatInstalmentPlanPageView);
@@ -770,7 +772,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             NoOfInstalments = itemDetails.d.Noofinstallment;
             InstalmentAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.TotInvAmt)) + " " + AppResources.ZSAR;
             PenaltyAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Peneltyamt)) + " " + AppResources.ZSAR;
-            TotalAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Totliablityamt)) + " " + AppResources.ZSAR;
+            TotalAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Totdueamt)) + " " + AppResources.ZSAR;
         }
 
 

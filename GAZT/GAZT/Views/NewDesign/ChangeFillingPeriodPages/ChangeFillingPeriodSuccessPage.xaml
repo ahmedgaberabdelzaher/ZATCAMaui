@@ -31,11 +31,9 @@
                 <Image HeightRequest="120" WidthRequest="120"
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" Margin="0,20,0,0"
-                                    FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VFCSuccessDesc}"
-                                    Margin="0,15,0,0"
-                                    TextColor="White" HorizontalOptions="Center" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                     <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                     <Label Text= "{x:Static ResourceManager:AppResources.VFCSuccessDesc}" FontFamily="{StaticResource SSTArabicMedium}"
+                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>
                 <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False"

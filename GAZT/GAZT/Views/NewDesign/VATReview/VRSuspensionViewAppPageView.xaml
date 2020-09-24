@@ -242,12 +242,14 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+                                <StackLayout Grid.ColumnSpan="2" Orientation="Horizontal">
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRVSNextfilingperiod}"
                                                     Style="{StaticResource ValueLabelGrey}" />
                                 <custom:CustomLabel Grid.Column="1" Text="{Binding VRVSNextfilingperiod}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
                             </Grid>
 
 
@@ -274,12 +276,15 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+                               <StackLayout Grid.ColumnSpan="2" Orientation="Horizontal">
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRVSReasonforSuspensionofFiling}"
                                                     Style="{StaticResource ValueLabelGrey}" />
                                 <custom:CustomLabel Grid.Column="1" Text="{Binding VRVSRFSuspensionofFiling}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
+                                   </StackLayout>
+                                   
                             </Grid>
                         </StackLayout>
 

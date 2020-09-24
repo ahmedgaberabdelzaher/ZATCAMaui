@@ -132,9 +132,21 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
         private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var item = e.ItemData as Result31;
-            var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
-            viewModel.GetDetailsClicked(index);
-            viewModel.EnableVAtInstalmentSummary();
+
+
+            if (item.Fbust == "E0045")
+            {
+                App.selectedVATItem = item.Fbnum;
+                viewModel._navigationService.NavigateTo(App.VatInstalmentPlanPageView);
+            }
+            else {
+
+                var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
+                viewModel.GetDetailsClicked(index);
+                viewModel.EnableVAtInstalmentSummary();
+            }
+
+          
         }
 
         private void DisplayListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)

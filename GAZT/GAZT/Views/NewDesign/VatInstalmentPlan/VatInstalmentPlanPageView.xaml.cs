@@ -50,20 +50,49 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                 });
 
-
-
             }
             catch (Exception ex)
             {
 
             }
-
-
-
-
-
         }
 
+
+        private void SetItemsSelected()
+        {
+            if (viewModel.VatInstalments != null && viewModel.VatInstalments.d != null)
+            {
+                viewModel.selectedList = viewModel.SelectedBillsList.Where(w => w.Xsele.Contains("X")).ToList();
+
+                //viewModel.EnableBillsContinue();
+                for (int i = 0; i < viewModel.selectedList.Count; i++)
+                {
+                    var dataItem = viewModel.selectedList[i] as VATResults4;
+                    if (viewModel.SelectedBillsList.Contains(dataItem))
+                    {
+                        BillsVATListVIew.SelectedItem = viewModel.SelectedBillsList[i];
+                    }
+
+                }
+            }
+
+            Double dueAmount = 0.0;
+            for (int i = 0; i < viewModel.selectedList.Count; i++)
+            {
+                if (viewModel.selectedList[i] != null)
+                {
+                    dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
+                }
+                else
+                {
+                    viewModel.selectedList.Remove(viewModel.selectedList[i]);
+                }
+            }
+
+            viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + viewModel.selectedList[0].Waers;
+
+            viewModel.EnableBillsContinue();
+        }
         public async Task GetVAtInstalmentData()
         {
             try
@@ -109,67 +138,6 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         }
 
 
-        //private void BPickerButtonZakat_Clicked(object sender, EventArgs e)
-        //{
-        //    FZakatPicker.IsOpen = true;
-        //}
-
-        //private void FPickerZakat_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    CorrespondenceFiltersModel selectedZakat = (CorrespondenceFiltersModel)e.NewValue;
-        //    FZakatPicker.SelectedItem = selectedZakat;
-        //    viewModel.SelectedFilterZakat = selectedZakat;//selectedregion
-        //    viewModel.SelectedFilterZakatPrev = selectedZakat;//selectedregion
-        //    viewModel.TxtSelectedStatusZakat = selectedZakat.Filter;
-        //    viewModel.IsSubIncomeTaxViewEnabled = true;
-        //}
-        //private void FPickerZakat_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        FZakatPicker.SelectedItem = viewModel.SelectedFilterZakatPrev;
-        //        viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;//selectedregion
-        //        if (viewModel.SelectedFilterZakatPrev == null)
-        //        {
-        //            viewModel.TxtSelectedStatusZakat = string.Empty;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-
-        //}
-        //private void SubBPickerButtonZakat_Clicked(object sender, EventArgs e)
-        //{
-        //    SubFZakatPicker.IsOpen = true;
-        //}
-
-        //private void SubFPickerZakat_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    CorrespondenceFiltersModel selectedZakat = (CorrespondenceFiltersModel)e.NewValue;
-        //    SubFZakatPicker.SelectedItem = selectedZakat;
-        //    viewModel.SubSelectedFilterZakat = selectedZakat;//selectedregion
-        //    viewModel.SubSelectedFilterZakatPrev = selectedZakat;//selectedregion
-        //    viewModel.SubTxtSelectedStatusZakat = selectedZakat.Filter;
-        //}
-        //private void SubFPickerZakat_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        SubFZakatPicker.SelectedItem = viewModel.SubSelectedFilterZakatPrev;
-        //        viewModel.SubSelectedFilterZakat = viewModel.SubSelectedFilterZakatPrev;//selectedregion
-        //        if (viewModel.SelectedFilterZakatPrev == null)
-        //        {
-        //            viewModel.SubTxtSelectedStatusZakat = string.Empty;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-
-        //}
         private void DownPayment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
             viewModel.DownPaymentAmount = args.NewValue;
@@ -235,12 +203,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         {
             var dataItem = e.ItemData as VATResults4;
 
-
-
-
             totalAmount = 0.0;
-
-
 
             try
             {
@@ -256,17 +219,11 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                         viewModel.selectedList.Add(dataItem);
                     }
 
-
-
-
-
                 }
                 else
                 {
                     viewModel.selectedList.Add(dataItem);
-                    //viewModel.BillsListVAT[0].Xsele = "X";
-                    // totalAmount += Convert.ToDouble(dataItem.Betrh);
-                    // viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
+
                 }
 
 
@@ -283,25 +240,15 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                         viewModel.selectedList.Remove(viewModel.selectedList[i]);
                     }
 
-
-
                 }
-
-
-
 
                 viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;
 
-
-
                 viewModel.EnableBillsContinue();
-
             }
-
 
             catch (Exception ex)
             {
-
 
             }
         }
@@ -317,6 +264,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, Boolean>(this, "TermsContinueSecond");
             MessagingCenter.Unsubscribe<object, Boolean>(this, "InstructionsContinue");
+            MessagingCenter.Unsubscribe<object, Boolean>(this, "RejectScenario");
+
         }
         protected async override void OnAppearing()
         {
@@ -328,6 +277,13 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 viewModel.SecondTerms = false;
 
 
+                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "RejectScenario", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        SetItemsSelected();
+                    }
+                });
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
@@ -369,7 +325,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 });
 
 
-              
+
 
 
                 if (Device.RuntimePlatform == Device.iOS)

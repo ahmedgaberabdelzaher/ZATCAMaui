@@ -450,7 +450,7 @@
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}"
+                                    <Label Text="{x:Static ResourceManager:AppResources.VATAmountDue}"
                                       Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
                                     <Label Text="{Binding InstalmentAmount}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
                                 </StackLayout>
@@ -476,7 +476,7 @@
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
-                                    <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}"
+                                    <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}"
                                       Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
                                     <Label Text="{Binding TotalAmount}" Style="{StaticResource SectionTitleBlackBold}"
                                            HorizontalOptions="EndAndExpand" />

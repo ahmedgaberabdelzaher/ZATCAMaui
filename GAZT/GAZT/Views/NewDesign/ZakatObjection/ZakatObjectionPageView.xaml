@@ -1871,7 +1871,7 @@
 
                         </border:SfBorder>
 
-                        <buttons:SfButton  Margin="0,10,0,0" VerticalOptions="End"
+                        <buttons:SfButton  Margin="0,10,0,25" VerticalOptions="End"
                                       Text="{x:Static ResourceManager:AppResources.Submit}"
                                       Style="{StaticResource PrimaryButtonStyle}" Command="{Binding  WithdrAttachmentsContinueTapped}"/>
                     </StackLayout>
