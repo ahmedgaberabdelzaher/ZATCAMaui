@@ -1387,10 +1387,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (viewModel.IsPasswordEncripted)
             {
                 viewModel.IsPasswordEncripted = false;
+                ImageSeePassword.Source = "showPassword"; 
             }
             else
             {
                 viewModel.IsPasswordEncripted = true;
+                ImageSeePassword.Source = "hidePassword";
             }
         }
 
@@ -1399,10 +1401,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (viewModel.IsConfirmPasswordEncripted)
             {
                 viewModel.IsConfirmPasswordEncripted = false;
+                ImageSeeConfirmPassword.Source = "showPassword";
             }
             else
             {
                 viewModel.IsConfirmPasswordEncripted = true;
+                ImageSeeConfirmPassword.Source = "hidePassword";
             }
             
         }
@@ -1596,6 +1600,36 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
 
             }
+        }
+
+        private void EntryPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ResetPasswordValidationConditions();
+            bool ValidPassword = UtilityManager.ValidateNewPassword(viewModel.Password);
+            if (ValidPassword)
+            {
+                viewModel.MinEight = "check_oval";
+                viewModel.CapsSmall = "check_oval";
+                viewModel.MaxSixteen = "check_oval";
+                viewModel.NumSymbol = "check_oval";
+
+                // check the new and confirm password condition
+            }
+            else
+            {
+                if (UtilityManager.ValidMinEight) { viewModel.MinEight = "check_oval"; }
+                if (UtilityManager.ValidSmallL && UtilityManager.ValidCapsL) { viewModel.CapsSmall = "check_oval"; }
+                if (UtilityManager.ValidMaxSixteen) { viewModel.MaxSixteen = "check_oval"; }
+                if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = "check_oval"; }
+            }
+        }
+
+        void ResetPasswordValidationConditions()
+        {
+            viewModel.MinEight = "error";
+            viewModel.CapsSmall = "error";
+            viewModel.MaxSixteen = "error";
+            viewModel.NumSymbol = "error";
         }
     }
 }

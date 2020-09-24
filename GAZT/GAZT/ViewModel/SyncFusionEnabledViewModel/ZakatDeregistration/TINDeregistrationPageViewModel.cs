@@ -470,23 +470,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (value != null)
                 {
                     _selectedOutletOption = value;
-
                     if (TinDeregistrationData != null)
                     {
-                        if (TinDeregistrationData.ADregOpt != null)
+                        if (_selectedOutletOption != null && _selectedOutletOption.OutletOptionIndex != null)
                         {
-                            TinDeregistrationData.ADregOpt = _selectedOutletOption.OutletOptionIndex;
+                            if (TinDeregistrationData.ADregOpt == null)
+                            {
+                                TinDeregistrationData.ADregOpt = _selectedOutletOption.OutletOptionIndex;
+                            }
+                            else
+                            {
+                                TinDeregistrationData.ADregOpt = string.Empty;
+                                TinDeregistrationData.ADregOpt = _selectedOutletOption.OutletOptionIndex;
+                            }
                         }
-                        else
-                        {
-                            TinDeregistrationData.ADregOpt = string.Empty;
-                            TinDeregistrationData.ADregOpt = _selectedOutletOption.OutletOptionIndex;
-                        }
-
                         PopulateAttachmentsListViewTemplate();
                     }
                 }
-
                 RaisePropertyChanged("SelectedOutletOption");
             }
         }
@@ -1661,7 +1661,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             GrandFathersNameText = new FieldValidations();
             Name1Text = new FieldValidations();
             Name2Text = new FieldValidations();
-
+            DateField = new FieldValidations();
             IdTypeTapped = new Command(OnIdTypeClicked);
             PermitIdtypeTapped = new Command<PermitSetResult>(OnPermitIdTypeClicked);
             PermitTypeTinUnfocused = new Command<PermitSetResult>(OnPermitTypeTinEntered);
@@ -1707,7 +1707,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
                         SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
 
-                        MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
+                       // MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
                     }
                     catch (Exception ex)
                     {
@@ -2683,6 +2683,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
+                bool isMandatoryDocAttached = false;
+                foreach (TinDeregestrationAttachmentsModel reqAttachment in AttachmentsListViewData)
+                {
+                    if (reqAttachment.IsMandatory)
+                    {
+                        isMandatoryDocAttached = TinDeregistrationData.AttDetSet.Results.Any(attachedDocs => attachedDocs.Dotyp == reqAttachment.DocType);
+                        if (!isMandatoryDocAttached)
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            break;
+                        }
+                    }
+
+                }
+                if (!isMandatoryDocAttached)
+                    return;
                 await SaveAsDraft();
                 EnableDeclarationView();
             }
