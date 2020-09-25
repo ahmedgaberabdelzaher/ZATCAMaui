@@ -50,24 +50,15 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 if (viewModel.ZakatReferanceNumber != null)
                 {
 
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading = true;
-                    });
-
+                 
                     await Clipboard.SetTextAsync(viewModel.ZakatReferanceNumber);
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
                         await viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
 
-
-
                     }
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                  
                 }
             }
             catch (Exception ex)

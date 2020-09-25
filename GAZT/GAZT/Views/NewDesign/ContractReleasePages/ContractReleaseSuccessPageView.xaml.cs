@@ -93,11 +93,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 if (viewModel.ContractReleaseData.d.Fbnumz != null)
                 {
 
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading1 = true;
-                    });
-
                     await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.Fbnumz);
                     if (Clipboard.HasText)
                     {
@@ -105,10 +100,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                         await viewModel._dialogService.ShowMessageBox(AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
 
                     }
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading1 = false;
-                    });
+                 
                 }
             }
             catch (Exception ex)
@@ -174,11 +166,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 if (viewModel.ContractReleaseData.d.AContNo != null)
                 {
 
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading1 = true;
-                    });
-
                     await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.AContNo);
                     if (Clipboard.HasText)
                     {
@@ -186,10 +173,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                         await viewModel._dialogService.ShowMessageBox(AppResources.CRContractingNumber + " " + text, AppResources.Copied);
 
                     }
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading1 = false;
-                    });
+               
                 }
             }
             catch (Exception ex)

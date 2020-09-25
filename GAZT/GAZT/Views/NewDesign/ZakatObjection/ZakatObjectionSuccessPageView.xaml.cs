@@ -59,24 +59,14 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 if (_viewModel.VATReferanceNumber != null)
                 {
 
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        _viewModel.IsLoading = true;
-                    });
-
                     await Clipboard.SetTextAsync(_viewModel.VATReferanceNumber);
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
                         await _viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
 
-
-
                     }
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        _viewModel.IsLoading = false;
-                    });
+                   
                 }
             }
             catch (Exception ex)

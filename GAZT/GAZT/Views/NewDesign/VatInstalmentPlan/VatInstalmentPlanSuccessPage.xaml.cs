@@ -38,11 +38,6 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 if (viewModel.VATReferanceNumber != null)
                 {
 
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading = true;
-                    });
-
                     await Clipboard.SetTextAsync(viewModel.VATReferanceNumber);
                     if (Clipboard.HasText)
                     {
@@ -50,12 +45,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                         await viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
 
 
-
                     }
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
+                   
                 }
             }
             catch (Exception ex)

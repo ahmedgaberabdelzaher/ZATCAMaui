@@ -89,7 +89,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             {
                 if (viewModel.ChangeFillingResponse.d.Fbnumz != null)
                 {
-                    Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = true; });
 
                     await Clipboard.SetTextAsync(viewModel.ChangeFillingResponse.d.Fbnumz);
                     if (Clipboard.HasText)
@@ -99,7 +98,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                             AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
                     }
 
-                    Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = false; });
                 }
             }
             catch (Exception ex)
