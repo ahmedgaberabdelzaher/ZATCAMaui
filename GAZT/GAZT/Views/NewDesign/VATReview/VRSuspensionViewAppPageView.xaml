@@ -229,7 +229,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRVSSuspendedfilingperiod}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VRVSSuspendedfilingperiod}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding VRVSRFSuspensionofFiling}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                             </Grid>
@@ -280,7 +280,7 @@
                                 <custom:CustomLabel Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.VRVSReasonforSuspensionofFiling}"
                                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Grid.Column="1" Text="{Binding VRVSRFSuspensionofFiling}"
+                                <custom:CustomLabel Grid.Column="1" Text="{Binding VRVSSuspendedfilingperiod}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" />
                                    </StackLayout>

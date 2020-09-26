@@ -137,6 +137,7 @@ namespace EGAZT
         public static string MoreMenuPopUpPageViewRTwo = "MoreMenuPopUpPageViewRTwo";
         public static string VRSuspensionViewAppPageView = "VRSuspensionViewAppPageView";
         public static string VRVatRegViewPageView = "VRVatRegViewPageView";
+        public static string VRVatGroupPageView = "VRVatGroupPageView";
         #endregion
 
         #region old view strings
@@ -202,6 +203,7 @@ namespace EGAZT
         public static string VATRealEstateServicesPageView = "VATRealEstateServicesPageView";
         public static string PropertyRegistrationPage = "PropertyRegistrationPage";
         public static string VATRegistrationPageView = "VATRegistrationPageView";
+        public static string VATAmendReactivationPageView = "VATAmendReactivationPageView";
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
         public static string VATIndividualSignupTnCPageView = "VATIndividualSignupTnCPageView";
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";

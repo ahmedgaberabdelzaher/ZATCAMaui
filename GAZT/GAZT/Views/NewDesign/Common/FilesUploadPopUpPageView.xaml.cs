@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EGAZT.Models;
@@ -77,7 +78,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             else if (whichAttachment == WhichAttachment.ContractReleaseCopy || whichAttachment == WhichAttachment.ContractReleaseInvoice)
             {
-                viewModel.TitleOne = AppResources.ESTAttachmentSizeNotfication;
+                viewModel.TitleOne = AppResources.ZContractReleaseAttachmentTitle;
                 viewModel.TitleTwo = AppResources.ZContractReleaseChooseonlyfilewithextension;
             }
             else if (whichAttachment == WhichAttachment.VATInstalment)
@@ -217,6 +218,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         //}
 
 
+
+       
         public async Task email(string doguid, VATAttachment attachment)
         {
             await Task.Run(() =>
@@ -227,37 +230,58 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 try
                 {
+
+
                     string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
-                    byte[] PdfBytes;
-                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
-                    WebResponse myResp = myReq.GetResponse();
-                    using (Stream streams = myResp.GetResponseStream())
-                    using (MemoryStream Ms = new MemoryStream())
-                    {
-                        int count = 0;
-                        do
-                        {
-                            byte[] buf = new byte[1024];
-                            count = streams.Read(buf, 0, 1024);
-                            Ms.Write(buf, 0, count);
-                        } while (streams.CanRead && count > 0);
-                        PdfBytes = Ms.ToArray();
-                    }
+
+                    System.IO.MemoryStream pdfStream = new MemoryStream();
+
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var uri = new Uri(attachmentURL);
+                    HttpResponseMessage _fileDownloadResponse = await client.GetAsync(uri);
+
+                    var fileName = Guid.NewGuid().ToString();
+
+                    _fileDownloadResponse.EnsureSuccessStatusCode();
+                    await _fileDownloadResponse.Content.CopyToAsync(pdfStream);
+
+
+
+                    //byte[] PdfBytes;
+                    //HttpWebRequest myReq = (System.Net.HttpWebRequest)WebRequest.Create(attachmentURL);
+                    //WebResponse myResp = myReq.GetResponse();
+
+                    //using (Stream streams = myResp.GetResponseStream())
+                    //using (MemoryStream Ms = new MemoryStream())
+                    //{
+                    //    int count = 0;
+                    //    do
+                    //    {
+                    //        byte[] buf = new byte[1024];
+                    //        count = streams.Read(buf, 0, 1024);
+                    //        Ms.Write(buf, 0, count);
+                    //    } while (streams.CanRead && count > 0);
+                    //    PdfBytes = Ms.ToArray();
+                    //}
                     var message = new EmailMessage
                     {
                         Subject = "Attached Form :",
                     };
                     var fn = attachment.Filename;
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                    File.WriteAllBytes(file, PdfBytes);
+                    File.WriteAllBytes(file, pdfStream.ToArray());
+
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await Share.RequestAsync(new ShareFileRequest
                         {
-                            Title = Title,
+                            Title = "",
                             File = new ShareFile(file)
                         });
                     });
+
+
 
                 }
                 catch (Exception ex)

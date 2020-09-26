@@ -7828,4 +7828,53 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="ZZZZViewRefund" xml:space="preserve">
     <value>View Refund Information</value>
   </data>
+    <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
+    <value>Attachment(Only One Allowed - Maximum Size 10 MB)</value>
+  </data>
+    <data name="ZZZZViewRefund" xml:space="preserve">
+  <value>View Refund Information</value>
+</data>
+<data name="VRVGMemberDetails" xml:space="preserve">
+  <value>Member Details</value>
+</data>
+<data name="VRVGAggregatedgrouplevelfinancialdetails" xml:space="preserve">
+  <value>Aggregated group level financial details</value>
+</data>
+<data name="VRVGGroupVATeligiblesupplies" xml:space="preserve">
+  <value>Group VAT eligible supplies</value>
+</data>
+<data name="VRVGGroupVATeligiblepurchases" xml:space="preserve">
+  <value>Group VAT eligible purchases</value>
+</data>
+<data name="VRVGGroupeffectivedate" xml:space="preserve">
+  <value>Group effective date</value>
+</data>
+<data name="VRVGAttachments" xml:space="preserve">
+  <value>Attachments</value>
+</data>
+<data name="VRVGTINHolderName" xml:space="preserve">
+  <value>TIN Holder Name</value>
+</data>
+<data name="VRVGTINNumber" xml:space="preserve">
+  <value>TIN Number</value>
+</data>
+    <data name="VRVGLessthanSAR187500" xml:space="preserve">
+  <value>Less than SAR 187,500</value>
+</data>
+<data name="VRVGBetweenSAR18750andSAR375000" xml:space="preserve">
+  <value>Between SAR 187,500 and SAR 375,000</value>
+</data>
+<data name="VRVGBetweenSAR375000andSAR1000000" xml:space="preserve">
+  <value>Between SAR 375,000 and SAR 1,000,000</value>
+</data>
+<data name="VRVGBetweenSAR1000000andSAR40000000" xml:space="preserve">
+  <value>Between SAR 1,000,000 and SAR 40,000,000</value>
+</data>
+<data name="VRVGGreaterthanSAR40000000" xml:space="preserve">
+  <value>Greater than SAR 40,000,000</value>
+</data> 
+
+<data name="VRVGGreaterthanSAR187500" xml:space="preserve">
+  <value>Greater than SAR 187,500</value>
+</data>
 </root>

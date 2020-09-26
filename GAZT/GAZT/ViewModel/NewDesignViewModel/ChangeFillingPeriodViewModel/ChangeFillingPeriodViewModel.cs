@@ -1644,6 +1644,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     catch (Exception ex)
                     {
+                        isSubmitted = false;
                         IsLoading = false;
                         return null;
 
@@ -1657,6 +1658,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
+                    isSubmitted = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     //_navigationService.GoBack();
 
@@ -1666,6 +1668,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             catch (Exception ex)
             {
+                isSubmitted = false;
                 return response;
             }
 
@@ -2102,6 +2105,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.ATTACHSet = ChangeFillingResponse.d.ATTACHSet.results;
                 request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
 
+                request.d.DecidTy = IDTypeDictionary[IDType];
+                request.d.Decname = ContactPersonName;
+                request.d.Decdesignation = "";
+                request.d.Decfg = "1";
+                request.d.DecidNo = IDNumber;
+                request.d.TransType = "CRE_TPCV";
+                request.d.UserTypz = "TP";
 
                 if (IsAttachmentsEnabled) {
 
@@ -2130,6 +2140,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     attSet.Add(attTypeSet1);
 
                     if(OtherAttachmentsListViewData != null) {
+
                         var attTypeSet2 = new AttTypSetList();
                         // attTypeSet1.__metadata = ChangeFillingResponse.d.__metadata;
                         attTypeSet2.__metadata = new Models.ChageFillingPeriodModel.Metadata();
@@ -2170,13 +2181,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 var convretedTodayate = jsonDateTime2;
 
                 //request.d.Decdate = convretedTodayate;
-                request.d.DecidTy = IDTypeDictionary[IDType];
-                request.d.Decname = ContactPersonName;
-                request.d.Decdesignation = "";
-                request.d.Decfg = "1";
-                request.d.DecidNo = IDNumber;
-                request.d.TransType = "CRE_TPCV";
-                request.d.UserTypz = "TP";
+              
             }
 
             catch (Exception ex)

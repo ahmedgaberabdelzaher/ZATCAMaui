@@ -692,7 +692,7 @@
                                             <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped"/>
                                         </border:SfBorder.GestureRecognizers>
                                     </border:SfBorder>
-                                    <!--<border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                                             <Image Source="registration.png"/>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationAmendmentTile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
@@ -711,7 +711,7 @@
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="VATReactivation_Tapped"/>
                                         </border:SfBorder.GestureRecognizers>
-                                    </border:SfBorder>-->
+                                    </border:SfBorder>
                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                                             <Image Source="details.png"/>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EGAZT.Models.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
@@ -119,29 +120,48 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 try
                 {
+
+
                     string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
-                    byte[] PdfBytes;
-                    HttpWebRequest myReq = (System.Net.HttpWebRequest)WebRequest.Create(attachmentURL);
-                    WebResponse myResp = myReq.GetResponse();
-                    using (Stream streams = myResp.GetResponseStream())
-                    using (MemoryStream Ms = new MemoryStream())
-                    {
-                        int count = 0;
-                        do
-                        {
-                            byte[] buf = new byte[1024];
-                            count = streams.Read(buf, 0, 1024);
-                            Ms.Write(buf, 0, count);
-                        } while (streams.CanRead && count > 0);
-                        PdfBytes = Ms.ToArray();
-                    }
+
+                    System.IO.MemoryStream pdfStream = new MemoryStream();
+
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var uri = new Uri(attachmentURL);
+                    HttpResponseMessage _fileDownloadResponse = await client.GetAsync(uri);
+
+                    var fileName = Guid.NewGuid().ToString();
+
+                    _fileDownloadResponse.EnsureSuccessStatusCode();
+                    await _fileDownloadResponse.Content.CopyToAsync(pdfStream);
+
+
+
+                    //byte[] PdfBytes;
+                    //HttpWebRequest myReq = (System.Net.HttpWebRequest)WebRequest.Create(attachmentURL);
+                    //WebResponse myResp = myReq.GetResponse();
+
+                    //using (Stream streams = myResp.GetResponseStream())
+                    //using (MemoryStream Ms = new MemoryStream())
+                    //{
+                    //    int count = 0;
+                    //    do
+                    //    {
+                    //        byte[] buf = new byte[1024];
+                    //        count = streams.Read(buf, 0, 1024);
+                    //        Ms.Write(buf, 0, count);
+                    //    } while (streams.CanRead && count > 0);
+                    //    PdfBytes = Ms.ToArray();
+                    //}
                     var message = new EmailMessage
                     {
                         Subject = "Attached Form :",
                     };
                     var fn = attachment.Filename;
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                    File.WriteAllBytes(file, PdfBytes);
+                    File.WriteAllBytes(file, pdfStream.ToArray());
+
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await Share.RequestAsync(new ShareFileRequest

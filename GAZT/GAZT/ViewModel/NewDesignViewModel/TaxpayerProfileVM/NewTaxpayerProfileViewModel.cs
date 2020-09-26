@@ -145,9 +145,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             try
             {
                 ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.Tin);
-                PopToRootPage();
                 UpdateTinStatus();
                 IsLoading = false;
+
+                // Session Expired Or Not
+                PopToRootPage();
             }
             catch
             {

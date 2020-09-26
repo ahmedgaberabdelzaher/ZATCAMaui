@@ -78,7 +78,7 @@
                                     </yummy:PancakeView>
                                 </StackLayout>
                             </Frame>
-                            
+
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}"
                                             HorizontalOptions="StartAndExpand"
@@ -149,8 +149,8 @@
                                 <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
                                                      Text="{Binding EmailEntry}"
                                                     IsReadOnly="True">
-                            </control:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
+                                </control:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
 
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdatePassword}"
@@ -166,10 +166,11 @@
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
                                                         FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
                                 <control:BorderlessEntry x:Name="Password"
-                                                     Style="{StaticResource DefaultEntry}" Text="{Binding PasswordEntry}"
-                                                    IsReadOnly="True"
-                                                     IsPassword="True"  >
-                            </control:BorderlessEntry>
+                                                         Style="{StaticResource DefaultEntry}"
+                                                         Text="{Binding PasswordEntry}"
+                                                         IsReadOnly="True"
+                                                         IsPassword="True">
+                                </control:BorderlessEntry>
 
                             </inputLayout:SfTextInputLayout>
 
