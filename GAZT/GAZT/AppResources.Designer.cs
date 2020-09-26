@@ -14081,5 +14081,53 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZContractReleaseAttachmentTitle", resourceCulture);
             }
         }
+        
+        public static string VRVGMemberDetails {
+            get {
+                return ResourceManager.GetString("VRVGMemberDetails", resourceCulture);
+            }
+        }
+        
+        public static string VRVGAggregatedgrouplevelfinancialdetails {
+            get {
+                return ResourceManager.GetString("VRVGAggregatedgrouplevelfinancialdetails", resourceCulture);
+            }
+        }
+        
+        public static string VRVGGroupVATeligiblesupplies {
+            get {
+                return ResourceManager.GetString("VRVGGroupVATeligiblesupplies", resourceCulture);
+            }
+        }
+        
+        public static string VRVGGroupVATeligiblepurchases {
+            get {
+                return ResourceManager.GetString("VRVGGroupVATeligiblepurchases", resourceCulture);
+            }
+        }
+        
+        public static string VRVGGroupeffectivedate {
+            get {
+                return ResourceManager.GetString("VRVGGroupeffectivedate", resourceCulture);
+            }
+        }
+        
+        public static string VRVGAttachments {
+            get {
+                return ResourceManager.GetString("VRVGAttachments", resourceCulture);
+            }
+        }
+        
+        public static string VRVGTINHolderName {
+            get {
+                return ResourceManager.GetString("VRVGTINHolderName", resourceCulture);
+            }
+        }
+        
+        public static string VRVGTINNumber {
+            get {
+                return ResourceManager.GetString("VRVGTINNumber", resourceCulture);
+            }
+        }
     }
 }

@@ -7763,4 +7763,13 @@
     <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
     <value>تعليق الإلتزام بتقديم إقرارات ضريبة القيمة المضافة</value>
   </data>
+    <data name="VRVGTINNumber" xml:space="preserve">
+  <value>الرقم المميز</value>
+</data>
+<data name="VRVGAttachments" xml:space="preserve">
+  <value>المرفقات</value>
+</data>
+<data name="VRVGGroupeffectivedate" xml:space="preserve">
+  <value>تاريخ فعالية المجموعة الضريبية</value>
+</data>
 </root>
