@@ -7760,4 +7760,7 @@
     <data name="VRVSEndofSuspensionPeriod" xml:space="preserve">
     <value>فترة نهاية تعليق الالتزام</value>
   </data>
+    <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
+    <value>تعليق الإلتزام بتقديم إقرارات ضريبة القيمة المضافة</value>
+  </data>
 </root>

@@ -1755,13 +1755,13 @@ namespace EGAZT.Models.VatReviewModel
             {
                 public Metadata __metadata { get; set; }
                 public string Gpart { get; set; }
-                public DateTime StartDate { get; set; }
-                public DateTime EndDate { get; set; }
-                public DateTime Duedate { get; set; }
-                public DateTime SuspDtfrom { get; set; }
-                public DateTime SuspDtto { get; set; }
-                public DateTime NextDtfrom { get; set; }
-                public DateTime NextDtto { get; set; }
+                public DateTime? StartDate { get; set; }
+                public DateTime? EndDate { get; set; }
+                public DateTime? Duedate { get; set; }
+                public DateTime? SuspDtfrom { get; set; }
+                public DateTime? SuspDtto { get; set; }
+                public DateTime? NextDtfrom { get; set; }
+                public DateTime? NextDtto { get; set; }
             }
 
             public class D

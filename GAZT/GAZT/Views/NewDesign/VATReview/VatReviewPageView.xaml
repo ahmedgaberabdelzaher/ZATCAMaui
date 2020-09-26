@@ -727,9 +727,16 @@
                                 <RowDefinition Height="100" />
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0"
-                                                Text="{x:Static ResourceManager:AppResources.VRDisputeDetails}"
                                                 HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+
+                                       <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VRDisputeDetails}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                              </custom:CustomLabel>
 
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">

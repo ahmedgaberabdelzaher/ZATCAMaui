@@ -5396,11 +5396,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     var _suspensionResult = await WebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(startDate, endDate);
                                     if (_suspensionResult != null & _suspensionResult.d.results.Count > 0)
                                     {
-                                        VRVSStartofSuspensionPeriod = _suspensionResult.d.results[0].StartDate.ToString("dd-MM-yyyy");
-                                        VRVSEndofSuspensionPeriod = _suspensionResult.d.results[0].EndDate.ToString("dd-MM-yyyy");
-                                        VRVSNextfilingduedate = _suspensionResult.d.results[0].Duedate.ToString("dd-MM-yyyy");
-                                        VRVSRFSuspensionofFiling = _suspensionResult.d.results[0].SuspDtfrom.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].SuspDtto.ToString("dd-MM-yyyy");
-                                        VRVSNextfilingperiod = _suspensionResult.d.results[0].NextDtfrom.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].NextDtto.ToString("dd-MM-yyyy");
+                                        if(_suspensionResult.d.results[0].StartDate != null) {
+
+                                            VRVSStartofSuspensionPeriod = _suspensionResult.d.results[0].StartDate?.ToString("dd-MM-yyyy");
+
+                                        }
+
+                                        if(_suspensionResult.d.results[0].EndDate != null) {
+
+                                            VRVSEndofSuspensionPeriod = _suspensionResult.d.results[0].EndDate?.ToString("dd-MM-yyyy");
+
+                                        }
+
+                                        if(_suspensionResult.d.results[0].Duedate != null) {
+
+                                            VRVSNextfilingduedate = _suspensionResult.d.results[0].Duedate?.ToString("dd-MM-yyyy");
+
+                                        }
+
+                                        if(_suspensionResult.d.results[0].SuspDtfrom != null) {
+
+                                            VRVSRFSuspensionofFiling = _suspensionResult.d.results[0].SuspDtfrom?.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].SuspDtto?.ToString("dd-MM-yyyy");
+
+                                        }
+
+                                        if(_suspensionResult.d.results[0].NextDtfrom != null) {
+
+                                            VRVSNextfilingperiod = _suspensionResult.d.results[0].NextDtfrom?.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].NextDtto?.ToString("dd-MM-yyyy");
+
+                                        }
 
                                     }
 
