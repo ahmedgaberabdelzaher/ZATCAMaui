@@ -203,6 +203,7 @@ namespace EGAZT
         public static string VATRealEstateServicesPageView = "VATRealEstateServicesPageView";
         public static string PropertyRegistrationPage = "PropertyRegistrationPage";
         public static string VATRegistrationPageView = "VATRegistrationPageView";
+        public static string VATAmendReactivationPageView = "VATAmendReactivationPageView";
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
         public static string VATIndividualSignupTnCPageView = "VATIndividualSignupTnCPageView";
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";

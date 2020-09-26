@@ -168,6 +168,8 @@ using EGAZT.Views.NewDesign.VATRegistrationDetails;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.VATReview;
 using EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
+using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 
 namespace EGAZT
 {
@@ -324,6 +326,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<VATAmendReactivationPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<InternationalMobileNumberCodePagesViewModel>();
 
@@ -1944,6 +1947,20 @@ namespace EGAZT
                 }
             }
         }
+        public VATAmendReactivationPageViewModel VATAmendReactivationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATAmendReactivationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public VATRegistrationDisplayDetailsPageViewModel VATRegistrationDisplayDetails
         {
             get
@@ -2297,6 +2314,7 @@ namespace EGAZT
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
             navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));
+            navigationService.Configure(App.VATAmendReactivationPageView, typeof(VATAmendReactivationPageView));
 
 
             #endregion

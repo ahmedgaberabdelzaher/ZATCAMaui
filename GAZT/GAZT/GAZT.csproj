@@ -282,6 +282,9 @@
     <EmbeddedResource Update="Views\NewDesign\Template\NewPublicMenuPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\AdjustmentPopupPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
