@@ -1684,11 +1684,11 @@ namespace EGAZT.Models.VatReviewModel
                 public object SuspDtto { get; set; }
                 public object NextDtfrom { get; set; }
                 public object NextDtto { get; set; }
-                public DateTime Declaredt { get; set; }
+                public DateTime? Declaredt { get; set; }
                 public object EndDate { get; set; }
                 public object Lasticrdt { get; set; }
                 public object StartDate { get; set; }
-                public DateTime Taxdt { get; set; }
+                public DateTime? Taxdt { get; set; }
                 public string Actnm { get; set; }
                 public string CaseId { get; set; }
                 public string SuspPeriod { get; set; }

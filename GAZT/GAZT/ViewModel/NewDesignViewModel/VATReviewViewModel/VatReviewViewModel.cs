@@ -5245,7 +5245,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                 _vATDREGViewApllicationViewModel.ContactPersonName = dregresult.d.Contactnm;
                                 _vATDREGViewApllicationViewModel.DeclarationId = dregresult.d.Idnumbr;
 
-                                PopulateVatDeRegSummaryDeclarationData(IDToNameDictionary[dregresult.d.Type], dregresult.d.Idnumbr, dregresult.d.Declaredt.ToString("dd MM yyyy"), dregresult.d.Contactnm);
+                                var declarationDate = "";
+
+                                if(dregresult.d.Declaredt != null) {
+
+                                    declarationDate = dregresult.d.Declaredt?.ToString("dd MM yyyy");
+                                }
+
+
+                                PopulateVatDeRegSummaryDeclarationData(IDToNameDictionary[dregresult.d.Type], dregresult.d.Idnumbr, declarationDate, dregresult.d.Contactnm);
                                 PopulateVatDeRegAttachments(dregresult.d.AttdetSet.results);
                                 PopulateVatDeRegSummaryReasonData(dregresult.d.Reqtp, _vATDREGViewApllicationViewModel.ReasonforDeRegistration);
 
@@ -5359,30 +5367,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                                 try {
 
-                                    var jsonstartDate = JsonConvert.SerializeObject(dregresult.d.StartDate, settings);
-                                    startDate = Regex.Replace(jsonstartDate, "[@,\\.\";'\\\\]", string.Empty);
+                                    if(dregresult.d.StartDate != null) {
 
-                                    var jsonEndDate = JsonConvert.SerializeObject(dregresult.d.EndDate, settings);
-                                    endDate = Regex.Replace(jsonEndDate, "[@,\\.\";'\\\\]", string.Empty);
+                                        var jsonstartDate = JsonConvert.SerializeObject(dregresult.d.StartDate, settings);
+                                        startDate = Regex.Replace(jsonstartDate, "[@,\\.\";'\\\\]", string.Empty);
+                                    }
+
+                                    if(dregresult.d.EndDate != null) {
+
+                                        var jsonEndDate = JsonConvert.SerializeObject(dregresult.d.EndDate, settings);
+                                        endDate = Regex.Replace(jsonEndDate, "[@,\\.\";'\\\\]", string.Empty);
+                                    }
+
+
+                                   
+
+                                   
 
                                 }
                                 catch {
 
                                 }
 
-
-
-                                var _suspensionResult = await WebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(startDate, endDate);
-                                if (_suspensionResult != null & _suspensionResult.d.results.Count > 0)
+                                if (dregresult.d.StartDate != null)
                                 {
-                                    VRVSStartofSuspensionPeriod = _suspensionResult.d.results[0].StartDate.ToString("dd MMM yyyy");
-                                    VRVSEndofSuspensionPeriod = _suspensionResult.d.results[0].EndDate.ToString("dd MMM yyyy");
-                                    VRVSNextfilingduedate = _suspensionResult.d.results[0].Duedate.ToString("dd MMM yyyy");
-                                    VRVSRFSuspensionofFiling = _suspensionResult.d.results[0].SuspDtfrom.ToString("dd MMM yyyy") + " - " + _suspensionResult.d.results[0].SuspDtto.ToString("dd MMM yyyy");
-                                    VRVSNextfilingperiod = _suspensionResult.d.results[0].NextDtfrom.ToString("dd MMM yyyy") + " - " + _suspensionResult.d.results[0].NextDtto.ToString("dd MMM yyyy");
+
+
+                                    var _suspensionResult = await WebServiceManager.GAZTGetVATReviewDREGSuspensionDetailSet(startDate, endDate);
+                                    if (_suspensionResult != null & _suspensionResult.d.results.Count > 0)
+                                    {
+                                        VRVSStartofSuspensionPeriod = _suspensionResult.d.results[0].StartDate.ToString("dd-MM-yyyy");
+                                        VRVSEndofSuspensionPeriod = _suspensionResult.d.results[0].EndDate.ToString("dd-MM-yyyy");
+                                        VRVSNextfilingduedate = _suspensionResult.d.results[0].Duedate.ToString("dd-MM-yyyy");
+                                        VRVSRFSuspensionofFiling = _suspensionResult.d.results[0].SuspDtfrom.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].SuspDtto.ToString("dd-MM-yyyy");
+                                        VRVSNextfilingperiod = _suspensionResult.d.results[0].NextDtfrom.ToString("dd-MM-yyyy") + " - " + _suspensionResult.d.results[0].NextDtto.ToString("dd-MM-yyyy");
+
+                                    }
+
 
                                 }
-
                                 var attachmentList = new ObservableCollection<Attachment>();
                                 foreach (var attachment in dregresult.d.AttdetSet.results)
                                 {

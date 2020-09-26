@@ -117,7 +117,7 @@
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
-                            <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                            <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource GAZTMicroMediumGrayLabel}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
                         </Grid>
 
  
@@ -193,7 +193,7 @@
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
-                            <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                            <custom:CustomLabel Grid.Column="1" Text="{Binding CheckBoxDescription}" Style="{StaticResource GAZTMicroMediumGrayLabel}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
                         </Grid>
 
 

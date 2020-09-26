@@ -1250,6 +1250,7 @@
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                         <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged"
                                                                     Text="{Binding IDNumber}"
+                                                                    Keyboard="Numeric"
                                                                     Unfocused="OnIDNumberFocusChanged"
                                                                     FontAttributes="Bold" FontSize="Small"
                                                                     TextColor="Black" HorizontalOptions="FillAndExpand" />

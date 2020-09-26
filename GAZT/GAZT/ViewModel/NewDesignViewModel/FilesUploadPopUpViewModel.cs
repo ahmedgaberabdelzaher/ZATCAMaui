@@ -445,6 +445,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         }
 
+                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count();
+                                if (count >= 1)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.VATReviewAttachmentLimitReached, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
+                        }
+
                         else if (IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
                         {
                             if (VatAttachmentsList != null)

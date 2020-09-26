@@ -77,7 +77,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             else if (whichAttachment == WhichAttachment.ContractReleaseCopy || whichAttachment == WhichAttachment.ContractReleaseInvoice)
             {
-                viewModel.TitleOne = AppResources.ESTAttachmentSizeNotfication;
+                viewModel.TitleOne = AppResources.ZContractReleaseAttachmentTitle;
                 viewModel.TitleTwo = AppResources.ZContractReleaseChooseonlyfilewithextension;
             }
             else if (whichAttachment == WhichAttachment.VATInstalment)

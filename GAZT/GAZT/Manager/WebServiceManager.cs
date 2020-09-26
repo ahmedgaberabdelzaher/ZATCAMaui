@@ -15977,7 +15977,7 @@ namespace GAZT.Manager
                     //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=Gpart eq '3102190734' and 
                     //    StartDate eq datetime'2020-10-01T00:00:00' and EndDate eq datetime'2020-10-31T00:00:00'
 
-                    String url = Constants.GetVATObjSuspensionDetailSetURL + "Gpart eq'" + App.LoginDataRetrieved.TIN + "'and StartDate eq datetime'" + startDate + "'and  EndDate eq datetime'" + endDate + "'&$format=json";
+                    String url = Constants.GetVATObjSuspensionDetailSetURL + "Gpart eq'" + App.LoginDataRetrieved.TIN + "'and StartDate eq datetime'" + startDate + "' and  EndDate eq datetime'" + endDate + "'&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage vATReviewDREGSuspension = await client.GetAsync(uri);
                     if (vATReviewDREGSuspension != null)

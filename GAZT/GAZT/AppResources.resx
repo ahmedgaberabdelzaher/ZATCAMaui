@@ -7828,4 +7828,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="ZZZZViewRefund" xml:space="preserve">
     <value>View Refund Information</value>
   </data>
+    <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
+    <value>Attachment(Only One Allowed - Maximum Size 10 MB)</value>
+  </data>
 </root>

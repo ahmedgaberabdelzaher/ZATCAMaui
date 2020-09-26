@@ -14075,5 +14075,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZViewRefund", resourceCulture);
             }
         }
+        
+        public static string ZContractReleaseAttachmentTitle {
+            get {
+                return ResourceManager.GetString("ZContractReleaseAttachmentTitle", resourceCulture);
+            }
+        }
     }
 }

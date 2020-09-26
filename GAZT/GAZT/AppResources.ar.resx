@@ -7727,4 +7727,37 @@
     <data name="VRTIDTaxablePurchases" xml:space="preserve">
     <value>نسبة المشتريات المخصصة للتوريدات الخاضعة للضريبة</value>
   </data>
+    <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
+    <value>حجم الملف المسموح به في المرفقات 10 MB</value>
+  </data>
+    <data name="VRVSInstruction1" xml:space="preserve">   
+        <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)</value>
+  </data>
+  <data name="VRVSInstruction2" xml:space="preserve">
+    <value>تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.</value>
+  </data>
+  <data name="VRVSInstruction3" xml:space="preserve">
+    <value>يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
+  </data>
+  <data name="VRVSNextfilingduedate" xml:space="preserve">
+    <value>تاريخ الاستحقاق القادم</value>
+  </data>
+  <data name="VRVSNextfilingperiod" xml:space="preserve">
+    <value>فترة تقديم الإقرار القادم</value>
+  </data>
+  <data name="VRVSReasonforSuspensionofFiling" xml:space="preserve">
+    <value>سبب إلغاء التسجيل أو تعليق الالتزام</value>
+  </data>
+  <data name="VRVSRequestType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+  <data name="VRVSStartofSuspensionPeriod" xml:space="preserve">
+    <value>فترة بداية تعليق الالتزام</value>
+  </data>
+  <data name="VRVSSuspendedfilingperiod" xml:space="preserve">
+    <value>فترة تعليق الالتزام</value>
+  </data>
+    <data name="VRVSEndofSuspensionPeriod" xml:space="preserve">
+    <value>فترة نهاية تعليق الالتزام</value>
+  </data>
 </root>
