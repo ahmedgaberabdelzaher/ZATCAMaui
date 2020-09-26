@@ -14129,5 +14129,41 @@ namespace EGAZT {
                 return ResourceManager.GetString("VRVGTINNumber", resourceCulture);
             }
         }
+        
+        public static string VRVGLessthanSAR187500 {
+            get {
+                return ResourceManager.GetString("VRVGLessthanSAR187500", resourceCulture);
+            }
+        }
+        
+        public static string VRVGBetweenSAR18750andSAR375000 {
+            get {
+                return ResourceManager.GetString("VRVGBetweenSAR18750andSAR375000", resourceCulture);
+            }
+        }
+        
+        public static string VRVGBetweenSAR375000andSAR1000000 {
+            get {
+                return ResourceManager.GetString("VRVGBetweenSAR375000andSAR1000000", resourceCulture);
+            }
+        }
+        
+        public static string VRVGBetweenSAR1000000andSAR40000000 {
+            get {
+                return ResourceManager.GetString("VRVGBetweenSAR1000000andSAR40000000", resourceCulture);
+            }
+        }
+        
+        public static string VRVGGreaterthanSAR40000000 {
+            get {
+                return ResourceManager.GetString("VRVGGreaterthanSAR40000000", resourceCulture);
+            }
+        }
+        
+        public static string VRVGGreaterthanSAR187500 {
+            get {
+                return ResourceManager.GetString("VRVGGreaterthanSAR187500", resourceCulture);
+            }
+        }
     }
 }

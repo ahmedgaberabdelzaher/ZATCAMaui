@@ -138,6 +138,7 @@
                                                              VerticalOptions="Center"
                                                              ItemsSource="{Binding VRVGTinsListViewData}"
                                                              SelectionMode="None"
+                                                             AutoFitMode="Height"
                                                              SelectionBackgroundColor="Transparent">
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
@@ -279,6 +280,7 @@
                                                              VerticalOptions="Center"
                                                              ItemsSource="{Binding VRVGAttachmentsListViewData}"
                                                              SelectionMode="None"
+                                                             AutoFitMode="Height"
                                                              SelectionBackgroundColor="Transparent">
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>

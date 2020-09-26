@@ -2252,7 +2252,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         }
 
         private Dictionary<string, string> IDTypeDictionary = null;
-        
+        private Dictionary<string, string> VGSupplicesDictionary = null;
+        private Dictionary<string, string> VGPurchasesDictionary = null;
+
 
         private bool _isDialog = true;
         private bool _isBankGuranteeAttachments = false;
@@ -3318,7 +3320,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 }
                 else if (selectedApplicationRef.Fbtyp == "VTGR") {
 
-                    IsApplicationVisible = false;
+                    IsApplicationVisible = true;
                 }
 
                 else if (selectedApplicationRef.Fbtyp == "DGVT")
@@ -3630,7 +3632,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             };
 
 
-            IsSadadSecuritySelected = false;
+            VGSupplicesDictionary = new Dictionary<string, string>
+            {
+                {"01",AppResources.VRVGLessthanSAR187500},
+                { "02",AppResources.VRVGBetweenSAR18750andSAR375000},
+                { "03",AppResources.VRVGBetweenSAR375000andSAR1000000},
+                { "04",AppResources.VRVGBetweenSAR1000000andSAR40000000},
+                { "05",AppResources.VRVGGreaterthanSAR40000000},
+            };
+         VGPurchasesDictionary = new Dictionary<string, string>
+            {
+                {"01",AppResources.VRVGLessthanSAR187500},
+                { "02",AppResources.VRVGGreaterthanSAR187500},
+            };
+
+
+        IsSadadSecuritySelected = false;
             IsBankGurantSecuritySelected = false;
             IsSecurityPaymentsTabVisible = false;
             PickedDate = "";
@@ -5459,8 +5476,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             //    _VATReviewRequestVTGRReturn.IsGrpMbrImporter = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().Importer;
                             //    _VATReviewRequestVTGRReturn.WhatIsYourVATEliigibleSupplies = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().VatSupply;
                             //    _VATReviewRequestVTGRReturn.WhatIsYourVATEliigiblePurchases = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().VatPuchase;
-                            VRVGVATeligiblesupplies = _VATReviewRequestVTGR.d.AggreSupply;
-                            VRVGVATeligiblepurchases = _VATReviewRequestVTGR.d.AggrePurchase;
+                           // VRVGVATeligiblesupplies = _VATReviewRequestVTGR.d.AggreSupply;
+                           // VRVGVATeligiblepurchases = _VATReviewRequestVTGR.d.AggrePurchase;
                             VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50
                             ;
                             //_VATReviewRequestVTGRReturn.AttachmentName = _VATReviewRequestVTGR.d.ELGBL_DOCSet.results.Where(x=> x.DmsTp=="Txt50").FirstOrDefault().doctyp;
@@ -5468,6 +5485,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             VRVGIDType = IDToNameDictionary[_VATReviewRequestVTGR.d.DecidTy];
                             VRVGIDNumber = _VATReviewRequestVTGR.d.DecidNo;
                             VRVGContactPersonName = _VATReviewRequestVTGR.d.Decname;
+
+                            VRVGVATeligiblesupplies = VGSupplicesDictionary[_VATReviewRequestVTGR.d.AggreSupply];
+                            VRVGVATeligiblepurchases = VGPurchasesDictionary[_VATReviewRequestVTGR.d.AggrePurchase];
 
                             var tinsListViewData = new ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult>();
                             foreach (VATReviewRequestVTGRModel.TABLESetResult tin in _VATReviewRequestVTGR.d.TABLESet.results)
