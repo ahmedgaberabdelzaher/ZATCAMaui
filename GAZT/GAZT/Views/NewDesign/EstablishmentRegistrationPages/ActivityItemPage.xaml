@@ -118,7 +118,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding CRValidFrom}" Clicked="crValidFromButtonClick"
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding DisplayCRValidFrom}" Clicked="crValidFromButtonClick"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -390,7 +390,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding ValidFrom}" Clicked="validFromButtonClick"
+                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding DisplayValidFrom}" Clicked="validFromButtonClick"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>

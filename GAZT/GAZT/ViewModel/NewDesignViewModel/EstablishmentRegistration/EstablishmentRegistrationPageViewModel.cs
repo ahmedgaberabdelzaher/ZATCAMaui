@@ -26,7 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     {
         #region Variable
         //public int DefaultMonth;
-        private TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private Nreg_IdItem idItem { get; set; } = null;
         //private OutletNumber number;
@@ -100,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        public bool DatePickerInGregorian { get; set; } = true;
+        //public bool DatePickerInGregorian { get; set; } = true;
 
         private int _currenrIndex;
         public int CurrentIndex
@@ -567,6 +567,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedDOB));
             }
         }
+        private string _displaySelectedDOB = string.Empty;
+        public string DisplaySelectedDOB
+        {
+            get => _displaySelectedDOB;
+            set
+            {
+                _displaySelectedDOB = value;
+                RaisePropertyChanged(nameof(DisplaySelectedDOB));
+            }
+        }
         private ObservableCollection<object> _selectedDOBDate;
         public ObservableCollection<object> SelectedDOBDate
         {
@@ -822,6 +832,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(PassportIssueDate));
             }
         }
+        private string _displayPassportIssueDate;
+        public string DisplayPassportIssueDate
+        {
+            get => _displayPassportIssueDate;
+            set
+            {
+                _displayPassportIssueDate = value;
+                RaisePropertyChanged(nameof(DisplayPassportIssueDate));
+            }
+        }
         private ObservableCollection<object> _selectedPassportExpireDate;
         public ObservableCollection<object> SelectedPassportExpireDate
         {
@@ -858,7 +878,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(PassportExpireDate));
             }
         }
-
+        private string _displayPassportExpireDate;
+        public string DisplayPassportExpireDate
+        {
+            get => _displayPassportExpireDate;
+            set
+            {
+                _displayPassportExpireDate = value;
+                RaisePropertyChanged(nameof(DisplayPassportExpireDate));
+            }
+        }
         private ObservableCollection<Attachment> _uploadedPassportDocumentsList = new ObservableCollection<Attachment>();
         public ObservableCollection<Attachment> UploadedPassportDocumentsList
         {
@@ -1191,7 +1220,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnPreButtonClick = new Command(() => _navigationService.GoBack());
+            OnPreButtonClick = new Command(() =>
+            {
+                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
+                _navigationService.GoBack();
+            });
 
             #region Registration Tab Variable initialization
 
@@ -1384,6 +1417,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         taxPayerDetails.UserTypx = "TP";
                                         taxPayerDetails.StepNumberx = string.Empty;
                                         var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                        currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                                         navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                                     }
                                     catch (Exception e)
@@ -1410,11 +1444,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             cal.OnItemSelect = (_cal) => {
                                 if (_cal as string == AppResources.NDGregorian)
                                 {
-                                    DatePickerInGregorian = true;
+                                    taxPayerDetails.Caltp = "G";
                                 }
                                 else if (_cal as string == AppResources.NDHijri)
                                 {
-                                    DatePickerInGregorian = false;
+                                    taxPayerDetails.Caltp = "H";
                                 }
                                 updateDatePickers(currentTab);
                             };
@@ -1601,7 +1635,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
-                //taxPayerDetails = new TaxPayerDetails();
+                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                 _navigationService.GoBack();
             }
 
@@ -2113,6 +2147,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         };
                         someThingWhentWrong.OnDone = () =>
                         {
+                            currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                             _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         };
                         await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
@@ -2167,7 +2202,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
-                    PassportNumber = passportItem.Idnumber;
+                    PassportNumber = passportItem?.Idnumber;
                     SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
                     PassportIssueDate = passportItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     PassportExpireDate = passportItem?.ValidDateTo?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
@@ -2219,7 +2254,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             DateTime dob = DateTime.Now;
             ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
-            if (DatePickerInGregorian)
+            if (taxPayerDetails?.Caltp == "G")
             {
                 _selectedDOBDate?.Clear();
                 _selectedDOBDate.Add($"{dob.Day:00}");
@@ -2235,33 +2270,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 _selectedDOBDate.Add(arr[1]);
                 _selectedDOBDate.Add(arr[0]);
             }
-            if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail) {
-                if (DatePickerInGregorian)
+            if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+            {
+                DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _dob);
+                if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedDOBDate = _selectedDOBDate;
+                    if(SelectedDOB != null)
+                        DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedDOBHijiriDate = _selectedDOBDate;
+                    if(SelectedDOB != null)
+                        DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
             else if(_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
             {
-                if (DatePickerInGregorian)
+                DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
+                DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
+                if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportIssueDate = _selectedDOBDate;
+                    if(PassportIssueDate != null)
+                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportIssueHijiriDate = _selectedDOBDate;
+                    if(PassportIssueDate != null)
+                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
-                if (DatePickerInGregorian)
+                if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportExpireDate = _selectedDOBDate;
+                    if(PassportExpireDate != null)
+                        DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportExpireHijiriDate = _selectedDOBDate;
+                    if(PassportExpireDate != null)
+                        DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
         }
@@ -2371,7 +2422,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             outletNavigationModels.idItem = idItem;
-            outletNavigationModels.IsDatePickerInGregorian = DatePickerInGregorian;
             _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
         }
         private void deleteOutlet(OutletItem item)

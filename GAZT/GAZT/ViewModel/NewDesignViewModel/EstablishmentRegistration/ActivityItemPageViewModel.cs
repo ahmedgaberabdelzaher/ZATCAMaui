@@ -33,7 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private Nreg_ActivityItem SelectedLicenseItem = null;
         private Nreg_ActivityItem SelectedCRItem = null;
         public ActicityListDelegate goBackAction = null;
-        public bool DatePickerInGregorian { get; set; }
+        
         private EstablishmentOutletActivitiesTabsEnum _currentTab = EstablishmentOutletActivitiesTabsEnum.CRDetails;
         public EstablishmentOutletActivitiesTabsEnum CurrentTab
         {
@@ -261,6 +261,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(CRValidFrom));
             }
         }
+        private string _displayCRValidFrom = string.Empty;
+        public string DisplayCRValidFrom
+        {
+            get => _displayCRValidFrom;
+            set
+            {
+                _displayCRValidFrom = value;
+                RaisePropertyChanged(nameof(DisplayCRValidFrom));
+            }
+        }
         public int _attachmentCount = 0;
         public int AttachmentCount
         {
@@ -383,6 +393,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _validFrom = value;
                 RaisePropertyChanged(nameof(ValidFrom));
+            }
+        }
+        private string _displayValidFrom = string.Empty;
+        public string DisplayValidFrom
+        {
+            get => _displayValidFrom;
+            set
+            {
+                _displayValidFrom = value;
+                RaisePropertyChanged(nameof(DisplayValidFrom));
             }
         }
         private CountryDropdownItem _licenseIssueCountry = null;
@@ -1073,7 +1093,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             DateTime dob = DateTime.Now;
             ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
-            if (DatePickerInGregorian)
+            if (taxPayerDetails?.Caltp == "G")
             {
                 _selectedDOBDate?.Clear();
                 _selectedDOBDate.Add($"{dob.Day:00}");
@@ -1091,24 +1111,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
             {
-                if (DatePickerInGregorian)
+                DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _crValidFrom);
+                if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedCRValidFromDate = _selectedDOBDate;
+                    if(CRValidFrom != null)
+                        DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedCRValidFromHijiriDate = _selectedDOBDate;
+                    if (CRValidFrom != null)
+                        DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
             else if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
-                if (DatePickerInGregorian)
+                DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _validFrom);
+                if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedValidFromDate = _selectedDOBDate;
+                    if(ValidFrom != null)
+                        DisplayValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedValidFromHijiriDate = _selectedDOBDate;
+                    if(ValidFrom != null)
+                        DisplayValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
         }
@@ -1134,7 +1164,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             };
             CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
-
+            updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
         }
         private void updateCRAttachments()
         {

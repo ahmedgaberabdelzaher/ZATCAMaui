@@ -78,7 +78,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 dobPicker.IsOpen = true;
             }
@@ -90,7 +90,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
         {
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 passportIssuePicker.IsOpen = true;
             }
@@ -102,7 +102,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 passportExpiryPicker.IsOpen = true;
             }
@@ -211,43 +211,55 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         void dobPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                viewModel.SelectedDOB = viewModel?.DisplaySelectedDOB;
             }
             else
             {
                 selectedItem = dobHijiriPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                DateTime.TryParseExact(viewModel?.DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _dob);
+                viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
-            viewModel.SelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
 
         void passportIssuePicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                viewModel.PassportIssueDate = viewModel?.DisplayPassportIssueDate;
             }
             else
             {
                 selectedItem = passportIssueHijiriPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                DateTime.TryParseExact(viewModel?.DisplayPassportIssueDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _issueDate);
+                viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
-            viewModel.PassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
 
         void passportExpiryPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                viewModel.PassportExpireDate = viewModel?.DisplayPassportExpireDate;
             }
             else
             {
                 selectedItem = passportExpiryHijiriPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                DateTime.TryParseExact(viewModel?.DisplayPassportExpireDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _expiryDate);
+                viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
-            viewModel.PassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
     }
 }
