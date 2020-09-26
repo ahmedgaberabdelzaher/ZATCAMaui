@@ -7790,4 +7790,19 @@
 <data name="VRVGGreaterthanSAR187500" xml:space="preserve">
   <value>أقل من 187,500 ريال سعودي</value>
 </data>
+    <data name="VRVGMemberDetails" xml:space="preserve">
+  <value>تفاصيل العضو</value>
+</data>
+<data name="VRVGAggregatedgrouplevelfinancialdetails" xml:space="preserve">
+  <value>التفاصيل المالية المجمعة للمجموعة </value>
+</data>
+<data name="VRVGGroupVATeligiblesupplies" xml:space="preserve">
+  <value>المبيعات الخاضعة لضريبة القمية المضافة</value>
+</data>
+<data name="VRVGGroupVATeligiblepurchases" xml:space="preserve">
+  <value>المشتريات الخاضعة لضريبة القيمة المضافة </value>
+</data>
+<data name="VRVGTINHolderName" xml:space="preserve">
+  <value>اسم المكلف</value>
+</data>
 </root>
