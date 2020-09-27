@@ -160,8 +160,7 @@
                                     <!--<border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="Transparent" BorderWidth="0" Margin="0,10,0,0">
                                         <gmaps:Map MapType="Street" x:Name="mapView1" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                                     </border:SfBorder>-->
-                                    <Frame CornerRadius="14"  BackgroundColor="White" Padding="5"    Style="{StaticResource GAZTFrameStyleForEntry}" BorderColor="{StaticResource NeutralLightGrey}" Margin="0
-                                           "  x:Name="FrmReportLocation">
+                                    <Frame CornerRadius="14"  BackgroundColor="White" Padding="5"    Style="{StaticResource GAZTFrameStyleForEntry}" BorderColor="{StaticResource NeutralLightGrey}"  Margin="0,10,0,0"  x:Name="FrmReportLocation">
                                         <!--<gmaps:Map MapType="Street" HasRotationEnabled="True" x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />-->
 
                                         <gmaps:Map x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" IsShowingUser="True">
