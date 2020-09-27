@@ -47,7 +47,7 @@ namespace EGAZT.Views.NewDesign
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
 
-//            SetLocationToMap();
+            SetLocationToMap();
 
         }
 
@@ -56,12 +56,20 @@ namespace EGAZT.Views.NewDesign
             try
             {
                 double lat = 24.655933, lon = 46.713687;
-//                double lat = 24.7136, lon = 46.6753;
                 try
                 {
                     Position position = new Position(lat, lon);
                     MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.444));
                     mapView.MoveToRegion(mapSpan);
+
+                    Pin pin = new Pin
+                    {
+                        Label = "General Authority of Zakat and Tax - Headquarter",
+                        Address = AppResources.NDHeadQAddress,
+                        Type = PinType.Place,
+                        Position = new Position(lat, lon)
+                    };
+                    mapView.Pins.Add(pin);
                 }
             catch (FeatureNotSupportedException fnsEx)
             {
