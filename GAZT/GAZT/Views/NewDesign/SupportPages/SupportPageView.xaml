@@ -157,12 +157,12 @@
                                             <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadQAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
-                                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="0" Margin="0,10,0,0">
-                                        <gmaps:Map Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" IsEnabled="False" x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                    </border:SfBorder>
-                                    <!--<Frame   BackgroundColor="White"     Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
-                                        <gmaps:Map Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="-12"  MapType="Street" IsEnabled="False" x:Name="mapView1" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                                    </Frame>-->
+                                    <!--<border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="Transparent" BorderWidth="0" Margin="0,10,0,0">
+                                        <gmaps:Map MapType="Street" x:Name="mapView1" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                    </border:SfBorder>-->
+                                    <Frame CornerRadius="14"  BackgroundColor="White" Padding="5"    Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
+                                        <gmaps:Map MapType="Street" HasRotationEnabled="True" x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                    </Frame>
                                     <custom:CustomLabel Margin="0,15,0,0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" />
 
                         <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">

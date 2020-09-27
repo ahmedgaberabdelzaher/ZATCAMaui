@@ -47,7 +47,7 @@ namespace EGAZT.Views.NewDesign
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
 
-            
+//            SetLocationToMap();
 
         }
 
@@ -55,9 +55,11 @@ namespace EGAZT.Views.NewDesign
         {
             try
             {
+                double lat = 24.655933, lon = 46.713687;
+//                double lat = 24.7136, lon = 46.6753;
                 try
-            {
-                //double lat = 24.655933, lon = 46.713687;
+                {
+                
                 //Position position = new Position(lat, lon);
                 //MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                 //mapView.MoveToRegion(mapSpan);
@@ -68,10 +70,19 @@ namespace EGAZT.Views.NewDesign
                 //mapView.Pins.Add(pin);
 
 
-                mapView.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
+//                mapView.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
 
+                    Position position = new Position(lat, lon);
+                    MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
+                    mapView.MoveToRegion(mapSpan);
 
-            }
+                    Pin pin = new Pin();
+                    pin.Label = "Report Location";
+                    pin.Type = PinType.Place;
+                    pin.Position = position;
+
+                    var addrs = (await Geocoding.GetPlacemarksAsync(new Location(lat, lon))).FirstOrDefault();
+                }
             catch (FeatureNotSupportedException fnsEx)
             {
                 // Handle not supported on device exception
@@ -88,7 +99,8 @@ namespace EGAZT.Views.NewDesign
             {
                 // Unable to get location
             }
-             }catch(Exception e)
+            }
+            catch(Exception e)
             {
 
             }
