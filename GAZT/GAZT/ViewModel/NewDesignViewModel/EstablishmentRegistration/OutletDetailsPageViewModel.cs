@@ -27,7 +27,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public Nreg_IdItem idItem { get; set; } = null;
         private ValidateCR validateCR = null;
         private Nreg_ActivityItem PreLoadedLicenseItem = null;
-        
+        public OutletItem selectedOutletItem { get; set; } = null;
+
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
@@ -478,7 +479,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 return CanExecute;
             });
-            OnPreButtonClick = new Command(() => _navigationService.GoBack());
+            OnPreButtonClick = new Command(() => {
+                selectedOutletItem = null;
+                _navigationService.GoBack();
+            });
             //editModeEnabled = false;
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
@@ -732,6 +736,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.UserTypx = "TP";
                         await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
+
+                        selectedOutletItem = null;
                         _navigationService.GoBack();
                     }
                     catch (Exception ex)
@@ -814,31 +820,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     clearFormData();
-                    newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    if (selectedOutletItem != null)
+                    {
+                        newNumber = new OutletNumber() {
+                            Actno = selectedOutletItem?.Actno
+                        };
+                        OutletName = selectedOutletItem?.Actnm;
+                    }
+                    else
+                    {
+                        newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    }
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                     if (OutletActNumber == "000")
                     {
-                        var preLoadedItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).FirstOrDefault();
-                        if (preLoadedItem?.Type == "BUP002")
+                        var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
+                        if (preLoadedItems.Count == 1)
                         {
-                            validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
-                            if (!string.IsNullOrEmpty(validateCR?.Crname))
+                            var preLoadedItem = preLoadedItems.FirstOrDefault();
+                            if (preLoadedItem?.Type == "BUP002")
                             {
-                                OutletName = validateCR?.Crname;
-                                validateCR.Crnum = preLoadedItem?.Idnumber;
+                                validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                                if (!string.IsNullOrEmpty(validateCR?.Crname))
+                                {
+                                    OutletName = validateCR?.Crname;
+                                    validateCR.Crnum = preLoadedItem?.Idnumber;
+                                }
+                                PreLoadedLicenseItem = null;
                             }
-                            PreLoadedLicenseItem = null;
-                        }
-                        else if (preLoadedItem?.Type == "ZS0004")
-                        {
-                            validateCR = null;
-                            PreLoadedLicenseItem = preLoadedItem;
+                            else if (preLoadedItem?.Type == "ZS0004")
+                            {
+                                validateCR = null;
+                                PreLoadedLicenseItem = preLoadedItem;
+                            }
+                            else
+                            {
+                                validateCR = null;
+                                PreLoadedLicenseItem = null;
+                            }
                         }
                         else
                         {
-                            validateCR = null;
-                            PreLoadedLicenseItem = null;
+                            //nothing to do
                         }
                     }
                     else
@@ -850,24 +874,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
-                    if (idItem != null)
+                    if (selectedOutletItem != null)
                     {
-                        List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, App.LoginDataRetrieved.TIN);
-                        if (addressess.Count > 0)
+                        Nreg_AddressItem defaultAddress = taxPayerDetails?.Nreg_AddressSet?.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("XXDEFAULT")).FirstOrDefault();
+                        HouseNumber = defaultAddress?.HouseNum1;
+                        BuildingNumber = defaultAddress?.Building;
+                        FloorNumber = defaultAddress?.Floor;
+                        Street = defaultAddress?.Street;
+                        Quarter = defaultAddress?.City2;
+                        PostalCode = defaultAddress?.PostCode1;
+                        AddNumber = defaultAddress?.HouseNum2;
+                        Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == defaultAddress?.Country).FirstOrDefault();
+                        Provinance = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == defaultAddress?.Region).FirstOrDefault();
+                        City = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == defaultAddress?.CityCode && i.CityName == defaultAddress?.City1).FirstOrDefault();
+
+                        PostalAsPhysical = defaultAddress?.Sameasphy == "X";
+
+                        Nreg_AddressItem _address = taxPayerDetails?.Nreg_AddressSet?.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("0001")).FirstOrDefault();
+                        HouseNumberSame = _address?.HouseNum1;
+                        BuildingNumberSame = _address?.Building;
+                        FloorNumberSame = _address?.Floor;
+                        StreetSame = _address?.Street;
+                        QuarterSame = _address?.City2;
+                        PostalCodeSame = _address?.PostCode1;
+                        AddNumberSame = _address?.HouseNum2;
+                        CountrySame = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == _address?.Country).FirstOrDefault();
+                        ProvinanceSame = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == _address?.Region).FirstOrDefault();
+                        CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == _address?.CityCode && i.CityName == _address?.City1).FirstOrDefault();
+                    }
+                    else
+                    {
+                        if (idItem != null)
                         {
-                            if (addressess.Count == 1)
+                            List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, App.LoginDataRetrieved.TIN);
+                            if (addressess.Count > 0)
                             {
-                                populateAddress(addressess.FirstOrDefault());
-                            }
-                            else
-                            {
-                                AddressPickerPopPage addressPickerPopPage = new AddressPickerPopPage(addressess) {
-                                    CloseWhenBackgroundIsClicked = false
-                                };
-                                addressPickerPopPage.OnItemSelect = (item) => {
-                                    populateAddress(item as OutletAddress);
-                                };
-                                await PopupNavigation.Instance.PushAsync(addressPickerPopPage);
+                                if (addressess.Count == 1)
+                                {
+                                    populateAddress(addressess.FirstOrDefault());
+                                }
+                                else
+                                {
+                                    AddressPickerPopPage addressPickerPopPage = new AddressPickerPopPage(addressess)
+                                    {
+                                        CloseWhenBackgroundIsClicked = false
+                                    };
+                                    addressPickerPopPage.OnItemSelect = (item) =>
+                                    {
+                                        populateAddress(item as OutletAddress);
+                                    };
+                                    await PopupNavigation.Instance.PushAsync(addressPickerPopPage);
+                                }
                             }
                         }
                     }

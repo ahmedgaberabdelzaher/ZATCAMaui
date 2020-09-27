@@ -3784,6 +3784,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         }
 
+        public async void OpenAttachment(Attachment attachment)
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await WebServiceManager.email(attachment.Doguid, attachment);
+            }
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+        }
+
 
         public void EnableDeclarationConButton()
         {

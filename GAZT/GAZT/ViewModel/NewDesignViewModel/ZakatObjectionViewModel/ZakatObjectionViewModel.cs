@@ -1851,9 +1851,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         ZakatObjectionWithdrawPostModel.Metadata metaData = new ZakatObjectionWithdrawPostModel.Metadata();
 
 
-                        metaData.uri = result.d.__metadata.uri;
+                        metaData.uri = result.d.__metadata.uri.Replace(SelectedFbNum ,"");
                         metaData.type = result.d.__metadata.type;
-                        metaData.id = result.d.__metadata.id;
+                        metaData.id = result.d.__metadata.id.Replace(SelectedFbNum, "");
 
                         postData.__metadata = metaData;
                         postData.AComments = RemarkNote;
@@ -1900,9 +1900,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                         postData.AStep = result.d.AStep;
                         postData.AAgreeDt = result.d.AAgreeDt;
-                        postData.AAgreeTm = result.d.AAgreeTm;
                         postData.CaseGuid = result.d.CaseGuid;
                         postData.Textnote = result.d.Textnote;
+
+
+
+                        var curr = DateTime.Now;
+                        string hours = curr.ToString("HH");
+                        string mins = curr.ToString("mm");
+                        string sec = curr.ToString("ss");
+
+                        string ATime = "PT" + hours + "H" + mins + "M"+ sec + "S";
+
+                        postData.AAgreeTm = ATime;
+
+
                         postData.AttDetSet = new List<object>();
                         List<ZobjItemsSet> zobjItemsSet = new List<ZobjItemsSet>();
 
@@ -1975,7 +1987,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         obj.Lineno = 1;
                         obj.Tdformat = "";
 
-                        if (DetailDescriptionNote != null)
+                        if (DetailDescriptionNote != "")
                         {
                             obj.Tdline = DetailDescriptionNote;
                         }
@@ -1985,7 +1997,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         }
 
                         List<ZnotesSet> _znotesSet = new List<ZnotesSet>();
-                        _znotesSet.Add(obj);
+
+                        if (DetailDescriptionNote != "")
+                        {
+                            _znotesSet.Add(obj);
+
+                        }
                         postData.znotesSet = _znotesSet;
 
                         postData.Submitz = "X";

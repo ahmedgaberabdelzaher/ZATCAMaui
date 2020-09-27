@@ -353,6 +353,7 @@
                                                  VerticalOptions="Center" AutoFitMode="Height"
                                                  ItemsSource="{Binding VITDAttachmentsListViewData}"
                                                  SelectionMode="None"
+                                                 ItemTapped="VRITDAttachItemTapped"
                                                  SelectionBackgroundColor="Transparent">
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>

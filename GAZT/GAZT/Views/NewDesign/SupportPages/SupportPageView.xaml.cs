@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.GoogleMaps;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -47,7 +47,7 @@ namespace EGAZT.Views.NewDesign
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
 
-//            SetLocationToMap();
+            SetLocationToMap();
 
         }
 
@@ -56,32 +56,20 @@ namespace EGAZT.Views.NewDesign
             try
             {
                 double lat = 24.655933, lon = 46.713687;
-//                double lat = 24.7136, lon = 46.6753;
                 try
                 {
-                
-                //Position position = new Position(lat, lon);
-                //MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                //mapView.MoveToRegion(mapSpan);
-                //Pin pin = new Pin();
-                //pin.Label = "Report Location";
-                //pin.Type = PinType.Place;
-                //pin.Position = position;
-                //mapView.Pins.Add(pin);
+                    Position position = new Position(lat, lon);
+                    MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.444));
+                    mapView.MoveToRegion(mapSpan);
 
-
-//                mapView.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
-
-                    //Position position = new Position(lat, lon);
-                    //MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
-                    //mapView.MoveToRegion(mapSpan);
-
-                    //Pin pin = new Pin();
-                    //pin.Label = "Report Location";
-                    //pin.Type = PinType.Place;
-                    //pin.Position = position;
-
-                    //var addrs = (await Geocoding.GetPlacemarksAsync(new Location(lat, lon))).FirstOrDefault();
+                    Pin pin = new Pin
+                    {
+                        Label = "General Authority of Zakat and Tax - Headquarter",
+                        Address = AppResources.NDHeadQAddress,
+                        Type = PinType.Place,
+                        Position = new Position(lat, lon)
+                    };
+                    mapView.Pins.Add(pin);
                 }
             catch (FeatureNotSupportedException fnsEx)
             {

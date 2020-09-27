@@ -278,6 +278,7 @@
                                         <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                              VerticalOptions="Center"
+                                                             ItemTapped="VRVGAttachTapped"
                                                              ItemsSource="{Binding VRVGAttachmentsListViewData}"
                                                              SelectionMode="None"
                                                              AutoFitMode="Height"
