@@ -72,7 +72,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         NxtButtonLabel = AppResources.ZZNext;
                         break;
                 }
-                fetchTabDataAndBind(_currentTab);
+                Device.BeginInvokeOnMainThread(() => fetchTabDataAndBind(_currentTab));
             }
         }
         public ObservableCollection<string> _tabList { get; set; }
@@ -1199,6 +1199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         #region Outlet Tabs commands
         public ICommand OnNewOutletButtonClick { get; set; }
+        public ICommand OnEditOutletButtonClick { get; set; }
         public ICommand OnDeleteOutletButtonClick { get; set; }
         #endregion
 
@@ -1308,6 +1309,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
+            OnEditOutletButtonClick = new Command((item) => openEditOutlet(item as OutletItem));
             OnDeleteOutletButtonClick = new Command(async (item) => {
                 var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText)
                 {
@@ -2276,13 +2278,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedDOBDate = _selectedDOBDate;
-                    if(SelectedDOB != null)
+                    if(!string.IsNullOrWhiteSpace(SelectedDOB))
                         DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedDOBHijiriDate = _selectedDOBDate;
-                    if(SelectedDOB != null)
+                    if(!string.IsNullOrWhiteSpace(SelectedDOB))
                         DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
@@ -2293,25 +2295,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportIssueDate = _selectedDOBDate;
-                    if(PassportIssueDate != null)
+                    if(!string.IsNullOrWhiteSpace(PassportIssueDate))
                         DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportIssueHijiriDate = _selectedDOBDate;
-                    if(PassportIssueDate != null)
+                    if(!string.IsNullOrWhiteSpace(PassportIssueDate))
                         DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportExpireDate = _selectedDOBDate;
-                    if(PassportExpireDate != null)
+                    if(!string.IsNullOrWhiteSpace(PassportExpireDate))
                         DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportExpireHijiriDate = _selectedDOBDate;
-                    if(PassportExpireDate != null)
+                    if(!string.IsNullOrWhiteSpace(PassportExpireDate))
                         DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
@@ -2422,6 +2424,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             outletNavigationModels.idItem = idItem;
+            _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
+        }
+        private void openEditOutlet(OutletItem item)
+        {
+            OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
+            outletNavigationModels.taxPayerDetails = taxPayerDetails;
+            outletNavigationModels.idItem = idItem;
+            outletNavigationModels.selectedOutletItem = item;
             _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
         }
         private void deleteOutlet(OutletItem item)
@@ -2938,6 +2948,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
                     idItem = null;
                     SelectedDOB = string.Empty;
+                    DisplaySelectedDOB = string.Empty;
+                    SelectedDOBDate = null;
+                    SelectedDOBHijiriDate = null;
                     FirstName = string.Empty;
                     LastName = string.Empty;
                     FatherName = string.Empty;
@@ -2955,7 +2968,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     PassportNumber = string.Empty;
                     SelectedPassportIssueCountry = null;
                     PassportIssueDate = string.Empty;
+                    DisplayPassportIssueDate = string.Empty;
+                    SelectedPassportIssueDate = null;
+                    SelectedPassportIssueHijiriDate = null;
                     PassportExpireDate = string.Empty;
+                    DisplayPassportExpireDate = string.Empty;
+                    SelectedPassportExpireDate = null;
+                    SelectedPassportExpireHijiriDate = null;
                     UploadedPassportDocumentsList?.Clear();
                     break;
                 case EstablishmentRegistrationTabsEnum.Outlets:
