@@ -11579,14 +11579,15 @@ namespace GAZT.Manager
             return ConvertedDate;
         }
 
-        public static async Task<TinDeregistrationResponseModel> GaztTinDeregistrationSubmitRequestData(TinDeregistrationResponseModel tinDeregistrationResponseModel)
+        public static async Task<string> GaztTinDeregistrationSubmitRequestData(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
+            string TinDeregResponseJson = string.Empty;
             TinDeregistrationSendResponseModel tinDeregistrationSendResponseModel = new TinDeregistrationSendResponseModel();
 
-            tinDeregistrationResponseModel.AEffectiveDtC = "G";
-            tinDeregistrationResponseModel.ASubmissionDateC = "G";
-            tinDeregistrationResponseModel.ADecDateC = "G";
-            tinDeregistrationResponseModel.ADobC = "G";
+            //tinDeregistrationResponseModel.AEffectiveDtC = "G";
+            //tinDeregistrationResponseModel.ASubmissionDateC = "G";
+            //tinDeregistrationResponseModel.ADecDateC = "G";
+            //tinDeregistrationResponseModel.ADobC = "G";
 
             try
             {
@@ -11769,46 +11770,46 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
+                         TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
 
-                        if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
-                        {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(TinDeregResponseJson);
-                            try
-                            {
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                                {
-                                    ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                    String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                    ErrorMessageForUnlockAccount = WithReplacedString;
-                                    //ErrorMessageForVAT
-                                    throw new GAZTErrorException(ErrorMessageForUnlockAccount);
-                                }
+                        //if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
+                        //{
+                        //    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(TinDeregResponseJson);
+                        //    try
+                        //    {
+                        //        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        //        {
+                        //            ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                        //            String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                        //            ErrorMessageForUnlockAccount = WithReplacedString;
+                        //            //ErrorMessageForVAT
+                        //            throw new GAZTErrorException(ErrorMessageForUnlockAccount);
+                        //        }
 
-                            }
-                            catch (Exception ex)
-                            {
-                                if (errorMesg != null && errorMesg.error != null)
-                                {
-                                    throw new GAZTErrorException(errorMesg.error.message.value);
-                                }
-                            }
-                        }
-                        else if (!string.IsNullOrEmpty(TinDeregResponseJson))
-                        {
-                            TinDeregResponseJson = JObject.Parse(TinDeregResponseJson)["d"].ToString();
-                            _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregResponseJson);
-                            if (_newRequestSummaryDataResponse == null)
-                            {
-                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                            }
-                        }
-                        else
-                        {
-                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                        }
+                        //    }
+                        //    catch (Exception ex)
+                        //    {
+                        //        if (errorMesg != null && errorMesg.error != null)
+                        //        {
+                        //            throw new GAZTErrorException(errorMesg.error.message.value);
+                        //        }
+                        //    }
+                        //}
+                        //else if (!string.IsNullOrEmpty(TinDeregResponseJson))
+                        //{
+                        //    TinDeregResponseJson = JObject.Parse(TinDeregResponseJson)["d"].ToString();
+                        //    _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregResponseJson);
+                        //    if (_newRequestSummaryDataResponse == null)
+                        //    {
+                        //        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        //}
                     }
-                    return _newRequestSummaryDataResponse;
+                    return TinDeregResponseJson;
                 }
                 catch (GAZTErrorException ex)
                 {

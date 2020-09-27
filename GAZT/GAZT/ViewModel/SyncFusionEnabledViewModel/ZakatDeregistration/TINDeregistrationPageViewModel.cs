@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -21,6 +23,7 @@ using Newtonsoft.Json.Linq;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using static GAZT.ErrorMessage;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
@@ -34,7 +37,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand IdTypeTapped { get; set; }
         public ICommand PermitIdtypeTapped { get; set; }
         public ICommand PermitTypeTinUnfocused { get; set; }
-
+        public int DefaultMonth;
+        public int DefaultMonthHijri;
         //
         #endregion
 
@@ -134,7 +138,84 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsNodataAvailableVisible");
             }
         }
-
+        private ObservableCollection<object> _todayDate;
+        public ObservableCollection<object> TodayDate
+        {
+            get
+            {
+                return _todayDate;
+            }
+            set
+            {
+                _todayDate = value;
+                RaisePropertyChanged("TodayDate");
+            }
+        }
+        private ObservableCollection<object> _todayDateinHijri;
+        public ObservableCollection<object> TodayDateinHijri
+        {
+            get
+            {
+                return _todayDateinHijri;
+            }
+            set
+            {
+                _todayDateinHijri = value;
+                RaisePropertyChanged("TodayDateinHijri");
+            }
+        }
+        private string _pkrDBO = string.Empty;
+        public string PkrDBO
+        {
+            get
+            {
+                return _pkrDBO;
+            }
+            set
+            {
+                _pkrDBO = value;
+                RaisePropertyChanged("PkrDBO");
+            }
+        }
+        private string _pkrDBOPrev = string.Empty;
+        public string PkrDBOPrev
+        {
+            get
+            {
+                return _pkrDBOPrev;
+            }
+            set
+            {
+                _pkrDBOPrev = value;
+                RaisePropertyChanged("PkrDBOPrev");
+            }
+        }
+        private string _PickerDobToDisplay = string.Empty;
+        public string PickerDobToDisplay
+        {
+            get
+            {
+                return _PickerDobToDisplay;
+            }
+            set
+            {
+                _PickerDobToDisplay = value;
+                RaisePropertyChanged("PickerDobToDisplay");
+            }
+        }
+        private string _PickerDOBDateDisplay = string.Empty;
+        public string PickerDOBDateDisplay
+        {
+            get
+            {
+                return _PickerDOBDateDisplay;
+            }
+            set
+            {
+                _PickerDOBDateDisplay = value;
+                RaisePropertyChanged("PickerDOBDateDisplay");
+            }
+        }
         //
         private bool _isReasonViewEnabled = true;
         public bool IsReasonViewEnabled
@@ -149,7 +230,33 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsReasonViewEnabled");
             }
         }
-
+        private bool _IsHijriCal = false;
+        public bool IsHijriCal
+        {
+            get
+            {
+                return _IsHijriCal;
+            }
+            set
+            {
+                _IsHijriCal = value;
+                RaisePropertyChanged("IsHijriCal");
+            }
+        }
+        
+                    private bool _IsDOBHijriCal = false;
+        public bool IsDOBHijriCal
+        {
+            get
+            {
+                return _IsDOBHijriCal;
+            }
+            set
+            {
+                _IsDOBHijriCal = value;
+                RaisePropertyChanged("IsDOBHijriCal");
+            }
+        }
         private bool _isOutletViewEnabled = false;
         public bool IsOutletViewEnabled
         {
@@ -1673,6 +1780,40 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             VoidIsVisible = false;
             EnableReasonView();
         }
+        public async Task SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDate = todaycollection;
+            DefaultMonth = DateTime.Now.Date.Month;
+
+            //TodayDateinHijri
+            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+            var calendar = new HijriCalendar();
+            if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            else
+                todaycollectionHijri.Add(calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
+            if (calendar.GetMonth(DateTime.Now.Date) < 10)
+                todaycollectionHijri.Add("0" + calendar.GetMonth(DateTime.Now.Date));
+            else
+                todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
+            todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+            TodayDateinHijri = todaycollectionHijri;
+            //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
+
+
+        }
 
         public async void LoadReasonSet()
         {
@@ -1717,6 +1858,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (TinDeregistrationData.AEffectiveDt != null)
                     DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDt);
+                PickerDobToDisplay = DeregistrationDate.ToString("dd MMM yyyy", new CultureInfo("en-US"));
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
@@ -2558,7 +2700,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (SelectedOutletOptionIndex == 1)
                 {
-                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.FamilyName) || string.IsNullOrEmpty(IDTypeDataModel.Name1))
+                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null  || string.IsNullOrEmpty(IDTypeDataModel.FamilyName) || string.IsNullOrEmpty(IDTypeDataModel.Name1))
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                     }
@@ -2751,7 +2893,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 //Display Success Screen
                 await Submit();
-                _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
+          
+                 _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3314,8 +3457,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 try
                 {
 
+                    if(IsHijriCal)
+                    {
+                        TinDeregistrationData.ASubmissionDateC = "H";
+                        TinDeregistrationData.AEffectiveDtC = "H";
+                        TinDeregistrationData.AExpdtC = "H";
+                    }
+                    else if (IsDOBHijriCal)
+                    {
+                        TinDeregistrationData.ADobC = "H";
+                    }
+                    else
+                    {
+                        TinDeregistrationData.ASubmissionDateC = "G";
+                        TinDeregistrationData.AEffectiveDtC = "G";
+                        TinDeregistrationData.AExpdtC = "G";
+                        TinDeregistrationData.ADobC = "G";
+
+                    }
+
                     TinDeregistrationData.ASubmissionDate = DeregistrationDate.ToString();
                     TinDeregistrationData.ADob = ConvertDateFormat(DeregistrationDate);
+                    TinDeregistrationData.ADobH = DeregistrationDate.ToString("yyyy/MM/dd");
 
                     TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DateTime.Now);
                     TinDeregistrationData.ASubmissionDateH = DeregistrationDate.ToString("yyyy/MM/dd");
@@ -3325,7 +3488,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
                     TinDeregistrationData.ADecDate = ConvertDateFormat(DeregistrationDate);
+                    TinDeregistrationData.ADecDateH = DeregistrationDate.ToString("yyyy/MM/dd");
+
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
+                    TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy/MM/dd");
+
+
                     if (IsDeclarationChecked)
                     {
                         TinDeregistrationData.ADeclarationChkbox = "1";
@@ -3404,11 +3572,54 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     tempAttachDetSet.Add(attachment);
                 }
+                         string ErrorMessageForUnlockAccount = string.Empty;
 
                 try
                 {
-                    TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+                   string TinDeregistrationDataResponse = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+                    TinDeregistrationParentResponseModel obj = JsonConvert.DeserializeObject<TinDeregistrationParentResponseModel>(TinDeregistrationDataResponse);
+
+                    if (obj.D == null)
+                    {
+
+                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(TinDeregistrationDataResponse);
+                        StringBuilder Message = new StringBuilder();
+                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                        {
+                            if (itemerror.severity.Contains("error"))
+                            {
+                                if (Message.Length > 0)
+                                {
+                                    Message.Append(Environment.NewLine);
+                                }
+                                Message.Append(itemerror.message);
+                            }
+                        }
+                        await _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+                        _navigationService.GoBack();
+
+                    }
+                    else if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
+                    {
+                        TinDeregistrationDataResponse = JObject.Parse(TinDeregistrationDataResponse)["d"].ToString();
+                        TinDeregistrationData = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregistrationDataResponse);
+                        if (TinDeregistrationData == null)
+                        {
+                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        }
+                       
+                    }
+                    else
+                    {
+                        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                    }
+
                     TinDeregistrationData.AttDetSet.Results = tempAttachDetSet;
+
 
                     if (TinDeregistrationData.Xvoidz.Equals("X"))
                     {
@@ -3501,5 +3712,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
             }
         }
+    
     }
 }
