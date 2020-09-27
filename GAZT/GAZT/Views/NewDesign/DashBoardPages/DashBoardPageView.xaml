@@ -51,7 +51,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <Grid IsVisible="{Binding HomeViewVisible}" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
+            <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,15,0,0">
                 <Grid.RowDefinitions>
                     <!--<RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />-->
@@ -427,7 +427,7 @@
             </Grid>
 
             <!--Menu Starts-->
-            <Grid x:Name="OldMenu" IsVisible="{Binding MenuViewVisible}">
+            <Grid x:Name="OldMenu" Grid.Row="0" IsVisible="{Binding MenuViewVisible}">
                 <ScrollView>
                     <Grid >
                         <Grid x:Name="ParentMenu">
@@ -1034,7 +1034,7 @@
             </Grid>-->
 
             <!--Menu Ends-->
-
+            
             <StackLayout x:Name="ButtomTab" Grid.Row="1" BackgroundColor="White">
                 <yummy:PancakeView  VerticalOptions="EndAndExpand" BorderColor="DarkGray"  BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
                     <Grid>
