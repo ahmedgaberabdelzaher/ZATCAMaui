@@ -56,7 +56,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
+    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
@@ -66,7 +66,6 @@
     <OptimizePNGs>false</OptimizePNGs>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchInterpreter>-all</MtouchInterpreter>
-    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -103,13 +102,13 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <DefineConstants></DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
+    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <MtouchVerbosity></MtouchVerbosity>
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
+    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
