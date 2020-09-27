@@ -4996,7 +4996,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>Search by Invoice ID</value>
+    <value>Search by SADAD Number</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>Select Bills</value>
