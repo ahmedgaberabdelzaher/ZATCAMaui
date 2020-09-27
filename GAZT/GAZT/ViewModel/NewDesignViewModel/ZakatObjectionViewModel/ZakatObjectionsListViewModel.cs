@@ -360,8 +360,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
-        private List<ZakatObjectionListModel.Result> _objectionsList;
-        public List<ZakatObjectionListModel.Result> ObjectionsList
+        private ObservableCollection<ZakatObjectionListModel.Result> _objectionsList;
+        public ObservableCollection<ZakatObjectionListModel.Result> ObjectionsList
         {
             get
             {
@@ -399,9 +399,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         public void ResetData()
         {
-            ObjectionsList = null;
+            ObjectionsList = new ObservableCollection<ZakatObjectionListModel.Result>(); 
             ObjectionsCount = 0 + " " + AppResources.ZakatObjection;
             AttachmentsListViewData = null;
+
             EnableListView();
         }
 
@@ -456,9 +457,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     {
                         _ZAKATObjectionList = await WebServiceManager.GAZTGetZAKATObjectionList();
 
+                        var objectionsList = new ObservableCollection<ZakatObjectionListModel.Result>();
                         if (_ZAKATObjectionList != null && _ZAKATObjectionList.d != null)
                         {
-                            ObjectionsList = _ZAKATObjectionList.d.ListSet.results.ToList();
+                            foreach (var objection in _ZAKATObjectionList.d.ListSet.results)
+                            {
+                                objectionsList.Add(objection);
+                            }
+                            ObjectionsList = objectionsList;
                             ObjectionsCount = ObjectionsList.Count + " " + AppResources.ZakatObjection;
                         }
 

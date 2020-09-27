@@ -376,7 +376,8 @@
                                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                  ItemsSource="{Binding AttachmentsListViewData}"
-                                                 TapCommand="{Binding NewAttachmentTapped}" 
+                                                 TapCommand="{Binding NewAttachmentTapped}"
+                                                  ItemTapped="VRAttachTapped"
                                                  SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
 
 
@@ -886,6 +887,7 @@
                             <listView:SfListView HorizontalOptions="Center"
                                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                                 ItemTapped="VRBGAttachTapped"
                                                  ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
                                                  TapCommand="{Binding NewBankGuranteeAttachmentTapped}"
                                                  SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">

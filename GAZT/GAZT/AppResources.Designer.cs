@@ -14165,5 +14165,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("VRVGGreaterthanSAR187500", resourceCulture);
             }
         }
+        
+        public static string NDYoushouldsignupasnewuser {
+            get {
+                return ResourceManager.GetString("NDYoushouldsignupasnewuser", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentTotalLiabilityToIncludeInTheInstallment {
+            get {
+                return ResourceManager.GetString("VATInstalmentTotalLiabilityToIncludeInTheInstallment", resourceCulture);
+            }
+        }
     }
 }

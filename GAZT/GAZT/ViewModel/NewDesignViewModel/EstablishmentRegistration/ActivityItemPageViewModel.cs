@@ -1115,13 +1115,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedCRValidFromDate = _selectedDOBDate;
-                    if(CRValidFrom != null)
+                    if(!string.IsNullOrWhiteSpace(CRValidFrom))
                         DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedCRValidFromHijiriDate = _selectedDOBDate;
-                    if (CRValidFrom != null)
+                    if (!string.IsNullOrWhiteSpace(CRValidFrom))
                         DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
@@ -1131,13 +1131,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedValidFromDate = _selectedDOBDate;
-                    if(ValidFrom != null)
+                    if(!string.IsNullOrWhiteSpace(ValidFrom))
                         DisplayValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedValidFromHijiriDate = _selectedDOBDate;
-                    if(ValidFrom != null)
+                    if(!string.IsNullOrWhiteSpace(ValidFrom))
                         DisplayValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 }
             }
@@ -1221,7 +1221,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 CRsCopies = new ObservableCollection<Attachment>();
                 TransferCRsCopies = new ObservableCollection<Attachment>();
                 MainActivity = false;
-                CRValidFrom = null;
+                CRValidFrom = string.Empty;
+                DisplayCRValidFrom = string.Empty;
+                SelectedCRValidFromDate = null;
+                SelectedCRValidFromHijiriDate = null;
                 CRMainGroup = null;
                 CRSubGroup = null;
                 CRAcitivity = null;
@@ -1234,7 +1237,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 LicenseNumber = string.Empty;
                 LicensesCopies = new ObservableCollection<Attachment>();
                 MainActivity = false;
-                ValidFrom = null;
+                ValidFrom = string.Empty;
+                DisplayValidFrom = string.Empty;
+                SelectedValidFromDate = null;
+                SelectedValidFromHijiriDate = null;
                 LicenseMainGroup = null;
                 LicenseSubGroup = null;
                 LicenseAcitivity = null;

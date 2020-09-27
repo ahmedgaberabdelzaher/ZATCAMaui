@@ -295,6 +295,7 @@
                                                      IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                      VerticalOptions="Center" AutoFitMode="Height"
                                                      ItemsSource="{Binding VSVRAttachmentsListViewData}"
+                                                     ItemTapped="VRVSItemTapped"
                                                      SelectionMode="None"
                                                      SelectionBackgroundColor="Transparent">
                                     <listView:SfListView.ItemTemplate>

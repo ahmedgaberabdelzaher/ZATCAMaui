@@ -2269,11 +2269,11 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZCommercialReiterationNumberconsistsofnumbersonly" xml:space="preserve">
-    <value>Commercial Reiteration Number consists of numbers only</value>
+    <value>Commercial Registration Number consists of numbers only</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZCommercialReiterationNumbershouddbe10digits" xml:space="preserve">
-    <value>Commercial Reiteration Number should be 10 digits</value>
+    <value>Commercial Registration Number should be 10 digits</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce" xml:space="preserve">
@@ -2421,7 +2421,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseentertheCommercialReiterationNumber" xml:space="preserve">
-    <value>Please enter the Commercial Reiteration Number</value>
+    <value>Please enter the Commercial Registration Number</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseentertheName" xml:space="preserve">
@@ -4406,8 +4406,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationDeclarationCheck" xml:space="preserve">
     <value>I declare that all entered data are Valid</value>
   </data>
- 
-      <data name="TinDeregistrationContactNumber" xml:space="preserve">
+  <data name="TinDeregistrationContactNumber" xml:space="preserve">
     <value> Contact Number</value>
   </data>
   <data name="TinDeregistrationReason" xml:space="preserve">
@@ -4997,7 +4996,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>Search by Invoice ID</value>
+    <value>Search by SADAD Number</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>Select Bills</value>
@@ -7828,53 +7827,55 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="ZZZZViewRefund" xml:space="preserve">
     <value>View Refund Information</value>
   </data>
-    <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
+  <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
     <value>Attachment(Only One Allowed - Maximum Size 10 MB)</value>
   </data>
-    <data name="ZZZZViewRefund" xml:space="preserve">
-  <value>View Refund Information</value>
-</data>
-<data name="VRVGMemberDetails" xml:space="preserve">
-  <value>Member Details</value>
-</data>
-<data name="VRVGAggregatedgrouplevelfinancialdetails" xml:space="preserve">
-  <value>Aggregated group level financial details</value>
-</data>
-<data name="VRVGGroupVATeligiblesupplies" xml:space="preserve">
-  <value>Group VAT eligible supplies</value>
-</data>
-<data name="VRVGGroupVATeligiblepurchases" xml:space="preserve">
-  <value>Group VAT eligible purchases</value>
-</data>
-<data name="VRVGGroupeffectivedate" xml:space="preserve">
-  <value>Group effective date</value>
-</data>
-<data name="VRVGAttachments" xml:space="preserve">
-  <value>Attachments</value>
-</data>
-<data name="VRVGTINHolderName" xml:space="preserve">
-  <value>TIN Holder Name</value>
-</data>
-<data name="VRVGTINNumber" xml:space="preserve">
-  <value>TIN Number</value>
-</data>
-    <data name="VRVGLessthanSAR187500" xml:space="preserve">
-  <value>Less than SAR 187,500</value>
-</data>
-<data name="VRVGBetweenSAR18750andSAR375000" xml:space="preserve">
-  <value>Between SAR 187,500 and SAR 375,000</value>
-</data>
-<data name="VRVGBetweenSAR375000andSAR1000000" xml:space="preserve">
-  <value>Between SAR 375,000 and SAR 1,000,000</value>
-</data>
-<data name="VRVGBetweenSAR1000000andSAR40000000" xml:space="preserve">
-  <value>Between SAR 1,000,000 and SAR 40,000,000</value>
-</data>
-<data name="VRVGGreaterthanSAR40000000" xml:space="preserve">
-  <value>Greater than SAR 40,000,000</value>
-</data> 
-
-<data name="VRVGGreaterthanSAR187500" xml:space="preserve">
-  <value>Greater than SAR 187,500</value>
-</data>
+  <data name="VRVGMemberDetails" xml:space="preserve">
+    <value>Member Details</value>
+  </data>
+  <data name="VRVGAggregatedgrouplevelfinancialdetails" xml:space="preserve">
+    <value>Aggregated group level financial details</value>
+  </data>
+  <data name="VRVGGroupVATeligiblesupplies" xml:space="preserve">
+    <value>Group VAT eligible supplies</value>
+  </data>
+  <data name="VRVGGroupVATeligiblepurchases" xml:space="preserve">
+    <value>Group VAT eligible purchases</value>
+  </data>
+  <data name="VRVGGroupeffectivedate" xml:space="preserve">
+    <value>Group effective date</value>
+  </data>
+  <data name="VRVGAttachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="VRVGTINHolderName" xml:space="preserve">
+    <value>TIN Holder Name</value>
+  </data>
+  <data name="VRVGTINNumber" xml:space="preserve">
+    <value>TIN Number</value>
+  </data>
+  <data name="VRVGLessthanSAR187500" xml:space="preserve">
+    <value>Less than SAR 187,500</value>
+  </data>
+  <data name="VRVGBetweenSAR18750andSAR375000" xml:space="preserve">
+    <value>Between SAR 187,500 and SAR 375,000</value>
+  </data>
+  <data name="VRVGBetweenSAR375000andSAR1000000" xml:space="preserve">
+    <value>Between SAR 375,000 and SAR 1,000,000</value>
+  </data>
+  <data name="VRVGBetweenSAR1000000andSAR40000000" xml:space="preserve">
+    <value>Between SAR 1,000,000 and SAR 40,000,000</value>
+  </data>
+  <data name="VRVGGreaterthanSAR40000000" xml:space="preserve">
+    <value>Greater than SAR 40,000,000</value>
+  </data>
+  <data name="VRVGGreaterthanSAR187500" xml:space="preserve">
+    <value>Greater than SAR 187,500</value>
+  </data>
+  <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
+    <value>You should Signup as new user</value>
+  </data>
+    <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+    <value>Total liability to include in the installment</value>
+  </data>
 </root>

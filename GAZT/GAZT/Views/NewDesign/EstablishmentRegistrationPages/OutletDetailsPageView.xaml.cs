@@ -19,6 +19,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.OutletDetailsPageView;
             viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
             viewModel.idItem = outletNavigation.idItem;
+            viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
             viewModel.currentTab = outletNavigation.openedTab;
             BindingContext = viewModel;
             ChangeAeroIcon();

@@ -1136,8 +1136,16 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Crlicenceno}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Crlicenceno}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0">
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
                                         <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding Actno, Converter={StaticResource deleteActionVisibilityConverter}}">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>

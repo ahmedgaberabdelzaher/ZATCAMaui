@@ -1001,7 +1001,7 @@
                                Margin="0,10,0,0" Padding="0">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                         <custom:CustomLabel
-                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}"
+                                    Text="{x:Static ResourceManager:AppResources.VATInstalmentTotalLiabilityToIncludeInTheInstallment}"
                                   Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" />
                                         <custom:CustomLabel Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlackBold}"
                                                     HorizontalOptions="EndAndExpand" />

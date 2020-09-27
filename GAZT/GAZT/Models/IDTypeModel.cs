@@ -15,7 +15,7 @@ namespace GAZT.Models
     public class IDTypeModelD
     {
         public IDTypeModelMetadata __metadata { get; set; }
-        public DateTime Birthdt { get; set; }
+        public DateTime? Birthdt { get; set; }
         public string Bpkind { get; set; }
         public string Country { get; set; }
         public string IdIssueingCountry { get; set; }

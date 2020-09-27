@@ -243,6 +243,7 @@
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                              VerticalOptions="Center" AutoFitMode="Height"
                                                              ItemsSource="{Binding VatDeRegAttachmentsList}"
+                                                             ItemTapped="VRVatDeRegAttachTapped"
                                                              SelectionMode="None" Margin="8"
                                                              SelectionBackgroundColor="Transparent">
                                             <listView:SfListView.ItemTemplate>
