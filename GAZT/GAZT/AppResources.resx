@@ -2269,11 +2269,11 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZCommercialReiterationNumberconsistsofnumbersonly" xml:space="preserve">
-    <value>Commercial Reiteration Number consists of numbers only</value>
+    <value>Commercial Registration Number consists of numbers only</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZCommercialReiterationNumbershouddbe10digits" xml:space="preserve">
-    <value>Commercial Reiteration Number should be 10 digits</value>
+    <value>Commercial Registration Number should be 10 digits</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce" xml:space="preserve">
@@ -2421,7 +2421,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseentertheCommercialReiterationNumber" xml:space="preserve">
-    <value>Please enter the Commercial Reiteration Number</value>
+    <value>Please enter the Commercial Registration Number</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseentertheName" xml:space="preserve">
