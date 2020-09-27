@@ -7816,7 +7816,7 @@ Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
-    <value>Your Zakat Withdraw is submitted successfully</value>
+    <value>Your Zakat Withdrawal Application is submitted successfully</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
     <value>Gregorian</value>
