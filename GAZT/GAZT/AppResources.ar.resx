@@ -7677,7 +7677,7 @@
 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
-    <value>تم استلام طلب إلغاء الزكاة بنجاح</value>
+    <value>تم استلام طلب الغاء الزكاة بنجاح</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
     <value>هجري</value>
