@@ -7763,4 +7763,46 @@
     <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
     <value>تعليق الإلتزام بتقديم إقرارات ضريبة القيمة المضافة</value>
   </data>
+    <data name="VRVGTINNumber" xml:space="preserve">
+  <value>الرقم المميز</value>
+</data>
+<data name="VRVGAttachments" xml:space="preserve">
+  <value>المرفقات</value>
+</data>
+<data name="VRVGGroupeffectivedate" xml:space="preserve">
+  <value>تاريخ فعالية المجموعة الضريبية</value>
+</data>
+    <data name="VRVGLessthanSAR187500" xml:space="preserve">
+  <value>أقل من 187,500 ريال سعودي</value>
+</data>
+<data name="VRVGBetweenSAR18750andSAR375000" xml:space="preserve">
+  <value>أكثر من 187,500 حتى 375,000 ريال سعودي</value>
+</data>
+<data name="VRVGBetweenSAR375000andSAR1000000" xml:space="preserve">
+  <value>أكثر من 375,000 حتى 1,000,000 ريال سعودي</value>
+</data>
+<data name="VRVGBetweenSAR1000000andSAR40000000" xml:space="preserve">
+  <value>أكثر من 1,000,000 حتى 40,000,000 ريال سعودي</value>
+</data>
+<data name="VRVGGreaterthanSAR40000000" xml:space="preserve">
+  <value>أكثر من 40,000,000 ريال سعودي</value>
+</data> 
+<data name="VRVGGreaterthanSAR187500" xml:space="preserve">
+  <value>أقل من 187,500 ريال سعودي</value>
+</data>
+    <data name="VRVGMemberDetails" xml:space="preserve">
+  <value>تفاصيل العضو</value>
+</data>
+<data name="VRVGAggregatedgrouplevelfinancialdetails" xml:space="preserve">
+  <value>التفاصيل المالية المجمعة للمجموعة </value>
+</data>
+<data name="VRVGGroupVATeligiblesupplies" xml:space="preserve">
+  <value>المبيعات الخاضعة لضريبة القمية المضافة</value>
+</data>
+<data name="VRVGGroupVATeligiblepurchases" xml:space="preserve">
+  <value>المشتريات الخاضعة لضريبة القيمة المضافة </value>
+</data>
+<data name="VRVGTINHolderName" xml:space="preserve">
+  <value>اسم المكلف</value>
+</data>
 </root>

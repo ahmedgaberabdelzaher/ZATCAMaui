@@ -892,14 +892,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             await Task.Run(() => viewModel.IsLoading = true);
             App.VATType = VATRegDetailsExecutionType.Amend;
-            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+            viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
         }
 
         private async void VATReactivation_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
             App.VATType = VATRegDetailsExecutionType.Reactivation;
-            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationPageView));
+            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView));
 
         }
         

@@ -23,7 +23,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.ActivityItemPage;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             viewModel.newNumber = _activityNavigation.nextNumber;
-            viewModel.DatePickerInGregorian = activityNavigation.IsDatePickerInGregorian;
             viewModel.validateCR = _activityNavigation.validateCR;
             viewModel.validateLicense = _activityNavigation.validateLicense;
             //viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
@@ -149,7 +148,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (viewModel?.EnableInputFields == true)
             {
-                if (viewModel?.DatePickerInGregorian == true)
+                if (viewModel?.taxPayerDetails?.Caltp == "G")
                 {
                     validFromPicker.IsOpen = true;
                 }
@@ -164,7 +163,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (viewModel?.EnableInputFields == true)
             {
-                if (viewModel?.DatePickerInGregorian == true)
+                if (viewModel?.taxPayerDetails?.Caltp == "G")
                 {
                     crValidFromPicker.IsOpen = true;
                 }
@@ -183,29 +182,37 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         void crValidFromPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = crValidFromPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayCRValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                viewModel.CRValidFrom = viewModel?.DisplayCRValidFrom;
             }
             else
             {
                 selectedItem = crValidFromHijiriPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayCRValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                DateTime.TryParseExact(viewModel?.DisplayCRValidFrom, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _crvalidFrom);
+                viewModel.CRValidFrom = _crvalidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
-            viewModel.CRValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
 
         void validFromPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.DatePickerInGregorian == true)
+            if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = validFromPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                viewModel.ValidFrom = viewModel?.DisplayValidFrom;
             }
             else
             {
                 selectedItem = validFromHijiriPicker.SelectedItem as ObservableCollection<object>;
+                viewModel.DisplayValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                DateTime.TryParseExact(viewModel?.DisplayValidFrom, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _validFrom);
+                viewModel.ValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
-            viewModel.ValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
         }
     }
 }

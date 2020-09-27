@@ -1776,6 +1776,113 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        private string _vRVGVATeligiblesupplies = string.Empty;
+        public string VRVGVATeligiblesupplies
+        {
+            get
+            {
+                return _vRVGVATeligiblesupplies;
+            }
+            set
+            {
+                _vRVGVATeligiblesupplies = value;
+                RaisePropertyChanged("VRVGVATeligiblesupplies");
+            }
+        }
+        private string _vRVGVATeligiblepurchases = string.Empty;
+        public string VRVGVATeligiblepurchases
+        {
+            get
+            {
+                return _vRVGVATeligiblepurchases;
+            }
+            set
+            {
+                _vRVGVATeligiblepurchases = value;
+                RaisePropertyChanged("VRVGVATeligiblepurchases");
+            }
+        }
+        private string _vRVGEffectivedate = string.Empty;
+        public string VRVGEffectivedate
+        {
+            get
+            {
+                return _vRVGEffectivedate;
+            }
+            set
+            {
+                _vRVGEffectivedate = value;
+                RaisePropertyChanged("VRVGEffectivedate");
+            }
+        }
+        public ObservableCollection<Attachment> vRVGAttachmentsListViewData { get; set; }
+        public ObservableCollection<Attachment> VRVGAttachmentsListViewData
+        {
+            get { return vRVGAttachmentsListViewData; }
+            set
+            {
+                if (vRVGAttachmentsListViewData == value)
+                {
+                    return;
+                }
+                vRVGAttachmentsListViewData = value;
+                RaisePropertyChanged("VRVGAttachmentsListViewData");
+            }
+        }
+        public ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult> vRVGTinsListViewData { get; set; }
+        public ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult> VRVGTinsListViewData
+        {
+            get { return vRVGTinsListViewData; }
+            set
+            {
+                if (vRVGTinsListViewData == value)
+                {
+                    return;
+                }
+                vRVGTinsListViewData = value;
+                RaisePropertyChanged("VRVGTinsListViewData");
+            }
+        }
+        private string _VrVGIDType = string.Empty;
+        public string VRVGIDType
+        {
+            get
+            {
+                return _VrVGIDType;
+            }
+            set
+            {
+                _VrVGIDType = value;
+                RaisePropertyChanged("VRVGIDType");
+            }
+        }
+        private string _VrVGIDNumber = string.Empty;
+        public string VRVGIDNumber
+        {
+            get
+            {
+                return _VrVGIDNumber;
+            }
+            set
+            {
+                _VrVGIDNumber = value;
+                RaisePropertyChanged("VRVGIDNumber");
+            }
+        }
+        private string _VrVGContactPersonName = string.Empty;
+        public string VRVGContactPersonName
+        {
+            get
+            {
+                return _VrVGContactPersonName;
+            }
+            set
+            {
+                _VrVGContactPersonName = value;
+                RaisePropertyChanged("VRVGContactPersonName");
+            }
+        }
+
         public class SelectionModel
         {
             public SelectionModel()
@@ -2145,7 +2252,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         }
 
         private Dictionary<string, string> IDTypeDictionary = null;
-        
+        private Dictionary<string, string> VGSupplicesDictionary = null;
+        private Dictionary<string, string> VGPurchasesDictionary = null;
+
 
         private bool _isDialog = true;
         private bool _isBankGuranteeAttachments = false;
@@ -2963,7 +3072,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     if (selectedSubReviewReason.Code == "0012")
                     {
 
-                        GetVATDREGSuspensionViewApplication();
+                        await GetVATDREGSuspensionViewApplication();
                     }
                     else if (selectedSubReviewReason.Code == "0011")
                     {
@@ -2976,7 +3085,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 }
                 else if (selectedApplicationRef.Fbtyp == "VTGR")
                 {
-                    GetVATDREGSuspensionViewApplication();
+                    await GetVATReviewRequestVTGR();
                 }
                 else if (selectedApplicationRef.Fbtyp == "VTIN" || selectedApplicationRef.Fbtyp == "TPFV")
                 {
@@ -3211,7 +3320,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 }
                 else if (selectedApplicationRef.Fbtyp == "VTGR") {
 
-                    IsApplicationVisible = false;
+                    IsApplicationVisible = true;
                 }
 
                 else if (selectedApplicationRef.Fbtyp == "DGVT")
@@ -3523,7 +3632,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             };
 
 
-            IsSadadSecuritySelected = false;
+            VGSupplicesDictionary = new Dictionary<string, string>
+            {
+                {"01",AppResources.VRVGLessthanSAR187500},
+                { "02",AppResources.VRVGBetweenSAR18750andSAR375000},
+                { "03",AppResources.VRVGBetweenSAR375000andSAR1000000},
+                { "04",AppResources.VRVGBetweenSAR1000000andSAR40000000},
+                { "05",AppResources.VRVGGreaterthanSAR40000000},
+            };
+         VGPurchasesDictionary = new Dictionary<string, string>
+            {
+                {"01",AppResources.VRVGLessthanSAR187500},
+                { "02",AppResources.VRVGGreaterthanSAR187500},
+            };
+
+
+        IsSadadSecuritySelected = false;
             IsBankGurantSecuritySelected = false;
             IsSecurityPaymentsTabVisible = false;
             PickedDate = "";
@@ -5297,6 +5421,133 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             catch (GAZTVATRegistrationInProcessException ex)
             {
 
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task GetVATReviewRequestVTGR()
+        {
+            try
+            {
+                string strTxnTpz = "CRE_VTGR";
+                string strGpart = App.LoginDataRetrieved.TIN;
+                string strEuser = "";
+                string strFbguid = "";
+                string strFBNum = selectedApplicationRef.Fbnum;
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    VATReviewRequestVTGRModel _VATReviewRequestVTGR = new VATReviewRequestVTGRModel();
+                    VATReviewRequestVTGRReturnModel _VATReviewRequestVTGRReturn = new VATReviewRequestVTGRReturnModel();
+                    try
+                    {
+                        _VATReviewRequestVTGR = await WebServiceManager.GAZTGetVATReviewRequestVTGR(strEuser, strFbguid, strGpart, strTxnTpz, strFBNum);
+                        if (_VATReviewRequestVTGR != null && _VATReviewRequestVTGR.d != null)
+                        {
+                            //      //_VATReviewRequestVTGRReturn.AgreeFlag = _VATReviewRequestVTGR.d.AgrFg;
+                            //  VRVGTINNumber = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().Gpart;
+                            //  VRVGTINHolderName = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().Actnm;
+                            // _VATReviewRequestVTGRReturn.Address = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().Street + ", " + _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().RegionDesc;
+                            //  _VATReviewRequestVTGRReturn.CRLicense = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().LicenseCrno;
+                            //  _VATReviewRequestVTGRReturn.VATAccount = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().Account;
+                            //  _VATReviewRequestVTGRReturn.LegalPersonType = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().PersonTp;
+                            //   _VATReviewRequestVTGRReturn.IsGrpMbrExporter = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().Exporter;
+                            //    _VATReviewRequestVTGRReturn.IsGrpMbrImporter = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().Importer;
+                            //    _VATReviewRequestVTGRReturn.WhatIsYourVATEliigibleSupplies = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().VatSupply;
+                            //    _VATReviewRequestVTGRReturn.WhatIsYourVATEliigiblePurchases = _VATReviewRequestVTGR.d.TABLESet.results.FirstOrDefault().VatPuchase;
+                           // VRVGVATeligiblesupplies = _VATReviewRequestVTGR.d.AggreSupply;
+                           // VRVGVATeligiblepurchases = _VATReviewRequestVTGR.d.AggrePurchase;
+                            VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50
+                            ;
+                            //_VATReviewRequestVTGRReturn.AttachmentName = _VATReviewRequestVTGR.d.ELGBL_DOCSet.results.Where(x=> x.DmsTp=="Txt50").FirstOrDefault().doctyp;
+                            //    _VATReviewRequestVTGRReturn.DeclarationFlag = _VATReviewRequestVTGR.d.Decfg;
+                            VRVGIDType = IDToNameDictionary[_VATReviewRequestVTGR.d.DecidTy];
+                            VRVGIDNumber = _VATReviewRequestVTGR.d.DecidNo;
+                            VRVGContactPersonName = _VATReviewRequestVTGR.d.Decname;
+
+                            VRVGVATeligiblesupplies = VGSupplicesDictionary[_VATReviewRequestVTGR.d.AggreSupply];
+                            VRVGVATeligiblepurchases = VGPurchasesDictionary[_VATReviewRequestVTGR.d.AggrePurchase];
+
+                            var tinsListViewData = new ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult>();
+                            foreach (VATReviewRequestVTGRModel.TABLESetResult tin in _VATReviewRequestVTGR.d.TABLESet.results)
+                            {
+
+                                tinsListViewData.Add(tin);
+
+                            }
+                            VRVGTinsListViewData = tinsListViewData;
+                            var attachmentsListViewData = new ObservableCollection<Attachment>();
+                            foreach (Attachment attachemnt in _VATReviewRequestVTGR.d.ATTDETSet.results)
+                            {
+
+                                attachmentsListViewData.Add(attachemnt);
+
+                            }
+                            VRVGAttachmentsListViewData = attachmentsListViewData;
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _navigationService.NavigateTo(App.VRVatGroupPageView);
+                            });
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                //});
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;

@@ -3,6 +3,7 @@ namespace EGAZT.Models
 {
     public enum EstablishmentRegistrationTabsEnum
     {
+        Unknown = -1,
         RegistrationType = 1,
         TaxpayerDetail = 2,
         PassportDetails = 3,

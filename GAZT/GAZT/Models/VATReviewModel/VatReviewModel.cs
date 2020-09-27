@@ -1162,7 +1162,7 @@ namespace EGAZT.Models.VatReviewModel
                 public string type { get; set; }
             }
 
-            public class Result2
+            public class TABLESetResult
             {
                 public Metadata3 __metadata { get; set; }
                 public string Actnm { get; set; }
@@ -1204,7 +1204,7 @@ namespace EGAZT.Models.VatReviewModel
 
             public class TABLESet
             {
-                public List<Result2> results { get; set; }
+                public List<TABLESetResult> results { get; set; }
             }
 
             public class Metadata4
@@ -1280,7 +1280,7 @@ namespace EGAZT.Models.VatReviewModel
 
             public class ATTDETSet
             {
-                public List<Result4> results { get; set; }
+                public List<Attachment> results { get; set; }
             }
 
             public class QUESLISTSet
@@ -1738,6 +1738,29 @@ namespace EGAZT.Models.VatReviewModel
                 public QuesListSet QuesListSet { get; set; }
             }
 
+        }
+
+        public class VATReviewRequestVTGRReturnModel
+        {
+            public string AgreeFlag { get; set; }
+            public string TIN { get; set; }
+            public string Name { get; set; }
+            public string Address { get; set; }
+            public string CRLicense { get; set; }
+            public string VATAccount { get; set; }
+            public string LegalPersonType { get; set; }
+            public string IsGrpMbrExporter { get; set; }
+            public string IsGrpMbrImporter { get; set; }
+            public string WhatIsYourVATEliigibleSupplies { get; set; }
+            public string WhatIsYourVATEliigiblePurchases { get; set; }
+            public string WhatIsYourGrpVATEliigibleSupplies { get; set; }
+            public string WhatIsYourGrpVATEliigiblePurchases { get; set; }
+            public string GroupEffectiveDate { get; set; }
+            public string AttachmentName { get; set; }
+            public string DeclarationFlag { get; set; }
+            public string IDType { get; set; }
+            public string IDNumber { get; set; }
+            public string ContactPersonName { get; set; }
         }
 
         public class VATReviewDREGSuspensionListModel

@@ -27,7 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public Nreg_IdItem idItem { get; set; } = null;
         private ValidateCR validateCR = null;
         private Nreg_ActivityItem PreLoadedLicenseItem = null;
-        public bool DatePickerInGregorian { get; set; }
+        
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
@@ -629,7 +629,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
-                IsDatePickerInGregorian = DatePickerInGregorian,
                 //EditEnabledMode = editModeEnabled,
                 //newActivityItems = activityItems,
                 goBackAction = (List<Nreg_ActivityItem> list) =>
@@ -655,7 +654,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
                             validateCR = validateCR,
-                            IsDatePickerInGregorian = DatePickerInGregorian,
                             validateLicense = PreLoadedLicenseItem,
                             //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
                             //newActivityItems = activityItems,
@@ -725,7 +723,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Nreg_OutletItem outletItem = new Nreg_OutletItem();
                         outletItem.Actnm = OutletName;
                         outletItem.Actno = OutletActNumber;
-                        outletItem.Caltp = "G";
+                        outletItem.Caltp = taxPayerDetails?.Caltp;
                         outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
                         //outletItem.Conatt = "X";
                         taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);

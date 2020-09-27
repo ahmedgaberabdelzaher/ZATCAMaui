@@ -542,7 +542,7 @@
 
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
-                                            <Label x:Name="dob" Text="{Binding SelectedDOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                            <Label x:Name="dob" Text="{Binding DisplaySelectedDOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Margin="5,0">
                                                     <Image.Source>
@@ -878,7 +878,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
-                                        <Label x:Name="PassportIssueDate" Text="{Binding PassportIssueDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <Label x:Name="PassportIssueDate" Text="{Binding DisplayPassportIssueDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -967,7 +967,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
-                                        <Label x:Name="PassportExpiryDate" Text="{Binding PassportExpireDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <Label x:Name="PassportExpiryDate" Text="{Binding DisplayPassportExpireDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
