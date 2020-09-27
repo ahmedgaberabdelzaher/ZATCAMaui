@@ -6248,11 +6248,9 @@
   </data>
   <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
     <value> فرع شركة غير مقيمة مصرح لها بمزاولة الأعمال بالمملكة.</value>
-            <value>مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها.</value>
-
   </data>
   <data name="ESTConstuctionSiteLabel" xml:space="preserve">
-    <value> مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها.</value>
+  <value>مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها.</value>
   </data>
   <data name="ESTInstallationLabel" xml:space="preserve">
     <value>التركيبات والمواقع المستخدمة في أعمال المسح للموارد الطبيعية, ومعدات الحفر, والسفن المستخدمة في مسح الموارد الطبيعية, وممارسة الأعمال الإشرافية المتعلقة بها</value>
