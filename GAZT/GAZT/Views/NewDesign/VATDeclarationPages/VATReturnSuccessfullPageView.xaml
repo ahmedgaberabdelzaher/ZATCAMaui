@@ -49,7 +49,7 @@
                 </StackLayout.GestureRecognizers>
             </StackLayout>
 
-            <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="1" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+            <ScrollView VerticalScrollBarVisibility="Default" Grid.Row="1" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
             <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
 
                 <Image Source="Forget_ic_success"/>
@@ -80,10 +80,10 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0">
+                    <ScrollView x:Name="retrunrefscroll" HorizontalScrollBarVisibility="Always" VerticalScrollBarVisibility="Always"  Grid.Row="0">
                         <StackLayout Spacing="0">
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                                <StackLayout Orientation="Horizontal"  Padding="15,5,15,5">
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
@@ -95,7 +95,7 @@
                             </border:SfBorder >
 
                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                                <StackLayout Orientation="Horizontal"  Padding="15,5,15,5">
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxablePeriod}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
@@ -105,7 +105,7 @@
                             </border:SfBorder >
 
                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}" IsVisible="{Binding IsSadadNumberVisible}">
-                                <StackLayout Orientation="Horizontal"  Padding="15,10,15,10" IsVisible="{Binding IsSadadNumberVisible}">
+                                <StackLayout Orientation="Horizontal"  Padding="15,5,15,5" IsVisible="{Binding IsSadadNumberVisible}">
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
@@ -124,12 +124,12 @@
                             </border:SfBorder>
                           </StackLayout>
                     </ScrollView>
-                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Margin="0,0,0,2" Clicked="OnVATRefreshButtonClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"  IsVisible="{Binding IsAcknowledgementButtonVisible}" Margin="0,0,0,2" Command="{Binding OnAcknowlwdgementClicked}" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDownloadForm}" IsVisible="{Binding IsButtonVisible}" Margin="0,0,0,2" Command="{Binding OnDownloadFormClicked}" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
+                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,2,0,0">
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Margin="0,0,0,1" Clicked="OnVATRefreshButtonClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"  IsVisible="{Binding IsAcknowledgementButtonVisible}" Margin="0,0,0,1" Command="{Binding OnAcknowlwdgementClicked}" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDownloadForm}" IsVisible="{Binding IsButtonVisible}" Margin="0,0,0,1" Command="{Binding OnDownloadFormClicked}" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
                         <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"  Margin="0,0,0,2" Clicked="GotodashboardClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>-->
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDReturns}"  Clicked="GotoreturnClicked" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,0,0,2"/>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDReturns}"  Clicked="GotoreturnClicked" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,0,0,1"/>
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>
