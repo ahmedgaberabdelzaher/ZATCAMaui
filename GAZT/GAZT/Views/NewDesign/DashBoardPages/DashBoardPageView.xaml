@@ -418,7 +418,9 @@
                                 <!--Commented line because X:Refrence Maingrid is not available -->
                                 <!--<Span Text="{Binding Source={x:Reference Name=Maingrid},Path=BindingContext.WelcomeText}"/>-->
                                 <Span Text=" "/>
-                                <Span Text="{Binding Name}"/>
+                                <Span Text="{Binding NameFirst}"/>
+                                <Span Text="&#160;"/>
+                                <Span Text="{Binding NameLast}"/>
                             </FormattedString>
                         </custom:CustomLabel.FormattedText>
                     </custom:CustomLabel>
