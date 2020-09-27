@@ -72,16 +72,16 @@ namespace EGAZT.Views.NewDesign
 
 //                mapView.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(37.79752, -122.40183), Distance.FromMiles(1.0)));
 
-                    Position position = new Position(lat, lon);
-                    MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
-                    mapView.MoveToRegion(mapSpan);
+                    //Position position = new Position(lat, lon);
+                    //MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
+                    //mapView.MoveToRegion(mapSpan);
 
-                    Pin pin = new Pin();
-                    pin.Label = "Report Location";
-                    pin.Type = PinType.Place;
-                    pin.Position = position;
+                    //Pin pin = new Pin();
+                    //pin.Label = "Report Location";
+                    //pin.Type = PinType.Place;
+                    //pin.Position = position;
 
-                    var addrs = (await Geocoding.GetPlacemarksAsync(new Location(lat, lon))).FirstOrDefault();
+                    //var addrs = (await Geocoding.GetPlacemarksAsync(new Location(lat, lon))).FirstOrDefault();
                 }
             catch (FeatureNotSupportedException fnsEx)
             {
