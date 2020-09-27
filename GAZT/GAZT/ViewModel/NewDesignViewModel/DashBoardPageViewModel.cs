@@ -63,6 +63,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        
+
+        private String _taxpayerName;
+        public String TaxpayerName
+        {
+            get
+            {
+                return _taxpayerName;
+            }
+            set
+            {
+                _taxpayerName = value;
+                RaisePropertyChanged("TaxpayerName");
+            }
+        }
+
         private bool _ifnotRegInVATAndZakat;
         public bool IfnotRegInVATAndZakat
         {
@@ -658,6 +674,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             if (App.TP != null)
             {
+                if(App.TP.TypeChk=="X")
+                {
+                    TaxpayerName = App.TP.NameFirst + " " + App.TP.NameLast;
+                }
+                else
+                {
+                    TaxpayerName = App.TP.NameOrg1;
+                }
+
                 GetDashboardDataTask = Task.Run(() =>
                 {
                     DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);

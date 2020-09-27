@@ -34,7 +34,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 case 1:
                     viewModel.SuccessTitleLbl = AppResources.TPEmailUpdated;
                     viewModel.successCaptionLbl = AppResources.TPNewEmailUpDated;
-                   viewModel.ButtonLabelText=  AppResources.NDBacktoLogin;
+                    viewModel.ButtonLabelText = AppResources.NDBacktoLogin;
                     break;
                 case 2:
                     viewModel.SuccessTitleLbl = AppResources.TPMobileUpdate;
@@ -58,43 +58,71 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 // * Passing success id's : Mobile - 2 ; Email - 1 ; Password - 3
                 /*if (viewModel.TPProfileSuccessId == 1 || viewModel.TPProfileSuccessId == 3)
                 {*/
-                    await Task.Run(() =>
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+                if (App.TP != null)
+                    App.TP = null;
+                if (App.PreviousIsArabic)
+                {
+                    String langName = "ar-AE";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+                else
+                {
+                    String langName = "en-US";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+
+                try { await WebServiceManager.GAZTLogOff(); }
+                catch { }
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                App.IsLogOut = true;
+                App.IsLoginCalled = false;
+                App.IsSamlApiCalledAndroid = false;
+
+                try
+                {
+                    App.httpClientHandler = new HttpClientHandler();
+                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                }
+                catch (Exception ex) { }
+
+                //viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+
+                try
+                {
+                    if(viewModel.TPProfileSuccessId == 1)
                     {
-                        App.DisplayProgressView();
-                    });
-                    if (App.TP != null)
-                        App.TP = null;
-                    if (App.PreviousIsArabic)
-                    {
-                        String langName = "ar-AE";
-                        AppResources.Culture = new CultureInfo(langName);
+                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(firstPageToRemove);
+
+                        var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(secondPageToRemove);
+
+                        var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(thirdPageToRemove);
                     }
                     else
                     {
-                        String langName = "en-US";
-                        AppResources.Culture = new CultureInfo(langName);
+                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(firstPageToRemove);
+
+                        var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(secondPageToRemove);
                     }
+                    viewModel._navigationService.GoBack();
+                }
+                catch (Exception ex) { }
 
-                    try { await WebServiceManager.GAZTLogOff(); }
-                    catch { }
 
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
-
-                    App.IsLogOut = true;
-                    App.IsLoginCalled = false;
-                    App.IsSamlApiCalledAndroid = false;
-
-                    try
-                    {
-                        App.httpClientHandler = new HttpClientHandler();
-                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                        App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                    }
-                    catch (Exception ex) { }
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                 /*}
                 else { viewModel._navigationService.GoBack(); }*/
             });
