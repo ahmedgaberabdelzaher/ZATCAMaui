@@ -82,12 +82,12 @@
 		<true/>
 	</dict>
 	<key>CFBundleVersion</key>
-	<string>0.0.5</string>
+	<string>1.0.75</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.0.5</string>
+	<string>3.2.1.15</string>
 	<key>CFBundleDisplayName</key>
 	<string>E-GAZT</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.egazt</string>
+	<string>com.gazt.enterprise.egazt</string>
 </dict>
 </plist>
