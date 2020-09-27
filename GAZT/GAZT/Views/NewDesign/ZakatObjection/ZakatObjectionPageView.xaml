@@ -1646,10 +1646,7 @@
 
                         <StackLayout Orientation="Vertical">
 
-                            <custom:CustomLabel Grid.Row="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZOWithdrawGeneralAttachmentOne}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                            
                             <listView:SfListView HorizontalOptions="Center"
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                      ItemsSource="{Binding WithdrawAttachmentsListViewData}"
@@ -1707,6 +1704,10 @@
                                 </listView:SfListView.ItemTemplate>
                             </listView:SfListView>
 
+                            <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.ZOWithdrawGeneralAttachmentOne}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
@@ -1747,10 +1748,7 @@
 
                             <!--Second Attachment-->
 
-                            <custom:CustomLabel Grid.Row="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZOWithdrawGeneralAttachmentTwo}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                         
 
                             <listView:SfListView HorizontalOptions="Center"
                                                      VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
@@ -1809,6 +1807,10 @@
                                 </listView:SfListView.ItemTemplate>
                             </listView:SfListView>
 
+                               <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.ZOWithdrawGeneralAttachmentTwo}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>

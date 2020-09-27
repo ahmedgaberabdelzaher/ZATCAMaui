@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -45,6 +46,11 @@ namespace EGAZT.Views.NewDesign.VATReview
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        private void VRVatDeRegAttachTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            viewModel.OpenAttachment(e.ItemData as Attachment);
         }
 
     }
