@@ -433,7 +433,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                     //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "01";
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
 
                     Models.VATRegistrationDetails response = await viewModel.SubmitClicked();
                     if (response != null)

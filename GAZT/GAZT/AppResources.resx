@@ -6380,7 +6380,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>A branch of Non-Resident Company</value>
   </data>
   <data name="ESTConstuctionSiteLabel" xml:space="preserve">
-    <value>Constuction Site</value>
+    <value>Construction Site</value>
   </data>
   <data name="ESTInstallationLabel" xml:space="preserve">
     <value>Installation</value>

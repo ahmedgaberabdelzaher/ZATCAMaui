@@ -46,7 +46,7 @@ namespace GAZT.Helper
         //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         //public static string DomainUrlForCookies = QADomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;       
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
@@ -191,7 +191,7 @@ namespace GAZT.Helper
         public static string VatRefundDisplayData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='',Fbnumx='',";
         public static string VatRefundGetIbanData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_UI_RF_SRV/VR_UI_HDRSet(Fbnum='',Lang='',Officer='',";
         public static string VatRefundSubmitData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet";
-       
+
         #endregion
 
 
@@ -335,7 +335,7 @@ namespace GAZT.Helper
         #region ZAKATObjections
         public static string GetZAKATObjectionListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TP_DASHBOARD_SRV/HeaderSet(";
         public static string GetZakatObjectionDataURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set(";
-       
+
         //API-2
         public static string GetZAKATObjectionCreateNewURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
         //API-5
