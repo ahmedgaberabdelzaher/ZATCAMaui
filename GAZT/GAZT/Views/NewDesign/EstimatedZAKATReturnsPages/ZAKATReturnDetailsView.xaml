@@ -295,7 +295,7 @@
                                                              </custom:GAZTBorderlessEntry>
 
                                                    </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="{x:Static local:AppResources.ZNA}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding TvtslI}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
 
@@ -312,7 +312,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel  Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
                                              <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
