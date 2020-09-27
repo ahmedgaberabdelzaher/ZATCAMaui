@@ -911,6 +911,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     else if (viewModel.SelectedSignUpUsing.ID == 3)
                     {
+                        bool flag = true;
                         if (EntryIDNumber.Text.Substring(0, 1) == "0")
                         {
                             //Have to change to neww error message
@@ -927,6 +928,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                             //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+                            flag = false;
                             FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
                             EntryName.Text = string.Empty;
@@ -944,20 +946,31 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                          //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            flag = false;
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
                             FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
                             EntryName.Text = string.Empty;
                             // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
+                        if (flag)
+                        {
+                            FrmIDNumber.HasError = false;
+                            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                            {
+                                ValidateIDNumber();
+                            }
+                        }
                     }
+
                     else
                     {
                        // ValidateIDNumber();
                          viewModel.IsAllValidDataEntered = true;
                          FrmIDNumber.HasError = false;
                     }
+                  
                 }
             }
             else
