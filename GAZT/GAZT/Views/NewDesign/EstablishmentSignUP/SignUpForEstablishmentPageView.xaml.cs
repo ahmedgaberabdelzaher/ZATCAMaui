@@ -158,8 +158,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public void ClearFields()
         {
-            viewModel.IsHijriCal = false;
-            HijriCalSwitch.IsToggled = false;
+           
           viewModel.PageTitle = AppResources.ZVatTermsAndConditions;
             viewModel.BodyText = "";
             viewModel.NextBTN = AppResources.ZZProceedtoindividualSignup;
@@ -215,6 +214,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.MOTPSecondDigit = string.Empty;
             viewModel.MOTPThirdDigit = string.Empty;
             viewModel.MOTPFourthDigit = string.Empty;
+            viewModel.IsHijriCal = false;
+            HijriCalSwitch.IsToggled = false;
         }
         private void SetLTR()
         {
