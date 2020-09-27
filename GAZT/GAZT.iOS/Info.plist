@@ -68,8 +68,8 @@
 	<string>false</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
-	<key>Custom Property2</key>
-	<string></string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Can we use your photos to save attachments ?</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>gamekit</string>
