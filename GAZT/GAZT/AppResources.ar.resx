@@ -4926,7 +4926,7 @@
     <value>تفاصيل طلب خطة تقسيط</value>
   </data>
   <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
-    <value>المبلغ الإجمالي</value>
+    <value>إجمالي المبلغ المستحق</value>
   </data>
   <data name="ZakatInstalmetHalfYearly" xml:space="preserve">
     <value>نصف سنوي</value>
@@ -7807,5 +7807,8 @@
   </data>
   <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
     <value>You should Signup as new user</value>
+  </data>
+     <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+    <value>مجموع الخصومات المطلوب إدراجها في التقسيط</value>
   </data>
 </root>

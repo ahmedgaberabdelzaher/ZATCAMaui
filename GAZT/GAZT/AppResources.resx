@@ -7875,4 +7875,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
     <value>You should Signup as new user</value>
   </data>
+    <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+    <value>Total liability to include in the installment</value>
+  </data>
 </root>
