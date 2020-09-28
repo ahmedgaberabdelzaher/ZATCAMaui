@@ -258,6 +258,7 @@ namespace GAZT.Helper
         public static string GetZAKATInvoices = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=";
         public static string GetZAKATSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(";
         public static string ZakatInstalmentValidateNewRequestURL = BaseUrlOfODataServices + "/sap/opu/odata//SAP/ZDP_IPRF_WI_SRV/HdrSet(";
+        public static string ZakatdownloadCoverFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/cover_formSet(Fbnum=";
         #endregion
 
         #region Contract Release

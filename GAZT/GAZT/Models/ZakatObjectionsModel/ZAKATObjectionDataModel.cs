@@ -761,7 +761,7 @@ namespace EGAZT.Models.ZakatObjectionsModel
 
         public class ZobjItemsSet
         {
-            public Metadata3 __metadata { get; set; }
+            //public Metadata3 __metadata { get; set; }
             public string ASel { get; set; }
             public string ARefNo { get; set; }
             public string AAssnmtYr { get; set; }
