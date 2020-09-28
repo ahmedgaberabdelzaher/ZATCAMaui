@@ -75,9 +75,9 @@
                     <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0">
                         <StackLayout Spacing="0" >
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADPaymentNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADPaymentNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
                                     <Image Source="zakat_copy.png">
 <Image.GestureRecognizers>
 <TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked"/>
@@ -88,25 +88,25 @@
                             </border:SfBorder >
 
                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSADADGAZTId}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Start"/>
+                                <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSADADGAZTId}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding SADADNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel Text="{Binding SADADNumber}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center"  HorizontalOptions="Start"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder >
 
                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                                <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatAmount}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" VerticalOptions="Center">                                       
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatAmount}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" VerticalOptions="Center" >                                       
                                         <custom:CustomLabel>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding ZAKATAmount}" />
+                                                    <Span Text="{Binding ZAKATAmount}" FontSize="12"/>
                                                     <Span Text=" "/>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" FontSize="12"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </custom:CustomLabel>
@@ -135,7 +135,7 @@
                     </ScrollView>
                     <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVATInvoiceButton}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
-                        <Label Text="{x:Static ResourceManager:AppResources.NDReturns}" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
+                        <Label Text="{x:Static ResourceManager:AppResources.NDReturns}" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnReturnClicked"/>
                             </Label.GestureRecognizers>
@@ -159,7 +159,7 @@
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDInvoiceDetail}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
 
                 <StackLayout Grid.Row="0" Grid.Column="0">
                     <Image IsVisible="{Binding IsBackBtnVisible}" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">

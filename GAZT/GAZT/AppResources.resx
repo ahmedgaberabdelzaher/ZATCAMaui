@@ -2269,11 +2269,11 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZCommercialReiterationNumberconsistsofnumbersonly" xml:space="preserve">
-    <value>Commercial Reiteration Number consists of numbers only</value>
+    <value>Commercial Registration Number consists of numbers only</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZCommercialReiterationNumbershouddbe10digits" xml:space="preserve">
-    <value>Commercial Reiteration Number should be 10 digits</value>
+    <value>Commercial Registration Number should be 10 digits</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce" xml:space="preserve">
@@ -2421,7 +2421,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseentertheCommercialReiterationNumber" xml:space="preserve">
-    <value>Please enter the Commercial Reiteration Number</value>
+    <value>Please enter the Commercial Registration Number</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseentertheName" xml:space="preserve">
@@ -4556,6 +4556,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationCompanyIDCheck" xml:space="preserve">
     <value>Company ID should start with 7</value>
   </data>
+  <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+    <value>I agree about that, I see the outlets that will be de-registered.</value>
+  </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
     <value>Select DOB</value>
   </data>
@@ -4732,6 +4735,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>Reactivation of VAT Account</value>
+  </data>
+  <data name="VATAmendReactivationSuccessful" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
+   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
@@ -4996,7 +5005,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>Search by Invoice ID</value>
+    <value>Search by SADAD Number</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>Select Bills</value>
@@ -7816,7 +7825,7 @@ Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
-    <value>Your Zakat Withdraw is submitted successfully</value>
+    <value>Your Zakat Withdrawal Application is submitted successfully</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
     <value>Gregorian</value>
@@ -7872,10 +7881,10 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="VRVGGreaterthanSAR187500" xml:space="preserve">
     <value>Greater than SAR 187,500</value>
   </data>
-  <data name="ZZZZGetAckNew" xml:space="preserve">
-    <value>Get Acknowledgement</value>
+  <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
+    <value>You should Signup as new user</value>
   </data>
-  <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
-    <value>Your VAT Return is submitted successfully and SADAD Bill generated for</value>
+    <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+    <value>Total liability to include in the installment</value>
   </data>
 </root>

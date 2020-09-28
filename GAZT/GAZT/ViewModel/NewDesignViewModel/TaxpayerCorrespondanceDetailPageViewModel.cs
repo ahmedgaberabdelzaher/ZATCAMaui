@@ -1,7 +1,9 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -166,7 +168,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                    IsLoading = false;
-                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    //await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                 });
             }
             await Task.Run(() =>

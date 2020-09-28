@@ -4719,6 +4719,12 @@
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>تم استلام طلب إيقاف التسجيل في ضريبة القيمة المضافة بنجاح</value>
   </data>
+  <data name="VATAmendReactivationSuccessful" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
+  <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>تنشيط حساب ضريبة القيمة المضافة</value>
   </data>
@@ -4926,7 +4932,7 @@
     <value>تفاصيل طلب خطة تقسيط</value>
   </data>
   <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
-    <value>المبلغ الإجمالي</value>
+    <value>إجمالي المبلغ المستحق</value>
   </data>
   <data name="ZakatInstalmetHalfYearly" xml:space="preserve">
     <value>نصف سنوي</value>
@@ -4972,7 +4978,7 @@
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>اختر الفاتورة</value>
@@ -5634,7 +5640,7 @@
     <value>تم تقديم إقرار ضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="NDInvoiceDetail" xml:space="preserve">
-    <value />
+    <value>تفاصيل الفاتورة</value>
   </data>
   <data name="NDSubmittedSuccessfully" xml:space="preserve">
     <value>تم تقديم الإقرار بنجاح</value>
@@ -7677,7 +7683,7 @@
 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
-    <value>تم استلام طلب إلغاء الزكاة بنجاح</value>
+    <value>تم استلام طلب الغاء الزكاة بنجاح</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
     <value>هجري</value>
@@ -7805,10 +7811,10 @@
   <data name="VRVGTINHolderName" xml:space="preserve">
     <value>اسم المكلف</value>
   </data>
-  <data name="ZZZZGetAckNew" xml:space="preserve">
-    <value>الحصول على اشعار الاستلام</value>
+  <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
+    <value>الرجاء التسجيل كمستخدم جديد</value>
   </data>
-  <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
-    <value>تم تقديم إقرار ضريبة القيمة المضافة بنجاح وتم انشاء فاتورة سداد لـ</value>
+  <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+    <value>مجموع الخصومات المطلوب إدراجها في التقسيط</value>
   </data>
 </root>

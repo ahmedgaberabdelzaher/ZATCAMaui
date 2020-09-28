@@ -138,6 +138,7 @@ namespace EGAZT
         public static string VRSuspensionViewAppPageView = "VRSuspensionViewAppPageView";
         public static string VRVatRegViewPageView = "VRVatRegViewPageView";
         public static string VRVatGroupPageView = "VRVatGroupPageView";
+        public static string VATServicesPageView = "VATServicesPageView";
         #endregion
 
         #region old view strings

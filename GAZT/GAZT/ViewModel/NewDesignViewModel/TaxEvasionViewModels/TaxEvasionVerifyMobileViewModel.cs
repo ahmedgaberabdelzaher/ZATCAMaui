@@ -699,7 +699,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                         if (ex.Message.Contains("The entered code is incorrect") || ex.Message.Contains("الرمز المدخل غير صحيح"))
                         {
-                            await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
+                            //await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InvalidOTP));
                         }
                         else

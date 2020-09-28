@@ -1852,6 +1852,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ResendOTPTextColor = Color.FromHex("#909090");
                             IsAPICalledSuccessfully = true;
 
+                            OTPFirstDigit = string.Empty;
+                            OTPSecondDigit = string.Empty;
+                            OTPThirdDigit = string.Empty;
+                            OTPFourthDigit = string.Empty;
+
                             //StartPage = StartPage + 1;
                             StartPage = 2;
 

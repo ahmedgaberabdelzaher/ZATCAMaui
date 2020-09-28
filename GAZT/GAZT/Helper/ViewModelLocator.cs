@@ -234,6 +234,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NotesDescriptionPopUpPageViewModel>();
             SimpleIoc.Default.Register<NotesPopUpPageViewModel>();
             SimpleIoc.Default.Register<TaxManagementPageViewModel>();
+            SimpleIoc.Default.Register<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
             #endregion
 
             #region NewDesignRelease2IOC
@@ -375,6 +376,21 @@ namespace EGAZT
         }
 
         #region NewDesignViewModel
+
+        public ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel VATServicesPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public TaxManagementPageViewModel TaxManagementPageView
         {
             get
@@ -2315,7 +2331,7 @@ namespace EGAZT
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
             navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));
             navigationService.Configure(App.VATAmendReactivationPageView, typeof(VATAmendReactivationPageView));
-
+            navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
 
             #endregion
 

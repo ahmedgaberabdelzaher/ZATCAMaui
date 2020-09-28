@@ -1,4 +1,7 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.VATServicesPageViewModel;
+using EGAZT.Views.NewDesign.VATDeRegistration;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +17,71 @@ namespace EGAZT.Views.NewDesign.VATServices
     public partial class VATServicesPageView : ContentPage
     {
         #region Variable
-        GAZTNewDesignDashBoardPageViewModel viewModel;
+        VATServicesPageViewModel viewModel;
         #endregion
         public VATServicesPageView()
         {
             InitializeComponent();
+            viewModel = App.Locator.VATServicesPageView;
+            BindingContext = viewModel;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetLTR();
+        }
+        private void SetLTR()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                this.FlowDirection = FlowDirection.RightToLeft; 
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
+        private void OnBackTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
+        }
+
+        private async void VATRefundRequest_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
+            });
+        }
+
+        private async void ChnageFillingPeriod_Tapped(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
+
+            });
+        }
+
+        private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+            });
         }
     }
 }

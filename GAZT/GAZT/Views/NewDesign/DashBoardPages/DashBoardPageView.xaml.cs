@@ -821,10 +821,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override bool OnBackButtonPressed()
         {
 
-            if (VATServices.IsVisible)
-            {
-                GoBackStep();
-            }
+            //if (VATServices.IsVisible)
+            //{
+            //    GoBackStep();
+            //}
 
 
             return true;
@@ -912,11 +912,12 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void OnVATServiceTapped(object sender, EventArgs e)
         {
-            ParentMenu.IsVisible = false;
-            ButtomTab.IsVisible = false;
+            viewModel._navigationService.NavigateTo(App.VATServicesPageView);
+            //ParentMenu.IsVisible = false;
+            //ButtomTab.IsVisible = false;
 
-            VATServices.IsVisible = true;
-            MenuTitleName.Text = AppResources.NDVATServices;
+            //VATServices.IsVisible = true;
+            //MenuTitleName.Text = AppResources.NDVATServices;
         }
 
         private void OnBackTapped(object sender, EventArgs e)
@@ -925,23 +926,23 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         public void GoBackStep()
         {
-            if (ParentMenu.IsVisible)
-            {
-                viewModel.MenuViewVisible = false;
-                viewModel.HomeViewVisible = true;
-            }
-            else if (VATServices.IsVisible)
-            {
-                SetParentMenuVisible();
-            }
+            //if (ParentMenu.IsVisible)
+            //{
+            //    viewModel.MenuViewVisible = false;
+            //    viewModel.HomeViewVisible = true;
+            //}
+            //else if (VATServices.IsVisible)
+            //{
+            //    SetParentMenuVisible();
+            //}
         }
 
         public void SetParentMenuVisible()
         {
-            VATServices.IsVisible = false;
-            ParentMenu.IsVisible = true;
-            MenuTitleName.Text = AppResources.NDTaxManagement;
-            ButtomTab.IsVisible = true;
+            //VATServices.IsVisible = false;
+            //ParentMenu.IsVisible = true;
+            //MenuTitleName.Text = AppResources.NDTaxManagement;
+            //ButtomTab.IsVisible = true;
         }
     }
 }

@@ -661,7 +661,7 @@
                                      HeaderBackgroundColor="White"
                                         SelectedItemTextColor="{StaticResource NeutralBlack}"
                                         BorderColor="Black"
-								ShowFooter="False"
+								ShowFooter="False" FutureDay="True"
 								 ShowColumnHeader="True"
                                              ColumnHeaderBackgroundColor="White"
 								ColumnHeaderHeight="50"
