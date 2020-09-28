@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using EGAZT.Models.EnumModels;
+using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
@@ -18,6 +19,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 {
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
+        #region Variable
+        private DashBoardModelTabEnum _currentTab = DashBoardModelTabEnum.DashBoard;
+        public DashBoardModelTabEnum currentTab
+        {
+            get => _currentTab;
+            set
+            {
+                _currentTab = value;
+                RaisePropertyChanged(nameof(currentTab));
+                CurrentIndex = (int)_currentTab;
+                RaisePropertyChanged(nameof(CurrentIndex));
+            }
+        }
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                //if (_currenrIndex == MaxIndex)
+                //{
+                //    MarkComplete = true;
+                //    RaisePropertyChanged(nameof(MarkComplete));
+                //}
+            }
+        }
+        #endregion
+
         #region Fields
 
         private ICommand EserviceCommand { get; set; }

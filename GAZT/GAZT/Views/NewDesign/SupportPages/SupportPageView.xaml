@@ -84,7 +84,7 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
-                            <!--<border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ColorChat.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDChat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
@@ -93,7 +93,7 @@
                                 <border:SfBorder.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnChatTapped"/>
                                 </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>-->
+                            </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
