@@ -1,8 +1,10 @@
 ﻿using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -359,7 +361,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     {
                         IsLoading = false;
                     });
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+               //     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
             catch (Exception ex)
@@ -370,7 +373,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     {
                         IsLoading = false;
                     });
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 });
             }
         }
