@@ -1,419 +1,422 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>EGAZT</RootNamespace>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>pdbonly</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="MECalendar" Version="0.1.5" />
-    <PackageReference Include="Microsoft.AppCenter" Version="3.2.2" />
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.2" />
-    <PackageReference Include="NodaTime" Version="3.0.0" />
-    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.1.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
-    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.1.0.54" />
-    <PackageReference Include="System.Linq" Version="4.3.0" />
-    <PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
-    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.7.0" />
-    <PackageReference Include="System.ServiceModel.Security" Version="4.7.0" />
-    <PackageReference Include="Xam.Plugins.Forms.DeviceOrientation" Version="1.0.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.3" />
-    <PackageReference Include="SkiaSharp" Version="1.68.3" />
-    <PackageReference Include="CardsView" Version="2.6.1" />
-    <PackageReference Include="MvvmLight" Version="5.4.1.1" />
-    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
-    <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
-    <PackageReference Include="modernhttpclient" Version="2.4.2" />
-    <PackageReference Include="Tavant.XToolkit.RoundedCornerView" Version="1.0.3" />
-    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.800" />
-    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
-    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.41" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.1.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.1.0.54" />
-    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
-    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="18.1.0.48" />
-    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="18.1.0.55" />
-    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
-    <PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
-    <PackageReference Include="AppDynamics.Agent" Version="2020.4.0" />
-    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="18.1.0.55" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="LogInView.cs" />
-    <Compile Remove="Views\BorderlessEntry.xaml.cs" />
-    <Compile Remove="Helper\IHTTPClientHandlerCreationService.cs" />
-    <Compile Remove="Models\AttachmentPageView.xaml.cs" />
-    <Compile Remove="Views\SyncFusionEnabledViews\VATRefundsListPageView.xaml.cs" />
-    <Compile Remove="ViewModel\NewDesignViewModel\Instructions\ContractReleasePageView.xaml.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Connected Services\" />
-    <Folder Include="Effect\" />
-    <Folder Include="SyncFusionEnabledBehaviors\" />
-    <Folder Include="Enums\" />
-    <Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
-    <Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
-    <Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
-    <Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
-    <Folder Include="Views\SyncFusionEnabledViews\VATLookUpPages\" />
-    <Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
-    <Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
-    <Folder Include="Views\NewDesign\ZakatDeregistration\" />
-    <Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatDeregistration\" />
-    <Folder Include="Views\NewDesign\VATLookUp\" />
-    <Folder Include="Views\NewDesign\VATDeRegistration\" />
-    <Folder Include="Views\NewDesign\GenericPickers\" />
-    <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
-    <Folder Include="Views\NewDesign\EstablishmentRegistrationPages\" />
-    <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
-    <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
-    <Folder Include="Models\ZakatInstalationModels\" />
-    <Folder Include="Views\NewDesign\VATRefunds\" />
-    <Folder Include="ViewModel\NewDesignViewModel\VATRefunds\" />
-    <Folder Include="Models\VATRefunds\" />
-    <Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
-    <Folder Include="ViewModel\NewDesignViewModel\EstablishmentRegistration\" />
-    <Folder Include="Models\EstablishmentRegistration\" />
-    <Folder Include="GAZTDLL\" />
-    <Folder Include="GAZTDLL\Droid\" />
-    <Folder Include="GAZTDLL\iOS\" />
-    <Folder Include="Views\NewDesign\VATRegistrationDetails\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="AppResources.ar.Designer.cs">
-      <DependentUpon>AppResources.ar.resx</DependentUpon>
-    </Compile>
-    <Compile Update="AppResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="SyncfusionControl.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>SyncfusionControl.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml.cs">
-      <DependentUpon>UpdatePasswordPopUp.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml.cs">
-      <DependentUpon>DashboardAnonymousMenuPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
-      <DependentUpon>MorePopUpPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
-      <DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
-      <DependentUpon>SFLandingPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml.cs">
-      <DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
-      <DependentUpon>SFOptionsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\TaxEvasionPages\TaxEvasionReportMobilePageView.xaml.cs">
-      <DependentUpon>TaxEvasionReportMobilePageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml.cs">
-      <DependentUpon>FinancialDetailAttachmentPopupPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\VATRealEstateServicesPage.xaml.cs">
-      <DependentUpon>VATRealEstateServicesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
-      <DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml.cs">
-      <DependentUpon>UnlockAccountTINPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\VATDeRegistration\VATDeRegistrationDetailsPage.xaml.cs">
-      <DependentUpon>VATDeregistrationDetailsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\VATDeRegistration\VATDeRegistrationInstructionsPage.xaml.cs">
-      <DependentUpon>VATDeregistrationInstructionsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationDetailsListPageView.xaml.cs">
-      <DependentUpon>ZakatRegistrationDetailsListPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\VATRefunds\VATRefundsNewRequestPageView.xaml.cs">
-      <DependentUpon>VATRefundsNewRequestPageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\SyncFusionEnabledViews\VATRefundsListPageView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\NewDesign\VATRefunds\VATRefundsListPageView.xaml.cs">
-      <DependentUpon>..\..\SyncFusionEnabledViews\VATRefundsListPageView.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentInformationPopUp.xaml.cs">
-      <DependentUpon>AttachmentInformationPopUp.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\TAXEvasionPages\NewTaxEvasionFormSuccessPaveView.xaml.cs">
-      <DependentUpon>NewTaxEvasionFormSuccessPaveView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationTaxPayerDetails.xaml.cs">
-      <DependentUpon>ZakatRegistrationTaxPayerDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationOutletsDetails.xaml.cs">
-      <DependentUpon>ZakatRegistrationOutletsDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml.cs">
-      <DependentUpon>ZakatRegistrationFinancialDetails.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="AppResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="SyncfusionControl.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SyncfusionControl.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\MyBillsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\Common\ListPopUpViewPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\DashBoardPages\InfoPopUpPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\DashBoardPages\TaxManagementPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\AccountCreatedSuccessfullyPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUPPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfulForNoTINPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfullPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfullPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\InstructionPopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZakatReturnDetailsSuccessfullPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\RecoverPasswordPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\RecoverUsername.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\FormBundleStatusPages\FormBundleStatusPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\MyBillsPages\MyBillsPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\MyReturnsPages\MyReturnsNewPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\SupportPages\SupportPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TAXEvasionPages\TaxEvasionPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TAXEvasionPages\TaxEvasionReportDetailPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondancePageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\TaxpayerProfilePageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdateEmailPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdateMobilePopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\VerificationPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayersCertificatesPages\TaxpayersCertificatesPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\Template\NewPublicMenuPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\AdjustmentPopupPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\InstructionPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\NewAccountPopPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\NotesDescriptionPopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\NotesPopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\RefundAccountPopupPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\RefundInstrunctions.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationConfirmationPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationPopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\ForgotPasswordPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\SummaryInstruction.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATCreditCarriedForwardPopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnSuccessfullPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnUpdatedUIPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATServices\VATServicesPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\ZakatForm5\ZakatForm5PageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\NewZakatObjectionPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\ZakatObjectionSuccessfullPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\ContactUsPage\ContactUsPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\StandardTemplate\StandardTemplateOfCardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\StylesTestUi\StyleTestUIPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATDeclarationPagesEX\VATReturnsPageViewEX.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\ConfirmationPopUpForVatRegistration.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FileAttachmentPopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\IndividualRegistrationPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\NewAccountPopUpPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\RegistrationSuccessfulPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupTnCPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationMenuPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationSuccessfullPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\ZAKATForm5\ZAKATForm05PageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="CustomControl\CustomLabel.config" />
-    <None Remove="Font\MyMaterialIcon.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Font\MyMaterialIcon.ttf" />
-    <None Remove=".DS_Store" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Syncfusion.SfRotator.XForms">
-      <HintPath>..\..\..\UX VD Design\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Views\NewDesign\ZakatObjection\ObjectionsSelectionPageView.xaml" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>EGAZT</RootNamespace>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>pdbonly</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="MECalendar" Version="0.1.5" />
+		<PackageReference Include="Microsoft.AppCenter" Version="3.2.2" />
+		<PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.2" />
+		<PackageReference Include="NodaTime" Version="3.0.0" />
+		<PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
+		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.54" />
+		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.54" />
+		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.1.0.55" />
+		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
+		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.1.0.54" />
+		<PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />
+		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.54" />
+		<PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
+		<PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
+		<PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.1.0.54" />
+		<PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.1.0.54" />
+		<PackageReference Include="System.Linq" Version="4.3.0" />
+		<PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
+		<PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
+		<PackageReference Include="System.ServiceModel.NetTcp" Version="4.7.0" />
+		<PackageReference Include="System.ServiceModel.Security" Version="4.7.0" />
+		<PackageReference Include="Xam.Plugins.Forms.DeviceOrientation" Version="1.0.1" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+		<PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
+		<PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.3" />
+		<PackageReference Include="SkiaSharp" Version="1.68.3" />
+		<PackageReference Include="CardsView" Version="2.6.1" />
+		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
+		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+		<PackageReference Include="CommonServiceLocator" Version="2.0.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+		<PackageReference Include="modernhttpclient" Version="2.4.2" />
+		<PackageReference Include="Tavant.XToolkit.RoundedCornerView" Version="1.0.3" />
+		<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+		<PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.800" />
+		<PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
+		<PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.41" />
+		<PackageReference Include="Syncfusion.Xamarin.Core" Version="18.1.0.55" />
+		<PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.1.0.54" />
+		<PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+		<PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
+		<PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="18.1.0.48" />
+		<PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="18.1.0.55" />
+		<PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
+		<PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
+		<PackageReference Include="AppDynamics.Agent" Version="2020.4.0" />
+		<PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="18.1.0.55" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="LogInView.cs" />
+		<Compile Remove="Views\BorderlessEntry.xaml.cs" />
+		<Compile Remove="Helper\IHTTPClientHandlerCreationService.cs" />
+		<Compile Remove="Models\AttachmentPageView.xaml.cs" />
+		<Compile Remove="Views\SyncFusionEnabledViews\VATRefundsListPageView.xaml.cs" />
+		<Compile Remove="ViewModel\NewDesignViewModel\Instructions\ContractReleasePageView.xaml.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Connected Services\" />
+		<Folder Include="Effect\" />
+		<Folder Include="SyncFusionEnabledBehaviors\" />
+		<Folder Include="Enums\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
+		<Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
+		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
+		<Folder Include="Views\SyncFusionEnabledViews\VATLookUpPages\" />
+		<Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
+		<Folder Include="Views\NewDesign\ZakatDeregistration\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatDeregistration\" />
+		<Folder Include="Views\NewDesign\VATLookUp\" />
+		<Folder Include="Views\NewDesign\VATDeRegistration\" />
+		<Folder Include="Views\NewDesign\GenericPickers\" />
+		<Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
+		<Folder Include="Views\NewDesign\EstablishmentRegistrationPages\" />
+		<Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
+		<Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
+		<Folder Include="Models\ZakatInstalationModels\" />
+		<Folder Include="Views\NewDesign\VATRefunds\" />
+		<Folder Include="ViewModel\NewDesignViewModel\VATRefunds\" />
+		<Folder Include="Models\VATRefunds\" />
+		<Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
+		<Folder Include="ViewModel\NewDesignViewModel\EstablishmentRegistration\" />
+		<Folder Include="Models\EstablishmentRegistration\" />
+		<Folder Include="GAZTDLL\" />
+		<Folder Include="GAZTDLL\Droid\" />
+		<Folder Include="GAZTDLL\iOS\" />
+		<Folder Include="Views\NewDesign\VATRegistrationDetails\" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Update="AppResources.ar.Designer.cs">
+			<DependentUpon>AppResources.ar.resx</DependentUpon>
+		</Compile>
+		<Compile Update="AppResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>AppResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="SyncfusionControl.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>SyncfusionControl.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml.cs">
+			<DependentUpon>UpdatePasswordPopUp.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml.cs">
+			<DependentUpon>DashboardAnonymousMenuPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
+			<DependentUpon>MorePopUpPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
+			<DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
+			<DependentUpon>SFLandingPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml.cs">
+			<DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
+			<DependentUpon>SFOptionsPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\TaxEvasionPages\TaxEvasionReportMobilePageView.xaml.cs">
+			<DependentUpon>TaxEvasionReportMobilePageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml.cs">
+			<DependentUpon>FinancialDetailAttachmentPopupPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\VATRealEstateServicesPage.xaml.cs">
+			<DependentUpon>VATRealEstateServicesPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
+			<DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml.cs">
+			<DependentUpon>UnlockAccountTINPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\VATDeRegistration\VATDeRegistrationDetailsPage.xaml.cs">
+			<DependentUpon>VATDeregistrationDetailsPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\VATDeRegistration\VATDeRegistrationInstructionsPage.xaml.cs">
+			<DependentUpon>VATDeregistrationInstructionsPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationDetailsListPageView.xaml.cs">
+			<DependentUpon>ZakatRegistrationDetailsListPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\VATRefunds\VATRefundsNewRequestPageView.xaml.cs">
+			<DependentUpon>VATRefundsNewRequestPageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\SyncFusionEnabledViews\VATRefundsListPageView.xaml.cs">
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\NewDesign\VATRefunds\VATRefundsListPageView.xaml.cs">
+			<DependentUpon>..\..\SyncFusionEnabledViews\VATRefundsListPageView.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentInformationPopUp.xaml.cs">
+			<DependentUpon>AttachmentInformationPopUp.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\TAXEvasionPages\NewTaxEvasionFormSuccessPaveView.xaml.cs">
+			<DependentUpon>NewTaxEvasionFormSuccessPaveView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationTaxPayerDetails.xaml.cs">
+			<DependentUpon>ZakatRegistrationTaxPayerDetails.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationOutletsDetails.xaml.cs">
+			<DependentUpon>ZakatRegistrationOutletsDetails.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml.cs">
+			<DependentUpon>ZakatRegistrationFinancialDetails.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="AppResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="SyncfusionControl.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>SyncfusionControl.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\MyBillsView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Common\ListPopUpViewPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\DashBoardPages\InfoPopUpPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\DashBoardPages\TaxManagementPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\AccountCreatedSuccessfullyPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUPPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfulForNoTINPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfullPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfullPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\InstructionPopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentPopUp.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZakatReturnDetailsSuccessfullPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\RecoverPasswordPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\RecoverUsername.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\FormBundleStatusPages\FormBundleStatusPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\MyBillsPages\MyBillsPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\MyReturnsPages\MyReturnsNewPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\SupportPages\SupportPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TAXEvasionPages\TaxEvasionPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TAXEvasionPages\TaxEvasionReportDetailPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondancePageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\TaxpayerProfilePageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdateEmailPopUp.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdateMobilePopUp.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\VerificationPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\TaxpayersCertificatesPages\TaxpayersCertificatesPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\NewPublicMenuPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationSuccessfulPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\AdjustmentPopupPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\InstructionPopUp.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\NewAccountPopPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\NotesDescriptionPopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\NotesPopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\RefundAccountPopupPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\RefundInstrunctions.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationConfirmationPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationPopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\ForgotPasswordPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\SummaryInstruction.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATCreditCarriedForwardPopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnSuccessfullPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnUpdatedUIPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\VATServices\VATServicesPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ZakatForm5\ZakatForm5PageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\NewZakatObjectionPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\ZakatObjectionSuccessfullPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\ContactUsPage\ContactUsPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\StandardTemplate\StandardTemplateOfCardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\StylesTestUi\StyleTestUIPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATDeclarationPagesEX\VATReturnsPageViewEX.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\ConfirmationPopUpForVatRegistration.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FileAttachmentPopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\IndividualRegistrationPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\NewAccountPopUpPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\RegistrationSuccessfulPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupTnCPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationMenuPopUp.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationSuccessfullPageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SyncFusionEnabledViews\ZAKATForm5\ZAKATForm05PageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="CustomControl\CustomLabel.config" />
+		<None Remove="Font\MyMaterialIcon.ttf" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Font\MyMaterialIcon.ttf" />
+		<None Remove=".DS_Store" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="Syncfusion.SfRotator.XForms">
+			<HintPath>..\..\..\UX VD Design\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<WCFMetadata Include="Connected Services" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Views\NewDesign\ZakatObjection\ObjectionsSelectionPageView.xaml" />
+	</ItemGroup>
 </Project>
