@@ -453,6 +453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             vATChangingSummaryData.DecidNo = resultData.d.DecidNo;
                             vATChangingSummaryData.DecidTy = resultData.d.DecidTy;
                             vATChangingSummaryData.AttachmentList = resultData.d.ATTACHSet;
+                            vATChangingSummaryData.Fbnum = resultData.d.Fbnumz;
                             //vATChangingSummaryData.NOTESSet = resultData.d.NOTESSet;
 
                             CurrentFrequency = vATChangingSummaryData.CureentF;

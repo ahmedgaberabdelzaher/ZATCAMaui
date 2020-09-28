@@ -59,7 +59,7 @@
                     <custom:CustomLabel  TextColor="White" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}" StyleId="OnBoardText" >
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.ZZZZSadadGeneratedSuccessfully}" />
+                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZVatReturnSubmittedNew}" />
                             <Span Text="&#160;&#160;"/>
                             <Span Text="{Binding AmountPayable}" TextColor="White" />
                             <Span Text="&#160;"/>
@@ -67,7 +67,7 @@
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZRemembertocompletepayment}" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" TextColor="White" Style="{StaticResource CaptionLabelBlack}" Margin="0,8,0,0"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZRemembertocompletepayment}" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" TextColor="White" Style="{StaticResource CaptionLabelBlack}" StyleId="OnBoardText" Margin="0,8,0,0"/>
 
             </StackLayout>
             </ScrollView>

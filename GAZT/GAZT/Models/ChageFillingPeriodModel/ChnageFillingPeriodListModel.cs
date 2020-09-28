@@ -285,6 +285,8 @@ namespace EGAZT.Models.ChageFillingPeriodModel
 
             //step1
             public string Attchk { get; set; }
+            public string Fbnum { get; set; }
+
             //step2
             public string CureentF { get; set; }
             public string FilingF { get; set; }

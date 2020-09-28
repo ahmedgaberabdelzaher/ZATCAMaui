@@ -15054,10 +15054,6 @@ namespace GAZT.Manager
                 {
                     ZakatObjectionWithdrawPostResponceModel responseData = new ZakatObjectionWithdrawPostResponceModel();
 
-
-
-
-
                     string LangZ = GetLangZParameterAREN();
                     String url = Constants.ZakatObjectionWDPostURL;
                     var uri = new Uri(url);
@@ -15113,7 +15109,7 @@ namespace GAZT.Manager
 
 
                     String url = Constants.ZakatObjectionSummaryURL + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
-                        "Savez='" + "',Fbnumz='" + fbnum + "',Langz='" + lang + "',UserTin='" + "')?$expand=znotesSet,AttDetSet,zobj_itemsSet&$format=json";
+                        "Savez='" + "',Fbnumz='',Langz='" + lang + "',UserTin='" + "')?$expand=znotesSet,AttDetSet,zobj_itemsSet&$format=json";
                     var uri = new Uri(url);
 
 
