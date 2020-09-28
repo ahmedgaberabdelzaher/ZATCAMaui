@@ -14195,5 +14195,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATInstalmentTotalLiabilityToIncludeInTheInstallment", resourceCulture);
             }
         }
+        
+        public static string ZZZZGetAckNew {
+            get {
+                return ResourceManager.GetString("ZZZZGetAckNew", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVatReturnSubmittedNew {
+            get {
+                return ResourceManager.GetString("ZZZZVatReturnSubmittedNew", resourceCulture);
+            }
+        }
     }
 }

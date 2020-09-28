@@ -938,12 +938,18 @@
                                                 <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
 
+                                                <Label Grid.Row="0" Grid.Column="1"
+                                                               Text="{Binding Filename}"
+                                                               Style="{StaticResource CaptionLabelBlack}"
+                                                               LineHeight="0.8"
+                                                               HorizontalOptions="FillAndExpand"
+                                                               VerticalOptions="Center"/>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                                     Text="{Binding Filename}"
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
-                                                                    VerticalOptions="Center"/>
+                                                                    VerticalOptions="Center"/>-->
                                                 <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        Rotation="90">
@@ -1054,12 +1060,17 @@
                                                 <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
 
-
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                <Label Grid.Row="0" Grid.Column="1"
+                                                               Text="{Binding Filename}"
+                                                               Style="{StaticResource CaptionLabelBlack}"
+                                                               LineHeight="0.8"
+                                                               HorizontalOptions="FillAndExpand"
+                                                               VerticalOptions="Center"/>
+                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                                     Text="{Binding Filename}"
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
-                                                                    VerticalOptions="Center"/>
+                                                                    VerticalOptions="Center"/>-->
                                                 <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        Rotation="90">

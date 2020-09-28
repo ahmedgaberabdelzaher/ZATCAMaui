@@ -2266,7 +2266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                     
                 }
-                else if(CreditDetailsText == AppResources.ZZGeneralMessage_GetAcknowledgement)
+                else if(CreditDetailsText == AppResources.ZZZZGetAckNew)
                 {
                     _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationData);
                 }
@@ -3162,7 +3162,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     isBtnVisible = true;
                     IsMainButtonVisible = false;
-                    CreditDetailsText = AppResources.ZZGeneralMessage_GetAcknowledgement;
+                    CreditDetailsText = AppResources.ZZZZGetAckNew;
                     if (VATDeclarationData.d.RefundFg == "1")
                     {
                         IsRefundButtonVisible = true;

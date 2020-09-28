@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
+using GAZT.Helper;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
@@ -77,9 +78,21 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 viewModel.EnableSummaryView();
             }
 
-
-
-           
         }
+
+        private async void Download_Acknowledgement(object sender, EventArgs e)
+        {
+
+            if (viewModel.vATChangingSummaryData.Fbnum != null)
+            {
+
+                String downloadurl = Constants.downloadFile + "'" + viewModel.vATChangingSummaryData.Fbnum + "')/$value";
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+
+            }
+        }
+
+
     }
 }

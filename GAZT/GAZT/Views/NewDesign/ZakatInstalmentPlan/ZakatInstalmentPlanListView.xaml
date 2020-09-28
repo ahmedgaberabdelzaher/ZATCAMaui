@@ -529,6 +529,21 @@
                             </StackLayout>
                         </Grid>
 
+                        <StackLayout  Grid.Row="3" Orientation="Vertical" Grid.ColumnSpan="2">
+                        <buttons:SfButton  Margin="0,16,0,16"
+                                          Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding Download_Acknowledgement}" />
+
+ 
+
+
+                        <buttons:SfButton  Margin="0,16,0,16"
+                                          Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding ZDownloadForm}" />
+                        </StackLayout>
+
                     </Grid>
                 </Grid>
 
