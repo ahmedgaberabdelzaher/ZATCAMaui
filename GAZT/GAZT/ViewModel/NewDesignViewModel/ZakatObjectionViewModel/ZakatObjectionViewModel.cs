@@ -1037,6 +1037,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
         }
 
+        private ZakatObjectionWDDropdownModel _zakatWithdrawlData;
+
+        public ZakatObjectionWDDropdownModel ZakatWithdrawlData
+        {
+            get { return _zakatWithdrawlData; }
+            set
+            {
+                _zakatWithdrawlData = value;
+                RaisePropertyChanged("ZakatWithdrawlData");
+            }
+        }
+
 
 
 
@@ -1477,9 +1489,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         //Data binding for withdraw objection details
                         _ZAKATObjectionWithDraw = await WebServiceManager.GAZTGetZakatWithDrawDDData(SelectedFbNum);
 
+                        ZakatWithdrawlData = _ZAKATObjectionWithDraw;
 
-
-                        if (_ZAKATObjectionWithDraw != null && _ZAKATObjectionWithDraw.d != null)
+                        if (ZakatWithdrawlData != null && ZakatWithdrawlData.d != null)
                         {
                             DateTime dateStart = new DateTime();
                             CultureInfo cultureInfo = new CultureInfo("ar-SA");
@@ -1918,14 +1930,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         postData.AttDetSet = new List<object>();
                         List<ZobjItemsSet> zobjItemsSet = new List<ZobjItemsSet>();
 
-                        foreach (var item in result.d.zobj_itemsSet.results)
+
+
+                        
+                        foreach (var item in ZakatWithdrawlData.d.results)
                         {
                             ZakatObjectionWithdrawPostModel.Metadata3 metaData1 = new ZakatObjectionWithdrawPostModel.Metadata3();
                             ZobjItemsSet obj1 = new ZobjItemsSet();
-                            metaData1.uri = item.__metadata.uri;
-                            metaData1.type = item.__metadata.type;
-                            metaData1.id = item.__metadata.id;
-                            obj1.__metadata = metaData1;
+                            //metaData1.uri = item.__metadata.uri;
+                            //metaData1.type = item.__metadata.type;
+                            //metaData1.id = item.__metadata.id;
+                            //obj1.__metadata = metaData1;
 
                             obj1.ASel = "1";
                             obj1.ACurr = "SAR";
@@ -1947,7 +1962,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings2);
                             string[] dateList1 = jsonDateTime1.Split('+');
                             jsonDateTime1 = Regex.Replace(dateList1[0], "[@,\\.\";'\\\\]", string.Empty);
+                            jsonDateTime1 = jsonDateTime1 + ")/";
+
                             obj1.APeriodTo = jsonDateTime1;
+
 
                             DateTime dt2 = Convert.ToDateTime(item.APeriodFrom);
                             JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
@@ -1958,6 +1976,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             var jsonDateTime2 = JsonConvert.SerializeObject(dt2.Date, microsoftDateFormatSettings1);
                             string[] dateList2 = jsonDateTime2.Split('+');
                             jsonDateTime2 = Regex.Replace(dateList2[0], "[@,\\.\";'\\\\]", string.Empty);
+                            jsonDateTime2 = jsonDateTime2 + ")/";
 
 
                             obj1.APeriodFrom = jsonDateTime2;
@@ -2019,6 +2038,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         string[] dateList = jsonDateTime.Split('+');
                         //jsonDateTime = dateList[0].Replace("\"\\", "").Replace("\\/\"", "");
                         jsonDateTime = Regex.Replace(dateList[0], "[@,\\.\";'\\\\]", string.Empty);
+
                         postData.AReceiveDt = jsonDateTime;
 
 

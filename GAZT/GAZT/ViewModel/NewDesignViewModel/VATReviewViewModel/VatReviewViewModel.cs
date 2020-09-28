@@ -3646,8 +3646,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 { "02",AppResources.VRVGGreaterthanSAR187500},
             };
 
-
-        IsSadadSecuritySelected = false;
+            IsGeneratingFormbundle = false;
+            IsSadadSecuritySelected = false;
             IsBankGurantSecuritySelected = false;
             IsSecurityPaymentsTabVisible = false;
             PickedDate = "";

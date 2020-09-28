@@ -53,6 +53,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ICommand SummaryRevokeBtnTapped { get; set; }
         public Command NoteContinueTapped { get; set; }
         public Command OnResendOTPClicked { get; set; }
+        public Command Download_Acknowledgement { get; set; }
+        public Command ZDownloadForm { get; set; }
 
         #endregion
 
@@ -182,6 +184,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             NoteContinueTapped = new Command(async () =>
             {
                 ValidateNoteAndContinueAsync();
+            });
+
+            ZDownloadForm = new Command(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (SelectedFbNum != null)
+                {
+                    String downloadurl = Constants.ZakatdownloadCoverFormFile + "'" + SelectedFbNum + "')/$value";
+                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    _navigationService.NavigateTo(App.PdfView, downloadurl);
+
+                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+
+
+            });
+
+            Download_Acknowledgement = new Command(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (SelectedFbNum != null)
+                {
+                    String downloadurl = Constants.ZOdownloadAckLetter + "'" + SelectedFbNum + "')/$value";
+                    //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                    _navigationService.NavigateTo(App.PdfView, downloadurl);
+
+
+
+                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+
+
             });
 
         }

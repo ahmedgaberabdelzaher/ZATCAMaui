@@ -25,6 +25,10 @@ namespace GAZT.iOS.CustomRenderer
 
         public HybridCustomWebViewRenderer() : this(new WKWebViewConfiguration())
         {
+            if (Device.Idiom == TargetIdiom.Tablet)
+            {
+                this.CustomUserAgent = "GaztMobileAppUserAgent";
+            }
         }
 
         WKUserContentController userController;
@@ -49,7 +53,7 @@ namespace GAZT.iOS.CustomRenderer
             if (e.NewElement != null)
             {
                 HybridWebView hybridWebView = e.NewElement as HybridWebView;
-
+                
                 string langVal = "en";
 
                 if (App.IsArabic == true)
@@ -186,8 +190,9 @@ namespace GAZT.iOS.CustomRenderer
             {
                 try
                 {
-                    //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
-                    ////App.LoginDataRetrieved = new LoginModel();
+                    NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
+                    Console.WriteLine(htmlData.ToString());
+                    //App.LoginDataRetrieved = new LoginModel();
 
                     //HtmlDocument document = new HtmlDocument();
                     //document.LoadHtml(htmlData.ToString());

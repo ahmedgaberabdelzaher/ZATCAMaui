@@ -7887,4 +7887,10 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
     <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
     <value>Total liability to include in the installment</value>
   </data>
+   <data name="ZZZZGetAckNew" xml:space="preserve">
+    <value>Get Acknowledgement</value>
+  </data>
+  <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
+    <value>Your VAT Return is submitted successfully and SADAD Bill generated for</value>
+  </data>
 </root>

@@ -15,8 +15,7 @@
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView"
-             BackgroundImageSource="partials_background.png">
+             x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--<CustomControl:DataMarkerConverter x:Key="converter" />-->
@@ -50,6 +49,8 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
+            <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" Source="partials_background.png" />
+
             <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,15,0,0">
                 <Grid.RowDefinitions>
                     <!--<RowDefinition Height="Auto" />
