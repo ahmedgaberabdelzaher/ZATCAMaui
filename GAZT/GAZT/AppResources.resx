@@ -4556,6 +4556,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationCompanyIDCheck" xml:space="preserve">
     <value>Company ID should start with 7</value>
   </data>
+  <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+    <value>I agree about that, I see the outlets that will be de-registered.</value>
+  </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
     <value>Select DOB</value>
   </data>
@@ -4732,6 +4735,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>Reactivation of VAT Account</value>
+  </data>
+  <data name="VATAmendReactivationSuccessful" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
+   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />

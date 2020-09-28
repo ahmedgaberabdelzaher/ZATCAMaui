@@ -4719,6 +4719,12 @@
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>تم استلام طلب إيقاف التسجيل في ضريبة القيمة المضافة بنجاح</value>
   </data>
+  <data name="VATAmendReactivationSuccessful" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
+   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>تنشيط حساب ضريبة القيمة المضافة</value>
   </data>
