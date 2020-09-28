@@ -295,7 +295,7 @@
                                                              </custom:GAZTBorderlessEntry>
 
                                                    </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="{x:Static local:AppResources.ZNA}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding TvtslI}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
 
@@ -312,7 +312,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel  Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
                                              <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
@@ -776,7 +776,7 @@
                                             <StackLayout Spacing="0" Margin="0,0,0,0" Grid.Row="2" Grid.Column="1">
 
                                                 <inputLayout:SfTextInputLayout ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="{Binding Sumcnt}"    IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding EtimadI}"    IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>

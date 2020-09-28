@@ -4383,7 +4383,7 @@
   <data name="TinDeregistrationTransfer" xml:space="preserve">
     <value>نقل</value>
   </data>
-      <data name="TinDeregistrationContactNumber" xml:space="preserve">
+  <data name="TinDeregistrationContactNumber" xml:space="preserve">
     <value>رقم الاتصال</value>
   </data>
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
@@ -4719,6 +4719,12 @@
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>تم استلام طلب إيقاف التسجيل في ضريبة القيمة المضافة بنجاح</value>
   </data>
+  <data name="VATAmendReactivationSuccessful" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
+   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+    <value>VAT Registration Amendment Successfull</value>
+  </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>تنشيط حساب ضريبة القيمة المضافة</value>
   </data>
@@ -4926,7 +4932,7 @@
     <value>تفاصيل طلب خطة تقسيط</value>
   </data>
   <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
-    <value>المبلغ الإجمالي</value>
+    <value>إجمالي المبلغ المستحق</value>
   </data>
   <data name="ZakatInstalmetHalfYearly" xml:space="preserve">
     <value>نصف سنوي</value>
@@ -4972,7 +4978,7 @@
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>البحث بالرقم المرجعي</value>
+    <value>البحث برقم فاتورة سداد</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
     <value>اختر الفاتورة</value>
@@ -5168,7 +5174,7 @@
     <value>تسويه</value>
   </data>
   <data name="ZDone" xml:space="preserve">
-  <value>تم</value>
+    <value>تم</value>
   </data>
   <data name="FORM5ActivityTotalProfits" xml:space="preserve">
     <value>إجمالي أرباح النشاط (ريال سعودي)</value>
@@ -7663,7 +7669,7 @@
     <value>ارفاق خطاب طلب مع ذكر سبب هذا الطلب</value>
   </data>
   <data name="ZOWithdrawGeneralAttachmentOne" xml:space="preserve">
-      <value>خطاب الطلب</value>
+    <value>خطاب الطلب</value>
   </data>
   <data name="ZOWithdrawGeneralAttachmentTwo" xml:space="preserve">
     <value>اعتماد الفرع</value>
@@ -7677,7 +7683,7 @@
 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
-    <value>تم استلام طلب إلغاء الزكاة بنجاح</value>
+    <value>تم استلام طلب الغاء الزكاة بنجاح</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
     <value>هجري</value>
@@ -7688,50 +7694,50 @@
   <data name="ZZZZViewRefund" xml:space="preserve">
     <value>عرض بيانات الاسترداد</value>
   </data>
-    <data name="VRCurrentinputtaxdeductionmethod" xml:space="preserve">
+  <data name="VRCurrentinputtaxdeductionmethod" xml:space="preserve">
     <value>طريقة خصم ضريبة المدخلات المستخدمة حاليا لتحديد ضريبة المدخلات الغير مخصصة</value>
   </data>
-    <data name="VREffectiveDateforinputtaxdeductionmethod" xml:space="preserve">
+  <data name="VREffectiveDateforinputtaxdeductionmethod" xml:space="preserve">
     <value>تاريخ استخدام طريقة الخصم النسبي لضريبة للمدخلات</value>
   </data>
-    <data name="VRProposedinputtaxdeductionmethod" xml:space="preserve">
+  <data name="VRProposedinputtaxdeductionmethod" xml:space="preserve">
     <value>طريقة خصم ضريبة المدخلات المقترحة لتحديد ضريبة المدخلات الغير مخصصة.</value>
   </data>
-    <data name="VRRequestDetails" xml:space="preserve">
+  <data name="VRRequestDetails" xml:space="preserve">
     <value>تفاصيل الطلب</value>
   </data>
-    <data name="VRTIDEffectiveDateFrom" xml:space="preserve">
+  <data name="VRTIDEffectiveDateFrom" xml:space="preserve">
     <value>من تاريخ</value>
   </data>
-    <data name="VRTIDEffectiveDateTo" xml:space="preserve">
+  <data name="VRTIDEffectiveDateTo" xml:space="preserve">
     <value>الي تاريخ</value>
   </data>
-    <data name="VRTIDExemptPurchases" xml:space="preserve">
+  <data name="VRTIDExemptPurchases" xml:space="preserve">
     <value>نسبة المشتريات المخصصة للتوريدات المعفاة</value>
   </data>
-    <data name="VRTIDInstruction1" xml:space="preserve">
+  <data name="VRTIDInstruction1" xml:space="preserve">
     <value>يرجى تعبئة المعلومات المطلوبة لكل خطوة. لا يمكن تقديم الطلب بنجاح حتى يتم الانتهاء من جميع الحقول الإلزامية.</value>
   </data>
-    <data name="VRTIDInstruction2" xml:space="preserve">
+  <data name="VRTIDInstruction2" xml:space="preserve">
     <value>يرجى الملاحظة أن الهيئة تحتفظ بكافة الحقوق الخاصة بالتأكد من النسب الواردة بطلبكم كما أن الهيئة لديها الحق في الزامكم باتباع طريقة أخرى والفترة التي سيتم اتباع تلك الطريقة فيها والرجوع عليكم بالأثار المترتبة إذا رأت الهيئة أن الطريقة التي وافقت عليها لا تعكس بدقة استخدام الشخص الخاضع للضريبة للسلع والخدمات.</value>
   </data>
-    <data name="VRTIDInstruction3" xml:space="preserve">
+  <data name="VRTIDInstruction3" xml:space="preserve">
     <value>يرجى الاطلاع على قسم الأسئلة الشائعة قبل ملء استمارة الطلب</value>
   </data>
-    <data name="VRTIDProxyforExemptPurchases" xml:space="preserve">
+  <data name="VRTIDProxyforExemptPurchases" xml:space="preserve">
     <value>الطريقة الحالية للخصم النسبي للمشتريات المخصصة للتوريدات المعفاة</value>
   </data>
-    <data name="VRTIDProxyforTaxablePurchases" xml:space="preserve">
+  <data name="VRTIDProxyforTaxablePurchases" xml:space="preserve">
     <value>الطريقة الحالية للخصم النسبي للمشتريات المخصصة للتوريدات الخاضعة</value>
   </data>
-    <data name="VRTIDTaxablePurchases" xml:space="preserve">
+  <data name="VRTIDTaxablePurchases" xml:space="preserve">
     <value>نسبة المشتريات المخصصة للتوريدات الخاضعة للضريبة</value>
   </data>
-    <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
+  <data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
     <value>حجم الملف المسموح به في المرفقات 10 MB</value>
   </data>
-    <data name="VRVSInstruction1" xml:space="preserve">   
-        <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)</value>
+  <data name="VRVSInstruction1" xml:space="preserve">
+    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)</value>
   </data>
   <data name="VRVSInstruction2" xml:space="preserve">
     <value>تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.</value>
@@ -7757,52 +7763,58 @@
   <data name="VRVSSuspendedfilingperiod" xml:space="preserve">
     <value>فترة تعليق الالتزام</value>
   </data>
-    <data name="VRVSEndofSuspensionPeriod" xml:space="preserve">
+  <data name="VRVSEndofSuspensionPeriod" xml:space="preserve">
     <value>فترة نهاية تعليق الالتزام</value>
   </data>
-    <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
+  <data name="VRVSVATReturnFilingObligationSuspension" xml:space="preserve">
     <value>تعليق الإلتزام بتقديم إقرارات ضريبة القيمة المضافة</value>
   </data>
-    <data name="VRVGTINNumber" xml:space="preserve">
-  <value>الرقم المميز</value>
-</data>
-<data name="VRVGAttachments" xml:space="preserve">
-  <value>المرفقات</value>
-</data>
-<data name="VRVGGroupeffectivedate" xml:space="preserve">
-  <value>تاريخ فعالية المجموعة الضريبية</value>
-</data>
-    <data name="VRVGLessthanSAR187500" xml:space="preserve">
-  <value>أقل من 187,500 ريال سعودي</value>
-</data>
-<data name="VRVGBetweenSAR18750andSAR375000" xml:space="preserve">
-  <value>أكثر من 187,500 حتى 375,000 ريال سعودي</value>
-</data>
-<data name="VRVGBetweenSAR375000andSAR1000000" xml:space="preserve">
-  <value>أكثر من 375,000 حتى 1,000,000 ريال سعودي</value>
-</data>
-<data name="VRVGBetweenSAR1000000andSAR40000000" xml:space="preserve">
-  <value>أكثر من 1,000,000 حتى 40,000,000 ريال سعودي</value>
-</data>
-<data name="VRVGGreaterthanSAR40000000" xml:space="preserve">
-  <value>أكثر من 40,000,000 ريال سعودي</value>
-</data> 
-<data name="VRVGGreaterthanSAR187500" xml:space="preserve">
-  <value>أقل من 187,500 ريال سعودي</value>
-</data>
-    <data name="VRVGMemberDetails" xml:space="preserve">
-  <value>تفاصيل العضو</value>
-</data>
-<data name="VRVGAggregatedgrouplevelfinancialdetails" xml:space="preserve">
-  <value>التفاصيل المالية المجمعة للمجموعة </value>
-</data>
-<data name="VRVGGroupVATeligiblesupplies" xml:space="preserve">
-  <value>المبيعات الخاضعة لضريبة القمية المضافة</value>
-</data>
-<data name="VRVGGroupVATeligiblepurchases" xml:space="preserve">
-  <value>المشتريات الخاضعة لضريبة القيمة المضافة </value>
-</data>
-<data name="VRVGTINHolderName" xml:space="preserve">
-  <value>اسم المكلف</value>
-</data>
+  <data name="VRVGTINNumber" xml:space="preserve">
+    <value>الرقم المميز</value>
+  </data>
+  <data name="VRVGAttachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="VRVGGroupeffectivedate" xml:space="preserve">
+    <value>تاريخ فعالية المجموعة الضريبية</value>
+  </data>
+  <data name="VRVGLessthanSAR187500" xml:space="preserve">
+    <value>أقل من 187,500 ريال سعودي</value>
+  </data>
+  <data name="VRVGBetweenSAR18750andSAR375000" xml:space="preserve">
+    <value>أكثر من 187,500 حتى 375,000 ريال سعودي</value>
+  </data>
+  <data name="VRVGBetweenSAR375000andSAR1000000" xml:space="preserve">
+    <value>أكثر من 375,000 حتى 1,000,000 ريال سعودي</value>
+  </data>
+  <data name="VRVGBetweenSAR1000000andSAR40000000" xml:space="preserve">
+    <value>أكثر من 1,000,000 حتى 40,000,000 ريال سعودي</value>
+  </data>
+  <data name="VRVGGreaterthanSAR40000000" xml:space="preserve">
+    <value>أكثر من 40,000,000 ريال سعودي</value>
+  </data>
+  <data name="VRVGGreaterthanSAR187500" xml:space="preserve">
+    <value>أقل من 187,500 ريال سعودي</value>
+  </data>
+  <data name="VRVGMemberDetails" xml:space="preserve">
+    <value>تفاصيل العضو</value>
+  </data>
+  <data name="VRVGAggregatedgrouplevelfinancialdetails" xml:space="preserve">
+    <value>التفاصيل المالية المجمعة للمجموعة </value>
+  </data>
+  <data name="VRVGGroupVATeligiblesupplies" xml:space="preserve">
+    <value>المبيعات الخاضعة لضريبة القمية المضافة</value>
+  </data>
+  <data name="VRVGGroupVATeligiblepurchases" xml:space="preserve">
+    <value>المشتريات الخاضعة لضريبة القيمة المضافة </value>
+  </data>
+  <data name="VRVGTINHolderName" xml:space="preserve">
+    <value>اسم المكلف</value>
+  </data>
+  <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
+    <value>You should Signup as new user</value>
+  </data>
+     <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+    <value>مجموع الخصومات المطلوب إدراجها في التقسيط</value>
+  </data>
 </root>

@@ -1916,7 +1916,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void ResetData()
         {
             EnableSlectionView();
-            NoOfInstalments = 0;
+            NoOfInstalments = 2;
             _isLoading = false;
             SecondTerms = false;
             _vATPenalityAmount = "0.00";

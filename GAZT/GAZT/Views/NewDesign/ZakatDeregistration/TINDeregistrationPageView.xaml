@@ -178,8 +178,125 @@
                             <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
+    <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
+    <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                    <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                </StackLayout>
+                                
+                                <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                                <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                    <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
+                                                         Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
+                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
+                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
-                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
+                            </custom:BorderlessEntry>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <!--<Image Source="arrowDropdown.png"/>-->
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                        <Image Margin="5,0">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+                            <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
+                        </Button>
+                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
+								ShowHeader="False"
+								Margin="10,0,10,0" 
+                              BackgroundColor="White"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#EAF7CC"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    BorderColor="Black"
+                                
+                                
+								ShowFooter="False"
+								 ShowColumnHeader="True"
+                                 ColumnHeaderBackgroundColor="White"
+								ColumnHeaderHeight="46"
+                                PickerMode="Dialog"
+								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+								
+								x:Name="DpDbo"
+                               
+                     
+                             OKButtonTextColor="#006450" 
+                                
+                                             CancelButtonTextColor="#006450"
+                               
+                            
+                            SelectedItem="{Binding TodayDate}"
+                            HorizontalOptions="FillAndExpand"
+                                 Closed="DpDbo_Closed"
+                                                      SelectionChanged="DpDbo_SelectionChanged"
+                                OkButtonClicked="DOBpicker_OkButtonClicked"
+                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+								ItemHeight="40">
+                                <custom1:CustomDatePicker.Behaviors>
+                                    <custom1:SfPickerBehavior />
+                                </custom1:CustomDatePicker.Behaviors>
+                            </custom1:CustomDatePicker>
+                            <!--HijriDatePicker-->
+                                    <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
+								ShowHeader="False"
+								Margin="10,0,10,0" 
+                              BackgroundColor="White"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#EAF7CC"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    BorderColor="Black"
+                                  SelectedItem="{Binding TodayDateinHijri}"                                  
+								ShowFooter="False"
+								 ShowColumnHeader="True"
+                                 ColumnHeaderBackgroundColor="White"
+								ColumnHeaderHeight="46"
+                                PickerMode="Dialog"
+								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+								x:Name="DpDboHijri"
+                             OKButtonTextColor="#006450"    
+                             CancelButtonTextColor="#006450"
+                           
+                            HorizontalOptions="FillAndExpand"
+                               Closed="DpDbo_Closed"
+                                                      SelectionChanged="DpDbo_SelectionChanged"
+                                OkButtonClicked="DOBpicker_OkButtonClicked"
+                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+								ItemHeight="40">
+                                    </custom1:CustomHijriDatePicker>
+                                    <!--SelectedItem="{Binding TodayDate}"-->
+                                    <!--HijriDatePicker-->
+                                </Grid>
+               <StackLayout.Triggers>
+                         
+                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+               </StackLayout>
+                 <!--<StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -213,7 +330,7 @@
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
-                 </StackLayout>
+                 </StackLayout>-->
 
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption2Visible}">
                         <StackLayout.Triggers>
@@ -230,7 +347,111 @@
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
 
                         <StackLayout>
-                            <StackLayout IsVisible="{Binding DateField.IsVisible}">
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                                <StackLayout Orientation="Horizontal" >
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                    <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                </StackLayout>
+                                
+                                <Grid >
+                                <inputLayout:SfTextInputLayout x:Name="FrmDBO2" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                    <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry21"
+                                                         Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
+                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
+                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
+
+                            </custom:BorderlessEntry>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <!--<Image Source="arrowDropdown.png"/>-->
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                        <Image Margin="5,0">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+                            <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
+                        </Button>
+                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
+								ShowHeader="False"
+								Margin="10,0,10,0" 
+                              BackgroundColor="White"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#EAF7CC"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    BorderColor="Black"
+                                
+                                
+								ShowFooter="False"
+								 ShowColumnHeader="True"
+                                 ColumnHeaderBackgroundColor="White"
+								ColumnHeaderHeight="46"
+                                PickerMode="Dialog"
+								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+								
+								x:Name="DpDbo2"
+                               
+                     
+                             OKButtonTextColor="#006450" 
+                                
+                                             CancelButtonTextColor="#006450"
+                               
+                            
+                            SelectedItem="{Binding TodayDate}"
+                            HorizontalOptions="FillAndExpand"
+                                 Closed="DpDbo_Closed"
+                                                      SelectionChanged="DpDbo_SelectionChanged"
+                                OkButtonClicked="DOBpicker_OkButtonClicked"
+                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+								ItemHeight="40">
+                                <custom1:CustomDatePicker.Behaviors>
+                                    <custom1:SfPickerBehavior />
+                                </custom1:CustomDatePicker.Behaviors>
+                            </custom1:CustomDatePicker>
+                            <!--HijriDatePicker-->
+                                    <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
+								ShowHeader="False"
+								Margin="10,0,10,0" 
+                              BackgroundColor="White"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#EAF7CC"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    BorderColor="Black"
+                                  SelectedItem="{Binding TodayDateinHijri}"                                  
+								ShowFooter="False"
+								 ShowColumnHeader="True"
+                                 ColumnHeaderBackgroundColor="White"
+								ColumnHeaderHeight="46"
+                                PickerMode="Dialog"
+								HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"
+								x:Name="DpDboHijri2"
+                             OKButtonTextColor="#006450"    
+                             CancelButtonTextColor="#006450"
+                           
+                            HorizontalOptions="FillAndExpand"
+                               Closed="DpDbo_Closed"
+                                                      SelectionChanged="DpDbo_SelectionChanged"
+                                OkButtonClicked="DOBpicker_OkButtonClicked"
+                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+								ItemHeight="40">
+                                    </custom1:CustomHijriDatePicker>
+                                    <!--SelectedItem="{Binding TodayDate}"-->
+                                    <!--HijriDatePicker-->
+                                </Grid>
+                            <!--<StackLayout IsVisible="{Binding DateField.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -253,7 +474,7 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
-                            </StackLayout>
+                            </StackLayout>-->
                             <StackLayout IsVisible="{Binding TinText.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
@@ -309,8 +530,106 @@
                             </StackLayout>
 
                         </StackLayout>
+                           <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                                <StackLayout Orientation="Horizontal" >
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                    <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal}" />
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
+                                </StackLayout>
+                                
+                                <Grid >
+                                <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                    <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
+                                                         Text ="{Binding PickerDOBDateDisplay}" Unfocused="DOBDatePicker_Unfocused" TextChanged="DOBDateEntry_TextChanged"
+                                                         Focused="OnDOBDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
+                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
-                        <StackLayout IsVisible="{Binding DobText.IsVisible}">
+                            </custom:BorderlessEntry>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <!--<Image Source="arrowDropdown.png"/>-->
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                        <Image Margin="5,0">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+                            <Button BackgroundColor="Transparent" Clicked="OnIDDOBClicked" Margin="0,0,0,0" >
+                        </Button>
+                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
+								ShowHeader="False"
+								Margin="10,0,10,0" 
+                              BackgroundColor="White"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#EAF7CC"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    BorderColor="Black"
+                                
+                                
+								ShowFooter="False"
+								 ShowColumnHeader="True"
+                                 ColumnHeaderBackgroundColor="White"
+								ColumnHeaderHeight="46"
+                                PickerMode="Dialog"
+								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+								
+								x:Name="DpDbo3"
+                             OKButtonTextColor="#006450"                               
+                             CancelButtonTextColor="#006450" 
+                            SelectedItem="{Binding TodayDate}"
+                            HorizontalOptions="FillAndExpand"
+                                 Closed="DpDOB_Closed"
+                                                      SelectionChanged="DpDOB_SelectionChanged"
+                                OkButtonClicked="DOBpicker_OkButtonClicked"
+                                CancelButtonClicked="DpDOB_CancelButtonClicked"
+								ItemHeight="40">
+                                <custom1:CustomDatePicker.Behaviors>
+                                    <custom1:SfPickerBehavior />
+                                </custom1:CustomDatePicker.Behaviors>
+                            </custom1:CustomDatePicker>
+                            <!--HijriDatePicker-->
+                                    <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
+								ShowHeader="False"
+								Margin="10,0,10,0" 
+                                BackgroundColor="White"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                HeaderBackgroundColor="#EAF7CC"
+                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                BorderColor="Black"
+                                SelectedItem="{Binding TodayDateinHijri}"                                  
+								ShowFooter="False"
+								ShowColumnHeader="True"
+                                ColumnHeaderBackgroundColor="White"
+								ColumnHeaderHeight="46"
+                                PickerMode="Dialog"
+								HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"
+								x:Name="DpDboHijri3"
+                                OKButtonTextColor="#006450"    
+                                CancelButtonTextColor="#006450"
+                           
+                                HorizontalOptions="FillAndExpand"
+                               Closed="DpDOB_Closed"
+                                SelectionChanged="DpDOB_SelectionChanged"
+                                OkButtonClicked="DOBpicker_OkButtonClicked"
+                                CancelButtonClicked="DpDOB_CancelButtonClicked"
+								ItemHeight="40">
+                                    </custom1:CustomHijriDatePicker>
+                                    <!--SelectedItem="{Binding TodayDate}"-->
+                                    <!--HijriDatePicker-->
+                                </Grid>
+                        <!--<StackLayout IsVisible="{Binding DobText.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -333,7 +652,7 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
-                            </StackLayout>
+                            </StackLayout>-->
 
                          <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all other id types except comapny id-!>-->
 
@@ -440,7 +759,7 @@
 
                  </StackLayout>
 
-                 <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>
@@ -616,7 +935,7 @@
                </Grid>
 
               <ScrollView IsVisible="{Binding IsAttachmentsViewEnabled}">
-               <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+               <Grid IsVisible="{Binding IsAttachmentssViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>

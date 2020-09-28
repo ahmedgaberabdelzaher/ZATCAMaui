@@ -7704,6 +7704,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationOutletCheckboxCloseAllOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationOutletCheckboxCloseAllOutlets", resourceCulture);
+            }
+        }
+        
         public static string VatDeregDOBDatePickerTitle {
             get {
                 return ResourceManager.GetString("VatDeregDOBDatePickerTitle", resourceCulture);
@@ -8055,6 +8061,18 @@ namespace EGAZT {
         public static string VatReactivationDashboardTitle {
             get {
                 return ResourceManager.GetString("VatReactivationDashboardTitle", resourceCulture);
+            }
+        }
+        
+        public static string VATAmendReactivationSuccessful {
+            get {
+                return ResourceManager.GetString("VATAmendReactivationSuccessful", resourceCulture);
+            }
+        }
+        
+        public static string VATAmendReactivationSuccessfulAkwdg {
+            get {
+                return ResourceManager.GetString("VATAmendReactivationSuccessfulAkwdg", resourceCulture);
             }
         }
         
@@ -14163,6 +14181,18 @@ namespace EGAZT {
         public static string VRVGGreaterthanSAR187500 {
             get {
                 return ResourceManager.GetString("VRVGGreaterthanSAR187500", resourceCulture);
+            }
+        }
+        
+        public static string NDYoushouldsignupasnewuser {
+            get {
+                return ResourceManager.GetString("NDYoushouldsignupasnewuser", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentTotalLiabilityToIncludeInTheInstallment {
+            get {
+                return ResourceManager.GetString("VATInstalmentTotalLiabilityToIncludeInTheInstallment", resourceCulture);
             }
         }
     }

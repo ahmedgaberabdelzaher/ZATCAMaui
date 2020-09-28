@@ -402,6 +402,7 @@
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                              VerticalOptions="Center" AutoFitMode="Height"
                                                              ItemsSource="{Binding AttachmentsListViewData}"
+                                                             ItemTapped="Attachments_ItemTapped"
                                                              SelectionMode="None"
                                                              SelectionBackgroundColor="Transparent">
                                             <listView:SfListView.ItemTemplate>
@@ -686,6 +687,7 @@
                                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                              VerticalOptions="Center" AutoFitMode="Height"
                                                              ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
+                                                              ItemTapped="BankGuranAttachTapped"
                                                              SelectionMode="None"
                                                              SelectionBackgroundColor="Transparent">
                                             <listView:SfListView.ItemTemplate>

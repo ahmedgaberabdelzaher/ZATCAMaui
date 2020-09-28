@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Models;
 using EGAZT.Models.VatReviewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
+using GAZT.Manager;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -64,5 +66,68 @@ namespace EGAZT.Views.NewDesign.VatReview
             _viewModel.EnableSummaryView();
             _viewModel.OnPageLoad1(index);
         }
+
+        private async void BankGuranAttachTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = true;
+            });
+            var attachment = e.ItemData as Attachment;
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    _viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+
+                
+                await WebServiceManager.email(attachment.Doguid, attachment);
+            }
+
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = false;
+            });
+
+        }
+
+        private async void Attachments_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = true;
+            });
+            var attachment = e.ItemData as Attachment;
+
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    _viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+               
+                await WebServiceManager.email(attachment.Doguid, attachment);
+            }
+
+
+
+            await Task.Run(() =>
+            {
+                _viewModel.IsLoading = false;
+            });
+
+        }
+       
     }
 }

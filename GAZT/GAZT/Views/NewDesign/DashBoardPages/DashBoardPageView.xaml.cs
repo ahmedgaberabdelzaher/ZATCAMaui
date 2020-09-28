@@ -36,6 +36,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 if (viewModel != null)
                 {
                     viewModel.MenuViewVisible = false;
+                    viewModel.TaxpayerName = string.Empty;
                     viewModel.HomeViewVisible = true;
                     viewModel.IsVatRegistrationTileVisible = false;
                 }

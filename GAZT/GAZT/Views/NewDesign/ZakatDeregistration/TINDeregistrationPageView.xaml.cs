@@ -9,6 +9,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
@@ -65,6 +66,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             base.OnAppearing();
             ChangeArrowDirection();
 
+            SetDate();
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
@@ -153,6 +155,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             viewModel.LoadReasonSet();
             viewModel.PopulateAttachmentsListViewTemplate();
+        }
+
+        private async void SetDate()
+        {
+            await viewModel.SetDefaultDate();
+
         }
 
         protected override void OnDisappearing()
@@ -259,11 +267,30 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     {
                         if (viewModel.TinDeregistrationData.ADecTelNo.Length < 9)
                         {
+                           // popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                             Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                         }
+                        if (Messages.Length > 0)
+                        {
+                            popUp.Message = Messages.ToString();
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
 
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                           
+                        }
                     }
                 }
+              
+
             }
 
         }
@@ -488,7 +515,165 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.FrameIDError = false;
             }
         }
+        private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+            {
+                FrmDBO.HasError = false;
+            }
 
+        }
+        private void DOBDateEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+            {
+                FrmDBO.HasError = false;
+            }
+
+        }
+        private void OnDOBClicked(object sender, EventArgs e)
+        {
+            if (!viewModel.IsHijriCal)
+            {
+                DpDbo.IsOpen = true;
+            }
+            else
+            {
+                DpDboHijri.IsOpen = true;
+            }
+        }
+        
+        private void OnIDDOBClicked(object sender, EventArgs e)
+        {
+            if (!viewModel.IsDOBHijriCal)
+            {
+                DpDbo3.IsOpen = true;
+            }
+            else
+            {
+                DpDboHijri3.IsOpen = true;
+            }
+        }
+        private void DpDbo_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+
+                    }
+                }
+                else
+                {
+                    if (DpDbo.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+        private void DpDOB_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsDOBHijriCal)
+                {
+                    if (DpDboHijri3.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri3.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
+                        viewModel.SelectedDob= day + "/" + month + "/" + year;
+                    }
+                }
+                else
+                {
+                    if (DpDbo3.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
+                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        private void DpDOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            // FrmDBO.HasError = false;
+            //try
+            //{
+            //    if (DpDbo.SelectedItem != null)
+            //    {
+            //        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+            //        string month = selectedItem[1].ToString();
+            //        string day = selectedItem[0].ToString();
+            //        string year = selectedItem[2].ToString();
+            //        viewModel.PkrDBO = year + "/" + month + "/" + day;
+
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+        }
+        private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            // FrmDBO.HasError = false;
+            //try
+            //{
+            //    if (DpDbo.SelectedItem != null)
+            //    {
+            //        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+            //        string month = selectedItem[1].ToString();
+            //        string day = selectedItem[0].ToString();
+            //        string year = selectedItem[2].ToString();
+            //        viewModel.PkrDBO = year + "/" + month + "/" + day;
+
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+        }
+    
         void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -556,8 +741,122 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
+          
+        }
+        private void DOBDatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+            //ValidateIDNumber();
+
+            if (viewModel.IsDOBHijriCal)
+            {
+                var selectedItem = DpDboHijri3.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                viewModel.SelectedDob = date;
+
+
+            }
+            else
+            {
+                var selectedItem = DpDbo3.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                string date = year + "/" + month + "/" + day;
+                viewModel.SelectedDob = date;
+
+
+            }
         }
 
+        private void DatePicker_Unfocused(object sender, FocusEventArgs e)
+        {
+            //ValidateIDNumber();
+
+            if (viewModel.IsHijriCal)
+            {
+                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                viewModel.DeregistrationDate = Convert.ToDateTime(date);
+
+
+            }
+            else
+            {
+                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                string date = year + "/" + month + "/" + day;
+
+                viewModel.DeregistrationDate = Convert.ToDateTime(date);
+
+
+            }
+        }
+        public void OnDateEntryFocussed(object sender, EventArgs args)
+        {
+            if (viewModel.IsHijriCal)
+            {
+                DpDboHijri.IsOpen = true;
+            }
+            else
+            {
+                DpDbo.IsOpen = true;
+            }
+
+        }
+        public void OnDOBDateEntryFocussed(object sender, EventArgs args)
+        {
+            if (viewModel.IsDOBHijriCal)
+            {
+                DpDboHijri3.IsOpen = true;
+            }
+            else
+            {
+                DpDbo3.IsOpen = true;
+            }
+
+        }
+        private void DpDOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.PkrDBO = viewModel.PkrDBOPrev;
+            if (!string.IsNullOrEmpty(viewModel.PkrDBOPrev))
+            {
+                string[] Date = viewModel.PkrDBOPrev.Split('/');
+                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                //Select today dates
+                todaycollection.Add(Date[2]);
+                todaycollection.Add(Date[1]);//day
+                todaycollection.Add(Date[0]);
+
+                DpDbo.SelectedItem = todaycollection;
+            }
+        }
+        private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.PkrDBO = viewModel.PkrDBOPrev;
+            if (!string.IsNullOrEmpty(viewModel.PkrDBOPrev))
+            {
+                string[] Date = viewModel.PkrDBOPrev.Split('/');
+                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                //Select today dates
+                todaycollection.Add(Date[2]);
+                todaycollection.Add(Date[1]);//day
+                todaycollection.Add(Date[0]);
+
+                DpDbo.SelectedItem = todaycollection;
+            }
+        }
+        private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //  ValidateIDNumber();
+        }
         void outletsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             try

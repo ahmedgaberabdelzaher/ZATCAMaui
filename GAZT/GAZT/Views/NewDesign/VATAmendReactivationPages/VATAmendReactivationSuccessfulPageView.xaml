@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"             
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             BackgroundColor="#006450"
+             xmlns:custom2="clr-namespace:EGAZT"
+             x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationSuccessfulPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Views/SyncFusionEnabledViews/Common/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="WidthRequest" Value="10"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
+                <!--<Image Source="confirmnew.jpg" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="100" HorizontalOptions="CenterAndExpand"></Image>-->
+
+                <!--<Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
+                    <Image.Source>
+                        <FontImageSource FontFamily="UserIconFont" Color="White" Size="100"
+                                         Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                    </Image.Source>
+                </Image>-->
+
+                <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
+                <Label Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessful}" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessfulAkwdg}" IsVisible="true"
+                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <ScrollView>
+                <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False" VerticalOptions="EndAndExpand">
+                    <StackLayout>
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
+                            <StackLayout Orientation="Horizontal" Padding="10" >
+                                <Label Text="{x:Static custom2:AppResources.VATRSName}"  VerticalOptions="Center" FontSize="12" TextColor="#909090"  HorizontalOptions="StartAndExpand"/>
+                                <Label x:Name="Label_Name"   FontSize="16" TextColor="#010101" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{x:Static custom2:AppResources.VATRSAppNumber}" VerticalOptions="Center" FontSize="12" TextColor="#909090"   HorizontalOptions="StartAndExpand"/>
+                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                    <Label x:Name="Label_ApplicationNumber" Text="" FontSize="16" VerticalOptions="Center" TextColor="#010101" />
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                        </Image.Source>
+                                    </Image>
+                                </StackLayout>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Image_Copy_Tapped"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10" HasShadow="False">
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{x:Static custom2:AppResources.Date}" VerticalOptions="Center" FontSize="12" TextColor="#909090"   HorizontalOptions="StartAndExpand"/>
+                                <Label x:Name="Label_Date"  FontSize="16" TextColor="#010101" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                        <!--VATRgotologinpage-->
+                        <buttons:SfButton x:Name="btnDashboard" Text="{x:Static custom2:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                      HeightRequest="46" Clicked="btnDashboard_Clicked"   Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" TextColor="White" />
+                    </StackLayout>
+                </yummy:PancakeView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
