@@ -1,8 +1,10 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -440,7 +442,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                 //   _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
         }
