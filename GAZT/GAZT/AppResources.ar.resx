@@ -5640,7 +5640,7 @@
     <value>تم تقديم إقرار ضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="NDInvoiceDetail" xml:space="preserve">
-    <value />
+    <value>تفاصيل الفاتورة</value>
   </data>
   <data name="NDSubmittedSuccessfully" xml:space="preserve">
     <value>تم تقديم الإقرار بنجاح</value>
