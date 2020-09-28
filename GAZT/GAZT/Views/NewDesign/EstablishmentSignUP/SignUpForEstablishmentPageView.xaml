@@ -252,10 +252,12 @@
                                     <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled"/>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                 </StackLayout>-->
-                                <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" VerticalOptions="Center" WidthRequest="150">
+                                <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" VerticalOptions="Center" >
                                     <buttons:SfChipGroup.ItemTemplate>
                                         <DataTemplate >
-                                            <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}" MinimumWidthRequest="150"/>
+                                            <StackLayout WidthRequest="80" >
+                                                <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}"/>
+                                            </StackLayout>
                                         </DataTemplate>
                                     </buttons:SfChipGroup.ItemTemplate>
                                 </buttons:SfChipGroup>
