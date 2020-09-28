@@ -207,12 +207,21 @@
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
                                                             </custom:CustomLabel>
-                                                            <StackLayout Orientation="Horizontal">
+                                                            <!--<StackLayout Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static local:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                                                 <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled" />
                                                                 <custom:CustomLabel  Text="{x:Static local:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
-                                                            </StackLayout>
+                                                            </StackLayout>-->
 
+                                                            <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" VerticalOptions="Center" >
+                                                                <buttons:SfChipGroup.ItemTemplate>
+                                                                    <DataTemplate >
+                                                                        <StackLayout MinimumWidthRequest="150" >
+                                                                            <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}" />
+                                                                        </StackLayout>
+                                                                    </DataTemplate>
+                                                                </buttons:SfChipGroup.ItemTemplate>
+                                                            </buttons:SfChipGroup>
 
                                                         </StackLayout>
                                                         
@@ -292,19 +301,7 @@ Closed="SignUpDOB_Closed"
 								ItemHeight="45" >
                                                         </custom1:CustomHijriDatePicker>
 
-                                                        <calendar:CalendarView x:Name="HijriCal"
-                             
-                    CalendarType="Gregorian"
-                    DisablePreviousDates="True"
-                    StartDayOfWeek="Sunday"
-                    WeekendDays="Friday,Saturday"
-                          BackgroundColor="Transparent"
-                                TodayLabel="text"
-                    DateSelected="{Binding DateSelectedCommand}"
-                    
-                    DayColor="Black"
-                    WeekendDayColor="Gray"
-                    SelectedDayColor="Red" />
+                                                        
 
                                                     </Grid>
                                                 </StackLayout>
