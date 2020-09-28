@@ -255,13 +255,14 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
 
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
                                             </Grid.ColumnDefinitions>
-                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                                                  <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTotalVATSales}" Style="{StaticResource ValueLabelBlack}"/>
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
                                                     <Image.GestureRecognizers>
@@ -283,7 +284,7 @@
 
                                                    </inputLayout:SfTextInputLayout>
 
-                                                <custom:CustomLabel Text="{Binding TvtslI}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding TvtslI}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" />
 
                                             </StackLayout>
 
@@ -312,7 +313,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel  Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel  Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,10,0"/>
                                             </StackLayout>
 
                                              <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
@@ -354,6 +355,9 @@
                                                     <TapGestureRecognizer Tapped="OnTotalVATSaleEditImageClicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
+
+                                             <BoxView Style="{StaticResource lineSeperator}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,5,-10,15"/>
+
                                         </Grid>
                                         <!---->
                                         <Grid RowSpacing="0">
@@ -364,7 +368,7 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
@@ -429,7 +433,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.LabnoE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.LabnoE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,10,0"/>
                                                 <!--<custom:CustomLabel  Text="{x:Static local:AppResources.ZNA}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsLabelVisibleWithNA}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>-->
 
                                             </StackLayout>
@@ -477,10 +481,12 @@
                                                     <TapGestureRecognizer Tapped="OnAverageNumberLabourEditImageClicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
+                                            <BoxView Style="{StaticResource lineSeperator}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,5,-10,15"/>
                                         </Grid>
 
                                         <Grid RowSpacing="0">
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
@@ -552,7 +558,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImpvalE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImpvalE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,10,0"/>
                                             </StackLayout>
 
                                            <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
@@ -595,6 +601,8 @@
                                                     <TapGestureRecognizer Tapped="OnImportValueEditImageClicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
+                                           <BoxView Style="{StaticResource lineSeperator}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,5,-10,15"/>
+
                                         </Grid>
 
                                         <Grid RowSpacing="0">
@@ -605,7 +613,7 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
@@ -721,6 +729,7 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
@@ -784,7 +793,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel   Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.Sumcnt}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel   Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.Sumcnt}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,10,0"/>
                                             </StackLayout>
 
                                                 
@@ -831,6 +840,7 @@
 
                                         <Grid RowSpacing="0">
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
@@ -938,6 +948,8 @@
                                                     <TapGestureRecognizer Tapped="OnExportValueEditImageClicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
+                                        <BoxView Style="{StaticResource lineSeperator}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,5,-10,15"/>
+
                                         </Grid>
 
                                         <Grid RowSpacing="0">
@@ -947,6 +959,7 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                  <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
@@ -1016,7 +1029,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.PramtE}"    IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel  Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.PramtE}"    IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,10,0"/>
                                             </StackLayout>
 
                                              <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
@@ -1048,6 +1061,8 @@
                                                     <TapGestureRecognizer Tapped="OnPurchaseValueEditImageClicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
+                                           <BoxView Style="{StaticResource lineSeperator}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,5,-10,15"/>
+
                                         </Grid>
 
                                        <Grid RowSpacing="0">
@@ -1058,7 +1073,7 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
@@ -1102,7 +1117,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="{Binding Cpamt}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding Cpamt}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}" Margin="10,-10,10,0"/>
                                             </StackLayout>
 
                                               <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}"></custom:CustomLabel>
@@ -1124,6 +1139,8 @@
                                                     <TapGestureRecognizer Tapped="OnCapitalAmountEditImageClicked"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
+                                        <BoxView Style="{StaticResource lineSeperator}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,5,-10,0"/>
+
                                         </Grid>
 
 
