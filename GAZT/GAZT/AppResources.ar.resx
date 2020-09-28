@@ -4722,7 +4722,7 @@
   <data name="VATAmendReactivationSuccessful" xml:space="preserve">
     <value>VAT Registration Amendment Successfull</value>
   </data>
-   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+  <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
     <value>VAT Registration Amendment Successfull</value>
   </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
@@ -6256,11 +6256,11 @@
     <value>قاعدة ثابتة يمارس منها الشخص الطبيعي غير المقيم نشاطة.</value>
   </data>
   <data name="ESTConstuctionSiteLabel" xml:space="preserve">
-  <value>مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها.</value>
+    <value>مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها.</value>
   </data>
   <data name="ESTInstallationLabel" xml:space="preserve">
-     <value>التركيبات والمواقع المستخدمة في أعمال المسح للموارد الطبيعية, ومعدات الحفر, والسفن المستخدمة في مسح الموارد الطبيعية, وممارسة الأعمال الإشرافية المتعلقة بها.</value>
-    </data>
+    <value>التركيبات والمواقع المستخدمة في أعمال المسح للموارد الطبيعية, ومعدات الحفر, والسفن المستخدمة في مسح الموارد الطبيعية, وممارسة الأعمال الإشرافية المتعلقة بها.</value>
+  </data>
   <data name="ESTAFixedBaseLabel" xml:space="preserve">
     <value> قاعدة ثابتة يمارس منها الشخص الطبيعي غير المقيم نشاطة.</value>
   </data>
@@ -7812,9 +7812,9 @@
     <value>اسم المكلف</value>
   </data>
   <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
-    <value>You should Signup as new user</value>
+    <value>الرجاء التسجيل كمستخدم جديد</value>
   </data>
-     <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+  <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
     <value>مجموع الخصومات المطلوب إدراجها في التقسيط</value>
   </data>
 </root>
