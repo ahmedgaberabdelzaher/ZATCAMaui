@@ -2765,7 +2765,7 @@
                     <StackLayout Margin="15,0,15,0">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatSummary}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZReviewthebelowinformation}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
-                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
+                        <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30" />-->
                     </StackLayout>
                 </StackLayout>
             </Grid>
