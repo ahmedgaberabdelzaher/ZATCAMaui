@@ -171,6 +171,8 @@ using EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
+using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
+using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 
 namespace EGAZT
 {
@@ -223,6 +225,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<EstablishmentAmendUpdatePageViewModel>();
             SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
             SimpleIoc.Default.Register<ActivityItemPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulViewModel>();
@@ -771,6 +774,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public EstablishmentAmendUpdatePageViewModel EstablishmentAmendUpdatePage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2511,6 +2528,7 @@ namespace EGAZT
 
             //EST
             navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
+            navigationService.Configure(App.EstablishmentAmendUpdatePage, typeof(EstablishmentAmendUpdatePageView));
             navigationService.Configure(App.ActivityItemPage, typeof(ActivityItemPage));
             navigationService.Configure(App.OutletDetailsPageView, typeof(OutletDetailsPageView));
             navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));

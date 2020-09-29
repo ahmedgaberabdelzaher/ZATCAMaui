@@ -7900,4 +7900,10 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
 <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>Do you want to add a new financial representative and close the current one ?</value>
   </data>
+<data name="ZAKATAmend" xml:space="preserve">
+    <value>ZAKAT Amendment</value>
+  </data>
+<data name="ZAKATUpdate" xml:space="preserve">
+    <value>ZAKAT Update</value>
+  </data>
 </root>

@@ -11551,6 +11551,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ZAKAT Amendment.
+        /// </summary>
+        public static string ZAKATAmend {
+            get {
+                return ResourceManager.GetString("ZAKATAmend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat Amount.
         /// </summary>
         public static string ZakatAmount {
@@ -12722,6 +12731,15 @@ namespace EGAZT {
         public static string ZakatTaxTypeForBills {
             get {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZAKAT Update.
+        /// </summary>
+        public static string ZAKATUpdate {
+            get {
+                return ResourceManager.GetString("ZAKATUpdate", resourceCulture);
             }
         }
         
