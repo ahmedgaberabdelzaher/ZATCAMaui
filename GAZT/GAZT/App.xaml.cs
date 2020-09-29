@@ -33,6 +33,7 @@ using GAZT.Manager;
 using System.Linq;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
 using EGAZT.Views.NewDesign.VATAmendReactivationPages;
+using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -76,6 +77,7 @@ namespace EGAZT
         //*EST
         public static string ActivityItemPage = nameof(ActivityItemPage);
         public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
+        public static string EstablishmentAmendUpdatePage = nameof(EstablishmentAmendUpdatePageView);
         public static string OutletDetailsPageView = nameof(OutletDetailsPageView);
         public static string RegistrationSuccessfulPage = nameof(RegistrationSuccessfulPage);
         //*End EST
@@ -245,7 +247,10 @@ namespace EGAZT
         //VATRefundsListPageView
         #endregion
 
+        //public static Enums.PageExecutionType VATType { get; set; }
+        //public static Enums.PageExecutionType ZAKATType { get; set; }
         public static Enums.VATRegDetailsExecutionType VATType { get; set; }
+        public static Enums.VATRegDetailsExecutionType ZAKATType { get; set; }
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
