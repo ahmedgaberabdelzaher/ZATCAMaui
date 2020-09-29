@@ -54,6 +54,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             SetLTR();
             ClearFields();
             loadPageData();
+            SetPickerFont();
             viewModel.TxtLOrCIssuedBy = string.Empty;
             viewModel.TxtCountryCode = "+966";
             if (Device.RuntimePlatform == Device.Android)
