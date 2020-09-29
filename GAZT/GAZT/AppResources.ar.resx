@@ -5038,7 +5038,7 @@
     <value>SADAD Number</value>
   </data>
   <data name="ZakatInstalmetDetails" xml:space="preserve">
-    <value>عرض تفاصيل القسط</value>
+    <value>عرض جدول الاقساط</value>
   </data>
   <data name="AllReturns" xml:space="preserve">
     <value>جميع الاقرارات</value>
@@ -5164,8 +5164,8 @@
   <data name="NDInbox" xml:space="preserve">
     <value>الصندوق الوارد</value>
   </data>
-  <data name="NDReferenceNumber" xml:space="preserve">
-    <value>الرقم التسلسلي</value>
+ <data name="NDReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
@@ -7826,4 +7826,10 @@
   <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>هل تريد إضافة ممثل مالي جديد وإغلاق الممثل الحالي؟</value>
   </data>
+    <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
+    <value>إجمالي الفواتير المحدده</value>
+  </data>
+   <data name="VRSadadAlert" xml:space="preserve">
+  <value>إنشاء رقم سداد سيكون نشاطا نهائيا لتسليم نموذج المراجعة، ولن يسمح بأي تغييرات بعد ذلك. انقر على موافق للإنشاء</value>
+</data>
 </root>

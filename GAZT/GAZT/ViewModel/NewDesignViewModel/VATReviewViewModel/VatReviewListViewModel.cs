@@ -602,8 +602,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public void ResetListData()
         {
-           
-            VATobjListViewData = null;
+
+            
+            VATobjListViewData = new ObservableCollection<VATObjectionListModel.Result3>(); 
             IsLoading = false;
             SetFilterOptions((int)FilterOptions.All);
             NumberOfObjAndReviews = "0 " + AppResources.VatReview;

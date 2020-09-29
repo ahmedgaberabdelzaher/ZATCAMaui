@@ -317,7 +317,7 @@
 
                             <Grid Grid.Row="1">
 
-                                <buttons:SfButton  Margin="0,16,0,16"  Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                                <buttons:SfButton  Margin="0,16,0,16"  Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDetails}"
                                               Style="{StaticResource PrimaryButtonStyle}" Command="{Binding AggrementContinueBtnTapped}"/>
 
                             </Grid>
@@ -524,7 +524,7 @@
                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatInstalmentTotalBillsSelected}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" />
                                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"  />
                                                     </Grid>
                                                 </Frame>
@@ -1005,13 +1005,24 @@
                                 <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                                Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                                Margin="0,10,0,0" Padding="0">
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                                   <Grid  HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+ 
+
                                         <custom:CustomLabel
-                                    Text="{x:Static ResourceManager:AppResources.VATInstalmentTotalLiabilityToIncludeInTheInstallment}"
-                                  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                        <custom:CustomLabel Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlackBold}"
-                                                    HorizontalOptions="EndAndExpand" />
-                                    </StackLayout>
+                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}"
+                                  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" />
+                                        <custom:CustomLabel Text="{Binding MonthlyInstalment}" Style="{StaticResource SectionTitleBlackBold}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                            Grid.Row="0" Grid.Column="1"/>
+                                    </Grid>
                                 </Frame>
                             </Grid>
 

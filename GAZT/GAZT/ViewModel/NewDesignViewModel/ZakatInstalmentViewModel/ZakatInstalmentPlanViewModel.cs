@@ -1920,6 +1920,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     EnableSlectionView();
                     break;
                 case (int)PagesEnum.ZakatAggrementView:
+                    for (int i = 0; i < selectedList.Count; i++)
+                    {
+                        if (ZakatInvoicesList[i].Abtyp.Equals("ITAX"))
+                        {
+                            ZakatInvoicesList[i].Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                        }
+                        else if (ZakatInvoicesList[i].Abtyp.Equals("ZAKT"))
+                        {
+                            ZakatInvoicesList[i].Abtyp = AppResources.FORM5Zakat;
+                        }
+                    }
                     EnableVATBillView();
                     break;
                 case (int)PagesEnum.IsDisplayInstalmentsVisible:
@@ -4029,6 +4040,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                             ZakatInvoicesList = invoiceList.d.results;
                             for (int i = 0; i < ZakatInvoicesList.Count; i++)
                             {
+                                if (ZakatInvoicesList[i].Abtyp.Equals("ITAX"))
+                                {
+                                    ZakatInvoicesList[i].Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                                }
+                                else if (ZakatInvoicesList[i].Abtyp.Equals("ZAKT"))
+                                {
+                                    ZakatInvoicesList[i].Abtyp = AppResources.FORM5Zakat;
+                                }
+
                                 DateTime dateStart = new DateTime();
                                 CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                 string apiDate = @"""" + ZakatInvoicesList[i].DueDt + @"""";
@@ -4537,7 +4557,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 
                 int index = ZakatInvoicesList.ToList().FindIndex(item => item.InvNo == dataItem.InvNo);
 
-              
+                if (ZakatInvoicesList[i].Abtyp.Equals(AppResources.ZakatInstalmetSelectTypeIncomeTax))
+                {
+                    ZakatInvoicesList[i].Abtyp = "ITAX";
+                }
+                else if (ZakatInvoicesList[i].Abtyp.Equals(AppResources.FORM5Zakat))
+                {
+                    ZakatInvoicesList[i].Abtyp = "ZAKT";
+                }
+
                 ZakatInvoicesList[index].InvCb = "X";
 
 

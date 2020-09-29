@@ -150,7 +150,34 @@ namespace EGAZT.Models.VATInstalationModels
 
     public partial class NotesSet
     {
-        public object[] results { get; set; }
+        public List<NotesSetResult> results { get; set; }
+    }
+
+    public partial class NotesSetResult
+    {
+        public Metadata Metadata { get; set; }
+        public string Notenoz { get; set; }
+        public string Refnamez { get; set; }
+        public string XInvoicez { get; set; }
+        public string XObsoletez { get; set; }
+        public string Rcodez { get; set; }
+        public string Erfusrz { get; set; }
+        public string Erfdtz { get; set; }
+        public string Erftmz { get; set; }
+        public string AttByz { get; set; }
+        public string ByPusrz { get; set; }
+        public string ByGpartz { get; set; }
+        public string DataVersionz { get; set; }
+        public string Namez { get; set; }
+        public string Noteno { get; set; }
+        public long Lineno { get; set; }
+        public long ElemNo { get; set; }
+        public string Tdformat { get; set; }
+        public string Tdline { get; set; }
+        public string Sect { get; set; }
+        public string Strdt { get; set; }
+        public string Strtime { get; set; }
+        public string Strline { get; set; }
     }
 
     public partial class VtadSet
@@ -253,7 +280,7 @@ namespace EGAZT.Models.VATInstalationModels
         public string Vtref { get; set; }
         public string Waers { get; set; }
         public object[] VTADSet { get; set; }
-        public object[] NOTESSet { get; set; }
+        public NotesSetResult[] NOTESSet { get; set; }
         public VATResults3[] VTISSet { get; set; }
         public VATResults4[] VTIASet { get; set; }
         public List<Attachment> ATTACHMENTSet { get; set; }

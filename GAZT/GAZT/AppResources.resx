@@ -5064,8 +5064,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="ZakatInstalmentsSadadNumber" xml:space="preserve">
     <value>SADAD Number</value>
   </data>
-  <data name="ZakatInstalmetDetails" xml:space="preserve">
-    <value>Display Instalment</value>
+ <data name="ZakatInstalmetDetails" xml:space="preserve">
+    <value>Display Instalment Schedule</value>
   </data>
   <data name="AllReturns" xml:space="preserve">
     <value>All Returns</value>
@@ -7906,4 +7906,10 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
 <data name="ZAKATUpdate" xml:space="preserve">
     <value>ZAKAT Update</value>
   </data>
+    <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
+    <value>Total Bills Selected</value>
+  </data>
+    <data name="VRSadadAlert" xml:space="preserve">
+  <value>Generating the SADAD number will be final activity to submit the review form, and no changes will be allowed afterwards. Click OK to generate.</value>
+</data>
 </root>

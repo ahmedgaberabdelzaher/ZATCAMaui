@@ -365,6 +365,7 @@
                                                              Unfocused="Report_Details_UnFocused"
                                                              PlaceholderColor="Gray" FontSize="Small"
                                                              MinimumHeightRequest="100"
+                                                             IsEnabled="{Binding IsReportDetailsEditable}"
                                                              HorizontalOptions="FillAndExpand"
                                                              Style="{StaticResource BodyLabelBlack}" />
 
@@ -650,6 +651,7 @@
                                                  IsScrollingEnabled="False" VerticalOptions="StartAndExpand"
                                                  AutoFitMode="Height" ItemSpacing="5"
                                                  ItemsSource="{Binding DisputeAmountPaymentOptions}"
+                                                 IsEnabled="{Binding DAPOptionsEditable}"
                                                  SelectionMode="Single"
                                                  SelectionBackgroundColor="Transparent"
                                                  ItemTapped="Dispute_Amount_ListView_ItemTapped">
@@ -758,6 +760,7 @@
                                 <custom:GAZTBorderlessEditor x:Name="Dispute_Details_Tx" MaxLength="1000"
                                                              Unfocused="Dispute_Details_UnFocused"
                                                              PlaceholderColor="Gray" FontSize="Small"
+                                                             IsEnabled="{Binding IsDisputeDetailsEditable}"
                                                              MinimumHeightRequest="100"
                                                              HorizontalOptions="FillAndExpand"
                                                              Style="{StaticResource BodyLabelBlack}" />
@@ -809,6 +812,7 @@
                                                  AutoFitMode="Height" ItemSpacing="5"
                                                  ItemsSource="{Binding SecurityPaymentOptions}"
                                                  SelectedItem="{Binding SelectedOption, Mode=TwoWay}"
+                                                 IsEnabled="{Binding IsSecurityPOEditable}"
                                                  SelectionMode="Single"
                                                  SelectionBackgroundColor="Transparent"
                                                  ItemTapped="Security_Type_ListView_ItemTapped">
