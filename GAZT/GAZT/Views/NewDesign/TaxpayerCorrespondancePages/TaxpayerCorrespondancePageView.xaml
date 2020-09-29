@@ -135,7 +135,7 @@
                         <!--SelectionChanged="chipgroup_SelectionChanged" ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1"  -->
                         <buttons:SfChipGroup.ItemTemplate>
                             <DataTemplate >
-                                <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
+                                <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="2" Padding="5,-2,5,-2"  >
                                     <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
                                     <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="Center" Style="{StaticResource CaptionLabelBlack}"/>
 
