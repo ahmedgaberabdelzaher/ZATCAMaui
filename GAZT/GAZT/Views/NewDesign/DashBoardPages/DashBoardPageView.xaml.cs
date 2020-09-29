@@ -82,6 +82,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             base.OnAppearing();
             OnDataLoad();
             RefreshDashboardCommand();
+            getYesCommandToLogout();
+            getNoCommandToLogout();
             viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
             viewModel.PaidString = AppResources.Paid;
             viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
@@ -89,7 +91,36 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.TotalString = AppResources.NDTotal;
             ChangeArrowDirection();
         }
+        public async void getYesCommandToLogout()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToLogout", async (sender, arg) =>
+                {
+                    App.TP = null;
+                    await viewModel.LogOut();
+                });
+            }
+            catch (Exception ex)
+            {
 
+            }
+        }
+
+        public async void getNoCommandToLogout()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoPressedToLogout", async (sender, arg) =>
+                {
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         public void OnDataLoad()
         {
             if (viewModel != null)
@@ -242,6 +273,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "StartTimerForDashboard");
+            MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
         }
         private async Task LoadData()
         {
@@ -490,25 +523,33 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private async void Logout_Tapped(System.Object sender, System.EventArgs e)
         {
-            //    App.DisplayProgressView();
+            try
+            {
+                //    App.DisplayProgressView();
 
-            if (App.IsArabic)
-            {
-                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
-                if (!result)
-                {
-                    App.TP = null;
-                    await viewModel.LogOut();
-                }
+                //if (App.IsArabic)
+                //{
+                //    var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
+                //    if (!result)
+                //    {
+                //        App.TP = null;
+                //        await viewModel.LogOut();
+                //    }
+                //}
+                //else
+                //{
+                //    var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                //    if (result)
+                //    {
+                //        App.TP = null;
+                //        await viewModel.LogOut();
+                //    }
+                //}
+                PopupNavigation.Instance.PushAsync(new LogoutPageView(AppResources.LogoutConfirmationMessage));
             }
-            else
+            catch(Exception ex)
             {
-                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-                if (result)
-                {
-                    App.TP = null;
-                    await viewModel.LogOut();
-                }
+
             }
         }
         private async void Label_MyBills(object sender, EventArgs e)

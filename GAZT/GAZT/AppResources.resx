@@ -4739,8 +4739,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VATAmendReactivationSuccessful" xml:space="preserve">
     <value>VAT Registration Amendment Successfull</value>
   </data>
-   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>VAT Registration Amendment Successfull</value>
+  <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+    <value>GAZT acknowledges your Change VAT registration application</value>
+    <comment>VATAmendReactivationSuccessfulPageView</comment>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
@@ -7884,20 +7885,19 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
     <value>You should Signup as new user</value>
   </data>
-    <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+  <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
     <value>Total liability to include in the installment</value>
   </data>
-   <data name="ZZZZGetAckNew" xml:space="preserve">
+  <data name="ZZZZGetAckNew" xml:space="preserve">
     <value>Get Acknowledgement</value>
   </data>
   <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
     <value>Your VAT Return is submitted successfully and SADAD Bill generated for</value>
   </data>
-<data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>GAZT acknowledges your Change VAT registration application</value>
-    <comment>VATAmendReactivationSuccessfulPageView</comment>
-  </data>
-<data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
+  <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>Do you want to add a new financial representative and close the current one ?</value>
+  </data>
+  <data name="ZZZZFAQ" xml:space="preserve">
+    <value>FAQ</value>
   </data>
 </root>

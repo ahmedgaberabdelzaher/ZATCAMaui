@@ -4723,7 +4723,7 @@
     <value>VAT Registration Amendment Successfull</value>
   </data>
   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>VAT Registration Amendment Successfull</value>
+    <value>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>تنشيط حساب ضريبة القيمة المضافة</value>
@@ -7823,10 +7823,10 @@
   <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
     <value>تم تقديم إقرار ضريبة القيمة المضافة بنجاح وتم انشاء فاتورة سداد لـ</value>
   </data>
-  <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل الهيئة العامة للزكاة والدخل</value>
-  </data>
- <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
+  <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>هل تريد إضافة ممثل مالي جديد وإغلاق الممثل الحالي؟</value>
+  </data>
+  <data name="ZZZZFAQ" xml:space="preserve">
+    <value>الأسئلة الشائعة</value>
   </data>
 </root>

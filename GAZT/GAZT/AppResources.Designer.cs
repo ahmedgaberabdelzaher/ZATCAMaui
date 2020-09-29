@@ -20849,6 +20849,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FAQ.
+        /// </summary>
+        public static string ZZZZFAQ {
+            get {
+                return ResourceManager.GetString("ZZZZFAQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From Previous Periods.
         /// </summary>
         public static string ZZZZFromPreviousPeriods {
