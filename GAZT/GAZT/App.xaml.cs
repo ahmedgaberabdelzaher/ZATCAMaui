@@ -238,8 +238,9 @@ namespace EGAZT
         public static string InfoPopUpPage = "InfoPopUpPage";
         public static string QuickActionPopUpPageView = "QuickActionPopUpPageView";
 
+        public static string AccountStatementsPageView = "AccountStatementsPageView";
 
-
+        //AccountStatementsPageView
 
         //VATRefundsListPageView
         #endregion

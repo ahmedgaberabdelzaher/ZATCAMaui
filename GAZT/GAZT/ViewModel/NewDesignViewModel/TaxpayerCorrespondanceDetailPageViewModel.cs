@@ -44,6 +44,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("CorrespondenceDateTime");
             }
         }
+        private string _correspondenceTime = string.Empty;
+        public string CorrespondenceTime
+        {
+            get
+            {
+                return _correspondenceTime;
+            }
+            set
+            {
+                _correspondenceTime = value;
+                RaisePropertyChanged("CorrespondenceTime");
+            }
+        }
 
         private bool _isFavoriteVisible = false;
         public bool IsFavoriteVisible

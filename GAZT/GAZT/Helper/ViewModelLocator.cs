@@ -171,6 +171,8 @@ using EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
+using EGAZT.Views.NewDesign.AccountStatements;
 
 namespace EGAZT
 {
@@ -373,6 +375,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopPageViewModel>();
 
+            //Account Statements
+            //AccountStatementsPageView
+            SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
 
             #endregion
         }
@@ -2308,8 +2313,20 @@ namespace EGAZT
             }
         }
 
-
-
+        public AccountStatementsPageViewModel AccountStatementsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -2516,6 +2533,10 @@ namespace EGAZT
             navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));
             //End EST
 
+
+            //Account Statements
+            navigationService.Configure(App.AccountStatementsPageView, typeof(AccountStatementsPageView));
+            //End Account Statements
             #endregion
 
             return navigationService;

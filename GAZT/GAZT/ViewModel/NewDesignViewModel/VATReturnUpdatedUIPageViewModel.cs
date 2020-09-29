@@ -45,7 +45,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-
         int CurrentView;
 
         #region Variable
