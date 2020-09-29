@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             viewModel.PopulateDataInChips();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            //SetPickerFont();
+            SetPickerFont();
         }
         public void SetPickerFont()
         {
@@ -40,24 +40,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            if (App.IsArabic)
-                            {
-                                TaxTypeDownPicker.HeaderFontFamily = "GE SS Two";
-                                TaxTypeDownPicker.ColumnHeaderFontFamily = "GE SS Two";
-                                TaxTypeDownPicker.SelectedItemFontFamily = "GE SS Two";
-                                TaxTypeDownPicker.UnSelectedItemFontFamily = "GE SS Two";//ddlLIssuedBy
-
-                           
-                            }
-                            else
-                            {
+                      
                                 TaxTypeDownPicker.HeaderFontFamily = "SSTArabic-Medium";
                                 TaxTypeDownPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
                                 TaxTypeDownPicker.SelectedItemFontFamily = "SSTArabic-Medium";
                                 TaxTypeDownPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
 
                  
-                            }
                         }
                         break;
                     case Xamarin.Forms.Device.Android:

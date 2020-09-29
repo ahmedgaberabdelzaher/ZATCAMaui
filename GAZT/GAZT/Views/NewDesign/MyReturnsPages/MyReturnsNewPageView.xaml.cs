@@ -41,7 +41,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     return;
                 } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
-           // SetPickerFont();
+        SetPickerFont();
           //  App.HideProgressView();
         }
         public void SetPickerFont()
@@ -53,24 +53,12 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            if (App.IsArabic)
-                            {
-                                TaxTypePicker.HeaderFontFamily = "GE SS Two";
-                                TaxTypePicker.ColumnHeaderFontFamily = "GE SS Two";
-                                TaxTypePicker.SelectedItemFontFamily = "GE SS Two";
-                                TaxTypePicker.UnSelectedItemFontFamily = "GE SS Two";//ddlLIssuedBy
-
-
-                            }
-                            else
-                            {
+                         
                                 TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
                                 TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
                                 TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
                                 TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
 
-
-                            }
                         }
                         break;
                     case Xamarin.Forms.Device.Android:

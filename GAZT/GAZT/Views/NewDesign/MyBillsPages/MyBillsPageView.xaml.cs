@@ -60,7 +60,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             { 
             
             }
-            //SetPickerFont();
+          SetPickerFont();
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -89,9 +89,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                                 TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
                                 TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
                                 TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
-
-
-                                                   }
+                        }
                         break;
                     case Xamarin.Forms.Device.Android:
                         TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
