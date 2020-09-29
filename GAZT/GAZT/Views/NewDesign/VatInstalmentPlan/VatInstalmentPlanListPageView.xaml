@@ -449,11 +449,25 @@
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2" VerticalOptions="CenterAndExpand">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentTotalLiabilityToIncludeInTheInstallment}"
-                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding TotalLiabilityAmount}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
-                                </StackLayout>
+                                <Grid  HorizontalOptions="FillAndExpand" Padding="10,3,10,2" VerticalOptions="CenterAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout HorizontalOptions="Start" Grid.Row="0" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}"
+                                      Style="{StaticResource BodyLabelBlack}"   />
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand">
+                                        <Label Text="{Binding TotalLiabilityAmount}" Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+
+ 
+
+                                </Grid>
                             </Frame>
                         </Grid>
 

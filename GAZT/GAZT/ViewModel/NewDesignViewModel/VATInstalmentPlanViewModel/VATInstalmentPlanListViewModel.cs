@@ -787,7 +787,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             InstalmentAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.TotInvAmt)) + " " + AppResources.ZSAR;
             PenaltyAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Peneltyamt)) + " " + AppResources.ZSAR;
             TotalAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Totdueamt)) + " " + AppResources.ZSAR;
-            TotalLiabilityAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Totliablityamt)) + " " + AppResources.ZSAR;
+            TotalLiabilityAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.VTISSet.results[0].Betrw)) + " " + AppResources.ZSAR;
         }
 
 
