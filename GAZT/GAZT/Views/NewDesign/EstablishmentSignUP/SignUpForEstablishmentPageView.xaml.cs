@@ -2433,7 +2433,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 flag = false;
                 FrmDBO.HasError = true;
             }
-            if (string.IsNullOrEmpty(viewModel.TxtName))
+            if (string.IsNullOrEmpty(viewModel.TxtName.Trim()))
             {
                 flag = false;
                 FrmName.HasError = true;
