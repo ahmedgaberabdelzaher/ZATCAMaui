@@ -8424,7 +8424,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                newDesignPopUp.MainHeader = AppResources.ZVatZerorateddomesticsales;
+                newDesignPopUp.MainHeader = AppResources.ZZZZNetVAT;
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
