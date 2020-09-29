@@ -97,6 +97,8 @@
 		<Folder Include="GAZTDLL\Droid\" />
 		<Folder Include="GAZTDLL\iOS\" />
 		<Folder Include="Views\NewDesign\VATRegistrationDetails\" />
+		<Folder Include="Views\NewDesign\AccountStatements\" />
+		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -403,6 +405,9 @@
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\ZAKATForm5\ZAKATForm05PageView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\EstablishmentAmendUpdatePages\EstablishmentAmendUpdatePageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 	</ItemGroup>

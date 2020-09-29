@@ -171,6 +171,10 @@ using EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
+using EGAZT.Views.NewDesign.AccountStatements;
+using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
+using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 
 namespace EGAZT
 {
@@ -223,6 +227,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<EstablishmentAmendUpdatePageViewModel>();
             SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
             SimpleIoc.Default.Register<ActivityItemPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulViewModel>();
@@ -373,6 +378,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopPageViewModel>();
 
+            //Account Statements
+            //AccountStatementsPageView
+            SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
 
             #endregion
         }
@@ -771,6 +779,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public EstablishmentAmendUpdatePageViewModel EstablishmentAmendUpdatePage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2308,8 +2330,20 @@ namespace EGAZT
             }
         }
 
-
-
+        public AccountStatementsPageViewModel AccountStatementsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -2511,11 +2545,16 @@ namespace EGAZT
 
             //EST
             navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
+            navigationService.Configure(App.EstablishmentAmendUpdatePage, typeof(EstablishmentAmendUpdatePageView));
             navigationService.Configure(App.ActivityItemPage, typeof(ActivityItemPage));
             navigationService.Configure(App.OutletDetailsPageView, typeof(OutletDetailsPageView));
             navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));
             //End EST
 
+
+            //Account Statements
+            navigationService.Configure(App.AccountStatementsPageView, typeof(AccountStatementsPageView));
+            //End Account Statements
             #endregion
 
             return navigationService;

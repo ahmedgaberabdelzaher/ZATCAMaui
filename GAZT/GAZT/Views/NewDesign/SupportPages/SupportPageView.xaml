@@ -65,7 +65,7 @@
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
-                                    <Image Source="ic_vat_return.png"/>
+                                    <Image Source="declaration.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPrivacyPolicy}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>

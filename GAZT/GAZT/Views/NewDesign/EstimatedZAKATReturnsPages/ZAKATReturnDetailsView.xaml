@@ -291,7 +291,7 @@
                                              <StackLayout x:Name="TVSNA" Spacing="0" Grid.Row="2" Grid.Column="0" >
                                                 <inputLayout:SfTextInputLayout ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
-                                                    <custom:GAZTBorderlessEntry  Text="{x:Static local:AppResources.ZNA}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding TvtslI}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
 
                                                              </custom:GAZTBorderlessEntry>
 

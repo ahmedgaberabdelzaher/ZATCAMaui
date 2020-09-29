@@ -60,6 +60,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             { 
             
             }
+          SetPickerFont();
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -74,7 +75,36 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
           //  App.HideProgressView();
 
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
 
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                          
+                                TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+                                TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
