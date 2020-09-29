@@ -29,6 +29,50 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             viewModel.PopulateDataInChips();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+            SetPickerFont();
+        }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            if (App.IsArabic)
+                            {
+                                TaxTypeDownPicker.HeaderFontFamily = "GE SS Two";
+                                TaxTypeDownPicker.ColumnHeaderFontFamily = "GE SS Two";
+                                TaxTypeDownPicker.SelectedItemFontFamily = "GE SS Two";
+                                TaxTypeDownPicker.UnSelectedItemFontFamily = "GE SS Two";//ddlLIssuedBy
+
+                           
+                            }
+                            else
+                            {
+                                TaxTypeDownPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                TaxTypeDownPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                TaxTypeDownPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                TaxTypeDownPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                 
+                            }
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        TaxTypeDownPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypeDownPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypeDownPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypeDownPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
         private void SetLTR()
         {
