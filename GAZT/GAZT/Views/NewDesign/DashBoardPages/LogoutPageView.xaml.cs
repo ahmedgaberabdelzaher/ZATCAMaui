@@ -40,19 +40,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
-        private void OnOkayButtonClicked(object sender, EventArgs e)
+        private async void OnOkayButtonClicked(object sender, EventArgs e)
         {
             MessagingCenter.Send<Object, string>(this, "YesPressedToLogout", "Yes");
             OnSelect?.Invoke("Yes");
-            PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
 
         }
 
-        private void OnCancelClicked(object sender, EventArgs e)
+        private async void OnCancelClicked(object sender, EventArgs e)
         {
             MessagingCenter.Send<Object, string>(this, "NoPressedToLogout", "No");
             OnSelect?.Invoke("No");
-            PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
 
         }
         

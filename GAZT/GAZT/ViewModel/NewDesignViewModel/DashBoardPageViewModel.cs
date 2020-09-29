@@ -1305,7 +1305,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             await Task.Run(() =>
             {
-                App.DisplayProgressView();
+                // App.DisplayProgressView();
+                IsLoading = true;
             });
             if (App.TP != null)
                 App.TP = null;
@@ -1331,7 +1332,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             await Task.Run(() =>
             {
-                App.HideProgressView();
+                //App.HideProgressView();
+                IsLoading = false;
             });
 
             //var _navigation = Application.Current.MainPage.Navigation;

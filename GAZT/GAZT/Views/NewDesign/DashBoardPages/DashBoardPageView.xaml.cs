@@ -113,7 +113,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "NoPressedToLogout", async (sender, arg) =>
                 {
-
                 });
             }
             catch (Exception ex)
