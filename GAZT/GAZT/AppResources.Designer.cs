@@ -8699,11 +8699,11 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Amendment Successful.
+        ///   Looks up a localized string similar to VAT Registration Amendment Successfull.
         /// </summary>
-        public static string VATAmendmentSuccessful {
+        public static string VATAmendReactivationSuccessful {
             get {
-                return ResourceManager.GetString("VATAmendmentSuccessful", resourceCulture);
+                return ResourceManager.GetString("VATAmendReactivationSuccessful", resourceCulture);
             }
         }
         
@@ -9618,15 +9618,6 @@ namespace EGAZT {
         public static string VatReactivationDashboardTitle {
             get {
                 return ResourceManager.GetString("VatReactivationDashboardTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to VAT Reactivation Successful.
-        /// </summary>
-        public static string VATReactivationSuccessful {
-            get {
-                return ResourceManager.GetString("VATReactivationSuccessful", resourceCulture);
             }
         }
         
@@ -20867,6 +20858,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get Acknowledgement.
+        /// </summary>
+        public static string ZZZZGetAckNew {
+            get {
+                return ResourceManager.GetString("ZZZZGetAckNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go to Dashboard.
         /// </summary>
         public static string ZZZZGotoDashboard {
@@ -21331,6 +21331,15 @@ namespace EGAZT {
         public static string ZZZZVATReturnsubmitted {
             get {
                 return ResourceManager.GetString("ZZZZVATReturnsubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your VAT Return is submitted successfully and SADAD Bill generated for.
+        /// </summary>
+        public static string ZZZZVatReturnSubmittedNew {
+            get {
+                return ResourceManager.GetString("ZZZZVatReturnSubmittedNew", resourceCulture);
             }
         }
         

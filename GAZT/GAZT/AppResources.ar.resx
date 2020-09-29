@@ -7817,6 +7817,12 @@
   <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
     <value>مجموع الخصومات المطلوب إدراجها في التقسيط</value>
   </data>
+  <data name="ZZZZGetAckNew" xml:space="preserve">
+    <value>الحصول على اشعار الاستلام</value>
+  </data>
+  <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
+    <value>تم تقديم إقرار ضريبة القيمة المضافة بنجاح وتم انشاء فاتورة سداد لـ</value>
+  </data>
   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
     <value>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل الهيئة العامة للزكاة والدخل</value>
   </data>

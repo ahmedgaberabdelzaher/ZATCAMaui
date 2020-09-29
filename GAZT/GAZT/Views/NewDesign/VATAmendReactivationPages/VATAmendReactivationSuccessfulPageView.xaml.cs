@@ -26,14 +26,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationSuccessfullPageView;
             this.BindingContext = viewModel;
-            if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation)
-            {
-                lblSuccessMessage.Text = AppResources.VATReactivationSuccessful;
-            }
-            else if (App.VATType == Enums.VATRegDetailsExecutionType.Amend)
-            {
-                lblSuccessMessage.Text = AppResources.VATAmendmentSuccessful;
-            }
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
             if (response != null)
