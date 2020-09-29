@@ -123,10 +123,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         if (NewMobileNumberEntryText.Length > 0 && CountryCode.Equals("+966"))
                         {
                             string firstlettorOfNewMobileNumberEntryText = NewMobileNumberEntryText.Substring(0, 1);
+                            char ch = NewMobileNumberEntryText.ToCharArray()[0];
                             if (!firstlettorOfNewMobileNumberEntryText.Equals("5"))
                             {
                                 NewMobileNumberEntryText = string.Empty;
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDMobileNumberMustStartWithFive));
+                                if((ch >= 48 && ch <= 57))
+                                {
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDMobileNumberMustStartWithFive));
+                                }
                             }
                         }
                         else

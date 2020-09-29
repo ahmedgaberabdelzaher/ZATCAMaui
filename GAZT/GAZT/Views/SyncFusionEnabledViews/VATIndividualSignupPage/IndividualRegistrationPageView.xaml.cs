@@ -38,12 +38,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         public IndividualRegistrationPageView()
         {
             InitializeComponent();
-            HijriCal.IsVisible = false;
+            
             viewModel = App.Locator.IndividualRegistrationPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             viewModel.IsHijriCal = false;
-            HijriCalSwitch.IsToggled = false;
+
             viewModel.ClearData();
              Task.Run(async() =>
             {
@@ -69,6 +69,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.PasswordView = false;
             viewModel.ContinueButtonText = AppResources.ZZZZContinue;
             //viewModel.SetFormVisibility();
+            try
+            {
+                viewModel.PopulateDataInChips();
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
+                viewModel.IsHijriCal = false;
+
+            }
+            catch(Exception e)
+            {
+
+            }
         }
         private void SetLTR()
         {
@@ -1551,8 +1562,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void HijriCal_OnDateSelected(object sender, CalendarView.DateSelectionArgs e)
         {
-            var date = HijriCal.DateSelected;
-            Console.WriteLine("Hi Your Hijri Date : " + date);
+            //var date = HijriCal.DateSelected;
+            //Console.WriteLine("Hi Your Hijri Date : " + date);
         }
 
         private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
@@ -1656,6 +1667,66 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.NationalAddressView = false;
             viewModel.ContactInformationView = true;
             viewModel.SummeryView = false;
+        }
+
+        private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ChipModel selectedReturntype = (ChipModel)e.AddedItem;
+                ChipGroup_statusFilter.SelectedItem = selectedReturntype;
+
+                if (selectedReturntype.Text.Equals(AppResources.NDHijri))
+                {
+                    viewModel.IsHijriCal = true;
+                    var selectedItem = SignUpDOBHijri.SelectedItem as ObservableCollection<object>;
+                    if (selectedItem != null)
+                    {
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.DOB = year + "/" + month + "/" + day;
+                        viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                        string DOB = year + month + day;
+                        viewModel.DOBPrev = viewModel.DOB;
+                        
+                    }
+                    else
+                    {
+                        viewModel.DOB = string.Empty;
+                        viewModel.DOBddyymm = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    viewModel.IsHijriCal = false;
+                    var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                    if (selectedItem != null)
+                    {
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.DOB = year + "/" + month + "/" + day;
+                        viewModel.DOBddyymm = day + "/" + month + "/" + year;
+                        string DOB = year + month + day;
+                        viewModel.DOBPrev = viewModel.DOB;
+                        
+                    }
+                    else
+                    {
+                        viewModel.DOB = string.Empty;
+                        viewModel.DOBddyymm = string.Empty;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }
