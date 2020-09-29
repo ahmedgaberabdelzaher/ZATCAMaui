@@ -4440,6 +4440,9 @@
   <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
     <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
+      <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+    <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
+  </data>
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>تاريخ الإيقاف / الشطب</value>
   </data>
@@ -4583,6 +4586,9 @@
   </data>
   <data name="VATDeregistrationDocumentType4" xml:space="preserve">
     <value>ملفات أخرى</value>
+  </data>
+      <data name="TinDeregistrationDateValidationMessage" xml:space="preserve">
+    <value>يجب ان يكون تاريخ الغاء التسجيل اكبر من تاريخ بداية اخر تصريح سارى المفعول</value>
   </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>

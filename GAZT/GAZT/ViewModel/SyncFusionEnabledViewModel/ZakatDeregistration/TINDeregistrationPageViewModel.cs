@@ -3353,7 +3353,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private String ConvertDateFormat(DateTime newDate)
+        public String ConvertDateFormat(DateTime newDate)
         {
             string ConvertedDate = string.Empty;
             TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
