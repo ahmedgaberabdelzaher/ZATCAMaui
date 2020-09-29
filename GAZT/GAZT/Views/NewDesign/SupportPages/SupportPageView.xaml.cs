@@ -65,7 +65,7 @@ namespace EGAZT.Views.NewDesign
                     Pin pin = new Pin
                     {
                         Label = "General Authority of Zakat and Tax - Headquarter",
-                        Address = AppResources.NDHeadQAddress,
+                        ///Address = AppResources.NDHeadQAddress,
                         Type = PinType.Place,
                         Position = new Position(lat, lon)
                     };
