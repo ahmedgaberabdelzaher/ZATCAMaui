@@ -143,7 +143,7 @@
                             <StackLayout>
                         <!--<WebView x:Name="ContactUsWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />-->
                                     <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZLandingPageTitle}" Style="{StaticResource PageTitleBlack}" />
-                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadquaeterRiyadh}" Style="{StaticResource SectionTitleBlack}" />
+                                    <!--<custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadquaeterRiyadh}" Style="{StaticResource SectionTitleBlack}" />
                                     <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">
                                         <Grid Padding="16">
                                             <Grid.ColumnDefinitions>
@@ -156,7 +156,7 @@
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadQAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                         </Grid>
-                                    </border:SfBorder>
+                                    </border:SfBorder>-->
 
                                 <yummy:PancakeView CornerRadius="14" Padding="0" HasShadow="True" BorderColor="{StaticResource NeutralLightGrey}"  Margin="0,10,0,0" >
                                         <gmaps:Map x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" IsShowingUser="True"/>
