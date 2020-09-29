@@ -518,7 +518,7 @@
 
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="declaration">
+                                            <Image Source="ic_menu_cr">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
