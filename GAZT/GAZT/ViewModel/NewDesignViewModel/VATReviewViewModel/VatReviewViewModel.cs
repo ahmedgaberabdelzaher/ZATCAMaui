@@ -3220,12 +3220,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
             try
             {
-                check.Add(new VATDeregistrationSummaryModel
+
+                if (requestType == "S")
                 {
-                    SummaryTitle = AppResources.VatDeregRequestType,
-                    SummaryData = requestType,
-                    IsEditVisible = true
-                });
+                    check.Add(new VATDeregistrationSummaryModel
+                    {
+                        SummaryTitle = AppResources.VatDeregRequestType,
+                        SummaryData = AppResources.VATDeregistrationReasonType2,
+                        IsEditVisible = true
+                    });
+                }
+                else
+                {
+                    check.Add(new VATDeregistrationSummaryModel
+                    {
+                        SummaryTitle = AppResources.VatDeregRequestType,
+                        SummaryData = AppResources.VATDeregistrationReasonType1,
+                        IsEditVisible = true
+                    });
+                }
+
+                //check.Add(new VATDeregistrationSummaryModel
+                //{
+                //    SummaryTitle = AppResources.VatDeregRequestType,
+                //    SummaryData = requestType,
+                //    IsEditVisible = true
+                //});
                 check.Add(new VATDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.VatDeregReasonTitle,
@@ -3270,12 +3290,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsEditVisible = true
                 });
 
-                check.Add(new VATDeregistrationSummaryModel
+                //check.Add(new VATDeregistrationSummaryModel
+                //{
+                //    SummaryTitle = AppResources.VatDeregDOBTitle,
+                //    SummaryData = dateOfBirth,
+                //    IsEditVisible = true
+                //});
+
+                if (!string.IsNullOrEmpty(dateOfBirth))
                 {
-                    SummaryTitle = AppResources.VatDeregDOBTitle,
-                    SummaryData = dateOfBirth,
-                    IsEditVisible = true
-                });
+                    check.Add(new VATDeregistrationSummaryModel
+                    {
+                        SummaryTitle = AppResources.VatDeregDOBTitle,
+                        SummaryData = dateOfBirth,
+                        IsEditVisible = true
+                    });
+                }
+
 
                 check.Add(new VATDeregistrationSummaryModel
                 {
