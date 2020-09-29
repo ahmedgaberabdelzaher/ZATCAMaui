@@ -190,8 +190,8 @@ namespace GAZT.iOS.CustomRenderer
             {
                 try
                 {
-                    NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
-                    Console.WriteLine(htmlData.ToString());
+                    //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
+                    //Console.WriteLine(htmlData.ToString());
                     //App.LoginDataRetrieved = new LoginModel();
 
                     //HtmlDocument document = new HtmlDocument();
