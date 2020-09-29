@@ -97,6 +97,8 @@
 		<Folder Include="GAZTDLL\Droid\" />
 		<Folder Include="GAZTDLL\iOS\" />
 		<Folder Include="Views\NewDesign\VATRegistrationDetails\" />
+		<Folder Include="Views\NewDesign\AccountStatements\" />
+		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

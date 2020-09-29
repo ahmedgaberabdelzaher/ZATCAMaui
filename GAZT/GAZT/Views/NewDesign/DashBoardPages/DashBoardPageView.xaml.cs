@@ -160,6 +160,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         else if (App.LoginDataRetrieved.VtReg == "R")
                         {
                             viewModel.IsVatRegistrationTileVisible = false;
+                            viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                         }
 
 
