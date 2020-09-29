@@ -80,7 +80,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
 
             }
+            SetPickerFont();
         }
+
+        
         private void SetLTR()
         {
             if (!App.IsArabic)
