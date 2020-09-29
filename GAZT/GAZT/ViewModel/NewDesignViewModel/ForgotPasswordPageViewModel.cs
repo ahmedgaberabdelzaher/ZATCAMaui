@@ -2040,9 +2040,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     //await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
+                                    OTPFirstDigit = string.Empty;
+                                    OTPSecondDigit = string.Empty;
+                                    OTPThirdDigit = string.Empty;
+                                    OTPFourthDigit = string.Empty;
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZWrongVerificationCode));
 
-                                   // await _dialogService.ShowMessageBox(AppResources.ZZZZWrongVerificationCode, AppResources.ZError);
+                                    // await _dialogService.ShowMessageBox(AppResources.ZZZZWrongVerificationCode, AppResources.ZError);
                                 });
                             }
                             else if (currentAttempts == 2)
