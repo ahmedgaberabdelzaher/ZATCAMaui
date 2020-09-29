@@ -465,14 +465,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-                if (attachments == value)
-                {
-                    return;
-                }
                 attachments = value;
                 RaisePropertyChanged("Attachments");
             }
         }
+
+
+
         public ObservableCollection<ZakatSelectBillModel> summarySelectedBillsList { get; set; }
         public ObservableCollection<ZakatSelectBillModel> SummarySelectedBillsList
         {
@@ -482,12 +481,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-                if (SummarySelectedBillsList == value)
-                {
-                    return;
-                }
                 summarySelectedBillsList = value;
                 RaisePropertyChanged("SummarySelectedBillsList");
+            }
+        }
+
+
+
+        private bool _isAttachmentsListVisible = false;
+        public bool IsAttachmentsListVisible
+        {
+            get
+            {
+                return _isAttachmentsListVisible;
+            }
+            set
+            {
+                _isAttachmentsListVisible = value;
+                RaisePropertyChanged("IsAttachmentsListVisible");
             }
         }
 
@@ -760,6 +771,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
 
         //Static data for Summary
+
         public void PopulateSummaryReasonData(RequestToVATInstallmentPlanDetails itemDetails)
         {
             SummarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
@@ -774,22 +786,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     isSelected = false,
                     billType = AppResources.ZakatInstalmetSelectTypeVAT
 
+
+
                 });
             }
 
-            Attachments = new ObservableCollection<ATTACHMENTSetResults>();
+
+
+            var attachments = new ObservableCollection<ATTACHMENTSetResults>();
+
+
 
             foreach (var attach in itemDetails.d.ATTACHMENTSet.results)
             {
-                Attachments.Add(attach);
+                if (string.IsNullOrEmpty(attach.Filename))
+                {
+                    attach.Filename = DateTime.Now.ToString("yyyy/MM/dd");
+                }
+                attachments.Add(attach);
             }
+
+            Attachments = attachments;
+
+            if (Attachments.Count == 0)
+            {
+                IsAttachmentsListVisible = false;
+            }
+            else
+            {
+                IsAttachmentsListVisible = true;
+            }
+
+
+
             NoOfInstalments = itemDetails.d.Noofinstallment;
             InstalmentAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.TotInvAmt)) + " " + AppResources.ZSAR;
             PenaltyAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Peneltyamt)) + " " + AppResources.ZSAR;
             TotalAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Totdueamt)) + " " + AppResources.ZSAR;
             TotalLiabilityAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.VTISSet.results[0].Betrw)) + " " + AppResources.ZSAR;
-        }
 
+
+
+
+        }
 
 
         #region GETVatInstalmentPlan
@@ -797,7 +836,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public async Task GetVATInstalmentPlanDetails(int index)
         {
 
-            SummarySelectedBillsList = null;
+           
             try
             {
                 await Task.Run(() =>
