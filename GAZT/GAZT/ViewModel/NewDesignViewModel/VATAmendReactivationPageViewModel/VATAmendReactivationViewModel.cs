@@ -1914,6 +1914,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 if (value1forimage3first == "1")
                 {
+                    quesTion3answerSelected = TextQuestion3First;
                     ImageforTextQuestion3First = "vat_tile_IbanCard_background.png";
                     TextQuestion3FirstTextColor = Color.White;
                 }
@@ -1925,6 +1926,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 if (value2forimage3second == "1")
                 {
+                    quesTion3answerSelected = TextQuestion3Second;
                     ImageforTextQuestion3Second = "vat_tile_IbanCard_background.png";
                     TextQuestion3SecondTextColor = Color.White;
                 }
@@ -1936,6 +1938,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 if (value1forimage4first == "1")
                 {
+                    quesTion4answerSelected = TextQuestion4First;
                     ImageforTextQuestion4First = "vat_tile_IbanCard_background.png";
                     TextQuestion4FirstTextColor = Color.White;
                 }
@@ -1947,6 +1950,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 if (value2forimage4second == "1")
                 {
+                    quesTion4answerSelected = TextQuestion4Second;
                     ImageforTextQuestion4Second = "vat_tile_IbanCard_background.png";
                     TextQuestion4SecondTextColor = Color.White;
                 }
@@ -2102,6 +2106,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             else if (vATRegistration.d.Decfg == "0")
                             {
                                 IsDeclarationChecked = false;
+                            }
+                            switch (App.VATType)
+                            {
+                                case Enums.VATRegDetailsExecutionType.Amend:
+                                case Enums.VATRegDetailsExecutionType.Reactivation:
+                                    IsInstrunctionChecked = true;
+                                    break;
+                                case Enums.VATRegDetailsExecutionType.Register:
+                                    break;
+                                default:
+                                    break;
                             }
                             if (vATRegistration.d.AgrFg != null)
                             {

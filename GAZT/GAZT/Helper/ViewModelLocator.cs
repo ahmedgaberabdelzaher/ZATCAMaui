@@ -170,6 +170,9 @@ using EGAZT.Views.NewDesign.VATReview;
 using EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using EGAZT.Views.NewDesign.VATAmendReactivationPages;
+using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
+using EGAZT.Views.NewDesign.AccountStatements;
 
 namespace EGAZT
 {
@@ -196,6 +199,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
             SimpleIoc.Default.Register<TaxpayerCorrespondancePageViewModel>();
             SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
+            SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
 
@@ -371,6 +375,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopPageViewModel>();
 
+            //Account Statements
+            //AccountStatementsPageView
+            SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
 
             #endregion
         }
@@ -2005,6 +2012,20 @@ namespace EGAZT
                 }
             }
         }
+        public VATAmendReactivationSuccesssulPageViewModel VATAmendReactivationSuccesssulPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATAmendReactivationSuccesssulPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public FileAttachmentPopUpPageViewModel FileAttachmentPopUpPageView
         {
             get
@@ -2292,8 +2313,20 @@ namespace EGAZT
             }
         }
 
-
-
+        public AccountStatementsPageViewModel AccountStatementsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -2434,6 +2467,7 @@ namespace EGAZT
             navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
             navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
             navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
+            navigationService.Configure(App.VATAmendReactivationSuccessfulPageView, typeof(VATAmendReactivationSuccessfulPageView));
 
             navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
             navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
@@ -2499,6 +2533,10 @@ namespace EGAZT
             navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));
             //End EST
 
+
+            //Account Statements
+            navigationService.Configure(App.AccountStatementsPageView, typeof(AccountStatementsPageView));
+            //End Account Statements
             #endregion
 
             return navigationService;

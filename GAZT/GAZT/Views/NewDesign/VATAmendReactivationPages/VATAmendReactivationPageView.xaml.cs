@@ -300,6 +300,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         viewModel.IsFinancialVisible = true;
                         //SetfifthBoxColor();
                         SetfourthBoxColor();
+                        if (viewModel.CurrentIndex == 3)
+                            viewModel.CurrentIndex++;
                     }
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep5)
@@ -433,12 +435,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                     //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
-                    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "01";
 
                     Models.VATRegistrationDetails response = await viewModel.SubmitClicked();
                     if (response != null)
                     {
-                        viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
+                        viewModel._navigationService.NavigateTo(App.VATAmendReactivationSuccessfulPageView, response);
                     }
 
                 }
@@ -1176,7 +1178,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void DpEStartDate_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
+            //var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
+            //string month = selectedItem[1].ToString();
+            //string day = selectedItem[0].ToString();
+            //string year = selectedItem[2].ToString();
+            //viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
         }
 
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
@@ -2357,21 +2363,22 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                             viewModel.SmtpAddrFR = vATSignUpData.d.Email;
-                            if (!string.IsNullOrEmpty(viewModel.FirstnmFR) || !string.IsNullOrEmpty(viewModel.LastnmFR) || !string.IsNullOrEmpty(viewModel.IdnumberFR) || !string.IsNullOrEmpty(viewModel.SmtpAddrFR))
-                            {
-                                FrmFirstName.IsEnabled = false;
-                                FrmLastName.IsEnabled = false;
-                                FrmEmailAddress.IsEnabled = false;
-                                FrmPhoneNumber.IsEnabled = false;
-                                viewModel.FrameIDError = false;
-                            }
-                            else
+                            viewModel.MobNumberFR = vATSignUpData.d.Mobile;
+                            if (string.IsNullOrEmpty(viewModel.FirstnmFR) && string.IsNullOrEmpty(viewModel.LastnmFR) && string.IsNullOrEmpty(viewModel.MobNumberFR) && string.IsNullOrEmpty(viewModel.SmtpAddrFR))
                             {
                                 FrmFirstName.IsEnabled = true;
                                 FrmLastName.IsEnabled = true;
                                 FrmEmailAddress.IsEnabled = true;
                                 FrmPhoneNumber.IsEnabled = true;
                                 viewModel.FrameIDError = true;
+                            }
+                            else
+                            {
+                                FrmFirstName.IsEnabled = false;
+                                FrmLastName.IsEnabled = false;
+                                FrmEmailAddress.IsEnabled = false;
+                                FrmPhoneNumber.IsEnabled = false;
+                                viewModel.FrameIDError = false;
                             }
 
                         }
@@ -4103,9 +4110,26 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         }
 
-        private void AddNewRepresentative_Tapped(object sender, CheckedChangedEventArgs e)
+        private async void AddNewRepresentative_Tapped(object sender, CheckedChangedEventArgs e)
         {
-            viewModel.IsNewFinancialRepVisible = ((CheckBox)sender).IsChecked;
+            if (((CheckBox)sender).IsChecked)
+            {
+                var result = await DisplayAlert("", AppResources.VATAmendAddNewFinancialRepresentativeWarning, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                    viewModel.IsNewFinancialRepVisible = ((CheckBox)sender).IsChecked;
+                }
+                else
+                {
+                    viewModel.IsNewFinancialRepVisible = !((CheckBox)sender).IsChecked;
+                    ((CheckBox)sender).IsChecked = false;
+                }
+
+            }
+            else
+            {
+                viewModel.IsNewFinancialRepVisible = ((CheckBox)sender).IsChecked;
+            }
         }
 
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)

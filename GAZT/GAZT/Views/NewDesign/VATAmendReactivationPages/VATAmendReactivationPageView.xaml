@@ -661,7 +661,7 @@
                                      HeaderBackgroundColor="White"
                                         SelectedItemTextColor="{StaticResource NeutralBlack}"
                                         BorderColor="Black"
-								ShowFooter="False" FutureDay="True"
+								ShowFooter="False" FutureDay="False"
 								 ShowColumnHeader="True"
                                              ColumnHeaderBackgroundColor="White"
 								ColumnHeaderHeight="50"
@@ -2122,7 +2122,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                     </inputLayout:SfTextInputLayout>
                                                                 </StackLayout>
 
-                                                                <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="{Binding DOBMandatoryVisibility}">
+                                                                <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="false">
                                                                     <Grid>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="auto"/>
@@ -2368,7 +2368,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
 
-                                                    <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="{Binding DOBMandatoryVisibility}">
+                                                    <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="false">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
@@ -2448,7 +2448,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" IsEnabled="False"
                                     ContainerType="Outlined" x:Name="FrmFirstName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry x:Name="EntryFirstName" Text="{Binding FirstnmFR}" IsSpellCheckEnabled="False" IsEnabled="False" 
+                                                            <custom:BorderlessEntry x:Name="EntryFirstName" Text="{Binding FirstnmFR}" IsSpellCheckEnabled="False"  
                                                           Placeholder="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>

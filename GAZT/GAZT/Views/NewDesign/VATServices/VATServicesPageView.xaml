@@ -61,7 +61,8 @@
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
 
-                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Spacing="16" IsVisible="{Binding IsVATAmendVisible}">
+                        <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                             <Image Source="deregistration.png"/>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDDeregistration}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
@@ -71,6 +72,30 @@
                             <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped"/>
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
+                    
+                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" >
+                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
+                            <Image Source="registration.png"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationAmendmentTile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+
+                        </StackLayout>
+                        <border:SfBorder.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="VATAment_Tapped"/>
+                        </border:SfBorder.GestureRecognizers>
+                    </border:SfBorder>
+
+                    </StackLayout>                    
+                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding IsVATReactivationVisible}">
+                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
+                            <Image Source="sf_ic_Paid.png"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationReactivationTile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+
+                        </StackLayout>
+                        <border:SfBorder.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="VATReactivation_Tapped"/>
+                        </border:SfBorder.GestureRecognizers>
+                    </border:SfBorder>
+                    
                 </StackLayout>
             </yummy:PancakeView>
             <Grid Grid.Row="0" Padding="15,5,15,5">
