@@ -35,7 +35,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public static IsComeFromForAttachment IsComeFromForAttachment;
         public ICommand OnSaveAsDraftClicked { get; set; }
         public ICommand NewAttachmentTapped { get; set; }
-
+        private bool isDateValidated = false;
         public ICommand GoBackClick { get; set; }
         public static Decimal AttachmentUploadedSize = 0;
         public static bool IsToBeFilled = false;
@@ -1499,6 +1499,90 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         }
+        public void suspendedDateValidation()
+        {
+            if (FromDate != DateTime.Now && ToDate != DateTime.Now)
+            {
+                if (LastIcrDate > FromDate)
+                {
+                    _dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Information);
+                    isDateValidated = false;
+                }
+                else if (ToDate <= FromDate)
+                {
+
+                   _dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Information);
+                    isDateValidated = false;
+                }
+                else
+                {
+                    DateTime startDateTime = Convert.ToDateTime(FromDate);
+                    DateTime toDateTime = Convert.ToDateTime(ToDate);
+                    string validateSuspendedDate = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
+                    VATDeregistrationSuspendedDateRootObject obj = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(validateSuspendedDate);
+                    if (obj.d != null)
+                    {
+                        if (obj.d.dateResults[0].SuspDtfrom != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
+                            SuspendedStartDate = date;
+
+
+                        }
+                        if (obj.d.dateResults[0].SuspDtto != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
+
+                           SuspendedEndDate = date;
+
+                        }
+                        if (obj.d.dateResults[0].NextDtfrom != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
+
+                            NextFilingStartDate = date;
+
+                        }
+                        if (obj.d.dateResults[0].NextDtfrom != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
+
+                            NextFilingEndDate = date;
+                        }
+                        if (obj.d.dateResults[0].Duedate != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
+
+                            NextFilingDueDate = date.ToString("dd MMM yyyy", new CultureInfo("en-US"));
+                        }
+
+                        isDateValidated = true;
+                    }
+                    else
+                    {
+
+                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(validateSuspendedDate);
+                        StringBuilder Message = new StringBuilder();
+                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                        {
+                            if (itemerror.code.Contains("ZD_DGVT/019"))
+                            {
+                                if (Message.Length > 0)
+                                {
+                                    Message.Append(Environment.NewLine);
+                                }
+                                Message.Append(itemerror.message);
+                            }
+                        }
+                         _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                        isDateValidated = false;
+                    }
+
+                }
+            }
+
+
+        }
 
         public async void AddOutletDocumentOptions()
         {
@@ -1565,52 +1649,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
         }
-        private  bool DateValidation()
-        {
-            bool isValid;
-            int result;
-            double quarterrDiff = quarterDiff(FromDate, ToDate);
-            result = DateTime.Compare(ToDate, FromDate);
-
-
-            if (LastIcrDate >= FromDate)
-            {
-
-                 _dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Alerts);
-                 isValid = false;
-            }
-
-         
-          else  if (result == 0 || result < 0)
-            {
-                isValid = true;
-                 _dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Alerts);
-
-            }
-            else if (quarterrDiff <= 1)
-            {
-                isValid = false;
-                 _dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, AppResources.Alerts);
-
-            }
-            else
-            {
-                isValid = true;
-            }
-
-            return isValid;
-        }
-        public static double quarterDiff(DateTime first, DateTime second)
-        {
-            int firstQuarter = getQuarter(first);
-            int secondQuarter = getQuarter(second);
-            return 1 + Math.Abs(firstQuarter - secondQuarter);
-        }
-
-        private static int getQuarter(DateTime date)
-        {
-            return (date.Year * 4) + ((date.Month - 1) / 3);
-        }
+       
         public async void ReasonContinueBtnClicked()
         {
             try
@@ -1619,32 +1658,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (SelectedOutletOptionIndex == 1)
                     {
-                        bool isValid;
-                        int result;
-                        double quarterrDiff = quarterDiff(FromDate, ToDate);
-                        result = DateTime.Compare(ToDate, FromDate);
+                       
+                        suspendedDateValidation();
 
-
-                        if (ReasonTitle == string.Empty)
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        }
-                        else if (LastIcrDate >= FromDate)
-                        {
-
-                            await _dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Alerts);
-
-                        }
-                        else if (result == 0 || result < 0)
-                        {
-                            await _dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Alerts);
-                        }
-                        else if (quarterrDiff <= 1)
-                        {
-                            await _dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, AppResources.Alerts);
-                        }
-                        else
-                        {
+                        if(isDateValidated)
+                        { 
                             setDATA("05");
                             await saveAsDraftVoidAPIMethodCall();
                             VoidIsVisible = true;
