@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using EGAZT.Models.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
+using GAZT.Helper;
 using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -80,6 +81,53 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             viewModel.GetContractReleaseSummaryData(item);
         }
 
+        private void Download_Acknowledgement(object sender, EventArgs e)
+        {
+            if (viewModel.ContractReLeaseSummaryData.RequestNumber != null)
+            {
+
+
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
+
+
+                String downloadurl = Constants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReLeaseSummaryData.RequestNumber + "')/$value";
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+
+
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+        }
+
+
+
+        private void Download_AcknowledgementForm(object sender, EventArgs e)
+        {
+            if (viewModel.ContractReLeaseSummaryData.RequestNumber != null)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                String downloadurl = Constants.CRDownloadCoverFormFile + "'" + viewModel.ContractReLeaseSummaryData.RequestNumber + "')/$value";
+                //await WebServiceManager.FileDownload(downloadurl, "pdf");
+                viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+        }
         private async void SummaryAttachments_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             await Task.Run(() =>

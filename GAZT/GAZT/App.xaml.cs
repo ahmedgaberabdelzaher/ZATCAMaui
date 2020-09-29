@@ -31,6 +31,8 @@ using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using GAZT.Helper;
 using GAZT.Manager;
 using System.Linq;
+using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
+using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -206,6 +208,7 @@ namespace EGAZT
         public static string VATRegistrationPageView = "VATRegistrationPageView";
         public static string VATAmendReactivationPageView = "VATAmendReactivationPageView";
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
+        public static string VATAmendReactivationSuccessfulPageView = nameof(VATAmendReactivationSuccessfulPageView);
         public static string VATIndividualSignupTnCPageView = "VATIndividualSignupTnCPageView";
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";
 

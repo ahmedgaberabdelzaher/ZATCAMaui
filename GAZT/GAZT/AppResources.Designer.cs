@@ -8690,6 +8690,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to add a new financial representative and close the current one ?.
+        /// </summary>
+        public static string VATAmendAddNewFinancialRepresentativeWarning {
+            get {
+                return ResourceManager.GetString("VATAmendAddNewFinancialRepresentativeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Registration Amendment Successfull.
         /// </summary>
         public static string VATAmendReactivationSuccessful {
@@ -8699,7 +8708,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Registration Amendment Successfull.
+        ///   Looks up a localized string similar to GAZT acknowledges your Change VAT registration application.
         /// </summary>
         public static string VATAmendReactivationSuccessfulAkwdg {
             get {

@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Enums;
+using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATServicesPageViewModel;
 using EGAZT.Views.NewDesign.VATDeRegistration;
 using Rg.Plugins.Popup.Services;
@@ -35,7 +36,7 @@ namespace EGAZT.Views.NewDesign.VATServices
             if (App.IsArabic)
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                this.FlowDirection = FlowDirection.RightToLeft; 
+                this.FlowDirection = FlowDirection.RightToLeft;
             }
             else
             {
@@ -82,6 +83,20 @@ namespace EGAZT.Views.NewDesign.VATServices
             {
                 PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
             });
+        }
+
+        private async void VATReactivation_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() => viewModel.IsLoading = true);
+            App.VATType = VATRegDetailsExecutionType.Reactivation;
+            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView));
+        }
+
+        private async void VATAment_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() => viewModel.IsLoading = true);
+            App.VATType = VATRegDetailsExecutionType.Amend;
+            viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
         }
     }
 }

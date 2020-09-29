@@ -112,6 +112,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             await viewModel.SetIssueIdList();
             await viewModel.SetCityList();
 
+            try
+            {
+                viewModel.PopulateDataInChips();
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
+                viewModel.IsHijriCal = false;
+
+            }
+            catch (Exception e)
+            {
+
+            }
 
         }
 
@@ -215,7 +226,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.MOTPThirdDigit = string.Empty;
             viewModel.MOTPFourthDigit = string.Empty;
             viewModel.IsHijriCal = false;
-            HijriCalSwitch.IsToggled = false;
+           // HijriCalSwitch.IsToggled = false;
         }
         private void SetLTR()
         {
@@ -4507,6 +4518,67 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.PageTitle = AppResources.ZZZContactInformation;
             viewModel.BodyText = AppResources.ZZZZCompletethebelowdetails;
             viewModel.CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
+        }
+
+        private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ChipModel selectedReturntype = (ChipModel)e.AddedItem;
+                ChipGroup_statusFilter.SelectedItem = selectedReturntype;
+                if (selectedReturntype.Text.Equals(AppResources.NDHijri))
+                {
+                    viewModel.IsHijriCal = true;
+                    if (DpDboHijri.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    viewModel.IsHijriCal = false;
+                    if (DpDbo.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber) && !string.IsNullOrEmpty(viewModel.PickerDobToDisplay))
+                {
+                    ValidateIDNumber();
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 

@@ -41,8 +41,8 @@
                 </Image>-->
 
                 <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
-                <Label Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessful}" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessfulAkwdg}" IsVisible="true"
+                <Label x:Name="lblSuccessMessage" Text="{x:Static custom2:AppResources.ZVatAcknowledgment}" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center" />
+                <Label Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessfulAkwdg}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>

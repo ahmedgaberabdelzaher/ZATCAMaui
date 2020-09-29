@@ -108,6 +108,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var item = e.ItemData as ZakatListModel;
             if (item != null)
             {
+
+
                 if (item.statusType == "E0013")
                 {
                     App.selectedZakatItem = item.fbNum;
@@ -123,6 +125,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 else
                 {
 
+                    viewModel.SelectedFbNum = item.fbNum;
                     var index = viewModel.ZakatListData.IndexOf(item);
 
                     viewModel.GetSummaryDetailsClickedAsync(index);
