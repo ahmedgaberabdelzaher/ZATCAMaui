@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -131,6 +132,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     RaisePropertyChanged(nameof(MarkComplete));
                 }
 
+            }
+        }
+        private bool _IsViewEnable = true;
+        public bool IsViewEnable
+        {
+            get
+            {
+                return _IsViewEnable;
+            }
+            set
+            {
+                _IsViewEnable = value;
+                RaisePropertyChanged("IsViewEnable");
             }
         }
         public bool MarkComplete { get; private set; } = false;
@@ -1392,6 +1406,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
+        public string _monthlyInstalment = "0.00 SAR";
+
+        public string MonthlyInstalment
+        {
+            set
+            {
+                if (_monthlyInstalment != value)
+                {
+                    _monthlyInstalment = value;
+                    RaisePropertyChanged("MonthlyInstalment");
+                }
+            }
+            get
+            {
+                return _monthlyInstalment;
+            }
+        }
 
         string minInstalmentsTitle = AppResources.ZakatMin + " " + 2;
         string maxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
@@ -1686,46 +1717,58 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 for (int i = 0; i < statementList.Length; i++)
                 {
-                    DateTime dateStart = new DateTime();
-                    //CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                    string apiDate = @"""" + statementList[i].Faedn + @"""";
-                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
-                    GregorianCalendar hjCalendar = new GregorianCalendar();
-                    int year = hjCalendar.GetYear(dateStart);
-                    int month = hjCalendar.GetMonth(dateStart);
-                    int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-                    statementList[i].Faedn = dateStr;
-
-                    string dt1 = string.Empty;
-                    string[] dts = null;
-                    dts = statementList[i].Faedn.Split('/');
-
-                    if (App.IsArabic)
+                   
+                        DateTime dateStart = new DateTime();
+                        //CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + statementList[i].Faedn + @"""";
+                    if (apiDate.Contains("Date"))
                     {
-                        dt1 = dts[2] + "-" + dts[1] + "-" + dts[0];
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                        statementList[i].Faedn = dateStr;
+
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = statementList[i].Faedn.Split('/');
+
+                        if (App.IsArabic)
+                        {
+                            dt1 = dts[2] + "-" + dts[1] + "-" + dts[0];
+
+                        }
+                        else
+                        {
+                            dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
+
+                        }
+
+
+
+                        //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                        statementList[i].Faedn = dt1;
 
                     }
-                    else
-                    {
-                        dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
-
-                    }
-
-
-
-                    //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                    statementList[i].Faedn = dt1;
 
 
                 }
                 StatementList = statementList;
                 VATBillDueAmount = VatInstalments.d.Totdueamt;
                 VATPenalityAmount = VatInstalments.d.Peneltyamt;
+                if(StatementList != null && StatementList.ToList().Count > 0) {
+
+                    MonthlyInstalment = string.Format("{0:N2}", double.Parse(VatInstalments.d.VTISSet.results[0].Betrw)) + " SAR";
+
+                }
+
                 //try
                 //{
 
@@ -2033,57 +2076,73 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async void AggrementContinueBtnClicked()
         {
-            try
-            {
-                //EnableAttachmentsView();
 
 
-                setDATA();
-                //VaiInstalmentRequest vatInstalments1 = new VaiInstalmentRequest();
-                //vatInstalments1.Xstep1Conf = "1";
-                //vatInstalments1.Xstep2Conf = "2";
-                //vatInstalments1.Noofinstallment = "4";
-                //vatInstalments1.Operationz = "10";
-
-                var amount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
-                VatInstalments.d.Totliablityamt = amount;
-                VatInstalments.d.StepNumberz = "03";
-
-                VatInstalments.d.Operationz = "10";
-
-
-                for (int i = 0; i < VatInstalments.d.VTIASet.results.ToList().Count; i++)
-                {
-
-
-                    VatInstalments.d.VTIASet.results[i].Xsele = "";
-
-                }
-
-
-                await Task.Run(async () =>
-                {
-                    VatInstalments = await SubmitClicked();
-
-                });
-
+            if(App.selectedVATItem != "") {
 
                 EnableStatementsView();
                 BindStatementsView();
 
             }
-            catch (GAZTUnlockAccountException ex)
-            {
+            else {
+
+                try
+                {
+                    //EnableAttachmentsView();
+
+
+                    setDATA();
+                    //VaiInstalmentRequest vatInstalments1 = new VaiInstalmentRequest();
+                    //vatInstalments1.Xstep1Conf = "1";
+                    //vatInstalments1.Xstep2Conf = "2";
+                    //vatInstalments1.Noofinstallment = "4";
+                    //vatInstalments1.Operationz = "10";
+
+                    var amount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
+                    VatInstalments.d.Totliablityamt = amount;
+                    VatInstalments.d.StepNumberz = "03";
+
+                    VatInstalments.d.Operationz = "10";
+
+
+                    for (int i = 0; i < VatInstalments.d.VTIASet.results.ToList().Count; i++)
+                    {
+
+
+                        VatInstalments.d.VTIASet.results[i].Xsele = "";
+
+                    }
+
+
+                    await Task.Run(async () =>
+                    {
+                        VatInstalments = await SubmitClicked();
+
+                    });
+
+
+                    EnableStatementsView();
+                    BindStatementsView();
+
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
 
             }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+
+
+
+            
         }
 
 
@@ -2364,6 +2423,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         if (App.selectedVATItem != "")
                         {
+                            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                            {
+                                IsViewEnable = false;
+                            }
                             var selectedItemFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
                             //vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData();
                             //VatInstalments = vATInstalment;
@@ -2416,6 +2479,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                 {
                                     NoOfInstalments = int.Parse(VatInstalments.d.Noofinstallment);
                                 }
+
+                              
                             }
 
 
@@ -2610,8 +2675,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             request.d.__metadata = VatInstalments.d.__metadata;
             request.d.VTADSet = VatInstalments.d.VTADSet.results;
             request.d.ATTACHMENTSet = VatInstalments.d.AttachmentSet.results;
+            request.d.ATTACHMENTSet.Clear();
             request.d.VTISSet = VatInstalments.d.VTISSet.results;
-            request.d.NOTESSet = VatInstalments.d.NotesSet.results;
+
+
+            if (VatInstalments.d.NotesSet.results.Count != 0)
+            {
+
+                string apiDate = VatInstalments.d.NotesSet.results[0].Erfdtz;
+                if (!apiDate.Contains("Date"))
+                {
+
+                    foreach (var item in VatInstalments.d.NotesSet.results)
+                    {
+
+                        DateTime dt1 = Convert.ToDateTime(item.Erfdtz);
+                        JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
+                        {
+                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                        };
+                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                        var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings2);
+                        string[] dateList1 = jsonDateTime1.Split('+');
+                        jsonDateTime1 = Regex.Replace(dateList1[0], "[@,\\.\";'\\\\]", string.Empty);
+                        jsonDateTime1 = jsonDateTime1 + ")/";
+
+                        item.Erfdtz = jsonDateTime1;
+
+                    }
+                }
+
+            }
+
+            request.d.NOTESSet = VatInstalments.d.NotesSet.results.ToArray();
 
 
 
@@ -2670,8 +2766,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         {
                             dateformat = "dd-MM-yyyy";
                         }
-
-
 
 
                         string DateAsString;

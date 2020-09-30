@@ -1550,6 +1550,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     submitDate = dt1;
                 }
 
+                if (bill.Abtyp.Equals("ITAX"))
+                {
+                    bill.Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                }
+                else if (bill.Abtyp.Equals("ZAKT"))
+                {
+                    bill.Abtyp = AppResources.FORM5Zakat;
+                }
 
 
                 SummarySelectedBillsList.Add(new ZakatSelectBillModel()

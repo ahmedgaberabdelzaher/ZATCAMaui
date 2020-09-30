@@ -30,7 +30,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
+            SetPickerFont();
             ClearFields();
             SetDataToUI();
             SetLocationToMap();
@@ -38,7 +38,58 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             viewModel.OnPageLoad();
 
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
 
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            RegionPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            RegionPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            RegionPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            RegionPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+
+                            CityPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            CityPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            CityPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            CityPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+
+
+                            ReportTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+                            ReportTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            ReportTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            ReportTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        RegionPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        CityPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+
+                        ReportTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ReportTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ReportTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ReportTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

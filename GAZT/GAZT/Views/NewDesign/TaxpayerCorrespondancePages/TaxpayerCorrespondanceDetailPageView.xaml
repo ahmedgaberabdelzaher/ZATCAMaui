@@ -118,11 +118,15 @@
                     <StackLayout Grid.Row="0" Grid.Column="0">
                         <control:CustomLabel Text="{Binding CorrespondenceTitle}"
                                              Style="{StaticResource SectionTitleBlack}" />
-                        <StackLayout HorizontalOptions="Start">
-                            <control:CustomLabel FlowDirection="LeftToRight" Text="{Binding CorrespondenceDateTime}"
-                                             Style="{StaticResource BodyLabelGrey}"/>
+                        <!--<StackLayout HorizontalOptions="Start">
+                            <control:CustomLabel  Text="{Binding CorrespondenceDateTime}"
+                                             Style="{StaticResource BodyLabelGrey}"/>-->
 
-                        </StackLayout>
+                            <StackLayout  Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                            <Label Text="{Binding CorrespondenceDateTime}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
+                            <Label Text="{Binding CorrespondenceTime}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
+                            </StackLayout>
+                        <!--</StackLayout>-->
 
                     </StackLayout>
                     <Image Grid.Row="0" Grid.Column="1" Source="{Binding FavIcon}" IsVisible="{Binding IsFavoriteVisible}" VerticalOptions="StartAndExpand">

@@ -512,6 +512,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
+                                
+
                                 if (childZakat.Ctime != null)
                                 {
                                     time = childZakat.Ctime;
@@ -522,6 +527,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
                                 }
+                                childZakat.DateToDisplay = StartDate;
+                                childZakat.TimeToDisplay = time;
                                 StartDate = String.Concat(StartDate, time);
                             }
                         }
@@ -530,6 +537,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
                                 time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
                                 if (childZakat.Ctime != null)
                                 {
@@ -541,9 +551,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
                                 }
-                                StartDate = StartDate + "  " + time;
+                                childZakat.DateToDisplay = StartDate;
+                                childZakat.TimeToDisplay = time;
+                               StartDate = StartDate + "  " + time;
                             }
                         }
+                      
+                       
+
                         childZakat.DateAndTime = StartDate;
                         ZakatCo.Add(childZakat);
                     }
@@ -610,6 +625,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
                                 if (childVAT.Ctime != null)
                                 {
                                     time = childVAT.Ctime;
@@ -620,6 +638,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
                                 }
+                                childVAT.DateToDisplay = StartDate;
+                                childVAT.TimeToDisplay = time;
                                 StartDate = String.Concat(StartDate, time);
                             }
                         }
@@ -628,6 +648,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
                                 if (childVAT.Ctime != null)
                                 {
                                     time = childVAT.Ctime;
@@ -638,6 +661,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
                                 }
+                                childVAT.DateToDisplay = StartDate;
+                                childVAT.TimeToDisplay = time;
                                 StartDate = StartDate + "  " + time;
                             }
                         }
@@ -707,6 +732,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
                                 if (childET.Ctime != null)
                                 {
                                     time = childET.Ctime;
@@ -717,6 +745,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
                                 }
+                                childET.DateToDisplay = StartDate;
+                                childET.TimeToDisplay = time;
                                 StartDate = String.Concat(StartDate, time);
                             }
                         }
@@ -725,6 +755,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (BegDate != null)
                             {
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                string[] dts = StartDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                                StartDate = date;
                                 if (childET.Ctime != null)
                                 {
                                     time = childET.Ctime;
@@ -735,6 +768,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
                                 }
+                                childET.DateToDisplay = StartDate;
+                                childET.TimeToDisplay = time;
                                 StartDate = StartDate + time;
                             }
                         }

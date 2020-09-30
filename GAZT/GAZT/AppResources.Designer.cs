@@ -2219,6 +2219,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZFilesizeshouldnotbemorethan1MB {
+            get {
+                return ResourceManager.GetString("ZFilesizeshouldnotbemorethan1MB", resourceCulture);
+            }
+        }
+        
         public static string ZMaximumnoof5attachmentscanbeuploaded {
             get {
                 return ResourceManager.GetString("ZMaximumnoof5attachmentscanbeuploaded", resourceCulture);
@@ -7659,6 +7665,12 @@ namespace EGAZT {
         public static string TinDeregistration50MBMax {
             get {
                 return ResourceManager.GetString("TinDeregistration50MBMax", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationDateValidationMessage {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDateValidationMessage", resourceCulture);
             }
         }
         
@@ -14070,6 +14082,18 @@ namespace EGAZT {
             }
         }
         
+        public static string TINDeregAttachmentsTitleOne {
+            get {
+                return ResourceManager.GetString("TINDeregAttachmentsTitleOne", resourceCulture);
+            }
+        }
+        
+        public static string TINDeregAttachmentsTitleTwo {
+            get {
+                return ResourceManager.GetString("TINDeregAttachmentsTitleTwo", resourceCulture);
+            }
+        }
+        
         public static string NDZakatWithdrawSubmittedSuccessfully {
             get {
                 return ResourceManager.GetString("NDZakatWithdrawSubmittedSuccessfully", resourceCulture);
@@ -14235,6 +14259,34 @@ namespace EGAZT {
         public static string NDSelectFilesOrCameraToUploadTheAttachment {
             get {
                 return ResourceManager.GetString("NDSelectFilesOrCameraToUploadTheAttachment", resourceCulture);
+
+        public static string ZAKATAmend {
+            get {
+                return ResourceManager.GetString("ZAKATAmend", resourceCulture);
+            }
+        }
+        
+        public static string ZAKATUpdate {
+            get {
+                return ResourceManager.GetString("ZAKATUpdate", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentTotalBillsSelected {
+            get {
+                return ResourceManager.GetString("VatInstalmentTotalBillsSelected", resourceCulture);
+            }
+        }
+        
+        public static string VRSadadAlert {
+            get {
+                return ResourceManager.GetString("VRSadadAlert", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZFAQ {
+            get {
+                return ResourceManager.GetString("ZZZZFAQ", resourceCulture);
             }
         }
     }

@@ -5571,9 +5571,16 @@ namespace GAZT.Manager
                                     String.Format("\"{0}\"", keyValuePair.Key));
                             }
 
+                            //foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
+                            //{
+                            //    multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
+                            //   '"' + "File" + '"',
+                            //   '"' + uploadedDocumentsList.FileNameWithExtension + '"');
+                            //}
+
                             foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
                             {
-                                multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
+                                multipartFormDataContent.Add(new StreamContent(new MemoryStream(uploadedDocumentsList.DocBinaryInBase64)),
                                '"' + "File" + '"',
                                '"' + uploadedDocumentsList.FileNameWithExtension + '"');
                             }
@@ -8248,7 +8255,7 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);

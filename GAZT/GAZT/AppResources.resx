@@ -1207,6 +1207,9 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>File size should not be more than 5MB</value>
   </data>
+      <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
+    <value>File size should not be more than 1MB</value>
+  </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
     <value>Maximum no. of 5 attachments can be uploaded.</value>
   </data>
@@ -4535,6 +4538,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistration50MBMax" xml:space="preserve">
     <value>50MB Max</value>
   </data>
+  <data name="TinDeregistrationDateValidationMessage" xml:space="preserve">
+    <value>Deregistration Date should be greater than the Latest Permit Valid Start Date</value>
+  </data>
   <data name="TinDeregistrationContactPersonName" xml:space="preserve">
     <value>Contact Person Name</value>
   </data>
@@ -4739,8 +4745,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VATAmendReactivationSuccessful" xml:space="preserve">
     <value>VAT Registration Amendment Successfull</value>
   </data>
-   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>VAT Registration Amendment Successfull</value>
+  <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
+    <value>GAZT acknowledges your Change VAT registration application</value>
+    <comment>VATAmendReactivationSuccessfulPageView</comment>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
@@ -5064,8 +5071,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="ZakatInstalmentsSadadNumber" xml:space="preserve">
     <value>SADAD Number</value>
   </data>
-  <data name="ZakatInstalmetDetails" xml:space="preserve">
-    <value>Display Instalment</value>
+ <data name="ZakatInstalmetDetails" xml:space="preserve">
+    <value>Display Instalment Schedule</value>
   </data>
   <data name="AllReturns" xml:space="preserve">
     <value>All Returns</value>
@@ -7824,6 +7831,14 @@ Please provide us with supporting documents to support your reasons for a review
 Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
+      <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
+    <value>The maximum nuber of attachments you can upload is 5</value>
+  </data>
+  <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
+    <value>Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB.
+Recommended settings for the scanner is: 1024 x 745
+Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
+  </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
     <value>Your Zakat Withdrawal Application is submitted successfully</value>
   </data>
@@ -7884,20 +7899,16 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="NDYoushouldsignupasnewuser" xml:space="preserve">
     <value>You should Signup as new user</value>
   </data>
-    <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
+  <data name="VATInstalmentTotalLiabilityToIncludeInTheInstallment" xml:space="preserve">
     <value>Total liability to include in the installment</value>
   </data>
-   <data name="ZZZZGetAckNew" xml:space="preserve">
+  <data name="ZZZZGetAckNew" xml:space="preserve">
     <value>Get Acknowledgement</value>
   </data>
   <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
     <value>Your VAT Return is submitted successfully and SADAD Bill generated for</value>
   </data>
-<data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>GAZT acknowledges your Change VAT registration application</value>
-    <comment>VATAmendReactivationSuccessfulPageView</comment>
-  </data>
-<data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
+  <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>Do you want to add a new financial representative and close the current one ?</value>
   </data>
    <data name="ZMaximumnoof3attachmentscanbeuploaded" xml:space="preserve">
@@ -7913,4 +7924,20 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
     <value>Select files or camera to upload the attachment</value>
   </data>
   
+
+<data name="ZAKATAmend" xml:space="preserve">
+    <value>ZAKAT Amendment</value>
+  </data>
+<data name="ZAKATUpdate" xml:space="preserve">
+    <value>ZAKAT Update</value>
+  </data>
+    <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
+    <value>Total Bills Selected</value>
+  </data>
+    <data name="VRSadadAlert" xml:space="preserve">
+  <value>Generating the SADAD number will be final activity to submit the review form, and no changes will be allowed afterwards. Click OK to generate.</value>
+</data>
+  <data name="ZZZZFAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
 </root>

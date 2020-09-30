@@ -16,7 +16,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public SupportTabEnum currentTab
         {
             get => _currentTab;
-            private set
+            set
             {
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));

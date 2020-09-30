@@ -584,6 +584,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        private bool isReportDetailsEditable = true;
+        public bool IsReportDetailsEditable
+        {
+            get
+            {
+                return isReportDetailsEditable;
+            }
+            set
+            {
+                isReportDetailsEditable = value;
+                RaisePropertyChanged("IsReportDetailsEditable");
+            }
+        }
+        private bool isDisputeDetailsEditable = true;
+        public bool IsDisputeDetailsEditable
+        {
+            get
+            {
+                return isDisputeDetailsEditable;
+            }
+            set
+            {
+                isDisputeDetailsEditable = value;
+                RaisePropertyChanged("IsDisputeDetailsEditable");
+            }
+        }
+        private bool dAPOptionsEditable = true;
+        public bool DAPOptionsEditable
+        {
+            get
+            {
+                return dAPOptionsEditable;
+            }
+            set
+            {
+                dAPOptionsEditable = value;
+                RaisePropertyChanged("DAPOptionsEditable");
+            }
+        }
+        private bool isSecurityPOEditable = true;
+        public bool IsSecurityPOEditable
+        {
+            get
+            {
+                return isSecurityPOEditable;
+            }
+            set
+            {
+                isSecurityPOEditable = value;
+                RaisePropertyChanged("IsSecurityPOEditable");
+            }
+        }
+
         private GenericPickerModel _reviewReasonPickerModel { get; set; }
 
         public GenericPickerModel ReviewReasonPickerModel
@@ -2308,7 +2361,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ReviewReasonCommand = new Command(async () => { showReviewReasonPickerDialog(); });
             SubReviewReasonCommand = new Command(async () => { showSubReviewReasonPickerDialog(); });
             ApplicationNumRefCommand = new Command(async () => { showAppRefNumberPickerDialog(); });
-            SadadGenerateBtnTapped = new Command(async () => { GenerateSadadNumberAsync(); });
+            SadadGenerateBtnTapped = new Command(async () => { ShowSADADConfirmation(); });
             ShowDatePicker = new Command(async () => { showDatePickerDialog(); });
             IdTypeSpinnerTapped = new Command(async () => { showIdTypePickerDialog(); });
             GoBackToReportDetails = new Command(async () => { EnableReportDetailsView(); });
@@ -2338,9 +2391,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 if (AttachmentsListViewData.Count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                        AttachmentsListViewData.ToList(),
-                        Models.ZakatInstalationModels.WhichAttachment.VatReviewAttachments, modelVATReview.d.ReturnIdx));
+                    if (string.IsNullOrEmpty(SADADNumber))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                            AttachmentsListViewData.ToList(),
+                            Models.ZakatInstalationModels.WhichAttachment.VatReviewAttachments,
+                            modelVATReview.d.ReturnIdx));
+                    }
                 }
             }
             catch (GAZTUnlockAccountException ex)
@@ -2554,7 +2611,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             try
             {
-                if (ReviewReasonPickerModel != null)
+                if (ReviewReasonPickerModel != null && string.IsNullOrEmpty(SADADNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(ReviewReasonPickerModel));
                 }
@@ -2577,7 +2634,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             try
             {
-                if (ReviewSubReasonPickerModel != null)
+                if (ReviewSubReasonPickerModel != null && string.IsNullOrEmpty(SADADNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(ReviewSubReasonPickerModel));
 
@@ -2601,7 +2658,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             try
             {
-                if (ApplicationRefPickerModel != null)
+                if (ApplicationRefPickerModel != null && string.IsNullOrEmpty(SADADNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(ApplicationRefPickerModel));
 
@@ -3018,6 +3075,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         }
 
+        public async void ShowSADADConfirmation()
+        {
+            if (IsGeneratingFormbundle)
+            {
+                await GenerateSadadNumberAsync();
+            }
+            else
+            {
+                await _dialogService.ShowMessage(message: AppResources.VRSadadAlert, title: AppResources.ZZZConfirmationMsg,
+                    buttonConfirmText: AppResources.ZZZOkayText, buttonCancelText: AppResources.ZZCancel,
+                    afterHideCallback: GenerateSadadConfirmaton);
+            }
+        }
+
+        public async void GenerateSadadConfirmaton(bool status)
+        {
+            if (status)
+            {
+                await GenerateSadadNumberAsync();
+            }
+        }
+
         public void ShowSadadGenerateButton()
         {
             SadadGenerateBtnVisible = true;
@@ -3031,6 +3110,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             IsSadadRefeshVisible = true;
             SadadGenerateProgressVisible = false;
             SadadAmountVisible = false;
+        }
+        public void MakeViewOnlyItems()
+        {
+            IsReportDetailsEditable = false;
+            DAPOptionsEditable = false;
+            IsRRAmountEdit = false;
+            IsDisputeDetailsEditable = false;
+            IsSecurityPOEditable = false;
+
         }
         public void ShowSadadProgressLabel()
         {
@@ -3132,12 +3220,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
             try
             {
-                check.Add(new VATDeregistrationSummaryModel
+
+                if (requestType == "S")
                 {
-                    SummaryTitle = AppResources.VatDeregRequestType,
-                    SummaryData = requestType,
-                    IsEditVisible = true
-                });
+                    check.Add(new VATDeregistrationSummaryModel
+                    {
+                        SummaryTitle = AppResources.VatDeregRequestType,
+                        SummaryData = AppResources.VATDeregistrationReasonType2,
+                        IsEditVisible = true
+                    });
+                }
+                else
+                {
+                    check.Add(new VATDeregistrationSummaryModel
+                    {
+                        SummaryTitle = AppResources.VatDeregRequestType,
+                        SummaryData = AppResources.VATDeregistrationReasonType1,
+                        IsEditVisible = true
+                    });
+                }
+
+                //check.Add(new VATDeregistrationSummaryModel
+                //{
+                //    SummaryTitle = AppResources.VatDeregRequestType,
+                //    SummaryData = requestType,
+                //    IsEditVisible = true
+                //});
                 check.Add(new VATDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.VatDeregReasonTitle,
@@ -3182,12 +3290,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsEditVisible = true
                 });
 
-                check.Add(new VATDeregistrationSummaryModel
+                //check.Add(new VATDeregistrationSummaryModel
+                //{
+                //    SummaryTitle = AppResources.VatDeregDOBTitle,
+                //    SummaryData = dateOfBirth,
+                //    IsEditVisible = true
+                //});
+
+                if (!string.IsNullOrEmpty(dateOfBirth))
                 {
-                    SummaryTitle = AppResources.VatDeregDOBTitle,
-                    SummaryData = dateOfBirth,
-                    IsEditVisible = true
-                });
+                    check.Add(new VATDeregistrationSummaryModel
+                    {
+                        SummaryTitle = AppResources.VatDeregDOBTitle,
+                        SummaryData = dateOfBirth,
+                        IsEditVisible = true
+                    });
+                }
+
 
                 check.Add(new VATDeregistrationSummaryModel
                 {
@@ -3693,6 +3812,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             RequestedReviewAmount = "";
             TotalTaxLiability = "";
             TaxPaid = "";
+
+            IsReportDetailsEditable = true;
+            DAPOptionsEditable = true;
+            IsRRAmountEdit = false;
+            IsDisputeDetailsEditable = true;
+            IsSecurityPOEditable = true;
 
             AddSecurityPaymentOptions();
             setIdPickerModel();
@@ -4238,6 +4363,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     }
                     else {
                         ShowSadadAmount();
+                        MakeViewOnlyItems();
                     }
 
 

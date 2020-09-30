@@ -80,7 +80,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
 
             }
+            SetPickerFont();
         }
+
+        
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -1635,7 +1638,68 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = "check_oval"; }
             }
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
 
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DDlIDType.HeaderFontFamily = "SSTArabic-Medium";
+                            DDlIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DDlIDType.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DDlIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+
+                            GCCPicker_Country.HeaderFontFamily = "SSTArabic-Medium";
+                            GCCPicker_Country.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            GCCPicker_Country.SelectedItemFontFamily = "SSTArabic-Medium";
+                            GCCPicker_Country.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+
+
+                            Picker_Region.HeaderFontFamily = "SSTArabic-Medium";
+                            Picker_Region.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            Picker_Region.SelectedItemFontFamily = "SSTArabic-Medium";
+                            Picker_Region.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                            Picker_City.HeaderFontFamily = "SSTArabic-Medium";
+                            Picker_City.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            Picker_City.SelectedItemFontFamily = "SSTArabic-Medium";
+                            Picker_City.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        DDlIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        GCCPicker_Country.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        GCCPicker_Country.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        GCCPicker_Country.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        GCCPicker_Country.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+
+                        Picker_Region.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_Region.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_Region.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_Region.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+
+                        Picker_City.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_City.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_City.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_City.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         void ResetPasswordValidationConditions()
         {
             viewModel.MinEight = "error";

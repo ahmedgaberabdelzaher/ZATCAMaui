@@ -3,6 +3,7 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,8 +21,8 @@ namespace EGAZT.Views.NewDesign.VATLookUp
 
             viewModel = App.Locator.VATLookUpNewPageView;
             this.BindingContext = viewModel;
-          
 
+            SetPickerFont();
             ChangeAeroIcon();
             SetLTR();
             //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
@@ -34,7 +35,36 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             viewModel.MaxDigids = "15";
             viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
 
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            PPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            PPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            PPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            PPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        PPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

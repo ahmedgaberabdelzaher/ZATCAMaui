@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Models.EnumModels;
+using EGAZT.ViewModel.NewDesignViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,10 @@ namespace EGAZT.Views.NewDesign
 
             SetLocationToMap();
 
+            if(viewModel.currentTab== SupportTabEnum.Parent)
+            {
+                viewModel.setSupportTab();
+            }
         }
 
         private async void SetLocationToMap()
@@ -65,7 +70,7 @@ namespace EGAZT.Views.NewDesign
                     Pin pin = new Pin
                     {
                         Label = "General Authority of Zakat and Tax - Headquarter",
-                        Address = AppResources.NDHeadQAddress,
+                        ///Address = AppResources.NDHeadQAddress,
                         Type = PinType.Place,
                         Position = new Position(lat, lon)
                     };

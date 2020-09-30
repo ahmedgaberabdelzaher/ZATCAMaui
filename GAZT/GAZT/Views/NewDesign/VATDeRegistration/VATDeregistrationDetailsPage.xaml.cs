@@ -206,7 +206,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle) || arg.DatePickerTitle.Contains(AppResources.VatDeregEndDatePickerTitle))
                 {
-                    suspendedDateValidation();
+                    viewModel.suspendedDateValidation();
                 }
 
             });
@@ -564,89 +564,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
         }
 
-        public void suspendedDateValidation()
-            {
-            if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
-            {
-                if(viewModel.LastIcrDate > viewModel.FromDate)
-                {
-                    viewModel._dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Information);
-
-                }
-               else if (viewModel.ToDate <= viewModel.FromDate)
-                {
-
-                    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Information);
-
-                }
-                else
-                {
-                    DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
-                    DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
-                    string validateSuspendedDate = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
-                    VATDeregistrationSuspendedDateRootObject obj = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(validateSuspendedDate);
-                    if (obj.d != null)
-                    {
-                        if (obj.d.dateResults[0].SuspDtfrom != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
-                            viewModel.SuspendedStartDate = date;
-
-
-                        }
-                        if (obj.d.dateResults[0].SuspDtto != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
-
-                            viewModel.SuspendedEndDate = date;
-
-                        }
-                        if (obj.d.dateResults[0].NextDtfrom != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
-
-                            viewModel.NextFilingStartDate = date;
-
-                        }
-                        if (obj.d.dateResults[0].NextDtfrom != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
-
-                            viewModel.NextFilingEndDate = date;
-                        }
-                        if (obj.d.dateResults[0].Duedate != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
-
-                            viewModel.NextFilingDueDate = date.ToString("dd MMM yyyy", new CultureInfo("en-US"));
-                        }
-                    }
-                    else
-                    {
-
-                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(validateSuspendedDate);
-                        StringBuilder Message = new StringBuilder();
-                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                        {
-                            if (itemerror.code.Contains("ZD_DGVT/019"))
-                            {
-                                if (Message.Length > 0)
-                                {
-                                    Message.Append(Environment.NewLine);
-                                }
-                                Message.Append(itemerror.message);
-                            }
-                        }
-                        viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-
-
-                    }
-
-                }
-            }
-
-
-        }
         public static double quarterDiff(DateTime first, DateTime second)
         {
             int firstQuarter = getQuarter(first);

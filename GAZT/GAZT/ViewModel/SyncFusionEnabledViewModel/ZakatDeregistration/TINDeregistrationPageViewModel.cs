@@ -1780,6 +1780,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             VoidIsVisible = false;
             EnableReasonView();
         }
+        #region Attachments View
+        public void PopulateAttachments(List<TinDeregestrationAttachmentsModel> attachments)
+        {
+            var attachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>();
+
+            foreach (TinDeregestrationAttachmentsModel attachemnt in attachments)
+            {
+                attachmentsListViewData.Add(attachemnt);
+            }
+            AttachmentsListViewData = attachmentsListViewData;
+        }
+
+        #endregion
+
+
         public async Task SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
@@ -3353,7 +3368,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private String ConvertDateFormat(DateTime newDate)
+        public String ConvertDateFormat(DateTime newDate)
         {
             string ConvertedDate = string.Empty;
             TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));

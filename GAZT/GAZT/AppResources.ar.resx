@@ -1226,6 +1226,9 @@
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>حجم الملف لا يزيد عن 5 ميجا</value>
   </data>
+      <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
+    <value>جم الملف لا يزيد عن 1 ميج</value>
+  </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
     <value>لا يمكن تحميل أكثر من 5 مرفقات</value>
   </data>
@@ -4440,6 +4443,9 @@
   <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
     <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
+      <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+    <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
+  </data>
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>تاريخ الإيقاف / الشطب</value>
   </data>
@@ -4584,6 +4590,18 @@
   <data name="VATDeregistrationDocumentType4" xml:space="preserve">
     <value>ملفات أخرى</value>
   </data>
+      <data name="TinDeregistrationDateValidationMessage" xml:space="preserve">
+    <value>يجب ان يكون تاريخ الغاء التسجيل اكبر من تاريخ بداية اخر تصريح سارى المفعول</value>
+  </data>
+   <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
+    <value> يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات</value>
+  </data>
+  <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
+    <value> تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من. 1MB.
+ الاعدادات الموصى بها للماسح الضوئي هي: 1024 * 745
+ الرجاء إرفاق ملف من الامتدادت التالية فقط DOC, DOCX, XLS, XLSX, PDF, JPG
+        </value>
+  </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>
   </data>
@@ -4723,7 +4741,7 @@
     <value>VAT Registration Amendment Successfull</value>
   </data>
   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>VAT Registration Amendment Successfull</value>
+    <value>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>تنشيط حساب ضريبة القيمة المضافة</value>
@@ -4882,7 +4900,7 @@
     <value>Please Select</value>
   </data>
   <data name="NDSkip" xml:space="preserve">
-    <value>تخطى</value>
+    <value>تخطي</value>
   </data>
   <data name="AllBills" xml:space="preserve">
     <value>جميع الفواتير</value>
@@ -5038,7 +5056,7 @@
     <value>SADAD Number</value>
   </data>
   <data name="ZakatInstalmetDetails" xml:space="preserve">
-    <value>عرض تفاصيل القسط</value>
+    <value>عرض جدول الاقساط</value>
   </data>
   <data name="AllReturns" xml:space="preserve">
     <value>جميع الاقرارات</value>
@@ -5164,8 +5182,8 @@
   <data name="NDInbox" xml:space="preserve">
     <value>الصندوق الوارد</value>
   </data>
-  <data name="NDReferenceNumber" xml:space="preserve">
-    <value>الرقم التسلسلي</value>
+ <data name="NDReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
@@ -7823,10 +7841,7 @@
   <data name="ZZZZVatReturnSubmittedNew" xml:space="preserve">
     <value>تم تقديم إقرار ضريبة القيمة المضافة بنجاح وتم انشاء فاتورة سداد لـ</value>
   </data>
-  <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
-    <value>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل الهيئة العامة للزكاة والدخل</value>
-  </data>
- <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
+  <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>هل تريد إضافة ممثل مالي جديد وإغلاق الممثل الحالي؟</value>
   </data>
    <data name="ZMaximumnoof3attachmentscanbeuploaded" xml:space="preserve">
@@ -7840,5 +7855,14 @@
   </data>
     <data name="NDSelectFilesOrCameraToUploadTheAttachment" xml:space="preserve">
     <value>اختر الكاميرا أو الملفات لرفع المرفقات</value>
+
+    <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
+    <value>إجمالي الفواتير المحددة</value>
+  </data>
+   <data name="VRSadadAlert" xml:space="preserve">
+  <value>إنشاء رقم سداد سيكون نشاطا نهائيا لتسليم نموذج المراجعة، ولن يسمح بأي تغييرات بعد ذلك. انقر على موافق للإنشاء</value>
+</data>
+  <data name="ZZZZFAQ" xml:space="preserve">
+    <value>الأسئلة الشائعة</value>
   </data>
 </root>

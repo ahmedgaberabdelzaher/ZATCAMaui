@@ -14,6 +14,8 @@ namespace GAZT.Models
         public string Cokey { get; set; }
         public DateTime Txtco { get; set; }
         public DateTime StartDate { get; set; }
+        public string DateToDisplay { get; set; }
+        public string TimeToDisplay { get; set; }
         public string Cotype { get; set; }
         public string Coitm { get; set; }
         public string Gpart { get; set; }

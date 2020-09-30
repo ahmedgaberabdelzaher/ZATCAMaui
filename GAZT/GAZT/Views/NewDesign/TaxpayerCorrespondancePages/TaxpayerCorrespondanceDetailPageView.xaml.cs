@@ -35,8 +35,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             if (CorrModel != null)
             {
                 viewModel.CorrespondenceTitle = CorrModel.Title;
-                viewModel.CorrespondenceDateTime = CorrModel.DateAndTime;
-                if(string.IsNullOrEmpty(CorrModel.TaxtpFg))
+                viewModel.CorrespondenceDateTime = CorrModel.DateToDisplay;
+                viewModel.CorrespondenceTime = CorrModel.TimeToDisplay;
+                if (string.IsNullOrEmpty(CorrModel.TaxtpFg))
                 {
                     viewModel.IsFavoriteVisible = true;
                 }

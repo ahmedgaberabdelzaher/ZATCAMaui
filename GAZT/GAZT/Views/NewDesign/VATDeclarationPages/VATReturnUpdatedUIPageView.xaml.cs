@@ -7465,7 +7465,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAmountInfo.Message = AppResources.ZToolTipPrivateHealthcareAmount;
                 headerAmountInfo.IsLinkAvailable = true;
                 headerAmountInfo.HeaderText = AppResources.ZZZZAmountWithSAR;
-                headerAmountInfo.LinkText = AppResources.ZLink;
+                headerAmountInfo.LinkText = AppResources.ZZZZFAQ;
                 headerAmountInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
                 if (App.IsArabic)
                 {
@@ -7480,7 +7480,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 headerAdjustmentInfo.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
                 headerAdjustmentInfo.HeaderText = AppResources.ZZZZAdjustmentWithSAR;
                 headerAdjustmentInfo.IsLinkAvailable = true;
-                headerAdjustmentInfo.LinkText = AppResources.ZLink; ;
+                headerAdjustmentInfo.LinkText = AppResources.ZZZZFAQ; 
                 headerAdjustmentInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
                 if (App.IsArabic)
                 {
@@ -7501,6 +7501,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 newDesignPopUp.MainHeader = AppResources.ZVatPrivateHealthcare;
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                //PopupNavigation.Instance.PushAsync(new ShowVatInformationForPrivatehealthCare());
+                
             }
             catch(Exception ex)
             {

@@ -72,7 +72,7 @@ namespace EGAZT.Views.NewDesign
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        //protected override bool OnBackButtonPressed() => true;
+        protected override bool OnBackButtonPressed() => true;
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

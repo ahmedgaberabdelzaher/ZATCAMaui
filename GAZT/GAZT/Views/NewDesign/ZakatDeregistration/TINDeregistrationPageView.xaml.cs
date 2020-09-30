@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
@@ -137,8 +140,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg.PickerId == "DeregDatePicker")
                 {
                     viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+              
                 }
-                if (arg.PickerId == "DOBDateTypePicker")
+               if (arg.PickerId == "DOBDateTypePicker")
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
 
@@ -585,6 +589,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
 
+                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet.Results);
+                string sortedDate = string.Empty;
+                foreach (PermitSetResult permitInfo in allPermitTypes)
+                {
+                    sortedDate  = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
+
+                }
+                DateTime permitDate = Convert.ToDateTime(sortedDate);
+                DateTime deregDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                if (deregDate < permitDate)
+                {
+                    viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+
+                }
 
             }
             catch (Exception ex)
