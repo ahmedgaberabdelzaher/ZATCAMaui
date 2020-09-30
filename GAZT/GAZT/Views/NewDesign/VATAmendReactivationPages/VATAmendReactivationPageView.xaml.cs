@@ -4576,7 +4576,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregEndDatePickerTitle;
+            genericDatePickerModel.DatePickerTitle = "";
             genericDatePickerModel.PickerId = "EndDateTypePicker";
             try
             {
