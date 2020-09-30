@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Models.EnumModels;
+using EGAZT.ViewModel.NewDesignViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,10 @@ namespace EGAZT.Views.NewDesign
 
             SetLocationToMap();
 
+            if(viewModel.currentTab== SupportTabEnum.Parent)
+            {
+                viewModel.setSupportTab();
+            }
         }
 
         private async void SetLocationToMap()
