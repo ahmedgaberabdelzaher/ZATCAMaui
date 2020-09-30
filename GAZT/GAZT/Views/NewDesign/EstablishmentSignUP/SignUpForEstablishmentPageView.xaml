@@ -110,7 +110,7 @@
                                 <Image Source="{Binding ImgBackgroundYes}">
                                 
                             </Image>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZYesText}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZYesText}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Margin="16,0,16,0" Padding="16,8,16,8">
                                     <custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundYes}" Value="re_Tile_Background">
                                             <Setter Property="TextColor" Value="White"/>
@@ -125,7 +125,7 @@
                                 <Image x:Name="NoBackGroungImg" Source="{Binding ImgBackgroundNo}">
 
                             </Image>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ButtonLabelBlackBold}" Margin="16,0,16,0" VerticalOptions="End" Padding="16,8,16,8">
                                 <custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundNo}" Value="re_Tile_Background">
                                         <Setter Property="TextColor" Value="White"/>
@@ -252,11 +252,11 @@
                                     <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled"/>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                                 </StackLayout>-->
-                                <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" VerticalOptions="Center" >
+                                <buttons:SfChipGroup  x:Name="ChipGroup_statusFilter" Margin="0,0,0,5" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" VerticalOptions="Center" >
                                     <buttons:SfChipGroup.ItemTemplate>
                                         <DataTemplate >
                                             <StackLayout WidthRequest="80" >
-                                                <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}"/>
+                                                <custom:CustomLabel Text="{Binding Text}" StyleId="OnBoardText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}"/>
                                             </StackLayout>
                                         </DataTemplate>
                                     </buttons:SfChipGroup.ItemTemplate>
