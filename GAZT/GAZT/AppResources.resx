@@ -8145,4 +8145,64 @@ CONTACT
 
 Questions, comments and requests regarding this privacy policy are welcomed and should be addressed to info@gazt.gov.sa</value>
   </data>
+  <data name="PPSubTitle1" xml:space="preserve">
+    <value>- To enable the GAZT to administer, and improve the site and the services GAZT offers on the Site;</value>
+  </data>
+  <data name="PPSubTitle10" xml:space="preserve">
+    <value>- To archive this information and/or use it for future communications with you</value>
+  </data>
+  <data name="PPSubTitle2" xml:space="preserve">
+    <value>- To help GAZT improve the Site offerings, both individually and in aggregate, and to individualize the experience and to evaluate the access and use of the Site;</value>
+  </data>
+  <data name="PPSubTitle3" xml:space="preserve">
+    <value>- For purposes of research</value>
+  </data>
+  <data name="PPSubTitle4" xml:space="preserve">
+    <value>- To monitor and detect violations of GAZT's Terms Of Service as well as other misuses and potential misuses of the Site.</value>
+  </data>
+  <data name="PPSubTitle5" xml:space="preserve">
+    <value>- To publish information, but not personal information, gathered about access, use, impact, and performance</value>
+  </data>
+  <data name="PPSubTitle6" xml:space="preserve">
+    <value>- To send you updates about GAZT or its events or to send you email messages about site maintenance or updates.</value>
+  </data>
+  <data name="PPSubTitle7" xml:space="preserve">
+    <value>- To archive this information and/or use it for future communications with you</value>
+  </data>
+  <data name="PPSubTitle8" xml:space="preserve">
+    <value>- To maintain and improve the functioning and security of the Site and GAZT's software, systems, and network</value>
+  </data>
+  <data name="PPSubTitle9" xml:space="preserve">
+    <value>- To archive this information and/or use it for future communications with you</value>
+  </data>
+  <data name="PrivacyPolicyPra1" xml:space="preserve">
+    <value>INFORMATION THE GENERAL AUTHORITY OF ZAKAT AND TAX MAY COLLECT FROM YOU</value>
+  </data>
+  <data name="PrivacyPolicyPra2" xml:space="preserve">
+    <value>The General Authority of Zakat and Tax ("GAZT") may collect and process the following information about you:</value>
+  </data>
+  <data name="PrivacyPolicyPra3" xml:space="preserve">
+    <value>Information you give GAZT: You may give GAZT information about you by filling in forms and options on the GAZT's sites or by corresponding with GAZT by phone, e-mail or otherwise. This includes information you provide when you register to use the site ("Site"), set up a user profile, and when you send GAZT an email or report a problem with the Site. The information you give GAZT may include personal information such as your name, address, e-mail address and phone number, personal description and business information relating to your organization and its employees, as well as, bank information related to Zakat transfer to the relevant Authorities.</value>
+  </data>
+  <data name="PrivacyPolicyPra4" xml:space="preserve">
+    <value>Information GAZT collects about you. With regard to each of your visits to the Site, GAZT may automatically collect the following information:</value>
+  </data>
+  <data name="PrivacyPolicyPra5" xml:space="preserve">
+    <value>Technical information, including the Internet protocol (IP) address used to connect your computer to the Internet, your login information, browser type and version, time zone setting, browser plug-in types and versions, operating system and platform; and</value>
+  </data>
+  <data name="PrivacyPolicyPra6" xml:space="preserve">
+    <value>Information about your visit, including the full Uniform Resource Locators (URL) clickstream to, through and from the Site (including date and time); page response times, download errors, length of visits to certain pages, page interaction information (such as scrolling, clicks, and mouse-overs), and methods used to browse away from the page and any phone number used to contact GAZT.</value>
+  </data>
+  <data name="PrivacyPolicyPra7" xml:space="preserve">
+    <value>Information GAZT receives from other sources. GAZT may receive information about you if you use any of the other websites GAZT operates or the other services GAZT provides. GAZT is also working closely with third parties (including, for example, other government entities, advisors and consultants, sub-contractors in technical services, analytics providers, search information providers) and may receive information about you from them.</value>
+  </data>
+  <data name="PrivacyPolicyPra8" xml:space="preserve">
+    <value>GAZT may uses information held about you in the following ways:</value>
+  </data>
+  <data name="PrivacyPolicySubTitle1" xml:space="preserve">
+    <value>USES MADE OF THE INFORMATION</value>
+  </data>
+  <data name="PrivacyPolicySubTitle1.1" xml:space="preserve">
+    <value>1. INFORMATION YOU GIVE TO GAZT OR GAZT COLLECTS ABOUT YOU. GAZT WILL USE THIS INFORMATION:</value>
+  </data>
 </root>

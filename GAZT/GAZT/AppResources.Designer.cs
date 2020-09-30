@@ -7363,6 +7363,186 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to - To enable the GAZT to administer, and improve the site and the services GAZT offers on the Site;.
+        /// </summary>
+        public static string PPSubTitle1 {
+            get {
+                return ResourceManager.GetString("PPSubTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To archive this information and/or use it for future communications with you.
+        /// </summary>
+        public static string PPSubTitle10 {
+            get {
+                return ResourceManager.GetString("PPSubTitle10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To help GAZT improve the Site offerings, both individually and in aggregate, and to individualize the experience and to evaluate the access and use of the Site;.
+        /// </summary>
+        public static string PPSubTitle2 {
+            get {
+                return ResourceManager.GetString("PPSubTitle2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - For purposes of research.
+        /// </summary>
+        public static string PPSubTitle3 {
+            get {
+                return ResourceManager.GetString("PPSubTitle3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To monitor and detect violations of GAZT&apos;s Terms Of Service as well as other misuses and potential misuses of the Site..
+        /// </summary>
+        public static string PPSubTitle4 {
+            get {
+                return ResourceManager.GetString("PPSubTitle4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To publish information, but not personal information, gathered about access, use, impact, and performance.
+        /// </summary>
+        public static string PPSubTitle5 {
+            get {
+                return ResourceManager.GetString("PPSubTitle5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To send you updates about GAZT or its events or to send you email messages about site maintenance or updates..
+        /// </summary>
+        public static string PPSubTitle6 {
+            get {
+                return ResourceManager.GetString("PPSubTitle6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To archive this information and/or use it for future communications with you.
+        /// </summary>
+        public static string PPSubTitle7 {
+            get {
+                return ResourceManager.GetString("PPSubTitle7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To maintain and improve the functioning and security of the Site and GAZT&apos;s software, systems, and network.
+        /// </summary>
+        public static string PPSubTitle8 {
+            get {
+                return ResourceManager.GetString("PPSubTitle8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - To archive this information and/or use it for future communications with you.
+        /// </summary>
+        public static string PPSubTitle9 {
+            get {
+                return ResourceManager.GetString("PPSubTitle9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INFORMATION THE GENERAL AUTHORITY OF ZAKAT AND TAX MAY COLLECT FROM YOU.
+        /// </summary>
+        public static string PrivacyPolicyPra1 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The General Authority of Zakat and Tax (&quot;GAZT&quot;) may collect and process the following information about you:.
+        /// </summary>
+        public static string PrivacyPolicyPra2 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information you give GAZT: You may give GAZT information about you by filling in forms and options on the GAZT&apos;s sites or by corresponding with GAZT by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send GAZT an email or report a problem with the Site. The information you give GAZT may include personal information such as your name, address, e-mail address and phone number, personal description and business in [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string PrivacyPolicyPra3 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information GAZT collects about you. With regard to each of your visits to the Site, GAZT may automatically collect the following information:.
+        /// </summary>
+        public static string PrivacyPolicyPra4 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical information, including the Internet protocol (IP) address used to connect your computer to the Internet, your login information, browser type and version, time zone setting, browser plug-in types and versions, operating system and platform; and.
+        /// </summary>
+        public static string PrivacyPolicyPra5 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information about your visit, including the full Uniform Resource Locators (URL) clickstream to, through and from the Site (including date and time); page response times, download errors, length of visits to certain pages, page interaction information (such as scrolling, clicks, and mouse-overs), and methods used to browse away from the page and any phone number used to contact GAZT..
+        /// </summary>
+        public static string PrivacyPolicyPra6 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information GAZT receives from other sources. GAZT may receive information about you if you use any of the other websites GAZT operates or the other services GAZT provides. GAZT is also working closely with third parties (including, for example, other government entities, advisors and consultants, sub-contractors in technical services, analytics providers, search information providers) and may receive information about you from them..
+        /// </summary>
+        public static string PrivacyPolicyPra7 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GAZT may uses information held about you in the following ways:.
+        /// </summary>
+        public static string PrivacyPolicyPra8 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicyPra8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USES MADE OF THE INFORMATION.
+        /// </summary>
+        public static string PrivacyPolicySubTitle1 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicySubTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. INFORMATION YOU GIVE TO GAZT OR GAZT COLLECTS ABOUT YOU. GAZT WILL USE THIS INFORMATION:.
+        /// </summary>
+        public static string PrivacyPolicySubTitle1_1 {
+            get {
+                return ResourceManager.GetString("PrivacyPolicySubTitle1.1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase value.
         /// </summary>
         public static string PurchaseValue {
