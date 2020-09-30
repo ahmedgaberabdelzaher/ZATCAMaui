@@ -7845,7 +7845,7 @@
     <value>هل تريد إضافة ممثل مالي جديد وإغلاق الممثل الحالي؟</value>
   </data>
     <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
-    <value>إجمالي الفواتير المحدده</value>
+    <value>إجمالي الفواتير المحددة</value>
   </data>
    <data name="VRSadadAlert" xml:space="preserve">
   <value>إنشاء رقم سداد سيكون نشاطا نهائيا لتسليم نموذج المراجعة، ولن يسمح بأي تغييرات بعد ذلك. انقر على موافق للإنشاء</value>

@@ -265,7 +265,8 @@
                                     Padding="0">
                                         <StackLayout>
                                             <Slider  
-                                            Maximum="{Binding MaxInstalments}" 
+                                            Maximum="{Binding MaxInstalments}"
+                                            IsEnabled="{Binding IsViewEnable}"
                                             Margin="5,5,5,10"                                                                      Value="{Binding NoOfInstalments}"                        
                                             MinimumTrackColor="{StaticResource Primary}"
                                                 MaximumTrackColor="LightSlateGray"
@@ -469,6 +470,7 @@
 
                         <listView:SfListView x:Name="BillsVATListVIew" HorizontalOptions="FillAndExpand"
                                               VerticalOptions="FillAndExpand"
+                                             SelectionChanging="listView_SelectionChanging"
                                                     Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                                                   AutoFitMode="DynamicHeight" ItemSpacing="10" RowSpacing="10" SelectionMode="Multiple"
                                       SelectionBackgroundColor="Transparent" ItemTapped="Bills_ItemTapped" ColumnSpacing="10" >

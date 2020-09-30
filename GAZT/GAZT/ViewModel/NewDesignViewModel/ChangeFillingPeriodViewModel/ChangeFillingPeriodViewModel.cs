@@ -82,6 +82,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        private bool _isDecCheckBoxVisible = false;
+        public bool IsDecCheckBoxVisible
+        {
+            get { return _isDecCheckBoxVisible; }
+            set
+            {
+                _isDecCheckBoxVisible = value;
+                RaisePropertyChanged("IsDecCheckBoxVisible");
+            }
+        }
+
         #region Commands
 
         public ICommand GoBackClick { get; set; }
@@ -1501,7 +1512,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void EnableFrequencyDetails()
         {
-            if (!IsFrequencyDetailsChecked || EffectiveDatePicked == "")
+            if ((IsDecCheckBoxVisible && !IsFrequencyDetailsChecked) || EffectiveDatePicked == "")
             {
                 IsFrequencyDetailsEnabled = false;
             }
@@ -1818,23 +1829,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             ChangeFillingResponse = resultData;
                             CurrentFrequency = resultData.d.CureentF;
                             NewFrequency = resultData.d.FilingF;
+
                             if (resultData.d.Attchk == "Q")
                             {
                                 IsAtachmentsVisible = true;
-
+                                IsDecCheckBoxVisible = true;
                             }
                             else
                             {
                                 IsAtachmentsVisible = false;
+                                IsDecCheckBoxVisible = false;
                             }
+
 
                             if (resultData.d.Attchk == "M")
                             {
                                 IsAtachmentsVisible = false;
+                                IsDecCheckBoxVisible = false;
                             }
                             else
                             {
                                 IsAtachmentsVisible = true;
+                                IsDecCheckBoxVisible = true;
                             }
 
                             GetEffectiveDateList();
