@@ -50,7 +50,7 @@
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
 
-                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding ShowVATRegisteredItems}">
                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                             <Image Source="ic_vat_return.png"/>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
@@ -61,7 +61,7 @@
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
 
-                    <StackLayout Spacing="16" IsVisible="{Binding IsVATAmendVisible}">
+                    <StackLayout Spacing="16" IsVisible="{Binding ShowVATRegisteredItems}">
                         <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                             <Image Source="deregistration.png"/>
@@ -84,8 +84,19 @@
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
 
-                    </StackLayout>                    
-                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding IsVATReactivationVisible}">
+                    </StackLayout>
+
+                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding ShowVATRegisteredItems}">
+                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
+                            <Image Source="details.png"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <border:SfBorder.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="VATRegistration_Details_Tapped"/>
+                        </border:SfBorder.GestureRecognizers>
+                    </border:SfBorder>
+
+                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding ShowVATReactivationItems}">
                         <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
                             <Image Source="sf_ic_Paid.png"/>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationReactivationTile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>

@@ -50,6 +50,21 @@ namespace EGAZT.Views.NewDesign.VATServices
             viewModel._navigationService.GoBack();
         }
 
+        private void VATRegistration_Details_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails);
+            });
+        }
+
         private async void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
             //await Task.Run(() =>
