@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
-using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Manager;
-using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
