@@ -29,6 +29,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 Yes.Text = AppResources.NDCamera;
                 No.Text = AppResources.NDFiles;
+                confirmationText.Text = AppResources.NDSelectFilesOrCameraToUploadTheAttachment;
             }
             else
             {
