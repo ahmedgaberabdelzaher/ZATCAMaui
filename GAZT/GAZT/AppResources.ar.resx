@@ -8117,4 +8117,6 @@
   <data name="PrivacyPolicySubTitle1.1" xml:space="preserve">
     <value>1. ​المعلومات التي تقدم أو التي تجمعها الهيئة عنك. وسوف يتم استخدام هذه المعلومات من قبل الهيئة العامة للزكاة الدخل من أجل:</value>
   </data>
+<data name="AccountStatementsTitle" xml:space="preserve">     <value>كشف الحساب</value>   </data>  <data name="ASDirectTaxes" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data> <data name="ASIndirectTaxes" xml:space="preserve">     <value>الضرائب الغير مباشرة</value>   </data>  <data name="ASCustoms" xml:space="preserve">     <value>الجمارك</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>كل العمليات</value>   </data> <data name="ASIncomeTax" xml:space="preserve">     <value>ضريبة الدخل</value>   </data>      <data name="ASWithholdingTax" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data>  
+
 </root>

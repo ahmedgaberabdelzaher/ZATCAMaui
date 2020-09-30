@@ -14471,5 +14471,47 @@ namespace EGAZT {
                 return ResourceManager.GetString("PrivacyPolicySubTitle1.1", resourceCulture);
             }
         }
+        
+        public static string AccountStatementsTitle {
+            get {
+                return ResourceManager.GetString("AccountStatementsTitle", resourceCulture);
+            }
+        }
+        
+        public static string ASDirectTaxes {
+            get {
+                return ResourceManager.GetString("ASDirectTaxes", resourceCulture);
+            }
+        }
+        
+        public static string ASIndirectTaxes {
+            get {
+                return ResourceManager.GetString("ASIndirectTaxes", resourceCulture);
+            }
+        }
+        
+        public static string ASCustoms {
+            get {
+                return ResourceManager.GetString("ASCustoms", resourceCulture);
+            }
+        }
+        
+        public static string ASAllTransactions {
+            get {
+                return ResourceManager.GetString("ASAllTransactions", resourceCulture);
+            }
+        }
+        
+        public static string ASIncomeTax {
+            get {
+                return ResourceManager.GetString("ASIncomeTax", resourceCulture);
+            }
+        }
+        
+        public static string ASWithholdingTax {
+            get {
+                return ResourceManager.GetString("ASWithholdingTax", resourceCulture);
+            }
+        }
     }
 }

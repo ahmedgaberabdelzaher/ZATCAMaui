@@ -8206,4 +8206,5 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   <data name="PrivacyPolicySubTitle1.1" xml:space="preserve">
     <value>1. INFORMATION YOU GIVE TO GAZT OR GAZT COLLECTS ABOUT YOU. GAZT WILL USE THIS INFORMATION:</value>
   </data>
+ <data name="AccountStatementsTitle" xml:space="preserve">     <value>Account Statement</value>   </data> <data name="ASDirectTaxes" xml:space="preserve">     <value>Direct Taxes</value>   </data> <data name="ASIndirectTaxes" xml:space="preserve">     <value>Indirect Taxes</value>   </data>     <data name="ASCustoms" xml:space="preserve">     <value>CUSTOMS</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>ALL TRANSACTIONS</value>   </data>  <data name="ASIncomeTax" xml:space="preserve">     <value>Income Tax</value>     <comment>My Return </comment>   </data>   <data name="ASWithholdingTax" xml:space="preserve">     <value>WITHHOLDING TAX</value>   </data>
 </root>

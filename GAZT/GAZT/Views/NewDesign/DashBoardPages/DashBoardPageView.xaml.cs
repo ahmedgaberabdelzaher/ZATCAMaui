@@ -961,6 +961,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             //MenuTitleName.Text = AppResources.NDVATServices;
         }
 
+        private void AccountStatements_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
+        }
+
         private void OnBackTapped(object sender, EventArgs e)
         {
             GoBackStep();
