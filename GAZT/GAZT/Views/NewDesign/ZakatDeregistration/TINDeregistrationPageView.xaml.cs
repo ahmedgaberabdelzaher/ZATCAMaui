@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
@@ -589,21 +590,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
                 List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet.Results);
-
+                string sortedDate = string.Empty;
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
-
-                    DateTime permitDate = Convert.ToDateTime(permitInfo.APermitValfrDtHTb);
-                    DateTime deregDate = Convert.ToDateTime(viewModel.PkrDBO);
-
-                    if (deregDate < permitDate)
-                    {
-                        viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-
-                    }
+                    sortedDate  = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
 
                 }
+                DateTime permitDate = Convert.ToDateTime(sortedDate);
+                DateTime deregDate = Convert.ToDateTime(viewModel.PkrDBO);
 
+                if (deregDate < permitDate)
+                {
+                    viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+
+                }
 
             }
             catch (Exception ex)

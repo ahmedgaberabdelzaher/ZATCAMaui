@@ -90,6 +90,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.TitleOne = AppResources.ZOAttachmentsTitleOne;
                 viewModel.TitleTwo = AppResources.ZOAttachmentsTitleTwo;
+            }else if (whichAttachment == WhichAttachment.TINDeregistration)
+            {
+                viewModel.TitleOne = AppResources.TINDeregAttachmentsTitleOne;
+                viewModel.TitleTwo = AppResources.TINDeregAttachmentsTitleTwo;
             }
             else
             {

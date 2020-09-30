@@ -2219,6 +2219,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZFilesizeshouldnotbemorethan1MB {
+            get {
+                return ResourceManager.GetString("ZFilesizeshouldnotbemorethan1MB", resourceCulture);
+            }
+        }
+        
         public static string ZMaximumnoof5attachmentscanbeuploaded {
             get {
                 return ResourceManager.GetString("ZMaximumnoof5attachmentscanbeuploaded", resourceCulture);
@@ -14073,6 +14079,18 @@ namespace EGAZT {
         public static string ZOAttachmentsTitleTwo {
             get {
                 return ResourceManager.GetString("ZOAttachmentsTitleTwo", resourceCulture);
+            }
+        }
+        
+        public static string TINDeregAttachmentsTitleOne {
+            get {
+                return ResourceManager.GetString("TINDeregAttachmentsTitleOne", resourceCulture);
+            }
+        }
+        
+        public static string TINDeregAttachmentsTitleTwo {
+            get {
+                return ResourceManager.GetString("TINDeregAttachmentsTitleTwo", resourceCulture);
             }
         }
         

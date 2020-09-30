@@ -1780,6 +1780,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             VoidIsVisible = false;
             EnableReasonView();
         }
+        #region Attachments View
+        public void PopulateAttachments(List<TinDeregestrationAttachmentsModel> attachments)
+        {
+            var attachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>();
+
+            foreach (TinDeregestrationAttachmentsModel attachemnt in attachments)
+            {
+                attachmentsListViewData.Add(attachemnt);
+            }
+            AttachmentsListViewData = attachmentsListViewData;
+        }
+
+        #endregion
+
+
         public async Task SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
