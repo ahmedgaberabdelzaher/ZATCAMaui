@@ -1207,6 +1207,9 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>File size should not be more than 5MB</value>
   </data>
+      <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
+    <value>File size should not be more than 1MB</value>
+  </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
     <value>Maximum no. of 5 attachments can be uploaded.</value>
   </data>
@@ -7826,6 +7829,14 @@ Please provide us with supporting documents to support your reasons for a review
   <data name="ZOAttachmentsTitleTwo" xml:space="preserve">
     <value>Caution, you must adjust the settings of the scanner so that the compressed file size less than MB10.
 Recommended settings for the scanner are: 1024 x 745
+Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
+  </data>
+      <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
+    <value>The maximum nuber of attachments you can upload is 5</value>
+  </data>
+  <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
+    <value>Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB.
+Recommended settings for the scanner is: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">

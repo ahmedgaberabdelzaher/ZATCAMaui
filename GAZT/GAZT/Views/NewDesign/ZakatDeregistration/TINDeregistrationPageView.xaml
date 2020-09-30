@@ -770,7 +770,7 @@
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                       <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -781,8 +781,9 @@
                         <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
-                         <RowDefinition Height="1"/>
+                         <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
+                     
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletDetails}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlack}" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletReviewMessage}" HorizontalOptions="StartAndExpand"
@@ -791,7 +792,7 @@
 
                         
                         <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
-                                             IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                             IsScrollBarVisible="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                 SelectionMode="Single" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -930,7 +931,7 @@
                         </listView:SfListView>
                        
                     </Grid>
-                         <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                                                      <CheckBox x:Name="outletDeclaration"   VerticalOptions="CenterAndExpand" IsChecked="{Binding IsOutletChecked}">
                                                         <CheckBox.Triggers>
                                                             <DataTrigger TargetType="CheckBox"  Value="false">
