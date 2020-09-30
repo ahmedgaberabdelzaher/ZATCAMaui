@@ -5916,7 +5916,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Upload your document</value>
   </data>
   <data name="VRNewAttachment" xml:space="preserve">
-    <value>New Attachment</value>
+    <value>Attachment Name</value>
   </data>
   <data name="VR20MB" xml:space="preserve">
     <value>20MB</value>
@@ -6804,7 +6804,8 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="VRHelperText" xml:space="preserve">
     <value>Supporting Evidence and Documents:
-Please provide us with supporting documents to support your reasons for a review.</value>
+Please provide us with supporting documents to support your reasons for a review.
+Please enter an attachment name before choosing an attachment</value>
   </data>
   <data name="VRAttachment" xml:space="preserve">
     <value>Attachment</value>

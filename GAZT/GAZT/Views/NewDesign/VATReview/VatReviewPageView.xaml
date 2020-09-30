@@ -435,10 +435,7 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                           
 
                                         </Grid>
                                     </DataTemplate>
@@ -955,10 +952,7 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                           
 
                                         </Grid>
                                     </DataTemplate>
@@ -999,10 +993,7 @@
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>
-                                <custom:CustomLabel Grid.Row="2"
-                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyle}" />
+                            
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NewBankGuranteeAttachmentTapped}" />
