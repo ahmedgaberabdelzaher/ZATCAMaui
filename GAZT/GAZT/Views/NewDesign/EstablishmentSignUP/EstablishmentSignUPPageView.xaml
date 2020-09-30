@@ -27,7 +27,7 @@
         <Grid>
             <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,16,24,24">
 
-                <Grid>
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -35,7 +35,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="2" x:Name="ParentView">
+                    <Grid Grid.Row="2" x:Name="ParentView" HorizontalOptions="StartAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>

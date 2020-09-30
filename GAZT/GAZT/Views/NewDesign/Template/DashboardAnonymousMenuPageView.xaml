@@ -9,7 +9,6 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:ResourceManager="clr-namespace:EGAZT"
-             BackgroundImageSource="partials_background"
              NavigationPage.HasNavigationBar="False"
              
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
@@ -45,6 +44,9 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
+            
+            <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" Source="partials_background.png" />
+            
             <!--<Grid x:Name="NewMenu">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
