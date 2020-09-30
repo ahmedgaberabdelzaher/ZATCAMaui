@@ -54,7 +54,74 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 CityPicker.BackgroundColor = Color.FromHex("#FFFFFF");
                 ReportTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
             }
+
+            GetCameraCommand();
+            GetGalleryCommand();
         }
+
+        private async void OnAttachmentClick(object sender, EventArgs e)
+        {
+
+            //var result = await this.DisplayAlert(AppResources.Attachment, AppResources.NDSelectFilesOrCameraToUploadTheAttachment, AppResources.NDCamera, AppResources.NDFiles);
+            //if (result)
+            //{
+            //    viewModel.UploadAttachment();
+            //}
+            //else
+            //{
+            //    await viewModel.AddAttachment();
+            //}
+
+            await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("SelectAttachment"));
+
+        }
+
+        public async void GetCameraCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "OnCameraClicked", async (sender, arg) =>
+                {
+                     viewModel.UploadAttachment();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void GetGalleryCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "OnGalleryClicked", async (sender, arg) =>
+                {
+                     viewModel.AddAttachment();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            try
+            {
+                MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
+                MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -299,6 +366,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 }
             }
         }
+
+
+       
+
+
+
 
         private void TVatNumber_Unfocused(object sender, FocusEventArgs e)
         {

@@ -14213,5 +14213,29 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATAmendAddNewFinancialRepresentativeWarning", resourceCulture);
             }
         }
+        
+        public static string ZMaximumnoof3attachmentscanbeuploaded {
+            get {
+                return ResourceManager.GetString("ZMaximumnoof3attachmentscanbeuploaded", resourceCulture);
+            }
+        }
+        
+        public static string NDFiles {
+            get {
+                return ResourceManager.GetString("NDFiles", resourceCulture);
+            }
+        }
+        
+        public static string NDCamera {
+            get {
+                return ResourceManager.GetString("NDCamera", resourceCulture);
+            }
+        }
+        
+        public static string NDSelectFilesOrCameraToUploadTheAttachment {
+            get {
+                return ResourceManager.GetString("NDSelectFilesOrCameraToUploadTheAttachment", resourceCulture);
+            }
+        }
     }
 }

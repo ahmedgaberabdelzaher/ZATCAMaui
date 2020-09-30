@@ -25,6 +25,17 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 _confirmationText = confirmationText.Text = ConfirmationText;
             }
 
+            if(ConfirmationText.Equals("SelectAttachment"))
+            {
+                Yes.Text = AppResources.NDCamera;
+                No.Text = AppResources.NDFiles;
+            }
+            else
+            {
+                Yes.Text = AppResources.ZYes;
+                No.Text = AppResources.ZNo;
+            }
+
         }
 
         protected override void OnAppearing()
@@ -33,7 +44,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
           
         }
 
-        private void OnOkayButtonClicked(object sender, EventArgs e)
+        private async void OnOkayButtonClicked(object sender, EventArgs e)
         {
             if(_confirmationText.Equals(AppResources.ZZDoyouwanttoreleasethedeclaration))
             {
@@ -48,6 +59,12 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MessagingCenter.Send<Object, string>(this, "YesCommandToDeleteVATAttachment", "Yes");
             }
+            else if (_confirmationText.Equals("SelectAttachment"))
+            {
+               await PopupNavigation.Instance.PopAsync();
+                MessagingCenter.Send<Object, string>(this, "OnCameraClicked", "Yes");
+                return;
+            }
             else
             {
                 MessagingCenter.Send<Object, string>(this, "YesPressedToAmendheReturn", "Yes");
@@ -57,10 +74,17 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-        private void OnCancelClicked(object sender, EventArgs e)
+        private async void OnCancelClicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
-            OnSelect?.Invoke("No");
+            if (_confirmationText.Equals("SelectAttachment"))
+            {
+               await PopupNavigation.Instance.PopAsync();
+                MessagingCenter.Send<Object, string>(this, "OnGalleryClicked", "No");
+                return;
+                
+            }
+            //MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
+            //OnSelect?.Invoke("No");
             PopupNavigation.Instance.PopAsync();
 
         }

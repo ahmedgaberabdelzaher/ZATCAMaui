@@ -7829,4 +7829,16 @@
  <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>هل تريد إضافة ممثل مالي جديد وإغلاق الممثل الحالي؟</value>
   </data>
+   <data name="ZMaximumnoof3attachmentscanbeuploaded" xml:space="preserve">
+   <value>لا يمكن تحميل أكثر من 3 مرفقات</value>
+    </data>
+   <data name="NDFiles" xml:space="preserve">
+    <value>الملفات</value>
+  </data>
+  <data name="NDCamera" xml:space="preserve">
+    <value>الكاميرا</value>
+  </data>
+    <data name="NDSelectFilesOrCameraToUploadTheAttachment" xml:space="preserve">
+    <value>اختر الكاميرا أو الملفات لرفع المرفقات</value>
+  </data>
 </root>

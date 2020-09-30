@@ -411,7 +411,7 @@
                                         <Image Source="closeGrey.png"/>
                                     </inputLayout:SfTextInputLayout.TrailingView> -->
                                 </inputLayout:SfTextInputLayout>
-                                <custom:CustomButton Command="{Binding OnAttachmentClick}" BackgroundColor="Transparent"  />
+                                <custom:CustomButton Clicked="OnAttachmentClick" BackgroundColor="Transparent"  />
                             </Grid>
 
                             <!--Attachment List-->
