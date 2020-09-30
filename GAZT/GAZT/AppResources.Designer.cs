@@ -14259,7 +14259,9 @@ namespace EGAZT {
         public static string NDSelectFilesOrCameraToUploadTheAttachment {
             get {
                 return ResourceManager.GetString("NDSelectFilesOrCameraToUploadTheAttachment", resourceCulture);
-
+            }
+        }
+        
         public static string ZAKATAmend {
             get {
                 return ResourceManager.GetString("ZAKATAmend", resourceCulture);
