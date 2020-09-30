@@ -305,6 +305,7 @@ namespace EGAZT
         public static string selectedZakatItem = "";
         public static string selectedVATItem = "";
         public static string selectedVatFillingItem = "";
+        public static string selectedVATItemFbust = "";
 
         #endregion
 

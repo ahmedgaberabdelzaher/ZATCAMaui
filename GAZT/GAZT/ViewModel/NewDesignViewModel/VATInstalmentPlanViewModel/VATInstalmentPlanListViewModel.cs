@@ -585,6 +585,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
 
                 App.selectedVATItem = "";
+                App.selectedVATItemFbust = "";
 
                 // _navigationService.NavigateTo(App.VatInstalmentPlanSuccessPage);
 

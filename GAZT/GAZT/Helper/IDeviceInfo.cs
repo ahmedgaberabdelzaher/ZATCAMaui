@@ -18,15 +18,16 @@ namespace GAZT.Helper
         string GetAttachmentToDownloadsPath(string fileName, string fileContents);
 
         bool IsJailBreakDetected();
+        byte[] GetImagePathByteArray(string filePath);
 
 
-       // bool IsJailBreakDetected { get; }
+        // bool IsJailBreakDetected { get; }
 
         //int ScreenHeight { get; }
         //int ScreenWidth { get; }
 
-       // string DeviceId { get; }
-      //  string Manufacturer { get; }
+        // string DeviceId { get; }
+        //  string Manufacturer { get; }
         string Model { get; }
         string OperatingSystem { get; }
         string OperatingSystemVersion { get; }

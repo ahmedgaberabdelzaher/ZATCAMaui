@@ -8255,7 +8255,7 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);

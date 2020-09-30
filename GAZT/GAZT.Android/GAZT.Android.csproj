@@ -196,6 +196,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer">
       <Version>18.1.0.55</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>4.0.1.5</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_Android.cs" />

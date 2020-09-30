@@ -164,14 +164,14 @@ namespace EGAZT.Views.NewDesign.VatReview
             DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[0];
         }
 
-        private void VRAttachTapped(object sender,Syncfusion.ListView.XForms.ItemTappedEventArgs e)
-        {
-            viewModel.OpenAttachment(e.ItemData as Attachment);
-        }
-        private void VRBGAttachTapped(object sender,Syncfusion.ListView.XForms.ItemTappedEventArgs e)
-        {
-            viewModel.OpenAttachment(e.ItemData as Attachment);
-        }
+        //private void VRAttachTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        //{
+        //    viewModel.OpenAttachment(e.ItemData as Attachment);
+        //}
+        //private void VRBGAttachTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        //{
+        //    viewModel.OpenAttachment(e.ItemData as Attachment);
+        //}
     }
 
     public interface VatReviewInterface

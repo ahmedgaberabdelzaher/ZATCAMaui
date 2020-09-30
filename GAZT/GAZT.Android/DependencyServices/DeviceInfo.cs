@@ -172,5 +172,20 @@ namespace GAZT.Droid.DependencyServices
             return false;
         }
 
+        public byte[] GetImagePathByteArray(string filePath)
+        {
+            byte[] base64Image = null;
+            try
+            {
+                base64Image = System.IO.File.ReadAllBytes(filePath);
+                //base64Image = Convert.ToBase64String(imageArray);
+
+            }
+            catch (System.Exception e)
+            {
+
+            }
+            return base64Image;
+        }
     }
 }

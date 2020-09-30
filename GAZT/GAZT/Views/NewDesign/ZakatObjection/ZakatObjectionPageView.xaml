@@ -418,7 +418,7 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf"
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon"
                                                                Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                                HorizontalOptions="Start" VerticalOptions="Center" />
 
@@ -633,7 +633,7 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
 
                                                      <Label Grid.Row="0" Grid.Column="1"
@@ -1696,7 +1696,7 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf"
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon"
                                                                Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                                HorizontalOptions="Start" VerticalOptions="Center" />
 
@@ -1805,7 +1805,7 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf"
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon"
                                                                Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                                HorizontalOptions="Start" VerticalOptions="Center" />
 
