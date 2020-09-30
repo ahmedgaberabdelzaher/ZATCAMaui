@@ -2579,6 +2579,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IsResendOTPEnabled = false;
                     VerifyButtonDisableColor = Color.FromHex("#d49504");
                     IsVerifyOTPEnabled = true;
+                    OTP = string.Empty;
+
+
                 }
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
                 VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
