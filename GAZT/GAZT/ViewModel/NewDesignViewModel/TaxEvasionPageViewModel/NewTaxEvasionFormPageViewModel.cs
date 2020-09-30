@@ -8,7 +8,6 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EnumModels;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -1243,7 +1242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         if (fileData.FileName.Contains("."))
                         {
                             string Extention = fileData.FileName.Split('.')[1];//pdf
-                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
+                            if ( Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
                             {
                                 if (TotalAttachmentSize <= 30)
                                 {
@@ -1539,7 +1538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                         if (FileName.Contains("."))
                                         {
                                             string Extention = FileName.Split('.')[1];//pdf
-                                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
+                                            if ( Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg")
                                             {
                                                 if (TotalAttachmentSize <= 30)
                                                 {
