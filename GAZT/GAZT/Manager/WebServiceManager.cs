@@ -5571,9 +5571,16 @@ namespace GAZT.Manager
                                     String.Format("\"{0}\"", keyValuePair.Key));
                             }
 
+                            //foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
+                            //{
+                            //    multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
+                            //   '"' + "File" + '"',
+                            //   '"' + uploadedDocumentsList.FileNameWithExtension + '"');
+                            //}
+
                             foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
                             {
-                                multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
+                                multipartFormDataContent.Add(new StreamContent(new MemoryStream(uploadedDocumentsList.DocBinaryInBase64)),
                                '"' + "File" + '"',
                                '"' + uploadedDocumentsList.FileNameWithExtension + '"');
                             }
