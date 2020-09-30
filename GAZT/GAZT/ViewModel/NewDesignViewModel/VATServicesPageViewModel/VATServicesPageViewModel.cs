@@ -7,8 +7,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATServicesPageViewModel
 {
     public class VATServicesPageViewModel : BaseViewModel
     {
-        public bool IsVATAmendVisible { get => App.LoginDataRetrieved.VtReg == "X" ? true : false; }
-        public bool IsVATReactivationVisible { get => App.LoginDataRetrieved.VtReg == "R" ? true : false; }
+        public bool ShowVATRegisteredItems { get => App.LoginDataRetrieved.VtReg == "X" ? true : false; }
+        public bool ShowVATReactivationItems { get => App.LoginDataRetrieved.VtReg == "R" ? true : false; }
         #region Constructor
         public VATServicesPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
