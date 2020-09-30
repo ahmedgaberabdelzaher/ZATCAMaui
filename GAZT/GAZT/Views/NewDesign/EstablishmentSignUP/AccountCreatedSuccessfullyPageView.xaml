@@ -26,7 +26,7 @@
             <StackLayout>
                 <StackLayout Padding="24,0,24,16">
                     <Image Source="Forget_ic_success.png" Margin="0,75,0,0"/>
-                    <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZAccountCreatedSuccessfully}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZAccountCreatedSuccessfully}"  StyleId="OnBoardText" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
                     <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDYouSuccessfullyRegisteredGAZTServies}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>-->
 
                 </StackLayout>
