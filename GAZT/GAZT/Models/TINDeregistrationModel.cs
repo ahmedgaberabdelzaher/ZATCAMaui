@@ -28,6 +28,20 @@ namespace EGAZT.Models
         {
         }
 
+        private List<Attachment> _attachmentTypeList { get; set; }
+        public List<Attachment> AttachmentTypeList
+        {
+            get
+            {
+                return _attachmentTypeList;
+            }
+            set
+            {
+                _attachmentTypeList = value;
+                OnPropertyRaised("AttachmentTypeList");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyRaised(string propertyname)
         {
@@ -107,6 +121,8 @@ namespace EGAZT.Models
         public string SummaryData { get; set; }
         public bool IsEditVisible { get; set; }
     }
+
+    
 
     public class ZakatDeregistrationDetailsListModel
     {
