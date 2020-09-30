@@ -384,12 +384,12 @@
                     <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <StackLayout>
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}" Style="{StaticResource CaptionLabelGrey}"/>
-                    <Grid>
+                    <Grid HorizontalOptions="StartAndExpand" > 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
+                        <Grid Grid.Column="0" HorizontalOptions="StartAndExpand">
                                 <Image Source="{Binding ImgBackgroundCRNubmer}">
 
                             </Image>
@@ -404,7 +404,7 @@
                                     <TapGestureRecognizer Tapped="OnCRNumberTapped" NumberOfTapsRequired="1"/>
                                 </Grid.GestureRecognizers>
                         </Grid>
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" HorizontalOptions="StartAndExpand">
                                 <Image x:Name="LicenseBackGroungImg" Source="{Binding ImgBackgroundLicenseNubmer}">
 
                             </Image>
