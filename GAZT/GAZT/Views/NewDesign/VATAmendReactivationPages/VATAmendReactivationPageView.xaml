@@ -649,9 +649,29 @@
                                                     Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                                                                         </Image.Source>
                                                                     </Image>
+                                                                    <StackLayout.GestureRecognizers>
+                                                                        <TapGestureRecognizer  Tapped="VATEligibleDateClicked" />
+                                                                    </StackLayout.GestureRecognizers>
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
-                                                            <Button Grid.Row="1" x:Name="btn1" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration} }"  BackgroundColor="Transparent" Clicked="btn1_Clicked" Margin="0,0,0,0" />
+                                                            <StackLayout IsVisible="false" Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End">
+                                                                <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                                <StackLayout HorizontalOptions="End" Orientation="Horizontal" >
+                                                                    <Image Margin="5,0">
+                                                                        <Image.Source>
+                                                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                                        </Image.Source>
+                                                                    </Image>
+
+                                                                </StackLayout>
+
+                                                                <StackLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer x:Name="EndDate" Tapped="VATEligibleDateClicked" ></TapGestureRecognizer>
+                                                                </StackLayout.GestureRecognizers>
+
+                                                            </StackLayout>
+                                                            <Button Grid.Row="1" IsVisible="false" x:Name="btn1" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration} }"  BackgroundColor="Transparent" Clicked="btn1_Clicked" Margin="0,0,0,0" />
                                                             <custom1:CustomDatePicker Grid.Row="1" FlowDirection="RightToLeft" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration} }"
 								ShowHeader="false"
 								Margin="2" 
