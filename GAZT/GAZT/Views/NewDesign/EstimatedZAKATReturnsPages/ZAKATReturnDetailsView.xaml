@@ -1196,11 +1196,11 @@
                         <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnConfirmClicked" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>
                         <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZAmend}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnAmendClick" IsVisible="{Binding SetAmendButtonVisibility}" Margin="0,10,0,0"/>
 
-                        <!--<Label Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.ChangeFromEstimateToAccountingBasis}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}" >
+                        <Label Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.ChangeFromEstimateToAccountingBasis}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"/>
                             </Label.GestureRecognizers>
-                        </Label>-->
+                        </Label>
 
                         <!--<Label Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
 
