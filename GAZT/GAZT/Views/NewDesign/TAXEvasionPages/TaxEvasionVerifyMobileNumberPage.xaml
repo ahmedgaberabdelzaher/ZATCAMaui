@@ -320,7 +320,7 @@
                                                IsEnabled="{Binding IsResendOTPEnabled}"
                                                Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
                                                VerticalOptions="StartAndExpand"
-                                               Margin="0,50,0,0"
+                                               Margin="0,50,0,0" FontFamily="{StaticResource SSTArRoman}"
                                                BackgroundColor="Transparent"
                                                TextColor="{Binding ResendOtpButtonColor}"/>
                 </StackLayout>
