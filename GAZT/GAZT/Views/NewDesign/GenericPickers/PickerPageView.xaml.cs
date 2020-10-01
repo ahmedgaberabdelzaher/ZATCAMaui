@@ -21,10 +21,45 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel.PickerItemSource = _pickerSource;
             ChangeAeroIcon();
             SetLTR();
+            SetPickerFont();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
 
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            PickerDoneButton.FontFamily = "SSTArabic-Medium";
+                            PickerTitle.FontFamily = "SSTArabic-Medium";
+
+                            genericPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            genericPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            genericPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        PickerDoneButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PickerTitle.FontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+
+                        genericPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        genericPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        genericPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
 
         private void SetLTR()
         {
@@ -56,6 +91,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            SetPickerFont();
         }
 
         void genericPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -63,7 +99,6 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             try
             {
                 viewModel.DataSource.SelectedValue = e.NewValue.ToString();
-
 
             }
             catch (Exception ex)
@@ -74,18 +109,18 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         private void PopupClose_Clicked(object sender, EventArgs e)
         {
+
             PopupNavigation.Instance.PopAsync();
 
             try
             {
-                    MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
 
-            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         void PopupPage_BackgroundClicked(System.Object sender, System.EventArgs e)

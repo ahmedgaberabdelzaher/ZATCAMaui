@@ -273,7 +273,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -379,7 +379,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -467,7 +467,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15">
 
                                         <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                                             <Grid.RowDefinitions>
@@ -630,7 +630,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -750,7 +750,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
