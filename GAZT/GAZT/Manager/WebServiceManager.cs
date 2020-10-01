@@ -5570,20 +5570,28 @@ namespace GAZT.Manager
                                 multipartFormDataContent.Add(new StringContent(keyValuePair.Value),
                                     String.Format("\"{0}\"", keyValuePair.Key));
                             }
-
-                            //foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
-                            //{
-                            //    multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
-                            //   '"' + "File" + '"',
-                            //   '"' + uploadedDocumentsList.FileNameWithExtension + '"');
-                            //}
-
                             foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
                             {
-                                multipartFormDataContent.Add(new StreamContent(new MemoryStream(uploadedDocumentsList.DocBinaryInBase64)),
-                               '"' + "File" + '"',
-                               '"' + uploadedDocumentsList.FileNameWithExtension + '"');
+                                string base64Encoded = System.Convert.ToBase64String(uploadedDocumentsList.DocBinaryInBase64);
+
+
+                                var valuesTmp = new[]
+                                {
+                                    new KeyValuePair<string, string>("file[]", base64Encoded)
+                                };
+
+
+                                foreach (var keyValuePair in valuesTmp)
+                                {
+                                    multipartFormDataContent.Add(new StringContent(keyValuePair.Value),
+                                        String.Format("\"{0}\"", keyValuePair.Key));
+                                }
                             }
+
+
+
+
+
 
                             string langVal = "en";
                             if (App.IsArabic == true)
