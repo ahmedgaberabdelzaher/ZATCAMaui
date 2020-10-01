@@ -54,7 +54,49 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsLoading = true;
                     await GetVatRegistrationData();
                 });
-               
+                SetPickerFont();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DDlIDType.HeaderFontFamily = "SSTArabic-Medium";
+                            DDlIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DDlIDType.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DDlIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+
+                            DDlContactIDType.HeaderFontFamily = "SSTArabic-Medium";
+                            DDlContactIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DDlContactIDType.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DDlContactIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        DDlIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        DDlContactIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlContactIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlContactIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlContactIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+
+                        break;
+                }
             }
             catch (Exception ex)
             {
