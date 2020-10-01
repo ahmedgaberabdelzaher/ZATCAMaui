@@ -49,5 +49,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             TaxTypePicker.IsOpen = true;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.PopulateASFilterData();
+        }
     }
 }

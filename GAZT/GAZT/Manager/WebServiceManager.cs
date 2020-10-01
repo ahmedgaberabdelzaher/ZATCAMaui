@@ -44,6 +44,7 @@ using EGAZT.Helper;
 using EGAZT.Models.TPProfile;
 using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
 using Xamarin.Essentials;
+using EGAZT.Models.AccountStatements;
 
 namespace GAZT.Manager
 {
@@ -16187,5 +16188,239 @@ namespace GAZT.Manager
 
         #endregion
 
+        #region Account Statements
+        public static async Task<ASTabIdentification> GAZTGetAccountStatementsTabIdentification()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                string FbGuid = App.LoginDataRetrieved.FbGuid;
+                try
+                {
+                    ASTabIdentification _asTabIdentification = new ASTabIdentification();
+                    char LangZ = GetLangZParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/TabIdentificationSet(Euser='00001000000008337092',Fbguid='005056B1F8FB1EDB80ECD20B24BEA571')
+
+                    String url = Constants.AccountStatementTabIdentification + "Euser=''," + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "')?$format=json";
+
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
+                    if (GAZTASTabIdentificationStatus != null)
+                    {
+                        if (GAZTASTabIdentificationStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = GAZTASTabIdentificationStatus.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
+                            {
+                                App.IsSessionExpired = true;
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        _asTabIdentification = JsonConvert.DeserializeObject<ASTabIdentification>(data);
+                    }
+                    return _asTabIdentification;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<ASRevenueDropDownSet> GAZTGetAccountStatementsRevenueDropDownSet(string taxType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                string FbGuid = App.LoginDataRetrieved.FbGuid;
+                try
+                {
+                    ASRevenueDropDownSet _asTabIdentification = new ASRevenueDropDownSet();
+                    char LangZ = GetLangZParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/RevenueDropdownSet?$filter=Euser eq '00001000000008337092' and Fbguid eq '005056B1F8FB1EDB80ECD20B24BEA571' and TaxType eq 'D' and Langz eq 'E'
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/RevenueDropdownSet=?$filter=Euser eq '' and Fbguid eq '005056B1F8FB1EDB80EE6A027F1609FE' and TaxType eq 'D' and Langz eq 'E'"
+                    String url = Constants.AccountStatementRevenueDropDownSet + "Euser eq ''" + " and Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and Langz eq '" + LangZ + "'&$format=json";
+
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
+                    if (GAZTASTabIdentificationStatus != null)
+                    {
+                        if (GAZTASTabIdentificationStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = GAZTASTabIdentificationStatus.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
+                            {
+                                App.IsSessionExpired = true;
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        _asTabIdentification = JsonConvert.DeserializeObject<ASRevenueDropDownSet>(data);
+                    }
+
+                    return _asTabIdentification;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<ASStatementHeaderSet> GAZTGetAccountStatementHeaderSet(string statementFilter, string fiscalYear, string taxType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                string FbGuid = App.LoginDataRetrieved.FbGuid;
+                try
+                {
+                    ASStatementHeaderSet _asTabIdentification = new ASStatementHeaderSet();
+                    char LangZ = GetLangZParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='00001000000008337102',Fbguid='005056B1F8FB1EDB80EE42BD20B90982',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='',Fbguid='005056B1F8FB1EDB80EF060738B88BA9',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
+                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='',FiscalYear='',TaxType='" + taxType + "',Lang='" + LangZ + "')?&$expand=StatmenetLineItemsSet&$format=json";
+
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
+                    if (GAZTASTabIdentificationStatus != null)
+                    {
+                        if (GAZTASTabIdentificationStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = GAZTASTabIdentificationStatus.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
+                            {
+                                App.IsSessionExpired = true;
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        _asTabIdentification = JsonConvert.DeserializeObject<ASStatementHeaderSet>(data);
+                    }
+
+                    return _asTabIdentification;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<ASYearValuesHeader> GAZTGetAccountStatementYearValuesHeaderSet(string statementFilter, string fiscalYear, string taxType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                string FbGuid = App.LoginDataRetrieved.FbGuid;
+                try
+                {
+                    ASYearValuesHeader _asTabIdentification = new ASYearValuesHeader();
+                    char LangZ = GetLangZParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    String url = Constants.AccountStatementGetYearValues + "Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '01'" + "&$format=json";
+
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
+                    if (GAZTASTabIdentificationStatus != null)
+                    {
+                        if (GAZTASTabIdentificationStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = GAZTASTabIdentificationStatus.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
+                            {
+                                App.IsSessionExpired = true;
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        _asTabIdentification = JsonConvert.DeserializeObject<ASYearValuesHeader>(data);
+                    }
+
+                    return _asTabIdentification;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        #endregion
     }
 }

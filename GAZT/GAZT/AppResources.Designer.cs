@@ -14472,21 +14472,21 @@ namespace EGAZT {
             }
         }
         
-        public static string AccountStatementsTitle {
+        public static string AccountStatementsDashboardTitle {
             get {
-                return ResourceManager.GetString("AccountStatementsTitle", resourceCulture);
+                return ResourceManager.GetString("AccountStatementsDashboardTitle", resourceCulture);
             }
         }
         
-        public static string ASDirectTaxes {
+        public static string AStatementDirectTaxes {
             get {
-                return ResourceManager.GetString("ASDirectTaxes", resourceCulture);
+                return ResourceManager.GetString("AStatementDirectTaxes", resourceCulture);
             }
         }
         
-        public static string ASIndirectTaxes {
+        public static string AStatementIndirectTaxes {
             get {
-                return ResourceManager.GetString("ASIndirectTaxes", resourceCulture);
+                return ResourceManager.GetString("AStatementIndirectTaxes", resourceCulture);
             }
         }
         
@@ -14511,6 +14511,48 @@ namespace EGAZT {
         public static string ASWithholdingTax {
             get {
                 return ResourceManager.GetString("ASWithholdingTax", resourceCulture);
+            }
+        }
+        
+        public static string ASTransactionDate {
+            get {
+                return ResourceManager.GetString("ASTransactionDate", resourceCulture);
+            }
+        }
+        
+        public static string ASFBNum {
+            get {
+                return ResourceManager.GetString("ASFBNum", resourceCulture);
+            }
+        }
+        
+        public static string ASSadadBillNumber {
+            get {
+                return ResourceManager.GetString("ASSadadBillNumber", resourceCulture);
+            }
+        }
+        
+        public static string ASTaxperiod {
+            get {
+                return ResourceManager.GetString("ASTaxperiod", resourceCulture);
+            }
+        }
+        
+        public static string ASDueDate {
+            get {
+                return ResourceManager.GetString("ASDueDate", resourceCulture);
+            }
+        }
+        
+        public static string ASBillDescription {
+            get {
+                return ResourceManager.GetString("ASBillDescription", resourceCulture);
+            }
+        }
+        
+        public static string ASBillAmount {
+            get {
+                return ResourceManager.GetString("ASBillAmount", resourceCulture);
             }
         }
     }
