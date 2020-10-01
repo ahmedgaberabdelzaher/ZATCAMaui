@@ -8139,4 +8139,7 @@
  <data name="ASBillAmount" xml:space="preserve">
     <value>Bill Amount</value>
   </data>
+  <data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
+    <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>
+  </data>
 </root>
