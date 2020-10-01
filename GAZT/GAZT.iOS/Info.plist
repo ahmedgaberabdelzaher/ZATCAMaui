@@ -76,18 +76,13 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>CFBundleDisplayName</key>
 	<string>E-GAZT</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.egazt</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.0.9</string>
+	<string>3.2.1.20</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.9</string>
+	<string>1.0.80</string>
 </dict>
 </plist>

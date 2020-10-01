@@ -321,6 +321,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
+        private bool _isOutletChecked;
+        public bool IsOutletChecked
+        {
+            get
+            {
+                return _isOutletChecked;
+            }
+            set
+            {
+                _isOutletChecked = value;
+
+                if (_isOutletChecked)
+                {
+                    IsOutletContinueButtonEnabled = true;
+                }
+                else
+                {
+                    IsOutletContinueButtonEnabled = false;
+                }
+
+                RaisePropertyChanged("IsOutletChecked");
+            }
+        }
         private Color _declarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
         public Color DeclarationContinueButtonnBackroundColor
         {
@@ -332,6 +355,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _declarationContinueButtonnBackroundColor = value;
                 RaisePropertyChanged("DeclarationContinueButtonnBackroundColor");
+            }
+        }
+        private Color _outletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color OutletContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _outletContinueButtonnBackroundColor;
+            }
+            set
+            {
+                _outletContinueButtonnBackroundColor = value;
+                RaisePropertyChanged("OutletContinueButtonnBackroundColor");
             }
         }
         private bool _iSDeclarationContinueButtonEnabled = false;
@@ -353,6 +389,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     DeclarationContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
                 }
                 RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
+            }
+        }
+        private bool _iSOutletContinueButtonEnabled = false;
+        public bool IsOutletContinueButtonEnabled
+        {
+            get
+            {
+                return _iSOutletContinueButtonEnabled;
+            }
+            set
+            {
+                _iSOutletContinueButtonEnabled = value;
+                if (_iSOutletContinueButtonEnabled)
+                {
+                    OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsOutletContinueButtonEnabled");
             }
         }
         private bool _isSummaryViewEnabled = false;
@@ -538,7 +595,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("SelectedOutletOptionIndex");
             }
         }
-        private bool _isOption1Visible;
+        private bool _isOption1Visible = false;
         public bool IsOption1Visible
         {
             get
@@ -551,7 +608,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsOption1Visible");
             }
         }
-        private bool _isOption2Visible;
+        private bool _isOption2Visible = false;
         public bool IsOption2Visible
         {
             get
@@ -908,12 +965,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 }
                                 DateField.IsVisible = true;
 
-
-
                             }
                             else
                             {
                                 DateField.IsVisible = false;
+                                SelectedReason.ReasonDesc = string.Empty;
                             }
                             AddOutletDecisionOptions();
                             PopulateAttachmentsListViewTemplate();
@@ -1825,6 +1881,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //AddOutletDecisionOptions();
             //PopulateAttachmentsListViewTemplate();
             PopulateIdTypeTypeFromList();
+            IsOption1Visible = false;
+            IsOption2Visible = false;
             VoidIsVisible = false;
             EnableReasonView();
         }
@@ -2554,7 +2612,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableOutletDetaislView()
         {
-            CurrentStep = ProcessStep.Step2;
+            if (TinDeregistrationData.OutletSet.Results != null)
+            {
+                if (TinDeregistrationData.OutletSet.Results.Length != 0)
+                {
+                    IsOutletChecked = true;
+                }
+                else
+                {
+                    IsOutletChecked = false;
+
+                }
+            }
+                    CurrentStep = ProcessStep.Step2;
             IsBackButtonVisible = true;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = true;
@@ -2770,7 +2840,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else
                     {
                         await SaveAsDraft();
-                        VoidIsVisible = true;
+                      //  VoidIsVisible = true;
                         EnableOutletDetaislView();
                     }
 
@@ -2786,7 +2856,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
 
 
-                        VoidIsVisible = true;
+                      //  VoidIsVisible = true;
                         EnableOutletDetaislView();
                     }
                 }
@@ -2799,7 +2869,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else
                     {
                         await SaveAsDraft();
-                        VoidIsVisible = true;
+                        //VoidIsVisible = true;
 
                         EnableOutletDetaislView();
                     }
@@ -2807,7 +2877,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 else
                 {
                     await SaveAsDraft();
-                    VoidIsVisible = true;
+                  //  VoidIsVisible = true;
 
                     EnableOutletDetaislView();
                 }
@@ -3598,6 +3668,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         TinDeregistrationData.ADeclarationChkbox = "0";
                     }
 
+               
                     //try
                     //{
                     //    if (SelectedIdNumber == null)
@@ -3633,6 +3704,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         //TODO
                         outletInfo.AOutletDobTb = ConvertDateFormat(DeregistrationDate);
+
+                        if (IsOutletChecked)
+                        {
+                            outletInfo.AOutletMainFlagTb = "1";
+                        }
+                        else
+                        {
+                            outletInfo.AOutletMainFlagTb = "0";
+
+                        }
                     }
 
                     foreach (PermitSetResult permitInfo in allPermitTypes)

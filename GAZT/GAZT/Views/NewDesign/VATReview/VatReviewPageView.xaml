@@ -372,10 +372,9 @@
                             </border:SfBorder>
 
 
-                            <custom:CustomLabel Grid.Row="2"
-                                                Text="{x:Static ResourceManager:AppResources.VRHelperText}"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                            <custom:CustomLabel Grid.Row="2" Text="{x:Static ResourceManager:AppResources.VRHelperText}"
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource BodyLabelBlack}" />
 
                         </Grid>
                         
@@ -1422,7 +1421,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15,15,15,15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1539,7 +1538,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15,15,15,15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1638,7 +1637,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15,15,15,15">
 
                                         <Grid IsVisible="{Binding IsSecurityPaymentsTabVisible}">
                                             <Grid.RowDefinitions>
@@ -1812,7 +1811,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15,15,15,15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1943,7 +1942,7 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <StackLayout Padding="15,15,15,0">
+                                    <StackLayout Padding="15,15,15,15">
 
                                         <Grid>
                                             <Grid.RowDefinitions>

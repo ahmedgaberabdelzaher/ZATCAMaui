@@ -3,11 +3,13 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using pdfjs.Interfaces;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -84,7 +86,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //pop that certificate is not available
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+
+                    // await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 });
             }
         }

@@ -27,9 +27,10 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel.SetDefaultDate();
             viewModel.IsFutureDatePickerVisible = false;
             viewModel.IsCurrentDatePickerVisible = true;
-            
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            SetPickerFont();
         }
         public CalendarPickerPageView(GenericDatePickerModel _pickerSource)
         {
@@ -45,6 +46,57 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            SetPickerFont();
+
+        }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            CalendarTitle.FontFamily = "SSTArabic-Medium";
+                            FutureCalendarTitle.FontFamily = "SSTArabic-Medium";
+                            CalendarDoneButton.FontFamily = "SSTArabic-Medium";
+
+                            calendarPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            futureCalendarPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            calendarPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            futureCalendarPicker.HeaderFontFamily = "SSTArabic-Medium";
+
+                            calendarPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            calendarPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            futureCalendarPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            futureCalendarPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+
+                        CalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FutureCalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CalendarDoneButton.FontFamily = "GAZT_FONT_MEDIUM";
+
+                        calendarPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        futureCalendarPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        calendarPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        futureCalendarPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+
+                        calendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        calendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        futureCalendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        futureCalendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         public CalendarPickerPageView(GenericDatePickerModel _pickerSource, bool isFuturePickerVisible)
@@ -61,13 +113,14 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            SetPickerFont();
         }
 
         void genericPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
-                if(viewModel.IsFutureDatePickerVisible == true)
+                if (viewModel.IsFutureDatePickerVisible == true)
                 {
                     if (futureCalendarPicker.SelectedItem != null)
                     {
@@ -140,6 +193,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
         {
 
 
+            PopupNavigation.Instance.PopAsync();
 
             if (viewModel.IsFutureDatePickerVisible == true)
             {
@@ -182,7 +236,6 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
 
 
-            PopupNavigation.Instance.PopAsync();
 
 
 

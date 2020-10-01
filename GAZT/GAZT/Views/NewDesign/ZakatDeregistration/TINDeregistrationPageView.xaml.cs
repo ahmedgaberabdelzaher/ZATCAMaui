@@ -42,6 +42,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 outletDecisionOptionsListView.SelectedItem = x;
 
+                
+
             });
             Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
             {
@@ -50,6 +52,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.PopulateAttachments(arg.results);
                 }
             });
+
+            SetDatePickerFont();
+            SetDateOfBirthPickerFont();
+            SetHijriDateOfBirthPickerFont();
+            SetHijriDateOfBirth2PickerFont();
+            SetTodayDatePickerFont();
+            SetTodayDateHijriPickerFont();
         }
 
         public void ChangeArrowDirection()
@@ -84,8 +93,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if(arg.SelectedValue == string.Empty)
                 {
                     viewModel.IsOption1Visible = false;
+                    FrmDBO.IsVisible = false;
+                    CalLabel.IsVisible = false;
+                    DateLabel.IsVisible = false;
+                    outletDecisionOptionsListView.IsVisible = false;
                     viewModel.IsOption2Visible = false;
 
+                }
+                else
+                {
+                    viewModel.IsOption1Visible = true;
+                    FrmDBO.IsVisible = true;
+                    CalLabel.IsVisible = true;
+                    DateLabel.IsVisible = true;
+                    outletDecisionOptionsListView.IsVisible = true;
+                    viewModel.IsOption2Visible = true;
                 }
                 Console.WriteLine(arg);
             });
@@ -931,6 +953,198 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
             }
+        }
+
+        public void SetDatePickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DpDbo2.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo2.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo2.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDbo2.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+                            DpDbo2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        }
+                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        public void SetDateOfBirthPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DpDbo.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDbo.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+                            DpDbo.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        public void SetHijriDateOfBirthPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DpDboHijri.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDboHijri.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+                            DpDboHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        public void SetHijriDateOfBirth2PickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DpDboHijri2.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri2.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri2.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDboHijri2.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+                            DpDboHijri2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        public void SetTodayDatePickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DpDbo3.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo3.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo3.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDbo3.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+                            DpDbo3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDbo3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        public void SetTodayDateHijriPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            DpDboHijri3.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri3.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri3.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDboHijri3.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+                            DpDboHijri3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            DpDboHijri3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
     }
 }

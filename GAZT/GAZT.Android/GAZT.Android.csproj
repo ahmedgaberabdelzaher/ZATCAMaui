@@ -67,9 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AppCenter">
-      <Version>3.2.2</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Distribute">
       <Version>3.2.2</Version>
     </PackageReference>
@@ -4903,6 +4900,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\registration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\file_paths.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

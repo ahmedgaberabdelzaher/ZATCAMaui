@@ -28,6 +28,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             //App.IsArabic = false;
             ChangeAeroIcon();
             SetLTR();
+            SetPickerFont();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
             viewModel = App.Locator.ContractReleasePageView;
@@ -44,6 +45,82 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             viewModel.showInstructionDialog();
 
            
+        }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            NormalCalendar.HeaderFontFamily = "SSTArabic-Medium";
+                            NormalCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
+                            NormalCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+
+
+                            HijriCalendar.HeaderFontFamily = "SSTArabic-Medium";
+                            HijriCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
+                            HijriCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+
+
+                            EndDateNormalCalendar.HeaderFontFamily = "SSTArabic-Medium";
+                            EndDateNormalCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
+                            EndDateNormalCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+
+
+                            EndDateHijriCalendar.HeaderFontFamily = "SSTArabic-Medium";
+                            EndDateHijriCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
+                            EndDateHijriCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+
+
+
+                        NormalCalendar.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        NormalCalendar.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                        NormalCalendar.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+
+
+                        HijriCalendar.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        HijriCalendar.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                        HijriCalendar.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+
+
+                        EndDateNormalCalendar.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        EndDateNormalCalendar.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                        EndDateNormalCalendar.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+
+
+                        EndDateHijriCalendar.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        EndDateHijriCalendar.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                        EndDateHijriCalendar.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+
+
+
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+
+
+
         }
 
         public async Task GetContractReleaseData()

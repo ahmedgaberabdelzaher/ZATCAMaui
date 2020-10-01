@@ -272,32 +272,35 @@
                             </Grid>
                         </border:SfBorder>
 
-                                <custom1:CustomDatePicker FlowDirection="LeftToRight" 
-                                                          ShowHeader="False"
-                                                          Margin="10,0,10,0" 
-                                                          BackgroundColor="White"                             
-                                                          OKButtonBackgroundColor="#EAF7CC"
-                                                          CancelButtonBackgroundColor="#EAF7CC"
-                                                          HeaderBackgroundColor="#EAF7CC"
-                                                          SelectedItemTextColor="{StaticResource                                     NeutralBlack}"
-                                                          BorderColor="Black"
-                                                          ShowFooter="False"
-                                                          ShowColumnHeader="True"
-                                                          ColumnHeaderBackgroundColor="White"
-                                                          ColumnHeaderHeight="46"
-                                                          PickerMode="Dialog"
-                                                          HeaderText="{x:Static 
+                                <custom1:CustomDatePicker 
+                                    FlowDirection="LeftToRight"                
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="NormalCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="NormalCalendar_SelectionChanged"      
+                                    ItemHeight="36"                                                    
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False"
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
                                     ResourceManager:AppResources.CRContractStartDate}"
-                                                          x:Name="NormalCalendar"
-                                                          OKButtonTextColor="#006450" 
-                                                          CancelButtonTextColor="#006450"
-                                                          SelectedItem="{Binding TodayDateStart}"
-                                                          HorizontalOptions="FillAndExpand"
-                                                          Closed="NormalCalendar_Closed"
-                                                          SelectionChanged="NormalCalendar_SelectionChanged"
-                                                          OkButtonClicked="NormalCalendar_OkButtonClicked"       
-                                                         CancelButtonClicked="NormalCalendar_CancelButtonClicked"
-                                                          ItemHeight="40">
+                                    Closed="NormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateStart}"
+                                    OkButtonClicked="NormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="NormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
                                     <custom1:CustomDatePicker.Behaviors>
                                         <custom1:SfPickerBehavior />
                                     </custom1:CustomDatePicker.Behaviors>
@@ -305,32 +308,35 @@
                                 
                         <!--HijriDatePicker-->
 
-                                <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
-                                                       ShowHeader="False"
-                                                       Margin="10,0,10,0" 
-                                                       BackgroundColor="White"
-                                                       OKButtonBackgroundColor="#EAF7CC"
-                                                       CancelButtonBackgroundColor="#EAF7CC"
-                                                       HeaderBackgroundColor="#EAF7CC"
-                                                       SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                                       BorderColor="Black"
-                                                       SelectedItem="{Binding TodayDateinHijriStart}"                
-                                                       ShowFooter="False"
-                                                       ShowColumnHeader="True"
-                                                       ColumnHeaderBackgroundColor="White"
-                                                       ColumnHeaderHeight="46"
-                                                       PickerMode="Dialog"
-                                                       HeaderText="{x:Static 
+                                <custom1:CustomHijriDatePicker 
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="HijriCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="NormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False"
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
                                     ResourceManager:AppResources.CRContractStartDate}"
-                                                       x:Name="HijriCalendar"
-                                                       OKButtonTextColor="#006450"    
-                                                       CancelButtonTextColor="#006450"
-                                                       HorizontalOptions="FillAndExpand"
-                                                       Closed="NormalCalendar_Closed"
-                                                       SelectionChanged="NormalCalendar_SelectionChanged"
-                                                       OkButtonClicked="NormalCalendar_OkButtonClicked"
-                                                       CancelButtonClicked="NormalCalendar_CancelButtonClicked"
-                                                       ItemHeight="40">
+                                    Closed="NormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateinHijriStart}"
+                                    OkButtonClicked="NormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="NormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
                                 </custom1:CustomHijriDatePicker>
                             </Grid>
                     <Grid Grid.Row="5" Margin="0,10,0,10">
@@ -375,31 +381,36 @@
 
                             </Grid>
                         </border:SfBorder>
-                                <custom1:CustomDatePicker FlowDirection="LeftToRight" 
-                                                          ShowHeader="False"
-                                                          Margin="10,0,10,0" 
-                                                          BackgroundColor="White"                             
-                                                          OKButtonBackgroundColor="#EAF7CC"
-                                                          CancelButtonBackgroundColor="#EAF7CC"
-                                                          HeaderBackgroundColor="#EAF7CC"
-                                                          SelectedItemTextColor="{StaticResource                                     NeutralBlack}"
-                                                          BorderColor="Black"
-                                                          ShowFooter="False"
-                                                          ShowColumnHeader="True"
-                                                          ColumnHeaderBackgroundColor="White"
-                                                          ColumnHeaderHeight="46"
-                                                          PickerMode="Dialog"
-                                                          HeaderText="{x:Static 
-                                    ResourceManager:AppResources.CRContractEndDate}"
-                                                          x:Name="EndDateNormalCalendar"
-                                                          OKButtonTextColor="#006450" 
-                                                          CancelButtonTextColor="#006450"
-                                                          SelectedItem="{Binding TodayDateEnd}"
-                                                          HorizontalOptions="FillAndExpand"
-                                                          Closed="EndDateNormalCalendar_Closed"
-                                       SelectionChanged="EndDateNormalCalendar_SelectionChanged"
-                                                          OkButtonClicked="EndDateNormalCalendar_OkButtonClicked" CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
-                                                          ItemHeight="40">
+                                <custom1:CustomDatePicker 
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="EndDateNormalCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="EndDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False"
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.CRContractStartDate}"
+                                    Closed="EndDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateEnd}"
+                                    OkButtonClicked="EndDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+                                    
                                     <custom1:CustomDatePicker.Behaviors>
                                         <custom1:SfPickerBehavior />
                                     </custom1:CustomDatePicker.Behaviors>
@@ -407,31 +418,37 @@
 
                                 <!--HijriDatePicker-->
 
-                                <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
-                                                       ShowHeader="False"
-                                                       Margin="10,0,10,0" 
-                                                       BackgroundColor="White"
-                                                       OKButtonBackgroundColor="#EAF7CC"
-                                                       CancelButtonBackgroundColor="#EAF7CC"
-                                                       HeaderBackgroundColor="#EAF7CC"
-                                                       SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                                       BorderColor="Black"
-                                                       SelectedItem="{Binding TodayDateinHijriEnd}"                
-                                                       ShowFooter="False"
-                                                       ShowColumnHeader="True"
-                                                       ColumnHeaderBackgroundColor="White"
-                                                       ColumnHeaderHeight="46"
-                                                       PickerMode="Dialog"
-                                                       HeaderText="{x:Static 
-                                    ResourceManager:AppResources.CRContractEndDate}"
-                                                       x:Name="EndDateHijriCalendar"
-                                                       OKButtonTextColor="#006450"    
-                                                       CancelButtonTextColor="#006450"
-                                                       HorizontalOptions="FillAndExpand"
-                                                       Closed="EndDateNormalCalendar_Closed"
-                                                       SelectionChanged="EndDateNormalCalendar_SelectionChanged"
-                                                       OkButtonClicked="EndDateNormalCalendar_OkButtonClicked"                       CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
-                                                       ItemHeight="40">
+                                <custom1:CustomHijriDatePicker 
+                                    
+                                    FlowDirection="LeftToRight" 
+                                    Style="{StaticResource PickerStyle}" 
+                                    Margin="2" 
+                                    HeaderBackgroundColor="Aqua"
+                                    x:Name="EndDateHijriCalendar"
+                                    SelectedItemFontSize="15"
+                                    SelectionChanged="EndDateNormalCalendar_SelectionChanged"
+                                    ItemHeight="36"
+                                    PickerMode="Dialog"
+                                    ColumnHeaderHeight="46"
+                                    ShowFooter="False"
+                                    BorderColor="Black"
+                                    ShowHeader="False" 
+                                    BackgroundColor="White"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    ColumnHeaderBackgroundColor="White"
+                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                    OKButtonTextColor="#006450"    
+                                    CancelButtonTextColor="#006450"
+                                    HeaderText="{x:Static 
+                                    ResourceManager:AppResources.CRContractStartDate}"
+                                    Closed="EndDateNormalCalendar_Closed"
+                                    SelectedItem="{Binding TodayDateinHijriEnd}"
+                                    OkButtonClicked="EndDateNormalCalendar_OkButtonClicked"       
+                                    CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    ShowColumnHeader="True">
+                                    
                                 </custom1:CustomHijriDatePicker>
                             </Grid>
                     <Grid Grid.Row="6" Margin="0,10,0,10">
@@ -935,7 +952,7 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon.png" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
 
                                                 <Label Grid.Row="0" Grid.Column="1"
@@ -1057,7 +1074,7 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
 
                                                 <Label Grid.Row="0" Grid.Column="1"
