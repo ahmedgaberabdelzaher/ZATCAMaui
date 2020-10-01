@@ -96,7 +96,10 @@ namespace EGAZT.Views.NewDesign.VatReview
             else if (selectedITem.SelectionTitle.Equals(AppResources.VRBANKGURANTEE))
             {
                 viewModel.EnablebankGuranteeSecurityView();
+
             }
+
+            viewModel.EnableSecurityPaymentsConButton();
         }
 
         private void Report_Details_UnFocused(object sender, FocusEventArgs e)

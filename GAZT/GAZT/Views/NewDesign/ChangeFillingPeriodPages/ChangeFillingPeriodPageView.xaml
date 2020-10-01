@@ -823,14 +823,11 @@
                                     </DataTrigger>
                                 </CheckBox.Triggers>
                             </CheckBox>
-                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" VerticalOptions="Fill">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span
-                                Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+
+                    <custom:CustomLabel Grid.Column="1"
+                    Text="{x:Static ResourceManager:AppResources.CFPDeclarationCheckbox}"
+                    Style="{StaticResource ValueLabelBlack}"
+                    HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
                         </StackLayout>
                         <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0"   >
 
@@ -1017,7 +1014,7 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                                 
-                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                <Grid Padding="15" RowSpacing="8">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
@@ -1111,94 +1108,93 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                                 
-                           
+                            <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
+                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                  VerticalOptions="Center"
+                                  ItemsSource="{Binding YearsattachmentsListViewData}"
+                                  SelectionMode="None"
+                                  SelectionBackgroundColor="Transparent">
+                                 <listView:SfListView.ItemTemplate>
+                                     <DataTemplate>
+                                         <Grid>
+                                             <Grid.RowDefinitions>
+                                                 <RowDefinition Height="auto" />
+                                             </Grid.RowDefinitions>
+                                             <Grid.ColumnDefinitions>
+                                                 <ColumnDefinition Width="*" />
+                                                 <ColumnDefinition Width="*" />
+                                             </Grid.ColumnDefinitions>
+                                             <custom:CustomLabel Grid.Column="0"
+                                                                 Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwoYears}"
+                                                                 Style="{StaticResource ValueLabelGrey}" />
+                                             <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}"
+                                                                 Style="{StaticResource ValueLabelBlack}"
+                                                                 HorizontalOptions="EndAndExpand"
+                                                                 HorizontalTextAlignment="End" />
+                                         </Grid>
+                                     </DataTemplate>
+                                 </listView:SfListView.ItemTemplate>
+                             </listView:SfListView>
+     
+  
+                      <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
+                                                      IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                                      VerticalOptions="Center"
+                                                      ItemsSource="{Binding MonthsattachmentsListViewData}"
+                                                      SelectionMode="None"
+                                                      SelectionBackgroundColor="Transparent">
+                                     <listView:SfListView.ItemTemplate>
+                                         <DataTemplate>
+                                             <Grid>
+                                                 <Grid.RowDefinitions>
+                                                     <RowDefinition Height="auto" />
+                                                 </Grid.RowDefinitions>
+                                                 <Grid.ColumnDefinitions>
+                                                     <ColumnDefinition Width="*" />
+                                                     <ColumnDefinition Width="*" />
+                                                 </Grid.ColumnDefinitions>
+                                                 <custom:CustomLabel Grid.Column="0"
+                                                                     Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwelveMonths}"
+                                                                     Style="{StaticResource ValueLabelGrey}" />
+                                                 <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}"
+                                                                     Style="{StaticResource ValueLabelBlack}"
+                                                                     HorizontalOptions="EndAndExpand"
+                                                                     HorizontalTextAlignment="End" />
+                                             </Grid>
+                                         </DataTemplate>
+                                     </listView:SfListView.ItemTemplate>
+                                 </listView:SfListView>   
+     
+                     <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
+                                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                                  VerticalOptions="Center"
+                                                  ItemsSource="{Binding OtherAttachmentsListViewData}"
+                                                  SelectionMode="None"
+                                                  SelectionBackgroundColor="Transparent">
+                                 <listView:SfListView.ItemTemplate>
+                                     <DataTemplate>
+                                         <Grid>
+                                             <Grid.RowDefinitions>
+                                                 <RowDefinition Height="auto" />
+                                             </Grid.RowDefinitions>
+                                             <Grid.ColumnDefinitions>
+                                                 <ColumnDefinition Width="*" />
+                                                 <ColumnDefinition Width="*" />
+                                             </Grid.ColumnDefinitions>
+                                             <custom:CustomLabel Grid.Column="0"
+                                                                 Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsOtherDocuments}"
+                                                                 Style="{StaticResource ValueLabelGrey}" />
+                                             <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}"
+                                                                 Style="{StaticResource ValueLabelBlack}"
+                                                                 HorizontalOptions="EndAndExpand"
+                                                                 HorizontalTextAlignment="End" />
+                                         </Grid>
+                                     </DataTemplate>
+                                 </listView:SfListView.ItemTemplate>
+                             </listView:SfListView> 
                                 
-                                <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
-                                      ItemsSource="{Binding YearsattachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
-                                        <listView:SfListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0">
-                                                    <Grid.RowDefinitions >
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid Grid.Row="0" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwoYears}"
-                                                               HorizontalOptions="Start"
-                                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                                    </Grid>
-
-                                                    <Grid Grid.Row="0" Grid.Column="1">
-                                                        <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Style="{StaticResource BodyLabelBlack}" />
-                                                    </Grid>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
                                 
-                                <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
-                                      ItemsSource="{Binding MonthsattachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
-                                        <listView:SfListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0">
-                                                    <Grid.RowDefinitions >
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid Grid.Row="0" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwelveMonths}"
-                                                               HorizontalOptions="Start"
-                                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                                    </Grid>
-
-                                                    <Grid Grid.Row="0" Grid.Column="1">
-                                                        <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Style="{StaticResource BodyLabelBlack}" />
-                                                    </Grid>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
                                 
-                                <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
-                                      ItemsSource="{Binding OtherAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
-                                        <listView:SfListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0">
-                                                    <Grid.RowDefinitions >
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid Grid.Row="0" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsOtherDocuments}"
-                                                               HorizontalOptions="Start"
-                                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                                    </Grid>
-
-                                                    <Grid Grid.Row="0" Grid.Column="1">
-                                                        <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Style="{StaticResource BodyLabelBlack}" />
-                                                    </Grid>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
                             </StackLayout>
                         </border:SfBorder >
 
@@ -1237,7 +1233,7 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                                 
-                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                <Grid Padding="15" RowSpacing="8">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
