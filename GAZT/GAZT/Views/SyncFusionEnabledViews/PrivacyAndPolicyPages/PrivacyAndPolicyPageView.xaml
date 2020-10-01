@@ -47,7 +47,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}"   Style="{StaticResource SectionTitleWhiteBold}"
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}"     FontFamily="{StaticResource SSTArBold}"
                                   TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
                         <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
