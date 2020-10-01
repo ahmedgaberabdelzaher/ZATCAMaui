@@ -150,8 +150,8 @@
                                                          Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <Grid Padding="0" RowSpacing="0" Margin="0">
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="50*" />

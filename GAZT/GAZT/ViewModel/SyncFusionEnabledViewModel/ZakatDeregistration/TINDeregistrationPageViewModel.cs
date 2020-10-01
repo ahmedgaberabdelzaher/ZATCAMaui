@@ -1332,6 +1332,54 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public ObservableCollection<Attachment> tinDeregAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> TinDeregAttachmentsListViewData
+        {
+            get { return tinDeregAttachmentsListViewData; }
+
+            set
+            {
+                if (tinDeregAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                tinDeregAttachmentsListViewData = value;
+                RaisePropertyChanged("TinDeregAttachmentsListViewData");
+            }
+        }
+        private bool _isAttachmentsEnabled = false;
+
+        public bool IsAttachmentsEnabled
+        {
+            get { return _isAttachmentsEnabled; }
+            set
+            {
+                _isAttachmentsEnabled = value;
+                AttachButtonBackGroundColor = Color.FromHex(_isAttachmentsEnabled ? "#d49504" : "#9EA4A9");
+                RaisePropertyChanged("IsAttachmentsEnabled");
+            }
+        }
+
+        private Color _attachButtonBackGroundColor = Color.FromHex("#d49504");
+        public Color AttachButtonBackGroundColor
+        {
+            get
+            {
+                return _attachButtonBackGroundColor;
+            }
+            set
+            {
+                if (_attachButtonBackGroundColor == value)
+                {
+                    return;
+                }
+                _attachButtonBackGroundColor = value;
+                RaisePropertyChanged("AttachButtonBackGroundColor");
+            }
+        }
+
         private FieldValidations _familyNameText { get; set; }
         public FieldValidations FamilyNameText
         {
@@ -3245,29 +3293,61 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             AttachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>(check);
 
-            //AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            //foreach(Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
             //{
-            //    FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
-            //    FieldSubTitle = AppResources.TinDeregistration50MBMax,
-            //    AttachmentName = string.Empty,
-            //    IsAttachmentAttached = false
-            //});
-            //AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
-            //{
-            //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
-            //    FieldSubTitle = AppResources.TinDeregistration50MBMax,
-            //    AttachmentName = string.Empty,
-            //    IsAttachmentAttached = false
-            //});
-            //AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
-            //{
-            //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractAfterClosing,
-            //    FieldSubTitle = AppResources.TinDeregistration50MBMax,
-            //    AttachmentName = string.Empty,
-            //    IsAttachmentAttached = false
-            //});
+            //    foreach(TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+            //    {
+            //        if(attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
+            //        {
+            //            if (attachmentsModelsTemp.AttachmentTypeList == null)
+            //                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+
+            //            attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+            //        }
+            //    }
+            //}
+
+        }
+        public void PopulateAttachments(List<Attachment> attachments)
+        {
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
+
+            foreach (Attachment attachemnt in attachments)
+            {
+                attachmentsListViewData.Add(attachemnt);
+            }
+
+          //  AttachmentTypeList = attachments;
+            
+
+            EnableAttachments();
         }
 
+        private void EnableAttachments()
+        {
+
+          if (TinDeregAttachmentsListViewData == null)
+            {
+
+                IsAttachmentsEnabled = false;
+            }
+            else
+            {
+
+                if (TinDeregAttachmentsListViewData.Count == 0)
+                {
+
+                    IsAttachmentsEnabled = false;
+                }
+                else
+                {
+                    IsAttachmentsEnabled = true;
+                }
+
+
+            }
+
+        }
         public async void NewAttachmentClicked()
         {
             try

@@ -23,6 +23,7 @@ using GAZT.Models;
 using Newtonsoft.Json;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 using static EGAZT.Models.ChageFillingPeriodModel.VATChangeFillingPeriodRequestModel;
+using System.Text.RegularExpressions;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -493,6 +494,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {"ZS0002",AppResources.VFCIqamaID},
             {"ZS0003",AppResources.VFCGCCID},
         };
+        public ChangeFillingInterface cFInterface { get; set; }
+
+
 
         public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -595,6 +599,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             //EffectiveDatePicked = ChangeFillingResponse.d.Persl;
 
+
+            foreach (var att in EffectiveDateResponse.d.EffDateSet.results)
+            {
+                if (att.Persl == ChangeFillingResponse.d.Persl)
+                {
+                    EffectiveDatePicked = att.Txt50;
+                }
+            }
+            IsFrequencyDetailsChecked = true;
+
             IDType = IDValueDictionary[ChangeFillingResponse.d.DecidTy];
             IsIDVerified = true;
             ContactPersonName = ChangeFillingResponse.d.Decname;
@@ -610,9 +624,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 ContractPersonEditable = false;
             }
 
+
+            var yearsAttachments = new ObservableCollection<Attachment>();
+            var monthsAttachments = new ObservableCollection<Attachment>();
+            var othersAttachments = new ObservableCollection<Attachment>();
+            foreach (var attach in ChangeFillingResponse.d.ATTACHSet.results)
+            {
+                if (attach.Dotyp == "ZTPA")
+                {
+                    yearsAttachments.Add(attach);
+                }
+                else if (attach.Dotyp == "ZTPB")
+                {
+                    monthsAttachments.Add(attach);
+                }
+                else if (attach.Dotyp == "ZTPC")
+                {
+                    othersAttachments.Add(attach);
+                }
+            }
+            YearsattachmentsListViewData = yearsAttachments;
+            MonthsattachmentsListViewData = monthsAttachments;
+            OtherAttachmentsListViewData = othersAttachments;
+            if (YearsattachmentsListViewData.Count > 0)
+            {
+                cFInterface.SelectDefaultAttachOption(0);
+                IsTwoYearsAtachmentsVisible = false;
+                IsMonthsAtachmentsVisible = false;
+                IsOthersAtachmentsVisible = true;
+                SelectedOutletOptionIndex = 0;
+                SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[0].ActiveOutletDecisionOptions;
+            }
+            else if (MonthsattachmentsListViewData.Count > 0)
+            {
+                cFInterface.SelectDefaultAttachOption(1);
+                IsTwoYearsAtachmentsVisible = false;
+                IsMonthsAtachmentsVisible = false;
+                IsOthersAtachmentsVisible = true;
+                SelectedOutletOptionIndex = 1;
+                SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[1].ActiveOutletDecisionOptions;
+            }
+            else if (OtherAttachmentsListViewData.Count > 0)
+            {
+                cFInterface.SelectDefaultAttachOption(2);
+                IsTwoYearsAtachmentsVisible = false;
+                IsMonthsAtachmentsVisible = false;
+                IsOthersAtachmentsVisible = true;
+                SelectedOutletOptionIndex = 2;
+                SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[2].ActiveOutletDecisionOptions;
+            }
+
             EnableFrequencyDetails();
             EnableDeclaration();
             EnableAttachments();
+
+
+
 
         }
 
@@ -2119,6 +2186,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.UI_BTNSet = ChangeFillingResponse.d.UI_BTNSet;
                 request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet.results;
                 request.d.ATTACHSet = ChangeFillingResponse.d.ATTACHSet.results;
+                request.d.ATTACHSet.Clear();
                 request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
 
                 request.d.DecidTy = IDTypeDictionary[IDType];
@@ -2128,6 +2196,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.DecidNo = IDNumber;
                 request.d.TransType = "CRE_TPCV";
                 request.d.UserTypz = "TP";
+
+
+                if (ChangeFillingResponse.d.NOTESSet.results.Count != 0)
+                {
+
+                    string apiDate = ChangeFillingResponse.d.NOTESSet.results[0].Erfdtz;
+                    if (!apiDate.Contains("Date"))
+                    {
+
+                        foreach (var item in ChangeFillingResponse.d.NOTESSet.results)
+                        {
+
+                            DateTime dt1 = Convert.ToDateTime(item.Erfdtz);
+                            JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                            var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings1);
+                            string[] dateList1 = jsonDateTime1.Split('+');
+                            jsonDateTime1 = Regex.Replace(dateList1[0], "[@,\\.\";'\\\\]", string.Empty);
+                            jsonDateTime1 = jsonDateTime1 + ")/";
+
+                            item.Erfdtz = jsonDateTime1;
+
+                        }
+                    }
+
+                }
+
+                request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet.results.ToList();
+
 
                 if (IsAttachmentsEnabled) {
 

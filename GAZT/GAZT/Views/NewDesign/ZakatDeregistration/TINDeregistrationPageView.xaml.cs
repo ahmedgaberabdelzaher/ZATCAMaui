@@ -41,6 +41,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
             {
                 outletDecisionOptionsListView.SelectedItem = x;
+
+            });
+            Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            {
+                if (arg != null)
+                {
+                    viewModel.PopulateAttachments(arg.results);
+                }
             });
         }
 
@@ -73,6 +81,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
+                if(arg.SelectedValue == string.Empty)
+                {
+                    viewModel.IsOption1Visible = false;
+                    viewModel.IsOption2Visible = false;
+
+                }
                 Console.WriteLine(arg);
             });
 

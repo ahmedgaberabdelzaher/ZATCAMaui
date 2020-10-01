@@ -6688,7 +6688,7 @@
     <value>الرجاء رفع الملف</value>
   </data>
   <data name="VRNewAttachment" xml:space="preserve">
-    <value>مرفق جديد</value>
+    <value>اسم المرفق</value>
   </data>
   <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>خطة التقسيط لضريبة القيمة المضافة</value>
@@ -6864,9 +6864,8 @@
   <data name="VRReportDetails" xml:space="preserve">
     <value>تفاصيل التقرير</value>
   </data>
-  <data name="VRHelperText" xml:space="preserve">
-    <value>المستندات والأدلة المساندة:
-يرجى تزويدنا بالوثائق المساندة لدعم أسباب المراجعة</value>
+    <data name="VRHelperText" xml:space="preserve">
+    <value>المستندات والأدلة المساندة: يرجى تزويدنا بالوثائق المساندة لدعم أسباب المراجعة الرجاء كتابة اسم المرفق في الخانه المخصصة لذلك قبل ارفاقه </value>
   </data>
   <data name="VRAttachment" xml:space="preserve">
     <value>المرفقات</value>
@@ -8058,4 +8057,66 @@
 
 نرحب بأسئلتكم وتعليقاتكم وطلباتكم فيما يتعلق بسياسة الخصوصية هذه عبر الإرسال للبريد الالكتروني التالي: info@gazt.gov.sa​</value>
   </data>
+  <data name="PPSubTitle1" xml:space="preserve">
+    <value>- تمكيننا من إدارة الموقع وتحسينه وتحسين الخدمات المتاحة على موقع المركز.</value>
+  </data>
+  <data name="PPSubTitle10" xml:space="preserve">
+    <value>- التحقق من هويتك عند التسجيل في بعض الخدمات المتاحة على الموقع إدارة الموقع والعمليات الداخلية بما في ذلك استكشاف الأخطاء وتحليل البيانات والاختبار وأغراض البحث والاحصاءات والدراسات الاستقصائية.</value>
+  </data>
+  <data name="PPSubTitle2" xml:space="preserve">
+    <value>- تحسين العروض المقدمة على الموقع سواء بصورة فردية أو جماعية، وتخصيص التجربة وتقييم إمكانية الوصول إلى الموقع واستخدامه.</value>
+  </data>
+  <data name="PPSubTitle3" xml:space="preserve">
+    <value>- أغراض البحث.</value>
+  </data>
+  <data name="PPSubTitle4" xml:space="preserve">
+    <value>- رصد وكشف انتهاكات شروط الاستخدام إلى جانب الإساءات الأخرى و المحتملة عند استخدام الموقع.</value>
+  </data>
+  <data name="PPSubTitle5" xml:space="preserve">
+    <value>- نشر معلومات غير شخصية تم جمعها حول بيانات الوصول والاستخدام والأثر والأداء.</value>
+  </data>
+  <data name="PPSubTitle6" xml:space="preserve">
+    <value>- أرشفة هذه المعلومات أو استخدامها للتواصل معك في المستقبل.</value>
+  </data>
+  <data name="PPSubTitle7" xml:space="preserve">
+    <value>- الحفاظ على تحسين أداء الموقع وأمان برمجياته وأنظمته وشبكته.</value>
+  </data>
+  <data name="PPSubTitle8" xml:space="preserve">
+    <value>- من أجل الاسباب التي تم ذكرها سابقاً في سياسة الخصوصية هذه (وذلك يشمل مشاركة المعلومات مع جهات أخرى).​</value>
+  </data>
+  <data name="PPSubTitle9" xml:space="preserve">
+    <value>- باستثناء ما تم توضيحه لك عند جمع المعلومات أو بموجب موافقتك على ذلك.</value>
+  </data>
+  <data name="PrivacyPolicyPra1" xml:space="preserve">
+    <value>المعلومات التي قد تجمعها منك الهيئة العامة للزكاة والدخل</value>
+  </data>
+  <data name="PrivacyPolicyPra2" xml:space="preserve">
+    <value>يجوز للهيئة العامة للزكاة والدخل ("الهيئة”) القيام بجمع المعلومات التالية عنك ومعالجتها:</value>
+  </data>
+  <data name="PrivacyPolicyPra3" xml:space="preserve">
+    <value>المعلومات التي تزودوننا بها: يمكنك تزويدنا بمعلومات عنك من خلال تعبئتك للنماذج أو الخيارات الموجودة على المواقع الرسمية للهيئة أو من خلال التواصل معنا عبر الهاتف، أو البريد الإلكتروني، أو غير ذلك من وسائل التواصل. وهذا يتضمن معلومات قمت بتزويدنا بها عند تسجيلك في ("الموقع")، أو إنشائك لملف المستخدم الخاص بك، أو عند إرسالك لنا رسالة الكترونية أو عند تبليغنا بمشكلة ما عن الموقع. إن المعلومات التي تزودنا بها قد تحتوي على معلومات شخصية كاسمك، وعنوانك وبريدك الإلكتروني ورقم هاتفك، ووصف شخصي لك ومعلومات عن العمل تتعلق بمنظمتك/ بمنشأتك/ مقر عملك وموظفيها، إضافة إلى المعلومات البنكية الخاصة بتحويل أموال الزكاة إلى الجهات المختصة بصرفها.</value>
+  </data>
+  <data name="PrivacyPolicyPra4" xml:space="preserve">
+    <value>معلوماتك التي تقوم الهيئة بجمعها وفيما يتعلق بجميع زياراتك للموقع، قد تقوم الهيئة بجمع المعلومات التالية آلياً:</value>
+  </data>
+  <data name="PrivacyPolicyPra5" xml:space="preserve">
+    <value>المعلومات التقنية بما في ذلك عنوان بروتوكول الإنترنت الخاص بك وهو عنوان ال (IP) الذي يستخدم لربط جهاز حاسوبك الشخصي بالإنترنت، ومعلومات تسجيل دخولك الشخصي، ونوع متصفحك وإصداره، وإعداداتك للمنطقة الزمنية، والمتصفح الذي تستخدمه والوظائف الإضافية المضافة له وإصداراته، ومنصة تشغيل نظام الإنترنت</value>
+  </data>
+  <data name="PrivacyPolicyPra6" xml:space="preserve">
+    <value>معلومات زيارتك للموقع بما في ذلك عنوان ال (URL) وهو عنوان موقع الإنترنت، و تتبع مسار النقر الخاص بك عبر الموقع ومن خلاله (شاملاً التاريخ و الوقت)، المعلومات المتعلقة بأوقات استجابة الصفحات، و أخطاء التحميل، و طول فترات الزيارة لصفحات معينة، وتفاعلك مع المحتوى المعروض على الصفحة) كتمرير الماوس أو النقر عليه أو تحريكه على الصفحة)، والطرق المستخدمة للتصفح خارج الصفحة و أي رقم هاتف تم استخدامه للاتصال بالهيئة.​</value>
+  </data>
+  <data name="PrivacyPolicyPra7" xml:space="preserve">
+    <value>​المعلومات التي تتلقاها الهيئة من مصادر أخرى يجوز للهيئة أن تتلقى معلومات عنك في حال استخدامك لأي من المواقع الأخرى التي يتم تشغيلها من قبلها أو أي من الخدمات الأخرى التي تقدمها كما تعمل الهيئة بشكل وثيق مع جهات أخرى ومنها على سبيل المثال: الجهات الحكومية الأخرى والبنوك والمستشارين و الاستشاريين و المقاولين والمتعاقدين في الخدمات الإلكترونية و مقدمي التحليلات و موفري خدمات بحث المعلومات وتلك الجهات قد تزود الهيئة بمعلومات خاصة بك</value>
+  </data>
+  <data name="PrivacyPolicyPra8" xml:space="preserve">
+    <value>يحق للهيئة استخدام المعلومات الخاصة بك بأحد الطرق التالية:</value>
+  </data>
+  <data name="PrivacyPolicySubTitle1" xml:space="preserve">
+    <value>استخدام المعلومات والاستفادة منها</value>
+  </data>
+  <data name="PrivacyPolicySubTitle1.1" xml:space="preserve">
+    <value>1. ​المعلومات التي تقدم أو التي تجمعها الهيئة عنك. وسوف يتم استخدام هذه المعلومات من قبل الهيئة العامة للزكاة الدخل من أجل:</value>
+  </data>
+<data name="AccountStatementsTitle" xml:space="preserve">     <value>كشف الحساب</value>   </data>  <data name="ASDirectTaxes" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data> <data name="ASIndirectTaxes" xml:space="preserve">     <value>الضرائب الغير مباشرة</value>   </data>  <data name="ASCustoms" xml:space="preserve">     <value>الجمارك</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>كل العمليات</value>   </data> <data name="ASIncomeTax" xml:space="preserve">     <value>ضريبة الدخل</value>   </data>      <data name="ASWithholdingTax" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data>  
+
 </root>

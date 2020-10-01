@@ -114,8 +114,8 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string DecidNo { get; set; }
             public List<object> EffDateSet { get; set; }
             public VATChangeFillingPeriodRequestModel.UIBTNSet UI_BTNSet { get; set; }
-            public List<object> NOTESSet { get; set; }
-            public List<object> ATTACHSet { get; set; }
+            public List<NotesSetResult> NOTESSet { get; set; }
+            public List<Attachment> ATTACHSet { get; set; }
             public List<AttTypSetList> ATT_TYPSet { get; set; }
             public VATChangeFillingPeriodRequestModel.QuesListSet QuesListSet { get; set; }
         }
@@ -135,6 +135,34 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public Metadata __metadata { get; set; }
         public string DmsTp { get; set; }
         public string Txt50 { get; set; }
+    }
+
+
+    public partial class NotesSetResult
+    {
+        public Metadata Metadata { get; set; }
+        public string Notenoz { get; set; }
+        public string Refnamez { get; set; }
+        public string XInvoicez { get; set; }
+        public string XObsoletez { get; set; }
+        public string Rcodez { get; set; }
+        public string Erfusrz { get; set; }
+        public string Erfdtz { get; set; }
+        public string Erftmz { get; set; }
+        public string AttByz { get; set; }
+        public string ByPusrz { get; set; }
+        public string ByGpartz { get; set; }
+        public string DataVersionz { get; set; }
+        public string Namez { get; set; }
+        public string Noteno { get; set; }
+        public long Lineno { get; set; }
+        public long ElemNo { get; set; }
+        public string Tdformat { get; set; }
+        public string Tdline { get; set; }
+        public string Sect { get; set; }
+        public string Strdt { get; set; }
+        public string Strtime { get; set; }
+        public string Strline { get; set; }
     }
     #region VATChangeFillingPeriodRequestModel
     public class VATChangeFillingPeriodRequestModel
@@ -160,12 +188,14 @@ namespace EGAZT.Models.ChageFillingPeriodModel
 
         public class NOTESSet
         {
-            public List<object> results { get; set; }
+            public List<NotesSetResult> results { get; set; }
         }
+
+      
 
         public class ATTACHSet
         {
-            public List<object> results { get; set; }
+            public List<Attachment> results { get; set; }
         }
 
        
