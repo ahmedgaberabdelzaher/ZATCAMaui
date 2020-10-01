@@ -44,5 +44,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
+
+        private void btn_Clicked(object sender, System.EventArgs e)
+        {
+            TaxTypePicker.IsOpen = true;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.PopulateASFilterData();
+        }
     }
 }

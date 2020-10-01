@@ -124,6 +124,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             ddlLIssuedByCity.ColumnHeaderFontFamily = "SSTArabic-Medium";
                             ddlLIssuedByCity.SelectedItemFontFamily = "SSTArabic-Medium";
                             ddlLIssuedByCity.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+
+
+                            DpDbo.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDbo.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDbo.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+
+
+                            DpDboHijri.HeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpDboHijri.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpDboHijri.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
@@ -141,6 +155,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         ddlLIssuedByCity.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         ddlLIssuedByCity.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         ddlLIssuedByCity.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+
+                        DpDbo.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpDbo.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpDbo.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpDbo.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+
+
+
+                        DpDboHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpDboHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpDboHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpDboHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
                         break;
                 }
             }

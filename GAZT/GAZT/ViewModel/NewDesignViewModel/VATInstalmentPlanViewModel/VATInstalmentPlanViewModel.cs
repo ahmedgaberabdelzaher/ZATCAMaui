@@ -134,6 +134,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             }
         }
+        private bool _IsViewEnable = true;
+        public bool IsViewEnable
+        {
+            get
+            {
+                return _IsViewEnable;
+            }
+            set
+            {
+                _IsViewEnable = value;
+                RaisePropertyChanged("IsViewEnable");
+            }
+        }
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 6;
         private VATResults4[] _billsListVATData;
@@ -2410,6 +2423,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         if (App.selectedVATItem != "")
                         {
+                            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                            {
+                                IsViewEnable = false;
+                            }
                             var selectedItemFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
                             //vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData();
                             //VatInstalments = vATInstalment;
@@ -2658,6 +2675,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             request.d.__metadata = VatInstalments.d.__metadata;
             request.d.VTADSet = VatInstalments.d.VTADSet.results;
             request.d.ATTACHMENTSet = VatInstalments.d.AttachmentSet.results;
+            request.d.ATTACHMENTSet.Clear();
             request.d.VTISSet = VatInstalments.d.VTISSet.results;
 
 

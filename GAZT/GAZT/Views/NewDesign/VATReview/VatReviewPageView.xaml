@@ -386,7 +386,6 @@
                                                  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                                  ItemsSource="{Binding AttachmentsListViewData}"
                                                  TapCommand="{Binding NewAttachmentTapped}"
-                                                  ItemTapped="VRAttachTapped"
                                                  SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
 
 
@@ -410,7 +409,7 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf"
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon"
                                                            Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                            HorizontalOptions="Start" VerticalOptions="Center" />
 
@@ -436,10 +435,7 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                           
 
                                         </Grid>
                                     </DataTemplate>
@@ -904,7 +900,6 @@
                             <listView:SfListView HorizontalOptions="Center"
                                                  IsScrollBarVisible="False" IsScrollingEnabled="False"
                                                  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                                 ItemTapped="VRBGAttachTapped"
                                                  ItemsSource="{Binding BankGuranteeAttachmentsListViewData}"
                                                  TapCommand="{Binding NewBankGuranteeAttachmentTapped}"
                                                  SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
@@ -930,7 +925,7 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf"
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon"
                                                            Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                            HorizontalOptions="Start" VerticalOptions="Center" />
 
@@ -957,10 +952,7 @@
                                                     </Image>
                                                 </Grid>
                                             </border:SfBorder>
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource MicroGrayLabelStyle}" />
+                                           
 
                                         </Grid>
                                     </DataTemplate>
@@ -1001,10 +993,7 @@
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>
-                                <custom:CustomLabel Grid.Row="2"
-                                                    Text="{x:Static ResourceManager:AppResources.VR20MB}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource MicroGrayLabelStyle}" />
+                            
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NewBankGuranteeAttachmentTapped}" />

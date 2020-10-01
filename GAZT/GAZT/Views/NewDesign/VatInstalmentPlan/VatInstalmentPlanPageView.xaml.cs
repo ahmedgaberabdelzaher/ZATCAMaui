@@ -64,17 +64,23 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             {
                 viewModel.selectedList = viewModel.SelectedBillsList.Where(w => w.Xsele.Contains("X")).ToList();
 
-                //viewModel.EnableBillsContinue();
+
+
                 for (int i = 0; i < viewModel.selectedList.Count; i++)
                 {
                     var dataItem = viewModel.selectedList[i] as VATResults4;
-                    if (viewModel.SelectedBillsList.Contains(dataItem))
+                    int index = viewModel.SelectedBillsList.IndexOf(w => w.SadadNo.Contains(dataItem.SadadNo));
+                    if (index != -1)
                     {
-                        BillsVATListVIew.SelectedItem = viewModel.SelectedBillsList[i];
+                        BillsVATListVIew.SelectedItem = viewModel.SelectedBillsList[index];
                     }
+
+
 
                 }
             }
+
+
 
             Double dueAmount = 0.0;
             for (int i = 0; i < viewModel.selectedList.Count; i++)
@@ -89,7 +95,11 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 }
             }
 
+
+
             viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + viewModel.selectedList[0].Waers;
+
+
 
             viewModel.EnableBillsContinue();
         }
@@ -201,6 +211,11 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
         private void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
+
+            if (!viewModel.IsViewEnable)
+            {
+                return;
+            }
             var dataItem = e.ItemData as VATResults4;
 
             totalAmount = 0.0;
@@ -255,6 +270,14 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             // PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(viewModel.VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
+        }
+
+        private void listView_SelectionChanging(object sender, Syncfusion.ListView.XForms.ItemSelectionChangingEventArgs e)
+        {
+            if (!viewModel.IsViewEnable)
+            {
+                e.Cancel = true;
+            }
         }
 
         protected override void OnDisappearing()

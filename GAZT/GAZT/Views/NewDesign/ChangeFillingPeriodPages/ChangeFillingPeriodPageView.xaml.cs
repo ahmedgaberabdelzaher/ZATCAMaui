@@ -17,7 +17,7 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChangeFillingPeriodPageView : ContentPage
+    public partial class ChangeFillingPeriodPageView : ContentPage,ChangeFillingInterface
     {
         #region Variable
 
@@ -40,7 +40,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 viewModel = App.Locator.ChangeFillingPeriodPageView;
                 this.BindingContext = viewModel;
-
+                viewModel.cFInterface = this;
                 viewModel.ResetData();
 
                 //viewModel.showInstructionDialog();
@@ -219,5 +219,20 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
         {
             viewModel.EnableDeclaration();
         }
+        public void SelectDefaultAttachOption(int index)
+        {
+            AttachmentTypeOption.SelectedItem = viewModel.OutletDecisionOptions[index];
+        }
     }
+
+    public interface ChangeFillingInterface
+    {
+        void SelectDefaultAttachOption(int index);
+    }
+
 }
+
+
+
+
+

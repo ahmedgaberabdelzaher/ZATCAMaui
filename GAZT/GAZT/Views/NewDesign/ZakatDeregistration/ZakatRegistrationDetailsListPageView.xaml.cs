@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
@@ -59,12 +60,31 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
+                var selectedLv = sender as SfListView;
+                ZakatDeregistrationDetailsListModel selectedItem = (ZakatDeregistrationDetailsListModel)selectedLv.SelectedItem;
 
-                viewModel.GetNewTinDeregistrationDataCliked();
+                if (selectedItem.ZDTitle == AppResources.ZZTaxPayerDetails)
+                {
+                    
+                }
+                else if(selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
+                {
+
+                }
+                else if(selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
+                {
+
+                }
+                else
+                {
+                    await Task.Run(() =>
+                    {
+                        App.DisplayProgressView();
+                    });
+
+                    viewModel.GetNewTinDeregistrationDataCliked();
+                }
+
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }

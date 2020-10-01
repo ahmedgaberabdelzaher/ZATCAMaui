@@ -2389,8 +2389,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 _isBankGuranteeAttachments = false;
 
-                if (AttachmentsListViewData.Count == 0)
-                {
+                
                     if (string.IsNullOrEmpty(SADADNumber))
                     {
                         await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
@@ -2398,7 +2397,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             Models.ZakatInstalationModels.WhichAttachment.VatReviewAttachments,
                             modelVATReview.d.ReturnIdx));
                     }
-                }
+                
             }
             catch (GAZTUnlockAccountException ex)
             {

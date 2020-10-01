@@ -184,6 +184,22 @@ namespace GAZT.iOS.DependencyServices
             //}
         }
 
-       
+        public byte[] GetImagePathByteArray(string filePath)
+        {
+            byte[] base64Image = null;
+            try
+            {
+                base64Image = System.IO.File.ReadAllBytes(filePath);
+                //base64Image = Convert.ToBase64String(imageArray);
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            return base64Image;
+        }
+
+
     }
 }

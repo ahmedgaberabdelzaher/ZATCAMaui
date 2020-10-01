@@ -90,7 +90,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
-                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -179,7 +179,7 @@
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
     <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
-    <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+    <custom:CustomLabel x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}"  >
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
@@ -187,7 +187,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                                <StackLayout x:Name="CalLabel" Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                     <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
@@ -759,7 +759,7 @@
 
                  </StackLayout>
 
-                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" HorizontalOptions="FillAndExpand"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>
@@ -948,7 +948,7 @@
                                                     </custom:CustomLabel>
                                   </StackLayout>
                   
-                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnOutletContinue" Command="{Binding OutletContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" IsEnabled="{Binding IsOutletContinueButtonEnabled}" BackgroundColor="{Binding OutletContinueButtonnBackroundColor}" x:Name="btnOutletContinue" Command="{Binding OutletContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
 
@@ -979,38 +979,18 @@
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                 </Grid>
-                <listView:SfListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+
+
+                <listView:SfListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="Single" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 					             <ViewCell>
+
                                     <StackLayout Spacing="2">
                                             <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
                                                                     Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />
-                                                <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-
-                                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                        
-                                                        <Image HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsAttachmentAttached}">
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="Red" Size="20"
-                                                                         Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
-                                                            </Image.Source>
-                                                        </Image>
-
-                                                        <Label Style="{StaticResource GAZTCaptionBlackLabel}" Text="{Binding AttachmentName}" IsVisible="true">
-                                                        </Label>
-
-                                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                                            <Image Margin="5,0">
-                                                                <Image.Source>
-                                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                                </Image.Source>
-                                                            </Image>
-                                                        </StackLayout>
-                                                    </StackLayout>
-                                                </border:SfBorder >-->
+                                               
                                             <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
                                             ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
                                             OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
@@ -1066,14 +1046,79 @@
 
                                             </inputLayout:SfTextInputLayout>
                                             <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
-                                                    Style="{StaticResource CaptionLabelGrey}" /> 
+                                                    Style="{StaticResource CaptionLabelGrey}" />
+                                 <!--<listView:SfListView HorizontalOptions="Center" BackgroundColor="Green
+                                                 "
+                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                             VerticalOptions="Start"  ItemSpacing="5"
+                                             ItemsSource="{Binding AttachmentTypeList}"
+                                             TapCommand="{Binding NewContractCopyAttachmentTapped}"
+                                             SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent"
+                                             >
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                                <Label  Text="Attachments" HorizontalOptions="StartAndExpand"
+                                                                    Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />
+                                         
+                                        <border:SfBorder Grid.Row="0" Margin="0,0,0,10" Padding="12"
+                                                         Style="{StaticResource SfStyleGreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+
+                                                   <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                           
+                                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                                <Label Grid.Row="0" Grid.Column="1"
+                                                               Text="{Binding Filename}"
+                                                               Style="{StaticResource CaptionLabelBlack}"
+                                                               LineHeight="0.8"
+                                                               HorizontalOptions="FillAndExpand"
+                                                               VerticalOptions="Center"/>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                                    Text="{Binding Filename}"
+                                                                    FontSize="Small" TextColor="Black"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    VerticalOptions="Center"/>
+                                                <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       Rotation="90">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                                         Size="24"
+                                                                         Glyph="{x:Static FontImage:IconFonts.Close}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </border:SfBorder>
+                                        
+
+                                    </Grid>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>-->
+
                                      </StackLayout>
                                   </ViewCell>   
 			                </DataTemplate>
                         </listView:SfListView.ItemTemplate>
                  </listView:SfListView>
 
-                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="48" VerticalOptions="Center"  Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
+                 <buttons:SfButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="48" VerticalOptions="Center"  Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
