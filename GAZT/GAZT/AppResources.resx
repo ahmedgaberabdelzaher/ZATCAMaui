@@ -1207,7 +1207,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>File size should not be more than 5MB</value>
   </data>
-      <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
+  <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
     <value>File size should not be more than 1MB</value>
   </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
@@ -5071,7 +5071,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="ZakatInstalmentsSadadNumber" xml:space="preserve">
     <value>SADAD Number</value>
   </data>
- <data name="ZakatInstalmetDetails" xml:space="preserve">
+  <data name="ZakatInstalmetDetails" xml:space="preserve">
     <value>Display Instalment Schedule</value>
   </data>
   <data name="AllReturns" xml:space="preserve">
@@ -7831,7 +7831,7 @@ Please provide us with supporting documents to support your reasons for a review
 Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
-      <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
+  <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
     <value>The maximum nuber of attachments you can upload is 5</value>
   </data>
   <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
@@ -7911,19 +7911,22 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>Do you want to add a new financial representative and close the current one ?</value>
   </data>
-<data name="ZAKATAmend" xml:space="preserve">
+  <data name="ZAKATAmend" xml:space="preserve">
     <value>ZAKAT Amendment</value>
   </data>
-<data name="ZAKATUpdate" xml:space="preserve">
+  <data name="ZAKATUpdate" xml:space="preserve">
     <value>ZAKAT Update</value>
   </data>
-    <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
+  <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
     <value>Total Bills Selected</value>
   </data>
-    <data name="VRSadadAlert" xml:space="preserve">
-  <value>Generating the SADAD number will be final activity to submit the review form, and no changes will be allowed afterwards. Click OK to generate.</value>
-</data>
+  <data name="VRSadadAlert" xml:space="preserve">
+    <value>Generating the SADAD number will be final activity to submit the review form, and no changes will be allowed afterwards. Click OK to generate.</value>
+  </data>
   <data name="ZZZZFAQ" xml:space="preserve">
     <value>FAQ</value>
+  </data>
+  <data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
+    <value>In case you don't agree with above information, click on this link and confirm -</value>
   </data>
 </root>

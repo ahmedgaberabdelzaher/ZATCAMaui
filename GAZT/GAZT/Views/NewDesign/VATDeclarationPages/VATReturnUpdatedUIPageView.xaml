@@ -2370,6 +2370,8 @@
                                                 <Span Text="&#160;"/>
                                                 <Span Text=":"/>
                                                 <Span Text="&#160;"/>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistationFirstNote}"></Span>
+                                                <Span Text="&#160;"/>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZZZChageOfRegistration}" TextColor="{StaticResource Primary}" >
                                                     <!--<Span.GestureRecognizers>
                                                         <TapGestureRecognizer  Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}" />

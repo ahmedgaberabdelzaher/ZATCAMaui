@@ -1226,7 +1226,7 @@
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>حجم الملف لا يزيد عن 5 ميجا</value>
   </data>
-      <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
+  <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
     <value>جم الملف لا يزيد عن 1 ميج</value>
   </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
@@ -4443,7 +4443,7 @@
   <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
     <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
-      <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
+  <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
     <value>اوافق انه قد تم الاطلاع على التراخيص التي سيتم الفروع / اغلاقها</value>
   </data>
   <data name="TinDeregistrationDate" xml:space="preserve">
@@ -4590,10 +4590,10 @@
   <data name="VATDeregistrationDocumentType4" xml:space="preserve">
     <value>ملفات أخرى</value>
   </data>
-      <data name="TinDeregistrationDateValidationMessage" xml:space="preserve">
+  <data name="TinDeregistrationDateValidationMessage" xml:space="preserve">
     <value>يجب ان يكون تاريخ الغاء التسجيل اكبر من تاريخ بداية اخر تصريح سارى المفعول</value>
   </data>
-   <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
+  <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
     <value> يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات</value>
   </data>
   <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
@@ -5182,7 +5182,7 @@
   <data name="NDInbox" xml:space="preserve">
     <value>الصندوق الوارد</value>
   </data>
- <data name="NDReferenceNumber" xml:space="preserve">
+  <data name="NDReferenceNumber" xml:space="preserve">
     <value>الرقم المرجعي</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
@@ -7844,13 +7844,16 @@
   <data name="VATAmendAddNewFinancialRepresentativeWarning" xml:space="preserve">
     <value>هل تريد إضافة ممثل مالي جديد وإغلاق الممثل الحالي؟</value>
   </data>
-    <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
+  <data name="VatInstalmentTotalBillsSelected" xml:space="preserve">
     <value>إجمالي الفواتير المحدده</value>
   </data>
-   <data name="VRSadadAlert" xml:space="preserve">
-  <value>إنشاء رقم سداد سيكون نشاطا نهائيا لتسليم نموذج المراجعة، ولن يسمح بأي تغييرات بعد ذلك. انقر على موافق للإنشاء</value>
-</data>
+  <data name="VRSadadAlert" xml:space="preserve">
+    <value>إنشاء رقم سداد سيكون نشاطا نهائيا لتسليم نموذج المراجعة، ولن يسمح بأي تغييرات بعد ذلك. انقر على موافق للإنشاء</value>
+  </data>
   <data name="ZZZZFAQ" xml:space="preserve">
     <value>الأسئلة الشائعة</value>
+  </data>
+  <data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
+    <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>
   </data>
 </root>

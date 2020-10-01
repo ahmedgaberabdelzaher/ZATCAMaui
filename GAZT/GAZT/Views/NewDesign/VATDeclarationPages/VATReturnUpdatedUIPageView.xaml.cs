@@ -3150,6 +3150,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryVatAmount.Text == "0.00")
                 {
                     EntryVatAmount.Text = string.Empty;
@@ -3272,6 +3273,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryVatAdjustmentWithSAR.Text == "0.00")
                 {
                     EntryVatAdjustmentWithSAR.Text = string.Empty;
@@ -3296,6 +3298,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntrySalesGccAmt.Text == "0.00")
                 {
                     EntrySalesGccAmt.Text = string.Empty;
@@ -3319,6 +3322,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntrySalesGccAdj.Text == "0.00")
                 {
                     EntrySalesGccAdj.Text = string.Empty;
@@ -3342,6 +3346,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryZerosalesAmt.Text == "0.00")
                 {
                     EntryZerosalesAmt.Text = string.Empty;
@@ -3365,6 +3370,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryZerosalesAdj.Text == "0.00")
                 {
                     EntryZerosalesAdj.Text = string.Empty;
@@ -3388,6 +3394,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryExportsAmt.Text == "0.00")
                 {
                     EntryExportsAmt.Text = string.Empty;
@@ -3411,6 +3418,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryExportsAdj.Text == "0.00")
                 {
                     EntryExportsAdj.Text = string.Empty;
@@ -3434,6 +3442,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryExemptsalesAmt.Text == "0.00")
                 {
                     EntryExemptsalesAmt.Text = string.Empty;
@@ -3501,6 +3510,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryStdpurchaseAmt.Text == "0.00")
                 {
                     EntryStdpurchaseAmt.Text = string.Empty;
@@ -3520,6 +3530,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryStdpurchaseAdj.Text == "0.00")
                 {
                     EntryStdpurchaseAdj.Text = string.Empty;
@@ -3539,6 +3550,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryZVatAmountWithSAR.Text == "0.00")
                 {
                     EntryZVatAmountWithSAR.Text = String.Empty;
@@ -3558,6 +3570,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportspaidAdj.Text == "0.00")
                 {
                     EntryImportspaidAdj.Text = string.Empty;
@@ -3577,6 +3590,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportsaccAmt.Text == "0.00")
                 {
                     EntryImportsaccAmt.Text = string.Empty;
@@ -3596,6 +3610,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportsaccAdj.Text == "0.00")
                 {
                     EntryImportsaccAdj.Text = string.Empty;
@@ -3615,6 +3630,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryZeropurchaseAmt.Text == "0.00")
                 {
                     EntryZeropurchaseAmt.Text = string.Empty;
@@ -3634,7 +3650,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryZeropurchaseAdj.Text == "0.00")
                 {
                     EntryZeropurchaseAdj.Text = string.Empty;
@@ -3654,6 +3670,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryExemptpurchaseAmt.Text == "0.00")
                 {
                     EntryExemptpurchaseAmt.Text = string.Empty;
@@ -3673,6 +3690,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryExemptpurchaseAdj.Text == "0.00")
                 {
                     EntryExemptpurchaseAdj.Text = string.Empty;
@@ -3692,6 +3710,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryPreperiodcorr.Text == "0.00" || EntryPreperiodcorr.Text == "-0.00")
                 {
                     EntryPreperiodcorr.Text = string.Empty;
@@ -5231,6 +5250,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryVatAmount15.Text == "0.00")
                 {
                     EntryVatAmount15.Text = string.Empty;
@@ -5250,6 +5270,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryVatAdjustmentWithSAR15.Text == "0.00")
                 {
                     EntryVatAdjustmentWithSAR15.Text = string.Empty;
@@ -5414,6 +5435,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryVatAmount5.Text == "0.00")
                 {
                     EntryVatAmount5.Text = string.Empty;
@@ -5470,6 +5492,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryVatAdjustmentWithSAR5.Text == "0.00")
                 {
                     EntryVatAdjustmentWithSAR5.Text = string.Empty;
@@ -5522,6 +5545,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryStdpurchaseAmt15.Text == "0.00")
                 {
                     EntryStdpurchaseAmt15.Text = string.Empty;
@@ -5542,6 +5566,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryStdpurchaseAdj15.Text == "0.00")
                 {
                     EntryStdpurchaseAdj15.Text = string.Empty;
@@ -5635,6 +5660,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryStdpurchaseAmt5.Text == "0.00")
                 {
                     EntryStdpurchaseAmt5.Text = string.Empty;
@@ -5695,6 +5721,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryStdpurchaseAdj5.Text == "0.00")
                 {
                     EntryStdpurchaseAdj5.Text = string.Empty;
@@ -5748,6 +5775,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryZVatAmountWithSAR15.Text == "0.00")
                 {
                     EntryZVatAmountWithSAR15.Text = String.Empty;
@@ -5801,6 +5829,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportspaidAdj15.Text == "0.00")
                 {
                     EntryImportspaidAdj15.Text = string.Empty;
@@ -5854,6 +5883,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryZVatAmountWithSAR5.Text == "0.00")
                 {
                     EntryZVatAmountWithSAR5.Text = String.Empty;
@@ -5907,6 +5937,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportspaidAdj5.Text == "0.00")
                 {
                     EntryImportspaidAdj5.Text = string.Empty;
@@ -5960,6 +5991,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportsaccAmt15.Text == "0.00")
                 {
                     EntryImportsaccAmt15.Text = string.Empty;
@@ -6013,6 +6045,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportsaccAdj15.Text == "0.00")
                 {
                     EntryImportsaccAdj15.Text = string.Empty;
@@ -6066,6 +6099,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportsaccAmt5.Text == "0.00")
                 {
                     EntryImportsaccAmt5.Text = string.Empty;
@@ -6119,6 +6153,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryImportsaccAdj5.Text == "0.00")
                 {
                     EntryImportsaccAdj5.Text = string.Empty;
@@ -7259,6 +7294,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
+                viewModel.IsUnFocusedTextBox = false;
                 if (EntryExemptsalesAdj.Text == "0.00")
                 {
                     EntryExemptsalesAdj.Text = string.Empty;
