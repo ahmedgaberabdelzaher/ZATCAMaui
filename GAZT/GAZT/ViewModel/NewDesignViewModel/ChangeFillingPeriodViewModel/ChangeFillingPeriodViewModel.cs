@@ -622,8 +622,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 IsDOBVisible = true;
                 ContractPersonEditable = false;
+
             }
 
+            IsCheckboxChecked = true;
 
             var yearsAttachments = new ObservableCollection<Attachment>();
             var monthsAttachments = new ObservableCollection<Attachment>();

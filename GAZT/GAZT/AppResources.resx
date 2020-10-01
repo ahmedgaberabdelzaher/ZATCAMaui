@@ -8227,4 +8227,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
  <data name="ASBillAmount" xml:space="preserve">
     <value>Bill Amount</value>
   </data>
+  <data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
+    <value>In case you don't agree with above information, click on this link and confirm -</value>
+  </data>
 </root>
