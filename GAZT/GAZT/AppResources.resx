@@ -8206,5 +8206,25 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   <data name="PrivacyPolicySubTitle1.1" xml:space="preserve">
     <value>1. INFORMATION YOU GIVE TO GAZT OR GAZT COLLECTS ABOUT YOU. GAZT WILL USE THIS INFORMATION:</value>
   </data>
- <data name="AccountStatementsTitle" xml:space="preserve">     <value>Account Statement</value>   </data> <data name="ASDirectTaxes" xml:space="preserve">     <value>Direct Taxes</value>   </data> <data name="ASIndirectTaxes" xml:space="preserve">     <value>Indirect Taxes</value>   </data>     <data name="ASCustoms" xml:space="preserve">     <value>CUSTOMS</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>ALL TRANSACTIONS</value>   </data>  <data name="ASIncomeTax" xml:space="preserve">     <value>Income Tax</value>     <comment>My Return </comment>   </data>   <data name="ASWithholdingTax" xml:space="preserve">     <value>WITHHOLDING TAX</value>   </data>
+ <data name="AccountStatementsDashboardTitle" xml:space="preserve">     <value>Account Statement</value>   </data>   <data name="AStatementDirectTaxes" xml:space="preserve">     <value>Direct Taxes</value>   </data> <data name="AStatementIndirectTaxes" xml:space="preserve">     <value>Indirect Taxes</value>   </data>     <data name="ASCustoms" xml:space="preserve">     <value>CUSTOMS</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>ALL TRANSACTIONS</value>   </data>  <data name="ASIncomeTax" xml:space="preserve">     <value>Income Tax</value>     <comment>My Return </comment>   </data>   <data name="ASWithholdingTax" xml:space="preserve">     <value>WITHHOLDING TAX</value>   </data>   <data name="ASTransactionDate" xml:space="preserve">
+    <value>Transaction Date</value>
+  </data>
+   <data name="ASFBNum" xml:space="preserve">
+    <value>FB Number</value>
+  </data> 
+   <data name="ASSadadBillNumber" xml:space="preserve">
+    <value>SADAD Bill Number</value>
+  </data> 
+   <data name="ASTaxperiod" xml:space="preserve">
+    <value>Tax Period</value>
+  </data> 
+  <data name="ASDueDate" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+ <data name="ASBillDescription" xml:space="preserve">
+    <value>Bill Description</value>
+  </data>
+ <data name="ASBillAmount" xml:space="preserve">
+    <value>Bill Amount</value>
+  </data>
 </root>

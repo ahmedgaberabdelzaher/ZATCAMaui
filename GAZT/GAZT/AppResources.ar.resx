@@ -8117,6 +8117,26 @@
   <data name="PrivacyPolicySubTitle1.1" xml:space="preserve">
     <value>1. ​المعلومات التي تقدم أو التي تجمعها الهيئة عنك. وسوف يتم استخدام هذه المعلومات من قبل الهيئة العامة للزكاة الدخل من أجل:</value>
   </data>
-<data name="AccountStatementsTitle" xml:space="preserve">     <value>كشف الحساب</value>   </data>  <data name="ASDirectTaxes" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data> <data name="ASIndirectTaxes" xml:space="preserve">     <value>الضرائب الغير مباشرة</value>   </data>  <data name="ASCustoms" xml:space="preserve">     <value>الجمارك</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>كل العمليات</value>   </data> <data name="ASIncomeTax" xml:space="preserve">     <value>ضريبة الدخل</value>   </data>      <data name="ASWithholdingTax" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data>  
-
+  <data name="AccountStatementsDashboardTitle" xml:space="preserve">     <value>كشف الحساب</value>   </data>  <data name="AStatementDirectTaxes" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data> <data name="AStatementIndirectTaxes" xml:space="preserve">     <value>الضرائب الغير مباشرة</value>   </data>  <data name="ASCustoms" xml:space="preserve">     <value>الجمارك</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>كل العمليات</value>   </data> <data name="ASIncomeTax" xml:space="preserve">     <value>ضريبة الدخل</value>   </data>      <data name="ASWithholdingTax" xml:space="preserve">     <value>الضرائب المباشرة</value>   </data>
+ <data name="ASTransactionDate" xml:space="preserve">
+    <value>Transaction Date</value>
+  </data>
+   <data name="ASFBNum" xml:space="preserve">
+    <value>FB Number</value>
+  </data> 
+   <data name="ASSadadBillNumber" xml:space="preserve">
+    <value>SADAD Bill Number</value>
+  </data> 
+   <data name="ASTaxperiod" xml:space="preserve">
+    <value>Tax Period</value>
+  </data> 
+  <data name="ASDueDate" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+ <data name="ASBillDescription" xml:space="preserve">
+    <value>Bill Description</value>
+  </data>
+ <data name="ASBillAmount" xml:space="preserve">
+    <value>Bill Amount</value>
+  </data>
 </root>
