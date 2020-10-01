@@ -22,14 +22,15 @@ namespace GAZT.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             await CrossMedia.Current.Initialize();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
-
+            
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
