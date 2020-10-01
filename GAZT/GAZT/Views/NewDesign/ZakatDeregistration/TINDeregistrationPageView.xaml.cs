@@ -42,6 +42,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 outletDecisionOptionsListView.SelectedItem = x;
 
+                
+
             });
             Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
             {
@@ -91,8 +93,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if(arg.SelectedValue == string.Empty)
                 {
                     viewModel.IsOption1Visible = false;
+                    FrmDBO.IsVisible = false;
+                    CalLabel.IsVisible = false;
+                    DateLabel.IsVisible = false;
+                    outletDecisionOptionsListView.IsVisible = false;
                     viewModel.IsOption2Visible = false;
 
+                }
+                else
+                {
+                    viewModel.IsOption1Visible = true;
+                    FrmDBO.IsVisible = true;
+                    CalLabel.IsVisible = true;
+                    DateLabel.IsVisible = true;
+                    outletDecisionOptionsListView.IsVisible = true;
+                    viewModel.IsOption2Visible = true;
                 }
                 Console.WriteLine(arg);
             });

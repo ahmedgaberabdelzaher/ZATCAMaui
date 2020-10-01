@@ -179,7 +179,7 @@
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
     <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
-    <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+    <custom:CustomLabel x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}"  >
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
@@ -187,7 +187,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                                <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                                <StackLayout x:Name="CalLabel" Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                     <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
@@ -759,7 +759,7 @@
 
                  </StackLayout>
 
-                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" HorizontalOptions="FillAndExpand"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>
@@ -948,7 +948,7 @@
                                                     </custom:CustomLabel>
                                   </StackLayout>
                   
-                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnOutletContinue" Command="{Binding OutletContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" IsEnabled="{Binding IsOutletContinueButtonEnabled}" BackgroundColor="{Binding OutletContinueButtonnBackroundColor}" x:Name="btnOutletContinue" Command="{Binding OutletContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
 

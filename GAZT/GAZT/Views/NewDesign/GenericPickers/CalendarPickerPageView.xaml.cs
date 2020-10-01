@@ -140,6 +140,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
         {
 
 
+            PopupNavigation.Instance.PopAsync();
 
             if (viewModel.IsFutureDatePickerVisible == true)
             {
@@ -182,7 +183,6 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
 
 
-            PopupNavigation.Instance.PopAsync();
 
 
 

@@ -81,7 +81,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             DDlContactIDType.HeaderFontFamily = "SSTArabic-Medium";
                             DDlContactIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
                             DDlContactIDType.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DDlContactIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+                            DDlContactIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd  
+
+                            DpEStartDate.HeaderFontFamily = "SSTArabic-Medium";
+                            DpEStartDate.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            DpEStartDate.SelectedItemFontFamily = "SSTArabic-Medium";
+                            DpEStartDate.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+
+                            SignUpDOB.HeaderFontFamily = "SSTArabic-Medium";
+                            SignUpDOB.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            SignUpDOB.SelectedItemFontFamily = "SSTArabic-Medium";
+                            SignUpDOB.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd   
+
+                            ContactDOBPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            ContactDOBPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            ContactDOBPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            ContactDOBPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd  
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
@@ -94,6 +109,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         DDlContactIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         DDlContactIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         DDlContactIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+
+                        DpEStartDate.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpEStartDate.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpEStartDate.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DpEStartDate.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+
+                        SignUpDOB.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SignUpDOB.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SignUpDOB.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SignUpDOB.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+
+                        ContactDOBPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ContactDOBPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ContactDOBPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ContactDOBPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
 
                         break;
                 }

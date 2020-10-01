@@ -63,7 +63,8 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             try
             {
                 viewModel.DataSource.SelectedValue = e.NewValue.ToString();
-                
+
+
             }
             catch (Exception ex)
             {
@@ -73,9 +74,10 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         private void PopupClose_Clicked(object sender, EventArgs e)
         {
-         
-                try
-                {
+            PopupNavigation.Instance.PopAsync();
+
+            try
+            {
                     MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
                 }
                 catch (Exception ex)
@@ -83,7 +85,6 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     Console.WriteLine(ex.Message);
                 }
 
-                PopupNavigation.Instance.PopAsync();
             
         }
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
@@ -321,13 +322,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 FrmIDNumber.HasError = true;
 
                                 //viewModel.FrameContactIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 //viewModel.FrameContactIDError = false;
                                 FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         else
@@ -350,14 +355,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 FrmIDNumber.HasError = true;
                                // viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 FrmIDNumber.HasError = false;
                                 //viewModel.FrameContactIDError = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         catch (GAZTException gex)
@@ -385,7 +393,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 viewModel.IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -393,7 +403,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -407,8 +419,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -419,8 +432,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -447,13 +461,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                  FrmIDNumber.HasError = true;
                                 //viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                               // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 FrmIDNumber.HasError = false;
-                               // viewModel.FrameContactIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel.FrameContactIDError = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                                //   viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         else
@@ -475,13 +493,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 FrmIDNumber.HasError = true;
                                // viewModel.FrameContactIDError = true;
                                 viewModel.TxtIDNumber = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 FrmIDNumber.HasError = false;
-                               // viewModel.FrameContactIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                // viewModel.FrameContactIDError = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         catch (GAZTException gex)
@@ -508,8 +530,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -517,7 +540,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -531,8 +556,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                  viewModel.IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -543,8 +569,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -776,7 +803,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                    // await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
@@ -801,7 +830,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                    //await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
@@ -826,7 +857,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                    // await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
@@ -858,7 +891,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                    // viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
@@ -1088,13 +1123,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 viewModel.FrameIDError = false;
                                 //FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         else
@@ -1119,13 +1158,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         catch (GAZTException gex)
@@ -1152,8 +1195,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -1161,7 +1205,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -1175,8 +1221,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 // IsLoading = false;
-
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                               // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -1187,8 +1233,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 // IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -1213,13 +1260,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 // FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                                //viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         else
@@ -1241,13 +1292,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+
+                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         catch (GAZTException gex)
@@ -1274,8 +1329,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 viewModel._navigationService.GoBack();
                             });
                         }
@@ -1283,7 +1339,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                                //viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 await Task.Run(() =>
                                 {
                                     viewModel.IsLoading = false;
@@ -1297,8 +1355,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 // IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -1309,8 +1368,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 // IsLoading = false;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
-                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                 //_navigationService.GoBack();
                             });
                         }
@@ -1391,7 +1451,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.IsLoading = true;
                     });
                     Image arrowImage = sender as Image;
-                  Attachment attachment = (Attachment)arrowImage.BindingContext;
+                    Attachment attachment = (Attachment)arrowImage.BindingContext;
                     //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                     //{
 
@@ -1433,6 +1493,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         async void voidTapped(System.Object sender, System.EventArgs e)
         {
+            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatDeregistrationVoidMessage));
+
             var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo,AppResources.ZYes);
             if (!result)
             {
