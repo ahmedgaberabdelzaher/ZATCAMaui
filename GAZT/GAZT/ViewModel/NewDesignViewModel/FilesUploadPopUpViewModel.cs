@@ -635,6 +635,122 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                 await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan1MB, AppResources.Information);
                                             }
                                         }
+                                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+                                        {
+                                            if (fileSize <= 1)
+                                            {
+                                                if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                                                {
+                                                    bool IsAttachmentPresent = false;
+                                                    foreach (Attachment ItemA in AttachmentsList.results)
+                                                    {
+                                                        if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
+                                                        {
+                                                            IsAttachmentPresent = true;
+                                                        }
+                                                    }
+                                                    if (IsAttachmentPresent == false)
+                                                    {
+                                                        string attachmentType = UtilityManager.GetContentType(Extention);
+                                                        AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
+                                                        // await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                                                        PopToRootPage();
+                                                        if (_attachment != null && _attachment.d != null)
+                                                        {
+                                                            AttachmentName = string.Empty;
+                                                            TimeZone localZone = TimeZone.CurrentTimeZone;
+                                                            string standardName = localZone.DaylightName;
+                                                            _attachment.d.Erfdt = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘UTC’ ‘zzz’");
+                                                            string uploadedDate = _attachment.d.Erfdt;
+                                                            uploadedDate = uploadedDate.Replace("’", "");
+                                                            uploadedDate = uploadedDate.Replace("‘", "");
+                                                            uploadedDate = uploadedDate.Replace("UTC", "GMT");
+                                                            _attachment.d.Erfdt = uploadedDate;
+                                                            _attachment.d.Dotyp = DocTypeString;
+                                                            AttachmentsList.results.Add(_attachment.d);
+                                                            ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(AttachmentsList.results);
+                                                            Device.BeginInvokeOnMainThread(async () =>
+                                                            {
+                                                                VatAttachmentsList = myCollection;
+                                                            });
+                                                            VatAttachmentsList = myCollection;
+                                                            foreach (var item in VatAttachmentsList)
+                                                            {
+                                                                try
+                                                                {
+                                                                    if (App.IsArabic)
+                                                                    {
+                                                                        if (item.Erfdt != null)
+                                                                        {
+                                                                            //item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                            //item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                            item.Erfdt = item.Erfdt;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.Erfdt != null)
+                                                                        {
+                                                                            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                        }
+                                                                    }
+                                                                }
+                                                                catch (Exception ex)
+                                                                {
+                                                                    await Task.Run(() =>
+                                                                    {
+                                                                        IsLoading = false;
+                                                                    });
+                                                                }
+                                                            }
+                                                            AttachmentCount++;
+                                                            filterList();
+                                                            //CloneAttachmentList(VatAttachmentsListtofilter);
+                                                            CloneAttachmentList(VatAttachmentsList);
+                                                            // TotalAttachmentSize += AttachmentSize;
+                                                            AttachmentName = string.Empty;
+                                                        }
+                                                        else
+                                                        {
+                                                            AttachmentName = string.Empty;
+                                                            await Task.Run(() =>
+                                                            {
+                                                                IsLoading = false;
+                                                            });
+                                                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                        await Task.Run(() =>
+                                                        {
+                                                            IsLoading = false;
+                                                        });
+                                                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    AttachmentName = string.Empty;
+                                                    await Task.Run(() =>
+                                                    {
+                                                        IsLoading = false;
+                                                    });
+                                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                AttachmentName = string.Empty;
+                                                await Task.Run(() =>
+                                                {
+                                                    IsLoading = false;
+                                                });
+                                                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan10MB, AppResources.Information);
+                                            }
+                                        }
                                         else { 
                                             if (Convert.ToDecimal(AttachmentSize) <= 5)
                                             {

@@ -969,7 +969,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             else
                             {
                                 DateField.IsVisible = false;
-                                SelectedReason.ReasonDesc = string.Empty;
+                                //SelectedReason.ReasonDesc = string.Empty;
                             }
                             AddOutletDecisionOptions();
                             PopulateAttachmentsListViewTemplate();

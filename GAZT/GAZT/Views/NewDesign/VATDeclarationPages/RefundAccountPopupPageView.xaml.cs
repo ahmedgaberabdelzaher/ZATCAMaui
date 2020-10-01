@@ -28,8 +28,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel = App.Locator.RefundAccountPopupPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
-
-                if(vATDeclaration!=null && vATDeclaration.d != null)
+                SetPickerFont();
+                if (vATDeclaration!=null && vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationDetails = vATDeclaration;
                     onPageLoad();
@@ -59,6 +59,50 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch(Exception ex)
+            {
+
+            }
+
+        }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            IDTypeDropdown.HeaderFontFamily = "SSTArabic-Medium";
+                            IDTypeDropdown.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            IDTypeDropdown.SelectedItemFontFamily = "SSTArabic-Medium";
+                            IDTypeDropdown.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+
+                            IDNumberDropdown.HeaderFontFamily = "SSTArabic-Medium";
+                            IDNumberDropdown.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            IDNumberDropdown.SelectedItemFontFamily = "SSTArabic-Medium";
+                            IDNumberDropdown.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+
+                 }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        IDTypeDropdown.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        IDTypeDropdown.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        IDTypeDropdown.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        IDTypeDropdown.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        IDNumberDropdown.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        IDNumberDropdown.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        IDNumberDropdown.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        IDNumberDropdown.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+
+                        break;
+                }
+            }
+            catch (Exception ex)
             {
 
             }

@@ -23,6 +23,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
             viewModel.ClearData();
             ChangeAeroIcon();
             SetLTR();
+            SetPickerFont();
             OnPageLoad();
         }
 
@@ -39,6 +40,48 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                 BundleType.BackgroundColor = Color.FromHex("#FFFFFF");
                 BundleNumber.BackgroundColor = Color.FromHex("#FFFFFF");
             }
+        }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            //BundleNumber.HeaderFontFamily = "SSTArabic-Medium";
+                            //BundleNumber.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            //BundleNumber.SelectedItemFontFamily = "SSTArabic-Medium";
+                            //BundleNumber.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+
+                            BundleType.HeaderFontFamily = "SSTArabic-Medium";
+                            BundleType.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            BundleType.SelectedItemFontFamily = "SSTArabic-Medium";
+                            BundleType.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        //BundleNumber.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //BundleNumber.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //BundleNumber.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //BundleNumber.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        BundleType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BundleType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BundleType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BundleType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
         public void ChangeAeroIcon()
         {

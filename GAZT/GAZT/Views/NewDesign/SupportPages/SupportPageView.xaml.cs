@@ -23,6 +23,7 @@ namespace EGAZT.Views.NewDesign
             viewModel = App.Locator.SupportPageView;
             BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            SetPickerFont();
         }
 
         protected async override void OnAppearing()
@@ -55,7 +56,37 @@ namespace EGAZT.Views.NewDesign
                 viewModel.setSupportTab();
             }
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
 
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            BranchLocation.HeaderFontFamily = "SSTArabic-Medium";
+                            BranchLocation.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            BranchLocation.SelectedItemFontFamily = "SSTArabic-Medium";
+                            BranchLocation.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        BranchLocation.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BranchLocation.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BranchLocation.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BranchLocation.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         private async void SetLocationToMap()
         {
             try
