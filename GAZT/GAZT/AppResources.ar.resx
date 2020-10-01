@@ -8142,4 +8142,5 @@
   <data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
     <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>
   </data>
+   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">  <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value> </data>
 </root>
