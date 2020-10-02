@@ -1122,7 +1122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedCRValidFromHijiriDate = _selectedDOBDate;
                     if (!string.IsNullOrWhiteSpace(CRValidFrom))
-                        DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                        DisplayCRValidFrom = HijriDateString(_crValidFrom);
                 }
             }
             else if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
@@ -1132,7 +1132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedValidFromDate = _selectedDOBDate;
                     if(!string.IsNullOrWhiteSpace(ValidFrom))
-                        DisplayValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                        DisplayValidFrom = HijriDateString(_validFrom);
                 }
                 else
                 {
@@ -1513,7 +1513,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             return isFileAlreadyAttached;
         }
-
+        private string HijriDateString(DateTime date)
+        {
+            try
+            {
+                return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+            }
+            catch (Exception)
+            {
+                HijriCalendar hijriCalendar = new HijriCalendar();
+                return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
+            }
+        }
         #endregion
     }
 }

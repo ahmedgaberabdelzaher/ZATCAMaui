@@ -2284,8 +2284,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else
                 {
                     SelectedDOBHijiriDate = _selectedDOBDate;
-                    if(!string.IsNullOrWhiteSpace(SelectedDOB))
-                        DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    if (!string.IsNullOrWhiteSpace(SelectedDOB))
+                        DisplaySelectedDOB = HijriDateString(_dob);
                 }
             }
             else if(_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
@@ -2302,7 +2302,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedPassportIssueHijiriDate = _selectedDOBDate;
                     if(!string.IsNullOrWhiteSpace(PassportIssueDate))
-                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                        DisplayPassportIssueDate = HijriDateString(_issueDate);
                 }
                 if (taxPayerDetails?.Caltp == "G")
                 {
@@ -2314,7 +2314,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedPassportExpireHijiriDate = _selectedDOBDate;
                     if(!string.IsNullOrWhiteSpace(PassportExpireDate))
-                        DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                        DisplayPassportExpireDate = HijriDateString(_expiryDate);
                 }
             }
         }
@@ -3003,6 +3003,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsSaudi = false;
                     UploadedRentDocumentsList?.Clear();
                     break;
+            }
+        }
+        private string HijriDateString(DateTime date)
+        {
+            try
+            {
+                return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+            }catch(Exception)
+            {
+                HijriCalendar hijriCalendar = new HijriCalendar();
+                return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }
         }
         #endregion
