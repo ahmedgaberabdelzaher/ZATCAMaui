@@ -24,6 +24,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     public partial class TINDeregistrationPageView : ContentPage
     {
         TINDeregistrationPageViewModel viewModel;
+        OutletSetResult selectedItem;
         public TINDeregistrationPageView(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
             InitializeComponent();
@@ -38,11 +39,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
 
+            
             MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
             {
                 outletDecisionOptionsListView.SelectedItem = x;
-
-                
 
             });
             Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
@@ -90,7 +90,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
-                if(arg.SelectedValue == string.Empty)
+                if (arg.SelectedValue == string.Empty)
                 {
                     viewModel.IsOption1Visible = false;
                     FrmDBO.IsVisible = false;
@@ -117,6 +117,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg != null)
                 {
                     viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
+                    viewModel.PopulateAttachments(arg.results);
+
                     foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
                     {
                         if (attachment.Dotyp == "DR01")
@@ -176,9 +178,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg.PickerId == "DeregDatePicker")
                 {
                     viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
-              
+
                 }
-               if (arg.PickerId == "DOBDateTypePicker")
+                if (arg.PickerId == "DOBDateTypePicker")
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
 
@@ -195,6 +197,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             viewModel.LoadReasonSet();
             viewModel.PopulateAttachmentsListViewTemplate();
+
+            if (viewModel.TinDeregistrationData.ADregOpt == "3")
+            {
+                viewModel.outletEditIsVisible = true;
+            }
+            else
+            {
+                viewModel.outletEditIsVisible = false;
+            }
         }
 
         private async void SetDate()
@@ -254,7 +265,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
-            viewModel.SelectedOutletOptionIndex = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
+            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             viewModel.IsOption1Visible = index == 0 ? true : false;
             viewModel.IsOption2Visible = index == 1 ? true : false;
         }
@@ -914,11 +925,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         void outletsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+
             try
             {
                 if (viewModel.TinDeregistrationData.ADregOpt == "3")
                 {
-                    OutletSetResult selectedItem = e.AddedItems[0] as OutletSetResult;
+                    viewModel.outletEditIsVisible = true;
+                    selectedItem = e.AddedItems[0] as OutletSetResult;
                     viewModel.SelectedOutletForCloseTranser = selectedItem;
                     viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
 
@@ -926,6 +939,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.AddPopUpPage();
                     var view = sender as SfListView;
                     view.SelectedItem = null;
+                }
+                else
+                {
+                    viewModel.outletEditIsVisible = false;
+
+
                 }
             }
             catch (Exception ex)
@@ -1145,6 +1164,26 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             }
 
+        }
+
+        void newName_Clicked(System.Object sender, System.EventArgs e)
+        {
+            if (viewModel.TinDeregistrationData.ADregOpt == "3")
+            {
+                viewModel.outletEditIsVisible = true;
+                viewModel.SelectedOutletForCloseTranser = selectedItem;
+                viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+                viewModel.AddPermitOutletDecisionOptions();
+                viewModel.AddPopUpPage();
+                var view = sender as SfListView;
+                view.SelectedItem = null;
+            }
+            else
+            {
+                viewModel.outletEditIsVisible = false;
+
+
+            }
         }
     }
 }
