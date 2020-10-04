@@ -4711,22 +4711,22 @@
     <value>أتعهد بأني مصرح لإكمال هذا النموذج للشخص الخاضع للضريبة وجميع المعلومات صحيحة</value>
   </data>
   <data name="VatDeregistrationofVATReason1" xml:space="preserve">
-    <value>Total value of VAT eligible supplies falls below mandatory registration threshold (&lt;375,000 SAR)</value>
+    <value>إجمالي التوريدات الخاضعة لضريبة القيمة المضافة أقل من الحد الإلزامي 375,000 ريال سعودي</value>
   </data>
   <data name="VatDeregistrationofVATReason2" xml:space="preserve">
-    <value>Others (please specify)</value>
+    <value>أخرى – الرجاء التحديد</value>
   </data>
   <data name="VatDeregistrationofReturnReason1" xml:space="preserve">
-    <value>Temporary suspension of economic activities due to accidents , catastrophes or other external events </value>
+    <value>التعليق المؤقت للأنشطة الاقتصادية بسبب الحوادث أو الكوارث أو الأحداث الخارجية الأخرى</value>
   </data>
   <data name="VatDeregistrationofReturnReason2" xml:space="preserve">
-    <value>Business Seasonality</value>
+    <value>الأعمال الموسمية</value>
   </data>
   <data name="VatDeregistrationofReturnReason3" xml:space="preserve">
-    <value>Legal orders for temporary suspension of economic activities</value>
+    <value>أوامر قانونية للتعليق المؤقت للأنشطة الاقتصادية</value>
   </data>
   <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
-    <value>خرى – الرجاء التحديد</value>
+   <value>أخرى – الرجاء التحديد</value>
   </data>
   <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
     <value>رقم الطلب</value>
@@ -8165,4 +8165,7 @@
   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
      <value>حجم الملف لا يزيد عن 10 ميجا</value>
   </data>
+  <data name="PleaseEnterCorrectData" xml:space="preserve">
+  <value>الرجاء إدخال بيانات صحيحه</value>
+</data> 
 </root>

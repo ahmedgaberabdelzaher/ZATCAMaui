@@ -235,13 +235,17 @@
                         <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                         <StackLayout Padding="15" Spacing="10">
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource BodyLabelGrey}" WidthRequest="200"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.Category}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                            </StackLayout>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource BodyLabelGrey}" WidthRequest="200"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding SelectedTaxEvasionListItem.Category}"  Style="{StaticResource BodyLabelGrey}" TextColor="{StaticResource BlackLabelTextColor}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                            </Grid>
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.Content}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="{Binding SelectedTaxEvasionListItem.Content}" Style="{StaticResource BodyLabelGrey}" TextColor="{StaticResource BlackLabelTextColor}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <!--<StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="Attachment" Style="{StaticResource BodyLabelGrey}"/>
