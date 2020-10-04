@@ -1009,9 +1009,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             MainActivity = false;
                         }
                         updateActivityList(SelectedCRItem?.Activity);
-                        CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
-                        CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
-                        CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
+                        //CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
+                        //CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
+                        //CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
                         updateCRAttachments();
                     }
                     //}
