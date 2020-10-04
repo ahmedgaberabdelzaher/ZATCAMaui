@@ -1598,7 +1598,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         {
             get
             {
-                _instAndCondition.CBAgreeCondition = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _instAndCondition.CBAgreeCondition = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
                 return _instAndCondition;
             }
         }
@@ -1607,33 +1607,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         {
             get
             {
-                _taxPayerDetails.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.TaxPayerDetailsParent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.TaxPayerDetailsParent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
 
-                _taxPayerDetails.TinEntry1 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.TinEntry2 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.MainOutletEntry1 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.MainOutletEntry2 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.StartDateEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.AddressEntry1 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.AddressEntry2 = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.SourceEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.TinEntry1 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.TinEntry2 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.MainOutletEntry1 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.MainOutletEntry2 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.StartDateEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.AddressEntry1 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.AddressEntry2 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.SourceEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
 
-                _taxPayerDetails.AddInformationCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
-                _taxPayerDetails.AddInformationCBVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
-                _taxPayerDetails.AddInformationParent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                IsTaxPayerIBANEnabled = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                IsTaxPayerEligDateEnabled = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                _taxPayerDetails.AddInformationCB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
+                _taxPayerDetails.AddInformationCBVisible = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
+                _taxPayerDetails.AddInformationParent = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                IsTaxPayerIBANEnabled = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                IsTaxPayerEligDateEnabled = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
 
-                _taxPayerDetails.ImporterYesRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ImporterNoRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ImporterAttachmentsBtn = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExporterYesRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExporterNoRB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExporterrAttachmentsBtn = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExistingIBANPicker = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.NewIBANPicker = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.CommencementDate = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                _taxPayerDetails.ImporterYesRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ImporterNoRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ImporterAttachmentsBtn = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExporterYesRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExporterNoRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExporterrAttachmentsBtn = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.ExistingIBANPicker = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.NewIBANPicker = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _taxPayerDetails.CommencementDate = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
                 return _taxPayerDetails;
             }
         }
@@ -1642,15 +1642,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         {
             get
             {
-                _financialDetails.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialDetails.VATEligibilityPoint1Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialDetails.VATEligibilityPoint2Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialDetails.VATEligibilityPoint3Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialDetails.VATEligibilityPoint4Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialDetails.AttachSectionCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
-                _financialDetails.AttachSectionCBVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
-                IsFDChangeSectionEnabled = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialDetails.AttachSectionAddNewType = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialDetails.Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint1Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint2Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint3Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialDetails.VATEligibilityPoint4Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialDetails.AttachSectionCB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
+                _financialDetails.AttachSectionCBVisible = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
+                IsFDChangeSectionEnabled = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialDetails.AttachSectionAddNewType = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
                 return _financialDetails;
             }
         }
@@ -1659,21 +1659,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         {
             get
             {
-                _financialRepresentative.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialRepresentative.ChangeMobileEmailCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialRepresentative.AddNewFinRepresentativeCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
-                _financialRepresentative.AddNewFinRepCBVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : false;
-                IsNewFinancialRepVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialRepresentative.SkipBtn = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
+                _financialRepresentative.Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialRepresentative.ChangeMobileEmailCB = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialRepresentative.AddNewFinRepresentativeCB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
+                _financialRepresentative.AddNewFinRepCBVisible = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
+                IsNewFinancialRepVisible = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialRepresentative.SkipBtn = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
 
 
-                _financialRepresentative.TinEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialRepresentative.IDTypeEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? true : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialRepresentative.IDNoEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialRepresentative.FNameEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true;
-                _financialRepresentative.SurnameEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true);
-                _financialRepresentative.MobileNoEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true);
-                _financialRepresentative.EmailIDEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? false : true);
+                _financialRepresentative.TinEntry = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialRepresentative.IDTypeEntry = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialRepresentative.IDNoEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialRepresentative.FNameEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _financialRepresentative.SurnameEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true);
+                _financialRepresentative.MobileNoEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true);
+                _financialRepresentative.EmailIDEntry = IsFDNameMobEmailEnable && (App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true);
 
                 return _financialRepresentative;
             }
@@ -1683,13 +1683,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         {
             get
             {
-                _declaration.Parent = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
-                _declaration.AcknowledgementCB = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
-                _declaration.IDTypeOrNoPicker = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
-                _declaration.IDTypeOrNoEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
-                _declaration.DOBEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
-                IsDeclarationDOBVisible = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : false;
-                _declaration.ContactNameEntry = App.VATType == Enums.VATRegDetailsExecutionType.Amend ? false : App.VATType == Enums.VATRegDetailsExecutionType.Reactivation ? true : true;
+                _declaration.Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
+                _declaration.AcknowledgementCB = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
+                _declaration.IDTypeOrNoPicker = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
+                _declaration.IDTypeOrNoEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
+                _declaration.DOBEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
+                IsDeclarationDOBVisible = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : false;
+                _declaration.ContactNameEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
                 return _declaration;
             }
         }
@@ -1723,10 +1723,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             // to be added, currently not using
             switch (App.VATType)
             {
-                case Enums.VATRegDetailsExecutionType.Amend:
+                case Enums.PageExecutionType.Amend:
                     InstAndCondition.CBAgreeCondition = false;
                     break;
-                case Enums.VATRegDetailsExecutionType.Reactivation:
+                case Enums.PageExecutionType.Reactivation:
                     InstAndCondition.CBAgreeCondition = true;
                     break;
                 default:
@@ -2036,9 +2036,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     try
                     {
                         string pageType = string.Empty;
-                        if (App.VATType == Enums.VATRegDetailsExecutionType.Amend)
+                        if (App.VATType == Enums.PageExecutionType.Amend)
                             pageType = "05";
-                        else if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation)
+                        else if (App.VATType == Enums.PageExecutionType.Reactivation)
                             pageType = "07";
                         else
                             pageType = "04";
@@ -2061,7 +2061,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                if (App.VATType == Enums.VATRegDetailsExecutionType.Amend)
+                                if (App.VATType == Enums.PageExecutionType.Amend)
                                 {
                                     GpartFR = string.Empty;
                                     idnumber = string.Empty;
@@ -2071,7 +2071,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     MobNumberFR = string.Empty;
                                     TxtIDTypeFR = string.Empty;
                                 }
-                                if (App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Reactivation)
+                                if (App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Reactivation)
                                 {
                                     int count = 0;
                                     foreach (var item in vATRegistration.d.CONTACT_PERSONSet.results)
@@ -2109,11 +2109,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             }
                             switch (App.VATType)
                             {
-                                case Enums.VATRegDetailsExecutionType.Amend:
-                                case Enums.VATRegDetailsExecutionType.Reactivation:
+                                case Enums.PageExecutionType.Amend:
+                                case Enums.PageExecutionType.Reactivation:
                                     IsInstrunctionChecked = true;
                                     break;
-                                case Enums.VATRegDetailsExecutionType.Register:
+                                case Enums.PageExecutionType.Register:
                                     break;
                                 default:
                                     break;

@@ -911,7 +911,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void OnVATNowTapped(object sender, EventArgs e)
         {
-            App.VATType = VATRegDetailsExecutionType.Register;
+            App.VATType = PageExecutionType.Register;
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
@@ -947,14 +947,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void VATAment_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
-            App.VATType = VATRegDetailsExecutionType.Amend;
+            App.VATType = PageExecutionType.Amend;
             viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
         }
 
         private async void VATReactivation_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
-            App.VATType = VATRegDetailsExecutionType.Reactivation;
+            App.VATType = PageExecutionType.Reactivation;
             Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView));
 
         }
