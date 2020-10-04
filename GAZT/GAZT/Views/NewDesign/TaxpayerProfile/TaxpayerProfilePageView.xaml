@@ -153,7 +153,9 @@
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdatePassword}"
+                                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdatePassword}"
+                                                Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}"
                                                 Style="{StaticResource CaptionLabelGrey}"/>
                                 <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                     <Image.GestureRecognizers>
