@@ -323,18 +323,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
             IsShowMobileInput = true;
             IsShowOTPInput = false;
-            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            OnBackButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 if (App.TP != null)
                 {
                     if (!string.IsNullOrEmpty(App.TP.Tin))
                     {
+                        await Task.Run(() =>
+                        {
+                            App.HasToRefreshLoaderOnDashboard = true;
+                        });
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-                        });
-                   
-                        
+                        });   
                     }
                     else
                     {
