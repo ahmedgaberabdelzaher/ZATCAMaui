@@ -7703,10 +7703,10 @@
     <value>تم استلام طلب الغاء الزكاة بنجاح</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
-    <value>هجري</value>
+    <value>ميلادي</value>
   </data>
   <data name="NDHijri" xml:space="preserve">
-    <value>ميلادي</value>
+    <value>هجري</value>
   </data>
   <data name="ZZZZViewRefund" xml:space="preserve">
     <value>عرض بيانات الاسترداد</value>
