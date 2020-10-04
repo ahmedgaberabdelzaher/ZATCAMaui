@@ -581,7 +581,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             AddAttachmetToPostData();
                         }
 
-                        SubmitReturn();
+                        if(ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                        {
+                            SubmitReturn();
+                        }
+                        else
+                        {
+                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        }
+
                     }
                     else
                     {
@@ -851,7 +859,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //IsAmendButtonPressed = true;
                     //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
                     IsBillsButtonTapped = true;
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                    if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    }
+                    else
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                    }
+
 
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
@@ -863,7 +880,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                        {
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        }
+                        else
+                        {
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        }
                     });
                 }
                 else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
@@ -872,7 +896,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                        {
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        }
+                        else
+                        {
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        }
                     });
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
@@ -880,7 +911,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                        {
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        }
+                        else
+                        {
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        }
                     });
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0005"))// In Processing
@@ -888,7 +926,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                            {
+                                _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                            }
+                            else
+                            {
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            }
+                        });
                     });
                 }
                 else
@@ -896,7 +944,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsBillsButtonTapped = true;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
+                            {
+                                _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                            }
+                            else
+                            {
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            }
+                        });
                     });
                 }
             });

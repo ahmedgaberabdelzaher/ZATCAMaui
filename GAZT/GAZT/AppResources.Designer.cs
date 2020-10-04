@@ -14567,5 +14567,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZFilesizeshouldnotbemorethan10MB", resourceCulture);
             }
         }
+        
+        public static string PleaseEnterCorrectData {
+            get {
+                return ResourceManager.GetString("PleaseEnterCorrectData", resourceCulture);
+            }
+        }
     }
 }

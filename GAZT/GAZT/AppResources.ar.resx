@@ -8165,4 +8165,7 @@
   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
     <value />
   </data>
+  <data name="PleaseEnterCorrectData" xml:space="preserve">
+  <value>الرجاء إدخال بيانات صحيحه</value>
+</data> 
 </root>
