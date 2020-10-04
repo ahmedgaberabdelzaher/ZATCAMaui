@@ -2458,6 +2458,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             }
 
                         }
+                    OTP = string.Empty;
+
                     //_dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
 

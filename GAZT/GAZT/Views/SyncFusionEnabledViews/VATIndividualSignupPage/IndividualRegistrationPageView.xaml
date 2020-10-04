@@ -217,7 +217,7 @@
                                                                 <buttons:SfChipGroup.ItemTemplate>
                                                                     <DataTemplate >
                                                                         <StackLayout WidthRequest="80" >
-                                                                            <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}" />
+                                                                            <custom:CustomLabel Text="{Binding Text}" StyleId="OnBoardText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}" />
                                                                         </StackLayout>
                                                                     </DataTemplate>
                                                                 </buttons:SfChipGroup.ItemTemplate>
@@ -987,7 +987,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <!--National Address-->
                                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False"  Padding="0"  Margin="0,20,0,0">
                                                 <StackLayout>
-                                                    <Grid  Padding="10,0,10,0"  >
+                                                    <Grid  Margin="10,0,10,0"  >
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
@@ -1002,7 +1002,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <buttons:SfButton  Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_NationalAddress" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static local:AppResources.NDEdit}" Clicked="Btn_Edit_NationalAddress_Clicked"  HorizontalOptions="End"/>
                                                     </Grid>
                                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
-                                                    <Grid Padding="10,5,10,10">
+                                                    <Grid Padding="10,5,10,10" >
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
@@ -1040,8 +1040,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                 </StackLayout>
                                             </border:SfBorder>
                                             <!--Contact Information-->
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False"  Padding="0" Margin="0,20,0,0">
-                                                <StackLayout Padding="0,5,0,5">
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False"  Padding="0,0,0,15" Margin="0,20,0,0">
+                                                <StackLayout Margin="0,5,0,5">
                                                     <Grid  Padding="10,0,10,0"  >
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -1057,7 +1057,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <buttons:SfButton  Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_ContactInformation" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static local:AppResources.NDEdit}" Clicked="Btn_Edit_ContactInformation_Clicked"  HorizontalOptions="End"/>
                                                     </Grid>
                                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray"/>
-                                                    <Grid Padding="10,5,10,10">
+                                                    <Grid Padding="10,5,10,10" VerticalOptions="FillAndExpand" >
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
@@ -1069,7 +1069,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         </Grid.ColumnDefinitions>
 
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZMobileNumber}" />
-                                                        <Label Text="{Binding MobileNumber}"  Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                                                        <Label Text="{Binding MobileNumber}" HorizontalOptions="Start" FlowDirection="LeftToRight" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1" TextColor="Black">
+                                                            <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding TxtCountryCode}"  />
+                                                                        <Span  Text="{Binding MobileNumber}"  />
+                                                                    </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
 
 
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.Email}" />
