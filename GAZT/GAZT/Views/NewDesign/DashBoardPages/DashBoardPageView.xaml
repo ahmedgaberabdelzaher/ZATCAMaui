@@ -166,18 +166,14 @@
                             <StackLayout>
                                 <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
                                     <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
-                                        <StackLayout Orientation="Horizontal">
+                                        
                                             <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                            <!--<Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand"/>-->
-                                            <!--    <Image.Source>
-                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
-                                            </Image.Source>-->
+                                            
 
-                                        </StackLayout>
 
                                         <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
-                                        <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
+                                        <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Horizontal" Margin="8">
