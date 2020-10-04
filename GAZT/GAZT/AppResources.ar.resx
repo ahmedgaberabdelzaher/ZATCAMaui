@@ -8163,7 +8163,7 @@
     <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
-    <value />
+     <value>حجم الملف لا يزيد عن 10 ميجا</value>
   </data>
   <data name="PleaseEnterCorrectData" xml:space="preserve">
   <value>الرجاء إدخال بيانات صحيحه</value>
