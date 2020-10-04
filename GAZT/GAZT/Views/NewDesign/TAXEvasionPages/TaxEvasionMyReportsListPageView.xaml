@@ -202,7 +202,7 @@
                         <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Filter"  Margin="0,10,0,0" HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  SelectionChanging="ChipGroup_statusFilter_SelectionChanging" ChipBorderWidth="1" VerticalOptions="Center"  SelectedChipTextColor="{StaticResource Secondary}">
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
-                                    <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
+                                    <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="2" Padding="5,-2,5,-2"  >
                                         <!--SelectionChanging="ChipGroup_statusFilter_SelectionChanged" <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>-->
                                         <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="Center" Style="{StaticResource CaptionLabelBlack}"/>
                                     </StackLayout>
