@@ -48,10 +48,18 @@ namespace EGAZT.Enums
         /// </summary>
         SlideFromBottom = 7
     }
-    public enum VATRegDetailsExecutionType
+    public enum PageExecutionType
     {
         Amend=5,
         Reactivation=7,
-        Register
+        Register,
+        Update
+    }
+    public enum VATRegDetailsExecutionType
+    {
+        Amend = 5,
+        Reactivation = 7,
+        Register,
+        Update
     }
 }

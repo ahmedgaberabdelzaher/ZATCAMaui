@@ -13,7 +13,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     {
         ZakatRegistrationDetailsListPageViewModel viewModel;
 
-        
+
 
         public ZakatRegistrationDetailsListPageView()
         {
@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+
         }
 
         private void SetLTR()
@@ -65,15 +65,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 if (selectedItem.ZDTitle == AppResources.ZZTaxPayerDetails)
                 {
-                    
+
                 }
-                else if(selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
+                else if (selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
                 {
 
                 }
-                else if(selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
+                else if (selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
                 {
 
+                }
+                else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATUpdate)
+                {
+                    App.ZAKATType = ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATAmend ? Enums.PageExecutionType.Amend : Enums.PageExecutionType.Update;
+                    viewModel.ZAKATAmendOrUpdateClicked();
                 }
                 else
                 {
@@ -88,7 +93,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

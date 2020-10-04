@@ -81,7 +81,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsArabic");
             }
         }
-
+        public void ZAKATAmendOrUpdateClicked()
+        {
+            _navigationService.NavigateTo(App.EstablishmentAmendUpdatePage, ZakatDeregResponseData);
+        }
         public void PopulateZakatRegListData()
         {
             ZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>();
@@ -105,13 +108,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 ZDTitle = AppResources.TinDeregistration,
                 ZDImageSource = "deregistration",
             });
+            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+            {
+                ZDTitle = AppResources.ZAKATAmend,
+                ZDImageSource = "registration.png",
+            });
+            if (App.LoginDataRetrieved.ZkReg == "U")
+            {
+                ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.ZAKATUpdate,
+                    ZDImageSource = "sf_ic_Paid.png",
+                });
+            }
         }
 
         public async void GetNewTinDeregistrationDataCliked()
         {
             try
             {
-                
+
                 ZakatDeregResponseData = new TinDeregistrationResponseModel();
                 ZakatDeregResponseData.Approvez = "";
                 ZakatDeregResponseData.Rejectz = "";
@@ -121,7 +137,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
                 //IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
                 //VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
-               
+
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -160,7 +176,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 try
                 {
-                    if(message.Contains("112") || message.Contains("206"))
+                    if (message.Contains("112") || message.Contains("206"))
                     {
                         string newMessage = AppResources.TinDeregistrationChangeApplicationInDraftError;
 
@@ -168,70 +184,70 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             newMessage = AppResources.TinDeregistrationPermitApplicationInDraftError;
                         }
-                        else if(message.Contains("206"))
+                        else if (message.Contains("206"))
                         {
                             newMessage = AppResources.TinDeregistrationChangeApplicationInDraftError;
                         }
 
-                        await _dialogService.ShowMessage(newMessage, AppResources.Information, AppResources.ZYes, AppResources.ZNo,(async (bool isConfirmed) =>
-                        {
-                            if (isConfirmed == true)
-                            {
-                                try
-                                {
-                                    if(ZakatDeregResponseData == null)
-                                    {
-                                        ZakatDeregResponseData = new TinDeregistrationResponseModel();
-                                    }
+                        await _dialogService.ShowMessage(newMessage, AppResources.Information, AppResources.ZYes, AppResources.ZNo, (async (bool isConfirmed) =>
+                         {
+                             if (isConfirmed == true)
+                             {
+                                 try
+                                 {
+                                     if (ZakatDeregResponseData == null)
+                                     {
+                                         ZakatDeregResponseData = new TinDeregistrationResponseModel();
+                                     }
 
-                                    if (message.Contains("206"))
-                                    {
-                                        ZakatDeregResponseData.Approvez = "";
-                                        ZakatDeregResponseData.Rejectz = "X";
-                                    }
-                                    else if(message.Contains("112"))
-                                    {
+                                     if (message.Contains("206"))
+                                     {
+                                         ZakatDeregResponseData.Approvez = "";
+                                         ZakatDeregResponseData.Rejectz = "X";
+                                     }
+                                     else if (message.Contains("112"))
+                                     {
 
-                                        ZakatDeregResponseData.Approvez = "X";
-                                        ZakatDeregResponseData.Rejectz = "";
-                                    }
+                                         ZakatDeregResponseData.Approvez = "X";
+                                         ZakatDeregResponseData.Rejectz = "";
+                                     }
 
-                                    await Task.Run(() =>
-                                    {
-                                        App.DisplayProgressView();
-                                    });
+                                     await Task.Run(() =>
+                                     {
+                                         App.DisplayProgressView();
+                                     });
 
-                                    ZakatDeregResponseData = await WebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregResponseData);
-                                    _navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
-                                    
-                                    await Task.Run(() =>
-                                    {
-                                        App.HideProgressView();
-                                    });
-                                }
-                                catch (InternetException iex)
-                                {
-                                    await Task.Run(() =>
-                                    {
-                                        App.HideProgressView();
-                                    });
+                                     ZakatDeregResponseData = await WebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregResponseData);
+                                     _navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
 
-                                    try
-                                    {
-                                        Device.BeginInvokeOnMainThread(async () =>
-                                        {
-                                            await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                                        });
+                                     await Task.Run(() =>
+                                     {
+                                         App.HideProgressView();
+                                     });
+                                 }
+                                 catch (InternetException iex)
+                                 {
+                                     await Task.Run(() =>
+                                     {
+                                         App.HideProgressView();
+                                     });
 
-                                    }
-                                    catch (Exception mex)
-                                    {
-                                        Console.WriteLine(mex.Message);
-                                    }
-                                }
+                                     try
+                                     {
+                                         Device.BeginInvokeOnMainThread(async () =>
+                                         {
+                                             await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                                         });
 
-                            }
-                        }));
+                                     }
+                                     catch (Exception mex)
+                                     {
+                                         Console.WriteLine(mex.Message);
+                                     }
+                                 }
+
+                             }
+                         }));
                     }
                     else
                     {
@@ -258,6 +274,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
             }
         }
-             
+
     }
 }
