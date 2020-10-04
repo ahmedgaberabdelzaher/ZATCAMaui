@@ -354,17 +354,16 @@
                                                     <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding billType}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding billNumber}" Style="{StaticResource SectionTitleBlackBold}"  HorizontalOptions="StartAndExpand" />
 
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding billType}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding billType}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryBillType}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" ></custom:CustomLabel>
 
                                                 <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInvoiceNumber}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding saadNumber}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding saadNumber}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
 
                                                 <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{Binding taxPeriod}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{Binding taxPeriod}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
 
                                             </Grid>
                                         </DataTemplate>
