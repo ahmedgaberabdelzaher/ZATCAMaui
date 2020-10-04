@@ -481,19 +481,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        private Dictionary<string, string> IDTypeDictionary = new Dictionary<string, string>
-        {
-            {AppResources.VFCNationalID,"ZS0001"},
-            {AppResources.VFCIqamaID,"ZS0002"},
-            {AppResources.VFCGCCID,"ZS0003"},
-        };
+        private Dictionary<string, string> IDTypeDictionary = null;
+        private Dictionary<string, string> IDValueDictionary = null;
 
-        private Dictionary<string, string> IDValueDictionary = new Dictionary<string, string>
-        {
-            {"ZS0001",AppResources.VFCNationalID},
-            {"ZS0002",AppResources.VFCIqamaID},
-            {"ZS0003",AppResources.VFCGCCID},
-        };
+      
         public ChangeFillingInterface cFInterface { get; set; }
 
 
@@ -565,6 +556,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void ResetData()
         {
+
+
+          IDTypeDictionary = new Dictionary<string, string>
+        {
+            {AppResources.VFCNationalID,"ZS0001"},
+            {AppResources.VFCIqamaID,"ZS0002"},
+            {AppResources.VFCGCCID,"ZS0003"},
+        };
+
+        IDValueDictionary = new Dictionary<string, string>
+        {
+            {"ZS0001",AppResources.VFCNationalID},
+            {"ZS0002",AppResources.VFCIqamaID},
+            {"ZS0003",AppResources.VFCGCCID},
+        };
+
             EnableFrequencyDetailsView();
             IsFrequencyDetailsChecked = false;
             ContactPersonName = "";
@@ -588,6 +595,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsTwoYearsAtachmentsVisible = false;
             IsMonthsAtachmentsVisible = false;
             IsOthersAtachmentsVisible = false;
+
+
 
            // IDTypePickerModel = null;
             setIdPickerModel();
