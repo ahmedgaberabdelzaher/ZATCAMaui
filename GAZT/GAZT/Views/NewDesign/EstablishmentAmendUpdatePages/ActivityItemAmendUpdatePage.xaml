@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="partials_background.png"
+             xmlns:models="clr-namespace:EGAZT.Models"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:customOne="clr-namespace:GAZT"
+             xmlns:GAZTBehaviors="clr-namespace:EGAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:syncfusiondatepicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             x:Class="EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages.ActivityItemAmendUpdatePage"
+             x:Name="ESTActivityAmendUpdateItemPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
+            <converters:EstablishmentRegistrationActivityTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
+            <converters:EstablishmentMainActivityToVisibilityConverter x:Key="isMainActivityConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <yummy:PancakeView BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="{OnPlatform Android='15,15,0,0', iOS='15'}" Padding="0">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0" Spacing="0">
+                    <ContentPresenter VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"  BackgroundColor="White"/>
+                </StackLayout>
+            </yummy:PancakeView>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="20,10,20,0">
+                <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentOutletActivitiesTabsEnum.CRDetails}}">
+                    <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,0,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueCountry}"  Command="{Binding OnIssueCountrySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
+                                          IsEnabled="{Binding ActivityDetails.IssueCountry}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueBy}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueBy}" Command="{Binding OnIssueBySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
+                                          IsEnabled="{Binding ActivityDetails.IssueBy}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCity}" />
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueCity}" Command="{Binding OnIssueCitySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5"
+                                          Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.IssueCity}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZCRNumber}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="10,0,10,0">
+                            <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" MaxLength="10" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" 
+                                                        Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" 
+                                                        PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
+                                                        FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric"
+                                                        IsEnabled="{Binding ActivityDetails.CRNo}">
+
+                                <customOne:GAZTBorderlessEntry.Behaviors>
+                                    <custom:NumericValidationBehavior/>
+                                </customOne:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTValidFrom}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding DisplayCRValidFrom}" Clicked="crValidFromButtonClick"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                          Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.ValidFrom}">
+                            <buttons:SfButton.ImageSource>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                            </buttons:SfButton.ImageSource>
+                        </buttons:SfButton>
+                        <!--<syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
+                                                           FlowDirection="RightToLeft"
+                                                             ShowHeader="False"
+                                                             Format="yyyy_MM_dd"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
+                                                             PickerMode="Dialog"
+                                                             IsOpen="False"
+                                                             DateSelected="crValidFromPicker_DateSelected" />-->
+                        <custom1:CustomDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="crValidFromPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedCRValidFromDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="crValidFromPicker_Closed"
+								                ItemHeight="40">
+                            <custom1:CustomDatePicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </custom1:CustomDatePicker.Behaviors>
+                        </custom1:CustomDatePicker>
+                        <custom1:CustomHijriDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="crValidFromHijiriPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedCRValidFromHijiriDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="crValidFromPicker_Closed"
+								                ItemHeight="40">
+                        </custom1:CustomHijriDatePicker>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                                     Padding="10,0" Margin="0,10,0,0" IsVisible="{Binding ActivityDetails.IsMainActivityVisible}">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                            <syncfusion:SfSwitch VisualType="Material" x:Name="CRMainActivity"  IsOn="{Binding MainActivity}" StateChanged="CRSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Attachments}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span   Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfCRLabel}"/>
+                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
+                                          Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG01"
+                                          Style="{StaticResource NoBackgroundButtonStyle}" FontSize="14"
+                                          Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
+                                          TextColor="{StaticResource NeutralGreay}" HorizontalTextAlignment="Start" Padding="5"
+                                          Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.CRCopy}">
+
+                        </buttons:SfButton>
+                        <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding CRsCopies}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                        <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityAmendUpdateItemPage}, Path=BindingContext.OnDeleteCRsCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </Grid>
+                                    </border:SfBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTAttachmentTransferCopyOfCRLabel}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,15,0,0"/>
+                        <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
+                                          Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG12"
+                                          Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}"
+                                          BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralGreay}" FontSize="14"
+                                          Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                          HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0"
+                                          IsVisible="{Binding ActivityDetails.IsTransferCRCopyVisible}">
+                        </buttons:SfButton>
+                        <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding TransferCRsCopies}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                        <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" >
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityAmendUpdateItemPage}, Path=BindingContext.OnDeleteTransferCRsCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </Grid>
+                                    </border:SfBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTBusinessActivityDetails}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" Margin="0,15" />
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,0,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTMainGroup}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRMainGroup}" Command="{Binding OnMainGroupSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start"
+                                          Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.MainGroup}" />
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTSubGroup}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRSubGroup}" Command="{Binding OnSubGroupSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.SubGroup}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTActivity}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRAcitivity}" Command="{Binding OnAcitivitySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start"
+                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.Activity}"/>
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentOutletActivitiesTabsEnum.ActivityList}}">
+                    <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddLicense}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewLicenseButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
+                    <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding LicenseData}" AutoFitMode="Height" SelectionBackgroundColor="Transparent" ItemSpacing="5" SelectionMode="Single" Margin="0,15" IsScrollBarVisible="False" SelectedItem="{Binding SelectedLicense}">
+                        <listView:SfListView.LayoutManager>
+                            <listView:LinearLayout />
+                        </listView:SfListView.LayoutManager>
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralGreay}" BorderWidth="0.7">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" ColumnSpacing="10" Padding="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{Binding Idnumber}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                        <Image Grid.Column="1" Source="check_oval.png" IsVisible="{Binding Actcat, Converter={StaticResource isMainActivityConverter}}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Image Grid.Column="2" Source="arrowRight.png" HorizontalOptions="Center" VerticalOptions="Center" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityAmendUpdateItemPage}, Path=BindingContext.OnLicenseSelected}" CommandParameter="{Binding .}" ></TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </cards:SfCardView>
+                            </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                    </listView:SfListView>
+                </StackLayout>
+                <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentOutletActivitiesTabsEnum.LicenseDetails}}">
+                    <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,0,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueCountry}"  Command="{Binding OnIssueCountrySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5"
+                                           Margin="0,5,0,0"  IsEnabled="{Binding LicenseDetails.IssueCountry}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueBy}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueBy}"  Command="{Binding OnIssueBySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.IssueBy}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCity}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueCity}"  Command="{Binding OnIssueCitySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start"
+                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.IssueCity}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
+
+                            <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" MaxLength="30" VerticalTextAlignment="Center"
+                                                        HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
+                                                        TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" 
+                                                        Keyboard="Numeric" IsEnabled="{Binding LicenseDetails.LicenseNo}">
+
+                                <customOne:GAZTBorderlessEntry.Behaviors>
+                                    <custom:AlphaNumericValidatorBehaviour/>
+                                </customOne:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                        </inputLayout:SfTextInputLayout>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTValidFrom}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding DisplayValidFrom}" Clicked="validFromButtonClick"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                           Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.ValidFrom}">
+                            <buttons:SfButton.ImageSource>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                            </buttons:SfButton.ImageSource>
+                        </buttons:SfButton>
+                        <!--<syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
+                                                             ShowHeader="False"
+                                                           FlowDirection="RightToLeft"
+                                                             Format="yyyy_MM_dd"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTValidFrom}"
+                                                             PickerMode="Dialog"
+                                                             IsOpen="False"
+                                                             DateSelected="validFromPicker_DateSelected" />-->
+                        <custom1:CustomDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="validFromPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedValidFromDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="validFromPicker_Closed"
+								                ItemHeight="40">
+                            <custom1:CustomDatePicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </custom1:CustomDatePicker.Behaviors>
+                        </custom1:CustomDatePicker>
+                        <custom1:CustomHijriDatePicker
+                                                FlowDirection="RightToLeft"
+								                ShowHeader="False"
+								                Margin="10,0,10,0" 
+                                                BackgroundColor="White"
+                                                OKButtonBackgroundColor="#EAF7CC"
+                                                CancelButtonBackgroundColor="#EAF7CC"
+                                                HeaderBackgroundColor="#EAF7CC"
+                                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                                BorderColor="Black"
+								                ShowFooter="False"
+								                ShowColumnHeader="True"
+                                                ColumnHeaderBackgroundColor="White"
+								                ColumnHeaderHeight="46"
+                                                PickerMode="Dialog"
+								                HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+								                x:Name="validFromHijiriPicker"
+                                                OKButtonTextColor="#006450" 
+                                                CancelButtonTextColor="#006450"
+                                                SelectedItem="{Binding SelectedValidFromHijiriDate}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Closed="validFromPicker_Closed"
+								                ItemHeight="40">
+                        </custom1:CustomHijriDatePicker>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"
+                                     Padding="10,0" Margin="0,10,0,0" IsVisible="{Binding LicenseDetails.IsMainActivityVisible}">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                            <syncfusion:SfSwitch VisualType="Material" x:Name="LicenseMainActivity" IsOn="{Binding MainActivity}" StateChanged="LicenseSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <custom:CustomLabel   Text="{x:Static ResourceManager:AppResources.Attachments}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfLicense}"/>
+                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <buttons:SfButton ShowIcon="True"  ImageSource="ic_attachment"  ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
+                                          CommandParameter="RG02"  Style="{StaticResource NoBackgroundButtonStyle}"
+                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
+                                          TextColor="{StaticResource NeutralGreay}"
+                                          FontSize="14"
+                                          Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                          HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0"
+                                          IsEnabled="{Binding LicenseDetails.LicenseCopy}">
+
+                        </buttons:SfButton>
+                        <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding LicensesCopies}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                        <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                                            <StackLayout Grid.Column="2">
+                                                <Image Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityAmendUpdateItemPage}, Path=BindingContext.OnDeleteLicenseCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </StackLayout>
+                                        </Grid>
+                                    </border:SfBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTBusinessActivityDetails}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" Margin="0,15" />
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,0,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTMainGroup}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseMainGroup}" Command="{Binding OnMainGroupSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" 
+                                          IsEnabled="{Binding LicenseDetails.MainGroup}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTSubGroup}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseSubGroup}" Command="{Binding OnSubGroupSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                          Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.SubGroup}"/>
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTActivity}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseAcitivity}" Command="{Binding OnAcitivitySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" 
+                                          Padding="5" Margin="0,5,0,0" IsEnabled="{Binding LicenseDetails.Activity}"/>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <StackLayout Grid.Row="0" Spacing="0" Padding="20,15" Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                <Grid ColumnSpacing="0" RowSpacing="0" Padding="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="15*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Source="arrowLeft" Style="{DynamicResource BackButtonArrow}">
+                        <!--<Image.Source>
+                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
+                        </Image.Source>-->
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Grid.Column="1" Grid.Row="0" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
+                    <!--<Image Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.DotsVertical}"/>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>-->
+                </Grid>
+                <custom:CustomLabel Text="{Binding ActivityTitle}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
+                <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
+            </StackLayout>
+            <Grid Grid.Row="2" Padding="20,15" Margin="0,20,0,0" BackgroundColor="White">
+                <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static ResourceManager:AppResources.ZZNext}" Command="{Binding OnNextButtonClick}" />
+            </Grid>
+            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
+               Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <busyindicator:SfBusyIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+	                        EnableAnimation="True" 
+	                        AnimationType="SingleCircle" 
+	                        IsBusy="True" 
+	                        TextColor="#006450"
+	                        ViewBoxWidth="70"
+                            ViewBoxHeight="70"
+                            TitlePlacement="Bottom" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

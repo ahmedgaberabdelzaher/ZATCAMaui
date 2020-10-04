@@ -1126,6 +1126,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
         #endregion
 
+        public TaxPayerTypeAvailability RegTaxPayerTypeAvailability { get; set; }
+        public TaxPayerPersonalDetailsAvailability TaxPayerDetailsAvailability { get; set; }
+        public PassportDetails PassportDetails { get; set; }
+        public FinancialDetails FinancialDetails { get; set; }
+
 
         private bool _canExecute = true;
         public bool CanExecute
@@ -1223,6 +1228,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         #region Constructor
         public EstablishmentAmendUpdatePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            RegTaxPayerTypeAvailability = new TaxPayerTypeAvailability();
+            TaxPayerDetailsAvailability = new TaxPayerPersonalDetailsAvailability();
+            FinancialDetails = new FinancialDetails();
+            PassportDetails = new PassportDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() =>
             {
@@ -1480,10 +1489,97 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
             //await Task.WhenAll(branchTask, nationalityTask);
-            if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
+            //if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
+            //{
+            fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType);
+            //bindingOutletList();
+            // }
+            SetUIAvailability();
+        }
+
+        void SetUIAvailability()
+        {
+            switch (App.ZAKATType)
             {
-                fetchTabDataAndBind(currentTab);
-                //bindingOutletList();
+                case Enums.PageExecutionType.Amend:
+                    RegTaxPayerTypeAvailability.ReportingBranch = false;
+                    RegTaxPayerTypeAvailability.IsReportingBranchVisible = false;
+                    RegTaxPayerTypeAvailability.EntityType = false;
+                    RegTaxPayerTypeAvailability.TaxPayerType = false;
+                    RegTaxPayerTypeAvailability.IsTaxPayerTypeVisible = false;
+                    RegTaxPayerTypeAvailability.Nationality = false;
+                    RegTaxPayerTypeAvailability.IsNationalityStatusVisible = true;
+                    RegTaxPayerTypeAvailability.ResidencyStatus = true;
+
+                    TaxPayerDetailsAvailability.DOB = true;
+                    TaxPayerDetailsAvailability.FirstName = false;
+                    TaxPayerDetailsAvailability.LastName = true;
+                    TaxPayerDetailsAvailability.FathersName = false;
+                    TaxPayerDetailsAvailability.GrandFathersName = false;
+                    TaxPayerDetailsAvailability.IsFamilyNameVisible = false;
+                    TaxPayerDetailsAvailability.IsInitialVisible = false;
+                    TaxPayerDetailsAvailability.IsGenderVisible = false;
+                    TaxPayerDetailsAvailability.Nationality = false;
+                    TaxPayerDetailsAvailability.IsNationalityVisible = false;
+                    TaxPayerDetailsAvailability.Citizen = false;
+                    TaxPayerDetailsAvailability.IsCitizenVisible = false;
+                    TaxPayerDetailsAvailability.Residence = false;
+                    TaxPayerDetailsAvailability.IsResidenceVisible = false;
+
+                    PassportDetails.PassportNo = true;
+                    PassportDetails.IssueCountry = true;
+                    PassportDetails.IssueDate = true;
+                    PassportDetails.ExpiryDate = true;
+                    PassportDetails.Attachment = true;
+
+                    FinancialDetails.FinancialRecords = true;
+                    FinancialDetails.CalendarType = false;
+                    FinancialDetails.FiscalMonthEnd = false;
+                    FinancialDetails.FiscalDayEnd = false;
+                    FinancialDetails.CommencementDate = false;
+                    FinancialDetails.TaxableDate = false;
+                    break;
+                case Enums.PageExecutionType.Update:
+                    RegTaxPayerTypeAvailability.ReportingBranch = false;
+                    RegTaxPayerTypeAvailability.IsReportingBranchVisible = true;
+                    RegTaxPayerTypeAvailability.EntityType = false;
+                    RegTaxPayerTypeAvailability.TaxPayerType = false;
+                    RegTaxPayerTypeAvailability.IsTaxPayerTypeVisible = false;
+                    RegTaxPayerTypeAvailability.Nationality = false;
+                    RegTaxPayerTypeAvailability.IsNationalityStatusVisible = false;
+                    RegTaxPayerTypeAvailability.ResidencyStatus = false;
+                    RegTaxPayerTypeAvailability.IsResidencyStatusVisible = false;
+
+                    TaxPayerDetailsAvailability.DOB = true;
+                    TaxPayerDetailsAvailability.FirstName = false;
+                    TaxPayerDetailsAvailability.LastName = true;
+                    TaxPayerDetailsAvailability.FathersName = false;
+                    TaxPayerDetailsAvailability.GrandFathersName = false;
+                    TaxPayerDetailsAvailability.FamilyName = false;
+                    TaxPayerDetailsAvailability.Initial = false;
+                    TaxPayerDetailsAvailability.Gender = true;
+                    TaxPayerDetailsAvailability.Nationality = true;
+                    TaxPayerDetailsAvailability.IsNationalityVisible = true;
+                    TaxPayerDetailsAvailability.Citizen = true;
+                    TaxPayerDetailsAvailability.IsCitizenVisible = true;
+                    TaxPayerDetailsAvailability.Residence = true;
+                    TaxPayerDetailsAvailability.IsResidenceVisible = true;
+
+                    PassportDetails.PassportNo = false;
+                    PassportDetails.IssueCountry = false;
+                    PassportDetails.IssueDate = false;
+                    PassportDetails.ExpiryDate = false;
+                    PassportDetails.Attachment = false;
+
+                    FinancialDetails.FinancialRecords = false;
+                    FinancialDetails.CalendarType = false;
+                    FinancialDetails.FiscalMonthEnd = false;
+                    FinancialDetails.FiscalDayEnd = false;
+                    FinancialDetails.CommencementDate = false;
+                    FinancialDetails.TaxableDate = false;
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -1596,7 +1692,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     {
                         if (await PushDatatoServer(currentTab))
                         {
-                            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                            _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
                         }
                         //else
                         //{
@@ -1608,6 +1704,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                     //}
                 }
+
+                SetUIAvailability();
             }
             catch (Exception e)
             {
@@ -1645,7 +1743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                 _navigationService.GoBack();
             }
-
+            SetUIAvailability();
         }
 
 
@@ -2431,7 +2529,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             outletNavigationModels.idItem = idItem;
-            _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
+            _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
         }
         private void deleteOutlet(OutletItem item)
         {
