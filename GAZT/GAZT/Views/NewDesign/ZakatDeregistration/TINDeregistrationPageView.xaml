@@ -399,13 +399,8 @@
 								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
 								
 								x:Name="DpDbo2"
-                               
-                     
                              OKButtonTextColor="#006450" 
-                                
-                                             CancelButtonTextColor="#006450"
-                               
-                            
+                              CancelButtonTextColor="#006450"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                  Closed="DpDbo_Closed"
@@ -788,7 +783,7 @@
 
                         
                         <listView:SfListView Margin="-3,0,-3,0" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
-                                              IsScrollBarVisible="False" IsScrollingEnabled="False" VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                              IsScrollBarVisible="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                 SelectionMode="Single" SelectionBackgroundColor="Transparent" SelectionChanged="outletsListView_SelectionChanged">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>

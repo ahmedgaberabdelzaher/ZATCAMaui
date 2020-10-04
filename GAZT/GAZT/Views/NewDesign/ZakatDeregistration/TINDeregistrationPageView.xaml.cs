@@ -607,6 +607,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void DpDbo_Closed(object sender, EventArgs e)
         {
+            bool isHIjri;
+            DateTime deregDate;
             try
             {
                 if (viewModel.IsHijriCal)
@@ -621,6 +623,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
 
                     }
+                    isHIjri = true;
                 }
                 else
                 {
@@ -634,6 +637,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
 
                     }
+                    isHIjri = false;
                 }
 
                 List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet.Results);
@@ -643,8 +647,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     sortedDate  = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
 
                 }
-                DateTime permitDate = Convert.ToDateTime(sortedDate);
-                DateTime deregDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                string convertedSortedDate = UtilityManager.HijriToGreg(sortedDate);
+                DateTime permitDate = Convert.ToDateTime(convertedSortedDate);
+
+                if (isHIjri)
+                {
+                    string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
+                     deregDate = Convert.ToDateTime(convertedDeregDate);
+
+                }
+                else
+                {
+                     deregDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+
+                }
+
 
                 if (deregDate < permitDate)
                 {
@@ -759,7 +778,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                     else
                     {
-                        Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                        Messages.Append(" "+ AppResources.ZZTINnumberlengthcannotbelessthan10digits);
                     }
                 }
                 if (Messages.Length > 0)
@@ -789,7 +808,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else
             {
                 viewModel.FrameTinError = true;
-                Messages.Append(AppResources.AccountUnlockedCompleteRequiedFields);
+                Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
 
                 popUp.Message = Messages.ToString();
                 popUp.IsLinkAvailable = false;
