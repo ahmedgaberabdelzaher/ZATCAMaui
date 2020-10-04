@@ -294,7 +294,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                    viewModel.PopulateBillsInformation();
                    viewModel.PopulateReturnsInformation();
                    viewModel.PopualateCommittmentsInformation();
+                   try
+                   {
+                       if (viewModel.BillsAndReturnsCommitments != null)
+                       {
+                           if (viewModel.BillsAndReturnsCommitments.Count > 0)
+                           {
+                               CollectionView_Commitment.ScrollTo(0);
+                           }
 
+                       }
+                   }
+                   catch(Exception ex)
+                   {
+                   }
+                   
                    viewModel.IsLoading = false;
 
                });
