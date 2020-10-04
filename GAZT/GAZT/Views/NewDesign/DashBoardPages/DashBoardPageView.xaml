@@ -649,7 +649,8 @@
                                     </Image>
 
                                 </StackLayout >
-                                <custom:CustomLabel Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
+                                <!--TaxpayerName<custom:CustomLabel Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />-->
+                                <custom:CustomLabel Text="{Binding TaxpayerName}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
                                 <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
                                     <Label.FormattedText>
                                         <FormattedString>
