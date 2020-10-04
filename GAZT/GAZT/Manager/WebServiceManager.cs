@@ -15981,7 +15981,7 @@ namespace GAZT.Manager
                     String url = string.Empty;
                     if (deregType == "VT_DREG")
                     {
-                        url = Constants.GetVATObjViewApplicationDREGReasonSetURL;
+                        url = Constants.GetVATObjViewApplicationDREGReasonSetURL + "'"+ lang + "'&$format=json";
                     }
                     else
                     {
