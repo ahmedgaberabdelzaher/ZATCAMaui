@@ -30,6 +30,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel = App.Locator.TaxpayerProfilePageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
+            viewModel.ResidenceText = App.TP.TpType;
 
             // * Page content direction
             this.FlowDirection = UtilityManager.SetLTRAndRTL();

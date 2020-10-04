@@ -50,11 +50,11 @@
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleWhiteBold}"
                                     FontSize="24"/>
-                    <!--<custom:CustomLabel Margin="0,-15,0,0"
-                                    Text="{x:Static ResourceManager:AppResources.TPIndividualSaudi}"
+                    <custom:CustomLabel Margin="0,0,0,0"
+                                    Text="{Binding ResidenceText}"
                                     Style="{StaticResource BodyLabelBlack}"
                                     HorizontalOptions="StartAndExpand"
-                                    TextColor="White"/>-->
+                                    TextColor="White"/>
                 </StackLayout>
                 <ScrollView Grid.Row="2">
                     <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,32,24,16">
@@ -153,7 +153,9 @@
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdatePassword}"
+                                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdatePassword}"
+                                                Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}"
                                                 Style="{StaticResource CaptionLabelGrey}"/>
                                 <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                     <Image.GestureRecognizers>
