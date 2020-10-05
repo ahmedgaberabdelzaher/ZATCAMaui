@@ -16250,6 +16250,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Corrections from previous period ( between SAR ±).
+        /// </summary>
+        public static string ZVatCorrectionsfrompreviousperiod1 {
+            get {
+                return ResourceManager.GetString("ZVatCorrectionsfrompreviousperiod1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Notes.
         /// </summary>
         public static string ZVATCreateNote {
@@ -21479,11 +21488,47 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Net VAT due (or Reclaimed).
+        /// </summary>
+        public static string ZZZZNETdue {
+            get {
+                return ResourceManager.GetString("ZZZZNETdue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Net VAT.
         /// </summary>
         public static string ZZZZNetVAT {
             get {
                 return ResourceManager.GetString("ZZZZNetVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net VAT due.
+        /// </summary>
+        public static string ZZZZNetVATDueFirst {
+            get {
+                return ResourceManager.GetString("ZZZZNetVATDueFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net VAT due (or Reclaimed).
+        /// </summary>
+        public static string ZZZZNetVatDueReclaimed {
+            get {
+                return ResourceManager.GetString("ZZZZNetVatDueReclaimed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to or Reclaimed.
+        /// </summary>
+        public static string ZZZZNetVATDueSecond {
+            get {
+                return ResourceManager.GetString("ZZZZNetVATDueSecond", resourceCulture);
             }
         }
         
@@ -21754,6 +21799,33 @@ namespace EGAZT {
         public static string ZZZZVATDue {
             get {
                 return ResourceManager.GetString("ZZZZVATDue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT due for current period.
+        /// </summary>
+        public static string ZZZZVatDueForCurrentPeriod {
+            get {
+                return ResourceManager.GetString("ZZZZVatDueForCurrentPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Credit carried forward from previous period(s).
+        /// </summary>
+        public static string ZZZZVatFromPreviousPeriod {
+            get {
+                return ResourceManager.GetString("ZZZZVatFromPreviousPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT on Purchases.
+        /// </summary>
+        public static string ZZZZVATOnPurchasesForSummarypage {
+            get {
+                return ResourceManager.GetString("ZZZZVATOnPurchasesForSummarypage", resourceCulture);
             }
         }
         
