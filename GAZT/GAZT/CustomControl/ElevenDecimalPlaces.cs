@@ -12,6 +12,7 @@ namespace EGAZT
         public int IntegerV { get; set; }
         public int numberOfDigitBeforDecimal { get; set; }
         public int numberOfDigitAfterDecimal { get; set; }
+        public static bool IsValiedNumber = true;
         protected override void OnAttachedTo(Entry entry)
         {
             entry.TextChanged += OnEntryTextChanged;
@@ -101,10 +102,14 @@ namespace EGAZT
             if(!iSValiedNumber)
             {
                 ((Entry)sender).TextColor =  Color.Red;
+
+                IsValiedNumber = false;
             }
             else
             {
                 ((Entry)sender).TextColor = Color.Black;
+                IsValiedNumber = true;
+
             }
         }
         private static void GetDecimalCount(string DecimalNumber)

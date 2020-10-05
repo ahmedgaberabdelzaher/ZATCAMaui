@@ -3224,6 +3224,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     check.Add(new VATDeregistrationSummaryModel
                     {
+
                         SummaryTitle = AppResources.VatDeregRequestType,
                         SummaryData = AppResources.VATDeregistrationReasonType2,
                         IsEditVisible = true

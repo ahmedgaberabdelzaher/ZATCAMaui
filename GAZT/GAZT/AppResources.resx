@@ -8206,31 +8206,104 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   <data name="PrivacyPolicySubTitle1.1" xml:space="preserve">
     <value>1. INFORMATION YOU GIVE TO GAZT OR GAZT COLLECTS ABOUT YOU. GAZT WILL USE THIS INFORMATION:</value>
   </data>
- <data name="AccountStatementsDashboardTitle" xml:space="preserve">     <value>Account Statement</value>   </data>   <data name="AStatementDirectTaxes" xml:space="preserve">     <value>Direct Taxes</value>   </data> <data name="AStatementIndirectTaxes" xml:space="preserve">     <value>Indirect Taxes</value>   </data>     <data name="ASCustoms" xml:space="preserve">     <value>CUSTOMS</value>   </data>     <data name="ASAllTransactions" xml:space="preserve">     <value>ALL TRANSACTIONS</value>   </data>  <data name="ASIncomeTax" xml:space="preserve">     <value>Income Tax</value>     <comment>My Return </comment>   </data>   <data name="ASWithholdingTax" xml:space="preserve">     <value>WITHHOLDING TAX</value>   </data>   <data name="ASTransactionDate" xml:space="preserve">
+  <data name="AccountStatementsDashboardTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AStatementDirectTaxes" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AStatementIndirectTaxes" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ASCustoms" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ASAllTransactions" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ASIncomeTax" xml:space="preserve">
+    <value />
+    <comment>My Return </comment>
+  </data>
+  <data name="ASWithholdingTax" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ASTransactionDate" xml:space="preserve">
     <value>Transaction Date</value>
   </data>
-   <data name="ASFBNum" xml:space="preserve">
+  <data name="ASFBNum" xml:space="preserve">
     <value>FB Number</value>
-  </data> 
-   <data name="ASSadadBillNumber" xml:space="preserve">
+  </data>
+  <data name="ASSadadBillNumber" xml:space="preserve">
     <value>SADAD Bill Number</value>
-  </data> 
-   <data name="ASTaxperiod" xml:space="preserve">
+  </data>
+  <data name="ASTaxperiod" xml:space="preserve">
     <value>Tax Period</value>
-  </data> 
+  </data>
   <data name="ASDueDate" xml:space="preserve">
     <value>Due Date</value>
   </data>
- <data name="ASBillDescription" xml:space="preserve">
+  <data name="ASBillDescription" xml:space="preserve">
     <value>Bill Description</value>
   </data>
- <data name="ASBillAmount" xml:space="preserve">
+  <data name="ASBillAmount" xml:space="preserve">
     <value>Bill Amount</value>
   </data>
   <data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
     <value>In case you don't agree with above information, click on this link and confirm -</value>
   </data>
+  <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve"> 
+  <value>File size should not be more than 10 MB.</value>
+  </data>
+<data name="PleaseEnterCorrectData" xml:space="preserve">
+  <value>Please enter correct data</value>
+</data> 
    <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
     <value>File size should not be more than 10MB</value>
+  </data>
+ <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
+    <value>Account Statement</value>
+ </data>
+	<data name="OutletTypeField" xml:space="preserve">
+    <value>Outlet Type</value>
+ </data>
+<data name="MainOutlet" xml:space="preserve">
+    <value>Main Outlet</value>
+ </data>
+<data name="SubOutlet" xml:space="preserve">
+    <value>Sub Outlet</value>
+ </data>
+<data name="SelectOutletType" xml:space="preserve">
+    <value>Select outlet type</value>
+ </data>
+<data name="SelectOutletTypeError" xml:space="preserve">
+    <value>Main Outlet already exists, please choose Sub Outlet</value>
+ </data>
+ <data name="ESTValidateOutletType" xml:space="preserve">
+    <value>Please provide type</value>
+  </data>
+  <data name="ZVatCorrectionsfrompreviousperiod1" xml:space="preserve">
+    <value>Corrections from previous period ( between SAR ±)</value>
+  </data>
+  <data name="ZZZZNETdue" xml:space="preserve">
+    <value>Net VAT due (or Reclaimed)</value>
+  </data>
+  <data name="ZZZZNetVATDueFirst" xml:space="preserve">
+    <value>Net VAT due</value>
+  </data>
+  <data name="ZZZZNetVatDueReclaimed" xml:space="preserve">
+    <value>Net VAT due (or Reclaimed)</value>
+  </data>
+  <data name="ZZZZNetVATDueSecond" xml:space="preserve">
+    <value>or Reclaimed</value>
+  </data>
+  <data name="ZZZZVatDueForCurrentPeriod" xml:space="preserve">
+    <value>VAT due for current period</value>
+  </data>
+  <data name="ZZZZVatFromPreviousPeriod" xml:space="preserve">
+    <value>VAT Credit carried forward from previous period(s)</value>
+  </data>
+  <data name="ZZZZVATOnPurchasesForSummarypage" xml:space="preserve">
+    <value>VAT on Purchases</value>
   </data>
 </root>

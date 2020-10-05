@@ -175,7 +175,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "U")
                         {
-                            viewModel.IsEstablishmentRegistrationTileVisible = false;
+                            viewModel.IsEstablishmentRegistrationTileVisible = true;
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "N")
                         {
@@ -935,7 +935,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             await Task.Run(() => viewModel.IsLoading = true);
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+                if (App.LoginDataRetrieved.ZkReg=="U")
+                {
+                    App.ZAKATType = PageExecutionType.Update;
+                    viewModel._navigationService.NavigateTo(App.EstablishmentAmendUpdatePage);
+                }
+                else
+                {
+                    viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+                }
             });
         }
 

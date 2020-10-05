@@ -338,6 +338,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+                IsLoading = true;
                 if (SelectedParameterType != null)
                 {
                     if (LookupNumber != null && LookupNumber != "")
@@ -349,7 +350,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 isMandatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                   // _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
+                                    IsLoading = false;
+                                    // _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVATNumberisnotequalto15));
                                 });
                                 return;
@@ -362,7 +364,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 isMandatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                 //   _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
+                                    IsLoading = false;
+                                    //   _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZCRNumberisnotequalto10));
                                 });
                                 return;
@@ -375,7 +378,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 isMandatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                  //  _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
+                                    IsLoading = false;
+                                    //  _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVATNumberisnotequalto15));
                                 });
                                 return;
@@ -387,6 +391,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         isMandatoryDataEntered = false;
                         Device.BeginInvokeOnMainThread(() =>
                         {
+                            IsLoading = false;
                             isMandatoryDataEntered = false;
                           //  _dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseenterthecorrespondingnumber));
@@ -399,7 +404,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     isMandatoryDataEntered = false;
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                       // _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
+                        IsLoading = false;
+                        // _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseselectparametertype));
                     });
                     return;
@@ -407,6 +413,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 isMandatoryDataEntered = false;
             }
             //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
@@ -424,6 +431,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
+                    IsLoading = true;
                     //isMandatoryDataEntered = true;
                     string _language = "A"; //UtilityManager.GetLanguageParameter();
 
@@ -434,6 +442,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
                             {
+                                IsLoading = false;
                                 NameOrNoResultLabel = AppResources.Name;
                                 Name = vatLookUp.d.results[0].Name;
                                 IsNameVisible = true;
@@ -450,42 +459,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (string.Compare(vatLookUp.d.results[0].Description, "Vat number is not equal to 15", true) == 0)
                                     {
-                                      //  await _dialogService.ShowMessageBox(AppResources.ZZZVatnumberisnotequalto15, AppResources.ZError);
+                                        IsLoading = false;
+                                        //  await _dialogService.ShowMessageBox(AppResources.ZZZVatnumberisnotequalto15, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZVatnumberisnotequalto15));
                                     }
                                     else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided", true) == 0)
                                     {
-                                       // await _dialogService.ShowMessageBox(AppResources.ZZZInvalidVATnumberprovided, AppResources.ZError);
+                                        IsLoading = false;
+                                        // await _dialogService.ShowMessageBox(AppResources.ZZZInvalidVATnumberprovided, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZInvalidVATnumberprovided));
                                     }
                                     else if (string.Compare(vatLookUp.d.results[0].Description, "Tin is not Active", true) == 0)
                                     {
-                                       // await _dialogService.ShowMessageBox(AppResources.ZZZTinisnotActive, AppResources.ZError);
+                                        IsLoading = false;
+                                        // await _dialogService.ShowMessageBox(AppResources.ZZZTinisnotActive, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZTinisnotActive));
                                     }
                                     else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid TIN", true) == 0)
                                     {
-                                       // await _dialogService.ShowMessageBox(AppResources.ZInvalidTinNumber, AppResources.ZError);
+                                        IsLoading = false;
+                                        // await _dialogService.ShowMessageBox(AppResources.ZInvalidTinNumber, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidTinNumber));
                                     }
                                     else if (string.Compare(vatLookUp.d.results[0].Description, "No Data found against given parameters", true) == 0)
                                     {
+                                        IsLoading = false;
                                         // await _dialogService.ShowMessageBox(AppResources.ZZZNoDatafoundagainstgivenparameters, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZNoDatafoundagainstgivenparameters));
                                     }
                                     else if (string.Compare(vatLookUp.d.results[0].Description, "No VAT Certificate Found", true) == 0)
                                     {
+                                        IsLoading = false;
                                         //await _dialogService.ShowMessageBox(AppResources.ZZZNoVATCertificateFound, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZNoVATCertificateFound));
                                     }
                                     else if (string.Compare(vatLookUp.d.results[0].Description, "Account is deregistered", true) == 0)
                                     {
-                                       // await _dialogService.ShowMessageBox(AppResources.ZZZAccountisderegistered, AppResources.ZError);
+                                        IsLoading = false;
+                                        // await _dialogService.ShowMessageBox(AppResources.ZZZAccountisderegistered, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZAccountisderegistered));
                                     }
 
                                     else
                                     {
+                                        IsLoading = false;
                                         //await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(vatLookUp.d.results[0].Description));
                                     }
@@ -495,6 +512,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
+                            IsLoading = false;
                             Name = vatLookUp.d.results[0].Name;
                             NameOrNoResultLabel = AppResources.Nodataavailable;
                         }

@@ -11,6 +11,7 @@ namespace EGAZT.Models
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         public Nreg_IdItem idItem { get; set; } = null;
         public OutletItem selectedOutletItem { get; set; } = null;
+        public bool IsEditingMode { get; set; }
     }
 
     public class ActivityNavigationModels

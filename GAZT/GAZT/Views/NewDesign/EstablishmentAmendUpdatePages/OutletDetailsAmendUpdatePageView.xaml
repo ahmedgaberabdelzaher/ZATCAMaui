@@ -58,6 +58,23 @@
                 <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.OutletDetail}}">
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}" TextColor="{StaticResource NeutralGreay}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,-10,0,0"/>
                     <custom:CustomLabel Text="{Binding OutletActNumber}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,-5,0,0"/>
+                    <custom:CustomLabel TextColor="{StaticResource NeutralGreay}" FontFamily="{StaticResource SSTArRoman}"
+                                        FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="Center"
+                                        Margin="0,10,0,0">
+                        <custom:CustomLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static ResourceManager:AppResources.OutletTypeField}"/>
+                                <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                            </FormattedString>
+                        </custom:CustomLabel.FormattedText>
+                    </custom:CustomLabel>
+                    <syncfusion:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" 
+                                         Text="{Binding SelectedOutletType}"
+                                         Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                         TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0"
+                                         IsEnabled="{Binding OutletDetails.OutletType}"
+                                         Clicked="OutletType_Clicked">
+                    </syncfusion:SfButton>
                     <custom:CustomLabel TextColor="{StaticResource NeutralGreay}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                         <custom:CustomLabel.FormattedText>
                             <FormattedString>
@@ -271,8 +288,8 @@
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTSameAsPhycical}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0" BackgroundColor="AliceBlue" />
                             <syncfusion:SfSwitch VisualType="Material" IsOn="{Binding PostalAsPhysical}" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>
-                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="20" RowSpacing="0">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" IsEnabled="{Binding PostalAsPhysical,Converter={StaticResource boolToVisibilityConverter},ConverterParameter='invert'}" >
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="20" RowSpacing="0" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -421,15 +438,17 @@
                 <custom:CustomLabel Text="{Binding SelectedOutletTabText}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
-                <buttons:SfChipGroup Type="Choice" SelectedItem="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" ChipBackgroundColor="Transparent" HorizontalOptions="Start" ItemsSource="{x:Binding OutletTabSfChipGroupTabList}" SelectionChanging="SfChipGroup_SelectionChanging" SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
-                    <!--<buttons:SfChipGroup.ItemsSource>
+                <!--<buttons:SfChipGroup Type="Choice" SelectedItem="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" ChipBackgroundColor="Transparent" HorizontalOptions="Start" ItemsSource="{x:Binding OutletTabSfChipGroupTabList}" SelectionChanging="SfChipGroup_SelectionChanging" SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
+                    -->
+                <!--<buttons:SfChipGroup.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Passport Details</x:String>
                             <x:String>Outlets</x:String>
                             <x:String>Financial Details</x:String>
                         </x:Array>
                     </buttons:SfChipGroup.ItemsSource>-->
-                </buttons:SfChipGroup>
+                <!--
+                </buttons:SfChipGroup>-->
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="OutletTabScrollView">
                     <buttons:SfChipGroup Type="Choice" SelectedItem="{Binding SelectedOutletTabText}" x:Name="OutletTabSfChipGroup" ItemsSource="{x:Binding OutletTabSfChipTabList}"  SelectionChanged="SfChipGroup_SelectionChanged" SelectionChanging="OutletTabSfChipGroup_SelectionChanging" Margin="0,10" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
                         <!--<buttons:SfChipGroup.ItemsSource>

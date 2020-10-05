@@ -23,6 +23,8 @@ using Syncfusion.SfRotator.XForms.iOS;
 using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.Buttons;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace GAZT.iOS
 {
@@ -92,6 +94,7 @@ namespace GAZT.iOS
             App.InitializeAppDynamics();
 
             LoadApplication(iosapp);
+
             //Code for PUSH notification
             //UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
             //if (statusBar != null && statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
@@ -160,6 +163,68 @@ namespace GAZT.iOS
         {
             Console.WriteLine("App is terminating.");
         }
+
+        //rohith-login
+        //private CancellationTokenSource idleTimerCancellationTokenSource;
+        //public void ResetIdleTimer()
+        //{
+        //    //use, then gid rid of the old CancellationTokenSource
+        //    if (idleTimerCancellationTokenSource != null)
+        //    {
+        //        idleTimerCancellationTokenSource.Cancel();
+        //        idleTimerCancellationTokenSource.Dispose();
+        //        idleTimerCancellationTokenSource = null;
+        //    }
+        //    // Restart the timer with a new CancellationTokenSource
+        //    StartIdleTimer(new CancellationTokenSource());
+        //}
+
+        //public void StopIdleTimer()
+        //{
+        //    // use, then get rid of the CancellationTokenSource
+        //    if (idleTimerCancellationTokenSource != null)
+        //    {
+        //        idleTimerCancellationTokenSource.Cancel();
+        //        idleTimerCancellationTokenSource.Dispose();
+        //        idleTimerCancellationTokenSource = null;
+        //    }
+        //}
+
+        //// async void, since we want to just start and forget about this thread
+        //public async void StartIdleTimer(CancellationTokenSource tokenSource)
+        //{
+        //    try
+        //    {
+        //        //maintain a reference to the token so we can cancel when needed
+        //        idleTimerCancellationTokenSource = tokenSource;
+
+        //        Console.WriteLine("Idle Timer Thread Started");
+        //        await Task.Delay(TimeSpan.FromSeconds(App.IdleTimeToLogout), tokenSource.Token);
+
+        //        Console.WriteLine("Idle Timeout Detected, Do Stuff!");
+        //        //Do something here, like show a screensaver or something
+        //        InvokeOnMainThread(() =>
+        //        {
+        //            if(App.IsLoginPageVisible() == true)
+        //            {
+        //                App.IsLoginPageRefreshed = true;
+        //                MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+        //            }
+        //            else
+        //            {
+        //                App.DoesLoginNeedToBeRefreshed = true;
+        //                MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+        //            }
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //if we cancel/reset, this catch block gets called
+        //        Console.WriteLine("Idle Timer Thread Cancelled");
+        //    }
+        //    // if we reach here, this timer has stopped
+        //    Console.WriteLine("Idle Timer Thread Complete");
+        //}
 
         //Code for PUSH notification
         //public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
