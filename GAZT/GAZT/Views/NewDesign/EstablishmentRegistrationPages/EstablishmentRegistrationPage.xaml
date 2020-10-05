@@ -367,36 +367,40 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100*"></ColumnDefinition>
+
+                                            </Grid.ColumnDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}"
                                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10" Margin="10,0,10,0"
+                                                               HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTABranchOfNonResidentCompanyLabel}"  IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" Margin="10,0,10,0"
+                                                                HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
                                         <Grid x:Name="ConstructionSiteGrid"   Grid.Row="1" Grid.Column="0" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
+                                            </Grid.RowDefinitions>   
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10"  Margin="10,0,10,0"
+                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedConstructionSitePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTConstuctionSiteLabel}" IsVisible="{Binding IsClickedConstructionSitePE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" Margin="10,0,10,0"
+                                                                HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
@@ -409,12 +413,12 @@
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                              HorizontalOptions="CenterAndExpand"  Padding="10"  Margin="10,0,10,0"
+                                                              HorizontalOptions="CenterAndExpand"   Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedInstallationPE}"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTInstallationLabel}"  IsVisible="{Binding IsClickedInstallationPE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10"  Margin="10,0,10,0"
+                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
@@ -428,12 +432,12 @@
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}"
                                                                 IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10"  Margin="10,0,10,0"
+                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedAFixedBasePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTAFixedBaseLabel}"  IsVisible="{Binding IsClickedAFixedBasePE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10"  Margin="10,0,10,0"
+                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
@@ -447,12 +451,12 @@
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}"
                                                                 IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10"  Margin="10,0,10,0"
+                                                                HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTANonResidentPartnerLabel}" IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10"  Margin="10,0,10,0"
+                                                               HorizontalOptions="CenterAndExpand"    Margin="20,0,20,0"
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
