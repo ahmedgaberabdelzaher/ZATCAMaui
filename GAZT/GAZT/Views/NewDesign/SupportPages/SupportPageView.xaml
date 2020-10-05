@@ -205,7 +205,7 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                    <Image Source="phone_Green.png" VerticalOptions="Start" Margin="0,3,0,0"/>
+                                                <Image Source="Grey_phone.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
                                     <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDLocalPhone}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
                                 <custom:CustomLabel x:Name="LocalPhone" Grid.Column="1" Text="19993" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
@@ -222,7 +222,7 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                    <Image Source="phone_Green.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
+                                                <Image Source="Grey_phone.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
                                                 <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDInternationalPhone}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
                                 <custom:CustomLabel x:Name="InternationalPhone" VerticalTextAlignment="Center" Grid.Column="1" Text="+966 112 048 998" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
@@ -239,13 +239,7 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                    <!--<Image Source="phone_Green.png" VerticalOptions="Start" Margin="0,3,0,0"/>-->
-                                                <Image VerticalOptions="Start" Margin="0,3,0,0">
-                                                    <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont" Color="#006450" 
-                                         Glyph="{x:Static FontImage:IconFonts.EmailOutline}"/>
-                                                    </Image.Source>
-                                                </Image>
+                                                <Image Source="Grey_message.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
                                                 <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDContactEmail}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
                                 <custom:CustomLabel x:Name="Email" Grid.Column="1" Text="info@gazt.gov.sa" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
