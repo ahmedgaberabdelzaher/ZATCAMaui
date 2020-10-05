@@ -82,6 +82,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy
                 viewModel._navigationService.GoBack();
             }
         }
+
+        void PrivacyandPolicyWebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
+        {
+            viewModel.IsLoading = true;
+        }
+
+        void PrivacyandPolicyWebView_Navigated(System.Object sender, Xamarin.Forms.WebNavigatedEventArgs e)
+        {
+            viewModel.IsLoading = false;
+        }
         #endregion
     }
 }

@@ -29,6 +29,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewMo
                 RaisePropertyChanged("WebUrl");
             }
         }
+        private bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+        //IsLoading
         #endregion
         #region Commands
         public ICommand BackButtonClicked { get; private set; }
