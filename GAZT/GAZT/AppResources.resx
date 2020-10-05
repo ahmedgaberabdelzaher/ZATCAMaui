@@ -5196,7 +5196,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>Bills Returns</comment>
   </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>Please enter confirmation code sent to your mobile number</value>
+    <value>Please enter verification code sent to your mobile number</value>
   </data>
   <data name="NDAllcertificates" xml:space="preserve">
     <value>All certificates</value>
