@@ -21,7 +21,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid >
+        <Grid>
             <Grid.RowDefinitions>
                 <!--  Skip Button  -->
                 <RowDefinition Height="96" />
@@ -100,7 +100,7 @@
 
             <!--  Next button  -->
             <buttons:SfButton
-               
+               Margin="0,0,0,35"
                 Grid.Row="3"
                 Command="{Binding NextCommand}"
                 
