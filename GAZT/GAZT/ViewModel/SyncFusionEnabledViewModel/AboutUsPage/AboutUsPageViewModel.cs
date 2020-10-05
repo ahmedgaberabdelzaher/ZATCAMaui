@@ -25,6 +25,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
                 RaisePropertyChanged("WebUrl");
             }
         }
+        //IsLoading
+        private bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         #endregion
         #region Constructor
         public AboutUsPageViewModel(INavigationService navigationService, IDialogService dialogService)
