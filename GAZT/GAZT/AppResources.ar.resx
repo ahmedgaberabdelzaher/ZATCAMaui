@@ -4510,38 +4510,37 @@
     <value>يرجى تقديم نسخة من الوثائق التالية</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfDeclaringBankruptcy" xml:space="preserve">
-    <value>المرفقات - نسخة من حكم الإفلاس</value>
-  </data>
+    <value>(إلزامي) المرفقات - نسخة من حكم الإفلاس</value>
+    </data>
   <data name="TinDeregistrationAttachmentCopyOfLicneseAfterClosing" xml:space="preserve">
-    <value>المرفقات - نسخة من الترخيص بعد إغلاق / تحديث</value>
+    <value>(إلزامي) المرفقات - نسخة من الترخيص بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfCRAfterClosing" xml:space="preserve">
-    <value>المرفقات - نسخة من السجل التجاري بعد إغلاق / تحديث</value>
-  </data>
+     <value>(إلزامي) المرفقات - نسخة من السجل التجاري بعد إغلاق / تحديث</value>
+    </data>
   <data name="TinDeregistrationAttachmentOwnershipSellingAgreement" xml:space="preserve">
-    <value>المرفقات - عقد مبايعة نقل الملكية</value>
-  </data>
+ <value>(إلزامي) المرفقات - عقد مبايعة نقل الملكية</value>
+    </data>
   <data name="TinDeregistrationAttachmentCopyOfPartnersDecision" xml:space="preserve">
-    <value>المرفقات - نسخة من قرار الشركاء</value>
-  </data>
+    <value>(إلزامي) المرفقات - نسخة من قرار الشركاء</value>   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
     <value>المرفقات - نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
-    <value>المرفقات - نسخة من عقد البيع</value>
-  </data>
+  <value>(إلزامي)  المرفقات - نسخة من عقد البيع</value>
+    </data>
   <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
-    <value>المرفقات -شهادة الوفاة للشخص الطبيعي</value>
-  </data>
+    <value>(إلزامي)  المرفقات -شهادة الوفاة للشخص الطبيعي</value>
+    </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
-    <value>المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
-  </data>
+    <value>(إلزامي) المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
+    </data>
   <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
-    <value>المرفقات - قرار وزاري للموافقة على عملية الاندماج</value>
-  </data>
+<value>(إلزامي) المرفقات - قرار وزاري للموافقة على عملية الاندماج</value>
+    </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
-    <value>المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
-  </data>
+<value>(إلزامي)  المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
+    </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
     <value>تحميل المرفقات</value>
   </data>
