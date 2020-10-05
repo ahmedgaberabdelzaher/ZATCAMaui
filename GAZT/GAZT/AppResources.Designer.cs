@@ -14573,5 +14573,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("PleaseEnterCorrectData", resourceCulture);
             }
         }
+        
+        public static string ASAccountStatementDashboardTileText {
+            get {
+                return ResourceManager.GetString("ASAccountStatementDashboardTileText", resourceCulture);
+            }
+        }
     }
 }

@@ -2121,7 +2121,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             SummaryExpendedCard = (EstablishmentRegistrationTabsEnum)_enum;
         }
 
-        private async void fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
+        public async void fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
         {
             clearFormData(_enum);
             try

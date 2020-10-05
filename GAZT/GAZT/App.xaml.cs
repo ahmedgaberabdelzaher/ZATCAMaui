@@ -64,7 +64,9 @@ namespace EGAZT
         public static string PickerPageView = "PickerPageView";
         public static string ZakatRegistrationDetailsListPageView = "ZakatRegistrationDetailsListPageView";
         public static string TINDeregistrationCloseIndividualOutletsPageView = "TINDeregistrationCloseIndividualOutletsPageView";
-
+        public static string ZakatRegistrationOutletsDetails = "ZakatRegistrationOutletsDetails";
+        public static string ZakatRegistrationFinancialDetails = "ZakatRegistrationFinancialDetails";
+        public static string ZakatRegistrationTaxPayerDetails = "ZakatRegistrationTaxPayerDetails";
 
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
@@ -292,6 +294,9 @@ namespace EGAZT
         //HttpClientHandlerForSSL Certificate Issue
         public static string IncomingChannel = string.Empty;
         public static bool DoesLoginNeedToBeRefreshed;
+
+        //in Seconds
+        public static int IdleTimeToLogout = 100;
 
         public static bool IsLoginPageRefreshed;
         private INavigationService _navigationService;
@@ -730,7 +735,7 @@ namespace EGAZT
 
             if (topPage.GetType().Name == App.SFLoginPageView)
             {
-                return true;
+                return true;    
             }
 
             return false;
@@ -914,6 +919,19 @@ namespace EGAZT
             });
         }
 
-
+        //rohith-login
+        //public static void HandleSessionTimeout()
+        //{
+        //    if (App.IsLoginPageVisible() == true)
+        //    {
+        //        App.IsLoginPageRefreshed = true;
+        //        MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+        //    }
+        //    else
+        //    {
+        //        App.DoesLoginNeedToBeRefreshed = true;
+        //        MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+        //    }
+        //}
     }
 }

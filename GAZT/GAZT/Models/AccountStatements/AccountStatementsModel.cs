@@ -198,7 +198,7 @@ namespace EGAZT.Models.AccountStatements
         public string Betrh { get; set; }
 
         [JsonProperty("Bldat")]
-        public string Bldat { get; set; }
+        public DateTime Bldat { get; set; }
 
         [JsonProperty("Bldat2")]
         public string Bldat2 { get; set; }
@@ -208,6 +208,12 @@ namespace EGAZT.Models.AccountStatements
 
         [JsonProperty("PeriodEndDt")]
         public string PeriodEndDt { get; set; }
+
+        public bool IsTotalBalanceVisile { get; set; }
+
+        public string OpeningBalance { get; set; }
+        public string ClosingBalance { get; set; }
+        public string TotalBalance { get; set; }
     }
 
     public partial class ASYearValuesHeader

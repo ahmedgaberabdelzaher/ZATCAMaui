@@ -14,6 +14,8 @@ namespace GAZT.iOS
             // you can specify it here.
             try
             {
+                //rohith-login
+                //UIApplication.Main(args, typeof(CustomApplication), typeof(AppDelegate));
                 UIApplication.Main(args, null, "AppDelegate");
             }
             catch (Exception ex)

@@ -569,7 +569,7 @@
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="refund">
                                             </Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDTINDeregestration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                             </StackLayout.GestureRecognizers>
@@ -581,7 +581,7 @@
                                             <Image Source="ic_ReportTaxEvasion.png">
 
                                             </Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.AccountStatementsDashboardTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
                                             </StackLayout.GestureRecognizers>
