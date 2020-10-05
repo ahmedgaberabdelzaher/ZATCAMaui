@@ -2741,6 +2741,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.GrandfatherName = string.IsNullOrEmpty(GrandFatherName) ? string.Empty : GrandFatherName;
                     taxPayerDetails.FamilyName = string.IsNullOrEmpty(FamilyName) ? string.Empty : FamilyName;
                     taxPayerDetails.Initials = string.IsNullOrEmpty(Initial) ? string.Empty : Initial;
+                    taxPayerDetails.Chkfg = "X";
+
                     if (SelectedGender?.ToLower() == GenderList.FirstOrDefault().ToLower())
                     {
                         taxPayerDetails.Xsexm = "X";
