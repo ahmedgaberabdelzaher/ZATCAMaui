@@ -184,7 +184,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
 
-                    if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationNationalID || viewModel.SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                     {
                         if (!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
                         {
@@ -621,6 +621,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
 
                     }
                     isHIjri = true;
@@ -635,6 +636,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
 
                     }
                     isHIjri = false;
