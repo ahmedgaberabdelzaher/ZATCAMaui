@@ -22,6 +22,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
             viewModel.idItem = outletNavigation.idItem;
             viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
+            viewModel.IsEditingMode = outletNavigation.IsEditingMode;
             viewModel.currentTab = outletNavigation.openedTab;
             BindingContext = viewModel;
             ChangeAeroIcon();
@@ -105,6 +106,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         void SfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {
             e.Cancel = true;
+        }
+
+        private async void OutletType_Clicked(object sender, EventArgs e)
+        {
+            var result = await DisplayActionSheet(AppResources.SelectOutletType, "", "", viewModel.ListOutletTypes.ToArray());
+            if (result!=null)
+            {
+                viewModel.SelectedOutletType = result;
+            }
         }
     }
 }

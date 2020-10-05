@@ -19,7 +19,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
     public class OutletDetailsAmendUpdatePageViewModel : BaseViewModel
     {
         #region Variable
-        //public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
+        public bool IsEditingMode { get; set; }
+        private List<string> _listOutletTypes;
+        public List<string> ListOutletTypes
+        {
+            get => _listOutletTypes;
+            set
+            {
+                _listOutletTypes = value;
+                RaisePropertyChanged(nameof(ListOutletTypes));
+            }
+        }
+        private string _selectedOutletType;
+        public string SelectedOutletType
+        {
+            get => _selectedOutletType;
+            set
+            {
+                _selectedOutletType = value;
+                RaisePropertyChanged(nameof(SelectedOutletType));
+            }
+        }
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         //public bool editModeEnabled { get; set; } = false;
         private OutletNumber newNumber = null;
@@ -478,6 +498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         {
             OutletDetails = new OutletDetails();
             AddressDetails = new AddressDetails();
+            ListOutletTypes = new List<string>();
             OnNextButtonClick = new Command(() =>
          {
              navigateToNext();
@@ -700,7 +721,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
-                        _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                        _navigationService.NavigateTo(App.ActivityItemAmendUpdatePage, new ActivityNavigationModels()
                         {
                             openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
                             taxPayerDetails = taxPayerDetails,
@@ -776,7 +797,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         outletItem.Actnm = OutletName;
                         outletItem.Actno = OutletActNumber;
                         outletItem.Caltp = taxPayerDetails?.Caltp;
-                        outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
+                        outletItem.Actcat = SelectedOutletType == AppResources.MainOutlet ? "M" : SelectedOutletType == AppResources.SubOutlet ? "S" : "";
+                        // outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
                         //outletItem.Conatt = "X";
                         taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
                         taxPayerDetails.StepNumberx = "03";
@@ -870,6 +892,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     clearFormData();
+                    bool isMainOutletExists = false;
+                    var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
+                    _outletTempData.ForEach(_out =>
+                    {
+                        if (_out.Actcat == "M")
+                        {
+                            isMainOutletExists = true;
+                        }
+                    });
+                    ListOutletTypes.Clear();
+                    if (isMainOutletExists)
+                    {
+                        ListOutletTypes.Add(AppResources.SubOutlet);
+                    }
+                    else
+                    {
+                        ListOutletTypes.Add(AppResources.MainOutlet);
+                        ListOutletTypes.Add(AppResources.SubOutlet);
+                    }
+                    SelectedOutletType = AppResources.SubOutlet;
                     if (selectedOutletItem != null)
                     {
                         newNumber = new OutletNumber()
@@ -877,10 +919,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             Actno = selectedOutletItem?.Actno
                         };
                         OutletName = selectedOutletItem?.Actnm;
+                        if (selectedOutletItem.Actcat == "M")
+                        {
+                            SelectedOutletType = AppResources.MainOutlet;
+                        }
+                        else if (selectedOutletItem.Actcat == "S")
+                        {
+                            SelectedOutletType = AppResources.SubOutlet;
+                        }
                     }
                     else
                     {
-                        newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                        newNumber = await WebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
                     }
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
@@ -1007,14 +1057,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
-                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count == 0)
+                if (App.ZAKATType == Enums.PageExecutionType.Update && taxPayerDetails?.Nreg_ActivitySet.results?.Count == 0)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
                     return false;
                 }
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M").ToList();
                 var count = mainactivity.Count();
-                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
+                if (App.ZAKATType == Enums.PageExecutionType.Update && taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
                     return false;
@@ -1152,6 +1202,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletName));
                     return false;
                 }
+                //else if (string.IsNullOrWhiteSpace(SelectedOutletType))
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletType));
+                //    return false;
+                //}
             }
             return true;
         }

@@ -88,32 +88,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public void PopulateZakatRegListData()
         {
             ZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>();
-            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+            if (App.LoginDataRetrieved.ZkReg == "X")
             {
-                ZDTitle = AppResources.ZZTaxPayerDetails,
-                ZDImageSource = "vat_ic_taxpayerDetail",
-            });
-            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-            {
-                ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
-                ZDImageSource = "establishments",
-            });
-            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-            {
-                ZDTitle = AppResources.ZZZZVATREFinancialDetails,
-                ZDImageSource = "details",
-            });
-            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-            {
-                ZDTitle = AppResources.TinDeregistration,
-                ZDImageSource = "deregistration",
-            });
-            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-            {
-                ZDTitle = AppResources.ZAKATAmend,
-                ZDImageSource = "registration.png",
-            });
-            if (App.LoginDataRetrieved.ZkReg == "U")
+                ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.ZZTaxPayerDetails,
+                    ZDImageSource = "vat_ic_taxpayerDetail",
+                });
+                ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
+                    ZDImageSource = "establishments",
+                });
+                ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.ZZZZVATREFinancialDetails,
+                    ZDImageSource = "details",
+                });
+                ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.TinDeregistration,
+                    ZDImageSource = "deregistration",
+                });
+                ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.ZAKATAmend,
+                    ZDImageSource = "registration.png",
+                });
+            }
+            else if (App.LoginDataRetrieved.ZkReg == "U")
             {
                 ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {

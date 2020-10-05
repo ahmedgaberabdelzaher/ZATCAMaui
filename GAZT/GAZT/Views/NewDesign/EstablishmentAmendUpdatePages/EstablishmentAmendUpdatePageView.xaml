@@ -76,7 +76,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <StackLayout Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10" IsVisible="{Binding RegTaxPayerTypeAvailability.IsReportingBranchVisible}">
+                            <StackLayout Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -85,11 +85,12 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <StackLayout>
+                                <StackLayout  IsEnabled="{Binding RegTaxPayerTypeAvailability.ReportingBranch}">
                                     <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding SelectedReportingBranch}" Command="{Binding OnReportingBranchSelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" 
-                                                       IsEnabled="{Binding RegTaxPayerTypeAvailability.ReportingBranch}"/>
+                                                      />
+                                    <!--IsEnabled="{Binding BindingContext.RegTaxPayerTypeAvailability.ReportingBranch,Source={x:Reference ESTAmendReactivationPage}}"-->
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
@@ -103,7 +104,7 @@
                                 </Label>
                                 <custom:CustomLabel Text="{Binding SelectedEntityType}" HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
-                            <StackLayout Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10" IsVisible="{Binding RegTaxPayerTypeAvailability.IsTaxPayerTypeVisible}">
+                            <StackLayout Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -160,7 +161,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Grid x:Name="StayMoreKsagrid" Grid.Row="0" Grid.Column="0"  >
+                                    <Grid x:Name="StayMoreKsagrid" Grid.Row="0" Grid.Column="0" IsEnabled="{Binding RegTaxPayerTypeAvailability.ResidencyStatus}"  >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
@@ -183,7 +184,7 @@
                                                             VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                             LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                     </Grid>
-                                    <Grid x:Name="OwnhouseGrid" Grid.Row="0" Grid.Column="1" >
+                                    <Grid x:Name="OwnhouseGrid" Grid.Row="0" Grid.Column="1" IsEnabled="{Binding RegTaxPayerTypeAvailability.ResidencyStatus}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
@@ -204,7 +205,7 @@
                                                             VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                             LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                     </Grid>
-                                    <Grid  x:Name="NoneOfTheAboveGrid"  Grid.Row="1" Grid.Column="0"  WidthRequest="250">
+                                    <Grid  x:Name="NoneOfTheAboveGrid"  Grid.Row="1" Grid.Column="0"  WidthRequest="250" IsEnabled="{Binding RegTaxPayerTypeAvailability.ResidencyStatus}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
@@ -765,10 +766,8 @@
                             <StackLayout x:Name="NationalityDetails" Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10" IsVisible="false">
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" 
                                                      TextColor="{StaticResource NeutralBlack}" 
-                                                     FontFamily="{StaticResource SSTArBold}" FontSize="18" 
-                                                     IsVisible="{Binding TaxPayerDetailsAvailability.IsNationalityVisible}"/>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10"
-                                             IsVisible="{Binding TaxPayerDetailsAvailability.IsNationalityVisible}">
+                                                     FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -786,8 +785,7 @@
                                                            IsEnabled="{Binding TaxPayerDetailsAvailability.Nationality}"/>
                                     </StackLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10" 
-                                             IsVisible="{Binding TaxPayerDetailsAvailability.IsCitizenVisible}">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10" >
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -804,8 +802,7 @@
                                                            Padding="5" IsEnabled="{Binding TaxPayerDetailsAvailability.Citizen}"/>
                                     </StackLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10"
-                                             IsVisible="{Binding TaxPayerDetailsAvailability.IsResidenceVisible}">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -885,7 +882,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <StackLayout>
+                                <StackLayout IsEnabled="{Binding PassportDetails.IssueCountry}">
                                     <buttons:SfButton Text="{Binding SelectedPassportIssueCountry}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End"
                                                       Command="{Binding OnPassportIssueCountryButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
@@ -1172,7 +1169,11 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
                                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Crlicenceno}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
                                         <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding Actno, Converter={StaticResource deleteActionVisibilityConverter}}">
                                             <Image.GestureRecognizers>

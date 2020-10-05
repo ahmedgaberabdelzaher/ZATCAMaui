@@ -9543,7 +9543,14 @@ namespace GAZT.Manager
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            try
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
                             taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
                         }
                     }
@@ -9835,6 +9842,75 @@ namespace GAZT.Manager
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format("{0}(Fbnum='{1}',Gpart='')?&$format=json",
                         Constants.ESTOutletNumber, Fbnum));
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            outletNumber = JsonConvert.DeserializeObject<OutletNumber>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return outletNumber;
+        }
+        public static async Task<OutletNumber> ESTOutletNumberESAmendUpdate(string Fbnum, string tin)
+        {
+            OutletNumber outletNumber = null;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(string.Format("{0}(Fbnum='{1}',Gpart='{2}')?&$format=json",
+                        Constants.ESTOutletNumber, Fbnum, tin));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
@@ -11786,7 +11862,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                         TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
+                        TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
 
                         //if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
                         //{

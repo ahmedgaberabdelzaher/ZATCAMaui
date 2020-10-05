@@ -8242,4 +8242,22 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
  <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
     <value>Account Statement</value>
  </data>
+	<data name="OutletTypeField" xml:space="preserve">
+    <value>Outlet Type</value>
+ </data>
+<data name="MainOutlet" xml:space="preserve">
+    <value>Main Outlet</value>
+ </data>
+<data name="SubOutlet" xml:space="preserve">
+    <value>Sub Outlet</value>
+ </data>
+<data name="SelectOutletType" xml:space="preserve">
+    <value>Select outlet type</value>
+ </data>
+<data name="SelectOutletTypeError" xml:space="preserve">
+    <value>Main Outlet already exists, please choose Sub Outlet</value>
+ </data>
+ <data name="ESTValidateOutletType" xml:space="preserve">
+    <value>Please provide type</value>
+  </data>
 </root>
