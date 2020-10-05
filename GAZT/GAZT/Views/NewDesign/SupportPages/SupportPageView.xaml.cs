@@ -1,4 +1,5 @@
-﻿using EGAZT.Models.EnumModels;
+﻿using EGAZT.Helper;
+using EGAZT.Models.EnumModels;
 using EGAZT.ViewModel.NewDesignViewModel;
 using System;
 using System.Collections.Generic;
@@ -142,8 +143,12 @@ namespace EGAZT.Views.NewDesign
 
         public void GoToBackStep()
         {
+
+            ContactUsWebView.Source = "about:blank";
+            viewModel.IsLoading = false;
             if (ContactUsWebView.IsVisible)
             {
+                viewModel.IsLoading = false;
                 ContactUsWebView.IsVisible = false;
                 viewModel.setContactUs();
             }
@@ -170,12 +175,12 @@ namespace EGAZT.Views.NewDesign
 
         private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-
+            viewModel.IsLoading = true;
         }
 
         private void ContactWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-
+            viewModel.IsLoading = false;
         }
 
         private void OnFAQTapped(object sender, EventArgs e)
@@ -229,6 +234,8 @@ namespace EGAZT.Views.NewDesign
 
         private void SuggestionsandComplaintsClicked(object sender, EventArgs e)
         {
+            ContactUsWebView.Source = "";
+            ContactUsWebView.Reload();
             viewModel.PageTitle = AppResources.NDSuggestionsandComplaints;
             ContactUsWebView.IsVisible = true;
             if (App.IsArabic)
@@ -252,6 +259,9 @@ namespace EGAZT.Views.NewDesign
         }
         private void OnTwitterGAZTTapped(object sender, EventArgs e)
         {
+           
+            ContactUsWebView.Source = "";
+            ContactUsWebView.Reload();
             viewModel.PageTitle = AppResources.NDGAZT;
             ContactUsWebView.IsVisible = true;
            
@@ -260,6 +270,9 @@ namespace EGAZT.Views.NewDesign
         }
         private void OnTwitterVATTapped(object sender, EventArgs e)
         {
+            //DependencyService.Get<IClearCookies>().ClearAllCookies();
+            
+            ContactUsWebView.Reload();
             viewModel.PageTitle = AppResources.ZakatInstalmetSelectTypeVAT;
             ContactUsWebView.IsVisible = true;
             
