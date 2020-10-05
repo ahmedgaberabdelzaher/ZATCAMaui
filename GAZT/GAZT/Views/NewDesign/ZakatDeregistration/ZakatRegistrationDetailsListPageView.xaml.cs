@@ -27,7 +27,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            viewModel.PopulateZakatRegListData();
+            ChangeArrowDirection();
         }
 
         private void SetLTR()
@@ -39,6 +40,18 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
