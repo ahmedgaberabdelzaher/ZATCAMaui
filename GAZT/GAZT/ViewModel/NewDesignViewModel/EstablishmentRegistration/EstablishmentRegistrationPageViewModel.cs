@@ -2713,7 +2713,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
                     taxPayerDetails.Orgnonresidentoptions = string.IsNullOrEmpty(SelectedOrgNonResidentOptions) ? string.Empty : SelectedOrgNonResidentOptions;
                     taxPayerDetails.Orgnonresidentactivity = string.IsNullOrEmpty(SelectedOrgNonResidentActivity) ? string.Empty : SelectedOrgNonResidentActivity;
-
+                    taxPayerDetails.Chkfg = "X";
                     if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
                     {
                         taxPayerDetails.Rentatt = "X";
@@ -2780,7 +2780,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.Nreg_IdSet.results.Clear();
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
-
+                    taxPayerDetails.Chkfg = "X";
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
                     {
 
@@ -2810,7 +2810,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
                     taxPayerDetails.Fdenddt = Fdenddt;
-
+                    taxPayerDetails.Chkfg = "X";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";
