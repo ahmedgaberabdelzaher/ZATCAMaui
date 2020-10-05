@@ -9522,6 +9522,31 @@ namespace GAZT.Manager
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            String _responseData = ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+
+                                var errorMsg = errorMesg.error.innererror.errordetails[0].message;
+
+                                if (errorCode.Contains("206"))
+                                {
+                                    errorMsg = "206";
+                                }
+                                else if (errorCode.Contains("112"))
+                                {
+                                    errorMsg = "112";
+                                }
+
+                                String WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
+                                errorMsg = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTErrorException(errorMsg);
+                            }
+                        }
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             throw new GAZTSessionExpiredException();
@@ -9554,6 +9579,10 @@ namespace GAZT.Manager
                             taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
                         }
                     }
+                }
+                catch (GAZTErrorException ex)
+                {
+                    throw ex;
                 }
                 catch (JsonReaderException ex)
                 {
@@ -16057,7 +16086,7 @@ namespace GAZT.Manager
                     String url = string.Empty;
                     if (deregType == "VT_DREG")
                     {
-                        url = Constants.GetVATObjViewApplicationDREGReasonSetURL + "'"+ lang + "'&$format=json";
+                        url = Constants.GetVATObjViewApplicationDREGReasonSetURL + "'" + lang + "'&$format=json";
                     }
                     else
                     {

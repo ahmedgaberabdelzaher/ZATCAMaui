@@ -32,13 +32,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             BindingContext = viewModel;
-            //if (App.ZAKATType==Enums.PageExecutionType.Amend)
+            //if (App.ZAKATType == Enums.PageExecutionType.Amend)
             //{
-            //    viewModel.PageTitle = AppResources.ZAKATAmend;
+            //    viewModel.PageTitle = AppResources.ZZAmend;
             //}
-            //else if (App.ZAKATType==Enums.PageExecutionType.Update)
+            //else if (App.ZAKATType == Enums.PageExecutionType.Update)
             //{
-            //    viewModel.PageTitle = AppResources.ZAKATUpdate;
+            //    viewModel.PageTitle = AppResources.TPUpdate;
             //}
         }
 

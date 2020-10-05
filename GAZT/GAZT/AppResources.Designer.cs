@@ -8194,7 +8194,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachments - Copy of Contract of Sale Agreement.
+        ///   Looks up a localized string similar to Attachments - Copy of Contract of Sale Agreement(Mandatory).
         /// </summary>
         public static string TinDeregistrationAttachmentCopyOfContractOfSaleAgreement {
             get {
@@ -8230,7 +8230,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachments - Copy of Partners Decision.
+        ///   Looks up a localized string similar to Attachments - Copy of Partners Decision(Mandatory).
         /// </summary>
         public static string TinDeregistrationAttachmentCopyOfPartnersDecision {
             get {
@@ -8239,7 +8239,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachments - Death Certificate of Individual.
+        ///   Looks up a localized string similar to Attachments - Death Certificate of Individual(Mandatory).
         /// </summary>
         public static string TinDeregistrationAttachmentDeathCertificate {
             get {
@@ -8248,7 +8248,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall.
+        ///   Looks up a localized string similar to Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall(Mandatory).
         /// </summary>
         public static string TinDeregistrationAttachmentLiquidation {
             get {
@@ -8257,7 +8257,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachments - Ministerial Resolution to approve Merger.
+        ///   Looks up a localized string similar to Attachments - Ministerial Resolution to approve Merger(Mandatory).
         /// </summary>
         public static string TinDeregistrationAttachmentMerger {
             get {
@@ -8266,7 +8266,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachments - Ministerial Resolution to approve the Acquisition process.
+        ///   Looks up a localized string similar to Attachments - Ministerial Resolution to approve the Acquisition process(Mandatory).
         /// </summary>
         public static string TinDeregistrationAttachmentMinisterialResponse {
             get {
@@ -8275,7 +8275,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Attachments - Ownership Selling/Transfer Agreement.
+        ///   Looks up a localized string similar to Attachments - Ownership Selling/Transfer Agreement(Mandatory).
         /// </summary>
         public static string TinDeregistrationAttachmentOwnershipSellingAgreement {
             get {
@@ -8653,7 +8653,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Surname.
         /// </summary>
         public static string TinDeregistrationSurName {
             get {
@@ -22029,7 +22029,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Return has been submitted successfully.
+        ///   Looks up a localized string similar to VAT Return has been Submitted.
         /// </summary>
         public static string ZZZZVATReturnsubmitted {
             get {

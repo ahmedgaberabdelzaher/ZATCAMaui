@@ -11,6 +11,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                 <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -47,7 +55,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" Rotation="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image Grid.Row="0" Grid.Column="0" Rotation="0" IsVisible="true" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
@@ -87,7 +95,7 @@
                                         <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label Text="{Binding ZDTitle}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" VerticalOptions="Center" />
                                         </StackLayout>
-                                        <Image x:Name="ListViewArrow" Margin="10,5,10,0" Grid.Row="0" Grid.Column="2" Source="arrowDropdown" Rotation="270" WidthRequest="20" HeightRequest="20"
+                                        <Image x:Name="ListViewArrow" Style="{DynamicResource BackButtonArrow}" Margin="10,5,10,0" Grid.Row="0" Grid.Column="2" Source="arrowDropdown" Rotation="270" WidthRequest="20" HeightRequest="20"
                                         HorizontalOptions="End" VerticalOptions="Center">
                                              <Image.Triggers>
                                                  <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="false">
