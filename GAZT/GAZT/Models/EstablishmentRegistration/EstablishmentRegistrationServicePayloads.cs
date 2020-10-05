@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using EGAZT.ViewModel.NewDesignViewModel;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -17,7 +18,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if(value is NregIdSet)
+            if (value is NregIdSet)
             {
                 List<Nreg_IdItem> results = (value as NregIdSet)?.results;
                 JArray jArray = JArray.FromObject(results, serializer);
@@ -41,7 +42,7 @@ namespace EGAZT.Models.EstablishmentRegistration
                 JArray jArray = JArray.FromObject(results, serializer);
                 jArray.WriteTo(writer);
             }
-            if(value is OffNotesSet)
+            if (value is OffNotesSet)
             {
                 List<OffNotes> results = (value as OffNotesSet)?.results;
                 JArray jArray = JArray.FromObject(results, serializer);
@@ -198,7 +199,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     {
         public List<Nreg_OutletItem> results { get; set; }
     }
-    public class Nreg_ActivityItem: INotifyPropertyChanged
+    public class Nreg_ActivityItem : INotifyPropertyChanged
     {
         [JsonIgnore]
         public Metadata __metadata { get; set; }
@@ -231,7 +232,8 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Crtrfattfg { get; set; } = string.Empty;
         public string Activity { get; set; } = string.Empty;
         private string _actcat = string.Empty;
-        public string Actcat {
+        public string Actcat
+        {
             get => _actcat;
             set
             {
@@ -722,4 +724,844 @@ namespace EGAZT.Models.EstablishmentRegistration
         public DateTime? ADateComm { get; set; }
         public string EIslmedate { get; set; } = string.Empty;
     }
+    public class TaxPayerTypeAvailability : INotifyPropertyChanged
+    {
+        private bool _reportingBranch;
+        public bool ReportingBranch
+        {
+            get => _reportingBranch;
+            set
+            {
+                _reportingBranch = value;
+                OnPropertyChnaged(nameof(ReportingBranch));
+            }
+        }
+        private bool _isReportingBranchVisible;
+        public bool IsReportingBranchVisible
+        {
+            get => _isReportingBranchVisible;
+            set
+            {
+                _isReportingBranchVisible = value;
+                OnPropertyChnaged(nameof(IsReportingBranchVisible));
+            }
+        }
+        private bool _entityType;
+        public bool EntityType
+        {
+            get => _entityType;
+            set
+            {
+                _entityType = value;
+                OnPropertyChnaged(nameof(EntityType));
+            }
+        }
+        private bool _taxPayerType;
+        public bool TaxPayerType
+        {
+            get => _taxPayerType;
+            set
+            {
+                _taxPayerType = value;
+                OnPropertyChnaged(nameof(TaxPayerType));
+            }
+        }
+        private bool _isTaxPayerTypeVisible;
+        public bool IsTaxPayerTypeVisible
+        {
+            get => _isTaxPayerTypeVisible;
+            set
+            {
+                _isTaxPayerTypeVisible = value;
+                OnPropertyChnaged(nameof(IsTaxPayerTypeVisible));
+            }
+        }
+        private bool _nationality;
+        public bool Nationality
+        {
+            get => _nationality;
+            set
+            {
+                _nationality = value;
+                OnPropertyChnaged(nameof(Nationality));
+            }
+        }
+        private bool _nationalityStatus;
+        public bool NationalityStatus
+        {
+            get => _nationalityStatus;
+            set
+            {
+                _nationalityStatus = value;
+                OnPropertyChnaged(nameof(NationalityStatus));
+            }
+        }
+        private bool _isNationalityStatusVisible;
+        public bool IsNationalityStatusVisible
+        {
+            get => _isNationalityStatusVisible;
+            set
+            {
+                _isNationalityStatusVisible = value;
+                OnPropertyChnaged(nameof(IsNationalityStatusVisible));
+            }
+        }
+        private bool _residencyStatus;
+        public bool ResidencyStatus
+        {
+            get => _residencyStatus;
+            set
+            {
+                _residencyStatus = value;
+                OnPropertyChnaged(nameof(ResidencyStatus));
+            }
+        }
+        private bool _isResidencyStatusVisible;
+        public bool IsResidencyStatusVisible
+        {
+            get => _isResidencyStatusVisible;
+            set
+            {
+                _isResidencyStatusVisible = value;
+                OnPropertyChnaged(nameof(IsResidencyStatusVisible));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+    }
+    public class TaxPayerPersonalDetailsAvailability : INotifyPropertyChanged
+    {
+        private bool _dob;
+        public bool DOB
+        {
+            get => _dob;
+            set
+            {
+                _dob = value;
+                OnPropertyChnaged(nameof(DOB));
+            }
+        }
+        private bool _firstName;
+        public bool FirstName
+        {
+            get => _firstName;
+            set
+            {
+                _firstName = value;
+                OnPropertyChnaged(nameof(FirstName));
+            }
+        }
+        private bool _lastName;
+        public bool LastName
+        {
+            get => _lastName;
+            set
+            {
+                _lastName = value;
+                OnPropertyChnaged(nameof(LastName));
+            }
+        }
+        private bool _fathersName;
+        public bool FathersName
+        {
+            get => _fathersName;
+            set
+            {
+                _fathersName = value;
+                OnPropertyChnaged(nameof(FathersName));
+            }
+        }
+        private bool _grandFathersName;
+        public bool GrandFathersName
+        {
+            get => _grandFathersName;
+            set
+            {
+                _grandFathersName = value;
+                OnPropertyChnaged(nameof(GrandFathersName));
+            }
+        }
+        private bool _familyName;
+        public bool FamilyName
+        {
+            get => _familyName;
+            set
+            {
+                _familyName = value;
+                OnPropertyChnaged(nameof(FamilyName));
+            }
+        }
+        private bool _isFamilyNameVisible;
+        public bool IsFamilyNameVisible
+        {
+            get => _isFamilyNameVisible;
+            set
+            {
+                _isFamilyNameVisible = value;
+                OnPropertyChnaged(nameof(IsFamilyNameVisible));
+            }
+        }
+        private bool _initial;
+        public bool Initial
+        {
+            get => _initial;
+            set
+            {
+                _initial = value;
+                OnPropertyChnaged(nameof(Initial));
+            }
+        }
+        private bool _isInitialVisible;
+        public bool IsInitialVisible
+        {
+            get => _isInitialVisible;
+            set
+            {
+                _isInitialVisible = value;
+                OnPropertyChnaged(nameof(IsInitialVisible));
+            }
+        }
+        private bool _gender;
+        public bool Gender
+        {
+            get => _gender;
+            set
+            {
+                _gender = value;
+                OnPropertyChnaged(nameof(Gender));
+            }
+        }
+        private bool _isGenderVisible;
+        public bool IsGenderVisible
+        {
+            get => _isGenderVisible;
+            set
+            {
+                _isGenderVisible = value;
+                OnPropertyChnaged(nameof(IsGenderVisible));
+            }
+        }
+        private bool _nationality;
+        public bool Nationality
+        {
+            get => _nationality;
+            set
+            {
+                _nationality = value;
+                OnPropertyChnaged(nameof(Nationality));
+            }
+        }
+        private bool _isNationalityVisible;
+        public bool IsNationalityVisible
+        {
+            get => _isNationalityVisible;
+            set
+            {
+                _isNationalityVisible = value;
+                OnPropertyChnaged(nameof(IsNationalityVisible));
+            }
+        }
+        private bool _citizen;
+        public bool Citizen
+        {
+            get => _citizen;
+            set
+            {
+                _citizen = value;
+                OnPropertyChnaged(nameof(Citizen));
+            }
+        }
+        private bool _isCitizenVisible;
+        public bool IsCitizenVisible
+        {
+            get => _isCitizenVisible;
+            set
+            {
+                _isCitizenVisible = value;
+                OnPropertyChnaged(nameof(IsCitizenVisible));
+            }
+        }
+        private bool _residence;
+        public bool Residence
+        {
+            get => _residence;
+            set
+            {
+                _residence = value;
+                OnPropertyChnaged(nameof(Residence));
+            }
+        }
+        private bool _isResidenceVisible;
+        public bool IsResidenceVisible
+        {
+            get => _isResidenceVisible;
+            set
+            {
+                _isResidenceVisible = value;
+                OnPropertyChnaged(nameof(IsResidenceVisible));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
+
+    }
+    public class PassportDetails : INotifyPropertyChanged
+    {
+        private bool _passportNo;
+        public bool PassportNo
+        {
+            get => _passportNo;
+            set
+            {
+                _passportNo = value;
+                OnPropertyChnaged(nameof(PassportNo));
+            }
+        }
+        private bool _issueCountry;
+        public bool IssueCountry
+        {
+            get => _issueCountry;
+            set
+            {
+                _issueCountry = value;
+                OnPropertyChnaged(nameof(IssueCountry));
+            }
+        }
+        private bool _issueDate;
+        public bool IssueDate
+        {
+            get => _issueDate;
+            set
+            {
+                _issueDate = value;
+                OnPropertyChnaged(nameof(IssueDate));
+            }
+        }
+        private bool _expiryDate;
+        public bool ExpiryDate
+        {
+            get => _expiryDate;
+            set
+            {
+                _expiryDate = value;
+                OnPropertyChnaged(nameof(ExpiryDate));
+            }
+        }
+        private bool _attachment;
+        public bool Attachment
+        {
+            get => _attachment;
+            set
+            {
+                _attachment = value;
+                OnPropertyChnaged(nameof(Attachment));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+    }
+    public class OutletDetails : INotifyPropertyChanged
+    {
+        private bool _outletType;
+        public bool OutletType
+        {
+            get => _outletType;
+            set
+            {
+                _outletType = value;
+                OnPropertyChnaged(nameof(OutletType));
+            }
+        }
+        private bool _outletName;
+        public bool OutletName
+        {
+            get => _outletName;
+            set
+            {
+                _outletName = value;
+                OnPropertyChnaged(nameof(OutletName));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+    }
+    public class ActivityDetails : INotifyPropertyChanged
+    {
+        private bool _issueCountry;
+        public bool IssueCountry
+        {
+            get => _issueCountry;
+            set
+            {
+                _issueCountry = value;
+                OnPropertyChnaged(nameof(IssueCountry));
+            }
+        }
+        private bool _issueBy;
+        public bool IssueBy
+        {
+            get => _issueBy;
+            set
+            {
+                _issueBy = value;
+                OnPropertyChnaged(nameof(IssueBy));
+            }
+        }
+        private bool _issueCity;
+        public bool IssueCity
+        {
+            get => _issueCity;
+            set
+            {
+                _issueCity = value;
+                OnPropertyChnaged(nameof(IssueCity));
+            }
+        }
+        private bool _crno;
+        public bool CRNo
+        {
+            get => _crno;
+            set
+            {
+                _crno = value;
+                OnPropertyChnaged(nameof(CRNo));
+            }
+        }
+        private bool _validFrom;
+        public bool ValidFrom
+        {
+            get => _validFrom;
+            set
+            {
+                _validFrom = value;
+                OnPropertyChnaged(nameof(ValidFrom));
+            }
+        }
+        private bool _mainActivity;
+        public bool MainActivity
+        {
+            get => _mainActivity;
+            set
+            {
+                _mainActivity = value;
+                OnPropertyChnaged(nameof(MainActivity));
+            }
+        }
+        private bool _isMainActivityVisible;
+        public bool IsMainActivityVisible
+        {
+            get => _isMainActivityVisible;
+            set
+            {
+                _isMainActivityVisible = value;
+                OnPropertyChnaged(nameof(IsMainActivityVisible));
+            }
+        }
+        private bool _crcopy;
+        public bool CRCopy
+        {
+            get => _crcopy;
+            set
+            {
+                _crcopy = value;
+                OnPropertyChnaged(nameof(CRCopy));
+            }
+        }
+        private bool _transferCRCopy;
+        public bool TransferCRCopy
+        {
+            get => _transferCRCopy;
+            set
+            {
+                _transferCRCopy = value;
+                OnPropertyChnaged(nameof(TransferCRCopy));
+            }
+        }
+        private bool _isTransferCRCopyVisible;
+        public bool IsTransferCRCopyVisible
+        {
+            get => _isTransferCRCopyVisible;
+            set
+            {
+                _isTransferCRCopyVisible = value;
+                OnPropertyChnaged(nameof(IsTransferCRCopyVisible));
+            }
+        }
+        private bool _mainGroup;
+        public bool MainGroup
+        {
+            get => _mainGroup;
+            set
+            {
+                _mainGroup = value;
+                OnPropertyChnaged(nameof(MainGroup));
+            }
+        }
+        private bool _subGroup;
+        public bool SubGroup
+        {
+            get => _subGroup;
+            set
+            {
+                _subGroup = value;
+                OnPropertyChnaged(nameof(SubGroup));
+            }
+        }
+        private bool _activity;
+        public bool Activity
+        {
+            get => _activity;
+            set
+            {
+                _activity = value;
+                OnPropertyChnaged(nameof(Activity));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+    }
+    public class LicenseDetails : INotifyPropertyChanged
+    {
+        private bool _issueCountry;
+        public bool IssueCountry
+        {
+            get => _issueCountry;
+            set
+            {
+                _issueCountry = value;
+                OnPropertyChnaged(nameof(IssueCountry));
+            }
+        }
+        private bool _issueBy;
+        public bool IssueBy
+        {
+            get => _issueBy;
+            set
+            {
+                _issueBy = value;
+                OnPropertyChnaged(nameof(IssueBy));
+            }
+        }
+        private bool _issueCity;
+        public bool IssueCity
+        {
+            get => _issueCity;
+            set
+            {
+                _issueCity = value;
+                OnPropertyChnaged(nameof(IssueCity));
+            }
+        }
+        private bool _licenseNo;
+        public bool LicenseNo
+        {
+            get => _licenseNo;
+            set
+            {
+                _licenseNo = value;
+                OnPropertyChnaged(nameof(LicenseNo));
+            }
+        }
+        private bool _validFrom;
+        public bool ValidFrom
+        {
+            get => _validFrom;
+            set
+            {
+                _validFrom = value;
+                OnPropertyChnaged(nameof(ValidFrom));
+            }
+        }
+        private bool _mainActivity;
+        public bool MainActivity
+        {
+            get => _mainActivity;
+            set
+            {
+                _mainActivity = value;
+                OnPropertyChnaged(nameof(MainActivity));
+            }
+        }
+        private bool _isMainActivityVisible;
+        public bool IsMainActivityVisible
+        {
+            get => _isMainActivityVisible;
+            set
+            {
+                _isMainActivityVisible = value;
+                OnPropertyChnaged(nameof(IsMainActivityVisible));
+            }
+        }
+        private bool _licenseCopy;
+        public bool LicenseCopy
+        {
+            get => _licenseCopy;
+            set
+            {
+                _licenseCopy = value;
+                OnPropertyChnaged(nameof(LicenseCopy));
+            }
+        }
+        private bool _transferLicenseCopy;
+        public bool TransferLicenseCopy
+        {
+            get => _transferLicenseCopy;
+            set
+            {
+                _transferLicenseCopy = value;
+                OnPropertyChnaged(nameof(TransferLicenseCopy));
+            }
+        }
+        private bool _mainGroup;
+        public bool MainGroup
+        {
+            get => _mainGroup;
+            set
+            {
+                _mainGroup = value;
+                OnPropertyChnaged(nameof(MainGroup));
+            }
+        }
+        private bool _subGroup;
+        public bool SubGroup
+        {
+            get => _subGroup;
+            set
+            {
+                _subGroup = value;
+                OnPropertyChnaged(nameof(SubGroup));
+            }
+        }
+        private bool _activity;
+        public bool Activity
+        {
+            get => _activity;
+            set
+            {
+                _activity = value;
+                OnPropertyChnaged(nameof(Activity));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+    }
+    public class AddressDetails : INotifyPropertyChanged
+    {
+        private bool _houseNo;
+        public bool HouseNo
+        {
+            get => _houseNo;
+            set
+            {
+                _houseNo = value;
+                OnPropertyChnaged(nameof(HouseNo));
+            }
+        }
+        private bool _buildinNo;
+        public bool BuildinNo
+        {
+            get => _buildinNo;
+            set
+            {
+                _buildinNo = value;
+                OnPropertyChnaged(nameof(BuildinNo));
+            }
+        }
+        private bool _floor;
+        public bool Floor
+        {
+            get => _floor;
+            set
+            {
+                _floor = value;
+                OnPropertyChnaged(nameof(Floor));
+            }
+        }
+        private bool _street;
+        public bool Street
+        {
+            get => _street;
+            set
+            {
+                _street = value;
+                OnPropertyChnaged(nameof(Street));
+            }
+        }
+        private bool _quarter;
+        public bool Quarter
+        {
+            get => _quarter;
+            set
+            {
+                _quarter = value;
+                OnPropertyChnaged(nameof(Quarter));
+            }
+        }
+        private bool _postelCode;
+        public bool PostelCode
+        {
+            get => _postelCode;
+            set
+            {
+                _postelCode = value;
+                OnPropertyChnaged(nameof(PostelCode));
+            }
+        }
+        private bool _addNo;
+        public bool AddNo
+        {
+            get => _addNo;
+            set
+            {
+                _addNo = value;
+                OnPropertyChnaged(nameof(AddNo));
+            }
+        }
+        private bool _country;
+        public bool Country
+        {
+            get => _country;
+            set
+            {
+                _country = value;
+                OnPropertyChnaged(nameof(Country));
+            }
+        }
+        private bool _province;
+        public bool Province
+        {
+            get => _province;
+            set
+            {
+                _province = value;
+                OnPropertyChnaged(nameof(Province));
+            }
+        }
+        private bool _city;
+        public bool City
+        {
+            get => _city;
+            set
+            {
+                _city = value;
+                OnPropertyChnaged(nameof(City));
+            }
+        }
+        private bool _cbSameAsPhysical;
+        public bool CBSameAsPhysical
+        {
+            get => _cbSameAsPhysical;
+            set
+            {
+                _cbSameAsPhysical = value;
+                OnPropertyChnaged(nameof(CBSameAsPhysical));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+    public class FinancialDetails : INotifyPropertyChanged
+    {
+        private bool _financialRecords;
+        public bool FinancialRecords
+        {
+            get => _financialRecords;
+            set
+            {
+                _financialRecords = value;
+                OnPropertyChnaged(nameof(FinancialRecords));
+            }
+        }
+        private bool _calendarType;
+        public bool CalendarType
+        {
+            get => _calendarType;
+            set
+            {
+                _calendarType = value;
+                OnPropertyChnaged(nameof(CalendarType));
+            }
+        }
+        private bool _fiscalMonthEnd;
+        public bool FiscalMonthEnd
+        {
+            get => _fiscalMonthEnd;
+            set
+            {
+                _fiscalMonthEnd = value;
+                OnPropertyChnaged(nameof(FiscalMonthEnd));
+            }
+        }
+        private bool _fiscalDayEnd;
+        public bool FiscalDayEnd
+        {
+            get => _fiscalDayEnd;
+            set
+            {
+                _fiscalDayEnd = value;
+                OnPropertyChnaged(nameof(FiscalDayEnd));
+            }
+        }
+        private bool _commencementDate;
+        public bool CommencementDate
+        {
+            get => _commencementDate;
+            set
+            {
+                _commencementDate = value;
+                OnPropertyChnaged(nameof(CommencementDate));
+            }
+        }
+        private bool _taxableDate;
+
+        public bool TaxableDate
+        {
+            get => _taxableDate;
+            set
+            {
+                _taxableDate = value;
+                OnPropertyChnaged(nameof(TaxableDate));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChnaged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+    }
+
 }

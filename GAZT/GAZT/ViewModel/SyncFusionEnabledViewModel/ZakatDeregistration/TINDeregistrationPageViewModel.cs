@@ -969,7 +969,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             else
                             {
                                 DateField.IsVisible = false;
-                                SelectedReason.ReasonDesc = string.Empty;
+                                //SelectedReason.ReasonDesc = string.Empty;
                             }
                             AddOutletDecisionOptions();
                             PopulateAttachmentsListViewTemplate();
@@ -1235,6 +1235,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private bool _outletEditIsVisible = false;
+        public bool outletEditIsVisible
+        {
+            get
+            {
+                return _outletEditIsVisible;
+            }
+            set
+            {
+                _outletEditIsVisible = value;
+                RaisePropertyChanged("outletEditIsVisible");
+            }
+        }
+
         private bool _isLoading;
         public bool IsLoading
         {
@@ -1274,6 +1288,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _tinText = value;
                 RaisePropertyChanged("TinText");
+            }
+        }
+        private List<Attachment> _attachmentTypeList { get; set; }
+        public List<Attachment> AttachmentTypeList
+        {
+            get
+            {
+                return _attachmentTypeList;
+            }
+            set
+            {
+                _attachmentTypeList = value;
+                RaisePropertyChanged("AttachmentTypeList");
             }
         }
         private FieldValidations _DateField { get; set; }
@@ -1548,7 +1575,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("VoidIsVisible");
             }
         }
-
+        
+        public string _uploadedAttachmentFileType = string.Empty;
+        public string UploadedAttachmentFileType
+        {
+            get
+            {
+                return _uploadedAttachmentFileType;
+            }
+            set
+            {
+                _uploadedAttachmentFileType = value;
+                RaisePropertyChanged("UploadedAttachmentFileType");
+            }
+        }
         public void CompanyIdTypeSelected()
         {
             TinText.IsMandatory = false;
@@ -1886,19 +1926,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             VoidIsVisible = false;
             EnableReasonView();
         }
-        #region Attachments View
-        public void PopulateAttachments(List<TinDeregestrationAttachmentsModel> attachments)
-        {
-            var attachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>();
-
-            foreach (TinDeregestrationAttachmentsModel attachemnt in attachments)
-            {
-                attachmentsListViewData.Add(attachemnt);
-            }
-            AttachmentsListViewData = attachmentsListViewData;
-        }
-
-        #endregion
 
 
         public async Task SetDefaultDate()
@@ -1948,73 +1975,75 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
-                TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
-
-                AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
-                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
-
-                if (!String.IsNullOrEmpty(TinDeregistrationData.ADregReason))
+                if (TinDeregistrationReasonSetData != null)
                 {
-                    SelectedReason = TinDeregReasons.Where(m => m.ReasonCd == TinDeregistrationData.ADregReason).FirstOrDefault();
-                }
+                    TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
 
-                AddOutletDecisionOptions();
+                    AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                    List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
 
-
-                if (!String.IsNullOrEmpty(TinDeregistrationData.ADregOpt))
-                {
-                    try
+                    if (!String.IsNullOrEmpty(TinDeregistrationData.ADregReason))
                     {
-
-                        SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
-                        SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
-
-                       // MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-
-                if (TinDeregistrationData.AEffectiveDt != null)
-                    DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDt);
-                PickerDobToDisplay = DeregistrationDate.ToString("dd MMM yyyy", new CultureInfo("en-US"));
-
-                foreach (OutletSetResult outletInfo in AllOutlets)
-                {
-                    if (SelectedReason != null)
-                    {
-                        outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                        SelectedReason = TinDeregReasons.Where(m => m.ReasonCd == TinDeregistrationData.ADregReason).FirstOrDefault();
                     }
 
-                    outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                    AddOutletDecisionOptions();
 
 
-                    foreach (PermitSetResult permitInfo in allPermitTypes)
+                    if (!String.IsNullOrEmpty(TinDeregistrationData.ADregOpt))
                     {
-                        if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                        try
                         {
-                            if (SelectedReason != null)
-                                permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
 
-                            if (permitInfo.APermitIdNoTb == null)
-                                permitInfo.APermitIdNoTb = "";
+                            SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
+                            SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
 
-                            if (permitInfo.APermitTransTinTb == null)
-                                permitInfo.APermitTransTinTb = "";
+                            // MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
+                        }
+                        catch (Exception ex)
+                        {
 
-                            if (permitInfo.APermitDregRsnTb == null)
-                                permitInfo.APermitDregRsnTb = string.Empty;
+                        }
+                    }
 
-                            if (outletInfo.PermitTypes == null)
-                                outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                    if (TinDeregistrationData.AEffectiveDt != null)
+                        DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDt);
+                    PickerDobToDisplay = DeregistrationDate.ToString("dd MMM yyyy", new CultureInfo("en-US"));
 
-                            outletInfo.PermitTypes.Add(permitInfo);
+                    foreach (OutletSetResult outletInfo in AllOutlets)
+                    {
+                        if (SelectedReason != null)
+                        {
+                            outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
+                        }
+
+                        outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+
+
+                        foreach (PermitSetResult permitInfo in allPermitTypes)
+                        {
+                            if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                            {
+                                if (SelectedReason != null)
+                                    permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
+
+                                if (permitInfo.APermitIdNoTb == null)
+                                    permitInfo.APermitIdNoTb = "";
+
+                                if (permitInfo.APermitTransTinTb == null)
+                                    permitInfo.APermitTransTinTb = "";
+
+                                if (permitInfo.APermitDregRsnTb == null)
+                                    permitInfo.APermitDregRsnTb = string.Empty;
+
+                                if (outletInfo.PermitTypes == null)
+                                    outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+
+                                outletInfo.PermitTypes.Add(permitInfo);
+                            }
                         }
                     }
                 }
-
                 //TinDeregistrationReasonSetData.ReasonSet.Results.
                 //await Task.Run(() =>
                 //{
@@ -2556,6 +2585,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         tempValues.Add(new TINDeregistrationModel
                         {
                             ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseAllOutlets,
+                            
                             ActiveOutletDecisionOptionsIsSelected = true,
                             OutletOptionIndex = "1"
                         });
@@ -2880,6 +2910,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                   //  VoidIsVisible = true;
 
                     EnableOutletDetaislView();
+                }
+
+
+                if (TinDeregistrationData.ADregOpt == "3")
+                {
+                    outletEditIsVisible = true;
+                }
+                else
+                {
+                    outletEditIsVisible = false;
                 }
             }
             catch (GAZTUnlockAccountException ex)
@@ -3363,48 +3403,53 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             AttachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>(check);
 
-            //foreach(Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
-            //{
-            //    foreach(TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
-            //    {
-            //        if(attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
-            //        {
-            //            if (attachmentsModelsTemp.AttachmentTypeList == null)
-            //                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+            foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
+            {
+                foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                {
+                    if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
+                    {
+                        if (attachmentsModelsTemp.AttachmentTypeList == null)
+                            attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
 
-            //            attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
-            //        }
-            //    }
-            //}
+                        attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                    }
+                }
+            }
 
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
             var attachmentsListViewData = new ObservableCollection<Attachment>();
 
-            foreach (Attachment attachemnt in attachments)
+            foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
             {
-                attachmentsListViewData.Add(attachemnt);
+                foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                {
+                    UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+                    if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
+                    {
+                        if (attachmentsModelsTemp.AttachmentTypeList == null)
+                            attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+
+                        attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                    }
+                }
             }
-
-          //  AttachmentTypeList = attachments;
-            
-
-            EnableAttachments();
+                AttachmentTypeList = attachments;
+                EnableAttachments();
         }
 
         private void EnableAttachments()
         {
 
-          if (TinDeregAttachmentsListViewData == null)
+          if (AttachmentTypeList == null)
             {
-
                 IsAttachmentsEnabled = false;
             }
             else
             {
-
-                if (TinDeregAttachmentsListViewData.Count == 0)
+                if (AttachmentTypeList.Count == 0)
                 {
 
                     IsAttachmentsEnabled = false;
@@ -3414,9 +3459,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsAttachmentsEnabled = true;
                 }
 
-
             }
-
         }
         public async void NewAttachmentClicked()
         {

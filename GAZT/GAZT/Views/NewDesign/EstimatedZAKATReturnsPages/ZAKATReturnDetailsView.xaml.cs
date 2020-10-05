@@ -20,6 +20,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             viewModel.ClearData();
+            ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber = true;
             if (AttachmentPopUpViewModel.SalesDetailList != null)
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;

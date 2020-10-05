@@ -1711,24 +1711,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             // Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                            DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
-                            DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                            //DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                            //DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
 
 
                             string CalenderType = ZakatForm5DataResult.Incotyp.Substring(0, 1);
                             if (CalenderType.Equals("H"))//  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                             {
-                                ZakatFromDate = UtilityManager.Converthijri(fromDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                ZakatToDate = UtilityManager.Converthijri(toDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                ZakatFromDate = ZakatForm5DataResult.AFromDt.ToString("dd-MM-yyyy", new CultureInfo("ar-SA"));
+                                string[] dts = ZakatFromDate.Split('-');
+                                string date = dts[0] + "-" + UtilityManager.GetMonthNameHijri(dts[1]) + "-" + dts[2];
+                                ZakatFromDate = date;
+                                ZakatToDate = ZakatForm5DataResult.AToDt.ToString("dd-MM-yyyy", new CultureInfo("ar-SA"));
+                                string[] dts2 = ZakatToDate.Split('-');
+                                string date2 = dts2[0] + "-" + UtilityManager.GetMonthNameHijri(dts2[1]) + "-" + dts2[2];
+                                ZakatToDate = date2;
+                                //ZakatFromDate = UtilityManager.Converthijri(fromDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                //ZakatToDate = UtilityManager.Converthijri(toDate); ;// Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 Period = ZakatFromDate + " - " + ZakatToDate;
                             }
                             else
                             {
-                                ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                               
+                                ZakatFromDate = ZakatForm5DataResult.AFromDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts = ZakatFromDate.Split('-');
                                 string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                                 ZakatFromDate = date;
-                                ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                ZakatToDate = ZakatForm5DataResult.AToDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 string[] dts2 = ZakatToDate.Split('-');
                                 string date2 = dts2[0] + "-" + UtilityManager.GetMonthName(dts2[1]) + "-" + dts2[2];
                                 ZakatToDate = date2;

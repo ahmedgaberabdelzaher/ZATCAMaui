@@ -121,7 +121,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
              estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
             if (estimateZakatAttachment != null)
             {
-                await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText));
+                await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?"));
 
                 //var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                 //if (result)

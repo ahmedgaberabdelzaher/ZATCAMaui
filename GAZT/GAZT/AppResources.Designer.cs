@@ -197,6 +197,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Statement.
+        /// </summary>
+        public static string ASAccountStatementDashboardTileText {
+            get {
+                return ResourceManager.GetString("ASAccountStatementDashboardTileText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string ASAllTransactions {
@@ -3604,6 +3613,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide type.
+        /// </summary>
+        public static string ESTValidateOutletType {
+            get {
+                return ResourceManager.GetString("ESTValidateOutletType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide postal&apos;s additional number.
         /// </summary>
         public static string ESTValidatePAddAdditional {
@@ -5437,6 +5455,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main Outlet.
+        /// </summary>
+        public static string MainOutlet {
+            get {
+                return ResourceManager.GetString("MainOutlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If you are changing the Email ID, it is mandatory to change the Password.
         /// </summary>
         public static string MandatoryPasswordForEmailUpdatation {
@@ -7264,6 +7291,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Outlet Type.
+        /// </summary>
+        public static string OutletTypeField {
+            get {
+                return ResourceManager.GetString("OutletTypeField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overdue.
         /// </summary>
         public static string OverDue {
@@ -7413,6 +7449,15 @@ namespace EGAZT {
         public static string Pleaseenterconfirmationcodesenttoyourmobilenumber {
             get {
                 return ResourceManager.GetString("Pleaseenterconfirmationcodesenttoyourmobilenumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter correct data.
+        /// </summary>
+        public static string PleaseEnterCorrectData {
+            get {
+                return ResourceManager.GetString("PleaseEnterCorrectData", resourceCulture);
             }
         }
         
@@ -7921,6 +7966,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select outlet type.
+        /// </summary>
+        public static string SelectOutletType {
+            get {
+                return ResourceManager.GetString("SelectOutletType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main Outlet already exists, please choose Sub Outlet.
+        /// </summary>
+        public static string SelectOutletTypeError {
+            get {
+                return ResourceManager.GetString("SelectOutletTypeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select password/username.
         /// </summary>
         public static string SelectPasswordUserName {
@@ -7998,6 +8061,15 @@ namespace EGAZT {
         public static string SubmitZakatReturn {
             get {
                 return ResourceManager.GetString("SubmitZakatReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sub Outlet.
+        /// </summary>
+        public static string SubOutlet {
+            get {
+                return ResourceManager.GetString("SubOutlet", resourceCulture);
             }
         }
         
@@ -13543,6 +13615,15 @@ namespace EGAZT {
         public static string ZFicalYear {
             get {
                 return ResourceManager.GetString("ZFicalYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File size should not be more than 10MB.
+        /// </summary>
+        public static string ZFilesizeshouldnotbemorethan10MB {
+            get {
+                return ResourceManager.GetString("ZFilesizeshouldnotbemorethan10MB", resourceCulture);
             }
         }
         

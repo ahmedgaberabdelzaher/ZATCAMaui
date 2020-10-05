@@ -52,7 +52,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Send<Object, string>(this, "YesPressedToReleaseTheReturn", "Yes");
 
             }
-            else if(_confirmationText.Equals(AppResources.ZZDeleteAttachmentConfirmationText))
+            else if(_confirmationText.Contains(AppResources.ZZDeleteAttachmentConfirmationText))
             {
                 MessagingCenter.Send<Object, string>(this, "YesCommandToDeleteTheAttachment", "Yes");
             }

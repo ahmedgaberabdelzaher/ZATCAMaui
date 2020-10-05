@@ -57,11 +57,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.IsLoading = true;
                     await GetVatRegistrationData();
                 });
-                if (App.VATType == Enums.VATRegDetailsExecutionType.Amend)
+                if (App.VATType == Enums.PageExecutionType.Amend)
                     viewModel.PageTitle = AppResources.ZZZZVatRegistrationAmendmentTile;
-                else if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation)
+                else if (App.VATType == Enums.PageExecutionType.Reactivation)
                     viewModel.PageTitle = AppResources.ZZZZVatRegistrationReactivationTile;
-                else if (App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                else if (App.VATType == Enums.PageExecutionType.Register)
                     viewModel.PageTitle = AppResources.ZZZZVatRegistrationTile;
                 //FrmContactDBO.IsVisible = false;
                 //lblDOB.IsVisible = false;
@@ -405,7 +405,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             if (viewModel.IsDeclarationChecked == true)
             {
                 bool flag = true;
-                if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation)
+                if (App.VATType == Enums.PageExecutionType.Reactivation)
                 {
                     if (viewModel.SelectedIdTypeSR == null)
                     {
@@ -431,7 +431,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 if (flag)
                 {
-                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -607,7 +607,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
                 viewModel.setQuestionImage();
-                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                 //else
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -673,7 +673,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
                 viewModel.setQuestionImage();
-                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                 //else
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -747,7 +747,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                         }
                     }
-                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -828,7 +828,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                         }
                     }
-                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -913,7 +913,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                         }
                     }
-                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -991,7 +991,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                         }
                     }
-                    //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                    //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -1911,7 +1911,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                // if (App.VATType != Enums.VATRegDetailsExecutionType.Amend && App.VATType != Enums.VATRegDetailsExecutionType.Reactivation)
+                // if (App.VATType != Enums.PageExecutionType.Amend && App.VATType != Enums.PageExecutionType.Reactivation)
                 FrmFirstName.IsEnabled = false;
                 FrmLastName.IsEnabled = false;
                 FrmEmailAddress.IsEnabled = false;
@@ -3980,7 +3980,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                     }
                 }
-                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                 //else
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -4061,7 +4061,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                     }
                 }
-                //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+                //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
                 //else
                 //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -4124,7 +4124,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             }
             viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
             viewModel.setQuestionImage();
-            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
             //else
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -4189,7 +4189,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             }
             viewModel.setQuestionImage();
             //viewModel.quesTion3answerSelected = viewModel.TextQuestion3Second;
-            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
             //else
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -4254,7 +4254,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             }
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
             viewModel.setQuestionImage();
-            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
             //else
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
@@ -4318,7 +4318,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             }
             viewModel.setQuestionImage();
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4Second;
-            //if (App.VATType == Enums.VATRegDetailsExecutionType.Reactivation || App.VATType == Enums.VATRegDetailsExecutionType.Amend || App.VATType == Enums.VATRegDetailsExecutionType.Register)
+            //if (App.VATType == Enums.PageExecutionType.Reactivation || App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Register)
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "05";
             //else
             //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";

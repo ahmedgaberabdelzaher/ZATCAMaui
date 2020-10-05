@@ -216,6 +216,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRegistrationFinancialDetailsPageViewModel>();
 
             //TINDeregistrationCloseIndividualOutletsPageView
             SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
@@ -229,7 +232,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
             SimpleIoc.Default.Register<EstablishmentAmendUpdatePageViewModel>();
             SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
+            SimpleIoc.Default.Register<OutletDetailsAmendUpdatePageViewModel>();
             SimpleIoc.Default.Register<ActivityItemPageViewModel>();
+            SimpleIoc.Default.Register<ActivityItemAmendUpdatePageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulViewModel>();
             SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<NewTaxEvasionFormPageViewModel>();
@@ -333,6 +338,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
             SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
+            SimpleIoc.Default.Register<EstablishmentAmendUpdateSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
             SimpleIoc.Default.Register<VATAmendReactivationPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
@@ -814,6 +820,20 @@ namespace EGAZT
                 }
             }
         }
+        public OutletDetailsAmendUpdatePageViewModel OutletDetailsAmendUpdatePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<OutletDetailsAmendUpdatePageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
         public ActivityItemPageViewModel ActivityItemPage
         {
             get
@@ -828,6 +848,20 @@ namespace EGAZT
                 }
             }
         }
+        public ActivityItemAmendUpdatePageViewModel ActivityItemAmendUpdatePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ActivityItemAmendUpdatePageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
         public RegistrationSuccessfulViewModel RegistrationSuccessfulPage
         {
             get
@@ -835,6 +869,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<RegistrationSuccessfulViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public EstablishmentAmendUpdateSuccessfulPageViewModel EstablishmentAmendUpdateSuccessfulPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdateSuccessfulPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2517,6 +2565,9 @@ namespace EGAZT
             navigationService.Configure(App.TINDeregistrationCloseIndividualOutletsPageView, typeof(TINDeregistrationCloseIndividualOutletsPageView));
 
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
+            navigationService.Configure(App.ZakatRegistrationTaxPayerDetails, typeof(ZakatRegistrationTaxPayerDetails));
+            navigationService.Configure(App.ZakatRegistrationOutletsDetails, typeof(ZakatRegistrationOutletsDetails));
+            navigationService.Configure(App.ZakatRegistrationFinancialDetails, typeof(ZakatRegistrationFinancialDetails));
 
             navigationService.Configure(App.ZakatReturnDetailsSuccessfullPageView, typeof(ZakatReturnDetailsSuccessfullPageView));
 
@@ -2547,8 +2598,11 @@ namespace EGAZT
             navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
             navigationService.Configure(App.EstablishmentAmendUpdatePage, typeof(EstablishmentAmendUpdatePageView));
             navigationService.Configure(App.ActivityItemPage, typeof(ActivityItemPage));
+            navigationService.Configure(App.ActivityItemAmendUpdatePage, typeof(ActivityItemAmendUpdatePage));
             navigationService.Configure(App.OutletDetailsPageView, typeof(OutletDetailsPageView));
+            navigationService.Configure(App.OutletDetailsAmendUpdatePageView, typeof(OutletDetailsAmendUpdatePageView));
             navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));
+            navigationService.Configure(App.EstablishmentAmendUpdateSuccessfulPage, typeof(EstablishmentAmendUpdateSuccessfulPage));
             //End EST
 
 
@@ -2929,6 +2983,51 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatRegistrationTaxPayerDetailsPageViewModel ZakatRegistrationTaxPayerDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRegistrationTaxPayerDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatRegistrationOutletsDetailsPageViewModel ZakatRegistrationOutletsDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRegistrationOutletsDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatRegistrationFinancialDetailsPageViewModel ZakatRegistrationFinancialDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRegistrationFinancialDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {

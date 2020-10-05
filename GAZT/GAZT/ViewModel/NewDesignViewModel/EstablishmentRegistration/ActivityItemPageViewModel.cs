@@ -946,12 +946,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 Console.WriteLine(ex.StackTrace);
             }
         }
-        private async void updateActivityList(string indSector)
-        {
-            IsLoading = true;
-            activityList = await WebServiceManager.ESTOutletGetActivitySetsList(indSector);
-            IsLoading = false;
-        }
+        //private async void updateActivityList(string indSector)
+        //{
+        //    IsLoading = true;
+        //    activityList = await WebServiceManager.ESTOutletGetActivitySetsList(indSector);
+        //    IsLoading = false;
+        //}
         private async void fetchTabDataAndBind()
         {
             try
@@ -1008,7 +1008,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             MainActivity = false;
                         }
-                        updateActivityList(SelectedCRItem?.Activity);
+                        //updateActivityList(SelectedCRItem?.Activity);
                         CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
                         CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
                         CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
@@ -1047,7 +1047,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             MainActivity = false;
                         }
-                        updateActivityList(SelectedLicenseItem?.Activity);
+                        //updateActivityList(SelectedLicenseItem?.Activity);
                         //var a = activityList;
                         LicenseAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedLicenseItem?.Activity).FirstOrDefault();
                         LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActMgrp).FirstOrDefault();
@@ -1122,7 +1122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedCRValidFromHijiriDate = _selectedDOBDate;
                     if (!string.IsNullOrWhiteSpace(CRValidFrom))
-                        DisplayCRValidFrom = _crValidFrom.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                        DisplayCRValidFrom = HijriDateString(_crValidFrom);
                 }
             }
             else if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
@@ -1132,7 +1132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedValidFromDate = _selectedDOBDate;
                     if(!string.IsNullOrWhiteSpace(ValidFrom))
-                        DisplayValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                        DisplayValidFrom = HijriDateString(_validFrom);
                 }
                 else
                 {
@@ -1189,6 +1189,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             CRsCopies = new ObservableCollection<Attachment>(list);
 
+            list?.Clear();
             lists = taxPayerDetails.AttDetSet.results.Where(x =>
             {
                 var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);
@@ -1513,7 +1514,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             return isFileAlreadyAttached;
         }
-
+        private string HijriDateString(DateTime date)
+        {
+            try
+            {
+                return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+            }
+            catch (Exception)
+            {
+                HijriCalendar hijriCalendar = new HijriCalendar();
+                return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
+            }
+        }
         #endregion
     }
 }

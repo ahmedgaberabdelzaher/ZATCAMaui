@@ -103,14 +103,14 @@ namespace EGAZT.Views.NewDesign.VATServices
         private async void VATReactivation_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
-            App.VATType = VATRegDetailsExecutionType.Reactivation;
+            App.VATType = PageExecutionType.Reactivation;
             Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView));
         }
 
         private async void VATAment_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
-            App.VATType = VATRegDetailsExecutionType.Amend;
+            App.VATType = PageExecutionType.Amend;
             viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
         }
     }

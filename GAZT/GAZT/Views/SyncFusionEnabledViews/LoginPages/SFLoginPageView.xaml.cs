@@ -43,7 +43,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             try
             {
                 InitializeComponent();
-                App.VATType = VATRegDetailsExecutionType.Register;
+                App.VATType = PageExecutionType.Register;
+                App.ZAKATType = PageExecutionType.Register;
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);

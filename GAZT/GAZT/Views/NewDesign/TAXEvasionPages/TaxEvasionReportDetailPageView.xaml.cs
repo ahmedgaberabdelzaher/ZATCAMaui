@@ -60,15 +60,25 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     //}
                     if (viewModel.SelectedTaxEvasionListItem != null)
                     {
-                        if (viewModel.SelectedTaxEvasionListItem.Latitude != null)
+                        if (viewModel.SelectedTaxEvasionListItem.Location != null)
                         {
-                            lat = Convert.ToDouble(viewModel.SelectedTaxEvasionListItem.Latitude);
                            
+                            string[] Reportlocation = viewModel.SelectedTaxEvasionListItem.Location.Split(',');
+                            var currentCulture = System.Globalization.CultureInfo.InstalledUICulture;
+                            var numberFormat = (System.Globalization.NumberFormatInfo)currentCulture.NumberFormat.Clone();
+                            numberFormat.NumberDecimalSeparator = ".";
+
+                            double number = double.Parse("22.1", numberFormat);
+                            lat = Convert.ToDouble(Reportlocation[0]);
+                            //lat = double.Parse(Reportlocation[0], numberFormat);
+                            //lon = double.Parse(Reportlocation[1], numberFormat);
+                            lon = Convert.ToDouble(Reportlocation[1]);
+
                         }
                         if (viewModel.SelectedTaxEvasionListItem.Latitude != null)
                         {
                            
-                            lon = Convert.ToDouble(viewModel.SelectedTaxEvasionListItem.Longitude);
+                          
                         }
 
 

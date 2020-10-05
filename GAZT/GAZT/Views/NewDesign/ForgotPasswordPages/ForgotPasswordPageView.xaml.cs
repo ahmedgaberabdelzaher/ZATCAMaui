@@ -30,12 +30,42 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ClearData();
             viewModel.OnPageLoad();
             SetLTR();
-            
+            SetPickerFont();
             viewModel.StartPage = 1;
 
         }
 
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
 
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            Picker_Tins.HeaderFontFamily = "SSTArabic-Medium";
+                            Picker_Tins.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            Picker_Tins.SelectedItemFontFamily = "SSTArabic-Medium";
+                            Picker_Tins.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        Picker_Tins.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_Tins.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_Tins.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        Picker_Tins.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         private void SetLTR()
         {
             if (App.IsArabic)

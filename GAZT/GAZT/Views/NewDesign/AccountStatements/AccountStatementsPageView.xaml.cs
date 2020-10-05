@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -16,11 +17,43 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             viewModel = App.Locator.AccountStatementsPageView;
             ChangeAeroIcon();
-            SetLTR();
+            SetLTR(); 
+            SetPickerFont();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
 
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+                            TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -54,6 +87,23 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             base.OnAppearing();
             viewModel.PopulateASFilterData();
+        }
+
+        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ASReturnTypes selectedReturntype = (ASReturnTypes)e.NewValue;
+                TaxTypePicker.SelectedItem = selectedReturntype;
+                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
+
+                // ChipGroup_statusFilter.SelectedItem = null;
+                //viewModel.SelectedChipFilterItem = null;          
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

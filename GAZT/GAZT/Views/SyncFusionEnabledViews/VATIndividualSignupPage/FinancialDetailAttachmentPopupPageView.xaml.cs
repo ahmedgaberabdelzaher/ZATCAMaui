@@ -76,6 +76,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+
+                            AttachmentTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+                            AttachmentTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            AttachmentTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            AttachmentTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        AttachmentTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        AttachmentTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        AttachmentTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        AttachmentTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         public void onPageLoad()
         {
             try

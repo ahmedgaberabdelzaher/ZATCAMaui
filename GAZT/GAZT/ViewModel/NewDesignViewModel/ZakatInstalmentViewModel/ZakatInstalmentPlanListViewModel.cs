@@ -1398,10 +1398,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-                if (SummarySelectedBillsList == value)
-                {
-                    return;
-                }
+                //if (SummarySelectedBillsList == value)
+                //{
+                //    return;
+                //}
                 summarySelectedBillsList = value;
                 RaisePropertyChanged("SummarySelectedBillsList");
             }
@@ -1639,7 +1639,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async Task GetSummaryDetailsClickedAsync(int index)
         {
-            SummarySelectedBillsList = null;
+           // SummarySelectedBillsList = null;
 
             try
             {
