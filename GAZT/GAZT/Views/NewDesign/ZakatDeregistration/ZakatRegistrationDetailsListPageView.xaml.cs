@@ -86,9 +86,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
                 }
-                else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATUpdate)
+                else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.TPUpdate)
                 {
-                    App.ZAKATType = ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATAmend ? Enums.PageExecutionType.Amend : Enums.PageExecutionType.Update;
+                    App.ZAKATType = ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend ? Enums.PageExecutionType.Amend : Enums.PageExecutionType.Update;
                     viewModel.ZAKATAmendOrUpdateClicked();
                 }
                 else
