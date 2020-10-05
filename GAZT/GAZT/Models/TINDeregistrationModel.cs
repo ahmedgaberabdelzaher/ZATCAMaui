@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EGAZT.Models
 {
@@ -1238,12 +1239,12 @@ namespace EGAZT.Models
                     Task.Run(async () =>
                     {
 
-                            VATSignUp resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
-
-                            if (resultData != null && resultData.d != null)
+                            string resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
+                        string _responseData = JObject.Parse(resultData)["d"].ToString();
+                        VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                        if (_responseData != null)
                             {
-                                VATSignUpD IDTypeDataModel = new VATSignUpD();
-                                IDTypeDataModel = resultData.d;
+                                
 
                                 IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
                                 if (idType != null)
@@ -1284,12 +1285,12 @@ namespace EGAZT.Models
                     { 
                         if(aPermitTransTinTb.Length == 10)
                         {
-                            VATSignUp resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitTransTinTb);
-                            
-                            if (resultData != null && resultData.d != null)
-                            {
-                                VATSignUpD IDTypeDataModel = new VATSignUpD();
-                                IDTypeDataModel = resultData.d;
+                            string resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
+                            string _responseData = JObject.Parse(resultData)["d"].ToString();
+                            VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                            if (_responseData != null) { 
+                                //VATSignUpD IDTypeDataModel = new VATSignUpD();
+                                //IDTypeDataModel = resultData.d;
 
                                 IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
                                 if (idType != null)

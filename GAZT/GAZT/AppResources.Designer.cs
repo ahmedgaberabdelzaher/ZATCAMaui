@@ -7518,6 +7518,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationSurName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationSurName", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationName1 {
             get {
                 return ResourceManager.GetString("TinDeregistrationName1", resourceCulture);

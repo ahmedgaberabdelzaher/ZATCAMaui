@@ -4458,6 +4458,9 @@
   <data name="TinDeregistrationFamilyName" xml:space="preserve">
     <value>اسم العائلة</value>
   </data>
+   <data name="TinDeregistrationSurName" xml:space="preserve">
+    <value>كنية</value>
+  </data>
   <data name="TinDeregistrationName1" xml:space="preserve">
     <value>الاسم 1</value>
   </data>
@@ -4594,13 +4597,13 @@
     <value>يجب ان يكون تاريخ الغاء التسجيل اكبر من تاريخ بداية اخر تصريح سارى المفعول</value>
   </data>
   <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
-    <value> يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات</value>
+    <value>1. يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات.</value>
   </data>
   <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
-    <value> تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من. 1MB.
- الاعدادات الموصى بها للماسح الضوئي هي: 1024 * 745
- الرجاء إرفاق ملف من الامتدادت التالية فقط DOC, DOCX, XLS, XLSX, PDF, JPG
-        </value>
+    <value>1. يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات.
+2. تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من. 1MB
+3. الاعدادات الموصى بها للماسح الضوئي هي: 1024 * 745
+4. الرجاء إرفاق ملف من الامتدادت التالية فقط DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>
