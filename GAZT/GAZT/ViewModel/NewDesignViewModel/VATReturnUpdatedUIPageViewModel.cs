@@ -622,6 +622,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public string _carriedValueStringNew;
+        public string CarriedValueStringNew
+        {
+            get
+            {
+                return _carriedValueStringNew;
+            }
+            set
+            {
+                _carriedValueStringNew = value;
+                RaisePropertyChanged("CarriedValueStringNew");
+            }
+        }
+
         private bool _isDeclarationCheckedForInstruction = false;
         public bool IsDeclarationCheckedForInstruction
         {
@@ -3310,10 +3324,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (App.IsArabic)
                             {
                                 CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", CorrectionPeriodAmount + " ± ");
+                                CarriedValueStringNew= AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", CorrectionPeriodAmount + " ± ");
                             }
                             else
                             {
                                 CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", " ± " + CorrectionPeriodAmount);
+                                CarriedValueStringNew= AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", " ± " + CorrectionPeriodAmount);
                             }
                         }
                     }

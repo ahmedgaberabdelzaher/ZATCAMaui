@@ -8168,4 +8168,28 @@
   <data name="PleaseEnterCorrectData" xml:space="preserve">
   <value>الرجاء إدخال بيانات صحيحه</value>
 </data> 
+  <data name="ZVatCorrectionsfrompreviousperiod1" xml:space="preserve">
+    <value>تصحيحات على الفترات السابقة (بين ±  ريال)</value>
+  </data>
+  <data name="ZZZZNETdue" xml:space="preserve">
+    <value>(صافي الضريبة المستحقة (أو المستردة</value>
+  </data>
+  <data name="ZZZZNetVATDueFirst" xml:space="preserve">
+    <value>صافي الضريبة المستحقة</value>
+  </data>
+  <data name="ZZZZNetVatDueReclaimed" xml:space="preserve">
+    <value>(صافي الضريبة المستحقة (أو المستردة</value>
+  </data>
+  <data name="ZZZZNetVATDueSecond" xml:space="preserve">
+    <value>أو المستردة</value>
+  </data>
+  <data name="ZZZZVatDueForCurrentPeriod" xml:space="preserve">
+    <value>إجمالي ضريبة القيمة المضافة المستحقة عن الفترة الضريبية الحالية</value>
+  </data>
+  <data name="ZZZZVatFromPreviousPeriod" xml:space="preserve">
+    <value>ضريبة القيمة المضافة التي تم ترحيلها من الفترة/الفترات السابقة</value>
+  </data>
+  <data name="ZZZZVATOnPurchasesForSummarypage" xml:space="preserve">
+    <value>ضريبة القيمة المضافة على المشتريات</value>
+  </data>
 </root>
