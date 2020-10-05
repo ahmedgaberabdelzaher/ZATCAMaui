@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 await Task.Run(async () =>
                 {
-                    fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.Outlets);
+                    await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.Outlets);
                 });
             }
             catch (Exception ex)

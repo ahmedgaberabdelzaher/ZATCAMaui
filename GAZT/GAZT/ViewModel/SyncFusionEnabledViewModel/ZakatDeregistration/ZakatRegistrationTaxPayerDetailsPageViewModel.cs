@@ -28,6 +28,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             });
         }
 
+        
+
         public async Task LoadDataTaxPayerDetails()
         {
             await Task.Run(() =>
@@ -38,7 +40,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 await Task.Run(async () =>
                 {
-                    fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType);
+                    await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.RegistrationType);
                 });
                 
             }
@@ -54,7 +56,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 await Task.Run(async () =>
                 {
-                    fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
+                    await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
                 }); 
             }
             catch(Exception ex)
