@@ -216,6 +216,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRegistrationFinancialDetailsPageViewModel>();
 
             //TINDeregistrationCloseIndividualOutletsPageView
             SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
@@ -2562,6 +2565,9 @@ namespace EGAZT
             navigationService.Configure(App.TINDeregistrationCloseIndividualOutletsPageView, typeof(TINDeregistrationCloseIndividualOutletsPageView));
 
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
+            navigationService.Configure(App.ZakatRegistrationTaxPayerDetails, typeof(ZakatRegistrationTaxPayerDetails));
+            navigationService.Configure(App.ZakatRegistrationOutletsDetails, typeof(ZakatRegistrationOutletsDetails));
+            navigationService.Configure(App.ZakatRegistrationFinancialDetails, typeof(ZakatRegistrationFinancialDetails));
 
             navigationService.Configure(App.ZakatReturnDetailsSuccessfullPageView, typeof(ZakatReturnDetailsSuccessfullPageView));
 
@@ -2977,6 +2983,51 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatRegistrationTaxPayerDetailsPageViewModel ZakatRegistrationTaxPayerDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRegistrationTaxPayerDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatRegistrationOutletsDetailsPageViewModel ZakatRegistrationOutletsDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRegistrationOutletsDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatRegistrationFinancialDetailsPageViewModel ZakatRegistrationFinancialDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRegistrationFinancialDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {

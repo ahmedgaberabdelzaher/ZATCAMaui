@@ -88,21 +88,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public void PopulateZakatRegListData()
         {
             ZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>();
-            //ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-            //{
-            //    ZDTitle = AppResources.ZZTaxPayerDetails,
-            //    ZDImageSource = "vat_ic_taxpayerDetail",
-            //});
-            //ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-            //{
-            //    ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
-            //    ZDImageSource = "establishments",
-            //});
-            //ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-            //{
-            //    ZDTitle = AppResources.ZZZZVATREFinancialDetails,
-            //    ZDImageSource = "details",
-            //});
+            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+            {
+                ZDTitle = AppResources.ZZTaxPayerDetails,
+                ZDImageSource = "vat_ic_taxpayerDetail",
+            });
+            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+            {
+                ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
+                ZDImageSource = "establishments",
+            });
+            ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+            {
+                ZDTitle = AppResources.ZZZZVATREFinancialDetails,
+                ZDImageSource = "details",
+            });
             ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
             {
                 ZDTitle = AppResources.TinDeregistration,

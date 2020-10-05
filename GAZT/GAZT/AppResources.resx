@@ -8233,13 +8233,13 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve"> 
   <value>File size should not be more than 10 MB.</value>
   </data>
-
 <data name="PleaseEnterCorrectData" xml:space="preserve">
   <value>Please enter correct data</value>
 </data> 
-
-
    <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
     <value>File size should not be more than 10MB</value>
   </data>
+ <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
+    <value>Account Statement</value>
+ </data>
 </root>

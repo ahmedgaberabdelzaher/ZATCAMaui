@@ -13,8 +13,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     {
         ZakatRegistrationDetailsListPageViewModel viewModel;
 
-
-
         public ZakatRegistrationDetailsListPageView()
         {
             InitializeComponent();
@@ -65,15 +63,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 if (selectedItem.ZDTitle == AppResources.ZZTaxPayerDetails)
                 {
-
+                    viewModel._navigationService.NavigateTo(App.ZakatRegistrationTaxPayerDetails);
                 }
                 else if (selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
                 {
-
+                    viewModel._navigationService.NavigateTo(App.ZakatRegistrationOutletsDetails);
                 }
                 else if (selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
                 {
-
+                    viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
                 }
                 else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZAKATUpdate)
                 {

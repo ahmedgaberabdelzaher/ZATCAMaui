@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -21,6 +22,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
+
         public void SetPickerFont()
         {
             try
@@ -85,6 +87,23 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             base.OnAppearing();
             viewModel.PopulateASFilterData();
+        }
+
+        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ASReturnTypes selectedReturntype = (ASReturnTypes)e.NewValue;
+                TaxTypePicker.SelectedItem = selectedReturntype;
+                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
+
+                // ChipGroup_statusFilter.SelectedItem = null;
+                //viewModel.SelectedChipFilterItem = null;          
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }
