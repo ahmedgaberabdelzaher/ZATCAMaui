@@ -24,6 +24,7 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons" 
              xmlns:GAZTBehaviors1="clr-namespace:GAZT.CustomControl"
              x:Class="EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages.EstablishmentAmendUpdatePageView"
+             Title="{Binding PageTitle}"
              x:Name="ESTAmendReactivationPage">
     <ContentPage.Resources>
         <ResourceDictionary>

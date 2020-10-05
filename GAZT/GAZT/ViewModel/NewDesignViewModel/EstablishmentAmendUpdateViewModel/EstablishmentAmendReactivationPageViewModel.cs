@@ -16,6 +16,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -2348,6 +2349,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     //    }
                     //}
                 }
+            }
+            catch (GAZTErrorException e)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                _navigationService.GoBack();
             }
             catch (Exception e)
             {

@@ -4463,7 +4463,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationFamilyName" xml:space="preserve">
     <value>Family Name</value>
   </data>
-  <data name="TinDeregistrationSurName" xml:space="preserve">     <value>Surname</value>   </data> 
+  <data name="TinDeregistrationSurName" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+
   <data name="TinDeregistrationName1" xml:space="preserve">
     <value>Name 1</value>
   </data>
@@ -4507,28 +4510,28 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Attachments - Copy of CR After Closing/Update(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentOwnershipSellingAgreement" xml:space="preserve">
-    <value>Attachments - Ownership Selling/Transfer Agreement</value>
+    <value>Attachments - Ownership Selling/Transfer Agreement(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfPartnersDecision" xml:space="preserve">
-    <value>Attachments - Copy of Partners Decision</value>
+    <value>Attachments - Copy of Partners Decision(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
     <value>Attachments - Copy of Contract After Closing/Update</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
-    <value>Attachments - Copy of Contract of Sale Agreement</value>
+    <value>Attachments - Copy of Contract of Sale Agreement(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
-    <value>Attachments - Death Certificate of Individual</value>
+    <value>Attachments - Death Certificate of Individual(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
-    <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
+    <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
-    <value>Attachments - Ministerial Resolution to approve Merger</value>
+    <value>Attachments - Ministerial Resolution to approve Merger(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
-    <value>Attachments - Ministerial Resolution to approve the Acquisition process</value>
+    <value>Attachments - Ministerial Resolution to approve the Acquisition process(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
     <value>Upload your Document</value>
