@@ -1239,7 +1239,7 @@
 
                                     <StackLayout Orientation="Horizontal" IsVisible="false">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" Style="{StaticResource ValueLabelGrey}" WidthRequest="200"/>
-                                        <custom:CustomLabel Text="{Binding TxtLOrCIssuedBy}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200"/>
+                                        <Label Text="{Binding TxtLOrCIssuedBy}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200"/>
                                         <StackLayout.Triggers>
                                             <DataTrigger TargetType="StackLayout" Binding="{Binding ImgBackgroundLicenseNubmer}" Value="FP_selected_tile">
                                                 <Setter Property="IsVisible" Value="True"/>
