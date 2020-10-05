@@ -87,6 +87,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AboutUs
                 viewModel._navigationService.GoBack();
             }
         }
+
+        void AboutUsWebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
+        {
+            viewModel.IsLoading = true;
+        }
+
+        void AboutUsWebView_Navigated(System.Object sender, Xamarin.Forms.WebNavigatedEventArgs e)
+        {
+            viewModel.IsLoading = false;
+        }
         #endregion
     }
 }
