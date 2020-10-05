@@ -112,11 +112,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             if(viewModel.SelectedPermitOutletOptionIndex == 2)
             {
-                if(viewModel.SelectedOutletForCloseTranser.PermitTypes != null && viewModel.SelectedOutletForCloseTranser.PermitTypes.Count > 0)
+                if(viewModel.SelectedOutletForCloseTranser.PermitTypes != null )
                 {
-                    viewModel.IsNodataAvailableVisible = false;
+                    if (viewModel.SelectedOutletForCloseTranser.PermitTypes.Count > 0)
+                    {
+                        viewModel.IsNodataAvailableVisible = false;
 
-                    viewModel.IsMultiplePermitsVisible = true;
+                        viewModel.IsMultiplePermitsVisible = true;
+                    }
+                    else
+                    {
+                        viewModel.IsNodataAvailableVisible = true;
+
+                    }
                 }
                 else
                 {
