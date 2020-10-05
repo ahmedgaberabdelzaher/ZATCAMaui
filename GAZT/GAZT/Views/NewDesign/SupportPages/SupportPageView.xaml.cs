@@ -224,12 +224,12 @@ namespace EGAZT.Views.NewDesign
 
         private void ChatWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-
+            viewModel.IsLoading = true;
         }
 
         private void ChatWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-
+            viewModel.IsLoading = false;
         }
 
         private void SuggestionsandComplaintsClicked(object sender, EventArgs e)
