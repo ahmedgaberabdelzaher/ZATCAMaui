@@ -7836,7 +7836,12 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
     <value>The maximum nuber of attachments you can upload is 5</value>
   </data>
-  <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">    <value>1.The maximum nuber of attachments you can upload is 5. 2.Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB. 3.Recommended settings for the scanner is: 1024 x 745 4.Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>   </data>
+    <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
+   <value>1.The maximum nuber of attachments you can upload is 5.
+2.Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB.
+3.Recommended settings for the scanner is: 1024 x 745
+4.Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
+  </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
     <value>Your Zakat Withdrawal Application is submitted successfully</value>
   </data>

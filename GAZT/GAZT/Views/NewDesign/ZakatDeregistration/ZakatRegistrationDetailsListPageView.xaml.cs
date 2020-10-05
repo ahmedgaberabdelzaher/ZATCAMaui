@@ -16,10 +16,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         public ZakatRegistrationDetailsListPageView()
         {
             InitializeComponent();
+            SetLTR();
 
             viewModel = App.Locator.ZakatRegistrationDetailsListPageView;
             ChangeAeroIcon();
-            SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
