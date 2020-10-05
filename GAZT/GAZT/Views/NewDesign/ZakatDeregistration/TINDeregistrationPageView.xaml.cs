@@ -39,19 +39,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
 
-            
+
             MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
             {
                 outletDecisionOptionsListView.SelectedItem = x;
 
             });
-            Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
-            {
-                if (arg != null)
-                {
-                    viewModel.PopulateAttachments(arg.results);
-                }
-            });
+            //Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            //{
+            //    if (arg != null)
+            //    {
+            //        viewModel.PopulateAttachments(arg.results);
+            //    }
+            //});
 
             SetDatePickerFont();
             SetDateOfBirthPickerFont();
@@ -117,7 +117,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg != null)
                 {
                     viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
-                    viewModel.PopulateAttachments(arg.results);
+                    viewModel.PopulateAttachmentsListViewTemplate();
 
                     foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
                     {
@@ -318,7 +318,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     {
                         if (viewModel.TinDeregistrationData.ADecTelNo.Length < 9)
                         {
-                           // popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                            // popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                             Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                         }
                         if (Messages.Length > 0)
@@ -336,11 +336,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             }
 
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                           
+
                         }
                     }
                 }
-              
+
 
             }
 
@@ -619,7 +619,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
             }
         }
-        
+
         private void HijriCal2Switch_Toggled(object sender, ToggledEventArgs e)
         {
             try
@@ -753,7 +753,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 DpDboHijri.IsOpen = true;
             }
         }
-        
+
         private void OnIDDOBClicked(object sender, EventArgs e)
         {
             if (!viewModel.IsDOBHijriCal)
@@ -807,7 +807,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 string sortedDate = string.Empty;
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
-                    sortedDate  = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
+                    sortedDate = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
 
                 }
 
@@ -817,12 +817,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (isHIjri)
                 {
                     string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
-                     deregDate = Convert.ToDateTime(convertedDeregDate);
+                    deregDate = Convert.ToDateTime(convertedDeregDate);
 
                 }
                 else
                 {
-                     deregDate = Convert.ToDateTime(viewModel.PkrDBO);
+                    deregDate = Convert.ToDateTime(viewModel.PkrDBO);
 
 
                 }
@@ -854,7 +854,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
-                        viewModel.SelectedDob= day + "/" + month + "/" + year;
+                        viewModel.SelectedDob = day + "/" + month + "/" + year;
                     }
                 }
                 else
@@ -921,7 +921,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //{
             //}
         }
-    
+
         void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -941,7 +941,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                     else
                     {
-                        Messages.Append(" "+ AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                        Messages.Append(" " + AppResources.ZZTINnumberlengthcannotbelessthan10digits);
                     }
                 }
                 if (Messages.Length > 0)
@@ -989,7 +989,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
-          
+
         }
         private void DOBDatePicker_Unfocused(object sender, FocusEventArgs e)
         {
@@ -1178,7 +1178,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             DpDbo2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                             DpDbo2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
                         }
-                    break;
+                        break;
                 }
             }
             catch (Exception ex)
@@ -1365,6 +1365,79 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.outletEditIsVisible = false;
 
 
+            }
+        }
+
+        private void attachmentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            viewModel.SelectedAttachment = e.SelectedItem as TinDeregestrationAttachmentsModel;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+            viewModel.NewAttachmentClicked();
+            var view = sender as SfListView;
+            view.SelectedItem = null;
+        }
+
+        private void EditOutlet_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                OutletSetResult selectedOutlet = (OutletSetResult)(e as TappedEventArgs).Parameter;
+                if (viewModel.TinDeregistrationData.ADregOpt == "3")
+                {
+                    viewModel.outletEditIsVisible = true;
+                    selectedItem = selectedOutlet;
+                    viewModel.SelectedOutletForCloseTranser = selectedItem;
+                    viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+
+                    viewModel.AddPermitOutletDecisionOptions();
+                    viewModel.AddPopUpPage();
+                    var view = sender as SfListView;
+                    view.SelectedItem = null;
+                }
+                else
+                {
+                    viewModel.outletEditIsVisible = false;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void AddAttachment_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                TinDeregestrationAttachmentsModel selectedOutlet = (TinDeregestrationAttachmentsModel)(e as TappedEventArgs).Parameter;
+                viewModel.SelectedAttachment = selectedOutlet;
+                viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+                viewModel.NewAttachmentClicked();
+            }
+            catch (Exception ex)
+            {
+
+                return;
+            }
+        }
+
+        private void DeleteAttachment_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                Attachment selectedOutlet = (Attachment)(e as TappedEventArgs).Parameter;
+                var list = viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Any(q => q.Filename == selectedOutlet.Filename)).Select(f => f.AttachmentTypeList).FirstOrDefault();
+                list.Remove(selectedOutlet);
+                list = new List<Attachment>(list);
+               
+                //viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Contains(selectedOutlet)).Select(q => q.AttachmentTypeList).FirstOrDefault() = list;
+                //viewModel.AttachmentTypeList = viewModel.AttachmentTypeList;
+            }
+            catch (Exception ex)
+            {
+                return;
             }
         }
     }

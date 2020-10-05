@@ -62,6 +62,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         #region Properties
 
+        private string _labelText;
+        public string LabelText
+        {
+            get => _labelText;
+            set
+            {
+                _labelText = value;
+                RaisePropertyChanged(nameof(LabelText));
+            }
+        }
         public enum ProcessStep
         {
             Step1 = 0,
@@ -256,8 +266,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsHijriCal");
             }
         }
-        
-                    private bool _IsDOBHijriCal = false;
+
+        private bool _IsDOBHijriCal = false;
         public bool IsDOBHijriCal
         {
             get
@@ -1588,7 +1598,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("VoidIsVisible");
             }
         }
-        
+
         public string _uploadedAttachmentFileType = string.Empty;
         public string UploadedAttachmentFileType
         {
@@ -2565,7 +2575,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                               }
                               ).ToList());
                         }
-                     
+
                         IsLoading = false;
                     }
                     catch (GAZTVATChangeFillingPeriodException ex)
@@ -2658,7 +2668,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         tempValues.Add(new TINDeregistrationModel
                         {
                             ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseAllOutlets,
-                            
+
                             ActiveOutletDecisionOptionsIsSelected = true,
                             OutletOptionIndex = "1"
                         });
@@ -2727,7 +2737,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
             }
-                    CurrentStep = ProcessStep.Step2;
+            CurrentStep = ProcessStep.Step2;
             IsBackButtonVisible = true;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = true;
@@ -2936,14 +2946,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (SelectedOutletOptionIndex == 1)
                 {
-                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null  || string.IsNullOrEmpty(IDTypeDataModel.FamilyName) || string.IsNullOrEmpty(IDTypeDataModel.Name1))
+                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null || string.IsNullOrEmpty(IDTypeDataModel.FamilyName) || string.IsNullOrEmpty(IDTypeDataModel.Name1))
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                     }
                     else
                     {
                         await SaveAsDraft();
-                      //  VoidIsVisible = true;
+                        //  VoidIsVisible = true;
                         EnableOutletDetaislView();
                     }
 
@@ -2959,7 +2969,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
 
 
-                      //  VoidIsVisible = true;
+                        //  VoidIsVisible = true;
                         EnableOutletDetaislView();
                     }
                 }
@@ -2980,7 +2990,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 else
                 {
                     await SaveAsDraft();
-                  //  VoidIsVisible = true;
+                    //  VoidIsVisible = true;
 
                     EnableOutletDetaislView();
                 }
@@ -3145,8 +3155,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 //Display Success Screen
                 await Submit();
-          
-                 _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
+
+                _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3515,14 +3525,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 }
             }
-                AttachmentTypeList = attachments;
-                EnableAttachments();
+            AttachmentTypeList = attachments;
+            EnableAttachments();
         }
 
         private void EnableAttachments()
         {
 
-          if (AttachmentTypeList == null)
+            if (AttachmentTypeList == null)
             {
                 IsAttachmentsEnabled = false;
             }
@@ -3744,7 +3754,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 try
                 {
 
-                    if(IsHijriCal)
+                    if (IsHijriCal)
                     {
                         TinDeregistrationData.ASubmissionDateC = "H";
                         TinDeregistrationData.AEffectiveDtC = "H";
@@ -3790,7 +3800,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         TinDeregistrationData.ADeclarationChkbox = "0";
                     }
 
-               
+
                     //try
                     //{
                     //    if (SelectedIdNumber == null)
@@ -3870,11 +3880,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     tempAttachDetSet.Add(attachment);
                 }
-                         string ErrorMessageForUnlockAccount = string.Empty;
+                string ErrorMessageForUnlockAccount = string.Empty;
 
                 try
                 {
-                   string TinDeregistrationDataResponse = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+                    string TinDeregistrationDataResponse = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
                     TinDeregistrationParentResponseModel obj = JsonConvert.DeserializeObject<TinDeregistrationParentResponseModel>(TinDeregistrationDataResponse);
 
                     if (obj.D == null)
@@ -3909,7 +3919,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                         }
-                       
+
                     }
                     else
                     {
@@ -4010,6 +4020,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
             }
         }
-    
+
     }
 }
