@@ -184,7 +184,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
 
-                    if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationNationalID || viewModel.SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                     {
                         if (!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
                         {
@@ -566,6 +566,166 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.FrameIDError = false;
             }
         }
+        private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (DpDbo.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        
+        private void HijriCal2Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri2.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (DpDbo2.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void HijriCal3Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri3.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
+                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (DpDbo3.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
+                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
         private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.PkrDBO))
@@ -621,6 +781,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
 
                     }
                     isHIjri = true;
@@ -635,6 +796,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
 
                     }
                     isHIjri = false;

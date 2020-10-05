@@ -4466,7 +4466,18 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationSurName" xml:space="preserve">
     <value>Surname</value>
   </data>
-
+       <data name="TinDeregistrationNationalID" xml:space="preserve">
+    <value>National Id</value>
+  </data> 
+      <data name="TinDeregistrationCompanyID" xml:space="preserve">
+    <value>Company ID</value>
+  </data> 
+      <data name="TinDeregistrationGCCID" xml:space="preserve">
+    <value>GCC ID</value>
+  </data>
+      <data name="TinDeregistrationIQAMANumber" xml:space="preserve">
+    <value>Iqama Number</value>
+  </data> 
   <data name="TinDeregistrationName1" xml:space="preserve">
     <value>Name 1</value>
   </data>
@@ -4830,7 +4841,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Please enter verification code sent to your mobile</value>
   </data>
   <data name="NDTypeyourIDNumber" xml:space="preserve">
-    <value>Type your ID Number</value>
+    <value>Please enter your ID number</value>
   </data>
   <data name="NDCommitments" xml:space="preserve">
     <value>Commitments</value>
@@ -5196,7 +5207,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>Bills Returns</comment>
   </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>Please enter confirmation code sent to your mobile number</value>
+    <value>Please enter verification code sent to your mobile number</value>
   </data>
   <data name="NDAllcertificates" xml:space="preserve">
     <value>All certificates</value>
@@ -5682,7 +5693,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Confirm New Password</value>
   </data>
   <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
-    <value>VAT Return has been Submitted</value>
+    <value>VAT Return has been submitted successfully</value>
   </data>
   <data name="ChangeFillingPeriodAttachments" xml:space="preserve">
     <value>Attachments</value>
@@ -7565,7 +7576,7 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Search by SADAD Number</value>
   </data>
   <data name="TypeYourUserName" xml:space="preserve">
-    <value>Type your user name</value>
+    <value>Please enter your user name</value>
   </data>
   <data name="questionmark" xml:space="preserve">
     <value>?</value>
@@ -7839,8 +7850,8 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
     <value>The maximum nuber of attachments you can upload is 5</value>
   </data>
-    <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
-   <value>1.The maximum nuber of attachments you can upload is 5.
+  <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
+    <value>1.The maximum nuber of attachments you can upload is 5.
 2.Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB.
 3.Recommended settings for the scanner is: 1024 x 745
 4.Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
@@ -7921,7 +7932,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
     <value>Maximum no. of 3 attachments can be uploaded.</value>
   </data>
   <data name="NDFiles" xml:space="preserve">
-    <value>Files</value>
+    <value>Gallery</value>
   </data>
   <data name="NDCamera" xml:space="preserve">
     <value>Camera</value>
@@ -8257,34 +8268,31 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   <data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
     <value>In case you don't agree with above information, click on this link and confirm -</value>
   </data>
-  <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve"> 
-  <value>File size should not be more than 10 MB.</value>
-  </data>
-<data name="PleaseEnterCorrectData" xml:space="preserve">
-  <value>Please enter correct data</value>
-</data> 
-   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
+  <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
     <value>File size should not be more than 10MB</value>
   </data>
- <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
+  <data name="PleaseEnterCorrectData" xml:space="preserve">
+    <value>Please enter correct data</value>
+  </data>
+  <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
     <value>Account Statement</value>
- </data>
-	<data name="OutletTypeField" xml:space="preserve">
+  </data>
+  <data name="OutletTypeField" xml:space="preserve">
     <value>Outlet Type</value>
- </data>
-<data name="MainOutlet" xml:space="preserve">
+  </data>
+  <data name="MainOutlet" xml:space="preserve">
     <value>Main Outlet</value>
- </data>
-<data name="SubOutlet" xml:space="preserve">
+  </data>
+  <data name="SubOutlet" xml:space="preserve">
     <value>Sub Outlet</value>
- </data>
-<data name="SelectOutletType" xml:space="preserve">
+  </data>
+  <data name="SelectOutletType" xml:space="preserve">
     <value>Select outlet type</value>
- </data>
-<data name="SelectOutletTypeError" xml:space="preserve">
+  </data>
+  <data name="SelectOutletTypeError" xml:space="preserve">
     <value>Main Outlet already exists, please choose Sub Outlet</value>
- </data>
- <data name="ESTValidateOutletType" xml:space="preserve">
+  </data>
+  <data name="ESTValidateOutletType" xml:space="preserve">
     <value>Please provide type</value>
   </data>
   <data name="ZVatCorrectionsfrompreviousperiod1" xml:space="preserve">
