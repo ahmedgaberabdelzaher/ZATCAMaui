@@ -30,39 +30,51 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             try
             {
+                //if (Navigation.NavigationStack.Count > 0)
+                //{
+                //    int PageCount = Navigation.NavigationStack.Count;
+                //    int indexToRemoveThePage = PageCount - 2;
+                //    if (!string.IsNullOrEmpty(viewModel.taxPayerDetails?.Fbsta) && viewModel.taxPayerDetails?.Fbsta != "IP011")
+                //    {
+                //        try
+                //        {
+                //            Xamarin.Forms.Page pg = Navigation.NavigationStack[indexToRemoveThePage];
+                //            Navigation.RemovePage(pg);
+                //            indexToRemoveThePage = Navigation.NavigationStack.Count - 1;
+                //            Xamarin.Forms.Page pg1 = Navigation.NavigationStack[indexToRemoveThePage];
+                //            Navigation.RemovePage(pg1);
+                //        }
+                //        catch (Exception ex)
+                //        {
+
+                //        }
+
+                //        // viewModel._navigationService.GoBack();
+
+                //    }
+                //    else
+                //    {
+                //        Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                //        Navigation.RemovePage(pg);
+                //        viewModel._navigationService.GoBack();
+
+                //        //Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                //        //Navigation.RemovePage(pg1);
+                //    }
+
+                //}
                 if (Navigation.NavigationStack.Count > 0)
                 {
-                    int PageCount = Navigation.NavigationStack.Count;
-                    int indexToRemoveThePage = PageCount - 2;
-                    if (!string.IsNullOrEmpty(viewModel.taxPayerDetails?.Fbsta) && viewModel.taxPayerDetails?.Fbsta != "IP011")
+                    foreach (var item in Navigation.NavigationStack)
                     {
-                        try
+                        if (Navigation.NavigationStack.Count > 1)
                         {
-                            Xamarin.Forms.Page pg = Navigation.NavigationStack[indexToRemoveThePage];
-                            Navigation.RemovePage(pg);
-                            indexToRemoveThePage = Navigation.NavigationStack.Count - 1;
-                            Xamarin.Forms.Page pg1 = Navigation.NavigationStack[indexToRemoveThePage];
-                            Navigation.RemovePage(pg1);
+                            Navigation.RemovePage(item);
                         }
-                        catch (Exception ex)
-                        {
-
-                        }
-
-                        // viewModel._navigationService.GoBack();
-
                     }
-                    else
-                    {
-                        Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                        Navigation.RemovePage(pg);
-                        viewModel._navigationService.GoBack();
-
-                        //Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                        //Navigation.RemovePage(pg1);
-                    }
-
                 }
+
+
             }
             catch (Exception ex)
             {

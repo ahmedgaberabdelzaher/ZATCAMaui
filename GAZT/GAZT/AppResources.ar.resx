@@ -8198,4 +8198,22 @@
   <data name="ZZZZVATOnPurchasesForSummarypage" xml:space="preserve">
     <value>ضريبة القيمة المضافة على المشتريات</value>
   </data>
+	<data name="OutletTypeField" xml:space="preserve">
+    <value>نوع الفرع</value>
+ </data>
+<data name="MainOutlet" xml:space="preserve">
+    <value>الفرع الرئيسي</value>
+ </data>
+<data name="SubOutlet" xml:space="preserve">
+    <value>الفرع</value>
+ </data>
+<data name="SelectOutletType" xml:space="preserve">
+    <value>اختار نوع الفرع</value>
+ </data>
+<data name="SelectOutletTypeError" xml:space="preserve">
+    <value>الفرع الرئيسي موجود بالفعل ، يرجى اختيار فرع فرعي</value>
+ </data>
+ <data name="ESTValidateOutletType" xml:space="preserve">
+    <value>الرجاء إرسال النوع</value>
+  </data>
 </root>

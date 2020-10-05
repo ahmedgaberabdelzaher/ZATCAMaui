@@ -112,7 +112,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
-                    ZDTitle = AppResources.ZAKATAmend,
+                    ZDTitle = AppResources.ZZAmend,
                     ZDImageSource = "registration.png",
                 });
             }
@@ -120,7 +120,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
-                    ZDTitle = AppResources.ZAKATUpdate,
+                    ZDTitle = AppResources.TPUpdate,
                     ZDImageSource = "sf_ic_Paid.png",
                 });
             }
