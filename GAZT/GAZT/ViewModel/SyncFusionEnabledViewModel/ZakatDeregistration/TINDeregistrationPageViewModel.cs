@@ -177,6 +177,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("PkrDBO");
             }
         }
+        private string _tINNumber = string.Empty;
+        public string TINNumber
+        {
+            get
+            {
+                return _tINNumber;
+            }
+            set
+            {
+                _tINNumber = value;
+                RaisePropertyChanged("TINNumber");
+            }
+        }
         private string _pkrDBOPrev = string.Empty;
         public string PkrDBOPrev
         {
@@ -982,7 +995,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             IDTypeDataModel = new VATSignUpD();
 
                             FirstNameLbl = AppResources.ZZZVATRFirstName;
-                            SurnameNameLbl = AppResources.ZZZVATRSurName;
+                            SurnameNameLbl = AppResources.TinDeregistrationSurName;
                             IsName1Visible = false;
 
                             if (SelectedIdtype == AppResources.NationaID)
@@ -2377,12 +2390,45 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsLoading = true;
                     try
                     {
-                        VATSignUp resultData = await WebServiceManager.GAZTGetTInNumberData(tinNumber);
+                        string resultData = await WebServiceManager.GAZTGetTInNumberData(tinNumber);
+
                         SelectedDob = string.Empty;
-                        if (resultData != null && resultData.d != null)
+                        if (IDTypeDataModel == null)
                         {
                             IDTypeDataModel = new VATSignUpD();
-                            IDTypeDataModel = resultData.d;
+                        }
+
+                        string _responseData = JObject.Parse(resultData)["d"].ToString();
+                        IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                        if (_responseData == null)
+                        {
+                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
+                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            {
+                                await Task.Run(() =>
+                                {
+                                    App.HideProgressView();
+                                });
+
+                                FrameIDError = true;
+
+                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                            else
+                            {
+                                FrameIDError = false;
+                                await Task.Run(() =>
+                                {
+                                    App.HideProgressView();
+                                });
+
+                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                        }
+                        else
+                        {
+                            ///IDTypeDataModel = new VATSignUpD();
+                            //IDTypeDataModel = resultData.d;
 
                             IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
                             if (idType != null)
@@ -2391,17 +2437,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 SelectedIDTypeCode = idType.key;
                                 SelectedDob = IDTypeDataModel.Birthdt10;
                                 SelectedIdNumber = IDTypeDataModel.Idnum;
+                                TINNumber = IDTypeDataModel.Tin;
                             }
 
                         }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                IsLoading = false;
-                                //await _dialogService.ShowMessage(resultDa, AppResources.Information);
-                            });
-                        }
+                        //else
+                        //{
+                        //    Device.BeginInvokeOnMainThread(async () =>
+                        //    {
+                        //        IsLoading = false;
+                        //        //await _dialogService.ShowMessage(resultDa, AppResources.Information);
+                        //    });
+                        //}
                         IsLoading = false;
                     }
                     catch (GAZTVATChangeFillingPeriodException ex)
@@ -2460,12 +2507,45 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsLoading = true;
                     try
                     {
-                        VATSignUp resultData = await WebServiceManager.GAZTGetTInNumberData(tinNumber);
+                        string resultData = await WebServiceManager.GAZTGetTInNumberData(tinNumber);
+
                         SelectedDob = string.Empty;
-                        if (resultData != null && resultData.d != null)
+                        if (IDTypeDataModel == null)
                         {
                             IDTypeDataModel = new VATSignUpD();
-                            IDTypeDataModel = resultData.d;
+                        }
+
+                        string _responseData = JObject.Parse(resultData)["d"].ToString();
+                        IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                        if (_responseData == null)
+                        {
+                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
+                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            {
+                                await Task.Run(() =>
+                                {
+                                    App.HideProgressView();
+                                });
+
+                                FrameIDError = true;
+
+                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                            else
+                            {
+                                FrameIDError = false;
+                                await Task.Run(() =>
+                                {
+                                    App.HideProgressView();
+                                });
+
+                                await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                        }
+                        else
+                        {
+                            //IDTypeDataModel = new VATSignUpD();
+                            //IDTypeDataModel = _responseData;
 
                             IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
 
@@ -2485,14 +2565,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                               }
                               ).ToList());
                         }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                IsLoading = false;
-                                //await _dialogService.ShowMessage(resultDa, AppResources.Information);
-                            });
-                        }
+                     
                         IsLoading = false;
                     }
                     catch (GAZTVATChangeFillingPeriodException ex)

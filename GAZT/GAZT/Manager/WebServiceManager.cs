@@ -11054,7 +11054,7 @@ namespace GAZT.Manager
             }
         }
 
-        public async static Task<VATSignUp> GAZTGetTInNumberData(string tin)
+        public async static Task<string> GAZTGetTInNumberData(string tin)
         {
 
             VATSignUp _validateIDResponse = new VATSignUp();
@@ -11063,7 +11063,7 @@ namespace GAZT.Manager
                 VATSignUp vATSignUp = new VATSignUp();
                 string IsIDTypeValidList = string.Empty;
                 string NewToken = string.Empty;
-                String SignUpCityList = string.Empty;
+                string SignUpCityList = string.Empty;
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
@@ -11102,24 +11102,24 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
-                        _validateIDResponse = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
-                        if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
-                        {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                //_validateIDResponse.errorMessage = errorMessage;
-                                //ErrorMessageForVAT
-                                //throw new GAZTVATChangeFillingPeriodException(errorMessage);
-                            }
-                        }
+                        //_validateIDResponse = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
+                        //if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
+                        //{
+                        //    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
+                        //    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        //    {
+                        //        string errorMessage = string.Empty;
+                        //        errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        //        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        //        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        //        errorMessage = WithReplacedString;
+                        //        //_validateIDResponse.errorMessage = errorMessage;
+                        //        //ErrorMessageForVAT
+                        //        //throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                        //    }
+                        //}
                     }
-                    return _validateIDResponse;// tINStatus;
+                    return SignUpCityList;// tINStatus;
                 }
                 catch (JsonReaderException ex)
                 {
