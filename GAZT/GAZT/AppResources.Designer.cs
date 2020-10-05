@@ -22029,7 +22029,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Return has been Submitted.
+        ///   Looks up a localized string similar to VAT Return has been submitted successfully.
         /// </summary>
         public static string ZZZZVATReturnsubmitted {
             get {

@@ -234,8 +234,7 @@ namespace EGAZT.Views.NewDesign
 
         private void SuggestionsandComplaintsClicked(object sender, EventArgs e)
         {
-            ContactUsWebView.Source = "";
-            ContactUsWebView.Reload();
+       
             viewModel.PageTitle = AppResources.NDSuggestionsandComplaints;
             ContactUsWebView.IsVisible = true;
             if (App.IsArabic)
@@ -260,8 +259,7 @@ namespace EGAZT.Views.NewDesign
         private void OnTwitterGAZTTapped(object sender, EventArgs e)
         {
            
-            ContactUsWebView.Source = "";
-            ContactUsWebView.Reload();
+        
             viewModel.PageTitle = AppResources.NDGAZT;
             ContactUsWebView.IsVisible = true;
            
@@ -270,9 +268,7 @@ namespace EGAZT.Views.NewDesign
         }
         private void OnTwitterVATTapped(object sender, EventArgs e)
         {
-            //DependencyService.Get<IClearCookies>().ClearAllCookies();
             
-            ContactUsWebView.Reload();
             viewModel.PageTitle = AppResources.ZakatInstalmetSelectTypeVAT;
             ContactUsWebView.IsVisible = true;
             
