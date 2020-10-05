@@ -661,13 +661,13 @@
                                                 <TapGestureRecognizer Tapped="CountryCodeTapped"/>
                                             </Image.GestureRecognizers>
                                         </Image>
-                                        <custom:CustomButton  HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black"
+                                        <custom:CustomButton  HorizontalOptions="Start"  TextColor="Black"
                                                                  Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="CountryCodeTapped"
                                                                  BackgroundColor="Transparent"  >
                                         </custom:CustomButton>
                                         <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
                                         <custom2:MyEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
-                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" VerticalTextAlignment="End"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Text="{Binding TxtMobileNumber}" 
                                                          Keyboard="Numeric" MaxLength="{Binding MaxDigids}" >
 
                                             <custom2:MyEntry.Behaviors>
