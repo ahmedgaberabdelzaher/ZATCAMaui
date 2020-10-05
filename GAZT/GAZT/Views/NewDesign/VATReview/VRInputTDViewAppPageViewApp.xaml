@@ -205,14 +205,21 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" />
                             
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                     Text="{x:Static ResourceManager:AppResources.VRTIDProxyforTaxablePurchases}"
                                     Style="{StaticResource ValueLabelGrey}" />
-                                <custom:CustomLabel Text="{Binding CIPFTxablePurchases}"
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding CIPFTxablePurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="EndAndExpand" />
-                            </StackLayout>
+                            </Grid>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -271,14 +278,21 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" />
                             
-                            <StackLayout Orientation="Horizontal">
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
                                 <custom:CustomLabel
                                     Text="{x:Static ResourceManager:AppResources.VRTIDProxyforTaxablePurchases}"
-                                    Style="{StaticResource ValueLabelGrey}" />
+                                    Style="{StaticResource ValueLabelGrey}" Grid.Column="0" Grid.Row="0" />
                                 <custom:CustomLabel Text="{Binding PIPFTxablePurchases}"
                                                     Style="{StaticResource ValueLabelBlack}"
-                                                    HorizontalOptions="EndAndExpand" />
-                            </StackLayout>
+                                                    HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="0" />
+                            </Grid>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
