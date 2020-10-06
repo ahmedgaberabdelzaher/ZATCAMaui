@@ -283,18 +283,7 @@
                             <!--SelectedItem="{Binding TodayDate}"-->
                             <!--HijriDatePicker-->
                         </Grid>
-                        <StackLayout.Triggers>
-
-                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
-                                <Setter Property="IsVisible" Value="true" />
-                            </DataTrigger>
-                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
-                                <Setter Property="IsVisible" Value="false" />
-                            </DataTrigger>
-                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                <Setter Property="IsVisible" Value="false" />
-                            </DataTrigger>
-                        </StackLayout.Triggers>
+                       
                     </StackLayout>
                     <!--<StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
@@ -333,17 +322,7 @@
                  </StackLayout>-->
 
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption2Visible}">
-                        <StackLayout.Triggers>
-                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
-                                <Setter Property="IsVisible" Value="false" />
-                            </DataTrigger>
-                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
-                                <Setter Property="IsVisible" Value="true" />
-                            </DataTrigger>
-                            <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="2">
-                                <Setter Property="IsVisible" Value="false" />
-                            </DataTrigger>
-                        </StackLayout.Triggers>
+                      
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
 
                         <StackLayout>

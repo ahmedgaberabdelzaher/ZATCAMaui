@@ -855,6 +855,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
+                        viewModel.ValidateIDNumber();
+
                     }
                 }
                 else
@@ -868,7 +870,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
-
+                        viewModel.ValidateIDNumber();
 
                     }
                 }
@@ -880,6 +882,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
         }
+
 
         private void DpDOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -1431,7 +1434,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var list = viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Any(q => q.Filename == selectedOutlet.Filename)).Select(f => f.AttachmentTypeList).FirstOrDefault();
                 list.Remove(selectedOutlet);
                 list = new List<Attachment>(list);
-               
+
                 //viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Contains(selectedOutlet)).Select(q => q.AttachmentTypeList).FirstOrDefault() = list;
                 //viewModel.AttachmentTypeList = viewModel.AttachmentTypeList;
             }
