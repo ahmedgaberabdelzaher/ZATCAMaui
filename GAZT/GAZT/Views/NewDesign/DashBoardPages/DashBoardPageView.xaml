@@ -262,7 +262,7 @@
                                         <!--End Horizontal List View-->
 
                                         <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MyBills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                             <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TappedOnMyBills"></TapGestureRecognizer>
@@ -331,7 +331,7 @@
                                         <!--End Horizontal List View-->
 
                                         <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBMyReturns}"  Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReturns}"  Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                             <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TappedOnMyReturns"></TapGestureRecognizer>
