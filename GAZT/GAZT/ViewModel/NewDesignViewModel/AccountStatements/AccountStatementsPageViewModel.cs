@@ -360,7 +360,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 //await PopulateDataInChipsForTaxTypes();
                 //RevenueDropDownParent = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("D");
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty,string.Empty, "D");
+
+                ASResult totalBalances = new ASResult();
+                totalBalances.IsTotalBalanceVisile = true;
+
                 StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+
+                StatementsLineItems.Insert(0, totalBalances);
+
                 //YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, "D");
 
                 ASResult totalBalance = new ASResult();
