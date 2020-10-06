@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                 {
                                                     IsLoading = false;
                                                 });
-                                                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan10MB, AppResources.Information);
+                                                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan1MB, AppResources.Information);
                                             }
                                         }
                                         else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
