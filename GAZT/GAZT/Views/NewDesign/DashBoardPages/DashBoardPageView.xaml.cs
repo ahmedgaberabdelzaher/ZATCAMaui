@@ -601,10 +601,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
-        private void Label_MyProfile_Tapped(object sender, EventArgs e)
+        private async void Label_MyProfile_Tapped(object sender, EventArgs e)
         {
             //         App.DisplayProgressView();
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
 
+            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.TaxpayerProfilePageView);
