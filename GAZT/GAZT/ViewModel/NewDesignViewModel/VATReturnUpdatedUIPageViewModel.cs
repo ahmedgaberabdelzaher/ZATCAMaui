@@ -3776,7 +3776,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         headerAmountInfo.IsLinkAvailable = false;
 
                         StringBuilder Masseges = new StringBuilder();
-                        Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                        //Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
                         Masseges.Append(Environment.NewLine);
                         Masseges.Append(Environment.NewLine);
                         Masseges.Append(Environment.NewLine);
