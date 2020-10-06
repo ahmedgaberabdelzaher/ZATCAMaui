@@ -2253,6 +2253,140 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 Device.BeginInvokeOnMainThread(() => updateDatePickers(_enum));
             }
         }
+
+        public async Task FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum _enum)
+        {
+            clearFormData(_enum);
+            try
+            {
+                IsLoading = true;
+                if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
+                {
+                    await GetReportingBranchListFromServer();
+                    //var nationalityTask = GetPdNationalityListFromServer(null);
+                    //await Task.WhenAll(branchTask, nationalityTask);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
+                    {
+                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                    }
+                    SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
+                    SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
+                    SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
+                    SelectedRegNationalityType = NationalityMapping[taxPayerDetails?.Tpnationality];
+
+                    if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
+                    {
+                        var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong)
+                        {
+                            CloseWhenBackgroundIsClicked = false
+                        };
+                        someThingWhentWrong.OnDone = () =>
+                        {
+                            currentTab = EstablishmentRegistrationTabsEnum.Unknown;
+                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        };
+                        await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
+                        return;
+                    }
+                    IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";
+                    if (IsSaudi)
+                    {
+                        TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
+                    }
+                    else
+                    {
+                        ResidenceTypePrePopulateData(taxPayerDetails);
+                        RentAttachmentPrePopulateCheck(taxPayerDetails);
+                    }
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+                {
+
+                    await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    if (App.IsArabic)
+                    {
+                        GCCIDType = ArIDType[idItem?.Type];
+                    }
+                    else
+                    {
+                        GCCIDType = EnIDType[idItem?.Type];
+                    }
+                    GCCIDTypeIdNumberValue = idItem.Idnumber;
+                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    FirstName = taxPayerDetails?.NameFirst;
+                    LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
+                    FatherName = taxPayerDetails?.FatherName;
+                    GrandFatherName = taxPayerDetails?.GrandfatherName;
+                    FamilyName = taxPayerDetails?.FamilyName;
+                    Initial = taxPayerDetails?.Initials;
+                    if (taxPayerDetails?.Xsexm == "X")
+                        SelectedGender = GenderList.FirstOrDefault();
+                    if (taxPayerDetails?.Xsexf == "X")
+                        SelectedGender = GenderList.LastOrDefault();
+                    if (string.IsNullOrEmpty(SelectedGender))
+                    {
+                        SelectedGender = GenderList.FirstOrDefault();
+                    }
+                    SelectedTaxpayerPDNationality = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
+                    SelectedCitizen = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
+                    SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
+                {
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
+                    PassportNumber = passportItem?.Idnumber;
+                    SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
+                    PassportIssueDate = passportItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportExpireDate = passportItem?.ValidDateTo?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportAttachmentPrepopulateCheck(taxPayerDetails);
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
+                {
+                    bindingOutletList();
+
+                    //number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    //taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, $"{Int16.Parse(number?.Actno):000}", taxPayerDetails?.Fbnumx);
+
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+
+                    //await WebServiceManager.ESTOutletDropDowns();
+                    //await WebServiceManager.ESTOutletGetActivitySetsList();
+                    //ValidateCR crItem = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results?.FirstOrDefault()?.Idnumber);
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
+                {
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+                    SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
+                    CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
+                    udpdateDates();
+                    //FiscalMonth = taxPayerDetails?.Fdmonth;
+                    //FiscalDay = taxPayerDetails?.Fdday;
+                    //CommDate = taxPayerDetails?.Commdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    //TaxDate = taxPayerDetails?.Fdenddt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    //if (string.IsNullOrEmpty(TaxDate))
+                    //{
+                    //    if(taxPayerDetails?.Accmethod == "E")
+                    //    {
+                    //        updateDatesAccordingMethods();
+                    //    }
+                    //}
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                IsLoading = false;
+                Device.BeginInvokeOnMainThread(() => updateDatePickers(_enum));
+            }
+        }
+
         private void updateDatePickers(EstablishmentRegistrationTabsEnum _enum)
         {
             DateTime dob = DateTime.Now;

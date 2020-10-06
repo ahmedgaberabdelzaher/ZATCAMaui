@@ -224,12 +224,12 @@ namespace EGAZT.Views.NewDesign
 
         private void ChatWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-
+            viewModel.IsLoading = true;
         }
 
         private void ChatWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-
+            viewModel.IsLoading = false;
         }
 
         private void SuggestionsandComplaintsClicked(object sender, EventArgs e)
@@ -275,7 +275,70 @@ namespace EGAZT.Views.NewDesign
             ContactUsWebView.Source = "https://twitter.com/saudivat";
 
         }
-        
 
+        private async void OnEmailTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                //var message = new EmailMessage
+                //{
+                //    Subject = "",
+                //    Body = "",
+                //    To = "info@gazt.gov.sa",
+                //    //Cc = ccRecipients,
+                //    //Bcc = bccRecipients
+                //};
+                //await Email.ComposeAsync(message);
+                await Xamarin.Essentials.Email.ComposeAsync("", "", Email.Text);
+            }
+            catch (FeatureNotSupportedException fbsEx)
+            {
+                // Email is not supported on this device
+            }
+            catch (Exception ex)
+            {
+                // Some other exception occurred
+            }
+        }
+
+        private void OnInternationMobileTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                PhoneDialer.Open(InternationalPhone.Text);
+            }
+            catch (ArgumentNullException anEx)
+            {
+                // Number was null or white space
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Phone Dialer is not supported on this device.
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        private void OnMobileTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                PhoneDialer.Open(LocalPhone.Text);
+            }
+            catch (ArgumentNullException anEx)
+            {
+                // Number was null or white space
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Phone Dialer is not supported on this device.
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
     }
 }

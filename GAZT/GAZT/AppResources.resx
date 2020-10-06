@@ -4466,7 +4466,18 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationSurName" xml:space="preserve">
     <value>Surname</value>
   </data>
-
+       <data name="TinDeregistrationNationalID" xml:space="preserve">
+    <value>National Id</value>
+  </data> 
+      <data name="TinDeregistrationCompanyID" xml:space="preserve">
+    <value>Company ID</value>
+  </data> 
+      <data name="TinDeregistrationGCCID" xml:space="preserve">
+    <value>GCC ID</value>
+  </data>
+      <data name="TinDeregistrationIQAMANumber" xml:space="preserve">
+    <value>Iqama Number</value>
+  </data> 
   <data name="TinDeregistrationName1" xml:space="preserve">
     <value>Name 1</value>
   </data>
@@ -4830,7 +4841,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Please enter verification code sent to your mobile</value>
   </data>
   <data name="NDTypeyourIDNumber" xml:space="preserve">
-    <value>Type your ID Number</value>
+    <value>Please enter your ID number</value>
   </data>
   <data name="NDCommitments" xml:space="preserve">
     <value>Commitments</value>
@@ -5196,7 +5207,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>Bills Returns</comment>
   </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>Please enter confirmation code sent to your mobile number</value>
+    <value>Please enter verification code sent to your mobile number</value>
   </data>
   <data name="NDAllcertificates" xml:space="preserve">
     <value>All certificates</value>
@@ -7565,7 +7576,7 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Search by SADAD Number</value>
   </data>
   <data name="TypeYourUserName" xml:space="preserve">
-    <value>Type your user name</value>
+    <value>Please enter your user name</value>
   </data>
   <data name="questionmark" xml:space="preserve">
     <value>?</value>
@@ -7921,7 +7932,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
     <value>Maximum no. of 3 attachments can be uploaded.</value>
   </data>
   <data name="NDFiles" xml:space="preserve">
-    <value>Files</value>
+    <value>Gallery</value>
   </data>
   <data name="NDCamera" xml:space="preserve">
     <value>Camera</value>

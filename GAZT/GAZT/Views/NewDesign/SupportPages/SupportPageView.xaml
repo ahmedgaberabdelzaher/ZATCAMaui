@@ -196,44 +196,53 @@
                                     <custom:CustomLabel Margin="0,15,0,0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" />
 
                         <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">
+                                        <border:SfBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnMobileTapped"/>
+                                        </border:SfBorder.GestureRecognizers>
                             <Grid Padding="16,8,16,8">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                    <Image Source="phone_Green.png" VerticalOptions="Start" Margin="0,3,0,0"/>
+                                                <Image Source="Grey_phone.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
                                     <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDLocalPhone}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
-                                <custom:CustomLabel Grid.Column="1" Text="19993" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel x:Name="LocalPhone" Grid.Column="1" Text="19993" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
 
                         <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">
+                                        <border:SfBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnInternationMobileTapped"/>
+                                        </border:SfBorder.GestureRecognizers>
                             <Grid Padding="16,8,16,8" ColumnSpacing="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                    <Image Source="phone_Green.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
+                                                <Image Source="Grey_phone.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
                                                 <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDInternationalPhone}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
-                                <custom:CustomLabel VerticalTextAlignment="Center" Grid.Column="1" Text="+966 112 048 998" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel x:Name="InternationalPhone" VerticalTextAlignment="Center" Grid.Column="1" Text="+966 112 048 998" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
 
                         <border:SfBorder Margin="0,0,0,15" Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">
+                                        <border:SfBorder.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnEmailTapped"/>
+                                        </border:SfBorder.GestureRecognizers>
                             <Grid Padding="16,8,16,8">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                    <Image Source="phone_Green.png" VerticalOptions="Start" Margin="0,3,0,0"/>
+                                                <Image Source="Grey_message.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
                                                 <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDContactEmail}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
-                                <custom:CustomLabel Grid.Column="1" Text="info@gazt.gov.sa" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel x:Name="Email" Grid.Column="1" Text="info@gazt.gov.sa" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
 

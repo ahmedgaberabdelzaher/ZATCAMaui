@@ -51,9 +51,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             else
             {
+
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
+
 
         public void ChangeAeroIcon()
         {
