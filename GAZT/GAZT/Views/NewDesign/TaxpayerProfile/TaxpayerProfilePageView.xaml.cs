@@ -92,7 +92,17 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (App.TP != null)
             {
-                viewModel.TPProfileNameLbl = App.TP.Name;
+                //viewModel.TPProfileNameLbl = App.TP.Name;
+
+                if (App.TP.TypeChk == "X")
+                {
+                    viewModel.TPProfileNameLbl = App.TP.NameFirst + " " + App.TP.NameLast;
+                }
+                else
+                {
+                    viewModel.TPProfileNameLbl = App.TP.NameOrg1;
+                }
+
                 viewModel.TINLabel = App.TP.Tin;
 
                 if (App.TP.Mobile.Length < 12)
