@@ -26,12 +26,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            
             viewModel = App.Locator.TaxpayerProfilePageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
-            viewModel.ResidenceText = App.TP.TpType;
+         
+            TpProfileTaxpaayertypeRefresh();
 
+            viewModel.ResidenceText = App.TP.TpType;
             // * Page content direction
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
@@ -46,6 +48,36 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.Start;
+            }
+        }
+
+
+        public async void TpProfileTaxpaayertypeRefresh()
+        {
+            try
+            {
+
+                viewModel.IsLoading = true;
+            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(App.TP.Tin);
+
+            if (TPProfile != null)
+            {
+                //if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                //{
+                //    throw new GAZTRegistrationPendingException();
+                //}
+                if (App.TP != null)
+                {
+                    App.TP.TpType = TPProfile.TpType;
+                        viewModel.ResidenceText = App.TP.TpType;
+                    }
+                
+            }
+                viewModel.IsLoading = false;
+            }
+            catch
+            {
+                viewModel.IsLoading = false;
             }
         }
 

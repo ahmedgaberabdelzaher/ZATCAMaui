@@ -246,7 +246,9 @@ namespace EGAZT
         public static string QuickActionPopUpPageView = "QuickActionPopUpPageView";
 
         public static string AccountStatementsPageView = "AccountStatementsPageView";
+        public static string AccountStatementsFiltersPageView = "AccountStatementsFiltersPageView";
 
+        //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
 
         //VATRefundsListPageView
