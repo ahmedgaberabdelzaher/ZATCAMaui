@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.AccountStatements;
+using EGAZT.Views.NewDesign.AccountStatements;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
@@ -16,6 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
     public class AccountStatementsPageViewModel:BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
+        public ICommand FiltersTapped { get; set; }
 
         public ASTabIdentification _tabIdentification = null;
         public ASTabIdentification TabIdentification
@@ -150,6 +154,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        public ASChipModel _selectedTransactionType = null;
+        public ASChipModel SelectedTransactionType
+        {
+            get
+            {
+                return _selectedTransactionType;
+            }
+            set
+            {
+                _selectedTransactionType = value;
+                
+                RaisePropertyChanged("SelectedTransactionType");
+            }
+        }
+
+        public ASChipModel _selectedYear = null;
+        public ASChipModel SelectedYear
+        {
+            get
+            {
+                return _selectedYear;
+            }
+            set
+            {
+                _selectedYear = value;
+
+                RaisePropertyChanged("SelectedYear");
+            }
+        }
+
         public string _filterLabelText;
         public string FilterLabelText
         {
@@ -162,6 +196,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 _filterLabelText = value;
 
                 RaisePropertyChanged("FilterLabelText");
+            }
+        }
+
+        private bool _isSearchButtonVisible = true;
+        public bool IsSearchButtonVisible
+        {
+            get
+            {
+                return _isSearchButtonVisible;
+            }
+
+            set
+            {
+
+                _isSearchButtonVisible = value;
+                RaisePropertyChanged("IsSearchButtonVisible");
+            }
+        }
+
+        private bool _isCloseButtonVisible = false;
+        public bool IsCloseButtonVisible
+        {
+            get
+            {
+                return _isCloseButtonVisible;
+            }
+
+            set
+            {
+
+                _isCloseButtonVisible = value;
+                RaisePropertyChanged("IsCloseButtonVisible");
+            }
+        }
+
+        private bool _isSortByVisible = false;
+        public bool IsSortByVisible
+        {
+            get
+            {
+                return _isSortByVisible;
+            }
+
+            set
+            {
+
+                _isSortByVisible = value;
+                RaisePropertyChanged("IsSortByVisible");
+            }
+        }
+
+        //IsSortByVisible
+        public ObservableCollection<ASFilters> _filterList = null;
+        public ObservableCollection<ASFilters> FilterList
+        {
+            get
+            {
+                return _filterList;
+            }
+            set
+            {
+                _filterList = value;
+                RaisePropertyChanged("FilterList");
             }
         }
 
@@ -181,10 +278,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 _navigationService.GoBack();
             });
 
+            IsSortByVisible = false;
+            FiltersTapped = new Command(FiltersClicked);
             PopulateReturnTypeList();
         }
 
-        public async void PopulateReturnTypeList()
+        public void FiltersClicked()
+        {
+            IsSortByVisible = !IsSortByVisible;
+            //await PopupNavigation.Instance.PushAsync(new AccountStatementsFiltersPageView());
+        }
+
+        public void PopulateReturnTypeList()
         {
             try
             {
@@ -202,13 +307,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public async void PopulateDataInChipsForTaxTypes()
+        public async Task PopulateDataInChipsForTaxTypes(string taxType)
         {
+            RevenueDropDownParent = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
+
             ChipDataFilterlist = new ObservableCollection<ASChipModel>();
 
             foreach(ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in RevenueDropDownParent.D.Results)
             {
-                ChipDataFilterlist.Add(new ASChipModel() { Text = aSRevenueDropDownSetDataResults.Txt30, TemplateType = AppResources.Paid});
+                ChipDataFilterlist.Add(new ASChipModel() { Text = aSRevenueDropDownSetDataResults.Txt30, StatementFilter = aSRevenueDropDownSetDataResults.StatementFilter, TemplateType = AppResources.Paid});
             }
 
             //new ASChipModel(){Text =AppResources.ZZZAKAT, TemplateType = AppResources.Paid},
@@ -217,8 +324,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             //new ASChipModel(){Text =AppResources.ASAllTransactions, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"}
         }
 
-        public void PopulateDataInChipsForYears()
+        public async Task PopulateDataInChipsForYears(string taxType, string statementFilter)
         {
+            //YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, taxType, statementFilter);
+
             ChipDataFilterlistForYears = new ObservableCollection<ASChipModel>();
 
             if(YearValuesHeader != null && YearValuesHeader.D != null)
@@ -248,10 +357,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                RevenueDropDownParent = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("D");
+                //await PopulateDataInChipsForTaxTypes();
+                //RevenueDropDownParent = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("D");
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty,string.Empty, "D");
                 StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
-                YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, "D");
+                //YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, "D");
 
                 ASResult totalBalance = new ASResult();
                 totalBalance.IsTotalBalanceVisile = true;
@@ -259,8 +369,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 totalBalance.ClosingBalance = HeaderSet.D.Close;
 
                 //YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, "D");
-                PopulateDataInChipsForTaxTypes();
-                PopulateDataInChipsForYears();
+                PopulateDataInChipsForYears("","");
             }
             catch (GAZTErrorException ex)
             {
@@ -291,6 +400,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 //    Console.WriteLine(ex.Message);
                 //});
             }
+        }
+
+        public void PopulateFiltersData()
+        {
+            List<ASFilters> filters = new List<ASFilters>();
+            filters.Add(new ASFilters
+            {
+
+                FilterHeader = AppResources.ASTransactionDate
+            });
+            filters.Add(new ASFilters
+            {
+
+                FilterHeader = AppResources.TaxType
+            });
+            filters.Add(new ASFilters
+            {
+
+                FilterHeader = AppResources.ASFBNum
+            });
+            filters.Add(new ASFilters
+            {
+
+                FilterHeader = AppResources.ASSadadBillNumber
+            });
+            filters.Add(new ASFilters
+            {
+
+                FilterHeader = AppResources.ASTaxperiod
+            });
+            filters.Add(new ASFilters
+            {
+
+                FilterHeader = AppResources.ASDueDate
+            });
+            filters.Add(new ASFilters
+            {
+                FilterHeader = AppResources.ASBillDescription
+            });
+            filters.Add(new ASFilters
+            {
+                FilterHeader = AppResources.ASBillAmount
+            });
+            filters.Add(new ASFilters
+            {
+                FilterHeader = AppResources.ZStatus
+            });
+
+            FilterList = new ObservableCollection<ASFilters>(filters);
         }
 
         //public async Task PopToRootPage()

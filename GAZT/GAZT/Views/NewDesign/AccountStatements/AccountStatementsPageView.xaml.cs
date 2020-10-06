@@ -17,7 +17,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             viewModel = App.Locator.AccountStatementsPageView;
             ChangeAeroIcon();
-            SetLTR(); 
+            SetLTR();
             SetPickerFont();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
@@ -87,9 +87,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             base.OnAppearing();
             viewModel.PopulateASFilterData();
+            viewModel.PopulateFiltersData();
         }
 
-        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private async void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
@@ -97,8 +98,67 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 TaxTypePicker.SelectedItem = selectedReturntype;
                 viewModel.SelectedTaxTypeForFilter = selectedReturntype;
 
+                if(selectedReturntype.Id == "00")
+                {
+                    await viewModel.PopulateDataInChipsForTaxTypes("D");
+                }
+                else
+                {
+                    await viewModel.PopulateDataInChipsForTaxTypes("I");
+                }
+                
                 // ChipGroup_statusFilter.SelectedItem = null;
                 //viewModel.SelectedChipFilterItem = null;          
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        void searchButtonTapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel.IsSearchButtonVisible = false;
+            viewModel.IsCloseButtonVisible = true;
+        }
+
+        void filterButtonTapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel.FiltersClicked();
+        }
+
+        void CloseSearchButton_Tapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel.IsSearchButtonVisible = true;
+            viewModel.IsCloseButtonVisible = false;
+        }
+
+        void SearchBar_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+
+        }
+
+        async void ChipGroup_statusFilter_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ASChipModel selectedTransactionType = (ASChipModel)e.AddedItem;
+                ChipGroup_statusFilter.SelectedItem = selectedTransactionType;
+                viewModel.SelectedTransactionType = selectedTransactionType;
+
+                string taxType = string.Empty;
+                if (viewModel.SelectedTaxTypeForFilter.Id == "00")
+                {
+                    taxType = "D";
+                }
+                else
+                {
+                    taxType = "I";
+                }
+
+                //await viewModel.PopulateDataInChipsForYears(taxType, selectedTransactionType.StatementFilter);
+
+                //viewModel.SelectionColor = Color.AliceBlue;
             }
             catch (Exception ex)
             {

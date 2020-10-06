@@ -768,7 +768,7 @@
                     <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
 
-                    <StackLayout Margin="-3,0,-3,0" BindableLayout.ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
+                    <StackLayout Margin="3,0,3,0" BindableLayout.ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
                                                 VerticalOptions="Center" >
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
@@ -1133,7 +1133,7 @@
                                              Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start"
                                                    FlowDirection="LeftToRight" />
 
-                                        <Frame BorderColor="#B1B1B1" Padding="12" HeightRequest="30" CornerRadius="15" Margin="0,10,0,0" >
+                                        <Frame BorderColor="#B1B1B1" HasShadow="False" Padding="12" HeightRequest="30" CornerRadius="15" Margin="0,10,0,0" >
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:BorderlessEntry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
                                                        HorizontalTextAlignment="Start" VerticalOptions="Center" Text="{Binding AttachmentName}"  />
@@ -1149,10 +1149,10 @@
                                                                       Tapped="AddAttachment_Tapped" CommandParameter="{Binding .}"/>
                                             </Frame.GestureRecognizers>
                                         </Frame>
-                                        <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
+                                        <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,10,0,0"
                                                     Style="{StaticResource CaptionLabelGrey}" />
                                         <StackLayout BindableLayout.ItemsSource="{Binding AttachmentTypeList}"
-                       HorizontalOptions="Center" >
+                                            HorizontalOptions="Center" >
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
                                                     <Grid HorizontalOptions="FillAndExpand">
