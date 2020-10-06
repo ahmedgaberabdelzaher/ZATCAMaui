@@ -16490,7 +16490,7 @@ namespace GAZT.Manager
                     String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    String url = Constants.AccountStatementGetYearValues + "Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '01'" + "&$format=json";
+                    String url = Constants.AccountStatementGetYearValues + "Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '"+ statementFilter+"'" + "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
