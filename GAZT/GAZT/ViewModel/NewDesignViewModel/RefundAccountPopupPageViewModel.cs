@@ -468,6 +468,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsNewLoading");
             }
         }
+
+        public bool _IsCarriedForwandReviewMessageForRefund;
+        public bool IsCarriedForwandReviewMessageForRefund
+        {
+            get
+            {
+                return _IsCarriedForwandReviewMessageForRefund;
+            }
+            set
+            {
+                _IsCarriedForwandReviewMessageForRefund = value;
+                RaisePropertyChanged("IsCarriedForwandReviewMessageForRefund");
+            }
+        }
+
         private bool _isDeclarationCheckedForRefund = false;
         public bool IsDeclarationCheckedForRefund
         {
@@ -943,37 +958,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
 
-                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        //List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        //HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        //NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                        headerAmountInfo.IsLinkAvailable = false;
+                        //headerAmountInfo.IsLinkAvailable = false;
 
-                        StringBuilder Masseges = new StringBuilder();
-                        Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
-                        Masseges.Append(Environment.NewLine);
-                        Masseges.Append(Environment.NewLine);
-                        Masseges.Append(Environment.NewLine);
-                        Masseges.Append(AppResources.CreditReturnMsg);
-                        //  PopUp Pop = new PopUp();
-                        headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.IsRed = "#ff0000";
-                        headerAmountInfo.IsBold = "Bold";
-                        headerAmountInfo.Message = Masseges.ToString();
+                        //StringBuilder Masseges = new StringBuilder();
+                        //Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                        //Masseges.Append(Environment.NewLine);
+                        //Masseges.Append(Environment.NewLine);
+                        //Masseges.Append(Environment.NewLine);
+                        //Masseges.Append(AppResources.CreditReturnMsg);
+                        //headerAmountInfo.IsLinkAvailable = false;
+                        //headerAmountInfo.IsRed = "#ff0000";
+                        //headerAmountInfo.IsBold = "Bold";
+                        //headerAmountInfo.Message = Masseges.ToString();
 
-                        headerWithInfos.Add(headerAmountInfo);
+                        //headerWithInfos.Add(headerAmountInfo);
 
 
-                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        //newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        //newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        //newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        //PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         result = true;
-                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                        //SelectedIndex = 2;
-                        //PageSelectedItem = VatTabbledPageList[2];
+                  
                     }
                     else
                     {
