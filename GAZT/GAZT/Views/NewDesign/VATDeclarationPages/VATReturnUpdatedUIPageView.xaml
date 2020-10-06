@@ -1491,7 +1491,14 @@
                 </StackLayout>
                 <StackLayout Grid.Row="0" Margin="0,-17,0,0" BackgroundColor="White"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"  Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"  />
+                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static custom2:AppResources.ZVatOnSales}"   />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"  Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"  />-->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     </StackLayout>
                     <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
@@ -2187,7 +2194,21 @@
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,8"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}"  Style="{StaticResource PageTitleBlack}"/>
+                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static custom2:AppResources.ZZZZVATOnPurchasesForSummarypage}"   />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--<custom:CustomLabel  Style="{StaticResource PageTitleBlack}">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATOnPurchasesForSummarypage}"
+                          LineHeight="4.0" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>-->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                         <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                     </StackLayout>
@@ -2269,7 +2290,14 @@
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>
+                                    <Label  Grid.Column="0" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <!--<custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>-->
                                     <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Margin="1,0,1,0" />
                                     <Image Grid.Column="2" Source="ic_vat_info" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="1,0,1,0">
                                         <Image.GestureRecognizers>
@@ -2296,7 +2324,14 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTotalVat}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTotalVat}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                     </StackLayout>
@@ -2675,7 +2710,7 @@
                                         <Label   VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"  FontFamily="{StaticResource SSTArabicMedium}" />
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
