@@ -193,7 +193,7 @@
                                                 <Image Source="Grey_phone.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
                                                 <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDInternationalPhone}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
-                                <custom:CustomLabel x:Name="InternationalPhone" VerticalTextAlignment="Center" Grid.Column="1" Text="+966 112 048 998"  Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                <Label FlowDirection="LeftToRight" HorizontalOptions="Start"  x:Name="InternationalPhone" VerticalTextAlignment="Center" Grid.Column="1" Text="+966 112 048 998"  Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
 
