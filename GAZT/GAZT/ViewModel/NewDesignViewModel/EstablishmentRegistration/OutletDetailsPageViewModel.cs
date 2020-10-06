@@ -862,7 +862,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                         else
                         {
-                            //nothing to do
+                            validateCR = null;
+                            PreLoadedLicenseItem = null;
                         }
                     }
                     else

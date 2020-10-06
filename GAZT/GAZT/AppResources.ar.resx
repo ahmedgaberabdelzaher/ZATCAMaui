@@ -1227,7 +1227,7 @@
     <value>حجم الملف لا يزيد عن 5 ميجا</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
-    <value>جم الملف لا يزيد عن 1 ميج</value>
+    <value>اعلى حجم للملف هو 1MB</value>
   </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
     <value>لا يمكن تحميل أكثر من 5 مرفقات</value>
@@ -2676,7 +2676,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>الرجاء إدخال رمز التأكيد المرسل الى هاتفك الجوال</value>
+    <value>الرجاء إدخال رمز التحقق المرسل إلى جوالك لاستعادة كلمة المرور</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZSignup" xml:space="preserve">
@@ -4834,7 +4834,7 @@
     <value>قم بالاختيار واكمل التفاصيل المطلوبة</value>
   </data>
   <data name="NDTypeyourIDNumber" xml:space="preserve">
-    <value>ادخل رقم الهوية</value>
+    <value>الرجاء إدخال رقم الهوية</value>
   </data>
   <data name="NDUsername" xml:space="preserve">
     <value>اسم المستخدم</value>

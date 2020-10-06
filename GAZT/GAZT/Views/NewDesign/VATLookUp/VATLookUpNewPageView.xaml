@@ -138,7 +138,7 @@
             <StackLayout Grid.Row="0">
                 <ScrollView>
                     <StackLayout Padding="10">
-                        <control:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleNew}"
+                        <control:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
                                              Style="{StaticResource SectionTitleBlack}" />
                         <control:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVATLookUpTitleSub}"
                                              Style="{StaticResource BodyLabelGrey}"/>

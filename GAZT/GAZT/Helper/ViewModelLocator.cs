@@ -387,7 +387,9 @@ namespace EGAZT
             //Account Statements
             //AccountStatementsPageView
             SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
+            SimpleIoc.Default.Register<AccountStatementsFiltersPageViewModel>();
 
+            //
             #endregion
         }
 
@@ -2393,6 +2395,23 @@ namespace EGAZT
             }
         }
 
+        public AccountStatementsFiltersPageViewModel AccountStatementsFiltersPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountStatementsFiltersPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        //AccountStatementsFiltersPageViewModel
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -2608,6 +2627,9 @@ namespace EGAZT
 
             //Account Statements
             navigationService.Configure(App.AccountStatementsPageView, typeof(AccountStatementsPageView));
+            navigationService.Configure(App.AccountStatementsFiltersPageView, typeof(AccountStatementsFiltersPageView));
+
+            //AccountStatementsFiltersPageViewModel
             //End Account Statements
             #endregion
 
