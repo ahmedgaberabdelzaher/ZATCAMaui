@@ -48,6 +48,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsRefundButtonEnabled = true;
                     viewModel.IsNavigatedToSubmitted = false;
                     viewModel.IsCarriedForwandReviewMessage = false;
+                    viewModel.IsRefundNoMsgDisplayed = false;
                     viewModel.RefundButtonText = AppResources.ZZZZConfirmAndRefundRequest;
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                  
@@ -573,6 +574,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         else if(arg == AppResources.ZZZRefundEnableMessage)
                         {
                             viewModel.IsCarriedForwandReviewMessage = false;
+                            viewModel.IsRefundNoMsgDisplayed = false;
                             await PopupNavigation.Instance.PopAsync();
                             viewModel.SetDataForRefundPopup();
                             PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(viewModel.VATDeclarationData));
@@ -893,6 +895,44 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        public async void getRefundYesMsgCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "ReceivedForYesRefundMsg", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        await PopupNavigation.Instance.PopAsync();
+                        OnConfirmAndCarryForwardClicked();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public async void getRefundNoMsgCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "ReceivedForNoRefundMsg", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        await PopupNavigation.Instance.PopAsync();
+                        viewModel.IsRefundNoMsgDisplayed = false;
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public void AddNotePopUp()
         {
             try
@@ -931,6 +971,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Unsubscribe<object, string>(this, "AddNoteForVATDeclaration");
                 MessagingCenter.Unsubscribe<object, string>(this, "ClearNoteForVATDeclaration");
 
+                MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForYesRefundMsg");
+                MessagingCenter.Unsubscribe<object, string>(this, "ReceivedForNoRefundMsg");
+
 
 
                 Device.BeginInvokeOnMainThread(() =>
@@ -962,6 +1005,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             getRefundClickedForStopLoaderCommand();
             getAddNoteCommand();
             getClearNoteCommand();
+
+            getRefundYesMsgCommand();
+            getRefundNoMsgCommand();
 
 
             AddNote();
@@ -8474,6 +8520,79 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        public async void OnConfirmAndCarryForwardClicked()
+        {
+            if (viewModel.IsCarriedForwandReviewMessage == false)
+            {
+                viewModel.IsCarriedForwandReviewMessage = true;
+                decimal FourteenA = 0;
+                if (!string.IsNullOrEmpty(viewModel.TotaldueVat) && !string.IsNullOrEmpty(viewModel.Preperiodcorr))
+                {
+                    FourteenA = Convert.ToDecimal(viewModel.TotaldueVat) + Convert.ToDecimal(viewModel.Preperiodcorr);
+                }
+                if ((viewModel.IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(viewModel.NetdueVat) < 0) || (viewModel.IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(viewModel.CreditVat) > 0))
+                {
+
+
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+
+                    StringBuilder Masseges = new StringBuilder();
+                    Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                    Masseges.Append(Environment.NewLine);
+                    Masseges.Append(Environment.NewLine);
+                    Masseges.Append(Environment.NewLine);
+                    Masseges.Append(AppResources.CreditReturnMsg);
+                    //  PopUp Pop = new PopUp();
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.IsRed = "#ff0000";
+                    headerAmountInfo.IsBold = "Bold";
+                    headerAmountInfo.Message = Masseges.ToString();
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    //SelectedIndex = 2;
+                    //PageSelectedItem = VatTabbledPageList[2];
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsNewLoading = true;
+                    });
+                    await viewModel.SubmitClicked();
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsNewLoading = false;
+                    });
+                }
+
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsNewLoading = true;
+                });
+                await viewModel.SubmitClicked();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsNewLoading = false;
+                });
+            }
+        }
+
         private async void OnContinueButtonClicked(object sender, EventArgs e)
         {
             try
@@ -8554,75 +8673,30 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             {
                                 if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
                                 {
-                                if (viewModel.IsCarriedForwandReviewMessage == false)
-                                {
-                                    viewModel.IsCarriedForwandReviewMessage = true;
-                                    decimal FourteenA = 0;
-                                    if (!string.IsNullOrEmpty(viewModel.TotaldueVat) && !string.IsNullOrEmpty(viewModel.Preperiodcorr))
+                                    if(viewModel.IsRefundNoMsgDisplayed==false)
                                     {
-                                        FourteenA = Convert.ToDecimal(viewModel.TotaldueVat) + Convert.ToDecimal(viewModel.Preperiodcorr);
-                                    }
-                                    if ((viewModel.IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(viewModel.NetdueVat) < 0) || (viewModel.IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(viewModel.CreditVat) > 0))
-                                    {
-
+                                        viewModel.IsRefundNoMsgDisplayed = true;
 
                                         List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                         HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                        headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
                                         headerAmountInfo.IsLinkAvailable = false;
-
-                                        StringBuilder Masseges = new StringBuilder();
-                                        Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
-                                        Masseges.Append(Environment.NewLine);
-                                        Masseges.Append(Environment.NewLine);
-                                        Masseges.Append(Environment.NewLine);
-                                        Masseges.Append(AppResources.CreditReturnMsg);
-                                        //  PopUp Pop = new PopUp();
-                                        headerAmountInfo.IsLinkAvailable = false;
-                                        headerAmountInfo.IsRed = "#ff0000";
-                                        headerAmountInfo.IsBold = "Bold";
-                                        headerAmountInfo.Message = Masseges.ToString();
-
+                                        headerAmountInfo.Message = AppResources.ZZZRefundNoMsg;
                                         headerWithInfos.Add(headerAmountInfo);
 
 
                                         newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                                        newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
 
-                                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                        PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
 
-                                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                                        //SelectedIndex = 2;
-                                        //PageSelectedItem = VatTabbledPageList[2];
                                     }
                                     else
                                     {
-                                        Device.BeginInvokeOnMainThread(() =>
-                                        {
-                                            viewModel.IsNewLoading = true;
-                                        });
-                                        await viewModel.SubmitClicked();
-                                        Device.BeginInvokeOnMainThread(() =>
-                                        {
-                                            viewModel.IsNewLoading = false;
-                                        });
+                                        OnConfirmAndCarryForwardClicked();
                                     }
-
-                                }
-                                else
-                                {
-                                        Device.BeginInvokeOnMainThread(() =>
-                                            {
-                                                viewModel.IsNewLoading = true;
-                                            });
-                                        await viewModel.SubmitClicked();
-                                        Device.BeginInvokeOnMainThread(() =>
-                                        {
-                                            viewModel.IsNewLoading = false;
-                                        });
-                                   }
                                 }
                             }
                         }

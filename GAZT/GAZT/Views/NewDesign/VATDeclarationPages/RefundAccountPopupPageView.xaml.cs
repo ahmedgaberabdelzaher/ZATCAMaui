@@ -36,6 +36,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     
                     viewModel.IsSwichButtonEnable = true;
                     viewModel.IsCarriedForwandReviewMessageForRefund = false;
+                    viewModel.IsRefundYesMsgDisplayed = false;
+                    viewModel.SelectedIBANIDNumber = null;
 
 
                     if (App.ICRStatus!="E0001" && App.ICRStatus != "E0013")
@@ -179,11 +181,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 IDNumberDropdown.BackgroundColor = Color.FromHex("#FFFFFF");
             }
             getIban();
+            getYesRefundMsgCommand();
+            getNoRefundMsgCommand();
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceivedVATDeclaration");
+            MessagingCenter.Unsubscribe<object, string>(this, "YesReceivedForRefundMsg");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoReceivedForRefundMsg");
         }
         public async void getIban()
         {
@@ -631,10 +637,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         private void IDNumberDropdown_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             IBANIDNumber selectedIBANIDNumber = (IBANIDNumber)e.NewValue;
-            IDNumberDropdown.SelectedItem = selectedIBANIDNumber;
-            viewModel.SelectedIBANIDNumber = selectedIBANIDNumber;
-            viewModel.SelectedIBANIDNumberPrev = selectedIBANIDNumber;
-            viewModel.TxtSelectedIBANIDNumber = selectedIBANIDNumber.Idnumber;
+            if (selectedIBANIDNumber != null)
+            {
+                IDNumberDropdown.SelectedItem = selectedIBANIDNumber;
+                viewModel.SelectedIBANIDNumber = selectedIBANIDNumber;
+                viewModel.SelectedIBANIDNumberPrev = selectedIBANIDNumber;
+                viewModel.TxtSelectedIBANIDNumber = selectedIBANIDNumber.Idnumber;
+            }
             //if (viewModel.IsVisibleSummary == true)
             //{
             //    if (viewModel.IsVisibleDropdownForRefund == true)
@@ -645,11 +654,18 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         private void IDNumberDropdown_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            IDNumberDropdown.SelectedItem = viewModel.SelectedIBANIDNumberPrev;
-            viewModel.SelectedIBANIDNumber = viewModel.SelectedIBANIDNumberPrev;
-            if (viewModel.SelectedIBANIDNumberPrev == null)
+            try
             {
-                viewModel.TxtSelectedIBANIDNumber = string.Empty;
+                IDNumberDropdown.SelectedItem = viewModel.SelectedIBANIDNumberPrev;
+                viewModel.SelectedIBANIDNumber = viewModel.SelectedIBANIDNumberPrev;
+                if (viewModel.SelectedIBANIDNumberPrev == null)
+                {
+                    viewModel.TxtSelectedIBANIDNumber = string.Empty;
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
         private void IDTypeDropdown_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -727,9 +743,46 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private async void Confirm_RefundClicked(object sender, EventArgs e)
+        public async void getYesRefundMsgCommand()
         {
-            
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesReceivedForRefundMsg", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        await PopupNavigation.Instance.PopAsync();
+                        saveRefund();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public async void getNoRefundMsgCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceivedForRefundMsg", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        await PopupNavigation.Instance.PopAsync();
+                        viewModel.IsRefundYesMsgDisplayed = false;
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void saveRefund()
+        {
             if (CheckValidationsForSubmitButtonWithMsg())
             {
 
@@ -741,7 +794,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     {
                         FourteenA = Convert.ToDecimal(viewModel.VATDeclarationDetails.d.TotaldueVat) + Convert.ToDecimal(viewModel.VATDeclarationDetails.d.Preperiodcorr);
                     }
-                    if ((viewModel.IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(viewModel.VATDeclarationDetails.d.NetdueVat) < 0) || (viewModel.IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(viewModel.VATDeclarationDetails.d.CreditVat) > 0))
+                    if ((viewModel.IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(viewModel.VATDeclarationDetails.d.NetdueVat) < 0) || (viewModel.IsSwichButtonEnable == true && FourteenA < 0))
                     {
 
 
@@ -790,7 +843,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             this.CloseWhenBackgroundIsClicked = true;
                         });
                     }
-                    
+
                 }
                 else
                 {
@@ -805,6 +858,45 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         viewModel.IsNewLoading = false;
                         this.CloseWhenBackgroundIsClicked = true;
                     });
+                }
+            }
+        }
+
+        private async void Confirm_RefundClicked(object sender, EventArgs e)
+        {
+            
+            if (CheckValidationsForSubmitButtonWithMsg())
+            {
+                if (viewModel.IsRefundYesMsgDisplayed==false)
+                {
+                    viewModel.IsRefundYesMsgDisplayed = true;
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    if (viewModel.VATDeclarationDetails != null && viewModel.VATDeclarationDetails.d != null && viewModel.VATDeclarationDetails.d.GoliveFg == "X")
+                    {
+                        headerAmountInfo.Message = AppResources.ZZZRefundYesMsgForFiteenPercent;
+                    }
+                    else
+                    {
+                        headerAmountInfo.Message = AppResources.ZZZRefundYesMsg;
+                    }
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
+
+                    PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+                }
+                else
+                {
+                    saveRefund();
                 }
             }
         }
