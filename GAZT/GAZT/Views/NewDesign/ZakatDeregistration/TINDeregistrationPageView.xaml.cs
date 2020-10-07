@@ -1380,10 +1380,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             view.SelectedItem = null;
         }
 
-        private void EditOutlet_Tapped(object sender, EventArgs e)
+        private void EditOutlet_Tapped(object sender, TappedEventArgs e)
         {
             try
             {
+
                 OutletSetResult selectedOutlet = (OutletSetResult)(e as TappedEventArgs).Parameter;
                 if (viewModel.TinDeregistrationData.ADregOpt == "3")
                 {
@@ -1441,6 +1442,40 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (Exception ex)
             {
                 return;
+            }
+        }
+
+       private void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                StackLayout lblClicked = (StackLayout)sender;
+                var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
+                var id = item.CommandParameter;
+
+                OutletSetResult selectedOutlet = (OutletSetResult)lblClicked.BindingContext; //(OutletSetResult)(e as TappedEventArgs).Parameter;
+                if (viewModel.TinDeregistrationData.ADregOpt == "3")
+                {
+                    viewModel.outletEditIsVisible = true;
+                    selectedItem = selectedOutlet;
+                    viewModel.SelectedOutletForCloseTranser = selectedItem;
+                    viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+
+                    viewModel.AddPermitOutletDecisionOptions();
+                    viewModel.AddPopUpPage();
+                    var view = sender as SfListView;
+                    view.SelectedItem = null;
+                }
+                else
+                {
+                    viewModel.outletEditIsVisible = false;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

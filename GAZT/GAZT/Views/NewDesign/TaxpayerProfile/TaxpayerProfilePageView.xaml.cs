@@ -32,8 +32,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             ChangeAeroIcon();
          
             TpProfileTaxpaayertypeRefresh();
+            try
+            {
+                viewModel.ResidenceText = App.TP.TpType;
+            }
+            catch (Exception ex)
+            {
 
-            viewModel.ResidenceText = App.TP.TpType;
+            }
+            
             // * Page content direction
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
@@ -122,29 +129,50 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            if (App.TP != null)
+            try
             {
-                //viewModel.TPProfileNameLbl = App.TP.Name;
 
-                if (App.TP.TypeChk == "X")
+
+                if (App.TP != null)
                 {
-                    viewModel.TPProfileNameLbl = App.TP.NameFirst + " " + App.TP.NameLast;
+                    //viewModel.TPProfileNameLbl = App.TP.Name;
+
+                    if (App.TP.TypeChk == "X")
+                    {
+                        viewModel.TPProfileNameLbl = App.TP.NameFirst + " " + App.TP.NameLast;
+                    }
+                    else
+                    {
+                        viewModel.TPProfileNameLbl = App.TP.NameOrg1;
+                    }
+
+                    viewModel.TINLabel = App.TP.Tin;
+                    try
+                    {
+                        if (string.IsNullOrEmpty(App.TP.Mobile))
+                        {
+                            if (App.TP.Mobile.Length < 12)
+                                viewModel.MobileNumber = "+966" + App.TP.Mobile.Remove(0, 2);
+                            else
+                                viewModel.MobileNumber = "+" + App.TP.Mobile.Remove(0, 2);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                    viewModel.EmailEntry = App.TP.Email;
+                    viewModel.PasswordEntry = "********";
                 }
-                else
-                {
-                    viewModel.TPProfileNameLbl = App.TP.NameOrg1;
-                }
-
-                viewModel.TINLabel = App.TP.Tin;
-
-                if (App.TP.Mobile.Length < 12)
-                    viewModel.MobileNumber = "+966" + App.TP.Mobile.Remove(0, 2);
-                else
-                    viewModel.MobileNumber = "+" + App.TP.Mobile.Remove(0, 2);
-
-                viewModel.EmailEntry = App.TP.Email;
-                viewModel.PasswordEntry = "********";
             }
+            catch (Exception ex)
+            {
+
+            }
+
         }
     }
 }

@@ -39,6 +39,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand PermitTypeTinUnfocused { get; set; }
         public int DefaultMonth;
         public int DefaultMonthHijri;
+        public bool isSubmitted;
         //
         #endregion
 
@@ -1789,7 +1790,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             DobText.IsMandatory = true;
             DobText.IsVisible = true;
-            DobText.IsEditable = true;//Non Editable after validation
+            DobText.IsEditable = true; //Non Editable after validation
 
             FirstNameText.IsMandatory = false;
             FirstNameText.IsVisible = true;
@@ -3241,8 +3242,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 //Display Success Screen
                 await Submit();
+                if (isSubmitted)
+                {
+                    _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
+                }
+                else
+                {
+                    _navigationService.GoBack();
 
-                _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
+                }
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3975,7 +3983,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (obj.D == null)
                     {
-
+                        isSubmitted = false;
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(TinDeregistrationDataResponse);
                         StringBuilder Message = new StringBuilder();
                         foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
@@ -3994,7 +4002,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             App.HideProgressView();
                         });
-                        _navigationService.GoBack();
 
                     }
                     else if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
@@ -4003,7 +4010,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         TinDeregistrationData = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregistrationDataResponse);
                         if (TinDeregistrationData == null)
                         {
+                            isSubmitted = false;
+
                             throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        }
+                        else
+                        {
+                            isSubmitted = true;
+
                         }
 
                     }
@@ -4038,6 +4052,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         App.HideProgressView();
                     });
+
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
