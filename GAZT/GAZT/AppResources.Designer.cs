@@ -14699,5 +14699,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZGotothePortalForVAT", resourceCulture);
             }
         }
+        
+        public static string LogInSessionTitle {
+            get {
+                return ResourceManager.GetString("LogInSessionTitle", resourceCulture);
+            }
+        }
     }
 }

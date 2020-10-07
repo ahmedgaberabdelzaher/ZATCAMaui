@@ -125,15 +125,15 @@ namespace GAZT.iOS
 
         public override void WillEnterForeground(UIApplication application)
         {
-            if (App.IsLoginPageVisible() == false)
-            {
-                App.ShouldStopTimer = true;
-            }
-            else
-            {
-                App.ShouldStopLoginRefreshTimer = true;
-            }
-           
+            //if (App.IsLoginPageVisible() == false)
+            //{
+            //    App.ShouldStopTimer = true;
+            //}
+            //else
+            //{
+            //    App.ShouldStopLoginRefreshTimer = true;
+            //}
+
             Console.WriteLine("App will enter foreground");
         }
 
@@ -144,24 +144,24 @@ namespace GAZT.iOS
 
         public override void DidEnterBackground(UIApplication application)
         {
-            if(App.IsLoginPageVisible() == false)
-            {
-                App.ShouldStopTimer = false;
-                App.DoesLoginNeedToBeRefreshed = false;
-                App.StartTimerForBackground(0, 5, 0);
-                //Console.WriteLine("App entering background state.");
-            }
-            else
-            {
-                App.ShouldStopLoginRefreshTimer = false;
-                App.StartTimerForLoginRefresh(0, 3, 0);
-            }
+            //if (App.IsLoginPageVisible() == false)
+            //{
+            //    App.ShouldStopTimer = false;
+            //    App.DoesLoginNeedToBeRefreshed = false;
+            //    App.StartTimerForBackground(0, 5, 0);
+            //    //Console.WriteLine("App entering background state.");
+            //}
+            //else
+            //{
+            //    App.ShouldStopLoginRefreshTimer = false;
+            //    App.StartTimerForLoginRefresh(0, 3, 0);
+            //}
         }
 
         // not guaranteed that this will run
         public override void WillTerminate(UIApplication application)
         {
-            Console.WriteLine("App is terminating.");
+                Console.WriteLine("App is terminating.");
         }
 
         //rohith-login
@@ -190,7 +190,7 @@ namespace GAZT.iOS
         //    }
         //}
 
-        //// async void, since we want to just start and forget about this thread
+        // async void, since we want to just start and forget about this thread
         //public async void StartIdleTimer(CancellationTokenSource tokenSource)
         //{
         //    try
@@ -205,7 +205,7 @@ namespace GAZT.iOS
         //        //Do something here, like show a screensaver or something
         //        InvokeOnMainThread(() =>
         //        {
-        //            if(App.IsLoginPageVisible() == true)
+        //            if (App.IsLoginPageVisible() == true)
         //            {
         //                App.IsLoginPageRefreshed = true;
         //                MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");

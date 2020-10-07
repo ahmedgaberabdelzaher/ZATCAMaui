@@ -15506,8 +15506,8 @@ namespace GAZT.Manager
             if (CrossConnectivity.Current.IsConnected)
             {
                 string lang = string.Empty;
-                if (App.IsArabic) { lang = "A"; }
-                else { lang = "E"; }
+                if (App.IsArabic) { lang = "AR"; }
+                else { lang = "EN"; }
 
                 string URL = Constants.GetTPProfileChangePWDURL
                             + "(" + "Email=" + "'" + App.TP.Email + "'"
@@ -15519,7 +15519,7 @@ namespace GAZT.Manager
                             + ",Euser2=" + "''"
                             + ",Euser3=" + "''"
                             + ",Euser4=" + "''"
-                            + ",Euser5=" + "''" + ")?$format=json";
+                            + ",Euser5=" + "''" + ")?$format=json"+"&sap-language="+ lang;
 
                 var URI = new Uri(URL);
                 Task<TaxPayerProfile> TPProfileData = GetTPProfileAndUpdatePasswordAPICall(URI);
