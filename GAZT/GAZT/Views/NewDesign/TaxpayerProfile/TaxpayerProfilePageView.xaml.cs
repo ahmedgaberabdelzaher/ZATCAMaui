@@ -149,7 +149,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     viewModel.TINLabel = App.TP.Tin;
                     try
                     {
-                        if (string.IsNullOrEmpty(App.TP.Mobile))
+                        if (!string.IsNullOrEmpty(App.TP.Mobile))
                         {
                             if (App.TP.Mobile.Length < 12)
                                 viewModel.MobileNumber = "+966" + App.TP.Mobile.Remove(0, 2);

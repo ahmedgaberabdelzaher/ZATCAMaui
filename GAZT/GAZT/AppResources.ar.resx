@@ -4912,7 +4912,7 @@
     <value>الالتزامات القادمة</value>
   </data>
   <data name="ZZZZPleaseSelect" xml:space="preserve">
-    <value>Please Select</value>
+    <value>الرجاء الاختيار</value>
   </data>
   <data name="NDSkip" xml:space="preserve">
     <value>تخطي</value>
@@ -5185,8 +5185,8 @@
     <comment>Bills Returns</comment>
   </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>الرجاء إدخال رقم التحقق المرسل الى جوالك لاستعادة كلمة المرور</value>
-  </data>
+    <value>الرجاء إدخال رمز التحقق المرسل إلى جوالك لاستعادة كلمة المرور</value>
+    </data>
   <data name="NDAllcertificates" xml:space="preserve">
     <value>جميع الشهادات</value>
     <comment>Certificate</comment>
@@ -8231,4 +8231,5 @@
   <data name="ZZZZGotothePortalForVAT" xml:space="preserve">
     <value>الرجاء الذهاب الى البوابة لإكمال المعلومات الإضافية</value>
   </data>
+  <data name="LogInSessionTitle" xml:space="preserve">     <value>تسجيل الدخول</value>   </data> 
 </root>

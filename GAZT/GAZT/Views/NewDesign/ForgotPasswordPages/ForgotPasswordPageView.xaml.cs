@@ -30,6 +30,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ClearData();
             viewModel.OnPageLoad();
             SetLTR();
+            viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
             SetPickerFont();
             viewModel.StartPage = 1;
 

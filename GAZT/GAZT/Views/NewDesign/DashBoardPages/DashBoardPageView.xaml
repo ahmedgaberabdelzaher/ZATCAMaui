@@ -407,17 +407,26 @@
 
                     </StackLayout>
 
-                    <custom:CustomLabel  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
-                        <custom:CustomLabel.FormattedText >
+                    <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
+                        <!--<custom:CustomLabel.FormattedText >
                             <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.Hello}" />
-                                <!--Commented line because X:Refrence Maingrid is not available -->
-                                <!--<Span Text="{Binding Source={x:Reference Name=Maingrid},Path=BindingContext.WelcomeText}"/>-->
-                                <Span Text=" "/>
-                                <Span Text="{Binding TaxpayerName}"/>
+                                <Span Text="{x:Static ResourceManager:AppResources.Hello}" StyleId="SingleLabel"/>
+                                  <Span Text=" "/>
+                                <Span Text="{Binding TaxpayerName}" StyleId="SingleLabel"/>
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel.FormattedText>-->
                     </custom:CustomLabel>
+
+                    <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Hello}" HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
+
+                        </custom:CustomLabel>
+
+                         <custom:CustomLabel Text="{Binding TaxpayerName}" HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
+
+                        </custom:CustomLabel>
+
+                    </StackLayout>-->
                     
                 </StackLayout>
             </Grid>
@@ -481,7 +490,7 @@
                                     <StackLayout Spacing="20" IsVisible="{Binding IfSignUpnNotRegInVATShowVATServie}" >
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="menu_return">
+                                            <Image Source="ic_VAT_service_w">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDVATServices}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -514,7 +523,7 @@
 
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_menu_cr">
+                                            <Image Source="ic_menu_cr_w">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -524,7 +533,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_Application_Status.png">
+                                            <Image Source="ic_menu_Tax_check.png">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZFormBundleStatus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -535,7 +544,7 @@
                                     </StackLayout>
                                     <StackLayout Spacing="20" IsVisible="{Binding IsVatRegistrationTileVisible}" >
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="menu_return.png">
+                                            <Image Source="ic_VAT_reg_w.png">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDRegistertoVAT}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>

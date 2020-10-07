@@ -200,11 +200,17 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             else
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
 
-            if (App.TP.Mobile.Length < 12)
-                viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
-            else
-                viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
+            try
+            {
+                if (App.TP.Mobile.Length < 12)
+                    viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+                else
+                    viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
+            }
+            catch(Exception ex)
+            {
 
+            }
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                 Label_InternationalnoCode.Text = arg;
