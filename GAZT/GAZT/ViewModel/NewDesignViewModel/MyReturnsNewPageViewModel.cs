@@ -454,7 +454,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     IsLoading = false;
 
                                     //await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZGotothePortalForVAT));
 
                                 });
 
