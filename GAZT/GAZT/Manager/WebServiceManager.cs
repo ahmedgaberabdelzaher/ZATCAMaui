@@ -15533,7 +15533,7 @@ namespace GAZT.Manager
         {
             TaxPayerProfile TPProfileData = null;
             string NewToken = string.Empty;
-
+            string GAZTTPProfileResponseJSON = string.Empty;
             try
             {
                 HttpClient client = new HttpClient(App.httpClientHandler);
@@ -15563,7 +15563,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        string GAZTTPProfileResponseJSON = UpdatePWDResponse.Content.ReadAsStringAsync().Result;
+                        GAZTTPProfileResponseJSON = UpdatePWDResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
                         {
                             GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["d"].ToString();
@@ -15579,7 +15579,22 @@ namespace GAZT.Manager
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
-                throw new Exception(AppResources.InvalidPassword);
+                
+                if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                {
+                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
+                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    {
+                        string errorMessage = string.Empty;
+                        errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                        
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        errorMessage = WithReplacedString;
+                        //ErrorMessageForVAT
+                        throw new Exception(errorMessage);
+                    }
+                }
             }
 
             return TPProfileData;
@@ -15590,6 +15605,7 @@ namespace GAZT.Manager
             if (CrossConnectivity.Current.IsConnected)
             {
                 TaxPayerProfile TP = null;
+                string GAZTTPProfileResponseJSON = string.Empty;
 
                 try
                 {
@@ -15608,7 +15624,7 @@ namespace GAZT.Manager
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
 
-                    string GAZTTPProfileResponseJSON = res.Content.ReadAsStringAsync().Result;
+                    GAZTTPProfileResponseJSON = res.Content.ReadAsStringAsync().Result;
                     if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
                     {
                         GAZTTPProfileResponseJSON = JObject.Parse(GAZTTPProfileResponseJSON)["d"].ToString();
@@ -15617,6 +15633,23 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
+
+                    if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                           
+                            throw new Exception(errorMessage);
+                        }
+                    }
+
                     System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
                     if (APIType.Equals("GETOTPMOBILE"))
                         throw new Exception(AppResources.EnterValidMobileNumber);
