@@ -13,20 +13,22 @@ using Tavant.XToolkit;
 using AppDynamics.Agent;
 using Plugin.Media;
 using Java.Lang;
+using System;
 
 namespace GAZT.Droid
 {
-    [Activity(Label = "GAZT E-Services", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false,ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "GAZT E-Services", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         Handler handler;
         Runnable r;
+        System.Action action;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            
+
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
@@ -34,13 +36,13 @@ namespace GAZT.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
-            
+
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
-            } 
+            }
             // Xamarin.Essentials.Platform.Init(this, bundle);
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
@@ -72,14 +74,73 @@ namespace GAZT.Droid
             App.appObj = app;
             Distribute.SetEnabledForDebuggableBuild(true);
 
-            //rohith-login
+            //rohith - login
             //handler = new Handler();
-            //r = new Runnable(()=>{
+            //r = new Runnable(() =>
+            //{
             //    App.HandleSessionTimeout();
+            //    startHandler();
             //});
             //startHandler();
 
+            //action = () =>
+            //{
+            //    App.HandleSessionTimeout();
+            //    resetDisconnectTimer();
+            //};
+
+            //disconnectHandler = new Handler(new MyHandlerICallback(this));
+            //resetDisconnectTimer();
+
+            //StartTimerForLoginRefresh(0,1,0);
             LoadApplication(app);
+        }
+        
+
+        public class MyHandlerICallback : Java.Lang.Object, Handler.ICallback
+        {
+            private MainActivity mainActivity;
+
+            public MyHandlerICallback(MainActivity mainActivity)
+            {
+                this.mainActivity = mainActivity;
+            }
+
+            public bool HandleMessage(Message msg)
+            {
+                //ToDo
+                return true;
+            }
+        }
+
+        public void stopDisconnectTimer()
+        {
+            disconnectHandler.RemoveCallbacks(action);
+        }
+
+        //public override void OnUserInteraction()
+        //{
+        //    base.OnUserInteraction();
+        //    //resetDisconnectTimer();
+
+        //    App.stopWatch.Reset();
+        //    App.stopWatch.Start();
+
+        //    //InvalidateTimer = true;
+        //    //StartTimerForLoginRefresh(0, 1, 0);
+
+        //    //stopHandler();
+        //    //startHandler();
+        //}
+
+        public static long DISCONNECT_TIMEOUT = 60000; // 5 min = 5 * 60 * 1000 ms
+
+        public Handler disconnectHandler;
+
+        public void resetDisconnectTimer()
+        {
+            disconnectHandler.RemoveCallbacks(action);
+            disconnectHandler.PostDelayed(action, DISCONNECT_TIMEOUT);
         }
 
         protected override void OnResume()
@@ -89,38 +150,38 @@ namespace GAZT.Droid
 
         protected override void OnStop()
         {
-            if (App.IsLoginPageVisible() == false)
-            {
-                App.ShouldStopTimer = false;
-                App.DoesLoginNeedToBeRefreshed = false;
-                App.StartTimerForBackground(0, 5, 0);
-            }
-            else
-            {
-                App.ShouldStopLoginRefreshTimer = false;
-                App.StartTimerForLoginRefresh(0, 3, 0);
-            }
+            //if (App.IsLoginPageVisible() == false)
+            //{
+            //    App.ShouldStopTimer = false;
+            //    App.DoesLoginNeedToBeRefreshed = false;
+            //    App.StartTimerForBackground(0, 5, 0);
+            //}
+            //else
+            //{
+            //    App.ShouldStopLoginRefreshTimer = false;
+            //    App.StartTimerForLoginRefresh(0, 3, 0);
+            //}
 
             base.OnStop();
         }
 
         protected override void OnRestart()
         {
-            if (App.IsLoginPageVisible() == false)
-            {
-                App.ShouldStopTimer = true;
-            }
-            else
-            {
-                App.ShouldStopLoginRefreshTimer = true;
-            }
+            //if (App.IsLoginPageVisible() == false)
+            //{
+            //    App.ShouldStopTimer = true;
+            //}
+            //else
+            //{
+            //    App.ShouldStopLoginRefreshTimer = true;
+            //}
 
             base.OnRestart();
         }
 
         protected override void OnPause()
         {
-           base.OnPause();
+            base.OnPause();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -136,6 +197,7 @@ namespace GAZT.Droid
                 {
                     global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
+
                 //else
                 //{
                 //    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -149,7 +211,8 @@ namespace GAZT.Droid
                 //    alert.Show();
                 //}
             }
-           // global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            //global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
@@ -166,14 +229,69 @@ namespace GAZT.Droid
             }
         }
 
-        //rohith-login
-        //public override void OnUserInteraction()
-        //{
-        //    base.OnUserInteraction();
+        //public static bool ShouldStopLoginRefreshTimer = false;
+        //public static bool InvalidateTimer = false;
 
-        //    stopHandler();
-        //    startHandler();
+        //public static void StartTimerForLoginRefresh(int h, int m, int sec)
+        //{
+        //    int hour = h;
+        //    int mins = m;
+        //    int counter = sec;
+
+        //    Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+        //    {
+        //        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+        //        {
+        //            counter = counter - 1;
+        //            if (counter < 0)
+        //            {
+        //                counter = 59;
+        //                mins = mins - 1;
+        //                if (mins < 0)
+        //                {
+        //                    mins = 59;
+        //                    hour = hour - 1;
+        //                    if (hour < 0)
+        //                    {
+        //                        hour = 0;
+        //                        mins = 0;
+        //                        counter = 0;
+        //                    }
+        //                }
+        //            }
+
+
+        //            // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+        //        });
+
+        //        if (ShouldStopLoginRefreshTimer == true)
+        //        {
+        //            return false;
+        //        }
+
+        //        if(InvalidateTimer == true)
+        //        {
+
+        //            InvalidateTimer = false;
+        //            return false;
+        //        }
+
+        //        if (hour == 0 && mins == 0 && counter == 0)
+        //        {
+        //            App.IsLoginPageRefreshed = true;
+        //            App.HandleSessionTimeout();
+
+        //            mins = m;
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return true;
+        //        }
+        //    });
         //}
+
+        //rohith-login
 
         //public void stopHandler()
         //{
