@@ -34,6 +34,8 @@ using System.Linq;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
 using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
+using System.Diagnostics;
+using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -41,6 +43,10 @@ namespace EGAZT
     public partial class App : Application
     {
         #region new design views
+
+        public static Stopwatch stopWatch = new Stopwatch();
+        public const int defaultTimespan = 2;
+        public const int defaultTimespanForLogin = 1;
 
         public static string GAZTNewDesignVATReturnUpdatedUIPageView = "GAZTNewDesignVATReturnUpdatedUIPageView";
         public static string GAZTNewDesignDashBoardPageView = "GAZTNewDesignDashBoardPageView";
@@ -407,66 +413,71 @@ namespace EGAZT
 
             MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", async (sender, arg) =>
             {
-                if (App.DoesLoginNeedToBeRefreshed == true)
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        try
-                        {
-                            await WebServiceManager.GAZTLogOff();
-                        }
-                        catch (Exception ex)
-                        {
+                //if (App.DoesLoginNeedToBeRefreshed == true)
+                //{
+                //    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //        try
+                //        {
+                //            await WebServiceManager.GAZTLogOff();
+                //        }
+                //        catch (Exception ex)
+                //        {
 
-                        }
+                //        }
 
-                        //to be reverted code
+                //        //to be reverted code
 
-                        //App.DoesLoginNeedToBeRefreshed = false;
-                        //var _navigation = Application.Current.MainPage.Navigation;
-                        //await _navigation.PopToRootAsync();
+                //        //App.DoesLoginNeedToBeRefreshed = false;
+                //        //var _navigation = Application.Current.MainPage.Navigation;
+                //        //await _navigation.PopToRootAsync();
 
-                        //Test and Revert
-                        //await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                //        //Test and Revert
+                //        //await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
 
-                        App.DoesLoginNeedToBeRefreshed = false;
-                        var _navigation = Application.Current.MainPage.Navigation;
+                //        App.DoesLoginNeedToBeRefreshed = false;
+                //        var _navigation = Application.Current.MainPage.Navigation;
 
-                        foreach (var item in _navigation.NavigationStack)
-                        {
-                            if (item.GetType().Name == App.SFLoginPageView)
-                            {
-                                _navigation.RemovePage(item);
-                                break;
-                            }
-                        }
+                //        //foreach (var item in _navigation.NavigationStack)
+                //        //{
+                //        //    if (item.GetType().Name != App.SFLoginPageView)
+                //        //    {
+                //        //        _navigation.RemovePage(item);
+                //        //    }
+                //        //}
 
-                        _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                        _navigation.NavigationStack.ToList().Clear();
-                        await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                //        navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                //        MainPage = navigationPage;
 
-                        //if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
-                        //{
-                        //    foreach (var item in _navigation.NavigationStack)
-                        //    {
-                        //        if (item.GetType().Name == App.SFLoginPageView)
-                        //        {
-                        //            _navigation.RemovePage(item);
-                        //            break;
-                        //        }
-                        //    }
+                //        //_navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                //        //_navigation.NavigationStack.ToList().Clear();
 
-                        //    //_navigation.PushAsync(App.SFLoginPageView);
-                        //    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                        //    _navigation.NavigationStack.ToList().Clear();
-                        //}
-                        //else
-                        //{
-                        //    await _navigation.PopToRootAsync();
-                        //    await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                        //}
-                    });
-                }
+                //        await PopupNavigation.Instance.PushAsync(new SessionTimeoutPageView());
+
+                //        //await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+
+                //        //if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+                //        //{
+                //        //    foreach (var item in _navigation.NavigationStack)
+                //        //    {
+                //        //        if (item.GetType().Name == App.SFLoginPageView)
+                //        //        {
+                //        //            _navigation.RemovePage(item);
+                //        //            break;
+                //        //        }
+                //        //    }
+
+                //        //    //_navigation.PushAsync(App.SFLoginPageView);
+                //        //    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                //        //    _navigation.NavigationStack.ToList().Clear();
+                //        //}
+                //        //else
+                //        //{
+                //        //    await _navigation.PopToRootAsync();
+                //        //    await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                //        //}
+                //    });
+                //}
             });
 
 
@@ -649,6 +660,40 @@ namespace EGAZT
 
             }
 
+
+            //if (!stopWatch.IsRunning)
+            //{
+            //    stopWatch.Start();
+            //}
+
+            //Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            //{
+            //    // Logic for logging out if the device is inactive for a period of time.
+            //    int timeSpan = defaultTimespan;
+
+            //    if(IsLoginPageVisible() == true)
+            //    {
+            //        timeSpan = defaultTimespanForLogin;
+            //    }
+
+            //    if (stopWatch.IsRunning && stopWatch.Elapsed.Minutes >= timeSpan)
+            //    {
+            //        //prepare to perform your data pull here as we have hit the 1 minute mark   
+
+            //        // Perform your long running operations here.
+
+            //        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            //        {
+            //            HandleSessionTimeout();
+            //        });
+
+            //        stopWatch.Restart();
+            //    }
+
+            //    // Always return true as to keep our device timer running.
+            //    return true;
+            //});
+
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             // Handle when your app starts
             AppCenter.Start("ios=eb11c7c9-cb42-4806-b01e-9b78bf433259" +
@@ -738,6 +783,19 @@ namespace EGAZT
             if (topPage.GetType().Name == App.SFLoginPageView)
             {
                 return true;    
+            }
+
+            return false;
+        }
+
+        public static bool IsOnboardingPageVisible()
+        {
+            var _navigation = Application.Current.MainPage.Navigation;
+            Page topPage = _navigation.NavigationStack.ToList().LastOrDefault();
+
+            if (topPage.GetType().Name == App.GAZTNewDesignOnBoardingAnimationPageView)
+            {
+                return true;
             }
 
             return false;
@@ -897,6 +955,7 @@ namespace EGAZT
                     return false;
                 }
 
+
                 if (hour == 0 && mins == 0 && counter == 0)
                 {
                     App.IsLoginPageRefreshed = true;
@@ -908,6 +967,8 @@ namespace EGAZT
                 {
                     return true;
                 }
+
+                
                 // }
             });
         }
@@ -924,16 +985,27 @@ namespace EGAZT
         //rohith-login
         //public static void HandleSessionTimeout()
         //{
-        //    if (App.IsLoginPageVisible() == true)
+        //    if (App.IsOnboardingPageVisible() == false)
         //    {
-        //        App.IsLoginPageRefreshed = true;
-        //        MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
-        //    }
-        //    else
-        //    {
-        //        App.DoesLoginNeedToBeRefreshed = true;
-        //        MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+        //        if (App.IsLoginPageVisible() == true)
+        //        {
+        //            App.IsLoginPageRefreshed = true;
+        //            Preferences.Set("SessionAction", "RefreshLoginPage");
+        //            MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+        //        }
+        //        else
+        //        {
+        //            Preferences.Set("SessionAction", "LogoutUserFromApp");
+        //            App.DoesLoginNeedToBeRefreshed = true;
+        //            MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+        //        }
         //    }
         //}
+
+        public static void HandleSessionActionAfterUnlock()
+        {
+
+        }
+
     }
 }

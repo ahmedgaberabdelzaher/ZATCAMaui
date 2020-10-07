@@ -8322,4 +8322,6 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   <data name="ZZZZGotothePortalForVAT" xml:space="preserve">
     <value>go to the portal and complete the additional information</value>
   </data>
+   <data name="LogInSessionTitle" xml:space="preserve">     <value>Login</value>   </data>
+
 </root>
