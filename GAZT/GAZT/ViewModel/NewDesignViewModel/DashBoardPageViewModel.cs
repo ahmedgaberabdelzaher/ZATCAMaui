@@ -707,11 +707,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if(App.TP.TypeChk=="X")
                 {
-                    TaxpayerName = App.TP.NameFirst + " " + App.TP.NameLast;
+                    TaxpayerName = AppResources.Hello + " " +  App.TP.NameFirst + " " + App.TP.NameLast;
                 }
                 else
                 {
-                    TaxpayerName = App.TP.NameOrg1;
+                    TaxpayerName = AppResources.Hello + " " + App.TP.NameOrg1;
                 }
 
                 GetDashboardDataTask = Task.Run(() =>

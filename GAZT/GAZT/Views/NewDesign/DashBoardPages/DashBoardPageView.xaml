@@ -407,17 +407,26 @@
 
                     </StackLayout>
 
-                    <custom:CustomLabel  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
-                        <custom:CustomLabel.FormattedText >
+                    <custom:CustomLabel Text="{Binding TaxpayerName}"  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
+                        <!--<custom:CustomLabel.FormattedText >
                             <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.Hello}" />
-                                <!--Commented line because X:Refrence Maingrid is not available -->
-                                <!--<Span Text="{Binding Source={x:Reference Name=Maingrid},Path=BindingContext.WelcomeText}"/>-->
-                                <Span Text=" "/>
-                                <Span Text="{Binding TaxpayerName}"/>
+                                <Span Text="{x:Static ResourceManager:AppResources.Hello}" StyleId="SingleLabel"/>
+                                  <Span Text=" "/>
+                                <Span Text="{Binding TaxpayerName}" StyleId="SingleLabel"/>
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel.FormattedText>-->
                     </custom:CustomLabel>
+
+                    <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Hello}" HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
+
+                        </custom:CustomLabel>
+
+                         <custom:CustomLabel Text="{Binding TaxpayerName}" HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
+
+                        </custom:CustomLabel>
+
+                    </StackLayout>-->
                     
                 </StackLayout>
             </Grid>
