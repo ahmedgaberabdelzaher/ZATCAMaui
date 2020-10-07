@@ -4466,18 +4466,18 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationSurName" xml:space="preserve">
     <value>Surname</value>
   </data>
-       <data name="TinDeregistrationNationalID" xml:space="preserve">
+  <data name="TinDeregistrationNationalID" xml:space="preserve">
     <value>National Id</value>
-  </data> 
-      <data name="TinDeregistrationCompanyID" xml:space="preserve">
+  </data>
+  <data name="TinDeregistrationCompanyID" xml:space="preserve">
     <value>Company ID</value>
-  </data> 
-      <data name="TinDeregistrationGCCID" xml:space="preserve">
+  </data>
+  <data name="TinDeregistrationGCCID" xml:space="preserve">
     <value>GCC ID</value>
   </data>
-      <data name="TinDeregistrationIQAMANumber" xml:space="preserve">
+  <data name="TinDeregistrationIQAMANumber" xml:space="preserve">
     <value>Iqama Number</value>
-  </data> 
+  </data>
   <data name="TinDeregistrationName1" xml:space="preserve">
     <value>Name 1</value>
   </data>
@@ -8318,5 +8318,8 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   </data>
   <data name="ZZZZVATOnPurchasesForSummarypage" xml:space="preserve">
     <value>VAT on Purchases</value>
+  </data>
+  <data name="ZZZZGotothePortalForVAT" xml:space="preserve">
+    <value>go to the portal and complete the additional information</value>
   </data>
 </root>

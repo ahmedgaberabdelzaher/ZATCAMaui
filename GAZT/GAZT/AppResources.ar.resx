@@ -4458,7 +4458,7 @@
   <data name="TinDeregistrationFamilyName" xml:space="preserve">
     <value>اسم العائلة</value>
   </data>
-   <data name="TinDeregistrationSurName" xml:space="preserve">
+  <data name="TinDeregistrationSurName" xml:space="preserve">
     <value>كنية</value>
   </data>
   <data name="TinDeregistrationName1" xml:space="preserve">
@@ -4467,18 +4467,18 @@
   <data name="TinDeregistrationName2" xml:space="preserve">
     <value>الاسم 2</value>
   </data>
-    <data name="TinDeregistrationNationalID" xml:space="preserve">
+  <data name="TinDeregistrationNationalID" xml:space="preserve">
     <value>رقم الهوية الوطنية</value>
-  </data> 
-      <data name="TinDeregistrationCompanyID" xml:space="preserve">
+  </data>
+  <data name="TinDeregistrationCompanyID" xml:space="preserve">
     <value>رقم الشركة</value>
-  </data> 
-      <data name="TinDeregistrationGCCID" xml:space="preserve">
+  </data>
+  <data name="TinDeregistrationGCCID" xml:space="preserve">
     <value>رقم هوية المواطن الخليجي</value>
   </data>
-      <data name="TinDeregistrationIQAMANumber" xml:space="preserve">
+  <data name="TinDeregistrationIQAMANumber" xml:space="preserve">
     <value>رقم الإقامة</value>
-  </data> 
+  </data>
   <data name="TinDeregistrationOutletDetails" xml:space="preserve">
     <value>معلومات الفروع</value>
   </data>
@@ -4511,36 +4511,37 @@
   </data>
   <data name="TinDeregistrationAttachmentCopyOfDeclaringBankruptcy" xml:space="preserve">
     <value>(إلزامي) المرفقات - نسخة من حكم الإفلاس</value>
-    </data>
+  </data>
   <data name="TinDeregistrationAttachmentCopyOfLicneseAfterClosing" xml:space="preserve">
     <value>(إلزامي) المرفقات - نسخة من الترخيص بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfCRAfterClosing" xml:space="preserve">
-     <value>(إلزامي) المرفقات - نسخة من السجل التجاري بعد إغلاق / تحديث</value>
-    </data>
+    <value>(إلزامي) المرفقات - نسخة من السجل التجاري بعد إغلاق / تحديث</value>
+  </data>
   <data name="TinDeregistrationAttachmentOwnershipSellingAgreement" xml:space="preserve">
- <value>(إلزامي) المرفقات - عقد مبايعة نقل الملكية</value>
-    </data>
+    <value>(إلزامي) المرفقات - عقد مبايعة نقل الملكية</value>
+  </data>
   <data name="TinDeregistrationAttachmentCopyOfPartnersDecision" xml:space="preserve">
-    <value>(إلزامي) المرفقات - نسخة من قرار الشركاء</value>   </data>
+    <value />
+  </data>
   <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
     <value>المرفقات - نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
-  <value>(إلزامي)  المرفقات - نسخة من عقد البيع</value>
-    </data>
+    <value>(إلزامي)  المرفقات - نسخة من عقد البيع</value>
+  </data>
   <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
     <value>(إلزامي)  المرفقات -شهادة الوفاة للشخص الطبيعي</value>
-    </data>
+  </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
     <value>(إلزامي) المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
-    </data>
+  </data>
   <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
-<value>(إلزامي) المرفقات - قرار وزاري للموافقة على عملية الاندماج</value>
-    </data>
+    <value>(إلزامي) المرفقات - قرار وزاري للموافقة على عملية الاندماج</value>
+  </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
-<value>(إلزامي)  المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
-    </data>
+    <value>(إلزامي)  المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
+  </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
     <value>تحميل المرفقات</value>
   </data>
@@ -4740,7 +4741,7 @@
     <value>أوامر قانونية للتعليق المؤقت للأنشطة الاقتصادية</value>
   </data>
   <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
-   <value>أخرى – الرجاء التحديد</value>
+    <value>أخرى – الرجاء التحديد</value>
   </data>
   <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
     <value>رقم الطلب</value>
@@ -8180,11 +8181,11 @@
     <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
-     <value>حجم الملف لا يزيد عن 10 ميجا</value>
+    <value>حجم الملف لا يزيد عن 10 ميجا</value>
   </data>
   <data name="PleaseEnterCorrectData" xml:space="preserve">
-  <value>الرجاء إدخال بيانات صحيحه</value>
-</data> 
+    <value>الرجاء إدخال بيانات صحيحه</value>
+  </data>
   <data name="ZVatCorrectionsfrompreviousperiod1" xml:space="preserve">
     <value>تصحيحات على الفترات السابقة (بين ±  ريال)</value>
   </data>
@@ -8209,22 +8210,25 @@
   <data name="ZZZZVATOnPurchasesForSummarypage" xml:space="preserve">
     <value>ضريبة القيمة المضافة على المشتريات</value>
   </data>
-	<data name="OutletTypeField" xml:space="preserve">
+  <data name="OutletTypeField" xml:space="preserve">
     <value>نوع الفرع</value>
- </data>
-<data name="MainOutlet" xml:space="preserve">
+  </data>
+  <data name="MainOutlet" xml:space="preserve">
     <value>الفرع الرئيسي</value>
- </data>
-<data name="SubOutlet" xml:space="preserve">
+  </data>
+  <data name="SubOutlet" xml:space="preserve">
     <value>الفرع</value>
- </data>
-<data name="SelectOutletType" xml:space="preserve">
+  </data>
+  <data name="SelectOutletType" xml:space="preserve">
     <value>اختار نوع الفرع</value>
- </data>
-<data name="SelectOutletTypeError" xml:space="preserve">
+  </data>
+  <data name="SelectOutletTypeError" xml:space="preserve">
     <value>الفرع الرئيسي موجود بالفعل ، يرجى اختيار فرع فرعي</value>
- </data>
- <data name="ESTValidateOutletType" xml:space="preserve">
+  </data>
+  <data name="ESTValidateOutletType" xml:space="preserve">
     <value>الرجاء إرسال النوع</value>
+  </data>
+  <data name="ZZZZGotothePortalForVAT" xml:space="preserve">
+    <value>go to the portal and complete the additional information</value>
   </data>
 </root>
