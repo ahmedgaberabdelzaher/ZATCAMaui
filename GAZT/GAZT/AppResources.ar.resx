@@ -5185,8 +5185,8 @@
     <comment>Bills Returns</comment>
   </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>الرجاء إدخال رقم التحقق المرسل الى جوالك لاستعادة كلمة المرور</value>
-  </data>
+    <value>الرجاء إدخال رمز التحقق المرسل إلى جوالك لاستعادة كلمة المرور</value>
+    </data>
   <data name="NDAllcertificates" xml:space="preserve">
     <value>جميع الشهادات</value>
     <comment>Certificate</comment>

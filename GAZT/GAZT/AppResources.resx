@@ -2655,7 +2655,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>Please enter confirmation code sent to your mobile number</value>
+    <value>Please enter verification code sent to your mobile number</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZSignup" xml:space="preserve">
