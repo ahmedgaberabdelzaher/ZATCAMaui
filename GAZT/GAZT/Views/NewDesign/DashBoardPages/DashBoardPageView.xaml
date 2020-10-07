@@ -166,18 +166,14 @@
                             <StackLayout>
                                 <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
                                     <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
-                                        <StackLayout Orientation="Horizontal">
+                                        
                                             <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                            <!--<Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand"/>-->
-                                            <!--    <Image.Source>
-                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
-                                            </Image.Source>-->
+                                            
 
-                                        </StackLayout>
 
                                         <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
-                                        <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
+                                        <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Horizontal" Margin="8">
@@ -266,7 +262,7 @@
                                         <!--End Horizontal List View-->
 
                                         <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MyBills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                             <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TappedOnMyBills"></TapGestureRecognizer>
@@ -335,7 +331,7 @@
                                         <!--End Horizontal List View-->
 
                                         <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBMyReturns}"  Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReturns}"  Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                             <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TappedOnMyReturns"></TapGestureRecognizer>
@@ -411,7 +407,7 @@
 
                     </StackLayout>
 
-                    <custom:CustomLabel  HorizontalTextAlignment="Start" StyleId="LTRLabelText" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center">
+                    <custom:CustomLabel  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" HorizontalOptions="Start"  Margin="0,10,0,10" VerticalOptions="Center" StyleId="SingleLabel">
                         <custom:CustomLabel.FormattedText >
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.Hello}" />
@@ -573,7 +569,7 @@
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="refund">
                                             </Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDTINDeregestration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                             </StackLayout.GestureRecognizers>
@@ -585,7 +581,7 @@
                                             <Image Source="ic_ReportTaxEvasion.png">
 
                                             </Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.AccountStatementsDashboardTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
                                             </StackLayout.GestureRecognizers>
@@ -653,7 +649,8 @@
                                     </Image>
 
                                 </StackLayout >
-                                <custom:CustomLabel Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
+                                <!--TaxpayerName<custom:CustomLabel Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />-->
+                                <custom:CustomLabel Text="{Binding TaxpayerName}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
                                 <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
                                     <Label.FormattedText>
                                         <FormattedString>

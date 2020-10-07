@@ -32,6 +32,10 @@ namespace GAZT.iOS.CustomRenderer
                                 {
                                     Control.TextAlignment = UITextAlignment.Left;
                                 }
+                                if (StyleId.Equals("SingleLabel"))
+                                {
+                                    Control.TextAlignment = UITextAlignment.Right;
+                                }
                             }
                         }
                     }
@@ -47,6 +51,10 @@ namespace GAZT.iOS.CustomRenderer
                                 if (StyleId.Equals("ValueLabel"))
                                 {
                                     Control.TextAlignment = UITextAlignment.Right;
+                                }
+                                if (StyleId.Equals("SingleLabel"))
+                                {
+                                    Control.TextAlignment = UITextAlignment.Left;
                                 }
                             }
                         }

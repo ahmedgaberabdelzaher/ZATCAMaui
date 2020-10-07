@@ -42,6 +42,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
                 viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             }
+
             viewModel?.OnAppearing();
         }
 

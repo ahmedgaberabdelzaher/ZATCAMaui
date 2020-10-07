@@ -26,11 +26,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            
             viewModel = App.Locator.TaxpayerProfilePageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
+         
+            TpProfileTaxpaayertypeRefresh();
+            try
+            {
+                viewModel.ResidenceText = App.TP.TpType;
+            }
+            catch (Exception ex)
+            {
 
+            }
+            
             // * Page content direction
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
@@ -45,6 +55,36 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.Start;
+            }
+        }
+
+
+        public async void TpProfileTaxpaayertypeRefresh()
+        {
+            try
+            {
+
+                viewModel.IsLoading = true;
+            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(App.TP.Tin);
+
+            if (TPProfile != null)
+            {
+                //if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                //{
+                //    throw new GAZTRegistrationPendingException();
+                //}
+                if (App.TP != null)
+                {
+                    App.TP.TpType = TPProfile.TpType;
+                        viewModel.ResidenceText = App.TP.TpType;
+                    }
+                
+            }
+                viewModel.IsLoading = false;
+            }
+            catch
+            {
+                viewModel.IsLoading = false;
             }
         }
 
@@ -89,19 +129,50 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            if (App.TP != null)
+            try
             {
-                viewModel.TPProfileNameLbl = App.TP.Name;
-                viewModel.TINLabel = App.TP.Tin;
 
-                if (App.TP.Mobile.Length < 12)
-                    viewModel.MobileNumber = "+966" + App.TP.Mobile.Remove(0, 2);
-                else
-                    viewModel.MobileNumber = "+" + App.TP.Mobile.Remove(0, 2);
 
-                viewModel.EmailEntry = App.TP.Email;
-                viewModel.PasswordEntry = "********";
+                if (App.TP != null)
+                {
+                    //viewModel.TPProfileNameLbl = App.TP.Name;
+
+                    if (App.TP.TypeChk == "X")
+                    {
+                        viewModel.TPProfileNameLbl = App.TP.NameFirst + " " + App.TP.NameLast;
+                    }
+                    else
+                    {
+                        viewModel.TPProfileNameLbl = App.TP.NameOrg1;
+                    }
+
+                    viewModel.TINLabel = App.TP.Tin;
+                    try
+                    {
+                        if (string.IsNullOrEmpty(App.TP.Mobile))
+                        {
+                            if (App.TP.Mobile.Length < 12)
+                                viewModel.MobileNumber = "+966" + App.TP.Mobile.Remove(0, 2);
+                            else
+                                viewModel.MobileNumber = "+" + App.TP.Mobile.Remove(0, 2);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                    viewModel.EmailEntry = App.TP.Email;
+                    viewModel.PasswordEntry = "********";
+                }
             }
+            catch (Exception ex)
+            {
+
+            }
+
         }
     }
 }

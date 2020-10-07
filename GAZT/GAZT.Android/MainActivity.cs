@@ -12,12 +12,16 @@ using Plugin.Permissions;
 using Tavant.XToolkit;
 using AppDynamics.Agent;
 using Plugin.Media;
+using Java.Lang;
 
 namespace GAZT.Droid
 {
     [Activity(Label = "GAZT E-Services", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false,ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        Handler handler;
+        Runnable r;
+
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -67,6 +71,14 @@ namespace GAZT.Droid
             App app = new App();
             App.appObj = app;
             Distribute.SetEnabledForDebuggableBuild(true);
+
+            //rohith-login
+            //handler = new Handler();
+            //r = new Runnable(()=>{
+            //    App.HandleSessionTimeout();
+            //});
+            //startHandler();
+
             LoadApplication(app);
         }
 
@@ -108,8 +120,7 @@ namespace GAZT.Droid
 
         protected override void OnPause()
         {
-           
-            base.OnPause();
+           base.OnPause();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -154,5 +165,24 @@ namespace GAZT.Droid
                 // Do something if there are not any pages in the `PopupStack`
             }
         }
+
+        //rohith-login
+        //public override void OnUserInteraction()
+        //{
+        //    base.OnUserInteraction();
+
+        //    stopHandler();
+        //    startHandler();
+        //}
+
+        //public void stopHandler()
+        //{
+        //    handler.RemoveCallbacks(r);
+        //}
+
+        //public void startHandler()
+        //{
+        //    handler.PostDelayed(r, App.IdleTimeToLogout * 50);
+        //}
     }
 }

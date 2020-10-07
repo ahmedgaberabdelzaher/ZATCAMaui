@@ -296,6 +296,7 @@
     <BundleResource Include="Resources\finances.png" />
     <BundleResource Include="Resources\finances%402x.png" />
     <BundleResource Include="Resources\finances%403x.png" />
+    <Compile Include="CustomApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -2152,5 +2153,23 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\registration%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_message.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_message%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_message%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_phone%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Grey_phone%403x.png" />
   </ItemGroup>
 </Project>

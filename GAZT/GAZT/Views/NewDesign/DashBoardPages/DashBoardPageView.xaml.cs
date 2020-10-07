@@ -175,7 +175,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "U")
                         {
-                            viewModel.IsEstablishmentRegistrationTileVisible = false;
+                            viewModel.IsEstablishmentRegistrationTileVisible = true;
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "N")
                         {
@@ -294,7 +294,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                    viewModel.PopulateBillsInformation();
                    viewModel.PopulateReturnsInformation();
                    viewModel.PopualateCommittmentsInformation();
+                   try
+                   {
+                       if (viewModel.BillsAndReturnsCommitments != null)
+                       {
+                           if (viewModel.BillsAndReturnsCommitments.Count > 0)
+                           {
+                               CollectionView_Commitment.ScrollTo(0);
+                           }
 
+                       }
+                   }
+                   catch(Exception ex)
+                   {
+                   }
+                   
                    viewModel.IsLoading = false;
 
                });
@@ -587,10 +601,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
-        private void Label_MyProfile_Tapped(object sender, EventArgs e)
+        private async void Label_MyProfile_Tapped(object sender, EventArgs e)
         {
             //         App.DisplayProgressView();
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
 
+            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.TaxpayerProfilePageView);
@@ -897,7 +915,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void OnVATNowTapped(object sender, EventArgs e)
         {
-            App.VATType = VATRegDetailsExecutionType.Register;
+            App.VATType = PageExecutionType.Register;
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
@@ -921,7 +939,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             await Task.Run(() => viewModel.IsLoading = true);
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+                if (App.LoginDataRetrieved.ZkReg=="U")
+                {
+                    App.ZAKATType = PageExecutionType.Update;
+                    viewModel._navigationService.NavigateTo(App.EstablishmentAmendUpdatePage);
+                }
+                else
+                {
+                    viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+                }
             });
         }
 
@@ -933,14 +959,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void VATAment_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
-            App.VATType = VATRegDetailsExecutionType.Amend;
+            App.VATType = PageExecutionType.Amend;
             viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
         }
 
         private async void VATReactivation_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
-            App.VATType = VATRegDetailsExecutionType.Reactivation;
+            App.VATType = PageExecutionType.Reactivation;
             Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView));
 
         }

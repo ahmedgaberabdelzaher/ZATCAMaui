@@ -45,6 +45,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }
         }
+
+
+        private bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 5;
         #endregion

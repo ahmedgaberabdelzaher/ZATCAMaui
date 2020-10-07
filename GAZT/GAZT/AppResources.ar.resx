@@ -1227,7 +1227,7 @@
     <value>حجم الملف لا يزيد عن 5 ميجا</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan1MB" xml:space="preserve">
-    <value>جم الملف لا يزيد عن 1 ميج</value>
+    <value>اعلى حجم للملف هو 1MB</value>
   </data>
   <data name="ZMaximumnoof5attachmentscanbeuploaded" xml:space="preserve">
     <value>لا يمكن تحميل أكثر من 5 مرفقات</value>
@@ -2676,7 +2676,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>الرجاء إدخال رمز التأكيد المرسل الى هاتفك الجوال</value>
+    <value>الرجاء إدخال رمز التحقق المرسل إلى جوالك لاستعادة كلمة المرور</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZSignup" xml:space="preserve">
@@ -2895,7 +2895,7 @@
     <value>الاختيارات</value>
   </data>
   <data name="ZZZPrivacyandPolicy" xml:space="preserve">
-    <value>الخصوصية والسياسة</value>
+    <value>سياسة الخصوصية</value>
   </data>
   <data name="ZZZSupport" xml:space="preserve">
     <value>الدعم</value>
@@ -4411,7 +4411,7 @@
     <value>إفلاس</value>
   </data>
   <data name="TinDeregistrationReasonDeath" xml:space="preserve">
-    <value>Death</value>
+    <value>وفاة</value>
   </data>
   <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">
     <value>تصفية</value>
@@ -4458,12 +4458,27 @@
   <data name="TinDeregistrationFamilyName" xml:space="preserve">
     <value>اسم العائلة</value>
   </data>
+   <data name="TinDeregistrationSurName" xml:space="preserve">
+    <value>كنية</value>
+  </data>
   <data name="TinDeregistrationName1" xml:space="preserve">
     <value>الاسم 1</value>
   </data>
   <data name="TinDeregistrationName2" xml:space="preserve">
     <value>الاسم 2</value>
   </data>
+    <data name="TinDeregistrationNationalID" xml:space="preserve">
+    <value>رقم الهوية الوطنية</value>
+  </data> 
+      <data name="TinDeregistrationCompanyID" xml:space="preserve">
+    <value>رقم الشركة</value>
+  </data> 
+      <data name="TinDeregistrationGCCID" xml:space="preserve">
+    <value>رقم هوية المواطن الخليجي</value>
+  </data>
+      <data name="TinDeregistrationIQAMANumber" xml:space="preserve">
+    <value>رقم الإقامة</value>
+  </data> 
   <data name="TinDeregistrationOutletDetails" xml:space="preserve">
     <value>معلومات الفروع</value>
   </data>
@@ -4495,38 +4510,37 @@
     <value>يرجى تقديم نسخة من الوثائق التالية</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfDeclaringBankruptcy" xml:space="preserve">
-    <value>نسخة من حكم الإفلاس</value>
-  </data>
+    <value>(إلزامي) المرفقات - نسخة من حكم الإفلاس</value>
+    </data>
   <data name="TinDeregistrationAttachmentCopyOfLicneseAfterClosing" xml:space="preserve">
-    <value>نسخة من الترخيص بعد إغلاق / تحديث</value>
+    <value>(إلزامي) المرفقات - نسخة من الترخيص بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfCRAfterClosing" xml:space="preserve">
-    <value>نسخة من السجل التجاري بعد إغلاق / تحديث</value>
-  </data>
+     <value>(إلزامي) المرفقات - نسخة من السجل التجاري بعد إغلاق / تحديث</value>
+    </data>
   <data name="TinDeregistrationAttachmentOwnershipSellingAgreement" xml:space="preserve">
-    <value>عقد مبايعة نقل الملكية</value>
-  </data>
+ <value>(إلزامي) المرفقات - عقد مبايعة نقل الملكية</value>
+    </data>
   <data name="TinDeregistrationAttachmentCopyOfPartnersDecision" xml:space="preserve">
-    <value>نسخة من قرار الشركاء</value>
-  </data>
+    <value>(إلزامي) المرفقات - نسخة من قرار الشركاء</value>   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
-    <value>نسخة من العقد بعد إغلاق / تحديث</value>
+    <value>المرفقات - نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
-    <value>المرفقات - نسخة من عقد البيع</value>
-  </data>
+  <value>(إلزامي)  المرفقات - نسخة من عقد البيع</value>
+    </data>
   <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
-    <value>المرفقات - شهادة الوفاة</value>
-  </data>
+    <value>(إلزامي)  المرفقات -شهادة الوفاة للشخص الطبيعي</value>
+    </data>
   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
-    <value>المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
-  </data>
+    <value>(إلزامي) المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ</value>
+    </data>
   <data name="TinDeregistrationAttachmentMerger" xml:space="preserve">
-    <value>قرار وزاري للموافقة على عملية الاندماج</value>
-  </data>
+<value>(إلزامي) المرفقات - قرار وزاري للموافقة على عملية الاندماج</value>
+    </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
-    <value>المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
-  </data>
+<value>(إلزامي)  المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ</value>
+    </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
     <value>تحميل المرفقات</value>
   </data>
@@ -4594,13 +4608,13 @@
     <value>يجب ان يكون تاريخ الغاء التسجيل اكبر من تاريخ بداية اخر تصريح سارى المفعول</value>
   </data>
   <data name="TINDeregAttachmentsTitleOne" xml:space="preserve">
-    <value> يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات</value>
+    <value>1. يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات.</value>
   </data>
   <data name="TINDeregAttachmentsTitleTwo" xml:space="preserve">
-    <value> تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من. 1MB.
- الاعدادات الموصى بها للماسح الضوئي هي: 1024 * 745
- الرجاء إرفاق ملف من الامتدادت التالية فقط DOC, DOCX, XLS, XLSX, PDF, JPG
-        </value>
+    <value>1. يجب ان لايتعدى عدد المرفقات لعملية تقديم الإقرار / او التعديل على الإقرار عن 5 مرفقات.
+2. تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من. 1MB
+3. الاعدادات الموصى بها للماسح الضوئي هي: 1024 * 745
+4. الرجاء إرفاق ملف من الامتدادت التالية فقط DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>
@@ -4711,22 +4725,22 @@
     <value>أتعهد بأني مصرح لإكمال هذا النموذج للشخص الخاضع للضريبة وجميع المعلومات صحيحة</value>
   </data>
   <data name="VatDeregistrationofVATReason1" xml:space="preserve">
-    <value>Total value of VAT eligible supplies falls below mandatory registration threshold (&lt;375,000 SAR)</value>
+    <value>إجمالي التوريدات الخاضعة لضريبة القيمة المضافة أقل من الحد الإلزامي 375,000 ريال سعودي</value>
   </data>
   <data name="VatDeregistrationofVATReason2" xml:space="preserve">
-    <value>Others (please specify)</value>
+    <value>أخرى – الرجاء التحديد</value>
   </data>
   <data name="VatDeregistrationofReturnReason1" xml:space="preserve">
-    <value>Temporary suspension of economic activities due to accidents , catastrophes or other external events </value>
+    <value>التعليق المؤقت للأنشطة الاقتصادية بسبب الحوادث أو الكوارث أو الأحداث الخارجية الأخرى</value>
   </data>
   <data name="VatDeregistrationofReturnReason2" xml:space="preserve">
-    <value>Business Seasonality</value>
+    <value>الأعمال الموسمية</value>
   </data>
   <data name="VatDeregistrationofReturnReason3" xml:space="preserve">
-    <value>Legal orders for temporary suspension of economic activities</value>
+    <value>أوامر قانونية للتعليق المؤقت للأنشطة الاقتصادية</value>
   </data>
   <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
-    <value>خرى – الرجاء التحديد</value>
+   <value>أخرى – الرجاء التحديد</value>
   </data>
   <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
     <value>رقم الطلب</value>
@@ -4820,7 +4834,7 @@
     <value>قم بالاختيار واكمل التفاصيل المطلوبة</value>
   </data>
   <data name="NDTypeyourIDNumber" xml:space="preserve">
-    <value>ادخل رقم الهوية</value>
+    <value>الرجاء إدخال رقم الهوية</value>
   </data>
   <data name="NDUsername" xml:space="preserve">
     <value>اسم المستخدم</value>
@@ -6262,7 +6276,7 @@
     <value>المرفقات - نسخة من عقد الإيجار</value>
   </data>
   <data name="ESTChooseLegalEntityBelowTitleLabel" xml:space="preserve">
-    <value>(اختيار حالة الكيان القانوني (لغير السعودي</value>
+    <value> اختيار حالة الكيان القانوني (لغير السعودي)</value>
   </data>
   <data name="ESTOtherTaxableIncomeFromSourcesWithinTheKSA" xml:space="preserve">
     <value>الدخل الخاضع للضريبة من مصادر داخل المملكة العربية السعودية</value>
@@ -6865,7 +6879,10 @@
     <value>تفاصيل التقرير</value>
   </data>
   <data name="VRHelperText" xml:space="preserve">
-    <value>المستندات والأدلة المساندة: يرجى تزويدنا بالوثائق المساندة لدعم أسباب المراجعة الرجاء كتابة اسم المرفق في الخانه المخصصة لذلك قبل ارفاقه </value>
+    <value>المستندات والأدلة المساندة:
+يرجى تزويدنا بالوثائق المساندة لدعم أسباب المراجعة
+الرجاء كتابة اسم المرفق في الخانه المخصصة لذلك قبل ارفاقه
+</value>
   </data>
   <data name="VRAttachment" xml:space="preserve">
     <value>المرفقات</value>
@@ -7642,7 +7659,7 @@
     <value>الإدارة العامة - الرياض</value>
   </data>
   <data name="NDInternationalPhone" xml:space="preserve">
-    <value>لرقم الدولي</value>
+    <value>الرقم الدولي</value>
   </data>
   <data name="NDSocial" xml:space="preserve">
     <value>التواصل الإجتماعي</value>
@@ -7703,10 +7720,10 @@
     <value>تم استلام طلب الغاء الزكاة بنجاح</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
-    <value>هجري</value>
+    <value>ميلادي</value>
   </data>
   <data name="NDHijri" xml:space="preserve">
-    <value>ميلادي</value>
+    <value>هجري</value>
   </data>
   <data name="ZZZZViewRefund" xml:space="preserve">
     <value>عرض بيانات الاسترداد</value>
@@ -7847,7 +7864,7 @@
     <value>لا يمكن تحميل أكثر من 3 مرفقات</value>
   </data>
   <data name="NDFiles" xml:space="preserve">
-    <value>الملفات</value>
+    <value>صالة عرض</value>
   </data>
   <data name="NDCamera" xml:space="preserve">
     <value>الكاميرا</value>
@@ -8163,6 +8180,51 @@
     <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
-    <value />
+     <value>حجم الملف لا يزيد عن 10 ميجا</value>
+  </data>
+  <data name="PleaseEnterCorrectData" xml:space="preserve">
+  <value>الرجاء إدخال بيانات صحيحه</value>
+</data> 
+  <data name="ZVatCorrectionsfrompreviousperiod1" xml:space="preserve">
+    <value>تصحيحات على الفترات السابقة (بين ±  ريال)</value>
+  </data>
+  <data name="ZZZZNETdue" xml:space="preserve">
+    <value>(صافي الضريبة المستحقة (أو المستردة</value>
+  </data>
+  <data name="ZZZZNetVATDueFirst" xml:space="preserve">
+    <value>صافي الضريبة المستحقة</value>
+  </data>
+  <data name="ZZZZNetVatDueReclaimed" xml:space="preserve">
+    <value>(صافي الضريبة المستحقة (أو المستردة</value>
+  </data>
+  <data name="ZZZZNetVATDueSecond" xml:space="preserve">
+    <value>أو المستردة</value>
+  </data>
+  <data name="ZZZZVatDueForCurrentPeriod" xml:space="preserve">
+    <value>إجمالي ضريبة القيمة المضافة المستحقة عن الفترة الضريبية الحالية</value>
+  </data>
+  <data name="ZZZZVatFromPreviousPeriod" xml:space="preserve">
+    <value>ضريبة القيمة المضافة التي تم ترحيلها من الفترة/الفترات السابقة</value>
+  </data>
+  <data name="ZZZZVATOnPurchasesForSummarypage" xml:space="preserve">
+    <value>ضريبة القيمة المضافة على المشتريات</value>
+  </data>
+	<data name="OutletTypeField" xml:space="preserve">
+    <value>نوع الفرع</value>
+ </data>
+<data name="MainOutlet" xml:space="preserve">
+    <value>الفرع الرئيسي</value>
+ </data>
+<data name="SubOutlet" xml:space="preserve">
+    <value>الفرع</value>
+ </data>
+<data name="SelectOutletType" xml:space="preserve">
+    <value>اختار نوع الفرع</value>
+ </data>
+<data name="SelectOutletTypeError" xml:space="preserve">
+    <value>الفرع الرئيسي موجود بالفعل ، يرجى اختيار فرع فرعي</value>
+ </data>
+ <data name="ESTValidateOutletType" xml:space="preserve">
+    <value>الرجاء إرسال النوع</value>
   </data>
 </root>

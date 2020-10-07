@@ -39,19 +39,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
 
-            
+
             MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
             {
                 outletDecisionOptionsListView.SelectedItem = x;
 
             });
-            Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
-            {
-                if (arg != null)
-                {
-                    viewModel.PopulateAttachments(arg.results);
-                }
-            });
+            //Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            //{
+            //    if (arg != null)
+            //    {
+            //        viewModel.PopulateAttachments(arg.results);
+            //    }
+            //});
 
             SetDatePickerFont();
             SetDateOfBirthPickerFont();
@@ -117,7 +117,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg != null)
                 {
                     viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
-                    viewModel.PopulateAttachments(arg.results);
+                    viewModel.PopulateAttachmentsListViewTemplate();
 
                     foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
                     {
@@ -184,7 +184,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
 
-                    if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationNationalID || viewModel.SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                     {
                         if (!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
                         {
@@ -318,7 +318,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     {
                         if (viewModel.TinDeregistrationData.ADecTelNo.Length < 9)
                         {
-                           // popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                            // popUp.Message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
                             Messages.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                         }
                         if (Messages.Length > 0)
@@ -336,11 +336,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             }
 
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                           
+
                         }
                     }
                 }
-              
+
 
             }
 
@@ -566,6 +566,166 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.FrameIDError = false;
             }
         }
+        private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (DpDbo.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void HijriCal2Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri2.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (DpDbo2.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void HijriCal3Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsHijriCal)
+                {
+                    if (DpDboHijri3.SelectedItem != null)
+                    {
+                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
+                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+
+                }
+                else
+                {
+                    if (DpDbo3.SelectedItem != null)
+                    {
+                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
+                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+                    }
+                    else
+                    {
+                        viewModel.PkrDBO = string.Empty;
+                        viewModel.PickerDobToDisplay = string.Empty;
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
         private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.PkrDBO))
@@ -593,7 +753,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 DpDboHijri.IsOpen = true;
             }
         }
-        
+
         private void OnIDDOBClicked(object sender, EventArgs e)
         {
             if (!viewModel.IsDOBHijriCal)
@@ -607,6 +767,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void DpDbo_Closed(object sender, EventArgs e)
         {
+            bool isHIjri;
+            DateTime deregDate;
             try
             {
                 if (viewModel.IsHijriCal)
@@ -619,8 +781,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
 
                     }
+                    isHIjri = true;
                 }
                 else
                 {
@@ -632,19 +796,37 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
+
 
                     }
+                    isHIjri = false;
                 }
 
                 List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(viewModel.TinDeregistrationData.PermitSet.Results);
                 string sortedDate = string.Empty;
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
-                    sortedDate  = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
+                    sortedDate = allPermitTypes.OrderBy(x => x.APermitValfrDtHTb).Select(x => x.APermitValfrDtHTb).FirstOrDefault();
 
                 }
-                DateTime permitDate = Convert.ToDateTime(sortedDate);
-                DateTime deregDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+                string convertedSortedDate = UtilityManager.HijriToGreg(sortedDate);
+                DateTime permitDate = Convert.ToDateTime(convertedSortedDate);
+
+                if (isHIjri)
+                {
+                    string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
+                    deregDate = Convert.ToDateTime(convertedDeregDate);
+
+                }
+                else
+                {
+                    deregDate = Convert.ToDateTime(viewModel.PkrDBO);
+
+
+                }
+
 
                 if (deregDate < permitDate)
                 {
@@ -672,7 +854,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
-                        viewModel.SelectedDob= day + "/" + month + "/" + year;
+                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+                        viewModel.ValidateIDNumber();
+
                     }
                 }
                 else
@@ -686,7 +870,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.PickerDOBDateDisplay = day + "/" + month + "/" + year;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
-
+                        viewModel.ValidateIDNumber();
 
                     }
                 }
@@ -698,6 +882,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
         }
+
 
         private void DpDOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -739,7 +924,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //{
             //}
         }
-    
+
         void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -759,7 +944,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                     else
                     {
-                        Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                        Messages.Append(" " + AppResources.ZZTINnumberlengthcannotbelessthan10digits);
                     }
                 }
                 if (Messages.Length > 0)
@@ -789,7 +974,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else
             {
                 viewModel.FrameTinError = true;
-                Messages.Append(AppResources.AccountUnlockedCompleteRequiedFields);
+                Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
 
                 popUp.Message = Messages.ToString();
                 popUp.IsLinkAvailable = false;
@@ -807,7 +992,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
-          
+
         }
         private void DOBDatePicker_Unfocused(object sender, FocusEventArgs e)
         {
@@ -996,7 +1181,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             DpDbo2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                             DpDbo2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
                         }
-                    break;
+                        break;
                 }
             }
             catch (Exception ex)
@@ -1183,6 +1368,114 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.outletEditIsVisible = false;
 
 
+            }
+        }
+
+        private void attachmentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            viewModel.SelectedAttachment = e.SelectedItem as TinDeregestrationAttachmentsModel;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+            viewModel.NewAttachmentClicked();
+            var view = sender as SfListView;
+            view.SelectedItem = null;
+        }
+
+        private void EditOutlet_Tapped(object sender, TappedEventArgs e)
+        {
+            try
+            {
+
+                OutletSetResult selectedOutlet = (OutletSetResult)(e as TappedEventArgs).Parameter;
+                if (viewModel.TinDeregistrationData.ADregOpt == "3")
+                {
+                    viewModel.outletEditIsVisible = true;
+                    selectedItem = selectedOutlet;
+                    viewModel.SelectedOutletForCloseTranser = selectedItem;
+                    viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+
+                    viewModel.AddPermitOutletDecisionOptions();
+                    viewModel.AddPopUpPage();
+                    var view = sender as SfListView;
+                    view.SelectedItem = null;
+                }
+                else
+                {
+                    viewModel.outletEditIsVisible = false;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void AddAttachment_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                TinDeregestrationAttachmentsModel selectedOutlet = (TinDeregestrationAttachmentsModel)(e as TappedEventArgs).Parameter;
+                viewModel.SelectedAttachment = selectedOutlet;
+                viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+                viewModel.NewAttachmentClicked();
+            }
+            catch (Exception ex)
+            {
+
+                return;
+            }
+        }
+
+        private void DeleteAttachment_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                Attachment selectedOutlet = (Attachment)(e as TappedEventArgs).Parameter;
+                var list = viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Any(q => q.Filename == selectedOutlet.Filename)).Select(f => f.AttachmentTypeList).FirstOrDefault();
+                list.Remove(selectedOutlet);
+                list = new List<Attachment>(list);
+
+                //viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Contains(selectedOutlet)).Select(q => q.AttachmentTypeList).FirstOrDefault() = list;
+                //viewModel.AttachmentTypeList = viewModel.AttachmentTypeList;
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+       private void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                StackLayout lblClicked = (StackLayout)sender;
+                var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
+                var id = item.CommandParameter;
+
+                OutletSetResult selectedOutlet = (OutletSetResult)lblClicked.BindingContext; //(OutletSetResult)(e as TappedEventArgs).Parameter;
+                if (viewModel.TinDeregistrationData.ADregOpt == "3")
+                {
+                    viewModel.outletEditIsVisible = true;
+                    selectedItem = selectedOutlet;
+                    viewModel.SelectedOutletForCloseTranser = selectedItem;
+                    viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+
+                    viewModel.AddPermitOutletDecisionOptions();
+                    viewModel.AddPopUpPage();
+                    var view = sender as SfListView;
+                    view.SelectedItem = null;
+                }
+                else
+                {
+                    viewModel.outletEditIsVisible = false;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

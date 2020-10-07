@@ -13,15 +13,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     {
         ZakatRegistrationDetailsListPageViewModel viewModel;
 
-        
-
         public ZakatRegistrationDetailsListPageView()
         {
             InitializeComponent();
+            SetLTR();
 
             viewModel = App.Locator.ZakatRegistrationDetailsListPageView;
             ChangeAeroIcon();
-            SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
@@ -29,7 +27,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+            viewModel.PopulateZakatRegListData();
+            ChangeArrowDirection();
         }
 
         private void SetLTR()
@@ -43,6 +42,28 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
 
         public void ChangeAeroIcon()
         {
@@ -65,15 +86,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 if (selectedItem.ZDTitle == AppResources.ZZTaxPayerDetails)
                 {
-                    
+                    viewModel._navigationService.NavigateTo(App.ZakatRegistrationTaxPayerDetails);
                 }
-                else if(selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
+                else if (selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
                 {
-
+                    viewModel._navigationService.NavigateTo(App.ZakatRegistrationOutletsDetails);
                 }
-                else if(selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
+                else if (selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
                 {
-
+                    viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
+                }
+                else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.TPUpdate)
+                {
+                    App.ZAKATType = ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend ? Enums.PageExecutionType.Amend : Enums.PageExecutionType.Update;
+                    viewModel.ZAKATAmendOrUpdateClicked();
                 }
                 else
                 {
@@ -88,7 +114,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

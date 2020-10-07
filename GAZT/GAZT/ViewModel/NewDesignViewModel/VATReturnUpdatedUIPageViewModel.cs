@@ -622,6 +622,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public string _carriedValueStringNew;
+        public string CarriedValueStringNew
+        {
+            get
+            {
+                return _carriedValueStringNew;
+            }
+            set
+            {
+                _carriedValueStringNew = value;
+                RaisePropertyChanged("CarriedValueStringNew");
+            }
+        }
+
+
+        public bool _IsCarriedForwandReviewMessage;
+        public bool IsCarriedForwandReviewMessage
+        {
+            get
+            {
+                return _IsCarriedForwandReviewMessage;
+            }
+            set
+            {
+                _IsCarriedForwandReviewMessage = value;
+                RaisePropertyChanged("IsCarriedForwandReviewMessage");
+            }
+        }
+
         private bool _isDeclarationCheckedForInstruction = false;
         public bool IsDeclarationCheckedForInstruction
         {
@@ -2131,7 +2160,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                                     HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                                     NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-
+                                    headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
                                     headerAmountInfo.IsLinkAvailable = false;
                                     headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
 
@@ -3310,10 +3339,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (App.IsArabic)
                             {
                                 CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", CorrectionPeriodAmount + " ± ");
+                                CarriedValueStringNew= AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", CorrectionPeriodAmount + " ± ");
                             }
                             else
                             {
                                 CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", " ± " + CorrectionPeriodAmount);
+                                CarriedValueStringNew= AppResources.ZVatCorrectionsfrompreviousperiod1.Replace("±", " ± " + CorrectionPeriodAmount);
                             }
                         }
                     }
@@ -3753,37 +3784,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
 
-                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                        headerAmountInfo.IsLinkAvailable = false;
+                        //List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        //HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        //NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        //headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        //headerAmountInfo.IsLinkAvailable = false;
 
-                        StringBuilder Masseges = new StringBuilder();
-                        Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
-                        Masseges.Append(Environment.NewLine);
-                        Masseges.Append(Environment.NewLine);
-                        Masseges.Append(Environment.NewLine);
-                        Masseges.Append(AppResources.CreditReturnMsg);
-                      //  PopUp Pop = new PopUp();
-                        headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.IsRed = "#ff0000";
-                        headerAmountInfo.IsBold = "Bold";
-                        headerAmountInfo.Message = Masseges.ToString();
+                        //StringBuilder Masseges = new StringBuilder();
+                        //Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                        //Masseges.Append(Environment.NewLine);
+                        //Masseges.Append(Environment.NewLine);
+                        //Masseges.Append(Environment.NewLine);
+                        //Masseges.Append(AppResources.CreditReturnMsg);
+                        //headerAmountInfo.IsLinkAvailable = false;
+                        //headerAmountInfo.IsRed = "#ff0000";
+                        //headerAmountInfo.IsBold = "Bold";
+                        //headerAmountInfo.Message = Masseges.ToString();
 
-                        headerWithInfos.Add(headerAmountInfo);
+                        //headerWithInfos.Add(headerAmountInfo);
 
 
-                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                        //newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        //newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        //newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        //PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         result = true;
-                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                        //SelectedIndex = 2;
-                        //PageSelectedItem = VatTabbledPageList[2];
+                       
                     }
                     else
                     {

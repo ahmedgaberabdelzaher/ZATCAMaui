@@ -21,6 +21,8 @@ namespace EGAZT.Models.AccountStatements
     {
         public string TemplateType { get; set; }
         public string Text { get; set; }
+        public string StatementFilter { get; set; }
+
         public ImageSource ImageSource { get; set; }
     }
 
@@ -198,16 +200,22 @@ namespace EGAZT.Models.AccountStatements
         public string Betrh { get; set; }
 
         [JsonProperty("Bldat")]
-        public string Bldat { get; set; }
+        public DateTime Bldat { get; set; }
 
         [JsonProperty("Bldat2")]
-        public string Bldat2 { get; set; }
+        public DateTime Bldat2 { get; set; }
 
         [JsonProperty("Faedn")]
         public object Faedn { get; set; }
 
         [JsonProperty("PeriodEndDt")]
-        public string PeriodEndDt { get; set; }
+        public DateTime PeriodEndDt { get; set; }
+
+        public bool IsTotalBalanceVisile { get; set; }
+
+        public string OpeningBalance { get; set; }
+        public string ClosingBalance { get; set; }
+        public string TotalBalance { get; set; }
     }
 
     public partial class ASYearValuesHeader
@@ -247,5 +255,12 @@ namespace EGAZT.Models.AccountStatements
 
         [JsonProperty("Fguid")]
         public string Fguid { get; set; }
+    }
+
+    public class ASFilters
+    {
+        public string FilterHeader { get; set; }
+        public string SortAscending { get; set; }
+        public string SortDescending { get; set; }
     }
 }

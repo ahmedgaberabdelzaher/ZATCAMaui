@@ -637,7 +637,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                         }
                                         else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
                                         {
-                                            if (fileSize <= 1)
+                                            if (fileSize <= 10)
                                             {
                                                 if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                                 {
@@ -748,7 +748,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                 {
                                                     IsLoading = false;
                                                 });
+
                                                 await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan10MB, AppResources.Information);
+
                                             }
                                         }
                                         else { 

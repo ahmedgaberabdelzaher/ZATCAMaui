@@ -54,6 +54,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("TinStatusLabelText");
             }
         }
+        private string _ResidenceText;
+        public string ResidenceText 
+        {
+            get
+            {
+                return _ResidenceText;
+            }
+            set
+            {
+                _ResidenceText = value;
+                RaisePropertyChanged("ResidenceText");
+            }
+        }
         private string _TPProfileNameLbl;
         public string TPProfileNameLbl
         {

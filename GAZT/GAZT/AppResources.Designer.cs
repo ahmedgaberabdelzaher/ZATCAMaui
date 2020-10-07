@@ -7518,6 +7518,36 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationSurName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationSurName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationNationalID {
+            get {
+                return ResourceManager.GetString("TinDeregistrationNationalID", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationCompanyID {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCompanyID", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationGCCID {
+            get {
+                return ResourceManager.GetString("TinDeregistrationGCCID", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationIQAMANumber {
+            get {
+                return ResourceManager.GetString("TinDeregistrationIQAMANumber", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationName1 {
             get {
                 return ResourceManager.GetString("TinDeregistrationName1", resourceCulture);
@@ -14565,6 +14595,102 @@ namespace EGAZT {
         public static string ZFilesizeshouldnotbemorethan10MB {
             get {
                 return ResourceManager.GetString("ZFilesizeshouldnotbemorethan10MB", resourceCulture);
+            }
+        }
+        
+        public static string PleaseEnterCorrectData {
+            get {
+                return ResourceManager.GetString("PleaseEnterCorrectData", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementDashboardTileText {
+            get {
+                return ResourceManager.GetString("ASAccountStatementDashboardTileText", resourceCulture);
+            }
+        }
+        
+        public static string OutletTypeField {
+            get {
+                return ResourceManager.GetString("OutletTypeField", resourceCulture);
+            }
+        }
+        
+        public static string MainOutlet {
+            get {
+                return ResourceManager.GetString("MainOutlet", resourceCulture);
+            }
+        }
+        
+        public static string SubOutlet {
+            get {
+                return ResourceManager.GetString("SubOutlet", resourceCulture);
+            }
+        }
+        
+        public static string SelectOutletType {
+            get {
+                return ResourceManager.GetString("SelectOutletType", resourceCulture);
+            }
+        }
+        
+        public static string SelectOutletTypeError {
+            get {
+                return ResourceManager.GetString("SelectOutletTypeError", resourceCulture);
+            }
+        }
+        
+        public static string ESTValidateOutletType {
+            get {
+                return ResourceManager.GetString("ESTValidateOutletType", resourceCulture);
+            }
+        }
+        
+        public static string ZVatCorrectionsfrompreviousperiod1 {
+            get {
+                return ResourceManager.GetString("ZVatCorrectionsfrompreviousperiod1", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZNETdue {
+            get {
+                return ResourceManager.GetString("ZZZZNETdue", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZNetVATDueFirst {
+            get {
+                return ResourceManager.GetString("ZZZZNetVATDueFirst", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZNetVatDueReclaimed {
+            get {
+                return ResourceManager.GetString("ZZZZNetVatDueReclaimed", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZNetVATDueSecond {
+            get {
+                return ResourceManager.GetString("ZZZZNetVATDueSecond", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVatDueForCurrentPeriod {
+            get {
+                return ResourceManager.GetString("ZZZZVatDueForCurrentPeriod", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVatFromPreviousPeriod {
+            get {
+                return ResourceManager.GetString("ZZZZVatFromPreviousPeriod", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATOnPurchasesForSummarypage {
+            get {
+                return ResourceManager.GetString("ZZZZVATOnPurchasesForSummarypage", resourceCulture);
             }
         }
     }

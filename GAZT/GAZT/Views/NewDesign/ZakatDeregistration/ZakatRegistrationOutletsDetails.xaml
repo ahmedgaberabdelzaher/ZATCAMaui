@@ -8,7 +8,15 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:local="clr-namespace:EGAZT.Helper"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
-        <ContentPage.ControlTemplate>
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid BackgroundColor="Transparent">
                 <Grid>
@@ -18,12 +26,11 @@
                     </Grid.RowDefinitions>
                     <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,0,0,0" x:Name="VATRMainGrid">
+                    Padding="0,0,0,0" x:Name="VATRMainGrid">
 
                             <Grid.RowDefinitions>
                                 <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
-                                
                             </Grid.RowDefinitions>
                             <ContentPresenter VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
@@ -31,109 +38,117 @@
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
+                    <Grid Padding="0,10,0,10" Grid.Row="0" Margin="8,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
 
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                        <Image Grid.Row="0" Grid.Column="0" Rotation="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
                 </Grid>
-
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-                      <Grid IsVisible="{Binding IsOutletViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0"
-                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid IsVisible="true" BackgroundColor="Transparent"  Margin="20,10,20,0"
+    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50*"/>
+        <ColumnDefinition Width="50*"/>
+    </Grid.ColumnDefinitions>
+    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1"/>
+        </Grid.RowDefinitions>
+                      
+        <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding OutletData}" x:Name="outletsListView" HorizontalOptions="Center"
+                                IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                SelectionMode="Single" SelectionBackgroundColor="Transparent" >
+        <listView:SfListView.ItemTemplate>
+            <DataTemplate>
+                <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Padding="0">
+                    <Grid Padding="15" RowSpacing="0" >
                         <Grid.RowDefinitions>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="1"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletDetails}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletReviewMessage}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
-                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
 
-                        
-                        <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding AllOutlets}" x:Name="outletsListView" HorizontalOptions="Center"
-                                             IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="Single" SelectionBackgroundColor="Transparent" >
-                        <listView:SfListView.ItemTemplate>
-                            <DataTemplate>
-                                <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout Padding="0">
-                                    <Grid Padding="15" RowSpacing="0" >
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
-                                            <ColumnDefinition Width="auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Center" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                       HasShadow="False">
-                                        </Frame> 
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
-                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="{Binding  AOutletNameTb}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                        </StackLayout>
-                                    </Grid>
-
-                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                                    <Grid Padding="10" RowSpacing="8">
-                                        <Grid.RowDefinitions >
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                        </StackLayout>
-                                        <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                            <Label Text="{Binding AOutletNoTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                        </StackLayout>
-                                         <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ESTOutletCity}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                        </StackLayout>
-                                        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                            <Label Text="{Binding AOutletNameTb}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                        </StackLayout>
-                                         <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ESTAddCRAndOrLicenseDetails}"  Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                        </StackLayout>
-                                        <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
-                                            <Label Text="{Binding AOutletCompAddr}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                        </StackLayout>
-                                       
-                                    </Grid>
-                                </StackLayout>
-                        </border:SfBorder >
-
-			                </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                        </listView:SfListView>
-
-                        
+                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Center" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                        HasShadow="False">
+                        </Frame> 
+                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                            <Label Text="{Binding Actnm}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                        </StackLayout>
                     </Grid>
-          
-               </Grid>
 
+                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                    <Grid Padding="10" RowSpacing="8">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                            <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                            <Label Text="{Binding Actno}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                        </StackLayout>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                            <Label Text="{x:Static ResourceManager:AppResources.ESTOutletCity}"  Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
+                            <Label Text="{Binding City1}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                        </StackLayout>
+                            <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                            <Label Text="{x:Static ResourceManager:AppResources.ESTAddCRAndOrLicenseDetails}"  Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
+                            <Label Text="{Binding Crlicenceno}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                        </StackLayout>
+                                       
+                    </Grid>
+                </StackLayout>
+        </border:SfBorder >
+
+			</DataTemplate>
+        </listView:SfListView.ItemTemplate>
+        </listView:SfListView>
+
+                        
+    </Grid>
+          
+</Grid>
     </ContentPage.Content>
 </ContentPage>

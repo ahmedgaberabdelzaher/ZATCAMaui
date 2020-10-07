@@ -47,6 +47,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsCheckedTaxPayerDetailsInfo = false;
                     viewModel.IsRefundButtonEnabled = true;
                     viewModel.IsNavigatedToSubmitted = false;
+                    viewModel.IsCarriedForwandReviewMessage = false;
                     viewModel.RefundButtonText = AppResources.ZZZZConfirmAndRefundRequest;
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                  
@@ -571,6 +572,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         }
                         else if(arg == AppResources.ZZZRefundEnableMessage)
                         {
+                            viewModel.IsCarriedForwandReviewMessage = false;
                             await PopupNavigation.Instance.PopAsync();
                             viewModel.SetDataForRefundPopup();
                             PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(viewModel.VATDeclarationData));
@@ -8462,7 +8464,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                newDesignPopUp.MainHeader = AppResources.ZZZZNetVAT;
+                newDesignPopUp.MainHeader = AppResources.ZVatNetdue;
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
@@ -8552,15 +8554,75 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             {
                                 if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
                                 {
-                                    Device.BeginInvokeOnMainThread(() =>
+                                if (viewModel.IsCarriedForwandReviewMessage == false)
+                                {
+                                    viewModel.IsCarriedForwandReviewMessage = true;
+                                    decimal FourteenA = 0;
+                                    if (!string.IsNullOrEmpty(viewModel.TotaldueVat) && !string.IsNullOrEmpty(viewModel.Preperiodcorr))
                                     {
-                                        viewModel.IsNewLoading = true;
-                                    });
-                                    await viewModel.SubmitClicked();
-                                    Device.BeginInvokeOnMainThread(() =>
+                                        FourteenA = Convert.ToDecimal(viewModel.TotaldueVat) + Convert.ToDecimal(viewModel.Preperiodcorr);
+                                    }
+                                    if ((viewModel.IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(viewModel.NetdueVat) < 0) || (viewModel.IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(viewModel.CreditVat) > 0))
                                     {
-                                        viewModel.IsNewLoading = false;
-                                    });
+
+
+                                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                        headerAmountInfo.IsLinkAvailable = false;
+
+                                        StringBuilder Masseges = new StringBuilder();
+                                        Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                                        Masseges.Append(Environment.NewLine);
+                                        Masseges.Append(Environment.NewLine);
+                                        Masseges.Append(Environment.NewLine);
+                                        Masseges.Append(AppResources.CreditReturnMsg);
+                                        //  PopUp Pop = new PopUp();
+                                        headerAmountInfo.IsLinkAvailable = false;
+                                        headerAmountInfo.IsRed = "#ff0000";
+                                        headerAmountInfo.IsBold = "Bold";
+                                        headerAmountInfo.Message = Masseges.ToString();
+
+                                        headerWithInfos.Add(headerAmountInfo);
+
+
+                                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                        //SelectedIndex = 2;
+                                        //PageSelectedItem = VatTabbledPageList[2];
+                                    }
+                                    else
+                                    {
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            viewModel.IsNewLoading = true;
+                                        });
+                                        await viewModel.SubmitClicked();
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            viewModel.IsNewLoading = false;
+                                        });
+                                    }
+
+                                }
+                                else
+                                {
+                                        Device.BeginInvokeOnMainThread(() =>
+                                            {
+                                                viewModel.IsNewLoading = true;
+                                            });
+                                        await viewModel.SubmitClicked();
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            viewModel.IsNewLoading = false;
+                                        });
+                                   }
                                 }
                             }
                         }

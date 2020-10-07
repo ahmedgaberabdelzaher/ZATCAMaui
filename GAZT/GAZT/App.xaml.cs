@@ -64,7 +64,9 @@ namespace EGAZT
         public static string PickerPageView = "PickerPageView";
         public static string ZakatRegistrationDetailsListPageView = "ZakatRegistrationDetailsListPageView";
         public static string TINDeregistrationCloseIndividualOutletsPageView = "TINDeregistrationCloseIndividualOutletsPageView";
-
+        public static string ZakatRegistrationOutletsDetails = "ZakatRegistrationOutletsDetails";
+        public static string ZakatRegistrationFinancialDetails = "ZakatRegistrationFinancialDetails";
+        public static string ZakatRegistrationTaxPayerDetails = "ZakatRegistrationTaxPayerDetails";
 
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
@@ -76,10 +78,13 @@ namespace EGAZT
         public static string DashboardAnonymousMenuPageView = "DashboardAnonymousMenuPageView";
         //*EST
         public static string ActivityItemPage = nameof(ActivityItemPage);
+        public static string ActivityItemAmendUpdatePage = nameof(ActivityItemAmendUpdatePage);
         public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
         public static string EstablishmentAmendUpdatePage = nameof(EstablishmentAmendUpdatePageView);
         public static string OutletDetailsPageView = nameof(OutletDetailsPageView);
+        public static string OutletDetailsAmendUpdatePageView = nameof(OutletDetailsAmendUpdatePageView);
         public static string RegistrationSuccessfulPage = nameof(RegistrationSuccessfulPage);
+        public static string EstablishmentAmendUpdateSuccessfulPage = nameof(EstablishmentAmendUpdateSuccessfulPage);
         //*End EST
 
         //test
@@ -241,16 +246,16 @@ namespace EGAZT
         public static string QuickActionPopUpPageView = "QuickActionPopUpPageView";
 
         public static string AccountStatementsPageView = "AccountStatementsPageView";
+        public static string AccountStatementsFiltersPageView = "AccountStatementsFiltersPageView";
 
+        //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
 
         //VATRefundsListPageView
         #endregion
 
-        //public static Enums.PageExecutionType VATType { get; set; }
-        //public static Enums.PageExecutionType ZAKATType { get; set; }
-        public static Enums.VATRegDetailsExecutionType VATType { get; set; }
-        public static Enums.VATRegDetailsExecutionType ZAKATType { get; set; }
+        public static Enums.PageExecutionType VATType { get; set; }
+        public static Enums.PageExecutionType ZAKATType { get; set; }
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
@@ -291,6 +296,9 @@ namespace EGAZT
         //HttpClientHandlerForSSL Certificate Issue
         public static string IncomingChannel = string.Empty;
         public static bool DoesLoginNeedToBeRefreshed;
+
+        //in Seconds
+        public static int IdleTimeToLogout = 100;
 
         public static bool IsLoginPageRefreshed;
         private INavigationService _navigationService;
@@ -729,7 +737,7 @@ namespace EGAZT
 
             if (topPage.GetType().Name == App.SFLoginPageView)
             {
-                return true;
+                return true;    
             }
 
             return false;
@@ -913,6 +921,19 @@ namespace EGAZT
             });
         }
 
-
+        //rohith-login
+        //public static void HandleSessionTimeout()
+        //{
+        //    if (App.IsLoginPageVisible() == true)
+        //    {
+        //        App.IsLoginPageRefreshed = true;
+        //        MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+        //    }
+        //    else
+        //    {
+        //        App.DoesLoginNeedToBeRefreshed = true;
+        //        MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+        //    }
+        //}
     }
 }
