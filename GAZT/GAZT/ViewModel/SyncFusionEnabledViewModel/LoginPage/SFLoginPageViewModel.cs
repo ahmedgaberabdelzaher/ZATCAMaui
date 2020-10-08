@@ -876,6 +876,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
                 App.TP.Userid = TPProfile.Tin;
+                try
+                {
+                    if (App.LoginDataRetrieved != null)
+                    {
+                        if (App.TP != null)
+                        {
+                            App.TP.NameFirst = App.LoginDataRetrieved.NameFirst;
+                            App.TP.NameLast = App.LoginDataRetrieved.NameLast;
+                            App.TP.NameOrg1 = App.LoginDataRetrieved.NameOrg1;
+                            App.TP.TypeChk = App.LoginDataRetrieved.TypeChk;
+                        }
+                        
+                    }
+                    
+                }
+                catch
+                {
+
+                }
+
             }
 
             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
@@ -984,6 +1004,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
                 App.TP.Userid = App.LoginDataRetrieved.TIN;
+                try
+                {
+                    if (App.LoginDataRetrieved != null)
+                    {
+                        if (App.TP != null)
+                        {
+                            App.TP.NameFirst = App.LoginDataRetrieved.NameFirst;
+                            App.TP.NameLast = App.LoginDataRetrieved.NameLast;
+                            App.TP.NameOrg1 = App.LoginDataRetrieved.NameOrg1;
+                            App.TP.TypeChk = App.LoginDataRetrieved.TypeChk;
+                        }
+
+                    }
+
+                }
+                catch
+                {
+
+                }
             }
 
             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
