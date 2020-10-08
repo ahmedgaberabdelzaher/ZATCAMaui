@@ -96,6 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {"90729", "Saudi Council of Engineers" },
             {"90721", "Municipality" },
             {"90724", "Ministry of Petroleum and Mineral Resources" },
+            {"90740", "General Sports Authority" },
             {"90718", "Other" }
         };
         private Dictionary<string, string> ArIssueBy = new Dictionary<string, string>()
