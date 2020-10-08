@@ -2150,8 +2150,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            //  viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                            // viewModel.DOB = vATSignUpData.d.Birthdt10;
+                            viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
@@ -2164,8 +2163,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
                             }
 
-                            //  EntryName.IsEnabled = false;
-                            //FrmIDNumber.HasError = false;
+                            FrmFirstName.IsEnabled = false;
+                            FrmLastName.IsEnabled = false;
+                            FrmEmailAddress.IsEnabled = false;
+                            FrmPhoneNumber.IsEnabled = false;
+                            viewModel.FrameIDError = false;
                             viewModel.FrameIDError = false;
                         }
                     }
@@ -2292,15 +2294,18 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-
+                            viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                             viewModel.SmtpAddrFR = vATSignUpData.d.Email;
-                            //  EntryName.IsEnabled = false;
-                            //FrmIDNumber.HasError = false;
+                            FrmFirstName.IsEnabled = false;
+                            FrmLastName.IsEnabled = false;
+                            FrmEmailAddress.IsEnabled = false;
+                            FrmPhoneNumber.IsEnabled = false;
+                            viewModel.FrameIDError = false;
                             viewModel.FrameIDError = false;
                         }
                     }
@@ -3257,8 +3262,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string year = selectedItem[2].ToString();
                 viewModel.DOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
-                //viewModel.DOBPrev = viewModel.DOB;
-
+                if (string.IsNullOrEmpty(viewModel.DOB))
+                {
+                    viewModel.FrameDOBError = true;
+                }
+                else
+                {
+                    viewModel.FrameDOBError = false;
+                }
 
                 ValidateIDNumber();
             }

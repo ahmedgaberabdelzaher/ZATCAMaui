@@ -2448,7 +2448,6 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 								x:Name="SignUpDOB"
                           
                              OKButtonTextColor="#006450" 
-                                SelectionChanged="DOB_OkButtonClicked"
                                              CancelButtonTextColor="#006450"
                            Closed="SignUpDOB_Closed"
                             SelectedItem="{Binding TodayDate}"
