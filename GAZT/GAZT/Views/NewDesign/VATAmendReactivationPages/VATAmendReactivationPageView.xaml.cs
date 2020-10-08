@@ -4558,8 +4558,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
-            //viewModel.IsTaxPayerEligDateEnabled = ((CheckBox)sender).IsChecked;
+                viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
         }
 
         private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)

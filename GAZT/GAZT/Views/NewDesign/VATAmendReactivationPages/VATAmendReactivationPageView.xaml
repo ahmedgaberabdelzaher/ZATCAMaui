@@ -637,7 +637,7 @@
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
                                                             </custom:CustomLabel>
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsEnabled="{Binding IsTaxPayerIBANEnabled}"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration} }"
                                             ContainerType="Outlined" x:Name="FrmEStartDate" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
