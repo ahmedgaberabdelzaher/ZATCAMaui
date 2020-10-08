@@ -18,9 +18,15 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
+public enum IsComingFromScreen
+{
+    VATAmendReactivation = 0
+}
+
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class NewAccountPopUpPageView : PopupPage
     {
         NewAccountPopUpPageViewModel viewModel;
@@ -39,12 +45,60 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             else
             {
-                viewModel.AccountText = AppResources.VATREditAccount;
-                viewModel.IbanPartOne= SAremovedIban.Substring(0, 2);
-                viewModel.IbanPartTwo = SAremovedIban.Substring(2, 8);
-                viewModel.IbanPartThree = SAremovedIban.Substring(9, 4);
-                viewModel.IbanPartFour = SAremovedIban.Substring(13,4);
-                viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
+                try
+                {
+                    viewModel.AccountText = AppResources.VATREditAccount;
+                    viewModel.IbanPartOne = SAremovedIban.Substring(0, 2);
+                    viewModel.IbanPartTwo = SAremovedIban.Substring(2, 8);
+                    viewModel.IbanPartThree = SAremovedIban.Substring(9, 4);
+                    viewModel.IbanPartFour = SAremovedIban.Substring(13, 4);
+                    viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
+                }
+                catch(Exception ex)
+                {
+
+                }
+              
+                //Bind Iban and remove name
+            }
+            SetLTR();
+        }
+
+        public NewAccountPopUpPageView(String Iban, IsComingFromScreen isComingFromScreen)
+        {
+            InitializeComponent();
+            viewModel = App.Locator.NewAccountPopUpPageView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
+            this.BindingContext = viewModel;
+            viewModel.IbanNumberText = Iban;
+            string SAremovedIban = Iban.Replace("SA", string.Empty);
+            if (string.IsNullOrEmpty(viewModel.IbanNumberText))
+            {
+                viewModel.AccountText = AppResources.ZTERNewAccount;
+
+                viewModel.IbanPartOne = string.Empty;
+                viewModel.IbanPartTwo = string.Empty;
+                viewModel.IbanPartThree = string.Empty;
+                viewModel.IbanPartFour = string.Empty;
+                viewModel.IbanPartFive = string.Empty;
+            }
+            else
+            {
+                try
+                {
+                    viewModel.AccountText = AppResources.VATREditAccount;
+                    viewModel.IbanPartOne = SAremovedIban.Substring(0, 2);
+                    viewModel.IbanPartTwo = SAremovedIban.Substring(2, 8);
+                    viewModel.IbanPartThree = SAremovedIban.Substring(9, 4);
+                    viewModel.IbanPartFour = SAremovedIban.Substring(13, 4);
+                    viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
                 //Bind Iban and remove name
             }
             SetLTR();

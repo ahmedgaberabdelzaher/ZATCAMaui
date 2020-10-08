@@ -177,7 +177,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private void NewAccount_Clicked(object sender, EventArgs e)
         {
             // viewModel.IsNewAccountClicked = true;
-            PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView(viewModel.VATRegistrationDetailsData.d.OptIban));
+            PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty, IsComingFromScreen.VATAmendReactivation));
         }
 
         public void triggerIban(string messagestring)
