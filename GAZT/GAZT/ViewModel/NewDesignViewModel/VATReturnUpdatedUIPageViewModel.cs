@@ -335,6 +335,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsSwichButtonEnable");
             }
         }
+        private bool _isRefundNoMsgDisplayed = false;
+        public bool IsRefundNoMsgDisplayed
+        {
+            get
+            {
+                return _isRefundNoMsgDisplayed;
+            }
+            set
+            {
+                _isRefundNoMsgDisplayed = value;
+                RaisePropertyChanged("IsRefundNoMsgDisplayed");
+            }
+        }
         private bool _isControlEnabledForEntry = false;
         public bool IsControlEnabledForEntry
         {
@@ -3195,7 +3208,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         IsRefundButtonVisible = true;
                     }
-                    else if (IsAmendClicked == true)
+                    else if (IsAmendClicked == true || VATDeclarationData.d.RefundFg != "1")
                     {
                         IsRefundButtonVisible = false;
                     }
@@ -3208,7 +3221,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             isBtnVisible = false;
                             IsMainButtonVisible = true;
-                            IsRefundButtonVisible = true;
+                            if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == true && VATDeclarationData.d.RefundFg != "1")
+                            {
+                                IsRefundButtonVisible = false;
+                            }
+                            else
+                            {
+                                IsRefundButtonVisible = true;
+                            }
                             ContinueText = AppResources.ZZZZConfirmAndCarryForward;
                         }
                         else

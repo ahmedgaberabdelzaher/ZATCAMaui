@@ -490,7 +490,7 @@
                                     <StackLayout Spacing="20" IsVisible="{Binding IfSignUpnNotRegInVATShowVATServie}" >
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="menu_return">
+                                            <Image Source="ic_VAT_service_w">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDVATServices}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -523,7 +523,7 @@
 
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_menu_cr">
+                                            <Image Source="ic_menu_cr_w">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -533,7 +533,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="ic_Application_Status.png">
+                                            <Image Source="ic_menu_Tax_check.png">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZFormBundleStatus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
@@ -544,7 +544,7 @@
                                     </StackLayout>
                                     <StackLayout Spacing="20" IsVisible="{Binding IsVatRegistrationTileVisible}" >
                                         <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Image Source="menu_return.png">
+                                            <Image Source="ic_VAT_reg_w.png">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDRegistertoVAT}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>

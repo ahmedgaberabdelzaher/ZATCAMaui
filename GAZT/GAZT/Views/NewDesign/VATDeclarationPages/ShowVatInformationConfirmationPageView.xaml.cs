@@ -18,22 +18,30 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         public ShowVatInformationConfirmationPageViewModel viewModel;
         public ShowVatInformationConfirmationPageView(NewDesignPopUp newDesignPopData)
         {
-            InitializeComponent();
-            viewModel = App.Locator.ShowVatInformationConfirmationPageView;
-            this.BindingContext = viewModel;
-            SetLTR();
-            if (newDesignPopData != null)
+            try
             {
-                viewModel.NewDesignPopUp = newDesignPopData;
-                viewModel.MainString = viewModel.NewDesignPopUp.MainHeader;
-                if (viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)
+                InitializeComponent();
+                viewModel = App.Locator.ShowVatInformationConfirmationPageView;
+                this.BindingContext = viewModel;
+                SetLTR();
+                this.CloseWhenBackgroundIsClicked = false;
+                if (newDesignPopData != null)
                 {
-                    viewModel.HeaderWithInfoList = viewModel.NewDesignPopUp.HeaderWithInfos;
-                    //LoadLink();
+                    viewModel.NewDesignPopUp = newDesignPopData;
+                    viewModel.MainString = viewModel.NewDesignPopUp.MainHeader;
+                    if (viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)
+                    {
+                        viewModel.HeaderWithInfoList = viewModel.NewDesignPopUp.HeaderWithInfos;
+                        //LoadLink();
+                    }
+
                 }
+                SetMargin();
+            }
+            catch(Exception ex)
+            {
 
             }
-            SetMargin();
         }
 
         private void SetLTR()
@@ -82,6 +90,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     {
                         MessagingCenter.Send<Object, string>(this, "YesReceived", AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost);
                     }
+                    var messageForYesRefundConfirmation = viewModel.HeaderWithInfoList.Where(x => (x.Message == AppResources.ZZZRefundYesMsgForFiteenPercent) ||(x.Message == AppResources.ZZZRefundYesMsg)).FirstOrDefault();
+                    if (messageForYesRefundConfirmation != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "YesReceivedForRefundMsg", AppResources.ZZZRefundYesMsgForFiteenPercent);
+                    }
+
+                    var messageForNoRefundConfirmation = viewModel.HeaderWithInfoList.Where(x =>x.Message == AppResources.ZZZRefundNoMsg).FirstOrDefault();
+                    if (messageForNoRefundConfirmation != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "ReceivedForYesRefundMsg", AppResources.ZZZRefundNoMsg);
+                    }
                 }
             }
             catch(Exception ex)
@@ -107,6 +126,16 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (messageForVoid != null)
                     {
                         MessagingCenter.Send<Object, string>(this, "NoReceived", AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost);
+                    }
+                    var messageForYesRefundConfirmation = viewModel.HeaderWithInfoList.Where(x => (x.Message == AppResources.ZZZRefundYesMsgForFiteenPercent) || (x.Message == AppResources.ZZZRefundYesMsg)).FirstOrDefault();
+                    if (messageForYesRefundConfirmation != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "NoReceivedForRefundMsg", AppResources.ZZZRefundYesMsgForFiteenPercent);
+                    }
+                    var messageForNoRefundConfirmation = viewModel.HeaderWithInfoList.Where(x => x.Message == AppResources.ZZZRefundNoMsg).FirstOrDefault();
+                    if (messageForNoRefundConfirmation != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "ReceivedForNoRefundMsg", AppResources.ZZZRefundNoMsg);
                     }
                 }
             }

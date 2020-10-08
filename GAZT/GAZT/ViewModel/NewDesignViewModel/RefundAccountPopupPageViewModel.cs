@@ -197,6 +197,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     TxtSelectedIBANIDNumber = _selectedIBANIDNumber.Idnumber;
                 }
+                else
+                {
+                    TxtSelectedIBANIDNumber = string.Empty;
+                }
                 RaisePropertyChanged("SelectedIBANIDNumber");
             }
         }
@@ -480,6 +484,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _IsCarriedForwandReviewMessageForRefund = value;
                 RaisePropertyChanged("IsCarriedForwandReviewMessageForRefund");
+            }
+        }
+
+        private bool _isRefundYesMsgDisplayed = false;
+        public bool IsRefundYesMsgDisplayed
+        {
+            get
+            {
+                return _isRefundYesMsgDisplayed;
+            }
+            set
+            {
+                _isRefundYesMsgDisplayed = value;
+                RaisePropertyChanged("IsRefundYesMsgDisplayed");
             }
         }
 

@@ -195,7 +195,7 @@
                         </custom:CustomLabel>
                         <StackLayout x:Name="CalLabel" Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                            <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
+                            <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled" />
                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                         </StackLayout>
 
@@ -336,7 +336,7 @@
                             </custom:CustomLabel>
                             <StackLayout Orientation="Horizontal" >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                                <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" />
+                                <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCal2Switch_Toggled" />
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                             </StackLayout>
 
@@ -514,7 +514,7 @@
                         </custom:CustomLabel>
                         <StackLayout Orientation="Horizontal" >
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                            <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal}" />
+                            <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal}" Toggled="HijriCal3Switch_Toggled" />
                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                         </StackLayout>
 
@@ -796,6 +796,11 @@
                                                 <StackLayout  Grid.Row="0" Grid.Column="2" IsVisible="{Binding outletEditIsVisible}" x:Name="editButton">
                                                     <buttons:SfButton x:Name="buttonEdit" Margin="0,16,0,16"  Clicked="newName_Clicked" HorizontalOptions="End" Text="{x:Static ResourceManager:AppResources.NDEdit}"
                                                           TextColor="#006450" BackgroundColor="Transparent" />
+                                                     <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                                                  Tapped="TapGestureRecognizer_Tapped"
+                                                                 CommandParameter="{Binding selectedOutletOption}"/>
+                                    </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                             </Grid>
 
@@ -908,11 +913,7 @@
                                             </Grid>
                                         </StackLayout>
                                     </border:SfBorder >
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
-                                                                  Tapped="TapGestureRecognizer_Tapped"
-                                                                 CommandParameter="{Binding selectedOutletOption}"/>
-                                    </StackLayout.GestureRecognizers>
+                                   
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
@@ -1219,7 +1220,7 @@
                         </ListView.ItemTemplate>
 
                     </ListView>
-                    <buttons:SfButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="48" VerticalOptions="End"  Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
+                    <buttons:SfButton HeightRequest="48" VerticalOptions="End"  Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 

@@ -1491,7 +1491,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="0" Margin="0,-17,0,0" BackgroundColor="White"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" StyleId="SingleLabel">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static custom2:AppResources.ZVatOnSales}"   />
@@ -2194,7 +2194,7 @@
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,8"  Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" StyleId="SingleLabel">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static custom2:AppResources.ZZZZVATOnPurchasesForSummarypage}"   />
@@ -2290,7 +2290,7 @@
                                         <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label  Grid.Column="0" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center">
+                                    <Label  Grid.Column="0" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" StyleId="SingleLabel">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
@@ -2324,7 +2324,7 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Spacing="0">
                     <StackLayout Margin="15,0,15,0">
-                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label   VerticalTextAlignment="Center" Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" StyleId="SingleLabel">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
@@ -2707,7 +2707,7 @@
 
                                             </Image>
                                         </Frame>
-                                        <Label   VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}">
+                                        <Label   VerticalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}" StyleId="SingleLabel">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"   />
