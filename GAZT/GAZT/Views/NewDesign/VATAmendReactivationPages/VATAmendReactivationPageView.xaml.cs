@@ -17,6 +17,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -65,6 +66,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.PageTitle = AppResources.ZZZZVatRegistrationTile;
                 //FrmContactDBO.IsVisible = false;
                 //lblDOB.IsVisible = false;
+                NewFRDOBField.IsVisible = false;
 
             }
             catch (Exception ex)
@@ -307,6 +309,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep5)
                 {
+                    if (viewModel.IsNewFinancialRepVisible)
+                    {
+                        bool validFlag = await step4Validation();
+                        if (!validFlag)
+                        {
+                            return;
+                        }
+                    }
 
                     //viewModel.IsDeclarationChecked = false;
                     //viewModel.CurrentStep = "Submit";
@@ -321,7 +331,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.IsDeclarationChecked)
                     {
                         viewModel.IsContinueButtonEnable = true;
-
                     }
                     else
                     {
@@ -335,14 +344,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         //  IsSubmitClicked = true;
                         step5Validation();
                     }
-
-
                 }
-
-
             }
-
-
         }
         public void setdefaultvalueforTPDetailscreen()
         {
@@ -399,6 +402,72 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
+        }
+        public async Task<bool> step4Validation()
+        {
+            bool flag = true;
+            if (viewModel.IsDeclarationChecked == true)
+            {
+                if (viewModel.SelectedIdTypeFR == null || FrmIDType.HasError)
+                {
+                    flag = false;
+                    FrmIDType.HasError = true;
+                }
+                if (string.IsNullOrEmpty(viewModel.IdnumberFR) || viewModel.FrameIDError)
+                {
+                    flag = false;
+                    viewModel.FrameIDError = true;
+                }
+                if (NewFRDOBField.IsVisible && (viewModel.FrameDOBError || string.IsNullOrEmpty(viewModel.DOB)))
+                {
+                    viewModel.FrameDOBError = true;
+                }
+                if (FrmFirstName.IsEnabled && (FrmFirstName.HasError || string.IsNullOrEmpty(viewModel.FirstnmFR)))
+                {
+                    flag = false;
+                    FrmFirstName.HasError = true;
+
+                }
+                if (FrmLastName.IsEnabled && (FrmLastName.HasError || string.IsNullOrEmpty(viewModel.LastnmFR)))
+                {
+                    flag = false;
+                    FrmLastName.HasError = true;
+
+                }
+                if (FrmEmailAddress.IsEnabled && (FrmEmailAddress.HasError || string.IsNullOrEmpty(viewModel.SmtpAddrFR)))
+                {
+                    flag = false;
+                    FrmEmailAddress.HasError = true;
+
+                }
+                if (FrmPhoneNumber.IsEnabled && (FrmPhoneNumber.HasError || string.IsNullOrEmpty(viewModel.MobNumberFR)))
+                {
+                    flag = false;
+                    FrmPhoneNumber.HasError = true;
+                }
+                if (!flag)
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                }
+            }
+            else
+            {
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.VATRAcceptDeclarationToSubmit;
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATRAcceptDeclarationToSubmit));
+                chkDeclaration.Focus();
+                //viewModel.IsContinueButtonEnable = false;
+            }
+            return await Task.FromResult(flag);
         }
         public async void step5Validation()
         {
@@ -1195,6 +1264,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
+                FrmIDNo.HasError = false;
+                if (string.IsNullOrEmpty(viewModel.IdnumberFR))
+                {
+                    FrmIDNo.HasError = true;
+                }
                 PopUp popUp = new PopUp();
                 StringBuilder Messages = new StringBuilder();
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
@@ -1444,8 +1518,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             try
             {
                 ClearFinancialRepresentativeData();
+                FrmIDType.HasError = false;
                 if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
                 {
+                    FrmIDType.HasError = true;
                     FrmIDNo.IsEnabled = false;
                     EntryTINNumber.IsEnabled = true;
                     viewModel.IDTypeIndexFR = 0;
@@ -1456,6 +1532,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                     viewModel.DOBNonMandatoryVisibility = true;
                     viewModel.DOBMandatoryVisibility = true;
+                    NewFRDOBField.IsVisible = false;
                 }
                 else
                 {
@@ -1463,7 +1540,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
                     EntryTINNumber.Text = string.Empty;
                     EntryIDNo.Text = string.Empty;
-                    EntryTINNumber.IsEnabled = false;
+                    EntryTINNumber.IsEnabled = true;
                     FrmIDNo.IsEnabled = true;
                     viewModel.IDNumberNonMandatoryVisibility = false;
                     viewModel.IDNumberMandatoryVisibility = true;
@@ -1474,11 +1551,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         viewModel.DOBNonMandatoryVisibility = true;
                         viewModel.DOBMandatoryVisibility = false;
+                        NewFRDOBField.IsVisible = false;
                     }
                     else
                     {
                         viewModel.DOBNonMandatoryVisibility = false;
                         viewModel.DOBMandatoryVisibility = true;
+                        NewFRDOBField.IsVisible = true;
                     }
 
 
@@ -1508,12 +1587,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
 
         }
-
-        private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
         private void EntryPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -1932,11 +2005,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
-                    viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
-                    viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
-                    EntryTINNumber.Text = string.Empty;
-                    EntryIDNo.Text = string.Empty;
-                    EntryTINNumber.IsEnabled = false;
+
 
                     viewModel.IDNumberNonMandatoryVisibility = false;
                     viewModel.IDNumberMandatoryVisibility = true;
@@ -1945,7 +2014,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     // For GCC ID DOB is not mandatory
                     if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("ZS0003"))
                     {
-                        viewModel.DOBNonMandatoryVisibility = true;
+                        viewModel.DOBNonMandatoryVisibility = true; viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
+                        viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
+                        EntryTINNumber.Text = string.Empty;
+                        EntryIDNo.Text = string.Empty;
+                        EntryTINNumber.IsEnabled = true;
                         viewModel.DOBMandatoryVisibility = false;
                     }
                     else
@@ -2045,7 +2118,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             });
             string dob = viewModel.DOB.Replace("/", "");
             // EntryName.IsEnabled = true;
-            if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
+            if (viewModel.SelectedIdTypeFR?.ID == "ZS0001")
             {
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
                 {
@@ -2187,7 +2260,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            if (viewModel.SelectedIdTypeFR.ID == "ZS0002")
+            if (viewModel.SelectedIdTypeFR?.ID == "ZS0002")
             {
                 //  EntryName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
@@ -2322,7 +2395,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            if (viewModel.SelectedIdTypeFR.ID == "ZS0003")
+            if (viewModel.SelectedIdTypeFR?.ID == "ZS0003")
             {
                 //  EntryName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
@@ -2364,7 +2437,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-
+                            viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
@@ -4558,7 +4631,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-                viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
+            viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
         }
 
         private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -4593,6 +4666,90 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
+            }
+        }
+        public bool IsValid(string emailaddress)
+        {
+            bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (isEmail)
+                return true;
+            else
+            {
+                FrmEmailAddress.HasError = true;
+                return false;
+            }
+        }
+        private void EntryEmail_Unfocused(object sender, FocusEventArgs e)
+        {
+            bool flag = IsValid(viewModel.SmtpAddrFR);
+            if (!flag)
+            {
+                ShowValidationPopup(AppResources.ZZPleaseenteravalidEmailAddress);
+                return;
+            }
+        }
+        public void ShowValidationPopup(string sourceString)
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = sourceString;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+                popUp.FlowDirections = "RightToLeft";
+            else
+                popUp.FlowDirections = "LeftToRight";
+            FrmPhoneNumber.HasError = true;
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
+            // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+        private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            FrmPhoneNumber.HasError = false;
+            if (string.IsNullOrEmpty(viewModel.MobNumberFR))
+            {
+                FrmPhoneNumber.HasError = true;
+                return;
+            }
+            StringBuilder Messages = new StringBuilder();
+            string message = string.Empty;
+            if (!string.IsNullOrEmpty(viewModel.MobNumberFR))
+            {
+                if (viewModel.MobNumberFR.Substring(0, 1) != "5")
+                {
+                    message = AppResources.ZZMobilenumberhastostartwithnumber5;
+                    ShowValidationPopup(message);
+                }
+                else
+                {
+                    if (viewModel.MobNumberFR.Length != 10)
+                    {
+                        if (viewModel.MobNumberFR.Length < 9)
+                        {
+                            message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                        }
+                        if (Messages.Length > 0)
+                        {
+                            ShowValidationPopup(message);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void EntryLastName_Unfocused_1(object sender, FocusEventArgs e)
+        {
+            FrmLastName.HasError = false;
+            if (string.IsNullOrEmpty(viewModel.LastnmFR))
+            {
+                FrmLastName.HasError = true;
+            }
+        }
+
+        private void EntryFirstName_Unfocused_1(object sender, FocusEventArgs e)
+        {
+            FrmFirstName.HasError = false;
+            if (string.IsNullOrEmpty(viewModel.FirstnmFR))
+            {
+                FrmFirstName.HasError = true;
             }
         }
     }

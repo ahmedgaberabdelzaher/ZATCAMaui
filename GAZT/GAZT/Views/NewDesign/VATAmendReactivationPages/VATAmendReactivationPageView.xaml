@@ -2388,7 +2388,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
 
-                                                    <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="false">
+                                                    <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="false" x:Name="NewFRDOBField">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
@@ -2414,9 +2414,9 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
 
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
-                                        ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1" IsVisible="{Binding DOBMandatoryVisibility}"
+                                        ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
-                                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding DOBMandatoryVisibility}" >
+                                                                <StackLayout Orientation="Horizontal"  >
                                                                     <custom:BorderlessEntry  x:Name="DateEntryFR"  HorizontalOptions="FillAndExpand"  Text ="{Binding DOB}" Focused="DateEntry_Focused_1"  IsEnabled="False"  Unfocused="DateEntry_Unfocused_1" TextChanged="DateEntry_TextChanged" Placeholder="YYYY/MM/DD" Style="{StaticResource GAZTEntry}">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="End">
@@ -2448,7 +2448,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 								x:Name="SignUpDOB"
                           
                              OKButtonTextColor="#006450" 
-                                
+                                SelectionChanged="DOB_OkButtonClicked"
                                              CancelButtonTextColor="#006450"
                            Closed="SignUpDOB_Closed"
                             SelectedItem="{Binding TodayDate}"
@@ -2469,7 +2469,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                     ContainerType="Outlined" x:Name="FrmFirstName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryFirstName" Text="{Binding FirstnmFR}" IsSpellCheckEnabled="False"  
-                                                          Placeholder="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTEntry}">
+                                                          Placeholder="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTEntry}"
+                                                                                    Unfocused="EntryFirstName_Unfocused_1">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
@@ -2483,7 +2484,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                     ContainerType="Outlined" x:Name="FrmLastName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryLastName" Text="{Binding LastnmFR}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}"
-                                                            Placeholder="{x:Static custom2:AppResources.ZZZVATRSurName}">
+                                                            Placeholder="{x:Static custom2:AppResources.ZZZVATRSurName}"
+                                                                                    Unfocused="EntryLastName_Unfocused_1">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
@@ -2497,7 +2499,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="False" 
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry Text="{Binding SmtpAddrFR}"  x:Name="EntryEmail"  
-                                                                    Placeholder="{x:Static custom2:AppResources.Email}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}">
+                                                                    Placeholder="{x:Static custom2:AppResources.Email}" IsSpellCheckEnabled="False" 
+                                                                                    Style="{StaticResource GAZTEntry}" Unfocused="EntryEmail_Unfocused">
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -2507,7 +2510,10 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="False"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
+                                                            <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" 
+                                                                                    x:Name="EntryPhoneNumber" Placeholder="{x:Static custom2:AppResources.MobileNumber}" 
+                                                                                    IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" 
+                                                                                    Style="{StaticResource GAZTEntry}" Unfocused="EntryPhoneNumber_Unfocused" >
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
                                                                 </Entry.Behaviors>
