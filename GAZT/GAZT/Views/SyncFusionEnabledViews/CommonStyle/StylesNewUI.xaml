@@ -428,7 +428,7 @@
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="WidthRequest" Value="245"/>
-        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="HeightRequest" Value="48"/>
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
         <Setter Property="BackgroundColor" Value="#d99a29"/>
         <!--Value="{StaticResource Gray-White}"/>-->
