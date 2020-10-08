@@ -1756,7 +1756,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
                 sendtoPopup.VATRegistrationDetailsDatatoPopup = viewModel.VATRegistrationDetailsData;
                 sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
-                await PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup));
+                await PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup, Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration));
             }
             catch (Exception ex)
             {
@@ -1765,6 +1765,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
 
         }
+
 
         private void TappendOnImporter(object sender, EventArgs e)
         {
