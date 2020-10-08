@@ -1054,7 +1054,7 @@
             <!--Menu Ends-->
 
 
-            <!--<StackLayout x:Name="ButtomTab" Grid.Row="1" BackgroundColor="Black">-->
+            <StackLayout x:Name="ButtomTab" Grid.Row="1">
                 <yummy:PancakeView  VerticalOptions="EndAndExpand" BorderColor="DarkGray"  BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -1154,8 +1154,8 @@
                         <Setter Property="BackgroundColor" Value="Transparent"/>
                     </DataTrigger>
                     
-                </StackLayout.Triggers>
-            </StackLayout>-->
+                </StackLayout.Triggers>-->
+            </StackLayout>
 
 
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
