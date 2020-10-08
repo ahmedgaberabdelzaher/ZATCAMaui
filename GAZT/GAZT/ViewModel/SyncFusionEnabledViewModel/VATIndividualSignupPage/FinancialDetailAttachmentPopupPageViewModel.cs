@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Models.ZakatInstalationModels;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -263,6 +264,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("AttachmentName");
             }
         }
+        
+   
         public decimal _attachmentSize = 0;
         public decimal AttachmentSize
         {
@@ -303,6 +306,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("AttachmentCount");
             }
         }
+        public WhichAttachment _isComeForWhichAttachment;
+        public WhichAttachment IsComeForWhichAttachment
+        {
+            get
+            {
+                return _isComeForWhichAttachment;
+            }
+            set
+            {
+                _isComeForWhichAttachment = value;
+                RaisePropertyChanged("IsComeForWhichAttachment");
+            }
+        }
+
         private ObservableCollection<Attachment> _vatAttachmentsList;
         public ObservableCollection<Attachment> VatAttachmentsList
         {
@@ -327,20 +344,41 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _attachmentList = value;
-                if (_attachmentList != null)
+                if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                 {
-                    if (_attachmentList.Count >= 1)
+                    if (_attachmentList != null)
                     {
-                        IsAttachmentVisibile = false;
+                        if (_attachmentList.Count >= 5)
+                        {
+                            IsAttachmentVisibile = false;
+                        }
+                        else
+                        {
+                            IsAttachmentVisibile = true; ;
+                        }
                     }
                     else
                     {
-                        IsAttachmentVisibile = true; ;
+                        IsAttachmentVisibile = true;
                     }
                 }
                 else
                 {
-                    IsAttachmentVisibile = true;
+                    if (_attachmentList != null)
+                    {
+                        if (_attachmentList.Count >= 1)
+                        {
+                            IsAttachmentVisibile = false;
+                        }
+                        else
+                        {
+                            IsAttachmentVisibile = true; ;
+                        }
+                    }
+                    else
+                    {
+                        IsAttachmentVisibile = true;
+                    }
                 }
                 RaisePropertyChanged("AttachmentList");
             }
@@ -474,9 +512,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                 bool IsAttachmentPresent = false;
                                                 foreach (Attachment ItemA in VATRegistrationDetailsForAttach.d.ATTDETSet.results)
                                                 {
-                                                    if (AttachmentName == ItemA.Filename)
+                                                    if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                                                     {
-                                                        IsAttachmentPresent = true;
+                                                        if (AttachmentName == ItemA.Filename && (ItemA.Dotyp == DocTypeString))
+                                                        {
+                                                            IsAttachmentPresent = true;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (AttachmentName == ItemA.Filename)
+                                                        {
+                                                            IsAttachmentPresent = true;
+                                                        }
                                                     }
                                                 }
                                                 if (IsAttachmentPresent == false)
@@ -581,7 +629,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                         {
                                             AttachmentName = string.Empty;
                                             //_dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
-                                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                            if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                                            {
+                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZVATRAttachmentNote1));
+
+                                            }
+                                            else
+                                            {
+                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                            }
                                         }
                                     }
                                     else

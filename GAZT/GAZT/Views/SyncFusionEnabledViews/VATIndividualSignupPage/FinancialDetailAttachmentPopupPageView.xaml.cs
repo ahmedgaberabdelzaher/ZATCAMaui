@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Helper;
@@ -44,7 +45,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.VATRegistrationDetailsData = sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.VATRegistrationOtherDetails = new VATRegistrationOtherDetails();
                 viewModel.VATRegistrationOtherDetails = sendtoPopup.vatRegOthrDetailtoPopup;
-                
                 viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
                 viewModel.ResultsItemForDOCSet = new List<ResultsItemForElgblDocSet>();
                 viewModel.VATRegistrationDetailsForAttach = new VATRegistrationDetails();
@@ -66,8 +66,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
 
                 }
-                
-                          
+
                
             }
             catch (Exception ex)
@@ -75,6 +74,53 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             
             }
             
+        }
+        public FinancialDetailAttachmentPopupPageView(DataToPassTofinancialDetailAttachmentPopup sendtoPopup, WhichAttachment attachment)
+        {
+            try
+            {
+                InitializeComponent();
+                viewModel = App.Locator.FinancialDetailAttachmentPopupPageView;
+                this.BindingContext = viewModel;
+
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+                SetLTR();
+
+                viewModel.VATRegistrationDetailsData = new VATRegistrationDetails();
+                viewModel.VATRegistrationDetailsData = sendtoPopup.VATRegistrationDetailsDatatoPopup;
+                viewModel.VATRegistrationOtherDetails = new VATRegistrationOtherDetails();
+                viewModel.VATRegistrationOtherDetails = sendtoPopup.vatRegOthrDetailtoPopup;
+                viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
+                viewModel.ResultsItemForDOCSet = new List<ResultsItemForElgblDocSet>();
+                viewModel.VATRegistrationDetailsForAttach = new VATRegistrationDetails();
+
+                viewModel.VATRegistrationDetailsForAttach = sendtoPopup.VATRegistrationDetailsDatatoPopup;
+                viewModel.ELGBL_DOCSet = viewModel.VATRegistrationOtherDetails.d.ELGBL_DOCSet;
+                try
+                {
+                    viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
+                    onPageLoad();
+
+                    if (viewModel.ResultsItemForDOCSet != null)
+                    {
+                        viewModel.SelectedAttachmentType = 1;
+                        //AttachmentTypePicker.SelectedItem = "1";
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                viewModel.IsComeForWhichAttachment = attachment;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
         public void SetPickerFont()
         {

@@ -84,6 +84,7 @@
                                 </Image.GestureRecognizers>
                             </Image>-->
                             <!--VATRMPAttachments-->
+
                             <Label  Text="{x:Static custom2:AppResources.VATRMPAttachments}"  HorizontalOptions="Center"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
                             <StackLayout Grid.Row="2">
 
