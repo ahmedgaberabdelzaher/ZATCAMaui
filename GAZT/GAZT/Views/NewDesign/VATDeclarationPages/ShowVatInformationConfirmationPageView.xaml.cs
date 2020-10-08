@@ -62,7 +62,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.NewDesignPopUp.HeaderWithInfos.Count < 2)
                 {
-                    MainPanCakeView1.Margin = new Thickness(0, 380, 0, 0);
+                    MainPanCakeView1.Margin = new Thickness(0, 300, 0, 0);
                 }
                 else
                 {
