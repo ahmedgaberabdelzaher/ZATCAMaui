@@ -2333,7 +2333,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
             if (VATRegistrationDetailsData.d.IBANSet != null)
             {
+
                 IbanList = new ObservableCollection<Result2>(VATRegistrationDetailsData.d.IBANSet.results);
+
+                ObservableCollection<Result2> resultList = new ObservableCollection<Result2>();
+
+                foreach (var item in IbanList)
+                {
+                    if(!string.IsNullOrEmpty(item.Bkvid))
+                    {
+                        resultList.Add(item);
+                    }
+                }
+                IbanList = resultList;
             }
 
         }
