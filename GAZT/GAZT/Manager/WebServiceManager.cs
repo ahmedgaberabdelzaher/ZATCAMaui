@@ -8780,7 +8780,7 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    if (_vATInstalment.d.Operationz == "01")
+                    if (_vATInstalment.d.Operationz == "01" || _vATInstalment.d.Operationz == "05" || _vATInstalment.d.Operationz == "04")
                     {
 
                         var serilized = JsonConvert.SerializeObject(_vATInstalment.d);

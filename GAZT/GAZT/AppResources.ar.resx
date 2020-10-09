@@ -8231,5 +8231,11 @@
   <data name="ZZZZGotothePortalForVAT" xml:space="preserve">
     <value>الرجاء الذهاب الى البوابة لإكمال المعلومات الإضافية</value>
   </data>
-  <data name="LogInSessionTitle" xml:space="preserve">     <value>تسجيل الدخول</value>   </data> 
+  <data name="LogInSessionTitle" xml:space="preserve">     <value>تسجيل الدخول</value>   </data>   <data name="ZZGeneralMessage_VATCancelled" xml:space="preserve">
+    <value>Instalment form is cancelled. Please initiate the process again to file VAT instalment</value>
+    <comment>VAT instalment general message</comment>
+  </data>
+     <data name="VATDraftSaved" xml:space="preserve">
+    <value>VAT Instalment form saved successfully{0}</value>
+  </data>
 </root>

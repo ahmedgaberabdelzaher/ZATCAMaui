@@ -7588,7 +7588,7 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Trade/Business</value>
   </data>
   <data name="ZakatDraftSaved" xml:space="preserve">
-    <value>Zakat Instalment Form Saved successfully{0}</value>
+    <value>Zakat Instalment form saved successfully{0}</value>
   </data>
   <data name="ZZGeneralMessage_ZakatCancelled" xml:space="preserve">
     <value>Zakat Form is cancelled. Please initiate the process again to file Zakat instalment</value>
@@ -8323,5 +8323,11 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
     <value>go to the portal and complete the additional information</value>
   </data>
    <data name="LogInSessionTitle" xml:space="preserve">     <value>Login</value>   </data>
-
+   <data name="ZZGeneralMessage_VATCancelled" xml:space="preserve">
+    <value>Instalment form is cancelled. Please initiate the process again to file VAT instalment</value>
+    <comment>VAT instalment general message</comment>
+  </data>
+     <data name="VATDraftSaved" xml:space="preserve">
+    <value>VAT Instalment form saved successfully{0}</value>
+  </data>
 </root>
