@@ -332,17 +332,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                                 ResultsItemForDOCSetforsubmit _eligibledocset = new
 ResultsItemForDOCSetforsubmit();
-                                _eligibledocset.DmsTp = listitem.Dotyp;
-                                _eligibledocset.DmsTxt = viewModel.ResultsItemForDOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault().Txt50;
-                                _eligibledocset.TxnTp = "CRE_RGVT";
-                                _eligibledocset.LineNo = 0;
-                                _eligibledocset.Mandt = "";
-                                _eligibledocset.DataVersion = "";
-                                _eligibledocset.FormGuid = "";
-                                _eligibledocset.Fbtyp = "";
-                                _eligibledocset.RankingOrder = "";
- 
-                                viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Remove(_eligibledocset);
+                                //_eligibledocset.DmsTp = listitem.Dotyp;
+                                //_eligibledocset.DmsTxt = viewModel.ResultsItemForDOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault().Txt50;
+                                //_eligibledocset.TxnTp = "CRE_RGVT";
+                                //_eligibledocset.LineNo = 0;
+                                //_eligibledocset.Mandt = "";
+                                //_eligibledocset.DataVersion = "";
+                                //_eligibledocset.FormGuid = "";
+                                //_eligibledocset.Fbtyp = "";
+                                //_eligibledocset.RankingOrder = "";
+                                try
+                                {
+                                    _eligibledocset = viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault();
+                                    viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Remove(_eligibledocset);
+                                }
+                                catch
+                                {
+
+                                }
+                                
+
+
+                                
                             }
                             catch(Exception ex)
                             { 
