@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         VATDeclarationAttachmentPageViewModel viewModel;
         VATDeclaration vatDec;
         VATAttachment attachment;
-
+        public static string AttachmentName = string.Empty;
         string downloadFilePath;
         public VATDeclarationAttachmentPageView(VATDeclaration vATDeclaration)
         {
@@ -191,6 +191,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 if (attachment != null)
                                 {
                                     //  var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                                    AttachmentName = attachment.Filename;
                                     await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
                                    // DeleteAttachment(result, attachment);
                                 }
