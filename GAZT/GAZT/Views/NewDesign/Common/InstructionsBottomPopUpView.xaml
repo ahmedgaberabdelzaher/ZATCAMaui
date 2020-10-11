@@ -110,7 +110,7 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsInstuctionsChecked}">
+                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsInstuctionsChecked}" IsEnabled="{Binding IsCheckboxEditable}">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
@@ -160,18 +160,18 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.Row="0" Grid.Column="0 ">
+                                <Image Grid.Row="0" Grid.Column="0 " IsVisible="False">
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
                                                  Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
                                     </Image.Source>
 
                                 </Image>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.Information}"
+                                <custom:CustomLabel IsVisible="False" Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.Information}"
                                             Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelBlack}" />
 
-                                <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Description}"
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Description}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}" />
 
@@ -186,7 +186,7 @@
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsTermsChecked}">
+                            <CheckBox Grid.Column="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" CheckedChanged="CheckBox_CheckedChanged" IsChecked="{Binding IsTermsChecked}" IsEnabled="{Binding IsCheckboxEditable}">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Value="false">
                                         <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
