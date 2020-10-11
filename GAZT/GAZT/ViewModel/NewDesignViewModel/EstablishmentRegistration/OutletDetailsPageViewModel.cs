@@ -747,7 +747,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         if (ex is HTTPBadRequestException)
                         {
                             //editModeEnabled = true;
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                          //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         }
                     }
                     finally
