@@ -50,6 +50,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        public string _attachmentHeaderTitle;
+        public string AttachmentHeaderTitle
+        {
+            get
+            {
+                return _attachmentHeaderTitle;
+            }
+            set
+            {
+                _attachmentHeaderTitle = value;
+                RaisePropertyChanged("AttachmentHeaderTitle");
+            }
+        }
+
+        public bool _titleIsVisible = false;
+        public bool TitleIsVisible
+        {
+            get
+            {
+                return _titleIsVisible;
+            }
+            set
+            {
+                _titleIsVisible = value;
+                RaisePropertyChanged("TitleIsVisible");
+            }
+        }
+        
+        public bool _regAttachmentTitle = true;
+        public bool RegAttachmentTitle
+        {
+            get
+            {
+                return _regAttachmentTitle;
+            }
+            set
+            {
+                _regAttachmentTitle = value;
+                RaisePropertyChanged("RegAttachmentTitle");
+            }
+        }
+
         public bool _IsAttachmentVisibile=true;
         public bool IsAttachmentVisibile
         {
@@ -435,6 +477,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 PopupNavigation.Instance.PopAsync();
             });
+
+     
         }
 
 

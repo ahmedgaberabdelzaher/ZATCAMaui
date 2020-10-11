@@ -66,8 +66,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
 
                 }
+                if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                {
+                    viewModel.AttachmentHeaderTitle = AppResources.VATInstalmentsAttachmentTitle;
+                    viewModel.TitleIsVisible = true;
+                    viewModel.RegAttachmentTitle = false;
+                }
+                else
+                {
+                    viewModel.AttachmentHeaderTitle = AppResources.VATRMPAttachments;
+                    viewModel.TitleIsVisible = false;
+                    viewModel.RegAttachmentTitle = true;
 
-               
+                }
+
             }
             catch (Exception ex)
             { 
@@ -410,11 +422,6 @@ ResultsItemForDOCSetforsubmit();
             catch (Exception ex)
             {
 
-
-
-              
-
-
             }
 
         }
@@ -426,6 +433,20 @@ ResultsItemForDOCSetforsubmit();
             base.OnAppearing();
             getYesForDeleteAttachment();
             getNoForDeleteAttachment();
+
+            if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+            {
+                viewModel.AttachmentHeaderTitle = AppResources.VATInstalmentsAttachmentTitle;
+                viewModel.TitleIsVisible = true;
+                viewModel.RegAttachmentTitle = false;
+            }
+            else
+            {
+                viewModel.AttachmentHeaderTitle = AppResources.VATRMPAttachments;
+                viewModel.TitleIsVisible = false;
+                viewModel.RegAttachmentTitle = true;
+
+            }
         }
 
 
