@@ -746,20 +746,41 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachmentForFD(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
-                    if (attachment != null && attachment.d != null)
+                    if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                     {
-                        attachmentSizeVisibility = true;
-                        AttachmentSizeVisibility = attachmentSizeVisibility;
-                        SizeList.Add(AttachmentSize);
-                        AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
-                        TotalAttachmentSize = AttachmentUploadedSize;
-                        _attachment = attachment;
+                        AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachmentForFD(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
+                        if (attachment != null && attachment.d != null)
+                        {
+                            attachmentSizeVisibility = true;
+                            AttachmentSizeVisibility = attachmentSizeVisibility;
+                            SizeList.Add(AttachmentSize);
+                            AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
+                            TotalAttachmentSize = AttachmentUploadedSize;
+                            _attachment = attachment;
+                        }
+                        else
+                        {
+                            _attachment = null;
+                        }
                     }
                     else
                     {
-                        _attachment = null;
+                        AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
+                        if (attachment != null && attachment.d != null)
+                        {
+                            attachmentSizeVisibility = true;
+                            AttachmentSizeVisibility = attachmentSizeVisibility;
+                            SizeList.Add(AttachmentSize);
+                            AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
+                            TotalAttachmentSize = AttachmentUploadedSize;
+                            _attachment = attachment;
+                        }
+                        else
+                        {
+                            _attachment = null;
+                        }
                     }
+                   
                 }
                 catch (Exception ex)
                 {

@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Models;
@@ -20,11 +21,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATAmendReactivationSuccessfulPageView : ContentPage
     {
-        VATRegistrationSuccessfullPageViewModel viewModel;
+        VATAmendReactivationSuccesssulPageViewModel viewModel;
         public VATAmendReactivationSuccessfulPageView(Models.VATRegistrationDetails response)
         {
             InitializeComponent();
-            viewModel = App.Locator.VATRegistrationSuccessfullPageView;
+            viewModel = App.Locator.VATAmendReactivationSuccesssulPageView;
             this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
@@ -35,6 +36,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     Label_Name.Text = response.d.TinNm;
                     Label_ApplicationNumber.Text = response.d.Fbnumz;
                     string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.VatTaxDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    viewModel.FBNumber = response.d.Fbnumz;
                     //Label_Date.Text = response.d.GoLiveDt;
                     Label_Date.Text = StartdateToshow;
                 }
@@ -94,6 +96,18 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
             }
 
+        }
+        void SfButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+
+                viewModel.downloadConfirmation();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

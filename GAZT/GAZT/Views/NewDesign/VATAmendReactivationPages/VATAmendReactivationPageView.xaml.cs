@@ -2888,9 +2888,22 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-
                             viewModel.FirstNameSR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                            FrmContactName.IsEnabled = false;
+                            if (App.VATType == Enums.PageExecutionType.Reactivation)
+                            {
+                                if (viewModel.FirstNameSR.Contains(string.Empty))
+                                {
+                                    FrmContactName.IsEnabled = true;
+                                }
+                                else
+                                {
+                                    FrmContactName.IsEnabled = false;
+                                }
+                            }
+                            else
+                            {
+                                FrmContactName.IsEnabled = false;
+                            }
 
                         }
                     }
