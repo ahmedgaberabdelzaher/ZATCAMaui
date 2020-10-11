@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -28,6 +30,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public static Decimal AttachmentUploadedSize = 0;
         public static bool IsToBeFilled = false;
+        public bool isImporter = false;
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
         byte[] attachment;
@@ -270,6 +273,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _attachmentList = value;
+
                 RaisePropertyChanged("AttachmentList");
             }
         }
@@ -345,6 +349,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        public WhichAttachment _isComeForWhichAttachment;
+        public WhichAttachment IsComeForWhichAttachment
+        {
+            get
+            {
+                return _isComeForWhichAttachment;
+            }
+            set
+            {
+                _isComeForWhichAttachment = value;
+                RaisePropertyChanged("IsComeForWhichAttachment");
+            }
+        }
+   
 
 
         #endregion
@@ -411,7 +429,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
                         
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                        
+                        if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count;
+                                if(count > 0)
+                                {               
+                                    if(isImporter)
+                                    {
+
+                                        count = VatAttachmentsList.Where(x => x.Dotyp.Equals("ZVTB")).Count();
+                                    }
+                                    else
+                                    {
+                                        count = VatAttachmentsList.Where(x => x.Dotyp.Equals("ZVTC")).Count();
+
+                                    }
+                                }
+                               
+                                if (count >= 5)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
+                    
+
+                        }
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
                             attachment = fileData.DataArray;

@@ -491,6 +491,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
                         //                }
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                        if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count;
+                                if (count >= 5)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
+
+                        }
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
                             attachment = fileData.DataArray;

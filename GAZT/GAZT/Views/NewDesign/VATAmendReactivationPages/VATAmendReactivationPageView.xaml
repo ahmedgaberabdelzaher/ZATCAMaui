@@ -18,10 +18,9 @@
 		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"             Title="{Binding PageTitle}"
              BackgroundColor="#005e4b"
              xmlns:system="clr-namespace:System;assembly=netstandard"
-             xmlns:custom2="clr-namespace:EGAZT"
-             
+             xmlns:custom2="clr-namespace:EGAZT"            
              NavigationPage.BackButtonTitle = ""
-              
+           
              xmlns:local1="clr-namespace:GAZT"
              xmlns:syncfusion1="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
@@ -512,7 +511,7 @@
 
 
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }" IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
-                                                        <CheckBox   VerticalOptions="CenterAndExpand" CheckedChanged="AddAdditionalInfo_CheckedChanged">
+                                                        <CheckBox   VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddAdditionalInfoChecked}" CheckedChanged="AddAdditionalInfo_CheckedChanged">
                                                             <CheckBox.Triggers>
                                                                 <DataTrigger TargetType="CheckBox"  Value="false">
                                                                     <Setter Property="Color" Value="#ff0000" />
@@ -1593,7 +1592,7 @@
 
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" IsVisible="{Binding FinancialDetails.AttachSectionCBVisible}" IsEnabled="{Binding FinancialDetails.AttachSectionCB}">
-                                                    <CheckBox   VerticalOptions="CenterAndExpand" CheckedChanged="FDChangeSection_CheckedChanged">
+                                                    <CheckBox   VerticalOptions="CenterAndExpand" IsChecked="{Binding IsFDChangeSectionChecked}" CheckedChanged="FDChangeSection_CheckedChanged">
                                                         <CheckBox.Triggers>
                                                             <DataTrigger TargetType="CheckBox"  Value="false">
                                                                 <Setter Property="Color" Value="#ff0000" />
@@ -1984,7 +1983,7 @@
                                             <StackLayout>
                                                 <StackLayout Margin="0,0,0,15" >
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding FinancialRepresentative.AddNewFinRepCBVisible}" IsEnabled="{Binding FinancialRepresentative.AddNewFinRepresentativeCB}">
-                                                        <CheckBox x:Name="cbAddRepresentative"  VerticalOptions="CenterAndExpand" CheckedChanged="AddNewRepresentative_Tapped">
+                                                        <CheckBox x:Name="cbAddRepresentative"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddNewRepresentativeChecked}" CheckedChanged="AddNewRepresentative_Tapped">
                                                             <CheckBox.Triggers>
                                                                 <DataTrigger TargetType="CheckBox"  Value="false">
                                                                     <Setter Property="Color" Value="#ff0000" />
@@ -2448,6 +2447,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 								x:Name="SignUpDOB"
                           
                              OKButtonTextColor="#006450" 
+                                SelectionChanged="DOB_OkButtonClicked"
                                              CancelButtonTextColor="#006450"
                            Closed="SignUpDOB_Closed"
                             SelectedItem="{Binding TodayDate}"

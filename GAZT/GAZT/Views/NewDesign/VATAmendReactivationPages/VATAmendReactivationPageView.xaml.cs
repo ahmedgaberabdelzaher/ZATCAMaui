@@ -1917,6 +1917,18 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
             }
 
+            if (OperationCode == "05")
+            {
+                viewModel.ModifiedData = JsonConvert.SerializeObject(viewModel.VATRegistrationDetailsData);
+                if (viewModel.ModifiedData == viewModel.OriginalData)
+                {
+                    StringBuilder builder = new StringBuilder("No changes made");
+                    builder.AppendLine();
+                    builder.Append("Cannot Save");
+                    await DisplayAlert("", builder.ToString(), "OK");
+                    return;
+                }
+            }
             viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
             if (!string.IsNullOrEmpty(OperationCode))
             {
@@ -1951,7 +1963,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                 viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
-                if (!viewModel.TxtIDTypeSR.Trim().ToLower().Equals("gcc id"))
+                if (!viewModel.TxtIDTypeSR.Equals(AppResources.ZZGCCID))
                 {
                     if (string.IsNullOrEmpty(((SignUpIdType)e.NewValue).Name) || string.IsNullOrWhiteSpace(((SignUpIdType)e.NewValue).Name))
                     {
@@ -2052,9 +2064,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
+                bool isImporter = false;
                 VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
                 if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
                 {
+                    isImporter = true;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
                 else
@@ -2063,13 +2077,16 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
                 {
+                    isImporter = false;
+
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
                 else
                 {
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
-                PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
+
+               await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData,Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration, isImporter));
             }
             catch (Exception ex)
             {
@@ -4644,11 +4661,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
+            //viewModel.IsAddAdditionalInfoChecked = true;
         }
 
         private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsFDChangeSectionEnabled = ((CheckBox)sender).IsChecked;
+           // viewModel.IsFDChangeSectionChecked = true;
         }
 
         private void OnBackTapped(object sender, EventArgs e)
