@@ -15,7 +15,17 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleaseSuccessPageView"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </ContentPage.Resources>
     <ContentPage.Content>
+        
 
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
@@ -52,11 +62,11 @@
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
+                                                    VerticalOptions="Center" Style="{StaticResource ValueLabelGrey}"
                                                     HorizontalOptions="Start" />
 
-                                    <custom:CustomLabel x:Name="ReferenceNumberTxt" Grid.Row="0" Grid.Column="1" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />
+                                    <custom:CustomLabel x:Name="ReferenceNumberTxt" Grid.Row="0" Grid.Column="1"
+                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Style="{StaticResource ValueLabelBlack}" />
 
                                     <Image Grid.Row="0" Grid.Column="2">
                                         <Image.Source>
@@ -82,8 +92,8 @@
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.CRContractingNumber}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
-                                                    HorizontalOptions="Start" />
+                                                    VerticalOptions="Center"  Style="{StaticResource ValueLabelGrey}"
+                                                    HorizontalOptions="StartAndExpand" />
 
                                     <custom:CustomLabel x:Name="ContractNumberTxt" Grid.Row="0" Grid.Column="1" FontSize="16"
                                                     VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />

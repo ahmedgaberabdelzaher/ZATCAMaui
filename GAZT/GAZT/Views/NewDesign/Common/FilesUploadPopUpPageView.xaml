@@ -47,8 +47,8 @@
                     </StackLayout>
                 </border:SfBorder>
                 
-                <Label HorizontalTextAlignment="Center" Text="{Binding TitleOne}" Margin="0,0,0,0" TextColor="#005e4b"  />
-                <Label HorizontalTextAlignment="Start" Text="{Binding TitleTwo}" Margin="0,0,0,0" TextColor="#005e4b"  />
+                <Label HorizontalTextAlignment="Center" Text="{Binding TitleOne}" Margin="0,0,0,0" TextColor="#005e4b" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                <Label HorizontalTextAlignment="Start" Text="{Binding TitleTwo}" Margin="0,0,0,0" TextColor="#005e4b" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
 
                 <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300"  ItemTapped="Attachmentlist_ItemTapped" SeparatorVisibility="None">

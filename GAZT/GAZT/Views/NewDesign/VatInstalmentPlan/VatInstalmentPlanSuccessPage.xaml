@@ -57,13 +57,13 @@
                                 </Grid.ColumnDefinitions>
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
+                                                    VerticalOptions="Center" Style="{StaticResource ValueLabelGrey}"
                                                     HorizontalOptions="Start" />
 
  
 
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding VATReferanceNumber}" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding VATReferanceNumber}"
+                                                    VerticalOptions="Center" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
 
  
 
@@ -97,6 +97,9 @@
                         <custom:CustomLabel Margin="10,0,10,15"
                                             Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
                                             TextColor="#d49504" HorizontalOptions="Center"
+                                            FontFamily="{StaticResource SSTArabicMedium}"
+                                            FontSize="15"
+                                            Style="{StaticResource SfButtonStyle}"
                                             HorizontalTextAlignment="Center">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Instalment_plan_Tapped" />
