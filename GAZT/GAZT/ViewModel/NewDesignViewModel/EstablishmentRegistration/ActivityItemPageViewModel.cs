@@ -656,7 +656,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (TransferCRsCopies.Count == 5 || CRsCopies.Count == 5)
                 {
-                    await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+                  //  await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
                 }
 
             });
@@ -668,7 +669,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else
                 {
-                    await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+
+                  //  await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
                 }
             });
 
@@ -913,18 +916,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     else
                                     {
                                         attachmentName = string.Empty;
-                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                                       // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTAttachmentSizeNotfication));
+                                  //  await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
 
                             }
                             else
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                               // await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                     }
@@ -1151,7 +1158,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             updateCRAttachments();
             if (validateCR?.NotFound == "X")
             {
-                await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
+             //   await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
                 return;
             }
             if (validateCR?.Excption == "X")
@@ -1290,7 +1298,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private async void OnDeleteAttachment(Attachment item, string docType)
         {
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            string QuestionMark = string.Empty;
+            if (App.IsArabic)
+            {
+                QuestionMark = "؟";
+            }
+            else
+            {
+                QuestionMark = "?";
+            }
+
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + item.Filename + QuestionMark);
+
+           // var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
             confirmPopup.OnSelect = async (str) =>
             {
                 if (str == "Yes")
@@ -1316,6 +1336,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     else
                     {
                         IsLoading = false;
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
                     }
                 }
@@ -1434,7 +1455,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private void ShowAlertPopup(string _message)
         {
-            _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
+             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
+           // _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
         }
 
 

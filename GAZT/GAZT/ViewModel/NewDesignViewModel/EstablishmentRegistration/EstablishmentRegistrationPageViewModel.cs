@@ -1394,7 +1394,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             Console.WriteLine(e.StackTrace);
                             if (e is HTTPBadRequestException)
                             {
-                                await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                              //  await _dialogService.ShowMessage(e.Message, AppResources.Information);
                             }
                         }
                         finally
@@ -1433,7 +1434,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         Console.WriteLine(e.StackTrace);
                                         if (e is HTTPBadRequestException)
                                         {
-                                            await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                                            //await _dialogService.ShowMessage(e.Message, AppResources.Information);
                                         }
                                     }
                                     finally
@@ -1652,7 +1654,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private void ShowValidationPopup(string _message)
         {
-            _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
+             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
+           // _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
         }
 
         private void OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum selectedOption)
@@ -2056,18 +2059,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     else
                                     {
                                         attachmentName = string.Empty;
-                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                       await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                                       // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
 
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTAttachmentSizeNotfication));
+                                   // await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
                             }
                             else
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                              //  await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                     }
@@ -2989,7 +2996,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 ex.ToString();
                 if (ex is HTTPBadRequestException)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
                 return false;
             }

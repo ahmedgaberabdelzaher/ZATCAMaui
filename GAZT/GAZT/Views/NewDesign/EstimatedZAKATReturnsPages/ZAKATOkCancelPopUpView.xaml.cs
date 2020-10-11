@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -18,7 +19,17 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             if(ConfirmationText.Equals("DeleteVATAttachment"))
             {
                 _confirmationText = "DeleteVATAttachment";
-                confirmationText.Text = AppResources.ZZDeleteAttachmentConfirmationText;
+                string QuestionMark = string.Empty;
+                if (App.IsArabic)
+                {
+                    QuestionMark = "؟";
+                }
+                else
+                {
+                    QuestionMark = "?";
+                }
+
+                confirmationText.Text = AppResources.ZZDeleteAttachmentConfirmationText + " " + VATDeclarationAttachmentPageView.AttachmentName + QuestionMark;
             }
             else
             {
