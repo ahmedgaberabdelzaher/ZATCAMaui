@@ -193,7 +193,7 @@
                 </Image>
             </StackLayout>
             <StackLayout Grid.Row="1" Padding="15,15,0,0">
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Center" />
+                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Center" />-->
                 <ScrollView Margin="0,20,0,0">
                     <StackLayout Spacing="20" Padding="0,0,0,10">
                        
