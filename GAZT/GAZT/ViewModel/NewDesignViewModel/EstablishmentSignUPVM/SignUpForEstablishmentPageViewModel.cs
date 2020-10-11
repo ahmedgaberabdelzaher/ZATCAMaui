@@ -27,7 +27,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
     public class SignUpForEstablishmentPageViewModel : BaseViewModel
     {
-      
+
+
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public int DefaultMonth;
@@ -41,6 +42,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public VATSignUpData vATSignUpData { get; set; }
         public VATSignUpCaseId SignUpCaseIdD { get; set; }
         #region Variable
+
+
+
+
         private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
         public EstablishmentSignUPTabEnum CurrentTab
         {
@@ -2296,21 +2301,131 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 });
             }
         }
+        private Dictionary<string, string> EnIssueBy = new Dictionary<string, string>()
+        {
+            {"90701", "STC" },
+            {"90702", "Ministry of Commerce and Industry" },
+            {"90703", "Ministry of Health" },
+            {"90704", "Ministry of Culture and Information" },
+            {"90705", "Ministry of Agriculture" },
+            {"90706", "Ministry of Municipal and Rural Affairs" },
+            {"90707", "Ministry of Education" },
+            {"90708", "Technical and Vocational Training Corporation" },
+            {"90709", "Ministry of Labor" },
+            {"90710", "Ministry of Islamic Affairs, Endowments, Da`wah, and Guidance" },
+            {"90711", "Ministry of Hajj" },
+            {"90712", "Saudi Arabia General Investment Authority" },
+            {"90713", "Ministry of Water and Electricity" },
+            {"90714", "Saudi Arabian Monetary Agency" },
+            {"90715", "General Authority of Civil Aviation" },
+            {"90716", "Ministry of Interior" },
+            {"90717", "Ministry of Transportation" },
+            {"90719", "Same Government Agency" },
+            {"90720", "Ministry of Social Affairs" },
+            {"90722", "Saudi Organization for Certified public Accountants? SOCPA" },
+            {"90723", "Saudi Organization Tourism & National Heritage" },
+            {"90725", "Ministry Of Justice" },
+            {"90729", "Saudi Council of Engineers" },
+            {"90721", "Municipality" },
+            {"90724", "Ministry of Petroleum and Mineral Resources" },
+            {"90740", "General Sports Authority" },
+            {"90718", "Other" }
+        };
 
+
+        private Dictionary<string, string> ArIssueBy = new Dictionary<string, string>()
+        {
+            {"90701", "شركة الاتصالات السعوديه" },
+            {"90702", "وزارة التجارة والصناعة" },
+            {"90703", "وزارة الصحة" },
+            {"90704", "وزارة الثقافه والاعلام" },
+            {"90705", "وزارة الزراعة" },
+            {"90706", "وزارة الشؤون البلدية والقروية" },
+            {"90707", "وزارة التربية والتعليم" },
+            {"90708", "التعليم الفني والتدريب المهني" },
+            {"90709", "وزارة العمل" },
+            {"90710", "وزارة الشؤون الإسلامية والأوقاف والدعوة والإرشاد" },
+            {"90711", "وزارة الحـج" },
+            {"90712", "الهيئة العامه للاستثمار" },
+            {"90713", "وزارة المياه والكهرباء" },
+            {"90714", "مؤسسة النقد العربي السعودي" },
+            {"90715", "الهيئة العامة للطيران المدني" },
+            {"90716", "وزارة الداخلية" },
+            {"90717", "وزارة النقل" },
+            {"90719", "نفس الجهة الحكومية" },
+            {"90720", "وزارة الشؤون الإجتماعية" },
+            {"90722", "الهيئة السعودية للمحاسبين القانونيين" },
+            {"90723", "الهيئة العامة للسياحة والتراث الوطني" },
+            {"90725", "لدية العمار" },
+            {"90729", "وزارة العدل" },
+            {"90721", "الهيئة السعودية للمهندسين" },
+            {"90724", "وزارة البترول والثروة المعدنية" },
+            {"90718", "غير معرف" }
+        };
         public async Task SetIssueIdList()
         {
             await Task.Run(() =>
             {
-                IsLoading = true;
+                try
+                {
+                    IsLoading = true;
+                    //Hardcoded List
+                    IssuedByList = new List<IssuedByResponse>();
+                    List<IssuedByResponse> IssuedByListTest = new List<IssuedByResponse>();
+
+                    if (!App.IsArabic)
+                    {
+                        foreach (var item in EnIssueBy)
+                        {
+                            IssuedByListTest.Add(new IssuedByResponse() { mandt = " ", lang = "En", procsType = " ", elementCode = item.Key, txt50 = item.Value });
+
+                        }
+                    }
+                    else
+                    {
+
+                        foreach (var item in ArIssueBy)
+                        {
+                            IssuedByListTest.Add(new IssuedByResponse() { mandt = " ", lang = "AR", procsType = " ", elementCode = item.Key, txt50 = item.Value });
+
+                        }
+                    }
+                    IssuedByList = IssuedByListTest;
+                }
+                catch
+                {
+
+                }
+                
             });
             try
             {
                 // IssuedByList = null;
-                IssuedByList = new List<IssuedByResponse>();
-                List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
-                var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
-                IssuedByList = new List<IssuedByResponse>(IssuedBy);
+               // IssuedByList = new List<IssuedByResponse>();
+               // List<IssuedByResponse>  IssuedByListTest = new List<IssuedByResponse>();
+                //List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
+                //var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
+                //IssuedByList = new List<IssuedByResponse>(IssuedBy);
 
+                if (!App.IsArabic)
+                {
+                    foreach (var item in EnIssueBy)
+                    {
+                       
+                     //   IssuedByListTest.Add(new IssuedByResponse() { mandt=" ", lang="En", procsType= " ", elementCode = item.Key, txt50 = item.Value });
+                       
+                    }
+                }
+                else
+                {
+
+                    //foreach (var item in ArIssueBy)
+                    //{
+                    //    IssuedByListTest.Add(new IssuedByResponse() { mandt = " ", lang = "AR", procsType = " ", elementCode = item.Key, txt50 = item.Value });
+
+                    //}
+                }
+               // IssuedByList = IssuedByListTest;
             }
             catch (GAZTException gex)
             {
@@ -2375,6 +2490,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             });
 
         }
+
+
+
 
         public async Task SetCityList()
         {
