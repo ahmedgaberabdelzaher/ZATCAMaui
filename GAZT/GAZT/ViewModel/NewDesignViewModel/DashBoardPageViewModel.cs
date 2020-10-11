@@ -60,12 +60,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private Color _menuIndicatorColor = Color.White;
         private Color _tabbarColor = Color.DarkGray;
         private Color _stackMenuColor = Color.White;
-
+        private string _paidbillCount=string.Empty;
+        private string _partiallypaidbillCount=string.Empty;
+        private string _unPaidbillCount= string.Empty;
         private string _NextCommitmentsString = AppResources.ZZZZNextCommitments;
         private string _ReturnString = AppResources.NDReturns;
         private string _BillString = AppResources.Bills;
         private string _PaidString = AppResources.Paid;
-        private string _PartiallyPaidString = AppResources.PartiallyPaid;
+        private string _PartiallyPaidString = AppResources.Partiallynewui;
         private string _UnPaidString = AppResources.UnPaid;
         private string _TotalString = AppResources.NDTotalNumberOfBills;
         private Dashboard DashboardData = null;
@@ -290,6 +292,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 this._billCount = value;
                 this.RaisePropertyChanged("BillCount");
+            }
+        }
+
+        public string PaidBillCount
+        {
+            get
+            {
+                return this._paidbillCount;
+            }
+            set
+            {
+                this._paidbillCount = value;
+                this.RaisePropertyChanged("PaidBillCount");
+            }
+        }
+        
+        public string PartiallyPaidBillCount
+        {
+            get
+            {
+                return this._partiallypaidbillCount;
+            }
+            set
+            {
+                this._partiallypaidbillCount = value;
+                this.RaisePropertyChanged("PartiallyPaidBillCount");
+            }
+        }
+
+        public string UnPaidBillCount
+        {
+            get
+            {
+                return this._unPaidbillCount;
+            }
+            set
+            {
+                this._unPaidbillCount = value;
+                this.RaisePropertyChanged("UnPaidBillCount");
             }
         }
 
@@ -1033,6 +1074,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
 
                             iBillsCount = Convert.ToInt32(BillCount);
+                            PaidBillCount = BillCount;
 
                         }
                         catch (Exception ex)
@@ -1078,6 +1120,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ColorsChild.Add(System.Drawing.Color.FromArgb(227, 152, 0));
 
                         iBillsCount += Convert.ToInt32(BillCount);
+                        PartiallyPaidBillCount = BillCount;
                     }
                     //Unpaid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
@@ -1115,6 +1158,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ColorsChild.Add(System.Drawing.Color.FromArgb(236, 0, 0));
 
                         iBillsCount += Convert.ToInt32(BillCount);
+                        UnPaidBillCount = BillCount;
 
                     }
 
@@ -1124,8 +1168,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Colors = ColorsChild;
 
                     BillCount = iBillsCount.ToString();
+                            PaidString = AppResources.Paid+" "+PaidBillCount;
+        PartiallyPaidString = AppResources.Partiallynewui+" "+PartiallyPaidBillCount ;
+        UnPaidString = AppResources.UnPaid+" "+UnPaidBillCount;
 
-                }
+    }
             }
             catch (Exception ex)
             {

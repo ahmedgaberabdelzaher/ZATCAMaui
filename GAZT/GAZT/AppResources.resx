@@ -4909,7 +4909,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>New Desing Form5</comment>
   </data>
       <data name="NDTotalAmount" xml:space="preserve">
-    <value>:Total amount</value>
+    <value>Total amount:</value>
     <comment>My bills</comment>
   </data>
           <data name="NDInvoiceDueamount" xml:space="preserve">
