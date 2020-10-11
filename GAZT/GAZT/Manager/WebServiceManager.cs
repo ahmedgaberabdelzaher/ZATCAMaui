@@ -2109,7 +2109,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachmentForFD(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -2125,6 +2125,42 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    if (!string.IsNullOrEmpty(contentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(url, baContent);
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                    return _attachment;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
+                    char LangZ = GetLangZParameter();
+                    string AttBy = "TP";
+                    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
@@ -15519,7 +15555,7 @@ namespace GAZT.Manager
                             + ",Euser2=" + "''"
                             + ",Euser3=" + "''"
                             + ",Euser4=" + "''"
-                            + ",Euser5=" + "''" + ")?$format=json"+"&sap-language="+ lang;
+                            + ",Euser5=" + "''" + ")?$format=json" + "&sap-language=" + lang;
 
                 var URI = new Uri(URL);
                 Task<TaxPayerProfile> TPProfileData = GetTPProfileAndUpdatePasswordAPICall(URI);
@@ -15579,7 +15615,7 @@ namespace GAZT.Manager
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
-                
+
                 if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
                 {
                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
@@ -15588,7 +15624,7 @@ namespace GAZT.Manager
                         string errorMessage = string.Empty;
                         errorMessage = errorMesg.error.innererror.errordetails[0].message;
                         errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                        
+
                         String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                         errorMessage = WithReplacedString;
                         //ErrorMessageForVAT
@@ -15645,7 +15681,7 @@ namespace GAZT.Manager
 
                             String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
-                           
+
                             throw new Exception(errorMessage);
                         }
                     }
@@ -16523,7 +16559,7 @@ namespace GAZT.Manager
                     String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    String url = Constants.AccountStatementGetYearValues + "Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '"+ statementFilter+"'" + "&$format=json";
+                    String url = Constants.AccountStatementGetYearValues + "Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '" + statementFilter + "'" + "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);

@@ -746,7 +746,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
+                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachmentForFD(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
                     if (attachment != null && attachment.d != null)
                     {
                         attachmentSizeVisibility = true;
