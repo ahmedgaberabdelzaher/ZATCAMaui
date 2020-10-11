@@ -11,8 +11,10 @@
                   xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
                   xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
                   xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-                  xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
-                  x:Class="EGAZT.Views.NewDesign.ZakatDeregistration.TINDeregistrationCloseIndividualOutletsPageView">
+                  xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
+                  xmlns:custom1="clr-namespace:GAZT.CustomControl"
+                  x:Class="EGAZT.Views.NewDesign.ZakatDeregistration.TINDeregistrationCloseIndividualOutletsPageView"
+                  x:Name="TinDeregIndOutlets">
         <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -523,7 +525,8 @@
                                                         </StackLayout>
                                                     </border:SfBorder >
                                             </StackLayout>
-                                            <StackLayout x:Name="parentView" Grid.Row="7" Grid.ColumnSpan="2" IsVisible="{Binding IsOutletTranferOutletGridVisible}">
+                                            <StackLayout x:Name="parentView" Grid.Row="7" Grid.ColumnSpan="2" IsVisible="{Binding IsOutletTranferOutletGridVisible}"
+                                                         IsEnabled="{Binding BindingContext.IsDetailsFieldEnabled ,Source={x:Reference TinDeregIndOutlets}}">
                                                <Grid RowSpacing="8">
                                                         <Grid.RowDefinitions >
                                                             <RowDefinition Height="auto"/>

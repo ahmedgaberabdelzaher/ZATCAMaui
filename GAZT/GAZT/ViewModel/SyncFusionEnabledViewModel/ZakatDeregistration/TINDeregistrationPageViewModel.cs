@@ -929,7 +929,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
-
+        private bool _isDetailsFieldEnabled;
+        public bool IsDetailsFieldEnabled
+        {
+            get => _isDetailsFieldEnabled;
+            set
+            {
+                _isDetailsFieldEnabled = value;
+                RaisePropertyChanged(nameof(IsDetailsFieldEnabled));
+            }
+        }
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -1061,10 +1070,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                       if (tempSelectedReason == AppResources.TinDeregistrationClosed)
                                       {
                                           x.APermitDregRsnTb = "1";
+                                          IsDetailsFieldEnabled = false;
                                       }
                                       else
                                       {
                                           x.APermitDregRsnTb = "3";
+                                          IsDetailsFieldEnabled = true;
                                       }
                                   }
 
@@ -1075,10 +1086,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (PickerModel.SelectedValue == AppResources.TinDeregistrationClosed)
                             {
                                 IsOutletTranferOutletGridVisible = false;
+                                IsDetailsFieldEnabled = false;
                             }
                             else
                             {
                                 IsOutletTranferOutletGridVisible = true;
+                                IsDetailsFieldEnabled = true;
                             }
                         }
                         else if (PickerModel.PickerId == "permitIdTypePicker")
@@ -2925,15 +2938,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     //    outletInfo.AOutletExpdtTb = string.Empty;
 
                                     if (SelectedOutletOptionIndex == 0 || SelectedOutletOptionIndex == 2)
-                                        {
+                                    {
                                         outletInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
 
-                                        }
-                                        else
-                                        {
+                                    }
+                                    else
+                                    {
                                         outletInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
 
-                                        }
+                                    }
 
                                     outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
@@ -2952,7 +2965,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                             }
                                             else
                                             {
-                                                permitInfo.ReasonDescription  = AppResources.TinDeregistrationTransfer;
+                                                permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
 
                                             }
                                             if (permitInfo.APermitDregRsnTb == null)
@@ -3726,7 +3739,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 summaryDeclarationData.Add(new TINDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.MobileNumber,
-                    SummaryData = "00966"+TinDeregistrationData.ADecTelNo,
+                    SummaryData = "00966" + TinDeregistrationData.ADecTelNo,
                     IsEditVisible = true
                 });
                 summaryDeclarationData.Add(new TINDeregistrationSummaryModel
