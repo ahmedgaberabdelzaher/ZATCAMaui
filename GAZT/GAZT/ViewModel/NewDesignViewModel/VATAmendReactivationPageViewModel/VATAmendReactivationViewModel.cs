@@ -2059,7 +2059,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             pageType = "04";
 
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
-                        OriginalVATRegistrationDetailsData = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
+                        //OriginalVATRegistrationDetailsData = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
