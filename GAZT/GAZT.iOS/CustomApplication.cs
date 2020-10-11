@@ -28,7 +28,8 @@ namespace GAZT.iOS
             {
                 if (uievent.AllTouches.Cast<UIKit.UITouch>().Any(t => t.Phase == UIKit.UITouchPhase.Began))
                 {
-                    App.Current.Properties["timeOut"] = DateTime.Now;
+                    Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
+                    //App.ResetAndContinueSession();
 
                     //EGAZT.App.stopWatch.Reset();
                     //EGAZT.App.stopWatch.Start();

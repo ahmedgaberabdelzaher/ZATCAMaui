@@ -128,17 +128,18 @@ namespace GAZT.Droid
             disconnectHandler.RemoveCallbacks(action);
             disconnectHandler.PostDelayed(action, DISCONNECT_TIMEOUT);
         }
+
         public override void OnUserInteraction()
         {
             base.OnUserInteraction();
-
-            App.Current.Properties["timeOut"] = DateTime.Now;
+            Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
         }
+
         protected override void OnResume()
         {
             base.OnResume();
-            App.IsAppRunningInBackground = false;
-            App.ResetAndContinueSession();
+            //App.IsAppRunningInBackground = false;
+            //App.ResetAndContinueSession();
         }
 
         protected override void OnStop()
@@ -175,8 +176,8 @@ namespace GAZT.Droid
         protected override void OnPause()
         {
             base.OnPause();
-            App.IsAppRunningInBackground = true;
-            App.ResetAndContinueSession();
+            //App.IsAppRunningInBackground = true;
+            //App.ResetAndContinueSession();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

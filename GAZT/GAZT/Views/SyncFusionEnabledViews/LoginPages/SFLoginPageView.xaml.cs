@@ -244,7 +244,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 {
                     viewModel.IsLoading = true;
                     hybridWebView.Opacity = 0;
-                    var objSession = Xamarin.Forms.Application.Current.Properties.ContainsKey("IsSessionExpired") ? Xamarin.Forms.Application.Current.Properties["IsSessionExpired"] : null; if (objSession != null && bool.Parse(objSession.ToString()))
+                    var objSession = Xamarin.Forms.Application.Current.Properties.ContainsKey("IsSessionExpired") ? Xamarin.Forms.Application.Current.Properties["IsSessionExpired"] : null;
+                    if (objSession != null && bool.Parse(objSession.ToString()))
                     {
                         loginGrid.Opacity = 0;
                         sessionExpiredView.IsVisible = true;
@@ -773,7 +774,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         {
             sessionExpiredView.IsVisible = false;
             loginGrid.Opacity = 1;
-            Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
+            App.Current.Properties["IsSessionExpired"] = false;
+
+            OnAppearing();
+            //Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
+
             App.ResetAndContinueSession();
         }
     }
