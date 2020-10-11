@@ -3278,7 +3278,7 @@ Should we require further information, we would be in contact.</value>
     <comment>VAT</comment>
   </data>
   <data name="ZZZChangetoLanguage" xml:space="preserve">
-    <value>النسخة العربية</value>
+    <value>عربي</value>
     <comment>option  انتقل للغة العربية</comment>
   </data>
   <data name="ZZZContactus" xml:space="preserve">
