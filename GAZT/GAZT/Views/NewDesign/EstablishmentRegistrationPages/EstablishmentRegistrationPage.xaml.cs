@@ -127,13 +127,26 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            Image item = sender as Image;
+            Attachment data = item.BindingContext as Attachment;
+            string QuestionMark = string.Empty;
+            if (App.IsArabic)
+            {
+                QuestionMark = "؟";
+            }
+            else
+            {
+                QuestionMark = "?";
+            }
+
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + data.Filename + QuestionMark);
+
             confirmPopup.OnSelect = (str) =>
             {
                 if (str == "Yes")
                 {
-                    var item = sender as Image;
-                    var data = item.BindingContext as Attachment;
+                    //var item = sender as Image;
+                    //var data = item.BindingContext as Attachment;
                     viewModel.OnRentAttachmentDeleteButtonTapped(data);
                 }
             };
@@ -142,13 +155,25 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         async void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            Image item = sender as Image;
+            Attachment data = item.BindingContext as Attachment;
+            string QuestionMark = string.Empty;
+            if (App.IsArabic)
+            {
+                QuestionMark = "؟";
+            }
+            else
+            {
+                QuestionMark = "?";
+            }
+
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + data.Filename + QuestionMark);
             confirmPopup.OnSelect = (str) =>
             {
                 if (str == "Yes")
                 {
-                    var item = sender as Image;
-                    var data = item.BindingContext as Attachment;
+                    //var item = sender as Image;
+                    //var data = item.BindingContext as Attachment;
                     viewModel.OnPassportAttachmentDeleteButtonTapped(data);
                 }
             };
