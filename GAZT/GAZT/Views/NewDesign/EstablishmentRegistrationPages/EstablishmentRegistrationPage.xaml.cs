@@ -27,10 +27,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             ChangeAeroIcon();
             SetLTR();
+            
             viewModel = App.Locator.EstablishmentRegistrationPage;
+            BindingContext = viewModel;
+            viewModel.IsNavigationCompletedToSuccessfulPage = false;
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-            BindingContext = viewModel;
         }
 
         protected override void OnAppearing()

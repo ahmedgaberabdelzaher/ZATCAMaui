@@ -30,6 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private Nreg_IdItem idItem { get; set; } = null;
+        public bool IsNavigationCompletedToSuccessfulPage = false;
         //private OutletNumber number;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
@@ -39,6 +40,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if(_currentTab == value)
                 {
+                    if(IsNavigationCompletedToSuccessfulPage == false)
+                    {
+                        Device.BeginInvokeOnMainThread(() => fetchTabDataAndBind(_currentTab));
+                    }
                     return;
                 }
                 _currentTab = value;
@@ -2136,7 +2141,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        if (IsNavigationCompletedToSuccessfulPage == false)
+                        {
+                            IsNavigationCompletedToSuccessfulPage = true;
+                            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        }
+                    }
+                    else
+                    {
+                        IsNavigationCompletedToSuccessfulPage = false;
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
