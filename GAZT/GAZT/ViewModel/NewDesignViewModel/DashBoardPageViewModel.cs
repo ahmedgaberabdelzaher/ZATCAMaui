@@ -67,7 +67,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private string _PaidString = AppResources.Paid;
         private string _PartiallyPaidString = AppResources.PartiallyPaid;
         private string _UnPaidString = AppResources.UnPaid;
-        private string _TotalString = AppResources.NDTotal;
+        private string _TotalString = AppResources.NDTotalNumberOfBills;
         private Dashboard DashboardData = null;
         private CalendarEventCollection _CommittmentsSchedule = null;
         private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;

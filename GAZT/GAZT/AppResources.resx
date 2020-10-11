@@ -4901,10 +4901,22 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="NDTotal" xml:space="preserve">
     <value>Total</value>
   </data>
+      <data name="NDTotalNumberOfBills" xml:space="preserve">
+    <value>Total number of bills</value>
+  </data>
   <data name="NDEmail" xml:space="preserve">
     <value>Email</value>
     <comment>New Desing Form5</comment>
   </data>
+      <data name="NDTotalAmount" xml:space="preserve">
+    <value>:Total amount</value>
+    <comment>My bills</comment>
+  </data>
+          <data name="NDInvoiceDueamount" xml:space="preserve">
+    <value>Invoice Due amount</value>
+    <comment>My bills</comment>
+  </data>
+    
   <data name="NDFinancialYear" xml:space="preserve">
     <value>Financial Year</value>
     <comment>New Desing Form5</comment>
