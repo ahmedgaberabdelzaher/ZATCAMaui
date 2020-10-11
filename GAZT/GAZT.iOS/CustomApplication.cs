@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using EGAZT;
 
 namespace GAZT.iOS
 {
@@ -27,6 +28,8 @@ namespace GAZT.iOS
             {
                 if (uievent.AllTouches.Cast<UIKit.UITouch>().Any(t => t.Phase == UIKit.UITouchPhase.Began))
                 {
+                    App.Current.Properties["timeOut"] = DateTime.Now;
+
                     //EGAZT.App.stopWatch.Reset();
                     //EGAZT.App.stopWatch.Start();
                 }

@@ -14,6 +14,7 @@ using AppDynamics.Agent;
 using Plugin.Media;
 using Java.Lang;
 using System;
+using Xamarin.Forms;
 
 namespace GAZT.Droid
 {
@@ -95,7 +96,7 @@ namespace GAZT.Droid
             //StartTimerForLoginRefresh(0,1,0);
             LoadApplication(app);
         }
-        
+
 
         public class MyHandlerICallback : Java.Lang.Object, Handler.ICallback
         {
@@ -118,21 +119,6 @@ namespace GAZT.Droid
             disconnectHandler.RemoveCallbacks(action);
         }
 
-        //public override void OnUserInteraction()
-        //{
-        //    base.OnUserInteraction();
-        //    //resetDisconnectTimer();
-
-        //    App.stopWatch.Reset();
-        //    App.stopWatch.Start();
-
-        //    //InvalidateTimer = true;
-        //    //StartTimerForLoginRefresh(0, 1, 0);
-
-        //    //stopHandler();
-        //    //startHandler();
-        //}
-
         public static long DISCONNECT_TIMEOUT = 60000; // 5 min = 5 * 60 * 1000 ms
 
         public Handler disconnectHandler;
@@ -142,10 +128,17 @@ namespace GAZT.Droid
             disconnectHandler.RemoveCallbacks(action);
             disconnectHandler.PostDelayed(action, DISCONNECT_TIMEOUT);
         }
+        public override void OnUserInteraction()
+        {
+            base.OnUserInteraction();
 
+            App.Current.Properties["timeOut"] = DateTime.Now;
+        }
         protected override void OnResume()
         {
             base.OnResume();
+            App.IsAppRunningInBackground = false;
+            App.ResetAndContinueSession();
         }
 
         protected override void OnStop()
@@ -182,6 +175,8 @@ namespace GAZT.Droid
         protected override void OnPause()
         {
             base.OnPause();
+            App.IsAppRunningInBackground = true;
+            App.ResetAndContinueSession();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

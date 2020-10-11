@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local2="clr-namespace:EGAZT.Views.SyncFusionEnabledViews.EmailEntry"
     xmlns:local1="clr-namespace:EGAZT;assembly:GAZT"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
@@ -12,29 +13,34 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:egazt="clr-namespace:EGAZT"
     FlowDirection="RightToLeft"
+    xmlns:custom2="clr-namespace:EGAZT"
     NavigationPage.HasNavigationBar="False"
+    Title="Login"
                  xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
     BackgroundColor="White">
-   <!--Style="{StaticResource ContentPageStyle}"-->
+    <!--Style="{StaticResource ContentPageStyle}"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid x:Name="loginGrid">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid x:Name="loginGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <!--<egazt:HybridWebView Grid.Row="0" Opacity="0" x:Name="hybridWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
-            <!--<custom:CustomLabel Grid.Row="0"
+                <!--<egazt:HybridWebView Grid.Row="0" Opacity="0" x:Name="hybridWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
+                <!--<custom:CustomLabel Grid.Row="0"
                 x:Name="BackLabel"
                        VerticalOptions="Start"
                 HorizontalOptions="Start"
@@ -48,15 +54,15 @@
             </custom:CustomLabel>-->
 
 
-            <Image Source="ic_burger.png" x:Name="HamburgerMenu"
+                <Image Source="ic_burger.png" x:Name="HamburgerMenu"
                        VerticalOptions="Start"
                 HorizontalOptions="EndAndExpand"
                         Margin="10,30,10,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <!--<custom:CustomLabel Grid.Row="0"
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <!--<custom:CustomLabel Grid.Row="0"
                 x:Name="HamburgerMenu"
                        VerticalOptions="Start"
                 HorizontalOptions="EndAndExpand"
@@ -69,21 +75,21 @@
                 </custom:CustomLabel.GestureRecognizers>
             </custom:CustomLabel>-->
 
-            <Grid Grid.Row="0" Grid.Column="0" IsVisible="false">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="false">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
 
-                    <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
-                </StackLayout>
-            </Grid>
+                        <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
+                    </StackLayout>
+                </Grid>
 
-            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
                                        AnimationType="SingleCircle"
                                            HorizontalOptions="CenterAndExpand"
@@ -94,11 +100,27 @@
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#d99a29"/>
+                        </StackLayout>
+                        <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
-                    <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
-                </StackLayout>
+                </Grid>
+                <!-- Acticity indicator layout end -->
             </Grid>
-            <!-- Acticity indicator layout end -->
+            <StackLayout x:Name="sessionExpiredView" IsVisible="false" Margin="0" BackgroundColor="Transparent" >
+                <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
+                    <Image Source="errorNew.png"   Aspect="AspectFit"/>
+                    <Label Text="{x:Static custom2:AppResources.Information}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label Text= "{x:Static custom2:AppResources.ZYourSessionhasexpiredPleaseLoginagain}" FontFamily="{StaticResource SSTArabicMedium}"
+                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Margin="30,60,30,80" >
+                    <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  
+                                      x:Name="btnLogin" Clicked="btnLoginClicked" 
+                                      Text="{x:Static ResourceManager:AppResources.LoginTitle}"
+                                    Style="{StaticResource PrimaryButtonStyle}" HeightRequest="46" />
+                </StackLayout>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

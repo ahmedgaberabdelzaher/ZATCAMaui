@@ -672,6 +672,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         }
 
 
+        private VATRegistrationDetails _originalVATRegistrationDetailsData;
+        public VATRegistrationDetails OriginalVATRegistrationDetailsData
+        {
+            get
+            {
+                return _originalVATRegistrationDetailsData;
+            }
+            set
+            {
+                _originalVATRegistrationDetailsData = value;
+                RaisePropertyChanged("OriginalVATRegistrationDetailsData");
+            }
+        }
+
+
         private Double _minimumDisplayValueOfSlider1 = 0.0;
         public Double MinimumDisplayValueOfSlider1
         {
@@ -2042,7 +2057,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             pageType = "07";
                         else
                             pageType = "04";
+
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
+                        OriginalVATRegistrationDetailsData = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2148,6 +2165,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                             }
                             VATRegistrationDetailsData = vATRegistration;
+
                             setIban();
                             if (VATRegistrationDetailsData.d.AgrFg != null)
                             { }

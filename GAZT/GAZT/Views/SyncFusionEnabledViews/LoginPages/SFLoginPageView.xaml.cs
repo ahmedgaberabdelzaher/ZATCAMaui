@@ -72,7 +72,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 }
 
 
-                MessagingCenter.Subscribe<string>(this, "UnlockAccountBackButtonClicked", message => {
+                MessagingCenter.Subscribe<string>(this, "UnlockAccountBackButtonClicked", message =>
+                {
                     Console.WriteLine("UnlockAccountBackButtonClicked");
                     OnAppearing();
                 });
@@ -87,6 +88,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 {
                     Console.WriteLine("OnActivated");
                     OnAppearing();
+                });
+                MessagingCenter.Subscribe<object, string>(this, "SessionExpired", (sender, arg) =>
+                {
+                    //var objSession = Xamarin.Forms.Application.Current.Properties["IsSessionExpired"];
+                    //if (objSession != null && bool.Parse(objSession.ToString()))
+                    //{
+                    //    loginGrid.Opacity = 0;
+                    //    sessionExpiredView.IsVisible = true;
+                    //}
                 });
 
                 DependencyService.Get<IStatusBar>().HideStatusBar();
@@ -107,7 +117,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         public void CheckFirstTimeorNot()
         {
             Preferences.Set("first_TimeLoging_key", "False");
-            
+
         }
         public SFLoginPageView()
         {
@@ -189,7 +199,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 //viewModel.email = string.Empty;
                 // viewModel.Password = string.Empty;
                 // viewModel.Email = string.Empty;
-                MessagingCenter.Subscribe<string>(this, "TinList", message => {
+                MessagingCenter.Subscribe<string>(this, "TinList", message =>
+                {
                     viewModel.IsVisibleTinIds = true;
                 });
                 ChangeAeroIcon();
@@ -226,13 +237,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 if (hybridWebView != null)
                     loginGrid.Children.Remove(hybridWebView);
-              
+
                 hybridWebView = new HybridWebView();
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     viewModel.IsLoading = true;
                     hybridWebView.Opacity = 0;
+                    var objSession = Xamarin.Forms.Application.Current.Properties.ContainsKey("IsSessionExpired") ? Xamarin.Forms.Application.Current.Properties["IsSessionExpired"] : null; if (objSession != null && bool.Parse(objSession.ToString()))
+                    {
+                        loginGrid.Opacity = 0;
+                        sessionExpiredView.IsVisible = true;
+                    }
                 });
 
                 try
@@ -254,7 +270,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 //hybridWebView.Cookies = loginWebViewCookieContainer;
 
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
-                
+
                 hybridWebView.RegisterAction(async (data) =>
                 {
                     Device.BeginInvokeOnMainThread(async () =>
@@ -330,6 +346,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                         if (currVer >= minVer && currVer <= maxVer)
                                         {
                                             App.IsUserLoggedIn = true;
+                                            Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
                                             await viewModel.LoginCompletedInWebView();
                                         }
                                         else
@@ -385,7 +402,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 //viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
                                 viewModel._navigationService.NavigateTo(App.EstablishmentSignUPPageView);
                             }
-                            
+
                             if (data == "navigateBackToLoginPage")
                             {
                                 OnAppearing();
@@ -396,7 +413,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
 
-                                if(App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
+                                if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
                                 {
                                     App.LoginDataRetrieved.AppMsg = AppResources.Somethingwentwrong;
                                 }
@@ -485,7 +502,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
 
                                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-                                 _navigation.NavigationStack.ToList().Clear();
+                                _navigation.NavigationStack.ToList().Clear();
 
                             }
                         }
@@ -494,7 +511,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         {
                             Console.WriteLine(ex.Message);
                         }
-                        });
+                    });
                 });
 
                 loginGrid.Children.Add(hybridWebView, 0, 0);
@@ -750,6 +767,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         {
             string deviceId = System.Guid.NewGuid().ToString();
             viewModel.DeviceId = deviceId;
+        }
+
+        private void btnLoginClicked(object sender, EventArgs e)
+        {
+            sessionExpiredView.IsVisible = false;
+            loginGrid.Opacity = 1;
+            Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
+            App.ResetAndContinueSession();
         }
     }
 }

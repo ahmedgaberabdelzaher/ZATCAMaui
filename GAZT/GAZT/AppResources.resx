@@ -8330,4 +8330,8 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
      <data name="VATDraftSaved" xml:space="preserve">
     <value>VAT Instalment form saved successfully{0}</value>
   </data>
+ <data name="NoChangesMadeCannotBeSavedAsDraft" xml:space="preserve">     <value>There are No changes made in this application, please make changes and then Save it as Draft</value>  </data>
+ <data name="LoginTitle" xml:space="preserve">
+        <value>Login</value>
+ </data>
 </root>

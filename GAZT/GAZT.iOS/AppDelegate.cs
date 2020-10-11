@@ -120,19 +120,15 @@ namespace GAZT.iOS
 
         public override void OnActivated(UIApplication application)
         {
+            App.IsAppRunningInBackground = false;
+            App.ResetAndContinueSession();
             Console.WriteLine("OnActivated called, App is active.");
         }
 
         public override void WillEnterForeground(UIApplication application)
         {
-            //if (App.IsLoginPageVisible() == false)
-            //{
-            //    App.ShouldStopTimer = true;
-            //}
-            //else
-            //{
-            //    App.ShouldStopLoginRefreshTimer = true;
-            //}
+            //App.IsAppRunningInBackground = false;
+            //App.ResetAndContinueSession();
 
             Console.WriteLine("App will enter foreground");
         }
@@ -144,24 +140,14 @@ namespace GAZT.iOS
 
         public override void DidEnterBackground(UIApplication application)
         {
-            //if (App.IsLoginPageVisible() == false)
-            //{
-            //    App.ShouldStopTimer = false;
-            //    App.DoesLoginNeedToBeRefreshed = false;
-            //    App.StartTimerForBackground(0, 5, 0);
-            //    //Console.WriteLine("App entering background state.");
-            //}
-            //else
-            //{
-            //    App.ShouldStopLoginRefreshTimer = false;
-            //    App.StartTimerForLoginRefresh(0, 3, 0);
-            //}
+            App.IsAppRunningInBackground = true;
+            App.ResetAndContinueSession();
         }
 
         // not guaranteed that this will run
         public override void WillTerminate(UIApplication application)
         {
-                Console.WriteLine("App is terminating.");
+            Console.WriteLine("App is terminating.");
         }
 
         //rohith-login

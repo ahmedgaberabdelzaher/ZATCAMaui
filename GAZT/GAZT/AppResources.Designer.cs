@@ -14717,5 +14717,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATDraftSaved", resourceCulture);
             }
         }
+        
+        public static string NoChangesMadeCannotBeSavedAsDraft {
+            get {
+                return ResourceManager.GetString("NoChangesMadeCannotBeSavedAsDraft", resourceCulture);
+            }
+        }
+        
+        public static string LoginTitle {
+            get {
+                return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
     }
 }

@@ -45,8 +45,8 @@ namespace EGAZT
         #region new design views
 
         public static Stopwatch stopWatch = new Stopwatch();
-        public const int defaultTimespan = 2;
-        public const int defaultTimespanForLogin = 1;
+        public const int defaultTimespan = 8;
+        public const int defaultTimespanForLogin = 6;
 
         public static string GAZTNewDesignVATReturnUpdatedUIPageView = "GAZTNewDesignVATReturnUpdatedUIPageView";
         public static string GAZTNewDesignDashBoardPageView = "GAZTNewDesignDashBoardPageView";
@@ -320,6 +320,9 @@ namespace EGAZT
         public static string selectedVATItem = "";
         public static string selectedVatFillingItem = "";
         public static string selectedVATItemFbust = "";
+        public static string idleTime = string.Empty;
+        public static double idleTimeSpan = 0;
+        public static bool IsAppRunningInBackground = false;
 
         #endregion
 
@@ -327,6 +330,8 @@ namespace EGAZT
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
+            IsAppRunningInBackground = false;
+            App.Current.Properties["timeOut"] = DateTime.Now;
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
             Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
@@ -376,6 +381,11 @@ namespace EGAZT
             try
             {
                 CreateClientHandler();
+                ResetAndContinueSession();
+                MessagingCenter.Subscribe<object, string>(this, "ResetAndContinueSession", async (sender, arg) =>
+                {
+                    ResetAndContinueSession();
+                });
             }
             catch (Exception ex)
             {
@@ -413,76 +423,37 @@ namespace EGAZT
 
             MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", async (sender, arg) =>
             {
-                //if (App.DoesLoginNeedToBeRefreshed == true)
-                //{
-                //    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                //    {
-                //        try
-                //        {
-                //            await WebServiceManager.GAZTLogOff();
-                //        }
-                //        catch (Exception ex)
-                //        {
+                if (App.DoesLoginNeedToBeRefreshed == true)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        try
+                        {
+                            Current.Properties["IsSessionExpired"] = true;
+                            App.DoesLoginNeedToBeRefreshed = false;
+                            navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                            var navigationService1 = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
+                            navigationService1.Initialize(navigationPage);
+                            _navigationService = navigationService1;
+                            var dialogService1 = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
+                            dialogService1.Initialize(navigationPage);
+                            _dialogService = dialogService1;
 
-                //        }
+                            MainPage = navigationPage;
+                            _ = Task.Run(() => WebServiceManager.GAZTLogOff());
 
-                //        //to be reverted code
+                        }
+                        catch (Exception ex)
+                        {
 
-                //        //App.DoesLoginNeedToBeRefreshed = false;
-                //        //var _navigation = Application.Current.MainPage.Navigation;
-                //        //await _navigation.PopToRootAsync();
+                        }
+                    });
 
-                //        //Test and Revert
-                //        //await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
 
-                //        App.DoesLoginNeedToBeRefreshed = false;
-                //        var _navigation = Application.Current.MainPage.Navigation;
-
-                //        //foreach (var item in _navigation.NavigationStack)
-                //        //{
-                //        //    if (item.GetType().Name != App.SFLoginPageView)
-                //        //    {
-                //        //        _navigation.RemovePage(item);
-                //        //    }
-                //        //}
-
-                //        navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
-                //        MainPage = navigationPage;
-
-                //        //_navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                //        //_navigation.NavigationStack.ToList().Clear();
-
-                //        await PopupNavigation.Instance.PushAsync(new SessionTimeoutPageView());
-
-                //        //await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-
-                //        //if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
-                //        //{
-                //        //    foreach (var item in _navigation.NavigationStack)
-                //        //    {
-                //        //        if (item.GetType().Name == App.SFLoginPageView)
-                //        //        {
-                //        //            _navigation.RemovePage(item);
-                //        //            break;
-                //        //        }
-                //        //    }
-
-                //        //    //_navigation.PushAsync(App.SFLoginPageView);
-                //        //    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
-                //        //    _navigation.NavigationStack.ToList().Clear();
-                //        //}
-                //        //else
-                //        //{
-                //        //    await _navigation.PopToRootAsync();
-                //        //    await _dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                //        //}
-                //    });
-                //}
+                    //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+                    //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
+                }
             });
-
-
-            //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             _navigationService = navigationService;
@@ -494,6 +465,7 @@ namespace EGAZT
 
             MainPage = navigationPage;
         }
+
 
 
         public static void CreateClientHandler()
@@ -660,40 +632,6 @@ namespace EGAZT
 
             }
 
-
-            //if (!stopWatch.IsRunning)
-            //{
-            //    stopWatch.Start();
-            //}
-
-            //Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-            //{
-            //    // Logic for logging out if the device is inactive for a period of time.
-            //    int timeSpan = defaultTimespan;
-
-            //    if(IsLoginPageVisible() == true)
-            //    {
-            //        timeSpan = defaultTimespanForLogin;
-            //    }
-
-            //    if (stopWatch.IsRunning && stopWatch.Elapsed.Minutes >= timeSpan)
-            //    {
-            //        //prepare to perform your data pull here as we have hit the 1 minute mark   
-
-            //        // Perform your long running operations here.
-
-            //        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-            //        {
-            //            HandleSessionTimeout();
-            //        });
-
-            //        stopWatch.Restart();
-            //    }
-
-            //    // Always return true as to keep our device timer running.
-            //    return true;
-            //});
-
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             // Handle when your app starts
             AppCenter.Start("ios=eb11c7c9-cb42-4806-b01e-9b78bf433259" +
@@ -701,6 +639,41 @@ namespace EGAZT
                   "android=138974d9-a5ae-4afa-b7b3-13ff660d8421",
                   typeof(Distribute));
         }
+
+        public static Task ResetAndContinueSession()
+        {
+            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 3), () =>
+            {
+                // Logic for logging out if the device is inactive for a period of time.
+                int timeSpan = defaultTimespan;
+
+                if (IsLoginPageVisible() == true)
+                {
+                    timeSpan = defaultTimespanForLogin;
+                }
+
+                idleTime = Application.Current.Properties["timeOut"].ToString();
+                idleTimeSpan = DateTime.Now.Subtract(DateTime.Parse(idleTime)).TotalMinutes;
+                if (idleTimeSpan >= timeSpan)
+                {
+                    //prepare to perform your data pull here as we have hit the 1 minute mark   
+
+                    // Perform your long running operations here.
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        HandleSessionTimeout();
+                    });
+                    return false;
+                }
+
+                // Always return true as to keep our device timer running.
+                Xamarin.Forms.Application.Current.Properties["IsSessionExpired"] = false;
+                return IsAppRunningInBackground ? false : true;
+            });
+            return null;
+        }
+
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)
         {
             // Look at releaseDetails public properties to get version information, release notes text or release notes URL
@@ -747,6 +720,10 @@ namespace EGAZT
         }
         protected override void OnResume()
         {
+            foreach (var item in Application.Current.MainPage.Navigation.NavigationStack)
+            {
+                Debug.WriteLine(item.Title);
+            }
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
@@ -782,7 +759,7 @@ namespace EGAZT
 
             if (topPage.GetType().Name == App.SFLoginPageView)
             {
-                return true;    
+                return true;
             }
 
             return false;
@@ -968,7 +945,7 @@ namespace EGAZT
                     return true;
                 }
 
-                
+
                 // }
             });
         }
@@ -983,24 +960,24 @@ namespace EGAZT
         }
 
         //rohith-login
-        //public static void HandleSessionTimeout()
-        //{
-        //    if (App.IsOnboardingPageVisible() == false)
-        //    {
-        //        if (App.IsLoginPageVisible() == true)
-        //        {
-        //            App.IsLoginPageRefreshed = true;
-        //            Preferences.Set("SessionAction", "RefreshLoginPage");
-        //            MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
-        //        }
-        //        else
-        //        {
-        //            Preferences.Set("SessionAction", "LogoutUserFromApp");
-        //            App.DoesLoginNeedToBeRefreshed = true;
-        //            MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
-        //        }
-        //    }
-        //}
+        public static void HandleSessionTimeout()
+        {
+            if (App.IsOnboardingPageVisible() == false && !IsAppRunningInBackground)
+            {
+                if (App.IsLoginPageVisible() == true)
+                {
+                    App.IsLoginPageRefreshed = true;
+                    Preferences.Set("SessionAction", "RefreshLoginPage");
+                    MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+                }
+                else if (IsUserLoggedIn)
+                {
+                    Preferences.Set("SessionAction", "LogoutUserFromApp");
+                    App.DoesLoginNeedToBeRefreshed = true;
+                    MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "LogoutUserFromApp", "LogoutUserFromApp");
+                }
+            }
+        }
 
         public static void HandleSessionActionAfterUnlock()
         {
