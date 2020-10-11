@@ -15,6 +15,35 @@ namespace EGAZT.Views.NewDesign
     public partial class InstructionsBottomPopUpView : PopupPage
     {
         private InstructionsBottomPopUpViewModel _viewModel;
+        private bool isCheckboxchecked = false; 
+
+        public InstructionsBottomPopUpView(string instructionString, string checkBoxString, string continueString,bool isEditable, InstructionsBottomPopUpViewModel.DialogType _dialogType)
+        {
+            InitializeComponent();
+            _viewModel = App.Locator.InstructionsBottomPopUpView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = _viewModel;
+            _viewModel.Description = instructionString;
+            _viewModel.CheckBoxDescription = checkBoxString;
+            _viewModel.ButtonTitle = continueString;
+
+            if (_dialogType == InstructionsBottomPopUpViewModel.DialogType.Instructions)
+            {
+                _viewModel.IsInstructions = true;
+                _viewModel.IsTerms = false;
+            }
+            else if (_dialogType == InstructionsBottomPopUpViewModel.DialogType.TermsConditions)
+            {
+                _viewModel.IsTerms = true;
+                _viewModel.IsInstructions = false;
+            }
+            isCheckboxchecked = isEditable;
+           
+
+
+
+        }
+
         public InstructionsBottomPopUpView(string instructionString, string checkBoxString, string continueString, InstructionsBottomPopUpViewModel.DialogType _dialogType)
         {
             InitializeComponent();
@@ -47,8 +76,22 @@ namespace EGAZT.Views.NewDesign
                 base.OnAppearing();
 
 
-                _viewModel.IsInstuctionsChecked = false;
-                _viewModel.IsTermsChecked = false;
+                if (isCheckboxchecked)
+                {
+
+                    _viewModel.IsInstuctionsChecked = true;
+                    _viewModel.IsTermsChecked = true;
+                    _viewModel.IsCheckboxEditable = false;
+                }
+                else {
+                    _viewModel.IsCheckboxEditable = true;
+                    _viewModel.IsInstuctionsChecked = false;
+                    _viewModel.IsTermsChecked = false;
+
+                }
+
+
+               
                 _viewModel.EnableCheckboxContinue();
 
                 SetLTR();

@@ -59,6 +59,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
+        private bool _isCheckboxEditable = true;
+        public bool IsCheckboxEditable
+        {
+            get
+            {
+                return _isCheckboxEditable;
+            }
+            set
+            {
+                _isCheckboxEditable = value;
+                RaisePropertyChanged("IsCheckboxEditable");
+            }
+        }
+
+
         private bool _isInstructions = false;
         public bool IsInstructions
         {
