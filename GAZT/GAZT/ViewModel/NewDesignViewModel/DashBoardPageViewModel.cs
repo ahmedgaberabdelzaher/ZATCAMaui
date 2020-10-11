@@ -849,8 +849,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    PopToRootPage();
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //PopToRootPage();
                 });
             }
             await Task.Run(() =>
@@ -1007,8 +1007,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    PopToRootPage();
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //PopToRootPage();
                 });
             }
         }
