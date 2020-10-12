@@ -2340,6 +2340,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
             selectedList.Clear();
             selectedPage = (int)PagesEnum.ZakatSelectionView;
+            IsViewEnable = true;
         }
 
         public async void VATInstalationTapped()
