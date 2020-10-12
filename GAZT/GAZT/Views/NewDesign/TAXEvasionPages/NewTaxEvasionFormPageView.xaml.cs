@@ -495,6 +495,16 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 //    // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
                 //    viewModel.Longitude = location.Longitude;
                 //}
+                Pin pin = new Pin();
+                pin.Label = "Your Location";
+                pin.Type = PinType.Place;
+                pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
+                viewModel.Latitude = e.Position.Latitude;
+                viewModel.Longitude = e.Position.Longitude;
+                mapView.Pins.Clear();
+                mapView.Pins.Add(pin);
+                var addrs = (await Geocoding.GetPlacemarksAsync(new Location(viewModel.Latitude, viewModel.Longitude))).FirstOrDefault();
+                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
 
             }
             catch (FeatureNotSupportedException fnsEx)
@@ -513,16 +523,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 // Unable to get location
             }
-            Pin pin = new Pin();
-            pin.Label = "Your Location";
-            pin.Type = PinType.Place;
-            pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
-            viewModel.Latitude = e.Position.Latitude;
-            viewModel.Longitude = e.Position.Longitude;
-            mapView.Pins.Clear();
-            mapView.Pins.Add(pin);
-            var addrs = (await Geocoding.GetPlacemarksAsync(new Location(viewModel.Latitude, viewModel.Longitude))).FirstOrDefault();
-            viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
+
         }
 
         private void RegionBtnClicked(object sender, EventArgs e)
