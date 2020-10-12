@@ -86,29 +86,41 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 if (selectedItem.ZDTitle == AppResources.ZZTaxPayerDetails)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Tax Payer Details eService");
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationTaxPayerDetails);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 else if (selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Outlet Details eService");
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationOutletsDetails);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 else if (selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
                 }
                 else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.TPUpdate)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Amendment/Update eService");
                     App.ZAKATType = ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend ? Enums.PageExecutionType.Amend : Enums.PageExecutionType.Update;
                     viewModel.ZAKATAmendOrUpdateClicked();
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 else
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "TIN Deregistration eService");
+
                     await Task.Run(() =>
                     {
                         App.DisplayProgressView();
                     });
 
                     viewModel.GetNewTinDeregistrationDataCliked();
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
 
                 var view = sender as SfListView;

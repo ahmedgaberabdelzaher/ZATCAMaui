@@ -52,66 +52,61 @@ namespace EGAZT.Views.NewDesign.VATServices
 
         private void VATRegistration_Details_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-
-
-            //});
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATRegistration_Details_Tapped", "VAT Registration Details eService");
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails);
             });
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private async void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATRefundRequest_Tapped", "VAT Refund Request eService");
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
             });
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private async void ChnageFillingPeriod_Tapped(object sender, EventArgs e)
         {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "ChangeFilingPeriod_Tapped", "Change Filing Period eService");
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
 
             });
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration Request eService");
             Device.BeginInvokeOnMainThread(() =>
             {
                 PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
             });
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private async void VATReactivation_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATReactivation_Tapped", "VAT Reactivation eService");
             App.VATType = PageExecutionType.Reactivation;
             Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView));
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private async void VATAment_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() => viewModel.IsLoading = true);
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATAmend_Tapped", "VAT Amendment eService");
             App.VATType = PageExecutionType.Amend;
             viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
     }
 }

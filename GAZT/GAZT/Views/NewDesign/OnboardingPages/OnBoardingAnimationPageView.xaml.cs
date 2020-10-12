@@ -33,15 +33,19 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             {
                 if (App.IsArabic)   
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignOnBoardingAnimationPageView", "ChangeLangButton_Clicked", "Language Changed to English");
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 else
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignOnBoardingAnimationPageView", "ChangeLangButton_Clicked", "Language Changed to Arabic");
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection();
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 viewModel.NextButtonText = AppResources.ZZNext;
             }
