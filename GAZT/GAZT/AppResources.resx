@@ -734,7 +734,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>User is not currently valid</value>
   </data>
   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
-    <value>Your Session has expired, Please Login again</value>
+    <value>Your Session has expired, please Login again</value>
   </data>
   <data name="ZLogout" xml:space="preserve">
     <value>Logout</value>

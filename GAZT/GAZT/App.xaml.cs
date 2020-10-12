@@ -713,6 +713,7 @@ namespace EGAZT
             // Return true if you are using your own dialog, false otherwise
             return true;
         }
+
         protected override void OnSleep()
         {
             TimeAtSleep = DateTime.Now;
@@ -720,6 +721,7 @@ namespace EGAZT
             //TimeAtSleep = dt.ToLongTimeString();
             // Handle when your app sleeps
         }
+
         protected override void OnResume()
         {
             foreach (var item in Application.Current.MainPage.Navigation.NavigationStack)
@@ -730,13 +732,14 @@ namespace EGAZT
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
         }
+
         public static void InitializeAppDynamics()
         {
-            //var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
-            //config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
-            //AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
-            //config.CollectorURL = "https://eum.gazt.gov.sa:443";
-            //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa:443";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
 
         public static async void DisplayProgressView()
