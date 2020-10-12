@@ -1922,10 +1922,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.ModifiedData = JsonConvert.SerializeObject(viewModel.VATRegistrationDetailsData);
                 if (viewModel.ModifiedData == viewModel.OriginalData)
                 {
-                    StringBuilder builder = new StringBuilder("No changes made");
-                    builder.AppendLine();
-                    builder.Append("Cannot Save");
-                    await DisplayAlert("", builder.ToString(), "OK");
+                    //StringBuilder builder = new StringBuilder("No changes made");
+                    //builder.AppendLine();
+                    //builder.Append("Cannot Save");
+                    await DisplayAlert(AppResources.Information, AppResources.NoChangesMadeCannotBeSavedAsDraft, AppResources.OKText);
                     return;
                 }
             }
