@@ -99,26 +99,37 @@ namespace EGAZT.Views.NewDesign.Template
         }
         private void OnTaxEvasionTapped(object sender, EventArgs e)
         {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "OnTaxEvasionTapped", "Tax Evasion eService");
             viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private void OnSupportTapped(object sender, EventArgs e)
         {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "OnSupportTapped", "Support eService");
             viewModel._navigationService.NavigateTo(App.SupportPageView);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private void OnVATRefundTapped(object sender, EventArgs e)
         {
-        viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);    
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "OnVATRegistrationVerificationTapped", "VAT Registration Verification eService");
+            viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
         }
         private void Aboutus_Tapped(object sender, EventArgs e)
         {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "Aboutus_Tapped", "About Us");
             viewModel._navigationService.NavigateTo(App.AboutUsPageView);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         private void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "PrivacyPolicy_Tapped", "Privacy Policy");
             viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
     }
 }

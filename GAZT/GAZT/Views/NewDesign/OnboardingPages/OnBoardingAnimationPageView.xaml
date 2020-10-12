@@ -25,7 +25,7 @@
             <Grid.RowDefinitions>
                 <!--  Skip Button  -->
                 <RowDefinition Height="96" />
-                <RowDefinition Height="70" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 
@@ -68,7 +68,7 @@
                 Clicked="ChangeLangButton_Clicked" />
             </StackLayout>
 
-            <Image Source="onboarding.png" Aspect="AspectFit" Grid.Row="1"/>
+            <Image Source="centered.png" Aspect="AspectFit" Grid.Row="1"/>
 
             <!--  Rotator used to navigate the view  -->
             <rotator:SfRotator

@@ -827,10 +827,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
         private void HamburgerMenuClicked()
         {
-           
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFLoginPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
             _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
             //_navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
             //_dialogService.ShowMessage("Anonymous menu will appear", "Menu");
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
         #endregion
         #region New Authentication
@@ -982,6 +983,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         {
             string response = string.Empty;
             string UserId = App.LoginDataRetrieved.TIN;
+
+            Instrumentation.SetUserData("user_id", UserId);
 
             String lang = "E";
             string language = UtilityManager.GetLanguageParameter();

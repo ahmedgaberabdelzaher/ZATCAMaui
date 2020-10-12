@@ -2475,91 +2475,104 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private async void udpdateDates(string selectedDate = null)
         {
-            IsLoading = true;
-            var _calendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "H" : "G";
-            financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
+            try
             {
-                ACaltype = _calendarType,
-                ADateComm = taxPayerDetails?.Commdt
-            });
-            if (_calendarType == "H")
-            {
-                string dd = financialDetail?.ACommDate.Substring(6, 2);
-                string mm = financialDetail?.ACommDate.Substring(4, 2);
-                string yy = financialDetail?.ACommDate.Substring(0, 4);
-                CommDate = $"{Int16.Parse(yy) - 1:0000}/{Int16.Parse(mm):00}/{Int16.Parse(dd):00}";
-            }
-            else {
-                CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
-            }
-
-
-            if (selectedDate == null)
-            {
-                string dd = financialDetail?.ACommDate.Substring(6, 2);
-                string mm = financialDetail?.ACommDate.Substring(4, 2);
-                if (dd != "01")
+                IsLoading = true;
+                var _calendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "H" : "G";
+                financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                 {
-                    if (taxPayerDetails?.Fdcalender == "1")
+                    ACaltype = _calendarType,
+                    ADateComm = taxPayerDetails?.Commdt
+                });
+                if (_calendarType == "H")
+                {
+                    string dd = financialDetail?.ACommDate.Substring(6, 2);
+                    string mm = financialDetail?.ACommDate.Substring(4, 2);
+                    string yy = financialDetail?.ACommDate.Substring(0, 4);
+                    CommDate = $"{Int16.Parse(yy) - 1:0000}/{Int16.Parse(mm):00}/{Int16.Parse(dd):00}";
+                }
+                else
+                {
+                    CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
+                }
+
+
+                if (selectedDate == null)
+                {
+                    string dd = financialDetail?.ACommDate.Substring(6, 2);
+                    string mm = financialDetail?.ACommDate.Substring(4, 2);
+                    if (dd != "01")
                     {
-                        if (dd == "29" && mm == "02")
+                        if (taxPayerDetails?.Fdcalender == "1")
                         {
-                            dd = $"{Int16.Parse(dd) - 2:00}";
+                            if (dd == "29" && mm == "02")
+                            {
+                                dd = $"{Int16.Parse(dd) - 2:00}";
+                            }
+                            else
+                            {
+                                dd = $"{Int16.Parse(dd) - 1:00}";
+                            }
                         }
                         else
                         {
                             dd = $"{Int16.Parse(dd) - 1:00}";
                         }
+                        FiscalMonth = mm;
+                        FiscalDay = dd;
+                    }
+                    else if (dd == "01" && mm == "01")
+                    {
+                        FiscalMonth = "12";
+                        FiscalDay = AppResources.ESTFinLastDay;
                     }
                     else
                     {
-                        dd = $"{Int16.Parse(dd) - 1:00}";
+                        mm = $"{Int16.Parse(mm) - 1:00}";
+                        FiscalMonth = mm;
+                        FiscalDay = AppResources.ESTFinLastDay;
                     }
-                    FiscalMonth = mm;
-                    FiscalDay = dd;
+                    //FiscalMonth = mm;
+                    //FiscalDay = dd;
                 }
-                else if (dd == "01" && mm == "01")
+                financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                 {
-                    FiscalMonth = "12";
-                    FiscalDay = AppResources.ESTFinLastDay;
-                }
-                else
-                {
-                    mm = $"{Int16.Parse(mm) - 1:00}";
-                    FiscalMonth = mm;
-                    FiscalDay = AppResources.ESTFinLastDay;
-                }
-                //FiscalMonth = mm;
-                //FiscalDay = dd;
-            }
-            financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
-            {
-                ACaltype = _calendarType,
-                AMonth = FiscalMonth,
-                EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
-                ADateComm = taxPayerDetails?.Commdt
-            });
-            TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_calendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                    ACaltype = _calendarType,
+                    AMonth = FiscalMonth,
+                    EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                    ADateComm = taxPayerDetails?.Commdt
+                });
+                TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_calendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
 
-            if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
-            {
-                if (financialDetail?.EIslmedate == "28")
+                if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
                 {
-                    dates.Remove("29");
-                    dates.Remove("30");
+                    if (financialDetail?.EIslmedate == "28")
+                    {
+                        dates.Remove("29");
+                        dates.Remove("30");
+                    }
+                    else if (financialDetail?.EIslmedate == "29")
+                    {
+                        dates.Remove("29");
+                        dates.Remove("30");
+                    }
+                    else if (financialDetail?.EIslmedate == "30")
+                    {
+                        dates.Remove("30");
+                    }
                 }
-                else if (financialDetail?.EIslmedate == "29")
-                {
-                    dates.Remove("29");
-                    dates.Remove("30");
-                }
-                else if (financialDetail?.EIslmedate == "30")
-                {
-                    dates.Remove("30");
-                }
+                IsLoading = false;
+
+
             }
-            IsLoading = false;
-        }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+            }
+           }
+
         private async void bindingOutletList()
         {
             var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
