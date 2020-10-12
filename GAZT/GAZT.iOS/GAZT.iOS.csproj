@@ -300,6 +300,9 @@
     <BundleResource Include="Resources\errorNew.png" />
     <BundleResource Include="Resources\errorNew%402x.png" />
     <BundleResource Include="Resources\errorNew%403x.png" />
+    <BundleResource Include="Resources\centered.png" />
+    <BundleResource Include="Resources\centered%402x.png" />
+    <BundleResource Include="Resources\centered%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
