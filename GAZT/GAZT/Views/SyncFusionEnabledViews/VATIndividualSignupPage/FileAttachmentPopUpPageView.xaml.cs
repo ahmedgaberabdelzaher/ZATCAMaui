@@ -33,6 +33,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
            viewModel.AttachmentList=new ObservableCollection<VATAttachment>();
+            viewModel.VatAttachmentsList = new ObservableCollection<Attachment>();
             onPageLoad(vATRegistrationDetails);
 
 
@@ -45,6 +46,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
             viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
+            viewModel.VatAttachmentsList = new ObservableCollection<Attachment>();
             viewModel.IsComeForWhichAttachment = attachment;
             viewModel.isImporter = isImporter;
                 
