@@ -5379,7 +5379,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-
+        public bool IsCommaSeparatedValidAmount(string amount,int Max, int numberOfDigitAfterDecimal, int numberOfDigitBeforDecimal)
+        {
+            bool iSValiedNumber = false;
+            try
+            {
+               
+                if (amount != null && amount.Length < Max && amount.Length > 0)
+                {
+                    amount = amount.Replace(",", "");
+                    if (amount.Contains("."))
+                    {
+                        string[] Amount = new String[2];
+                        Amount = amount.Split('.');
+                        if (Amount[0].Length > numberOfDigitBeforDecimal || Amount[1].Length > numberOfDigitAfterDecimal)
+                        {
+                            iSValiedNumber = false;
+                        }
+                        else
+                        {
+                            iSValiedNumber = true;
+                        }
+                    }
+                    else
+                    {
+                        if (Convert.ToInt32(amount.Length) > numberOfDigitBeforDecimal)
+                        {
+                            iSValiedNumber = false;
+                        }
+                        else
+                        {
+                            iSValiedNumber = true;
+                        }
+                    }
+                }
+                else
+                {
+                    //amountWithComma = amount;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return iSValiedNumber;
+        }
 
     }
 }

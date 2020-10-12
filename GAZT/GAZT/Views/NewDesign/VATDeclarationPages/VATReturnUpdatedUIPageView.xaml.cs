@@ -3271,7 +3271,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                     if (isArabicChecked)
                     {
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid=viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19,2,12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (!viewModel.IsFifteenPercentChange)
                             {
@@ -5422,7 +5423,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                     if (isArabicChecked)
                     {
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
 
 
@@ -6277,7 +6279,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                     if (isArabicChecked)
                     {
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
 
 
@@ -6340,7 +6343,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             viewModel.StdpurchasesVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATRate002For15Percent);
 
@@ -6408,7 +6412,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                         bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             viewModel.StdpurchasesVat5 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATRate003For5Percent);
 
@@ -6485,7 +6490,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (viewModel.ResponseVATDeclarationD != null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
                             {
@@ -6575,7 +6581,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (viewModel.ResponseVATDeclarationD != null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
                             {
@@ -6664,7 +6671,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             viewModel.ImportsaccVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATRate002For15Percent);
 
@@ -6743,7 +6751,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             viewModel.ImportsaccVat5 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.VATRate003For5Percent);
 
@@ -6874,7 +6883,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckSalesMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (viewModel.IsFifteenPercentChange)
                             {
@@ -6947,7 +6957,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckSalesMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (viewModel.IsFifteenPercentChange)
                             {
@@ -7000,7 +7011,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (!viewModel.IsFifteenPercentChange)
                             {
@@ -7053,7 +7065,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (!viewModel.IsFifteenPercentChange)
                             {
@@ -7114,7 +7127,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
                             viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
@@ -7164,7 +7178,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
                             if (viewModel.IsFifteenPercentChange)
                             {
@@ -7226,7 +7241,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (isArabicChecked)
                     {
                         CheckPurchaseMandetoryFields();
-                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        bool isNumberSizeValid = viewModel.IsCommaSeparatedValidAmount(senderObj.Text, 19, 2, 12);
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber && isNumberSizeValid)
                         {
 
                             if (viewModel.IsFifteenPercentChange)
