@@ -19,6 +19,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 {
     public class VATAmendReactivationPageViewModel : ViewModelBase
     {
+        public string OriginalData;
+        public string ModifiedData;
         string idnumber { get; set; }
         public int DefaultMonth;
         public readonly INavigationService _navigationService;
@@ -918,6 +920,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
+        private bool _isAddAdditionalInfoChecked;
+        public bool IsAddAdditionalInfoChecked
+        {
+            get
+            {
+                return _isAddAdditionalInfoChecked;
+            }
+            set
+            {
+                _isAddAdditionalInfoChecked = value;
+         
+                RaisePropertyChanged("IsAddAdditionalInfoChecked");
+            }
+        }
+        private bool _isFDChangeSectionChecked;
+        public bool IsFDChangeSectionChecked
+        {
+            get
+            {
+                return _isFDChangeSectionChecked;
+            }
+            set
+            {
+                _isFDChangeSectionChecked = value;
+
+                RaisePropertyChanged("IsFDChangeSectionChecked");
+            }
+        }
+        private bool _isAddNewRepresentativeChecked;
+        public bool IsAddNewRepresentativeChecked
+        {
+            get
+            {
+                return _isAddNewRepresentativeChecked;
+            }
+            set
+            {
+                _isAddNewRepresentativeChecked = value;
+
+                RaisePropertyChanged("IsAddNewRepresentativeChecked");
+            }
+        }
 
         private bool _isResident;
         public bool IsResident
@@ -1702,8 +1746,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 _declaration.AcknowledgementCB = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
                 _declaration.IDTypeOrNoPicker = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
                 _declaration.IDTypeOrNoEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                _declaration.DOBEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                IsDeclarationDOBVisible = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : false;
+                _declaration.DOBEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                IsDeclarationDOBVisible = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
                 _declaration.ContactNameEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
                 return _declaration;
             }
@@ -1796,6 +1840,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 else
                 {
                     VATRegistrationDetailsData.d.Decfg = "0";
+                }
+                if (IsAddAdditionalInfoChecked)
+                {
+                    VATRegistrationDetailsData.d.Stp2Cbbox = "1";
+                }
+                else 
+                {
+                    VATRegistrationDetailsData.d.Stp2Cbbox = "0";
+                }
+                if (IsFDChangeSectionChecked)
+                {
+                    VATRegistrationDetailsData.d.Stp3Cbbox = "1";
+                }
+                else 
+                {
+                    VATRegistrationDetailsData.d.Stp3Cbbox = "0";
+                }
+                if (IsAddNewRepresentativeChecked)
+                {
+                    VATRegistrationDetailsData.d.Stp4Cbbox2 = "1";
+                }
+                else 
+                {
+                    VATRegistrationDetailsData.d.Stp4Cbbox2 = "0";
                 }
                 if (SelectedIdTypeSR != null)
                 {
@@ -2060,6 +2128,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
                         //OriginalVATRegistrationDetailsData = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
+                        OriginalData = JsonConvert.SerializeObject(vATRegistration);
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2124,6 +2193,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             {
                                 IsDeclarationChecked = false;
                             }
+                            if (vATRegistration.d.Stp2Cbbox == "1")
+                            {
+                                IsAddAdditionalInfoChecked = true;
+                                //VATRegistrationDetailsData.d.Decfg = "1";
+                            }
+                            else if (vATRegistration.d.Stp2Cbbox == "0")
+                            {
+                                IsAddAdditionalInfoChecked = false;
+                            }
+                            if (vATRegistration.d.Stp3Cbbox == "1")
+                            {
+                                IsFDChangeSectionChecked = true;
+                                //VATRegistrationDetailsData.d.Decfg = "1";
+                            }
+                            else if (vATRegistration.d.Stp3Cbbox == "0")
+                            {
+                                IsFDChangeSectionChecked = false;
+                            }
+                            if (vATRegistration.d.Stp4Cbbox2 == "1")
+                            {
+                                IsAddNewRepresentativeChecked = true;
+                                //VATRegistrationDetailsData.d.Decfg = "1";
+                            }
+                            else if (vATRegistration.d.Stp4Cbbox2 == "0")
+                            {
+                                IsAddNewRepresentativeChecked = false;
+                            }
                             switch (App.VATType)
                             {
                                 case Enums.PageExecutionType.Amend:
@@ -2177,8 +2273,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 AddressLineOne = ADDRESSSetData.BuildingNo + " " + ADDRESSSetData.Street + " " + ADDRESSSetData.Quarter;
                                 if (ADDRESSSetData.PostalCd.Equals("00000"))
                                 {
-                                    ADDRESSSetData.PostalCd = string.Empty;
-                                }
+
+                                //commenting the below line for save as draft data comparison
+                                // ADDRESSSetData.PostalCd = string.Empty;
+
+                                 }
                                 AddressLineTwo = ADDRESSSetData.RegionDesc + " " + ADDRESSSetData.City + " " + ADDRESSSetData.PostalCd;
 
                             }

@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GAZT.Helper;
@@ -36,7 +37,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
         }
+        public FileAttachmentPopUpPageView(VATRegistrationDetails vATRegistrationDetails, WhichAttachment attachment, bool  isImporter)
+        {
+            InitializeComponent();
+            viewModel = App.Locator.FileAttachmentPopUpPageView;
+            this.BindingContext = viewModel;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            SetLTR();
+            viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
+            viewModel.IsComeForWhichAttachment = attachment;
+            viewModel.isImporter = isImporter;
+                
+            onPageLoad(vATRegistrationDetails);
 
+
+        }
         public void onPageLoad(VATRegistrationDetails vATRegistrationDetails)
         {
             viewModel.IsComeFromForAttachment = VATRegistrationPageViewModel.IsComeFromForAttachment;

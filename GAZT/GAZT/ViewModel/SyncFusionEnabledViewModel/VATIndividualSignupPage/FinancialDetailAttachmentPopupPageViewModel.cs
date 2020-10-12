@@ -50,6 +50,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        public string _attachmentHeaderTitle;
+        public string AttachmentHeaderTitle
+        {
+            get
+            {
+                return _attachmentHeaderTitle;
+            }
+            set
+            {
+                _attachmentHeaderTitle = value;
+                RaisePropertyChanged("AttachmentHeaderTitle");
+            }
+        }
+
+        public bool _titleIsVisible = false;
+        public bool TitleIsVisible
+        {
+            get
+            {
+                return _titleIsVisible;
+            }
+            set
+            {
+                _titleIsVisible = value;
+                RaisePropertyChanged("TitleIsVisible");
+            }
+        }
+        
+        public bool _regAttachmentTitle = true;
+        public bool RegAttachmentTitle
+        {
+            get
+            {
+                return _regAttachmentTitle;
+            }
+            set
+            {
+                _regAttachmentTitle = value;
+                RaisePropertyChanged("RegAttachmentTitle");
+            }
+        }
+
         public bool _IsAttachmentVisibile=true;
         public bool IsAttachmentVisibile
         {
@@ -435,6 +477,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 PopupNavigation.Instance.PopAsync();
             });
+
+     
         }
 
 
@@ -491,6 +535,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
                         //                }
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                        if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count;
+                                if (count >= 5)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
+
+                        }
                         if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
                         {
                             attachment = fileData.DataArray;
@@ -732,20 +790,41 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
-                    if (attachment != null && attachment.d != null)
+                    if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                     {
-                        attachmentSizeVisibility = true;
-                        AttachmentSizeVisibility = attachmentSizeVisibility;
-                        SizeList.Add(AttachmentSize);
-                        AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
-                        TotalAttachmentSize = AttachmentUploadedSize;
-                        _attachment = attachment;
+                        AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachmentForFD(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
+                        if (attachment != null && attachment.d != null)
+                        {
+                            attachmentSizeVisibility = true;
+                            AttachmentSizeVisibility = attachmentSizeVisibility;
+                            SizeList.Add(AttachmentSize);
+                            AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
+                            TotalAttachmentSize = AttachmentUploadedSize;
+                            _attachment = attachment;
+                        }
+                        else
+                        {
+                            _attachment = null;
+                        }
                     }
                     else
                     {
-                        _attachment = null;
+                        AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATRegistrationDetailsForAttach.d.ReturnIdz, Doctype, contentType);
+                        if (attachment != null && attachment.d != null)
+                        {
+                            attachmentSizeVisibility = true;
+                            AttachmentSizeVisibility = attachmentSizeVisibility;
+                            SizeList.Add(AttachmentSize);
+                            AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
+                            TotalAttachmentSize = AttachmentUploadedSize;
+                            _attachment = attachment;
+                        }
+                        else
+                        {
+                            _attachment = null;
+                        }
                     }
+                   
                 }
                 catch (Exception ex)
                 {

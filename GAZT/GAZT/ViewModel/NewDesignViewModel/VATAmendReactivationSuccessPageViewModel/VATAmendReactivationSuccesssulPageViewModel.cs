@@ -1,6 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,6 +19,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageView
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+
+        private string _fBNumber = string.Empty;
+        public string FBNumber
+        {
+            get
+            {
+                return _fBNumber;
+            }
+            set
+            {
+                _fBNumber = value;
+                RaisePropertyChanged("FBNumber");
+            }
+        }
         public VATAmendReactivationSuccesssulPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -31,6 +48,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageView
             _dialogService = dialogService;
 
         }
+        #region Download Confirmation
+
+        public void downloadConfirmation()
+        {
+
+            try
+            {
+                String Url = string.Empty;
+                //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='62000006372')/$value
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + FBNumber + "')/$value?saml2=enabled";
+                ShowPdf(Url);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public void ShowPdf(string pdfUrl)
+        {
+
+            if (pdfUrl != null)
+            {
+                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+            }
+            else
+            {
+                //pop that certificate is not available
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+
+                    // await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                });
+            }
+        }
+
+
+        #endregion
         public async Task LogOut()
         {
             await Task.Run(() =>

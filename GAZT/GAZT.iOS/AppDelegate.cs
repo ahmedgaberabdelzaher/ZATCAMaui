@@ -120,8 +120,8 @@ namespace GAZT.iOS
 
         public override void OnActivated(UIApplication application)
         {
-            App.IsAppRunningInBackground = false;
-            App.ResetAndContinueSession();
+            //App.IsAppRunningInBackground = false;
+            //App.ResetAndContinueSession();
             Console.WriteLine("OnActivated called, App is active.");
         }
 
@@ -140,8 +140,8 @@ namespace GAZT.iOS
 
         public override void DidEnterBackground(UIApplication application)
         {
-            App.IsAppRunningInBackground = true;
-            App.ResetAndContinueSession();
+            //App.IsAppRunningInBackground = true;
+            //App.ResetAndContinueSession();
         }
 
         // not guaranteed that this will run

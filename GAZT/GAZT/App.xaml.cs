@@ -332,6 +332,7 @@ namespace EGAZT
         {
             IsAppRunningInBackground = false;
             App.Current.Properties["timeOut"] = DateTime.Now;
+
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
             Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
@@ -382,10 +383,11 @@ namespace EGAZT
             {
                 CreateClientHandler();
                 ResetAndContinueSession();
-                MessagingCenter.Subscribe<object, string>(this, "ResetAndContinueSession", async (sender, arg) =>
-                {
-                    ResetAndContinueSession();
-                });
+
+                //MessagingCenter.Subscribe<object, string>(this, "ResetAndContinueSession", async (sender, arg) =>
+                //{
+                //    ResetAndContinueSession();
+                //});
             }
             catch (Exception ex)
             {
@@ -448,7 +450,6 @@ namespace EGAZT
 
                         }
                     });
-
 
                     //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
                     //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.VatInstalmentPlan.VatInstalmentPlanSuccessPage()) { BarTextColor = Color.White };
@@ -632,6 +633,8 @@ namespace EGAZT
 
             }
 
+            //App.ResetAndContinueSession();
+
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             // Handle when your app starts
             AppCenter.Start("ios=eb11c7c9-cb42-4806-b01e-9b78bf433259" +
@@ -642,11 +645,10 @@ namespace EGAZT
 
         public static Task ResetAndContinueSession()
         {
-            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 3), () =>
+            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 2), () =>
             {
                 // Logic for logging out if the device is inactive for a period of time.
                 int timeSpan = defaultTimespan;
-
                 if (IsLoginPageVisible() == true)
                 {
                     timeSpan = defaultTimespanForLogin;
@@ -654,22 +656,22 @@ namespace EGAZT
 
                 idleTime = Application.Current.Properties["timeOut"].ToString();
                 idleTimeSpan = DateTime.Now.Subtract(DateTime.Parse(idleTime)).TotalMinutes;
+
                 if (idleTimeSpan >= timeSpan)
                 {
-                    //prepare to perform your data pull here as we have hit the 1 minute mark   
-
-                    // Perform your long running operations here.
-
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
+                        Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
                         HandleSessionTimeout();
                     });
+
                     return false;
                 }
 
+                return true;
+
                 // Always return true as to keep our device timer running.
-                Xamarin.Forms.Application.Current.Properties["IsSessionExpired"] = false;
-                return IsAppRunningInBackground ? false : true;
+                //return IsAppRunningInBackground ? false : true;
             });
             return null;
         }
@@ -962,13 +964,14 @@ namespace EGAZT
         //rohith-login
         public static void HandleSessionTimeout()
         {
-            if (App.IsOnboardingPageVisible() == false && !IsAppRunningInBackground)
+            if (App.IsOnboardingPageVisible() == false)
             {
                 if (App.IsLoginPageVisible() == true)
                 {
                     App.IsLoginPageRefreshed = true;
                     Preferences.Set("SessionAction", "RefreshLoginPage");
                     MessagingCenter.Send<Object, string>(Xamarin.Forms.Application.Current, "RefreshLoginPage", "RefreshLoginPage");
+                    App.ResetAndContinueSession();
                 }
                 else if (IsUserLoggedIn)
                 {

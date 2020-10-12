@@ -46,7 +46,7 @@
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>
-                <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False" VerticalOptions="EndAndExpand">
+                <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0" Padding="20" HasShadow="False" Margin="0,-20,0,0"  VerticalOptions="EndAndExpand">
                     <StackLayout>
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
                             <StackLayout Orientation="Horizontal" Padding="10" >
@@ -78,6 +78,10 @@
                             </StackLayout>
                         </Frame>
                         <!--VATRgotologinpage-->
+                                 <buttons:SfButton Text="{x:Static custom2:AppResources.VatInstalmentDownload}"
+                                          CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
+                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
+                                          BackgroundColor="#d49504" TextColor="White" Clicked="SfButton_Clicked"/>
                         <buttons:SfButton x:Name="btnDashboard" Text="{x:Static custom2:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"   Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" TextColor="White" />

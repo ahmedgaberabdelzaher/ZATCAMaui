@@ -66,8 +66,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
 
                 }
+                if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                {
+                    viewModel.AttachmentHeaderTitle = AppResources.VATInstalmentsAttachmentTitle;
+                    viewModel.TitleIsVisible = true;
+                    viewModel.RegAttachmentTitle = false;
+                }
+                else
+                {
+                    viewModel.AttachmentHeaderTitle = AppResources.VATRMPAttachments;
+                    viewModel.TitleIsVisible = false;
+                    viewModel.RegAttachmentTitle = true;
 
-               
+                }
+
             }
             catch (Exception ex)
             { 
@@ -332,17 +344,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                                 ResultsItemForDOCSetforsubmit _eligibledocset = new
 ResultsItemForDOCSetforsubmit();
-                                _eligibledocset.DmsTp = listitem.Dotyp;
-                                _eligibledocset.DmsTxt = viewModel.ResultsItemForDOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault().Txt50;
-                                _eligibledocset.TxnTp = "CRE_RGVT";
-                                _eligibledocset.LineNo = 0;
-                                _eligibledocset.Mandt = "";
-                                _eligibledocset.DataVersion = "";
-                                _eligibledocset.FormGuid = "";
-                                _eligibledocset.Fbtyp = "";
-                                _eligibledocset.RankingOrder = "";
- 
-                                viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Remove(_eligibledocset);
+                                //_eligibledocset.DmsTp = listitem.Dotyp;
+                                //_eligibledocset.DmsTxt = viewModel.ResultsItemForDOCSet.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault().Txt50;
+                                //_eligibledocset.TxnTp = "CRE_RGVT";
+                                //_eligibledocset.LineNo = 0;
+                                //_eligibledocset.Mandt = "";
+                                //_eligibledocset.DataVersion = "";
+                                //_eligibledocset.FormGuid = "";
+                                //_eligibledocset.Fbtyp = "";
+                                //_eligibledocset.RankingOrder = "";
+                                try
+                                {
+                                    _eligibledocset = viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Where(X => X.DmsTp == listitem.Dotyp).FirstOrDefault();
+                                    viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Remove(_eligibledocset);
+                                }
+                                catch
+                                {
+
+                                }
+                                
+
+
+                                
                             }
                             catch(Exception ex)
                             { 
@@ -399,11 +422,6 @@ ResultsItemForDOCSetforsubmit();
             catch (Exception ex)
             {
 
-
-
-              
-
-
             }
 
         }
@@ -415,6 +433,20 @@ ResultsItemForDOCSetforsubmit();
             base.OnAppearing();
             getYesForDeleteAttachment();
             getNoForDeleteAttachment();
+
+            if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+            {
+                viewModel.AttachmentHeaderTitle = AppResources.VATInstalmentsAttachmentTitle;
+                viewModel.TitleIsVisible = true;
+                viewModel.RegAttachmentTitle = false;
+            }
+            else
+            {
+                viewModel.AttachmentHeaderTitle = AppResources.VATRMPAttachments;
+                viewModel.TitleIsVisible = false;
+                viewModel.RegAttachmentTitle = true;
+
+            }
         }
 
 

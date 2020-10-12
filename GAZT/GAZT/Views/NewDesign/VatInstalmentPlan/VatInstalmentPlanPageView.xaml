@@ -574,12 +574,12 @@
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>-->
                                                 <BoxView Grid.Row="1"  Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1"/>
                                                 
-                                                <custom:CustomLabel Grid.Row="2"  Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="2"  Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="3" Margin="0" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
-                                                <custom:CustomLabel Grid.Row="4"  Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="4"  Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="5" Margin="0" Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="6" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="6" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7"  Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>
@@ -613,12 +613,12 @@
                                                 <!--<custom:CustomLabel TextColor="White" Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageAmendment}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>-->
                                                 <BoxView Grid.Row="1"  Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="1"/>
-                                                <custom:CustomLabel TextColor="White" Grid.Row="2"   Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel TextColor="White" Grid.Row="2"   Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                                 <custom:CustomLabel TextColor="White" Margin="0" Grid.Row="3" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
-                                                <custom:CustomLabel TextColor="White" Grid.Row="4"  Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel TextColor="White" Grid.Row="4"  Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                                 <custom:CustomLabel TextColor="White" Margin="0" Grid.Row="5"  Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
-                                                <custom:CustomLabel TextColor="White" Grid.Row="6"  Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel TextColor="White" Grid.Row="6"  Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                                 <custom:CustomLabel TextColor="White" Grid.Row="7"  Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>

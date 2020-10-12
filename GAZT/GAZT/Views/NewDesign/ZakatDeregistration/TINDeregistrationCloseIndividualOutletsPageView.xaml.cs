@@ -20,7 +20,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     {
         TINDeregistrationPageViewModel viewModel;
 
-        public TINDeregistrationCloseIndividualOutletsPageView( string reasonDesc)
+        public TINDeregistrationCloseIndividualOutletsPageView(string reasonDesc)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-           // viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
+            // viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
         }
 
@@ -78,7 +78,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
 
-                if(arg.PickerId == "DeregOutletSingleDatePicker")
+                if (arg.PickerId == "DeregOutletSingleDatePicker")
                 {
                     viewModel.SingleDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
                 }
@@ -110,7 +110,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             viewModel.SelectedPermitOutletOptionIndex = viewModel.PermitOutletDecisionOptions.IndexOf(selectedItem);
 
-            if(viewModel.SelectedPermitOutletOptionIndex == 2)
+            if (viewModel.SelectedPermitOutletOptionIndex == 2)
             {
                 if (viewModel.SelectedOutletForCloseTranser != null)
                 {
@@ -135,7 +135,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
             }
             else
-            { 
+            {
                 viewModel.IsNodataAvailableVisible = false;
                 viewModel.IsMultiplePermitsVisible = false;
             }
@@ -352,7 +352,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void BorderlessEntryPermittype_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            
+
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(EntryTIN.Text))
@@ -391,7 +391,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 else
                 {
                     viewModel.FrameTinError = false;
-                    viewModel.ValidateIdNumberForPermitTypes (EntryTIN.Text);
+                    viewModel.ValidateIdNumberForPermitTypes(EntryTIN.Text);
                 }
             }
             else
@@ -542,7 +542,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 catch (InternetException ex)
                 {
-                   
+
                 }
             }
             catch (GAZTUnlockAccountException ex)
@@ -553,7 +553,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   
+
                 });
             }
         }
@@ -593,6 +593,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-       
+
     }
 }

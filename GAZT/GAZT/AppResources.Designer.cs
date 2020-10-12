@@ -8382,9 +8382,27 @@ namespace EGAZT {
             }
         }
         
+        public static string NDTotalNumberOfBills {
+            get {
+                return ResourceManager.GetString("NDTotalNumberOfBills", resourceCulture);
+            }
+        }
+        
         public static string NDEmail {
             get {
                 return ResourceManager.GetString("NDEmail", resourceCulture);
+            }
+        }
+        
+        public static string NDTotalAmount {
+            get {
+                return ResourceManager.GetString("NDTotalAmount", resourceCulture);
+            }
+        }
+        
+        public static string NDInvoiceDueamount {
+            get {
+                return ResourceManager.GetString("NDInvoiceDueamount", resourceCulture);
             }
         }
         

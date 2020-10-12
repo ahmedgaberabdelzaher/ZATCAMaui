@@ -283,7 +283,7 @@
                             <!--SelectedItem="{Binding TodayDate}"-->
                             <!--HijriDatePicker-->
                         </Grid>
-                       
+
                     </StackLayout>
                     <!--<StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
@@ -322,7 +322,7 @@
                  </StackLayout>-->
 
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption2Visible}">
-                      
+
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
 
                         <StackLayout>
@@ -783,6 +783,7 @@
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
                                                     <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="50"/>
                                                 </Grid.ColumnDefinitions>
 
                                                 <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Center" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
@@ -793,14 +794,14 @@
                                                     <Label Text="{Binding  AOutletNameTb}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
 
                                                 </StackLayout>
-                                                <StackLayout  Grid.Row="0" Grid.Column="2" IsVisible="{Binding outletEditIsVisible}" x:Name="editButton">
-                                                    <buttons:SfButton x:Name="buttonEdit" Margin="0,16,0,16"  Clicked="newName_Clicked" HorizontalOptions="End" Text="{x:Static ResourceManager:AppResources.NDEdit}"
+                                                <StackLayout  Grid.Row="0" Grid.Column="2" IsVisible="{Binding BindingContext.outletEditIsVisible,Source={x:Reference TinDeReg}}" x:Name="editButton">
+                                                    <buttons:SfButton x:Name="buttonEdit" Margin="0,16,0,16" IsEnabled="False"  Clicked="newName_Clicked"  HorizontalOptions="End" Text="{x:Static ResourceManager:AppResources.NDEdit}"
                                                           TextColor="#006450" BackgroundColor="Transparent" />
-                                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer NumberOfTapsRequired="1" 
                                                                   Tapped="TapGestureRecognizer_Tapped"
                                                                  CommandParameter="{Binding selectedOutletOption}"/>
-                                    </StackLayout.GestureRecognizers>
+                                                    </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                             </Grid>
 
@@ -913,7 +914,7 @@
                                             </Grid>
                                         </StackLayout>
                                     </border:SfBorder >
-                                   
+
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>

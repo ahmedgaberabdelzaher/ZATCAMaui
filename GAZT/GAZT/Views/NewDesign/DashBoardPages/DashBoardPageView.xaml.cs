@@ -85,10 +85,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             getYesCommandToLogout();
             getNoCommandToLogout();
             viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
-            viewModel.PaidString = AppResources.Paid;
-            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
-            viewModel.UnPaidString = AppResources.UnPaid;
-            viewModel.TotalString = AppResources.NDTotal;
+            viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
+            viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
+            viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
+            viewModel.TotalString = AppResources.NDTotalNumberOfBills;
             ChangeArrowDirection();
         }
         public async void getYesCommandToLogout()
@@ -694,10 +694,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
                 viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
-                viewModel.PaidString = AppResources.Paid;
-                viewModel.UnPaidString = AppResources.UnPaid;
-                viewModel.PartiallyPaidString = AppResources.Partiallynewui;
-                viewModel.TotalString = AppResources.NDTotal;
+                viewModel.PaidString = AppResources.Paid+" "+viewModel.PaidBillCount;
+                viewModel.UnPaidString = AppResources.UnPaid+" "+viewModel.UnPaidBillCount;
+                viewModel.PartiallyPaidString = AppResources.Partiallynewui+" "+viewModel.PartiallyPaidBillCount;
+                viewModel.TotalString = AppResources.NDTotalNumberOfBills;
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 180;
             }
@@ -721,10 +721,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
                 viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
-                viewModel.PaidString = AppResources.Paid;
-                viewModel.UnPaidString = AppResources.UnPaid;
-                viewModel.PartiallyPaidString = AppResources.Partiallynewui;
-                viewModel.TotalString = AppResources.NDTotal;
+                viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
+                viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
+                viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
+                viewModel.TotalString = AppResources.NDTotalNumberOfBills;
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 0;
             }

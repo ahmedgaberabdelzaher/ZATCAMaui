@@ -3307,7 +3307,7 @@
     <comment>VAT</comment>
   </data>
   <data name="ZZZChangetoLanguage" xml:space="preserve">
-    <value>English version</value>
+    <value>English</value>
     <comment>option  Change to English</comment>
   </data>
   <data name="ZZZContactus" xml:space="preserve">
@@ -4896,6 +4896,17 @@
   </data>
   <data name="NDTotal" xml:space="preserve">
     <value>الإجمالي</value>
+  </data>
+          <data name="NDTotalNumberOfBills" xml:space="preserve">
+    <value>اجمالي عدد الفواتير</value>
+  </data>
+          <data name="NDTotalAmount" xml:space="preserve">
+    <value>المبلغ الإجمالي:</value>
+    <comment>My bills</comment>
+  </data>
+              <data name="NDInvoiceDueamount" xml:space="preserve">
+    <value>المبلغ المستحق </value>
+    <comment>My bills</comment>
   </data>
   <data name="NDEmail" xml:space="preserve">
     <value>البريد الإلكتروني</value>

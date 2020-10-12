@@ -288,7 +288,7 @@
                                                             <chart:DoughnutSeries.CenterView>
                                                                 <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand">
                                                                     <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.TotalString}" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
-                                                                    <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}" FontSize="24"/>
+                                                                    <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}" FontSize="24" HorizontalOptions="Center" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
                                                                 </StackLayout>
                                                             </chart:DoughnutSeries.CenterView>
 
@@ -318,13 +318,13 @@
                                                 </chart:SfChart>
                                                 <!--<custom:CustomLabel Text="{Binding BillCount}"  Style="{StaticResource PageTitleBlack}" AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="HeightProportional"/>
                                             </AbsoluteLayout>-->
-                                                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">-->
+                                                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                                                 <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                     <buttons:SfButton  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="paidClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="Paid_check.png"  ShowIcon="True" Text="{Binding PaidString}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
-                                                    <buttons:SfButton   HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Partiallynewui}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                                    <buttons:SfButton   HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{Binding PartiallyPaidString}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                                     <buttons:SfButton  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{Binding UnPaidString}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
                                                 </StackLayout>
-                                                <!--</ScrollView>-->
+                                                </ScrollView>
                                             </StackLayout>
                                         </cards:SfCardView>
 
