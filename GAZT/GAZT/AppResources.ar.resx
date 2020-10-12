@@ -340,10 +340,10 @@
     <value>25% من المبلغ المعترض عليه</value>
   </data>
   <data name="VATRegistrationDetails" xml:space="preserve">
-    <value>VAT Registration Details</value>
+    <value>تفاصيل تسجيل ضريبة القيمة المضافة </value>
   </data>
   <data name="VATRegistrationDetailsTitle" xml:space="preserve">
-    <value>VAT Registration</value>
+    <value>تفاصيل تسجيل ضريبة القيمة المضافة </value>
   </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
     <value>شهادة تسجيل في ضريبة القيمة المضافة</value>
@@ -8249,7 +8249,11 @@
      <data name="VATDraftSaved" xml:space="preserve">
     <value>VAT Instalment form saved successfully{0}</value>
   </data>
+ <data name="NochangesMade" xml:space="preserve">
+        <value>لا يوجد تغيير عن اخر نموذج تم حفظه كمسودة الرجاء اضافة تغيير لحفظه كمسودة</value>
+ </data>
  <data name="NoChangesMadeCannotBeSavedAsDraft" xml:space="preserve">     <value>لا يوجد تغيير عن اخر نموذج تم حفظه كمسودة الرجاء اضافة تغيير لحفظه كمسودة</value>   </data>
+    
   <data name="LoginTitle" xml:space="preserve">
         <value>تسجيل الدخول</value>
  </data>
