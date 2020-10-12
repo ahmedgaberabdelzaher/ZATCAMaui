@@ -8243,11 +8243,11 @@
     <value>الرجاء الذهاب الى البوابة لإكمال المعلومات الإضافية</value>
   </data>
   <data name="LogInSessionTitle" xml:space="preserve">     <value>تسجيل الدخول</value>   </data>   <data name="ZZGeneralMessage_VATCancelled" xml:space="preserve">
-    <value>Instalment form is cancelled. Please initiate the process again to file VAT instalment</value>
+    <value>تم إلغاء نموذج خطة التقسيط. الرجاء إعادة العملية لإنشاء خطة  تقسيط ضريبة القيمة المضافة</value>
     <comment>VAT instalment general message</comment>
   </data>
-     <data name="VATDraftSaved" xml:space="preserve">
-    <value>VAT Instalment form saved successfully{0}</value>
+   <data name="VATDraftSaved" xml:space="preserve">
+      <value>{0}تم حفظ نموذج خطة تقسيط ضريبة القيمة المضافة بنجاح</value>
   </data>
  <data name="NochangesMade" xml:space="preserve">
         <value>لا يوجد تغيير عن اخر نموذج تم حفظه كمسودة الرجاء اضافة تغيير لحفظه كمسودة</value>
