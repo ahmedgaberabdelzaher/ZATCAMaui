@@ -25,7 +25,7 @@
             <Grid.RowDefinitions>
                 <!--  Skip Button  -->
                 <RowDefinition Height="96" />
-                <RowDefinition Height="130" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 
