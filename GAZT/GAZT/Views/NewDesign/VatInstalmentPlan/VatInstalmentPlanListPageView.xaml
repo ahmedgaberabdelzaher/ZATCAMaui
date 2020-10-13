@@ -201,9 +201,9 @@
                             </Grid>
                         </border:SfBorder>
 
-                        <listView:SfListView  Grid.Row="1" x:Name="VATInstalmentPlanListViewPage" HorizontalOptions="CenterAndExpand" IsScrollBarVisible="False" Margin="0" Padding="0"
-                                                  IsScrollingEnabled="False" VerticalOptions="Center" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="SummaryattachmentsListView_ItemTapped"
-                                      ItemsSource="{Binding RequestForInstalmentPlanList}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
+                        <listView:SfListView  Grid.Row="1" x:Name="VATInstalmentPlanListViewPage" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False"
+                                                  IsScrollingEnabled="False" VerticalOptions="FillAndExpand" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="SummaryattachmentsListView_ItemTapped"
+                                      ItemsSource="{Binding VATInstalmentList}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="True" Style="{StaticResource GreyBorderFrameWithShadow}">

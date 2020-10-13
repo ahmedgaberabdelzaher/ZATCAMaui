@@ -2343,6 +2343,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             selectedList.Clear();
             selectedPage = (int)PagesEnum.ZakatSelectionView;
             IsViewEnable = true;
+            IsFirstCheckboxChecked = false;
         }
 
         public async void VATInstalationTapped()
