@@ -251,6 +251,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
             OnScanButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+                try
+                {
+                    SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+                }
+                catch
+                { 
+                }
                 IsNameVisible = false;
                 ZXingScannerPage scanPage = new ZXingScannerPage();
                 Device.BeginInvokeOnMainThread(async () =>

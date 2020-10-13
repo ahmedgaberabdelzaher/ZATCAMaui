@@ -850,6 +850,8 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
                     </Grid.RowDefinitions>
 
 
@@ -868,8 +870,9 @@
                     <custom:CustomLabel Grid.Row="1" Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueInvoiceText}" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
                     <listView:SfListView  Grid.Row="2" HorizontalOptions="CenterAndExpand"  
-                                          Margin="0"
-                                          Padding="0" VerticalOptions="FillAndExpand" AutoFitMode="Height"
+                                          VerticalOptions="FillAndExpand" AutoFitMode="Height"
+                                          IsScrollingEnabled="False"
+                                          IsScrollBarVisible="False"
                                           ItemSpacing="0" ItemsSource="{Binding DueInvoicesList}"
                                           SelectionMode="None">
                         <listView:SfListView.ItemTemplate>
@@ -931,9 +934,10 @@
                    
                    
                     <!--NotiSet12-->
-                    <listView:SfListView  Grid.Row="2" HorizontalOptions="FillAndExpand"  
-                                          Margin="0"
-                                          Padding="0" VerticalOptions="FillAndExpand"  AutoFitMode="Height"
+                    <listView:SfListView  Grid.Row="3" HorizontalOptions="FillAndExpand"  
+                                          IsScrollBarVisible="False"
+                                          IsScrollingEnabled="False"
+                                          VerticalOptions="FillAndExpand"  AutoFitMode="Height"
                                           ItemSpacing="0" ItemsSource="{Binding DueInvoicesListSet12}"
                                           SelectionMode="None" >
                         <listView:SfListView.ItemTemplate>

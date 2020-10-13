@@ -99,12 +99,17 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             }
 
 
+            if(viewModel.selectedList.Count > 0) {
 
-            viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + viewModel.selectedList[0].Waers;
+                viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + viewModel.selectedList[0].Waers;
+                viewModel.EnableBillsContinue();
+
+            }
 
 
 
-            viewModel.EnableBillsContinue();
+
+
         }
         public async Task GetVAtInstalmentData()
         {

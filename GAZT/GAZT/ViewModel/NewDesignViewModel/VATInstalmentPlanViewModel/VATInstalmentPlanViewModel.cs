@@ -1618,7 +1618,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         isDraftClicked = true;
                         setDATA();
                         VatInstalments = await SubmitClicked();
-
+                        isDraftClicked = false;
                         if (VatInstalments != null && VatInstalments.d != null)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -1913,7 +1913,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             });
 
 
-            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
             {
                 IsFirstCheckboxChecked = true;
 
@@ -2271,6 +2271,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         public async Task EnableSucessScreenAsync()
         {
+
+            isDraftClicked = false;
             VatInstalments.d.Operationz = "01";
             VatInstalments.d.Decflg = "1";
 
@@ -2340,6 +2342,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
             selectedList.Clear();
             selectedPage = (int)PagesEnum.ZakatSelectionView;
+            IsViewEnable = true;
+            IsFirstCheckboxChecked = false;
         }
 
         public async void VATInstalationTapped()
@@ -2443,9 +2447,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
 
 
+            isDraftClicked = false;
 
-
-            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
            {
                     EnableStatementsView();
                     BindStatementsView();
@@ -2632,7 +2636,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 if (App.selectedVATItem != "")
                 {
-                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                     {
                         
                         await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatTerms, checkBoxString: AppResources.VatTermsCheckBoxDesc, continueString: AppResources.ZakatInstalmetContinue, isEditable: true,
@@ -2848,7 +2852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     if (App.selectedVATItem != "")
                     {
-                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                         {
                             IsViewEnable = false;
                         }
@@ -2884,7 +2888,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             if (App.selectedVATItem != "")
                             {
-                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                                 {
                                     await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle, isEditable: true, _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                             .Instructions));
@@ -2907,7 +2911,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
                             BindVATSelectionView();
-                            BindVATSelectionView();
                             BindBillsListView();
 
                             if (VatInstalments.d.Xstep1Conf != null)
@@ -2927,12 +2930,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             if (App.selectedVATItem != "")
                             {
 
-                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
+                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
                                 {
                                     MessagingCenter.Send<Object, string>(this, "RejectScenario", App.selectedVATItem);
                                     if (VatInstalments.d.Noofinstallment != null)
                                     {
-                                        NoOfInstalments = int.Parse(VatInstalments.d.Noofinstallment);
+                                        if (int.Parse(VatInstalments.d.Noofinstallment) > 0) {
+                                            NoOfInstalments = int.Parse(VatInstalments.d.Noofinstallment);
+                                        }
+                                        else {
+                                            NoOfInstalments = 2;
+                                        }
+
+                                        
                                     }
 
                                 }
@@ -3088,7 +3098,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             request.d.Gpartz = VatInstalments.d.Gpartz;
             request.d.Langz = VatInstalments.d.Langz;
             request.d.Mandt = VatInstalments.d.Mandt;
-            request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
             request.d.Officer = VatInstalments.d.Officer;
             request.d.OfficerTz = VatInstalments.d.OfficerTz;
             request.d.Officerz = VatInstalments.d.Officerz;
@@ -3107,20 +3116,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             if (CurrentIndex == 1)
             {
                 VatInstalments.d.StepNumberz = "01";
+                request.d.Noofinstallment = "00";
 
             }
-            else if (CurrentIndex == 2 || CurrentIndex == 3)
+            else if (CurrentIndex == 2)
             {
                 VatInstalments.d.StepNumberz = "03";
+                request.d.Noofinstallment = "00";
+
+
+            }
+            else if (CurrentIndex == 3)
+            {
+                VatInstalments.d.StepNumberz = "03";
+
+                if (isDraftClicked) {
+
+                    if (VatInstalments.d.VTISSet.results.Length != 0)
+                    {
+                        request.d.Noofinstallment = VatInstalments.d.VTISSet.results.Length.ToString();
+                    }
+                    else
+                    {
+                        request.d.Noofinstallment = "00";
+                    }
+
+                }
+                else {
+                    request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
+
+                }
+
 
             }
             else
             {
+                request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
+
                 VatInstalments.d.StepNumberz = "04";
 
             }
 
-            request.d.StepNumberz = VatInstalments.d.StepNumberz;
+
+            if(VatInstalments.d.Operationz == "04") {
+
+                if (VatInstalments.d.VTISSet.results.Length != 0)
+                {
+                    request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
+                }
+                else
+                {
+                    request.d.Noofinstallment = "00";
+                }
+            }
+
+
+            
+
+
+                request.d.StepNumberz = VatInstalments.d.StepNumberz;
 
 
 

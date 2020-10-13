@@ -173,7 +173,7 @@
                                                             Style="{StaticResource MiniNewGrayLabelStyle}">
                                  <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.CRDesignation}"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.VFCEffectiveDate}"  />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
