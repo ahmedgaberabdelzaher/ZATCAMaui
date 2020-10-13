@@ -754,7 +754,7 @@
     <value>الخروج</value>
   </data>
   <data name="ZYourSessionhasexpiredPleaseLoginagain" xml:space="preserve">
-    <value>لقد انتهت مدة صلاحيتك ، يرجي تسجيل الدخول مرة أخري</value>
+    <value>لقد انتهت مدة صلاحيتك، يرجي تسجيل الدخول مرة اخرى</value>
   </data>
   <data name="ZError" xml:space="preserve">
     <value>خطأ</value>
