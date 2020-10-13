@@ -34,20 +34,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     int indexToRemoveThePage = PageCount - 2;
                     if (!string.IsNullOrEmpty(viewModel.taxPayerDetails?.Fbsta) && viewModel.taxPayerDetails?.Fbsta != "IP011")
                     {
-                        viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        try
+                        {
+                            Xamarin.Forms.Page pg = Navigation.NavigationStack[indexToRemoveThePage];
+                            Navigation.RemovePage(pg);
+                            indexToRemoveThePage = Navigation.NavigationStack.Count-1;
+                            Xamarin.Forms.Page pg1 = Navigation.NavigationStack[indexToRemoveThePage];
+                            Navigation.RemovePage(pg1);
+                        }
+                        catch (Exception ex)
+                        {
 
-                        //try
-                        //{
-                        //    Xamarin.Forms.Page pg = Navigation.NavigationStack[indexToRemoveThePage];
-                        //    Navigation.RemovePage(pg);
-                        //    indexToRemoveThePage = Navigation.NavigationStack.Count-1;
-                        //    Xamarin.Forms.Page pg1 = Navigation.NavigationStack[indexToRemoveThePage];
-                        //    Navigation.RemovePage(pg1);
-                        //}
-                        //catch (Exception ex)
-                        //{
-
-                        //}
+                        }
 
                         // viewModel._navigationService.GoBack();
 
