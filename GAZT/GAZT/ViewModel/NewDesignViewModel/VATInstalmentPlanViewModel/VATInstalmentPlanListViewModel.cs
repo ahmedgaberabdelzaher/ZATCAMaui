@@ -624,14 +624,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
+        public ObservableCollection<Result31> _vATInstalmentList { get; set; }
+        public ObservableCollection<Result31> VATInstalmentList
+        {
+            get
+            {
+                return _vATInstalmentList;
+            }
+            set
+            {
+                _vATInstalmentList = value;
+                RaisePropertyChanged("VATInstalmentList");
+            }
+        }
+
         public void BindVatInstalments()
         {
             if (ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results != null)
             {
                 //RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results;
+
+                VATInstalmentList = new ObservableCollection<Result31> ();
                 RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results.Where(w => w.Fbtyp.Contains("VTIA")).ToList();
 
-                if (RequestForInstalmentPlanList.Count > 0)
+                foreach(var instalmentListModel in RequestForInstalmentPlanList) {
+
+                    VATInstalmentList.Add(instalmentListModel);
+                }
+
+
+                if (VATInstalmentList.Count > 0)
                 {
                     NumberOfInstalmentPlans = RequestForInstalmentPlanList.Count + " " + AppResources.ZakatInstalmetPlan;
 
