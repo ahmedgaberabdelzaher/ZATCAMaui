@@ -820,7 +820,7 @@
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>عدد الارقام في الرقم التسلسلي يجب ان يكون 15 رقم</value>
+    <value>عدد الارقام في الرقم التسلسلي يجب أن يكون 15 رقم</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>مرحباً</value>
@@ -4897,14 +4897,14 @@
   <data name="NDTotal" xml:space="preserve">
     <value>الإجمالي</value>
   </data>
-          <data name="NDTotalNumberOfBills" xml:space="preserve">
+  <data name="NDTotalNumberOfBills" xml:space="preserve">
     <value>اجمالي عدد الفواتير</value>
   </data>
-          <data name="NDTotalAmount" xml:space="preserve">
+  <data name="NDTotalAmount" xml:space="preserve">
     <value>المبلغ الإجمالي:</value>
     <comment>My bills</comment>
   </data>
-              <data name="NDInvoiceDueamount" xml:space="preserve">
+  <data name="NDInvoiceDueamount" xml:space="preserve">
     <value>المبلغ المستحق </value>
     <comment>My bills</comment>
   </data>
@@ -5197,7 +5197,7 @@
   </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
     <value>الرجاء إدخال رمز التحقق المرسل إلى جوالك لاستعادة كلمة المرور</value>
-    </data>
+  </data>
   <data name="NDAllcertificates" xml:space="preserve">
     <value>جميع الشهادات</value>
     <comment>Certificate</comment>
@@ -8242,19 +8242,23 @@
   <data name="ZZZZGotothePortalForVAT" xml:space="preserve">
     <value>الرجاء الذهاب الى البوابة لإكمال المعلومات الإضافية</value>
   </data>
-  <data name="LogInSessionTitle" xml:space="preserve">     <value>تسجيل الدخول</value>   </data>   <data name="ZZGeneralMessage_VATCancelled" xml:space="preserve">
+  <data name="LogInSessionTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZZGeneralMessage_VATCancelled" xml:space="preserve">
     <value>تم إلغاء نموذج خطة التقسيط. الرجاء إعادة العملية لإنشاء خطة  تقسيط ضريبة القيمة المضافة</value>
     <comment>VAT instalment general message</comment>
   </data>
-   <data name="VATDraftSaved" xml:space="preserve">
-      <value>{0}تم حفظ نموذج خطة تقسيط ضريبة القيمة المضافة بنجاح</value>
+  <data name="VATDraftSaved" xml:space="preserve">
+    <value>{0}تم حفظ نموذج خطة تقسيط ضريبة القيمة المضافة بنجاح</value>
   </data>
- <data name="NochangesMade" xml:space="preserve">
-        <value>لا يوجد تغيير عن اخر نموذج تم حفظه كمسودة الرجاء اضافة تغيير لحفظه كمسودة</value>
- </data>
- <data name="NoChangesMadeCannotBeSavedAsDraft" xml:space="preserve">     <value>لا يوجد تغيير عن اخر نموذج تم حفظه كمسودة الرجاء اضافة تغيير لحفظه كمسودة</value>   </data>
-    
+  <data name="NochangesMade" xml:space="preserve">
+    <value>لا يوجد تغيير عن اخر نموذج تم حفظه كمسودة الرجاء اضافة تغيير لحفظه كمسودة</value>
+  </data>
+  <data name="NoChangesMadeCannotBeSavedAsDraft" xml:space="preserve">
+    <value />
+  </data>
   <data name="LoginTitle" xml:space="preserve">
-        <value>تسجيل الدخول</value>
- </data>
+    <value>تسجيل الدخول</value>
+  </data>
 </root>
