@@ -1913,7 +1913,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             });
 
 
-            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
             {
                 IsFirstCheckboxChecked = true;
 
@@ -2448,7 +2448,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             isDraftClicked = false;
 
-            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
            {
                     EnableStatementsView();
                     BindStatementsView();
@@ -2635,7 +2635,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 if (App.selectedVATItem != "")
                 {
-                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                     {
                         
                         await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatTerms, checkBoxString: AppResources.VatTermsCheckBoxDesc, continueString: AppResources.ZakatInstalmetContinue, isEditable: true,
@@ -2851,7 +2851,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     if (App.selectedVATItem != "")
                     {
-                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                         {
                             IsViewEnable = false;
                         }
@@ -2887,7 +2887,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             if (App.selectedVATItem != "")
                             {
-                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
+                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                                 {
                                     await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle, isEditable: true, _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                             .Instructions));
@@ -2929,7 +2929,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             if (App.selectedVATItem != "")
                             {
 
-                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
+                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
                                 {
                                     MessagingCenter.Send<Object, string>(this, "RejectScenario", App.selectedVATItem);
                                     if (VatInstalments.d.Noofinstallment != null)
