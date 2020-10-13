@@ -4122,9 +4122,12 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="VATREditAccount" xml:space="preserve">
     <value>Edit Account</value>
   </data>
-  <data name="VATRAdditionalInformation" xml:space="preserve">
-    <value>Additional Information</value>
-  </data>
+<data name="VATRAdditionalInformation" xml:space="preserve">
+<value>Additional Information</value>
+</data>
+ <data name="VATRTPDetailsAdditionalInformation" xml:space="preserve">
+<value>Do you want to change additional information?</value>
+</data>
   <data name="VATRStep1" xml:space="preserve">
     <value>Step 1</value>
   </data>
@@ -4759,6 +4762,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VATAmendReactivationSuccessful" xml:space="preserve">
     <value>VAT Registration Amendment Successfull</value>
+  </data>
+      <data name="VATAmendMobileNumberValidation" xml:space="preserve">
+    <value>Mobile Number should be start with 009665</value>
   </data>
   <data name="VATAmendReactivationSuccessfulAkwdg" xml:space="preserve">
     <value>GAZT acknowledges your Change VAT registration application</value>

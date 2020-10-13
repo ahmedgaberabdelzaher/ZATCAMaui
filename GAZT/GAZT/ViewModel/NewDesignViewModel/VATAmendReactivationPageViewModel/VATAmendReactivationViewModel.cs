@@ -1820,7 +1820,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 }
                 VATRegistrationDetailsData.d.VatTaxDt = Bdt;
                 VATRegistrationDetailsData.d.StepNumberz = "2";
-                VATRegistrationDetailsData.d.DecidTy = string.Empty;
+              //  VATRegistrationDetailsData.d.DecidTy = string.Empty;
                 //Step 4
 
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
@@ -2128,7 +2128,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
                         //OriginalVATRegistrationDetailsData = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
-                        OriginalData = JsonConvert.SerializeObject(vATRegistration);
+
+
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2348,6 +2349,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 SetApplicableButtons();
                             }
 
+                            OriginalData = JsonConvert.SerializeObject(VATRegistrationDetailsData);
 
                             IdnumberFR = idnumber;
 

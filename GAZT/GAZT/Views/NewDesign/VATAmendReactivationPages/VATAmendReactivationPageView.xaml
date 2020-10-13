@@ -220,6 +220,7 @@
                                                         </custom:CustomLabel.FormattedText>
                                                     </custom:CustomLabel>
                                                 </StackLayout>
+                                               <buttons:SfButton x:Name="InsructionsMainButton" Text="{Binding CurrentStep}" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}" CornerRadius="14" Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
 
                                             </StackLayout>
                                         </ScrollView>
@@ -521,7 +522,7 @@
                                                         <custom:CustomLabel   Style="{StaticResource GAZTCaptionBlackLabel}">
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{x:Static custom2:AppResources.VATRAdditionalInformation}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"  />
+                                                                    <Span Text="{x:Static custom2:AppResources.VATRTPDetailsAdditionalInformation}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"  />
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
@@ -2986,7 +2987,7 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
 
                         </Grid>
                     </StackLayout>
-                    <StackLayout Grid.Row="2" Grid.Column="0"  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
+                    <StackLayout x:Name="MainButtonStk" IsVisible="true" Grid.Row="2" Grid.Column="0"  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                         <buttons:SfButton x:Name="MainButtonName"  Text="{Binding CurrentStep}"  Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"    CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
                     </StackLayout>
                 </Grid>

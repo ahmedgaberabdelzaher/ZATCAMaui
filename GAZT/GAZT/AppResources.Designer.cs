@@ -6846,6 +6846,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRTPDetailsAdditionalInformation {
+            get {
+                return ResourceManager.GetString("VATRTPDetailsAdditionalInformation", resourceCulture);
+            }
+        }
+        
         public static string VATRStep1 {
             get {
                 return ResourceManager.GetString("VATRStep1", resourceCulture);
@@ -8109,6 +8115,12 @@ namespace EGAZT {
         public static string VATAmendReactivationSuccessful {
             get {
                 return ResourceManager.GetString("VATAmendReactivationSuccessful", resourceCulture);
+            }
+        }
+        
+        public static string VATAmendMobileNumberValidation {
+            get {
+                return ResourceManager.GetString("VATAmendMobileNumberValidation", resourceCulture);
             }
         }
         

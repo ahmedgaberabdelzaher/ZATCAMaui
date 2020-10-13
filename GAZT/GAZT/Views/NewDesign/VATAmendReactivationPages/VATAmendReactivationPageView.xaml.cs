@@ -248,7 +248,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 if (viewModel.CurrentStep == AppResources.VATRStep1)
                 {
-
+                    MainButtonStk.IsVisible = true;
+                    InsructionsMainButton.IsVisible = false;
                     viewModel.CurrentStep = AppResources.VATRStep2;
                     viewModel.SetVisibility();
                     viewModel.IsTaxPayersVisible = true;
@@ -413,7 +414,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     flag = false;
                     FrmIDType.HasError = true;
                 }
-                if (string.IsNullOrEmpty(viewModel.IdnumberFR) || viewModel.FrameIDError)
+                if (string.IsNullOrEmpty(viewModel.IdnumberFR) || FrmIDNo.HasError)
                 {
                     flag = false;
                     viewModel.FrameIDError = true;
@@ -4716,7 +4717,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
             if (isEmail)
+            {
+                FrmEmailAddress.HasError = false;
+
                 return true;
+            }
             else
             {
                 FrmEmailAddress.HasError = true;
@@ -4759,7 +4764,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 if (viewModel.MobNumberFR.Substring(0, 1) != "5")
                 {
-                    message = AppResources.ZZMobilenumberhastostartwithnumber5;
+                    message = AppResources.VATAmendMobileNumberValidation;
                     ShowValidationPopup(message);
                 }
                 else
