@@ -3462,7 +3462,7 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZTaxPayerName" xml:space="preserve">
     <value>Taxpayer Name</value>
-    <comment>Vat Lookup</comment>
+    <comment>Vat Lookup tax payer name</comment>
   </data>
   <data name="ZZZCRValidateMessg" xml:space="preserve">
     <value>Please note that this CR/Licence/Contract is already registered with another taxpayer in GAZT, 
