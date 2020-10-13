@@ -46,6 +46,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationOutletTabsEnum.AddressDetails:
+                        ClearData();
                         SelectedOutletTabText = AppResources.ESTAddressDetails;
                         NxtButtonLabel = AppResources.Save;
                         break;
@@ -1133,6 +1134,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             CountrySame = null;
             ProvinanceSame = null;
             CitySame = null;
+        }
+
+        public void ClearData()
+        {
+            Country = new CountryDropdownItem();// string.Empty;
+            Provinance = new StateDropdownItem();// string.Empty;
+            City = new CityDropdownItem();// string.Empty;
+
+            CountrySame = new CountryDropdownItem();// string.Empty;
+            ProvinanceSame = new StateDropdownItem();// string.Empty;
+            CitySame = new CityDropdownItem();// string.Empty;
         }
         #endregion
     }

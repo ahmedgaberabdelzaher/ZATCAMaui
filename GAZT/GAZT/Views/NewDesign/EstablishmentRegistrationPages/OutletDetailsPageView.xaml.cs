@@ -17,6 +17,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             //_outletNavigation = outletNavigation;
             viewModel = App.Locator.OutletDetailsPageView;
+            viewModel.ClearData();
             viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
             viewModel.idItem = outletNavigation.idItem;
             viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;

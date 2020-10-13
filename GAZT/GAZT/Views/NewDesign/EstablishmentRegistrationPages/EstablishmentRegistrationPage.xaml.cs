@@ -24,6 +24,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         EstablishmentRegistrationPageViewModel viewModel;
         public EstablishmentRegistrationPage()
         {
+            EstablishmentRegistrationPageViewModel.taxPayerDetails = null;
             InitializeComponent();
             ChangeAeroIcon();
             SetLTR();
@@ -81,7 +82,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 dobPicker.IsOpen = true;
             }
@@ -93,7 +94,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
         {
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 passportIssuePicker.IsOpen = true;
             }
@@ -105,7 +106,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 passportExpiryPicker.IsOpen = true;
             }
@@ -239,7 +240,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         void dobPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -257,7 +258,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         void passportIssuePicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -275,7 +276,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         void passportExpiryPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";

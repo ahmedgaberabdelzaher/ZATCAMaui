@@ -27,7 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     {
         #region Variable
         //public int DefaultMonth;
-        public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private Nreg_IdItem idItem { get; set; } = null;
         public bool IsNavigationCompletedToSuccessfulPage = false;
@@ -2478,13 +2478,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             try
             {
                 IsLoading = true;
-                var _calendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "H" : "G";
+                var _CalendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "H" : "G";
                 financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                 {
-                    ACaltype = _calendarType,
+                    ACaltype = _CalendarType,
                     ADateComm = taxPayerDetails?.Commdt
                 });
-                if (_calendarType == "H")
+                if (_CalendarType == "H")
                 {
                     string dd = financialDetail?.ACommDate.Substring(6, 2);
                     string mm = financialDetail?.ACommDate.Substring(4, 2);
@@ -2537,12 +2537,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                 {
-                    ACaltype = _calendarType,
+                    ACaltype = _CalendarType,
                     AMonth = FiscalMonth,
                     EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
                     ADateComm = taxPayerDetails?.Commdt
                 });
-                TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_calendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
 
                 if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
                 {
