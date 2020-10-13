@@ -3461,7 +3461,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Vat Lookup</comment>
   </data>
   <data name="ZZTaxPayerName" xml:space="preserve">
-    <value>Tax Payer Name</value>
+    <value>Taxpayer Name</value>
     <comment>Vat Lookup</comment>
   </data>
   <data name="ZZZCRValidateMessg" xml:space="preserve">
@@ -4901,22 +4901,21 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="NDTotal" xml:space="preserve">
     <value>Total</value>
   </data>
-      <data name="NDTotalNumberOfBills" xml:space="preserve">
+  <data name="NDTotalNumberOfBills" xml:space="preserve">
     <value>Total number of bills</value>
   </data>
   <data name="NDEmail" xml:space="preserve">
     <value>Email</value>
     <comment>New Desing Form5</comment>
   </data>
-      <data name="NDTotalAmount" xml:space="preserve">
+  <data name="NDTotalAmount" xml:space="preserve">
     <value>Total amount:</value>
     <comment>My bills</comment>
   </data>
-          <data name="NDInvoiceDueamount" xml:space="preserve">
+  <data name="NDInvoiceDueamount" xml:space="preserve">
     <value>Invoice Due amount</value>
     <comment>My bills</comment>
   </data>
-    
   <data name="NDFinancialYear" xml:space="preserve">
     <value>Financial Year</value>
     <comment>New Desing Form5</comment>
@@ -8334,16 +8333,20 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   <data name="ZZZZGotothePortalForVAT" xml:space="preserve">
     <value>go to the portal and complete the additional information</value>
   </data>
-   <data name="LogInSessionTitle" xml:space="preserve">     <value>Login</value>   </data>
-   <data name="ZZGeneralMessage_VATCancelled" xml:space="preserve">
+  <data name="LogInSessionTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ZZGeneralMessage_VATCancelled" xml:space="preserve">
     <value>Instalment form is cancelled. Please initiate the process again to file VAT instalment</value>
     <comment>VAT instalment general message</comment>
   </data>
-     <data name="VATDraftSaved" xml:space="preserve">
+  <data name="VATDraftSaved" xml:space="preserve">
     <value>VAT Instalment form saved successfully{0}</value>
   </data>
- <data name="NoChangesMadeCannotBeSavedAsDraft" xml:space="preserve">     <value>There are No changes made in this application, please make changes and then Save it as Draft</value>  </data>
- <data name="LoginTitle" xml:space="preserve">
-        <value>Login</value>
- </data>
+  <data name="NoChangesMadeCannotBeSavedAsDraft" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Login</value>
+  </data>
 </root>
