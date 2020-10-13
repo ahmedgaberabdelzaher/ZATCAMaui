@@ -15645,7 +15645,11 @@ namespace GAZT.Manager
 
                 try
                 {
-                    string url = Constants.TPProfileURL;
+                    string lang = string.Empty;
+                    if (App.IsArabic) { lang = "AR"; }
+                    else { lang = "EN"; }
+
+                    string url = Constants.TPProfileURL + "?sap-language=" + lang;
                     var uri = new Uri(url);
 
                     try { App.httpClientHandler.CookieContainer = null; }
