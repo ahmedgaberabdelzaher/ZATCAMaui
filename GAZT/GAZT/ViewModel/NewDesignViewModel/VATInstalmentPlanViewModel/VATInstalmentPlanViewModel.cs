@@ -2872,7 +2872,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         VatInstalments = vATInstalment;
                     }
 
-                    PopToRootPage();
+
+                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
+                        {
+                            IsFirstCheckboxChecked = true;
+
+                        }
+                        else
+                        {
+
+                            IsFirstCheckboxChecked = false;
+
+                        }
+
+                        PopToRootPage();
                     // If seesion Expired it will navigate to Dashboard page
 
                     // EnableSlectionView();
@@ -3116,13 +3129,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             if (CurrentIndex == 1)
             {
                 VatInstalments.d.StepNumberz = "01";
-                request.d.Noofinstallment = "00";
+                if (VatInstalments.d.VTISSet.results.Length != 0)
+                {
+                    request.d.Noofinstallment = VatInstalments.d.VTISSet.results.Length.ToString();
+                }
+                else
+                {
+                    request.d.Noofinstallment = "00";
+                }
 
             }
             else if (CurrentIndex == 2)
             {
                 VatInstalments.d.StepNumberz = "03";
-                request.d.Noofinstallment = "00";
+                if (VatInstalments.d.VTISSet.results.Length != 0)
+                {
+                    request.d.Noofinstallment = VatInstalments.d.VTISSet.results.Length.ToString();
+                }
+                else
+                {
+                    request.d.Noofinstallment = "00";
+                }
 
 
             }
