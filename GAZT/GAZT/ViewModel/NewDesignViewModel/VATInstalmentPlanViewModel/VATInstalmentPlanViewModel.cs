@@ -2271,6 +2271,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         public async Task EnableSucessScreenAsync()
         {
+
+            isDraftClicked = false;
             VatInstalments.d.Operationz = "01";
             VatInstalments.d.Decflg = "1";
 
@@ -2444,7 +2446,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
 
 
-
+            isDraftClicked = false;
 
             if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0018")
            {
@@ -3126,8 +3128,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             else if (CurrentIndex == 3)
             {
                 VatInstalments.d.StepNumberz = "03";
+
                 if (isDraftClicked) {
-                    request.d.Noofinstallment = "00";
+
+                    if (VatInstalments.d.VTISSet.results.Length != 0)
+                    {
+                        request.d.Noofinstallment = VatInstalments.d.VTISSet.results.Length.ToString();
+                    }
+                    else
+                    {
+                        request.d.Noofinstallment = "00";
+                    }
+
                 }
                 else {
                     request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
