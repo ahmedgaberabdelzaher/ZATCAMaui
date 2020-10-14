@@ -199,7 +199,7 @@
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="7."  />
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions7}" />
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATAmendInstrunctionsAndConditions7}" />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
@@ -220,8 +220,7 @@
                                                         </custom:CustomLabel.FormattedText>
                                                     </custom:CustomLabel>
                                                 </StackLayout>
-                                               <buttons:SfButton x:Name="InsructionsMainButton" Text="{Binding CurrentStep}" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}" CornerRadius="14" Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
-
+                                            <buttons:SfButton x:Name="InsructionsMainButton" Text="{Binding CurrentStep}" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}" CornerRadius="14" Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
                                             </StackLayout>
                                         </ScrollView>
                                     </Grid>
@@ -2448,7 +2447,6 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 								x:Name="SignUpDOB"
                           
                              OKButtonTextColor="#006450" 
-                                SelectionChanged="DOB_OkButtonClicked"
                                              CancelButtonTextColor="#006450"
                            Closed="SignUpDOB_Closed"
                             SelectedItem="{Binding TodayDate}"
@@ -2987,9 +2985,9 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
 
                         </Grid>
                     </StackLayout>
-                    <StackLayout x:Name="MainButtonStk" IsVisible="true" Grid.Row="2" Grid.Column="0"  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
-                        <buttons:SfButton x:Name="MainButtonName"  Text="{Binding CurrentStep}"  Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"    CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
-                    </StackLayout>
+                  <StackLayout Grid.Row="2" x:Name="MainButtonStk" IsVisible="false" Grid.Column="0" Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="White" >
+                    <buttons:SfButton x:Name="MainButtonName" Text="{Binding CurrentStep}" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}" CornerRadius="14" Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
+                </StackLayout>
                 </Grid>
             </yummy:PancakeView>
 

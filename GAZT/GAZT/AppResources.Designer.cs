@@ -6192,6 +6192,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZZVATAmendInstrunctionsAndConditions7 {
+            get {
+                return ResourceManager.GetString("ZZZVATAmendInstrunctionsAndConditions7", resourceCulture);
+            }
+        }
+        
         public static string ZZZVATRInstrunctionsAndConditionsAgreeCondition {
             get {
                 return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditionsAgreeCondition", resourceCulture);

@@ -1657,7 +1657,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         {
             get
             {
-                _instAndCondition.CBAgreeCondition = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                _instAndCondition.CBAgreeCondition = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
                 return _instAndCondition;
             }
         }

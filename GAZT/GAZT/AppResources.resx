@@ -3726,6 +3726,17 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
 * GAZT has the right to reassess the submitted filings in accordance with the VAT Law and its Regulations
 * GAZT has the right to reassess the non-submitted filing in accordance with the VAT Law and its Regulations</value>
   </data>
+      <data name="ZZZVATAmendInstrunctionsAndConditions7" xml:space="preserve">
+    <value>I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
+* Registration during the specified period, according to the VAT Law and its Regulations.
+* Submitting VAT filing on time based on the annual revenues.
+* Paying VAT payments and any related penalties within the specified period, according to the Regulations
+* Providing all the information, documents and records requested by the GAZT within the specified period, according to the Regulations.
+* Not issue a tax invoice without being effectively registered for VAT purposes.
+* Keeping tax invoices, records and accounting documents within the period which were stipulated by the Regulations
+* GAZT has the right to reassess the submitted filings in accordance with the VAT Law and its Regulations
+* GAZT has the right to reassess the non-submitted filing in accordance with the VAT Law and its Regulations</value>
+  </data>
   <data name="ZZZVATRInstrunctionsAndConditionsAgreeCondition" xml:space="preserve">
     <value>I agree with these conditions and proceed further.</value>
   </data>
