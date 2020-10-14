@@ -465,6 +465,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATRAcceptDeclarationToSubmit));
                 chkDeclaration.Focus();
+
                 //viewModel.IsContinueButtonEnable = false;
             }
             return await Task.FromResult(flag);
@@ -1199,7 +1200,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 });
 
-                //await GetVatRegistrationData();
+                await GetVatRegistrationData();
             }
             catch (Exception ex)
             {
@@ -1521,7 +1522,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 FrmIDType.HasError = false;
                 if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
                 {
-                    FrmIDType.HasError = true;
+                    //FrmIDType.HasError = true;
                     FrmIDNo.IsEnabled = false;
                     EntryTINNumber.IsEnabled = true;
                     viewModel.IDTypeIndexFR = 0;
@@ -4410,13 +4411,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
-            //viewModel.IsAddAdditionalInfoChecked = true;
+            viewModel.IsAddAdditionalInfoChecked = true;
         }
 
         private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsFDChangeSectionEnabled = ((CheckBox)sender).IsChecked;
-           // viewModel.IsFDChangeSectionChecked = true;
+           viewModel.IsFDChangeSectionChecked = true;
         }
 
         private void OnBackTapped(object sender, EventArgs e)

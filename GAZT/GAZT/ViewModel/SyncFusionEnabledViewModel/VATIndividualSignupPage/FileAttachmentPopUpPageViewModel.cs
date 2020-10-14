@@ -590,8 +590,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             {
                                                 IsLoading = false;
                                             });
-                                            //await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                            if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
+                                            {
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZVATRAttachmentNote1));
+
+                                            }
+                                            else
+                                            {
+                                                //await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                            }
                                         }
                                     }
                                     else

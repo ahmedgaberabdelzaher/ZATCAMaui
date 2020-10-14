@@ -383,7 +383,7 @@
                                             <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" Style="{StaticResource GAZTSmallBlackLbl}"/>
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
-                                        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never" >
+                                        <ScrollView Grid.Row="0"  VerticalScrollBarVisibility="Never" >
 
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" BindingContext="{Binding VATRegistrationDetailsData.d}" VerticalOptions="FillAndExpand" 
                               ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
@@ -2451,8 +2451,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                            Closed="SignUpDOB_Closed"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
-                                OkButtonClicked="DOB_OkButtonClicked"
-                                CancelButtonClicked="DOB_CancelButtonClicked"
+                             
 								ItemHeight="45" >
                                                                 <custom1:CustomDatePicker.Behaviors>
                                                                     <custom1:SfPickerBehavior />

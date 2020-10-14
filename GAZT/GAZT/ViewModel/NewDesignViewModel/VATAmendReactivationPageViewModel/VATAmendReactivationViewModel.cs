@@ -920,7 +920,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
-        private bool _isAddAdditionalInfoChecked;
+        private bool _isAddAdditionalInfoChecked = false;
         public bool IsAddAdditionalInfoChecked
         {
             get
@@ -934,7 +934,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsAddAdditionalInfoChecked");
             }
         }
-        private bool _isFDChangeSectionChecked;
+        private bool _isFDChangeSectionChecked = false;
         public bool IsFDChangeSectionChecked
         {
             get
@@ -948,7 +948,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsFDChangeSectionChecked");
             }
         }
-        private bool _isAddNewRepresentativeChecked;
+        private bool _isAddNewRepresentativeChecked= false;
         public bool IsAddNewRepresentativeChecked
         {
             get
