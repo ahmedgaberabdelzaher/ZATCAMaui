@@ -99,7 +99,6 @@
                                             TextColor="#d49504" HorizontalOptions="Center"
                                             FontFamily="{StaticResource SSTArabicMedium}"
                                             FontSize="15"
-                                            Style="{StaticResource SfButtonStyle}"
                                             HorizontalTextAlignment="Center">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Instalment_plan_Tapped" />

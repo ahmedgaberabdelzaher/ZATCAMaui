@@ -8279,4 +8279,16 @@
   <data name="LoginTitle" xml:space="preserve">
     <value>تسجيل الدخول</value>
   </data>
+    <data name="ZakatRevokConfirmationText" xml:space="preserve">
+    <value>عزيزي المكلف, عند اكتمال طلبك لإلغاء خطة التقسيط رقم  سيتم إعادة اصدار الفواتير المرتبطة بخطة التقسيط بالمبلغ المتبقي الواجب سداده ولا يمكنك طلب خطة تقسيط أخرى لنفس تلك الفواتير.</value>
+  </data>
+    <data name="ZVATRevokeButton" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+ <data name="ZakatInstalmentRevokNotes" xml:space="preserve">
+    <value>اكتب سبب الإلغاء</value>
+  </data>
+  <data name="ZakatRevokCannotLeaveEmpty" xml:space="preserve">
+    <value>لا يمكن ترك الحقل فارغا.</value>
+  </data>
 </root>
