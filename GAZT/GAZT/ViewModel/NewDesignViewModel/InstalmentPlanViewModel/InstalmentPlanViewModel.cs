@@ -230,19 +230,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
             var outletDecisionOptions = new ObservableCollection<InstalmentPlanModel>();
 
-            if(App.LoginDataRetrieved.ZkReg == "X") {
+            //if(App.LoginDataRetrieved.ZkReg == "X") {
 
-                outletDecisionOptions.Add(new InstalmentPlanModel
-                {
-                    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeZakat,
-                    ActiveOutletDecisionOptionsIsSelected = false
-                });
-                outletDecisionOptions.Add(new InstalmentPlanModel
-                {
-                    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
-                    ActiveOutletDecisionOptionsIsSelected = false
-                });
-            }
+            //    outletDecisionOptions.Add(new InstalmentPlanModel
+            //    {
+            //        ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeZakat,
+            //        ActiveOutletDecisionOptionsIsSelected = false
+            //    });
+            //    outletDecisionOptions.Add(new InstalmentPlanModel
+            //    {
+            //        ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
+            //        ActiveOutletDecisionOptionsIsSelected = false
+            //    });
+            //}
 
             if(App.LoginDataRetrieved.VtReg == "X") {
 
