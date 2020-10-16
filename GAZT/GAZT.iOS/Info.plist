@@ -80,9 +80,9 @@
 	<string>E-GAZT</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.egazt</string>
-	<key>CFBundleVersion</key>
-	<string>0.0.16</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.0.16</string>
+	<string>1.0.1</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.1</string>
 </dict>
 </plist>
