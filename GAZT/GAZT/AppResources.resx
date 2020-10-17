@@ -3911,10 +3911,10 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
-    <value>File size should be less than 5 MB</value>
+    <value>1.File size should be less than 5 MB</value>
   </data>
   <data name="ZZZZVATRAttachmentNote2" xml:space="preserve">
-    <value>Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx</value>
+    <value>2.Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx</value>
   </data>
   <data name="ZZZZVATRAttachmentSection" xml:space="preserve">
     <value>Attachment Section</value>
@@ -4594,6 +4594,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationOutletCheckboxCloseAllOutlets" xml:space="preserve">
     <value>I agree about that, I see the outlets that will be de-registered.</value>
   </data>
+  <data name="TinDeregistrationOutletCheckboxTransferAllOutlets" xml:space="preserve">
+    <value>I agree about that, I see the outlets that will be transferred to another Taxpayer.</value>
+  </data>
+   <data name="TinDeregistrationOutletCheckboxCloseorTransferAllOutlets" xml:space="preserve">
+    <value>I agree about that, I see the outlets that will be de-registered / transferred to another Taxpayer.</value>
+  </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
     <value>Select DOB</value>
   </data>
@@ -4770,6 +4776,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatReactivationDashboardTitle" xml:space="preserve">
     <value>Reactivation of VAT Account</value>
+  </data>
+  
+      <data name="VATAmendAttachmentSizeError" xml:space="preserve">
+    <value>File size should be less than 5 MB</value>
   </data>
   <data name="VATAmendReactivationSuccessful" xml:space="preserve">
     <value>VAT Registration Amendment Successfull</value>

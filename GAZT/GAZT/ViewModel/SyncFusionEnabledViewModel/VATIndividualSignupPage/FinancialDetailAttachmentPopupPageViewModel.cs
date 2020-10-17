@@ -17,6 +17,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Models.ZakatInstalationModels;
+using System.Linq;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -539,7 +540,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                             if (VatAttachmentsList != null)
                             {
-                                int count = VatAttachmentsList.Count;
+                                int count = VatAttachmentsList.Where(x => (x.Dotyp == DocTypeString)).ToList().Count();
                                 if (count >= 5)
                                 {
                                     await _dialogService.ShowMessage(AppResources.ZMaximumnoof5attachmentscanbeuploaded, AppResources.Information);

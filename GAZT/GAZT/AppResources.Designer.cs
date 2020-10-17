@@ -7764,6 +7764,18 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationOutletCheckboxTransferAllOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationOutletCheckboxTransferAllOutlets", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationOutletCheckboxCloseorTransferAllOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationOutletCheckboxCloseorTransferAllOutlets", resourceCulture);
+            }
+        }
+        
         public static string VatDeregDOBDatePickerTitle {
             get {
                 return ResourceManager.GetString("VatDeregDOBDatePickerTitle", resourceCulture);
@@ -8115,6 +8127,12 @@ namespace EGAZT {
         public static string VatReactivationDashboardTitle {
             get {
                 return ResourceManager.GetString("VatReactivationDashboardTitle", resourceCulture);
+            }
+        }
+        
+        public static string VATAmendAttachmentSizeError {
+            get {
+                return ResourceManager.GetString("VATAmendAttachmentSizeError", resourceCulture);
             }
         }
         

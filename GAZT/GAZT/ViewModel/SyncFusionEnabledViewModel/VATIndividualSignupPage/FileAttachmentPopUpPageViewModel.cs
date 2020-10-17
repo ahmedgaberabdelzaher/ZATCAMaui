@@ -592,7 +592,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             });
                                             if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                                             {
-                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZVATRAttachmentNote1));
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATAmendAttachmentSizeError));
 
                                             }
                                             else

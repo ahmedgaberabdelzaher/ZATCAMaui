@@ -1916,6 +1916,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                if (IsAddAdditionalInfoChecked)
+                                {
+                                    IsAddAdditionalInfoChecked = true;
+                                }
                             }
 
 
@@ -1948,6 +1952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsLoading = false;
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                  
                     //_navigationService.GoBack();
 
                 });

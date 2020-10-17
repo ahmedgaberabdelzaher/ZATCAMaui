@@ -932,7 +932,7 @@
                         <custom:CustomLabel Margin="5,10,0,15"  Style="{StaticResource GAZTMicroMediumGrayLabel}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets}"  />
+                                    <Span Text="{Binding OutletCheckboxTitle}"  />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>

@@ -161,7 +161,7 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </border:SfBorder >
-                            <StackLayout.Triggers>
+                            <!--<StackLayout.Triggers>
                                  <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
@@ -171,11 +171,11 @@
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="2">
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
-                            </StackLayout.Triggers>
+                            </StackLayout.Triggers>-->
                  </StackLayout>
 
                  <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="false" >
-                        <StackLayout.Triggers>
+                        <!--<StackLayout.Triggers>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
                                 <Setter Property="IsVisible" Value="false" />
                             </DataTrigger>
@@ -185,7 +185,7 @@
                             <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="2">
                                 <Setter Property="IsVisible" Value="false" />
                             </DataTrigger>
-                        </StackLayout.Triggers>
+                        </StackLayout.Triggers>-->
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
 
                         <StackLayout>
