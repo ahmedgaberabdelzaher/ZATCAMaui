@@ -65,6 +65,9 @@
     <Reference Include="Syncfusion.SfRotator.XForms">
       <HintPath>..\GAZT\GAZTDLL\Syncfusion.SfRotator.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.PdfiumBindings">
+      <HintPath>..\..\..\Incepteo\Gazt\GAZT\GAZT.Android\PdfiumAndroidBindings\Syncfusion.PdfiumBindings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter.Distribute">
@@ -229,6 +232,7 @@
     <Compile Include="CustomRenderer\TransitionNavigationPageRenderer.cs" />
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
     <Compile Include="AndroidDownloader.cs" />
+    <Compile Include="CustomRenderer\CustomPdfRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\web\compressed.tracemonkey-pldi-09.pdf" />

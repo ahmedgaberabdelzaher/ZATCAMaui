@@ -1,6 +1,7 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPdfViewer.XForms;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -20,6 +21,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
             {
                 viewModel = App.Locator.pdfView;
                 InitializeComponent();
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    PdfViewForCertificate.CustomPdfRenderer = DependencyService.Get<ICustomPdfRendererService>().AlternatePdfRenderer;
+
+                }
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.pdfUrl = Pdfurl;
