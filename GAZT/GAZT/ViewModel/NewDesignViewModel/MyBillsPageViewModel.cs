@@ -327,6 +327,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 SelcectedBillsIndex = 3;
                             }
                         }
+
+                        foreach(MyBills myBills in MyBills)
+                        {
+                            if(myBills.Period.Contains("000000") || myBills.PeriodPart1.Contains("000000") || myBills.PeriodPart2.Contains("000000"))
+                            {
+                                myBills.IsPeriodVisible = false;
+                            }
+                            else
+                            {
+                                myBills.IsPeriodVisible = true;
+                            }
+
+                            if (myBills.Status == "I")
+                            {
+                                if (!string.IsNullOrEmpty(myBills.BETRW) && !string.IsNullOrEmpty(myBills.Paidamt))
+                                {
+                                    myBills.TotalRemainingAmount = (Convert.ToDouble(myBills.BETRW) - Convert.ToDouble(myBills.Paidamt)).ToString();
+                                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                                    decimal dRem = Convert.ToDecimal(myBills.TotalRemainingAmount);
+                                    decimal positiveMoneyRem = dRem;
+                                    positiveMoneyRem.ToString(format);  //will return $24,508,975.94
+                                    myBills.TotalRemainingAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoneyRem.ToString());
+                                }
+                            }
+                        }
                     }
                     else
                     {

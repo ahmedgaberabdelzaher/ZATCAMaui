@@ -53,6 +53,95 @@ namespace EGAZT.Models
                 _TestDueAmount = value;
             }
         }
+
+        private bool _isPartiallyPaidVisibile = false;
+        public bool IsPartiallyPaidVisibile
+        {
+            get
+            {
+                if (Status == "I")
+                {
+                    _isPartiallyPaidVisibile = true;
+                    return _isPartiallyPaidVisibile;
+                }
+                else
+                {
+                    _isPartiallyPaidVisibile = false;
+                    return _isPartiallyPaidVisibile;
+                }
+            }
+            set
+            {
+                _isPartiallyPaidVisibile = value;
+            }
+        }
+
+        public bool IsPeriodVisible { get; set; }
+        
+
+        private string _paidamt = string.Empty;
+        public string Paidamt
+        {
+            get
+            {
+                return _paidamt;
+            }
+            set
+            {
+                _paidamt = value;
+                if (!string.IsNullOrEmpty(_paidamt))
+                {
+                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    decimal d = Convert.ToDecimal(_paidamt);
+                    decimal positiveMoney = d;
+                    positiveMoney.ToString(format);  //will return $24,508,975.94
+                    TotalPaidAmt = UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
+
+                  
+                }
+            }
+        }
+
+        private string _remainingAmount = string.Empty;
+        public string RemainingAmount
+        {
+            get
+            {
+                return _remainingAmount;
+            }
+            set
+            {
+                _remainingAmount = value;
+               
+            }
+        }
+
+        public string _totalRemainingAmount = String.Empty;
+        public string TotalRemainingAmount
+        {
+            get
+            {
+                return _totalRemainingAmount;
+            }
+            set
+            {
+                _totalRemainingAmount = value;
+            }
+        }
+
+        public string _totalPaidAmt = String.Empty;
+        public string TotalPaidAmt
+        {
+            get
+            {
+                return _totalPaidAmt;
+            }
+            set
+            {
+                _totalPaidAmt = value;
+            }
+        }
+
         private string _Period;
         public string Period
         {
