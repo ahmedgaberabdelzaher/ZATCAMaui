@@ -263,6 +263,18 @@ namespace EGAZT {
             }
         }
         
+        public static string MyBillsPaidAmount {
+            get {
+                return ResourceManager.GetString("MyBillsPaidAmount", resourceCulture);
+            }
+        }
+        
+        public static string MyBillsRemainingAmount {
+            get {
+                return ResourceManager.GetString("MyBillsRemainingAmount", resourceCulture);
+            }
+        }
+        
         public static string MyCertificate {
             get {
                 return ResourceManager.GetString("MyCertificate", resourceCulture);

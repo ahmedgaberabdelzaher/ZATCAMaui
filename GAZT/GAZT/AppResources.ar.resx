@@ -231,6 +231,12 @@
   <data name="MyBillsInvoices" xml:space="preserve">
     <value>فواتيري</value>
   </data>
+  <data name="MyBillsPaidAmount" xml:space="preserve">
+    <value>المبلغ المدفوع</value>
+  </data>
+   <data name="MyBillsRemainingAmount" xml:space="preserve">
+    <value>المبلغ المتبقي</value>
+  </data>
   <data name="MyCertificate" xml:space="preserve">
     <value>الشهادة</value>
   </data>

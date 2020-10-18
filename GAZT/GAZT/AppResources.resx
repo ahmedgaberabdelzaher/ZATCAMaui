@@ -225,6 +225,12 @@
   <data name="MyBillsInvoices" xml:space="preserve">
     <value>My Bills</value>
   </data>
+  <data name="MyBillsPaidAmount" xml:space="preserve">
+    <value>Paid Amount</value>
+  </data>
+   <data name="MyBillsRemainingAmount" xml:space="preserve">
+    <value>Remaining Amount</value>
+  </data>
   <data name="MyCertificate" xml:space="preserve">
     <value>My Certificate</value>
   </data>

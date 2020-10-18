@@ -234,7 +234,7 @@
                                                         <Setter Property="HeightRequest" Value="0" />
                                                     </DataTrigger>
                                                     </StackLayout.Triggers>
-                                                <Label Text="Paid Amount" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                <Label Text="{x:Static ResourceManager:AppResources.MyBillsPaidAmount}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand"/>
                                                 <custom:CustomLabel  HorizontalOptions="StartAndExpand">
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
@@ -254,7 +254,7 @@
                                                         <Setter Property="HeightRequest" Value="0" />
                                                     </DataTrigger>
                                                     </StackLayout.Triggers>
-                                                <Label Text="Remaining Amount" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                <Label Text="{x:Static ResourceManager:AppResources.MyBillsRemainingAmount}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand"/>
                                                 <custom:CustomLabel  HorizontalOptions="StartAndExpand">
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
