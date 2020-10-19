@@ -7762,7 +7762,7 @@
 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
-    <value>تم استلام طلب الغاء الزكاة بنجاح</value>
+    <value>تم استلام طلب الغاء إعتراض الزكاة بنجاح</value>
   </data>
   <data name="NDGregorian" xml:space="preserve">
     <value>ميلادي</value>
@@ -8305,5 +8305,12 @@
   </data>
   <data name="ZakatRevokCannotLeaveEmpty" xml:space="preserve">
     <value>لا يمكن ترك الحقل فارغا.</value>
+  </data>
+     <data name="VATFillingDraftSaved" xml:space="preserve">
+    <value>{0}تم حفظ نموذج تغيير فترة ضريبة القيمة المضافة بنجاح</value>
+  </data>
+    <data name="ZZGeneralMessage_VATFillingCancelled" xml:space="preserve">
+    <value>تم إلغاء نموذج تغيير فترة ضريبة القيمة المضافة. يرجى بدء العملية مرة أخرى لتقديم تغيير فترة ضريبة القيمة المضافة</value>
+    <comment>VAT Filling Frequency general message</comment>
   </data>
 </root>

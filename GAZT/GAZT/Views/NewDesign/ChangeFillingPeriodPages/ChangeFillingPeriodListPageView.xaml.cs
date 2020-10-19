@@ -32,11 +32,24 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 this.BindingContext = viewModel;
 
-                viewModel.ResetData();
-                viewModel.GetVATChangeFillingList();
+              
 
             }
             catch (Exception ex)
+            {
+
+            }
+        }
+
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+                viewModel.ResetData();
+                viewModel.GetVATChangeFillingList();
+            }
+            catch (Exception e)
             {
 
             }
@@ -66,7 +79,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             var item = e.ItemData as VATChangeFillingListModel.ChangeFillingFrequency;
 
 
-            if(item.Fbust == "E0018") {
+
+            if(item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013") {
 
                 App.selectedVatFillingItem = item.Fbnum;
                 viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);

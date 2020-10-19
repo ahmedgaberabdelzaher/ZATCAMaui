@@ -948,20 +948,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
+                CultureInfo calCul;
 
-                if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", null) > DateTime.Now)
+
+                if (ContractReleaseData.d.ACalTp == "H")
+                {
+                    calCul = new CultureInfo("ar-SA");
+                }
+                else
+                {
+                    calCul = new CultureInfo("en-US");
+                }
+
+                if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
                 {
                     await _dialogService.ShowMessage(AppResources.CRContractDateshouldnotbegreaterfromcurentdate,
                         AppResources.Information);
                     return;
                 }
-                else if (DateTime.ParseExact(ToDate, "yyyy/MM/dd", null) > DateTime.Now)
+                else if (DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(HDateNow(), "yyyy/MM/dd", calCul))
                 {
                     await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbegreaterfromcurentdate,
                         AppResources.Information);
                     return;
                 }
-                else if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", null) > DateTime.ParseExact(ToDate, "yyyy/MM/dd", null))
+                else if (DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul) > DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul))
                 {
                     await _dialogService.ShowMessage(AppResources.CRContractEndDateshouldnotbelessfromcontractdate,
                         AppResources.Information);
@@ -1187,6 +1198,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             else
                 todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
             todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
+
             TodayDateinHijriStart = todaycollectionHijri;
             TodayDateinHijriEnd = todaycollectionHijri;
             //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
@@ -1197,8 +1209,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                 if (ContractReleaseData.d.ACalTp == "H")
                 {
-                    FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
-                    ToDate = (TodayDateinHijriEnd[2] + "/" + TodayDateinHijriEnd[1] + "/" + TodayDateinHijriEnd[0]).ToString();
+
+                    FromDate = HDateNow();
+                    ToDate = HDateNow();
+                   // FromDate = (TodayDateinHijriStart[2] + "/" + TodayDateinHijriStart[1] + "/" + TodayDateinHijriStart[0]).ToString();
+                    //ToDate = (TodayDateinHijriEnd[2] + "/" + TodayDateinHijriEnd[1] + "/" + TodayDateinHijriEnd[0]).ToString();
                 }
                 else
                 {
@@ -1212,6 +1227,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
           
 
         }
+
+
+        public string HDateNow()
+        {
+            try
+            {
+
+                CultureInfo calCul;
+                if (ContractReleaseData != null)
+                {
+
+                    if (ContractReleaseData.d.ACalTp == "H")
+                    {
+                        calCul = new CultureInfo("ar-SA");
+                    }
+                    else
+                    {
+                        calCul = new CultureInfo("en-US");
+                    }
+
+
+                }
+                else {
+
+                    calCul = new CultureInfo("en-US");
+                }
+
+            
+                return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
+            }
+            catch (Exception ex)
+            {
+               
+                return "";
+            }
+        }
+
         public ContractReleaseFormRequest BuildRequestObject()
         {
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
@@ -1352,7 +1404,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                 request.d.AReceiveDt = convretedTodayate;
 
-                DateTime dt = DateTime.ParseExact(FromDate, "yyyy/MM/dd", null);
+
+                CultureInfo calCul;
+
+
+                if (ContractReleaseData.d.ACalTp == "H")
+                {
+                    calCul = new CultureInfo("ar-SA");
+                }
+                else
+                {
+                    calCul = new CultureInfo("en-US");
+                }
+
+                DateTime dt = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul);
                 JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
@@ -1365,7 +1430,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 var convretedFromDate = jsonDateTime;
 
 
-                DateTime dt1 = DateTime.ParseExact(ToDate, "yyyy/MM/dd", null);
+                DateTime dt1 = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul);
                 JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
@@ -1384,12 +1449,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 //request.d.AContEndDtCh = (ToDate.Year + "/" + ToDate.Month. + "/" + ToDate.Day).ToString();
                 //request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
 
-             
 
-                    request.d.AContEndDtCh = DateTime.ParseExact(ToDate, "yyyy/MM/dd", null).ToString("yyyy/MM/dd");
-                    request.d.AContDt1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", null).ToString("yyyy/MM/dd");
+                request.d.AContEndDtCh = ToDate;
+                request.d.AContDt1 = FromDate;
+                   // request.d.AContEndDtCh = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
+                   // request.d.AContDt1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
 
-                
+
                 request.d.Savez = "X";
                 request.d.Submitz = "X";
 

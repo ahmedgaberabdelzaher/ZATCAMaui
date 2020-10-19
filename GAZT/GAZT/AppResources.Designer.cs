@@ -14795,5 +14795,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("LoginTitle", resourceCulture);
             }
         }
+        
+        public static string VATFillingDraftSaved {
+            get {
+                return ResourceManager.GetString("VATFillingDraftSaved", resourceCulture);
+            }
+        }
+        
+        public static string ZZGeneralMessage_VATFillingCancelled {
+            get {
+                return ResourceManager.GetString("ZZGeneralMessage_VATFillingCancelled", resourceCulture);
+            }
+        }
     }
 }

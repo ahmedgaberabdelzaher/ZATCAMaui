@@ -13,6 +13,8 @@ using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Services;
+using GAZT.Manager;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
@@ -75,6 +77,103 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            getYesCommand();
+            getNoCommand();
+            MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+            {
+                await PopupNavigation.Instance.PopAsync();
+                if (arg != null)
+                {
+                    string message = arg;
+
+
+
+                    if (App.IsArabic)
+                    {
+                        ArButtons buttonId = ArButtons.None;
+                        if (!string.IsNullOrEmpty(message))
+                        {
+                            message = message.Replace(" ", "");
+                        }
+                        Enum.TryParse(message, out buttonId);
+                        switch (buttonId)
+                        {
+                            case ArButtons.إضافةملاحظات:
+                                //viewModel.VATReturnAddNote();
+                                break;
+                            case ArButtons.عرضملاحظات:
+                                //  viewModel.VATReturnGetNotes();
+                                break;
+                            case ArButtons.المرفقات:
+                                // viewModel.VATViewAttachments();
+                                break;
+                            case ArButtons.إلغاء:
+                                 viewModel.isDraftClicked = true;
+                                 viewModel.VoidMsg();
+                                 viewModel.isDraftClicked = false;
+                                break;
+                            case ArButtons.عادةتعيين:
+                                //await viewModel.VATReturnResetAsync();
+                                break;
+                            case ArButtons.تعديل:
+                                // await viewModel.VATReturnAmendAsync();
+                                break;
+                            case ArButtons.حفظكمسودة:
+                                viewModel.isDraftClicked = true;
+                                viewModel.OnSaveDraftClicked();
+                                viewModel.isDraftClicked = false;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Buttons buttonId = Buttons.None;
+                        if (!string.IsNullOrEmpty(message))
+                        {
+                            message = message.Replace(" ", "");
+                        }
+                        Enum.TryParse(message, out buttonId);
+                        switch (buttonId)
+                        {
+                            case Buttons.CreateNotes:
+                                //viewModel.VATReturnAddNote();
+                                break;
+                            case Buttons.DisplayNotes:
+                                //viewModel.VATReturnGetNotes();
+                                break;
+                            case Buttons.Attachments:
+                                // viewModel.VATViewAttachments();
+                                break;
+                            case Buttons.Void:
+                                viewModel.isDraftClicked = true;
+                                viewModel.VoidMsg();
+                                viewModel.isDraftClicked = false;
+                                break;
+                            case Buttons.Reset:
+                                //await viewModel.VATReturnResetAsync();
+                                break;
+                            case Buttons.Amend:
+                                // await viewModel.VATReturnAmendAsync();
+                                break;
+                            case Buttons.SaveasDraft:
+                                     viewModel.isDraftClicked = true;
+                                     viewModel.OnSaveDraftClicked();
+                                     viewModel.isDraftClicked = false;
+                                
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+
+
+                }
+            });
+
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem",
                 (sender, arg) =>
                 {
@@ -111,10 +210,78 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
         {
             base.OnDisappearing();
 
+            MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
 
+        }
+
+        public async void getYesCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                            viewModel.VATSetReturnVoidAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+
+
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+        }
+
+
+
+        public async void getNoCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+
+
+
+                    //await PopupNavigation.Instance.PopAsync();
+                    // await viewModel.VATSetReturnVoidAsync();
+                });
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
         }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender,
             Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)

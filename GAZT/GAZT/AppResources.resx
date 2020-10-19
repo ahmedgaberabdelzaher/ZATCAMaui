@@ -6361,13 +6361,13 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Other</value>
   </data>
   <data name="CRContractDateshouldnotbegreaterfromcurentdate" xml:space="preserve">
-    <value>Contract Date should not be greater from curent date</value>
+    <value>Contract Date should not be greater than current date</value>
   </data>
   <data name="CRContractEndDateshouldnotbegreaterfromcurentdate" xml:space="preserve">
-    <value>Contract EndDate should not be greater from curent date</value>
+    <value>Contract Enddate should not be greater than current date</value>
   </data>
   <data name="CRContractEndDateshouldnotbelessfromcontractdate" xml:space="preserve">
-    <value>Contract EndDate should not be less from contract date</value>
+    <value>Contract Enddate should not be less than contract date</value>
   </data>
   <data name="CRRequestContractRelease" xml:space="preserve">
     <value>Request Contract Release</value>
@@ -8381,5 +8381,12 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   </data>
   <data name="LoginTitle" xml:space="preserve">
     <value>Login</value>
+  </data>
+     <data name="VATFillingDraftSaved" xml:space="preserve">
+    <value>VAT Filling frequency form saved successfully{0}</value>
+  </data>
+     <data name="ZZGeneralMessage_VATFillingCancelled" xml:space="preserve">
+    <value>VAT Filling frequency form is cancelled. Please initiate the process again to file VAT Filling frequency</value>
+    <comment>VAT instalment general message</comment>
   </data>
 </root>

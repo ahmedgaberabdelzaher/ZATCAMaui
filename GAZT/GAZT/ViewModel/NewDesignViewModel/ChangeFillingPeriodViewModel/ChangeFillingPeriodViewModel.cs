@@ -24,6 +24,8 @@ using Newtonsoft.Json;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 using static EGAZT.Models.ChageFillingPeriodModel.VATChangeFillingPeriodRequestModel;
 using System.Text.RegularExpressions;
+using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -109,6 +111,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public ICommand IdTypeSpinnerTapped { get; set; }
         public ICommand NewAttachmentTapped { get; set; }
         public ICommand SummaryContinueBtnTapped { get; set; }
+        public ICommand onMoreOptionClicked { get; set; }
+
         #endregion
 
         private int _currenrIndex = 1;
@@ -430,7 +434,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             switch (selectedPage)
             {
                 case (int)PagesEnum.FrequencyDetailsView:
-
+                    _navigationService.GoBack();
                     break;
                 case (int)PagesEnum.AttachmentsView:
                     EnableFrequencyDetailsView();
@@ -522,6 +526,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 Backnavigations();
             });
+            onMoreOptionClicked = new Command(async () =>
+            {
+                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+            });
 
             CloseClick = new Command(async () =>
             {
@@ -552,6 +560,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             genericDatePickerModel.DatePickerTitle = AppResources.VatDeregDOBDatePickerTitle;
             genericDatePickerModel.PickerId = "DatePicker";
 
+        }
+
+
+        public void setMoreOptioButtons()
+        {
+            var listOfActionButtonsApplicable = new List<string>();
+             if (App.selectedVatFillingItem != "")
+             {
+
+                listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            }
+
+
+
+
+            listOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
+            ListOfActionButtonsApplicable = listOfActionButtonsApplicable;
+        }
+
+
+
+        private List<String> _ListOfActionButtonsApplicable;
+        public List<String> ListOfActionButtonsApplicable
+        {
+            get
+            {
+                return _ListOfActionButtonsApplicable;
+            }
+            set
+            {
+                _ListOfActionButtonsApplicable = value;
+                RaisePropertyChanged("ListOfActionButtonsApplicable");
+            }
         }
 
         public void ResetData()
@@ -595,11 +636,251 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsTwoYearsAtachmentsVisible = false;
             IsMonthsAtachmentsVisible = false;
             IsOthersAtachmentsVisible = false;
+            ShowAttachments = false;
 
-
+            IsCheckboxChecked = false;
 
            // IDTypePickerModel = null;
             setIdPickerModel();
+            setMoreOptioButtons();
+        }
+
+
+        public bool isDraftClicked = false;
+        public async void OnSaveDraftClicked()
+        {
+
+            ChangeFillingResponse.d.Operationz = "05";
+
+
+            try
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+
+                    if (!isDraftClicked)
+                    {
+                        isDraftClicked = true;
+
+                        ChangeFillingResponse = await SubmitClicked();
+
+                        if (ChangeFillingResponse != null && ChangeFillingResponse.d != null)
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                App.selectedVatFillingItem = ChangeFillingResponse.d.Fbnumz;
+                                setMoreOptioButtons();
+
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = string.Format(AppResources.VATFillingDraftSaved, "  " + ChangeFillingResponse.d.Fbnumz);
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                                //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+                            });
+                        }
+                        else
+                        {
+
+                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                            {
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    IsLoading = false;
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                });
+
+
+                            }
+                            else
+                            {
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    IsLoading = false;
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                });
+                            }
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            //});
+                        }
+                    }
+
+
+                });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+            }
+
+
+        }
+
+        public async void VoidMsg()
+        {
+            //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
+            //if (answer)
+
+
+            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+            headerAmountInfo.IsLinkAvailable = false;
+            headerAmountInfo.Message = AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost;
+
+            headerWithInfos.Add(headerAmountInfo);
+
+
+            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+        }
+
+        public async void VATSetReturnVoidAsync()
+        {
+            ChangeFillingResponse.d.Operationz = "04";
+
+            try
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+
+                    if (!isDraftClicked)
+                    {
+                        isDraftClicked = true;
+                        ChangeFillingResponse = await SubmitClicked();
+                        isDraftClicked = false;
+                        if (ChangeFillingResponse != null && ChangeFillingResponse.d != null)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+
+
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATFillingCancelled;
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                                _navigationService.GoBack();
+
+
+                                //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+                            });
+                        }
+                        else
+                        {
+                            IsLoading = false;
+                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                    headerAmountInfo.IsLinkAvailable = false;
+                                    headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+
+                                    headerWithInfos.Add(headerAmountInfo);
+
+
+                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+
+                                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                                    headerAmountInfo.IsLinkAvailable = false;
+                                    headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+                                    headerWithInfos.Add(headerAmountInfo);
+                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                                    WebServiceManager.ErrorMessageForVAT = string.Empty;
+                                });
+                            }
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            //});
+                        }
+                    }
+
+
+                });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         public void PopulateDraftData() {
@@ -616,25 +897,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     EffectiveDatePicked = att.Txt50;
                 }
             }
-            IsFrequencyDetailsChecked = true;
 
-            IDType = IDValueDictionary[ChangeFillingResponse.d.DecidTy];
-            IsIDVerified = true;
-            ContactPersonName = ChangeFillingResponse.d.Decname;
-            IDNumber = ChangeFillingResponse.d.DecidNo;
-            if (IDType == AppResources.VFCGCCID)
-            {
-                IsDOBVisible = false;
-                ContractPersonEditable = true;
+            if(ChangeFillingResponse.d.Iagrfg == "0") {
+
+                IsFrequencyDetailsChecked = false;
             }
-            else
-            {
-                IsDOBVisible = true;
-                ContractPersonEditable = false;
-
+            else {
+                IsFrequencyDetailsChecked = true;
             }
 
-            IsCheckboxChecked = true;
+            
+            
+
+            if(ChangeFillingResponse.d.DecidTy != "") {
+
+                IDType = IDValueDictionary[ChangeFillingResponse.d.DecidTy];
+                IsIDVerified = true;
+                ContactPersonName = ChangeFillingResponse.d.Decname;
+                IDNumber = ChangeFillingResponse.d.DecidNo;
+                if (IDType == AppResources.VFCGCCID)
+                {
+                    IsDOBVisible = false;
+                    ContractPersonEditable = true;
+                }
+                else
+                {
+                    IsDOBVisible = true;
+                    ContractPersonEditable = false;
+
+                }
+            }
+
+            if (ChangeFillingResponse.d.Decfg != "")
+            {
+                if(ChangeFillingResponse.d.Decfg == "0") {
+
+                    IsCheckboxChecked = false;
+                }
+                else {
+                    IsCheckboxChecked = true;
+                }
+
+                
+            }
+
+            
+
+            
 
             var yearsAttachments = new ObservableCollection<Attachment>();
             var monthsAttachments = new ObservableCollection<Attachment>();
@@ -657,33 +966,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             YearsattachmentsListViewData = yearsAttachments;
             MonthsattachmentsListViewData = monthsAttachments;
             OtherAttachmentsListViewData = othersAttachments;
-            if (YearsattachmentsListViewData.Count > 0)
-            {
-                cFInterface.SelectDefaultAttachOption(0);
-                IsTwoYearsAtachmentsVisible = false;
-                IsMonthsAtachmentsVisible = false;
-                IsOthersAtachmentsVisible = true;
-                SelectedOutletOptionIndex = 0;
-                SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[0].ActiveOutletDecisionOptions;
-            }
-            else if (MonthsattachmentsListViewData.Count > 0)
-            {
-                cFInterface.SelectDefaultAttachOption(1);
-                IsTwoYearsAtachmentsVisible = false;
-                IsMonthsAtachmentsVisible = false;
-                IsOthersAtachmentsVisible = true;
-                SelectedOutletOptionIndex = 1;
-                SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[1].ActiveOutletDecisionOptions;
-            }
-            else if (OtherAttachmentsListViewData.Count > 0)
-            {
-                cFInterface.SelectDefaultAttachOption(2);
-                IsTwoYearsAtachmentsVisible = false;
-                IsMonthsAtachmentsVisible = false;
-                IsOthersAtachmentsVisible = true;
-                SelectedOutletOptionIndex = 2;
-                SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[2].ActiveOutletDecisionOptions;
-            }
+            //if (YearsattachmentsListViewData.Count > 0)
+            //{
+            //    IsTwoYearsAtachmentsVisible = true;
+            //    IsMonthsAtachmentsVisible = false;
+            //    IsOthersAtachmentsVisible = false;
+            //    SelectedOutletOptionIndex = 0;
+            //    cFInterface.SelectDefaultAttachOption(0);
+
+            //    SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[0].ActiveOutletDecisionOptions;
+            //}
+            //else if (MonthsattachmentsListViewData.Count > 0)
+            //{
+            //    cFInterface.SelectDefaultAttachOption(1);
+            //    IsTwoYearsAtachmentsVisible = false;
+            //    IsMonthsAtachmentsVisible = true;
+            //    IsOthersAtachmentsVisible = false;
+            //    SelectedOutletOptionIndex = 1;
+            //    SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[1].ActiveOutletDecisionOptions;
+            //}
+            //else if (OtherAttachmentsListViewData.Count > 0)
+            //{
+            //    cFInterface.SelectDefaultAttachOption(2);
+            //    IsTwoYearsAtachmentsVisible = false;
+            //    IsMonthsAtachmentsVisible = false;
+            //    IsOthersAtachmentsVisible = true;
+            //    SelectedOutletOptionIndex = 2;
+            //    SelectedAttachmentText = AppResources.Attachment + " - " + OutletDecisionOptions[2].ActiveOutletDecisionOptions;
+            //}
 
             EnableFrequencyDetails();
             EnableDeclaration();
@@ -1047,7 +1357,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             try
             {
 
-                if (_selectedOutletOptionIndex == 0)
+                if (SelectedOutletOptionIndex == 0)
                 {
 
                     if (YearsattachmentsListViewData == null)
@@ -1062,7 +1372,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                  YearsattachmentsListViewData.ToList(),
                  Models.ZakatInstalationModels.WhichAttachment.ChangeFillingPeriod2Years, ChangeFillingResponse.d.ReturnIdz));
                 }
-                else if (_selectedOutletOptionIndex == 1)
+                else if (SelectedOutletOptionIndex == 1)
                 {
 
                     if (MonthsattachmentsListViewData == null)
@@ -1118,7 +1428,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
-            IsBackVisible = false;
+            IsBackVisible = true;
             selectedPage = (int)PagesEnum.FrequencyDetailsView;
         }
 
@@ -1568,11 +1878,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 attachmentsListViewData.Add(attachemnt);
             }
 
-            if (_selectedOutletOptionIndex == 0)
+            if (SelectedOutletOptionIndex == 0)
             {
                 YearsattachmentsListViewData = attachmentsListViewData;
             }
-            else if (_selectedOutletOptionIndex == 1)
+            else if (SelectedOutletOptionIndex == 1)
             {
                 MonthsattachmentsListViewData = attachmentsListViewData;
             }
@@ -1652,6 +1962,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (!isSubmitted) {
 
                     isSubmitted = true;
+
+                    ChangeFillingResponse.d.Operationz = "01";
 
                     ChangeFillingResponse = await SubmitClicked();
 
@@ -2153,17 +2465,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.Attchk = ChangeFillingResponse.d.Attchk;
                 request.d.CPersl = ChangeFillingResponse.d.CPersl;
                 request.d.Fbnumz = ChangeFillingResponse.d.Fbnumz;
-                request.d.Iagrfg = "1";
+                if (IsFrequencyDetailsChecked) {
+
+                    request.d.Iagrfg = "1";
+                }
+                else {
+                    request.d.Iagrfg = "0";
+                }
+
+
+               
                 request.d.Reqfg = "1";
-                request.d.StepNumber = "02";
                 request.d.Begda = ChangeFillingResponse.d.Begda;
                 request.d.PortalUsrz = ChangeFillingResponse.d.PortalUsrz;
                 request.d.Langz = ChangeFillingResponse.d.Langz;
                 request.d.Gpart = ChangeFillingResponse.d.Gpart;
 
-                request.d.Operationz = "01";
+                request.d.Operationz = ChangeFillingResponse.d.Operationz;
                 request.d.Fbtyp = ChangeFillingResponse.d.Fbtyp;
-                request.d.StepNumberz = "02";
+                if(CurrentIndex == 1 || CurrentIndex == 2) {
+
+                    request.d.StepNumber = "01";
+                    request.d.StepNumberz = "01";
+
+                }
+                else {
+                    request.d.StepNumber = "02";
+                    request.d.StepNumberz = "02";
+
+                }
+
+
                 request.d.Fbust = ChangeFillingResponse.d.Fbust;
 
 
@@ -2200,11 +2532,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.ATTACHSet.Clear();
                 request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
 
-                request.d.DecidTy = IDTypeDictionary[IDType];
-                request.d.Decname = ContactPersonName;
+                if(IDType != "") {
+
+                    request.d.DecidTy = IDTypeDictionary[IDType];
+                    request.d.Decname = ContactPersonName;
+                    request.d.DecidNo = IDNumber;
+
+                }
+                else {
+
+                    request.d.DecidTy = "";
+                    request.d.Decname = "";
+                    request.d.DecidNo = "";
+                }
+
+
+
+
                 request.d.Decdesignation = "";
-                request.d.Decfg = "1";
-                request.d.DecidNo = IDNumber;
+                if (IsCheckboxChecked) {
+
+                    request.d.Decfg = "1";
+                }
+                else {
+                    request.d.Decfg = "0";
+                }
+
+
+                
                 request.d.TransType = "CRE_TPCV";
                 request.d.UserTypz = "TP";
 
