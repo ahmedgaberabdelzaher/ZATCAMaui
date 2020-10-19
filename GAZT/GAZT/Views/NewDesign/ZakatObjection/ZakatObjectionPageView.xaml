@@ -247,7 +247,7 @@
                                                  Padding="3,0">
                                         <Label Text="{x:Static ResourceManager:AppResources.VRReviewReason}"
                                                VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                               Style="{StaticResource SectionTitleBlack}" />
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="End" Grid.Row="0" Grid.Column="2" Padding="3,0">
                                         <Label Text="{x:Static ResourceManager:AppResources.ZOViewReturn}"
@@ -787,9 +787,9 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="15">
                                 <custom:CustomLabel
                                 Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}"
-                                Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" />
                                 <custom:CustomLabel Text="{Binding SecurityAmount,StringFormat='{0:N} SAR'}"
-                                                Style="{StaticResource SectionTitleBlackBold}"
+                                                Style="{StaticResource SectionTitleBlack}"
                                                 HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                         </Frame>
@@ -1156,7 +1156,7 @@
                                             <Label Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}"
                                                VerticalOptions="CenterAndExpand"
 
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                               Style="{StaticResource SectionTitleBlack}" />
                                         </StackLayout>
                                     </Grid>
 
@@ -1181,10 +1181,10 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOFinancialPeriod}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding FinancialPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOFinancialPeriod}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding FinancialPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1192,7 +1192,7 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Column="1" Text="{Binding ReferenceNum}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
@@ -1225,35 +1225,35 @@
 
                             </border:SfBorder>
 
-                            <Frame CornerRadius="10" BackgroundColor="#E6EFED" HasShadow="False">
-                                <StackLayout Orientation="Horizontal">
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,10,0,0" Padding="0">
+                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding RevisedAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                    </Grid>
+                              </Frame>
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    VerticalTextAlignment="Center" />
+                           <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,10,0,0" Padding="0">
+                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding DisputeAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                    </Grid>
+                              </Frame>
 
-                                    <custom:CustomLabel Text="{Binding RevisedAmount,StringFormat='{0:N} SAR'}" HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                    VerticalTextAlignment="Center" />
-
-                                </StackLayout>
-                            </Frame>
-
-                            <Frame CornerRadius="10" BackgroundColor="#E6EFED" HasShadow="False">
-                                <StackLayout Orientation="Horizontal">
-
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    VerticalTextAlignment="Center" />
-
-                                    <custom:CustomLabel Text="{Binding DisputeAmount,StringFormat='{0:N} SAR'}" HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                    VerticalTextAlignment="Center" />
-
-                                </StackLayout>
-                            </Frame>
+                           
 
                             <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -1282,7 +1282,7 @@
                                                  Padding="8,0">
                                             <Label Text="{x:Static ResourceManager:AppResources.ZOObjectionReason}"
                                                VerticalOptions="CenterAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                               Style="{StaticResource SectionTitleBlack}" />
                                         </StackLayout>
 
                                     </Grid>
@@ -1334,7 +1334,7 @@
                                                  Padding="8,0">
                                             <Label Text="{x:Static ResourceManager:AppResources.Attachments}"
                                                VerticalOptions="CenterAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                               Style="{StaticResource SectionTitleBlack}" />
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
                                         </StackLayout>
@@ -1396,7 +1396,7 @@
                                                  Padding="8,0">
                                             <Label Text="{x:Static ResourceManager:AppResources.VRDeclaration}"
                                                VerticalOptions="CenterAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                               Style="{StaticResource SectionTitleBlack}" />
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
                                         </StackLayout>
@@ -1474,20 +1474,19 @@
 
                             </border:SfBorder>
 
-                            <Frame CornerRadius="10" Margin="0,16,0,10" BackgroundColor="#E6EFED" HasShadow="False">
-                                <StackLayout Orientation="Horizontal">
-
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VRApplicationNumber}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    VerticalTextAlignment="Center" />
-
-                                    <custom:CustomLabel Text="{Binding VATReferanceNumber}"  HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                    VerticalTextAlignment="Center" />
-
-                                </StackLayout>
-                            </Frame>
+                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,10,0,0" Padding="0">
+                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRApplicationNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding VATReferanceNumber}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                    </Grid>
+                              </Frame>
 
                             <buttons:SfButton Margin="0,16,0,16" 
                                            IsEnabled="{Binding IsWithDrawEnable}"
@@ -1576,7 +1575,7 @@
                                                  Padding="3,0">
                                         <Label Text="{x:Static ResourceManager:AppResources.ZOObjectionDetails}"
                                                VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                               Style="{StaticResource SectionTitleBlack}" />
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="End" Grid.Row="0" Grid.Column="2" Padding="3,0">
                                         <Label Text="{x:Static ResourceManager:AppResources.ZOViewReturn}"
