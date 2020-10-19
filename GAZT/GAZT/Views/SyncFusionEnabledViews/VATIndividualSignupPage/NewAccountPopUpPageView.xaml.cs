@@ -101,6 +101,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 //Bind Iban and remove name
             }
+
+            if(isComingFromScreen == IsComingFromScreen.VATAmendReactivation)
+            {
+                viewModel.CloseButtonVisible = true;
+                btnDone.IsVisible = false;
+
+            }
+            else
+            {
+                viewModel.CloseButtonVisible = false;
+                btnDone.IsVisible = true;
+
+            }
             SetLTR();
         }
 

@@ -30,7 +30,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IbanNumberText");
             }
         }
-
+        
+        private bool _CloseButtonVisible = false;
+        public bool CloseButtonVisible
+        {
+            get
+            {
+                return _CloseButtonVisible;
+            }
+            set
+            {
+                _CloseButtonVisible = value;
+                RaisePropertyChanged("CloseButtonVisible");
+            }
+        }
         private bool _isIBANValid;
         public bool IsIBANValid
         {

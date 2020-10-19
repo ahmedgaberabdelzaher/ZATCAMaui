@@ -108,6 +108,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             ChangeArrowDirection();
 
             SetDate();
+
+            MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton", (sender, args) => { btnOutletContinue.IsEnabled = args; });
+
+           // viewModel.EnableOutletDetaislView();
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
@@ -730,7 +734,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             try
             {
-                if (viewModel.IsHijriCal)
+                if (viewModel.IsDOBHijriCal)
                 {
                     if (DpDboHijri3.SelectedItem != null)
                     {

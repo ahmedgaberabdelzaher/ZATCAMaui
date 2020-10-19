@@ -248,7 +248,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 if (viewModel.CurrentStep == AppResources.VATRStep1)
                 {
-                    
+
                     viewModel.CurrentStep = AppResources.VATRStep2;
                     viewModel.SetVisibility();
                     viewModel.IsTaxPayersVisible = true;
@@ -1147,40 +1147,40 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
                 });
                 Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
-            {
-                if (arg != null)
                 {
-                    message = arg;
-                    // firebasemessage = JsonConvert.DeserializeObject<PushnotificationMessage>(arg);
-                    try
+                    if (arg != null)
                     {
-                        if (message == "SA")
+                        message = arg;
+                        // firebasemessage = JsonConvert.DeserializeObject<PushnotificationMessage>(arg);
+                        try
                         {
-                            if (viewModel.IbanList != null)
+                            if (message == "SA")
                             {
-                                viewModel.IbanList.Clear();
+                                if (viewModel.IbanList != null)
+                                {
+                                    viewModel.IbanList.Clear();
+                                }
+                                viewModel.IbanList = null;
+                                if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
+                                {
+                                    viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
+                                }
+                                viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
+                                viewModel.NewAccountText = AppResources.ZTERNewAccount;
                             }
-                            viewModel.IbanList = null;
-                            if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
+                            else
                             {
-                                viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
+                                triggerIban(message);
                             }
-                            viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
-                            viewModel.NewAccountText = AppResources.ZTERNewAccount;
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            triggerIban(message);
+
                         }
-                    }
-                    catch (Exception ex)
-                    {
+
 
                     }
-
-
-                }
-            });
+                });
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, ATTDETSet>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -2088,7 +2088,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
 
-               await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData,Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration, isImporter));
+                await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData, Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration, isImporter));
             }
             catch (Exception ex)
             {
@@ -4411,13 +4411,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
-            viewModel.IsAddAdditionalInfoChecked = true;
+            // viewModel.IsAddAdditionalInfoChecked = true;
         }
 
         private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsFDChangeSectionEnabled = ((CheckBox)sender).IsChecked;
-           viewModel.IsFDChangeSectionChecked = true;
+            //  viewModel.IsFDChangeSectionChecked = true;
         }
 
         private void OnBackTapped(object sender, EventArgs e)

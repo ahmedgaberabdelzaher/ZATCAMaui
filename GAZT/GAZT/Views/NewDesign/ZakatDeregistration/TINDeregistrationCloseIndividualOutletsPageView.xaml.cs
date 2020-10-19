@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 if (arg.PickerId == "DeregOutletSingleDatePicker")
                 {
-                    viewModel.SingleDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                    viewModel.SingleDeregistrationDate = arg.SelectedValue;//Convert.ToDateTime(arg.SelectedValue).ToString("dd/MM/yyyy");
                 }
             });
         }
@@ -493,7 +493,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -534,7 +534,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {

@@ -511,7 +511,7 @@
 
 
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }" IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
-                                                        <CheckBox   VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddAdditionalInfoChecked}" CheckedChanged="AddAdditionalInfo_CheckedChanged">
+                                                        <CheckBox   VerticalOptions="CenterAndExpand" IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" CheckedChanged="AddAdditionalInfo_CheckedChanged">
                                                             <CheckBox.Triggers>
                                                                 <DataTrigger TargetType="CheckBox"  Value="false">
                                                                     <Setter Property="Color" Value="#ff0000" />

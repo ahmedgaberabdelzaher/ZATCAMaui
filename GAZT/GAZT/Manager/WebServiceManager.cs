@@ -11761,6 +11761,9 @@ namespace GAZT.Manager
                     permitInfo.APermitDobTb = null;
                     permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
                     permitInfo.APermitEffDtCTb = "G";
+                    permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
+                    permitInfo.APermitValfrDtCTb = "G";
+
                 }
             }
             catch (Exception ex)
