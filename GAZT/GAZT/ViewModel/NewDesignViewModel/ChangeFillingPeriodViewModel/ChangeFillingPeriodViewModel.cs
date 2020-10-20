@@ -1199,11 +1199,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public async void showInstructionDialog()
         {
-            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+            //await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+            //    instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
+            //    continueString: AppResources.CRContinue,
+            //    _dialogType: InstructionsBottomPopUpViewModel.DialogType
+            //        .Instructions));
+
+            if (App.selectedVatFillingItem != "")
+            {
+                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
+                {
+
+                    
+                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
                 instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
                 continueString: AppResources.CRContinue,
+                isEditable: true,
                 _dialogType: InstructionsBottomPopUpViewModel.DialogType
                     .Instructions));
+                }
+                else
+                {
+
+                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+                                    instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
+                                    continueString: AppResources.CRContinue,
+                                    _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                                        .Instructions));
+                }
+
+
+            }
+            else
+            {
+                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+                                   instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
+                                   continueString: AppResources.CRContinue,
+                                   _dialogType: InstructionsBottomPopUpViewModel.DialogType
+                                       .Instructions));
+            }
+
 
         }
         private async void showDatePickerDialog()

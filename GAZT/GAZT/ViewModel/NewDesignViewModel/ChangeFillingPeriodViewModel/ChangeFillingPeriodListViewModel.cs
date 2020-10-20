@@ -284,6 +284,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
 
                 App.selectedVatFillingItem = "";
+                App.selectedVATItemFbust = "";
                 _navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
             });
         }
