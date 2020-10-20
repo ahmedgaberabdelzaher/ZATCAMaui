@@ -903,7 +903,7 @@
                                                                     <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5">
-                                                                    <Label Text="{Binding APermitDeregDisplayDate, StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                                    <Label Text="{Binding APermitDeregDisplayDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="5" Grid.Column="0" Spacing="-5">
                                                                     <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeregReason}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
@@ -1325,7 +1325,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
 
-                                        <Label Text="{Binding SubmissionDate,StringFormat='{0:dd MMM yyyy}'}" IsEnabled="False" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding SubmissionDate}" IsEnabled="False" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                             <Image Margin="5,0">
                                                 <Image.Source>

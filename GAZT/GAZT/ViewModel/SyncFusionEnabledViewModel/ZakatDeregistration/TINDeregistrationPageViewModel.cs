@@ -1189,7 +1189,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             x.APermitEffDtTb = ConvertDateFormat(SingleOutletDeregistrationDate);
                             x.APermitEffDtCTb = "G";
                             x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyyMMdd");
-                            x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd MMM yyyy");
+                            x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd/MM/yyyy");
                         }
                         return x;
                     }
@@ -2128,7 +2128,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (TinDeregistrationData.AEffectiveDt != null)
                             DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDt);
-                        PickerDobToDisplay = DeregistrationDate.ToString("dd MMM yyyy", new CultureInfo("en-US"));
+                        PickerDobToDisplay = TinDeregistrationData.AEffectiveDt;//.ToString("dd MMM yyyy", new CultureInfo("en-US"));
                     }
 
 
@@ -2917,7 +2917,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                             if (SelectedOutletOption.OutletOptionIndex != "3")
                             {
-                                permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("dd MMM yyyy");
+                                permitInfo.APermitDeregDisplayDate = PickerDobToDisplay;//DeregistrationDate.ToString("dd MMM yyyy");
                                 permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
                                 permitInfo.APermitEffDtCTb = "G";
                                 permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
@@ -3138,7 +3138,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                             if (SelectedOutletOption.OutletOptionIndex != "3")
                                             {
-                                                permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("dd MMM yyyy");
+                                                permitInfo.APermitDeregDisplayDate = PickerDobToDisplay;//DeregistrationDate.ToString("dd MMM yyyy");
                                                 permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
                                                 permitInfo.APermitEffDtCTb = "G";
                                                 permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
