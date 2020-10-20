@@ -568,9 +568,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             var listOfActionButtonsApplicable = new List<string>();
              if (App.selectedVatFillingItem != "")
              {
-                
 
-                listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+                if (ChangeFillingResponse != null && ChangeFillingResponse.d != null)
+                {
+                    if(ChangeFillingResponse.d.Statusz == "E0013") {
+
+                        listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+
+                    }
+
+                }
+
             }
 
 
@@ -2321,6 +2329,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             if(App.selectedVatFillingItem != "") {
 
                                 PopulateDraftData();
+                                setMoreOptioButtons();
+
+
                             }
 
                             
