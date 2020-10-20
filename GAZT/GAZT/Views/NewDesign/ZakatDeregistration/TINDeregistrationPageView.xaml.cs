@@ -906,7 +906,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        var date = year + "/" + month + "/" + day;
+                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            viewModel.PickerDOBDateDisplay = "";
+                            viewModel.SelectedDob = "";
+                        }
+
+                        viewModel.PkrDBO = date;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
                         viewModel.PickerDobToDisplay = viewModel.DeregistrationDate.ToString("dd MMM yyyy", new CultureInfo("en-US"));
 
@@ -921,7 +929,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                        var date = year + "/" + month + "/" + day;
+                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            viewModel.PickerDOBDateDisplay = "";
+                            viewModel.SelectedDob = "";
+                        }
+
+                        viewModel.PkrDBO = date;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
 
                         viewModel.PickerDobToDisplay = viewModel.DeregistrationDate.ToString("dd MMM yyyy", new CultureInfo("en-US"));
@@ -987,8 +1003,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+                        var date = year + "/" + month + "/" + day;
+                        if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            return;
+                        }
+                        viewModel.PkrDBO = date;
+                        viewModel.SelectedDob = date;
                         viewModel.PickerDOBDateDisplay = Convert.ToDateTime(viewModel.PkrDBO).ToString("dd MMM yyyy", new CultureInfo("en-US"));
 
                         viewModel.ValidateIDNumber();
@@ -1003,8 +1025,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
-                        viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.SelectedDob = day + "/" + month + "/" + year;
+                        var date = year + "/" + month + "/" + day;
+                        if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
+                            return;
+                        }
+                        viewModel.PkrDBO = date;
+                        viewModel.SelectedDob = date;
                         viewModel.PickerDOBDateDisplay = Convert.ToDateTime(viewModel.PkrDBO).ToString("dd MMM yyyy", new CultureInfo("en-US"));
 
                         viewModel.ValidateIDNumber();

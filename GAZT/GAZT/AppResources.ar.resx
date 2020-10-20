@@ -8314,4 +8314,7 @@
     <value>تم إلغاء نموذج تغيير فترة ضريبة القيمة المضافة. يرجى بدء العملية مرة أخرى لتقديم تغيير فترة ضريبة القيمة المضافة</value>
     <comment>VAT Filling Frequency general message</comment>
   </data>
+<data name="TINDeregDateDOBValidation" xml:space="preserve">
+    <value>تاريخ الميلاد لا يمكن ان يكون اكبر من تاريخ الغاء التسجيل</value>
+  </data>
 </root>

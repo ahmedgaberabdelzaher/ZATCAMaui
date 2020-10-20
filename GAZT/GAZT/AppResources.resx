@@ -8390,4 +8390,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
     <value>VAT Filling frequency form is cancelled. Please initiate the process again to file VAT Filling frequency</value>
     <comment>VAT instalment general message</comment>
   </data>
+	<data name="TINDeregDateDOBValidation" xml:space="preserve">
+    <value>DOB cannot be greater than Deregistration date</value>
+  </data>
 </root>
