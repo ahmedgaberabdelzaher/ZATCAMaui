@@ -155,12 +155,12 @@
 
                     <Grid Grid.Row="2" VerticalOptions="Start">
 
-                        <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="CenterAndExpand" AutoFitMode="DynamicHeight" ItemSpacing="0"
+                        <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="FillAndExpand" AutoFitMode="DynamicHeight"
                                       ItemsSource="{Binding MyRequestsListViewData}" ItemTapped="Request_Item_Tapped" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="True" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
-                                        <Grid Padding="0" RowSpacing="0" Margin="0" VerticalOptions="FillAndExpand">
+                                        <Grid VerticalOptions="FillAndExpand">
                                        
                                              <Grid.RowDefinitions >
                                                 <RowDefinition Height="auto"/>
