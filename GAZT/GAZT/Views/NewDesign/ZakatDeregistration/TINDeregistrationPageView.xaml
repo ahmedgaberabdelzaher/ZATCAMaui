@@ -16,6 +16,11 @@
              x:Name="TinDeReg">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="CaptionLabelBlack" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
             <converters:ValueTypeToVisibilityConverter x:Key="valueTypeToVisibilityConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -29,7 +34,6 @@
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
 
     </ContentPage.Resources>
@@ -151,27 +155,27 @@
                         </StackLayout>
                     </Grid>
 
-                    <listView:SfListView BackgroundColor="White" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False"
+                    <listView:SfListView BackgroundColor="Transparent" x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False"
                                       IsScrollingEnabled="False" AutoFitMode="Height"  VerticalOptions="Center"
                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ItemSpacing="5"
-                                      ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
+                                      ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                <Grid  BackgroundColor="Transparent"  HeightRequest="100">
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                         <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
                                                                     Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start">
                                         </Label>
                                     </Grid>
-                                </cards:SfCardView>
+                                </Grid>
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
-                        <listView:SfListView.SelectedItemTemplate>
+                        <!--<listView:SfListView.SelectedItemTemplate>
                             <DataTemplate>
-                                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                <cards:SfCardView HasShadow="True" BackgroundColor="Green" CornerRadius="20" HeightRequest="100">
+                                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                         <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
                                                                     Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start">
@@ -179,7 +183,7 @@
                                     </Grid>
                                 </cards:SfCardView>
                             </DataTemplate>
-                        </listView:SfListView.SelectedItemTemplate>
+                        </listView:SfListView.SelectedItemTemplate>-->
                         <listView:SfListView.LayoutManager>
                             <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>

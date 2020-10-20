@@ -16,8 +16,10 @@ using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
+using Syncfusion.XForms.Cards;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
 {
@@ -53,26 +55,26 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //    }
             //});
             if (viewModel.TinDeregistrationData != null)
-            { 
-            if (viewModel.TinDeregistrationData.ADregOpt == "3")
             {
-                viewModel.outletEditIsVisible = true;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
-            }
-            else if (viewModel.TinDeregistrationData.ADregOpt == "2")
-            {
-                viewModel.outletEditIsVisible = false;
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+                if (viewModel.TinDeregistrationData.ADregOpt == "3")
+                {
+                    viewModel.outletEditIsVisible = true;
+                    viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+                }
+                else if (viewModel.TinDeregistrationData.ADregOpt == "2")
+                {
+                    viewModel.outletEditIsVisible = false;
+                    viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
 
-            }
-            else
-            {
-                viewModel.outletEditIsVisible = false;
+                }
+                else
+                {
+                    viewModel.outletEditIsVisible = false;
 
-                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+                    viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
 
+                }
             }
-           }
 
             SetDatePickerFont();
             SetDateOfBirthPickerFont();
@@ -111,12 +113,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton", (sender, args) => { btnOutletContinue.IsEnabled = args; });
 
-           // viewModel.EnableOutletDetaislView();
+            // viewModel.EnableOutletDetaislView();
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
 
-                if(arg.PickerId == "reasonPicker")
+                if (arg.PickerId == "reasonPicker")
                 {
                     viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
                     if (arg.SelectedValue == string.Empty)
@@ -142,7 +144,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
 
-                
+
                 Console.WriteLine(arg);
             });
 
@@ -314,7 +316,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.IsOption1Visible = index == 0 ? true : false;
             viewModel.IsOption2Visible = index == 1 ? true : false;
 
-            if(viewModel.IsOption2Visible == true)
+            if (viewModel.IsOption2Visible == true)
             {
                 viewModel.PickerDobToDisplay = string.Empty;
                 viewModel.TINNumber = string.Empty;
@@ -322,7 +324,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.SelectedIdNumber = string.Empty;
                 viewModel.PickerDOBDateDisplay = string.Empty;
 
-                if(viewModel.FirstNameFromIdType != null)
+                if (viewModel.FirstNameFromIdType != null)
                 {
                     viewModel.FirstNameFromIdType = string.Empty;
                 }
@@ -389,8 +391,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.outletEditIsVisible = false;
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
             }
+            GetSelectedDataTemplate();
         }
-            
+        void GetSelectedDataTemplate()
+        {
+            var captionStyle = Resources["CaptionLabelBlack"] as Style;
+            Grid cardView = new Grid() { HeightRequest = 100 };
+            Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
+            Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+            Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle, Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions, Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
+            grid.Children.Add(image);
+            grid.Children.Add(label);
+
+            cardView.Children.Add(grid);
+            outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
+        }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
@@ -399,7 +414,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.NewAttachmentClicked();
             var view = sender as SfListView;
             view.SelectedItem = null;
-
             //if (viewModel.SelectedAttachment.IsAttachmentAttached == true)
             //{
             //    viewModel.SelectedAttachment.AttachmentName = string.Empty;
@@ -1610,7 +1624,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-       private void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        private void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
             try
             {
