@@ -638,7 +638,7 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" IsEnabled="{Binding FirstNameText.IsEditable}"
+                                    <custom:BorderlessEntry Text="{Binding FirstNameFromIdType, Mode=TwoWay}" IsEnabled="{Binding FirstNameText.IsEditable}"
                                                             Placeholder="{Binding FirstNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">

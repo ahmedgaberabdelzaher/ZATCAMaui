@@ -115,25 +115,34 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
-                if (arg.SelectedValue == string.Empty)
-                {
-                    viewModel.IsOption1Visible = false;
-                    FrmDBO.IsVisible = false;
-                    CalLabel.IsVisible = false;
-                    DateLabel.IsVisible = false;
-                    outletDecisionOptionsListView.IsVisible = false;
-                    viewModel.IsOption2Visible = false;
 
-                }
-                else
+                if(arg.PickerId == "reasonPicker")
                 {
-                    viewModel.IsOption1Visible = true;
-                    FrmDBO.IsVisible = true;
-                    CalLabel.IsVisible = true;
-                    DateLabel.IsVisible = true;
-                    outletDecisionOptionsListView.IsVisible = true;
-                    viewModel.IsOption2Visible = true;
+                    viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
+                    if (arg.SelectedValue == string.Empty)
+                    {
+                        viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
+                        viewModel.IsOption1Visible = false;
+                        FrmDBO.IsVisible = false;
+                        CalLabel.IsVisible = false;
+                        DateLabel.IsVisible = false;
+                        outletDecisionOptionsListView.IsVisible = false;
+                        viewModel.IsOption2Visible = false;
+                    }
+                    else
+                    {
+
+                        FrmDBO.IsVisible = true;
+                        CalLabel.IsVisible = true;
+                        DateLabel.IsVisible = true;
+                        outletDecisionOptionsListView.IsVisible = true;
+
+                        viewModel.IsOption2Visible = false;
+                        viewModel.IsOption1Visible = false;
+                    }
                 }
+
+                
                 Console.WriteLine(arg);
             });
 
@@ -305,6 +314,65 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.IsOption1Visible = index == 0 ? true : false;
             viewModel.IsOption2Visible = index == 1 ? true : false;
 
+            if(viewModel.IsOption2Visible == true)
+            {
+                viewModel.PickerDobToDisplay = string.Empty;
+                viewModel.TINNumber = string.Empty;
+                viewModel.SelectedIdtype = string.Empty;
+                viewModel.SelectedIdNumber = string.Empty;
+                viewModel.PickerDOBDateDisplay = string.Empty;
+
+                if(viewModel.FirstNameFromIdType != null)
+                {
+                    viewModel.FirstNameFromIdType = string.Empty;
+                }
+
+                if (viewModel.IDTypeDataModel == null)
+                {
+                    viewModel.IDTypeDataModel = new VATSignUpD();
+                }
+                else
+                {
+                    viewModel.IDTypeDataModel.Name1 = string.Empty;
+                    viewModel.IDTypeDataModel.Name2 = string.Empty;
+                    viewModel.IDTypeDataModel.FatherName = string.Empty;
+                    viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+                    viewModel.IDTypeDataModel.FamilyName = string.Empty;
+                }
+            }
+            else if (viewModel.IsOption1Visible == true)
+            {
+                if (viewModel.FirstNameFromIdType != null)
+                {
+                    viewModel.FirstNameFromIdType = string.Empty;
+                }
+
+                viewModel.PickerDobToDisplay = string.Empty;
+                viewModel.TodayDate = new ObservableCollection<object>();
+                viewModel.TodayDateinHijri = new ObservableCollection<object>();
+            }
+            else
+            {
+                if (viewModel.FirstNameFromIdType != null)
+                {
+                    viewModel.FirstNameFromIdType = string.Empty;
+                }
+
+                viewModel.PickerDobToDisplay = string.Empty;
+                viewModel.TINNumber = string.Empty;
+                viewModel.SelectedIdtype = string.Empty;
+                viewModel.SelectedIdNumber = string.Empty;
+                viewModel.PickerDOBDateDisplay = string.Empty;
+                viewModel.IDTypeDataModel.Name1 = string.Empty;
+                viewModel.IDTypeDataModel.Name2 = string.Empty;
+                viewModel.IDTypeDataModel.FatherName = string.Empty;
+                viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+                viewModel.IDTypeDataModel.FamilyName = string.Empty;
+
+                viewModel.PickerDobToDisplay = string.Empty;
+                viewModel.TodayDate = new ObservableCollection<object>();
+                viewModel.TodayDateinHijri = new ObservableCollection<object>();
+            }
 
             if (viewModel.SelectedOutletOptionIndex == 2)
             {
@@ -407,7 +475,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 StringBuilder Messages = new StringBuilder();
                 if (!string.IsNullOrEmpty(viewModel.SelectedIdtype))
                 {
-                    if (viewModel.SelectedIdtype == AppResources.NationaID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationNationalID)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "1")
                         {
@@ -467,7 +535,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
 
-                    if (viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "2")
                         {
@@ -527,7 +595,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
 
-                    if (viewModel.SelectedIdtype == AppResources.ZZGCCID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) == "0")
                         {

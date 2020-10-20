@@ -890,12 +890,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 return _selectedIdtype;
             }
-
             set
             {
 
                 _selectedIdtype = value;
                 RaisePropertyChanged("SelectedIdtype");
+            }
+        }
+
+        private string _firstNameFromIdType { get; set; }
+        public string FirstNameFromIdType
+        {
+            get
+            {
+                return _firstNameFromIdType;
+            }
+            set
+            {
+
+                _firstNameFromIdType = value;
+                RaisePropertyChanged("FirstNameFromIdType");
             }
         }
 
@@ -975,9 +989,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             string tempSelectedReason = PickerModel.SelectedValue;
                             if (tempSelectedReason != string.Empty)
-
                             {
-
                                 SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
                                 TinDeregistrationData.ADregReason = SelectedReason.ReasonCd;
                                 TinDeregistrationData.ADeregSelectedReasonValue = SelectedReason.ReasonDesc;
@@ -1039,7 +1051,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             else
                             {
                                 DateField.IsVisible = false;
-                                //SelectedReason.ReasonDesc = string.Empty;
+                                SelectedReason.ReasonDesc = string.Empty;
+                                SelectedReason.ReasonCd = string.Empty;
+
                             }
                             AddOutletDecisionOptions();
                             PopulateAttachmentsListViewTemplate();
@@ -2359,6 +2373,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     string _responseData = JObject.Parse(Result)["d"].ToString();
                     IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+
+                    FirstNameFromIdType = IDTypeDataModel.Name1;
+
                     if (_responseData == null)
                     {
                         IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
@@ -2516,6 +2533,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         string _responseData = JObject.Parse(resultData)["d"].ToString();
                         IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                        FirstNameFromIdType = IDTypeDataModel.Name1;
+
                         if (_responseData == null)
                         {
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
@@ -3186,7 +3205,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameLbl) || string.IsNullOrEmpty(SurnameNameLbl))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
