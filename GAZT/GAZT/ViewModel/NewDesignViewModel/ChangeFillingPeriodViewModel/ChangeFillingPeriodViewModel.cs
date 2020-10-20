@@ -566,7 +566,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public void setMoreOptioButtons()
         {
             var listOfActionButtonsApplicable = new List<string>();
-             if (App.selectedVatFillingItem != "" && App.selectedVATItemFbust == "E0013")
+             if (App.selectedVatFillingItem != "")
              {
                 
 
