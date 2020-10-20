@@ -350,8 +350,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
                 viewModel.PickerDobToDisplay = string.Empty;
-                viewModel.TodayDate = new ObservableCollection<object>();
-                viewModel.TodayDateinHijri = new ObservableCollection<object>();
+                //viewModel.TodayDate = new ObservableCollection<object>();
+                //viewModel.TodayDateinHijri = new ObservableCollection<object>();
             }
             else
             {
@@ -372,8 +372,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.IDTypeDataModel.FamilyName = string.Empty;
 
                 viewModel.PickerDobToDisplay = string.Empty;
-                viewModel.TodayDate = new ObservableCollection<object>();
-                viewModel.TodayDateinHijri = new ObservableCollection<object>();
+                //viewModel.TodayDate = new ObservableCollection<object>();
+                //viewModel.TodayDateinHijri = new ObservableCollection<object>();
             }
 
             if (viewModel.SelectedOutletOptionIndex == 2)
