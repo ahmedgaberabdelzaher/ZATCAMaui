@@ -365,12 +365,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.SelectedIdtype = string.Empty;
                 viewModel.SelectedIdNumber = string.Empty;
                 viewModel.PickerDOBDateDisplay = string.Empty;
-                viewModel.IDTypeDataModel.Name1 = string.Empty;
-                viewModel.IDTypeDataModel.Name2 = string.Empty;
-                viewModel.IDTypeDataModel.FatherName = string.Empty;
-                viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
-                viewModel.IDTypeDataModel.FamilyName = string.Empty;
 
+                if (viewModel.IDTypeDataModel == null)
+                {
+                    viewModel.IDTypeDataModel = new VATSignUpD();
+                }
+                else
+                {
+                    viewModel.IDTypeDataModel.Name1 = string.Empty;
+                    viewModel.IDTypeDataModel.Name2 = string.Empty;
+                    viewModel.IDTypeDataModel.FatherName = string.Empty;
+                    viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+                    viewModel.IDTypeDataModel.FamilyName = string.Empty;
+                }
                 viewModel.PickerDobToDisplay = string.Empty;
                 //viewModel.TodayDate = new ObservableCollection<object>();
                 //viewModel.TodayDateinHijri = new ObservableCollection<object>();
