@@ -7887,7 +7887,8 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Attachment(Only One Allowed - Maximum Size 10 MB)</value>
   </data>
   <data name="ZOAttachmentsTitleTwo" xml:space="preserve">
-    <value>Caution, you must adjust the settings of the scanner so that the compressed file size less than MB10.
+    <value>Attachment(Only One Allowed - Maximum Size 10 MB)
+Caution, you must adjust the settings of the scanner so that the compressed file size less than MB10.
 Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>

@@ -88,7 +88,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             else if (whichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment || whichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
             {
-                viewModel.TitleOne = AppResources.ZOAttachmentsTitleOne;
+                viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.ZOAttachmentsTitleTwo;
             }
             else if (whichAttachment == WhichAttachment.TINDeregistration)

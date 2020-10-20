@@ -7760,10 +7760,8 @@
     <value>حجم الملف المسموح به في المرفقات 10 MB</value>
   </data>
   <data name="ZOAttachmentsTitleTwo" xml:space="preserve">
-    <value>تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من MB10
-اعدادات الماسح الضوئي الموصى بها : 745*1024
-صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
-  </data>
+   <value>حجم الملف المسموح به في المرفقاتMB10
+تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من MB10 اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>   </data>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
     <value>تم استلام طلب الغاء إعتراض الزكاة بنجاح</value>
   </data>
