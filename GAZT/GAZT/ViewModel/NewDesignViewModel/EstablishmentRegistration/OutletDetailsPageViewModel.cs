@@ -149,6 +149,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _houseNumber = value;
+                    if (PostalAsPhysical)
+                    {
+                        HouseNumberSame = _houseNumber;
+                    }
                     RaisePropertyChanged(nameof(HouseNumber));
                 }
             }
@@ -162,6 +166,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _buildingNumber = value;
+                    if(PostalAsPhysical)
+                    {
+                        BuildingNumberSame = _buildingNumber;
+                    }
                     RaisePropertyChanged(nameof(BuildingNumber));
                 }
             }
@@ -175,6 +183,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _floorNumber = value;
+                    if (PostalAsPhysical)
+                    {
+                        FloorNumberSame = _floorNumber;
+                    }
                     RaisePropertyChanged(nameof(FloorNumber));
                 }
             }
@@ -188,6 +200,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _street = value;
+                    if (PostalAsPhysical)
+                    {
+                        StreetSame = _street;
+                    }
                     RaisePropertyChanged(nameof(Street));
                 }
             }
@@ -201,6 +217,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _quarter = value;
+                    if (PostalAsPhysical)
+                    {
+                        QuarterSame = _quarter;
+                    }
                     RaisePropertyChanged(nameof(Quarter));
                 }
             }
@@ -214,6 +234,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _postalCode = value;
+                    if (PostalAsPhysical)
+                    {
+                        PostalCodeSame = _postalCode;
+                    }
                     RaisePropertyChanged(nameof(PostalCode));
                 }
             }
@@ -227,6 +251,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _addNumber = value;
+                    if (PostalAsPhysical)
+                    {
+                        AddNumberSame = _addNumber;
+                    }
                     RaisePropertyChanged(nameof(AddNumber));
                 }
             }
@@ -240,6 +268,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _country = value;
+                    if (PostalAsPhysical)
+                    {
+                        CountrySame = _country;
+                    }
                     RaisePropertyChanged(nameof(Country));
                 }
             }
@@ -253,6 +285,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _provinance = value;
+                    if (PostalAsPhysical)
+                    {
+                        ProvinanceSame = _provinance;
+                    }
                     RaisePropertyChanged(nameof(Provinance));
                 }
             }
@@ -266,6 +302,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _city = value;
+                    if (PostalAsPhysical)
+                    {
+                        CitySame = _city;
+                    }
                     RaisePropertyChanged(nameof(City));
                 }
             }
