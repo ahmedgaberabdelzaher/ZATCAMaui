@@ -11759,9 +11759,11 @@ namespace GAZT.Manager
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
                     permitInfo.APermitDobTb = null;
-                    permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
+                    if (!permitInfo.APermitEffDtTb.Contains("/Date("))
+                        permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
                     permitInfo.APermitEffDtCTb = "G";
-                    permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
+                    if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
+                        permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
                     permitInfo.APermitValfrDtCTb = "G";
 
                 }
@@ -11912,6 +11914,21 @@ namespace GAZT.Manager
                         {
                             App.IsSessionExpired = true;
                             return null;
+                        }
+                        String _responseData = tinDeregResponse.Content.ReadAsStringAsync().Result;
+                        if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+
+                                String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForUnlockAccount = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
+                            }
                         }
                         HttpHeaders headers = tinDeregResponse.Headers;
                         IEnumerable<string> values;

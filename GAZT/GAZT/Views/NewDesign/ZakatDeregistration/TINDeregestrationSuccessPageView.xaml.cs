@@ -31,8 +31,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                     Label_ApplicationNumber.Text = response.Fbnum;
                     viewModel.FBNumber = response.Fbnum;
-                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    Label_Date.Text = StartdateToshow;
+                    //string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+
+                    Label_Date.Text = DateTime.Today.Date.ToString("dd/MM/yyyy").Replace('-', '/');
                 }
             }
         }

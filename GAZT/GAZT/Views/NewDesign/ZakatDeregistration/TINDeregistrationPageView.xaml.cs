@@ -82,6 +82,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             SetHijriDateOfBirth2PickerFont();
             SetTodayDatePickerFont();
             SetTodayDateHijriPickerFont();
+
+            viewModel.IsReasonViewEnabled = true;
+            viewModel.IsOutletViewEnabled = false;
+            viewModel.IsAttachmentsEnabled = false;
+            viewModel.IsDeclarationViewEnabled = false;
+            viewModel.IsSummaryViewEnabled = false;
         }
 
         public void ChangeArrowDirection()
@@ -111,7 +117,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             SetDate();
 
-            MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton", (sender, args) => { btnOutletContinue.IsEnabled = args; });
+            MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton", (sender, args) =>
+            {
+                btnOutletContinue.IsEnabled = args;
+            });
 
             // viewModel.EnableOutletDetaislView();
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -252,6 +261,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
 
             }
+
+            MessagingCenter.Subscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption", (arg) =>
+            {
+                GetSelectedDataTemplate();
+            });
         }
 
         private async void SetDate()
@@ -264,6 +278,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
+            MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton");
+            MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
         }
 
         private void SetLTR()
@@ -382,7 +398,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //viewModel.TodayDate = new ObservableCollection<object>();
                 //viewModel.TodayDateinHijri = new ObservableCollection<object>();
             }
+            GetSelectedDataTemplate();
+        }
+        void GetSelectedDataTemplate()
+        {
+            var captionStyle = Resources["CaptionLabelBlack"] as Style;
+            Grid cardView = new Grid() { HeightRequest = 100 };
+            Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
+            Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+            Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle, Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions, Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
+            grid.Children.Add(image);
+            grid.Children.Add(label);
 
+            cardView.Children.Add(grid);
+            outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
             if (viewModel.SelectedOutletOptionIndex == 2)
             {
                 viewModel.outletEditIsVisible = true;
@@ -398,20 +427,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.outletEditIsVisible = false;
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
             }
-            GetSelectedDataTemplate();
-        }
-        void GetSelectedDataTemplate()
-        {
-            var captionStyle = Resources["CaptionLabelBlack"] as Style;
-            Grid cardView = new Grid() { HeightRequest = 100 };
-            Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
-            Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-            Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle, Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions, Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
-            grid.Children.Add(image);
-            grid.Children.Add(label);
 
-            cardView.Children.Add(grid);
-            outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
+            int index = Convert.ToInt16(viewModel.SelectedOutletOptionIndex);
+            viewModel.IsOption1Visible = index == 0 ? true : false;
+            viewModel.IsOption2Visible = index == 1 ? true : false;
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -723,7 +742,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
 
@@ -746,8 +765,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;
+
+                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     else
@@ -779,7 +798,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
                     }
@@ -801,7 +820,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
                     }
@@ -834,7 +853,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDOBDateDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
                     }
@@ -856,7 +875,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDOBDateDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     else
@@ -938,7 +957,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                         viewModel.PkrDBO = date;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     isHIjri = true;
@@ -962,7 +981,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PkrDBO = date;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
 
-                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;
+                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     isHIjri = false;
@@ -1663,6 +1682,17 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private void attachmentsListViewChild_BindingContextChanged(object sender, EventArgs e)
+        {
+            int childElements = 0;
+            foreach (var item in viewModel.AttachmentsListViewData)
+            {
+                childElements += item.AttachmentTypeList != null && item.AttachmentTypeList.Count > 0 ? item.AttachmentTypeList.Count : 0;
+            }
+            if (((StackLayout)sender).Height > 0)
+                attachmentsListView.HeightRequest = (viewModel.AttachmentsListViewData.Count + childElements) * ((StackLayout)sender).Height;
         }
     }
 }
