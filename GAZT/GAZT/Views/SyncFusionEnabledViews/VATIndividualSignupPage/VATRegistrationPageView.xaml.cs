@@ -1876,11 +1876,44 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
-                viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
-                viewModel.IdNumberSR = string.Empty;
+                //viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
+                //viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
+                //viewModel.IdNumberSR = string.Empty;
+                if (viewModel.IdTypeListFR[viewModel.IDTypeIndexSR].ID.Equals("00000"))
+                {
+                    viewModel.IDTypeIndexFR = 0;
+                    viewModel.TxtIDTypeSR = string.Empty;
+
+                    viewModel.IDNumberNonMandatoryVisibility = true;
+                    viewModel.IDNumberMandatoryVisibility = false;
+
+                    viewModel.DOBNonMandatoryVisibility = true;
+                    viewModel.DOBMandatoryVisibility = false;
+                }
+                else
+                {
+                    viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
+                    viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
+                    EntryIDNo.Text = string.Empty;
+
+                    viewModel.IDNumberNonMandatoryVisibility = false;
+                    viewModel.IDNumberMandatoryVisibility = true;
 
 
+                    // For GCC ID DOB is not mandatory
+                    if (viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].ID.Equals("ZS0003"))
+                    {
+                        viewModel.DOBNonMandatoryVisibility = true;
+                        viewModel.DOBMandatoryVisibility = false;
+                    }
+                    else
+                    {
+                        viewModel.DOBNonMandatoryVisibility = false;
+                        viewModel.DOBMandatoryVisibility = true;
+                    }
+
+
+                }
 
             }
             catch (Exception ex)
@@ -3907,5 +3940,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             viewModel._navigationService.GoBack();
         }
+
     }
 }

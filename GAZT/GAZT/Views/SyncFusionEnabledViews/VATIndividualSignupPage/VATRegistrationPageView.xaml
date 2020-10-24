@@ -920,7 +920,7 @@
                                                                                     <StackLayout Grid.Row="1" Spacing="0">
 
                                                                                         <Label Text="{Binding Iban}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
-                                                                                        <Label Text="{x:Static custom2:AppResources.VATRInmaBank}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
+                                                                                        <!--<Label Text="{x:Static custom2:AppResources.VATRInmaBank}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>-->
                                                                                     </StackLayout>
                                                                                 </Grid>
                                                                             </Grid>
@@ -2031,7 +2031,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}"  SelectionChanged="DDlIDTypeFR_OkButtonClicked" Margin="10,0,10,0"
+                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="10,0,10,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="DDlIDTypeFR_OkButtonClicked"  CancelButtonClicked="DDlIDTypeFR_CancelButtonClicked">
@@ -2510,14 +2510,14 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Row="2" Grid.Column="0">
+                                                    <StackLayout Grid.Row="2" Grid.Column="0" IsVisible="{Binding DOBMandatoryVisibility}">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
                                                                 <RowDefinition Height="auto"/>
                                                             </Grid.RowDefinitions>
 
-                                                            <custom:CustomLabel  Grid.Row="0"   Style="{StaticResource GAZTCaptionBlackLabel}" >
+                                                            <custom:CustomLabel IsVisible="{Binding DOBMandatoryVisibility}" Grid.Row="0"   Style="{StaticResource GAZTCaptionBlackLabel}" >
 
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
@@ -2529,10 +2529,10 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
 
 
                                                             <!--Focused="OnDateEntryFocussed" TextChanged="DateEntry_TextChanged" Unfocused="DatePicker_Unfocused"-->
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding DOBMandatoryVisibility}"
                                         ContainerType="Outlined" x:Name="FrmContactDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactDOBError}" >
-                                                                <StackLayout Orientation="Horizontal">
+                                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding DOBMandatoryVisibility}">
                                                                     <custom:BorderlessEntry  x:Name="ContactDateEntry"  Text ="{Binding ContactDOB}"   IsEnabled="False"  TextChanged="ContactDateEntry_TextChanged"  Placeholder="YYYY/MM/DD"  HorizontalOptions="FillAndExpand" Style="{StaticResource GAZTEntry}">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="End">
