@@ -1165,13 +1165,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     TxtIDNumber = vATDeRegistration.d.Idnumbr;
                                 }
                             ContactPersonName = vATDeRegistration.d.Contactnm;
-                           ReturnIDx = vATDeRegistration.d.ReturnIdx;
+                            ReturnIDx = vATDeRegistration.d.ReturnIdx;
 
                             VATDeRegistrationDetailsData = vATDeRegistration;
 
                             //populateAttachments(vATDeRegistration);
+                            if (vATDeRegistration.d.NotesSet != null)
+                            {
+                                OtherField = vATDeRegistration.d.NotesSet.results[0].Strline;
 
-                      
+                            }
                         }
                         else
                         {
@@ -2532,6 +2535,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Idnumbr = TxtIDNumber;
                 VATDeRegistrationDetailsData.d.Contactnm = ContactPersonName;
                 //VATDeRegistrationDetailsData.d.Taxdt = DOB;
+                if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
+                {
+                    VATDeRegistrationDetailsData.d.NotesSet.results[0].Strline = OtherField;
+                }
 
 
             }
