@@ -4,13 +4,15 @@
              x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundDetailsPageView"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"   xmlns:custom="clr-namespace:GAZT"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             BackgroundImageSource="partials_background"  NavigationPage.HasNavigationBar="False">
+             BackgroundImageSource="partials_background"  NavigationPage.HasNavigationBar="False"
+             xmlns:custom2="clr-namespace:EGAZT"  
+             x:Name="VATRefundDetails">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-                 <ResourceDictionary>
+                <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
                     </Style>
@@ -36,7 +38,7 @@
                             <Grid.RowDefinitions>
                                 <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
-                                
+
                             </Grid.RowDefinitions>
                             <ContentPresenter VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
@@ -61,14 +63,14 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <Image Grid.Row="0" Grid.Column="2"  Source="close"  VerticalOptions="Center" HorizontalOptions="End">
-                           <Image.Triggers>
+                            <Image.Triggers>
                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsNewReqSummary}" Value="true">
-                                     <Setter Property="IsVisible" Value="true" />
+                                    <Setter Property="IsVisible" Value="true" />
                                 </DataTrigger>
-                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsNewReqSummary}" Value="false">
-                                     <Setter Property="IsVisible" Value="false" />
+                                <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsNewReqSummary}" Value="false">
+                                    <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
-                        </Image.Triggers>
+                            </Image.Triggers>
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="VoidButton_Tapped"/>
                             </Image.GestureRecognizers>
@@ -81,69 +83,69 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <Grid>
-                   <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" BackgroundColor="White">
-           <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
-                <Grid.RowDefinitions>
-                         <RowDefinition Height="*"/>
-                         <RowDefinition Height="auto"/>
-             </Grid.RowDefinitions>
-              <Grid IsVisible="true" Grid.Row="0" BackgroundColor="Transparent" Padding="0" Margin="20,10,20,16" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" BackgroundColor="White">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
                     <Grid.RowDefinitions>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Grid.Triggers>
-                            <DataTrigger TargetType="Grid" Binding="{Binding IsNewReqSummary}" Value="true">
-                                 <Setter Property="IsVisible" Value="false" />
-                            </DataTrigger>
-                             <DataTrigger TargetType="Grid" Binding="{Binding IsNewReqSummary}" Value="false">
-                                 <Setter Property="IsVisible" Value="true" />
-                            </DataTrigger>
-                        </Grid.Triggers>
+                    <Grid IsVisible="true" Grid.Row="0" BackgroundColor="Transparent" Padding="0" Margin="20,10,20,16" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="*"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                            
-                        <Grid  Grid.Row="0" Grid.Column="0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid.Triggers>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsNewReqSummary}" Value="true">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsNewReqSummary}" Value="false">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                            </Grid.Triggers>
                             <Grid.RowDefinitions>
-                                 <RowDefinition Height="auto"/>
-                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="50*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource PageTitleBlack}" />
-                                <Label Text="{x:Static ResourceManager:AppResources.VATRReviewInformation}" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Style="{StaticResource BodyLabelGrey}"
-                                       HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                <Label Text="{Binding VATRefundsHeaderSet.RefundFbnum}" Margin="5,-10,5,0" Style="{StaticResource CaptionLabelGrey}">
-                                    <Label.Triggers>
-                                         <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="false">
-                                            <Setter Property="IsVisible" Value="true" />
-                                        </DataTrigger>
-                                        <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="true">
-                                            <Setter Property="IsVisible" Value="false" />
-                                        </DataTrigger>
-                                    </Label.Triggers>
-                                </Label>
 
-                            </StackLayout>
-                            <yummy:PancakeView Grid.Row="0" Grid.Column="1" IsVisible="true" Padding="10,10,10,10" CornerRadius="14" 
+                            <Grid  Grid.Row="0" Grid.Column="0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="Fill">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}" />
+                                    <Label Text="{x:Static ResourceManager:AppResources.VATRReviewInformation}" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Style="{StaticResource BodyLabelGrey}"
+                                       HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                    <Label Text="{Binding VATRefundsHeaderSet.RefundFbnum}" Margin="5,-10,5,0" Style="{StaticResource CaptionLabelGrey}">
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="false">
+                                                <Setter Property="IsVisible" Value="true" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="true">
+                                                <Setter Property="IsVisible" Value="false" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+
+                                </StackLayout>
+                                <yummy:PancakeView Grid.Row="0" Grid.Column="1" IsVisible="true" Padding="10,10,10,10" CornerRadius="14" 
                                                WidthRequest="80"  HeightRequest="20" Opacity=".2" BackgroundColor="{StaticResource Secondary}"  BorderThickness="1" VerticalOptions="Center" HorizontalOptions="End" >
-                                <yummy:PancakeView.Triggers>
+                                    <yummy:PancakeView.Triggers>
                                         <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                         <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding VATRefundsHeaderSet.Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                             <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
@@ -155,8 +157,8 @@
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
                                     </yummy:PancakeView.Triggers>
-                              </yummy:PancakeView>
-                            <StackLayout Grid.Row="0" Grid.Column="1" IsVisible="true" VerticalOptions="Center"  HorizontalOptions="End"  Margin="15,0">
+                                </yummy:PancakeView>
+                                <StackLayout Grid.Row="0" Grid.Column="1" IsVisible="true" VerticalOptions="Center"  HorizontalOptions="End"  Margin="15,0">
                                     <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding VATRefundsHeaderSet.Status}" TextColor="{StaticResource Secondary}"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                                         <Label.Triggers>
                                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
@@ -165,394 +167,514 @@
                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                             </DataTrigger>
                                             <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="false">
-                                            <Setter Property="IsVisible" Value="true" />
-                                        </DataTrigger>
+                                                <Setter Property="IsVisible" Value="true" />
+                                            </DataTrigger>
                                             <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="true">
-                                            <Setter Property="IsVisible" Value="false" />
-                                        </DataTrigger>
+                                                <Setter Property="IsVisible" Value="false" />
+                                            </DataTrigger>
                                         </Label.Triggers>
                                     </Label>
+                                </StackLayout>
+                            </Grid>
+
+                            <border:SfBorder Margin="0,16,0,10" Grid.Row="1" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="0">
+                                    <Grid Padding="15" RowSpacing="0" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                        </Frame>
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                    <Grid Padding="0" Margin="8,0,8,8" >
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundsReassesmentAmount}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" >
+                                            <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.ReassessAmt}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundsTotalOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></Label>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="1">
+                                            <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.OffsetTot}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="1">
+                                            <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.NetCreditBal}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                        <Frame HasShadow="False" Opacity="0.1"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Primary}" CornerRadius="0" Margin="-8,10,-8,-8" Padding="20" HeightRequest="24" HorizontalOptions="FillAndExpand">
+
+                                        </Frame>
+                                        <StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" VerticalOptions="Center" Padding="0,10,0,0">
+                                            <Label MaxLines="2" WidthRequest="90" Text="{x:Static ResourceManager:AppResources.VATRefundsRequestedAmount}" Style="{StaticResource BodyLabelBlack}" />
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Padding="0,10,0,0">
+                                            <Label Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="End">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.RequestedAmt}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </border:SfBorder >
+                            <border:SfBorder Margin="0,16,0,10" Grid.Row="2" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="0">
+                                    <Grid Padding="15" RowSpacing="0" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                        </Frame>
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                    <Grid Padding="0" Margin="8,0,8,8" >
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" >
+                                            <Label Text="{Binding SelectedIbanIdType}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0" >
+                                            <Label Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="1">
+                                            <Label Text="{Binding VatRefundsDisplayDataModel.Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="1">
+                                            <Label Text="{Binding VatRefundsDisplayDataModel.Iban}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </border:SfBorder >
+
+
+                            <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding VATRefundsSubItemReturnsSet}" x:Name="summaryDeclarationListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <border:SfBorder Margin="0,16,0,40" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <StackLayout Padding="0">
+                                                <Grid Padding="15" RowSpacing="0" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition Width="auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                    HasShadow="False">
+                                                    </Frame>
+                                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="return_vatRefunds"/>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.VatReturns}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                    </StackLayout>
+                                                </Grid>
+
+                                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                                <Grid Padding="0" Margin="8,0,8,8" >
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ReturnPeriod}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                        <Label Text="{Binding ReturnPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="1" Grid.Column="0" >
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="1" Grid.Column="1">
+                                                        <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="2" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsReassessedBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="2" Grid.Column="1">
+                                                        <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="3" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="3" Grid.Column="1" >
+                                                        <Label Text="{Binding Offsets}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="4" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="4" Grid.Column="1" >
+                                                        <Label Text="{Binding NetCreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="5" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZStatus}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="5" Grid.Column="1" >
+                                                        <Label Text="{Binding Status}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="6" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsLastStatusChange}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="6" Grid.Column="1" >
+                                                        <Label Text="{Binding LastChgDt,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+
+                                        </border:SfBorder >
+
+                                    </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                            </listView:SfListView>
+
+                            <StackLayout Grid.Row="4" Margin="0,30">
+                                <buttons:SfButton   x:Name="btnConfirm" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Clicked="ConfirmButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
+                                Style="{StaticResource PrimaryButtonStyle}"/>
                             </StackLayout>
                         </Grid>
-
-                        <border:SfBorder Margin="0,16,0,10" Grid.Row="1" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout Padding="0">
-                            <Grid Padding="15" RowSpacing="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                <Label Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                </StackLayout>
-                            </Grid>
-
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             
-					        <Grid Padding="0" Margin="8,0,8,8" >
-                                <Grid.RowDefinitions >
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VATRefundsReassesmentAmount}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="1" >
-                                    <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
-                                         <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VATRefundsHeaderSet.ReassessAmt}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VATRefundsTotalOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></Label>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VATRefundsHeaderSet.OffsetTot}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                                <StackLayout Grid.Row="2" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="2" Grid.Column="1">
-                                    <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VATRefundsHeaderSet.NetCreditBal}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                   </Label>
-                                </StackLayout>
-                                <Frame HasShadow="False" Opacity="0.1"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Primary}" CornerRadius="0" Margin="-8,10,-8,-8" Padding="20" HeightRequest="24" HorizontalOptions="FillAndExpand">
-                                   
-                                 </Frame>
-                                 <StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" VerticalOptions="Center" Padding="0,10,0,0">
-                                    <Label MaxLines="2" WidthRequest="90" Text="{x:Static ResourceManager:AppResources.VATRefundsRequestedAmount}" Style="{StaticResource BodyLabelBlack}" />
-                                </StackLayout>
-                                <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Padding="0,10,0,0">
-                                    <Label Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="End">
-                                         <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VATRefundsHeaderSet.RequestedAmt}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
-                        </border:SfBorder >
-                        <border:SfBorder Margin="0,16,0,10" Grid.Row="2" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0">
-                            <Grid Padding="15" RowSpacing="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                </StackLayout>
-                            </Grid>
-
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             
-					        <Grid Padding="0" Margin="8,0,8,8" >
-                                <Grid.RowDefinitions >
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="1" >
-                                    <Label Text="{Binding SelectedIbanIdType}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="0" >
-                                    <Label Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Label Text="{Binding VatRefundsDisplayDataModel.Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="2" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="2" Grid.Column="1">
-                                    <Label Text="{Binding VatRefundsDisplayDataModel.Iban}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
-                    </border:SfBorder >
-
-                       
-                        <listView:SfListView Margin="-3,0,-3,0"   Grid.Row="3" Grid.Column="0" ItemsSource="{Binding VATRefundsSubItemReturnsSet}" x:Name="summaryDeclarationListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                        <listView:SfListView.ItemTemplate>
-                            <DataTemplate>
-					        <border:SfBorder Margin="0,16,0,40" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout Padding="0">
-                                <Grid Padding="15" RowSpacing="0" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition Width="auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                    HasShadow="False">
-                                    </Frame> 
-                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="return_vatRefunds"/>
-                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VatReturns}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                    </StackLayout>
-                                </Grid>
-
-                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             
-					            <Grid Padding="0" Margin="8,0,8,8" >
-                                    <Grid.RowDefinitions >
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                         <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ReturnPeriod}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="0" Grid.Column="1" >
-                                        <Label Text="{Binding ReturnPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="0" >
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="1">
-                                        <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="2" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsReassessedBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="2" Grid.Column="1">
-                                        <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                      <StackLayout Grid.Row="3" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="3" Grid.Column="1" >
-                                        <Label Text="{Binding Offsets}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                      <StackLayout Grid.Row="4" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="4" Grid.Column="1" >
-                                        <Label Text="{Binding NetCreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                      <StackLayout Grid.Row="5" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZStatus}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="5" Grid.Column="1" >
-                                        <Label Text="{Binding Status}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                      <StackLayout Grid.Row="6" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsLastStatusChange}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="6" Grid.Column="1" >
-                                        <Label Text="{Binding LastChgDt,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>
-                                </Grid>
-                            </StackLayout>
-
-                        </border:SfBorder >
-
-			                </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                        </listView:SfListView>
-
-                        <StackLayout Grid.Row="4" Margin="0,30">
-                           <buttons:SfButton   x:Name="btnConfirm" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Clicked="ConfirmButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
-                                Style="{StaticResource PrimaryButtonStyle}"/>
-                       </StackLayout>
-                    </Grid>
-                    <Grid IsVisible="{Binding IsNewReqSummary}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" Padding="0">
-                         <Grid.RowDefinitions >
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-
-                     <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent">
+                        <StackLayout IsVisible="{Binding IsNewReqSummary}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" Padding="0">
+                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSummaryTitle}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource PageTitleBlack}" />
                                 <Label Text="{x:Static ResourceManager:AppResources.VATRReviewInformation}" IsVisible="true" Style="{StaticResource BodyLabelGrey}"
                                        HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                     </StackLayout>
-                        
-                     <border:SfBorder Margin="0,16,0,10" Grid.Row="2" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}" BorderColor="Transparent">
+                            </StackLayout>
+                            <!--#region TaxPayer Details-->
 
-                            <StackLayout Padding="0">
-                             
-					        <Grid Padding="0" Margin="8,0,8,8" >
-                                <Grid.RowDefinitions >
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                             
-                                <Frame HasShadow="False" BorderColor="{StaticResource NewWarmGreyColor}" Opacity="0.1"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Primary}" CornerRadius="12" Margin="-8,10,-8,-8" Padding="20" HeightRequest="24" HorizontalOptions="FillAndExpand">
-                                   
-                                 </Frame>
-                                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalOptions="Center" Padding="0,10,10,0">
-                                    <custom:CustomLabel MaxLines="2" LineSpacing="0.8" WidthRequest="90" Text="{x:Static ResourceManager:AppResources.VATRefundsRequestedAmount}" Style="{StaticResource BodyLabelBlack}" />
-                                </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Padding="0,10,0,0">
-                                    <Label Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="End">
-                                         <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VatNewReqSummaryData.Rfamt}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                            </Grid>
-                                <StackLayout Grid.Row="2" Margin="0,30">
-                                   <buttons:SfButton   x:Name="btnConfirmSummary" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
-                                        Style="{StaticResource PrimaryButtonStyle}"/>
-                               </StackLayout>
-                        </StackLayout>
-                     </border:SfBorder>
+                            <border:SfBorder Margin="0,16,0,10" Grid.Row="1" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="0">
+                                    <Grid Padding="15" RowSpacing="0" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
 
-                      <border:SfBorder Margin="0,16,0,10" Grid.Row="1" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0">
-                            <Grid Padding="15" RowSpacing="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                </StackLayout>
-                                
-                            </Grid>
+                                        </Frame>
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </StackLayout>
 
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             
-					        <Grid Padding="0" Margin="8,0,8,8" >
-                                <Grid.RowDefinitions >
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    </Grid>
 
-                                </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                    <Grid Padding="0" Margin="8,0,8,8">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundRequestReferenceNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" >
+                                            <Label Text="{Binding VatNewReqSummaryData.Fbnumx}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0" >
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="1">
+                                            <Label Text="{Binding VatNewReqSummaryData.RefundTp}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundTaxpayerName}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="1">
+                                            <Label Text="{Binding VatNewReqSummaryData.TinName}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="3" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundTaxpayerTIN}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="3" Grid.Column="1">
+                                            <Label Text="{Binding VatNewReqSummaryData.Tin}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="4" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundTaxpayerIDNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="4" Grid.Column="1">
+                                            <Label Text="{Binding VatNewReqSummaryData.Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="5" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundTaxpayerAccNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="5" Grid.Column="1">
+                                            <Label Text="{Binding VatNewReqSummaryData.Fin}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="6" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundTaxpayerAddress}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="6" Grid.Column="1">
+                                            <Label Text="{Binding TPAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                    </Grid>
                                 </StackLayout>
-                                <StackLayout Grid.Row="0" Grid.Column="1" >
-                                    <Label Text="{Binding SelectedIbanIdType}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                            </border:SfBorder >
+
+                            <!--#region -->
+
+                            <border:SfBorder Margin="0,16,0,10" Grid.Row="2" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="0">
+                                    <Grid Padding="15" RowSpacing="0" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                        </Frame>
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                    <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                    <Grid Padding="0" Margin="8,0,8,8" >
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" >
+                                            <Label Text="{Binding SelectedIbanIdType}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0" >
+                                            <Label Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="1">
+                                            <Label Text="{Binding VatNewReqSummaryData.Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="0">
+                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="1">
+                                            <Label Text="{Binding VatNewReqSummaryData.Iban}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                        </StackLayout>
+                                    </Grid>
                                 </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="0" >
-                                    <Label Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                            </border:SfBorder >
+                            <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                                <CheckBox x:Name="CBTermsAndConditions"  VerticalOptions="CenterAndExpand" CheckedChanged="TermsAndConditions_CheckedChanged"/>
+                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="Black"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" >
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TermsAndConditions_Tapped"/>
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="Black"  />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
+                                <CheckBox x:Name="CBAcknowledment"   VerticalOptions="CenterAndExpand" CheckedChanged="Acknowledgment_CheckedChanged"/>
+                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="Black"   />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                            </StackLayout>
+
+
+                            <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}" BorderColor="Transparent">
+
+                                <StackLayout Padding="0">
+
+                                    <Grid Padding="0" Margin="8,0,8,8" >
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Frame HasShadow="False" BorderColor="{StaticResource NewWarmGreyColor}" Opacity="0.1"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Primary}" CornerRadius="12" Margin="-8,10,-8,-8" Padding="20" HeightRequest="24" HorizontalOptions="FillAndExpand">
+
+                                        </Frame>
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalOptions="Center" Padding="0,10,10,0">
+                                            <custom:CustomLabel MaxLines="2" LineSpacing="0.8" WidthRequest="90" Text="{x:Static ResourceManager:AppResources.VATRefundsRequestedAmount}" Style="{StaticResource BodyLabelBlack}" />
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Padding="0,10,0,0">
+                                            <Label Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="End">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding VatNewReqSummaryData.Rfamt}"/>
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                    <StackLayout Grid.Row="2" Margin="0,30">
+                                        <buttons:SfButton x:Name="btnConfirmSummary" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
+                                        Style="{StaticResource PrimaryButtonStyle}">
+                                            <buttons:SfButton.Triggers>
+                                                <DataTrigger TargetType="buttons:SfButton" Value="true">
+                                                    <Setter Property="BackgroundColor" Value="#d49504" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="buttons:SfButton" Value="false">
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource NeutralGreay}" />
+                                                </DataTrigger>
+                                            </buttons:SfButton.Triggers>
+                                        </buttons:SfButton>
+                                    </StackLayout>
                                 </StackLayout>
-                                <StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Label Text="{Binding VatNewReqSummaryData.Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="2" Grid.Column="0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                                <StackLayout Grid.Row="2" Grid.Column="1">
-                                    <Label Text="{Binding VatNewReqSummaryData.Iban}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                </StackLayout>
-                            </Grid>
+                            </border:SfBorder>
+
+
+
                         </StackLayout>
-                    </border:SfBorder >
-                   
-                         
                     </Grid>
-              </Grid>
-           </Grid>
-       </ScrollView>
+                </Grid>
+            </ScrollView>
 
-             <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">

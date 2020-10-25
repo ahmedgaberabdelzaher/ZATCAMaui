@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
+using EGAZT.Views.NewDesign.Common;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -41,6 +43,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            if (CBAcknowledment.IsChecked && CBTermsAndConditions.IsChecked)
+                btnConfirmSummary.IsEnabled = true;
+            else
+                btnConfirmSummary.IsEnabled = false;
         }
 
         protected override void OnAppearing()
@@ -60,6 +66,28 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     viewModel.IsNewReqSummary = false;
                     viewModel.ReloadData(vatRefundsListResultModel);
                 }
+                MessagingCenter.Subscribe<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse", (obj, res) =>
+                {
+                    if (res)
+                    {
+                        try
+                        {
+                            viewModel.ConfirmSummaryBtnClicked();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                    }
+                    else
+                        PopupNavigation.PopAsync();
+                });
+                MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+                {
+                    if (res)
+                        CBTermsAndConditions.IsChecked = true;
+                    PopupNavigation.Instance.PopAsync();
+                });
             }
             catch (GAZTErrorException ex)
             {
@@ -82,11 +110,16 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     viewModel._navigationService.GoBack();
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse");
         }
 
         private void SetLTR()
@@ -139,14 +172,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         void ConfirmSummaryButton_Tapped(object sender, EventArgs e)
         {
-            try
-            {
-                viewModel.ConfirmSummaryBtnClicked();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            PopupNavigation.PushAsync(new YesNoAlertPopupView(AppResources.AcceptButton, AppResources.ZZCancel, AppResources.VATRefundReturnSubmitConfirmation));
         }
 
         public async void VoidButton_Tapped(System.Object sender, System.EventArgs e)
@@ -165,7 +191,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                         await viewModel.OnVoidBtnClicked();
 
-                       
+
 
                         var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(firstPageToRemove);
@@ -221,7 +247,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                         var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(firstPageToRemove);
-                       
+
                         viewModel._navigationService.GoBack();
                     }
                     catch (GAZTErrorException ex)
@@ -251,6 +277,33 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     }
                 }
             }
+        }
+
+        private void Acknowledgment_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (CBAcknowledment.IsChecked && CBTermsAndConditions.IsChecked)
+                btnConfirmSummary.IsEnabled = true;
+            else
+                btnConfirmSummary.IsEnabled = false;
+        }
+
+        private void TermsAndConditions_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (CBAcknowledment.IsChecked && CBTermsAndConditions.IsChecked)
+                btnConfirmSummary.IsEnabled = true;
+            else
+                btnConfirmSummary.IsEnabled = false;
+            if (e.Value)
+            {
+                CBTermsAndConditions.IsChecked = false;
+            }
+            if (CBTermsAndConditions.IsChecked)
+                PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundRequestTermsAndConditions));
+        }
+
+        private void TermsAndConditions_Tapped(object sender, EventArgs e)
+        {
+            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundRequestTermsAndConditions));
         }
     }
 }

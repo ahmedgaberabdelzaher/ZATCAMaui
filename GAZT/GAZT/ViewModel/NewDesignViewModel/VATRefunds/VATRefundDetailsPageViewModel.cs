@@ -14,7 +14,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 {
-    public class VATRefundDetailsPageViewModel: ViewModelBase
+    public class VATRefundDetailsPageViewModel : ViewModelBase
     {
         #region Commands
 
@@ -24,7 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public readonly IDialogService _dialogService;
 
         #endregion
-       
+
         private VatRefHeaderSetResult _vatRefundsHeaderSet { get; set; }
         public VatRefHeaderSetResult VATRefundsHeaderSet
         {
@@ -72,7 +72,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 RaisePropertyChanged("VatRefundsListResultModel");
             }
         }
-
+        private string _TPAddress;
+        public string TPAddress
+        {
+            get => _TPAddress;
+            set
+            {
+                _TPAddress = value;
+                RaisePropertyChanged(nameof(TPAddress));
+            }
+        }
+        public void SetTaxpayerAddress()
+        {
+            string address = string.Empty;
+            if (!string.IsNullOrEmpty(VatNewReqSummaryData.BuildingNo))
+                address += VatNewReqSummaryData.BuildingNo;
+            if (!string.IsNullOrEmpty(VatNewReqSummaryData.Quarter))
+                address += ", " + VatNewReqSummaryData.Quarter;
+            if (!string.IsNullOrEmpty(VatNewReqSummaryData.Street))
+                address += ", " + VatNewReqSummaryData.Street;
+            if (!string.IsNullOrEmpty(VatNewReqSummaryData.RegionDesc))
+                address += ", " + VatNewReqSummaryData.RegionDesc;
+            if (!string.IsNullOrEmpty(VatNewReqSummaryData.PostalCd))
+                address += ", " + VatNewReqSummaryData.PostalCd;
+            if (!string.IsNullOrEmpty(VatNewReqSummaryData.City))
+                address += ", " + VatNewReqSummaryData.City;
+            TPAddress = address;
+        }
         private VatRefundDisplayDataModel _vatNewReqSummaryData { get; set; }
         public VatRefundDisplayDataModel VatNewReqSummaryData
         {
@@ -279,6 +305,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
 
             VatNewReqSummaryData = vATRefundsSaveDataModel;
+            SetTaxpayerAddress();
 
             try
             {
@@ -287,7 +314,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsLoading = true;
                 });
 
-                //VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VATRefundsHeaderSet.RefundFbnum);
+                // VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VATRefundsHeaderSet.RefundFbnum);
                 SelectedIbanTypeFromList();
 
                 IBANType selectedIdType = IBANTypesList.Where(m => m.key == VatNewReqSummaryData.IdType).FirstOrDefault();
@@ -320,7 +347,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 await Task.Run(() =>
@@ -417,7 +444,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
 
         }
-        
+
         public async Task OnVoidBtnClicked()
         {
             VatNewReqSummaryData.Operationx = "04";

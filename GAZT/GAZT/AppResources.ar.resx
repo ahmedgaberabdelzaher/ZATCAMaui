@@ -7764,7 +7764,9 @@
   </data>
   <data name="ZOAttachmentsTitleTwo" xml:space="preserve">
     <value>حجم الملف المسموح به في المرفقات 10 MB
-تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من MB10 اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
+تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من MB10
+اعدادات الماسح الضوئي الموصى بها : 745*1024
+صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
  </data>>
   <data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
     <value>تم استلام طلب الغاء إعتراض الزكاة بنجاح</value>
@@ -8321,4 +8323,47 @@
 <data name="TINDeregDateDOBValidation" xml:space="preserve">
     <value>تاريخ الميلاد لا يمكن ان يكون اكبر من تاريخ الغاء التسجيل</value>
   </data>
+	<data name="VATRefundRequestReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي لطلب الاسترداد</value>
+  </data>
+	<data name="VATRefundType" xml:space="preserve">
+    <value>نوع الاسترداد</value>
+  </data>
+	<data name="VATRefundTaxpayerName" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+	<data name="VATRefundTaxpayerTIN" xml:space="preserve">
+    <value>رقم التعريف الضريبي</value>
+  </data>
+	<data name="VATRefundTaxpayerIDNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+	<data name="VATRefundTaxpayerAccNumber" xml:space="preserve">
+    <value>رقم حساب ضريبة القيمة المضافة</value>
+  </data>
+	<data name="VATRefundTaxpayerAddress" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+	<data name="VATRefundTermsAndConditions1" xml:space="preserve">
+    <value>بعناية قبل تقديم الطلب</value>
+  </data>
+	<data name="VATRefundTermsAndConditions2" xml:space="preserve">
+    <value>الشروط والاحكام </value>
+  </data>
+	<data name="VATRefundTermsAndConditions3" xml:space="preserve">
+    <value>الرجاء الاطلاع على</value>
+  </data>
+	<data name="VATRefundAcknowledgment" xml:space="preserve">
+    <value></value>
+  </data>
+	<data name="AcceptButton" xml:space="preserve">
+    <value>الموافقة على الشروط</value>
+  </data>
+	<data name="VATRefundRequestTermsAndConditions" xml:space="preserve">
+    <value></value>
+  </data>
+	<data name="VATRefundReturnSubmitConfirmation" xml:space="preserve">
+    <value></value>
+  </data>
+	
 </root>

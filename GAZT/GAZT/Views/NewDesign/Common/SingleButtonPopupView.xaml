@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             x:Class="EGAZT.Views.NewDesign.Common.SingleButtonPopupView">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" BackgroundColor="White">
+        <ScrollView>
+            <StackLayout>
+                <custom:CustomLabel Margin="10" x:Name="MessageText" Style="{StaticResource BodyLabelBlack}"/>
+                <buttons:SfButton  x:Name="btnOK" HorizontalOptions="FillAndExpand" 
+                                  Style="{StaticResource PrimaryButtonStyle}" Clicked="OnOkayButtonClicked" />
+            </StackLayout>
+        </ScrollView>
+    </yummy:PancakeView>
+</pages:PopupPage>
