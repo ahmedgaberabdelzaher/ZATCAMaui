@@ -252,14 +252,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     }
                 });
 
-                try
-                {
-                    await WebServiceManager.GAZTLogOff();
-                }
-                catch (Exception ex)
-                {
+                //try
+                //{
+                //    await WebServiceManager.GAZTLogOff();
+                //}
+                //catch (Exception ex)
+                //{
 
-                }
+                //}
 
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;

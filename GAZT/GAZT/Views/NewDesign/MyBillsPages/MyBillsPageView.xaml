@@ -223,7 +223,7 @@
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource SectionTitleBlackBold}" ></Span>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
-                                                    </custom:CustomLabel>
+                                                </custom:CustomLabel>
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,15,0,0" IsVisible="{Binding IsPartiallyPaidVisibile}"  HorizontalOptions="StartAndExpand" Spacing="-5">
