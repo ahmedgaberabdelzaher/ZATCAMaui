@@ -371,6 +371,7 @@
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*"/>
@@ -378,45 +379,51 @@
 
                                                     </Grid.ColumnDefinitions>
                                                     <StackLayout Grid.Row="0" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ReturnPeriod}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                        <Label Text="{Binding ReturnFbnum}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="1" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ReturnPeriod}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="1" Grid.Column="1" >
                                                         <Label Text="{Binding ReturnPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Row="1" Grid.Column="0" >
+                                                    <StackLayout Grid.Row="2" Grid.Column="0" >
                                                         <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="1" Grid.Column="1">
-                                                        <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Row="2" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsReassessedBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2" Grid.Column="1">
                                                         <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="3" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsReassessedBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Row="3" Grid.Column="1" >
-                                                        <Label Text="{Binding Offsets}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <StackLayout Grid.Row="3" Grid.Column="1">
+                                                        <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="4" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="4" Grid.Column="1" >
-                                                        <Label Text="{Binding NetCreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                        <Label Text="{Binding Offsets}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="5" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ZStatus}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="5" Grid.Column="1" >
-                                                        <Label Text="{Binding Status}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                        <Label Text="{Binding NetCreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="6" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsLastStatusChange}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZStatus}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="6" Grid.Column="1" >
+                                                        <Label Text="{Binding Status}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="7" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.VATRefundsLastStatusChange}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="7" Grid.Column="1" >
                                                         <Label Text="{Binding LastChgDt,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                 </Grid>
@@ -655,10 +662,10 @@
                                         <buttons:SfButton x:Name="btnConfirmSummary" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"
                                         Style="{StaticResource PrimaryButtonStyle}">
                                             <buttons:SfButton.Triggers>
-                                                <DataTrigger TargetType="buttons:SfButton" Value="true">
+                                                <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsEnabled,Source={x:Reference btnConfirmSummary}}" Value="true">
                                                     <Setter Property="BackgroundColor" Value="#d49504" />
                                                 </DataTrigger>
-                                                <DataTrigger TargetType="buttons:SfButton" Value="false">
+                                                <DataTrigger TargetType="buttons:SfButton" Value="false" Binding="{Binding btnConfirmSummary.IsEnabled,Source={x:Reference btnConfirmSummary}}">
                                                     <Setter Property="BackgroundColor" Value="{StaticResource NeutralGreay}" />
                                                 </DataTrigger>
                                             </buttons:SfButton.Triggers>

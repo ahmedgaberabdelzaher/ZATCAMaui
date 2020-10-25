@@ -14,6 +14,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 {
     public partial class VATRefundDetailsPageView : ContentPage
     {
+        bool isTandCChecked = false;
         VATRefundDetailsPageViewModel viewModel;
         VatRefundsListResultModel vatRefundsListResultModel;
         VatRefundDisplayDataModel vatRefundsSaveDataModel;
@@ -47,6 +48,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 btnConfirmSummary.IsEnabled = true;
             else
                 btnConfirmSummary.IsEnabled = false;
+            isTandCChecked = false;
         }
 
         protected override void OnAppearing()
@@ -68,6 +70,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 }
                 MessagingCenter.Subscribe<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse", (obj, res) =>
                 {
+                    PopupNavigation.Instance.PopAsync();
                     if (res)
                     {
                         try
@@ -79,13 +82,16 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                             Console.WriteLine(ex.Message);
                         }
                     }
-                    else
-                        PopupNavigation.PopAsync();
                 });
                 MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
                 {
                     if (res)
+                    {
+                        isTandCChecked = true;
                         CBTermsAndConditions.IsChecked = true;
+                    }
+                    else
+                        isTandCChecked = false;
                     PopupNavigation.Instance.PopAsync();
                 });
             }
@@ -293,12 +299,15 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 btnConfirmSummary.IsEnabled = true;
             else
                 btnConfirmSummary.IsEnabled = false;
-            if (e.Value)
+          // Display T&C popup on checkbox click if its not checked
+            if (!isTandCChecked && CBTermsAndConditions.IsChecked)
             {
                 CBTermsAndConditions.IsChecked = false;
-            }
-            if (CBTermsAndConditions.IsChecked)
+                isTandCChecked = false;
                 PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundRequestTermsAndConditions));
+            }
+            else if (isTandCChecked && !CBTermsAndConditions.IsChecked)
+                isTandCChecked = false;
         }
 
         private void TermsAndConditions_Tapped(object sender, EventArgs e)

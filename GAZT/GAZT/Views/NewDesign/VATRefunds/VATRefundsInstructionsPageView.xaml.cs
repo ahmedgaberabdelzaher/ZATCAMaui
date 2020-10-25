@@ -33,6 +33,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             if (App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+                btnConfirmVATRefundInstructions.FontSize = 15;
             }
             else
             {
