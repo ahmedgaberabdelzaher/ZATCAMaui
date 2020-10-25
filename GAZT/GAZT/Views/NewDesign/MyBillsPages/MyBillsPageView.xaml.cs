@@ -34,6 +34,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.PopulateDataInChips();
                 viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
                 viewModel.SelectedChipFilterItem = null;
+
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[1];
+                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[1];
+
                 if (billInfo != null)
                 {
                     if (billInfo.BillTypeName.Equals(AppResources.Paid))

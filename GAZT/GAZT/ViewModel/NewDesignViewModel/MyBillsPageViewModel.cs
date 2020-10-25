@@ -153,12 +153,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         double Amount = 0.00;
                         foreach (var item in MyBills)
                         {
-                            if (item.TestDueAmount != null)
-                            {
-                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                            //P = 0 - Paid
+                            //I = 1 - Partially Paid
+                            //O = 2 - Unpaid
 
+                            if(item.Status == "O")
+                            {
+                                if (item.TestDueAmount != null)
+                                {
+                                    Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                                }
+                            }
+                            else if(item.Status == "I")
+                            {
+                                if(item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
+                                {
+                                    Amount = Amount + Convert.ToDouble(item.TotalRemainingAmount);
+                                }
                             }
                         }
+
                         string format = "$#,##0.00;-$#,##0.00;Zero";
                         decimal d = Convert.ToDecimal(Amount.ToString());
                         decimal positiveMoney = d;
@@ -223,7 +237,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _isListVisible = value;
                 RaisePropertyChanged("IsListVisible");
             }
-        } 
+          } 
         private bool _isNoDataLableVisible = false;
         public bool isNoDataLableVisible
         {
@@ -352,6 +366,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                             }
                         }
+
                     }
                     else
                     {
@@ -405,11 +420,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         }
-        public void PopulateDataInChips()
+        public void PopulateDataInChips() 
+
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
-                new ChipModel(){Text =AppResources.Paid, TemplateType = AppResources.Paid, ImageSource="Paid_check.png"},
+                //new ChipModel(){Text =AppResources.Paid, TemplateType = AppResources.Paid, ImageSource="Paid_check.png"},
                 new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"},
                 new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"}
                 //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
