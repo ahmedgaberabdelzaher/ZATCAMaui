@@ -35,8 +35,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
                 viewModel.SelectedChipFilterItem = null;
 
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[1];
-                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[1];
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
+                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[0];
 
                 if (billInfo != null)
                 {

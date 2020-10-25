@@ -4945,6 +4945,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Total amount:</value>
     <comment>My bills</comment>
   </data>
+  <data name="MyBillsTotalUnPaidAmount" xml:space="preserve">
+    <value>Total unpaid amount:</value>
+  </data>
   <data name="NDInvoiceDueamount" xml:space="preserve">
     <value>Invoice Due amount</value>
     <comment>My bills</comment>

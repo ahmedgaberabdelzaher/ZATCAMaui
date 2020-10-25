@@ -426,8 +426,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
                 //new ChipModel(){Text =AppResources.Paid, TemplateType = AppResources.Paid, ImageSource="Paid_check.png"},
-                new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"},
-                new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"}
+                new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"},
+                new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"}
                 //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
             };
         }        

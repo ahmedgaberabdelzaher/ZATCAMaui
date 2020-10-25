@@ -8682,7 +8682,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                     else if (viewModel.ContinueText == AppResources.ZZZZConfirmAndCarryForward)
                     {
-                   
                         if (viewModel.IsDeclarationCheckedForSummary)
                         {
                             if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
@@ -8691,23 +8690,25 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 {
                                     if(viewModel.IsRefundNoMsgDisplayed==false)
                                     {
-                                        viewModel.IsRefundNoMsgDisplayed = true;
+                                        if (viewModel.IsAmendClicked == false)
+                                        {
+                                            viewModel.IsRefundNoMsgDisplayed = true;
 
-                                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                                        headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
-                                        headerAmountInfo.IsLinkAvailable = false;
-                                        headerAmountInfo.Message = AppResources.ZZZRefundNoMsg;
-                                        headerWithInfos.Add(headerAmountInfo);
+                                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                                            headerAmountInfo.HeaderText = AppResources.ZZZConfirmationMsg;
+                                            headerAmountInfo.IsLinkAvailable = false;
+                                            headerAmountInfo.Message = AppResources.ZZZRefundNoMsg;
+                                            headerWithInfos.Add(headerAmountInfo);
 
 
-                                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                        newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
+                                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                            newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
 
-                                        PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
-
+                                            PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+                                        }
                                     }
                                     else
                                     {

@@ -107,7 +107,7 @@
                 <custom:CustomLabel  HorizontalOptions="StartAndExpand">
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span  Text="{x:Static ResourceManager:AppResources.NDTotalAmount}" Style="{StaticResource CaptionLabelGrey}" ></Span>
+                                                        <Span  Text="{x:Static ResourceManager:AppResources.MyBillsTotalUnPaidAmount}" Style="{StaticResource CaptionLabelGrey}" ></Span>
                                                         <Span Text="&#160;" Style="{StaticResource SectionTitleBlackBold}" ></Span>
                                                         <Span Text="{Binding AmountLabel}"  Style="{StaticResource CaptionLabelGrey}" ></Span>
                                                     </FormattedString>

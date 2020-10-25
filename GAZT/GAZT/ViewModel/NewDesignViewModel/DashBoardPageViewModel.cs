@@ -1031,59 +1031,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (DashboardData.results != null && DashboardData.results.Count > 0)
                 {
                     //Paid Bills
-                    if (DashboardData.results[0] != null && DashboardData.results[0].PbillsTot != null)
-                    {
-                        BillTypeCorrepsondingCountAndAmount PaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
+                    //if (DashboardData.results[0] != null && DashboardData.results[0].PbillsTot != null)
+                    //{
+                    //    BillTypeCorrepsondingCountAndAmount PaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
 
-                        PaidBillCountAndAmount.Status = BillType.PbillsTot;
+                    //    PaidBillCountAndAmount.Status = BillType.PbillsTot;
 
-                        String PaidBillsstr = DashboardData.results[0].PbillsTot.TrimStart(new Char[] { '0' });
-                        String PaidBillsAmountstr = DashboardData.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
+                    //    String PaidBillsstr = DashboardData.results[0].PbillsTot.TrimStart(new Char[] { '0' });
+                    //    String PaidBillsAmountstr = DashboardData.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
 
-                        if (string.IsNullOrEmpty(PaidBillsstr))
-                        {
-                            PaidBillsstr = "0";
-                        }
-                        else if (PaidBillsstr.Substring(0, 1) == ".")
-                        {
-                            PaidBillsstr = "0" + PaidBillsstr;
-                        }
-                        if (string.IsNullOrEmpty(PaidBillsAmountstr))
-                        {
-                            PaidBillsAmountstr = "0";
-                        }
-                        else if (PaidBillsAmountstr.Substring(0, 1) == ".")
-                        {
-                            PaidBillsAmountstr = "0" + PaidBillsAmountstr;
-                        }
-                        string TotalPaidAmount = PaidBillsAmountstr;
-                        try
-                        {
-
-
-                            PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
-                            PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
-                            PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
-
-                            SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
-                            MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
-
-                            MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
-                            BillCount = PaidBillCountAndAmount.BillCount.ToString();
-                            // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
-                            ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
-
-                            iBillsCount = Convert.ToInt32(BillCount);
-                            PaidBillCount = BillCount;
-
-                        }
-                        catch (Exception ex)
-                        {
-
-                        }
+                    //    if (string.IsNullOrEmpty(PaidBillsstr))
+                    //    {
+                    //        PaidBillsstr = "0";
+                    //    }
+                    //    else if (PaidBillsstr.Substring(0, 1) == ".")
+                    //    {
+                    //        PaidBillsstr = "0" + PaidBillsstr;
+                    //    }
+                    //    if (string.IsNullOrEmpty(PaidBillsAmountstr))
+                    //    {
+                    //        PaidBillsAmountstr = "0";
+                    //    }
+                    //    else if (PaidBillsAmountstr.Substring(0, 1) == ".")
+                    //    {
+                    //        PaidBillsAmountstr = "0" + PaidBillsAmountstr;
+                    //    }
+                    //    string TotalPaidAmount = PaidBillsAmountstr;
+                    //    try
+                    //    {
 
 
-                    }
+                    //        PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
+                    //        PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
+                    //        PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
+
+                    //        SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
+                    //        MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
+
+                    //        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
+                    //        BillCount = PaidBillCountAndAmount.BillCount.ToString();
+
+                    //        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
+                    //        ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
+
+                    //        iBillsCount = Convert.ToInt32(BillCount);
+                    //        PaidBillCount = BillCount;
+
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+
+                    //    }
+
+
+                    //}
                     //Partially Paid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
                     {
@@ -1113,6 +1114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         PartiallyPaidBillCountAndAmount.BillTypeName = AppResources.Partial;
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(PartiallyPaidBillCountAndAmount);
+                        MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
 
                         MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
                         BillCount = PartiallyPaidBillCountAndAmount.BillCount.ToString();
@@ -1168,11 +1170,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Colors = ColorsChild;
 
                     BillCount = iBillsCount.ToString();
-                            PaidString = AppResources.Paid+" "+PaidBillCount;
-        PartiallyPaidString = AppResources.Partiallynewui+" "+PartiallyPaidBillCount ;
-        UnPaidString = AppResources.UnPaid+" "+UnPaidBillCount;
 
-    }
+                    PaidString = AppResources.Paid+" "+PaidBillCount;
+                    PartiallyPaidString = AppResources.Partiallynewui+" "+PartiallyPaidBillCount ;
+                    UnPaidString = AppResources.UnPaid+" "+UnPaidBillCount;
+
+                }
             }
             catch (Exception ex)
             {

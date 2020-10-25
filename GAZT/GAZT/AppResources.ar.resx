@@ -748,7 +748,7 @@
     <value>إجمالي المبلغ المدفوع</value>
   </data>
   <data name="ZTotalUnPaidAmount" xml:space="preserve">
-    <value>Total unpaid amount</value>
+    <value>اجمالي المبلغ المستحق</value>
   </data>
   <data name="ZUserNotValid" xml:space="preserve">
     <value>User is not currently valid</value>
@@ -4939,6 +4939,9 @@
   <data name="NDTotalAmount" xml:space="preserve">
     <value>المبلغ الإجمالي:</value>
     <comment>My bills</comment>
+  </data>
+   <data name="MyBillsTotalUnPaidAmount" xml:space="preserve">
+    <value>اجمالي المبلغ المستحق:</value>
   </data>
   <data name="NDInvoiceDueamount" xml:space="preserve">
     <value>المبلغ المستحق </value>
