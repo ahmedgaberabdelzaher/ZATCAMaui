@@ -1951,16 +1951,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void AddOutletDecisionOptions()
         {
             OutletDecisionOptions = new ObservableCollection<VATInstalmentPlanModel>();
-            OutletDecisionOptions.Add(new VATInstalmentPlanModel
-            {
-                ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeZakat,
-                ActiveOutletDecisionOptionsIsSelected = true
-            });
-            OutletDecisionOptions.Add(new VATInstalmentPlanModel
-            {
-                ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
-                ActiveOutletDecisionOptionsIsSelected = false
-            });
+            //OutletDecisionOptions.Add(new VATInstalmentPlanModel
+            //{
+            //    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeZakat,
+            //    ActiveOutletDecisionOptionsIsSelected = true
+            //});
+            //OutletDecisionOptions.Add(new VATInstalmentPlanModel
+            //{
+            //    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
+            //    ActiveOutletDecisionOptionsIsSelected = false
+            //});
             OutletDecisionOptions.Add(new VATInstalmentPlanModel
             {
                 ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeVAT,

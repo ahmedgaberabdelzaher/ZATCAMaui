@@ -2149,7 +2149,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (TinDeregistrationData.AEffectiveDt != null)
                             DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDt);
-                        PickerDobToDisplay = DateTime.Parse(TinDeregistrationData.AEffectiveDt).Date.ToString("dd MMM yyyy");
+                        PickerDobToDisplay = DateTime.Parse(TinDeregistrationData.AEffectiveDt).Date.ToString("dd/MM/yyyy");
                     }
 
 
