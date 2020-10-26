@@ -137,7 +137,6 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             if (item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013")
             {
 
-               
                 App.selectedVATItem = item.Fbnum;
                 App.selectedVATItemFbust = item.Fbust;
                 viewModel._navigationService.NavigateTo(App.VatInstalmentPlanPageView);

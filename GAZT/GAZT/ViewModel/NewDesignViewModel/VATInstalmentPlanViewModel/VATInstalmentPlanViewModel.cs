@@ -2491,14 +2491,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     });
 
-
-                    EnableStatementsView();
-                    BindStatementsView();
+                    if (VatInstalments != null && VatInstalments.d != null)
+                    {
+                        EnableStatementsView();
+                        BindStatementsView();
+                    }
+                  
 
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
                 }
                 catch (InternetException ex)
                 {
@@ -3462,7 +3469,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
+                    _navigationService.GoBack();
 
                 });
                 return response;

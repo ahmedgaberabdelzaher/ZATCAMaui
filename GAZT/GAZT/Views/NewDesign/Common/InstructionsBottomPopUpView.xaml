@@ -12,6 +12,7 @@
                  xmlns:custom="clr-namespace:GAZT"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 CloseWhenBackgroundIsClicked="False"
                  x:Class="EGAZT.Views.NewDesign.InstructionsBottomPopUpView">
 
     <pages:PopupPage.Resources>
