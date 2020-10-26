@@ -29,9 +29,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         #region Variable
 
         public string PageTitle { get; set; }
-        public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private Nreg_IdItem idItem { get; set; } = null;
+        public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         //private OutletNumber number;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
@@ -41,6 +42,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 if (_currentTab == value)
                 {
+                    if (IsNavigationCompletedToSuccessfulPage == false)
+                    {
+                        Device.BeginInvokeOnMainThread(() => fetchTabDataAndBind(_currentTab));
+                    }
                     return;
                 }
                 _currentTab = value;
@@ -75,7 +80,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         NxtButtonLabel = AppResources.ZZNext;
                         break;
                 }
-                fetchTabDataAndBind(_currentTab);
+                Device.BeginInvokeOnMainThread(() => fetchTabDataAndBind(_currentTab));
             }
         }
         public ObservableCollection<string> _tabList { get; set; }
@@ -1421,7 +1426,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             Console.WriteLine(e.StackTrace);
                             if (e is HTTPBadRequestException)
                             {
-                                await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                                // await _dialogService.ShowMessage(e.Message, AppResources.Information);
                             }
                         }
                         finally
@@ -1460,7 +1466,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                         Console.WriteLine(e.StackTrace);
                                         if (e is HTTPBadRequestException)
                                         {
-                                            await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                                            //await _dialogService.ShowMessage(e.Message, AppResources.Information);
                                         }
                                     }
                                     finally
@@ -1773,7 +1780,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
         private void ShowValidationPopup(string _message)
         {
-            _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
+            // _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
         }
 
         private void OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum selectedOption)
@@ -2177,18 +2185,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                     else
                                     {
                                         attachmentName = string.Empty;
-                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                        // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
 
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTAttachmentSizeNotfication));
+                                    // await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
                                 }
                             }
                             else
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                //  await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                     }
@@ -2248,7 +2259,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             SummaryExpendedCard = (EstablishmentRegistrationTabsEnum)_enum;
         }
 
-        private async void fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
+        public async void fetchTabDataAndBind(EstablishmentRegistrationTabsEnum _enum)
         {
             clearFormData(_enum);
             try
@@ -2262,7 +2273,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {
-                        _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                        if (IsNavigationCompletedToSuccessfulPage == false)
+                        {
+                            IsNavigationCompletedToSuccessfulPage = true;
+                            _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                        }
+                    }
+                    else
+                    {
+                        IsNavigationCompletedToSuccessfulPage = false;
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
@@ -2400,7 +2419,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             else
             {
                 _selectedDOBDate?.Clear();
-                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
+                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
                 var arr = hijiriDate.Split('/');
                 _selectedDOBDate.Add(arr[2]);
                 _selectedDOBDate.Add(arr[1]);
@@ -2412,14 +2431,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedDOBDate = _selectedDOBDate;
-                    if (SelectedDOB != null)
+                    if (!string.IsNullOrWhiteSpace(SelectedDOB))
                         DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedDOBHijiriDate = _selectedDOBDate;
                     if (!string.IsNullOrEmpty(SelectedDOB))
-                        DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
+                        DisplaySelectedDOB = HijriDateString(_dob);
                 }
             }
             else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
@@ -2429,116 +2448,125 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportIssueDate = _selectedDOBDate;
-                    if (PassportIssueDate != null && (new DateTime()).Date.ToString() != _issueDate.Date.ToString())
+                    //if (PassportIssueDate != null && (new DateTime()).Date.ToString() != _issueDate.Date.ToString())
+                    if (!string.IsNullOrWhiteSpace(PassportIssueDate))
                         DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportIssueHijiriDate = _selectedDOBDate;
-                    if (PassportIssueDate != null && (new DateTime()).Date.ToString() != _issueDate.Date.ToString())
-                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
+                    //if (PassportIssueDate != null && (new DateTime()).Date.ToString("yyyy/MM/dd", new CultureInfo("en-sa")) != _issueDate.Date.ToString())
+                    if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                        DisplayPassportIssueDate = HijriDateString(_issueDate);
                 }
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportExpireDate = _selectedDOBDate;
-                    if (PassportExpireDate != null && (new DateTime()).Date.ToString() != _expiryDate.Date.ToString())
+                    // if (PassportExpireDate != null && (new DateTime()).Date.ToString() != _expiryDate.Date.ToString())
+                    if (!string.IsNullOrWhiteSpace(PassportExpireDate))
                         DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportExpireHijiriDate = _selectedDOBDate;
-                    if (PassportExpireDate != null && (new DateTime()).Date.ToString() != _expiryDate.Date.ToString())
-                        DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
+                    // if (PassportExpireDate != null && (new DateTime()).Date.ToString("yyyy/MM/dd", new CultureInfo("en-sa")) != _expiryDate.Date.ToString())
+                    if (!string.IsNullOrWhiteSpace(PassportExpireDate))
+                        DisplayPassportExpireDate = HijriDateString(_expiryDate);
                 }
             }
         }
         private async void udpdateDates(string selectedDate = null)
         {
-            IsLoading = true;
-            var _calendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "H" : "G";
-            financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
+            try
             {
-                ACaltype = _calendarType,
-                ADateComm = taxPayerDetails?.Commdt
-            });
-            if (_calendarType == "H")
-            {
-                string dd = financialDetail?.ACommDate.Substring(6, 2);
-                string mm = financialDetail?.ACommDate.Substring(4, 2);
-                string yy = financialDetail?.ACommDate.Substring(0, 4);
-                CommDate = $"{Int16.Parse(yy) - 1:0000}/{Int16.Parse(mm):00}/{Int16.Parse(dd):00}";
-            }
-            else
-            {
-                CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
-            }
-
-
-            if (selectedDate == null)
-            {
-                string dd = financialDetail?.ACommDate.Substring(6, 2);
-                string mm = financialDetail?.ACommDate.Substring(4, 2);
-                if (dd != "01")
+                IsLoading = true;
+                var _CalendarType = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key == "2" ? "H" : "G";
+                financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                 {
-                    if (taxPayerDetails?.Fdcalender == "1")
+                    ACaltype = _CalendarType,
+                    ADateComm = taxPayerDetails?.Commdt
+                });
+                if (_CalendarType == "H")
+                {
+                    string dd = financialDetail?.ACommDate.Substring(6, 2);
+                    string mm = financialDetail?.ACommDate.Substring(4, 2);
+                    string yy = financialDetail?.ACommDate.Substring(0, 4);
+                    CommDate = $"{Int16.Parse(yy) - 1:0000}/{Int16.Parse(mm):00}/{Int16.Parse(dd):00}";
+                }
+                else
+                {
+                    CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
+                }
+                if (selectedDate == null)
+                {
+                    string dd = financialDetail?.ACommDate.Substring(6, 2);
+                    string mm = financialDetail?.ACommDate.Substring(4, 2);
+                    if (dd != "01")
                     {
-                        if (dd == "29" && mm == "02")
+                        if (taxPayerDetails?.Fdcalender == "1")
                         {
-                            dd = $"{Int16.Parse(dd) - 2:00}";
+                            if (dd == "29" && mm == "02")
+                            {
+                                dd = $"{Int16.Parse(dd) - 2:00}";
+                            }
+                            else
+                            {
+                                dd = $"{Int16.Parse(dd) - 1:00}";
+                            }
                         }
                         else
                         {
                             dd = $"{Int16.Parse(dd) - 1:00}";
                         }
+                        FiscalMonth = mm;
+                        FiscalDay = dd;
+                    }
+                    else if (dd == "01" && mm == "01")
+                    {
+                        FiscalMonth = "12";
+                        FiscalDay = AppResources.ESTFinLastDay;
                     }
                     else
                     {
-                        dd = $"{Int16.Parse(dd) - 1:00}";
+                        mm = $"{Int16.Parse(mm) - 1:00}";
+                        FiscalMonth = mm;
+                        FiscalDay = AppResources.ESTFinLastDay;
                     }
-                    FiscalMonth = mm;
-                    FiscalDay = dd;
+                    //FiscalMonth = mm;
+                    //FiscalDay = dd;
                 }
-                else if (dd == "01" && mm == "01")
+                financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
                 {
-                    FiscalMonth = "12";
-                    FiscalDay = AppResources.ESTFinLastDay;
-                }
-                else
+                    ACaltype = _CalendarType,
+                    AMonth = FiscalMonth,
+                    EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                    ADateComm = taxPayerDetails?.Commdt
+                });
+                TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
                 {
-                    mm = $"{Int16.Parse(mm) - 1:00}";
-                    FiscalMonth = mm;
-                    FiscalDay = AppResources.ESTFinLastDay;
+                    if (financialDetail?.EIslmedate == "28")
+                    {
+                        dates.Remove("29");
+                        dates.Remove("30");
+                    }
+                    else if (financialDetail?.EIslmedate == "29")
+                    {
+                        dates.Remove("29");
+                        dates.Remove("30");
+                    }
+                    else if (financialDetail?.EIslmedate == "30")
+                    {
+                        dates.Remove("30");
+                    }
                 }
-                //FiscalMonth = mm;
-                //FiscalDay = dd;
+                IsLoading = false;
             }
-            financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
+            catch (Exception ex)
             {
-                ACaltype = _calendarType,
-                AMonth = FiscalMonth,
-                EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
-                ADateComm = taxPayerDetails?.Commdt
-            });
-            TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_calendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
-
-            if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
-            {
-                if (financialDetail?.EIslmedate == "28")
-                {
-                    dates.Remove("29");
-                    dates.Remove("30");
-                }
-                else if (financialDetail?.EIslmedate == "29")
-                {
-                    dates.Remove("29");
-                    dates.Remove("30");
-                }
-                else if (financialDetail?.EIslmedate == "30")
-                {
-                    dates.Remove("30");
-                }
+                IsLoading = false;
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
-            IsLoading = false;
         }
         private async void bindingOutletList()
         {
@@ -2850,7 +2878,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
                     taxPayerDetails.Orgnonresidentoptions = string.IsNullOrEmpty(SelectedOrgNonResidentOptions) ? string.Empty : SelectedOrgNonResidentOptions;
                     taxPayerDetails.Orgnonresidentactivity = string.IsNullOrEmpty(SelectedOrgNonResidentActivity) ? string.Empty : SelectedOrgNonResidentActivity;
-
+                    taxPayerDetails.Chkfg = "X";
                     if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
                     {
                         taxPayerDetails.Rentatt = "X";
@@ -2878,6 +2906,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.GrandfatherName = string.IsNullOrEmpty(GrandFatherName) ? string.Empty : GrandFatherName;
                     taxPayerDetails.FamilyName = string.IsNullOrEmpty(FamilyName) ? string.Empty : FamilyName;
                     taxPayerDetails.Initials = string.IsNullOrEmpty(Initial) ? string.Empty : Initial;
+                    taxPayerDetails.Chkfg = "X";
                     if (SelectedGender?.ToLower() == GenderList.FirstOrDefault().ToLower())
                     {
                         taxPayerDetails.Xsexm = "X";
@@ -2915,7 +2944,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     taxPayerDetails.Nreg_IdSet.results.Clear();
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
-
+                    taxPayerDetails.Chkfg = "X";
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
                     {
 
@@ -2947,6 +2976,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
                     taxPayerDetails.Fdenddt = Fdenddt;
+                    taxPayerDetails.Chkfg = "X";
 
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
@@ -2978,7 +3008,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 ex.ToString();
                 if (ex is HTTPBadRequestException)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 }
                 return false;
             }
@@ -3116,7 +3147,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     flag = true;
                     return flag;
                 }
-                
+
                 // EstablishmentRegistrationTabsEnum.Declaration
 
                 taxPayerDetails?.off_notesSet?.results?.Clear();
@@ -3232,6 +3263,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
                     idItem = null;
                     SelectedDOB = string.Empty;
+                    DisplaySelectedDOB = string.Empty;
+                    SelectedDOBDate = null;
+                    SelectedDOBHijiriDate = null;
                     FirstName = string.Empty;
                     LastName = string.Empty;
                     FatherName = string.Empty;
@@ -3249,7 +3283,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     PassportNumber = string.Empty;
                     SelectedPassportIssueCountry = null;
                     PassportIssueDate = string.Empty;
+                    DisplayPassportIssueDate = string.Empty;
+                    SelectedPassportIssueDate = null;
+                    SelectedPassportIssueHijiriDate = null;
                     PassportExpireDate = string.Empty;
+                    DisplayPassportExpireDate = string.Empty;
+                    SelectedPassportExpireDate = null;
+                    SelectedPassportExpireHijiriDate = null;
                     UploadedPassportDocumentsList?.Clear();
                     break;
                 case EstablishmentRegistrationTabsEnum.Outlets:
@@ -3278,6 +3318,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     IsSaudi = false;
                     UploadedRentDocumentsList?.Clear();
                     break;
+            }
+        }
+
+        private string HijriDateString(DateTime date)
+        {
+            try
+            {
+                return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+            }
+            catch (Exception)
+            {
+                HijriCalendar hijriCalendar = new HijriCalendar();
+                return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }
         }
         #endregion

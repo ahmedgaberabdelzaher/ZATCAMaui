@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private Nreg_IdItem idItem { get; set; } = null;
-        public bool IsNavigationCompletedToSuccessfulPage = false;
+        public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         //private OutletNumber number;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab

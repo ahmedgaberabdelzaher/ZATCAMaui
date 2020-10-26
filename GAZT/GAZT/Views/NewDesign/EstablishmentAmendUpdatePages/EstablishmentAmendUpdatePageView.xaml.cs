@@ -32,15 +32,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel = App.Locator.EstablishmentAmendUpdatePage;
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+            viewModel.IsNavigationCompletedToSuccessfulPage = false;
             BindingContext = viewModel;
-            if (App.ZAKATType == Enums.PageExecutionType.Amend)
-            {
-                viewModel.PageTitle = AppResources.ZZAmend;
-            }
-            else if (App.ZAKATType == Enums.PageExecutionType.Update)
-            {
-                viewModel.PageTitle = AppResources.TPUpdate;
-            }
+            //if (App.ZAKATType == Enums.PageExecutionType.Amend)
+            //{
+            //    viewModel.PageTitle = AppResources.ZZAmend;
+            //}
+            //else if (App.ZAKATType == Enums.PageExecutionType.Update)
+            //{
+            //    viewModel.PageTitle = AppResources.TPUpdate;
+            //}
         }
 
         protected override void OnAppearing()
@@ -92,7 +93,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 dobPicker.IsOpen = true;
             }
@@ -104,7 +105,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
         {
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 passportIssuePicker.IsOpen = true;
             }
@@ -116,7 +117,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 passportExpiryPicker.IsOpen = true;
             }
@@ -147,13 +148,24 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            Image item = sender as Image;
+            Attachment data = item.BindingContext as Attachment;
+            string QuestionMark = string.Empty;
+            if (App.IsArabic)
+            {
+                QuestionMark = "؟";
+            }
+            else
+            {
+                QuestionMark = "?";
+            }
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + data.Filename + QuestionMark);
             confirmPopup.OnSelect = (str) =>
             {
                 if (str == "Yes")
                 {
-                    var item = sender as Image;
-                    var data = item.BindingContext as Attachment;
+                    //var item = sender as Image;
+                    //var data = item.BindingContext as Attachment;
                     viewModel.OnRentAttachmentDeleteButtonTapped(data);
                 }
             };
@@ -162,13 +174,24 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         async void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            Image item = sender as Image;
+            Attachment data = item.BindingContext as Attachment;
+            string QuestionMark = string.Empty;
+            if (App.IsArabic)
+            {
+                QuestionMark = "؟";
+            }
+            else
+            {
+                QuestionMark = "?";
+            }
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + data.Filename + QuestionMark);
             confirmPopup.OnSelect = (str) =>
             {
                 if (str == "Yes")
                 {
-                    var item = sender as Image;
-                    var data = item.BindingContext as Attachment;
+                    //var item = sender as Image;
+                    //var data = item.BindingContext as Attachment;
                     viewModel.OnPassportAttachmentDeleteButtonTapped(data);
                 }
             };
@@ -236,7 +259,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         void dobPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -254,7 +277,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         void passportIssuePicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -272,7 +295,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         void passportExpiryPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
-            if (viewModel?.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
