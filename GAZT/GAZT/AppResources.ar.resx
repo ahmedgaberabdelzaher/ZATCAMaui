@@ -8385,5 +8385,7 @@
 		 قائمة تفصيلية بالمشتريات
 	</value>
   </data>
-	
+	<data name="ZAKATAmendUpdatePageTitle" xml:space="preserve">
+    <value>عرض / تعديل التفاصيل</value>
+  </data>
 </root>

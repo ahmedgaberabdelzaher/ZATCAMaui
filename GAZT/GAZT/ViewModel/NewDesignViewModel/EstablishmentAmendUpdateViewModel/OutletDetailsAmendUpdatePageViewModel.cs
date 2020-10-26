@@ -1078,37 +1078,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //    return false;
                 //}
                 //else
-                if (string.IsNullOrWhiteSpace(BuildingNumber))
+                if (AddressDetails.BuildinNo && string.IsNullOrWhiteSpace(BuildingNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(FloorNumber))
+                else if (AddressDetails.Floor && string.IsNullOrWhiteSpace(FloorNumber))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddFloorNumber));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(Street))
+                else if (AddressDetails.Street && string.IsNullOrWhiteSpace(Street))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddStreet));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(Quarter))
+                else if (AddressDetails.Quarter && string.IsNullOrWhiteSpace(Quarter))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddQuarter));
                     return false;
                 }
-                else if (string.IsNullOrWhiteSpace(PostalCode))
+                else if (AddressDetails.PostelCode && string.IsNullOrWhiteSpace(PostalCode))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostal));
                     return false;
                 }
-                else if (PostalCode.Length <= 1)
+                else if (AddressDetails.PostelCode && PostalCode.Length <= 1)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostalCode5));
                     return false;
                 }
-                else if (PostalCode == "12345")
+                else if (AddressDetails.PostelCode && PostalCode == "12345")
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTInValidPostalCode));
                     return false;
@@ -1118,17 +1118,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddAdditional));
                 //    return false;
                 //}
-                else if (Country == null)
+                else if (AddressDetails.Country && Country == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
                     return false;
                 }
-                else if (Provinance == null)
+                else if (AddressDetails.Province && Provinance == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddProvinance));
                     return false;
                 }
-                else if (City == null)
+                else if (AddressDetails.City && City == null)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
                     return false;
@@ -1138,66 +1138,68 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddHouseNumber));
                 //    return false;
                 //}
-                else
-                if (string.IsNullOrWhiteSpace(BuildingNumberSame))
+                if (AddressDetails.CBSameAsPhysical)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddBuildingNumber));
-                    return false;
-                }
-                else if (string.IsNullOrWhiteSpace(FloorNumberSame))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddFloorNumber));
-                    return false;
-                }
-                else if (string.IsNullOrWhiteSpace(StreetSame))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddStreet));
-                    return false;
-                }
-                else if (string.IsNullOrWhiteSpace(QuarterSame))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddQuarter));
-                    return false;
-                }
-                else if (string.IsNullOrWhiteSpace(PostalCodeSame))
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostal));
-                    return false;
-                }
-                else if (PostalCodeSame.Length <= 1)
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostalCode5));
-                    return false;
-                }
-                else if (PostalCodeSame == "12345")
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
-                    return false;
-                }
-                //else if (string.IsNullOrWhiteSpace(AddNumberSame))
-                //{
-                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddAdditional));
-                //    return false;
-                //}
-                else if (CountrySame == null)
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));
-                    return false;
-                }
-                else if (ProvinanceSame == null)
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddProvinance));
-                    return false;
-                }
-                else if (CitySame == null)
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCity));
-                    return false;
+                    if (string.IsNullOrWhiteSpace(BuildingNumberSame))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddBuildingNumber));
+                        return false;
+                    }
+                    else if (string.IsNullOrWhiteSpace(FloorNumberSame))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddFloorNumber));
+                        return false;
+                    }
+                    else if (string.IsNullOrWhiteSpace(StreetSame))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddStreet));
+                        return false;
+                    }
+                    else if (string.IsNullOrWhiteSpace(QuarterSame))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddQuarter));
+                        return false;
+                    }
+                    else if (string.IsNullOrWhiteSpace(PostalCodeSame))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostal));
+                        return false;
+                    }
+                    else if (PostalCodeSame.Length <= 1)
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostalCode5));
+                        return false;
+                    }
+                    else if (PostalCodeSame == "12345")
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
+                        return false;
+                    }
+                    //else if (string.IsNullOrWhiteSpace(AddNumberSame))
+                    //{
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddAdditional));
+                    //    return false;
+                    //}
+                    else if (CountrySame == null)
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));
+                        return false;
+                    }
+                    else if (ProvinanceSame == null)
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddProvinance));
+                        return false;
+                    }
+                    else if (CitySame == null)
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCity));
+                        return false;
+                    }
                 }
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
             {
-                if (string.IsNullOrWhiteSpace(OutletName))
+                if (OutletDetails.OutletName && string.IsNullOrWhiteSpace(OutletName))
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletName));
                     return false;

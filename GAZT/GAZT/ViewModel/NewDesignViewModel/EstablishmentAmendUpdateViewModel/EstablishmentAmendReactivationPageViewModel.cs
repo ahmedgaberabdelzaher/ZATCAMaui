@@ -1113,6 +1113,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
             }
         }
+        private bool _isDeclarationBtnEnabled;
+        public bool IsDeclarationBtnEnabled
+        {
+            get => _isDeclarationBtnEnabled;
+            set
+            {
+                _isDeclarationBtnEnabled = value;
+                RaisePropertyChanged(nameof(IsDeclarationBtnEnabled));
+            }
+        }
         private bool _eSTLedge = false;
         public bool ESTLedge
         {
@@ -1120,6 +1130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             set
             {
                 _eSTLedge = value;
+                IsDeclarationBtnEnabled = _eSTLedge;
                 RaisePropertyChanged(nameof(ESTLedge));
             }
         }
@@ -1393,10 +1404,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         IsLoading = true;
                         try
                         {
-                            taxPayerDetails.Draftfg = "X";
-                            taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                            taxPayerDetails.UserTypx = "TP";
-                            var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                            if (SetDataForSaveDraft(_currentTab))
+                            {
+                                taxPayerDetails.Draftfg = "X";
+                                taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                                taxPayerDetails.UserTypx = "TP";
+                                var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
+                                {
+                                    PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully"));
+                                }
+                            }
                         }
                         catch (Exception e)
                         {
@@ -1561,6 +1579,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     TaxPayerDetailsAvailability.FamilyName = false;
                     TaxPayerDetailsAvailability.Initial = false;
                     TaxPayerDetailsAvailability.Gender = true;
+                    TaxPayerDetailsAvailability.IsFamilyNameVisible = true;
+                    TaxPayerDetailsAvailability.IsInitialVisible = true;
+                    TaxPayerDetailsAvailability.IsGenderVisible = true;
                     TaxPayerDetailsAvailability.Nationality = true;
                     TaxPayerDetailsAvailability.IsNationalityVisible = true;
                     TaxPayerDetailsAvailability.Citizen = true;
@@ -2281,13 +2302,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     if (App.IsArabic)
                     {
-                        GCCIDType = ArIDType[idItem?.Type];
+                        GCCIDType = idItem != null ? ArIDType[idItem?.Type] : "";
                     }
                     else
                     {
-                        GCCIDType = EnIDType[idItem?.Type];
+                        GCCIDType = idItem != null ? EnIDType[idItem?.Type] : "";
                     }
-                    GCCIDTypeIdNumberValue = idItem.Idnumber;
+                    GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2303,17 +2324,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     {
                         SelectedGender = GenderList.FirstOrDefault();
                     }
-                    SelectedTaxpayerPDNationality = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
-                    SelectedCitizen = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
+                    SelectedTaxpayerPDNationality = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
+                    SelectedCitizen = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
                     //SelectedCitizen = SelectedCitizen == null ? "" : SelectedCitizen;
-                    SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
+                    SelectedResidence = TaxpayerFullNationlityList?.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem?.Idnumber;
-                    SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
+                    SelectedPassportIssueCountry = TaxpayerFullNationlityList?.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
                     PassportIssueDate = passportItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     PassportExpireDate = passportItem?.ValidDateTo?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     PassportAttachmentPrepopulateCheck(taxPayerDetails);
@@ -2334,8 +2355,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
-                    SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
-                    CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
+                    SelectedMethod = EnMethodList?[taxPayerDetails?.Accmethod];
+                    CalendarType = EnCalendarTypeList?[taxPayerDetails?.Fdcalender];
                     udpdateDates();
                     //FiscalMonth = taxPayerDetails?.Fdmonth;
                     //FiscalDay = taxPayerDetails?.Fdday;
@@ -2379,7 +2400,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             else
             {
                 _selectedDOBDate?.Clear();
-                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
                 var arr = hijiriDate.Split('/');
                 _selectedDOBDate.Add(arr[2]);
                 _selectedDOBDate.Add(arr[1]);
@@ -2397,8 +2418,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 else
                 {
                     SelectedDOBHijiriDate = _selectedDOBDate;
-                    if (SelectedDOB != null)
-                        DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    if (!string.IsNullOrEmpty(SelectedDOB))
+                        DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
                 }
             }
             else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
@@ -2408,26 +2429,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportIssueDate = _selectedDOBDate;
-                    if (PassportIssueDate != null)
+                    if (PassportIssueDate != null && (new DateTime()).Date.ToString() != _issueDate.Date.ToString())
                         DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportIssueHijiriDate = _selectedDOBDate;
-                    if (PassportIssueDate != null)
-                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    if (PassportIssueDate != null && (new DateTime()).Date.ToString() != _issueDate.Date.ToString())
+                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
                 }
                 if (taxPayerDetails?.Caltp == "G")
                 {
                     SelectedPassportExpireDate = _selectedDOBDate;
-                    if (PassportExpireDate != null)
+                    if (PassportExpireDate != null && (new DateTime()).Date.ToString() != _expiryDate.Date.ToString())
                         DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else
                 {
                     SelectedPassportExpireHijiriDate = _selectedDOBDate;
-                    if (PassportExpireDate != null)
-                        DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    if (PassportExpireDate != null && (new DateTime()).Date.ToString() != _expiryDate.Date.ToString())
+                        DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("ar-AE"));
                 }
             }
         }
@@ -2712,22 +2733,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateFirstName));
                         return false;
                     }
-                    else if (TaxPayerDetailsAvailability.Gender && string.IsNullOrWhiteSpace(SelectedGender))
+                    else if ((TaxPayerDetailsAvailability.IsGenderVisible || TaxPayerDetailsAvailability.Gender) && string.IsNullOrWhiteSpace(SelectedGender))
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateGender));
                         return false;
                     }
-                    else if (TaxPayerDetailsAvailability.IsNationalityVisible && null == SelectedTaxpayerPDNationality)
+                    else if ((TaxPayerDetailsAvailability.IsNationalityVisible || TaxPayerDetailsAvailability.Nationality) && null == SelectedTaxpayerPDNationality)
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateNationality));
                         return false;
                     }
-                    else if (TaxPayerDetailsAvailability.IsCitizenVisible && null == SelectedCitizen)
+                    else if ((TaxPayerDetailsAvailability.IsCitizenVisible || TaxPayerDetailsAvailability.Citizen) && null == SelectedCitizen)
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCitizen));
                         return false;
                     }
-                    else if (TaxPayerDetailsAvailability.IsResidenceVisible && null == SelectedResidence)
+                    else if ((TaxPayerDetailsAvailability.IsResidenceVisible || TaxPayerDetailsAvailability.Residence) && null == SelectedResidence)
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidence));
                         return false;
@@ -2740,7 +2761,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePassportNumber));
                         return false;
                     }
-                    else if (PassportDetails.IssueCountry &&  null == SelectedPassportIssueCountry)
+                    else if (PassportDetails.IssueCountry && null == SelectedPassportIssueCountry)
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueCountry));
                         return false;
@@ -2755,12 +2776,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePExpiryDate));
                         return false;
                     }
-                    else if (PassportDetails.Attachment && UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count <= 0)
+                    else if (PassportDetails.Attachment && (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count <= 0))
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAttachCopy));
                         return false;
                     }
-                    else
+                    else if (PassportDetails.PassportNo)
                     {
                         DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                         DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issue);
@@ -2823,6 +2844,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
+                    taxPayerDetails.Tpnationality = taxPayerDetails.Tpnationality == null ? "" : taxPayerDetails.Tpnationality;
                     taxPayerDetails.Taxtpdetermination = "1";
                     taxPayerDetails.Tpresidence = SelectedTpresidence;
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
@@ -2881,8 +2903,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     //return true;
                     Nreg_IdItem passportObj = new Nreg_IdItem();
-                    passportObj.Idnumber = PassportNumber;
-                    passportObj.Country = SelectedPassportIssueCountry?.Land1;
+                    passportObj.Idnumber = PassportNumber == null ? "" : PassportNumber;
+                    passportObj.Country = SelectedPassportIssueCountry?.Land1 == null ? "" : SelectedPassportIssueCountry?.Land1;
 
                     DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
                     DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expireDate);
@@ -2918,8 +2940,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     //DateTime.TryParseExact(CommDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Commdt);
                     DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                    taxPayerDetails.Accmethod = taxPayerDetails.Accmethod == null ? "" : taxPayerDetails.Accmethod;
                     taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
-                    taxPayerDetails.Fdmonth = FiscalMonth;
+                    taxPayerDetails.Fdcalender = taxPayerDetails.Fdcalender == null ? "" : taxPayerDetails.Fdcalender;
+                    taxPayerDetails.Fdmonth = FiscalMonth == null ? "" : FiscalMonth;
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
                     taxPayerDetails.Fdenddt = Fdenddt;
@@ -2959,6 +2983,151 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 return false;
             }
             return false;
+        }
+
+        private bool SetDataForSaveDraft(EstablishmentRegistrationTabsEnum _enum)
+        {
+            bool flag = false;
+            try
+            {
+                IsLoading = true;
+                // EstablishmentRegistrationTabsEnum.RegistrationType
+
+                if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
+                {
+                    taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
+                    taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
+                    taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
+                    taxPayerDetails.Tpnationality = taxPayerDetails.Tpnationality == null ? "" : taxPayerDetails.Tpnationality;
+                    taxPayerDetails.Taxtpdetermination = "1";
+                    taxPayerDetails.Tpresidence = SelectedTpresidence;
+                    taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
+                    taxPayerDetails.Orgnonresidentoptions = string.IsNullOrEmpty(SelectedOrgNonResidentOptions) ? string.Empty : SelectedOrgNonResidentOptions;
+                    taxPayerDetails.Orgnonresidentactivity = string.IsNullOrEmpty(SelectedOrgNonResidentActivity) ? string.Empty : SelectedOrgNonResidentActivity;
+
+                    if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
+                    {
+                        taxPayerDetails.Rentatt = "X";
+                    }
+                    else
+                    {
+                        taxPayerDetails.Rentatt = "";
+                    }
+                    taxPayerDetails.StepNumberx = "01";
+                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
+                    flag = true;
+                    return flag;
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+                {
+                    if (!string.IsNullOrEmpty(DisplaySelectedDOB))
+                    {
+                        DateTime.TryParseExact(DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
+                        taxPayerDetails.Birthdt = dob;
+                    }
+                    taxPayerDetails.NameFirst = FirstName;
+                    taxPayerDetails.NameLast = string.IsNullOrEmpty(LastName) ? string.Empty : LastName;
+                    taxPayerDetails.FatherName = string.IsNullOrEmpty(FatherName) ? string.Empty : FatherName;
+                    taxPayerDetails.GrandfatherName = string.IsNullOrEmpty(GrandFatherName) ? string.Empty : GrandFatherName;
+                    taxPayerDetails.FamilyName = string.IsNullOrEmpty(FamilyName) ? string.Empty : FamilyName;
+                    taxPayerDetails.Initials = string.IsNullOrEmpty(Initial) ? string.Empty : Initial;
+                    if (SelectedGender?.ToLower() == GenderList.FirstOrDefault().ToLower())
+                    {
+                        taxPayerDetails.Xsexm = "X";
+                    }
+                    else if (SelectedGender?.ToLower() == GenderList.LastOrDefault().ToLower())
+                    {
+                        taxPayerDetails.Xsexf = "X";
+                    }
+                    taxPayerDetails.Natio = SelectedTaxpayerPDNationality?.Land1;
+                    taxPayerDetails.Natio = taxPayerDetails.Natio == null ? "" : taxPayerDetails.Natio;
+                    taxPayerDetails.Citizen = SelectedCitizen?.Land1 == null ? "" : SelectedCitizen.Land1;
+                    taxPayerDetails.Residence = SelectedResidence?.Land1 == null ? "" : SelectedResidence?.Land1;
+
+                    taxPayerDetails.StepNumberx = "02";
+                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
+                    flag = true;
+                    return flag;
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
+                {
+
+                    Nreg_IdItem passportObj = new Nreg_IdItem();
+                    passportObj.Idnumber = PassportNumber == null ? "" : PassportNumber;
+                    passportObj.Country = SelectedPassportIssueCountry?.Land1 == null ? "" : SelectedPassportIssueCountry?.Land1;
+
+                    if (!string.IsNullOrEmpty(PassportIssueDate))
+                    {
+                        DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
+                        passportObj.ValidDateFrom = issueDate;
+                    }
+                    if (!string.IsNullOrEmpty(PassportExpireDate))
+                    {
+                        DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expireDate);
+                        passportObj.ValidDateTo = expireDate;
+                    }
+
+                    passportObj.Type = "FS0002";
+                    passportObj.Srcidentify = "000";
+
+                    taxPayerDetails.Nreg_IdSet.results.Clear();
+                    taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
+
+                    if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
+                    {
+
+                        taxPayerDetails.Passatt = "X";
+                    }
+                    else
+                    {
+                        taxPayerDetails.Passatt = "";
+                    }
+
+                    taxPayerDetails.StepNumberx = "02";
+                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.UserTypx = "TP";
+                    flag = true;
+                    return flag;
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
+                {
+                    // EstablishmentRegistrationTabsEnum.FinancialDetail
+
+                    //DateTime.TryParseExact(CommDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Commdt);  
+                    if (!string.IsNullOrEmpty(TaxDate))
+                    {
+                        DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
+                        taxPayerDetails.Fdenddt = Fdenddt;
+                    }
+                    taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                    taxPayerDetails.Accmethod = taxPayerDetails.Accmethod == null ? "" : taxPayerDetails.Accmethod;
+                    taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
+                    taxPayerDetails.Fdcalender = taxPayerDetails.Fdcalender == null ? "" : taxPayerDetails.Fdcalender;
+                    taxPayerDetails.Fdmonth = FiscalMonth == null ? "" : FiscalMonth;
+                    taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
+                    taxPayerDetails.Commdt = financialDetail?.ADateComm;
+
+
+                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                    taxPayerDetails.StepNumberx = "04";
+                    taxPayerDetails.UserTypx = "TP";
+                    flag = true;
+                    return flag;
+                }
+                
+                // EstablishmentRegistrationTabsEnum.Declaration
+
+                taxPayerDetails?.off_notesSet?.results?.Clear();
+                flag = true;
+            }
+            catch (Exception ex)
+            {
+                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                return flag;
+            }
+            return flag;
         }
 
         public void RentAttachmentPrePopulateCheck(TaxPayerDetails taxPayerDetails)

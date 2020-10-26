@@ -115,16 +115,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     ZDImageSource = "registration.png",
                 });
 
-                ZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);
             }
             else if (App.LoginDataRetrieved.ZkReg == "U")
             {
-                ZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.TPUpdate,
                     ZDImageSource = "sf_ic_Paid.png",
                 });
             }
+            ZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);
         }
 
         public async void GetNewTinDeregistrationDataCliked()

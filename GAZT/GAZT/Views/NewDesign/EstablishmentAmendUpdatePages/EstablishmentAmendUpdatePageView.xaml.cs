@@ -16,6 +16,7 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
+using EGAZT.Views.NewDesign.Common;
 
 namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 {
@@ -32,14 +33,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             BindingContext = viewModel;
-            //if (App.ZAKATType == Enums.PageExecutionType.Amend)
-            //{
-            //    viewModel.PageTitle = AppResources.ZZAmend;
-            //}
-            //else if (App.ZAKATType == Enums.PageExecutionType.Update)
-            //{
-            //    viewModel.PageTitle = AppResources.TPUpdate;
-            //}
+            if (App.ZAKATType == Enums.PageExecutionType.Amend)
+            {
+                viewModel.PageTitle = AppResources.ZZAmend;
+            }
+            else if (App.ZAKATType == Enums.PageExecutionType.Update)
+            {
+                viewModel.PageTitle = AppResources.TPUpdate;
+            }
         }
 
         protected override void OnAppearing()
@@ -51,6 +52,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
                 viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             }
+            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+            {
+                PopupNavigation.Instance.PopAsync();
+            });
             viewModel?.OnAppearing();
         }
 
@@ -119,6 +124,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             {
                 passportExpiryHijiriPicker.IsOpen = true;
             }
+
+            //if (viewModel?.taxPayerDetails?.Caltp == "G")
+            //{
+            //    passportIssuePicker.IsOpen = true;
+            //}
+            //else
+            //{
+            //    passportIssueHijiriPicker.IsOpen = true;
+            //}
         }
 
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)

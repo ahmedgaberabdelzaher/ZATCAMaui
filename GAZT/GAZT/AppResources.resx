@@ -8457,4 +8457,7 @@ I acknowledge that the above bank account information is correct and assume full
 		3. Detailed Purchase List
 	</value>
   </data>
+<data name="ZAKATAmendUpdatePageTitle" xml:space="preserve">
+    <value>Display/Amend Details</value>
+  </data>
 </root>

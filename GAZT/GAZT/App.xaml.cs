@@ -45,7 +45,7 @@ namespace EGAZT
         #region new design views
 
         public static Stopwatch stopWatch = new Stopwatch();
-        public const int defaultTimespan = 8;
+        public const int defaultTimespan = 30;
         public const int defaultTimespanForLogin = 6;
 
         public static string GAZTNewDesignVATReturnUpdatedUIPageView = "GAZTNewDesignVATReturnUpdatedUIPageView";

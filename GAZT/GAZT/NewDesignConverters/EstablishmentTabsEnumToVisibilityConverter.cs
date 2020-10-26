@@ -14,6 +14,10 @@ namespace EGAZT.NewDesignConverters
             EstablishmentRegistrationTabsEnum _parameter = (EstablishmentRegistrationTabsEnum)parameter;
             isVisible = _value == _parameter;
             //System.Diagnostics.Debug.WriteLine("_value {0} _parameter {1} isVisible {2} ", _value, _parameter, isVisible);
+            if ("DisableForDeclaration" == parameter.ToString())
+            {
+                isVisible = false;
+            }
             return isVisible;
         }
 
@@ -92,7 +96,7 @@ namespace EGAZT.NewDesignConverters
         private string status { get; set; } = AppResources.ESTNationalyStatusOptionTwoValue;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(value == null)
+            if (value == null)
             {
                 return string.Empty;
             }

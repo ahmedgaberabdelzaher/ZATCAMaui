@@ -764,7 +764,7 @@
                                     </listView:SfListView>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout x:Name="NationalityDetails" Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10" IsVisible="false">
+                            <StackLayout x:Name="NationalityDetails" Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10" IsVisible="{Binding TaxPayerDetailsAvailability.Nationality}">
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" 
                                                      TextColor="{StaticResource NeutralBlack}" 
                                                      FontFamily="{StaticResource SSTArBold}" FontSize="18" />
@@ -1595,6 +1595,8 @@
                         </cards:SfCardView>
                         <buttons:SfCheckBox IsChecked="{Binding ESTLedge}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}"
                                             Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}" />
+                        <!--<buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{Binding NxtButtonLabel}" 
+                                          Command="{Binding OnNextButtonClick}" IsEnabled="{Binding IsDeclarationBtnEnabled}"/>-->
                     </StackLayout>
                 </ScrollView>
             </Grid>
