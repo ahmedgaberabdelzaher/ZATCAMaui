@@ -2486,6 +2486,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     reqType = "VT_SUSP";
                     requestTyp = "S";
 
+                    VATDeRegistrationDetailsData.d.StartDate = ConvertDateFormat(FromDate);
+                    VATDeRegistrationDetailsData.d.EndDate = ConvertDateFormat(ToDate);
                     VATDeRegistrationDetailsData.d.SuspDtfrom = ConvertDateFormat(SuspendedStartDate);
                     VATDeRegistrationDetailsData.d.SuspDtto = ConvertDateFormat(SuspendedEndDate);
                     VATDeRegistrationDetailsData.d.NextDtfrom = ConvertDateFormat(NextFilingStartDate);

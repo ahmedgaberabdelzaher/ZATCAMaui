@@ -742,7 +742,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
 
@@ -766,7 +766,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
 
-                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     else
@@ -798,7 +798,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
                     }
@@ -820,7 +820,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
                     }
@@ -853,7 +853,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.PickerDOBDateDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
 
                     }
@@ -875,7 +875,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
-                        viewModel.PickerDOBDateDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     else
@@ -981,7 +981,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         viewModel.PkrDBO = date;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
 
-                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     isHIjri = false;
