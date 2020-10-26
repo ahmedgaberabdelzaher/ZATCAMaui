@@ -958,7 +958,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         if (IsComeForWhichAttachment == WhichAttachment.VATInstalment)
                         {
-                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                            APiMethod = "ZDP_INDTAX_ATT_SRV";
                         }
                         else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy)
                         {
@@ -1095,7 +1095,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                     if (IsComeForWhichAttachment == WhichAttachment.VATInstalment)
                     {
-                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                        APiMethod = "ZDP_INDTAX_ATT_SRV";
                     }
                     else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy)
                     {

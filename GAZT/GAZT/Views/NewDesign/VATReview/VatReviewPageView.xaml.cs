@@ -3,6 +3,7 @@ using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel;
 using EGAZT.Views.NewDesign.GenericPickers;
 using Xamarin.Forms;
+using System;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
@@ -54,7 +55,38 @@ namespace EGAZT.Views.NewDesign.VatReview
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+
+            MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
+            MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
+
+            Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
+            {
+                if (arg != null)
+                {
+                    DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
+                }
+            });
+
+            Xamarin.Forms.MessagingCenter.Subscribe<object, int>(this, "draftSecurity", (sender, arg) =>
+            {
+                if (arg != null)
+                {
+                    securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[arg];
+                    if (arg == 0)
+                    {
+                        viewModel.EnableSadadSecurityView();
+                    }
+                    else if (arg == 1)
+                    {
+                        viewModel.EnablebankGuranteeSecurityView();
+                    }
+                    viewModel.EnableSecurityPaymentsConButton();
+                }
+            });
+
+
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
                 //viewModel.PickerModel = arg;
                 //viewModel.updatePicker();
                 viewModel.updatePickerData(arg);
@@ -74,7 +106,9 @@ namespace EGAZT.Views.NewDesign.VatReview
                     viewModel.PopulateAttachments(arg.results);
                 }
             });
+
         }
+
 
         protected override void OnDisappearing()
         {
@@ -84,7 +118,11 @@ namespace EGAZT.Views.NewDesign.VatReview
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
 
+            MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
+            MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
+
         }
+
 
         private void Security_Type_ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -164,7 +202,19 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         public void SelectDefaultPaymentOption()
         {
-            DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[0];
+            DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[viewModel.DefaultReq];
+
+            securityTypeListView.SelectedItem = viewModel.SecurityPaymentOptions[viewModel.DefaultSecurity];
+
+            if (viewModel.DefaultSecurity == 0)
+            {
+                viewModel.EnableSadadSecurityView();
+            }
+            else if (viewModel.DefaultSecurity == 1)
+            {
+                viewModel.EnablebankGuranteeSecurityView();
+            }
+            viewModel.EnableSecurityPaymentsConButton();
         }
 
         //private void VRAttachTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
@@ -180,5 +230,6 @@ namespace EGAZT.Views.NewDesign.VatReview
     public interface VatReviewInterface
     {
         void SelectDefaultPaymentOption();
+
     }
 }

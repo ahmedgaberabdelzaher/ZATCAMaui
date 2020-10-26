@@ -65,46 +65,50 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         {
             if (viewModel.VatInstalments != null && viewModel.VatInstalments.d != null)
             {
-                viewModel.selectedList = viewModel.SelectedBillsList.Where(w => w.Xsele.Contains("X")).ToList();
+
+                if(viewModel.SelectedBillsList != null) {
+
+                    viewModel.selectedList = viewModel.SelectedBillsList.Where(w => w.Xsele.Contains("X")).ToList();
 
 
 
+                    for (int i = 0; i < viewModel.selectedList.Count; i++)
+                    {
+                        var dataItem = viewModel.selectedList[i] as VATResults4;
+                        int index = viewModel.SelectedBillsList.IndexOf(w => w.SadadNo.Contains(dataItem.SadadNo));
+                        if (index != -1)
+                        {
+                            BillsVATListVIew.SelectedItem = viewModel.SelectedBillsList[index];
+                        }
+                    }
+                }
+
+
+
+                Double dueAmount = 0.0;
                 for (int i = 0; i < viewModel.selectedList.Count; i++)
                 {
-                    var dataItem = viewModel.selectedList[i] as VATResults4;
-                    int index = viewModel.SelectedBillsList.IndexOf(w => w.SadadNo.Contains(dataItem.SadadNo));
-                    if (index != -1)
+                    if (viewModel.selectedList[i] != null)
                     {
-                        BillsVATListVIew.SelectedItem = viewModel.SelectedBillsList[index];
+                        dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
                     }
-
-
-
+                    else
+                    {
+                        viewModel.selectedList.Remove(viewModel.selectedList[i]);
+                    }
                 }
-            }
 
 
-
-            Double dueAmount = 0.0;
-            for (int i = 0; i < viewModel.selectedList.Count; i++)
-            {
-                if (viewModel.selectedList[i] != null)
+                if (viewModel.selectedList.Count > 0)
                 {
-                    dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
-                }
-                else
-                {
-                    viewModel.selectedList.Remove(viewModel.selectedList[i]);
+
+                    viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + viewModel.selectedList[0].Waers;
+                    viewModel.EnableBillsContinue();
+
                 }
             }
 
-
-            if(viewModel.selectedList.Count > 0) {
-
-                viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + viewModel.selectedList[0].Waers;
-                viewModel.EnableBillsContinue();
-
-            }
+                
 
 
 
@@ -295,7 +299,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, Boolean>(this, "TermsContinueSecond");
             MessagingCenter.Unsubscribe<object, Boolean>(this, "InstructionsContinue");
-            MessagingCenter.Unsubscribe<object, Boolean>(this, "RejectScenario");
+            MessagingCenter.Unsubscribe<object, string>(this, "RejectScenario");
             MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");

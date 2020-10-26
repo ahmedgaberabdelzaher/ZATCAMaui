@@ -596,6 +596,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public async void ShowVatReviewPage()
         {
+
+            App.selectedVATItem = "";
+            App.selectedVATItemFbust = "";
             await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
             // _navigationService.NavigateTo(App.VatReviewPageView);
         }

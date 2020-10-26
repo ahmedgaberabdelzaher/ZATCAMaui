@@ -459,6 +459,33 @@ namespace EGAZT.Models.VatReviewModel
     {
         public List<NotesSetResults> results { get; set; }
     }
+    public class NotesSetGet
+    {
+        public List<NotesSetResultsGet> results { get; set; }
+    }
+
+    public partial class NotesSetResultsGet
+    {
+        public Metadata __metadata { get; set; }
+        public string Notenoz { get; set; }
+        public string Refnamez { get; set; }
+        public string DataVersionz { get; set; }
+        public string XInvoicez { get; set; }
+        public string XObsoletez { get; set; }
+        public string Rcodez { get; set; }
+        public string Erfusrz { get; set; }
+        public object Erfdtz { get; set; }
+        public object Erftmz { get; set; }
+        public string ByGpartz { get; set; }
+        public string AttByz { get; set; }
+        public string Noteno { get; set; }
+        public long Lineno { get; set; }
+        public long ElemNo { get; set; }
+        public string Tdformat { get; set; }
+        public string Tdline { get; set; }
+        public string Strline { get; set; }
+
+    }
 
     public partial class NotesSetResults
     {
@@ -640,7 +667,7 @@ namespace EGAZT.Models.VatReviewModel
             public string UserTypx { get; set; }
             public ReasonSet ReasonSet { get; set; }
             public AddressSet1 AddressSet { get; set; }
-            public NotesSet NotesSet { get; set; }
+            public NotesSetGet NotesSet { get; set; }
             public QuesListSet1 QuesListSet { get; set; }
             public AttdetSet1 AttdetSet { get; set; }
             public IdDetailSet IdDetailSet { get; set; }

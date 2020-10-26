@@ -305,20 +305,27 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
             VATAttachment attachment = (VATAttachment)Document.SelectedItem;
             //attachment.DocUrl;
-            if (attachment.Filename.Contains(".")) ;
-            string Extention = attachment.Filename.Split('.')[1];
-            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
-            {
-                if (attachment.DocUrl != null)
+            if (attachment.Filename.Contains(".")) {
+
+                string Extention = attachment.Filename.Split('.')[1];
+                if (Extention.Equals("PDF") || Extention.Equals("pdf"))
                 {
-                    await PopupNavigation.Instance.PopAsync();
-                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    if (attachment.DocUrl != null)
+                    {
+                        await PopupNavigation.Instance.PopAsync();
+                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    }
+                }
+                else
+                {
+                    await email(attachment.Doguid, attachment);
                 }
             }
-            else
-            {
+            else {
                 await email(attachment.Doguid, attachment);
             }
+
+           
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
 

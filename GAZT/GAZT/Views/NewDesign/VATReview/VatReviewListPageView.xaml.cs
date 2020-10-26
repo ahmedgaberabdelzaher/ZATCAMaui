@@ -34,7 +34,15 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             _viewModel.ResetListData();
 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+
             _viewModel.VATObjectionList();
+
         }
 
         private void SetLTR()
@@ -62,9 +70,25 @@ namespace EGAZT.Views.NewDesign.VatReview
             //string euser = "00000010000008327086"; //string.Empty;
 
             var item = e.ItemData as VATObjectionListModel.Result3;
-            var index = _viewModel.VATobjListViewData.IndexOf(item);
-            _viewModel.EnableSummaryView();
-            _viewModel.OnPageLoad1(index);
+
+
+            if (item.Fbust == "E0013")
+            {
+
+                App.selectedVATItem = item.Fbnum;
+                App.selectedVATItemFbust = item.Fbust;
+                _viewModel._navigationService.NavigateTo(App.VatReviewPageView);
+            }
+            else
+            {
+
+                var index = _viewModel.VATobjListViewData.IndexOf(item);
+                _viewModel.EnableSummaryView();
+                _viewModel.OnPageLoad1(index);
+
+            }
+
+          
         }
 
         private async void BankGuranAttachTapped(object sender, ItemTappedEventArgs e)

@@ -1913,7 +1913,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             });
 
 
-            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
+            if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
             {
                 IsFirstCheckboxChecked = true;
 
@@ -1951,16 +1951,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void AddOutletDecisionOptions()
         {
             OutletDecisionOptions = new ObservableCollection<VATInstalmentPlanModel>();
-            //OutletDecisionOptions.Add(new VATInstalmentPlanModel
-            //{
-            //    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeZakat,
-            //    ActiveOutletDecisionOptionsIsSelected = true
-            //});
-            //OutletDecisionOptions.Add(new VATInstalmentPlanModel
-            //{
-            //    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
-            //    ActiveOutletDecisionOptionsIsSelected = false
-            //});
+            OutletDecisionOptions.Add(new VATInstalmentPlanModel
+            {
+                ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeZakat,
+                ActiveOutletDecisionOptionsIsSelected = true
+            });
+            OutletDecisionOptions.Add(new VATInstalmentPlanModel
+            {
+                ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                ActiveOutletDecisionOptionsIsSelected = false
+            });
             OutletDecisionOptions.Add(new VATInstalmentPlanModel
             {
                 ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeVAT,
@@ -2643,7 +2643,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 if (App.selectedVATItem != "")
                 {
-                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
+                    if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
                     {
                         
                         await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatTerms, checkBoxString: AppResources.VatTermsCheckBoxDesc, continueString: AppResources.ZakatInstalmetContinue, isEditable: true,
@@ -2859,8 +2859,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     if (App.selectedVATItem != "")
                     {
-                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
-                        {
+                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018") { 
                             IsViewEnable = false;
                         }
                         var selectedItemFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, App.selectedVATItem, App.LoginDataRetrieved.TIN, "E0045", "VTIA");
@@ -2880,7 +2879,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
 
 
-                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
+                        if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
                         {
                             IsFirstCheckboxChecked = true;
 
@@ -2908,7 +2907,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             if (App.selectedVATItem != "")
                             {
-                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
+                                if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018" || App.selectedVATItemFbust == "E0013")
                                 {
                                     await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle, isEditable: true, _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                             .Instructions));
@@ -2955,16 +2954,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                                     MessagingCenter.Send<Object, string>(this, "RejectScenario", App.selectedVATItem);
                                     if (VatInstalments.d.Noofinstallment != null)
                                     {
-                                        if (int.Parse(VatInstalments.d.Noofinstallment) > 0) {
+                                        if (int.Parse(VatInstalments.d.Noofinstallment) > 0)
+                                        {
                                             NoOfInstalments = int.Parse(VatInstalments.d.Noofinstallment);
                                         }
-                                        else {
+                                        else
+                                        {
                                             NoOfInstalments = 2;
                                         }
 
-                                        
+
                                     }
 
+
+                                    if (App.selectedVATItem != "")
+                                    {
+
+                                        if (VatInstalments.d.AttachmentSet.results.Count > 0)
+                                        {
+
+                                            AttachmentsListViewData = new ObservableCollection<Attachment>();
+
+                                            var attch = new ObservableCollection<Attachment>();
+
+                                            foreach (var attachment in VatInstalments.d.AttachmentSet.results)
+                                            {
+
+                                                if (attachment.Dotyp == "ZVTA")
+                                                {
+
+                                                    if (string.IsNullOrEmpty(attachment.Filename))
+                                                    {
+                                                        attachment.Filename = DateTime.Now.ToString("yyyy/MM/dd");
+                                                    }
+                                                    attch.Add(attachment);
+                                                }
+
+
+                                            }
+
+
+                                            AttachmentsListViewData = attch;
+
+                                        }
+
+                                    }
                                 }
 
 
