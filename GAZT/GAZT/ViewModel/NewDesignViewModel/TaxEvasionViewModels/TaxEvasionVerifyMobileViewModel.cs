@@ -342,7 +342,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                            _navigationService.GoBack();
                         });
                         
                     }
@@ -351,7 +351,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.GoBack();
                     });
                     
                 }
