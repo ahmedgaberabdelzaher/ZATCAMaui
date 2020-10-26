@@ -475,11 +475,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmContactName.HasError = true;
 
                 }
-                if (string.IsNullOrEmpty(viewModel.ContactDOB) )
+                if (viewModel.SelectedIdTypeSR.Name != AppResources.ZZGCCID)
                 {
-                    flag = false;
-                    viewModel.FrameContactDOBError = true;
+                    if (string.IsNullOrEmpty(viewModel.ContactDOB))
+                    {
+                        flag = false;
+                        viewModel.FrameContactDOBError = true;
 
+                    }
                 }
                 if (flag)
                 {
