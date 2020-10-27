@@ -8211,7 +8211,7 @@
     <value>Transaction Date</value>
   </data>
   <data name="ASFBNum" xml:space="preserve">
-    <value>FB Number</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="ASSadadBillNumber" xml:space="preserve">
     <value>SADAD Bill Number</value>

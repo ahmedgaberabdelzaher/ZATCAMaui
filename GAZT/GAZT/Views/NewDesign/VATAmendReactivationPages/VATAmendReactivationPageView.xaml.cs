@@ -67,7 +67,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 //FrmContactDBO.IsVisible = false;
                 //lblDOB.IsVisible = false;
                 NewFRDOBField.IsVisible = false;
-
             }
             catch (Exception ex)
             {
@@ -1200,7 +1199,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 });
 
-                await GetVatRegistrationData();
+                //await GetVatRegistrationData();
             }
             catch (Exception ex)
             {
@@ -4386,28 +4385,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         }
 
-        private async void AddNewRepresentative_Tapped(object sender, CheckedChangedEventArgs e)
-        {
-            if (((CheckBox)sender).IsChecked)
-            {
-                var result = await DisplayAlert("", AppResources.VATAmendAddNewFinancialRepresentativeWarning, AppResources.ZYes, AppResources.ZNo);
-                if (result)
-                {
-                    viewModel.IsNewFinancialRepVisible = ((CheckBox)sender).IsChecked;
-                }
-                else
-                {
-                    viewModel.IsNewFinancialRepVisible = !((CheckBox)sender).IsChecked;
-                    ((CheckBox)sender).IsChecked = false;
-                }
-
-            }
-            else
-            {
-                viewModel.IsNewFinancialRepVisible = ((CheckBox)sender).IsChecked;
-            }
-        }
-
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
@@ -4536,6 +4513,35 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 FrmFirstName.HasError = true;
             }
+        }
+
+        private async void AddNewRepresentative_Tapped(object sender, EventArgs e)
+        {
+            if (!viewModel.IsAddNewRepresentativeChecked)
+            {
+                var result = await DisplayAlert("", AppResources.VATAmendAddNewFinancialRepresentativeWarning, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                    viewModel.IsNewFinancialRepVisible = true;
+                    viewModel.IsAddNewRepresentativeChecked = true;
+                }
+                else
+                {
+                    viewModel.IsNewFinancialRepVisible = false;
+                    viewModel.IsAddNewRepresentativeChecked = false;
+                }
+
+            }
+            else
+            {
+                viewModel.IsNewFinancialRepVisible = false;
+                viewModel.IsAddNewRepresentativeChecked = false;
+            }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

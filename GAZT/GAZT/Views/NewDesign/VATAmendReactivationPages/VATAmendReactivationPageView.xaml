@@ -1982,15 +1982,20 @@
                                         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                                             <StackLayout>
                                                 <StackLayout Margin="0,0,0,15" >
+
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding FinancialRepresentative.AddNewFinRepCBVisible}" IsEnabled="{Binding FinancialRepresentative.AddNewFinRepresentativeCB}">
-                                                        <CheckBox x:Name="cbAddRepresentative"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddNewRepresentativeChecked}" CheckedChanged="AddNewRepresentative_Tapped">
-                                                            <CheckBox.Triggers>
-                                                                <DataTrigger TargetType="CheckBox"  Value="false">
-                                                                    <Setter Property="Color" Value="#ff0000" />
-                                                                </DataTrigger>
-                                                            </CheckBox.Triggers>
-                                                        </CheckBox>
-                                                        <custom:CustomLabel   Style="{StaticResource GAZTCaptionBlackLabel}">
+                                                        <Grid HeightRequest="30" WidthRequest="30" VerticalOptions="CenterAndExpand">
+                                                            <CheckBox x:Name="cbAddRepresentative" IsEnabled="False" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddNewRepresentativeChecked}">
+                                                                <CheckBox.Triggers>
+                                                                    <DataTrigger TargetType="CheckBox"  Value="false">
+                                                                        <Setter Property="Color" Value="#ff0000" />
+                                                                    </DataTrigger>
+                                                                </CheckBox.Triggers>
+                                                            </CheckBox>
+                                                            <Button HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
+                                                                    Clicked="AddNewRepresentative_Tapped"/>
+                                                        </Grid>
+                                                        <custom:CustomLabel   Style="{StaticResource GAZTCaptionBlackLabel}" VerticalOptions="CenterAndExpand">
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />

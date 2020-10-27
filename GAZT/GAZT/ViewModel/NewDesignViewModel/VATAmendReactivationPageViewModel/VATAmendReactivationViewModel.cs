@@ -930,7 +930,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _isAddAdditionalInfoChecked = value;
-         
+
                 RaisePropertyChanged("IsAddAdditionalInfoChecked");
             }
         }
@@ -948,7 +948,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsFDChangeSectionChecked");
             }
         }
-        private bool _isAddNewRepresentativeChecked= false;
+        private bool _isAddNewRepresentativeChecked = false;
         public bool IsAddNewRepresentativeChecked
         {
             get
@@ -1820,7 +1820,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 }
                 VATRegistrationDetailsData.d.VatTaxDt = Bdt;
                 VATRegistrationDetailsData.d.StepNumberz = "2";
-              //  VATRegistrationDetailsData.d.DecidTy = string.Empty;
+                //  VATRegistrationDetailsData.d.DecidTy = string.Empty;
                 //Step 4
 
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
@@ -1845,7 +1845,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 {
                     VATRegistrationDetailsData.d.Stp2Cbbox = "1";
                 }
-                else 
+                else
                 {
                     VATRegistrationDetailsData.d.Stp2Cbbox = "0";
                 }
@@ -1853,7 +1853,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 {
                     VATRegistrationDetailsData.d.Stp3Cbbox = "1";
                 }
-                else 
+                else
                 {
                     VATRegistrationDetailsData.d.Stp3Cbbox = "0";
                 }
@@ -1861,7 +1861,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 {
                     VATRegistrationDetailsData.d.Stp4Cbbox2 = "1";
                 }
-                else 
+                else
                 {
                     VATRegistrationDetailsData.d.Stp4Cbbox2 = "0";
                 }
@@ -1952,7 +1952,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsLoading = false;
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                  
+
                     //_navigationService.GoBack();
 
                 });
@@ -2109,9 +2109,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             try
             {
                 await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+             {
+                 IsLoading = true;
+             });
                 await Task.Run(async () =>
                 {
                     GetSignUpIdType();
@@ -2219,12 +2219,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             }
                             if (vATRegistration.d.Stp4Cbbox2 == "1")
                             {
-                                IsAddNewRepresentativeChecked = true;
-                                //VATRegistrationDetailsData.d.Decfg = "1";
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsAddNewRepresentativeChecked = true;
+                                    IsNewFinancialRepVisible = true;
+                                });
                             }
                             else if (vATRegistration.d.Stp4Cbbox2 == "0")
                             {
-                                IsAddNewRepresentativeChecked = false;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsAddNewRepresentativeChecked = false;
+                                    IsNewFinancialRepVisible = true;
+                                });
                             }
                             switch (App.VATType)
                             {
@@ -2280,10 +2287,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 if (ADDRESSSetData.PostalCd.Equals("00000"))
                                 {
 
-                                //commenting the below line for save as draft data comparison
-                                // ADDRESSSetData.PostalCd = string.Empty;
+                                    //commenting the below line for save as draft data comparison
+                                    // ADDRESSSetData.PostalCd = string.Empty;
 
-                                 }
+                                }
                                 AddressLineTwo = ADDRESSSetData.RegionDesc + " " + ADDRESSSetData.City + " " + ADDRESSSetData.PostalCd;
 
                             }
@@ -2357,7 +2364,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             OriginalData = JsonConvert.SerializeObject(VATRegistrationDetailsData);
 
                             IdnumberFR = idnumber;
-
                         }
                         else
                         {
@@ -2407,7 +2413,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
-
             }
             catch (Exception ex)
             {
@@ -2464,7 +2469,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 foreach (var item in IbanList)
                 {
-                    if(!string.IsNullOrEmpty(item.Bkvid))
+                    if (!string.IsNullOrEmpty(item.Bkvid))
                     {
                         resultList.Add(item);
                     }
