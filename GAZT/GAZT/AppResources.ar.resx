@@ -3859,6 +3859,22 @@
     <value>يرجى تحديد المنطقة قبل اختيار المدينة</value>
     <comment>Tax Evasion Report</comment>
   </data>
+        <data name="ZTaxEvasionTINValidationMessage" xml:space="preserve">
+    <value>الرقم المميز يجب أن يبدء.03</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+     <data name="ZTaxEvasionTINDigitValidationMessage" xml:space="preserve">
+    <value>الرقم المميز يجب أن لايكون أقل من 10 خانات</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+     <data name="ZTaxEvasionVATNumValidationMessage" xml:space="preserve">
+    <value>الرقم المميز يجب أن يبدء 01.</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+  <data name="ZTaxEvasionVATDigitValidationMessage" xml:space="preserve">
+    <value>الرقم المميز يجب أن لايكون أقل من 15 خانات</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
   <data name="ZZZZErroMessage1" xml:space="preserve">
     <value>رقم الاقامة &amp; غير صحيح - الرجاء التأكد من رقم الاقامة</value>
   </data>

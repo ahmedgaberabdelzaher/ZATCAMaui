@@ -409,24 +409,30 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             if (!string.IsNullOrEmpty(TxtTIN.Text))
             {
-                if (TxtTIN.Text.Length < 10 || (TxtTIN.Text.Substring(0, 1) != "3"))
+
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZInvalidTinNumber;
+                popUp.IsLinkAvailable = false;
+                if (App.IsArabic)
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZInvalidTinNumber;
-                    popUp.IsLinkAvailable = false;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                if (TxtTIN.Text.Substring(0, 1) != "3")
+                {
                   //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidTinNumber));
+                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionTINValidationMessage));
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     // TxtTIN.Focus();
+                }else if(TxtTIN.Text.Length < 10)
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionTINDigitValidationMessage));
+                    FrmTIN.HasError = true;
+                    TxtTIN.Text = string.Empty;
                 }
                 else
                 {
@@ -446,21 +452,28 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 if (!string.IsNullOrEmpty(TVatNumber.Text))
                 {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZInvalidVatNumber;
+                    popUp.IsLinkAvailable = false;
+                    //if (App.IsArabic)
+                    //{
+                    //    popUp.FlowDirections = "RightToLeft";
+                    //}
+                    //else
+                    //{
+                    //    popUp.FlowDirections = "LeftToRight";
+                    //}
+                    //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     if (TVatNumber.Text.Length < 15)
                     {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZInvalidVatNumber;
-                        popUp.IsLinkAvailable = false;
-                        //if (App.IsArabic)
-                        //{
-                        //    popUp.FlowDirections = "RightToLeft";
-                        //}
-                        //else
-                        //{
-                        //    popUp.FlowDirections = "LeftToRight";
-                        //}
-                      //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidVatNumber));
+
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionVATDigitValidationMessage));
+                        FrmVAT.HasError = true;
+                        TVatNumber.Text = string.Empty;
+                    }else if(TVatNumber.Text.Substring(0, 1) != "1")
+                        
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionVATNumValidationMessage));
                         FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
                     }

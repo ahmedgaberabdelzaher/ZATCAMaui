@@ -44,7 +44,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
         public int NumberOfAttachmentComingFromServer = 0;
-
+        public VATDeregistrationModelRootObject reasonList;
         #endregion
 
         #region Commands
@@ -1428,7 +1428,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             try
             {
-                VATDeregistrationModelRootObject reasonList = WebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+                 reasonList = WebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
                 if (reasonList != null)
                 {
                     for (int i = 0; i < reasonList.d.results.Count; i++)
@@ -2500,7 +2500,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Reqtp = requestTyp;
                 VATDeRegistrationDetailsData.d.StepNumber = "03";
                 VATDeRegistrationDetailsData.d.StepNumberx = "03";
-                VATDeRegistrationDetailsData.d.Reason = Reason;
+
+                for (int i = 0; i < reasonList.d.results.Count; i++)
+                {
+                  if(reasonList.d.results[i].Rdesc == ReasonTitle)
+                    {
+                        VATDeRegistrationDetailsData.d.Reason = reasonList.d.results[i].Reason;
+
+                    }
+                }
                 VATDeRegistrationDetailsData.d.Agreeflg = true;
                 VATDeRegistrationDetailsData.d.Atype = "2";
 
@@ -2537,9 +2545,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Idnumbr = TxtIDNumber;
                 VATDeRegistrationDetailsData.d.Contactnm = ContactPersonName;
                 //VATDeRegistrationDetailsData.d.Taxdt = DOB;
+                int noteNum = 0;
+                VATDeRegistrationDetailsData.d.NotesSet.results[0].Tdline = string.Empty;
+                VATDeRegistrationDetailsData.d.NotesSet.results[0].Strline = string.Empty;
                 if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                 {
-                    VATDeRegistrationDetailsData.d.NotesSet.results[0].Strline = OtherField;
+                    if (!string.IsNullOrEmpty(OtherField))
+                    {
+                        noteNum++;
+
+                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Noteno = noteNum.ToString();
+                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Notenoz = noteNum.ToString();
+                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Rcodez = "DGVT_OTH";
+                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Tdline = OtherField;
+                    }
                 }
 
 
@@ -2550,19 +2569,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private String ConvertDateFormat(DateTime newDate)
+
+        public String ConvertDateFormat(DateTime newDate)
         {
             string ConvertedDate = string.Empty;
-            //DateTime newDate = Convert.ToDateTime(date);
-            //DateTime currentDate = DateTime.Now.ToLocalTime();
-            long ticks = newDate.Ticks;
-            //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
             TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
             string unixTime = span.TotalSeconds.ToString("N0");
             unixTime = unixTime.Replace(",", "");
             ConvertedDate = "" + "/Date(" + unixTime + ")/";
-            return ConvertedDate;
 
+            long unixTimestamp = ((long)(newDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+
+            unixTimestamp = unixTimestamp * 1000;
+
+            ConvertedDate = "" + "/Date(" + unixTimestamp + ")/";
+
+            return ConvertedDate;
         }
         public async Task<VATDeRegistrationDetails> saveAsDraftVoidAPIMethodCall()
         {

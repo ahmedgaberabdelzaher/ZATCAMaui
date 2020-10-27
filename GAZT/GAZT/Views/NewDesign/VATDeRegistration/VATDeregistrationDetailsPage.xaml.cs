@@ -107,6 +107,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
+                     
                         if (viewModel.ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                         {
                             viewModel.IsOthersEditorVisible = true;

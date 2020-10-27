@@ -3856,6 +3856,22 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Please select region before city</value>
     <comment>Tax Evasion Report</comment>
   </data>
+    <data name="ZTaxEvasionTINValidationMessage" xml:space="preserve">
+    <value>Tin number must be start with 03</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+     <data name="ZTaxEvasionTINDigitValidationMessage" xml:space="preserve">
+    <value>Tin number must not be less than 10</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+     <data name="ZTaxEvasionVATNumValidationMessage" xml:space="preserve">
+    <value>VAT number must be start with 01</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+  <data name="ZTaxEvasionVATDigitValidationMessage" xml:space="preserve">
+    <value>VAT number must not be less than 15</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
 	<data name="ZZZZErroMessage1" xml:space="preserve">
     <value>The Iqama ID &amp; is not valid – please check</value>
     <comment>New SignUp</comment>
