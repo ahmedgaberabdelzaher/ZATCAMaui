@@ -2011,8 +2011,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             IsSucessViewEnabled = false;
             selectedPage = (int)PagesEnum.ZakatSelectionView;
 
-
-
         }
         public void BindVATSelectionView()
         {

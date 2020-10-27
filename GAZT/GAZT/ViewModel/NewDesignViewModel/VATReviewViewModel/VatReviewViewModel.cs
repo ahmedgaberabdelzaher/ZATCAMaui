@@ -324,6 +324,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
+        public string _formattedrequestDate = "";
+
+        public string FormattedRequestDate
+        {
+            get { return _formattedrequestDate; }
+            set
+            {
+                _formattedrequestDate = value;
+                RaisePropertyChanged("FormattedRequestDate");
+            }
+        }
+
+
+        public string _formattedTaxperdioFromDate = "";
+
+        public string FormattedTaxperdioFromDate
+        {
+            get { return _formattedTaxperdioFromDate; }
+            set
+            {
+                _formattedTaxperdioFromDate = value;
+                RaisePropertyChanged("FormattedTaxperdioFromDate");
+            }
+        }
+
+
+        public string _formattedTaxperdioToDate = "";
+
+        public string FormattedTaxperdioToDate
+        {
+            get { return _formattedTaxperdioToDate; }
+            set
+            {
+                _formattedTaxperdioToDate = value;
+                RaisePropertyChanged("FormattedTaxperdioToDate");
+            }
+        }
+
         public string _taxPeriodOfCase = "";
 
         public string TaxPeriodOfCase
@@ -3486,6 +3524,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SubReviewReason = "";
             ApplicationRefNumber = "";
             RequestDate = null;
+            FormattedRequestDate = null;
             IsApplicationVisible = false;
             EnableReviewReasonConButton();
 
@@ -3496,6 +3535,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ApplicationRefPickerModel = null;
             ApplicationRefNumber = "";
             RequestDate = null;
+            FormattedRequestDate = null;
             IsApplicationVisible = false;
             EnableReviewReasonConButton();
 
@@ -3503,6 +3543,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private void ResetDataAfterAppRefNumPicked()
         {
             RequestDate = null;
+            FormattedRequestDate = null;
             EnableReviewReasonConButton();
 
         }
@@ -3557,9 +3598,131 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 }
 
                 RequestDate = selectedApplicationRef.DecDt;
+
+
+                string strRequestedDate = "";
+                if (selectedApplicationRef.DecDt != null)
+                {
+
+                    DateTime dateStart = new DateTime();
+                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                    string apiDate = @"""" + selectedApplicationRef.DecDt + @"""";
+                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                    int year = hjCalendar.GetYear(dateStart);
+                    int month = hjCalendar.GetMonth(dateStart);
+                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                    string dt1 = string.Empty;
+                    string[] dts = null;
+                    dts = dateStr.Split('/');
+
+                    if (App.IsArabic) {
+
+                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                    }
+                    else {
+
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                    }
+
+
+                    strRequestedDate = dt1;
+                }
+
+                //PickedDate = strRequestedDate;
+
+                FormattedRequestDate = strRequestedDate;
+
+
+
                 TaxPeriodOfCase = selectedApplicationRef.Perslt;
                 TaxPeriodFrom = selectedApplicationRef.Abrzu;
                 TaxPeriodTo = selectedApplicationRef.Abrzo;
+
+                string strTaxPeriodFrom = "";
+                if (selectedApplicationRef.Abrzu != null)
+                {
+
+                    DateTime dateStart = new DateTime();
+                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                    string apiDate = @"""" + selectedApplicationRef.Abrzu + @"""";
+                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                    int year = hjCalendar.GetYear(dateStart);
+                    int month = hjCalendar.GetMonth(dateStart);
+                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                    string dt1 = string.Empty;
+                    string[] dts = null;
+                    dts = dateStr.Split('/');
+
+                    if (App.IsArabic)
+                    {
+
+                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                    }
+                    else
+                    {
+
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                    }
+
+                    strTaxPeriodFrom = dt1;
+                }
+
+                string strTaxPeriodTo = "";
+                if (selectedApplicationRef.Abrzo != null)
+                {
+
+                    DateTime dateStart = new DateTime();
+                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                    string apiDate = @"""" + selectedApplicationRef.Abrzo + @"""";
+                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                    int year = hjCalendar.GetYear(dateStart);
+                    int month = hjCalendar.GetMonth(dateStart);
+                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                    string dt1 = string.Empty;
+                    string[] dts = null;
+                    dts = dateStr.Split('/');
+
+                    if (App.IsArabic)
+                    {
+
+                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                    }
+                    else
+                    {
+
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                    }
+
+                    strTaxPeriodTo = dt1;
+                }
+
+                FormattedTaxperdioFromDate = strTaxPeriodFrom;
+                FormattedTaxperdioToDate = strTaxPeriodTo;
+
                 PenalityAmountInQuestion = selectedApplicationRef.Penamount;
 
                 TotalTaxLiability = selectedApplicationRef.Liaamt;
@@ -3872,6 +4035,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SubReviewReason = "";
             ApplicationRefNumber = "";
             RequestDate = null;
+            FormattedRequestDate = null;
             TaxPeriodOfCase = "";
             TaxPeriodFrom = null;
             TaxPeriodTo = null;
@@ -4168,6 +4332,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             
             RequestDate = Convert.ToDateTime(strRequestedDate);
 
+            string strFormatedRequestedDate = "";
+            if (modelVATReview.d.DecDt != null)
+            {
+
+                DateTime dateStart = new DateTime();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                string apiDate = @"""" + modelVATReview.d.DecDt + @"""";
+                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                string dt1 = string.Empty;
+                string[] dts = null;
+                dts = dateStr.Split('/');
+
+                if (App.IsArabic)
+                {
+
+                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                }
+                else
+                {
+
+                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                }
+
+                strFormatedRequestedDate = dt1;
+            }
+
+
+            FormattedRequestDate = strFormatedRequestedDate;
+
             TaxPeriodOfCase = modelVATReview.d.SecurityDtl.Perslt;
 
             string strTaxPeriodFromDate = "";
@@ -4190,11 +4394,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 string dt1 = string.Empty;
                 string[] dts = null;
                 dts = dateStr.Split('/');
+
                 dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
                 strTaxPeriodFromDate = dt1;
 
             }
+
+            string strFormatedTaxPeriodFromDate = "";
+            if (modelVATReview.d.SecurityDtl.Abrzu != null)
+            {
+
+                DateTime dateStart = new DateTime();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                string apiDate = @"""" + modelVATReview.d.SecurityDtl.Abrzu + @"""";
+                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                string dt1 = string.Empty;
+                string[] dts = null;
+                dts = dateStr.Split('/');
+
+                if (App.IsArabic)
+                {
+
+                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                }
+                else
+                {
+
+                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                }
+                strFormatedTaxPeriodFromDate = dt1;
+
+            }
             TaxPeriodFrom = Convert.ToDateTime(strTaxPeriodFromDate);
+            FormattedTaxperdioFromDate = strFormatedTaxPeriodFromDate;
 
 
 
@@ -4219,6 +4463,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
 
             RequestedReviewAmount = modelVATReview.d.SecurityDtl.Disamt;
+
             string strTaxPeriodToDate = "";
             if (modelVATReview.d.SecurityDtl.Abrzo != null)
             {
@@ -4243,9 +4488,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 strTaxPeriodToDate = dt1;
 
             }
-            
-            TaxPeriodTo = Convert.ToDateTime(strTaxPeriodToDate);
 
+            string strFormatedTaxPeriodToDate = "";
+            if (modelVATReview.d.SecurityDtl.Abrzo != null)
+            {
+
+                DateTime dateStart = new DateTime();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                string apiDate = @"""" + modelVATReview.d.SecurityDtl.Abrzo + @"""";
+                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                string dt1 = string.Empty;
+                string[] dts = null;
+                dts = dateStr.Split('/');
+                if (App.IsArabic)
+                {
+
+                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                }
+                else
+                {
+
+                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                }
+                strFormatedTaxPeriodToDate = dt1;
+
+            }
+
+            TaxPeriodTo = Convert.ToDateTime(strTaxPeriodToDate);
+            FormattedTaxperdioToDate = strFormatedTaxPeriodToDate;
 
             PenalityAmountInQuestion = modelVATReview.d.SecurityDtl.Penamount;
 

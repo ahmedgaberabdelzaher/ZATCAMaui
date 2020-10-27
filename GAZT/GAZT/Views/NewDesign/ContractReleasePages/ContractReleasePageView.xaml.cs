@@ -8,6 +8,7 @@ using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
 using EGAZT.Views.NewDesign.GenericPickers;
+using GAZT.Models;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -16,7 +17,7 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ContractReleasePageView : ContentPage
+    public partial class ContractReleasePageView : ContentPage, ContractReleaseInterface
     {
         ContractReleaseViewModel viewModel;
 
@@ -36,6 +37,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             viewModel.ResetData();
 
+
             Task.Run(async () =>
             {
                 viewModel.IsLoading1 = true;
@@ -44,7 +46,31 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             });
             viewModel.showInstructionDialog();
 
-           
+            viewModel.contractReleaseInterface = this;
+
+
+            try
+            {
+
+                Task.Run(async () =>
+                {
+                    await viewModel.PopulateDataInChips();
+
+                });
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
+                viewModel.IsHijriCal = false;
+
+
+
+            }
+            catch (Exception e)
+            {
+
+
+
+            }
+
+
         }
 
         public void SetPickerFont()
@@ -208,6 +234,61 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
         }
 
+        private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ChipModel selectedReturntype = (ChipModel)e.AddedItem;
+                ChipGroup_statusFilter.SelectedItem = selectedReturntype;
+                if (selectedReturntype.Text.Equals(AppResources.NDHijri))
+                {
+                    viewModel.IsHijriCal = true;
+
+                    if (EndDateHijriCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = HijriCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.FromDate = year + "/" + month + "/" + day;
+                        viewModel.ToDate = year + "/" + month + "/" + day;
+                    }
+
+                }
+                else
+                {
+                    viewModel.IsHijriCal = false;
+
+                    if (EndDateNormalCalendar.SelectedItem != null)
+                    {
+                        var selectedItem = NormalCalendar.SelectedItem as ObservableCollection<object>;
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
+                        string year = selectedItem[2].ToString();
+                        viewModel.FromDate = year + "/" + month + "/" + day;
+                        viewModel.ToDate = year + "/" + month + "/" + day;
+                    }
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public void setDateFormatFirstTime()
+        {
+            if (viewModel.IsHijriCal)
+            {
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[1];
+            }
+            else
+            {
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
+            }
+        }
         private void HandleAmountReleaseTextChange(object sender, TextChangedEventArgs e)
         {
             try
@@ -222,6 +303,17 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
 
             viewModel.MakeCalculations();
+        }
+
+        private void OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            //lets the Entry be empty
+            if (string.IsNullOrEmpty(e.NewTextValue)) return;
+
+            if (!int.TryParse(e.NewTextValue, out int value))
+            {
+                ContractNumberText.Text = e.OldTextValue;
+            }
         }
 
         private void HandleTotalAmount(object sender, TextChangedEventArgs e)
@@ -456,4 +548,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
              }*/
         }
     }
+
+    public interface ContractReleaseInterface
+    {
+        void setDateFormatFirstTime();
+    }
 }
+

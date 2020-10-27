@@ -16,6 +16,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
@@ -637,11 +638,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         int selectedPage = (int)PagesEnum.CrReleaseDetailsView;
 
+        public ContractReleaseInterface contractReleaseInterface { get; set; }
+
         public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             _navigationService = navigationService;
 
             _dialogService = dialogService;
+
+
+
 
             CloseClick = new Command(async () =>
             {
@@ -951,7 +957,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 CultureInfo calCul;
 
 
-                if (ContractReleaseData.d.ACalTp == "H")
+
+
+                if (IsHijriCal)
                 {
                     calCul = new CultureInfo("ar-SA");
                 }
@@ -1166,6 +1174,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        public ObservableCollection<ChipModel> _chipDataFilterlist = null;
+        public ObservableCollection<ChipModel> ChipDataFilterlist
+        {
+            get
+            {
+                return _chipDataFilterlist;
+            }
+            set
+            {
+                _chipDataFilterlist = value;
+                RaisePropertyChanged("ChipDataFilterlist");
+            }
+        }
+
+        public async Task PopulateDataInChips()
+        {
+            ChipDataFilterlist = new ObservableCollection<ChipModel>()
+            {
+                new ChipModel(){Text =AppResources.NDGregorian, TemplateType = AppResources.NDGregorian, ImageSource="Calendar"},
+                new ChipModel(){Text =AppResources.NDHijri, TemplateType = AppResources.NDHijri,ImageSource = "Calendar"},
+            };
+        }
+
         public int DefaultMonth;
         public int DefaultMonthHijri;
         public async Task SetDefaultDate()
@@ -1238,7 +1269,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 if (ContractReleaseData != null)
                 {
 
-                    if (ContractReleaseData.d.ACalTp == "H")
+                    if (IsHijriCal)
                     {
                         calCul = new CultureInfo("ar-SA");
                     }
@@ -1408,7 +1439,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 CultureInfo calCul;
 
 
-                if (ContractReleaseData.d.ACalTp == "H")
+                  if (IsHijriCal)
                 {
                     calCul = new CultureInfo("ar-SA");
                 }
@@ -1449,11 +1480,70 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 //request.d.AContEndDtCh = (ToDate.Year + "/" + ToDate.Month. + "/" + ToDate.Day).ToString();
                 //request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
 
-
                 request.d.AContEndDtCh = ToDate;
                 request.d.AContDt1 = FromDate;
-                   // request.d.AContEndDtCh = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
-                   // request.d.AContDt1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
+
+                if (ContractReleaseData.d.ACalTp == "H")
+                {
+                    if (IsHijriCal) {
+
+                        request.d.AContEndDtCh = ToDate;
+                        request.d.AContDt1 = FromDate;
+                    }
+                    else {
+
+
+                        CultureInfo arCI = new CultureInfo("en-US");
+
+                        DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                        DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+
+                        CultureInfo arCI1 = new CultureInfo("ar-SA");
+
+                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
+                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
+
+
+                        request.d.AContEndDtCh = convertedDae1;
+                        request.d.AContDt1 = convertedDae2; 
+                    }
+
+
+                }
+                else
+                {
+                    if (!IsHijriCal)
+                    {
+
+                        request.d.AContEndDtCh = ToDate;
+                        request.d.AContDt1 = FromDate;
+                    }
+                    else
+                    {
+
+
+                        CultureInfo arCI1 = new CultureInfo("en-US");
+                        CultureInfo arCI = new CultureInfo("ar-SA");
+
+
+                        DateTime tempDate = DateTime.ParseExact(ToDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                        DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+
+
+                        string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
+                        string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat); ;
+
+
+                        request.d.AContEndDtCh = convertedDae1;
+                        request.d.AContDt1 = convertedDae2;
+                    }
+
+
+                }
+
+
+                // request.d.AContEndDtCh = DateTime.ParseExact(ToDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
+                // request.d.AContDt1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", calCul).ToString("yyyy/MM/dd");
 
 
                 request.d.Savez = "X";
@@ -1687,7 +1777,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                                 IsHijriCal = false;
                             }
 
+                            contractReleaseInterface.setDateFormatFirstTime();
+
+
                             await SetDefaultDate();
+
 
                             Device.BeginInvokeOnMainThread(() =>
                             {
