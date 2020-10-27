@@ -355,6 +355,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             if (myBills.Status == "I")
                             {
+                                if(string.IsNullOrEmpty(myBills.Paidamt))
+                                {
+                                    myBills.Paidamt = "0";
+                                }
+
                                 if (!string.IsNullOrEmpty(myBills.BETRW) && !string.IsNullOrEmpty(myBills.Paidamt))
                                 {
                                     myBills.TotalRemainingAmount = (Convert.ToDouble(myBills.BETRW) - Convert.ToDouble(myBills.Paidamt)).ToString();
