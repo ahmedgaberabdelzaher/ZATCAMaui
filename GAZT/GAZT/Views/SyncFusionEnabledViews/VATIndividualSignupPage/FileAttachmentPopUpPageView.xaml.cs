@@ -384,6 +384,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.filterList();
                 viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                 viewModel.IsSwitchToggled = true;
+                viewModel.isImporter = false;
+
             }
             else
             {
@@ -391,6 +393,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.filterList();
                 viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                 viewModel.IsSwitchToggled = false;
+                viewModel.isImporter = true;
             }
         }
         }

@@ -627,7 +627,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-
+            viewModel.SelectedReasonListIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             viewModel.ReasonTitle = string.Empty;
 
             viewModel.AddOutletDocumentOptions();

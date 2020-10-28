@@ -45,6 +45,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public List<decimal> SizeList = new List<decimal>();
         public int NumberOfAttachmentComingFromServer = 0;
         public VATDeregistrationModelRootObject reasonList;
+        public int SelectedReasonListIndex = 0;
         #endregion
 
         #region Commands
@@ -2476,7 +2477,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 //Step2
 
-                if (SelectedOutletOptionIndex == 0)
+               // if (SelectedOutletOptionIndex == 0)
+
+                if(SelectedReasonListIndex == 0)
                 {
                     reqType = "VT_DREG";
                     requestTyp = "D";
@@ -2492,7 +2495,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     VATDeRegistrationDetailsData.d.SuspDtto = ConvertDateFormat(SuspendedEndDate);
                     VATDeRegistrationDetailsData.d.NextDtfrom = ConvertDateFormat(NextFilingStartDate);
                     VATDeRegistrationDetailsData.d.NextDtto = ConvertDateFormat(NextFilingEndDate);
-                    VATDeRegistrationDetailsData.d.Duedate = ConvertDateFormat(DateTime.Parse(NextFilingDueDate));
+                    if (!string.IsNullOrEmpty(NextFilingDueDate))
+                    {
+                        VATDeRegistrationDetailsData.d.Duedate = ConvertDateFormat(DateTime.Parse(NextFilingDueDate));
+                    }
 
                 }
 
