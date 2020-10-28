@@ -335,11 +335,13 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         private void RemarksTextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.Remarks = e.NewTextValue;
+            viewModel.charCountRemarksText = (255 - RemarksText.Text.Length) + " " + AppResources.VATReviewCharactersRemaining;
         }
 
         private void DetailDescriptionTextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.DetailDescription = e.NewTextValue;
+            viewModel.charCountDetailDescription = (132 - DetailDescription.Text.Length) + " " + AppResources.VATReviewCharactersRemaining;
         }
 
         private void ContactPersonNameTextChanged(object sender, TextChangedEventArgs e)

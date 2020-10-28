@@ -123,6 +123,35 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         }
 
+        private void Report_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.charCountReportDetails = (1000 - Report_Details_Tx.Text.Length) + " " + AppResources.VATReviewCharactersRemaining;
+        }
+
+
+        private void SADAD_CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            viewModel.EnableSecurityPaymentsConButton();
+
+            if (!string.IsNullOrEmpty(viewModel.SADADNumber))
+            {
+                return;
+            }
+
+            if (e.Value)
+            {
+                viewModel.ShowSadadGenerateButton();
+            }
+            else
+            {
+                viewModel.HideSadadGenerateButton();
+            }
+        }
+        private void Dispute_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.charCountDisputeDetails = (1000 - Dispute_Details_Tx.Text.Length) + " " + AppResources.VATReviewCharactersRemaining;
+        }
+
 
         private void Security_Type_ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {

@@ -224,6 +224,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        private string _charCountDetailDescription = 132 + " " + AppResources.VATReviewCharactersRemaining;
+        public string charCountDetailDescription
+        {
+            get
+            {
+                return _charCountDetailDescription;
+            }
+            set
+            {
+                _charCountDetailDescription = value;
+                RaisePropertyChanged("charCountDetailDescription");
+            }
+        }
+
+        private string _charCountRemarksText = 255 + " " + AppResources.VATReviewCharactersRemaining;
+        public string charCountRemarksText
+        {
+            get
+            {
+                return _charCountRemarksText;
+            }
+            set
+            {
+                _charCountRemarksText = value;
+                RaisePropertyChanged("charCountRemarksText");
+            }
+        }
         private Color _declarationButtonBackGroundColor = Color.FromHex("#d49504");
         public Color DeclarationButtonBackGroundColor
         {
@@ -2063,7 +2090,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             setPickerModel();
             ContractCopyAttachmentsListViewData = null;
             InvoiceAttachmentsListViewData = null;
-
+            charCountRemarksText = 255 + " " + AppResources.VATReviewCharactersRemaining;
+            charCountDetailDescription = 132 + " " + AppResources.VATReviewCharactersRemaining;
 
         }
 

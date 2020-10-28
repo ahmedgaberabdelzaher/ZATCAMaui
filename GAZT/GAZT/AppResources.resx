@@ -8482,4 +8482,7 @@ I acknowledge that the above bank account information is correct and assume full
 	<data name="VATRefundRequestConfirmSubmitButtonText" xml:space="preserve">
     <value>Submit</value>
   </data>
+     <data name="VATReviewCharactersRemaining" xml:space="preserve">
+    <value>Characters remaining</value>
+  </data>
 </root>

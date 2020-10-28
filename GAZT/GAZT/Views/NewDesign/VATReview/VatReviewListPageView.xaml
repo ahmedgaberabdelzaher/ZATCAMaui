@@ -408,7 +408,7 @@
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
 
-                                                    <Grid>
+                                                    <Grid VerticalOptions="FillAndExpand">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
@@ -422,7 +422,8 @@
                                                         <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}"
                                                                             Style="{StaticResource ValueLabelBlack}"
                                                                             HorizontalOptions="EndAndExpand"
-                                                                            HorizontalTextAlignment="End" />
+                                                                            HorizontalTextAlignment="End"
+                                                                            VerticalOptions="FillAndExpand"/>
                                                     </Grid>
 
                                                 </DataTemplate>

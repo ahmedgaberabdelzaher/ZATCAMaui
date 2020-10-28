@@ -1223,6 +1223,7 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                         <RowDefinition Height="150" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
@@ -1254,26 +1255,44 @@
 
                     <border:SfBorder Grid.Row="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
         
-                  <custom:GAZTBorderlessEditor TextChanged="RemarksTextChanged" MaxLength="1000"
+                  <custom:GAZTBorderlessEditor TextChanged="RemarksTextChanged" MaxLength="255"
                                          AutoSize="TextChanges"
                                          PlaceholderColor="Gray" FontSize="Small" x:Name="RemarksText"
                                          HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
   
                     </border:SfBorder>
-                 <custom:CustomLabel Grid.Row="3"
+                    <custom:CustomLabel Grid.Row="3"
+                                                HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding charCountRemarksText}" Style="{StaticResource MicroGrayLabelStyle}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                 <custom:CustomLabel Grid.Row="4"
                         Text="{x:Static ResourceManager:AppResources.CRDetailDescription}"
                         HorizontalOptions="StartAndExpand" 
                         Style="{StaticResource BodyLabelGrey}" />
 
-                 <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                 <border:SfBorder Grid.Row="5" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
        
-                        <custom:GAZTBorderlessEditor TextChanged="DetailDescriptionTextChanged" MaxLength="1000"
+                        <custom:GAZTBorderlessEditor x:Name="DetailDescription" TextChanged="DetailDescriptionTextChanged" MaxLength="132"
                                                     PlaceholderColor="Gray" FontSize="Small" AutoSize="TextChanges"
                                 MinimumHeightRequest="150" HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
                 </border:SfBorder>
 
+                    <custom:CustomLabel Grid.Row="6"
+                                                HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding charCountDetailDescription}" Style="{StaticResource MicroGrayLabelStyle}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
 
-                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
+                    <buttons:SfButton Grid.Row="7" Margin="0,16,0,16"
                                       VerticalOptions="End"
                                       Text="{x:Static ResourceManager:AppResources.CRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"

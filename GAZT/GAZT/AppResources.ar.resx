@@ -8410,4 +8410,7 @@
 	<data name="VATRefundRequestConfirmSubmitButtonText" xml:space="preserve">
     <value>تقديم</value>
   </data>
+    <data name="VATReviewCharactersRemaining" xml:space="preserve">
+    <value>الاحرف المتبقية</value>
+  </data>
 </root>

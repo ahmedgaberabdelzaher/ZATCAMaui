@@ -12939,10 +12939,10 @@ namespace GAZT.Manager
 
 
         //Excel sheet API3 Called to get the list of rejected forms
-        public async static Task<VATObjectionRejectedFormModel> GAZTGetVATObjectionFormRejected(string fbustx, string RvRsn, string rvSubRsn, string UserTypx)
+
+        public async static Task<VATObjectionRejectedFormModel> GAZTGetVATObjectionFormRejected(string fbustx, string RvRsn, string rvSubRsn, string UserTypx, string fbnumx, string sopbel)
         {
             VATObjectionRejectedFormModel _vATObjectionRejectedFormModel = new VATObjectionRejectedFormModel();
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
@@ -12953,16 +12953,12 @@ namespace GAZT.Manager
                     // RvRsn = "VTAS";
                     // rvSubRsn = "0090";
                     string formprocx = "ZTAX_VT_REV";
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
                     /// sap / opu / odata / SAP / ZDP_VAT_GET_REJFRM_SRV / HeaderSet(Langx = 'EN', Gpartx = '3102407123', TxnTpx = '', Fbustx = 'E0001', Fbstax = '',
                     //UserTypx = 'TP', RvRsn = 'VTAS', RvSubRsn = '0090', Fbnumx = '', Sopbel = '', Formprocx = 'ZTAX_VT_REV') ?$expand=RejectedFormSet
-
                     String url = Constants.GetVATObjectionRejectedFormURL + "Langx='" + lang + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',TxnTpx='" + "',Fbustx='" + fbustx + "'," +
-                     "Fbstax='" + "',UserTypx='" + UserTypx + "',RvRsn='" + RvRsn + "',RvSubRsn='" + rvSubRsn + "',Fbnumx='" + "',Sopbel='" + "',Formprocx='" + formprocx + "')?$expand=RejectedFormSet&$format=json";
-
+                     "Fbstax='" + "',UserTypx='" + UserTypx + "',RvRsn='" + RvRsn + "',RvSubRsn='" + rvSubRsn + "',Fbnumx='" + fbnumx + "',Sopbel='" + sopbel + "',Formprocx='" + formprocx + "')?$expand=RejectedFormSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage vATObjectionRejectedFormResponse = await client.GetAsync(uri);
                     if (vATObjectionRejectedFormResponse != null)
@@ -13022,7 +13018,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-
         ////Excel sheet API4 for Attachment API
         public static async Task<AttachmentRootOject> GAZTSaveVATObjectionAttachment(byte[] AttachmentByte, string fileName, string retGuid, string dotyp, string contentType)
         {
