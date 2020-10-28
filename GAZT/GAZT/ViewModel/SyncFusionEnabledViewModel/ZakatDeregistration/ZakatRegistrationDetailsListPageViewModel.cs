@@ -104,11 +104,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     ZDTitle = AppResources.ZZZZVATREFinancialDetails,
                     ZDImageSource = "details",
                 });
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                {
-                    ZDTitle = AppResources.TinDeregistration,
-                    ZDImageSource = "deregistration",
-                });
+                //tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                //{
+                //    ZDTitle = AppResources.TinDeregistration,
+                //    ZDImageSource = "deregistration",
+                //});
                 tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.ZZAmend,
