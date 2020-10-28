@@ -8709,7 +8709,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                                             PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
                                         }
-                                    }
+                                        else
+                                        {
+                                            OnConfirmAndCarryForwardClicked();
+
+                                        }
+
+                                }
                                     else
                                     {
                                         OnConfirmAndCarryForwardClicked();
