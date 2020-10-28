@@ -426,7 +426,7 @@
                                                         <Label Text="{x:Static ResourceManager:AppResources.VATRefundsLastStatusChange}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="7" Grid.Column="1" >
-                                                        <Label Text="{Binding LastChgDt,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                        <Label Text="{Binding LastStatusDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                 </Grid>
                                             </StackLayout>
@@ -598,13 +598,13 @@
                                     </Grid>
                                 </StackLayout>
                             </border:SfBorder >
-                            <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                            <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Padding="5">
                                 <CheckBox x:Name="CBTermsAndConditions"  VerticalOptions="CenterAndExpand" CheckedChanged="TermsAndConditions_CheckedChanged"/>
                                 <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="Black"  />
-                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" >
+                                            <Span FontSize="17" Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" >
                                                 <Span.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TermsAndConditions_Tapped"/>
                                                 </Span.GestureRecognizers>

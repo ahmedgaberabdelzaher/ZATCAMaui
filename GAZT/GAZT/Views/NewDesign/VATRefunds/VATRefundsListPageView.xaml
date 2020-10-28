@@ -215,7 +215,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsRequestDate}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding RefundReqDt,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" />
+                                            <Label Text="{Binding RefundReqDtString,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                         </Grid>
 

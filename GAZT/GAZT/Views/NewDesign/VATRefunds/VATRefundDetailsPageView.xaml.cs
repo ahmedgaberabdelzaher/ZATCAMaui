@@ -178,7 +178,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         void ConfirmSummaryButton_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.PushAsync(new YesNoAlertPopupView(AppResources.AcceptButton, AppResources.ZZCancel, AppResources.VATRefundReturnSubmitConfirmation));
+            string YesButtonText = string.Empty;
+            if (App.IsArabic)
+                YesButtonText = AppResources.VATRefundRequestConfirmSubmitButtonText;
+            else
+                YesButtonText = AppResources.AcceptButton;
+            PopupNavigation.PushAsync(new YesNoAlertPopupView(YesButtonText, AppResources.ZZCancel, AppResources.VATRefundReturnSubmitConfirmation));
         }
 
         public async void VoidButton_Tapped(System.Object sender, System.EventArgs e)
@@ -299,7 +304,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 btnConfirmSummary.IsEnabled = true;
             else
                 btnConfirmSummary.IsEnabled = false;
-          // Display T&C popup on checkbox click if its not checked
+            // Display T&C popup on checkbox click if its not checked
             if (!isTandCChecked && CBTermsAndConditions.IsChecked)
             {
                 CBTermsAndConditions.IsChecked = false;

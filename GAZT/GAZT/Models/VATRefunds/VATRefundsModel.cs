@@ -4,6 +4,7 @@ using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel;
+using GAZT.Manager;
 
 namespace EGAZT.Models.VATRefunds
 {
@@ -286,7 +287,7 @@ namespace EGAZT.Models.VATRefunds
                 OnPropertyRaised("RequestedAmt");
             }
         }
-       
+
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
@@ -315,27 +316,29 @@ namespace EGAZT.Models.VATRefunds
         public string NetCreditBal { get; set; }
 
         private string _formatedReqdt { get; set; }
+        public string RefundReqDtString { get; set; }
 
+        //  [JsonProperty("RefundReqDt")]
+        //  public DateTime RefundReqDt { get; set; }
+
+        private DateTime _refundReqDt { get; set; }
         [JsonProperty("RefundReqDt")]
-        public DateTime RefundReqDt { get; set; }
-
-        //[JsonProperty("RefundReqDt")]
-        //private DateTime _refundReqDt { get; set; }
-        //public DateTime RefundReqDt
-        //{
-        //    get
-        //    {
-        //        return _refundReqDt;
-        //    }
-        //    set
-        //    {
-        //        _refundReqDt = value;
-        //        //if (_refundReqDt != null)
-        //        //{
-        //        //    FormatedReqDt = _refundReqDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-        //        //}
-        //    }
-        //}
+        public DateTime RefundReqDt
+        {
+            get
+            {
+                return _refundReqDt;
+            }
+            set
+            {
+                _refundReqDt = value;
+                if (_refundReqDt != null)
+                {
+                    string date = UtilityManager.FormatAccordingToDeviceForVAT(value.ToShortDateString());
+                    RefundReqDtString = date;
+                }
+            }
+        }
     }
 
     public partial class VatRefSubItemsSet
@@ -373,8 +376,22 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("Status")]
         public string Status { get; set; }
 
+        public string LastStatusDate { get; set; }
+        public DateTime _lastChgDt { get; set; }
         [JsonProperty("LastChgDt")]
-        public DateTime LastChgDt { get; set; }
+        public DateTime LastChgDt
+        {
+            get => _lastChgDt;
+            set
+            {
+                if (value != null)
+                {
+                    string date = UtilityManager.FormatAccordingToDeviceForVAT(value.ToShortDateString());
+                    LastStatusDate = date;
+                }
+                _lastChgDt = value;
+            }
+        }
 
         [JsonProperty("Waers")]
         public string Waers { get; set; }
@@ -473,7 +490,7 @@ namespace EGAZT.Models.VATRefunds
         public VatRefundDisplayDataModel D { get; set; }
     }
 
-    public partial class VatRefundDisplayDataModel:INotifyPropertyChanged
+    public partial class VatRefundDisplayDataModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -500,7 +517,7 @@ namespace EGAZT.Models.VATRefunds
                 OnPropertyRaised("Rfamt");
             }
         }
-    
+
         [JsonProperty("__metadata")]
         public MetadataDisplayModel Metadata { get; set; }
 
@@ -1036,6 +1053,6 @@ namespace EGAZT.Models.VATRefunds
         public string Type { get; set; }
     }
 
-   
+
 
 }

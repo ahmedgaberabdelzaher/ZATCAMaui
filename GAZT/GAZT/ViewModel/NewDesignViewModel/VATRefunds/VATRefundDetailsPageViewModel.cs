@@ -242,9 +242,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
 
             VatRefundsListResultModel = vATRefundsModel;
-            VATRefundsHeaderSet = VatRefundsListResultModel.VatRefHeaderSet.Results[0];
+            VATRefundsHeaderSet = VatRefundsListResultModel.VatRefHeaderSet?.Results[0];
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
-            VATRefundsHeaderSet.RequestedAmt = VATRefundsHeaderSet.RequestedAmt.Replace("-", string.Empty);
+            VATRefundsHeaderSet.RequestedAmt = VATRefundsHeaderSet?.RequestedAmt?.Replace("-", string.Empty);
 
             try
             {
