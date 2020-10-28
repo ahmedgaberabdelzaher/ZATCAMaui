@@ -891,8 +891,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("VBSadadNumber");
             }
         }
-        public DateTime? _vBDateofPenality = null;
-        public DateTime? VBDateofPenality
+        public string _vBDateofPenality = null;
+        public string VBDateofPenality
         {
             get { return _vBDateofPenality; }
             set
@@ -921,8 +921,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("VBPeriodkey");
             }
         }
-        public DateTime? _vBStartDate = null;
-        public DateTime? VBStartDate
+        public string _vBStartDate = null;
+        public string VBStartDate
         {
             get { return _vBStartDate; }
             set
@@ -931,8 +931,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("VBStartDate");
             }
         }
-        public DateTime? _vBEndDate = null;
-        public DateTime? VBEndDate
+        public string _vBEndDate = null;
+        public string VBEndDate
         {
             get { return _vBEndDate; }
             set
@@ -941,8 +941,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("VBEndDate");
             }
         }
-        public DateTime? _vBDueDate = null;
-        public DateTime? VBDueDate
+        public string _vBDueDate = null;
+        public string VBDueDate
         {
             get { return _vBDueDate; }
             set
@@ -5260,13 +5260,162 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             {
                                 VBDocumentNumber = item.Opbel;
                                 VBSadadNumber = item.Vtre2;
-                                VBDateofPenality = item.Bldat; //item.Bldat.ToString();
                                 VBDescriptionOfPenality = item.Desc;
                                 VBPeriodkey = item.Perslt;
-                                VBStartDate = item.Abrzu; //item.Abrzu.ToString();
-                                VBEndDate = item.Abrzo; //item.Abrzo.ToString();
-                                VBDueDate = item.Studt; //item.Studt.ToString();
+                               
                                 VBAmount = item.Betrh;
+
+
+
+                                string strFormatedDateofPenality = "";
+                                if (item.Bldat != null)
+                                {
+
+                                    DateTime dateStart = new DateTime();
+                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                    string apiDate = @"""" + item.Bldat + @"""";
+                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                                    int year = hjCalendar.GetYear(dateStart);
+                                    int month = hjCalendar.GetMonth(dateStart);
+                                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                                    string dt1 = string.Empty;
+                                    string[] dts = null;
+                                    dts = dateStr.Split('/');
+                                    if (App.IsArabic)
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    else
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    strFormatedDateofPenality = dt1;
+
+                                }
+
+                                string strFormatedDueDate = "";
+                                if (item.Studt != null)
+                                {
+
+                                    DateTime dateStart = new DateTime();
+                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                    string apiDate = @"""" + item.Studt + @"""";
+                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                                    int year = hjCalendar.GetYear(dateStart);
+                                    int month = hjCalendar.GetMonth(dateStart);
+                                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                                    string dt1 = string.Empty;
+                                    string[] dts = null;
+                                    dts = dateStr.Split('/');
+                                    if (App.IsArabic)
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    else
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    strFormatedDueDate = dt1;
+
+                                }
+
+                                string strFormatedStartDate = "";
+                                if (item.Abrzu != null)
+                                {
+
+                                    DateTime dateStart = new DateTime();
+                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                    string apiDate = @"""" + item.Abrzu + @"""";
+                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                                    int year = hjCalendar.GetYear(dateStart);
+                                    int month = hjCalendar.GetMonth(dateStart);
+                                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                                    string dt1 = string.Empty;
+                                    string[] dts = null;
+                                    dts = dateStr.Split('/');
+                                    if (App.IsArabic)
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    else
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    strFormatedStartDate = dt1;
+
+                                }
+
+                                string strFormatedEndDate = "";
+                                if (item.Abrzo != null)
+                                {
+
+                                    DateTime dateStart = new DateTime();
+                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                    string apiDate = @"""" + item.Abrzo + @"""";
+                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                                    int year = hjCalendar.GetYear(dateStart);
+                                    int month = hjCalendar.GetMonth(dateStart);
+                                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                                    string dt1 = string.Empty;
+                                    string[] dts = null;
+                                    dts = dateStr.Split('/');
+                                    if (App.IsArabic)
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    else
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    strFormatedEndDate = dt1;
+
+                                }
+
+                                VBDateofPenality = strFormatedDateofPenality; //item.Bldat.ToString();
+                                VBStartDate = strFormatedStartDate; //item.Abrzu.ToString();
+                                VBEndDate = strFormatedEndDate; //item.Abrzo.ToString();
+                                VBDueDate = strFormatedDueDate; //item.Studt.ToString();
+
                             }
 
                             await PopupNavigation.Instance.PushAsync(new VatReviewBillViewBottomPopUpPageView());

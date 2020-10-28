@@ -293,7 +293,7 @@
                                              Style="{StaticResource GreyBorderFrame}">
                                 <Grid>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                        Text="{Binding RequestDate,StringFormat='{0:dd MMM yyyy}'}"
+                                                        Text="{Binding FormattedRequestDate}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Style="{StaticResource BodyLabelBlack}" />
 
@@ -551,7 +551,7 @@
                             <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
                                 <custom:BorderlessEntry IsEnabled="False"
-                                                        Text="{Binding TaxPeriodFrom,StringFormat='{0:dd MMM yyyy}'}"
+                                                        Text="{Binding FormattedTaxperdioFromDate}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Style="{StaticResource BodyLabelBlack}" />
                             </border:SfBorder>
@@ -571,7 +571,7 @@
                             <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
                                 <custom:BorderlessEntry IsEnabled="False"
-                                                        Text="{Binding TaxPeriodTo,StringFormat='{0:dd MMM yyyy}'}"
+                                                        Text="{Binding FormattedTaxperdioToDate}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Style="{StaticResource BodyLabelBlack}" />
                             </border:SfBorder>
@@ -1507,7 +1507,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label 
-                                                                Text="{Binding RequestDate,StringFormat='{0:dd MMM yyyy}'}"
+                                                                Text="{Binding FormattedRequestDate}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
@@ -1716,7 +1716,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label 
-                                                                Text="{Binding TaxPeriodFrom,StringFormat='{0:dd MMM yyyy}'}"
+                                                                Text="{Binding FormattedTaxperdioFromDate}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
@@ -1739,7 +1739,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label
-                                                                Text="{Binding TaxPeriodTo,StringFormat='{0:dd MMM yyyy}'}"
+                                                                Text="{Binding FormattedTaxperdioToDate}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />

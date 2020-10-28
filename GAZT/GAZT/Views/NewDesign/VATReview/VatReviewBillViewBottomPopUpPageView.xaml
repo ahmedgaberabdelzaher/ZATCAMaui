@@ -82,8 +82,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDocumentNo}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBDocumentNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDocumentNo}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBDocumentNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         
                                         <Grid>
@@ -94,8 +94,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBSadadNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBSadadNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -105,8 +105,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDateofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBDateofPenality,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDateofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBDateofPenality}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -116,8 +116,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDescriptionofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBDescriptionOfPenality}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDescriptionofPenalty}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBDescriptionOfPenality}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -127,8 +127,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPeriodKey}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBPeriodkey}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRPeriodKey}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBPeriodkey}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -138,8 +138,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRStartDate}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBStartDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRStartDate}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBStartDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -149,8 +149,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VREndDate}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBEndDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VREndDate}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBEndDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -161,7 +161,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRDueDate}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBDueDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBDueDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -171,8 +171,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding VBAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            <Label Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRAmount}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <Label Grid.Column="1" Text="{Binding VBAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                         </Grid>
                                     </StackLayout>
                                     
