@@ -183,7 +183,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Label Text="{x:Static ResourceManager:AppResources.OZObjectionDate}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding Erfdate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                <Label Text="{Binding Erfdate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             </StackLayout>
 
  

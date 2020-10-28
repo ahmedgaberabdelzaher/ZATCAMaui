@@ -1498,20 +1498,48 @@
 
                         </border:SfBorder>
 
-                        <Frame CornerRadius="10" BackgroundColor="#E6EFED" HasShadow="False">
-                            <StackLayout Orientation="Horizontal">
+                         <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,10,0,0" Padding="0">
+                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding ZakatDues,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                    </Grid>
+                           </Frame>
 
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CRTotalDues}"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    VerticalTextAlignment="Center" />
+                        <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,10,0,0" Padding="0">
+                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TaxDues,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                    </Grid>
+                           </Frame>
 
-                                <custom:CustomLabel Text="{Binding TotalDues,StringFormat='{0:N} SAR'}" HorizontalOptions="EndAndExpand"
-                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                    VerticalTextAlignment="Center" />
-
-                            </StackLayout>
-                        </Frame>
+                           <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,10,0,0" Padding="0">
+                                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTotalDues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TotalDues,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                    </Grid>
+                           </Frame>
+                        
 
                         <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">

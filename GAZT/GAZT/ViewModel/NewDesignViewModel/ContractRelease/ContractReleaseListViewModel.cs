@@ -288,6 +288,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        private string _zakatDues = "";
+        public string ZakatDues
+        {
+            get { return _zakatDues; }
+            set
+            {
+                _zakatDues = value;
+                RaisePropertyChanged("ZakatDues");
+            }
+        }
+        private string _taxDues = "";
+        public string TaxDues
+        {
+            get { return _taxDues; }
+            set
+            {
+                _taxDues = value;
+                RaisePropertyChanged("TaxDues");
+            }
+        }
 
         public ObservableCollection<Attachment> contractCopyAttachmentsListViewData { get; set; }
 
@@ -417,6 +437,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             //ContractReLeaseSummaryData.EstimatedProfitforTax = resultData.d.ATaxProfitPer;
             //ContractReLeaseSummaryData.TheValueofZakatdues = resultData.d.ADueZakat;
             //ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
+            ZakatDues = ContractReLeaseSummaryData.TheValueofZakatdues;
+            TaxDues = ContractReLeaseSummaryData.TheValueofTaxdues;
             TotalDues = ContractReLeaseSummaryData.TotalDues;
             var ccAttachments = new ObservableCollection<Attachment>();
             var invoiceAttachments = new ObservableCollection<Attachment>();

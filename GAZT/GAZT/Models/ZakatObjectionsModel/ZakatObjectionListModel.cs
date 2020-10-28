@@ -32,7 +32,7 @@ namespace EGAZT.Models.ZakatObjectionsModel
             public string StatText { get; set; }
             public string Fbtyp { get; set; }
             public string FbtText { get; set; }
-            public DateTime? Erfdate { get; set; }
+            public string Erfdate { get; set; }
             public string Erftime { get; set; }
             public string Persl { get; set; }
             public string TaxPeriod { get; set; }

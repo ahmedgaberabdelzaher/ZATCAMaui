@@ -391,7 +391,7 @@
 
                                                      <Label Grid.Row="0" Grid.Column="1"
                                                                Text="{Binding Filename}"
-                                                               Style="{StaticResource CaptionLabelBlack}"
+                                                               Style="{StaticResource ValueLabelBlack}"
                                                                LineHeight="0.8"
                                                                HorizontalOptions="FillAndExpand"
                                                                VerticalOptions="Center"/>
@@ -441,7 +441,7 @@
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                    FontSize="Small" TextColor="Black"
+                                                    FontSize="Small" TextColor="Black" Style="{StaticResource ValueLabelBlack}"
                                                     HorizontalOptions="FillAndExpand" />
                                     <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
                                        Rotation="90">
@@ -528,8 +528,8 @@
                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatInstalmentTotalBillsSelected}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" />
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"  />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatInstalmentTotalBillsSelected}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
                                                     </Grid>
                                                 </Frame>
 
@@ -578,9 +578,9 @@
                                                 <custom:CustomLabel Grid.Row="3" Margin="0" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
                                                 <custom:CustomLabel Grid.Row="4"  Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="5" Margin="0" Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="5" Margin="0" Text="{Binding SadadNo}" Style="{StaticResource ValueLabelBlack}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="6" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="7"  Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="7"  Text="{Binding Taxperioddsc}" Style="{StaticResource ValueLabelBlack}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>
                                     </cards:SfCardView>
@@ -617,9 +617,9 @@
                                                 <custom:CustomLabel TextColor="White" Margin="0" Grid.Row="3" Text="{Binding Betrh,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
                                                 <custom:CustomLabel TextColor="White" Grid.Row="4"  Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
-                                                <custom:CustomLabel TextColor="White" Margin="0" Grid.Row="5"  Text="{Binding SadadNo}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel TextColor="White" Margin="0" Grid.Row="5"  Text="{Binding SadadNo}" Style="{StaticResource ValueLabelBlack}"></custom:CustomLabel>
                                                 <custom:CustomLabel TextColor="White" Grid.Row="6"  Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
-                                                <custom:CustomLabel TextColor="White" Grid.Row="7"  Text="{Binding Taxperioddsc}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel TextColor="White" Grid.Row="7"  Text="{Binding Taxperioddsc}" Style="{StaticResource ValueLabelBlack}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>
                                     </cards:SfCardView>

@@ -373,6 +373,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 RaisePropertyChanged("ObjectionsList");
             }
         }
+
+        public string _formattedObjectionDate = "";
+
+        public string FormattedObjectionDate
+        {
+            get { return _formattedObjectionDate; }
+            set
+            {
+                _formattedObjectionDate = value;
+                RaisePropertyChanged("FormattedObjectionDate");
+            }
+        }
         public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
         public ObservableCollection<Attachment> AttachmentsListViewData
         {
@@ -462,6 +474,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                         {
                             foreach (var objection in _ZAKATObjectionList.d.ListSet.results)
                             {
+
+
+                                string strRequestedDate = objection.Erfdate;
+                                if (objection.Erfdate != null)
+                                {
+
+                                    DateTime dateStart = new DateTime();
+                                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                                    string apiDate = @"""" + objection.Erfdate + @"""";
+                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                                    int year = hjCalendar.GetYear(dateStart);
+                                    int month = hjCalendar.GetMonth(dateStart);
+                                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+                                    string dt1 = string.Empty;
+                                    string[] dts = null;
+                                    dts = dateStr.Split('/');
+
+                                    if (App.IsArabic)
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+                                    else
+                                    {
+
+                                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                                    }
+
+
+                                    strRequestedDate = dt1;
+                                }
+
+                                objection.Erfdate = strRequestedDate;
+
+
+
                                 objectionsList.Add(objection);
                             }
                             ObjectionsList = objectionsList;
@@ -683,7 +739,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             AssessmentYear = _ZAKATObjectionWithDraw.d.results[0].AAssnmtYr;
                             PeriodFrom = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom;
                             PeriodTo = _ZAKATObjectionWithDraw.d.results[0].APeriodTo;
-                            DisplaTaxType = _ZAKATObjectionWithDraw.d.results[0].ATaxTy;
+
+                            if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ITAX"))
+                            {
+                                DisplaTaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                            }
+                            else if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ZAKT"))
+                            {
+                                DisplaTaxType = AppResources.FORM5Zakat;
+                            }
+
                             Currency = _ZAKATObjectionWithDraw.d.results[0].ACurr;
                             AssessmentAmount = _ZAKATObjectionWithDraw.d.results[0].AAssnmtAmt;
                             DisplayRevisedAmount = _ZAKATObjectionWithDraw.d.results[0].ARevAmt;

@@ -1534,7 +1534,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                             AssessmentYear = _ZAKATObjectionWithDraw.d.results[0].AAssnmtYr;
                             PeriodFrom = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom;
                             PeriodTo = _ZAKATObjectionWithDraw.d.results[0].APeriodTo;
-                            DisplaTaxType = _ZAKATObjectionWithDraw.d.results[0].ATaxTy;
+                            //DisplaTaxType = _ZAKATObjectionWithDraw.d.results[0].ATaxTy;
+
+                            if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ITAX"))
+                            {
+                                DisplaTaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                            }
+                            else if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ZAKT"))
+                            {
+                                DisplaTaxType = AppResources.FORM5Zakat;
+                            }
+
                             Currency = _ZAKATObjectionWithDraw.d.results[0].ACurr;
                             AssessmentAmount = _ZAKATObjectionWithDraw.d.results[0].AAssnmtAmt;
                             DisplayRevisedAmount = _ZAKATObjectionWithDraw.d.results[0].ARevAmt;
@@ -1764,7 +1774,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             billsModel.FinancialPeriod = String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
                   String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
             billsModel.ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
-            billsModel.TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+
+
+            if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
+            {
+                billsModel.TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+            }
+            else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
+            {
+                billsModel.TaxType = AppResources.FORM5Zakat;
+            }
+           // billsModel.TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
             billsModel.AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
 
             bills.Add(billsModel);
@@ -1784,7 +1804,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                     String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom);
             }
             ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
-            TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+            //TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+
+            if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
+            {
+                TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+            }
+            else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
+            {
+                TaxType = AppResources.FORM5Zakat;
+            }
             AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
             RevisedAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARevAmt;
             DisputeAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ADisputeAmt;
