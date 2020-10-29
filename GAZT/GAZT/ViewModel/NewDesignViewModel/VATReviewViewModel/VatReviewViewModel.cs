@@ -3575,7 +3575,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     DateTime dateStart = new DateTime();
                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                     string apiDate = @"""" + selectedApplicationRef.DecDt + @"""";
-                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                    dateStart = (DateTime)selectedApplicationRef.DecDt;
 
                     GregorianCalendar hjCalendar = new GregorianCalendar();
                     int year = hjCalendar.GetYear(dateStart);
@@ -3619,9 +3619,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
 
                     DateTime dateStart = new DateTime();
-                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                    string apiDate = @"""" + selectedApplicationRef.Abrzu + @"""";
-                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                 
+                    dateStart = (DateTime)selectedApplicationRef.Abrzu;
 
                     GregorianCalendar hjCalendar = new GregorianCalendar();
                     int year = hjCalendar.GetYear(dateStart);
@@ -3658,7 +3657,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     DateTime dateStart = new DateTime();
                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                     string apiDate = @"""" + selectedApplicationRef.Abrzo + @"""";
-                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                    dateStart = (DateTime)selectedApplicationRef.Abrzo; 
 
                     GregorianCalendar hjCalendar = new GregorianCalendar();
                     int year = hjCalendar.GetYear(dateStart);
@@ -4961,7 +4960,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Bldat + @"""";
-                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                                    dateStart = (DateTime)item.Bldat;
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
@@ -4997,7 +4996,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Studt + @"""";
-                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                                    dateStart = (DateTime)item.Studt;
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
@@ -5033,7 +5032,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Abrzu + @"""";
-                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                                    dateStart = (DateTime)item.Abrzu;
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
@@ -5069,7 +5068,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                                     DateTime dateStart = new DateTime();
                                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
                                     string apiDate = @"""" + item.Abrzo + @"""";
-                                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                                    dateStart = (DateTime)item.Abrzo;
 
                                     GregorianCalendar hjCalendar = new GregorianCalendar();
                                     int year = hjCalendar.GetYear(dateStart);
