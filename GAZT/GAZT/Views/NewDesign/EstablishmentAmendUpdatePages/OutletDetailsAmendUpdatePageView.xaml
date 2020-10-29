@@ -288,7 +288,7 @@
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTSameAsPhycical}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0" BackgroundColor="AliceBlue" />
                             <syncfusion:SfSwitch VisualType="Material" IsOn="{Binding PostalAsPhysical}" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>
-                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" IsEnabled="{Binding PostalAsPhysical,Converter={StaticResource boolToVisibilityConverter},ConverterParameter='invert'}" >
+                        <StackLayout x:Name="PostalAddressFields" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" IsEnabled="{Binding PostalAsPhysical,Converter={StaticResource boolToVisibilityConverter},ConverterParameter='invert'}" >
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="20" RowSpacing="0" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>

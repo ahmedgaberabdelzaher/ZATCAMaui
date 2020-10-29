@@ -57,6 +57,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             base.OnAppearing();
             viewModel?.OnAppearing();
+            if(!viewModel.PostalAsPhysical)
+            {
+                viewModel.PostalAddressVisibility = true;
+            }
+            else
+            {
+                viewModel.PostalAddressVisibility = false;
+
+            }
         }
 
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)

@@ -330,6 +330,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     CountrySame = Country;
                     ProvinanceSame = Provinance;
                     CitySame = City;
+                    PostalAddressVisibility = false;
                 }
                 else
                 {
@@ -343,9 +344,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     CountrySame = null;
                     ProvinanceSame = null;
                     CitySame = null;
+                    PostalAddressVisibility = true;
+
+
                 }
             }
         }
+        private bool _postalAddressVisibility = true;
+        public bool PostalAddressVisibility
+        {
+            get => _postalAddressVisibility;
+            set
+            {
+                _postalAddressVisibility = value;
+                RaisePropertyChanged(nameof(PostalAddressVisibility));
+            }
+        }
+
         private string _houseNumberSame = string.Empty;
         public string HouseNumberSame
         {
