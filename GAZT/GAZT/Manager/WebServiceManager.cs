@@ -13539,10 +13539,13 @@ namespace GAZT.Manager
                     if (!string.IsNullOrEmpty(_vatObjectionsResponsestr) && _vatObjectionResponseObject.d == null)
                     {
                         ErrorMessage = string.Empty;
+
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatObjectionsResponsestr);
                         if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                         {
                             ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+
+                            WebServiceManager.ErrorMessageForVAT = ErrorMessage;
                             throw new GAZTVATRegistrationInProcessException(ErrorMessage);
 
                         }

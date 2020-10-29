@@ -8485,4 +8485,11 @@ I acknowledge that the above bank account information is correct and assume full
      <data name="VATReviewCharactersRemaining" xml:space="preserve">
     <value>Characters remaining</value>
   </data>
+    <data name="ZZGeneralMessage_VATReviewCancelled" xml:space="preserve">
+    <value>VAT Review form is cancelled. Please initiate the process again to file VAT Review</value>
+    <comment>VAT Review general message</comment>
+  </data>
+    <data name="VATReviewDraftSaved" xml:space="preserve">
+    <value>VAT Review form saved successfully{0}</value>
+  </data>
 </root>

@@ -8413,4 +8413,11 @@
     <data name="VATReviewCharactersRemaining" xml:space="preserve">
     <value>الاحرف المتبقية</value>
   </data>
+    <data name="VATReviewDraftSaved" xml:space="preserve">
+    <value>{0}تم حفظ نموذج طلب مراجعة لضريبة القيمة المضافة ضريبة القيمة المضافة بنجاح</value>
+  </data>
+    <data name="ZZGeneralMessage_VATReviewCancelled" xml:space="preserve">
+    <value>VAT Review form is cancelled. Please initiate the process again to file VAT Review</value>
+    <comment>VAT Review general message</comment>
+  </data>
 </root>

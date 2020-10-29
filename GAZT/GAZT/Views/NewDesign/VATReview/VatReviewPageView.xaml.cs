@@ -7,6 +7,8 @@ using System;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using GAZT.Manager;
+using Rg.Plugins.Popup.Services;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
@@ -31,6 +33,9 @@ namespace EGAZT.Views.NewDesign.VatReview
             viewModel.ResetData();
 
             viewModel.VatReviewReasonDropDownData();
+
+
+            viewModel.setMoreOptioButtons();
         }
 
         private void SetLTR()
@@ -55,6 +60,9 @@ namespace EGAZT.Views.NewDesign.VatReview
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            getYesCommand();
+            getNoCommand();
 
             MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
             MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
@@ -107,7 +115,154 @@ namespace EGAZT.Views.NewDesign.VatReview
                 }
             });
 
+            MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+            {
+                await PopupNavigation.Instance.PopAsync();
+                if (arg != null)
+                {
+                    string message = arg;
+
+                    if (App.IsArabic)
+                    {
+                        ArButtons buttonId = ArButtons.None;
+                        if (!string.IsNullOrEmpty(message))
+                        {
+                            message = message.Replace(" ", "");
+                        }
+                        Enum.TryParse(message, out buttonId);
+                        switch (buttonId)
+                        {
+                            case ArButtons.إضافةملاحظات:
+                                //viewModel.VATReturnAddNote();
+                                break;
+                            case ArButtons.عرضملاحظات:
+                                //  viewModel.VATReturnGetNotes();
+                                break;
+                            case ArButtons.المرفقات:
+                                // viewModel.VATViewAttachments();
+                                break;
+                            case ArButtons.إلغاء:
+                                viewModel.IsDraftClicked = true;
+                                viewModel.VoidMsg();
+                                viewModel.IsDraftClicked = false;
+                                break;
+                            case ArButtons.عادةتعيين:
+                                //await viewModel.VATReturnResetAsync();
+                                break;
+                            case ArButtons.تعديل:
+                                // await viewModel.VATReturnAmendAsync();
+                                break;
+                            case ArButtons.حفظكمسودة:
+                                viewModel.IsDraftClicked = true;
+                                viewModel.OnSaveDraftClickedAsync();
+                                viewModel.IsDraftClicked = false;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Buttons buttonId = Buttons.None;
+                        if (!string.IsNullOrEmpty(message))
+                        {
+                            message = message.Replace(" ", "");
+                        }
+                        Enum.TryParse(message, out buttonId);
+                        switch (buttonId)
+                        {
+                            case Buttons.CreateNotes:
+                                //viewModel.VATReturnAddNote();
+                                break;
+                            case Buttons.DisplayNotes:
+                                //viewModel.VATReturnGetNotes();
+                                break;
+                            case Buttons.Attachments:
+                                // viewModel.VATViewAttachments();
+                                break;
+                            case Buttons.Void:
+                                viewModel.IsDraftClicked = true;
+                                viewModel.VoidMsg();
+                                viewModel.IsDraftClicked = false;
+                                break;
+                            case Buttons.Reset:
+                                //await viewModel.VATReturnResetAsync();
+                                break;
+                            case Buttons.Amend:
+                                // await viewModel.VATReturnAmendAsync();
+                                break;
+                            case Buttons.SaveasDraft:
+                                viewModel.IsDraftClicked = true;
+                                viewModel.OnSaveDraftClickedAsync();
+
+                                viewModel.IsDraftClicked = false;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                }
+            });
+
+
         }
+
+        public async void getYesCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                            viewModel.VATSetReturnVoidAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void getNoCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+
+                    //await PopupNavigation.Instance.PopAsync();
+                    // await viewModel.VATSetReturnVoidAsync();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
 
 
         protected override void OnDisappearing()
@@ -120,6 +275,10 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
             MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
+
+            MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
 
         }
 

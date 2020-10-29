@@ -1387,7 +1387,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 //    request.d.AZakatProfit = EstimatedProfitForZakatAmount.ToString();
                 //     request.d.AZakatProfitPer = EstimatedProfitForZakatPercent.ToString();
                 request.d.AZakatProfitPer = EstimatedProfitForZakatAmount.ToString();
-                request.d.AComments = "";
+                request.d.AComments = Remarks.ToString();
                 request.d.ARemark = Remarks.ToString();
 
                 request.d.ADoc1 = "0";

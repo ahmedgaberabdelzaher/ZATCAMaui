@@ -11,7 +11,9 @@ using EGAZT.Models;
 using EGAZT.Models.VatReviewModel;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using EGAZT.Views.NewDesign;
+using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.NewDesign.VatReview;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
@@ -75,6 +77,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand ApplicationNumRefCommand { get; set; }
         public ICommand SadadGenerateBtnTapped { get; set; }
         public ICommand GoBackToReportDetails { get; set; }
+        public ICommand onMoreOptionClicked { get; set; }
 
 
 
@@ -86,6 +89,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public readonly IDialogService _dialogService;
 
         int selectedPage = (int)PagesEnum.ReviewReason;
+
+        private List<String> _ListOfActionButtonsApplicable;
+        public List<String> ListOfActionButtonsApplicable
+        {
+            get
+            {
+                return _ListOfActionButtonsApplicable;
+            }
+            set
+            {
+                _ListOfActionButtonsApplicable = value;
+                RaisePropertyChanged("ListOfActionButtonsApplicable");
+            }
+        }
 
         private bool _isBackVisible = false;
 
@@ -591,6 +608,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsGeneratingFormbundle");
             }
         }
+
 
         private bool isSadadRefeshVisible = false;
 
@@ -1677,6 +1695,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("IsAssessPayOptionVisible");
             }
         }
+
+        private bool isDraftClicked = false;
+        public bool IsDraftClicked
+        {
+            get { return isDraftClicked; }
+            set
+            {
+                isDraftClicked = value;
+                RaisePropertyChanged("IsDraftClicked");
+            }
+        }
         private bool _isRRAmountEdit = false;
         public bool IsRRAmountEdit
         {
@@ -2475,7 +2504,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             ShowDatePicker = new Command(async () => { showDatePickerDialog(); });
             IdTypeSpinnerTapped = new Command(async () => { showIdTypePickerDialog(); });
             GoBackToReportDetails = new Command(async () => { EnableReportDetailsView(); });
-
+            onMoreOptionClicked = new Command(async () =>
+            {
+                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+            });
 
             //AddSecurityPaymentOptions();
 
@@ -2486,6 +2518,210 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             //setIdPickerModel();
         }
+
+        public void setMoreOptioButtons()
+        {
+            var listOfActionButtonsApplicable = new List<string>();
+             if (App.selectedVATItem != "")
+             {
+
+             listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            }
+
+
+            listOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
+            ListOfActionButtonsApplicable = listOfActionButtonsApplicable;
+        }
+
+
+        public async Task VATSetReturnVoidAsync()
+        {
+            modelVATReview.d.Operationx = "04";
+            var vatReviewResponse = await SubmitClicked();
+
+            if (vatReviewResponse != null && vatReviewResponse.d != null)
+            {
+
+                modelVATReview = vatReviewResponse;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATReviewCancelled;
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                    _navigationService.GoBack();
+
+
+                    //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+                });
+
+            }
+            else {
+
+                IsLoading = false;
+                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+
+                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+                        headerWithInfos.Add(headerAmountInfo);
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                        WebServiceManager.ErrorMessageForVAT = string.Empty;
+                    });
+                }
+
+            }
+
+
+        }
+            public async Task OnSaveDraftClickedAsync()
+        {
+            IsDraftClicked = true;
+
+            modelVATReview.d.Operationx = "05";
+            var vatReviewResponse = await SubmitClicked();
+            if(vatReviewResponse != null && vatReviewResponse.d != null) {
+
+                modelVATReview = vatReviewResponse;
+
+                IsDraftClicked = false;
+
+                
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    App.selectedVATItem = modelVATReview.d.Fbnumx;
+                    setMoreOptioButtons();
+
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = string.Format(AppResources.VATReviewDraftSaved, "  " + modelVATReview.d.Fbnumx);
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                    //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+                });
+            }
+            else
+            {
+
+                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+
+
+                }
+                else
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                    });
+                }
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                //});
+            }
+        
+
+
+        }
+
+        public async void VoidMsg()
+        {
+
+            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+            headerAmountInfo.IsLinkAvailable = false;
+            headerAmountInfo.Message = AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost;
+
+            headerWithInfos.Add(headerAmountInfo);
+
+            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+        }
+
 
         public async void NewAttachmentClicked()
         {
@@ -2935,6 +3171,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                 IsGeneratingFormbundle = false;
                 IsSadadRefeshVisible = false;
+                modelVATReview.d.Operationx = "01";
                 modelVATReview = await SubmitClicked();
 
                 if (modelVATReview != null && modelVATReview.d != null)
@@ -2983,7 +3220,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             try
             {
 
-
+                modelVATReview.d.Operationx = "05";
                 modelVATReview = await SubmitClicked();
 
                 if (IsGeneratingFormbundle)
@@ -3042,7 +3279,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private void EnableReviewReasonView()
         {
             CurrentIndex = 1;
-            IsBackVisible = false;
+            IsBackVisible = true;
             ReviewReasonVisible = true;
             ReviewDetailsVisible = false;
             ReportDetailsVisible = false;
@@ -3429,6 +3666,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         {
             switch (selectedPage)
             {
+                case (int)PagesEnum.ReviewReason:
+                    _navigationService.GoBack();
+                    break;
+
                 case (int)PagesEnum.ReviewDetails:
                     EnableReportDetailsView();
                     break;
@@ -4247,6 +4488,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             IDNumber = modelVATReview.d.DecIdNo;
             ContactPersonName = modelVATReview.d.Decnm;
+
+            if (string.IsNullOrEmpty(IDNumber)) {
+
+                IsDECCheckBox = true;
+            }
+
            
             var bankAttachments = new ObservableCollection<Attachment>();
             var attachments = new ObservableCollection<Attachment>();
@@ -4739,6 +4986,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         MakeViewOnlyItems();
 
                         modelVATReview.d.Persl = selectedApplicationRef.Persl;
+
+                        modelVATReview.d.Operationx = "05";
 
                         modelVATReview = await SubmitClicked();
 
@@ -5321,6 +5570,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             _postData.NotesSet = NotesetResult.results;
 
+            if(modelVATReview.d.Operationx == "04") {
+
+                _postData.NotesSet.Clear();
+            }
+
 
             if (IsRRAmountEdit)
             {
@@ -5345,9 +5599,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.AttdetSet.Clear();
             _postData.ReasonSet.Clear();
             _postData.AddressSet.Clear();
-            _postData.RvRsn = selectedReviewReason.ProcCD;
-            _postData.RvSubRsn = selectedSubReviewReason.Code;
-            _postData.RejFb = ApplicationRefNumber;
+
+            if(selectedReviewReason != null) {
+
+                if (string.IsNullOrEmpty(selectedReviewReason.ProcCD))
+                {
+
+                    _postData.RvRsn = "";
+
+                }
+                else
+                {
+                    _postData.RvRsn = selectedReviewReason.ProcCD;
+
+
+
+                }
+            }
+            else {
+                _postData.RvRsn = "";
+            }
+
+
+            if(selectedSubReviewReason != null) {
+
+                if (string.IsNullOrEmpty(selectedSubReviewReason.Code))
+                {
+
+                    _postData.RvSubRsn = "";
+
+
+                }
+                else
+                {
+                    _postData.RvSubRsn = selectedSubReviewReason.Code;
+
+
+                }
+            }
+            else {
+                _postData.RvSubRsn = "";
+            }
+
+
+            if(string.IsNullOrEmpty(ApplicationRefNumber)) {
+
+                 _postData.RejFb = "";
+
+            }
+            else {
+
+                _postData.RejFb = ApplicationRefNumber;
+            }
+
+
 
             return _postData;
 
@@ -5393,95 +5698,98 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     modelVATReview.d.DecIdNo = "";
                 }
 
-                modelVATReview.d.DateFrm = selectedApplicationRef.DateFrm;
-                modelVATReview.d.DateFrmOld = selectedApplicationRef.DateFrm;
-                modelVATReview.d.DecDt = RequestDate.ToString();
+                if(selectedApplicationRef != null) {
 
-                var strDecDate = "";
-                if (!modelVATReview.d.DecDt.Contains("Date"))
-                {
+                    modelVATReview.d.DateFrm = selectedApplicationRef.DateFrm;
+                    modelVATReview.d.DateFrmOld = selectedApplicationRef.DateFrm;
+                    modelVATReview.d.DecDt = RequestDate.ToString();
 
-
-                    DateTime dt = Convert.ToDateTime(RequestDate.ToString());
-                    JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                    var strDecDate = "";
+                    if (!modelVATReview.d.DecDt.Contains("Date"))
                     {
-                        DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                    };
-                    //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                    var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                    string[] dateList = jsonDateTime.Split('+');
-                    jsonDateTime = dateList[0].Replace("\"\\", "");
-                    jsonDateTime = jsonDateTime + ")/";
-                    modelVATReview.d.DecDt = jsonDateTime;
-                    strDecDate = jsonDateTime;
 
 
+                        DateTime dt = Convert.ToDateTime(RequestDate.ToString());
+                        JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                        {
+                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                        };
+                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                        var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                        string[] dateList = jsonDateTime.Split('+');
+                        jsonDateTime = dateList[0].Replace("\"\\", "");
+                        jsonDateTime = jsonDateTime + ")/";
+                        modelVATReview.d.DecDt = jsonDateTime;
+                        strDecDate = jsonDateTime;
+
+
+                    }
+
+
+                    if (IsSecurityPaymentsTabVisible)
+                    {
+
+                        if (IsSadadSecuritySelected)
+                        {
+
+                            modelVATReview.d.SecurityDtl.Sectp = "C";
+                            modelVATReview.d.SecurityDtl.Sopbel = SADADNumber;
+                            modelVATReview.d.SecurityDtl.ChkBank = "";
+                            modelVATReview.d.SecurityDtl.ChkCash = "X";
+
+                        }
+                        else
+                        {
+
+
+
+                            modelVATReview.d.SecurityDtl.Sectp = "B";
+                            modelVATReview.d.SecurityDtl.ChkCash = "";
+                            modelVATReview.d.SecurityDtl.ChkBank = "X";
+
+
+                        }
+
+                        if (!string.IsNullOrEmpty(strDecDate))
+                        {
+
+                            modelVATReview.d.SecurityDtl.Abrzo = strDecDate;
+                            modelVATReview.d.SecurityDtl.Abrzu = strDecDate;
+
+                        }
+
+                        modelVATReview.d.SecurityDtl.DataVersion = "00001";
+                        modelVATReview.d.SecurityDtl.Disamt = RequestedReviewAmount;
+                        modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
+                        modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
+                        modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
+                        modelVATReview.d.SecurityDtl.Perslt = selectedApplicationRef.Perslt;
+                        modelVATReview.d.SecurityDtl.Secamt = SecurityAmount;
+                        modelVATReview.d.SecurityDtl.Clramt = selectedApplicationRef.Clramt;
+                        modelVATReview.d.SecurityDtl.Security = SecurityNumber;
+
+
+
+
+
+                    }
                 }
 
-
-
-
-
-                if (IsSecurityPaymentsTabVisible)
-                {
-
-                    if (IsSadadSecuritySelected)
-                    {
-
-                        modelVATReview.d.SecurityDtl.Sectp = "C";
-                        modelVATReview.d.SecurityDtl.Sopbel = SADADNumber;
-                        modelVATReview.d.SecurityDtl.ChkBank = "";
-                        modelVATReview.d.SecurityDtl.ChkCash = "X";
-
-                    }
-                    else
-                    {
-
-
-
-                        modelVATReview.d.SecurityDtl.Sectp = "B";
-                        modelVATReview.d.SecurityDtl.ChkCash = "";
-                        modelVATReview.d.SecurityDtl.ChkBank = "X";
-
-
-                    }
-
-                    if (!string.IsNullOrEmpty(strDecDate))
-                    {
-
-                        modelVATReview.d.SecurityDtl.Abrzo = strDecDate;
-                        modelVATReview.d.SecurityDtl.Abrzu = strDecDate;
-
-                    }
-
-                    modelVATReview.d.SecurityDtl.DataVersion = "00001";
-                    modelVATReview.d.SecurityDtl.Disamt = RequestedReviewAmount;
-                    modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
-                    modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
-                    modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
-                    modelVATReview.d.SecurityDtl.Perslt = selectedApplicationRef.Perslt;
-                    modelVATReview.d.SecurityDtl.Secamt = SecurityAmount;
-                    modelVATReview.d.SecurityDtl.Clramt = selectedApplicationRef.Clramt;
-                    modelVATReview.d.SecurityDtl.Security = SecurityNumber;
-
-                    
-
-
-
-                }
 
                 request = BuildRequestObject();
 
-                if (IsGeneratingFormbundle)
-                {
+                request.Operationx = modelVATReview.d.Operationx;
 
-                    request.Operationx = "05";
-                }
-                else
-                {
+                //if (IsGeneratingFormbundle || IsDraftClicked)
+                //{
 
-                    request.Operationx = "01";
-                }
+                //    request.Operationx = "05";
+                //}
+                //else
+                //{
+
+                //    request.Operationx = "01";
+                //}
 
 
 
