@@ -600,23 +600,22 @@
                             </border:SfBorder >
                             <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Padding="5">
                                 <CheckBox x:Name="CBTermsAndConditions"  VerticalOptions="CenterAndExpand" CheckedChanged="TermsAndConditions_CheckedChanged"/>
-                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                <custom:CustomLabel Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="Black"  />
-                                            <Span FontSize="17" Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" >
-                                                <Span.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="TermsAndConditions_Tapped"/>
-                                                </Span.GestureRecognizers>
-                                            </Span>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" />
                                             <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="Black"  />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
+                                    <custom:CustomLabel.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TermsAndConditions_Tapped"/>
+                                    </custom:CustomLabel.GestureRecognizers>
                                 </custom:CustomLabel>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
                                 <CheckBox x:Name="CBAcknowledment"   VerticalOptions="CenterAndExpand" CheckedChanged="Acknowledgment_CheckedChanged"/>
-                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                <custom:CustomLabel Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="Black"   />
