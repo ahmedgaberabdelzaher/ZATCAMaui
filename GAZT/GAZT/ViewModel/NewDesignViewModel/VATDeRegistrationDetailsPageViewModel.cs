@@ -680,7 +680,63 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("VATDeregistrationModel");
             }
         }
+        private bool _isDeclarationChecked;
+        public bool IsDeclarationChecked
+        {
+            get
+            {
+                return _isDeclarationChecked;
+            }
+            set
+            {
+                _isDeclarationChecked = value;
 
+                if (_isDeclarationChecked)
+                {
+                    IsDeclarationContinueButtonEnabled = true;
+                }
+                else
+                {
+                    IsDeclarationContinueButtonEnabled = false;
+                }
+
+                RaisePropertyChanged("IsDeclarationChecked");
+            }
+        }
+        private Color _declarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color DeclarationContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _declarationContinueButtonnBackroundColor;
+            }
+            set
+            {
+                _declarationContinueButtonnBackroundColor = value;
+                RaisePropertyChanged("DeclarationContinueButtonnBackroundColor");
+            }
+        }
+        private bool _iSDeclarationContinueButtonEnabled = false;
+        public bool IsDeclarationContinueButtonEnabled
+        {
+            get
+            {
+                return _iSDeclarationContinueButtonEnabled;
+            }
+            set
+            {
+                _iSDeclarationContinueButtonEnabled = value;
+                if (_iSDeclarationContinueButtonEnabled)
+                {
+                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
+            }
+        }
         //public ObservableCollection<VATDeregistrationModel> outletDocumentOptions { get; set; }
         //public ObservableCollection<VATDeregistrationModel> OutletDocumentOptions
         //{
@@ -1954,10 +2010,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                     //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
 
+
+                }
+                if (VATDeRegistrationDetailsData.d.Declareflg)
+                {
+                    IsDeclarationChecked = true;
+                }
+                else
+                {
+                    IsDeclarationChecked = false;
                 }
             }
         }
@@ -2565,6 +2630,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         VATDeRegistrationDetailsData.d.NotesSet.results[0].Rcodez = "DGVT_OTH";
                         VATDeRegistrationDetailsData.d.NotesSet.results[0].Tdline = OtherField;
                     }
+                }
+
+                if (IsDeclarationChecked)
+                {
+                    VATDeRegistrationDetailsData.d.Declareflg = true;
+                }
+                else
+                {
+                    VATDeRegistrationDetailsData.d.Declareflg = false;
                 }
 
 

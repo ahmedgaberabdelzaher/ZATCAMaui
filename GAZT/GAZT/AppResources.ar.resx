@@ -4771,6 +4771,9 @@
 	<data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
     <value>أتعهد بأني مصرح لإكمال هذا النموذج للشخص الخاضع للضريبة وجميع المعلومات صحيحة</value>
   </data>
+   <data name="VATDeregistrationDeclarationCheckBoxText" xml:space="preserve">
+    <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقة وصحيحة</value>
+  </data>
 	<data name="VatDeregistrationofVATReason1" xml:space="preserve">
     <value>إجمالي التوريدات الخاضعة لضريبة القيمة المضافة أقل من الحد الإلزامي 375,000 ريال سعودي</value>
   </data>
@@ -6493,13 +6496,16 @@
     <value>بيانات الأنشطة</value>
   </data>
 	<data name="ESTAddCRAndOrLicenseDetails" xml:space="preserve">
-    <value>الرجاء إدخال رقم السجل التجاري أو رقم الرخصة التجاري</value>
+    <value>رقم السجل التجاري/رقم الرخصة</value>
   </data>
 	<data name="ESTCommercialRegistration" xml:space="preserve">
     <value>السجل التجاري</value>
   </data>
 	<data name="ESTLicenseDetails" xml:space="preserve">
     <value>الرخصة التجارية</value>
+  </data>
+  <data name="ESTFinancialDetails" xml:space="preserve">
+    <value>التفاصيل المالية</value>
   </data>
 	<data name="ESTCommercialRegistrationNumberInfo" xml:space="preserve">
     <value>تستطيع إضافة سجل تجاري واحد وعدة ارقام للرخص التجارية بحد اقصى 4 رخص</value>

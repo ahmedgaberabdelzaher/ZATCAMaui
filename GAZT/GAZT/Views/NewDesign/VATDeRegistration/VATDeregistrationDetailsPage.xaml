@@ -592,7 +592,23 @@
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
-                                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                  <StackLayout  Orientation="Horizontal">
+                                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsDeclarationChecked}">
+                                    <CheckBox.Triggers>
+                                        <DataTrigger TargetType="CheckBox"  Value="false">
+                                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                                        </DataTrigger>
+                                    </CheckBox.Triggers>
+                                </CheckBox>
+                                <custom:CustomLabel Margin="5,10,0,15"  Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationCheckBoxText}"  />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                            </StackLayout>
+               <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
                 <StackLayout Margin="8">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                        <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -604,8 +620,9 @@
                 
                 </StackLayout>
             </border:SfBorder>
-                                <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,36" x:Name="btnDeclarationContinue"
-                                   Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                    
+                                <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  IsEnabled="{Binding IsDeclarationContinueButtonEnabled}"  Margin="0,10,0,36" x:Name="btnDeclarationContinue"
+                                   Command="{Binding DeclarationContinueBtnTapped}" BackgroundColor="{Binding DeclarationContinueButtonnBackroundColor}"  Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                             </StackLayout>
                          </Grid>

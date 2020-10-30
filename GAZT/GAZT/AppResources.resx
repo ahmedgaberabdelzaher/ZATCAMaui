@@ -4762,7 +4762,11 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
 	<data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
     <value>I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct.</value>
+  </data>   
+    <data name="VATDeregistrationDeclarationCheckBoxText" xml:space="preserve">
+    <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief.</value>
   </data>
+    
 	<data name="VatDeregistrationofVATReason1" xml:space="preserve">
     <value>Total value of VAT eligible supplies falls below mandatory registration threshold (&lt;375,000 SAR)</value>
   </data>
@@ -6636,7 +6640,7 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     <value>Activity Details</value>
   </data>
 	<data name="ESTAddCRAndOrLicenseDetails" xml:space="preserve">
-    <value>Add your CR and/or License Details</value>
+    <value>C/R / License</value>
   </data>
 	<data name="ESTCommercialRegistration" xml:space="preserve">
     <value>Commercial Registration</value>
@@ -6758,6 +6762,10 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
 	<data name="ESTCRlicense" xml:space="preserve">
     <value>CR/license</value>
   </data>
+    <data name="ESTFinancialDetails" xml:space="preserve">
+    <value>Financial Details</value>
+  </data>
+     
 	<data name="ESTMethodOfFinancialRecordMaintained" xml:space="preserve">
     <value>Method of Financial Record Maintained</value>
   </data>

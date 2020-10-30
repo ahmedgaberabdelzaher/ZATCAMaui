@@ -8094,6 +8094,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATDeregistrationDeclarationCheckBoxText {
+            get {
+                return ResourceManager.GetString("VATDeregistrationDeclarationCheckBoxText", resourceCulture);
+            }
+        }
+        
         public static string VatDeregistrationofVATReason1 {
             get {
                 return ResourceManager.GetString("VatDeregistrationofVATReason1", resourceCulture);
@@ -11967,6 +11973,12 @@ namespace EGAZT {
         public static string ESTCRlicense {
             get {
                 return ResourceManager.GetString("ESTCRlicense", resourceCulture);
+            }
+        }
+        
+        public static string ESTFinancialDetails {
+            get {
+                return ResourceManager.GetString("ESTFinancialDetails", resourceCulture);
             }
         }
         

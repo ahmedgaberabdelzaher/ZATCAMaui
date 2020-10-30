@@ -12,6 +12,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         public ZakatRegistrationFinancialDetails()
         {
             InitializeComponent();
+            SetLTR();
             viewModel = App.Locator.ZakatRegistrationFinancialDetailsPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;

@@ -96,7 +96,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationOutletsDetails);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                else if (selectedItem.ZDTitle == AppResources.ZZZZVATREFinancialDetails)
+                else if (selectedItem.ZDTitle == AppResources.ESTFinancialDetails)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
