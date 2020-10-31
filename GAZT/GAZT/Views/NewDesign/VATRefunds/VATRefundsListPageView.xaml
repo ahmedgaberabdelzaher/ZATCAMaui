@@ -165,7 +165,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestTotalRequestedAmount}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestTotalRequestedAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
                                                     <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding RequestedAmt}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" >
                                                         <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
@@ -178,8 +178,8 @@
                                             </StackLayout>
                                             
                                             <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.VATRefundsReassesmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label  Style="{StaticResource ValueLabelBlack}">
+                                                <Label Text="{x:Static ResourceManager:AppResources.VATRefundsReassesmentAmount}" HorizontalOptions="StartAndExpand"  Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                                      <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding ReassessAmt}"/>
@@ -191,7 +191,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsTotalOffset}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Style="{StaticResource ValueLabelBlack}">
+                                                <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding OffsetTot}"/>
@@ -203,7 +203,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Style="{StaticResource ValueLabelBlack}">
+                                                <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                                      <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding NetCreditBal}"/>
@@ -214,8 +214,8 @@
                                                 </Label>
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.VATRefundsRequestDate}" Style="{StaticResource CaptionLabelGrey}"/>
-                                            <Label Text="{Binding RefundReqDtString,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource ValueLabelBlack}" />
+                                                <Label Text="{x:Static ResourceManager:AppResources.VATRefundsRequestDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Label Text="{Binding RefundReqDtString,StringFormat='{0:dd MMM yyyy}'}" HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                         </Grid>
 
