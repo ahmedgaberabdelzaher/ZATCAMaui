@@ -334,7 +334,11 @@ namespace EGAZT.Models.VATRefunds
                 _refundReqDt = value;
                 if (_refundReqDt != null)
                 {
-                    string date = UtilityManager.FormatAccordingToDeviceForVAT(value.ToShortDateString());
+                    //string date = UtilityManager.FormatAccordingToDeviceForVAT(value.ToShortDateString());
+
+                    RefundReqDtString = value.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    string[] dts = RefundReqDtString.Split('-');
+                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     RefundReqDtString = date;
                 }
             }
@@ -386,8 +390,14 @@ namespace EGAZT.Models.VATRefunds
             {
                 if (value != null)
                 {
-                    string date = UtilityManager.FormatAccordingToDeviceForVAT(value.ToShortDateString());
+                    //string date = UtilityManager.FormatAccordingToDeviceForVAT(value.ToShortDateString());
+
+                    LastStatusDate = value.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    string[] dts = LastStatusDate.Split('-');
+                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     LastStatusDate = date;
+
+                    //LastStatusDate = date;
                 }
                 _lastChgDt = value;
             }
