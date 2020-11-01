@@ -110,18 +110,18 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.ZAKATAmendOrUpdateClicked();
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                //else
-                //{
-                //    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "TIN Deregistration eService");
+                else
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "TIN Deregistration eService");
 
-                //    await Task.Run(() =>
-                //    {
-                //        App.DisplayProgressView();
-                //    });
+                    await Task.Run(() =>
+                    {
+                        App.DisplayProgressView();
+                    });
 
-                //    viewModel.GetNewTinDeregistrationDataCliked();
-                //    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                //}
+                    viewModel.GetNewTinDeregistrationDataCliked();
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                }
 
                 var view = sender as SfListView;
                 view.SelectedItem = null;

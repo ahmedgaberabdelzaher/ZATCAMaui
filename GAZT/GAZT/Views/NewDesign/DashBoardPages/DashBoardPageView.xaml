@@ -573,7 +573,7 @@
                                         </StackLayout>
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                        <StackLayout Orientation="Horizontal" Spacing="20">
+                                        <StackLayout Orientation="Horizontal" Spacing="20" IsVisible="{Binding IsRegistrationDetailsTileVisible}">
                                             <Image Source="refund">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -581,10 +581,12 @@
                                                 <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                        <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
+                                        <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsRegistrationDetailsTileVisible}"/>
                                     </StackLayout>
 
-                                     <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <!--Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}"-->
+
+                                    <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_ReportTaxEvasion.png">
 
                                             </Image>
@@ -594,6 +596,7 @@
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
 
                                     <StackLayout Orientation="Horizontal" Spacing="20">
 

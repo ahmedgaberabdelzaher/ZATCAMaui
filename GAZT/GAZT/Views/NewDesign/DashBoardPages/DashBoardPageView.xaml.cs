@@ -185,8 +185,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         else if(App.LoginDataRetrieved.ZkReg == "N")
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = false;
+                            viewModel.IsRegistrationDetailsTileVisible = false;
                         }
-
 
                         if (App.LoginDataRetrieved.VtReg == "X")
                         {

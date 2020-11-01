@@ -534,6 +534,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsVatRegistrationTileVisible");
             }
         }
+
+        private bool _isRegistrationDetailsTileVisible = true;
+        public bool IsRegistrationDetailsTileVisible
+        {
+            get
+            {
+                return _isRegistrationDetailsTileVisible;
+            }
+            set
+            {
+                _isRegistrationDetailsTileVisible = value;
+                RaisePropertyChanged("IsRegistrationDetailsTileVisible");
+            }
+        }
+
         private bool _isVatAmendmentTileVisible = false;
         public bool IsVatAmendmentTileVisible
         {
