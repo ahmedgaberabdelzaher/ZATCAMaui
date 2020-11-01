@@ -176,11 +176,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = false;
                             viewModel.IsVatRegistrationTileVisible = true;
-
+                            viewModel.IsRegistrationDetailsTileVisible = true;
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "U")
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = true;
+                            viewModel.IsRegistrationDetailsTileVisible = false;
+
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "N")
                         {
@@ -197,7 +199,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             viewModel.IsVatRegistrationTileVisible = false;
                             viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                         }
-
 
                         if (App.LoginDataRetrieved.ZkSignup == "X")
                         {
