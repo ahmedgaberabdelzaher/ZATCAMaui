@@ -1277,7 +1277,7 @@
                                            HasShadow="False" />
                                         <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
                                            HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
-                                           Source="ic_attachment" />
+                                           Source="establishments" />
                                         <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
                                                  Padding="8,0">
                                             <Label Text="{x:Static ResourceManager:AppResources.ZOObjectionReason}"
@@ -1329,7 +1329,7 @@
                                            HasShadow="False" />
                                         <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
                                            HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
-                                           Source="establishments" />
+                                           Source="ic_attachment" />
                                         <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
                                                  Padding="8,0">
                                             <Label Text="{x:Static ResourceManager:AppResources.Attachments}"

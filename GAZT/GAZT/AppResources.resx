@@ -1206,7 +1206,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls.</value>
   </data>
 	<data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
-    <value>Caution, you must adjust the settings of the scanner so that the compressed file size less than MB10.
+    <value>Caution, you must adjust the settings of the scanner so that the compressed file size less than 10MB.
 Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
@@ -3857,7 +3857,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionTINValidationMessage" xml:space="preserve">
-    <value>Tin number must be start with 03</value>
+    <value>Tin number must be start with 3</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionTINDigitValidationMessage" xml:space="preserve">
@@ -3865,7 +3865,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATNumValidationMessage" xml:space="preserve">
-    <value>VAT number must be start with 01</value>
+    <value>VAT number must be start with 1</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATDigitValidationMessage" xml:space="preserve">
@@ -7915,7 +7915,7 @@ Please enter an attachment name before choosing an attachment</value>
   </data>
 	<data name="ZOAttachmentsTitleTwo" xml:space="preserve">
     <value>Attachment(Only One Allowed - Maximum Size 10 MB)
-Caution, you must adjust the settings of the scanner so that the compressed file size less than MB10.
+Caution, you must adjust the settings of the scanner so that the compressed file size less than 10 MB.
 Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>

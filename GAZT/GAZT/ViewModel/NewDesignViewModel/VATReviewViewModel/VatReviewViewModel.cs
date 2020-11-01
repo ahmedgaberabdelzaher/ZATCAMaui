@@ -1727,8 +1727,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 RaisePropertyChanged("PartialAmountCheckBox");
             }
         }
-
-        private string _charCountDisputeDetails = 1000 + " " + AppResources.VATReviewCharactersRemaining;
+        private string _charCountDisputeDetails = 0 + "/" + 1000;
         public string charCountDisputeDetails
         {
             get
@@ -1744,8 +1743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
 
-
-        private string _charCountReportDetails = 1000 + " " + AppResources.VATReviewCharactersRemaining;
+        private string _charCountReportDetails = 0 + "/" + 1000;
         public string charCountReportDetails
         {
             get
@@ -4242,8 +4240,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             };
 
 
-            charCountReportDetails = 1000 + " " + AppResources.VATReviewCharactersRemaining;
-            charCountDisputeDetails = 1000 + " " + AppResources.VATReviewCharactersRemaining;
+
+            charCountReportDetails = 0 + "/" + 1000;
+            charCountDisputeDetails = 0 + "/" + 1000;
 
             IsGeneratingFormbundle = false;
             IsSadadSecuritySelected = false;
@@ -4470,16 +4469,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             MessagingCenter.Send<Object, int>(this, "draftSecurity", modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0);
             MessagingCenter.Send<Object, int>(this, "draftRequest", modelVATReview.d.SecurityDtl.Amttp == "P" ? 1 : 0);
 
-            
+
             if (modelVATReview.d.IdType == "ZS0001")
             {
                 IDType = AppResources.VFCNationalID;
                 IsDOBVisible = true;
+                PickedDate = modelVATReview.d.DecDt;
             }
             else if (modelVATReview.d.IdType == "ZS0002")
             {
                 IDType = AppResources.VFCIqamaID;
                 IsDOBVisible = true;
+                PickedDate = modelVATReview.d.DecDt;
             }
             else if (modelVATReview.d.IdType == "ZS0003")
             {
@@ -4488,6 +4489,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             IDNumber = modelVATReview.d.DecIdNo;
             ContactPersonName = modelVATReview.d.Decnm;
+            if (!string.IsNullOrEmpty(ContactPersonName))
+            {
+                IsIDVerified = true;
+                if (modelVATReview.d.IdType == "ZS0003" && string.IsNullOrEmpty(IDNumber))
+                {
+                    IsIDVerified = false;
+                }
+            }
 
             if (string.IsNullOrEmpty(IDNumber)) {
 

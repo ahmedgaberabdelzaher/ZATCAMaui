@@ -1221,11 +1221,7 @@
     <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
 	<data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
-    <value>
-حجم الملف المسموح به في المرفقات 10 MB
-اعدادات الماسح الضوئي الموصى بها : 745*1024
-صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
-  </data>
+   <value> حجم الملف المسموح به في المرفقاتMB 10 اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>   </data>
 	<data name="BPTermsAndConditionsAlert" xml:space="preserve">
     <value>الرجاء الموافقة على التعليمات والشروط</value>
   </data>
@@ -3860,7 +3856,7 @@
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionTINValidationMessage" xml:space="preserve">
-    <value>الرقم المميز يجب أن يبدء.03</value>
+    <value>الرقم المميز يجب أن يبدأ برقم  3</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionTINDigitValidationMessage" xml:space="preserve">
@@ -3868,7 +3864,7 @@
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATNumValidationMessage" xml:space="preserve">
-    <value>الرقم المميز يجب أن يبدء 01.</value>
+    <value>الرقم الضريبي يجب أن يبدأ برقم  1</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATDigitValidationMessage" xml:space="preserve">
@@ -7785,11 +7781,7 @@
     <value>حجم الملف المسموح به في المرفقات 10 MB</value>
   </data>
 	<data name="ZOAttachmentsTitleTwo" xml:space="preserve">
-    <value>حجم الملف المسموح به في المرفقات 10 MB
-تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من MB10
-اعدادات الماسح الضوئي الموصى بها : 745*1024
-صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
- </data>>
+   <value>حجم الملف المسموح به في المرفقات 10 MB تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من 10 MB اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>  </data>
 	<data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
     <value>تم استلام طلب الغاء إعتراض الزكاة بنجاح</value>
   </data>
@@ -8423,7 +8415,9 @@
     <value>{0}تم حفظ نموذج طلب مراجعة لضريبة القيمة المضافة ضريبة القيمة المضافة بنجاح</value>
   </data>
     <data name="ZZGeneralMessage_VATReviewCancelled" xml:space="preserve">
-    <value>VAT Review form is cancelled. Please initiate the process again to file VAT Review</value>
+    <value>تم إلغاء نموذج مراجعة ضريبة القيمة المضافة
+الرجاء إنشاء العملية مجددا لرفع طلبة المراجعة
+</value>
     <comment>VAT Review general message</comment>
   </data>
 </root>

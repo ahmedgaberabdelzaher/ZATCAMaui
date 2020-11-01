@@ -1417,6 +1417,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 switch (CurrentStep)
                 {
+                    case ProcessStep.Step1:
+                        {
+                            _navigationService.GoBack();
+                            break;
+                        }
                     case ProcessStep.Step2:
                         {
                             EnableReasonView();
@@ -1457,6 +1462,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+
         public void SetDocType()
         {
             // VATRegistrationDetailsForAttach.d.ImFg;
@@ -1795,7 +1801,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (VatAttachmentsList == null)
             {
                 VatAttachmentsList = new ObservableCollection<Attachment>();
-
             }
         }
 
@@ -1898,12 +1903,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 PopulateAttachmentsListViewTemplate();
                 VATDeRegistrationDetails response = await SubmitClicked();
+
                 if (response != null)
                 {
                     _navigationService.NavigateTo(App.VATDeregistrationSuccessPage, response);
                 }
-
-
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1918,6 +1922,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
         public void EnableReasonView()
@@ -2083,47 +2091,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Attachments View
         public void PopulateAttachmentsListViewTemplate()
         {
-            
-            if (VatAttachmentsList != null)
+            try
             {
-                //AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
-                List<VATDeregistrationAttachmentsModel> check = new List<VATDeregistrationAttachmentsModel>();
-                //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
-                for (int i = 0; i < VatAttachmentsList.Count; i++)
+                if (VatAttachmentsList != null)
                 {
-
-                    try
+                    //AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
+                    List<VATDeregistrationAttachmentsModel> check = new List<VATDeregistrationAttachmentsModel>();
+                    //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
+                    for (int i = 0; i < VatAttachmentsList.Count; i++)
                     {
-                        if (SelectedDocumentOption != null)
+
+                        try
                         {
+                            if (SelectedDocumentOption != null)
+                            {
+                                check.Add(new VATDeregistrationAttachmentsModel
+                                {
+                                    FieldTitle = AppResources.VatDeregDocumentTitle,
+                                    FieldSubTitle = AppResources.TinDeregistration20MB,
+                                    AttachmentName = SelectedDocumentOption.Txt50,
+                                    IsAttachmentAttached = true
+                                });
+                            }
+
                             check.Add(new VATDeregistrationAttachmentsModel
                             {
-                                FieldTitle = AppResources.VatDeregDocumentTitle,
-                                FieldSubTitle = AppResources.TinDeregistration20MB,
-                                AttachmentName = SelectedDocumentOption.Txt50,
-                                IsAttachmentAttached = true
+                                FieldTitle = AppResources.VatDeregAttachmentTitle,
+                                FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                                AttachmentName = VatAttachmentsList[i].Filename,
+                                IsAttachmentAttached = false
                             });
                         }
-                        
-                            check.Add(new VATDeregistrationAttachmentsModel
+                        catch (Exception ex)
                         {
-                            FieldTitle = AppResources.VatDeregAttachmentTitle,
-                            FieldSubTitle = AppResources.TinDeregistration50MBMax,
-                            AttachmentName = VatAttachmentsList[i].Filename,
-                            IsAttachmentAttached = false
-                        });
-                    }
-                    catch(Exception ex)
-                    {
 
+                        }
                     }
+
+                    AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>(check);
+
                 }
-                AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>(check);
-
-
-
             }
-
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         #endregion
 
@@ -2525,24 +2537,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void setDATA(string operation)
         {
-
             try
             {
                 string reqType = string.Empty;
                 string requestTyp = string.Empty;
-                //Step1
-
-                if (IsInstructionChecked)
-                {
-                    VATDeRegistrationDetailsData.d.Agreeflg = true;
-                }
-                else
-                {
-                    VATDeRegistrationDetailsData.d.Agreeflg = false;
-                }
-                //Step2
-
-               // if (SelectedOutletOptionIndex == 0)
 
                 if(SelectedReasonListIndex == 0)
                 {
@@ -2564,7 +2562,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         VATDeRegistrationDetailsData.d.Duedate = ConvertDateFormat(DateTime.Parse(NextFilingDueDate));
                     }
-
                 }
 
                 VATDeRegistrationDetailsData.d.TxnTpx = reqType;
@@ -2616,19 +2613,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Idnumbr = TxtIDNumber;
                 VATDeRegistrationDetailsData.d.Contactnm = ContactPersonName;
                 //VATDeRegistrationDetailsData.d.Taxdt = DOB;
+
                 int noteNum = 0;
-                VATDeRegistrationDetailsData.d.NotesSet.results[0].Tdline = string.Empty;
-                VATDeRegistrationDetailsData.d.NotesSet.results[0].Strline = string.Empty;
+
+                try
+                {
+                    if(VATDeRegistrationDetailsData.d.NotesSet != null && VATDeRegistrationDetailsData.d.NotesSet.results != null
+                        && VATDeRegistrationDetailsData.d.NotesSet.results.Count() > 0)
+                    {
+                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Tdline = string.Empty;
+                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Strline = string.Empty;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
                 if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                 {
                     if (!string.IsNullOrEmpty(OtherField))
                     {
                         noteNum++;
+                        VATDeregNote vATDeregNote = new VATDeregNote();
 
-                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Noteno = noteNum.ToString();
-                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Notenoz = noteNum.ToString();
-                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Rcodez = "DGVT_OTH";
-                        VATDeRegistrationDetailsData.d.NotesSet.results[0].Tdline = OtherField;
+                        vATDeregNote.Noteno = noteNum.ToString();
+                        vATDeregNote.Notenoz = noteNum.ToString();
+                        vATDeregNote.Rcodez = "DGVT_OTH";
+                        vATDeregNote.Tdline = OtherField;
+
+                        VATDeRegistrationDetailsData.d.NotesSet.results.Clear();
+                        VATDeRegistrationDetailsData.d.NotesSet.results.Add(vATDeregNote);
                     }
                 }
 
@@ -2640,12 +2655,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     VATDeRegistrationDetailsData.d.Declareflg = false;
                 }
-
-
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -2689,7 +2702,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 string number = response.d.Fbnumx;
                                 string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
 
                                 // await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 _navigationService.GoBack();
@@ -2698,7 +2711,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 //  string number = response.d.Fbnumz;
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
-                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
 
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                             }
@@ -2752,6 +2765,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 setDATA("01");
                 VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
                 response = await WebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
+
                 // PopToRootPage();
                 if (response != null && response.d != null)
                 {
@@ -2768,6 +2782,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 _navigationService.GoBack();
                             }
+
                             if (response.d.Operationx.Equals("05"))
                             {
                                 //  string number = response.d.Fbnumz;
@@ -2783,7 +2798,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             setDataAfterSubmitAPIAsync(response);
 
                         }
-                        IsLoading = false;
+
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        
                         return response;
                     }
                     catch (Exception ex)
@@ -2792,6 +2812,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         return null;
                     }
                 }
+
                 IsLoading = false;
                 return response;
             }
@@ -2800,7 +2821,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                   await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     //_navigationService.GoBack();
