@@ -252,7 +252,7 @@
                                                VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource SectionTitleBlackBold}" />
                                     </StackLayout>
-                                    <StackLayout HorizontalOptions="End" Grid.Row="0" Grid.Column="2" Padding="3,0" IsVisible="false">
+                                    <StackLayout HorizontalOptions="End" Grid.Row="0" Grid.Column="2" Padding="3,0" IsVisible="False">
                                         <Label  Text="{x:Static ResourceManager:AppResources.ZOViewReturn}"
                                                VerticalOptions="CenterAndExpand" HorizontalOptions="End"
                                                Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">

@@ -1666,71 +1666,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                         {
 
                             SummaryData = _ZakatObjectionRequestSummary;
-                            _ZAKATObjectionReviewReturn.Agree = _ZakatObjectionRequestSummary.d.AAgree;
-                            _ZAKATObjectionReviewReturn.TaxPayerName = _ZakatObjectionRequestSummary.d.ATpNm;
-                            _ZAKATObjectionReviewReturn.Branch = _ZakatObjectionRequestSummary.d.ABranch;
-                            _ZAKATObjectionReviewReturn.Address = _ZakatObjectionRequestSummary.d.Line0 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line1 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line2 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line3 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line4 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line5 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line6 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line7 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line8 + "," +
-                                                                 _ZakatObjectionRequestSummary.d.Line9;
-                            _ZAKATObjectionReviewReturn.ElectronicMail = _ZakatObjectionRequestSummary.d.AEmail;
-                            _ZAKATObjectionReviewReturn.TelephoneNo = _ZakatObjectionRequestSummary.d.ATelephone;
-                            _ZAKATObjectionReviewReturn.FaxNo = _ZakatObjectionRequestSummary.d.AFaxNo;
-                            _ZAKATObjectionReviewReturn.RegerenceNo = _ZakatObjectionRequestSummary.d.ARefNo;
-                            _ZAKATObjectionReviewReturn.AssessmentYear = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
-                            _ZAKATObjectionReviewReturn.PeriodFrom = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom;
-                            _ZAKATObjectionReviewReturn.PeriodTo = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo;
-                            _ZAKATObjectionReviewReturn.TaxType = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
-                            _ZAKATObjectionReviewReturn.Currency = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ACurr;
-                            _ZAKATObjectionReviewReturn.AssessmentAmountGAZT = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
-                            _ZAKATObjectionReviewReturn.RevisedAmount = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARevAmt;
-                            _ZAKATObjectionReviewReturn.DisputeAmount = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ADisputeAmt;
-                            _ZAKATObjectionReviewReturn.ReturnDetails = _ZakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARetDet;
-                            _ZAKATObjectionReviewReturn.ObjectionReasons = _ZakatObjectionRequestSummary.d.AObjSum;
-                            _ZAKATObjectionReviewReturn.PaymentAmount = _ZakatObjectionRequestSummary.d.ASecam;
-                            _ZAKATObjectionReviewReturn.PaymentMethod = _ZakatObjectionRequestSummary.d.ASectp;
-                            _ZAKATObjectionReviewReturn.AckSADADPayment = _ZakatObjectionRequestSummary.d.AChkcs;
-                            _ZAKATObjectionReviewReturn.AckBankGuarantee = _ZakatObjectionRequestSummary.d.AChkcs;
-                            _ZAKATObjectionReviewReturn.ACKBG1 = _ZakatObjectionRequestSummary.d.AChkbg;
-                            _ZAKATObjectionReviewReturn.ACKBG2 = _ZakatObjectionRequestSummary.d.AChkbg1;
-                            //_ZAKATObjectionReviewReturn.BGAttachmentName= _ZakatObjectionRequestSummary.d.;//ZOBG
-                            _ZAKATObjectionReviewReturn.ZAKATSADADInvoiceNumber = _ZakatObjectionRequestSummary.d.AZsopbel;
-                            _ZAKATObjectionReviewReturn.TotalZAKATPayableAmount = _ZakatObjectionRequestSummary.d.ATotZkt;
-                            _ZAKATObjectionReviewReturn.CITSADADInvoiceNumber = _ZakatObjectionRequestSummary.d.AZsopbelCit;
-                            _ZAKATObjectionReviewReturn.TotalCITPayableAmount = _ZakatObjectionRequestSummary.d.ATotCit;
-                            _ZAKATObjectionReviewReturn.DisputedAmount = _ZakatObjectionRequestSummary.d.AZdisam != "" ? _ZakatObjectionRequestSummary.d.AZdisam : _ZakatObjectionRequestSummary.d.ACitdisam;
-                            _ZAKATObjectionReviewReturn.UnDisputedAmount = _ZakatObjectionRequestSummary.d.AZundisam != "" ? _ZakatObjectionRequestSummary.d.AZundisam : _ZakatObjectionRequestSummary.d.ACitundisam;
-                            //_ZAKATObjectionReviewReturn.SADADGAZTID = _ZakatObjectionRequestSummary.d.
-                            _ZAKATObjectionReviewReturn.DisputedZAKATAmount = _ZakatObjectionRequestSummary.d.AZdisam;
-                            _ZAKATObjectionReviewReturn.QuarterDisputedZAKATAmount = _ZakatObjectionRequestSummary.d.AZdisam != "" ? (Convert.ToDouble(_ZakatObjectionRequestSummary.d.AZdisam) / 4) : 0;
-                            _ZAKATObjectionReviewReturn.UnDisputedZAKATAmount = _ZakatObjectionRequestSummary.d.AZundisam;
-                            _ZAKATObjectionReviewReturn.DisputedCITAmount = _ZakatObjectionRequestSummary.d.ACitdisam;
-                            _ZAKATObjectionReviewReturn.UnDisputedCITAmount = _ZakatObjectionRequestSummary.d.ACitundisam;
-                            //_ZAKATObjectionReviewReturn.Reason = _ZakatObjectionRequestSummary.d.;// ZNOB_BGEX
-                            _ZAKATObjectionReviewReturn.BankGuaranteeID = _ZakatObjectionRequestSummary.d.ABnkid;
-                            _ZAKATObjectionReviewReturn.CalendarType = _ZakatObjectionRequestSummary.d.ACaltyp;
-                            _ZAKATObjectionReviewReturn.ValidFrom = _ZakatObjectionRequestSummary.d.ABnvfr;
-                            _ZAKATObjectionReviewReturn.ValidTo = _ZakatObjectionRequestSummary.d.ABnvto;
-                            _ZAKATObjectionReviewReturn.BankName = _ZakatObjectionRequestSummary.d.ABkext;
-                            _ZAKATObjectionReviewReturn.TotalPaymentAmount = _ZakatObjectionRequestSummary.d.ASecam;
-                            //_ZAKATObjectionReviewReturn.TaxOfficerComments = _ZakatObjectionRequestSummary.d.;//ZNOB_OFFC
-                            //_ZAKATObjectionReviewReturn.BGAttachmentName2 = _ZakatObjectionRequestSummary.d.;//ZCOB
-                            _ZAKATObjectionReviewReturn.RepFullName = _ZakatObjectionRequestSummary.d.ARepName;
-                            _ZAKATObjectionReviewReturn.RepPhoneNo = _ZakatObjectionRequestSummary.d.ARepPhone;
-                            _ZAKATObjectionReviewReturn.RepFaxNo = _ZakatObjectionRequestSummary.d.ARepFax;
-                            _ZAKATObjectionReviewReturn.RepElectronicMail = _ZakatObjectionRequestSummary.d.ARepEmail;
-                            _ZAKATObjectionReviewReturn.RepDesignation = _ZakatObjectionRequestSummary.d.ARepDes;
-                            _ZAKATObjectionReviewReturn.RepBuildingName = _ZakatObjectionRequestSummary.d.ARepBldNm;
-                            _ZAKATObjectionReviewReturn.RepLevelStreetNumber = _ZakatObjectionRequestSummary.d.ARepSteetNo;
-                            _ZAKATObjectionReviewReturn.RepCity = _ZakatObjectionRequestSummary.d.ARepCity;
-                            _ZAKATObjectionReviewReturn.ApplicantName = _ZakatObjectionRequestSummary.d.AName;
-                            _ZAKATObjectionReviewReturn.Capacity = _ZakatObjectionRequestSummary.d.ACapacity;
+                            
 
                             BindData(_ZakatObjectionRequestSummary);
 
@@ -1803,54 +1739,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
             var billsModel = new BillsModel();
 
-            billsModel.FiscalYear = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
-            billsModel.FinancialPeriod = String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
-                  String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
+          
             billsModel.ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
 
-
-            if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
+            if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results != null && zakatObjectionRequestSummary.d.ZNOB_ObjSet.results.Count > 0)
             {
-                billsModel.TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
-            }
-            else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
-            {
-                billsModel.TaxType = AppResources.FORM5Zakat;
-            }
-           // billsModel.TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
-            billsModel.AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
+                billsModel.FiscalYear = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
+                billsModel.FinancialPeriod = String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
+                      String.Format("{0:MMM yyyy}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
+                if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
+                {
+                    billsModel.TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                }
+                else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
+                {
+                    billsModel.TaxType = AppResources.FORM5Zakat;
+                }
+                // billsModel.TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+                billsModel.AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
 
-            bills.Add(billsModel);
+                bills.Add(billsModel);
 
-            ReturnBills = bills;
+                ReturnBills = bills;
 
-            FiscalYear = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
+                FiscalYear = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtYr;
 
-            if (!App.IsArabic)
-            {
-                FinancialPeriod = String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
-                  String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
-            }
-            else
-            {
-                FinancialPeriod = String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo) + " - " +
-                    String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom);
-            }
-            ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
-            //TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
+                if (!App.IsArabic)
+                {
+                    FinancialPeriod = String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom) + " - " +
+                      String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo);
+                }
+                else
+                {
+                    FinancialPeriod = String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodTo) + " - " +
+                        String.Format("{0:yyyy/MM/dd}", zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].APeriodFrom);
+                }
+                ReferenceNum = zakatObjectionRequestSummary.d.ARefNo;
+                //TaxType = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy;
 
-            if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
-            {
-                TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ITAX"))
+                {
+                    TaxType = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                }
+                else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
+                {
+                    TaxType = AppResources.FORM5Zakat;
+                }
+                AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
+                RevisedAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARevAmt;
+                DisputeAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ADisputeAmt;
+                ObjectionReasons = zakatObjectionRequestSummary.d.AObjSum;
             }
-            else if (zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ATaxTy.Equals("ZAKT"))
-            {
-                TaxType = AppResources.FORM5Zakat;
-            }
-            AssessmentAmountGAZT = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].AAssnmtAmt;
-            RevisedAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ARevAmt;
-            DisputeAmount = zakatObjectionRequestSummary.d.ZNOB_ObjSet.results[0].ADisputeAmt;
-            ObjectionReasons = zakatObjectionRequestSummary.d.AObjSum;
 
             SecurityAmount = zakatObjectionRequestSummary.d.ASecam;
             SADADNumber = zakatObjectionRequestSummary.d.AZsopbelCit;
