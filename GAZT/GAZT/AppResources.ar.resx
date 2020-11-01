@@ -4814,7 +4814,7 @@
     <value>يجب ان يكون حجم الملف اقل من 5 ميقا</value>
     </data>
 	<data name="VATAmendMobileNumberValidation" xml:space="preserve">
-    <value>يجب أن يبدأ رقم الجوال بـ 09665</value>
+    <value>يجب أن يبدأ رقم الجوال بـ 009665</value>
   </data>
 	<data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
@@ -8373,7 +8373,7 @@
     <value>الشروط والاحكام </value>
   </data>
 	<data name="VATRefundTermsAndConditions1" xml:space="preserve">
-    <value> الرجاء الاطلاع على</value>
+    <value>&amp;الرجاء الاطلاع على </value>
   </data>
 	<data name="VATRefundAcknowledgment" xml:space="preserve">
     <value>
