@@ -3857,7 +3857,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionTINValidationMessage" xml:space="preserve">
-    <value>Tin number must be start with 03</value>
+    <value>Tin number must be start with 3</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionTINDigitValidationMessage" xml:space="preserve">
@@ -3865,7 +3865,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATNumValidationMessage" xml:space="preserve">
-    <value>VAT number must be start with 01</value>
+    <value>VAT number must be start with 1</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATDigitValidationMessage" xml:space="preserve">
