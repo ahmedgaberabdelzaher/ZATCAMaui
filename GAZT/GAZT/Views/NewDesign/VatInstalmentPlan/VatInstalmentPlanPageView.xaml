@@ -65,7 +65,7 @@
                             <ColumnDefinition Width="60*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
