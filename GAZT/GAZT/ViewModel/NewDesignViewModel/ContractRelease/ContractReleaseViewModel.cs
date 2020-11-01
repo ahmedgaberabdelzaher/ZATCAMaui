@@ -224,7 +224,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private string _charCountDetailDescription = 132 + " " + AppResources.VATReviewCharactersRemaining;
+        private string _charCountDetailDescription = 0 + "/" + 132;
         public string charCountDetailDescription
         {
             get
@@ -238,7 +238,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private string _charCountRemarksText = 255 + " " + AppResources.VATReviewCharactersRemaining;
+        private string _charCountRemarksText = 0 + "/" + 255;
         public string charCountRemarksText
         {
             get
@@ -2092,8 +2092,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             setPickerModel();
             ContractCopyAttachmentsListViewData = null;
             InvoiceAttachmentsListViewData = null;
-            charCountRemarksText = 255 + " " + AppResources.VATReviewCharactersRemaining;
-            charCountDetailDescription = 132 + " " + AppResources.VATReviewCharactersRemaining;
+            charCountRemarksText = 0 + "/" + 255;
+            charCountDetailDescription = 0 + "/" + 132;
 
         }
 

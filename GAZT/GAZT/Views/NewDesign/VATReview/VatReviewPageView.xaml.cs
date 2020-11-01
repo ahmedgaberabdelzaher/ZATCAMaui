@@ -284,7 +284,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         private void Report_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
         {
-            viewModel.charCountReportDetails = (1000 - Report_Details_Tx.Text.Length) + " " + AppResources.VATReviewCharactersRemaining;
+            viewModel.charCountReportDetails = Report_Details_Tx.Text.Length + "/" + 1000;
         }
 
 
@@ -308,7 +308,7 @@ namespace EGAZT.Views.NewDesign.VatReview
         }
         private void Dispute_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
         {
-            viewModel.charCountDisputeDetails = (1000 - Dispute_Details_Tx.Text.Length) + " " + AppResources.VATReviewCharactersRemaining;
+            viewModel.charCountDisputeDetails = Dispute_Details_Tx.Text.Length + "/" + 1000;
         }
 
 

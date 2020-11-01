@@ -1313,6 +1313,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             //IsBankGurantSecuritySelected = true;
             WithdrawAttachmentsListViewDataTwo = null;
             WithdrawAttachmentsListViewData = null;
+
+            RemarkNote = "";
+            DetailDescriptionNote = "";
         }
 
 
