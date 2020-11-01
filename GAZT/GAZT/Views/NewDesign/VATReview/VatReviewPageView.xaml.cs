@@ -154,7 +154,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                                 break;
                             case ArButtons.حفظكمسودة:
                                 viewModel.IsDraftClicked = true;
-                                viewModel.OnSaveDraftClickedAsync();
+                                await viewModel.OnSaveDraftClicked();
                                 viewModel.IsDraftClicked = false;
                                 break;
                             default:
@@ -193,7 +193,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                                 break;
                             case Buttons.SaveasDraft:
                                 viewModel.IsDraftClicked = true;
-                                viewModel.OnSaveDraftClickedAsync();
+                                await viewModel.OnSaveDraftClicked();
 
                                 viewModel.IsDraftClicked = false;
                                 break;
@@ -219,7 +219,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
                             await PopupNavigation.Instance.PopAsync();
-                            viewModel.VATSetReturnVoidAsync();
+                            await viewModel.VATSetReturnVoid();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {

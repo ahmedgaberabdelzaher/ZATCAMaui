@@ -17,6 +17,7 @@ using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.NewDesign.VatReview;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -30,7 +31,7 @@ using Metadata = EGAZT.Models.VatReviewModel.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 {
-    public class VatReviewViewModel : BaseViewModel
+    public class VatReviewViewModel : ViewModelBase
     {
         #region Enums
 
@@ -2459,9 +2460,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         public VatReviewInterface vRInterface { get; set; }
 
-        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(
-            navigationService, dialogService)
-        {
+        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) { 
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -2532,7 +2531,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         }
 
 
-        public async Task VATSetReturnVoidAsync()
+        public async Task VATSetReturnVoid()
         {
             modelVATReview.d.Operationx = "04";
             var vatReviewResponse = await SubmitClicked();
@@ -2623,7 +2622,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
         }
-            public async Task OnSaveDraftClickedAsync()
+            public async Task OnSaveDraftClicked()
         {
             IsDraftClicked = true;
 
@@ -5714,25 +5713,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     modelVATReview.d.DecDt = RequestDate.ToString();
 
                     var strDecDate = "";
-                    if (!modelVATReview.d.DecDt.Contains("Date"))
-                    {
+                    if(!string.IsNullOrEmpty(RequestDate.ToString())) {
 
-
-                        DateTime dt = Convert.ToDateTime(RequestDate.ToString());
-                        JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                        if (!modelVATReview.d.DecDt.Contains("Date"))
                         {
-                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                        };
-                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                        var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                        string[] dateList = jsonDateTime.Split('+');
-                        jsonDateTime = dateList[0].Replace("\"\\", "");
-                        jsonDateTime = jsonDateTime + ")/";
-                        modelVATReview.d.DecDt = jsonDateTime;
-                        strDecDate = jsonDateTime;
 
 
+                            DateTime dt = Convert.ToDateTime(RequestDate.ToString());
+                            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                            var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                            string[] dateList = jsonDateTime.Split('+');
+                            jsonDateTime = dateList[0].Replace("\"\\", "");
+                            jsonDateTime = jsonDateTime + ")/";
+                            modelVATReview.d.DecDt = jsonDateTime;
+                            strDecDate = jsonDateTime;
+
+
+                        }
                     }
+                   
 
 
                     if (IsSecurityPaymentsTabVisible)
@@ -5810,6 +5813,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
                 PopToRootPage();
+
                 if (response != null)
                 {
                     try
@@ -5887,6 +5891,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             DateTime dateTime = unixEpoch.AddMilliseconds(milliseconds).ToLocalTime();
 
             return dateTime;
+        }
+
+          public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
         }
 
         public async Task GetViewApplication(string Fbguid, string Fbnumz, string EUser)
