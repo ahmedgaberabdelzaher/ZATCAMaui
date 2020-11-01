@@ -257,7 +257,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep2)
                 {
-                    MainButtonStk.IsVisible = true;
+                    //  MainButtonStk.IsVisible = true;
                     step2Validation();
                     setAttachmentImporterExporterVisibility();
 
@@ -1654,7 +1654,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.IsContinueButtonEnable = true;
                 }
-                MainButtonStk.IsVisible = false;
+                //  MainButtonStk.IsVisible = false;
             }
             else if (viewModel.IsSalesVisible)
             {
@@ -4475,7 +4475,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             string message = string.Empty;
             if (!string.IsNullOrEmpty(viewModel.MobNumberFR))
             {
-                if (viewModel.MobNumberFR.Substring(0, 1) != "5")
+                if (viewModel.MobNumberFR.Length < 9)
+                {
+                    message = AppResources.ZZMobilenumberlengthcannotbelessthan9digits;
+                    ShowValidationPopup(message);
+                }
+                else if (viewModel.MobNumberFR.Substring(0, 6) != "009665")
                 {
                     message = AppResources.VATAmendMobileNumberValidation;
                     ShowValidationPopup(message);
