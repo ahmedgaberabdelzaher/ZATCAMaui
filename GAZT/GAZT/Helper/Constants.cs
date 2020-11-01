@@ -208,7 +208,7 @@ namespace GAZT.Helper
         public static string GAZTGetVATDeRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet(Fbnumx='";
         public static string GAZTSaveVATDeregAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
         public static string GAZTVATDeregDeteleAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
-
+        public static string GAZTVATDeregNotesSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/NotesSet('002')";
         public static string SaveVATDeRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet";
 
         #endregion

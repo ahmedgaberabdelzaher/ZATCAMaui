@@ -1196,8 +1196,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (vATDeRegistration != null && vATDeRegistration.d != null)
                         {
-                            if (vATDeRegistration.d.Agreeflg != null)
-                            {
+                           
                                 if (vATDeRegistration.d.Agreeflg)
                                 {
                                     IsInstructionChecked = true;
@@ -1207,7 +1206,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     IsInstructionChecked = false;
                                 }
-                            }
+                            
+                          
+                                if (vATDeRegistration.d.Declareflg)
+                                {
+                                    IsDeclarationChecked = true;
+
+                                }
+                                else
+                                {
+                                    IsDeclarationChecked = false;
+                                }
+                            
                             //Step 5
 
                             if (vATDeRegistration.d.Idnumbr != null)
@@ -1854,7 +1864,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public  void DeclarationContinueBtnClicked()
+        public  async void DeclarationContinueBtnClicked()
         {
             try
             {
@@ -1862,6 +1872,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 try
                 {
                     setDATA("05");
+                    await saveAsDraftVoidAPIMethodCall();
+
                 }
                 catch (InternetException ex)
                 {
@@ -2542,7 +2554,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 string reqType = string.Empty;
                 string requestTyp = string.Empty;
 
-                if(SelectedReasonListIndex == 0)
+            
+
+                if (SelectedReasonListIndex == 0)
                 {
                     reqType = "VT_DREG";
                     requestTyp = "D";
@@ -2579,7 +2593,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 VATDeRegistrationDetailsData.d.Agreeflg = true;
                 VATDeRegistrationDetailsData.d.Atype = "2";
-
+                if (IsDeclarationChecked)
+                {
+                    VATDeRegistrationDetailsData.d.Declareflg = true;
+                }
+                else
+                {
+                    VATDeRegistrationDetailsData.d.Declareflg = false;
+                }
                 VATDeRegistrationDetailsData.d.Operationx = operation;
                 if (operation == "05")
                 {
@@ -2629,17 +2650,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Console.WriteLine(ex.Message);
                 }
+                VATDeregNote vATDeregNote = new VATDeregNote();
+
+                Metadata2 _metdata = new Metadata2();
+
+                _metdata.uri = Constants.GAZTVATDeregNotesSet;
+                _metdata.type = "ZDP_VAT_NW_DREG_SRV.Notes";
+                _metdata.id = Constants.GAZTVATDeregNotesSet;
+                vATDeregNote.__metadata = _metdata;
+                vATDeregNote.AttByz = "TP";
+                vATDeregNote.ElemNo = 0;
+                vATDeregNote.ByPusrz = "";
+                vATDeregNote.Erfdtz = null;
+                vATDeregNote.Erftmz = "PT00H00M00S";
+                vATDeregNote.Erfusrz = "";
+                vATDeregNote.Lineno = 1;
+                vATDeregNote.Rcodez = "DGVT_OTH";
+                vATDeregNote.Refnamez = "";
+                vATDeregNote.Tdformat = "";
+                vATDeregNote.XInvoicez = "";
+                vATDeregNote.XObsoletez = "";
+                vATDeregNote.DataVersionz = "00000";
+                vATDeregNote.ByGpartz = App.LoginDataRetrieved.TIN;
+                vATDeregNote.Namez = "";
+                vATDeregNote.ElemNo = 0;        
+                vATDeregNote.Sect = "";
+                vATDeregNote.Strdt = "";
+                vATDeregNote.Strtime = "";
+                vATDeregNote.Strline = "";
+
 
                 if (ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                 {
                     if (!string.IsNullOrEmpty(OtherField))
                     {
                         noteNum++;
-                        VATDeregNote vATDeregNote = new VATDeregNote();
 
                         vATDeregNote.Noteno = noteNum.ToString();
                         vATDeregNote.Notenoz = noteNum.ToString();
-                        vATDeregNote.Rcodez = "DGVT_OTH";
                         vATDeregNote.Tdline = OtherField;
 
                         VATDeRegistrationDetailsData.d.NotesSet.results.Clear();
@@ -2647,14 +2695,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
 
-                if (IsDeclarationChecked)
-                {
-                    VATDeRegistrationDetailsData.d.Declareflg = true;
-                }
-                else
-                {
-                    VATDeRegistrationDetailsData.d.Declareflg = false;
-                }
+           
             }
             catch (Exception ex)
             {
