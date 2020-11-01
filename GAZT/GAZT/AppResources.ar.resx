@@ -7778,10 +7778,10 @@
     <value>اعتماد الفرع</value>
   </data>
 	<data name="ZOAttachmentsTitleOne" xml:space="preserve">
-    <value>حجم الملف المسموح به في المرفقات 10 MB</value>
+    <value>حجم الملف المسموح به في المرفقات 10MB</value>
   </data>
 	<data name="ZOAttachmentsTitleTwo" xml:space="preserve">
-   <value>حجم الملف المسموح به في المرفقات 10 MB تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من 10 MB اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>  </data>
+   <value>حجم الملف المسموح به في المرفقات 10MB تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من 10MB اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>  </data>
 	<data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
     <value>تم استلام طلب الغاء إعتراض الزكاة بنجاح</value>
   </data>
@@ -7834,7 +7834,7 @@
     <value>نسبة المشتريات المخصصة للتوريدات الخاضعة للضريبة</value>
   </data>
 	<data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
-    <value>حجم الملف المسموح به في المرفقات 10 MB</value>
+    <value>حجم الملف المسموح به في المرفقات 10MB</value>
   </data>
 	<data name="VRVSInstruction1" xml:space="preserve">
     <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)</value>

@@ -713,9 +713,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
                             _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dateStr;
                             string dt1 = string.Empty;
+                            string formatedDate1 = string.Empty;
+
                             string[] dts = null;
                             dts = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom.Split('/');
                             dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                            if (App.IsArabic)
+                            {
+
+                                formatedDate1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                            }
+                            else
+                            {
+
+                                formatedDate1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+
+                            }
                             _ZAKATObjectionWithDraw.d.results[0].APeriodFrom = dt1;
 
                             DateTime dateStart1 = new DateTime();
@@ -729,16 +744,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             string dateStr1 = string.Format("{0:00}/{1}/{2}", day1, month1, year1);
                             _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dateStr1;
                             string dt11 = string.Empty;
+                            string formatedDate11 = string.Empty;
+
                             string[] dts1 = null;
                             dts1 = _ZAKATObjectionWithDraw.d.results[0].APeriodTo.Split('/');
                             dt11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
+
+                            if (App.IsArabic)
+                            {
+
+                                formatedDate11 = dts1[0] + "-" + UtilityManager.GetMonthName(dts1[1]) + "-" + dts1[2];
+
+                            }
+                            else
+                            {
+
+                                formatedDate11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
+
+                            }
+
                             _ZAKATObjectionWithDraw.d.results[0].APeriodTo = dt11;
 
                             objRefNumber = _ZAKATObjectionWithDraw.d.results[0].ObjFbnum;
                             ReferenceNumberOfAssessment = _ZAKATObjectionWithDraw.d.results[0].ARefNo;
                             AssessmentYear = _ZAKATObjectionWithDraw.d.results[0].AAssnmtYr;
-                            PeriodFrom = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom;
-                            PeriodTo = _ZAKATObjectionWithDraw.d.results[0].APeriodTo;
+                            PeriodFrom = formatedDate1;
+                            PeriodTo = formatedDate11;
 
                             if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ITAX"))
                             {

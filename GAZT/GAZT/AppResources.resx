@@ -7120,7 +7120,7 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Reason for void</value>
   </data>
 	<data name="ESTAttachmentSizeNotfication" xml:space="preserve">
-    <value>File size should not be more than 10 MB.</value>
+    <value>File size should not be more than 10MB.</value>
   </data>
 	<data name="ZakatInstalmentSrNo" xml:space="preserve">
     <value>Sr. No.</value>
@@ -7911,11 +7911,11 @@ Please enter an attachment name before choosing an attachment</value>
     <value>VAT Reactivation</value>
   </data>
 	<data name="ZOAttachmentsTitleOne" xml:space="preserve">
-    <value>Attachment(Only One Allowed - Maximum Size 10 MB)</value>
+    <value>Attachment(Only One Allowed - Maximum Size 10MB)</value>
   </data>
 	<data name="ZOAttachmentsTitleTwo" xml:space="preserve">
-    <value>Attachment(Only One Allowed - Maximum Size 10 MB)
-Caution, you must adjust the settings of the scanner so that the compressed file size less than 10 MB.
+    <value>Attachment(Only One Allowed - Maximum Size 10MB)
+Caution, you must adjust the settings of the scanner so that the compressed file size less than 10MB.
 Recommended settings for the scanner are: 1024 x 745
 Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
   </data>
@@ -7941,7 +7941,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
     <value>View Refund Information</value>
   </data>
 	<data name="ZContractReleaseAttachmentTitle" xml:space="preserve">
-    <value>Attachment(Only One Allowed - Maximum Size 10 MB)</value>
+    <value>Attachment(Only One Allowed - Maximum Size 10MB)</value>
   </data>
 	<data name="VRVGMemberDetails" xml:space="preserve">
     <value>Member Details</value>
