@@ -1220,8 +1220,12 @@
 	<data name="ZChooseonlyfilewithextension" xml:space="preserve">
     <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
-	<data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
-   <value> حجم الملف المسموح به في المرفقاتMB 10 اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>   </data>
+<data name="ZContractReleaseChooseonlyfilewithextension" xml:space="preserve">
+    <value>
+حجم الملف المسموح به في المرفقات 10 MB
+اعدادات الماسح الضوئي الموصى بها : 745*1024
+صيغ الملفات المسموح بها  (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
+  </data>
 	<data name="BPTermsAndConditionsAlert" xml:space="preserve">
     <value>الرجاء الموافقة على التعليمات والشروط</value>
   </data>
@@ -7780,8 +7784,12 @@
 	<data name="ZOAttachmentsTitleOne" xml:space="preserve">
     <value>حجم الملف المسموح به في المرفقات 10MB</value>
   </data>
-	<data name="ZOAttachmentsTitleTwo" xml:space="preserve">
-   <value>حجم الملف المسموح به في المرفقات 10MB تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من 10MB اعدادات الماسح الضوئي الموصى بها : 745*1024 صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>  </data>
+  <data name="ZOAttachmentsTitleTwo" xml:space="preserve">
+    <value>حجم الملف المسموح به في المرفقات 10MB
+تنبيه, يجب ضبط اعدادات الماسح الضوئي بحيث يكون حجم الملف المضغوط أقل من 10MB
+اعدادات الماسح الضوئي الموصى بها : 745*1024
+صيغ الملفات المسموح بها: (DOC, DOCX, XLS, XLSX, PDF, JPG)</value>
+ </data>
 	<data name="NDZakatWithdrawSubmittedSuccessfully" xml:space="preserve">
     <value>تم استلام طلب الغاء إعتراض الزكاة بنجاح</value>
   </data>

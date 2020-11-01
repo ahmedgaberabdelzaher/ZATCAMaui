@@ -1565,8 +1565,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                                 formatedDate11 = dts1[0] + "-" + UtilityManager.GetShortMonthName(dts1[1]) + "-" + dts1[2];
 
                             }
-                            PeriodFrom = _ZAKATObjectionWithDraw.d.results[0].APeriodFrom;
-                            PeriodTo = _ZAKATObjectionWithDraw.d.results[0].APeriodTo;
+                            PeriodFrom = formatedDate1;
+                            PeriodTo = formatedDate11;
                             //DisplaTaxType = _ZAKATObjectionWithDraw.d.results[0].ATaxTy;
 
                             if (_ZAKATObjectionWithDraw.d.results[0].ATaxTy.Equals("ITAX"))
