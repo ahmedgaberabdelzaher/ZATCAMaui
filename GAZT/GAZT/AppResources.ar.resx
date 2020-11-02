@@ -3868,11 +3868,11 @@
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATNumValidationMessage" xml:space="preserve">
-    <value>الرقم الضريبي يجب أن يبدأ برقم  1</value>
+    <value>الرقم الضريبي يجب أن يبدأ برقم 3</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZTaxEvasionVATDigitValidationMessage" xml:space="preserve">
-    <value>الرقم المميز يجب أن لايكون أقل من 15 خانات</value>
+    <value>الرقم الضريبي يجب أن لا يكون أقل من 15 خانات</value>
     <comment>Tax Evasion Report</comment>
   </data>
 	<data name="ZZZZErroMessage1" xml:space="preserve">

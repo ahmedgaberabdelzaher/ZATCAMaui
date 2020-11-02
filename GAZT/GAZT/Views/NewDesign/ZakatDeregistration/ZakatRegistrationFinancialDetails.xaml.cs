@@ -47,6 +47,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             base.OnAppearing();
             await viewModel.LoadDataFinancialDetails();
+            SetLTR();
+
         }
     }
 }
