@@ -1488,7 +1488,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
 
-                EntryIDNo.IsEnabled = false;
+              //  EntryIDNo.IsEnabled = false;
                 viewModel.IsFDNameMobEmailEnable = false;
             }
         }

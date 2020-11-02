@@ -2350,7 +2350,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" 
                                                                                     x:Name="EntryPhoneNumber" Placeholder="{x:Static custom2:AppResources.MobileNumber}" 
-                                                                                    IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" 
+                                                                                    IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" 
                                                                                     Style="{StaticResource GAZTEntry}" Unfocused="EntryPhoneNumber_Unfocused" >
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
