@@ -1360,7 +1360,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         }
         private async void OnDeleteAttachment(Attachment item, string docType)
         {
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            string QuestionMark = string.Empty;
+            if (App.IsArabic)
+            {
+                QuestionMark = "؟";
+            }
+            else
+            {
+                QuestionMark = "?";
+            }
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + item.Filename + QuestionMark);
             confirmPopup.OnSelect = async (str) =>
             {
                 if (str == "Yes")
