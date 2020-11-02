@@ -144,6 +144,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
             else {
 
+                viewModel.SummaryData();
                 var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
                 viewModel.GetDetailsClicked(index);
                 viewModel.EnableVAtInstalmentSummary();

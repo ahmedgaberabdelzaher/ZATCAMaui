@@ -574,7 +574,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             RequestForInstalmentPlanList = null;
             RequestForScheduleDetails = null;
+
+           
+
+
         }
+
+        public void SummaryData() {
+
+            Attachments = null;
+            SummarySelectedBillsList = null;
+
+
+            NoOfInstalments = "";
+            InstalmentAmount = "";
+            PenaltyAmount = "";
+            TotalAmount = "";
+            TotalLiabilityAmount = "";
+        }
+
 
 
         #region Button Action Declaration
@@ -800,18 +818,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             SummarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
             foreach (var bill in itemDetails.d.VTIASet.results)
             {
-                SummarySelectedBillsList.Add(new ZakatSelectBillModel()
-                {
-                    billNumber = AppResources.Bill + (SummarySelectedBillsList.Count + 1).ToString("00"),
-                    amount = "0.00 SAR",
-                    saadNumber = bill.SadadNo,
-                    taxPeriod = bill.Taxperioddsc,
-                    isSelected = false,
-                    billType = AppResources.ZakatInstalmetSelectTypeVAT
+                if(bill.Xsele == "X") {
+
+                    SummarySelectedBillsList.Add(new ZakatSelectBillModel()
+                    {
+                        billNumber = AppResources.Bill + (SummarySelectedBillsList.Count + 1).ToString("00"),
+                        amount = "0.00 SAR",
+                        saadNumber = bill.SadadNo,
+                        taxPeriod = bill.Taxperioddsc,
+                        isSelected = false,
+                        billType = AppResources.ZakatInstalmetSelectTypeVAT
+                    });
+
+                }
 
 
-
-                });
+             
             }
 
 
