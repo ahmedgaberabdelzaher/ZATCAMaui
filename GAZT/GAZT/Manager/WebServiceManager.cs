@@ -13564,7 +13564,7 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+                    //App.IsSessionExpired = true;
                     return null;
                 }
 

@@ -2461,12 +2461,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public VatReviewInterface vRInterface { get; set; }
 
         public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) { 
+
+
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
 
             _navigationService = navigationService;
+
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
