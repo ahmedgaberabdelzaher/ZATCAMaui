@@ -744,7 +744,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
+                    //_navigationService.GoBack();
                 });
             }
             catch (Exception ex)

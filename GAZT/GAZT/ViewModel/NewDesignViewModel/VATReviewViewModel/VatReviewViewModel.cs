@@ -3721,6 +3721,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             {
                 ApplicationRefPickerModel = genericPickerModel;
                 ApplicationRefNumber = ApplicationRefPickerModel.SelectedValue;
+
+
                 ResetDataAfterAppRefNumPicked();
                 setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
             }
@@ -3770,7 +3772,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public void setDataBasedOnAppRefNum(string appRefNum)
         {
 
+
+
             selectedApplicationRef = appRefNumList.Find(appRef => (appRef.Fbnum == appRefNum) || (appRef.Opbel == appRefNum));
+
+           
 
 
             if (selectedApplicationRef != null)
@@ -3966,8 +3972,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 catch (Exception e)
                 { }
 
+                if (selectedApplicationRef.Msgflg == "X")
+                {
 
-                EnableReviewReasonConButton();
+                    IsApplicationVisible = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.Information);
+                    });
+                }
+                else {
+
+                     EnableReviewReasonConButton();
+                }
+
+
+               
             }
 
         }
@@ -4561,9 +4581,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             }
 
+            if (selectedApplicationRef.Msgflg == "X")
+            {
+
+                IsApplicationVisible = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.Information);
+                });
+            }
+            else {
+                EnableReviewReasonConButton();
+
+            }
 
 
-            EnableReviewReasonConButton();
             EnableReportDetailsConButton();
             EnableDeclarationConButton();
             EnableReviewDetailsConButton();
