@@ -2286,7 +2286,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
-                    SelectedRegNationalityType = NationalityMapping[taxPayerDetails?.Tpnationality];
+                    if (taxPayerDetails?.Tpnationality == "SAUDI")
+                        SelectedRegNationalityType = AppResources.ESTNationalitySAUDI;
+                    else if (taxPayerDetails?.Tpnationality == "GCC")
+                        SelectedRegNationalityType = AppResources.ESTNationalityGCC;
+                    else if (taxPayerDetails?.Tpnationality == "FOREIGN")
+                        SelectedRegNationalityType = AppResources.ESTNationalityFOREIGN;
 
                     if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                     {

@@ -2911,7 +2911,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What is your Nationality Status?.
+        ///   Looks up a localized string similar to What is your Residency Status?.
         /// </summary>
         public static string ESTNationalyStatusQuestionLabel {
             get {

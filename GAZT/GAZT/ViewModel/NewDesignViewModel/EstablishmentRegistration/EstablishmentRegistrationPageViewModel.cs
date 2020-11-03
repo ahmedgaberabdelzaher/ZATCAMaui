@@ -522,7 +522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             { "ZS0003", "GCC ID" }
         };
         Dictionary<string, string> ArIDType = new Dictionary<string, string>() {
-            { "ZS0001", "رقم الهوية الوطنية" },
+             { "ZS0001", "رقم الهوية الوطنية" },
             { "ZS0002", "رقم الإقامة" },
             { "ZS0003", "رقم هوية مواطني دول الخليج" }
         };
@@ -2166,7 +2166,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
-                    SelectedRegNationalityType = NationalityMapping[taxPayerDetails?.Tpnationality];
+                    if (taxPayerDetails?.Tpnationality == "SAUDI")
+                        SelectedRegNationalityType = AppResources.ESTNationalitySAUDI;
+                    else if (taxPayerDetails?.Tpnationality == "GCC")
+                        SelectedRegNationalityType = AppResources.ESTNationalityGCC;
+                    else if (taxPayerDetails?.Tpnationality == "FOREIGN")
+                        SelectedRegNationalityType = AppResources.ESTNationalityFOREIGN;
 
                     if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                     {
@@ -2299,7 +2304,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
-                    SelectedRegNationalityType = NationalityMapping[taxPayerDetails?.Tpnationality];
+                    if (taxPayerDetails?.Tpnationality == "SAUDI")
+                        SelectedRegNationalityType = AppResources.ESTNationalitySAUDI;
+                    else if (taxPayerDetails?.Tpnationality == "GCC")
+                        SelectedRegNationalityType = AppResources.ESTNationalityGCC;
+                    else if (taxPayerDetails?.Tpnationality == "FOREIGN")
+                        SelectedRegNationalityType = AppResources.ESTNationalityFOREIGN;
 
                     if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                     {

@@ -6444,7 +6444,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>What is your Taxpayer type(from signup)?</value>
   </data>
 	<data name="ESTNationalyStatusQuestionLabel" xml:space="preserve">
-    <value>What is your Nationality Status?</value>
+    <value>What is your Residency Status?</value>
   </data>
 	<data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
     <value>Stay More than or equal to 183 days in KSA</value>
@@ -6734,6 +6734,9 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   </data>
 	<data name="ESTBusinessCommencementDate" xml:space="preserve">
     <value>Business Commencement Date</value>
+  </data>
+	<data name="ESTTaxableDate" xml:space="preserve">
+    <value>Taxable Date</value>
   </data>
 	<data name="ESTTaxableDate" xml:space="preserve">
     <value>Taxable Date</value>

@@ -6597,6 +6597,9 @@
 	<data name="ESTTaxableDate" xml:space="preserve">
     <value>تاريخ بدء تطبيق الضريبة</value>
   </data>
+	<data name="ESTDebtEndDate" xml:space="preserve">
+    <value>نهاية سنة المديونية الأولى</value>
+  </data>
 	<data name="ESTPledgeLabel" xml:space="preserve">
     <value>أتعهد بان المعلومات المقدمة صحيحة وأنا مخول لإكمال هذا النموذج </value>
   </data>
@@ -8373,7 +8376,7 @@
     <value>الشروط والاحكام </value>
   </data>
 	<data name="VATRefundTermsAndConditions1" xml:space="preserve">
-    <value>&amp;الرجاء الاطلاع على </value>
+    <value>الرجاء الاطلاع على </value>
   </data>
 	<data name="VATRefundAcknowledgment" xml:space="preserve">
     <value>
