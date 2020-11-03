@@ -789,25 +789,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #endregion
 
 
-        public void GetDetailsClicked(int index)
+        public async Task GetDetailsClicked(int index)
         {
             //For first item list
 
-            Console.WriteLine("Index: " + index);
+            //Console.WriteLine("Index: " + index);
 
-            GetVATInstalmentPlanDetails(index);
+            await GetVATInstalmentPlanDetails(index);
 
             //  PopulateSummaryReasonData();
 
         }
 
-        public void GetDisplayDetailsClicked(int index)
+        public async Task GetDisplayDetailsClicked(int index)
         {
             //
             Console.WriteLine("Index: " + index);
             //GetVATDisplaySchedule();
 
-            GetVATDisplayScheduleDetails(index);
+            await GetVATDisplayScheduleDetails(index);
 
         }
 

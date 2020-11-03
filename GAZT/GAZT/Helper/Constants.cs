@@ -373,6 +373,7 @@ namespace GAZT.Helper
         public static string ZakatObjectionRequestSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_OBJ_ZNOB_SRV/ZNOB_HeaderSet(";
         public static string ZakatObjectionWDPostURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set";
         public static string ZakatObjectionSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set(";
+        public static string ZakatObjectionSummaryURLTP10 = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP10_SRV/znotes_tp10Set(";
 
         // * TP PROFILE API - V2
         public static string TPProfileURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPFL_HEADERSet";

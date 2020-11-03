@@ -129,7 +129,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
         }
 
-        private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private async void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var item = e.ItemData as Result31;
 
@@ -144,20 +144,20 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
             else {
 
-                viewModel.SummaryData();
+                //viewModel.SummaryData();
                 var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
-                viewModel.GetDetailsClicked(index);
+                await viewModel.GetDetailsClicked(index);
                 viewModel.EnableVAtInstalmentSummary();
             }
 
           
         }
 
-        private void DisplayListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private async void DisplayListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var item = e.ItemData as VtiaIaSetResult;
             var index = viewModel.RequestForScheduleList.IndexOf(item);
-            viewModel.GetDisplayDetailsClicked(index);
+            await viewModel.GetDisplayDetailsClicked(index);
 
 
             viewModel.EnableDisplayDetails();

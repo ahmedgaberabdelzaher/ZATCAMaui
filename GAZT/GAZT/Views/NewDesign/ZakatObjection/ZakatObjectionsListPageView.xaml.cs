@@ -54,10 +54,6 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             //string formguid = "005056B1F8FB1EDABC99B9AFD7873DBB"; //string.Empty;
             //string euser = "00000010000008327086"; //string.Empty;
 
-
-
-
-
             try
             {
                 var item = e.ItemData as ZakatObjectionListModel.Result;
@@ -67,6 +63,10 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                 if (item.Fbtyp == "TP09")
                 {
                     viewModel.GetWithdrawReviewReason(item.Fbnum);
+                }
+                else if (item.Fbtyp == "TP10")
+                {
+                    viewModel.GetWithdrawReviewReasonTP10(item.Fbnum);
                 }
                 else
                 {
