@@ -793,7 +793,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             //For first item list
 
-            Console.WriteLine("Index: " + index);
+            //Console.WriteLine("Index: " + index);
 
             await GetVATInstalmentPlanDetails(index);
 
