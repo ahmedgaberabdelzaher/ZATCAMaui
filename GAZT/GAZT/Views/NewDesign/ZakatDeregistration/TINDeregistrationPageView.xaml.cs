@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             ChangeAeroIcon();
             SetLTR();
-            ChangeArrowDirection();
+           // ChangeArrowDirection();
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
@@ -296,13 +296,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         public void ChangeAeroIcon()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

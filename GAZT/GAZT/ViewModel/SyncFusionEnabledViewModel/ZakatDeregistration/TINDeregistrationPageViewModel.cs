@@ -1101,6 +1101,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             }
                             else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                             {
+                                SelectedIdNumber = string.Empty;
+                                SelectedDob = string.Empty;
+                                
                                 GCCIdTypeSelected();
                             }
                         }
@@ -2247,7 +2250,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 foreach (TinDeregReasonSetResult reasonDataDesc in TinDeregReasons)
                 {
                     if (!string.IsNullOrEmpty(reasonDataDesc.ReasonDesc) && !string.IsNullOrWhiteSpace(reasonDataDesc.ReasonDesc))
-                        reasonData.Add(reasonDataDesc.ReasonDesc);
+                    {
+                        if (reasonDataDesc.ReasonCd != "9")
+                        {
+                            reasonData.Add(reasonDataDesc.ReasonDesc);
+                        }
+                    }
                 }
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
@@ -3211,7 +3219,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -3219,7 +3227,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob)|| string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
