@@ -19,6 +19,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
     public class OutletDetailsAmendUpdatePageViewModel : BaseViewModel
     {
         #region Variable
+
+        public bool isMainOutletExists = false;
         public bool IsEditingMode { get; set; }
         private List<string> _listOutletTypes;
         public List<string> ListOutletTypes
@@ -496,6 +498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         #region Constructor
         public OutletDetailsAmendUpdatePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            isMainOutletExists = false;
             OutletDetails = new OutletDetails();
             AddressDetails = new AddressDetails();
             ListOutletTypes = new List<string>();
@@ -892,7 +895,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     clearFormData();
-                    bool isMainOutletExists = false;
                     var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
                     _outletTempData.ForEach(_out =>
                     {
@@ -902,16 +904,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         }
                     });
                     ListOutletTypes.Clear();
+                    //if (isMainOutletExists)
+                    //{
+                    //    ListOutletTypes.Add(AppResources.SubOutlet);
+                    //}
+                    //else
+                    //{
+                    ListOutletTypes.Add(AppResources.MainOutlet);
+                    ListOutletTypes.Add(AppResources.SubOutlet);
+                    // }
                     if (isMainOutletExists)
-                    {
-                        ListOutletTypes.Add(AppResources.SubOutlet);
-                    }
+                        SelectedOutletType = AppResources.SubOutlet;
                     else
-                    {
-                        ListOutletTypes.Add(AppResources.MainOutlet);
-                        ListOutletTypes.Add(AppResources.SubOutlet);
-                    }
-                    SelectedOutletType = AppResources.SubOutlet;
+                        SelectedOutletType = AppResources.MainOutlet;
                     if (selectedOutletItem != null)
                     {
                         newNumber = new OutletNumber()

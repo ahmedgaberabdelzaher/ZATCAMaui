@@ -5,6 +5,8 @@ using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
+using EGAZT.Views.NewDesign.Common;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -110,8 +112,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         private async void OutletType_Clicked(object sender, EventArgs e)
         {
-            var result = await DisplayActionSheet(AppResources.SelectOutletType, "", "", viewModel.ListOutletTypes.ToArray());
-            if (result!=null)
+            var result = await DisplayActionSheet(AppResources.SelectOutletType, AppResources.OKText, null, viewModel.ListOutletTypes.ToArray());
+            if (result != null && result == AppResources.MainOutlet && viewModel.isMainOutletExists)
+            {
+                PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, "MainOutlet already exists"));
+                return;
+            }
+            else
             {
                 viewModel.SelectedOutletType = result;
             }

@@ -8428,4 +8428,7 @@
 </value>
     <comment>VAT Review general message</comment>
   </data>
+	<data name="VATAmendReactivationFRUncheckWarning">
+		<value>بيانات الممثل المالي الجديد سيتم حذفها، هل تريد الاستمرار؟</value>
+	</data>
 </root>

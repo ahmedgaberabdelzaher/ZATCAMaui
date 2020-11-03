@@ -8500,4 +8500,7 @@ I acknowledge that the above bank account information is correct and assume full
     <data name="VATReviewDraftSaved" xml:space="preserve">
     <value>VAT Review form saved successfully{0}</value>
   </data>
+	<data name="VATAmendReactivationFRUncheckWarning">
+		<value>Data for new financial representative will be lost, do you want to continue?</value>
+	</data>
 </root>

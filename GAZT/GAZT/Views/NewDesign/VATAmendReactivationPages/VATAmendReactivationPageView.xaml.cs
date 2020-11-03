@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -505,6 +506,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     //else
                     //    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                     //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
+                    if (App.VATType == Enums.PageExecutionType.Amend)
+                    {
+                        if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked)
+                        {
+                            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZNochangesmadeFormcannotbesubmitted));
+                            return;
+                        }
+                    }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "01";
 
                     Models.VATRegistrationDetails response = await viewModel.SubmitClicked();
@@ -1120,6 +1129,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "EligibilitySetAttachmentReceived");
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+            MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse");
 
         }
 
@@ -1141,6 +1151,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
 
                 string message = string.Empty;
+                MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) => { PopupNavigation.Instance.PopAsync(); });
                 MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
                 {
                     viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
@@ -1488,7 +1499,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
 
-              //  EntryIDNo.IsEnabled = false;
+                //  EntryIDNo.IsEnabled = false;
                 viewModel.IsFDNameMobEmailEnable = false;
             }
         }
@@ -4539,8 +4550,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             }
             else
             {
-                viewModel.IsNewFinancialRepVisible = false;
-                viewModel.IsAddNewRepresentativeChecked = false;
+                var result = await DisplayAlert("", AppResources.VATAmendReactivationFRUncheckWarning, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                    viewModel.IsNewFinancialRepVisible = false;
+                    viewModel.IsAddNewRepresentativeChecked = false;
+                }
             }
         }
 
