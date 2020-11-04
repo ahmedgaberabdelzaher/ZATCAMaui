@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
@@ -18,12 +19,14 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             InitializeComponent();
             viewModel = App.Locator.TaxEvasionPageWebView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
             SetLanguage();
             loadingIndicator.IsVisible = true;
         }
+
         void SetLanguage()
         {
             if (App.IsArabic)
@@ -35,6 +38,13 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 taxEvasionWebView.Source = string.Format("https://gazt.gov.sa/{0}/ContactUs/Pages/ReportFraud.aspx", "en");
             }
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetLanguage();
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
