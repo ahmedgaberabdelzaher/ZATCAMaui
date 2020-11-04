@@ -77,7 +77,7 @@ namespace EGAZT.Views.NewDesign.Template
             {
 
             }
-            
+
         }
 
 
@@ -100,7 +100,8 @@ namespace EGAZT.Views.NewDesign.Template
         private void OnTaxEvasionTapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "OnTaxEvasionTapped", "Tax Evasion eService");
-            viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+            //  viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+            viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 

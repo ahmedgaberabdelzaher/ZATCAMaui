@@ -202,6 +202,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxpayerCorrespondancePageViewModel>();
             SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
             SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionPageWebView>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
 
@@ -247,6 +248,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NotesPopUpPageViewModel>();
             SimpleIoc.Default.Register<TaxManagementPageViewModel>();
             SimpleIoc.Default.Register<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionPageWebViewModel>();
             #endregion
 
             #region NewDesignRelease2IOC
@@ -416,6 +418,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TaxManagementPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionPageWebViewModel TaxEvasionPageWebView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionPageWebViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -2449,6 +2465,7 @@ namespace EGAZT
             navigationService.Configure(App.QuickActionPopUpPageView, typeof(QuickActionPopUpPageView));
             navigationService.Configure(App.VATAmendReactivationPageView, typeof(VATAmendReactivationPageView));
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
+            navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
 
             #endregion
 

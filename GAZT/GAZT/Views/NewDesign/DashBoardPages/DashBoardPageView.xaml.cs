@@ -1,5 +1,6 @@
 ﻿using EGAZT.Enums;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using GAZT.Models;
@@ -973,7 +974,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+                // viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+                viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
 
             });
 

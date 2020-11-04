@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="partials_background.png"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionPageWebView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid Padding="15,5,15,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="80*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+
+                    <Image Grid.Row="0" Grid.Column="0" IsVisible="true" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TOnBackButtonClicked"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <WebView x:Name="taxEvasionWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Red" Navigated="taxEvasionWebView_Navigated"/>
+            </StackLayout>
+            <Grid x:Name="loadingIndicator" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <StackLayout  Orientation="Vertical" BackgroundColor="Transparent"  VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout  Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                         TextColor="#D99A29"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
