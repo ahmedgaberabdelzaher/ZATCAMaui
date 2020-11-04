@@ -2488,6 +2488,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Taxable Date.
+        /// </summary>
+        public static string ESTDebtEndDate {
+            get {
+                return ResourceManager.GetString("ESTDebtEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string ESTEdit {

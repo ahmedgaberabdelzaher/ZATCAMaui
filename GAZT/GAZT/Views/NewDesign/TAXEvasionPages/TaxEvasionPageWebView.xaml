@@ -43,7 +43,7 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>
-                <WebView x:Name="taxEvasionWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Red" Navigated="taxEvasionWebView_Navigated"/>
+                <WebView x:Name="taxEvasionWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Red" Navigated="taxEvasionWebView_Navigated" Navigating="taxEvasionWebView_Navigating"/>
             </StackLayout>
             <Grid x:Name="loadingIndicator" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <StackLayout  Orientation="Vertical" BackgroundColor="Transparent"  VerticalOptions="FillAndExpand">

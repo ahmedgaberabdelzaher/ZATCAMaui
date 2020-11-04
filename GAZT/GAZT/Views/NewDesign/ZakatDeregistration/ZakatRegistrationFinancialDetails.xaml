@@ -168,7 +168,7 @@
                                                         <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ESTBusinessCommencementDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                         <Label Grid.Row="4" Grid.Column="1" HorizontalOptions="EndAndExpand"   Text="{Binding CommDate}"  Style="{StaticResource ValueLabelBlack}"/>
 
-                                                        <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.ESTTaxableDate}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                        <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.ESTDebtEndDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                    
                                                         <Label Grid.Row="5" Grid.Column="1" HorizontalOptions="EndAndExpand"  Text="{Binding TaxDate}" Style="{StaticResource ValueLabelBlack}"/>
                                                     </Grid>

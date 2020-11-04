@@ -23,7 +23,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
-            SetLanguage();
+          //  SetLanguage();
             loadingIndicator.IsVisible = true;
         }
 
@@ -77,6 +77,11 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         private void taxEvasionWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
             loadingIndicator.IsVisible = false;
+        }
+
+        private void taxEvasionWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+            loadingIndicator.IsVisible = true;
         }
     }
 }
