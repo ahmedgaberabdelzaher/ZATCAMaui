@@ -3172,11 +3172,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 IsGeneratingFormbundle = false;
                 IsSadadRefeshVisible = false;
                 modelVATReview.d.Operationx = "01";
-                modelVATReview = await SubmitClicked();
 
-                if (modelVATReview != null && modelVATReview.d != null)
+                var vatReviewResponse = await SubmitClicked();
+
+
+                if (vatReviewResponse != null && vatReviewResponse.d != null)
                 {
 
+                    modelVATReview = vatReviewResponse;
                     VATReferanceNumber = modelVATReview.d.Fbnumx;
 
                     await Application.Current.MainPage.Navigation.PushAsync(new VatReviewSuccessPageView());
@@ -5480,7 +5483,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.DecFlg1 = modelVATReview.d.DecFlg1;
             _postData.DecFlg2 = modelVATReview.d.DecFlg2;
             _postData.DecIdNo = modelVATReview.d.DecIdNo;
-            _postData.Declarationdt = modelVATReview.d.Declarationdt;
+            _postData.Declarationdt = modelVATReview.d.DecDt;
             _postData.Decnm = modelVATReview.d.Decnm;
             _postData.Euserx = modelVATReview.d.Euserx;
             _postData.Evstatus = modelVATReview.d.Evstatus;
@@ -5492,7 +5495,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             _postData.Forwardx = modelVATReview.d.Forwardx;
             _postData.FullName = modelVATReview.d.FullName;
             _postData.Golivefg = modelVATReview.d.Golivefg;
-            _postData.Gpartx = modelVATReview.d.Gpartx;
+            _postData.Gpartx = App.LoginDataRetrieved.TIN;
             _postData.Iban = modelVATReview.d.Iban;
             _postData.IdDetailSet = modelVATReview.d.IdDetailSet.results;
             _postData.IdType = modelVATReview.d.IdType;
@@ -5519,7 +5522,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else
             {
-                _postData.StepNumberx = "03";
+
+                
+                if (CurrentIndex == 0)
+                {
+
+                    _postData.StepNumberx = "01";
+
+                }
+                else if (CurrentIndex == 2)
+                {
+                    _postData.StepNumberx = "03";
+
+                }
+                else if (CurrentIndex == 3)
+                {
+                    _postData.StepNumberx = "03";
+
+                }
+                else if (CurrentIndex == 4)
+                {
+                    _postData.StepNumberx = "05";
+
+                }
+                else if (CurrentIndex == 5)
+                {
+                    _postData.StepNumberx = "05";
+
+                }
+                else {
+                    _postData.StepNumberx = "05";
+
+                }
+
+
 
             }
 
@@ -5725,7 +5761,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 modelVATReview.d.Appfg = "N";
                 modelVATReview.d.CalTyp = "1";
                 modelVATReview.d.DecFlg1 = true;
-                modelVATReview.d.DecFlg2 = true;
+                //modelVATReview.d.DecFlg2 = false;
                 modelVATReview.d.Decnm = ContactPersonName;
 
                 if (!string.IsNullOrEmpty(IDType))
@@ -5903,7 +5939,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
+
+                    if(CurrentIndex == 6) {
+
+                       _navigationService.GoBack();
+
+                    }
+
 
                 });
                 return response;
