@@ -317,7 +317,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         private void TermsAndConditions_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundRequestTermsAndConditions));
+            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundRequestTermsAndConditions));
         }
     }
 }
