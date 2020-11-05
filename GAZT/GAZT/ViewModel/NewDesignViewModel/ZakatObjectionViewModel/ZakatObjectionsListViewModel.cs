@@ -689,7 +689,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             });
             Device.BeginInvokeOnMainThread(async () =>
             {
-                _dialogService.ShowMessage(AppResources.ZZZZGotothePortalForVAT, AppResources.Information);
+                _dialogService.ShowMessage(AppResources.ZakatObjectionPortalMessage, AppResources.Information);
             });
 
         }

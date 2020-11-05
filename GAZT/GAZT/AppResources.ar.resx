@@ -8430,4 +8430,7 @@
 	<data name="VATAmendReactivationFRUncheckWarning">
 		<value>بيانات الممثل المالي الجديد سيتم حذفها، هل تريد الاستمرار؟</value>
 	</data>
+     <data name="ZakatObjectionPortalMessage">
+        <value>برجاء زيارة البوابة الالكترونية لارسال البيانات الاضافية</value>
+    </data>
 </root>
