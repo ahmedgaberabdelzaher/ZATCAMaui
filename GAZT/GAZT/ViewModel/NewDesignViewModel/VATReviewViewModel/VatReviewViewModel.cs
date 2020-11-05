@@ -3978,7 +3978,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 if (selectedApplicationRef.Msgflg == "X")
                 {
 
-                    IsApplicationVisible = false;
+                    if (string.IsNullOrEmpty(modelVATReview.d.SecurityDtl.Sopbel))
+                    {
+                        IsApplicationVisible = false;
+
+                    }
+                    else
+                    {
+                        IsApplicationVisible = true;
+                        EnableReviewReasonConButton();
+
+
+                    }
+
+
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.Information);
@@ -4523,7 +4536,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 }
             }
 
-            if (string.IsNullOrEmpty(IDNumber)) {
+            if (!string.IsNullOrEmpty(IDNumber)) {
 
                 IsDECCheckBox = true;
             }
@@ -4587,11 +4600,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             if (selectedApplicationRef.Msgflg == "X")
             {
 
-                IsApplicationVisible = false;
-                Device.BeginInvokeOnMainThread(async () =>
+                if (string.IsNullOrEmpty(modelVATReview.d.SecurityDtl.Sopbel))
                 {
-                    await _dialogService.ShowMessage(selectedApplicationRef.Msgtxt, AppResources.Information);
-                });
+                    IsApplicationVisible = false;
+
+                }
+                else
+                {
+                    IsApplicationVisible = true;
+                    EnableReviewReasonConButton();
+
+
+                }
+
+
             }
             else {
                 EnableReviewReasonConButton();
