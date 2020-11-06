@@ -2972,7 +2972,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     passportObj.Type = "FS0002";
                     passportObj.Srcidentify = "000";
 
-                    taxPayerDetails.Nreg_IdSet.results.Clear();
+                    //taxPayerDetails.Nreg_IdSet.results.Clear();
+                    if (taxPayerDetails.Nreg_IdSet.results.Count > 0)
+                    {
+                        taxPayerDetails.Nreg_IdSet.results[0].Srcidentify = "000";
+                        taxPayerDetails.Nreg_IdSet.results[0].Gpart = "";
+                    }
+                    taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
+
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
                     taxPayerDetails.Chkfg = "X";
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
