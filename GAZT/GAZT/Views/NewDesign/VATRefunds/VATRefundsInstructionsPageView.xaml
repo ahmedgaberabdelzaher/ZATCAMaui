@@ -34,7 +34,7 @@
                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZInstructions}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatRefundInstructions}" HorizontalOptions="StartAndExpand"
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatRefundInstructions}" HorizontalOptions="Start"
                             Style="{StaticResource CaptionLabelGrey}" />
                 
                 </StackLayout>

@@ -304,14 +304,31 @@
                                     <Label Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Grid.Row="4" Grid.Column="1" >
-                                    <Label Text="{Binding ContractTotalAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+
+                                    <custom:CustomLabel  HorizontalOptions="EndAndExpand">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding ContractTotalAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
                                 </StackLayout>
 
                                   <StackLayout Grid.Row="5" Grid.Column="0">
                                     <Label Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Grid.Row="5" Grid.Column="1" >
-                                    <Label Text="{Binding AmountToRelease,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                     <custom:CustomLabel  HorizontalOptions="EndAndExpand">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding AmountToRelease}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
                                 </StackLayout>
                                 </Grid>
                             </StackLayout>
@@ -328,7 +345,15 @@
                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  />
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding ZakatDues,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                         <custom:CustomLabel  HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1">
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding ZakatDues}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
                                                     </Grid>
                            </Frame>
 
@@ -342,7 +367,15 @@
                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TaxDues,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1">
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding TaxDues}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
                                                     </Grid>
                            </Frame>
 
@@ -356,7 +389,15 @@
                                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTotalDues}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding TotalDues,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                         <custom:CustomLabel  HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1">
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding TotalDues}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
                                                     </Grid>
                            </Frame>
 

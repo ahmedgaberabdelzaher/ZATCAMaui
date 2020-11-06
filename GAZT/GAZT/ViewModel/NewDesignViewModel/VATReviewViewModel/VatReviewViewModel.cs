@@ -4499,9 +4499,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             setReviewSubReasonPickerModel(ReviewReason);
             SubReviewReason = selectedReason.ListSubReason.First(x => x.Code == modelVATReview.d.RvSubRsn).SubReasons;
 
-            await fetchApplicationRefNums(SubReviewReason, modelVATReview.d.Fbnumx, modelVATReview.d.SecurityDtl.Sopbel);
-            ApplicationRefNumber = modelVATReview.d.RejFb;
-            setDataBasedOnAppRefNum(ApplicationRefNumber);
+            
+                await fetchApplicationRefNums(SubReviewReason, modelVATReview.d.Fbnumx, modelVATReview.d.SecurityDtl.Sopbel);
+                ApplicationRefNumber = modelVATReview.d.RejFb;
+                setDataBasedOnAppRefNum(ApplicationRefNumber);
+
+            
             DefaultSecurity = modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0;
             DefaultReq = modelVATReview.d.SecurityDtl.Amttp == "P" ? 1 : 0;
             MessagingCenter.Send<Object, int>(this, "draftSecurity", modelVATReview.d.SecurityDtl.Sectp == "B" ? 1 : 0);
@@ -4793,7 +4796,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                             if (App.selectedVATItem != "")
                             {
-                                PopulateDraftData();
+                                await PopulateDraftData();
 
                             }
 
@@ -4979,6 +4982,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     IsLoading = true;
                 });
                 //VATObjectionRejectedFormModel _VATObjectionRejected = new VATObjectionRejectedFormModel();
+
                 _VATObjectionRejected = await WebServiceManager.GAZTGetVATObjectionFormRejected(fbustx, RvRsn, rvSubRsn, UserTypx, fbnumx, sopbel);
                 if (_VATObjectionRejected != null && _VATObjectionRejected.d != null)
                 {
@@ -5783,7 +5787,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 modelVATReview.d.Appfg = "N";
                 modelVATReview.d.CalTyp = "1";
                 modelVATReview.d.DecFlg1 = true;
-                //modelVATReview.d.DecFlg2 = false;
+               // modelVATReview.d.DecFlg2 = true;
                 modelVATReview.d.Decnm = ContactPersonName;
 
                 if (!string.IsNullOrEmpty(IDType))

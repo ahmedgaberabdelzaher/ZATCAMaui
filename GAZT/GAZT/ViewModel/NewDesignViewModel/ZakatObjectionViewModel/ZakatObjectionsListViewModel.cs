@@ -681,7 +681,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
-        public async Task GetWithdrawReviewReasonTP10(string SelectedFbNum)
+        public async Task showRejectPopup()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                _dialogService.ShowMessage(AppResources.ZakatObjectionPortalMessage, AppResources.Information);
+            });
+
+        }
+            public async Task GetWithdrawReviewReasonTP10(string SelectedFbNum)
         {
             try
             {
