@@ -2232,4 +2232,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_VAT_reg_w%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Flash%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Flash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Flash%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_Bottom_nav%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_Bottom_nav%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bg_Bottom_nav.png" />
+  </ItemGroup>
 </Project>

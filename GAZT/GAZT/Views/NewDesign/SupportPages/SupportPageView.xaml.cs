@@ -258,24 +258,27 @@ namespace EGAZT.Views.NewDesign
         }
         private void OnTwitterGAZTTapped(object sender, EventArgs e)
         {
-           
-        
+
+
             viewModel.PageTitle = AppResources.NDGAZT;
-            ContactUsWebView.IsVisible = true;
-           
-                ContactUsWebView.Source = "https://twitter.com/GAZT_KSA";
-           
+            //  ContactUsWebView.IsVisible = true;
+            Uri uri = new Uri("https://twitter.com/GAZT_KSA");
+            Device.OpenUri(uri);
+            //   ContactUsWebView.Source = "https://twitter.com/GAZT_KSA";
+
         }
         private void OnTwitterVATTapped(object sender, EventArgs e)
         {
-            
+
             viewModel.PageTitle = AppResources.ZakatInstalmetSelectTypeVAT;
-            ContactUsWebView.IsVisible = true;
-            
-            ContactUsWebView.Source = "https://twitter.com/saudivat";
+            //ContactUsWebView.IsVisible = true;
+            Uri uri = new Uri("https://twitter.com/saudivat");
+            Device.OpenUri(uri);
+            // ContactUsWebView.Source = "https://twitter.com/saudivat";
+
+
 
         }
-
         private async void OnEmailTapped(object sender, EventArgs e)
         {
             try

@@ -31,8 +31,10 @@
                 
             </Grid.RowDefinitions>
 
+            <Image Grid.RowSpan="4" Aspect="AspectFill" Margin="0,-50,0,0"  BackgroundColor="Transparent" Source="partials_background.png" />
+            
             <!--  Gradient view  -->
-            <gradient:SfGradientView Grid.RowSpan="4" Style="{StaticResource SfGradientStyleForOnbBoarding}" />
+            <!--<gradient:SfGradientView Grid.RowSpan="4" Style="{StaticResource SfGradientStyleForOnbBoarding}" />-->
 
 
             <StackLayout Grid.Row="0" Orientation="Horizontal">
@@ -43,11 +45,12 @@
                 BackgroundColor="Transparent"
                 Command="{Binding SkipCommand}"
                 CornerRadius="20"
+                   
                 FontFamily="{StaticResource SSTArBold}"
                 HorizontalOptions="Start"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="{x:Static ResourceManager:AppResources.NDSkip}"
-                TextColor="{x:StaticResource NeutralGreay}"
+                TextColor="{x:StaticResource WhiteTextColor}"
                 VerticalOptions="StartAndExpand"
                  />
 
@@ -59,7 +62,7 @@
                 HorizontalOptions="EndAndExpand"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="{Binding LanguageText}"
-                TextColor="{x:StaticResource NeutralGreay}"
+                TextColor="{x:StaticResource WhiteTextColor}"
                 VerticalOptions="EndAndExpand"
                 Clicked="ChangeLangButton_Clicked" />
             </StackLayout>
@@ -97,11 +100,11 @@
 
             <!--  Next button  -->
             <buttons:SfButton
-               Margin="0,0,0,35"
+               Margin="10,0,10,35"
                 Grid.Row="3"
                 Command="{Binding NextCommand}"
                 
-                Style="{StaticResource SfButtonStyleForOnbBoarding}"
+                Style="{StaticResource PrimaryButtonStyle}"
                 Text="{Binding NextButtonText}" />
         </Grid>
     </ContentPage.Content>

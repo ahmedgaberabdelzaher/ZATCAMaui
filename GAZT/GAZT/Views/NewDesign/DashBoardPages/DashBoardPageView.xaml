@@ -15,7 +15,7 @@
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
+            BackgroundImageSource="partials_background" x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--<CustomControl:DataMarkerConverter x:Key="converter" />-->
@@ -44,13 +44,14 @@
     </ContentPage.Resources>
     <ContentPage.Content>
 
-        <Grid RowSpacing="0">
+        <Grid RowSpacing="0" BackgroundColor="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" Source="partials_background.png" />
+            <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" BackgroundColor="Transparent" Source="partials_background.png" />
 
+            
             <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,15,0,0">
                 <Grid.RowDefinitions>
                     <!--<RowDefinition Height="Auto" />
@@ -1055,18 +1056,28 @@
             <!--Menu Ends-->
 
 
-            <StackLayout x:Name="ButtomTab" Grid.Row="1">
-                <yummy:PancakeView  VerticalOptions="EndAndExpand" BorderColor="DarkGray"  BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
-                    <Grid>
+            <Grid x:Name="ButtomTab" VerticalOptions="EndAndExpand" Grid.Row="1" Margin="0,-3,0,0" BackgroundColor="White">
+                <Image Source="Bg_Bottom_nav.png" Aspect="Fill" BackgroundColor="Transparent"/>
+                <yummy:PancakeView Padding="20,0,20,8" BackgroundColor="Transparent" >
+                    <Grid BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <!--<ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>-->
                         </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0">
-                            <yummy:PancakeView Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+
+
+
+
+
+
+
+
+                        <StackLayout Grid.Column="0" BackgroundColor="Transparent" Grid.Row="0" >
+                            <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="0,0,22,22" Margin="10,0,10,0">
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding HomeViewVisible}" Value="True">
                                         <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
@@ -1074,71 +1085,66 @@
                                 </yummy:PancakeView.Triggers>
                             </yummy:PancakeView>
 
-                            <Image Source="home.png">
-                                <!--<Image.Source>
-                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HomeOutline}"/>
-                                </Image.Source>-->
+
+
+
+
+
+
+                            <Image Source="home.png" VerticalOptions="CenterAndExpand">
                             </Image>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnHomeTapped"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <!--<StackLayout Grid.Column="1">
-                            <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
+
+
+
+
+
+
+                        <StackLayout Grid.Column="1" Grid.Row="0">
+                            <yummy:PancakeView BackgroundColor="Transparent" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
                             </yummy:PancakeView>
 
-                            <Image Source="timeline.png">
-                                -->
-                        <!--<Image.Source>
-                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FilterMenu}"/>
-                                </Image.Source>-->
-                        <!--
-                            </Image>
-                        </StackLayout>-->
-                        <StackLayout Grid.Column="2">
-                            <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
-                            </yummy:PancakeView>
-                            <!--<Frame Padding="12" CornerRadius="100" BackgroundColor="{StaticResource Primary}">
-                            <Image Source="quick_action_2.png"/>
-                            </Frame>-->
-                            <buttons:SfButton
-                                BackgroundColor="{StaticResource Primary}"
-                                BackgroundImage="quick_action_2.png"
-                                CornerRadius="12"
+
+
+
+
+
+                            <buttons:SfButton 
+                                BackgroundImage="Flash.png"
                                 BorderWidth="0"
+                                CornerRadius="28"
                                 HorizontalOptions="Center"
-                                WidthRequest="24" HeightRequest="24"
+                                WidthRequest="56" HeightRequest="56"
                                 Clicked="OnQuickActionClicked"/>
-                            
-                            <!--<Image Source="quick_action_2.png"
-                                   BackgroundColor="{StaticResource Primary}"
-                                   WidthRequest="30"
-                                   HeightRequest="30"
-                                   HorizontalOptions="Center">-->      
-                            <!--</Image>-->
-
                         </StackLayout>
-                        <!--<StackLayout Grid.Column="3">
-                            <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
+
+
+
+
+
+
+                        <StackLayout Grid.Column="2" Grid.Row="0" BackgroundColor="Transparent">
+                            <yummy:PancakeView  BackgroundColor="Transparent" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0" >
+                                <yummy:PancakeView.Triggers>
+                                    <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding MenuViewVisible}" Value="True">
+                                        <Setter Property="BackgroundColor" Value="{Binding MenuIndicatorColor}"/>
+                                    </DataTrigger>
+                                </yummy:PancakeView.Triggers>
                             </yummy:PancakeView>
 
-                            <Image Source="chat.png">
-                                -->
-                        <!--<Image.Source>
-                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Chat}"/>
-                                </Image.Source>-->
-                        <!--
-                            </Image>
-                        </StackLayout>-->
-                        <StackLayout Grid.Column="4">
-                            <yummy:PancakeView  BackgroundColor="{Binding MenuIndicatorColor}" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0" >
 
-                            </yummy:PancakeView>
 
-                            <Image Source="ic_burger.png"/>
+
+
+
+
+                            <Image Source="ic_burger.png" VerticalOptions="CenterAndExpand"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                             </StackLayout.GestureRecognizers>
@@ -1147,16 +1153,16 @@
                     <yummy:PancakeView.Triggers>
                         <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding MenuViewVisible}" Value="True">
                             <Setter Property="BorderColor" Value="Transparent"/>
+                            <Setter Property="BackgroundColor" Value="Transparent"/>
                         </DataTrigger>
                     </yummy:PancakeView.Triggers>
                 </yummy:PancakeView>
-                <!--<StackLayout.Triggers>
-                    <DataTrigger TargetType="StackLayout" Binding="{Binding MenuViewVisible}" Value="True">
+                <Grid.Triggers>
+                    <DataTrigger TargetType="Grid" Binding="{Binding MenuViewVisible}" Value="True">
                         <Setter Property="BackgroundColor" Value="Transparent"/>
                     </DataTrigger>
-                    
-                </StackLayout.Triggers>-->
-            </StackLayout>
+                </Grid.Triggers>
+            </Grid>
 
 
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
