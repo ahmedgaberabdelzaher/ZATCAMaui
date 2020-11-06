@@ -1,4 +1,5 @@
 ﻿using System;
+using GAZT.Manager;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -118,9 +119,6 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("Open")]
         public string Open { get; set; }
 
-        [JsonProperty("Close")]
-        public string Close { get; set; }
-
         [JsonProperty("Gpart")]
         public string Gpart { get; set; }
 
@@ -142,8 +140,117 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("FiscalYear")]
         public string FiscalYear { get; set; }
 
+        private string _debit = string.Empty;
+        [JsonProperty("Debit")]
+        public string Debit
+        {
+            get
+            {
+                return _debit;
+            }
+            set
+            {
+                _debit = value;
+                if (!string.IsNullOrEmpty(_debit))
+                {
+                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    decimal d = Convert.ToDecimal(_debit);
+                    decimal amount = d;
+                    amount.ToString(format);  //will return $24,508,975.94
+                    DebitAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                }
+            }
+        }
+
+        public string _debitAmount = String.Empty;
+        public string DebitAmount
+        {
+            get
+            {
+                return _debitAmount;
+            }
+            set
+            {
+                _debitAmount = value;
+            }
+        }
+
+
+        private string _credit = string.Empty;
+        [JsonProperty("Credit")]
+        public string Credit
+        {
+            get
+            {
+                return _credit;
+            }
+            set
+            {
+                _credit = value;
+                if (!string.IsNullOrEmpty(_credit))
+                {
+                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    decimal d = Convert.ToDecimal(_credit);
+                    decimal amount = d;
+                    amount.ToString(format);  //will return $24,508,975.94
+                    CreditAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                }
+            }
+        }
+
+        public string _creditAmount = String.Empty;
+        public string CreditAmount
+        {
+            get
+            {
+                return _creditAmount;
+            }
+            set
+            {
+                _creditAmount = value;
+            }
+        }
+
+        private string _close = string.Empty;
+        [JsonProperty("Close")]
+        public string Close
+        {
+            get
+            {
+                return _close;
+            }
+            set
+            {
+                _close = value;
+                if (!string.IsNullOrEmpty(_close))
+                {
+                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    decimal d = Convert.ToDecimal(_close);
+                    decimal amount = d;
+                    amount.ToString(format);  //will return $24,508,975.94
+                    CloseAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                }
+            }
+        }
+
+        public string _CloseAmount = String.Empty;
+        public string CloseAmount
+        {
+            get
+            {
+                return _CloseAmount;
+            }
+            set
+            {
+                _CloseAmount = value;
+            }
+        }
+
         [JsonProperty("StatmenetLineItemsSet")]
         public StatmenetLineItemsSet StatmenetLineItemsSet { get; set; }
+
+        [JsonProperty("TaxRelationSet")]
+        public TaxRelationSet TaxRelationSet { get; set; }
     }
 
     public partial class StatmenetLineItemsSet
@@ -216,6 +323,45 @@ namespace EGAZT.Models.AccountStatements
         public string OpeningBalance { get; set; }
         public string ClosingBalance { get; set; }
         public string TotalBalance { get; set; }
+    }
+
+    public partial class TaxRelationSet
+    {
+        [JsonProperty("results")]
+        public TaxRelationSetResult[] Results { get; set; }
+    }
+
+    public partial class TaxRelationSetResult
+    {
+        [JsonProperty("__metadata")]
+        public Metadata Metadata { get; set; }
+
+        [JsonProperty("Spras")]
+        public string Spras { get; set; }
+
+        [JsonProperty("TaxType")]
+        public string TaxType { get; set; }
+
+        [JsonProperty("FromDate")]
+        public string FromDate { get; set; }
+
+        [JsonProperty("StatementFilter")]
+        public string StatementFilter { get; set; }
+
+        [JsonProperty("Counter")]
+        public string Counter { get; set; }
+
+        [JsonProperty("Contractobject")]
+        public string Contractobject { get; set; }
+
+        [JsonProperty("AbtypPs")]
+        public string AbtypPs { get; set; }
+
+        [JsonProperty("Txt30")]
+        public string Txt30 { get; set; }
+
+        [JsonProperty("ToDate")]
+        public string ToDate { get; set; }
     }
 
     public partial class ASYearValuesHeader

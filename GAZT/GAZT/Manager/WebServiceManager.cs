@@ -16494,6 +16494,8 @@ namespace GAZT.Manager
                     String url = Constants.AccountStatementTabIdentification + "Euser=''," + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "')?$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
                     if (GAZTASTabIdentificationStatus != null)
@@ -16608,11 +16610,14 @@ namespace GAZT.Manager
 
                     //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='00001000000008337102',Fbguid='005056B1F8FB1EDB80EE42BD20B90982',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
                     //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='',Fbguid='005056B1F8FB1EDB80EF060738B88BA9',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
-                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='',FiscalYear='',TaxType='" + taxType + "',Lang='" + LangZ + "')?&$expand=StatmenetLineItemsSet&$format=json";
+                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='"+ statementFilter + "',FiscalYear='"+fiscalYear+"',TaxType='" + taxType + "',Lang='" + LangZ + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
+
                     if (GAZTASTabIdentificationStatus != null)
                     {
                         if (GAZTASTabIdentificationStatus.StatusCode == HttpStatusCode.Unauthorized)
@@ -16622,6 +16627,7 @@ namespace GAZT.Manager
                         }
                         HttpHeaders headers = GAZTASTabIdentificationStatus.Headers;
                         IEnumerable<string> values;
+
                         if (headers.TryGetValues("token", out values))
                         {
                             NewToken = values.First();
@@ -16635,6 +16641,7 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
+
                         String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
                         _asTabIdentification = JsonConvert.DeserializeObject<ASStatementHeaderSet>(data);
                     }
@@ -16652,7 +16659,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<ASYearValuesHeader> GAZTGetAccountStatementYearValuesHeaderSet(string statementFilter, string fiscalYear, string taxType)
+        public static async Task<ASYearValuesHeader> GAZTGetAccountStatementYearValuesHeaderSet(string statementFilter, string taxType)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -16665,7 +16672,10 @@ namespace GAZT.Manager
                     String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    String url = Constants.AccountStatementGetYearValues + "Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '" + statementFilter + "'" + "&$format=json";
+                    //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/YearValueSet?$filter=Euser eq '' and Fguid eq '005056B1365C1EDB82951CC479769E28' and TaxType eq 'D' and StatementFilter eq '01'
+                    //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/YearValueSet?$filter=Euser eq '' and Fguid eq '005056B1365C1EDB88833EFD54E847C7' and TaxType eq 'D' and StatementFilter eq '01'&$format=json
+
+                    String url = Constants.AccountStatementGetYearValues + "Fguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '" + statementFilter + "'" + "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);

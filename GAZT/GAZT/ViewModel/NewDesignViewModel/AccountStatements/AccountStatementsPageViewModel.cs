@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -18,6 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
     public class AccountStatementsPageViewModel:BaseViewModel
     {
+
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand FiltersTapped { get; set; }
 
@@ -35,17 +37,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public ASRevenueDropDownSet _revenueDropDownParent = null;
-        public ASRevenueDropDownSet RevenueDropDownParent
+        public ASRevenueDropDownSet _transactionTypeDropDownParent = null;
+        public ASRevenueDropDownSet TransactionTypeDropDownParent
         {
             get
             {
-                return _revenueDropDownParent;
+                return _transactionTypeDropDownParent;
             }
             set
             {
-                _revenueDropDownParent = value;
-                RaisePropertyChanged("RevenueDropDownParent");
+                _transactionTypeDropDownParent = value;
+                RaisePropertyChanged("TransactionTypeDropDownParent");
             }
         }
 
@@ -91,8 +93,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public List<ASReturnTypes> _TaxTypeForFilter = null;
-        public List<ASReturnTypes> TaxTypeForFilter
+        public ObservableCollection<ASReturnTypes> _TaxTypeForFilter = null;
+        public ObservableCollection<ASReturnTypes> TaxTypeForFilter
         {
             get
             {
@@ -102,6 +104,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 _TaxTypeForFilter = value;
                 RaisePropertyChanged("TaxTypeForFilter");
+            }
+        }
+
+
+        public ObservableCollection<ASRevenueDropDownSetDataResults> _allTransactionFilters = null;
+        public ObservableCollection<ASRevenueDropDownSetDataResults> AllTransactionFilters
+        {
+            get
+            {
+                return _allTransactionFilters;
+            }
+            set
+            {
+                _allTransactionFilters = value;
+                RaisePropertyChanged("AllTransactionFilters");
+            }
+        }
+
+        public ObservableCollection<ASRevenueDropDownSetDataResults> _transactionTypeFilter = null;
+        public ObservableCollection<ASRevenueDropDownSetDataResults> TransactionTypeFilter
+        {
+            get
+            {
+                return _transactionTypeFilter;
+            }
+            set
+            {
+                _transactionTypeFilter = value;
+                RaisePropertyChanged("TransactionTypeFilter");
             }
         }
 
@@ -143,14 +174,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             set
             {
                 _SelectedTaxTypeForFilter = value;
+
                 if (_SelectedTaxTypeForFilter != null)
                 {
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
-                    //FilterOnTaxType(MyBillsOriginal);
-                    //FilterIfTypeAndStausFilterSelected();
-
+                    FilterOnTaxType(SelectedTaxTypeForFilter.Id);
                 }
+
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
+            }
+        }
+
+        public ASRevenueDropDownSetDataResults _selectedTransactionTypeFilter = null;
+        public ASRevenueDropDownSetDataResults SelectedTransactionTypeFilter
+        {
+            get
+            {
+                return _selectedTransactionTypeFilter;
+            }
+            set
+            {
+                _selectedTransactionTypeFilter = value;
+
+                if(_selectedTransactionTypeFilter.StatementFilter != null)
+                {
+                    IsYearsChipVisible = true;
+                    
+                }
+                else
+                {
+                    IsYearsChipVisible = false;
+                }
+
+                RaisePropertyChanged("SelectedTransactionTypeFilter");
             }
         }
 
@@ -168,6 +224,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("SelectedTransactionType");
             }
         }
+
+        public bool _isYearsChipVisible;
+        public bool IsYearsChipVisible
+        {
+            get
+            {
+                return _isYearsChipVisible;
+            }
+            set
+            {
+                _isYearsChipVisible = value;
+                RaisePropertyChanged("IsYearsChipVisible");
+            }
+        }
+
 
         public ASChipModel _selectedYear = null;
         public ASChipModel SelectedYear
@@ -278,9 +349,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 _navigationService.GoBack();
             });
 
+            TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>();
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
-            PopulateReturnTypeList();
         }
 
         public void FiltersClicked()
@@ -289,15 +360,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             //await PopupNavigation.Instance.PushAsync(new AccountStatementsFiltersPageView());
         }
 
-        public void PopulateReturnTypeList()
+        public async void PopulateReturnTypeList()
         {
             try
             {
-                TaxTypeForFilter = new List<ASReturnTypes>
+                TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
+                TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
+                
+                if(StatementsLineItems == null)
                 {
-                    new ASReturnTypes {Id = "00",TaxType = "Direct Taxes"},
-                    new ASReturnTypes {Id = "01",TaxType = "Indirect Taxes"},
-                };
+                    StatementsLineItems = new ObservableCollection<ASResult>();
+                }
+
+                StatementsLineItems.Clear();
+
+                var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = "Direct Taxes" };
+                var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = "Indirect Taxes" };
+
+                if(TabIdentification.D.Direct == "X")
+                {
+                    TaxTypeForFilter.Add(tempDirectTax);
+                }
+
+                if (TabIdentification.D.Indirect == "X")
+                {
+                    TaxTypeForFilter.Add(tempInDirectTax);
+                }
 
                 SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
             }
@@ -307,26 +395,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public async Task PopulateDataInChipsForTaxTypes(string taxType)
+        public void FilterOnTaxType(string taxType)
         {
-            RevenueDropDownParent = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
+            TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>(AllTransactionFilters.Where(x => x.TaxType.Equals(taxType)).ToList());
+            SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
+        }
 
-            ChipDataFilterlist = new ObservableCollection<ASChipModel>();
+        public async Task PopulateDataForTransactionTypes(string taxType)
+        {
+            var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
 
-            foreach(ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in RevenueDropDownParent.D.Results)
+            foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
             {
-                ChipDataFilterlist.Add(new ASChipModel() { Text = aSRevenueDropDownSetDataResults.Txt30, StatementFilter = aSRevenueDropDownSetDataResults.StatementFilter, TemplateType = AppResources.Paid});
+                aSRevenueDropDownSetDataResults.TaxType = taxType;
+                AllTransactionFilters.Add(aSRevenueDropDownSetDataResults);
             }
-
-            //new ASChipModel(){Text =AppResources.ZZZAKAT, TemplateType = AppResources.Paid},
-            //new ASChipModel(){Text =AppResources.ASIncomeTax, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"},
-            //new ASChipModel(){Text =AppResources.ASWithholdingTax, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"},
-            //new ASChipModel(){Text =AppResources.ASAllTransactions, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"}
         }
 
         public async Task PopulateDataInChipsForYears(string taxType, string statementFilter)
         {
-            //YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, taxType, statementFilter);
+            YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
 
             ChipDataFilterlistForYears = new ObservableCollection<ASChipModel>();
 
@@ -345,38 +433,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 ChipDataFilterlistForYears.Add(new ASChipModel() { Text = "2018", TemplateType = AppResources.Paid });
                 ChipDataFilterlistForYears.Add(new ASChipModel() { Text = "2019", TemplateType = AppResources.Paid });
             }
-
-            //new ASChipModel(){Text =AppResources.ZZZAKAT, TemplateType = AppResources.Paid},
-            //new ASChipModel(){Text =AppResources.ASIncomeTax, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"},
-            //new ASChipModel(){Text =AppResources.ASWithholdingTax, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"},
-            //new ASChipModel(){Text =AppResources.ASAllTransactions, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"}
         }
 
         public async void PopulateASFilterData()
         {
             try
             {
-                TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                //await PopulateDataInChipsForTaxTypes();
-                //RevenueDropDownParent = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("D");
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty,string.Empty, "D");
+                TransactionTypeDropDownParent = new ASRevenueDropDownSet();
 
-                ASResult totalBalances = new ASResult();
-                totalBalances.IsTotalBalanceVisile = true;
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty,string.Empty, string.Empty);
 
-                StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                if(AllTransactionFilters == null)
+                {
+                    AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
+                }
 
-                StatementsLineItems.Insert(0, totalBalances);
+                AllTransactionFilters.Clear();
 
-                //YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, "D");
+                ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
+                defautlVal.Txt30 = "Transaction Type";
+                defautlVal.TaxType = "D";
 
-                ASResult totalBalance = new ASResult();
-                totalBalance.IsTotalBalanceVisile = true;
-                totalBalance.OpeningBalance = HeaderSet.D.Open;
-                totalBalance.ClosingBalance = HeaderSet.D.Close;
+                AllTransactionFilters.Insert(0, defautlVal);
 
-                //YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(string.Empty, string.Empty, "D");
-                PopulateDataInChipsForYears("","");
+                ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
+                defautlValIndirectTax.Txt30 = "Transaction Type";
+                defautlValIndirectTax.TaxType = "I";
+
+                AllTransactionFilters.Insert(1, defautlValIndirectTax);
+
+                if (TabIdentification.D.Direct == "X")
+                {
+                    await PopulateDataForTransactionTypes("D");
+                }
+
+                if (TabIdentification.D.Indirect == "X")
+                {
+                    await PopulateDataForTransactionTypes("I");
+                }
+
+                if(HeaderSet.D.TaxType == "D")
+                {
+                    FilterOnTaxType("D");
+                }
+                else if(HeaderSet.D.TaxType == "I")
+                {
+                    FilterOnTaxType("I");
+                }
             }
             catch (GAZTErrorException ex)
             {
@@ -409,6 +512,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        public async void PopulateStatements(string taxType, string statementFilter, string year)
+        {
+            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+            StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+        }
+
         public void PopulateFiltersData()
         {
             List<ASFilters> filters = new List<ASFilters>();
@@ -429,7 +538,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             });
             filters.Add(new ASFilters
             {
-
                 FilterHeader = AppResources.ASSadadBillNumber
             });
             filters.Add(new ASFilters

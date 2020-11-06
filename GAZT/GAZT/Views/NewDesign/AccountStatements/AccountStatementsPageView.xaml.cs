@@ -86,29 +86,38 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            viewModel.PopulateReturnTypeList();
             viewModel.PopulateASFilterData();
             viewModel.PopulateFiltersData();
         }
 
-        private async void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
                 ASReturnTypes selectedReturntype = (ASReturnTypes)e.NewValue;
                 TaxTypePicker.SelectedItem = selectedReturntype;
                 viewModel.SelectedTaxTypeForFilter = selectedReturntype;
+            }
+            catch (Exception ex)
+            {
 
-                if(selectedReturntype.Id == "00")
+            }
+        }
+
+        private async void TransactionTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ASRevenueDropDownSetDataResults selectedReturntype = (ASRevenueDropDownSetDataResults)e.NewValue;
+                TransactionTypePicker.SelectedItem = selectedReturntype;
+                viewModel.SelectedTransactionTypeFilter = selectedReturntype;
+
+                if(viewModel.SelectedTransactionTypeFilter.StatementFilter != null)
                 {
-                    await viewModel.PopulateDataInChipsForTaxTypes("D");
+                    await viewModel.PopulateDataInChipsForYears(viewModel.SelectedTaxTypeForFilter.Id, viewModel.SelectedTransactionTypeFilter.StatementFilter);
                 }
-                else
-                {
-                    await viewModel.PopulateDataInChipsForTaxTypes("I");
-                }
-                
-                // ChipGroup_statusFilter.SelectedItem = null;
-                //viewModel.SelectedChipFilterItem = null;          
             }
             catch (Exception ex)
             {
@@ -138,32 +147,52 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         }
 
-        async void ChipGroup_statusFilter_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        void btnTransactionTypePicker_Clicked(System.Object sender, System.EventArgs e)
+        {
+            TransactionTypePicker.IsOpen = true;
+        }
+
+        private void yearChipGroup_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
             try
             {
-                ASChipModel selectedTransactionType = (ASChipModel)e.AddedItem;
-                ChipGroup_statusFilter.SelectedItem = selectedTransactionType;
-                viewModel.SelectedTransactionType = selectedTransactionType;
-
-                string taxType = string.Empty;
-                if (viewModel.SelectedTaxTypeForFilter.Id == "00")
-                {
-                    taxType = "D";
-                }
-                else
-                {
-                    taxType = "I";
-                }
-
-                //await viewModel.PopulateDataInChipsForYears(taxType, selectedTransactionType.StatementFilter);
-
-                //viewModel.SelectionColor = Color.AliceBlue;
+                ASChipModel selectedReturntype = (ASChipModel)e.AddedItem;
+                ChipGroup_Years.SelectedItem = selectedReturntype;
+                viewModel.SelectedYear = selectedReturntype;
+                viewModel.PopulateStatements(viewModel.SelectedTaxTypeForFilter.Id, viewModel.SelectedTransactionTypeFilter.StatementFilter, viewModel.SelectedYear.Text);
             }
             catch (Exception ex)
             {
 
             }
         }
+
+        //async void ChipGroup_statusFilter_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        ASChipModel selectedTransactionType = (ASChipModel)e.AddedItem;
+        //        ChipGroup_statusFilter.SelectedItem = selectedTransactionType;
+        //        viewModel.SelectedTransactionType = selectedTransactionType;
+
+        //        string taxType = string.Empty;
+        //        if (viewModel.SelectedTaxTypeForFilter.Id == "00")
+        //        {
+        //            taxType = "D";
+        //        }
+        //        else
+        //        {
+        //            taxType = "I";
+        //        }
+
+        //        //await viewModel.PopulateDataInChipsForYears(taxType, selectedTransactionType.StatementFilter);
+
+        //        //viewModel.SelectionColor = Color.AliceBlue;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //}
     }
 }
