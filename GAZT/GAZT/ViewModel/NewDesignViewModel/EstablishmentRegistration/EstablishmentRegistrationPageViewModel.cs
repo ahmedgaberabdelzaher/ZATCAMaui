@@ -2977,9 +2977,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         taxPayerDetails.Nreg_IdSet.results[0].Srcidentify = "000";
                         taxPayerDetails.Nreg_IdSet.results[0].Gpart = "";
-                    }
-                    taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
 
+                        Nreg_IdItem nreg_IdItem = new Nreg_IdItem();
+                        nreg_IdItem = taxPayerDetails.Nreg_IdSet.results[0];
+                        taxPayerDetails.Nreg_IdSet.results.Clear();
+                        taxPayerDetails.Nreg_IdSet.results.Add(nreg_IdItem);
+
+                    }
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
                     taxPayerDetails.Chkfg = "X";
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
