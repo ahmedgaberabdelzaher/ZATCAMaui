@@ -1606,8 +1606,20 @@
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <buttons:SfCheckBox IsChecked="{Binding ESTLedge}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}" />
+                              <StackLayout Orientation="Horizontal">
+                                <CheckBox x:Name="CBAcknowledment"   VerticalOptions="CenterAndExpand"  IsChecked="{Binding ESTLedge}"/>
+                                <custom:CustomLabel Margin="0" HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span LineHeight="1.5"  Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}" TextColor="Black"   />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                            </StackLayout>
+                        <!--<buttons:SfCheckBox IsChecked="{Binding ESTLedge}" Margin="10,0,30,0" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"
+                                            LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}"
+                                            FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}" />-->
                         <!--<buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{Binding NxtButtonLabel}" 
                                           Command="{Binding OnNextButtonClick}" IsEnabled="{Binding IsDeclarationBtnEnabled}"/>-->
                     </StackLayout>

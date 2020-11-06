@@ -11946,6 +11946,18 @@ namespace EGAZT {
             }
         }
         
+        public static string ESTMainOutlet {
+            get {
+                return ResourceManager.GetString("ESTMainOutlet", resourceCulture);
+            }
+        }
+        
+        public static string ESTSubOutlet {
+            get {
+                return ResourceManager.GetString("ESTSubOutlet", resourceCulture);
+            }
+        }
+        
         public static string ESTEdit {
             get {
                 return ResourceManager.GetString("ESTEdit", resourceCulture);

@@ -6747,6 +6747,12 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
 	<data name="ESTReviewTheBelowInformation" xml:space="preserve">
     <value>Review the below Information</value>
   </data>
+   <data name="ESTMainOutlet" xml:space="preserve">
+    <value>Main Outlet</value>
+  </data>
+     <data name="ESTSubOutlet" xml:space="preserve">
+    <value>Sub Outlet</value>
+  </data>
 	<data name="ESTEdit" xml:space="preserve">
     <value>Edit</value>
   </data>

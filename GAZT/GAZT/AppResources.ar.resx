@@ -6563,7 +6563,7 @@
     <value>الحي</value>
   </data>
 	<data name="ESTAddNumber" xml:space="preserve">
-    <value>إضافة رقم</value>
+    <value>رقم اضافي</value>
   </data>
 	<data name="ESTProvinance" xml:space="preserve">
     <value>المنطقة</value>
@@ -6603,6 +6603,12 @@
   </data>
 	<data name="ESTReportingBranch" xml:space="preserve">
     <value>فرع الهيئة الرئيسي</value>
+  </data>
+       <data name="ESTMainOutlet" xml:space="preserve">
+    <value>فرع رئيسي</value>
+  </data>
+     <data name="ESTSubOutlet" xml:space="preserve">
+    <value>فرع فرعي</value>
   </data>
 	<data name="ESTResidencyStatus" xml:space="preserve">
     <value>حالة الإقامة</value>
@@ -7143,7 +7149,7 @@
     <value>الرجاء ادخال اسم الشارع</value>
   </data>
 	<data name="ESTValidateAddQuarter" xml:space="preserve">
-    <value>الرجاء ادخال اسم المنطقة</value>
+    <value>الرجاء إدخال بيانات العنوان البريدي</value>
   </data>
 	<data name="ESTValidateAddPostal" xml:space="preserve">
     <value>الرجاء ادخال الرمز البريدي</value>

@@ -19,6 +19,11 @@
                   x:Name="TinDeregIndOutlets">
         <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="CaptionLabelBlack" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -114,17 +119,25 @@
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-					                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                       <Grid  BackgroundColor="Transparent"  HeightRequest="100">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                        <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start">
+                                        </Label>
+                                    </Grid>
+                                </Grid>
+					                <!--<cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
                                                                     Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
                                                 </Label>
                                             </Grid>
-                                    </cards:SfCardView> 
+                                    </cards:SfCardView>--> 
 			                </DataTemplate>
                         </listView:SfListView.ItemTemplate>
-                      <listView:SfListView.SelectedItemTemplate>
+                      <!--<listView:SfListView.SelectedItemTemplate>
                             <DataTemplate>
 					                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
@@ -135,13 +148,13 @@
                                             </Grid> 
                                     </cards:SfCardView>
 			                </DataTemplate>
-                       </listView:SfListView.SelectedItemTemplate>
+                       </listView:SfListView.SelectedItemTemplate>-->
                         <listView:SfListView.LayoutManager>
                             <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
 
-                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -176,7 +189,7 @@
                             </StackLayout.Triggers>-->
                  </StackLayout>
 
-                 <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="false" >
+                 <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="false">
                         <!--<StackLayout.Triggers>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
                                 <Setter Property="IsVisible" Value="false" />

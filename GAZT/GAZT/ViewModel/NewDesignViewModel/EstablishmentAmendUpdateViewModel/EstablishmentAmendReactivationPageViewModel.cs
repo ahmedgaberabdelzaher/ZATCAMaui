@@ -44,7 +44,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     if (IsNavigationCompletedToSuccessfulPage == false)
                     {
-                        Device.BeginInvokeOnMainThread(() => fetchTabDataAndBind(_currentTab));
+                        // Task.Run((() => fetchTabDataAndBind(_currentTab)));
+                        Device.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(_currentTab));
                     }
                     return;
                 }
@@ -80,7 +81,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         NxtButtonLabel = AppResources.ZZNext;
                         break;
                 }
-                Device.BeginInvokeOnMainThread(() => fetchTabDataAndBind(_currentTab));
+                //Task.Run((() => fetchTabDataAndBind(_currentTab)));
+                Device.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(_currentTab));
             }
         }
         public ObservableCollection<string> _tabList { get; set; }
@@ -1342,7 +1344,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
             OnDeleteOutletButtonClick = new Command(async (item) =>
             {
-                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText)
+                var newItem = item as OutletItem; 
+                string QuestionMark = string.Empty;
+                if (App.IsArabic)
+                {
+                    QuestionMark = "؟";
+                }
+                else
+                {
+                    QuestionMark = "?";
+                }
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " +newItem.Actnm + QuestionMark)
                 {
                     CloseWhenBackgroundIsClicked = false
                 };
@@ -1353,7 +1365,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
                     }
                 };
-                await PopupNavigation.Instance.PushAsync(confirmPopup);
+                 await PopupNavigation.Instance.PushAsync(confirmPopup);
             });
             #endregion
 
@@ -1519,7 +1531,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             //await Task.WhenAll(branchTask, nationalityTask);
             //if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             //{
-            fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType);
+            // Task.Run((() => fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType)));
+            Device.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType));
             //bindingOutletList();
             // }
             SetUIAvailability();
@@ -1562,8 +1575,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     FinancialDetails.FinancialRecords = true;
                     FinancialDetails.CalendarType = false;
-                    FinancialDetails.FiscalMonthEnd = false;
-                    FinancialDetails.FiscalDayEnd = false;
+                    FinancialDetails.FiscalMonthEnd = true;
+                    FinancialDetails.FiscalDayEnd = true;
                     FinancialDetails.CommencementDate = false;
                     FinancialDetails.TaxableDate = false;
                     break;
@@ -3130,7 +3143,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
                     // EstablishmentRegistrationTabsEnum.FinancialDetail
-
                     //DateTime.TryParseExact(CommDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Commdt);  
                     if (!string.IsNullOrEmpty(TaxDate))
                     {

@@ -63,15 +63,27 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 //    }
 
                 //}
-                if (Navigation.NavigationStack.Count > 0)
+                //if (Navigation.NavigationStack.Count > 0)
+                //{
+                //    foreach (var item in Navigation.NavigationStack)
+                //    {
+                //        if (Navigation.NavigationStack.Count > 1)
+                //        {
+                //            Navigation.RemovePage(item);
+                //        }
+                //    }
+                //}
+
+                try
                 {
-                    foreach (var item in Navigation.NavigationStack)
-                    {
-                        if (Navigation.NavigationStack.Count > 1)
-                        {
-                            Navigation.RemovePage(item);
-                        }
-                    }
+                    var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                    Navigation.RemovePage(firstPageToRemove);
+
+                    viewModel._navigationService.GoBack();
+                }
+                catch (Exception ex)
+                {
+
                 }
 
 

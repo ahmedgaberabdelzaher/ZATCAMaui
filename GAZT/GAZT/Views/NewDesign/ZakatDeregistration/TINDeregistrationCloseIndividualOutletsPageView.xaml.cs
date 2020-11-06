@@ -44,7 +44,38 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+        void GetSelectedDataTemplate()
+        {
+            var captionStyle = Resources["CaptionLabelBlack"] as Style;
+            Grid cardView = new Grid() { HeightRequest = 100 };
+            Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
+            Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+            Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle, Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions, Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
+            grid.Children.Add(image);
+            grid.Children.Add(label);
 
+            cardView.Children.Add(grid);
+            outletDecisionOptionsListView.SelectedItemTemplate = new DataTemplate(() => new ViewCell { View = cardView });
+            if (viewModel.SelectedPermitOutletOptionIndex == 2)
+            {
+                viewModel.outletEditIsVisible = true;
+                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseorTransferAllOutlets;
+            }
+            else if (viewModel.SelectedPermitOutletOptionIndex == 1)
+            {
+                viewModel.outletEditIsVisible = false;
+                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxTransferAllOutlets;
+            }
+            else
+            {
+                viewModel.outletEditIsVisible = false;
+                viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
+            }
+
+            int index = Convert.ToInt16(viewModel.SelectedPermitOutletOptionIndex);
+           // viewModel.IsOption1Visible = index == 0 ? true : false;
+            //viewModel.IsOption2Visible = index == 1 ? true : false;
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -83,6 +114,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.SingleDeregistrationDate = arg.SelectedValue;//Convert.ToDateTime(arg.SelectedValue).ToString("dd/MM/yyyy");
                 }
             });
+            MessagingCenter.Subscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption", (arg) =>
+            {
+                GetSelectedDataTemplate();
+            });
         }
 
         public void ChangeAeroIcon()
@@ -96,7 +131,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+        
+            MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
+        }
         private void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.SelectedIdNumber))
@@ -139,6 +179,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.IsNodataAvailableVisible = false;
                 viewModel.IsMultiplePermitsVisible = false;
             }
+            GetSelectedDataTemplate();
+
         }
 
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)

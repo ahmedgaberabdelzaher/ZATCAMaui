@@ -910,13 +910,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     //}
                     //else
                     //{
-                    ListOutletTypes.Add(AppResources.MainOutlet);
-                    ListOutletTypes.Add(AppResources.SubOutlet);
+                    ListOutletTypes.Add(AppResources.ESTMainOutlet);
+                    ListOutletTypes.Add(AppResources.ESTSubOutlet);
                     // }
                     if (isMainOutletExists)
-                        SelectedOutletType = AppResources.SubOutlet;
+                        SelectedOutletType = AppResources.ESTSubOutlet;
                     else
-                        SelectedOutletType = AppResources.MainOutlet;
+                        SelectedOutletType = AppResources.ESTMainOutlet;
                     if (selectedOutletItem != null)
                     {
                         newNumber = new OutletNumber()
@@ -926,11 +926,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         OutletName = selectedOutletItem?.Actnm;
                         if (selectedOutletItem.Actcat == "M")
                         {
-                            SelectedOutletType = AppResources.MainOutlet;
+                            SelectedOutletType = AppResources.ESTMainOutlet;
                         }
                         else if (selectedOutletItem.Actcat == "S")
                         {
-                            SelectedOutletType = AppResources.SubOutlet;
+                            SelectedOutletType = AppResources.ESTSubOutlet;
                         }
                     }
                     else
