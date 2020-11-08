@@ -6503,10 +6503,10 @@
     <value>تستطيع إضافة سجل تجاري واحد وعدة ارقام للرخص التجارية بحد اقصى 4 رخص</value>
   </data>
 	<data name="ESTCommercialRegistrationNumberInfoTwo" xml:space="preserve">
-    <value>تستطيع ربط سجل تجاري واحد و الرخص التجارية المرتبطه بالنشاط الرئيسي</value>
-  </data>
+    <value>يجب اختيار نشاط رئيسي واحد فقط لكل فرع</value>
+    </data>
       <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
-    <value>Refund Request form saved successfully</value>
+    <value>تم حفظ طلب المقاصة بنجاح</value>
   </data>
 	<data name="ESTIssueBy" xml:space="preserve">
     <value>جهة الاصدار</value>
