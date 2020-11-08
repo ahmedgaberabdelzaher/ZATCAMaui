@@ -115,7 +115,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             var result = await DisplayActionSheet(AppResources.SelectOutletType, AppResources.OKText, null, viewModel.ListOutletTypes.ToArray());
             if (result != null && result == AppResources.ESTMainOutlet && viewModel.isMainOutletExists)
             {
-                PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, "MainOutlet already exists"));
+                await PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.SelectOutletTypeError));
                 return;
             }
             else

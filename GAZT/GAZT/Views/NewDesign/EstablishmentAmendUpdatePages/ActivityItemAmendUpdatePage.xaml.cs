@@ -35,6 +35,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
+            if (viewModel.LicenseData.Count == 4)
+            {
+                viewModel.AddLicenseEnabled = false; 
+            }
+            else
+            {
+                viewModel.AddLicenseEnabled = true;
+
+            }
             viewModel.SetUIAvailability();
         }
         private void SetLTR()
@@ -67,6 +76,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             base.OnAppearing();
             viewModel?.OnAppearing();
+        
         }
         protected override void OnDisappearing()
         {

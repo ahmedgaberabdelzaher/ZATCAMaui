@@ -317,7 +317,7 @@
                     </StackLayout>
                 </ScrollView>
                 <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentOutletActivitiesTabsEnum.ActivityList}}">
-                    <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddLicense}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewLicenseButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
+                    <buttons:SfButton IsEnabled="{Binding AddLicenseEnabled}" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddLicense}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewLicenseButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
                     <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding LicenseData}" AutoFitMode="Height" SelectionBackgroundColor="Transparent" ItemSpacing="5" SelectionMode="Single" Margin="0,15" IsScrollBarVisible="False" SelectedItem="{Binding SelectedLicense}">
                         <listView:SfListView.LayoutManager>
                             <listView:LinearLayout />

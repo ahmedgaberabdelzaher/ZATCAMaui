@@ -159,6 +159,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //}
             }
         }
+        private bool _AddLicenseEnabled = true;
+        public bool AddLicenseEnabled
+        {
+            get => AddLicenseEnabled;
+            set
+            {
+                //if (value != null)
+                //{
+                _AddLicenseEnabled = value;
+                RaisePropertyChanged(nameof(AddLicenseEnabled));
+                //}
+            }
+        }
         private CityDropdownItem _cRIssueCity = null;
         public CityDropdownItem CRIssueCity
         {
@@ -935,6 +948,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public void OnAppearing()
         {
             //fetchTabDataAndBind();
+            if (LicenseData.Count == 4)
+            {
+                AddLicenseEnabled = false;
+            }
+            else
+            {
+                AddLicenseEnabled = true;
+
+            }
         }
         public void OnDisappearing()
         {
@@ -1092,57 +1114,63 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
-                    OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
-                    activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
-
-                    if ((/*editModeEnabled == true &&*/ SelectedLicenseItem != null) || validateLicense != null)
+                    if (LicenseData != null)
                     {
-                        if (SelectedLicenseItem == null && validateLicense != null)
+                        if (LicenseData.Count < 4)
                         {
-                            SelectedLicenseItem = validateLicense;
-                        }
-                        LicenseNumber = SelectedLicenseItem?.Idnumber;
-                        LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedLicenseItem?.Country).FirstOrDefault();
-                        LicenseIssueBy = App.IsArabic ? ArIssueBy[SelectedLicenseItem?.Institute] : EnIssueBy[SelectedLicenseItem?.Institute];
-                        ValidFrom = SelectedLicenseItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                        LicenseIssueCity = new CityDropdownItem()
-                        {
-                            CityName = SelectedLicenseItem?.City,
-                            CityCode = SelectedLicenseItem?.CityCode
-                        };
+                            OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
+                            activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
 
-                        if (SelectedLicenseItem.Actcat.Equals("M"))
-                        {
-                            MainActivity = true;
-                        }
-                        else
-                        {
-                            MainActivity = false;
-                        }
-                        updateActivityList(SelectedLicenseItem?.Activity);
-                        //var a = activityList;
-                        LicenseAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedLicenseItem?.Activity).FirstOrDefault();
-                        LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActMgrp).FirstOrDefault();
-                        LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActSgrp).FirstOrDefault();
-
-                        List<Attachment> list = new List<Attachment>();
-                        var lists = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG02" && x.OutletRef == string.Format("{0}-{1}", SelectedLicenseItem?.Actno, SelectedLicenseItem?.Idnumber)).ToList();
-                        if (lists.Count > 0)
-                        {
-                            foreach (AttDetItem attDetItem in lists)
+                            if ((/*editModeEnabled == true &&*/ SelectedLicenseItem != null) || validateLicense != null)
                             {
-                                var obj = new Attachment();
-                                obj.Filename = attDetItem.Filename;
-                                obj.FileExtn = attDetItem.FileExtn;
-                                obj.Mimetype = attDetItem.Mimetype;
-                                obj.RetGuid = attDetItem.RetGuid;
-                                obj.DocUrl = attDetItem.DocUrl;
-                                obj.Dotyp = attDetItem.Dotyp;
-                                obj.Doguid = attDetItem.Doguid;
-                                list.Add(obj);
-                            }
+                                if (SelectedLicenseItem == null && validateLicense != null)
+                                {
+                                    SelectedLicenseItem = validateLicense;
+                                }
+                                LicenseNumber = SelectedLicenseItem?.Idnumber;
+                                LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedLicenseItem?.Country).FirstOrDefault();
+                                LicenseIssueBy = App.IsArabic ? ArIssueBy[SelectedLicenseItem?.Institute] : EnIssueBy[SelectedLicenseItem?.Institute];
+                                ValidFrom = SelectedLicenseItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                                LicenseIssueCity = new CityDropdownItem()
+                                {
+                                    CityName = SelectedLicenseItem?.City,
+                                    CityCode = SelectedLicenseItem?.CityCode
+                                };
 
-                            LicensesCopies = new ObservableCollection<Attachment>(list);
+                                if (SelectedLicenseItem.Actcat.Equals("M"))
+                                {
+                                    MainActivity = true;
+                                }
+                                else
+                                {
+                                    MainActivity = false;
+                                }
+                                updateActivityList(SelectedLicenseItem?.Activity);
+                                //var a = activityList;
+                                LicenseAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedLicenseItem?.Activity).FirstOrDefault();
+                                LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActMgrp).FirstOrDefault();
+                                LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActSgrp).FirstOrDefault();
+
+                                List<Attachment> list = new List<Attachment>();
+                                var lists = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG02" && x.OutletRef == string.Format("{0}-{1}", SelectedLicenseItem?.Actno, SelectedLicenseItem?.Idnumber)).ToList();
+                                if (lists.Count > 0)
+                                {
+                                    foreach (AttDetItem attDetItem in lists)
+                                    {
+                                        var obj = new Attachment();
+                                        obj.Filename = attDetItem.Filename;
+                                        obj.FileExtn = attDetItem.FileExtn;
+                                        obj.Mimetype = attDetItem.Mimetype;
+                                        obj.RetGuid = attDetItem.RetGuid;
+                                        obj.DocUrl = attDetItem.DocUrl;
+                                        obj.Dotyp = attDetItem.Dotyp;
+                                        obj.Doguid = attDetItem.Doguid;
+                                        list.Add(obj);
+                                    }
+
+                                    LicensesCopies = new ObservableCollection<Attachment>(list);
+                                }
+                            }
                         }
                     }
                 }
@@ -1332,21 +1360,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     CRLicenseNo = LicenseNumber;
                 }
-                string outletref = $"{Int16.Parse(newNumber?.Actno):000-}" + CRLicenseNo;
+                if (newNumber != null)
+                {
+                    string outletref = $"{Int16.Parse(newNumber?.Actno):000-}" + CRLicenseNo;
 
-                Attachment dd = await WebServiceManager.ESTAttachment(attachmentByteData, fileName, taxPayerDetails?.ReturnIdx, docType, contentType, outletref);
 
-                if (docType == "RG01")
-                {
-                    CRsCopies.Add(dd);
-                }
-                else if (docType == "RG12")
-                {
-                    TransferCRsCopies.Add(dd);
-                }
-                else if (docType == "RG02")
-                {
-                    LicensesCopies.Add(dd);
+                    Attachment dd = await WebServiceManager.ESTAttachment(attachmentByteData, fileName, taxPayerDetails?.ReturnIdx, docType, contentType, outletref);
+
+                    if (docType == "RG01")
+                    {
+                        CRsCopies.Add(dd);
+                    }
+                    else if (docType == "RG12")
+                    {
+                        TransferCRsCopies.Add(dd);
+                    }
+                    else if (docType == "RG02")
+                    {
+                        LicensesCopies.Add(dd);
+                    }
                 }
             }
             catch (Exception ex)
