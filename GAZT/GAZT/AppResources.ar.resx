@@ -6505,6 +6505,9 @@
 	<data name="ESTCommercialRegistrationNumberInfoTwo" xml:space="preserve">
     <value>تستطيع ربط سجل تجاري واحد و الرخص التجارية المرتبطه بالنشاط الرئيسي</value>
   </data>
+      <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+    <value>Refund Request form saved successfully</value>
+  </data>
 	<data name="ESTIssueBy" xml:space="preserve">
     <value>جهة الاصدار</value>
   </data>

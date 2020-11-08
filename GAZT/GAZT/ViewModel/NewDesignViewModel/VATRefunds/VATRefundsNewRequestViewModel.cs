@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.VATRefunds;
+using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -27,7 +29,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public ICommand CloseBtnTapped { get; set; }
         public ICommand IbanIdTypeTapped { get; set; }
         public ICommand IbanIdNumberTapped { get; set; }
-        
+        public ICommand OnMoreClicked { get; set; }
+
         #endregion
 
         public ObservableCollection<VATRefundsModel> _vatRefundsModel { get; set; }
@@ -275,6 +278,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 RaisePropertyChanged("IBANIDNumberList");
             }
         }
+        public bool _isNavigatedToSubmitted;
+        public bool IsNavigatedToSubmitted
+        {
+            get
+            {
+                return _isNavigatedToSubmitted;
+            }
+            set
+            {
+                _isNavigatedToSubmitted = value;
+                RaisePropertyChanged("IsNavigatedToSubmitted");
+            }
+        }
+
+        private List<String> _ListOfActionButtonsApplicable;
+        public List<String> ListOfActionButtonsApplicable
+        {
+            get
+            {
+                return _ListOfActionButtonsApplicable;
+            }
+            set
+            {
+                _ListOfActionButtonsApplicable = value;
+                RaisePropertyChanged("ListOfActionButtonsApplicable");
+            }
+        }
+
 
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -318,8 +349,211 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             //PopulateSummaryReasonData();
             //PopulateSummaryDeclarationData();
             //EnableReasonView();
+            OnMoreClicked = new Command(async () =>
+            {
+                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+            });
         }
 
+        private async void ShowMoreOptionsPopUp()
+        {
+            try
+            {
+                if (ListOfActionButtonsApplicable != null && ListOfActionButtonsApplicable.Count() != 0)
+                {
+                    String action = await Application.Current.MainPage.DisplayActionSheet("", AppResources.ZZCancel, null, ListOfActionButtonsApplicable.ToArray());
+                    if (App.IsArabic)
+                    {
+                        ArButtons buttonId = ArButtons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        Enum.TryParse(action, out buttonId);
+                        switch (buttonId)
+                        {
+
+                            case ArButtons.إلغاء:
+                                OnVoidBtnClicked();
+                                break;
+                            case ArButtons.حفظكمسودة:
+
+                                OnSaveDraftClicked();
+
+
+
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Buttons buttonId = Buttons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        Enum.TryParse(action, out buttonId);
+                        switch (buttonId)
+                        {
+
+                            case Buttons.Void:
+                                OnVoidBtnClicked();
+                                break;
+
+                            case Buttons.SaveasDraft:
+
+                                OnSaveDraftClicked();
+
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public async void VoidMsg()
+        {
+            //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
+            //if (answer)
+
+
+            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+            headerAmountInfo.IsLinkAvailable = false;
+            headerAmountInfo.Message = AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost;
+
+            headerWithInfos.Add(headerAmountInfo);
+
+
+            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+        }
+        public bool isDraftClicked = false;
+
+        public async void OnSaveDraftClicked()
+        {
+
+            VatRefundsDisplayDataModel.Operationx = "05";
+            VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
+            VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
+            if (SelectedIbanData != null)
+            {
+                VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
+                VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
+            }
+            VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+            VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
+            if (SelectedIDTypeCode != null)
+            {
+                VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
+                VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
+            }
+            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
+            VatNewReqSummaryData.Confirmfg = "X";
+            VatNewReqSummaryData.TcFg = "X";
+
+            //VatRefundsDisplayDataModel.Statusx = "E0013";
+            VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+
+                if (VatNewReqSummaryData.Operationx.Equals("05"))
+                {
+                    //  string number = response.d.Fbnumz;
+                     App.selectedVATItem =  VatNewReqSummaryData.Fbnumx;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        App.selectedVATItem = VatNewReqSummaryData.Fbnumx;
+                        setMoreOptioButtons();
+
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = string.Format(AppResources.ZVatRefundRequestSavedAsDraft, "  " + VatNewReqSummaryData.Fbnumx);
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                        //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+                    });
+
+                    //string displayMessage = AppResources.VATRSaveasdraftMessage;
+                    //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                }
+
+             
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+                string message = ex.Message;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(message, AppResources.Information);
+                });
+            }
+
+
+        }
+
+   
+        public void setMoreOptioButtons()
+        {
+            var listOfActionButtonsApplicable = new List<string>();
+            if (App.selectedVATItem != "")
+            {
+
+                listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            }
+
+
+            listOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
+            ListOfActionButtonsApplicable = listOfActionButtonsApplicable;
+        }
         public async Task ReloadData()
         {
             try
@@ -774,69 +1008,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 return;
             }
 
-            VatRefundsDisplayDataModel.Operationx = "05";
-            VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
-            VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
-            VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
-            VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
-            VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
-            VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
-            VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
-            VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
-            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
-            VatNewReqSummaryData.Confirmfg = "X";
-            VatNewReqSummaryData.TcFg = "X";
+            //OnSaveDraftClicked();
 
-            //VatRefundsDisplayDataModel.Statusx = "E0013";
-            VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
-
-            try
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
-                VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
-
-                if (VatNewReqSummaryData.Operationx.Equals("05"))
-                {
-                    //  string number = response.d.Fbnumz;
-                    string displayMessage = AppResources.VATRSaveasdraftMessage;
-                    await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                }
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                   _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
-                });
-            }
-            catch (InternetException ex)
-            {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                });
-            }
-            catch (GAZTErrorException ex)
-            {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
-                string message = ex.Message;
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                });
-            }
+                _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
+            });
 
         }
 

@@ -2305,20 +2305,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         SelectedRegNationalityType = AppResources.ESTNationalityGCC;
                     else if (taxPayerDetails?.Tpnationality == "FOREIGN")
                         SelectedRegNationalityType = AppResources.ESTNationalityFOREIGN;
-
-                    if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Tpnationality))
                     {
-                        var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong)
+                        if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                         {
-                            CloseWhenBackgroundIsClicked = false
-                        };
-                        someThingWhentWrong.OnDone = () =>
-                        {
-                            currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-                        };
-                        await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
-                        return;
+                            var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong)
+                            {
+                                CloseWhenBackgroundIsClicked = false
+                            };
+                            someThingWhentWrong.OnDone = () =>
+                            {
+                                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
+                                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                            };
+                            await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
+                            return;
+                        }
                     }
                     IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";
                     if (IsSaudi)

@@ -8,6 +8,7 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -35,6 +36,8 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 viewModel.PickerModel = arg;
                 Console.WriteLine(arg);
             });
+            viewModel.setMoreOptioButtons();
+
         }
 
         public VATRefundsNewRequestPageView(VatRefundsListResultModel draftsRequestData)
@@ -68,6 +71,95 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     viewModel.AddNewIban(message);
                 }
             });
+            MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+            {
+                await PopupNavigation.Instance.PopAsync();
+                if (arg != null)
+                {
+                    string savemessage = arg;
+
+                    if (App.IsArabic)
+                    {
+                        ArButtons buttonId = ArButtons.None;
+                        if (!string.IsNullOrEmpty(savemessage))
+                        {
+                            savemessage = message.Replace(" ", "");
+                        }
+                        Enum.TryParse(savemessage, out buttonId);
+                        switch (buttonId)
+                        {
+                            case ArButtons.إضافةملاحظات:
+                                //viewModel.VATReturnAddNote();
+                                break;
+                            case ArButtons.عرضملاحظات:
+                                //  viewModel.VATReturnGetNotes();
+                                break;
+                            case ArButtons.المرفقات:
+                                // viewModel.VATViewAttachments();
+                                break;
+                            case ArButtons.إلغاء:
+                                viewModel.isDraftClicked = true;
+                                viewModel.VoidMsg();
+                                viewModel.isDraftClicked = false;
+                                break;
+                            case ArButtons.عادةتعيين:
+                                //await viewModel.VATReturnResetAsync();
+                                break;
+                            case ArButtons.تعديل:
+                                // await viewModel.VATReturnAmendAsync();
+                                break;
+                            case ArButtons.حفظكمسودة:
+                                viewModel.isDraftClicked = true;
+                                viewModel.OnSaveDraftClicked();
+                                viewModel.isDraftClicked = false;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Buttons buttonId = Buttons.None;
+                        if (!string.IsNullOrEmpty(savemessage))
+                        {
+                            savemessage = savemessage.Replace(" ", "");
+                        }
+                        Enum.TryParse(savemessage, out buttonId);
+                        switch (buttonId)
+                        {
+                            case Buttons.CreateNotes:
+                                //viewModel.VATReturnAddNote();
+                                break;
+                            case Buttons.DisplayNotes:
+                                //viewModel.VATReturnGetNotes();
+                                break;
+                            case Buttons.Attachments:
+                                // viewModel.VATViewAttachments();
+                                break;
+                            case Buttons.Void:
+                                viewModel.isDraftClicked = true;
+                                viewModel.VoidMsg();
+                                viewModel.isDraftClicked = false;
+                                break;
+                            case Buttons.Reset:
+                                //await viewModel.VATReturnResetAsync();
+                                break;
+                            case Buttons.Amend:
+                                // await viewModel.VATReturnAmendAsync();
+                                break;
+                            case Buttons.SaveasDraft:
+                                viewModel.isDraftClicked = true;
+                                viewModel.OnSaveDraftClicked();
+
+                                viewModel.isDraftClicked = false;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                }
+            });
 
             try
             {
@@ -92,6 +184,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 Console.WriteLine(ex.Message);
             }
+
         }
 
         protected override void OnDisappearing()

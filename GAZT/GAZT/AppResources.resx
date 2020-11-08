@@ -1645,6 +1645,9 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
 	<data name="ZVatRefundRequestForVAT" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
+  <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+    <value>Refund Request form saved successfully</value>
+  </data>
 	<data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
     <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
   </data>
@@ -6649,7 +6652,7 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     <value>License Details</value>
   </data>
 	<data name="ESTCommercialRegistrationNumberInfo" xml:space="preserve">
-    <value>You can enter one CR (Commercial Registration Number) and multiple license numbers(maximum 4)while registering outlet message Strip Information</value>
+    <value>You can enter one CR (Commercial Registration Number) and multiple license numbers(maximum 4)while registering outlet</value>
   </data>
 	<data name="ESTCommercialRegistrationNumberInfoTwo" xml:space="preserve">
     <value>You need to select only one main CR or License that is linked to the main activity for this outlet. This will represent the main CR or License</value>
