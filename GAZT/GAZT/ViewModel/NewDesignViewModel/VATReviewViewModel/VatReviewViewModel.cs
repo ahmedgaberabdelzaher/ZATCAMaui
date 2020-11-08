@@ -4514,14 +4514,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             if (modelVATReview.d.IdType == "ZS0001")
             {
                 IDType = AppResources.VFCNationalID;
-                IsDOBVisible = true;
-                PickedDate = modelVATReview.d.DecDt;
+                IsDOBVisible = false;
+
             }
             else if (modelVATReview.d.IdType == "ZS0002")
             {
                 IDType = AppResources.VFCIqamaID;
-                IsDOBVisible = true;
-                PickedDate = modelVATReview.d.DecDt;
+                IsDOBVisible = false;
+               // PickedDate = modelVATReview.d.DecDt;
+
+                
             }
             else if (modelVATReview.d.IdType == "ZS0003")
             {

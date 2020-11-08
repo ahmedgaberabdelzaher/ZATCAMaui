@@ -459,7 +459,7 @@
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                                <Grid  HorizontalOptions="FillAndExpand" Padding="10,3,10,2" VerticalOptions="CenterAndExpand">
+                                <Grid  HorizontalOptions="FillAndExpand" Padding="10,10,10,10" VerticalOptions="CenterAndExpand">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"></RowDefinition>
                                     </Grid.RowDefinitions>
@@ -472,7 +472,15 @@
                                       Style="{StaticResource ValueLabelBlack}"   />
                                     </StackLayout>
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding TotalLiabilityAmount}" Style="{StaticResource SectionTitleBlackBold}" />
+                                         <custom:CustomLabel>
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding TotalLiabilityAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
                                     </StackLayout>
                                 </Grid>
                             </Frame>
@@ -483,10 +491,19 @@
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,10,10,10">
                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentAgreementPenalty}"
                                       Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding PenaltyAmount}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
+                                     <custom:CustomLabel>
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding PenaltyAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
+
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -496,11 +513,18 @@
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,10,10,10">
                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}"
                                       Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding TotalAmount}" Style="{StaticResource SectionTitleBlackBold}"
-                                           HorizontalOptions="EndAndExpand" />
+                                     <custom:CustomLabel>
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding TotalAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
                                 </StackLayout>
                             </Frame>
                         </Grid>
