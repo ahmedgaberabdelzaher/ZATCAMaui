@@ -451,7 +451,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 StatementsLineItems.Clear();
 
                 var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
-                var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.AStatementIndirectTaxes };
+                var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.ASAccountStatementInDirectTax };
 
                 if(TabIdentification.D.Direct == "X")
                 {

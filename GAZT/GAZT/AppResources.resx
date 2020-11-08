@@ -8393,7 +8393,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
     <value>Total Debit</value>
   </data>
    <data name="ASAccountStatementTotalCredit" xml:space="preserve">
-    <value>Tax Credit</value>
+    <value>Total Credit</value>
   </data>
     <data name="ASFromDateShouldNotbeGreaterThanToDate" xml:space="preserve">
     <value>From Date Should not be greater than the to date </value>
