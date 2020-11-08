@@ -170,7 +170,7 @@
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASDashboardBalanceIndicatorTtile}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                 <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TappedOnMyBills"></TapGestureRecognizer>
+                                        <TapGestureRecognizer Tapped="AccountStatements_Tapped"></TapGestureRecognizer>
                                     </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>
