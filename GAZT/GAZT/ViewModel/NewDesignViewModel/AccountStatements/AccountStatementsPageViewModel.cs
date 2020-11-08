@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Views.NewDesign.AccountStatements;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -17,11 +18,12 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
-    public class AccountStatementsPageViewModel:BaseViewModel
+    public class AccountStatementsPageViewModel : BaseViewModel
     {
 
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand FiltersTapped { get; set; }
+        public ICommand DownloadBtnTapped { get; set; }
 
         public ASTabIdentification _tabIdentification = null;
         public ASTabIdentification TabIdentification
@@ -239,6 +241,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        public bool _isDownloadBtnVisile;
+        public bool IsDownloadBtnVisile
+        {
+            get
+            {
+                return _isDownloadBtnVisile;
+            }
+            set
+            {
+                _isDownloadBtnVisile = value;
+                RaisePropertyChanged("IsDownloadBtnVisile");
+            }
+        }
+
+
+        public bool _isNoStatementsAvaiableVisible;
+        public bool IsNoStatementsAvaiableVisible
+        {
+            get
+            {
+                return _isNoStatementsAvaiableVisible;
+            }
+            set
+            {
+                _isNoStatementsAvaiableVisible = value;
+                RaisePropertyChanged("IsNoStatementsAvaiableVisible");
+            }
+        }
+
 
         public ASChipModel _selectedYear = null;
         public ASChipModel SelectedYear
@@ -349,6 +380,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 _navigationService.GoBack();
             });
 
+            DownloadBtnTapped = new Command(DownloadBtnClicked);
+
             TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>();
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
@@ -360,10 +393,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             //await PopupNavigation.Instance.PushAsync(new AccountStatementsFiltersPageView());
         }
 
+        public void DownloadBtnClicked()
+        {
+            String pdfUrl = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + SelectedTaxTypeForFilter.Id + "',FiscalYear='" + SelectedYear.Text + "',StatementFilter='" + SelectedTransactionTypeFilter.StatementFilter + "',FromDt=datetime'2020-1-1T00:00:00',ToDt=datetime'2020-11-6T00:00:00',Langz='" + GetLangZParameter() + "')/$value";
+            ShowPdf(pdfUrl);
+            //await WebServiceManager.GAZTGetAccountStatementDownloadPdf(SelectedTransactionTypeFilter.StatementFilter, SelectedTaxTypeForFilter.Id, SelectedYear.Text, string.Empty, string.Empty);
+        }
+
+        private static char GetLangZParameter()
+        {
+            if (App.IsArabic)
+                return 'A';
+            else
+                return 'E';
+        }
+
+        public void ShowPdf(string pdfUrl)
+        {
+            try
+            {
+                if (pdfUrl != null)
+                {
+                    ASTaxpayerSelectedValues aSTaxpayerSelectedValues = new ASTaxpayerSelectedValues();
+                    aSTaxpayerSelectedValues.TaxType = SelectedTaxTypeForFilter.Id;
+                    aSTaxpayerSelectedValues.StatementFilter = SelectedTransactionTypeFilter.StatementFilter;
+                    aSTaxpayerSelectedValues.Year = SelectedYear.Text;
+
+                    _navigationService.NavigateTo(App.AccountStatementsDownloadPageView, aSTaxpayerSelectedValues);
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                    });
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public async void PopulateReturnTypeList()
         {
             try
             {
+                
                 TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
                 
@@ -374,8 +450,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 StatementsLineItems.Clear();
 
-                var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = "Direct Taxes" };
-                var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = "Indirect Taxes" };
+                var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
+                var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.AStatementIndirectTaxes };
 
                 if(TabIdentification.D.Direct == "X")
                 {
@@ -386,8 +462,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     TaxTypeForFilter.Add(tempInDirectTax);
                 }
-
-                SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -448,38 +522,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
                 }
 
-                AllTransactionFilters.Clear();
+                        AllTransactionFilters.Clear();
 
-                ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
-                defautlVal.Txt30 = "Transaction Type";
-                defautlVal.TaxType = "D";
+                        ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
+                        defautlVal.Txt30 = AppResources.ASTransactionType;
+                        defautlVal.TaxType = "D";
 
-                AllTransactionFilters.Insert(0, defautlVal);
+                        AllTransactionFilters.Insert(0, defautlVal);
 
-                ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
-                defautlValIndirectTax.Txt30 = "Transaction Type";
-                defautlValIndirectTax.TaxType = "I";
+                        ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
+                        defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
+                        defautlValIndirectTax.TaxType = "I";
 
-                AllTransactionFilters.Insert(1, defautlValIndirectTax);
+                        AllTransactionFilters.Insert(1, defautlValIndirectTax);
 
-                if (TabIdentification.D.Direct == "X")
-                {
-                    await PopulateDataForTransactionTypes("D");
-                }
+                        if (TabIdentification.D.Direct == "X")
+                        {
+                            await PopulateDataForTransactionTypes("D");
+                        }
 
-                if (TabIdentification.D.Indirect == "X")
-                {
-                    await PopulateDataForTransactionTypes("I");
-                }
+                        if (TabIdentification.D.Indirect == "X")
+                        {
+                            await PopulateDataForTransactionTypes("I");
+                        }
 
-                if(HeaderSet.D.TaxType == "D")
-                {
-                    FilterOnTaxType("D");
-                }
-                else if(HeaderSet.D.TaxType == "I")
-                {
-                    FilterOnTaxType("I");
-                }
+                        foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
+                        {
+                            if (HeaderSet.D.TaxType == aSReturnTypes.Id)
+                            {
+                                SelectedTaxTypeForFilter = aSReturnTypes;
+                            }
+                            else
+                            {
+                                SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+                            }
+                        }
+
+                        if (HeaderSet.D.TaxType == "D")
+                        {
+                            FilterOnTaxType("D");
+                        }
+                        else if (HeaderSet.D.TaxType == "I")
+                        {
+                            FilterOnTaxType("I");
+                        }
+                   
             }
             catch (GAZTErrorException ex)
             {
@@ -514,8 +601,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public async void PopulateStatements(string taxType, string statementFilter, string year)
         {
-            HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
-            StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+            try
+            {
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+
+                if(HeaderSet.D.StatmenetLineItemsSet != null)
+                {
+                    if(HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    {
+                        IsDownloadBtnVisile = true;
+                        IsNoStatementsAvaiableVisible = false;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    }
+                    else
+                    {
+                        IsDownloadBtnVisile = false;
+                        IsNoStatementsAvaiableVisible = true;
+                    }
+                }
+                else
+                {
+                    IsDownloadBtnVisile = false;
+                    IsNoStatementsAvaiableVisible = true;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public void PopulateFiltersData()

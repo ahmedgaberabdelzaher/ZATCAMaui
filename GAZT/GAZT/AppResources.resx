@@ -8349,6 +8349,15 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
 	<data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
     <value>In case you don't agree with above information, click on this link and confirm -</value>
   </data>
+   <data name="ASDashboardBalanceIndicatorTtile" xml:space="preserve">
+    <value>Tax Balances</value>
+  </data>
+   <data name="ASTransactionType" xml:space="preserve">
+    <value>Trasaction Type</value>
+  </data>
+  <data name="ASTaxType" xml:space="preserve">
+    <value>Tax Type</value>
+  </data>
 	<data name="ZFilesizeshouldnotbemorethan10MB" xml:space="preserve">
     <value>File size should not be more than 10MB</value>
   </data>
@@ -8357,6 +8366,46 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
   </data>
 	<data name="ASAccountStatementDashboardTileText" xml:space="preserve">
     <value>Account Statement</value>
+  </data>
+  <data name="ASAccountStatementDirectTax" xml:space="preserve">
+    <value>Direct Tax</value>
+  </data>
+    <data name="ASAccountStatementInDirectTax" xml:space="preserve">
+    <value>Indirect tax</value>
+  </data>
+   
+   <data name="ASAccountStatementDebit" xml:space="preserve">
+    <value>Debit</value>
+  </data>
+    <data name="ASAccountStatementCredit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+   <data name="ASAccountStatementFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
+    <data name="ASAccountStatementTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+   <data name="ASAccountStatementTotalBalances" xml:space="preserve">
+    <value>Total Balances</value>
+  </data>
+     <data name="ASAccountStatementTotalDebit" xml:space="preserve">
+    <value>Total Debit</value>
+  </data>
+   <data name="ASAccountStatementTotalCredit" xml:space="preserve">
+    <value>Tax Credit</value>
+  </data>
+    <data name="ASFromDateShouldNotbeGreaterThanToDate" xml:space="preserve">
+    <value>From Date Should not be greater than the to date </value>
+  </data>
+  <data name="ASViewStatementForOnlyOneYear" xml:space="preserve">
+    <value>You can view account statement for 1 selected fiscal Year only</value>
+  </data>
+  <data name="ASNoFinancialTransactions" xml:space="preserve">
+    <value>There are no financial transactions</value>
+  </data>
+  <data name="ASDownloadStatement" xml:space="preserve">
+    <value>Download Statement</value>
   </data>
 	<data name="OutletTypeField" xml:space="preserve">
     <value>Outlet Type</value>

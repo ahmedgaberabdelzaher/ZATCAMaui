@@ -16719,6 +16719,65 @@ namespace GAZT.Manager
             }
         }
 
+        public static async Task<ASYearValuesHeader> GAZTGetAccountStatementDownloadPdf(string statementFilter, string taxType, string year, string fromDt, string toDt)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+
+                try
+                {
+                    ASYearValuesHeader _asTabIdentification = new ASYearValuesHeader();
+                    char LangZ = GetLangZParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/zpdfDownloadSet(Euser='00000001000000109414',Fguid='005056B1365C1EDB8885CFC1FE964974',Taxtype='D',FiscalYear='2020',StatementFilter='02',FromDt=datetime'2020-1-1T00:00:00',ToDt=datetime'2020-11-6T00:00:00',Langz='E')/$value                    //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/zpdfDownloadSet(Euser='',Fguid='005056B1365C1EDB888600B680598992',TaxType='D',FiscalYear='2020',StatementFilter='02',FromDt=datetime'2020-1-1T00:00:00',ToDt=dateTime'2020-11-6T00:00:00',Langz='E')/$value
+                    String url = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + taxType + "',FiscalYear='" + year + "',StatementFilter='"+statementFilter+ "',FromDt=dateTime'2020-1-1T00:00:00',ToDt=dateTime'2020-11-6T00:00:00',Langz='" + LangZ+"')/$value";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
+                    if (GAZTASTabIdentificationStatus != null)
+                    {
+                        if (GAZTASTabIdentificationStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = GAZTASTabIdentificationStatus.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
+                            {
+                                App.IsSessionExpired = true;
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        _asTabIdentification = JsonConvert.DeserializeObject<ASYearValuesHeader>(data);
+                    }
+
+                    return _asTabIdentification;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
         #endregion
     }
 }

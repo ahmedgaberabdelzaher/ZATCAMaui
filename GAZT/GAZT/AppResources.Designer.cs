@@ -14718,6 +14718,24 @@ namespace EGAZT {
             }
         }
         
+        public static string ASDashboardBalanceIndicatorTtile {
+            get {
+                return ResourceManager.GetString("ASDashboardBalanceIndicatorTtile", resourceCulture);
+            }
+        }
+        
+        public static string ASTransactionType {
+            get {
+                return ResourceManager.GetString("ASTransactionType", resourceCulture);
+            }
+        }
+        
+        public static string ASTaxType {
+            get {
+                return ResourceManager.GetString("ASTaxType", resourceCulture);
+            }
+        }
+        
         public static string ZFilesizeshouldnotbemorethan10MB {
             get {
                 return ResourceManager.GetString("ZFilesizeshouldnotbemorethan10MB", resourceCulture);
@@ -14733,6 +14751,84 @@ namespace EGAZT {
         public static string ASAccountStatementDashboardTileText {
             get {
                 return ResourceManager.GetString("ASAccountStatementDashboardTileText", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementDirectTax {
+            get {
+                return ResourceManager.GetString("ASAccountStatementDirectTax", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementInDirectTax {
+            get {
+                return ResourceManager.GetString("ASAccountStatementInDirectTax", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementDebit {
+            get {
+                return ResourceManager.GetString("ASAccountStatementDebit", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementCredit {
+            get {
+                return ResourceManager.GetString("ASAccountStatementCredit", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementFrom {
+            get {
+                return ResourceManager.GetString("ASAccountStatementFrom", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementTo {
+            get {
+                return ResourceManager.GetString("ASAccountStatementTo", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementTotalBalances {
+            get {
+                return ResourceManager.GetString("ASAccountStatementTotalBalances", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementTotalDebit {
+            get {
+                return ResourceManager.GetString("ASAccountStatementTotalDebit", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementTotalCredit {
+            get {
+                return ResourceManager.GetString("ASAccountStatementTotalCredit", resourceCulture);
+            }
+        }
+        
+        public static string ASFromDateShouldNotbeGreaterThanToDate {
+            get {
+                return ResourceManager.GetString("ASFromDateShouldNotbeGreaterThanToDate", resourceCulture);
+            }
+        }
+        
+        public static string ASViewStatementForOnlyOneYear {
+            get {
+                return ResourceManager.GetString("ASViewStatementForOnlyOneYear", resourceCulture);
+            }
+        }
+        
+        public static string ASNoFinancialTransactions {
+            get {
+                return ResourceManager.GetString("ASNoFinancialTransactions", resourceCulture);
+            }
+        }
+        
+        public static string ASDownloadStatement {
+            get {
+                return ResourceManager.GetString("ASDownloadStatement", resourceCulture);
             }
         }
         

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:custom="clr-namespace:GAZT"
+             x:Class="EGAZT.Views.NewDesign.AccountStatements.AccountStatementsDownloadPageView"  xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" FlowDirection="RightToLeft"
+             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid>
+                <StackLayout>
+                    <Grid Padding="15,5,15,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ASDownloadStatement}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+
+                         <Image  Grid.Row="0" IsVisible="{TemplateBinding BindingContext.VoidIsVisible}" Grid.Column="2" Source="close" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+
+                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
+                        </Grid>
+                    </yummy:PancakeView>
+
+                </StackLayout>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+       <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                  <Grid.RowDefinitions>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+
+               
+                 <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Statement" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource SectionTitleBlack}" />
+                     
+                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="Select a range and download the statement" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"/>
+                    <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+                </Grid>
+
+                 <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <custom:CustomLabel Text="Statement Date" HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}" />   
+                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0"  Style="{StaticResource GreyBorderFrame}">
+                        <Grid Padding="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Orientation="Horizontal" HorizontalOptions="Start">
+                                <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                    <Image Margin="5,0" HorizontalOptions="EndAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                        Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                        </Image.Source>
+                                    </Image>
+
+                                </StackLayout>
+                                                <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="StartDate" Tapped="StartDateClicked"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+
+                            </StackLayout>
+                                    
+                            <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                    <Image Margin="5,0" HorizontalOptions="EndAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                        Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                        </Image.Source>
+                                    </Image>
+
+                                </StackLayout>
+
+                                <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="EndDate" Tapped="EndDateClicked"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+
+                            </StackLayout>
+
+                        </Grid>
+
+                    </border:SfBorder >
+
+                </StackLayout>
+
+                <buttons:SfButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,0"  x:Name="btnReasonContinue" Command="{Binding DownloadBtnTapped}" Text="{x:Static ResourceManager:AppResources.VatInstalmentDownload}"
+                Style="{StaticResource PrimaryButtonStyle}"/>
+      </Grid>
+    </ContentPage.Content>
+</ContentPage>

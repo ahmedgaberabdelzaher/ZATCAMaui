@@ -303,6 +303,9 @@
     <BundleResource Include="Resources\centered.png" />
     <BundleResource Include="Resources\centered%402x.png" />
     <BundleResource Include="Resources\centered%403x.png" />
+    <BundleResource Include="Resources\download.png" />
+    <BundleResource Include="Resources\download%402x.png" />
+    <BundleResource Include="Resources\download%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

@@ -390,7 +390,9 @@ namespace EGAZT
             //AccountStatementsPageView
             SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsFiltersPageViewModel>();
+            SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
 
+            //AccountStatementsDownloadPageView
             //
             #endregion
         }
@@ -2411,6 +2413,22 @@ namespace EGAZT
             }
         }
 
+        public AccountStatementsDownloadPageViewModel AccountStatementsDownloadPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountStatementsDownloadPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        //AccountStatementsDownloadPageViewModel
         public AccountStatementsFiltersPageViewModel AccountStatementsFiltersPageView
         {
             get
@@ -2645,7 +2663,9 @@ namespace EGAZT
             //Account Statements
             navigationService.Configure(App.AccountStatementsPageView, typeof(AccountStatementsPageView));
             navigationService.Configure(App.AccountStatementsFiltersPageView, typeof(AccountStatementsFiltersPageView));
+            navigationService.Configure(App.AccountStatementsDownloadPageView, typeof(AccountStatementsDownloadPageView));
 
+            //AccountStatementsDownloadPageViewModel
             //AccountStatementsFiltersPageViewModel
             //End Account Statements
             #endregion

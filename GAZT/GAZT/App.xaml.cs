@@ -254,6 +254,7 @@ namespace EGAZT
 
         public static string AccountStatementsPageView = "AccountStatementsPageView";
         public static string AccountStatementsFiltersPageView = "AccountStatementsFiltersPageView";
+        public static string AccountStatementsDownloadPageView = "AccountStatementsDownloadPageView";
 
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
@@ -326,6 +327,9 @@ namespace EGAZT
         public static bool IsAppRunningInBackground = false;
 
         #endregion
+
+        public string acntStatementsSelectedTaxTypeFilterId = string.Empty;
+        public string acntStatementsStatementFilterId = string.Empty;
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
         public static HttpClientHandler httpClientHandler = null;

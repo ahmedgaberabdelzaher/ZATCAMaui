@@ -12,6 +12,15 @@ namespace EGAZT.Models.AccountStatements
         }
     }
 
+    public class ASTaxpayerSelectedValues
+    {
+        public string TaxType { get; set; }
+        public string StatementFilter { get; set; }
+        public string Year { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+    }
+
     public class ASReturnTypes
     {
         public string TaxType { get; set; }
@@ -157,7 +166,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_debit);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    DebitAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    DebitAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString()) + " " + AppResources.ZSAR;
                 }
             }
         }
@@ -193,7 +202,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_credit);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    CreditAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    CreditAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString()) + " " + AppResources.ZSAR;
                 }
             }
         }
@@ -228,7 +237,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_close);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    CloseAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    CloseAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString()) + " " + AppResources.ZSAR;
                 }
             }
         }
@@ -333,6 +342,9 @@ namespace EGAZT.Models.AccountStatements
 
     public partial class TaxRelationSetResult
     {
+        [JsonIgnore]
+        public int DisplayId { get; set; }
+
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 

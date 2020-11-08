@@ -8231,25 +8231,76 @@
     <value />
   </data>
 	<data name="ASTransactionDate" xml:space="preserve">
-    <value>Transaction Date</value>
+    <value>تاريخ العملية</value>
   </data>
 	<data name="ASFBNum" xml:space="preserve">
     <value>الرقم المرجعي</value>
   </data>
 	<data name="ASSadadBillNumber" xml:space="preserve">
-    <value>SADAD Bill Number</value>
+    <value>رقم فاتورة سداد</value>
   </data>
 	<data name="ASTaxperiod" xml:space="preserve">
-    <value>Tax Period</value>
+    <value>الفترة الضريبية</value>
   </data>
 	<data name="ASDueDate" xml:space="preserve">
-    <value>Due Date</value>
+    <value>تاريخ الاستحقاق</value>
   </data>
 	<data name="ASBillDescription" xml:space="preserve">
-    <value>Bill Description</value>
+    <value>وصف الفاتورة</value>
   </data>
 	<data name="ASBillAmount" xml:space="preserve">
-    <value>Bill Amount</value>
+    <value>قيمة الفاتورة</value>
+  </data>
+ <data name="ASDashboardBalanceIndicatorTtile" xml:space="preserve">
+    <value>ارصدة الضريبة</value>
+  </data>
+  <data name="ASTransactionType" xml:space="preserve">
+    <value>نوع العملية</value>
+  </data>
+  <data name="ASTaxType" xml:space="preserve">
+    <value>نوع الضريبة</value>
+  </data>
+     <data name="ASAccountStatementDebit" xml:space="preserve">
+    <value>مدين</value>
+  </data>
+    <data name="ASAccountStatementCredit" xml:space="preserve">
+    <value>دائن</value>
+  </data>
+    <data name="ASAccountStatementFrom" xml:space="preserve">
+    <value>من عند</value>
+  </data>
+    <data name="ASAccountStatementTo" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
+    <value>كشف حساب المكلف</value>
+  </data>
+  <data name="ASAccountStatementTotalBalances" xml:space="preserve">
+    <value>اجمالي الرصيد</value>
+  </data>
+  <data name="ASAccountStatementTotalDebit" xml:space="preserve">
+    <value>اجمالي المدين</value>
+  </data>
+   <data name="ASAccountStatementTotalCredit" xml:space="preserve">
+    <value>اجمالي الدائن</value>
+  </data>
+  <data name="ASFromDateShouldNotbeGreaterThanToDate" xml:space="preserve">
+    <value>من تاريخ لا ينبغي أن يكون أكبر من إلى تاريخ.</value>
+  </data>
+  <data name="ASViewStatementForOnlyOneYear" xml:space="preserve">
+    <value>يمكنك عرض كشف حساب لمدة سنة واحدة فقط</value>
+  </data>
+   <data name="ASDownloadStatement" xml:space="preserve">
+    <value>تنزيل كشف الحساب</value>
+  </data>
+   <data name="ASAccountStatementDirectTax" xml:space="preserve">
+    <value>الضرائب المباشرة</value>
+  </data>
+    <data name="ASNoFinancialTransactions" xml:space="preserve">
+    <value>لا يوجد عمليات مالية مسجلة</value>
+  </data>
+    <data name="ASAccountStatementInDirectTax" xml:space="preserve">
+    <value>الضرائب الغير مباشرة</value>
   </data>
 	<data name="ZZZZVatRegistationFirstNote" xml:space="preserve">
     <value>في حال كنت لا توافق مع المعلومات أعلاه، انقر على هذا الرابط للتأكيد-</value>

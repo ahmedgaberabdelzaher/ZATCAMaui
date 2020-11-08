@@ -11,7 +11,7 @@
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
@@ -50,6 +50,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" BackgroundColor="Transparent" Source="partials_background.png" />
+
 
             
             <Grid RowSpacing="0" IsVisible="{Binding HomeViewVisible}" Grid.Row="0" Margin="0" Padding="0,15,0,0">
@@ -164,14 +165,135 @@
 
                                 <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
                             </Grid>
+
+                           <StackLayout Orientation="Horizontal" Margin="15,15,15,0">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASDashboardBalanceIndicatorTtile}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TappedOnMyBills"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
+
+                                 <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
+
+                                    <StackLayout VerticalOptions="Start" Margin="15,5,15,15">
+                                      <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="30"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Text="{Binding SelectedTaxTypeForFilter.Txt30}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                                        </custom:CustomLabel>
+
+                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,0" HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                                        <custom:CustomButton x:Name="btn" Clicked="btnTaxTypePickerClicked"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="Transparent"></custom:CustomButton>
+
+                                        <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypePicker"  HeaderHeight="55"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                                                             HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
+                                                             PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black"
+                                                             BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False"
+                                                             SelectedItemFontAttribute="Bold"
+                                                             SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"
+                                                             ItemHeight="40" DisplayMemberPath="Txt30" ItemsSource="{Binding TaxTypeFilter}"  Grid.Row="0" Grid.Column="0"
+                                                             Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
+                                                             CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
+                                                             CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TaxTypePicker_SelectionChanged">
+                                            <syncfusion:SfPicker.Behaviors>
+                                                <customcontrol:SfPickerBehavior />
+                                            </syncfusion:SfPicker.Behaviors>
+                                        </syncfusion:SfPicker>
+                                    </Grid>
+                           
+                                    <StackLayout Padding="10">
+                                        <progressBar:SfLinearProgressBar Progress="100" x:Name="TaxBalanceProgress" TrackHeight="16" HeightRequest="16" CornerRadius="8" >
+                                                <progressBar:SfLinearProgressBar.RangeColors>
+                                                    <progressBar:RangeColorCollection>
+                                                    <progressBar:RangeColor Color="{StaticResource Primary}" IsGradient="False"  Start="0" End="{Binding DebitAmountEndProgressBar}"/>
+                                                    <progressBar:RangeColor Color="{StaticResource ErrorColor}" IsGradient="False" Start="{Binding DebitAmountEndProgressBar}" End="100"/>
+                                                </progressBar:RangeColorCollection>
+                                                </progressBar:SfLinearProgressBar.RangeColors>
+
+                                        </progressBar:SfLinearProgressBar>
+                                    </StackLayout>
+                                    <Grid  Padding="0" RowSpacing="0">
+                                    <Grid.RowDefinitions>   
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" >
+                                        <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementDebit}" Style="{StaticResource BodyLabelBlack}"/>
+                                    </StackLayout>
+                                     <yummy:PancakeView Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="80"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" >
+                                     </yummy:PancakeView>
+                                    <StackLayout Grid.Row="1" Grid.Column="0"  VerticalOptions="FillAndExpand" Margin="5,0,0,0"  HorizontalOptions="FillAndExpand" >
+                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.DebitAmount}" TextColor="{StaticResource Primary}"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
+                                        <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementCredit}" Style="{StaticResource BodyLabelBlack}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                                    </StackLayout>
+                                     <yummy:PancakeView Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="80"  HeightRequest="20" Opacity=".2"  BorderThickness="1"   VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                        <yummy:PancakeView.Triggers>
+                                                <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                </DataTrigger>
+                                            </yummy:PancakeView.Triggers>
+                                     </yummy:PancakeView>
+                                    <StackLayout Grid.Row="1" Grid.Column="1"  VerticalOptions="FillAndExpand" Margin="0,0,5,0" HorizontalOptions="FillAndExpand" >
+                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.CreditAmount}" TextColor="{StaticResource ErrorColor}"   HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
+                                    </StackLayout>
+                                </Grid>
+                                <BoxView HorizontalOptions="FillAndExpand" Margin="-15,10,-15,0"   HeightRequest="1" BackgroundColor="LightGray" />
+                                <Grid Padding="0" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Spacing="-5">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTotalBalances}" Style="{StaticResource BodyLabelBlack}"  HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Spacing="-5">
+                                    <custom:CustomLabel  HorizontalOptions="EndAndExpand" Text="{Binding HeaderSet.D.CloseAmount}"  VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}" >
+                                 </custom:CustomLabel>
+                                </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                            </cards:SfCardView>
+                            </yummy:PancakeView>
+
                             <StackLayout>
                                 <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
                                     <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                         
-                                            <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                            
-
-
+                                        <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                         <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
                                         <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
@@ -280,7 +402,8 @@
                                                 <chart:SfChart ChartPadding="15"  BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
 
                                                     <chart:SfChart.Series>
-                                                        <chart:DoughnutSeries  x:Name="doughnutSeries"  ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}" Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
+                                                        <chart:DoughnutSeries  x:Name="doughnutSeries"  ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}"
+                                                                               Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
                                                             <chart:DoughnutSeries.ColorModel>
                                                                 <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
                                                                 </chart:ChartColorModel>
@@ -587,7 +710,7 @@
 
                                     <!--Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}"-->
 
-                                    <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_ReportTaxEvasion.png">
 
                                             </Image>
@@ -596,7 +719,7 @@
                                                 <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 
                                     <StackLayout Orientation="Horizontal" Spacing="20">

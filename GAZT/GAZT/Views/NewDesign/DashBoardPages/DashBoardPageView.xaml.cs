@@ -1,10 +1,12 @@
 ﻿using EGAZT.Enums;
+using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.XForms.ProgressBar;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -292,9 +294,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.IsLoading = true;
 
                 });
+
                 await viewModel.LoadDashboardData();
+
                 Device.BeginInvokeOnMainThread(() =>
-               {
+                {
                    viewModel.BillCount = string.Empty;
                    viewModel.BillsAndReturnsCommitments = null;
 
@@ -1102,6 +1106,26 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             //ParentMenu.IsVisible = true;
             //MenuTitleName.Text = AppResources.NDTaxManagement;
             //ButtomTab.IsVisible = true;
+        }
+
+        private void btnTaxTypePickerClicked(object sender, System.EventArgs e)
+        {
+            TaxTypePicker.IsOpen = true;
+        }
+
+        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                TaxRelationSetResult selectedReturntype = (TaxRelationSetResult)e.NewValue;
+                TaxTypePicker.SelectedItem = selectedReturntype;
+                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
+                viewModel.PopulateStatements(selectedReturntype.TaxType, selectedReturntype.StatementFilter, string.Empty);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

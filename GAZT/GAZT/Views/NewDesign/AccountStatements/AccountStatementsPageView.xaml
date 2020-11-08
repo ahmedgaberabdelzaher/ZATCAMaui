@@ -46,13 +46,13 @@
                                     <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                     <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
                                 </StackLayout>
-                                    <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="60"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                 <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="60"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                     <yummy:PancakeView.Triggers>
                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                 <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                             </DataTrigger>
                                         </yummy:PancakeView.Triggers>
-                                    </yummy:PancakeView>
+                                 </yummy:PancakeView>
                                 <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
                                         <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}" TextColor="{StaticResource Secondary}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                             <Label.Triggers>
@@ -423,9 +423,12 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
+
                     <custom:CustomLabel Text="{Binding SelectedTransactionTypeFilter.Txt30}"  Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                     </custom:CustomLabel>
 
@@ -447,8 +450,16 @@
                             <customcontrol:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
-                </Grid>
 
+                    <Image Grid.Row="0" Grid.Column="3" Source="download" IsVisible="{Binding IsDownloadBtnVisile}"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DownloadBtnTapped}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Grid>
+                
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
 
                 <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" >
@@ -510,7 +521,7 @@
                 <listView:SfListView x:Name="Bills" ItemsSource="{Binding StatementsLineItems}" SelectionBackgroundColor="Transparent" SelectionMode="None" IsVisible="true" IsScrollBarVisible="False" HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand" BackgroundColor="White" AutoFitMode="Height" ItemTemplate="{StaticResource lvDataTemplateSelector}" IsScrollingEnabled="False">
                 </listView:SfListView>
-                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.NoBillsAvailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isNoDataLableVisible}"/>
+                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNoStatementsAvaiableVisible}"/>
 
             </StackLayout>
             

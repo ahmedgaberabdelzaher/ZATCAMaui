@@ -395,6 +395,9 @@ namespace GAZT.Helper
         //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/YearValueSet?$filter=Euser eq '00000000001008337188' and Fguid eq '005056B1F8FB1EDB80EED6C67D924B34' and TaxType eq 'D' and StatementFilter eq '01'
         public static string AccountStatementGetYearValues = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/YearValueSet?$filter=Euser eq '' and ";
 
+        //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/zpdfDownloadSet(Euser='00000000000001088319',Fguid='005056B1365C1EDB82951CC479769E28',Taxtype='D',FiscalYear='2020',StatementFilter='04',FromDt=datetime'2020-8-1T00:00:00',ToDt=datetime'2020-10-31T00:00:00',Langz='E')/$value
+        public static string AccountStatementDownloadPdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/zpdfDownloadSet(Euser='',";
+
         #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using EGAZT.Models.EnumModels;
+﻿using EGAZT.Models.AccountStatements;
+using EGAZT.Models.EnumModels;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
@@ -77,6 +78,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private ObservableCollection<ReturnTypeAndCorrepsondingCount> _SegregatedReturnTypesAndCorrepsondingCounts = null;
         private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _Returns = null;
         private ObservableCollection<eServiceInfo> _eServices = null;
+        private ObservableCollection<TaxRelationSetResult> Tax = null;
 
         #endregion
 
@@ -96,7 +98,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+        public ASStatementHeaderSet _headerSet = null;
+        public ASStatementHeaderSet HeaderSet
+        {
+            get
+            {
+                return _headerSet;
+            }
+            set
+            {
+                _headerSet = value;
+                RaisePropertyChanged("HeaderSet");
+            }
+        }
 
         private String _taxpayerName;
         public String TaxpayerName
@@ -208,6 +222,67 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 this._BillsAndReturnsCommitments = value;
                 this.RaisePropertyChanged("BillsAndReturnsCommitments");
+            }
+        }
+
+        private ObservableCollection<TaxRelationSetResult> _taxTypeFilter = null;
+        public ObservableCollection<TaxRelationSetResult> TaxTypeFilter
+        {
+            get
+            {
+                return _taxTypeFilter;
+            }
+            set
+            {
+                _taxTypeFilter = value;
+                this.RaisePropertyChanged("TaxTypeFilter");
+            }
+        }
+
+        private double _debitAmountEndProgressBar = 0;
+        public double DebitAmountEndProgressBar
+        {
+            get => _debitAmountEndProgressBar;
+            set
+            {
+                _debitAmountEndProgressBar = value;
+                RaisePropertyChanged(nameof(DebitAmountEndProgressBar));
+            }
+        }
+
+        private double _creditAmountStartProgressBar = 0;
+        public double CreditAmountStartProgressBar
+        {
+            get => _creditAmountStartProgressBar;
+            set
+            {
+                _creditAmountStartProgressBar = value;
+                RaisePropertyChanged(nameof(CreditAmountStartProgressBar));
+            }
+        }
+
+        private double _totalAmountProgressBar = 0;
+        public double TotalAmountProgressBar
+        {
+            get => _totalAmountProgressBar;
+            set
+            {
+                _creditAmountStartProgressBar = value;
+                RaisePropertyChanged(nameof(_totalAmountProgressBar));
+            }
+        }
+
+        public TaxRelationSetResult _SelectedTaxTypeForFilter = null;
+        public TaxRelationSetResult SelectedTaxTypeForFilter
+        {
+            get
+            {
+                return _SelectedTaxTypeForFilter;
+            }
+            set
+            {
+                _SelectedTaxTypeForFilter = value;
+                RaisePropertyChanged("SelectedTaxTypeForFilter");
             }
         }
 
@@ -758,6 +833,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Task GetDashboardDataTask = null;
             Task GetBillsTask = null;
             Task GetReturnsTask = null;
+            Task GetAccountStatements = null;
 
             if (App.TP != null)
             {
@@ -797,6 +873,84 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     //Returns = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempReturns);
                     System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
+                });
+
+                GetAccountStatements = Task.Run(async () =>
+                {
+                    HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+
+                    foreach(TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                    {
+                        if(taxRelationSetResult.StatementFilter == "04")
+                        {
+                            taxRelationSetResult.DisplayId = 01;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "08")
+                        {
+                            taxRelationSetResult.DisplayId = 02;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "01")
+                        {
+                            taxRelationSetResult.DisplayId = 03;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "02")
+                        {
+                            taxRelationSetResult.DisplayId = 04;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "03")
+                        {
+                            taxRelationSetResult.DisplayId = 05;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "06")
+                        {
+                            taxRelationSetResult.DisplayId = 06;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "06")
+                        {
+                            taxRelationSetResult.DisplayId = 07;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "07")
+                        {
+                            taxRelationSetResult.DisplayId = 08;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "09")
+                        {
+                            taxRelationSetResult.DisplayId = 09;
+                        }
+                    }
+
+                    if(TaxTypeFilter == null)
+                    {
+                        TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>();
+                    }
+
+                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.OrderBy(temp => temp.DisplayId).ToList());
+
+                    foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
+                    {
+                        if (HeaderSet.D.TaxType == aSReturnTypes.TaxType)
+                        {
+                            SelectedTaxTypeForFilter = aSReturnTypes;
+                            break;
+                        }
+                    }
+
+                    double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.Debit));
+                    double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));
+                    double totalBalance = tempEndProgressBar + startCreditProgressBar;
+
+                    DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
+                    CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100) + DebitAmountEndProgressBar;
+
+                    TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
                 });
             }
             try
@@ -1346,6 +1500,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
             }
         }
+
+        public async void PopulateStatements(string taxType, string statementFilter, string year)
+        {
+            try
+            {
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+
+                double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.Debit));
+                double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));
+                double totalBalance = tempEndProgressBar + startCreditProgressBar;
+
+                DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
+                CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100) + DebitAmountEndProgressBar;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private string ConvertintoCommaSeperated(string strAmount)
         {
             string amountWithComma = string.Empty;
@@ -1363,6 +1537,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+
             }
             return amountWithComma;
         }

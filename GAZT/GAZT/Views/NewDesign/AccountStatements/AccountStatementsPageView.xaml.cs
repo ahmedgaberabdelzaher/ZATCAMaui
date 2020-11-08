@@ -19,9 +19,33 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             ChangeAeroIcon();
             SetLTR();
             SetPickerFont();
+            ChangeArrowDirection();
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
 
         public void SetPickerFont()
         {
@@ -87,9 +111,18 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             base.OnAppearing();
 
-            viewModel.PopulateReturnTypeList();
-            viewModel.PopulateASFilterData();
-            viewModel.PopulateFiltersData();
+            try
+            {
+                App.DisplayProgressView();
+                viewModel.PopulateReturnTypeList();
+                viewModel.PopulateASFilterData();
+                viewModel.PopulateFiltersData();
+                App.HideProgressView();
+            }
+            catch(Exception ex)
+            {
+                App.HideProgressView();
+            }
         }
 
         private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -166,6 +199,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             }
         }
+
+        
 
         //async void ChipGroup_statusFilter_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         //{

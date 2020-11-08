@@ -505,6 +505,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ToDate");
             }
         }
+
         private DateTime _lastIcrDate = DateTime.Now;
         public DateTime LastIcrDate
         {
