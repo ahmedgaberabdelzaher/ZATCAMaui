@@ -344,14 +344,14 @@
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}" 
                                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                HorizontalOptions="CenterAndExpand"  Margin="10" 
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray"
                                                                 Style="{StaticResource ValueLabelBlackMedium}"/>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ESTOtherTaxableIncomeFromSourcesWithinTheKSA}"  
                                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                HorizontalOptions="CenterAndExpand"  Margin="10" 
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
                                                                 LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" 
                                                                 Style="{StaticResource ValueLabelBlackMedium}"/>
