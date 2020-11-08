@@ -964,7 +964,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         if (idItem != null)
                         {
-                            List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, App.LoginDataRetrieved.TIN);
+                            string crNumber = "";
+                            string crType = "";/// taxPayerDetails.Nreg_ActivitySet
+                            foreach(var obj in taxPayerDetails.Nreg_ActivitySet.results)
+                            {
+                                if(obj.Type.Equals("BUP002"))
+                                {
+                                    crNumber = obj.Idnumber;
+                                    crType = obj.Type;
+                                }
+                                
+
+                            }
+                            List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(crType, crNumber, App.LoginDataRetrieved.TIN);
                             if (addressess.Count > 0)
                             {
                                 if (addressess.Count == 1)
