@@ -1572,8 +1572,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     FinancialDetails.FinancialRecords = true;
                     FinancialDetails.CalendarType = false;
-                    FinancialDetails.FiscalMonthEnd = true;
-                    FinancialDetails.FiscalDayEnd = true;
+                    FinancialDetails.FiscalMonthEnd = false;
+                    FinancialDetails.FiscalDayEnd = false;
                     FinancialDetails.CommencementDate = false;
                     FinancialDetails.TaxableDate = false;
                     break;

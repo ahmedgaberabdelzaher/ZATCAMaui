@@ -1132,11 +1132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
-                    if (LicenseData != null)
-                    {
-                        if (LicenseData.Count < 4)
-                        {
-                            OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
+                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
                             activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
 
                             if ((/*editModeEnabled == true &&*/ SelectedLicenseItem != null) || validateLicense != null)
@@ -1189,8 +1185,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                     LicensesCopies = new ObservableCollection<Attachment>(list);
                                 }
                             }
-                        }
-                    }
                 }
                 else
                 {
