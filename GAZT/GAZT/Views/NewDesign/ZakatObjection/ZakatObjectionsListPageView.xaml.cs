@@ -71,10 +71,6 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                     {
                         viewModel.GetWithdrawReviewReasonTP10(item.Fbnum);
                     }
-                    else if (item.Fbtyp == "ZNOB" && (item.StatText == "Additional Info Requested" || item.StatText == "طلب معلومات اضافية"))
-                    {
-                        viewModel.showRejectPopup();
-                    }
                     else
                     {
                         viewModel.ReqInstalmentBtnClickedAsync();
