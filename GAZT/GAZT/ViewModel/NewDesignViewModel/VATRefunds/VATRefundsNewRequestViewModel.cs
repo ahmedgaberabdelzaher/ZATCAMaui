@@ -302,6 +302,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             set
             {
                 _ListOfActionButtonsApplicable = value;
+         
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
@@ -351,7 +352,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             //EnableReasonView();
             OnMoreClicked = new Command(async () =>
             {
-                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+
+                if (ListOfActionButtonsApplicable == null)
+                {
+                    setMoreOptioButtons();
+                    await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+
+                }
+                else
+                {
+                    await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                }
             });
         }
 
@@ -490,7 +501,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                         headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.Message = string.Format(AppResources.ZVatRefundRequestSavedAsDraft, "  " + VatNewReqSummaryData.Fbnumx);
+                        headerAmountInfo.Message = string.Format(AppResources.ZRefundRequestSavedAsDraft+ "  " + VatNewReqSummaryData.Fbnumx);
 
                         headerWithInfos.Add(headerAmountInfo);
 
@@ -500,15 +511,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                         PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
+                        _navigationService.GoBack();
 
                         //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+                    });
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
                     });
 
                     //string displayMessage = AppResources.VATRSaveasdraftMessage;
                     //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                 }
 
-             
+
             }
             catch (InternetException ex)
             {
@@ -723,7 +740,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 {
                     VarRefundIbanDataModelMetadataResult varRefundIbanDataModelMetadataResult = IbanData.FirstOrDefault();
                     IsAddAccountVisisble = false;
-
+                    //SelectedIbanData.Iban = varRefundIbanDataModelMetadataResult.Iban;
                     if (varRefundIbanDataModelMetadataResult.Iban == string.Empty)
                     {
                         IsAddAccountVisisble = true;
@@ -1020,6 +1037,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         public async void OnVoidBtnClicked()
         {
+
             VatRefundsDisplayDataModel.Operationx = "04";
             VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
             VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
@@ -1031,17 +1049,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                Device.BeginInvokeOnMainThread(async () =>
+
+
+                await Task.Run(() =>
                 {
                     IsLoading = true;
                 });
 
                 VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+                if (VatNewReqSummaryData != null)
+                {
 
-                Device.BeginInvokeOnMainThread(async () =>
+                    ListOfActionButtonsApplicable = null;
+
+                }
+                await Task.Run(() =>
                 {
                     IsLoading = false;
-                    _navigationService.GoBack();
                 });
             }
             catch (InternetException ex)

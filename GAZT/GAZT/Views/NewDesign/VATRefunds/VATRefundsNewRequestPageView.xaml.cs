@@ -56,6 +56,8 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 viewModel.PickerModel = arg;
                 Console.WriteLine(arg);
             });
+            viewModel.setMoreOptioButtons();
+
         }
 
         protected async override void OnAppearing()
@@ -99,7 +101,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                                 break;
                             case ArButtons.إلغاء:
                                 viewModel.isDraftClicked = true;
-                                viewModel.VoidMsg();
+                                viewModel.OnVoidBtnClicked();
                                 viewModel.isDraftClicked = false;
                                 break;
                             case ArButtons.عادةتعيين:
@@ -138,7 +140,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                                 break;
                             case Buttons.Void:
                                 viewModel.isDraftClicked = true;
-                                viewModel.VoidMsg();
+                                viewModel.OnVoidBtnClicked();
                                 viewModel.isDraftClicked = false;
                                 break;
                             case Buttons.Reset:

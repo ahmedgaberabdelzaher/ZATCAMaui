@@ -1645,8 +1645,12 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
 	<data name="ZVatRefundRequestForVAT" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
-  <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+  <data name="ZRefundRequestSavedAsDraft" xml:space="preserve">
     <value>Refund Request form saved successfully</value>
+  </data>
+      <data name="ZRefundRequestVoid" xml:space="preserve">
+    <value>Request for Refund Amount is cancelled successfully!
+</value>
   </data>
 	<data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
     <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>

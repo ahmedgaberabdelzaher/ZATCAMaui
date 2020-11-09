@@ -2930,6 +2930,18 @@ namespace EGAZT {
             }
         }
         
+        public static string ZRefundRequestSavedAsDraft {
+            get {
+                return ResourceManager.GetString("ZRefundRequestSavedAsDraft", resourceCulture);
+            }
+        }
+        
+        public static string ZRefundRequestVoid {
+            get {
+                return ResourceManager.GetString("ZRefundRequestVoid", resourceCulture);
+            }
+        }
+        
         public static string ZVatRefundRequestSavedAsDraft {
             get {
                 return ResourceManager.GetString("ZVatRefundRequestSavedAsDraft", resourceCulture);
