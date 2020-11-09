@@ -1341,7 +1341,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
             OnDeleteOutletButtonClick = new Command(async (item) =>
             {
-                var newItem = item as OutletItem; 
+                var newItem = item as OutletItem;
                 string QuestionMark = string.Empty;
                 if (App.IsArabic)
                 {
@@ -1351,7 +1351,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     QuestionMark = "?";
                 }
-                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " +newItem.Actnm + QuestionMark)
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + newItem.Actnm + QuestionMark)
                 {
                     CloseWhenBackgroundIsClicked = false
                 };
@@ -1362,7 +1362,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
                     }
                 };
-                 await PopupNavigation.Instance.PushAsync(confirmPopup);
+                await PopupNavigation.Instance.PushAsync(confirmPopup);
             });
             #endregion
 
@@ -1697,7 +1697,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-
                     if (await PushDatatoServer(currentTab))
                     {
                         currentTab = EstablishmentRegistrationTabsEnum.Declaration;
@@ -2397,6 +2396,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+                    EnMethodList = new Dictionary<string, string>()
+                    {
+                        {"A", AppResources.NDAccounting },
+                        {"E", AppResources.NDEstimated }
+                    };
+                    EnCalendarTypeList = new Dictionary<string, string>()
+                    {
+                        {"2", AppResources.Hijri },
+                        {"1", AppResources.Gregorian }
+                    };
+                    MethodList.Clear();
+                    MethodList.AddRange(EnMethodList.Values);
+                    MethodList = new List<string>(MethodList);
+                    CalendarTypeList.Clear();
+                    CalendarTypeList.AddRange(EnCalendarTypeList.Values);
+                    CalendarTypeList =new List<string>(CalendarTypeList);
                     SelectedMethod = EnMethodList?[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList?[taxPayerDetails?.Fdcalender];
                     udpdateDates();

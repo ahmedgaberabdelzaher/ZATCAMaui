@@ -611,6 +611,7 @@
                                                         SelectedItem="{Binding SelectedDOBDate}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Closed="dobPicker_Closed"
+                                                        FutureDay="False"
 								                        ItemHeight="40">
                                         <custom1:CustomDatePicker.Behaviors>
                                             <custom1:SfPickerBehavior />
@@ -638,6 +639,7 @@
                                                         SelectedItem="{Binding SelectedDOBHijiriDate}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Closed="dobPicker_Closed"
+                                                        FutureDay="False"
 								                        ItemHeight="40">
                                     </custom1:CustomHijriDatePicker>
                                 </StackLayout>
@@ -1183,7 +1185,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                        <custom:CustomLabel Grid.Row="0" IsEnabled="True" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
                                             </custom:CustomLabel.GestureRecognizers>
