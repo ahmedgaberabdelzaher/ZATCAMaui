@@ -162,7 +162,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         private bool _AddLicenseEnabled = true;
         public bool AddLicenseEnabled
         {
-            get => AddLicenseEnabled;
+            get => _AddLicenseEnabled;
             set
             {
                 //if (value != null)
@@ -570,7 +570,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             LicenseDetails = new LicenseDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigationService.GoBack());
-            OnNewLicenseButtonClick = new Command(() => CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails);
+
+            OnNewLicenseButtonClick = new Command(() => {
+
+                if (AddLicenseEnabled) {
+
+                    CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails;
+                }
+                else {
+
+                    CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
+
+                }
+
+
+
+            });
+
+
+           // OnNewLicenseButtonClick = new Command(() => CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails);
             OnIssueCountrySelectButtonClick = new Command((object o) =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
@@ -948,7 +966,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public void OnAppearing()
         {
             //fetchTabDataAndBind();
-            if (LicenseData.Count == 4)
+            if (LicenseData.Count >= 4)
             {
                 AddLicenseEnabled = false;
             }
@@ -1177,6 +1195,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 else
                 {
                     LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
+
+                    if (LicenseData.Count >= 4)
+                    {
+                        AddLicenseEnabled = false;
+                    }
+                    else
+                    {
+                        AddLicenseEnabled = true;
+
+                    }
                 }
             }
             catch (Exception e)
