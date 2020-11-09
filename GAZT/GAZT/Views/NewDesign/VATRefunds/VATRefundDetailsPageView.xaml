@@ -600,7 +600,7 @@
                             </border:SfBorder >
                             <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" >
                                 <CheckBox x:Name="CBTermsAndConditions"   CheckedChanged="TermsAndConditions_CheckedChanged"/>
-                                <custom:CustomLabel Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  Margin="0" HorizontalOptions="Start" HorizontalTextAlignment="Start" >
+                                <custom:CustomLabel Margin="5,10,0,10" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"   HorizontalOptions="Start" HorizontalTextAlignment="Start" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="Black"  />

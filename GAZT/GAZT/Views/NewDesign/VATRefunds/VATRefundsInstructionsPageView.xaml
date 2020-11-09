@@ -34,7 +34,7 @@
                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZInstructions}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatRefundInstructions}" HorizontalOptions="Start"
+                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZVatRefundInstructions}" HorizontalOptions="Start"
                             Style="{StaticResource CaptionLabelGrey}" />
                 
                 </StackLayout>
@@ -49,7 +49,7 @@
                     </CheckBox.Triggers>
                     
                 </CheckBox>
-                <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                <custom:CustomLabel  Margin="5,10,0,15" Style="{StaticResource GAZTMicroMediumGrayLabel}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}"  />

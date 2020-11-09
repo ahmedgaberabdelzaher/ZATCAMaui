@@ -1007,6 +1007,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 return;
             }
+            VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
 
             //OnSaveDraftClicked();
 
