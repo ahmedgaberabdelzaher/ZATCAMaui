@@ -331,6 +331,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
 
+            if(viewModel.SelectedOutletOptionIndex == 1)
+            {
+                viewModel.NationalTypeSelected();
+            }
+
             viewModel.IsOption1Visible = index == 0 ? true : false;
             viewModel.IsOption2Visible = index == 1 ? true : false;
 
@@ -408,7 +413,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             Grid cardView = new Grid() { HeightRequest = 100 };
             Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
             Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-            Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle, Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions, Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
+            Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle,
+                             Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions,
+                             Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
             grid.Children.Add(image);
             grid.Children.Add(label);
 

@@ -3202,7 +3202,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (SelectedOutletOptionIndex == 1)
                 {
-                    if (SelectedIdNumber == null || SelectedReason == null || SelectedIdtype == null)
+                    if (string.IsNullOrEmpty(SelectedIdNumber)|| string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         return;

@@ -638,13 +638,13 @@
                         <StackLayout>
 
                             <StackLayout IsVisible="{Binding FirstNameText.IsVisible}">
-                                <custom:CustomLabel Text="{Binding FirstNameLbl}" HorizontalOptions="StartAndExpand"
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <control:BorderlessEntry Text="{Binding FirstNameFromIdType, Mode=TwoWay}" IsEnabled="{Binding FirstNameText.IsEditable}"
-                                                            Placeholder="{Binding FirstNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                          <control:BorderlessEntry.Behaviors>
@@ -655,13 +655,13 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding SurnameText.IsVisible}">
-                                <custom:CustomLabel Text="{Binding SurnameNameLbl}" HorizontalOptions="StartAndExpand"
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" IsEnabled="{Binding SurnameText.IsEditable}"
-                                                            Placeholder="{Binding SurnameNameLbl}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                <control:BorderlessEntry.Behaviors>
