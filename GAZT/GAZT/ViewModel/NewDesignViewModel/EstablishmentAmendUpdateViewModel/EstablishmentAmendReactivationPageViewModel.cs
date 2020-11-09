@@ -17,6 +17,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -31,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public string PageTitle { get; set; }
         public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
-        private Nreg_IdItem idItem { get; set; } = null;
+        public Nreg_IdItem idItem { get; set; } = null;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         //private OutletNumber number;
         private EstablishmentRegistrationTabsEnum _currentTab;
@@ -414,11 +415,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(SelectedTaxPayerType));
             }
         }
-        private Dictionary<string, string> NationalityMapping = new Dictionary<string, string>() {
-            { "SAUDI", AppResources.ESTNationalitySAUDI },
-            { "GCC", AppResources.ESTNationalityGCC },
-            { "FOREIGN", AppResources.ESTNationalityFOREIGN }
-        };
+        public Dictionary<string, string> NationalityMapping = null;
         private string _selectedRegNationalityType = string.Empty;
         public string SelectedRegNationalityType
         {
@@ -2278,6 +2275,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             try
             {
                 IsLoading = true;
+                NationalityMapping = new Dictionary<string, string>()
+                     {
+                        { "SAUDI", AppResources.ESTNationalitySAUDI },
+                        { "GCC", AppResources.ESTNationalityGCC },
+                        { "FOREIGN", AppResources.ESTNationalityFOREIGN }
+                    };
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     await GetReportingBranchListFromServer();
@@ -2721,7 +2724,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
             }
         }
-
+        public async Task<bool> ValidateIDAndDOB(string IDType, string IDNumber, string DOB)
+        {
+            IsLoading = true;
+            string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(IDType, IDNumber, DOB);
+            VATSignUp vATSignUpData = new VATSignUp();
+            vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+            //   IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+            if (vATSignUpData.d == null)
+            {
+                IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                }
+                else
+                {
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                }
+                Device.BeginInvokeOnMainThread(() => IsLoading = false);
+                return false;
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(() => IsLoading = false);
+                return true;
+            }
+        }
         private async Task<bool> FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
             //return true;
@@ -2800,6 +2829,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidence));
                         return false;
+                    }
+                    if (TaxPayerDetailsAvailability.DOB && !string.IsNullOrWhiteSpace(SelectedDOB))
+                    {
+                        var dob = SelectedDOB.Replace("/", "");
+                        var result = await ValidateIDAndDOB(idItem?.Type, GCCIDTypeIdNumberValue, dob);
+                        if (!result)
+                        {
+                            return false;
+                        }
                     }
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)

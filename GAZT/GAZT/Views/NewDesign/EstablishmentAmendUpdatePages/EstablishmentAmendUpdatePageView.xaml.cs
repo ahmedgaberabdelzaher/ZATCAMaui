@@ -17,6 +17,9 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.Views.NewDesign.Common;
+using GAZT.Manager;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 {
@@ -255,7 +258,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             }
             return EstablishmentRegistrationTabsEnum.RegistrationType;
         }
-
         void dobPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
@@ -272,6 +274,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 DateTime.TryParseExact(viewModel?.DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _dob);
                 viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
+            var dob = viewModel.SelectedDOB.Replace("/", "");
+            viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
         }
 
         void passportIssuePicker_Closed(System.Object sender, System.EventArgs e)
