@@ -8293,7 +8293,7 @@
     <value>تاريخ النهاية</value>
   </data>
   <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
-    <value>كشف حساب المكلف</value>
+    <value>كشف الحساب</value>
   </data>
   <data name="ASAccountStatementTotalBalances" xml:space="preserve">
     <value>اجمالي الرصيد</value>
