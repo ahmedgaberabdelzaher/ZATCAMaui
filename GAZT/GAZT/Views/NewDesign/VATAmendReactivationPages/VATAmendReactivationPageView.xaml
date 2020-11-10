@@ -347,7 +347,7 @@
 
 
                                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }" IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
-                                                        <CheckBox   VerticalOptions="CenterAndExpand" IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" CheckedChanged="AddAdditionalInfo_CheckedChanged">
+                                                        <CheckBox   VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" CheckedChanged="AddAdditionalInfo_CheckedChanged">
                                                             <CheckBox.Triggers>
                                                                 <DataTrigger TargetType="CheckBox"  Value="false">
                                                                     <Setter Property="Color" Value="#ff0000" />
@@ -1428,7 +1428,7 @@
 
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" IsVisible="{Binding FinancialDetails.AttachSectionCBVisible}" IsEnabled="{Binding FinancialDetails.AttachSectionCB}">
-                                                    <CheckBox   VerticalOptions="CenterAndExpand" IsChecked="{Binding IsFDChangeSectionChecked}" CheckedChanged="FDChangeSection_CheckedChanged">
+                                                    <CheckBox  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsFinancialDChangeSectionEnabled}" IsChecked="{Binding IsFDChangeSectionChecked}"  CheckedChanged="FDChangeSection_CheckedChanged">
                                                         <CheckBox.Triggers>
                                                             <DataTrigger TargetType="CheckBox"  Value="false">
                                                                 <Setter Property="Color" Value="#ff0000" />

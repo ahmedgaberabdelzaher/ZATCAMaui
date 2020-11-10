@@ -690,7 +690,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             //_dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
                                             if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                                             {
-                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZVATRAttachmentNote1));
+                                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZVATAmendAttachmentNote));
 
                                             }
                                             else

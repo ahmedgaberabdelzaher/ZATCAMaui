@@ -6552,6 +6552,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZZZVATAmendAttachmentNote {
+            get {
+                return ResourceManager.GetString("ZZZZVATAmendAttachmentNote", resourceCulture);
+            }
+        }
+        
         public static string ZZZZVATRAttachmentNote1 {
             get {
                 return ResourceManager.GetString("ZZZZVATRAttachmentNote1", resourceCulture);

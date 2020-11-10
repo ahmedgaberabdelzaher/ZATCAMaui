@@ -474,6 +474,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsInstrunctionVisible");
             }
         }
+        private bool _IsFDChangeSectionEnabled = false;
+        public bool IsFDChangeSectionEnabled
+        {
+            get
+            {
+                return _IsFDChangeSectionEnabled;
+            }
+            set
+            {
+                _IsFDChangeSectionEnabled = value;
+                RaisePropertyChanged("IsFDChangeSectionEnabled");
+            }
+        }
         private bool _isTaxPayersVisible = false;
         public bool IsTaxPayersVisible
         {
@@ -571,16 +584,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged(nameof(IsTaxPayerEligDateEnabled));
             }
         }
-        private bool _isFDChangeSectionEnabled;
-        public bool IsFDChangeSectionEnabled
-        {
-            get => _isFDChangeSectionEnabled;
-            set
-            {
-                _isFDChangeSectionEnabled = value;
-                RaisePropertyChanged(nameof(IsFDChangeSectionEnabled));
-            }
-        }
+
         private bool _isSummaryVisible = false;
         public bool IsSummaryVisible
         {
@@ -594,7 +598,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsSummaryVisible");
             }
         }
-
+        private bool _IsFinancialDChangeSectionEnabled = false;
+        public bool IsFinancialDChangeSectionEnabled
+        {
+            get
+            {
+                return _IsFinancialDChangeSectionEnabled;
+            }
+            set
+            {
+                _IsFinancialDChangeSectionEnabled = value;
+                RaisePropertyChanged("IsFinancialDChangeSectionEnabled");
+            }
+        }
+        
         private String _currentStep;
         public String CurrentStep
         {
@@ -930,8 +947,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _isAddAdditionalInfoChecked = value;
+              
 
                 RaisePropertyChanged("IsAddAdditionalInfoChecked");
+            }
+        }
+        private bool _AddAdditionalInfoCheckBoxEnabled = false;
+        public bool AddAdditionalInfoCheckBoxEnabled
+        {
+            get
+            {
+                return _AddAdditionalInfoCheckBoxEnabled;
+            }
+            set
+            {
+                _AddAdditionalInfoCheckBoxEnabled = value;
+     
+                RaisePropertyChanged("AddAdditionalInfoCheckBoxEnabled");
             }
         }
         private bool _isFDChangeSectionChecked = false;
@@ -2202,6 +2234,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             if (vATRegistration.d.Stp2Cbbox == "1")
                             {
                                 IsAddAdditionalInfoChecked = true;
+
+                                AddAdditionalInfoCheckBoxEnabled = false;
                                 //VATRegistrationDetailsData.d.Decfg = "1";
                             }
                             else if (vATRegistration.d.Stp2Cbbox == "0")
@@ -2211,11 +2245,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             if (vATRegistration.d.Stp3Cbbox == "1")
                             {
                                 IsFDChangeSectionChecked = true;
+                                IsFinancialDChangeSectionEnabled = false;
                                 //VATRegistrationDetailsData.d.Decfg = "1";
                             }
                             else if (vATRegistration.d.Stp3Cbbox == "0")
                             {
                                 IsFDChangeSectionChecked = false;
+                                IsFinancialDChangeSectionEnabled = true;
                             }
                             if (vATRegistration.d.Stp4Cbbox2 == "1")
                             {

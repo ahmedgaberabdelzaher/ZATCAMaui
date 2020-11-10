@@ -1965,6 +1965,24 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
+                    if (viewModel.IsAddAdditionalInfoChecked)
+                    {
+                        viewModel.AddAdditionalInfoCheckBoxEnabled = false;
+                    }
+                    else
+                    {
+                        viewModel.AddAdditionalInfoCheckBoxEnabled = true;
+
+                    }
+                    if (viewModel.IsFDChangeSectionChecked)
+                    {
+                        viewModel.IsFinancialDChangeSectionEnabled = false;
+                    }
+                    else
+                    {
+                        viewModel.IsFinancialDChangeSectionEnabled = true;
+
+                    }
                     await viewModel.SubmitClicked();
                 }
             }

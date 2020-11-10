@@ -3942,6 +3942,9 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Saudi Arabia</value>
     <comment>New SignUp</comment>
   </data>
+        <data name="ZZZZVATAmendAttachmentNote" xml:space="preserve">
+    <value>File size should be less than 5 MB</value>
+  </data>
 	<data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
     <value>1.File size should be less than 5 MB</value>
   </data>
