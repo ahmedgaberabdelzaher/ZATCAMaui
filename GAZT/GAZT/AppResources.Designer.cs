@@ -1805,6 +1805,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZTINDeregDownloadAcknowledgement {
+            get {
+                return ResourceManager.GetString("ZTINDeregDownloadAcknowledgement", resourceCulture);
+            }
+        }
+        
         public static string ZVatDownloadAcknowledgment {
             get {
                 return ResourceManager.GetString("ZVatDownloadAcknowledgment", resourceCulture);

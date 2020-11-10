@@ -1064,6 +1064,9 @@
 	<data name="ZVatDownloadForm" xml:space="preserve">
     <value>تحميل النموذج</value>
   </data>
+  <data name="ZTINDeregDownloadAcknowledgement" xml:space="preserve">
+    <value>تحميل الاشعار</value>
+  </data>
 	<data name="ZVatExemptPurchases" xml:space="preserve">
     <value>المشتريات المعفاة</value>
   </data>

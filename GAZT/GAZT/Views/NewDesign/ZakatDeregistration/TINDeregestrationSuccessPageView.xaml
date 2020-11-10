@@ -73,7 +73,7 @@ xmlns:custom2="clr-namespace:EGAZT"
 
                    </StackLayout>
                 </border:SfBorder>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.VatInstalmentDownload}"
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZTINDeregDownloadAcknowledgement}"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,0,10,0" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" Clicked="SfButton_Clicked"/>

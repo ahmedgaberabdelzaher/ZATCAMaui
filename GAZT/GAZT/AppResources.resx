@@ -998,6 +998,9 @@ GAZT reserves the right to investigate your return form further.</value>
 	<data name="ZVatDocumentNumber" xml:space="preserve">
     <value>Document Number</value>
   </data>
+      <data name="ZTINDeregDownloadAcknowledgement" xml:space="preserve">
+    <value>Download Acknowledgmen</value>
+  </data>
 	<data name="ZVatDownloadAcknowledgment" xml:space="preserve">
     <value>Download Acknowledgment</value>
   </data>
