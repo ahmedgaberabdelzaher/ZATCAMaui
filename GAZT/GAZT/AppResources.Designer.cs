@@ -15113,5 +15113,29 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZakatObjectionPortalMessage", resourceCulture);
             }
         }
+        
+        public static string SortBy {
+            get {
+                return ResourceManager.GetString("SortBy", resourceCulture);
+            }
+        }
+        
+        public static string Statement {
+            get {
+                return ResourceManager.GetString("Statement", resourceCulture);
+            }
+        }
+        
+        public static string Selectarangeanddownloadthestatement {
+            get {
+                return ResourceManager.GetString("Selectarangeanddownloadthestatement", resourceCulture);
+            }
+        }
+        
+        public static string StatementDate {
+            get {
+                return ResourceManager.GetString("StatementDate", resourceCulture);
+            }
+        }
     }
 }
