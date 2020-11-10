@@ -101,7 +101,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                                 break;
                             case ArButtons.إلغاء:
                                 viewModel.isDraftClicked = true;
-                                viewModel.OnVoidBtnClicked();
+                                VoidMsg();
                                 viewModel.isDraftClicked = false;
                                 break;
                             case ArButtons.عادةتعيين:
@@ -140,7 +140,8 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                                 break;
                             case Buttons.Void:
                                 viewModel.isDraftClicked = true;
-                                viewModel.OnVoidBtnClicked();
+                                VoidMsg();
+                                //viewModel.OnVoidBtnClicked();
                                 viewModel.isDraftClicked = false;
                                 break;
                             case Buttons.Reset:
@@ -188,6 +189,111 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
 
         }
+
+        public async Task VoidMsg()
+        {
+            if (App.IsArabic)
+            {
+                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
+                if (!result)
+                {
+                    try
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.DisplayProgressView();
+                        });
+
+                         viewModel.OnVoidBtnClicked();
+
+
+
+                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(firstPageToRemove);
+
+                        viewModel._navigationService.GoBack();
+                    }
+                    catch (GAZTErrorException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            App.HideProgressView();
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
+
+                if (result)
+                {
+                    try
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.DisplayProgressView();
+                        });
+
+                         viewModel.OnVoidBtnClicked();
+
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+
+                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(firstPageToRemove);
+
+                        viewModel._navigationService.GoBack();
+                    }
+                    catch (GAZTErrorException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            App.HideProgressView();
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+        }
+
 
         protected override void OnDisappearing()
         {
