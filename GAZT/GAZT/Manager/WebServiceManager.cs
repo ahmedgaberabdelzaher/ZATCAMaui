@@ -16554,6 +16554,8 @@ namespace GAZT.Manager
                     String url = Constants.AccountStatementRevenueDropDownSet + "Euser eq ''" + " and Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and Langz eq '" + LangZ + "'&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
                     if (GAZTASTabIdentificationStatus != null)
