@@ -8283,11 +8283,11 @@
     <data name="ASAccountStatementCredit" xml:space="preserve">
     <value>دائن</value>
   </data>
-    <data name="ASAccountStatementFrom" xml:space="preserve">
-    <value>من عند</value>
+   <data name="ASAccountStatementFrom" xml:space="preserve">
+    <value>تاريخ البداية</value>
   </data>
     <data name="ASAccountStatementTo" xml:space="preserve">
-    <value>إلى</value>
+    <value>تاريخ النهاية</value>
   </data>
   <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
     <value>كشف حساب المكلف</value>
@@ -8302,7 +8302,7 @@
     <value>اجمالي الدائن</value>
   </data>
   <data name="ASFromDateShouldNotbeGreaterThanToDate" xml:space="preserve">
-    <value>من تاريخ لا ينبغي أن يكون أكبر من إلى تاريخ.</value>
+    <value>تاريخ البداية يجب أن لايكون بعد تاريخ النهاية</value>
   </data>
   <data name="ASViewStatementForOnlyOneYear" xml:space="preserve">
     <value>يمكنك عرض كشف حساب لمدة سنة واحدة فقط</value>

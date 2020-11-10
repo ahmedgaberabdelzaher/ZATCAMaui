@@ -96,6 +96,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
             viewModel.TotalString = AppResources.NDTotalNumberOfBills;
             ChangeArrowDirection();
+            MessagingCenter.Subscribe<Object>(this, "UpdateProgressBar", (sender) =>
+            {
+                RangeColorCollection rangeColors = new RangeColorCollection();
+                rangeColors.Add(new RangeColor() { Color = Color.FromHex("006450"), IsGradient = false, Start = 0, End = viewModel.DebitAmountEndProgressBar });
+                rangeColors.Add(new RangeColor() { Color = Color.FromHex("AA0C19"), IsGradient = false, Start = viewModel.DebitAmountEndProgressBar, End = 100 });
+                Device.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
+            });
         }
         public async void getYesCommandToLogout()
         {

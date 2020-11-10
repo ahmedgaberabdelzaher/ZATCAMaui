@@ -668,24 +668,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     statementFilter = "04";
                 }
-              if(taxType=="I")
+                if(taxType=="I")
                 {
                     statementFilter = "08";
                 }
-                    
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
-                //if (HeaderSet != null && HeaderSet.D != null)
-                //{
-                //    TotalDebit = HeaderSet.D.DebitAmount;
-                //    TotalCredit = HeaderSet.D.CreditAmount;
-                //    TotalBalance = HeaderSet.D.CloseAmount;
 
-                //}
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
 
             }
             catch(Exception)
             {
-
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
 
             TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>(AllTransactionFilters.Where(x => x.TaxType.Equals(taxType)).ToList());
@@ -731,6 +737,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
                 TransactionTypeDropDownParent = new ASRevenueDropDownSet();
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty,string.Empty, string.Empty);
@@ -788,6 +799,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             FilterOnTaxType("I");
                         }
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
                 //if (HeaderSet != null && HeaderSet.D != null)
                 //{
                 //    TotalDebit = HeaderSet.D.DebitAmount;
@@ -806,10 +822,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (InternetException ex)
             {
-                //await Task.Run(() =>
-                //{
-                //    IsLoading = false;
-                //});
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -819,11 +835,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception ex)
             {
-                //await Task.Run(() =>
-                //{
-                //    IsLoading = false;
-                //    Console.WriteLine(ex.Message);
-                //});
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
         }
 
@@ -831,6 +846,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
                 if(HeaderSet.D.StatmenetLineItemsSet != null)
@@ -854,16 +874,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
-                //if (HeaderSet != null && HeaderSet.D != null)
-                //{
-                //    TotalDebit = HeaderSet.D.DebitAmount;
-                //    TotalCredit = HeaderSet.D.CreditAmount;
-                //    TotalBalance = HeaderSet.D.CloseAmount;
-                //}
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
             catch(Exception ex)
             {
-
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
         }
 

@@ -959,6 +959,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100) + DebitAmountEndProgressBar;
 
                     TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
+                    MessagingCenter.Send<Object>(this, "UpdateProgressBar");
                 });
             }
             try
@@ -1521,6 +1522,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
                 CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100) + DebitAmountEndProgressBar;
+                MessagingCenter.Send<Object>(this, "UpdateProgressBar");
             }
             catch (Exception ex)
             {

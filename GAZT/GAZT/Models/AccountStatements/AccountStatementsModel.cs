@@ -167,7 +167,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_debit);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    DebitAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString()) + " " + AppResources.ZSAR;
+                    DebitAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
                 }
             }
         }
@@ -199,11 +199,11 @@ namespace EGAZT.Models.AccountStatements
                 _credit = value;
                 if (!string.IsNullOrEmpty(_credit))
                 {
-                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    string format = "$#,##0.00;$#,##0.00-;Zero";
                     decimal d = Convert.ToDecimal(_credit);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    CreditAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString()) + " " + AppResources.ZSAR;
+                    CreditAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
                 }
             }
         }
@@ -332,50 +332,68 @@ namespace EGAZT.Models.AccountStatements
             }
             set
             {
-                _Bldat = value;
                 if (_Bldat != null)
                 {
-
-
+                    _Bldat = value;
                     FormattedBldat = _Bldat.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     FormattedBldat = date;
-
                 }
             }
         }
         [JsonIgnore]
         public string FormattedBldat { get; set; }
-        [JsonProperty("Bldat2")]
-        public DateTime Bldat2 { get; set; }
 
-        [JsonProperty("Faedn")]
-        public object Faedn { get; set; }
+
         [JsonIgnore]
-        private DateTime _PeriodEndDt;
-        [JsonProperty("PeriodEndDt")]
-        public DateTime PeriodEndDt
+        public string FormattedBldat2 { get; set; }
+
+        [JsonIgnore]
+        public DateTime _Bldat2 { get; set; }
+
+        [JsonProperty("Bldat2")]
+        public DateTime Bldat2
         {
             get
             {
-                return _PeriodEndDt;
+                return _Bldat2;
             }
             set
             {
-                _PeriodEndDt = value;
-                if (_PeriodEndDt != null)
+                if (_Bldat2 != null)
                 {
-
-
-                    FormattedPeriodEndDate = _PeriodEndDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    string[] dts = FormattedPeriodEndDate.Split('-');
+                    _Bldat2 = value;
+                    FormattedBldat2 = _Bldat2.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    FormattedPeriodEndDate = date;
-
+                    FormattedBldat2 = date;
                 }
             }
         }
+
+        //[JsonIgnore]
+        //private DateTime _PeriodEndDt;
+        //[JsonProperty("PeriodEndDt")]
+        //public DateTime PeriodEndDt
+        //{
+        //    get
+        //    {
+        //        return _PeriodEndDt;
+        //    }
+        //    set
+        //    {    
+        //        if (_PeriodEndDt != null)
+        //        {
+        //            _PeriodEndDt = value;
+        //            FormattedPeriodEndDate = _PeriodEndDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+        //            string[] dts = FormattedPeriodEndDate.Split('-');
+        //            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //            FormattedPeriodEndDate = date;
+        //        }
+        //    }
+        //}
+
         [JsonIgnore]
         public string FormattedPeriodEndDate { get; set; }
 

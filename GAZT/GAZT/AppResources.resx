@@ -8405,7 +8405,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
     <value>Total Credit</value>
   </data>
     <data name="ASFromDateShouldNotbeGreaterThanToDate" xml:space="preserve">
-    <value>From Date Should not be greater than the to date </value>
+    <value>From Date Should not be greater than To date </value>
   </data>
   <data name="ASViewStatementForOnlyOneYear" xml:space="preserve">
     <value>You can view account statement for 1 selected fiscal Year only</value>

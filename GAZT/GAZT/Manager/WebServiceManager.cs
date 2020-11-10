@@ -45,6 +45,7 @@ using EGAZT.Models.TPProfile;
 using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
 using Xamarin.Essentials;
 using EGAZT.Models.AccountStatements;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace GAZT.Manager
 {
@@ -16645,7 +16646,7 @@ namespace GAZT.Manager
                         }
 
                         String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
-                        _asTabIdentification = JsonConvert.DeserializeObject<ASStatementHeaderSet>(data);
+                         _asTabIdentification = JsonConvert.DeserializeObject<ASStatementHeaderSet>(data);
                     }
 
                     return _asTabIdentification;

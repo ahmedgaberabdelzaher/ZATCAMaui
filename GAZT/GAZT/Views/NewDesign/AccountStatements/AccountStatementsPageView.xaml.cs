@@ -25,6 +25,17 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+
+            try
+            {
+                viewModel.PopulateReturnTypeList();
+                viewModel.PopulateASFilterData();
+                viewModel.PopulateFiltersData();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void ChangeArrowDirection()
@@ -113,18 +124,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             base.OnAppearing();
 
-            try
-            {
-                App.DisplayProgressView();
-                viewModel.PopulateReturnTypeList();
-                viewModel.PopulateASFilterData();
-                viewModel.PopulateFiltersData();
-                App.HideProgressView();
-            }
-            catch(Exception ex)
-            {
-                App.HideProgressView();
-            }
+           
         }
 
         private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -191,6 +191,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             try
             {
+                
                 ASChipModel selectedReturntype = (ASChipModel)e.AddedItem;
                 ChipGroup_Years.SelectedItem = selectedReturntype;
                 viewModel.SelectedYear = selectedReturntype;
@@ -300,13 +301,13 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             {
                 case "":
                     viewModel.DueDateFilterItem = "ascending";
-                    var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.PeriodEndDt).ToList();
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.PeriodEndDt).ToList());
+                    var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Bldat2).ToList();
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Bldat2).ToList());
                     break;
                 case "ascending":
                     // code blockDescending
                     viewModel.DueDateFilterItem = string.Empty;
-                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.PeriodEndDt).ToList());
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Bldat2).ToList());
                     viewModel.DueDateFilterItem = "descending";
                     break;
                 case "descending":

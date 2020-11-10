@@ -222,7 +222,7 @@
 
                                         </progressBar:SfLinearProgressBar>
                                     </StackLayout>
-                                    <Grid  Padding="0" RowSpacing="0">
+                                    <Grid ColumnSpacing="20" Padding="0" RowSpacing="0">
                                     <Grid.RowDefinitions>   
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
@@ -232,39 +232,54 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" >
-                                        <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementDebit}" Style="{StaticResource BodyLabelBlack}"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementDebit}" Style="{StaticResource ValueLabelBlack}"/>
                                     </StackLayout>
-                                     <yummy:PancakeView Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" >
+                                     <yummy:PancakeView Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
                                      </yummy:PancakeView>
-                                    <StackLayout Grid.Row="1" Grid.Column="0"  VerticalOptions="FillAndExpand" Margin="5,0,0,0"  HorizontalOptions="FillAndExpand" >
-                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.DebitAmount}" TextColor="{StaticResource Primary}"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
-                                                <Label.Triggers>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
-                                                        <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                    </DataTrigger>
-                                                </Label.Triggers>
-                                            </Label>
+                                     <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal"  VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" >
+                                            <custom:CustomLabel  TextColor="{StaticResource Primary}" FlowDirection="LeftToRight" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding HeaderSet.D.DebitAmount}"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+
+                                            <custom:CustomLabel  TextColor="{StaticResource Primary}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
                                     </StackLayout>
+                                   
                                     <StackLayout Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
-                                        <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementCredit}" Style="{StaticResource BodyLabelBlack}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                                        <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementCredit}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
                                     </StackLayout>
-                                     <yummy:PancakeView Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"   VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                                     <yummy:PancakeView Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                         <yummy:PancakeView.Triggers>
                                                 <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                 </DataTrigger>
                                             </yummy:PancakeView.Triggers>
                                      </yummy:PancakeView>
-                                    <StackLayout Grid.Row="1" Grid.Column="1"  VerticalOptions="FillAndExpand" Margin="0,0,5,0" HorizontalOptions="FillAndExpand" >
-                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.CreditAmount}" TextColor="{StaticResource ErrorColor}"   HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-                                                <Label.Triggers>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
-                                                        <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                    </DataTrigger>
-                                                </Label.Triggers>
-                                            </Label>
+                                    <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
+                                            <custom:CustomLabel  TextColor="{StaticResource ErrorColor}" FlowDirection="LeftToRight" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding HeaderSet.D.CreditAmount}"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+
+                                            <custom:CustomLabel  TextColor="{StaticResource ErrorColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
                                     </StackLayout>
                                 </Grid>
                                 <BoxView HorizontalOptions="FillAndExpand" Margin="-15,10,-15,0"   HeightRequest="1" BackgroundColor="LightGray" />
