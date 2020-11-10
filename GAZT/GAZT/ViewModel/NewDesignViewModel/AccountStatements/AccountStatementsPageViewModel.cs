@@ -93,6 +93,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("FBNumFilterItem");
             }
         }
+
+
         public string _SadadBillNumberFilterItem = string.Empty;
         public string SadadBillNumberFilterItem
         {
@@ -118,6 +120,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 _TaxperiodFilterItem = value;
                 RaisePropertyChanged("TaxperiodFilterItem");
+            }
+        }
+
+        public ObservableCollection<ASResult> _SearchBarListItemSource = null;
+
+        public ObservableCollection<ASResult> SearchBarListItemSource
+        {
+            get
+            {
+                return _SearchBarListItemSource;
+            }
+            set
+            {
+                _SearchBarListItemSource = value;
+                RaisePropertyChanged("SearchBarListItemSource");
+
+            }
+
+        }
+
+        public bool _IsVisible_SearchList = false;
+        public bool IsVisible_SearchList
+        {
+            get
+            {
+                return _IsVisible_SearchList;
+            }
+            set
+            {
+                _IsVisible_SearchList = value;
+                RaisePropertyChanged("IsVisible_SearchList");
             }
         }
 

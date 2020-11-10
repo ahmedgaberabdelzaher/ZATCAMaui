@@ -306,6 +306,9 @@
     <BundleResource Include="Resources\download.png" />
     <BundleResource Include="Resources\download%402x.png" />
     <BundleResource Include="Resources\download%403x.png" />
+    <BundleResource Include="Resources\ArrowUp.png" />
+    <BundleResource Include="Resources\ArrowUp%402x.png" />
+    <BundleResource Include="Resources\ArrowUp%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

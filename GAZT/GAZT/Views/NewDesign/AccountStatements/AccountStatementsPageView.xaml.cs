@@ -179,7 +179,29 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         void SearchBar_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
+            var keyword = e.NewTextValue;
+            if (keyword.Length >= 1)
+            {
+                try
+                {
+                    var suggestion = viewModel.StatementsLineItems.Where(c => c.Desc.ToLower().Contains(keyword.ToLower())).ToList();
+                    // viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(suggestion);
+                    //viewModel.SearchBarListItemSource = viewModel.StatementsLineItems
+                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(suggestion);
+                    viewModel.IsVisible_SearchList = true;
+                }
+                catch (Exception ex)
+                {
+                    viewModel.IsVisible_SearchList = false;
 
+                }
+
+
+            }
+            else
+            {
+                viewModel.IsVisible_SearchList = false;
+            }
         }
 
         void btnTransactionTypePicker_Clicked(System.Object sender, System.EventArgs e)
