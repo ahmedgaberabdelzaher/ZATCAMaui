@@ -881,14 +881,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     foreach(TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                     {
-                        if(taxRelationSetResult.StatementFilter == "04")
+                        if (taxRelationSetResult.StatementFilter == "04")
                         {
-                            taxRelationSetResult.DisplayId = 01;
+                            if (HeaderSet.D.TaxType == "D")
+                                taxRelationSetResult.DisplayId = 01;
+                            else
+                                taxRelationSetResult.DisplayId = 02;
                         }
+
+
 
                         if (taxRelationSetResult.StatementFilter == "08")
                         {
-                            taxRelationSetResult.DisplayId = 02;
+                            if (HeaderSet.D.TaxType == "I")
+                                taxRelationSetResult.DisplayId = 01;
+                            else
+                                taxRelationSetResult.DisplayId = 02;
                         }
 
                         if (taxRelationSetResult.StatementFilter == "01")

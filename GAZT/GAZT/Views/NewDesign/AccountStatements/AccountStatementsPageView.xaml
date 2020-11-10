@@ -65,18 +65,18 @@
                                 </StackLayout>
                             </Grid>
                             <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                            <Grid Padding="10,10,10,10" RowSpacing="15">
+                            <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="1.5*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
+                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding Betrh}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" >
+                                    <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding Betrh}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
                                     </custom:CustomLabel>
                                 </StackLayout>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
@@ -101,13 +101,16 @@
                                 </StackLayout>           
                                 <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
                                     <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
+                                   
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
                                             <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding PeriodTxt}"/>
+                                                <Span Text="{Binding PeriodTxt}" />
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </Label>
+                                    </custom:CustomLabel>
+                                    
+                                    
                                 </StackLayout>
                             </Grid>
 
@@ -217,7 +220,8 @@
                 </DataTemplate>
                 <local:AccountStatementsLVDataTemplateSelector x:Key="lvDataTemplateSelector"
                     TotalBalanceTemplate="{StaticResource totalBalances}"
-                    OtherDataTemplate="{StaticResource otherDataTemplate}"/>
+                   />
+                     <!--OtherDataTemplate="{StaticResource otherDataTemplate}"-->
         </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -281,7 +285,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-    <ScrollView>
+   <ScrollView>
         <Grid Padding="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -340,7 +344,7 @@
                                     <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource NewDarkGreenColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                     </yummy:PancakeView>
                                     <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding HeaderSet.D.DebitAmount}" TextColor="{StaticResource NewDarkGreenColor}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding  HeaderSet.D.DebitAmount}" TextColor="{StaticResource NewDarkGreenColor}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                 <Label.Triggers>
                                                     <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                         <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
@@ -477,8 +481,8 @@
                     </buttons:SfChipGroup>
                 </ScrollView>-->
 
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}">
-                    <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"  ChipBackgroundColor="Transparent"
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}" HorizontalOptions="Start">
+                    <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent"
                                          ItemsSource="{Binding ChipDataFilterlistForYears}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"
                                          ChipBorderWidth="1" VerticalOptions="Center" SelectionChanged="yearChipGroup_SelectionChanged">
                         <buttons:SfChipGroup.ItemTemplate>
@@ -493,39 +497,258 @@
                 </ScrollView>
 
                <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSortByVisible}" Margin="0,15,0,0">
-                    <custom:CustomLabel Text="Sort By:" WidthRequest="130"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}"/>
+                    <custom:CustomLabel   WidthRequest="130"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                        <custom:CustomLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}"/>
+                                <Span Text=":"></Span>
+                            </FormattedString>
+                        </custom:CustomLabel.FormattedText>
+                    </custom:CustomLabel>
+                 
 
-                    <ScrollView HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
-                        <buttons:SfChipGroup Margin="0,0,0,0" x:Name="ChipGroup_Filters" Type="Choice" HorizontalOptions="Start"  ChipBackgroundColor="Transparent" ItemsSource="{Binding FilterList}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" >
+                   <!--PressedBackgroundColor="AliceBlue"  AppResources.TaxType-->
+                   <ScrollView HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
+                          <!--<buttons:SfChipGroup Margin="0,0,0,0" x:Name="ChipGroup_Filters" Type="Choice" HorizontalOptions="Start"  ChipBackgroundColor="Transparent" ItemsSource="{Binding FilterList}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" >
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="0"  >
-                                         <!--<Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Arrow}"/>
-                                            </Image.Source>
-                                        </Image>-->
+                                        
                                         <custom:CustomLabel Text="{Binding FilterHeader}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
                                     </StackLayout>
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
-                        </buttons:SfChipGroup>
+                        </buttons:SfChipGroup>-->
+                    <StackLayout Orientation="Horizontal">
+                    <buttons:SfButton x:Name="Button_TransactionTypeFilter" Clicked="Button_TransactionTypeFilter_Clicked" HorizontalTextAlignment="Start" Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                        <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ic_unpaid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="ic_paid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <!--<buttons:SfButton x:Name="Button_TaxTypeFilter" Clicked="Button_TaxTypeFilter_Clicked"  HorizontalTextAlignment="Start"   Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.TaxType}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
+                    <!--<buttons:SfButton x:Name="Button_FBNumFilter" Clicked="Button_FBNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASFBNum}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
+                    <buttons:SfButton x:Name="Button_SadadBillNumFilter" Clicked="Button_SadadBillNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
+                    <buttons:SfButton x:Name="Button_TaxPeriodFilter" Clicked="Button_TaxPeriodFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                        <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ic_unpaid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="ic_paid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <buttons:SfButton  x:Name="Button_DueDateFilter" Clicked="Button_DueDateFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASDueDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                           <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ic_unpaid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="ic_paid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <buttons:SfButton x:Name="Button_BillDiscriptionFilter"  Clicked="Button_BillDiscriptionFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillDescription}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                          <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ic_unpaid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="ic_paid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <buttons:SfButton x:Name="Button_BillAmountFilter" Clicked="Button_BillAmountFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillAmount}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                          <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ic_unpaid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="ic_paid" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <!--<buttons:SfButton  x:Name="Button_BillStatusFilter" Clicked="Button_BillStatusFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ZStatus}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
+                           </StackLayout>
                     </ScrollView>
+                      <!--<Image>
+                                            <Image.Source>
+                                                <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Arrow}"/>
+                                            </Image.Source>
+                                        </Image>-->
                </StackLayout>
-
 
             </StackLayout>
             
-            <StackLayout Grid.Row="1">
+            <Grid Grid.Row="1">
 
                 <listView:SfListView x:Name="Bills" ItemsSource="{Binding StatementsLineItems}" SelectionBackgroundColor="Transparent" SelectionMode="None" IsVisible="true" IsScrollBarVisible="False" HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand" BackgroundColor="White" AutoFitMode="Height" ItemTemplate="{StaticResource lvDataTemplateSelector}" IsScrollingEnabled="False">
+                VerticalOptions="FillAndExpand" BackgroundColor="White" AutoFitMode="Height" IsScrollingEnabled="False">
+
+                    <listView:SfListView.ItemTemplate>
+                                  <DataTemplate >
+                    <ViewCell>
+                    <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout Padding="0" Spacing="0">
+                            <Grid  Padding="15" RowSpacing="0">
+                                <Grid.RowDefinitions>   
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                    <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
+                                </StackLayout>
+                                 <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                    <yummy:PancakeView.Triggers>
+                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                            </DataTrigger>
+                                        </yummy:PancakeView.Triggers>
+                                 </yummy:PancakeView>
+                                <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
+                                        <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}" TextColor="{StaticResource Secondary}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding StatusDesc}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                </StackLayout>
+                            </Grid>
+                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                            <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                    <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding Betrh}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
+                                    </custom:CustomLabel>
+                                </StackLayout>
+                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                    <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                                    <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
+                                            <Label.FormattedText>
+                                            <FormattedString>
+                                                <!--<Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>-->
+                                                      <Span Text="{Binding FormattedBldat}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" >
+                                    <Label Text="{x:Static ResourceManager:AppResources.ASDueDate}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                    <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
+                                       <Label.FormattedText>
+                                            <FormattedString>
+                                                <!--<Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>-->
+                                                 <Span Text="{Binding FormattedPeriodEndDate}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>           
+                                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                    <Label Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                   
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                                            <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding PeriodTxt}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+                                    
+                                    
+                                </StackLayout>
+                            </Grid>
+
+                        </StackLayout>
+                    </border:SfBorder >
+                    </ViewCell>
+                </DataTemplate>
+                 </listView:SfListView.ItemTemplate> 
                 </listView:SfListView>
                 <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNoStatementsAvaiableVisible}"/>
 
-            </StackLayout>
+            </Grid>
             
         </Grid>
-        </ScrollView>
+      </ScrollView> 
     </ContentPage.Content>
 </ContentPage>

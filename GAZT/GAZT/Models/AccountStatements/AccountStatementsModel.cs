@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -314,18 +315,69 @@ namespace EGAZT.Models.AccountStatements
 
         [JsonProperty("Betrh")]
         public string Betrh { get; set; }
+        //FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+        //                    string[] dts = FormatedAbrzu.Split('-');
+        //string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //FormatedAbrzu = date;
 
+
+        [JsonIgnore]
+        private DateTime _Bldat;
         [JsonProperty("Bldat")]
-        public DateTime Bldat { get; set; }
+        public DateTime Bldat
+        {
+            get
+            {
+                return _Bldat;
+            }
+            set
+            {
+                _Bldat = value;
+                if (_Bldat != null)
+                {
 
+
+                    FormattedBldat = _Bldat.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    string[] dts = FormattedBldat.Split('-');
+                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    FormattedBldat = date;
+
+                }
+            }
+        }
+        [JsonIgnore]
+        public string FormattedBldat { get; set; }
         [JsonProperty("Bldat2")]
         public DateTime Bldat2 { get; set; }
 
         [JsonProperty("Faedn")]
         public object Faedn { get; set; }
-
+        [JsonIgnore]
+        private DateTime _PeriodEndDt;
         [JsonProperty("PeriodEndDt")]
-        public DateTime PeriodEndDt { get; set; }
+        public DateTime PeriodEndDt
+        {
+            get
+            {
+                return _PeriodEndDt;
+            }
+            set
+            {
+                _PeriodEndDt = value;
+                if (_PeriodEndDt != null)
+                {
+
+
+                    FormattedPeriodEndDate = _PeriodEndDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    string[] dts = FormattedPeriodEndDate.Split('-');
+                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    FormattedPeriodEndDate = date;
+
+                }
+            }
+        }
+        [JsonIgnore]
+        public string FormattedPeriodEndDate { get; set; }
 
         public bool IsTotalBalanceVisile { get; set; }
 

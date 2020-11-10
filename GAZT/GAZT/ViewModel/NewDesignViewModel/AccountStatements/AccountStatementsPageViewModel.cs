@@ -53,6 +53,128 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        //Filter Item properties start
+        public string _TransactionDateFilterItem = string.Empty;
+        public string TransactionDateFilterItem
+        {
+            get
+            {
+                return _TransactionDateFilterItem;
+            }
+            set
+            {
+                _TransactionDateFilterItem = value;
+                RaisePropertyChanged("TransactionDateFilterItem");
+            }
+        }
+        public string _TaxTypeFilterItem = string.Empty;
+        public string TaxTypeFilterItem
+        {
+            get
+            {
+                return _TaxTypeFilterItem;
+            }
+            set
+            {
+                _TaxTypeFilterItem = value;
+                RaisePropertyChanged("TaxTypeFilterItem");
+            }
+        }
+        public string _FBNumFilterItem = string.Empty;
+        public string FBNumFilterItem
+        {
+            get
+            {
+                return _FBNumFilterItem;
+            }
+            set
+            {
+                _FBNumFilterItem = value;
+                RaisePropertyChanged("FBNumFilterItem");
+            }
+        }
+        public string _SadadBillNumberFilterItem = string.Empty;
+        public string SadadBillNumberFilterItem
+        {
+            get
+            {
+                return _SadadBillNumberFilterItem;
+            }
+            set
+            {
+                _SadadBillNumberFilterItem = value;
+                RaisePropertyChanged("SadadBillNumberFilterItem");
+            }
+        }
+
+        public string _TaxperiodFilterItem = string.Empty;
+        public string TaxperiodFilterItem
+        {
+            get
+            {
+                return _TaxperiodFilterItem;
+            }
+            set
+            {
+                _TaxperiodFilterItem = value;
+                RaisePropertyChanged("TaxperiodFilterItem");
+            }
+        }
+
+        public string _DueDateFilterItem = string.Empty;
+        public string DueDateFilterItem
+        {
+            get
+            {
+                return _DueDateFilterItem;
+            }
+            set
+            {
+                _DueDateFilterItem = value;
+                RaisePropertyChanged("DueDateFilterItem");
+            }
+        }
+        public string _BillDescriptionFilterItem = string.Empty;
+        public string BillDescriptionFilterItem
+        {
+            get
+            {
+                return _BillDescriptionFilterItem;
+            }
+            set
+            {
+                _BillDescriptionFilterItem = value;
+                RaisePropertyChanged("BillDescriptionFilterItem");
+            }
+        }
+
+        public string _BillAmountFilterItem = string.Empty;
+        public string BillAmountFilterItem
+        {
+            get
+            {
+                return _BillAmountFilterItem;
+            }
+            set
+            {
+                _BillAmountFilterItem = value;
+                RaisePropertyChanged("BillAmountFilterItem");
+            }
+        }
+        public string _StatusFilterItem = string.Empty;
+        public string StatusFilterItem
+        {
+            get
+            {
+                return _StatusFilterItem;
+            }
+            set
+            {
+                _StatusFilterItem = value;
+                RaisePropertyChanged("StatusFilterItem");
+            }
+        }
+        //Filter Item properties  end
         public ASStatementHeaderSet _headerSet = null;
         public ASStatementHeaderSet HeaderSet
         {
@@ -64,6 +186,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 _headerSet = value;
                 RaisePropertyChanged("HeaderSet");
+            }
+        }
+        public string _TotalDebit = string.Empty;
+        public string TotalDebit
+        {
+            get
+            {
+                return _TotalDebit;
+            }
+            set
+            {
+                _TotalDebit = value;
+                RaisePropertyChanged("TotalDebit");
+            }
+        }
+        public string _TotalCredit = string.Empty;
+        public string TotalCredit
+        {
+            get
+            {
+                return _TotalCredit;
+            }
+            set
+            {
+                _TotalCredit = value;
+                RaisePropertyChanged("TotalCredit");
+            }
+        }
+        public string _TotalBalance = string.Empty;
+        public string TotalBalance
+        {
+            get
+            {
+                return _TotalBalance;
+            }
+            set
+            {
+                _TotalBalance = value;
+                RaisePropertyChanged("TotalBalance");
             }
         }
 
@@ -386,7 +547,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
         }
-
+        public void ClearFilterItems()
+        {
+            TransactionDateFilterItem = string.Empty;
+            BillAmountFilterItem = string.Empty;
+            BillDescriptionFilterItem = string.Empty;
+            DueDateFilterItem = string.Empty;
+            FBNumFilterItem = string.Empty;
+            SadadBillNumberFilterItem = string.Empty;
+            StatusFilterItem = string.Empty;
+            TaxperiodFilterItem = string.Empty;
+            TaxTypeFilterItem = string.Empty;
+            
+        }
         public void FiltersClicked()
         {
             IsSortByVisible = !IsSortByVisible;
@@ -469,8 +642,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public void FilterOnTaxType(string taxType)
+        public  async void FilterOnTaxType(string taxType)
         {
+            //API Call
+            try
+            {
+                string statementFilter = string.Empty;
+                if (taxType == "D")
+                {
+                    statementFilter = "04";
+                }
+              if(taxType=="I")
+                {
+                    statementFilter = "08";
+                }
+                    
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+                //if (HeaderSet != null && HeaderSet.D != null)
+                //{
+                //    TotalDebit = HeaderSet.D.DebitAmount;
+                //    TotalCredit = HeaderSet.D.CreditAmount;
+                //    TotalBalance = HeaderSet.D.CloseAmount;
+
+                //}
+
+            }
+            catch(Exception)
+            {
+
+            }
+
             TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>(AllTransactionFilters.Where(x => x.TaxType.Equals(taxType)).ToList());
             SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
         }
@@ -516,8 +717,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 TransactionTypeDropDownParent = new ASRevenueDropDownSet();
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty,string.Empty, string.Empty);
+             
 
-                if(AllTransactionFilters == null)
+                if (AllTransactionFilters == null)
                 {
                     AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
                 }
@@ -566,7 +768,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             FilterOnTaxType("I");
                         }
-                   
+                //if (HeaderSet != null && HeaderSet.D != null)
+                //{
+                //    TotalDebit = HeaderSet.D.DebitAmount;
+                //    TotalCredit = HeaderSet.D.CreditAmount;
+                //    TotalBalance = HeaderSet.D.CloseAmount;
+
+                //}
             }
             catch (GAZTErrorException ex)
             {
@@ -617,13 +825,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         IsDownloadBtnVisile = false;
                         IsNoStatementsAvaiableVisible = true;
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
                     }
                 }
                 else
                 {
+                
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
+                //if (HeaderSet != null && HeaderSet.D != null)
+                //{
+                //    TotalDebit = HeaderSet.D.DebitAmount;
+                //    TotalCredit = HeaderSet.D.CreditAmount;
+                //    TotalBalance = HeaderSet.D.CloseAmount;
+                //}
             }
             catch(Exception ex)
             {

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Xamarin.Forms;
@@ -200,15 +202,197 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             }
         }
 
-        
+        void Button_TransactionTypeFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+            //viewModel.TransactionDateFilterItem = string.Empty;
+            viewModel.BillAmountFilterItem = string.Empty;
+            viewModel.BillDescriptionFilterItem = string.Empty;
+            viewModel.DueDateFilterItem = string.Empty;
+            viewModel.FBNumFilterItem = string.Empty;
+            viewModel.SadadBillNumberFilterItem = string.Empty;
+            viewModel.StatusFilterItem = string.Empty;
+             viewModel.TaxperiodFilterItem = string.Empty;
+            viewModel.TaxTypeFilterItem = string.Empty;
+            switch (viewModel.TransactionDateFilterItem)
+            {
+                case  "":
+                    viewModel.TransactionDateFilterItem = "ascending";
+                    var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Bldat).ToList();
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Bldat).ToList());
+                    break;
+                case "ascending":
+                    // code blockDescending
+                    viewModel.TransactionDateFilterItem = string.Empty;
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Bldat).ToList());
+                    viewModel.TransactionDateFilterItem = "descending";
+                    break;
+                case "descending":
+                    // code block
+                    viewModel.TransactionDateFilterItem = string.Empty;
+                    break;
+                default:
+                    viewModel.TransactionDateFilterItem = string.Empty;
+                    break;
+            }
+        }
 
-        //async void ChipGroup_statusFilter_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        ASChipModel selectedTransactionType = (ASChipModel)e.AddedItem;
-        //        ChipGroup_statusFilter.SelectedItem = selectedTransactionType;
-        //        viewModel.SelectedTransactionType = selectedTransactionType;
+        void Button_TaxTypeFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
+        void Button_FBNumFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
+        void Button_SadadBillNumFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }        //async void ChipGroup_statusFilter_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+
+        void Button_TaxPeriodFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+            viewModel.TransactionDateFilterItem = string.Empty;
+            viewModel.BillAmountFilterItem = string.Empty;
+            viewModel.BillDescriptionFilterItem = string.Empty;
+              viewModel.DueDateFilterItem = string.Empty;
+            viewModel.FBNumFilterItem = string.Empty;
+            viewModel.SadadBillNumberFilterItem = string.Empty;
+            viewModel.StatusFilterItem = string.Empty;
+           // viewModel.TaxperiodFilterItem = string.Empty;
+            viewModel.TaxTypeFilterItem = string.Empty;
+
+            switch (viewModel.TaxperiodFilterItem)
+            {
+                case "":
+                    viewModel.TaxperiodFilterItem = "ascending";
+                    var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Persl).ToList();
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Persl).ToList());
+                    break;
+                case "ascending":
+                    // code blockDescending
+                    viewModel.TaxperiodFilterItem = string.Empty;
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Persl).ToList());
+                    viewModel.TaxperiodFilterItem = "descending";
+                    break;
+                case "descending":
+                    // code block
+                    viewModel.TaxperiodFilterItem = string.Empty;
+                    break;
+                default:
+                    viewModel.TaxperiodFilterItem = string.Empty;
+                    break;
+            }
+        }        //{
+
+        void Button_DueDateFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+            viewModel.TransactionDateFilterItem = string.Empty;
+             viewModel.BillAmountFilterItem = string.Empty;
+            viewModel.BillDescriptionFilterItem = string.Empty;
+          //  viewModel.DueDateFilterItem = string.Empty;
+            viewModel.FBNumFilterItem = string.Empty;
+            viewModel.SadadBillNumberFilterItem = string.Empty;
+            viewModel.StatusFilterItem = string.Empty;
+            viewModel.TaxperiodFilterItem = string.Empty;
+            viewModel.TaxTypeFilterItem = string.Empty;
+
+            switch (viewModel.DueDateFilterItem)
+            {
+                case "":
+                    viewModel.DueDateFilterItem = "ascending";
+                    var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.PeriodEndDt).ToList();
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.PeriodEndDt).ToList());
+                    break;
+                case "ascending":
+                    // code blockDescending
+                    viewModel.DueDateFilterItem = string.Empty;
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.PeriodEndDt).ToList());
+                    viewModel.DueDateFilterItem = "descending";
+                    break;
+                case "descending":
+                    // code block
+                    viewModel.DueDateFilterItem = string.Empty;
+                    break;
+                default:
+                    viewModel.DueDateFilterItem = string.Empty;
+                    break;
+            }
+        }        //    try
+
+        void Button_BillDiscriptionFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+            viewModel.TransactionDateFilterItem = string.Empty;
+              viewModel.BillAmountFilterItem = string.Empty;
+            //viewModel.BillDescriptionFilterItem = string.Empty;
+            viewModel.DueDateFilterItem = string.Empty;
+            viewModel.FBNumFilterItem = string.Empty;
+            viewModel.SadadBillNumberFilterItem = string.Empty;
+            viewModel.StatusFilterItem = string.Empty;
+            viewModel.TaxperiodFilterItem = string.Empty;
+            viewModel.TaxTypeFilterItem = string.Empty;
+            switch (viewModel.BillDescriptionFilterItem)
+            {
+                case "":
+                    viewModel.BillDescriptionFilterItem = "ascending";
+                    var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Desc).ToList();
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Desc).ToList());
+                    break;
+                case "ascending":
+                    // code blockDescending
+                    viewModel.BillDescriptionFilterItem = string.Empty;
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Desc).ToList());
+                    viewModel.BillDescriptionFilterItem = "descending";
+                    break;
+                case "descending":
+                    // code block
+                    viewModel.BillDescriptionFilterItem = string.Empty;
+                    break;
+                default:
+                    viewModel.BillDescriptionFilterItem = string.Empty;
+                    break;
+            }
+        }        //    {
+
+        void Button_BillDiscriptionFilter_Clicked_1(System.Object sender, System.EventArgs e)
+        {
+        }        //        ASChipModel selectedTransactionType = (ASChipModel)e.AddedItem;
+
+        void Button_BillAmountFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+           viewModel.TransactionDateFilterItem = string.Empty;
+         //  viewModel.BillAmountFilterItem = string.Empty;
+            viewModel.BillDescriptionFilterItem = string.Empty;
+            viewModel.DueDateFilterItem = string.Empty;
+            viewModel.FBNumFilterItem = string.Empty;
+            viewModel.SadadBillNumberFilterItem = string.Empty;
+            viewModel.StatusFilterItem = string.Empty;
+            viewModel.TaxperiodFilterItem = string.Empty;
+            viewModel.TaxTypeFilterItem = string.Empty;
+            switch (viewModel.BillAmountFilterItem)
+            {
+                case "":
+                    viewModel.BillAmountFilterItem = "ascending";
+                    var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Betrh).ToList();
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Betrh).ToList());
+                    break;
+                case "ascending":
+                    // code blockDescending
+                    viewModel.BillAmountFilterItem = string.Empty;
+                    viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Betrh).ToList());
+                    viewModel.BillAmountFilterItem = "descending";
+                    break;
+                case "descending":
+                    // code block
+                    viewModel.BillAmountFilterItem = string.Empty;
+                    break;
+                default:
+                    viewModel.BillAmountFilterItem = string.Empty;
+                    break;
+            }
+        }        //        ChipGroup_statusFilter.SelectedItem = selectedTransactionType;
+
+        void Button_BillStatusFilter_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }        //        viewModel.SelectedTransactionType = selectedTransactionType;
 
         //        string taxType = string.Empty;
         //        if (viewModel.SelectedTaxTypeForFilter.Id == "00")
