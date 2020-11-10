@@ -33,5 +33,10 @@ namespace EGAZT.Views.NewDesign.Common
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        private void OnBackGroundClicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse", true);
+        }
     }
 }

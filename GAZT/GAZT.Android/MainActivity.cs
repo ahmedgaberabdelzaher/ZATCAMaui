@@ -97,7 +97,6 @@ namespace GAZT.Droid
             LoadApplication(app);
         }
 
-
         public class MyHandlerICallback : Java.Lang.Object, Handler.ICallback
         {
             private MainActivity mainActivity;
@@ -223,6 +222,7 @@ namespace GAZT.Droid
             {
                 // Do something if there are not any pages in the `PopupStack`
             }
+            App.OnBackPressed();
         }
 
         //public static bool ShouldStopLoginRefreshTimer = false;

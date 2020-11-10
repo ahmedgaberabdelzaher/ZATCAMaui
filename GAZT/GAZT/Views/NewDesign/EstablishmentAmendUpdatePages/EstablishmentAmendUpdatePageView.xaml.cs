@@ -36,38 +36,62 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
+          //  viewModel.IsExceptionPopupVisible = false;
             BindingContext = viewModel;
-            //if (App.ZAKATType == Enums.PageExecutionType.Amend)
+            //if (App.ZAKATType==Enums.PageExecutionType.Amend)
             //{
-            //    viewModel.PageTitle = AppResources.ZZAmend;
+            //    fiscalMonth.IsEnabled = false;
+            //    fiscalDay.IsEnabled = false;
             //}
-            //else if (App.ZAKATType == Enums.PageExecutionType.Update)
+            //else
             //{
-            //    viewModel.PageTitle = AppResources.TPUpdate;
+            //    fiscalMonth.IsEnabled = true;
+            //    fiscalDay.IsEnabled = true;
             //}
+            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+            {
+                PopupNavigation.Instance.PopAsync();
+                viewModel._navigationService.GoBack();
+            });
+            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse", (obj, res) =>
+            {
+                PopupNavigation.Instance.PopAsync();
+                viewModel._navigationService.GoBack();
+            });
+            MessagingCenter.Subscribe<Application>(this, "BackButtonPressed", (args) =>
+             {
+                 //if (viewModel.IsExceptionPopupVisible)
+                 //{
+                 //    Navigation.PopAsync();
+                 //}
+                 Navigation.PopAsync();
+             });
+
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
-            {
-                viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-                viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-            }
-            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
-            {
-                PopupNavigation.Instance.PopAsync();
-            });
+            //if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
+            //{
+            //    viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+            //    viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+            //}
             viewModel?.OnAppearing();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse");
+            MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse");
         }
-
+        protected override bool OnBackButtonPressed()
+        {
+            return base.OnBackButtonPressed();
+          
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)

@@ -30,6 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         #region Variable
 
         public string PageTitle { get; set; }
+        public bool IsExceptionPopupVisible { get; set; } = false;
         public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         public Nreg_IdItem idItem { get; set; } = null;
@@ -1020,6 +1021,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     _selectedMethod = value;
                     RaisePropertyChanged(nameof(SelectedMethod));
+                    //SetUIAvailability();
                 }
             }
         }
@@ -1529,7 +1531,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             //if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             //{
             // Task.Run((() => fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType)));
-            Device.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType));
+            //        Device.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType));
             //bindingOutletList();
             // }
             SetUIAvailability();
@@ -1612,7 +1614,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     PassportDetails.ExpiryDate = false;
                     PassportDetails.Attachment = false;
 
-                    FinancialDetails.FinancialRecords = false;
+                    FinancialDetails.FinancialRecords = true;
                     FinancialDetails.CalendarType = false;
                     FinancialDetails.FiscalMonthEnd = false;
                     FinancialDetails.FiscalDayEnd = false;
@@ -2411,7 +2413,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     MethodList = new List<string>(MethodList);
                     CalendarTypeList.Clear();
                     CalendarTypeList.AddRange(EnCalendarTypeList.Values);
-                    CalendarTypeList =new List<string>(CalendarTypeList);
+                    CalendarTypeList = new List<string>(CalendarTypeList);
                     SelectedMethod = EnMethodList?[taxPayerDetails?.Accmethod];
                     CalendarType = EnCalendarTypeList?[taxPayerDetails?.Fdcalender];
                     udpdateDates();
@@ -2430,8 +2432,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             catch (GAZTErrorException e)
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
-                _navigationService.GoBack();
+                IsExceptionPopupVisible = true;
+                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZZDone, e.Message));
+                // _navigationService.GoBack();
             }
             catch (Exception e)
             {

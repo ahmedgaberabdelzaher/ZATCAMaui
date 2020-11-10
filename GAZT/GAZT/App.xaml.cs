@@ -994,6 +994,10 @@ namespace EGAZT
         {
 
         }
+        public static void OnBackPressed()
+        {
+            MessagingCenter.Send<Application>(Application.Current, "BackButtonPressed");
+        }
 
     }
 }
