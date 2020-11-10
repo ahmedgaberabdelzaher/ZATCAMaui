@@ -8571,26 +8571,18 @@ I acknowledge that the above bank account information is correct and assume full
         <value>Please visit portal to Provide additional information.</value>
     </data>
     <data name="SortBy" xml:space="preserve">
-
         <value>Sort by</value>
-
     </data>
-
         <data name="Statement" xml:space="preserve">
-
     <value>Statement</value>
-
   </data>
-
        <data name="Selectarangeanddownloadthestatement" xml:space="preserve">
-
     <value>Select a range and download the statement</value>
-
   </data>
-
         <data name="StatementDate" xml:space="preserve">
-
     <value>Statement Date</value>
-
   </data>
+     <data name="TotalOpeningBalance">
+        <value>Opening Balance</value>
+    </data>
 </root>

@@ -148,8 +148,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 ASRevenueDropDownSetDataResults selectedReturntype = (ASRevenueDropDownSetDataResults)e.NewValue;
                 TransactionTypePicker.SelectedItem = selectedReturntype;
                 viewModel.SelectedTransactionTypeFilter = selectedReturntype;
-
-                if(viewModel.SelectedTransactionTypeFilter.StatementFilter != null)
+               
+                if (viewModel.SelectedTransactionTypeFilter.StatementFilter != null)
                 {
                     await viewModel.PopulateDataInChipsForYears(viewModel.SelectedTaxTypeForFilter.Id, viewModel.SelectedTransactionTypeFilter.StatementFilter);
                 }
@@ -194,6 +194,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 ASChipModel selectedReturntype = (ASChipModel)e.AddedItem;
                 ChipGroup_Years.SelectedItem = selectedReturntype;
                 viewModel.SelectedYear = selectedReturntype;
+                viewModel.IsOpeningBalanceVisible = true;
                 viewModel.PopulateStatements(viewModel.SelectedTaxTypeForFilter.Id, viewModel.SelectedTransactionTypeFilter.StatementFilter, viewModel.SelectedYear.Text);
             }
             catch (Exception ex)

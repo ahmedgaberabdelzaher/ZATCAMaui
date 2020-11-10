@@ -462,6 +462,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        private bool _isOpeningBalanceVisible = false;
+        public bool IsOpeningBalanceVisible
+        {
+            get
+            {
+                return _isOpeningBalanceVisible;
+            }
+
+            set
+            {
+
+                _isOpeningBalanceVisible = value;
+                RaisePropertyChanged("IsOpeningBalanceVisible");
+            }
+        }
+
         private bool _isSearchButtonVisible = true;
         public bool IsSearchButtonVisible
         {
@@ -680,6 +696,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
 
+
             foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
             {
                 aSRevenueDropDownSetDataResults.TaxType = taxType;
@@ -747,6 +764,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             await PopulateDataForTransactionTypes("I");
                         }
+
+                        IsOpeningBalanceVisible = false;
+                        IsDownloadBtnVisile = false;
 
                         foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
                         {

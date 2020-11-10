@@ -8504,53 +8504,26 @@
   <data name="Statement" xml:space="preserve">
     <value>Statement</value>
   </data>
-
        <data name="Selectarangeanddownloadthestatement" xml:space="preserve">
     <value>Select a range and download the statement</value>
-
   </data>
-
         <data name="StatementDate" xml:space="preserve">
-
     <value>Statement Date</value>
-
   </data>
-
-
-
-
-
-
-
-
-
-
-
-
-
       <data name="SortBy" xml:space="preserve">
-
         <value>ترتيب حسب</value>
-
     </data>
-
      <data name="Statement" xml:space="preserve">
-
     <value>كشف الحساب </value>
-
   </data>
-
      <data name="Selectarangeanddownloadthestatement" xml:space="preserve">
-
     <value>حدد فترة لتنزيل كشف الحساب</value>
-
   </data>
-
      <data name="StatementDate" xml:space="preserve">
-
     <value>تاريخ كشف الحساب</value>
-
   </data>
-
+   <data name="TotalOpeningBalance">
+        <value>الرصيد الافتتاحي</value>
+    </data>
 
 </root>

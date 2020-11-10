@@ -15137,5 +15137,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("StatementDate", resourceCulture);
             }
         }
+        
+        public static string TotalOpeningBalance {
+            get {
+                return ResourceManager.GetString("TotalOpeningBalance", resourceCulture);
+            }
+        }
     }
 }
