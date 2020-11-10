@@ -1514,6 +1514,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
                 double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.Debit));
@@ -1523,10 +1528,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
                 CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100) + DebitAmountEndProgressBar;
                 MessagingCenter.Send<Object>(this, "UpdateProgressBar");
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
             catch (Exception ex)
             {
-
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
         }
 
