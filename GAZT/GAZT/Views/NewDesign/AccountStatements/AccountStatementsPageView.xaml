@@ -802,8 +802,28 @@
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-5">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASBillAmount}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                    <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding Betrh}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
-                                    </custom:CustomLabel>
+
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="StartAndExpand" >
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}"
+                                                                 HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding BetrhAmount}"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+
+                                            <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+                                    </StackLayout>
+
+                                    <!--<custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding BetrhAmount}" VerticalOptions="CenterAndExpand" Style="{StaticResource ValueLabelBlack}" >
+                                    </custom:CustomLabel>-->
                                 </StackLayout>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
                                     <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>

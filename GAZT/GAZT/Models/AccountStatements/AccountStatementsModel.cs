@@ -392,7 +392,38 @@ namespace EGAZT.Models.AccountStatements
         private string _betrh;
 
         [JsonProperty("Betrh")]
-        public string Betrh { get; set; }
+        public string Betrh
+        {
+            get
+            {
+                return _betrh;
+            }
+            set
+            {
+                _betrh = value;
+                if (!string.IsNullOrEmpty(_betrh))
+                {
+                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    decimal d = Convert.ToDecimal(_betrh);
+                    decimal amount = d;
+                    amount.ToString(format);  //will return $24,508,975.94
+                    BetrhAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                }
+            }
+        }
+
+        public string _betrhAmount = String.Empty;
+        public string BetrhAmount
+        {
+            get
+            {
+                return _betrhAmount;
+            }
+            set
+            {
+                _betrhAmount = value;
+            }
+        }
 
         [JsonIgnore]
         public string FormattedBetrh { get; set; }
