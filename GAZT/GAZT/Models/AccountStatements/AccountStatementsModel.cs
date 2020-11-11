@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using GAZT.Manager;
 using Newtonsoft.Json;
@@ -10,6 +11,19 @@ namespace EGAZT.Models.AccountStatements
     {
         public AccountStatementsModel()
         {
+
+        }
+    }
+
+    public class GroupedAccountStatements : List<ASResult>
+    {
+        public DateTime Date { get; set; }
+        public string Month { get; set; }
+        public GroupedAccountStatements(ASResult groupingItem, List<ASResult> groupingItems) : base()
+        {
+            Date = DateTime.Parse(groupingItem.FormattedBldat);
+            Month = DateTime.Parse(groupingItem.FormattedBldat).ToString("MMMM");
+            base.AddRange(groupingItems);
         }
     }
 
@@ -123,11 +137,64 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("Euser")]
         public string Euser { get; set; }
 
+        [JsonIgnore]
+        public bool IsOpeningBalancePositive { get; set; }
+
+        [JsonIgnore]
+        public bool IsTotalBalancePositive { get; set; }
+
         [JsonProperty("CalType")]
         public string CalType { get; set; }
 
+        private string openingBalance = string.Empty;
+
+        [JsonIgnore]
+        public string _open { get; set; }
+
         [JsonProperty("Open")]
-        public string Open { get; set; }
+        public string Open
+        {
+            get
+            {
+                return _debit;
+            }
+            set
+            {
+                _debit = value;
+                if (!string.IsNullOrEmpty(_debit))
+                {
+                    string format = "$#,##0.00;-$#,##0.00;Zero";
+                    decimal d = Convert.ToDecimal(_debit);
+                    decimal amount = d;
+                    amount.ToString(format);  //will return $24,508,975.94
+                    OpeningAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    if (OpeningAmount.Contains("-"))
+                    {
+                        IsOpeningBalancePositive = false;
+                    }
+                    else
+                    {
+                        IsOpeningBalancePositive = true;
+                    }
+                }
+            }
+        }
+
+        [JsonIgnore]
+        private string _openingAmount = String.Empty;
+
+        [JsonIgnore]
+        public string OpeningAmount
+        {
+            get
+            {
+                return _openingAmount;
+            }
+            set
+            {
+                _openingAmount = value;
+            }
+        }
 
         [JsonProperty("Gpart")]
         public string Gpart { get; set; }
@@ -239,6 +306,14 @@ namespace EGAZT.Models.AccountStatements
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     CloseAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString()) + " " + AppResources.ZSAR;
+                    if (CloseAmount.Contains("-"))
+                    {
+                        IsTotalBalancePositive = false;
+                    }
+                    else
+                    {
+                        IsTotalBalancePositive = true;
+                    }
                 }
             }
         }

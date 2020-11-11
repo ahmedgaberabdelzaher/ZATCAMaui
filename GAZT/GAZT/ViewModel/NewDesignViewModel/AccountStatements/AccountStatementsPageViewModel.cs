@@ -25,6 +25,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public ICommand FiltersTapped { get; set; }
         public ICommand DownloadBtnTapped { get; set; }
 
+        private List<GroupedAccountStatements> _groupedStatements;
+        public List<GroupedAccountStatements> GroupedStatements
+        {
+            get => _groupedStatements;
+            set
+            {
+                _groupedStatements = value;
+                RaisePropertyChanged(nameof(GroupedStatements));
+            }
+        }
+
         public ASTabIdentification _tabIdentification = null;
         public ASTabIdentification TabIdentification
         {
@@ -664,13 +675,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 
                 TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
-                
-                if(StatementsLineItems == null)
-                {
-                    StatementsLineItems = new ObservableCollection<ASResult>();
-                }
-
-                StatementsLineItems.Clear();
+                    
+                StatementsLineItems = new ObservableCollection<ASResult>();
+                GroupedStatements = new List<GroupedAccountStatements>();
 
                 var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
                 var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.ASAccountStatementInDirectTax };
@@ -712,6 +719,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+
+                if (StatementsLineItems == null)
+                {
+                    StatementsLineItems = new ObservableCollection<ASResult>();
+                }
+
+                if (GroupedStatements == null)
+                {
+                    GroupedStatements = new List<GroupedAccountStatements>();
+                }
+
+                StatementsLineItems.Clear();
+                GroupedStatements.Clear();
 
                 await Task.Run(() =>
                 {
@@ -893,17 +913,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         IsDownloadBtnVisile = true;
                         IsNoStatementsAvaiableVisible = false;
                         StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+
+                        StatementsLineItems.OrderByDescending(p => DateTime.Parse(p.FormattedBldat));
+                        List<GroupedAccountStatements> list = new List<GroupedAccountStatements>();
+                        foreach (var item in StatementsLineItems)
+                        {
+                            var innerList = StatementsLineItems.Where(p => DateTime.Parse(p.FormattedBldat) == DateTime.Parse(item.FormattedBldat)).ToList();
+                            if (!list.Any(p => p.Date.ToString("MMMM") == DateTime.Parse(item.FormattedBldat).ToString("MMMM")))
+                            {
+                                list.Add(new GroupedAccountStatements(item, innerList));
+                            }
+                        }
+
+                        GroupedStatements = new List<GroupedAccountStatements>(list);
                     }
                     else
                     {
                         IsDownloadBtnVisile = false;
                         IsNoStatementsAvaiableVisible = true;
+
                         StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        GroupedStatements = new List<GroupedAccountStatements>();
                     }
                 }
                 else
                 {
-                
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
