@@ -62,8 +62,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             base.OnAppearing();
             viewModel?.OnAppearing();
+            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+            {
+                PopupNavigation.Instance.PopAsync();
+            });
         }
-
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse");
+        }
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
             try
@@ -112,13 +120,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         private async void OutletType_Clicked(object sender, EventArgs e)
         {
-            var result = await DisplayActionSheet(AppResources.SelectOutletType, AppResources.OKText, null, viewModel.ListOutletTypes.ToArray());
-            if (result != null && result == AppResources.ESTMainOutlet && viewModel.isMainOutletExists)
+            var result = await DisplayActionSheet(AppResources.SelectOutletType, null, null, viewModel.ListOutletTypes.ToArray());
+            if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 1 && viewModel.isMainOutletExists && viewModel.selectedOutletItem.Actcat != "M")
             {
                 await PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.SelectOutletTypeError));
                 return;
             }
-            else
+            else if (result != null && result != AppResources.OKText)
             {
                 viewModel.SelectedOutletType = result;
             }

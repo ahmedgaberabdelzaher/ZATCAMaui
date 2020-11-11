@@ -1614,7 +1614,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     PassportDetails.ExpiryDate = false;
                     PassportDetails.Attachment = false;
 
-                    FinancialDetails.FinancialRecords = true;
+                    FinancialDetails.FinancialRecords = false;
                     FinancialDetails.CalendarType = false;
                     FinancialDetails.FiscalMonthEnd = false;
                     FinancialDetails.FiscalDayEnd = false;

@@ -21,6 +21,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         #region Variable
 
         public bool isMainOutletExists = false;
+        public List<OutletItem> ListOutlets { get; set; }
         public bool IsEditingMode { get; set; }
         private List<string> _listOutletTypes;
         public List<string> ListOutletTypes
@@ -705,6 +706,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
+                //SelectedOutlet = selectedOutletItem,
                 //EditEnabledMode = editModeEnabled,
                 //newActivityItems = activityItems,
                 goBackAction = (List<Nreg_ActivityItem> list) =>
@@ -730,6 +732,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
                             validateCR = validateCR,
+                           // SelectedOutlet = selectedOutletItem,
                             validateLicense = PreLoadedLicenseItem,
                             //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
                             //newActivityItems = activityItems,
@@ -903,6 +906,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             isMainOutletExists = true;
                         }
                     });
+                    ListOutlets = _outletTempData;
                     ListOutletTypes.Clear();
                     //if (isMainOutletExists)
                     //{

@@ -36,18 +36,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
-          //  viewModel.IsExceptionPopupVisible = false;
+            //  viewModel.IsExceptionPopupVisible = false;
             BindingContext = viewModel;
-            //if (App.ZAKATType==Enums.PageExecutionType.Amend)
-            //{
-            //    fiscalMonth.IsEnabled = false;
-            //    fiscalDay.IsEnabled = false;
-            //}
-            //else
-            //{
-            //    fiscalMonth.IsEnabled = true;
-            //    fiscalDay.IsEnabled = true;
-            //}
+            if (App.ZAKATType == Enums.PageExecutionType.Amend || App.ZAKATType == Enums.PageExecutionType.Update)
+            {
+                fiscalMonth.IsEnabled = false;
+                fiscalDay.IsEnabled = false;
+            }
             MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
             {
                 PopupNavigation.Instance.PopAsync();
@@ -60,11 +55,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             });
             MessagingCenter.Subscribe<Application>(this, "BackButtonPressed", (args) =>
              {
-                 //if (viewModel.IsExceptionPopupVisible)
-                 //{
-                 //    Navigation.PopAsync();
-                 //}
-                 Navigation.PopAsync();
+                 if (viewModel.IsExceptionPopupVisible)
+                 {
+                     Navigation.PopAsync();
+                 }
              });
 
         }
@@ -90,7 +84,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         protected override bool OnBackButtonPressed()
         {
             return base.OnBackButtonPressed();
-          
+
         }
         private void SetLTR()
         {
