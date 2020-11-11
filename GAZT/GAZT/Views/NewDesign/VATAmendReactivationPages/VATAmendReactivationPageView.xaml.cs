@@ -406,6 +406,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         public async Task<bool> step4Validation()
         {
             bool flag = true;
+            var IDValidationResult = false;
             if (viewModel.IsDeclarationChecked == true)
             {
                 if (viewModel.SelectedIdTypeFR == null || FrmIDType.HasError)
@@ -420,6 +421,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 if (NewFRDOBField.IsVisible && (viewModel.FrameDOBError || string.IsNullOrEmpty(viewModel.DOB)))
                 {
+                    flag = false;
                     viewModel.FrameDOBError = true;
                 }
                 if (FrmFirstName.IsEnabled && (FrmFirstName.HasError || string.IsNullOrEmpty(viewModel.FirstnmFR)))
@@ -445,6 +447,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     flag = false;
                     FrmPhoneNumber.HasError = true;
                 }
+                IDValidationResult = await ValidateIDNumber();
                 if (!flag)
                 {
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
@@ -467,6 +470,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 chkDeclaration.Focus();
 
                 //viewModel.IsContinueButtonEnable = false;
+            }
+            if (!IDValidationResult)
+            {
+                flag = false;
             }
             return await Task.FromResult(flag);
         }
@@ -2155,8 +2162,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         }
 
-        public async void ValidateIDNumber()
+        public async Task<bool> ValidateIDNumber()
         {
+            bool result = false;
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
@@ -2179,6 +2187,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         //   IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         if (vATSignUpData.d == null)
                         {
+                            result = false;
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
@@ -2197,6 +2206,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
+                            result = true;
                             viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
@@ -2222,6 +2232,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         try
                         {
+                            result = false;
                             string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdnumberFR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
@@ -2323,6 +2334,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
                         {
+                            result = false;
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
@@ -2341,6 +2353,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
+                            result = true;
                             viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
@@ -2360,6 +2373,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         try
                         {
+                            result = false;
                             string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdnumberFR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
@@ -2472,6 +2486,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else if (vATSignUpData.d == null)
                         {
+                            result = false;
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
@@ -2490,6 +2505,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
+                            result = true;
                             viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
@@ -2519,6 +2535,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         try
                         {
+                            result = false;
                             string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdnumberFR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
@@ -2614,6 +2631,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.IsLoading = false;
                 });
             });
+            return await Task.FromResult(result);
         }
         public async void ValidateIDNumberSR()
         {
@@ -3710,6 +3728,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 else
                 {
                     viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(obj => obj.ID == vATSignUpData.d.Idtype).FirstOrDefault();
+                    if (viewModel.SelectedIdTypeFR.ID == "ZS0003")
+                    {
+                        NewFRDOBField.IsVisible = false;
+                        viewModel.FrameDOBError = false;
+                    }
                     viewModel.DOB = vATSignUpData.d.Birthdt10;
                     viewModel.FirstnmFR = vATSignUpData.d.Name1;
                     viewModel.LastnmFR = vATSignUpData.d.Name2;
@@ -3719,6 +3742,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     //viewModel.TypeFR = viewModel.SelectedIdTypeFR.Name
                     // vATSignUpData.d.Idtype
                     FrmTINNumber.HasError = false;
+                    FrmFirstName.IsEnabled = false;
+                    FrmLastName.IsEnabled = false;
+                    FrmEmailAddress.IsEnabled = false;
+                    FrmPhoneNumber.IsEnabled = false;
+                    viewModel.FrameIDError = false;
+                    viewModel.FrameIDError = false;
                 }
             }
             catch
@@ -4382,7 +4411,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.DOB = year + "/" + month + "/" + day;
                 string DOB = year + month + day;
                 //viewModel.DOBPrev = viewModel.DOB;
-
+                if (!string.IsNullOrEmpty(viewModel.DOB))
+                {
+                    viewModel.FrameDOBError = false;
+                }
+                else
+                {
+                    viewModel.FrameDOBError = true;
+                }
 
                 ValidateIDNumber();
             }
