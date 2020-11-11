@@ -166,7 +166,7 @@
                                 <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
                             </Grid>
 
-                           <StackLayout Orientation="Horizontal" Margin="15,15,15,0" IsVisible="false">
+                           <StackLayout Orientation="Horizontal" Margin="15,15,15,0" IsVisible="true">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASDashboardBalanceIndicatorTtile}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                 <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                     <Image.GestureRecognizers>
@@ -175,7 +175,7 @@
                                 </Image>
                             </StackLayout>
 
-                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" IsVisible="false">
+                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" IsVisible="true">
 
                                  <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
 
@@ -477,7 +477,7 @@
 
                                         </StackLayout>
 
-                                        <CollectionView  Margin="0,0,0,15" HeightRequest="110" ItemsLayout="HorizontalList" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="White" HorizontalScrollBarVisibility="Never">
+                                        <CollectionView  Margin="0,0,0,15" HeightRequest="110" SelectionMode="None" ItemsLayout="HorizontalList"  ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
 
@@ -725,7 +725,7 @@
 
                                     <!--Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}"-->
 
-                                    <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_ReportTaxEvasion.png">
 
                                             </Image>
@@ -734,7 +734,7 @@
                                                 <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                    <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 
                                     <StackLayout Orientation="Horizontal" Spacing="20">

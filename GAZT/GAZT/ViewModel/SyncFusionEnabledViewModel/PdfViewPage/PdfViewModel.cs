@@ -224,8 +224,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
             Stream stream = null;
             try
             {
-
                 HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
+                myReq.Headers["ichannel"] = App.IncomingChannel;
 
                 CookieContainer cookieContainer = new CookieContainer();
 
