@@ -188,7 +188,7 @@
                                             <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="30"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Text="{Binding SelectedTaxTypeForFilter.Txt30}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                                        <custom:CustomLabel Text="{Binding SelectedTaxTypeForFilter.Txt30}" Grid.Column="0" Grid.Row="0" Style="{StaticResource SectionTitleBlack}">
                                         </custom:CustomLabel>
 
                                         <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,0" HorizontalOptions="Start" VerticalOptions="Center"></Image>
