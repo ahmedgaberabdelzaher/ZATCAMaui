@@ -388,13 +388,20 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("BillDes")]
         public string BillDes { get; set; }
 
+        [JsonIgnore]
+        private string _betrh;
+
         [JsonProperty("Betrh")]
         public string Betrh { get; set; }
+
+        [JsonIgnore]
+        public string FormattedBetrh { get; set; }
+
+
         //FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
         //                    string[] dts = FormatedAbrzu.Split('-');
         //string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
         //FormatedAbrzu = date;
-
 
         [JsonIgnore]
         private DateTime _Bldat;
@@ -443,7 +450,7 @@ namespace EGAZT.Models.AccountStatements
                     string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     FormattedBldat2 = date;
-                }
+                }       
             }
         }
 

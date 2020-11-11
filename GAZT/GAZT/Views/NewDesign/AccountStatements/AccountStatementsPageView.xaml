@@ -357,7 +357,7 @@
                                             <custom:CustomLabel  TextColor="{StaticResource NewDarkGreenColor}" FlowDirection="LeftToRight" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding HeaderSet.D.Open}"></Span>
+                                                    <Span Text="{Binding HeaderSet.D.OpeningAmount}"></Span>
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
                                             <custom:CustomLabel.Triggers>
@@ -732,13 +732,13 @@
             <Grid Grid.Row="1">
 
            	
-            <CollectionView x:Name="Bills" ItemsSource="{Binding GroupedStatements}" SelectionMode="None" IsVisible="{Binding IsSearchButtonVisible}"  HorizontalOptions="FillAndExpand"	
-                VerticalOptions="FillAndExpand" BackgroundColor="White" IsGrouped="true">	
-                    <CollectionView.GroupHeaderTemplate>
+            <CollectionView x:Name="Bills" ItemsSource="{Binding StatementsLineItems}" SelectionMode="None" IsVisible="{Binding IsSearchButtonVisible}"  HorizontalOptions="FillAndExpand"	
+                VerticalOptions="FillAndExpand" BackgroundColor="White">	
+                    <!--<CollectionView.GroupHeaderTemplate>
                         <DataTemplate>	
                             <Label Margin="0,0,0,0" Text="{Binding Month}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
                         </DataTemplate>
-                    </CollectionView.GroupHeaderTemplate>
+                    </CollectionView.GroupHeaderTemplate>-->
                
                 <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"

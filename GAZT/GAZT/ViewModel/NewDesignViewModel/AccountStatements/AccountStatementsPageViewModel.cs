@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -914,18 +915,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         IsNoStatementsAvaiableVisible = false;
                         StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
 
-                        StatementsLineItems.OrderByDescending(p => DateTime.Parse(p.FormattedBldat));
-                        List<GroupedAccountStatements> list = new List<GroupedAccountStatements>();
-                        foreach (var item in StatementsLineItems)
-                        {
-                            var innerList = StatementsLineItems.Where(p => DateTime.Parse(p.FormattedBldat) == DateTime.Parse(item.FormattedBldat)).ToList();
-                            if (!list.Any(p => p.Date.ToString("MMMM") == DateTime.Parse(item.FormattedBldat).ToString("MMMM")))
-                            {
-                                list.Add(new GroupedAccountStatements(item, innerList));
-                            }
-                        }
+                        //StatementsLineItems.OrderByDescending(p => DateTime.Parse(p.FormattedBldat));
 
-                        GroupedStatements = new List<GroupedAccountStatements>(list);
+                        //List<GroupedAccountStatements> list = new List<GroupedAccountStatements>();
+                        //foreach (var item in StatementsLineItems)
+                        //{
+                        //    CultureInfo calCul;
+
+                        //    if (App.IsArabic == true)
+                        //    {
+                        //        calCul = new CultureInfo("ar-SA");
+                        //    }
+                        //    else
+                        //    {
+                        //        calCul = new CultureInfo("en-US");
+                        //    }
+
+                        //    var test = DateTime.Parse(item.FormattedBldat);
+
+                        //    var innerList = StatementsLineItems.Where(p => p.FormattedBldat == item.FormattedBldat).ToList();
+
+                        //    if (!list.Any(p => p.Date.ToString("MMMM",calCul) == DateTime.Parse(item.FormattedBldat, calCul).ToString("MMMM")))
+                        //    {
+                        //        list.Add(new GroupedAccountStatements(item, innerList));
+                        //    }
+                        //}
+
+                        //GroupedStatements = new List<GroupedAccountStatements>(list);
                     }
                     else
                     {
@@ -954,6 +970,72 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsLoading = false;
                 });
             }
+        }
+
+        public static string GetMonthName(string Month)
+        {
+            if (Month == "01" || Month == "1" || Month == "يناير")
+            {
+                Month = "January";
+                // Month = "January";
+            }
+            else if (Month == "02" || Month == "2" || Month == "فبراير")
+            {
+                Month = "February";
+                //  Month = "February";
+            }
+            else if (Month == "03" || Month == "3" || Month == "مارس")
+            {
+                Month = "March";
+                // Month = "March";
+            }
+            else if (Month == "04" || Month == "4" || Month == "أبريل")
+            {
+                Month = "April";
+                // Month = "April";
+            }
+            else if (Month == "05" || Month == "5" || Month == "مايو")
+            {
+                Month = "May";
+                // Month = "May";
+            }
+            else if (Month == "06" || Month == "6" || Month == "يونيو")
+            {
+                Month = "June";
+                //  Month = "June";
+            }
+            else if (Month == "07" || Month == "7" || Month == "يوليو")
+            {
+                Month = "July";
+                //Month = "July";
+            }
+            else if (Month == "08" || Month == "8" || Month == "أغسطس")
+            {
+
+                Month ="August";
+                //  Month = "August";
+            }
+            else if (Month == "09" || Month == "9" || Month == "سبتمبر")
+            {
+                Month = "September" ;
+                //  Month = "September";
+            }
+            else if (Month == "10" || Month == "أكتوبر")
+            {
+                Month ="October" ;
+                //Month = "October";
+            }
+            else if (Month == "11" || Month == "نوفمبر")
+            {
+                Month = "November";
+                // Month = "November";
+            }
+            else if (Month == "12" || Month == "ديسيمبر")
+            {
+                Month = "December";
+                //   Month = "December";
+            }
+            return Month;
         }
 
         public void PopulateFiltersData()

@@ -242,29 +242,29 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     viewModel.TransactionDateFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Bldat).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Bldat).ToList());
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "ascending":
                     // code blockDescending
                     viewModel.TransactionDateFilterItem = string.Empty;
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Bldat).ToList());
                     viewModel.TransactionDateFilterItem = "descending";
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "descending":
                     // code block
                     viewModel.TransactionDateFilterItem = string.Empty;
-                    viewModel.IsVisible_SearchList = false;
-                    dummySearchList.IsVisible = false;
+                    //viewModel.IsVisible_SearchList = false;
+                    //dummySearchList.IsVisible = false;
 
                     break;
                 default:
                     viewModel.TransactionDateFilterItem = string.Empty;
-                    viewModel.IsVisible_SearchList = false;
+                    //viewModel.IsVisible_SearchList = false;
 
                     break;
             }
@@ -302,27 +302,27 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     viewModel.TaxperiodFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Persl).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Persl).ToList());
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "ascending":
                     // code blockDescending
                     viewModel.TaxperiodFilterItem = string.Empty;
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Persl).ToList());
                     viewModel.TaxperiodFilterItem = "descending";
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "descending":
                     // code block
                     viewModel.TaxperiodFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
                     break;
                 default:
                     viewModel.TaxperiodFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
                     break;
             }
 
@@ -347,28 +347,28 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     viewModel.DueDateFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Bldat2).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Bldat2).ToList());
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "ascending":
                     // code blockDescending
                     viewModel.DueDateFilterItem = string.Empty;
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Bldat2).ToList());
                     viewModel.DueDateFilterItem = "descending";
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "descending":
                     // code block
                     viewModel.DueDateFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
 
                     break;
                 default:
                     viewModel.DueDateFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
 
                     break;
             }
@@ -392,27 +392,27 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     viewModel.BillDescriptionFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Desc).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Desc).ToList());
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "ascending":
                     // code blockDescending
                     viewModel.BillDescriptionFilterItem = string.Empty;
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Desc).ToList());
                     viewModel.BillDescriptionFilterItem = "descending";
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "descending":
                     // code block
                     viewModel.BillDescriptionFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
                     break;
                 default:
                     viewModel.BillDescriptionFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
                     break;
             }
            
@@ -439,28 +439,28 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     viewModel.BillAmountFilterItem = "ascending";
                     var ListSorted = viewModel.StatementsLineItems.OrderBy(x => x.Betrh).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderBy(x => x.Betrh).ToList());
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "ascending":
                     // code blockDescending
                     viewModel.BillAmountFilterItem = string.Empty;
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.StatementsLineItems.OrderByDescending(x => x.Betrh).ToList());
                     viewModel.BillAmountFilterItem = "descending";
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
-                    viewModel.IsVisible_SearchList = true;
-                    dummySearchList.IsVisible = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(viewModel.StatementsLineItems);
+                    //viewModel.IsVisible_SearchList = true;
+                    //dummySearchList.IsVisible = true;
                     break;
                 case "descending":
                     // code block
                     viewModel.BillAmountFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
 
                     break;
                 default:
                     viewModel.BillAmountFilterItem = string.Empty;
-                    dummySearchList.IsVisible = false;
+                    //dummySearchList.IsVisible = false;
 
                     break;
             }
