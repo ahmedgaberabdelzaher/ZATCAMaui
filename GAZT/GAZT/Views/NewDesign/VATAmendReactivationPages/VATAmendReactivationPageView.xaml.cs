@@ -68,12 +68,16 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 //FrmContactDBO.IsVisible = false;
                 //lblDOB.IsVisible = false;
                 NewFRDOBField.IsVisible = false;
+
+
             }
             catch (Exception ex)
             {
 
             }
 
+            viewModel.AddAdditionalInfoCheckBoxEnabled = true;
+            viewModel.IsFinancialDChangeSectionEnabled = true;
         }
         public void clearDATA()
         {
