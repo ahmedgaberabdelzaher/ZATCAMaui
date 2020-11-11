@@ -78,9 +78,9 @@ xmlns:custom2="clr-namespace:EGAZT"
                                           HeightRequest="46" Margin="10,0,10,0" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" Clicked="SfButton_Clicked"/>
 
-                  <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.VatDeregistrationRegistrationServices}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                  <!--<buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.VatDeregistrationRegistrationServices}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                        Clicked="btnRegistrationDetailsClicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource PrimaryButtonStyle}"  /> 
+                                      Style="{StaticResource PrimaryButtonStyle}"  />--> 
                     <buttons:SfButton x:Name="btnDash"   Text="{x:Static local:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDash_Clicked" FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />

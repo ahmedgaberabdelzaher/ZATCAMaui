@@ -859,8 +859,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //    Actcat = "M"
                 //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-                var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-                taxPayerDetails?.AttDetSet.results?.Clear();
+                // var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                
+                var _taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx,taxPayerDetails?.Fbstax,taxPayerDetails?.Fbustx
+                     );
+
+                 taxPayerDetails?.AttDetSet.results?.Clear();
                 taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
             catch (Exception e)
@@ -942,7 +946,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         newNumber = await WebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
                     }
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                    // taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                    taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
+                     );
+
                     if (OutletActNumber == "000")
                     {
                         var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
@@ -984,9 +991,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
+                    List<CountryDropdownItem> countries = OutletDropDowns?.country_dropdownSet?.results;
+                    List<StateDropdownItem> states = OutletDropDowns?.State_dropdownSet?.results;
+               
                     if (selectedOutletItem != null)
                     {
-                        Nreg_AddressItem defaultAddress = taxPayerDetails?.Nreg_AddressSet?.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("XXDEFAULT")).FirstOrDefault();
+
+                        Nreg_AddressItem defaultAddress = taxPayerDetails?.Nreg_AddressSet.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("XXDEFAULT")).FirstOrDefault();
                         HouseNumber = defaultAddress?.HouseNum1;
                         BuildingNumber = defaultAddress?.Building;
                         FloorNumber = defaultAddress?.Floor;
@@ -995,12 +1006,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         PostalCode = defaultAddress?.PostCode1;
                         AddNumber = defaultAddress?.HouseNum2;
                         Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == defaultAddress?.Country).FirstOrDefault();
-                        Provinance = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == defaultAddress?.Region).FirstOrDefault();
+                        foreach (var countryName in countries)
+                        {
+                            states = new List<StateDropdownItem>();
+                            if (Country != null && !string.IsNullOrWhiteSpace(Country?.Landx50))
+                            {
+                                states.AddRange(OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Land1 == Country.Land1));
+                            }
+                        }
+                        // Provinance = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == defaultAddress?.Region).FirstOrDefault();
+                        Provinance = states.Where(i => i.Bland == defaultAddress?.Region).FirstOrDefault();
+
                         City = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == defaultAddress?.CityCode && i.CityName == defaultAddress?.City1).FirstOrDefault();
 
                         PostalAsPhysical = defaultAddress?.Sameasphy == "X";
 
-                        Nreg_AddressItem _address = taxPayerDetails?.Nreg_AddressSet?.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("0001")).FirstOrDefault();
+                        Nreg_AddressItem _address = taxPayerDetails?.Nreg_AddressSet.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("0001")).FirstOrDefault();
                         HouseNumberSame = _address?.HouseNum1;
                         BuildingNumberSame = _address?.Building;
                         FloorNumberSame = _address?.Floor;
@@ -1009,7 +1030,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         PostalCodeSame = _address?.PostCode1;
                         AddNumberSame = _address?.HouseNum2;
                         CountrySame = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == _address?.Country).FirstOrDefault();
-                        ProvinanceSame = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == _address?.Region).FirstOrDefault();
+
+                        foreach (var countryName in countries)
+                        {
+                            states = new List<StateDropdownItem>();
+                            if (CountrySame != null && !string.IsNullOrWhiteSpace(CountrySame?.Landx50))
+                            {
+                                states.AddRange(OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Land1 == CountrySame.Land1));
+                            }
+                        }
+                        //ProvinanceSame = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == _address?.Region).FirstOrDefault();
+                        ProvinanceSame = states.Where(i => i.Bland == _address?.Region).FirstOrDefault();
+
                         CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == _address?.CityCode && i.CityName == _address?.City1).FirstOrDefault();
                     }
                     else

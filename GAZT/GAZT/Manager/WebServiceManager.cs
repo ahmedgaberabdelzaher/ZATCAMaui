@@ -9647,6 +9647,124 @@ namespace GAZT.Manager
             }
             return taxPayer;
         }
+        public static async Task<TaxPayerDetails> ZakatAmendESTTaxPayerDetailGetService(string step, string TIN, string emailID, string srcidentify = null, string Fbnum = null, string Fbstax = null,string Fbustx = null)
+        {
+            TaxPayerDetails taxPayer = new TaxPayerDetails();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                srcidentify = (string.IsNullOrEmpty(srcidentify) || string.IsNullOrWhiteSpace(srcidentify)) ? string.Empty : string.Format("O{0}", srcidentify);
+                Fbnum = (string.IsNullOrEmpty(Fbnum) || string.IsNullOrWhiteSpace(Fbnum)) ? string.Empty : Fbnum;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                //client.DefaultRequestHeaders.Add("Token", "123");
+              //  https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet(Gpartx='3102462394',Langx='',Operationx='',PortalUsrx='A5068535@GMAIL.COM',Srcidentifyx='O000',StepNumberx='03',Euser='',Fbguid='',Fbnumx='10001159118',Fbstax='IP011',Fbustx='E0001')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet
+
+                    var uri = Constants.ESTTaxPayerDetails + "("+ "Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='"+ lang +"',Operationx='" + "',PortalUsrx='" +emailID+ "',Srcidentifyx='" + srcidentify + "',StepNumberx='" + step + "',Euser='" + "',Fbguid='" + "',Fbnumx='"+Fbnum +"',Fbstax='"+Fbstax+"',Fbustx='"+Fbustx+"')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet&$format=json";
+
+
+
+                    // var uri = new Uri(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='{4}',StepNumberx='{5}',Fbnumx='{6}',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
+                    //   Constants.ESTTaxPayerDetails, TIN, lang, emailID, srcidentify, step, Fbnum, "IP001", "E0001"));
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            String _responseData = ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+
+                                var errorMsg = errorMesg.error.innererror.errordetails[0].message;
+
+                                if (errorCode.Contains("206"))
+                                {
+                                    errorMsg = "206";
+                                }
+                                else if (errorCode.Contains("112"))
+                                {
+                                    errorMsg = "112";
+                                }
+
+                                String WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
+                                errorMsg = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTErrorException(errorMsg);
+                            }
+                        }
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        string jsonReplace = ESTBranchesDropDownResponseJSON.Replace("\"Begda\":\"\\/Date(-6", "\"Begda\":\"\\/Date(");
+                        string replaceDString = string.Empty;
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            try
+                            {
+                                replaceDString = JObject.Parse(jsonReplace)["d"].ToString();
+                                
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(replaceDString);
+                        }
+                    }
+                }
+                catch (GAZTErrorException ex)
+                {
+                    throw ex;
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return taxPayer;
+        }
+
         public static async Task<TaxPayerDetails> ESTTaxPayerDetailPostService(TaxPayerDetails taxPayer) //Rentatt =X , Passatt=X
         {
             if (CrossConnectivity.Current.IsConnected)
