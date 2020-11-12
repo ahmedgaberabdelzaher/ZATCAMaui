@@ -3644,7 +3644,7 @@ Should we require further information, we would be in contact.</value>
     <data name="ZZZAttachementSubmitNote" xml:space="preserve">
     <value>Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months</value>
   </data>
-    <data name="ZZZAttachementSubmitProveNote" xml:space="preserve">
+    <data name="ZZZAmendFinancialRepreGtext" xml:space="preserve">
     <value>What is the type of document that you are submitting to prove whether or not eligible.</value>
   </data>
     <data name="ZZZVATRAdditionalInfo" xml:space="preserve">

@@ -3658,7 +3658,7 @@
     <data name="ZZZAttachementSubmitNote" xml:space="preserve">
     <value>الرجاء تقديم المستندات المطلوبة لإثبات أحقيتك بالتسجيل في ضريبة القيمة المضافة , وفي حالة عدم تقديم تلك المستندات , فمن المرجح أن تتم عملية التدقيق على مدى 6 أشهر المقبلة .</value>
   </data>
-    <data name="ZZZAttachementSubmitProveNote" xml:space="preserve">
+   <data name="ZZZAmendFinancialRepreGtext" xml:space="preserve">
     <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
   </data>
     <data name="ZZZVATRAdditionalInfo" xml:space="preserve">
@@ -4021,8 +4021,10 @@
     <comment>VATRegistrationPageView</comment>
   </data>
     <data name="VATRAttachmentMandatory" xml:space="preserve">
-    <value>مرفقات إلزامية لدافعي الضرائب غير المؤهلين ، يرجى تقديم المستندات الداعمة كدليل على أهليتك لضريبة القيمة المضافة. خلاف ذلك ، فمن المرجح للغاية أنه سيتم متابعتك على مدار الأشهر الستة المقبلة</value>
-    <comment>VATRegistrationPageView</comment>
+<value>المرفقات إلزامية للمكلفين الغير خاضعين*
+الرجاء تقديم المستندات المطلوبة لإثبات أحقيتك بالتسجيل في ضريبة القيمة المضافة , وفي حالة عدم تقديم تلك المستندات , فمن المرجح أن تتم عملية التدقيق على مدى 6 أشهر المقبلة .
+</value>
+ <comment>VATRegistrationPageView</comment>
   </data>
     <data name="VATREligibleStartDate" xml:space="preserve">
     <value>تاريخ بداية الخضوع لضريبة القيمة المضافة</value>

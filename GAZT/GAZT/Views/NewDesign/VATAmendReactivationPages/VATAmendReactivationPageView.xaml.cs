@@ -76,8 +76,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
             }
 
-            viewModel.AddAdditionalInfoCheckBoxEnabled = true;
-            viewModel.IsFinancialDChangeSectionEnabled = true;
+            //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
+            //viewModel.IsFinancialDChangeSectionEnabled = true;
         }
         public void clearDATA()
         {

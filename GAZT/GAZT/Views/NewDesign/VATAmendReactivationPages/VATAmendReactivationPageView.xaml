@@ -67,8 +67,6 @@
                         <RowDefinition Height="10*" />
                         <RowDefinition Height="90*" />
                     </Grid.RowDefinitions>
-
-
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"  Margin="0" 
                   Padding="15,15,15,0" BackgroundColor="White" RowSpacing="0" >
                         <ScrollView  VerticalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand">
@@ -1457,7 +1455,7 @@
                                                                     <ColumnDefinition Width="*"/>
                                                                 </Grid.ColumnDefinitions>
                                                                 <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
-                                                                <Image HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" VerticalOptions="Start">
+                                                                <Image HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" VerticalOptions="Start">
                                                                     <Image.Source>
                                                                         <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Information}"/>
@@ -1477,7 +1475,8 @@
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
                                                         <StackLayout Grid.Row="0">
-                                                            <Label Text="{Binding Attachments}" Padding="0,0,0,0" Style="{StaticResource GAZTCaptionBlackLabel}"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZZZAmendFinancialRepreGtext}" Padding="0,0,0,0" Style="{StaticResource GAZTCaptionBlackLabel}"/>
+
                                                             <!--<Label Text="Account" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
                                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                                         </StackLayout>

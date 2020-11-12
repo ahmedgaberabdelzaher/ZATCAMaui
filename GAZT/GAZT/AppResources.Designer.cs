@@ -6054,9 +6054,9 @@ namespace EGAZT {
             }
         }
         
-        public static string ZZZAttachementSubmitProveNote {
+        public static string ZZZAmendFinancialRepreGtext {
             get {
-                return ResourceManager.GetString("ZZZAttachementSubmitProveNote", resourceCulture);
+                return ResourceManager.GetString("ZZZAmendFinancialRepreGtext", resourceCulture);
             }
         }
         
