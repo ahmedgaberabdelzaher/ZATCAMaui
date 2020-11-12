@@ -2927,7 +2927,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             Preferences.Set("IsFromRevok", false);
             Preferences.Set("RevokeRef", "");
            // await App.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + " " + ZakatInstalments.d.ADpAmt + " " + AppResources.FORM5SAR, AppResources.CRContinue);
-            await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new OldZakatInstalmentPlanSuccessPage());
 
         }
 
@@ -4644,7 +4644,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-            ZakatInstalments.d.Percentage = "20.000";
+            ZakatInstalments.d.Percentage = ((DownPaymentAmount / MaxAmount) * 100).ToString();
 
 
             _postData.__metadata = ZakatInstalments.d.__metadata;
