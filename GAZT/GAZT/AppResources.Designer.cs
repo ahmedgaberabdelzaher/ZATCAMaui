@@ -15155,5 +15155,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("TotalOpeningBalance", resourceCulture);
             }
         }
+        
+        public static string OldZakatInstructions {
+            get {
+                return ResourceManager.GetString("OldZakatInstructions", resourceCulture);
+            }
+        }
     }
 }
