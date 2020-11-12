@@ -1758,6 +1758,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     try
                     {
 
+                        IsZakat = Preferences.Get("isZakat", false);
+
                         string callSer = "IPRF";
 
                         if (IsZakat) {

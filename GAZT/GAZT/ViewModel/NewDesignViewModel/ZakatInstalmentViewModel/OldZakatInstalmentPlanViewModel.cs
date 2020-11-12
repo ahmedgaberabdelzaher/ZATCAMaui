@@ -76,7 +76,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         private bool _isDisplayInstalmentsVisible = false;
         private bool _isAgreementViewEnabled = false;
         private bool _isOutletViewEnabled = false;
-        private string _selectedFrequencyType = "01";
+        private string _selectedFrequencyType = "1";
         private string _selectedFrequencyName = AppResources.ZakatInstalmetMonthly;
 
         public bool MarkComplete { get; private set; } = false;
@@ -2035,7 +2035,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             NumberOFInstalmentSliderValue = 1;
             _idType = "";
-            SelectedFrequencyType = "01";
+            SelectedFrequencyType = "1";
             IsZakatSelected = true;
             DownPaymentSliderValue = 1;
             IsInitialDraft = false;
@@ -2084,9 +2084,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IDTypeDictionary = new Dictionary<string, string>
         {
             {"","oBlak"},
-            {AppResources.ZakatFinancialCrisis,"00"},
-            {AppResources.ZakatDisputeInFavorOfGAZT,"01"},
-            {AppResources.ZakatOtherReason,"02"},
+            {AppResources.ZakatFinancialCrisis,"1"},
+            {AppResources.ZakatDisputeInFavorOfGAZT,"2"},
+            {AppResources.ZakatOtherReason,"3"},
         };
 
             EnableDeclarationContinue();
@@ -3017,31 +3017,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 {
                     if (IsZakat)
                     {
-                        ZakatInstalments.d.AInstReqFor = "01";
+                        ZakatInstalments.d.AInstReqFor = "2";
 
                     }
                     else
                     {
-                        ZakatInstalments.d.AInstReqFor = "02";
+                        ZakatInstalments.d.AInstReqFor = "1";
                     }
 
 
 
                     if (IDType == IDTypeDictionary[AppResources.ZakatFinancialCrisis])
                     {
-                        ZakatInstalments.d.AInstReqReason = "01";
+                        ZakatInstalments.d.AInstReqReason = "1";
                     }
                     else if (IDType == IDTypeDictionary[AppResources.ZakatDisputeInFavorOfGAZT])
                     {
-                        ZakatInstalments.d.AInstReqReason = "02";
+                        ZakatInstalments.d.AInstReqReason = "2";
                     }
                     else if (IDType == IDTypeDictionary[AppResources.ZakatOtherReason])
                     {
-                        ZakatInstalments.d.AInstReqReason = "03";
+                        ZakatInstalments.d.AInstReqReason = "3";
                     }
                     else
                     {
-                        ZakatInstalments.d.AInstReqReason = "01";
+                        ZakatInstalments.d.AInstReqReason = "1";
                     }
 
 
@@ -3344,23 +3344,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-            if (SelectedFrequencyType == "01")
+            if (SelectedFrequencyType == "1")
             {
 
                 SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
 
             }
-            else if (SelectedFrequencyType == "02")
+            else if (SelectedFrequencyType == "2")
             {
 
                 SelectedFrequencyName = AppResources.ZakatInstalmetQuarterly;
             }
-            else if (SelectedFrequencyType == "03")
+            else if (SelectedFrequencyType == "3")
             {
 
                 SelectedFrequencyName = AppResources.ZakatInstalmetHalfYearly;
             }
-            else if (SelectedFrequencyType == "04")
+            else if (SelectedFrequencyType == "4")
             {
                 SelectedFrequencyName = AppResources.ZakatInstalmetYearly;
             }
@@ -3390,7 +3390,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         ZakatInstalments.d.ATwoYrTb = Year2;
                         ZakatInstalments.d.AThreeYrTb = Year3;
 
-                        if (Year1.Length < 4 || Year2.Length < 4 || Year3.Length < 4)
+                        if (Year1.Length >= 4 || Year2.Length >= 4 || Year3.Length >= 4)
                         {
                             ZakatInstalments.d.ARe1yrTbFg = "1";
                             ZakatInstalments.d.ARe2yrTbFg = "1";
@@ -3441,9 +3441,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         ZakatInstalments.d.AP23yrTb = CashRatioY2;
                         ZakatInstalments.d.AP33yrTb = CashRatioY3;
 
-
-                        ZakatInstalments.d.ANoOfInstTp = NumberOFInstalmentSliderValue.ToString();
-                        ZakatInstalments.d.APlanDurPeri = NumberOFInstalmentSliderValue.ToString();
+                        
+                        var noinstalments = Convert.ToInt32(NumberOFInstalmentSliderValue);
+                        ZakatInstalments.d.ANoOfInstTp = noinstalments.ToString();
+                        ZakatInstalments.d.APlanDurPeri = noinstalments.ToString();
 
 
                         
@@ -4179,7 +4180,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 MaxInstalments = 36;
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
-                SelectedFrequencyType = "01";
+                SelectedFrequencyType = "1";
                 InstalmentSliderVisible = true;
             }
             else if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetQuarterly)
@@ -4188,7 +4189,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 MaxInstalments = 12;
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
-                SelectedFrequencyType = "02";
+                SelectedFrequencyType = "2";
                 InstalmentSliderVisible = true;
             }
             else if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetHalfYearly)
@@ -4197,7 +4198,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 MaxInstalments = 6;
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 6;
-                SelectedFrequencyType = "03";
+                SelectedFrequencyType = "3";
                 InstalmentSliderVisible = true;
             }
             else if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetYearly)
@@ -4206,7 +4207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 MaxInstalments = 3;
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 3;
-                SelectedFrequencyType = "04";
+                SelectedFrequencyType = "4";
                 InstalmentSliderVisible = false;
             }
 
@@ -4359,24 +4360,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 if (App.selectedZakatItem != "")
                 {
 
-                    if (ZakatInstalments.d.ADpAmt != null && Double.Parse(ZakatInstalments.d.ADpAmt) > 0)
+                    if (!string.IsNullOrEmpty(ZakatInstalments.d.ADpAmt) && Double.Parse(ZakatInstalments.d.ADpAmt) > 0)
                     {
 
                         DownPaymentSliderValue = Double.Parse(ZakatInstalments.d.ADpAmt);
                     }
 
-                    if (ZakatInstalments.d.ATotalAmt != null && Double.Parse(ZakatInstalments.d.ATotalAmt) > 0)
+                    if (!string.IsNullOrEmpty(ZakatInstalments.d.ATotalAmt) && Double.Parse(ZakatInstalments.d.ATotalAmt) > 0)
                     {
                         TotalAmountSAR = ZakatInstalments.d.ATotalAmt;
                     }
 
-                    if (ZakatInstalments.d.APlanDurNo != null && int.Parse(ZakatInstalments.d.APlanDurNo) > 0)
+                    if (!string.IsNullOrEmpty(ZakatInstalments.d.APlanDurNo) && int.Parse(ZakatInstalments.d.APlanDurNo) > 0)
                     {
                         NumberOFInstalmentSliderValue = int.Parse(ZakatInstalments.d.APlanDurNo);
                     }
-
-                    if (ZakatInstalments.d.APaymentFreq != null && Double.Parse(ZakatInstalments.d.APaymentFreq) > 0)
+                    
+                    if (!string.IsNullOrEmpty(ZakatInstalments.d.APaymentFreq) && Double.Parse(ZakatInstalments.d.APaymentFreq) > 0)
                     {
+
                         SelectedFrequencyType = ZakatInstalments.d.APaymentFreq;
                         MessagingCenter.Send<Object, string>(this, "SelectedFrequencyType", SelectedFrequencyType);
                     }
