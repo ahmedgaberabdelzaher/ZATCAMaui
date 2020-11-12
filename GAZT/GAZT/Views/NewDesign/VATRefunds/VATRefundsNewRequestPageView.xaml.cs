@@ -78,16 +78,16 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 await PopupNavigation.Instance.PopAsync();
                 if (arg != null)
                 {
-                    string savemessage = arg;
+                    string savemessage = arg.ToString();
 
                     if (App.IsArabic)
                     {
                         ArButtons buttonId = ArButtons.None;
-                        if (!string.IsNullOrEmpty(savemessage))
+                        if (!string.IsNullOrEmpty(arg))
                         {
-                            savemessage = message.Replace(" ", "");
+                            arg = arg.Replace(" ", "");
                         }
-                        Enum.TryParse(savemessage, out buttonId);
+                        Enum.TryParse(arg, out buttonId);
                         switch (buttonId)
                         {
                             case ArButtons.إضافةملاحظات:
@@ -210,6 +210,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                         var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(firstPageToRemove);
+
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
 
                         viewModel._navigationService.GoBack();
                     }

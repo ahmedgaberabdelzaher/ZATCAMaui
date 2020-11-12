@@ -374,8 +374,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     EnableOutletDetaislView(true);
 
-                    // IsOutletContinueButtonEnabled = true;
-                    // IsOutletContinueButtonEnabled = true;
+                     IsOutletContinueButtonEnabled = true;
                 }
                 else
                 {

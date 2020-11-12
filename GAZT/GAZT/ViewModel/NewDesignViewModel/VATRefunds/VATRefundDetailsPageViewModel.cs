@@ -409,6 +409,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
 
                 VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatNewReqSummaryData);
+
                 _navigationService.NavigateTo(App.VATRefundsSuccessPageView, VatNewReqSummaryData);
 
                 await Task.Run(() =>

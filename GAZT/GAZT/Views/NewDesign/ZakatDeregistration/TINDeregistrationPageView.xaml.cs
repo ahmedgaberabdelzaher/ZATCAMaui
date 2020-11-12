@@ -966,7 +966,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                         viewModel.PkrDBO = date;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-                        viewModel.PickerDobToDisplay = DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
+                        viewModel.PickerDobToDisplay = date;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
 
                     }
                     isHIjri = true;

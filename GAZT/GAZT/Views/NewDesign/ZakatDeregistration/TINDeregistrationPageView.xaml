@@ -460,13 +460,13 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
-                                    <custom:BorderlessEntry x:Name="EntryTIN" Text="{Binding TINNumber}" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry x:Name="EntryTIN" Text="{Binding TINNumber}" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <Entry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>
-                                    </custom:BorderlessEntry>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
@@ -498,13 +498,13 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry  IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                        <Entry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>
-                                    </custom:BorderlessEntry>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
@@ -1297,7 +1297,7 @@
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecName}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                         <custom:BorderlessEntry.Behaviors>
-                                            <custom1:OnlyAlphabatesBehaviour/>
+                                            <custom1:AlphabetandArabicCharacters/>
                                         </custom:BorderlessEntry.Behaviors>
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
@@ -1312,7 +1312,7 @@
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecDesig}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                         <custom:BorderlessEntry.Behaviors>
-                                            <custom1:OnlyAlphabatesBehaviour/>
+                                            <custom1:AlphabetandArabicCharacters/>
                                         </custom:BorderlessEntry.Behaviors>
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
@@ -1331,13 +1331,13 @@
                                         </StackLayout>
                                     </inputLayout:SfTextInputLayout.LeadingView>
 
-                                    <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry Keyboard="Numeric" Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
                                                                 TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" MaxLength="10">
-                                        <Entry.Behaviors>
+                                          <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>
-                                    </custom:BorderlessEntry>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">

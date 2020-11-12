@@ -278,6 +278,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 RaisePropertyChanged("IBANIDNumberList");
             }
         }
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+                else
+                {
+                    MarkComplete = false;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        private int _maxIndex = 3;
+        public int MaxIndex
+        {
+            get
+            {
+                return _maxIndex;
+            }
+            set
+            {
+                _maxIndex = value;
+                RaisePropertyChanged("MaxIndex");
+            }
+        }
         public bool _isNavigatedToSubmitted;
         public bool IsNavigatedToSubmitted
         {
@@ -349,7 +383,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             //PopulateAttachmentsListViewTemplate();
             //PopulateSummaryReasonData();
             //PopulateSummaryDeclarationData();
+
             //EnableReasonView();
+
             OnMoreClicked = new Command(async () =>
             {
 
@@ -720,6 +756,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     }
                 }
 
+                if(string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
+                {
+                    if (App.IsArabic)
+                    {
+                        VatNewReqSummaryData.RefundTp = "طلب إسترداد";
+
+                    }
+                    else
+                    {
+                        VatNewReqSummaryData.RefundTp = "Refund Request";
+                    }
+                }
+
                 if (VatRefundsDisplayDataModel.Fbnumx == string.Empty)
                 {
                     IsVoidBtnVisible = false;
@@ -1025,6 +1074,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 return;
             }
             VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+            if (string.IsNullOrEmpty(VatRefundsDisplayDataModel.RefundTp))
+            {
+                if (App.IsArabic)
+                {
+                    VatNewReqSummaryData.RefundTp = "طلب إسترداد";
+
+                }
+                else
+                {
+                    VatNewReqSummaryData.RefundTp = "Refund Request";
+                }
+            }
 
             //OnSaveDraftClicked();
 
