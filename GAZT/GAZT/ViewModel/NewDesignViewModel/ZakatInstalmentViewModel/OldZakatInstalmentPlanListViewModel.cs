@@ -1288,26 +1288,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     //else
                     //{
 
-                    //    IsZakat = Preferences.Get("isZakat", false);
-                    //    if (IsZakat)
-                    //    {
-                    //        zakatbill = AppResources.ZakatInstalmetSelectTypeZakat;
+                    IsZakat = Preferences.Get("isZakat", false);
+                    if (IsZakat)
+                    {
+                        zakatbill = AppResources.ZakatInstalmetSelectTypeZakat;
 
-                    //    }
-                    //    else
-                    //    {
-                    //        zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
+                    }
+                    else
+                    {
+                        zakatbill = AppResources.ZakatInstalmetSelectTypeIncomeTax;
 
-                    //    }
-
-
-                    //}
+                    }
 
 
+                //}
 
 
 
-                    zakatListData.Add(new OldZakatListModel()
+
+
+                zakatListData.Add(new OldZakatListModel()
                     {
                         referanceNumber = RequestForInstalmentPlanList[i].Fbnum,
                         status = RequestForInstalmentPlanList[i].StatText,

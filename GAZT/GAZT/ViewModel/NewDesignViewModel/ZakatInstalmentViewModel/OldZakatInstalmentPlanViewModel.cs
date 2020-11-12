@@ -770,7 +770,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashBankY1 = "";
+        string cashBankY1 = "0.00";
         public string CashBankY1
         {
             get
@@ -784,7 +784,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashBankY2 = "";
+        string cashBankY2 = "0.00";
         public string CashBankY2
         {
             get
@@ -798,7 +798,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashBankY3 = "";
+        string cashBankY3 = "0.00";
         public string CashBankY3
         {
             get
@@ -812,7 +812,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashRatioY1 = "";
+        string cashRatioY1 = "0.00";
         public string CashRatioY1
         {
             get
@@ -826,7 +826,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashRatioY2 = "";
+        string cashRatioY2 = "0.00";
         public string CashRatioY2
         {
             get
@@ -840,7 +840,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashRatioY3 = "";
+        string cashRatioY3 = "0.00";
         public string CashRatioY3
         {
             get
@@ -854,7 +854,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string debitorsY1 = "";
+        string debitorsY1 = "0.00";
         public string DebitorsY1
         {
             get
@@ -868,7 +868,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string debitorsY2 = "";
+        string debitorsY2 = "0.00";
         public string DebitorsY2
         {
             get
@@ -881,7 +881,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("DebitorsY2");
             }
         }
-        string debitorsY3 = "";
+        string debitorsY3 = "0.00";
         public string DebitorsY3
         {
             get
@@ -895,7 +895,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string inventoryY1 = "";
+        string inventoryY1 = "0.00";
         public string InventoryY1
         {
             get
@@ -908,7 +908,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("InventoryY1");
             }
         }
-        string inventoryY2 = "";
+        string inventoryY2 = "0.00";
         public string InventoryY2
         {
             get
@@ -922,7 +922,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string inventoryY3 = "";
+        string inventoryY3 = "0.00";
         public string InventoryY3
         {
             get
@@ -936,7 +936,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string ncFlowY1 = "";
+        string ncFlowY1 = "0.00";
         public string NcFlowY1
         {
             get
@@ -950,7 +950,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string ncFlowY2 = "";
+        string ncFlowY2 = "0.00";
         public string NcFlowY2
         {
             get
@@ -964,7 +964,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string ncFlowY3 = "";
+        string ncFlowY3 = "0.00";
         public string NcFlowY3
         {
             get
@@ -978,7 +978,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string netIncomeY1 = "";
+        string netIncomeY1 = "0.00";
         public string NetIncomeY1
         {
             get
@@ -992,7 +992,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string netIncomeY2 = "";
+        string netIncomeY2 = "0.00";
         public string NetIncomeY2
         {
             get
@@ -1006,7 +1006,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string netIncomeY3 = "";
+        string netIncomeY3 = "0.00";
         public string NetIncomeY3
         {
             get
@@ -1021,7 +1021,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         }
 
 
-        string profitRatioY1 = "";
+        string profitRatioY1 = "0.00";
         public string ProfitRatioY1
         {
             get
@@ -1035,7 +1035,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string profitRatioY2 = "";
+        string profitRatioY2 = "0.00";
         public string ProfitRatioY2
         {
             get
@@ -1049,7 +1049,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string profitRatioY3 = "";
+        string profitRatioY3 = "0.00";
         public string ProfitRatioY3
         {
             get
@@ -1063,7 +1063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string revenueY1 = "";
+        string revenueY1 = "0.00";
         public string RevenueY1
         {
             get
@@ -1078,7 +1078,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
 
-        string revenueY2 = "";
+        string revenueY2 = "0.00";
         public string RevenueY2
         {
             get
@@ -1092,7 +1092,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
 
         }
-        string revenueY3 = "";
+        string revenueY3 = "0.00";
         public string RevenueY3
         {
             get
@@ -1107,7 +1107,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
 
-        string stiY1 = "";
+        string stiY1 = "0.00";
         public string StiY1
         {
             get
@@ -1120,7 +1120,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("StiY1");
             }
         }
-        string stiY2 = "";
+        string stiY2 = "0.00";
         public string StiY2
         {
             get
@@ -1133,7 +1133,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("StiY2");
             }
         }
-        string stiY3 = "";
+        string stiY3 = "0.00";
         public string StiY3
         {
             get
@@ -1148,7 +1148,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         }
 
 
-        string tcAssetsY1 = "";
+        string tcAssetsY1 = "0.00";
         public string TcAssetsY1
         {
             get
@@ -1162,7 +1162,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string tcAssetsY2 = "";
+        string tcAssetsY2 = "0.00";
         public string TcAssetsY2
         {
             get
@@ -1176,7 +1176,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string tcAssetsY3 = "";
+        string tcAssetsY3 = "0.00";
         public string TcAssetsY3
         {
             get
@@ -1191,7 +1191,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         }
 
 
-        string tcLiabltyY1 = "";
+        string tcLiabltyY1 = "0.00";
         public string TcLiabltyY1
         {
             get
@@ -1205,7 +1205,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string tcLiabltyY2 = "";
+        string tcLiabltyY2 = "0.00";
         public string TcLiabltyY2
         {
             get
@@ -1218,7 +1218,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("TcLiabltyY2");
             }
         }
-        string tcLiabltyY3 = "";
+        string tcLiabltyY3 = "0.00";
         public string TcLiabltyY3
         {
             get
@@ -1273,7 +1273,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string zakatY1 = "";
+        string zakatY1 = "0.00";
         public string ZakatY1
         {
             get
@@ -1287,7 +1287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string zakatY2 = "";
+        string zakatY2 = "0.00";
         public string ZakatY2
         {
             get
@@ -1302,7 +1302,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
 
-        string zakatY3 = "";
+        string zakatY3 = "0.00";
         public string ZakatY3
         {
             get
@@ -2126,45 +2126,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 IsFinsancialStatementsEditable = false;
 
-                CashBankY1 = "";
-                CashBankY2 = "";
-                CashBankY3 = "";
-                CashRatioY1 = "";
-                CashRatioY2 = "";
-                CashRatioY3 = "";
-                DebitorsY1 = "";
-                DebitorsY2 = "";
-                DebitorsY3 = "";
-                InventoryY1 = "";
-                InventoryY2 = "";
-                InventoryY3 = "";
-                NcFlowY1 = "";
-                NcFlowY2 = "";
-                NcFlowY3 = "";
-                NetIncomeY1 = "";
-                NetIncomeY2 = "";
-                NetIncomeY3 = "";
-                ProfitRatioY1 = "";
-                ProfitRatioY2 = "";
-                ProfitRatioY3 = "";
-                RevenueY1 = "";
-                RevenueY2 = "";
-                RevenueY3 = "";
-                StiY1 = "";
-                StiY2 = "";
-                StiY3 = "";
-                TcAssetsY1 = "";
-                TcAssetsY2 = "";
-                TcAssetsY3 = "";
-                TcLiabltyY1 = "";
-                TcLiabltyY2 = "";
-                TcLiabltyY3 = "";
+                CashBankY1 = "0.00";
+                CashBankY2 = "0.00";
+                CashBankY3 = "0.00";
+                CashRatioY1 = "0.00";
+                CashRatioY2 = "0.00";
+                CashRatioY3 = "0.00";
+                DebitorsY1 = "0.00";
+                DebitorsY2 = "0.00";
+                DebitorsY3 = "0.00";
+                InventoryY1 = "0.00";
+                InventoryY2 = "0.00";
+                InventoryY3 = "0.00";
+                NcFlowY1 = "0.00";
+                NcFlowY2 = "0.00";
+                NcFlowY3 = "0.00";
+                NetIncomeY1 = "0.00";
+                NetIncomeY2 = "0.00";
+                NetIncomeY3 = "0.00";
+                ProfitRatioY1 = "0.00";
+                ProfitRatioY2 = "0.00";
+                ProfitRatioY3 = "0.00";
+                RevenueY1 = "0.00";
+                RevenueY2 = "0.00";
+                RevenueY3 = "0.00";
+                StiY1 = "0.00";
+                StiY2 = "0.00";
+                StiY3 = "0.00";
+                TcAssetsY1 = "0.00";
+                TcAssetsY2 = "0.00";
+                TcAssetsY3 = "0.00";
+                TcLiabltyY1 = "0.00";
+                TcLiabltyY2 = "0.00";
+                TcLiabltyY3 = "0.00";
                 Year1 = "";
                 Year2 = "";
                 Year3 = "";
-                ZakatY1 = "";
-                ZakatY2 = "";
-                ZakatY3 = "";
+                ZakatY1 = "0.00";
+                ZakatY2 = "0.00";
+                ZakatY3 = "0.00";
             }
         }
 
@@ -2744,7 +2744,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    NcFlowY1 = "";
+                    NcFlowY1 = "0.00";
                 }
 
                 if ((TcAssetsY1.Length > 0 && double.Parse(TcAssetsY1) != 0) && (ZakatY1.Length > 0 && double.Parse(ZakatY1) != 0))
@@ -2753,7 +2753,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    ProfitRatioY1 = "";
+                    ProfitRatioY1 = "0.00";
                 }
 
 
@@ -2783,7 +2783,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    CashRatioY1 = "";
+                    CashRatioY1 = "0.00";
                 }
             }
             catch(Exception e)
@@ -2807,7 +2807,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    NcFlowY2 = "";
+                    NcFlowY2 = "0.00";
                 }
 
                 if ((TcAssetsY2.Length > 0 && double.Parse(TcAssetsY2) != 0) && (ZakatY2.Length > 0 && double.Parse(ZakatY2) != 0))
@@ -2816,7 +2816,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    ProfitRatioY2 = "";
+                    ProfitRatioY2 = "0.00";
                 }
 
 
@@ -2846,7 +2846,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    CashRatioY2 = "";
+                    CashRatioY2 = "0.00";
                 }
 
             }
@@ -2871,7 +2871,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    NcFlowY3 = "";
+                    NcFlowY3 = "0.00";
                 }
 
                 if ((TcAssetsY3.Length > 0 && double.Parse(TcAssetsY3) != 0) && (ZakatY3.Length > 0 && double.Parse(ZakatY3) != 0))
@@ -2880,7 +2880,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    ProfitRatioY3 = "";
+                    ProfitRatioY3 = "0.00";
                 }
 
 
@@ -2910,7 +2910,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    CashRatioY3 = "";
+                    CashRatioY3 = "0.00";
                 }
             }
             catch(Exception e)
@@ -4869,8 +4869,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         var dataItem = ZakatInstalments.d.Z_INVOICE_UI5Set.results[i];
 
 
-                        if (selectedList.Contains(dataItem))
-                        {
+                        if(selectedList.ToList().Exists(item => item.AIvNoTb == dataItem.AIvNoTb)) {
 
                             ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].AIvTb = "1";
                         }
@@ -4880,6 +4879,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                         }
 
+
+                       
 
 
                             string apiDate = ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].ADueDtTb;

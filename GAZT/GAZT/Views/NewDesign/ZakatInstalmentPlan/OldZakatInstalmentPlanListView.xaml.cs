@@ -96,6 +96,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.ResetData();
                 viewModel.EnableCreateZakatInstalment();
                 viewModel.GetZakatInstalmentPlanList();
+
+
             }
             catch (Exception e)
             {
