@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -524,6 +525,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     bool IsAttachmentPresent = false;
                                                     foreach (Attachment ItemA in AttachmentsList.results)
                                                     {
+                                                        
                                                         if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                         {
                                                             IsAttachmentPresent = true;
@@ -644,7 +646,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     bool IsAttachmentPresent = false;
                                                     foreach (Attachment ItemA in AttachmentsList.results)
                                                     {
-                                                        if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
+                                                        var fileName = (WebUtility.UrlEncode(AttachmentName));
+                                                        if ((fileName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                         {
                                                             IsAttachmentPresent = true;
                                                         }
@@ -761,7 +764,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     bool IsAttachmentPresent = false;
                                                     foreach (Attachment ItemA in AttachmentsList.results)
                                                     {
-                                                        if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
+                                                        var fileName = (WebUtility.UrlEncode(AttachmentName));
+
+                                                        if ((fileName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                         {
                                                             IsAttachmentPresent = true;
                                                         }
