@@ -1,6 +1,7 @@
 ﻿using EGAZT.Helper;
 using EGAZT.Models.EnumModels;
 using EGAZT.ViewModel.NewDesignViewModel;
+using GAZT.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -201,6 +202,7 @@ namespace EGAZT.Views.NewDesign
             viewModel.setChat();
             if (App.IsArabic)
             {
+                
                 ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=ar";
             }
             else
@@ -212,6 +214,7 @@ namespace EGAZT.Views.NewDesign
         private void OnContactUsTapped(object sender, EventArgs e)
         {
             viewModel.setContactUs();
+
             //if (App.IsArabic)
             //{
             //    //ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
@@ -224,7 +227,14 @@ namespace EGAZT.Views.NewDesign
 
         private void ChatWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-            viewModel.IsLoading = true;
+            if(e.Url.Contains(Constants.GAZTChatPartialUrl))
+            {
+                viewModel.IsLoading = false;
+            }
+            else
+            {
+                viewModel.IsLoading = true;
+            }
         }
 
         private void ChatWebView_Navigated(object sender, WebNavigatedEventArgs e)
