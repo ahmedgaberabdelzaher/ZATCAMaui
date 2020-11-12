@@ -862,6 +862,8 @@
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="auto"/>
@@ -878,6 +880,9 @@
 
                                                     <custom:CustomLabel Grid.Row="3"  Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryTaxPeriod}" Style="{StaticResource CaptionLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
                                                     <custom:CustomLabel Grid.Row="3"  Grid.Column="1" Text="{Binding taxPeriod}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+
+                                                    <custom:CustomLabel Grid.Row="4"  Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" Style="{StaticResource CaptionLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                                    <custom:CustomLabel Grid.Row="4"  Grid.Column="1" Text="{Binding amount}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                                 </Grid>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>

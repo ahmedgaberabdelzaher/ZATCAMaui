@@ -254,6 +254,8 @@ namespace EGAZT
             #region NewDesignRelease2IOC
             SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
             SimpleIoc.Default.Register<ZakatInstalmentPlanListViewModel>();
+            SimpleIoc.Default.Register<OldZakatInstalmentPlanViewModel>();
+            SimpleIoc.Default.Register<OldZakatInstalmentPlanListViewModel>();
 
             SimpleIoc.Default.Register<MorePopUpViewModelRTwo>();
             SimpleIoc.Default.Register<InstalmentPlanViewModel>();
@@ -2491,7 +2493,8 @@ namespace EGAZT
             navigationService.Configure(App.InstalmentPlanPageView, typeof(InstalmentPlanPageView));
             navigationService.Configure(App.ZakatInstalmentPlanPageView, typeof(ZakatInstalmentPlanPageView));
             navigationService.Configure(App.ZakatInstalmentPlanListPageView, typeof(ZakatInstalmentPlanListPageView));
-
+            navigationService.Configure(App.OldZakatInstalmentPlanPageView, typeof(OldZakatInstalmentPlanPageView));
+            navigationService.Configure(App.OldZakatInstalmentPlanListPageView, typeof(OldZakatInstalmentPlanListPageView));
             navigationService.Configure(App.VatInstalmentPlanPageView, typeof(VatInstalmentPlanPageView));
             navigationService.Configure(App.VatInstalmentPlanListPageView, typeof(VatInstalmentPlanListPageView));
             navigationService.Configure(App.TaxEvasionMyReportsListPageView, typeof(TaxEvasionMyReportsListPageView));
@@ -2797,6 +2800,35 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanListViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public OldZakatInstalmentPlanViewModel OldZakatInstalmentPlanPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public OldZakatInstalmentPlanListViewModel OldZakatInstalmentPlanListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanListViewModel>();
                 }
                 catch (Exception ex)
                 {

@@ -7118,19 +7118,19 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Reason for requesting Instalment</value>
   </data>
     <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>11. Net Cash Flow From Operation</value>
+    <value>11. Profitability Ratio (3/2)</value>
   </data>
     <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-    <value>10. Net Income</value>
+    <value>10. Retained Earnings (Accumulated Losses)</value>
   </data>
     <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
     <value>6. Total Current Assets</value>
   </data>
     <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>8. Total Current Liabilities</value>
+    <value>8. Debtors</value>
   </data>
     <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-    <value>7. Zakat and Tax</value>
+    <value>7. Total Current Liabilities</value>
   </data>
     <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
     <value>Attachment - Bank Statements for the last 3 months</value>
@@ -7151,31 +7151,31 @@ Please enter an attachment name before choosing an attachment</value>
     <value>Periodic Instalment Amount</value>
   </data>
     <data name="ZakatInstalmentCashRatio" xml:space="preserve">
-    <value>Cash Ratio (2+3)/8</value>
+    <value>Proportion of Cash ((4 + 5) / 7)</value>
   </data>
     <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
     <value>Display Instalment Details</value>
   </data>
     <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>Profitability Ratio(10/9)</value>
+    <value>Current Ratio (6/7)</value>
   </data>
     <data name="ZakatYear" xml:space="preserve">
     <value>Year</value>
   </data>
     <data name="ZakatCashBank" xml:space="preserve">
-    <value>2. Cash + Bank</value>
+    <value>2. Revenue</value>
   </data>
     <data name="ZakatShortTermInvestment" xml:space="preserve">
-    <value>3. Short Term Investment</value>
+    <value>3. Net Income</value>
   </data>
     <data name="ZakatDebitors" xml:space="preserve">
-    <value>4. Debtors</value>
+    <value>4. Cash + Bank</value>
   </data>
     <data name="ZakatInventory" xml:space="preserve">
-    <value>5. Inventory</value>
+    <value>5. Short Term Investments</value>
   </data>
     <data name="ZakatRevenue" xml:space="preserve">
-    <value>9. Revenue</value>
+    <value>9. Creditors</value>
   </data>
     <data name="ZakatRevokCannotLeaveEmpty" xml:space="preserve">
     <value>Cannot leave field empty</value>
@@ -8600,4 +8600,7 @@ I acknowledge that the above bank account information is correct and assume full
 6. GAZT has the right to apply collection procedures in the case of instalment plan cancellation.
 7. I declare, i will play minimum 20% of past total liabilities.</value>
   </data>
+    <data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
+  <value>Taxpayer Holding Financial Statement</value>
+</data>
 </root>

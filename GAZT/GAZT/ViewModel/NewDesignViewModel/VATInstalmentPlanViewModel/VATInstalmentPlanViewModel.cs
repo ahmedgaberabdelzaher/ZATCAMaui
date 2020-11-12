@@ -1038,7 +1038,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 summarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
                     billNumber = AppResources.Bill + " " +(i + 1).ToString("00"),
-                    amount = "0",
+                    amount = selectedList[i].Betrh + " " + selectedList[i].Waers,
                     saadNumber = selectedList[i].SadadNo,
                     taxPeriod = selectedList[i].Taxperioddsc,
                     isSelected = false,

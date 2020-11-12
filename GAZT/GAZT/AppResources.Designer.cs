@@ -15161,5 +15161,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("OldZakatInstructions", resourceCulture);
             }
         }
+        
+        public static string ZakatInstalmentTaxpayerHoldingFinancialStatement {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentTaxpayerHoldingFinancialStatement", resourceCulture);
+            }
+        }
     }
 }

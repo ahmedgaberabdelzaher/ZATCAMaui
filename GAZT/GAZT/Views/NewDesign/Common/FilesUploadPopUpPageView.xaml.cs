@@ -69,8 +69,18 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.VatAttachmentCount = attachments.results.Count;
             }
+            else if (whichAttachment == WhichAttachment.OldZakatInstalmentBankStatements || whichAttachment == WhichAttachment.OldZakatInstalmentFinance)
+            {
+                viewModel.VatAttachmentCount = attachments.results.Count;
+            }
 
             if (whichAttachment == WhichAttachment.ZakatInstalmentBankStatements || whichAttachment == WhichAttachment.ZakatInstalmentFinance)
+
+            {
+                viewModel.TitleOne = "";
+                viewModel.TitleTwo = AppResources.ZakatAttachmentTitle;
+            }
+            else if (whichAttachment == WhichAttachment.OldZakatInstalmentBankStatements || whichAttachment == WhichAttachment.OldZakatInstalmentFinance)
 
             {
                 viewModel.TitleOne = "";
@@ -186,6 +196,14 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
             {
                 viewModel.DocTypeString = "ZIP3";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.OldZakatInstalmentBankStatements)
+            {
+                viewModel.DocTypeString = "IPR1";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.OldZakatInstalmentFinance)
+            {
+                viewModel.DocTypeString = "IPR2";
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
             {

@@ -176,7 +176,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-
+            this.IsEnabled = true;
             try
             {
                 if (viewModel.InputData.Length > 0)

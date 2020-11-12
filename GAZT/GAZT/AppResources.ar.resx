@@ -6829,34 +6829,34 @@
     <value>سنة</value>
   </data>
     <data name="ZakatCashBank" xml:space="preserve">
-    <value>النقدية + البنك .2 </value>
+    <value>2.الإيرادات</value>
   </data>
     <data name="ZakatShortTermInvestment" xml:space="preserve">
-    <value>استثمار قصير المدى .3</value>
+    <value>صافي الدخل.3</value>
   </data>
     <data name="ZakatDebitors" xml:space="preserve">
-    <value>المدينين .4</value>
+    <value>النقد + البنك.4</value>
   </data>
     <data name="ZakatInventory" xml:space="preserve">
-    <value>المخزون .5</value>
+    <value>الاستثمارات قصيرة الأجل .5</value>
   </data>
     <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>إجمالي الأصول الحالية .6</value>
+    <value>إجمالي الأصول المتداولة.6</value>
   </data>
     <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-    <value>الزكاة والضريبة .7</value>
+    <value>إجمالي الخصوم المتداولة .7</value>
   </data>
     <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>إجمالي الالتزامات الحالية .8</value>
+    <value>المدينون.8</value>
   </data>
     <data name="ZakatRevenue" xml:space="preserve">
-    <value>إيرادات .9</value>
+    <value>الدائنون.9</value>
   </data>
     <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-    <value>صافي الدخل .10</value>
+    <value>الأرباح المرحلة - الخسائر المتراكمة.10</value>
   </data>
     <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>صافي التدفق النقدي من العملية .11</value>
+    <value>نسبة الربحية ٣ / ٢.11</value>
   </data>
     <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -6898,13 +6898,13 @@
     <value>المرفقات - كشوفات مالية لآخر 3 سنوات</value>
   </data>
     <data name="ZakatInstalmentCashRatio" xml:space="preserve">
-    <value>نسبة النقد (2 + 3) / 8</value>
+    <value>نسبة النقدية (٤+٥) / ٧</value>
   </data>
     <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
     <value>عرض تفاصيل القسط</value>
   </data>
     <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>معدل الربحية (10/9)</value>
+    <value>نسبة التداول ٦ / ٧</value>
   </data>
     <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -8540,4 +8540,7 @@
 - إلغاء خطة التقسيط في حال ثبوت القدرة المالية لسداد كامل المستحقات.
 4- اقر بسداد ما يقل عن 20% من قيمة إجمالي المديونيات السابقة.</value>
   </data>
+  <data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
+  <value>بيان دافعي الضرائب المالية القابضة</value>
+</data>
 </root>

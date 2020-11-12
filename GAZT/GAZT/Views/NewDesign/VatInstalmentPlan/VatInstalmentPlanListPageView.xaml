@@ -313,6 +313,8 @@
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
+                                                     <RowDefinition Height="auto"/>
+
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="50*"/>
@@ -344,7 +346,21 @@
                                                     <custom:CustomLabel Grid.Column="1" Text="{Binding taxPeriod}" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                                 </Grid>
 
+                                                 <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+ 
+
+                                                    <custom:CustomLabel   Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" Style="{StaticResource CaptionLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                                    <custom:CustomLabel  Grid.Column="1" Text="{Binding amount}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                                </Grid>
+
                                             </Grid>
+
+
 
                                         </DataTemplate>
                                     </listView:SfListView.ItemTemplate>

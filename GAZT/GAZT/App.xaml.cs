@@ -155,6 +155,10 @@ namespace EGAZT
         public static string VRVatRegViewPageView = "VRVatRegViewPageView";
         public static string VRVatGroupPageView = "VRVatGroupPageView";
         public static string VATServicesPageView = "VATServicesPageView";
+        public static string OldZakatInstalmentPlanPageView = "OldZakatInstalmentPlanPageView";
+        public static string OldZakatInstalmentPlanListPageView = "OldZakatInstalmentPlanListPageView";
+        public static string OldZakatInstalmentPlanSuccessPage = "OldZakatInstalmentPlanSuccessPage";
+
         #endregion
 
         #region old view strings

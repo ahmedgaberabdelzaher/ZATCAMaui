@@ -5,29 +5,29 @@ using static EGAZT.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
 
 namespace EGAZT.Models.ZakatInstalationModels
 {
-    public class ZakatInstalmentPlanModel
+    public class OldZakatInstalmentPlanModel
     {
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
     }
 
-    public class InstalmentAgreementFrequencyModel
+    public class OldInstalmentAgreementFrequencyModel
     {
-      
+
         public string FrequencyOptions { get; set; }
         public bool IsSelected { get; set; }
     }
 
-    public class InstalmentAgreementAttachmentsModel
+    public class OldInstalmentAgreementAttachmentsModel
     {
-       
+
         public string FieldTitle { get; set; }
         public string FieldSubTitle { get; set; }
         public string AttachmentName { get; set; }
 
         public bool IsAttachmentAttached { get; set; }
     }
-    public class ZakatListModel
+    public class OldZakatListModel
     {
 
         public string referanceNumber { get; set; }
@@ -46,9 +46,9 @@ namespace EGAZT.Models.ZakatInstalationModels
 
 
     }
-    public class ZakatSelectBillModel
+    public class OldZakatSelectBillModel
     {
-      
+
         public string billNumber { get; set; }
         public string amount { get; set; }
         public string saadNumber { get; set; }
@@ -58,7 +58,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string frequency { get; set; }
     }
 
-    public class ZakatSummaryViewModel
+    public class OldZakatSummaryViewModel
     {
 
         public string billNumber { get; set; }
@@ -70,7 +70,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
     }
 
-    public class InstalmentAgreementInstalmentPlansModel
+    public class OldInstalmentAgreementInstalmentPlansModel
     {
         public string DueDate { get; set; }
         public string NumberOfMonths { get; set; }
@@ -86,14 +86,44 @@ namespace EGAZT.Models.ZakatInstalationModels
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
 
+    public partial class ZakatNotesSet
+    {
+        public Metadata __metadata { get; set; }
+        public string Notenoz { get; set; }
+        public string Refnamez { get; set; }
+        public string XInvoicez { get; set; }
+        public string XObsoletez { get; set; }
+        public string Rcodez { get; set; }
+        public string Erfusrz { get; set; }
+        public string Erfdtz { get; set; }
+        public string AttByz { get; set; }
+        public string ByGpartz { get; set; }
+        public string DataVersionz { get; set; }
+        public string Noteno { get; set; }
+        public long Lineno { get; set; }
+        public long ElemNo { get; set; }
+        public string Tdformat { get; set; }
+        public string Tdline { get; set; }
 
-    public partial class ZakatInstalmentPlanResponse
+    }
+
+
+    public partial class OldZakatInstalmentPlanResponse
     {
         public ZakatInstalment d { get; set; }
     }
 
 
-    public partial class ZakatInstalment
+    public partial class Metadata
+    {
+        public string id { get; set; }
+        public string type { get; set; }
+        public string uri { get; set; }
+    }
+
+
+
+    public partial class OldZakatInstalment
     {
         public Metadata __metadata { get; set; }
         public string AccMethod { get; set; }
@@ -147,29 +177,29 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Zdays { get; set; }
     }
 
-  
 
-    public partial class AttachSet
+
+    public partial class OldAttachSet
     {
         public Attachment[] results { get; set; }
     }
 
-    public partial class FnDtlSet
+    public partial class OldFnDtlSet
     {
         public FnDtlSetObject[] results { get; set; }
     }
 
-    public partial class InsPlanOffSet
+    public partial class OldInsPlanOffSet
     {
         public object[] result { get; set; }
     }
 
-    public partial class InsPlanSet
+    public partial class OldInsPlanSet
     {
         public Results4[] results { get; set; }
     }
 
-    public partial class Results4
+    public partial class OldResults4
     {
         public Metadata __metadata { get; set; }
         public string Fbnum { get; set; }
@@ -191,12 +221,12 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string ReturnId { get; set; }
     }
 
-    public partial class InvDtlsSet
+    public partial class OldInvDtlsSet
     {
         public Results5[] results { get; set; }
     }
 
-    public partial class Results5
+    public partial class OldResults5
     {
         public Metadata Metadata { get; set; }
         public string Abtyp { get; set; }
@@ -225,67 +255,193 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Waers { get; set; }
     }
 
-   
 
-    public partial class RetmsgSet
+
+    public partial class OldRetmsgSet
     {
         public object[] results { get; set; }
     }
 
 
+   
 
-    public partial class ZakatInstalmentPlanRequest
+    
+
+    public partial class OldZakatInstalmentPlanRequest
     {
-        public string Fbguid { get; set; }
-        public string UserTyp { get; set; }
-        public string TxnTp { get; set; }
-        public string MobNo { get; set; }
-        public string FormGuid { get; set; }
-        public string Fbnum { get; set; }
-        public string DataVersion { get; set; }
-        public string Operation { get; set; }
+        public Metadata __metadata { get; set; }
+        public string Percentage { get; set; }
+        public string UserTin { get; set; }
         public string Euser { get; set; }
-        public string StepNumber { get; set; }
-        public string Email { get; set; }
-        public string Officer { get; set; }
+        public string Fbguid { get; set; }
+        public string Auditorz { get; set; }
         public string Langz { get; set; }
+        public string Taxpayerz { get; set; }
+        public string Savez { get; set; }
+        public string Fbnumz { get; set; }
+        public string PeriodKeyz { get; set; }
+        public string Submitz { get; set; }
+        public string AAgree { get; set; }
+        public string ADwPaymentReqLetter { get; set; }
+        public string AEffectiveCalTp { get; set; }
+        public string Euser1 { get; set; }
+        public string FbtypDescr { get; set; }
+        public string FormGuid { get; set; }
+        public string ZauditorFlag { get; set; }
+        public string ANoOfInstTp { get; set; }
+        public string ARev1yrTbFg { get; set; }
+        public string SavNot { get; set; }
+        public string Approvez { get; set; }
+        public string ARev2yrTbFg { get; set; }
+        public string ALegalEnty1 { get; set; }
+        public string ARev3yrTbFg { get; set; }
+        public string ANi1yrTbFg { get; set; }
+        public string Rejectz { get; set; }
+        public string ANi2yrTbFg { get; set; }
+        public string CaseGuid { get; set; }
+        public string ANi3yrTbFg { get; set; }
+        public int AStep { get; set; }
+        public string ACb1yrTbFg { get; set; }
+        public string ACb2yrTbFg { get; set; }
+        public string ALegalEnty2 { get; set; }
+        public string ACb3yrTbFg { get; set; }
+        public string ASi1yrTbFg { get; set; }
+        public string ASi2yrTbFg { get; set; }
+        public string RegIdz { get; set; }
+        public string ASi3yrTbFg { get; set; }
+        public string ATa1yrTbFg { get; set; }
+        public string ATa2yrTbFg { get; set; }
+        public string ATa3yrTbFg { get; set; }
+        public string Fbnum { get; set; }
+        public string ATl1yrTbFg { get; set; }
+        public string ATin { get; set; }
+        public string ATl2yrTbFg { get; set; }
+        public string ATaxpayerNm { get; set; }
+        public string ATl3yrTbFg { get; set; }
+        public string ADeb1yrTbFg { get; set; }
+        public string ATelNo { get; set; }
+        public string ADeb2yrTbFg { get; set; }
+        public string AMobNo { get; set; }
+        public string ADeb3yrTbFg { get; set; }
+        public string AEmail { get; set; }
+        public string ACr1yrTbFg { get; set; }
+        public string AInstReqFor { get; set; }
+        public string ACr2yrTbFg { get; set; }
+        public string AInstReqReason { get; set; }
+        public string ABnkStat3mhChk { get; set; }
+        public string ACr3yrTbFg { get; set; }
+        public string AFinStat3yrChk { get; set; }
+        public string ARe1yrTbFg { get; set; }
+        public string AOtherDocChk { get; set; }
+        public string ARe2yrTbFg { get; set; }
+        public string AHoldFinStat { get; set; }
+        public string ARe3yrTbFg { get; set; }
+        public string ADpAmtFg { get; set; }
+        public string AItTb { get; set; }
+        public string AOneYrTb { get; set; }
+        public string ATwoYrTb { get; set; }
+        public string AThreeYrTb { get; set; }
+        public string ADpAmt { get; set; }
+        public string APlanDurNo { get; set; }
+        public string APlanDurPeri { get; set; }
+        public string APaymentFreq { get; set; }
+        public string ACoPlanDurPeri { get; set; }
+        public string ACoPaymentFreq { get; set; }
+        public string ADpRequ { get; set; }
+        public string ADpDocNo { get; set; }
+        public string ADpPer { get; set; }
+        public string ACoDpAmt { get; set; }
+        public string ADpRecAmt { get; set; }
+        public string AAppInstAmt { get; set; }
+        public string AInstDpAmt { get; set; }
+        public string ABalAmt { get; set; }
+        public string ACoBoRev { get; set; }
+        public string ACoBoNm { get; set; }
+        public string ACoBoRd { get; set; }
+        public string ACmBoRev { get; set; }
+        public string ACmBoNm { get; set; }
+        public string ACmBoRd { get; set; }
+        public string ACoHoRev { get; set; }
+        public string ACoHoNm { get; set; }
+        public string ACoHoRd { get; set; }
+        public string ACmHoRev { get; set; }
+        public string ACmHoNm { get; set; }
+        public string ACmHoRd { get; set; }
+        public string AMofApprChk { get; set; }
+        public string AOtherSuppDocChk { get; set; }
+        public string ARejReason { get; set; }
+        public string ACoPlanDurNo { get; set; }
+        public string ARev1yrTb { get; set; }
+        public string ARev2yrTb { get; set; }
+        public string ARev3yrTb { get; set; }
+        public string ANi1yrTb { get; set; }
+        public string ANi2yrTb { get; set; }
+        public string ANi3yrTb { get; set; }
+        public string ACb1yrTb { get; set; }
+        public string ACb2yrTb { get; set; }
+        public string ACb3yrTb { get; set; }
+        public string ASi1yrTb { get; set; }
+        public string ASi2yrTb { get; set; }
+        public string ASi3yrTb { get; set; }
+        public string ATa1yrTb { get; set; }
+        public string ATa2yrTb { get; set; }
+        public string ATa3yrTb { get; set; }
+        public string ATl1yrTb { get; set; }
+        public string ATl2yrTb { get; set; }
+        public string ATl3yrTb { get; set; }
+        public string ADeb1yrTb { get; set; }
+        public string ADeb2yrTb { get; set; }
+        public string ADeb3yrTb { get; set; }
+        public string ACr1yrTb { get; set; }
+        public string ACr2yrTb { get; set; }
+        public string ACr3yrTb { get; set; }
+        public string ARe1yrTb { get; set; }
+        public string ARe2yrTb { get; set; }
+        public string ARe3yrTb { get; set; }
+        public string APr1yrTb { get; set; }
+        public string APr2yrTb { get; set; }
+        public string APr3yrTb { get; set; }
+        public string ACrt1yrTb { get; set; }
+        public string ACrt2yrTb { get; set; }
+        public string ACrt3yrTb { get; set; }
+        public string APc1yrTb { get; set; }
+        public string APc2yrTb { get; set; }
+        public string APc3yrTb { get; set; }
+        public string APerAmtRd { get; set; }
+        public string ADpRequDrp { get; set; }
+        public string APer { get; set; }
+        public string AFormStatus { get; set; }
+        public string ADownLetterChk { get; set; }
+        public string ADownYear { get; set; }
+        public string ADownMonth { get; set; }
+        public string ADownToYear { get; set; }
+        public string ADownToMonth { get; set; }
+        public string ABranch { get; set; }
+        public string ASaudiShare { get; set; }
+        public string ANonsaudiShare { get; set; }
+        public string AMainAct { get; set; }
+        public string AMainActDesc { get; set; }
+        public string APoBox { get; set; }
+        public string APostalCode { get; set; }
+        public string AFaxNo { get; set; }
+        public string ABuilding { get; set; }
+        public string AStreet { get; set; }
+        public string ADistrict { get; set; }
+        public string ACity { get; set; }
+        public string ALvError { get; set; }
+        public string ATotalAmt { get; set; }
         public string Status { get; set; }
-        public string SuAmt { get; set; }
-        public string SuAmtFg { get; set; }
-        public string Formproc { get; set; }
-        public string Tin { get; set; }
-        public string Periodkey { get; set; }
-        public string ReturnId { get; set; }
-        public string TinNm { get; set; }
-        public string AltMobNo { get; set; }
-        public string InstReqFor { get; set; }
-        public string InstReqReason { get; set; }
-        public string TotAmt { get; set; }
-        public string DpAmt { get; set; }
-        public string PymntFreq { get; set; }
-        public string PlanDur { get; set; }
-        public string OffPymntFreq { get; set; }
-        public string OffPlanDur { get; set; }
-        public string DecCb { get; set; }
-        public string Waers { get; set; }
-        public string AccMethod { get; set; }
-        public string Sopbel { get; set; }
-        public string OffAmt { get; set; }
-        public string PaymtDt { get; set; }
-        public string PenlAmt { get; set; }
-        public string InsDtOff { get; set; }
-        public FnDtlSetObject[] FnDtlSet { get; set; }
-        public object[] AttachSet { get; set; }
-        public NotesSet[] NotesSet { get; set; }
-        public ZakatInvoicesResult[] invDtlsSet { get; set; }
-        public object[] insPlanSet { get; set; }
-        public object[] retmsgSet { get; set; }
-        public object[] insPlan_OffSet { get; set; }
+        public OldAttDetSet[] AttDetSet { get; set; }
+        public ZakatNotesSet[] Off_notesSet { get; set; }
+        public OldZInvoiceSet[] z_invoiceSet { get; set; }
+        public OldZProposedinsSet[] z_proposedinsSet { get; set; }
+        public OldResults3[] Z_INVOICE_UI5Set { get; set; }
+
     }
 
 
 
-    public class ZAKATRequestPlanModel
+    public class OldZAKATRequestPlanModel
     {
         public D d { get; set; }
 
@@ -461,17 +617,17 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
     }
 
-    public partial class ZakatInvoiceList
+    public partial class OldZakatInvoiceList
     {
         public ZakatInvoices d { get; set; }
     }
 
-    public partial class ZakatInvoices
+    public partial class OldZakatInvoices
     {
-        public List<ZakatInvoicesResult> results { get; set; }
+        public List<OldZakatInvoicesResult> results { get; set; }
     }
 
-    public partial class ZakatInvoicesResult
+    public partial class OldZakatInvoicesResult
     {
         public Metadata __metadata { get; set; }
         public string InvCbDeflt { get; set; }
@@ -502,7 +658,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
 
 
-    public class ZakatInstalmentPlanRequestListModel
+    public class OldZakatInstalmentPlanRequestListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
@@ -519,14 +675,14 @@ namespace EGAZT.Models.ZakatInstalationModels
             public List<object> results { get; set; }
         }
 
-        public class Metadata2
+        public class OldMetadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
 
-        public class Result
+        public class OldResult
         {
             public Metadata2 __metadata { get; set; }
             public string DueAmt { get; set; }
@@ -547,17 +703,17 @@ namespace EGAZT.Models.ZakatInstalationModels
 
         }
 
-        public class WorklistSet
+        public class OldWorklistSet
         {
-            public List<Result> results { get; set; }
+            public List<OldResult> results { get; set; }
         }
 
-        public class RevokeListSet
+        public class OldRevokeListSet
         {
-            public List<RevokeListResult> results { get; set; }
+            public List<OldRevokeListResult> results { get; set; }
         }
 
-        public partial class RevokeListResult
+        public partial class OldRevokeListResult
         {
             public Metadata __metadata { get; set; }
             public string UserTyp { get; set; }
@@ -578,26 +734,40 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
 
-        public class EvtNotif12Set
+        public class ListSet
         {
-            public List<Result2> results { get; set; }
+            public List<OldResult2> results { get; set; }
         }
 
-        public class Result2
+        public class OldResult2
         {
             public Metadata __metadata { get; set; }
-            public string AAmtTb { get; set; }
-            public string AClearedAmtTb { get; set; }
-            public string ADueAmtTb { get; set; }
-            public string ADueDtTb { get; set; }
-            public string AIvAmtTb { get; set; }
-            public string AIvNoTb { get; set; }
-            public string AIvSrNoTb { get; set; }
-            public string AIvTb { get; set; }
-            public string AIvAbtyp { get; set; }
+            public string Fbnum { get; set; }
+            public string Objstatus { get; set; }
+            public string Fbsta { get; set; }
+            public string StatText { get; set; }
+            public string Fbtyp { get; set; }
+            public string FbtText { get; set; }
+            public string Erfdate { get; set; }
+            public string Erftime { get; set; }
+            public string Persl { get; set; }
+            public string TaxPeriod { get; set; }
+            public object DueDt { get; set; }
+            public string Due { get; set; }
+            public object Abrzu { get; set; }
+            public object Abrzo { get; set; }
+            public string Incotyp { get; set; }
+            public string Incotext { get; set; }
+            public string Flag { get; set; }
+            public string CalendrTyp { get; set; }
+            public string PrcBy { get; set; }
+            public string Grp { get; set; }
+            public string CrdtText { get; set; }
+            public string Euser { get; set; }
+            public string Fbguid { get; set; }
         }
 
-        public class EvtNotif1Set
+        public class OldEvtNotif1Set
         {
             public List<object> results { get; set; }
         }
@@ -605,19 +775,23 @@ namespace EGAZT.Models.ZakatInstalationModels
         public class D
         {
             public Metadata __metadata { get; set; }
-            public string Client { get; set; }
-            public string TinNm { get; set; }
-            public int Accnum { get; set; }
-            public int Actcnt { get; set; }
+            public string CallServ { get; set; }
+            public long Accnum { get; set; }
+            public long Actcnt { get; set; }
             public string Auditor { get; set; }
             public bool AudObjection { get; set; }
+            public bool AudRefund { get; set; }
+            public bool AudRefundTrn { get; set; }
             public bool AudRequest { get; set; }
+            public bool AudReturn { get; set; }
             public string Bpnum { get; set; }
             public string Branch { get; set; }
-            public string CallServ { get; set; }
             public string Caltype { get; set; }
-            public int Cnlcnt { get; set; }
+            public long Client { get; set; }
+            public long Cnlcnt { get; set; }
+            public long Corrnum { get; set; }
             public string Dept { get; set; }
+            public bool DisSharetile { get; set; }
             public bool EnableInstPlan { get; set; }
             public bool EnableTile { get; set; }
             public string Ettr { get; set; }
@@ -627,50 +801,60 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string Euser3 { get; set; }
             public string Euser4 { get; set; }
             public string Euser5 { get; set; }
+            public string ExeAppFlg { get; set; }
+            public string ExeDtFlg { get; set; }
             public string Fbguid { get; set; }
-            public string Fbnum { get; set; }
             public string HostName { get; set; }
+            public long Indcorrnum { get; set; }
+            public string Interest { get; set; }
             public string IntPortal { get; set; }
             public bool IsBankruptcy { get; set; }
             public string Lang { get; set; }
             public string Name { get; set; }
             public bool NotifLogFlag { get; set; }
-            public int Oblnum { get; set; }
+            public string NregDtFlg { get; set; }
+            public long Oblnum { get; set; }
             public string Overdue { get; set; }
             public string Penalty { get; set; }
             public string PortNo { get; set; }
             public string Protocol { get; set; }
-            public int Refnum { get; set; }
-            public int Regnum { get; set; }
-            public int Rencnt { get; set; }
-            public int Reqnum { get; set; }
-            public int RetItCnt { get; set; }
+            public long Refnum { get; set; }
+            public long Regnum { get; set; }
+            public long Rencnt { get; set; }
+            public long Reqnum { get; set; }
+            public long RetItCnt { get; set; }
             public string RetItFlg { get; set; }
             public string SystemName { get; set; }
             public string Taxtype { get; set; }
+            public bool TileOutlet { get; set; }
+            public bool TilePermit { get; set; }
+            public bool TileTin { get; set; }
             public string Title { get; set; }
             public string Type { get; set; }
             public bool UpdregOutflag { get; set; }
-            public string UserTin { get; set; }
-            public string UserTyp { get; set; }
+            public string VatConfFlg { get; set; }
+            public string VatDtFlg { get; set; }
+            public string VtepFg { get; set; }
+            public string VtiaSignFg { get; set; }
+            public string WarDtFlg { get; set; }
+            public long Zfillingoblig { get; set; }
+            public string Zregstatus { get; set; }
             public string Zuser { get; set; }
+            public ListSet ListSet { get; set; }
             public AuthServSet AuthServSet { get; set; }
-            public WorklistSet WorklistSet { get; set; }
-            public RevokeListSet RevokeListSet { get; set; }
-            public EvtNotif12Set EvtNotif12Set { get; set; }
-            public EvtNotif1Set EvtNotif1Set { get; set; }
+
         }
 
     }
 
 
 
-    public partial class ZakatRequestDisplayModel
+    public partial class OldZakatRequestDisplayModel
     {
-        public D d { get; set; }
+        public OldD d { get; set; }
     }
 
-    public partial class D
+    public partial class OldD
     {
         public Metadata __metadata { get; set; }
         public string Percentage { get; set; }
@@ -692,53 +876,53 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string FormGuid { get; set; }
         public string ZauditorFlag { get; set; }
         public string ANoOfInstTp { get; set; }
-        public string ARev1YrTbFg { get; set; }
+        public string ARev1yrTbFg { get; set; }
         public string SavNot { get; set; }
         public string Approvez { get; set; }
-        public string ARev2YrTbFg { get; set; }
+        public string ARev2yrTbFg { get; set; }
         public string ALegalEnty1 { get; set; }
-        public string ARev3YrTbFg { get; set; }
-        public string ANi1YrTbFg { get; set; }
+        public string ARev3yrTbFg { get; set; }
+        public string ANi1yrTbFg { get; set; }
         public string Rejectz { get; set; }
-        public string ANi2YrTbFg { get; set; }
+        public string ANi2yrTbFg { get; set; }
         public string CaseGuid { get; set; }
-        public string ANi3YrTbFg { get; set; }
-        public string AStep { get; set; }
-        public string ACb1YrTbFg { get; set; }
-        public string ACb2YrTbFg { get; set; }
+        public string ANi3yrTbFg { get; set; }
+        public int AStep { get; set; }
+        public string ACb1yrTbFg { get; set; }
+        public string ACb2yrTbFg { get; set; }
         public string ALegalEnty2 { get; set; }
-        public string ACb3YrTbFg { get; set; }
-        public string ASi1YrTbFg { get; set; }
-        public string ASi2YrTbFg { get; set; }
+        public string ACb3yrTbFg { get; set; }
+        public string ASi1yrTbFg { get; set; }
+        public string ASi2yrTbFg { get; set; }
         public string RegIdz { get; set; }
-        public string ASi3YrTbFg { get; set; }
-        public string ATa1YrTbFg { get; set; }
-        public string ATa2YrTbFg { get; set; }
-        public string ATa3YrTbFg { get; set; }
+        public string ASi3yrTbFg { get; set; }
+        public string ATa1yrTbFg { get; set; }
+        public string ATa2yrTbFg { get; set; }
+        public string ATa3yrTbFg { get; set; }
         public string Fbnum { get; set; }
-        public string ATl1YrTbFg { get; set; }
+        public string ATl1yrTbFg { get; set; }
         public string ATin { get; set; }
-        public string ATl2YrTbFg { get; set; }
+        public string ATl2yrTbFg { get; set; }
         public string ATaxpayerNm { get; set; }
-        public string ATl3YrTbFg { get; set; }
-        public string ADeb1YrTbFg { get; set; }
+        public string ATl3yrTbFg { get; set; }
+        public string ADeb1yrTbFg { get; set; }
         public string ATelNo { get; set; }
-        public string ADeb2YrTbFg { get; set; }
+        public string ADeb2yrTbFg { get; set; }
         public string AMobNo { get; set; }
-        public string ADeb3YrTbFg { get; set; }
+        public string ADeb3yrTbFg { get; set; }
         public string AEmail { get; set; }
-        public string ACr1YrTbFg { get; set; }
+        public string ACr1yrTbFg { get; set; }
         public string AInstReqFor { get; set; }
-        public string ACr2YrTbFg { get; set; }
+        public string ACr2yrTbFg { get; set; }
         public string AInstReqReason { get; set; }
-        public string ABnkStat3MhChk { get; set; }
-        public string ACr3YrTbFg { get; set; }
-        public string AFinStat3YrChk { get; set; }
-        public string ARe1YrTbFg { get; set; }
+        public string ABnkStat3mhChk { get; set; }
+        public string ACr3yrTbFg { get; set; }
+        public string AFinStat3yrChk { get; set; }
+        public string ARe1yrTbFg { get; set; }
         public string AOtherDocChk { get; set; }
-        public string ARe2YrTbFg { get; set; }
+        public string ARe2yrTbFg { get; set; }
         public string AHoldFinStat { get; set; }
-        public string ARe3YrTbFg { get; set; }
+        public string ARe3yrTbFg { get; set; }
         public string ADpAmtFg { get; set; }
         public string AItTb { get; set; }
         public string AOneYrTb { get; set; }
@@ -774,42 +958,45 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string AOtherSuppDocChk { get; set; }
         public string ARejReason { get; set; }
         public string ACoPlanDurNo { get; set; }
-        public string ARev1YrTb { get; set; }
-        public string ARev2YrTb { get; set; }
-        public string ARev3YrTb { get; set; }
-        public string ANi1YrTb { get; set; }
-        public string ANi2YrTb { get; set; }
-        public string ANi3YrTb { get; set; }
-        public string ACb1YrTb { get; set; }
-        public string ACb2YrTb { get; set; }
-        public string ACb3YrTb { get; set; }
-        public string ASi1YrTb { get; set; }
-        public string ASi2YrTb { get; set; }
-        public string ASi3YrTb { get; set; }
-        public string ATa1YrTb { get; set; }
-        public string ATa2YrTb { get; set; }
-        public string ATa3YrTb { get; set; }
-        public string ATl1YrTb { get; set; }
-        public string ATl2YrTb { get; set; }
-        public string ATl3YrTb { get; set; }
-        public string ADeb1YrTb { get; set; }
-        public string ADeb2YrTb { get; set; }
-        public string ADeb3YrTb { get; set; }
-        public string ACr1YrTb { get; set; }
-        public string ACr2YrTb { get; set; }
-        public string ACr3YrTb { get; set; }
-        public string ARe1YrTb { get; set; }
-        public string ARe2YrTb { get; set; }
-        public string ARe3YrTb { get; set; }
-        public string APr1YrTb { get; set; }
-        public string APr2YrTb { get; set; }
-        public string APr3YrTb { get; set; }
-        public string ACrt1YrTb { get; set; }
-        public string ACrt2YrTb { get; set; }
-        public string ACrt3YrTb { get; set; }
-        public string APc1YrTb { get; set; }
-        public string APc2YrTb { get; set; }
-        public string APc3YrTb { get; set; }
+        public string ARev1yrTb { get; set; }
+        public string ARev2yrTb { get; set; }
+        public string ARev3yrTb { get; set; }
+        public string ANi1yrTb { get; set; }
+        public string ANi2yrTb { get; set; }
+        public string ANi3yrTb { get; set; }
+        public string ACb1yrTb { get; set; }
+        public string ACb2yrTb { get; set; }
+        public string ACb3yrTb { get; set; }
+        public string ASi1yrTb { get; set; }
+        public string ASi2yrTb { get; set; }
+        public string ASi3yrTb { get; set; }
+        public string ATa1yrTb { get; set; }
+        public string ATa2yrTb { get; set; }
+        public string ATa3yrTb { get; set; }
+        public string ATl1yrTb { get; set; }
+        public string ATl2yrTb { get; set; }
+        public string ATl3yrTb { get; set; }
+        public string ADeb1yrTb { get; set; }
+        public string ADeb2yrTb { get; set; }
+        public string ADeb3yrTb { get; set; }
+        public string ACr1yrTb { get; set; }
+        public string ACr2yrTb { get; set; }
+        public string ACr3yrTb { get; set; }
+        public string ARe1yrTb { get; set; }
+        public string ARe2yrTb { get; set; }
+        public string ARe3yrTb { get; set; }
+        public string APr1yrTb { get; set; }
+        public string APr2yrTb { get; set; }
+        public string APr3yrTb { get; set; }
+        public string ACrt1yrTb { get; set; }
+        public string ACrt2yrTb { get; set; }
+        public string ACrt3yrTb { get; set; }
+        public string APc1yrTb { get; set; }
+        public string APc2yrTb { get; set; }
+        public string APc3yrTb { get; set; }
+        public string AP13yrTb { get; set; }
+        public string AP23yrTb { get; set; }
+        public string AP33yrTb { get; set; }
         public string APerAmtRd { get; set; }
         public string ADpRequDrp { get; set; }
         public string APer { get; set; }
@@ -834,37 +1021,64 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string ALvError { get; set; }
         public string ATotalAmt { get; set; }
         public string Status { get; set; }
-        public AttDetSet AttDetSet { get; set; }
-        public OffNotesSet Off_notesSet { get; set; }
-        public ZInvoiceSet z_invoiceSet { get; set; }
-        public ZProposedinsSet z_proposedinsSet { get; set; }
-        public ZInvoiceUi5Set Z_INVOICE_UI5Set { get; set; }
+        public OldAttDetSet AttDetSet { get; set; }
+        public OldOffNotesSet Off_notesSet { get; set; }
+        public OldZInvoiceSet z_invoiceSet { get; set; }
+        public OldZProposedinsSet z_proposedinsSet { get; set; }
+        public OldZInvoiceUi5Set Z_INVOICE_UI5Set { get; set; }
     }
 
-    public partial class AttDetSet
+    public partial class OldAttDetSet
+    {
+        public List<Attachment> results { get; set; }
+    }
+
+
+    public class AttResult
+    {
+        public Metadata2 __metadata { get; set; }
+        public string RetGuid { get; set; }
+        public string Seqno { get; set; }
+        public string SchGuid { get; set; }
+        public string Dotyp { get; set; }
+        public int Srno { get; set; }
+        public string Doguid { get; set; }
+        public string AttBy { get; set; }
+        public string Filename { get; set; }
+        public string FileExtn { get; set; }
+        public string Mimetype { get; set; }
+        public string ByPusr { get; set; }
+        public DateTime Erfdt { get; set; }
+        public string Erftm { get; set; }
+        public string DataVersion { get; set; }
+        public string DocUrl { get; set; }
+        public string OutletRef { get; set; }
+        public string Enbedit { get; set; }
+        public string Enbdele { get; set; }
+    }
+
+
+
+   
+
+    public partial class OldOffNotesSet
+    {
+        public List<ZakatNotesSet> results { get; set; }
+    }
+
+    public partial class OldZInvoiceSet
     {
         public List<object> results { get; set; }
     }
 
-  
-    public partial class OffNotesSet
+    public partial class OldZInvoiceUi5Set
     {
-        public List<NotesSet> results { get; set; }
+        public List<OldResults3> results { get; set; }
     }
 
-    public partial class ZInvoiceSet
+    public partial class OldResults3
     {
-        public List<object> results { get; set; }
-    }
-
-    public partial class ZInvoiceUi5Set
-    {
-        public List<Results3> results { get; set; }
-    }
-
-    public partial class Results3
-    {
-        public Metadata Metadata { get; set; }
+        public Metadata __metadata { get; set; }
         public string AAmtTb { get; set; }
         public string AClearedAmtTb { get; set; }
         public string ADueAmtTb { get; set; }
@@ -876,12 +1090,12 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string AIvAbtyp { get; set; }
     }
 
-    public partial class ZProposedinsSet
+    public partial class OldZProposedinsSet
     {
         public List<object> results { get; set; }
     }
 
-    public class ZakatSummaryInputModel
+    public class OldZakatSummaryInputModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class Metadata
@@ -954,183 +1168,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     }
 
 
-    public partial class ZakatInstalmentPlanRevokeResponse
-    {
-        public ZakatRevoke d { get; set; }
-    }
-
-    public partial class ZakatRevoke
-    {
-        public Metadata __metadata { get; set; }
-        public string Lokst { get; set; }
-        public string Fbguid { get; set; }
-        public string FbnumIprr { get; set; }
-        public string InsDtOff { get; set; }
-        public string PenlAmt { get; set; }
-        public string SuAmtFg { get; set; }
-        public string OffAmt { get; set; }
-        public string TotAmt { get; set; }
-        public string UserTyp { get; set; }
-        public string DpAmt { get; set; }
-        public string FormMode { get; set; }
-        public string PaymtDt { get; set; }
-        public string Fbnum { get; set; }
-        public string Sopbel { get; set; }
-        public string TxnTp { get; set; }
-        public string MobNo { get; set; }
-        public string Zdays { get; set; }
-        public string FormGuid { get; set; }
-        public string DataVersion { get; set; }
-        public string Operation { get; set; }
-        public string Euser { get; set; }
-        public string StepNumber { get; set; }
-        public string Email { get; set; }
-        public string Officer { get; set; }
-        public string Langz { get; set; }
-        public string Status { get; set; }
-        public string Formproc { get; set; }
-        public string SuAmt { get; set; }
-        public string Periodkey { get; set; }
-        public string Tin { get; set; }
-        public string ReturnId { get; set; }
-        public string TinNm { get; set; }
-        public string AltMobNo { get; set; }
-        public string InstReqFor { get; set; }
-        public string InstReqReason { get; set; }
-        public string PymntFreq { get; set; }
-        public string PlanDur { get; set; }
-        public string OffPymntFreq { get; set; }
-        public string OffPlanDur { get; set; }
-        public string DecCb { get; set; }
-        public string Waers { get; set; }
-        public string AccMethod { get; set; }
-        public Set FnDtlSet { get; set; }
-        public Set insPlan_OffSet { get; set; }
-        public Set invDtlsSet { get; set; }
-        public AttachSet AttachSet { get; set; }
-        public Set insPlanSet { get; set; }
-        public NotesSetResult NotesSet { get; set; }
-        public Set retmsgSet { get; set; }
-    }
-
-   
-
-    public partial class AttachSetResults
-    {
-        public Metadata __metadata { get; set; }
-        public string RetGuid { get; set; }
-        public string Seqno { get; set; }
-        public string SchGuid { get; set; }
-        public string Dotyp { get; set; }
-        public long Srno { get; set; }
-        public string Doguid { get; set; }
-        public string AttBy { get; set; }
-        public string Filename { get; set; }
-        public string FileExtn { get; set; }
-        public string Mimetype { get; set; }
-        public string ByPusr { get; set; }
-        public string Erfdt { get; set; }
-        public string Erftm { get; set; }
-        public string DataVersion { get; set; }
-        public string DocUrl { get; set; }
-        public string OutletRef { get; set; }
-        public string Enbedit { get; set; }
-        public string Enbdele { get; set; }
-    }
-
-
-
-   
-
-    public partial class Set
-    {
-        public Deferred Deferred { get; set; }
-    }
-
-    public partial class Deferred
-    {
-        public Uri Uri { get; set; }
-    }
-
-    public partial class NotesSetResult
-    {
-        public NotesSet[] results { get; set; }
-    }
-
-    public partial class NotesSet
-    {
-        public Metadata __metadata { get; set; }
-        public string Notenoz { get; set; }
-        public string Refnamez { get; set; }
-        public string XInvoicez { get; set; }
-        public string XObsoletez { get; set; }
-        public string Rcodez { get; set; }
-        public string Erfusrz { get; set; }
-        public string Erfdtz { get; set; }
-        public string AttByz { get; set; }
-        public string ByGpartz { get; set; }
-        public string DataVersionz { get; set; }
-        public string Noteno { get; set; }
-        public long Lineno { get; set; }
-        public long ElemNo { get; set; }
-        public string Tdformat { get; set; }
-        public string Tdline { get; set; }
-
-    }
-
-
-    public partial class ZakatInstalmentPlanRevokeRequest
-    {
-        public string Fbguid { get; set; }
-        public string UserTyp { get; set; }
-        public string TxnTp { get; set; }
-        public string MobNo { get; set; }
-        public string FormGuid { get; set; }
-        public string Fbnum { get; set; }
-        public string DataVersion { get; set; }
-        public string Operation { get; set; }
-        public string Euser { get; set; }
-        public string StepNumber { get; set; }
-        public string Email { get; set; }
-        public string Officer { get; set; }
-        public string Langz { get; set; }
-        public string Status { get; set; }
-        public string FbnumIprr { get; set; }
-        public string SuAmt { get; set; }
-        public string SuAmtFg { get; set; }
-        public string Formproc { get; set; }
-        public string Tin { get; set; }
-        public string Periodkey { get; set; }
-        public string ReturnId { get; set; }
-        public string TinNm { get; set; }
-        public string AltMobNo { get; set; }
-        public string InstReqFor { get; set; }
-        public string InstReqReason { get; set; }
-        public string TotAmt { get; set; }
-        public string DpAmt { get; set; }
-        public string PymntFreq { get; set; }
-        public string PlanDur { get; set; }
-        public string OffPymntFreq { get; set; }
-        public string OffPlanDur { get; set; }
-        public string DecCb { get; set; }
-        public string Waers { get; set; }
-        public string AccMethod { get; set; }
-        public string Sopbel { get; set; }
-        public string OffAmt { get; set; }
-        public string PaymtDt { get; set; }
-        public string PenlAmt { get; set; }
-        public object InsDtOff { get; set; }
-        public object[] FnDtlSet { get; set; }
-        public AttachSetResults[] AttachSet { get; set; }
-        public NotesSet[] NotesSet { get; set; }
-        public ZakatInvoicesResult[] invDtlsSet { get; set; }
-        public object[] insPlanSet { get; set; }
-        public object[] retmsgSet { get; set; }
-        public object[] insPlan_OffSet { get; set; }
-    }
-
-
-    public class ZakatInstalmentInvListModel
+    public class OldZakatInstalmentInvListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
@@ -1181,7 +1219,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
     }
 
-    public class SummaryDisplayModel
+    public class OldSummaryDisplayModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class Metadata

@@ -51,7 +51,10 @@ namespace EGAZT.Models.ZakatInstalationModels
         ZakatObjectionsWithdrawAttachment = 13,
         ZakatObjectionsWithdrawAttachmentTwo = 14,
         VATAmendRegistration= 15,
-        Others = 16
+        Others = 16,
+        OldZakatInstalmentBankStatements = 17,
+        OldZakatInstalmentFinance = 18,
+
 
     }
     
