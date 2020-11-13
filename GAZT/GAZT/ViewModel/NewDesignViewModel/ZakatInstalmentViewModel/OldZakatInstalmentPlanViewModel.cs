@@ -3356,16 +3356,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 summarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
-                    billNumber = AppResources.Bill + (i + 1).ToString("00"),
+                    billNumber = AppResources.Bill + (i + 1).ToString("00") + ":",
                     amount = "0",
                     saadNumber = selectedList[i].AIvNoTb.ToString(),
                     taxPeriod = dt1,
                     isSelected = false,
                     //billType = ZakatTitle
                     billType = IsZakat ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
-
-
-
 
                 });
             }

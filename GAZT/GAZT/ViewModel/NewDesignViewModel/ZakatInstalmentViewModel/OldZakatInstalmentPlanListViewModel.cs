@@ -1525,7 +1525,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 SummarySelectedBillsList.Add(new OldZakatSelectBillModel()
                 {
-                    billNumber = AppResources.Bill + (SummarySelectedBillsList.Count + 1).ToString("00"),
+                    billNumber = AppResources.Bill + (SummarySelectedBillsList.Count + 1).ToString("00") + ":",
                     amount = bill.ADueAmtTb,
                     saadNumber = bill.AIvNoTb,
                     taxPeriod = bill.ADueDtTb,

@@ -1567,7 +1567,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     saadNumber = bill.InvNo,
                     taxPeriod = bill.DueDt,
                     isSelected = false,
-                    billType = bill.Abtyp
+                    //billType = bill.Abtyp
+                    billType = IsZakat ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
 
 
 
