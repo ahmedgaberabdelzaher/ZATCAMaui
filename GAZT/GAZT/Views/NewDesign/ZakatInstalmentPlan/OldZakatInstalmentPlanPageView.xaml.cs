@@ -363,7 +363,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                 totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].ADueAmtTb);
                             }
                         }
-                        viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                        //viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                         viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                         viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
                         viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);

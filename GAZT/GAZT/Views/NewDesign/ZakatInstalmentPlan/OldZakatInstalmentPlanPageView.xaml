@@ -1252,7 +1252,7 @@
                                               ItemsSource="{Binding BankStatementsAttachmentsListViewData}" 
                                               SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" 
                                               SelectionChanged="attachmentsListView_SelectionChanged"
-                                               TapCommand="{Binding BankStatementsAttachmentTapped}">
+                                               TapCommand="{Binding BankStatementsAttachmentTapped}" Margin="0,0,0,10" >
                                
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
@@ -1359,7 +1359,7 @@
                             <listView:SfListView x:Name="FinancialAttachmentsList" HorizontalOptions="Center" IsScrollBarVisible="False" HeightRequest="180" IsScrollingEnabled="True"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                               ItemsSource="{Binding FinanceAttachmentsListViewData}" 
                                               SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" 
-                                               TapCommand="{Binding FinanceAttachmentTapped}">
+                                               TapCommand="{Binding FinanceAttachmentTapped}" Margin="0,0,0,10" >
                               
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
@@ -1582,30 +1582,22 @@
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
                                                 <BoxView Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
 
-                                                <custom:CustomLabel Grid.Row="3"   Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInvoiceNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="4" Grid.ColumnSpan="2" Text="{Binding AIvNoTb}" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
 
-                                                <custom:CustomLabel Grid.Column="0"   Grid.Row="5"   Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Column="0" Grid.Row="6" Text="{Binding ADueAmtTb,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="3"  Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInvoiceNumber}" Style="{StaticResource MiniNewGrayLabelStyle}" ></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="4"  Grid.ColumnSpan="2" Text="{Binding AIvNoTb}" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
 
-                                                <custom:CustomLabel Grid.Row="5"  Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="6" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel  Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                                 <custom:CustomLabel Grid.Row="6"  Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding ADueAmtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+
+                                                 
+                                                <custom:CustomLabel Grid.Row="5"  Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="6"  Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="7"  Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="8"  Grid.Column="0" Text="{Binding AIvAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="7"  Grid.Column="1"  HorizontalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="8"  Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{Binding AClearedAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 
-                                                <custom:CustomLabel Grid.Row="7"  Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"></custom:CustomLabel>
-
-                                                <custom:CustomLabel  HorizontalOptions="StartAndExpand" Grid.Row="8" Grid.Column="0">
-                                        <custom:CustomLabel.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding AIvAmtTb}" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                     </custom:CustomLabel>
-
-                                                <custom:CustomLabel Grid.Row="7" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}" ></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="8" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding AClearedAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>
                                     </cards:SfCardView>
@@ -1648,12 +1640,12 @@
                                                  <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding ADueAmtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
 
                                                  
-                                                <custom:CustomLabel Grid.Row="5" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="5" TextColor="White" Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="0" Text="{Binding AIvAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="1"  HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding AClearedAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="1"  HorizontalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{Binding AClearedAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>
                                     </cards:SfCardView>

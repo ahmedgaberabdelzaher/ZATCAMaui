@@ -4462,9 +4462,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 if (totalAmountDue > 0)
                 {
                     MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    DownPaymentAmount = MinAmount;
+                    //DownPaymentAmount = MinAmount;
+                    DownPaymentAmount = Math.Round(totalAmountDue * (float.Parse(ZakatInstalments.d.Percentage) / 100.0f), 2); // MinAmount;
+
                     MinAmountTitle = AppResources.ZakatMin + " " + MinAmount;
                     DownPaymentSliderValue = DownPaymentAmount;
+
                 }
 
                 if (App.selectedZakatItem != "")
