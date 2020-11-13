@@ -521,7 +521,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     {
                         if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked)
                         {
-                            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZNochangesmadeFormcannotbesubmitted));
+                            PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
                             return;
                         }
                     }
@@ -1887,6 +1887,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                             case ArButtons.حفظكمسودة:
                                 OperationCode = "05";
+                              
                                 break;
 
                             case ArButtons.تقديم:
@@ -1967,15 +1968,18 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                     else
                     {
-                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-                        if (result)
-                        {
-                            await viewModel.SubmitClicked();
-                        }
+                        
+                            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                            if (result)
+                            {
+                                await viewModel.SubmitClicked();
+                            }
+                        
                     }
                 }
                 else
                 {
+
                     if (viewModel.IsAddAdditionalInfoChecked)
                     {
                         viewModel.AddAdditionalInfoCheckBoxEnabled = false;
@@ -1994,7 +1998,63 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         viewModel.IsFinancialDChangeSectionEnabled = true;
 
                     }
+                if (App.VATType == Enums.PageExecutionType.Amend)
+                {
+                        if(viewModel.CurrentStep == "Step 3")
+                        {
+                            if (!viewModel.IsAddAdditionalInfoChecked )
+                            {
+                                string message = AppResources.ZZVATAmendNoChangesMadeMessage;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                            }
+                            else
+                            {
+                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                                if (result)
+                                {
+                                    await viewModel.SubmitClicked();
+                                }
+                            }
+                        }
+                        else if (viewModel.CurrentStep == "Step 4")
+                        {
+                            if (!viewModel.IsAddNewRepresentativeChecked || !viewModel.IsAddAdditionalInfoChecked)
+                            {
+                                string message = AppResources.ZZVATAmendNoChangesMadeMessage;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                            }
+                            else
+                            {
+                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                                if (result)
+                                {
+                                    await viewModel.SubmitClicked();
+                                }
+                            }
+                        }
+                        else 
+                        {
+                            if (!viewModel.IsFDChangeSectionChecked || !viewModel.IsAddAdditionalInfoChecked || !viewModel.IsAddNewRepresentativeChecked )
+                            {
+                                string message = AppResources.ZZVATAmendNoChangesMadeMessage;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                            }
+                            else
+                            {
+                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                                if (result)
+                                {
+                                    await viewModel.SubmitClicked();
+                                }
+                            }
+                        }
+                
+                 
+                }
+                else
+                {
                     await viewModel.SubmitClicked();
+                }
                 }
             }
         }
@@ -4591,7 +4651,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private async void AddNewRepresentative_Tapped(object sender, EventArgs e)
         {
-            if (!viewModel.IsAddNewRepresentativeChecked)
+            if (!viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
             {
                 var result = await DisplayAlert("", AppResources.VATAmendAddNewFinancialRepresentativeWarning, AppResources.ZYes, AppResources.ZNo);
                 if (result)
@@ -4615,6 +4675,21 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.IsAddNewRepresentativeChecked = false;
                 }
             }
+        }
+
+        private void ChangeMobileNumber_Tapped(object sender, EventArgs e)
+        {
+            viewModel.IsFDNameMobEmailEnable = true;
+            if (viewModel.IsChangeEmailChecked)
+            {
+                cbAddRepresentative.IsEnabled = false;
+            }
+            else
+            {
+                cbAddRepresentative.IsEnabled = true;
+
+            }
+
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

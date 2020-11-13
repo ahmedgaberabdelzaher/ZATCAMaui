@@ -6054,6 +6054,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZZAmendFinancialRepCheck {
+            get {
+                return ResourceManager.GetString("ZZZAmendFinancialRepCheck", resourceCulture);
+            }
+        }
+        
         public static string ZZZAmendFinancialRepreGtext {
             get {
                 return ResourceManager.GetString("ZZZAmendFinancialRepreGtext", resourceCulture);
@@ -6063,6 +6069,18 @@ namespace EGAZT {
         public static string ZZZVATRAdditionalInfo {
             get {
                 return ResourceManager.GetString("ZZZVATRAdditionalInfo", resourceCulture);
+            }
+        }
+        
+        public static string ZZVATAmendNoChangesMadeMessage {
+            get {
+                return ResourceManager.GetString("ZZVATAmendNoChangesMadeMessage", resourceCulture);
+            }
+        }
+        
+        public static string ZZVATAmendNoChangesMadeSubmitMessage {
+            get {
+                return ResourceManager.GetString("ZZVATAmendNoChangesMadeSubmitMessage", resourceCulture);
             }
         }
         

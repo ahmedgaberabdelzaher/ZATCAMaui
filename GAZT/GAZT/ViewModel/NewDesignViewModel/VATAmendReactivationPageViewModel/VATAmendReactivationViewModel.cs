@@ -1009,7 +1009,83 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("IsAddNewRepresentativeChecked");
             }
         }
+        private bool _IsChangeEmailChecked = false;
+        public bool IsChangeEmailChecked
+        {
+            get
+            {
+                return _IsChangeEmailChecked;
+            }
+            set
+            {
+                _IsChangeEmailChecked = value;
+                if(_IsChangeEmailChecked)
+                {
+                    IsFDNameMobEmailEnable = true;
+                    IsAddFinancialRepresentativeCheckBoxEnabled = false;
+                    IsAddFinancialRepButtonEnabled = false;
+                }
+                else
+                {
+                    IsFDNameMobEmailEnable = false;
+                    IsAddFinancialRepresentativeCheckBoxEnabled = true;
+                    IsAddFinancialRepButtonEnabled = true;
 
+
+                }
+
+                RaisePropertyChanged("IsChangeEmailChecked");
+            }
+        }
+        
+       private bool _IsAddFinancialRepresentativeCheckBoxEnabled = false;
+        public bool IsAddFinancialRepresentativeCheckBoxEnabled
+        {
+            get
+            {
+                return _IsAddFinancialRepresentativeCheckBoxEnabled;
+            }
+            set
+            {
+                _IsAddFinancialRepresentativeCheckBoxEnabled = value;
+            
+
+                RaisePropertyChanged("IsAddFinancialRepresentativeCheckBoxEnabled");
+            }
+        }
+       
+        private bool _IsAddFinancialRepButtonEnabled = false;
+        public bool IsAddFinancialRepButtonEnabled
+        {
+            get
+            {
+                return _IsAddFinancialRepButtonEnabled;
+            }
+            set
+            {
+                _IsAddFinancialRepButtonEnabled = value;
+
+
+                RaisePropertyChanged("IsAddFinancialRepButtonEnabled");
+            }
+        }
+        
+
+        private bool _IsChangeEmailCheckBoxEnabled = false;
+        public bool IsChangeEmailCheckBoxEnabled
+        {
+            get
+            {
+                return _IsChangeEmailCheckBoxEnabled;
+            }
+            set
+            {
+                _IsChangeEmailCheckBoxEnabled = value;
+
+
+                RaisePropertyChanged("IsChangeEmailCheckBoxEnabled");
+            }
+        }
         private bool _isResident;
         public bool IsResident
         {
@@ -1904,6 +1980,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 {
                     VATRegistrationDetailsData.d.Stp3Cbbox = "0";
                 }
+                if(IsChangeEmailChecked)
+                {
+                    VATRegistrationDetailsData.d.Stp4Cbbox1 = "1";
+                }
+                else
+                {
+                    VATRegistrationDetailsData.d.Stp4Cbbox1 = "0";
+
+                }
                 if (IsAddNewRepresentativeChecked)
                 {
                     VATRegistrationDetailsData.d.Stp4Cbbox2 = "1";
@@ -1930,6 +2015,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
         public async Task<VATRegistrationDetails> SubmitClicked()
         {
+
             VATRegistrationDetails response = new VATRegistrationDetails();
             try
             {
@@ -2191,7 +2277,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         //step 4 and 5 data set
                         if (vATRegistration.d.CONTACT_PERSONSet != null)
                         {
-                            ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
+                                IsChangeEmailCheckBoxEnabled = true;
+
+                                ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
                             GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                             //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                             idnumber = string.Empty;
@@ -2215,7 +2303,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 int count = 0;
                                 foreach (var item in vATRegistration.d.CONTACT_PERSONSet.results)
                                 {
-                                    ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
+
+                                        ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
                                     {
                                         GpartFR = item.Gpart,
                                         IdnumberFR = item.Idnumber,
@@ -2233,7 +2322,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             ATTDETSetObject = new ATTDETSet();
                             ATTDETSetObject = vATRegistration.d.ATTDETSet;
 
-                        }
+                            }
+                            else
+                            {
+                                IsChangeEmailCheckBoxEnabled = false;
+                            }
+                          
 
                         //Step 5
 
@@ -2269,6 +2363,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             {
                                 IsFDChangeSectionChecked = false;
                                 IsFinancialDChangeSectionEnabled = true;
+                            }
+                            if(vATRegistration.d.Stp4Cbbox1 == "1")
+                            {
+                                IsChangeEmailChecked = true;
+                            }
+                            else
+                            {
+                                IsChangeEmailChecked = false;
+
                             }
                             if (vATRegistration.d.Stp4Cbbox2 == "1")
                             {

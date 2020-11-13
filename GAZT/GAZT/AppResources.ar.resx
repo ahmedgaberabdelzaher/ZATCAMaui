@@ -3658,8 +3658,19 @@
     <data name="ZZZAttachementSubmitNote" xml:space="preserve">
     <value>الرجاء تقديم المستندات المطلوبة لإثبات أحقيتك بالتسجيل في ضريبة القيمة المضافة , وفي حالة عدم تقديم تلك المستندات , فمن المرجح أن تتم عملية التدقيق على مدى 6 أشهر المقبلة .</value>
   </data>
+  <data name="ZZZAmendFinancialRepCheck" xml:space="preserve">
+    <value>هل تريد تغيير رقم الجوال أو البريد الإلكتروني</value>
+  </data>
    <data name="ZZZAmendFinancialRepreGtext" xml:space="preserve">
     <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
+  </data>
+    <data name="ZZVATAmendNoChangesMadeMessage" xml:space="preserve">
+    <value>لا يوجد تغييرات لا يمكن الحفظ</value>
+    <comment>VAT Amend</comment>
+  </data>
+        <data name="ZZVATAmendNoChangesMadeSubmitMessage" xml:space="preserve">
+    <value>لا يوجد تغييرات لا يمكن التقديم</value>
+    <comment>VAT Amend</comment>
   </data>
     <data name="ZZZVATRAdditionalInfo" xml:space="preserve">
     <value>المعلومات الإضافية</value>
