@@ -4851,15 +4851,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                             if (IsZakat)
                             {
-                                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.OldZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
-                   _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-                       .Instructions));
+                                if (App.selectedZakatItem != "")
+                                {
+                                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.OldZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle, isEditable: true,
+               _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                   .Instructions));
+
+                                }
+                                else {
+
+                                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.OldZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
+                  _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                      .Instructions));
+                                }
+
+
+                                   
                             }
                             else
                             {
-                                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.OldZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax,
+
+                                if (App.selectedZakatItem != "")
+                                {
+                                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.OldZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax, isEditable: true,
+               _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                   .Instructions));
+
+                                }
+                                else
+                                {
+
+                                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.OldZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax,
                    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                        .Instructions));
+                                }
+
+                                
 
                             }
 
