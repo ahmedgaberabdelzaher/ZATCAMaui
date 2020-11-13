@@ -3361,8 +3361,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     saadNumber = selectedList[i].AIvNoTb.ToString(),
                     taxPeriod = dt1,
                     isSelected = false,
-                    billType = ZakatTitle
-
+                    //billType = ZakatTitle
+                    billType = IsZakat ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax
 
 
 
