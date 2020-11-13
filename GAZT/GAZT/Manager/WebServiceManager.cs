@@ -9785,11 +9785,11 @@ namespace GAZT.Manager
                 string Newfbnum = fbnum;
 
 
-                //if (fbnum != "")
-                //{
+                if (fbnum != "")
+                {
 
-                //    Newfbnum = "0" + fbnum;
-                //}
+                    Newfbnum = "0" + fbnum;
+                }
 
                 try
                 {

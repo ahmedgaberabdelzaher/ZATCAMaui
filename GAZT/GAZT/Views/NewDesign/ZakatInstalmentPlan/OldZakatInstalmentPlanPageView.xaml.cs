@@ -321,7 +321,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -349,24 +349,24 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
+                MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
                 {
                     if (arg != null && viewModel.ZakatInvoicesList != null && App.selectedZakatItem != "")
                     {
-                        //totalAmountDue = 0;
-                        //for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
-                        //{
-                        //    var dataItem = viewModel.ZakatInvoicesList[i] as ZakatInvoicesResult;
-                        //    if (viewModel.selectedList.Contains(dataItem))
-                        //    {
-                        //        BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
-                        //        totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].DueAmt);
-                        //    }
-                        //}
-                        //viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                        //viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                        //viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
-                        //viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);
+                        totalAmountDue = 0;
+                        for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
+                        {
+                            var dataItem = viewModel.ZakatInvoicesList[i];
+                            if (viewModel.selectedList.Contains(dataItem))
+                            {
+                                BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
+                                totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].ADueAmtTb);
+                            }
+                        }
+                        viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                        viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
+                        viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);
 
 
                     }
@@ -377,7 +377,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-                Xamarin.Forms.MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                     viewModel.YesNoPickerModel = arg;
                     viewModel.updatePicker();
                     // Console.WriteLine(arg);
@@ -476,7 +476,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "SelectedReason", (sender, arg) => {
+                MessagingCenter.Subscribe<object, string>(this, "SelectedReason", (sender, arg) => {
                     if (arg != null)
                     {
                         Device.BeginInvokeOnMainThread(() => {
@@ -486,9 +486,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                                 switch (arg)
                                 {
-                                    case "01": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatFinancialCrisis]; break; }
-                                    case "02": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[1]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatDisputeInFavorOfGAZT]; break; }
-                                    case "03": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[2]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatOtherReason]; break; }
+                                    case "1": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatFinancialCrisis]; break; }
+                                    case "2": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[1]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatDisputeInFavorOfGAZT]; break; }
+                                    case "3": { outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[2]; viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatOtherReason]; break; }
 
                                 }
                             }
@@ -501,13 +501,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 });
 
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "SelectedFrequencyType", (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "SelectedFrequencyType", (sender, arg) =>
                 {
                     if (arg != null)
                     {
                         switch (arg)
                         {
-                            case "01":
+                            case "1":
                                 {
                                     frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                                     viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
@@ -517,7 +517,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                     });
                                     break;
                                 }
-                            case "02":
+                            case "2":
                                 {
                                     frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[1];
                                     viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
@@ -527,7 +527,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                     });
                                     break;
                                 }
-                            case "03":
+                            case "3":
                                 {
                                     frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[2];
                                     viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
@@ -537,7 +537,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                     });
                                     break;
                                 }
-                            case "04":
+                            case "4":
                                 {
                                     frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[3];
                                     viewModel.updateInstalmentsOnSlider(new InstalmentAgreementFrequencyModel
