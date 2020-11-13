@@ -8603,4 +8603,12 @@ I acknowledge that the above bank account information is correct and assume full
     <data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
   <value>Taxpayer Holding Financial Statement</value>
 </data>
+   <data name="OldZakatAttachmentTitle" xml:space="preserve">
+    <value>1. File size should be less than 10 MB
+2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
+3. Maximum no. of allowed attachments are 3.</value>
+  </data>
+    <data name="OldZakatInstalmentAttachmentLimitReached" xml:space="preserve">
+  <value>Maximum no. of allowed attachments are 3.</value>
+</data>
 </root>

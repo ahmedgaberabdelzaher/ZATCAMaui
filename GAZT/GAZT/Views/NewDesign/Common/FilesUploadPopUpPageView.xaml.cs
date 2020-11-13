@@ -84,7 +84,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
             {
                 viewModel.TitleOne = "";
-                viewModel.TitleTwo = AppResources.ZakatAttachmentTitle;
+                viewModel.TitleTwo = AppResources.OldZakatAttachmentTitle;
             }
             else if (whichAttachment == WhichAttachment.ContractReleaseCopy || whichAttachment == WhichAttachment.ContractReleaseInvoice)
             {

@@ -8545,4 +8545,12 @@
   <data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
   <value>بيان دافعي الضرائب المالية القابضة</value>
 </data>
+    <data name="OldZakatAttachmentTitle" xml:space="preserve">
+      <value>1. يجب أن يكون حجم الملف أقل من 1 ميجابايت
+2. يجب ان يكون الملف بأحد الصيغ التالية: XLS, XLSX, PDF, JPG
+3. الحد الأقصى لعدد المرفقات المسموح بها هو 3.</value>
+    </data>
+    <data name="OldZakatInstalmentAttachmentLimitReached" xml:space="preserve">
+      <value>يجب أن لا يزيد عدد المرفقات عن 3 ملفات.</value>
+    </data>
 </root>

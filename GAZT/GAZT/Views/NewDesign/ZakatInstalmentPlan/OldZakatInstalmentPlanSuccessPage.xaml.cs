@@ -26,15 +26,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             viewModel = App.Locator.OldZakatInstalmentPlanPageView;
             this.BindingContext = viewModel;
 
-            if (Preferences.Get("IsFromRevok", false))
-            {
-                viewModel.SuccessMessage = AppResources.ZakatInstalmentRevokedSuccessfully;
-                viewModel.ZakatReferanceNumber = Preferences.Get("RevokeRef", "");
-            }
-            else
-            {
-                viewModel.SuccessMessage = AppResources.VatInstalmentPlanSubmittedSuccess;
-            }
+           
+            viewModel.SuccessMessage = AppResources.VatInstalmentPlanSubmittedSuccess;
+            
         }
 
         private void SetLTR()

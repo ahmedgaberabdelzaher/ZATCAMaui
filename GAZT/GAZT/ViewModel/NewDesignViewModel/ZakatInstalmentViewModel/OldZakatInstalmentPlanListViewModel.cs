@@ -135,7 +135,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             ReqInstalmentBtnTapped = new Command(async () =>
             {
                 //CheckDueInvoices();
-                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
+
+                App.selectedZakatItem = "";
+
+                _navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
             });
             SummaryContinueBtnTapped = new Command(async () =>
             {

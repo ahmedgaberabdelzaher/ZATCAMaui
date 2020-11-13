@@ -176,11 +176,11 @@
                                                 <RowDefinition Height="1"/>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
+                                            <custom:CustomLabel Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
-                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding NumberOfInstalmentPlans}" HorizontalOptions="StartAndExpand"
+                                            <custom:CustomLabel Grid.Row="1" Text="{Binding NumberOfInstalmentPlans}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
-                                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+                                            <BoxView Grid.Row="2" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                                             <cards:SfCardView Margin="0,10,0,10" Grid.Row="3" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
 
