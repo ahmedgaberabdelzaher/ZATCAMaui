@@ -178,7 +178,7 @@
                                             </Grid.RowDefinitions>
                                             <custom:CustomLabel Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
-                                            <custom:CustomLabel Grid.Row="1" Text="{Binding NumberOfInstalmentPlans}" HorizontalOptions="StartAndExpand"
+                                            <Label Grid.Row="1" Text="{Binding NumberOfInstalmentPlans}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
                                             <BoxView Grid.Row="2" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 

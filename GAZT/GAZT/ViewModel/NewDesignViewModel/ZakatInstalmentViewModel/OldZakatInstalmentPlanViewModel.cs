@@ -1634,16 +1634,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             var attachmentsListViewData1 = new ObservableCollection<Attachment>();
 
 
+            if(BankStatementsAttachmentsListViewData != null) {
+
+                foreach (Attachment attachment in BankStatementsAttachmentsListViewData)
+                {
+                    attachmentsListViewData1.Add(attachment);
+                }
+            }
+
+            if(FinanceAttachmentsListViewData != null) {
+
+                foreach (Attachment attachment in FinanceAttachmentsListViewData)
+                {
+                    attachmentsListViewData1.Add(attachment);
+                }
+            }
 
 
-            foreach (Attachment attachment in BankStatementsAttachmentsListViewData)
-            {
-                attachmentsListViewData1.Add(attachment);
-            }
-            foreach (Attachment attachment in FinanceAttachmentsListViewData)
-            {
-                attachmentsListViewData1.Add(attachment);
-            }
+         
+            
             AttachmentsListViewData = attachmentsListViewData1;
 
 
@@ -3903,6 +3912,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 ZakatInstalments.d.ATwoYrTb = Year2;
                 ZakatInstalments.d.AThreeYrTb = Year3;
 
+
                 if (Year1.Length < 4 || Year2.Length < 4 || Year3.Length < 4)
                 {
                     ZakatInstalments.d.ARe1yrTbFg = "1";
@@ -4009,18 +4019,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
 
-                ZakatInstalments.d.ANoOfInstTp = NumberOFInstalmentSliderValue.ToString();
-                ZakatInstalments.d.APlanDurPeri = NumberOFInstalmentSliderValue.ToString();
+                ZakatInstalments.d.ANoOfInstTp = NoOfInstalments.ToString();
+                ZakatInstalments.d.APlanDurPeri = NoOfInstalments.ToString();
 
 
-                if (IsInitialDraft || App.selectedZakatItem != "")
-                {
-
-                }
-                else
-                {
-                    // ZakatInstalments.d.Fbnum = "";
-                }
                 if (!isSubmitClicked)
                 {
                     isSubmitClicked = true;
@@ -4477,7 +4479,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                     if (!string.IsNullOrEmpty(ZakatInstalments.d.ADpAmt) && Double.Parse(ZakatInstalments.d.ADpAmt) > 0)
                     {
-
+                        DownPaymentAmount = Double.Parse(ZakatInstalments.d.ADpAmt);
                         DownPaymentSliderValue = Double.Parse(ZakatInstalments.d.ADpAmt);
                     }
 
@@ -4488,6 +4490,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                     if (!string.IsNullOrEmpty(ZakatInstalments.d.APlanDurNo) && int.Parse(ZakatInstalments.d.APlanDurNo) > 0)
                     {
+                        NoOfInstalments = int.Parse(ZakatInstalments.d.APlanDurNo);
                         NumberOFInstalmentSliderValue = int.Parse(ZakatInstalments.d.APlanDurNo);
                     }
                     
@@ -4742,6 +4745,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     
                     if (!string.IsNullOrEmpty(ZakatInstalments.d.ANoOfInstTp))
                     {
+                        NoOfInstalments = Convert.ToInt32(ZakatInstalments.d.ANoOfInstTp);
                         NumberOFInstalmentSliderValue = Convert.ToDouble(ZakatInstalments.d.ANoOfInstTp);
                     }
 
@@ -5412,11 +5416,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     ZakatInstalments.d.ABnkStat3mhChk = "1";
                 }
 
-                if (FinanceAttachmentsListViewData != null && FinanceAttachmentsListViewData.Count > 0)
-                {
+               
+
+                if (IsFinsancialStatementsEditable) {
 
                     ZakatInstalments.d.AFinStat3yrChk = "1";
+
                 }
+                else {
+                    ZakatInstalments.d.AFinStat3yrChk = "2";
+
+                }
+
 
 
                 double totalAmount = double.Parse(TotalAmountSAR.Replace(" SAR", ""));
@@ -5425,7 +5436,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     ZakatInstalments.d.ATotalAmt = totalAmount.ToString();
                 }
 
-                double dueAmount = double.Parse(DownPaymentSliderValue.ToString().Replace(" SAR", ""));
+                double dueAmount = double.Parse(DownPaymentAmount.ToString().Replace(" SAR", ""));
                 if (dueAmount != 0)
                 {
                     ZakatInstalments.d.ADpAmt = dueAmount.ToString();
