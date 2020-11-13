@@ -157,7 +157,37 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         }
 
 
-        
+        void OtpFirstEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPFirstDigit.Length > 0)
+            {
+                OTPSecondEntry.Focus();
+            }
+        }
+
+        void OtpSecondEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPSecondDigit.Length > 0)
+            {
+                OTPThirdEntry.Focus();
+            }
+        }
+
+        void OtpThirdEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPThirdDigit.Length > 0)
+            {
+                OTPFourthEntry.Focus();
+            }
+        }
+        void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+
+        }
+        void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+
+        }
 
     }
 }
