@@ -179,7 +179,7 @@
 
                                  <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
 
-                                    <StackLayout VerticalOptions="Start" Margin="15,5,15,15">
+                                    <StackLayout VerticalOptions="Start" Margin="15,5,15,15" Spacing="0" >
                                       <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -188,10 +188,10 @@
                                             <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="30"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Text="{Binding SelectedTaxTypeForFilter.Txt30}" Grid.Column="0" Grid.Row="0" Style="{StaticResource SectionTitleBlack}">
+                                        <custom:CustomLabel Text="{Binding SelectedTaxTypeForFilter.Txt30}" Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueLabelBlackMedium}">
                                         </custom:CustomLabel>
 
-                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,0" HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"></Image>
                                         <custom:CustomButton x:Name="btn" Clicked="btnTaxTypePickerClicked"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="Transparent"></custom:CustomButton>
 
                                         <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypePicker"  HeaderHeight="55"
@@ -211,15 +211,8 @@
                                         </syncfusion:SfPicker>
                                     </Grid>
                            
-                                    <StackLayout Padding="10">
-                                        <progressBar:SfLinearProgressBar Progress="100" x:Name="TaxBalanceProgress" TrackHeight="16" HeightRequest="16" CornerRadius="8" >
-                                                <progressBar:SfLinearProgressBar.RangeColors>
-                                                    <progressBar:RangeColorCollection>
-                                                    <progressBar:RangeColor Color="{StaticResource Primary}" IsGradient="False"  Start="0" End="{Binding DebitAmountEndProgressBar}"/>
-                                                    <progressBar:RangeColor Color="{StaticResource ErrorColor}" IsGradient="False" Start="{Binding DebitAmountEndProgressBar}" End="100"/>
-                                                </progressBar:RangeColorCollection>
-                                                </progressBar:SfLinearProgressBar.RangeColors>
-
+                                    <StackLayout Padding="0">
+                                        <progressBar:SfLinearProgressBar Progress="100" x:Name="TaxBalanceProgress" ProgressColor="{StaticResource Primary}" TrackHeight="16" HeightRequest="16" CornerRadius="8">
                                         </progressBar:SfLinearProgressBar>
                                     </StackLayout>
                                     <Grid ColumnSpacing="20" Padding="0" RowSpacing="0">
@@ -231,7 +224,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,0,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" >
+                                    <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,5,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" >
                                         <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementDebit}" Style="{StaticResource ValueLabelBlack}"/>
                                     </StackLayout>
                                      <yummy:PancakeView Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource Primary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
@@ -254,7 +247,7 @@
                                             </custom:CustomLabel>
                                     </StackLayout>
                                    
-                                    <StackLayout Grid.Row="0" Grid.Column="1" Margin="0,0,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Margin="0,5,0,10" Spacing="-10" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
                                         <Label Text="{x:Static ResourceManager:AppResources.ASAccountStatementCredit}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
                                     </StackLayout>
                                      <yummy:PancakeView Grid.Row="1" Grid.Column="1" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -282,7 +275,7 @@
                                             </custom:CustomLabel>
                                     </StackLayout>
                                 </Grid>
-                                <BoxView HorizontalOptions="FillAndExpand" Margin="-15,10,-15,0"   HeightRequest="1" BackgroundColor="LightGray" />
+                                <BoxView HorizontalOptions="FillAndExpand" Margin="-15,20,-15,10"   HeightRequest="1" BackgroundColor="LightGray" />
                                 <Grid Padding="0" RowSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>

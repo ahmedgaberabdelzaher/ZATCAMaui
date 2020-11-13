@@ -951,7 +951,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                     }
 
-                    double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.Debit));
+                    double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
                     double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));
                     double totalBalance = tempEndProgressBar + startCreditProgressBar;
 
