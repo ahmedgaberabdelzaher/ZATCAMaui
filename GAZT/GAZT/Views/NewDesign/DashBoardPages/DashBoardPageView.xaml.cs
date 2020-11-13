@@ -209,6 +209,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             viewModel.IsVatRegistrationTileVisible = false;
                             viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                         }
+                        else if (App.LoginDataRetrieved.VtReg == "")
+                        {
+                            viewModel.IfSignUpnNotRegInVATShowVATServie = false;
+                        }
 
                         if (App.LoginDataRetrieved.ZkSignup == "X")
                         {

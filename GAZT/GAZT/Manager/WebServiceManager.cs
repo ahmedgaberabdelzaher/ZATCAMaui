@@ -12215,7 +12215,7 @@ namespace GAZT.Manager
                     /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
                     //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
 
-                    String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
+                    String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
@@ -12350,7 +12350,8 @@ namespace GAZT.Manager
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
-                    outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
+                    if (outletInfo.AOutletEffDtTb != null)
+                        outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
                     outletInfo.AOutletEffDtCTb = "G";
                 }
                 foreach (PermitSetResult permitInfo in allPermitTypes)
@@ -12389,7 +12390,7 @@ namespace GAZT.Manager
             tinDeregistrationSendResponseModel.Monthz = tinDeregistrationResponseModel.Monthz;
             tinDeregistrationSendResponseModel.LegacyDocNo = tinDeregistrationResponseModel.LegacyDocNo;
             tinDeregistrationSendResponseModel.Langz = tinDeregistrationResponseModel.Langz;
-            tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.FormGuid;
+          //  tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.FormGuid;
             tinDeregistrationSendResponseModel.Fbnumz = tinDeregistrationResponseModel.Fbnumz;
             tinDeregistrationSendResponseModel.Fbnum = tinDeregistrationResponseModel.Fbnum;
             tinDeregistrationSendResponseModel.Dflag = tinDeregistrationResponseModel.Dflag;
@@ -15962,7 +15963,7 @@ namespace GAZT.Manager
 
 
                     String url = Constants.ZakatObjectionSummaryURLTP10 + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
-                        "Savez='" + "',Fbnumz='"+ fbnum + "',Langz='" + lang + "',UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
+                        "Savez='" + "',Fbnumz='" + fbnum + "',Langz='" + lang + "',UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
                     var uri = new Uri(url);
 
 
@@ -17206,7 +17207,7 @@ namespace GAZT.Manager
 
                     //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='00001000000008337102',Fbguid='005056B1F8FB1EDB80EE42BD20B90982',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
                     //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='',Fbguid='005056B1F8FB1EDB80EF060738B88BA9',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
-                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='"+ statementFilter + "',FiscalYear='"+fiscalYear+"',TaxType='" + taxType + "',Lang='" + LangZ + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
+                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -17239,7 +17240,7 @@ namespace GAZT.Manager
                         }
 
                         String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
-                         _asTabIdentification = JsonConvert.DeserializeObject<ASStatementHeaderSet>(data);
+                        _asTabIdentification = JsonConvert.DeserializeObject<ASStatementHeaderSet>(data);
                     }
 
                     return _asTabIdentification;
@@ -17329,7 +17330,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/zpdfDownloadSet(Euser='00000001000000109414',Fguid='005056B1365C1EDB8885CFC1FE964974',Taxtype='D',FiscalYear='2020',StatementFilter='02',FromDt=datetime'2020-1-1T00:00:00',ToDt=datetime'2020-11-6T00:00:00',Langz='E')/$value                    //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/zpdfDownloadSet(Euser='',Fguid='005056B1365C1EDB888600B680598992',TaxType='D',FiscalYear='2020',StatementFilter='02',FromDt=datetime'2020-1-1T00:00:00',ToDt=dateTime'2020-11-6T00:00:00',Langz='E')/$value
-                    String url = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + taxType + "',FiscalYear='" + year + "',StatementFilter='"+statementFilter+ "',FromDt=dateTime'2020-1-1T00:00:00',ToDt=dateTime'2020-11-6T00:00:00',Langz='" + LangZ+"')/$value";
+                    String url = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + taxType + "',FiscalYear='" + year + "',StatementFilter='" + statementFilter + "',FromDt=dateTime'2020-1-1T00:00:00',ToDt=dateTime'2020-11-6T00:00:00',Langz='" + LangZ + "')/$value";
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     var uri = new Uri(url);

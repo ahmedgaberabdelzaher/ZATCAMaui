@@ -41,8 +41,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _returnTypeForFilter = value;
                 RaisePropertyChanged("ReturnTypeForFilter");
             }
-        } 
-        public bool _isListVisible=false;
+        }
+        public bool _isListVisible = false;
         public bool IsListVisible
         {
             get
@@ -69,7 +69,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Index");
             }
         }
-        public bool _setNoDataLabelVisibilityALL=true;
+        public bool _setNoDataLabelVisibilityALL = true;
         public bool SetNoDataLabelVisibilityALL
         {
             get
@@ -92,7 +92,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _selectedListItem = value;
-                
+
                 if (_selectedListItem != null)
                 {
                     //Device.BeginInvokeOnMainThread(async () =>
@@ -104,7 +104,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         await Task.Run(async () =>
                         {
-                           IsLoading = true;
+                            IsLoading = true;
                         });
                         if (_selectedListItem.Open != null)
                         {
@@ -195,16 +195,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     messageTodisplay = _selectedListItem.Msg;
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
                                 });
-                              
+
                             }
 
                         }
 
 
                     });
-                  
+
                 }
-                
+
                 RaisePropertyChanged("SelectedListItem");
 
             }
@@ -234,7 +234,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         Index = 0;
                     }
-                                FilterOnBasisOfTaxType();
+                    FilterOnBasisOfTaxType();
 
                 }
                 RaisePropertyChanged("SelectedChipFilterItem");
@@ -382,7 +382,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = true;
             });
 
-            await Task.Run(async() =>
+            await Task.Run(async () =>
             {
                 await GetVATAllReturns(SelectedReturnsVAT);
             });
@@ -403,7 +403,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
 
 
-                    await Task.Run(async() =>
+                    await Task.Run(async () =>
                     {
                         if (SelectedReturnsVAT != null)
                         {
@@ -411,7 +411,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
                                 App.ICRStatus = SelectedReturnsVAT.Stat;
-                                App.VATDeclrationFbguid= SelectedReturnsVAT.Fbguid;
+                                App.VATDeclrationFbguid = SelectedReturnsVAT.Fbguid;
                                 VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
                                 PopToRootPage();
                                 if (_vATDeclaration != null && _vATDeclaration.d != null)
@@ -440,7 +440,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         IsLoading = false;
 
-                                       // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                        // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                                     });
@@ -449,7 +449,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async() =>
+                                Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     IsLoading = false;
 
@@ -474,13 +474,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
 
 
-                   
+
                 }
                 catch (InternetException ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                     //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         _navigationService.GoBack();
                     });
@@ -538,7 +538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = true;
             });
 
-            await Task.Run(async() =>
+            await Task.Run(async () =>
             {
 
 
@@ -640,10 +640,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
-           
-           
+
+
         }
-        
+
         public void FilterAllData()
         {
             try
@@ -656,7 +656,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
-                           
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -664,13 +664,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     item.StatusMessage = "submitted";
                                 }
-                               
+
                             }
-                           
+
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
-                           
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -682,8 +682,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
-                          {
-                            
+                        {
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -706,23 +706,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 foreach (var item in ListToDisplay)
                                 {
-                                    if(item.StatusTxt == "Non Submitted")
+                                    if (item.StatusTxt == "Non Submitted")
                                     {
                                         item.StatusMessage = "unsubmitted";
-                                     
+
 
                                     }
                                     if (item.StatusTxt == "Non Submitted" && item.Due == "X")
                                     {
                                         item.StatusMessage = "overdue";
-                                    
+
                                     }
                                     if (item.StatusTxt == "Submitted")
                                     {
                                         item.StatusMessage = "submitted";
-                                      
+
                                     }
-                                   
+
 
 
                                 }
@@ -736,10 +736,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }
             catch (Exception ex)
-            { 
-            
+            {
+
             }
-            
+
         }
         public void FilterZakatData()
         {
@@ -751,10 +751,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT"));
                     if (_selectedChipFilterItem != null)
                     {
-                        
+
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
-                            
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -767,7 +767,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
-                           
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -780,7 +780,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                         {
-                           
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -828,10 +828,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }
             catch (Exception ex)
-            { 
-            
+            {
+
             }
-            
+
         }
         public void FilterVatData()
         {
@@ -846,7 +846,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
-                            
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -859,7 +859,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
-                         
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -872,7 +872,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                         {
-                          
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -926,7 +926,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void FilterETData()
         {
-            
+
             try
             {
 
@@ -938,7 +938,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
-                   
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -951,7 +951,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
-                         
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -1029,7 +1029,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
-                           
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -1042,7 +1042,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
-                           
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -1055,7 +1055,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                         {
-                           
+
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -1136,7 +1136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //            Index = 2;
         //            FilterOnBasisOfTaxType();
         //            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
-                    
+
 
         //                if (ListToDisplay != null)
         //                {
@@ -1184,7 +1184,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //    { }
         //    }
         public void PopulateReturnTypeList()
-            {
+        {
             try
             {
                 List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
@@ -1196,18 +1196,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
                     new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
             };
+                if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.VtReg == "X")
+                {
+                    ReturnTypesList.RemoveAt(2);
+                }
                 ReturnTypeForFilter = new List<ReturnTypes>();
                 ReturnTypeForFilter = ReturnTypesList;
-               
+
 
             }
             catch (Exception ex)
-            { 
-            
+            {
+
             }
 
 
-            }
+        }
         public void PopulateDataInChips()
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
@@ -1217,7 +1221,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "unsubmitted.png"},
                 //new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "clockNew.png"},
                };
-            
+
         }
         public void FilterOnBasisOfTaxType()
         {
@@ -1242,7 +1246,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 FilterWTData();
             }
-            
+
         }
         #endregion
 

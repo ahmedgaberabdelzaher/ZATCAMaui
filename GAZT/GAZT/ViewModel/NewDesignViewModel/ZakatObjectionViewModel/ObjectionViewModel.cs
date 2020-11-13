@@ -65,11 +65,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         public void AddSelectionOptions()
         {
             var outletDecisionOptions = new ObservableCollection<SelectionModel>();
-            outletDecisionOptions.Add(new SelectionModel
+            if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.VtReg == "X")
             {
-                SelectionTitle = AppResources.VatReview,
-                IsSelected = false
-            });
+                outletDecisionOptions.Add(new SelectionModel
+                {
+                    SelectionTitle = AppResources.VatReview,
+                    IsSelected = false
+                });
+            }
             outletDecisionOptions.Add(new SelectionModel
             {
                 SelectionTitle = AppResources.ZakatIncomeTaxObjection,
