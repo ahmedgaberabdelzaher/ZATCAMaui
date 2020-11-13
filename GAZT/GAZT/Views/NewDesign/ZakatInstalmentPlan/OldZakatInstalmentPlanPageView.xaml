@@ -230,7 +230,7 @@
 
                                     <!--ZakatCashBank-->
                                     <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatCashBank}"
                                                 HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="FillAndExpand"
@@ -249,7 +249,7 @@
                                     <!--ZakatShortTermInvestment-->
 
                                     <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatShortTermInvestment}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -267,7 +267,7 @@
                                     <!--ZakatDebitors-->
 
                                     <StackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatDebitors}"
                                                 HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="FillAndExpand"
@@ -284,7 +284,7 @@
 
                                     <!--ZakatInventory-->
                                     <StackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInventory}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -299,7 +299,7 @@
                                     </StackLayout>
                                     <!--ZakatInstalmentTotalCurrentAssets-->
                                     <StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalCurrentAssets}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -316,7 +316,7 @@
                                     <!--ZakatInstalmentZakatAndTax-->
 
                                     <StackLayout Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentZakatAndTax}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -333,7 +333,7 @@
                                     <!--ZakatInstalmentTotalCurrentLiabilities-->
 
                                     <StackLayout Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalCurrentLiabilities}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -350,7 +350,7 @@
                                     <!--ZakatRevenue-->
 
                                     <StackLayout Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatRevenue}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -367,7 +367,7 @@
                                     <!--ZakatInstalmentNetIncome-->
 
                                     <StackLayout Grid.Row="5" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel Grid.Row="10" Grid.Column="0"
+                                        <Label Grid.Row="10" Grid.Column="0"
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNetIncome}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -384,7 +384,7 @@
                                     <!--ZakatInstalmentNetCashFlowFromOperation-->
 
                                     <StackLayout Grid.Row="5" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNetCashFlowFromOperation}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -398,7 +398,7 @@
                                         </border:SfBorder>
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -413,7 +413,7 @@
                                     </StackLayout>
 
                                     <StackLayout Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical" VerticalOptions="FillAndExpand">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="FillAndExpand"
@@ -475,7 +475,7 @@
 
                                     <!--ZakatCashBank-->
                                     <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatCashBank}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -494,7 +494,7 @@
                                     <!--ZakatShortTermInvestment-->
 
                                     <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatShortTermInvestment}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -512,7 +512,7 @@
                                     <!--ZakatDebitors-->
 
                                     <StackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatDebitors}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -529,7 +529,7 @@
 
                                     <!--ZakatInventory-->
                                     <StackLayout Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInventory}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -544,7 +544,7 @@
                                     </StackLayout>
                                     <!--ZakatInstalmentTotalCurrentAssets-->
                                     <StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalCurrentAssets}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -561,7 +561,7 @@
                                     <!--ZakatInstalmentZakatAndTax-->
 
                                     <StackLayout Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentZakatAndTax}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -578,7 +578,7 @@
                                     <!--ZakatInstalmentTotalCurrentLiabilities-->
 
                                     <StackLayout Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalCurrentLiabilities}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -595,7 +595,7 @@
                                     <!--ZakatRevenue-->
 
                                     <StackLayout Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatRevenue}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -629,7 +629,7 @@
                                     <!--ZakatInstalmentNetCashFlowFromOperation-->
 
                                     <StackLayout Grid.Row="5" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNetCashFlowFromOperation}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -643,7 +643,7 @@
                                         </border:SfBorder>
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentProfitabilityRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -651,14 +651,14 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:CustomLabel Text="{Binding ProfitRatioY2}"
+                                            <Label Text="{Binding ProfitRatioY2}"
                                                            FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
                                     </StackLayout>
 
                                     <StackLayout Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCashRatio}"
                                                 HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="Center"
@@ -666,7 +666,7 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:CustomLabel Text="{Binding CashRatioY2}"
+                                            <Label Text="{Binding CashRatioY2}"
                                                           FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
@@ -1188,8 +1188,16 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                    <custom:CustomLabel  Text="{Binding VATBillDueAmount}" HorizontalOptions="EndAndExpand"
-                                                Style="{StaticResource SectionTitleBlackBold}" VerticalTextAlignment="Center"/>
+                                     <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" >
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding VATBillDueAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
+                              
 
                                 </StackLayout>
                             </Frame>
@@ -1524,8 +1532,18 @@
 
                                                 <Frame  HorizontalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,20,0,0" Padding="0">
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                                        <Label Text="{Binding VATBillDueAmount}" FontSize="Medium" FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
+
+                                                          <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding VATBillDueAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
+
                                                     </StackLayout>
                                                 </Frame>
                                                 <buttons:SfButton Margin="0,16,0,16"  x:Name="btnVATBillsContinue" Command="{Binding BillContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
@@ -1574,8 +1592,18 @@
                                                 <custom:CustomLabel Grid.Row="5"  Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="6" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 
-                                                <custom:CustomLabel Grid.Row="7"  Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{Binding AIvAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="7"  Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"></custom:CustomLabel>
+
+                                                <custom:CustomLabel  HorizontalOptions="StartAndExpand" Grid.Row="8" Grid.Column="0">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding AIvAmtTb}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
+
                                                 <custom:CustomLabel Grid.Row="7" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}" ></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="8" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding AClearedAmtTb,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                             </Grid>
@@ -1616,10 +1644,10 @@
                                                 <custom:CustomLabel Grid.Row="4" TextColor="White" Grid.ColumnSpan="2" Text="{Binding AIvNoTb}" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
 
 
-                                                <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel TextColor="White" Grid.Row="6" Grid.Column="0" Text="{Binding ADueAmtTb,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                                 <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding ADueAmtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
 
-
+                                                 
                                                 <custom:CustomLabel Grid.Row="5" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
@@ -2048,10 +2076,19 @@
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" HorizontalOptions="Start"
                                                 VerticalOptions="Center"
-                                                Style="{StaticResource BodyLabelBlack}" />
+                                                Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>
 
-                                        <custom:CustomLabel Text="{Binding VATBillDueAmount}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
-                                                Style="{StaticResource SectionTitleBlackBold}" />
+                                        <custom:CustomLabel HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding VATBillDueAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                     </custom:CustomLabel>
+
+                                      
 
 
 

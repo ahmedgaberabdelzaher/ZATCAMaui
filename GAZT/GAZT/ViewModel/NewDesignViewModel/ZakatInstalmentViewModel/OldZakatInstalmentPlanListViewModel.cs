@@ -1568,8 +1568,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
             TotalAmount = string.Format("{0:N2}", SeletedZakatForm.d.ATotalAmt) + " SAR";
-            InstalmentAmount = string.Format("{0:N2}", zakatRequestDisplayModel.d.AAppInstAmt) + " SAR";
-            SummaryNoOfInstalments = zakatRequestDisplayModel.d.APlanDurPeri;
+            InstalmentAmount = string.Format("{0:N2}", SeletedZakatForm.d.ADpAmt) + " SAR";
+            SummaryNoOfInstalments = SeletedZakatForm.d.APlanDurPeri;
 
 
 
@@ -1652,7 +1652,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                             NoOfInstalments = SeletedZakatForm.d.APlanDurPeri;
                             TotalAmount = string.Format("{0:N2}", SeletedZakatForm.d.ATotalAmt) + " SAR";
-                            InstalmentAmount = string.Format("{0:N2}", SeletedZakatForm.d.AAppInstAmt) + " SAR";
+                            InstalmentAmount = string.Format("{0:N2}", SeletedZakatForm.d.ADpAmt) + " SAR";
 
 
                             if (item.frequency == "01")
