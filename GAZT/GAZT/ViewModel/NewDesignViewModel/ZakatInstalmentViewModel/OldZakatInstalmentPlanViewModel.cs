@@ -2078,6 +2078,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             genericPickerModel.PickerId = "HoldingFinancial";
             YesNoPickerModel = genericPickerModel;
 
+            CashBankY1 = "0.00";
+            CashBankY2 = "0.00";
+            CashBankY3 = "0.00";
+            CashRatioY1 = "0.00";
+            CashRatioY2 = "0.00";
+            CashRatioY3 = "0.00";
+            DebitorsY1 = "0.00";
+            DebitorsY2 = "0.00";
+            DebitorsY3 = "0.00";
+            InventoryY1 = "0.00";
+            InventoryY2 = "0.00";
+            InventoryY3 = "0.00";
+            NcFlowY1 = "0.00";
+            NcFlowY2 = "0.00";
+            NcFlowY3 = "0.00";
+            NetIncomeY1 = "0.00";
+            NetIncomeY2 = "0.00";
+            NetIncomeY3 = "0.00";
+            ProfitRatioY1 = "0.00";
+            ProfitRatioY2 = "0.00";
+            ProfitRatioY3 = "0.00";
+            RevenueY1 = "0.00";
+            RevenueY2 = "0.00";
+            RevenueY3 = "0.00";
+            StiY1 = "0.00";
+            StiY2 = "0.00";
+            StiY3 = "0.00";
+            TcAssetsY1 = "0.00";
+            TcAssetsY2 = "0.00";
+            TcAssetsY3 = "0.00";
+            TcLiabltyY1 = "0.00";
+            TcLiabltyY2 = "0.00";
+            TcLiabltyY3 = "0.00";
+            Year1 = "";
+            Year2 = "";
+            Year3 = "";
+            ZakatY1 = "0.00";
+            ZakatY2 = "0.00";
+            ZakatY3 = "0.00";
+
 
 
 
@@ -2954,10 +2994,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         public async Task EnableSucessScreenAsync()
         {
 
-            Preferences.Set("IsFromRevok", false);
-            Preferences.Set("RevokeRef", "");
+            //Preferences.Set("IsFromRevok", false);
+            //Preferences.Set("RevokeRef", "");
            // await App.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZakatInstalmentPlanSubmittedPopUpMsg + " " + ZakatInstalments.d.ADpAmt + " " + AppResources.FORM5SAR, AppResources.CRContinue);
             await Application.Current.MainPage.Navigation.PushAsync(new OldZakatInstalmentPlanSuccessPage());
+
 
         }
 
@@ -3276,16 +3317,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                if ((BankStatementsAttachmentsListViewData != null && BankStatementsAttachmentsListViewData.Count > 0) && (FinanceAttachmentsListViewData != null && FinanceAttachmentsListViewData.Count > 0))
-                {
-                    EnableSummaryView();
-                    PopulateSummaryReasonData();
-                    PopulateSummaryAttachments();
+                if(IsFinsancialStatementsEditable) {
+
+                    if ((BankStatementsAttachmentsListViewData != null && BankStatementsAttachmentsListViewData.Count > 0) && (FinanceAttachmentsListViewData != null && (FinanceAttachmentsListViewData.Count > 0)))
+                    {
+                        EnableSummaryView();
+                        PopulateSummaryReasonData();
+                        PopulateSummaryAttachments();
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(AppResources.VRUploadYourDocument, AppResources.Information);
+                    }
                 }
-                else
-                {
-                    await _dialogService.ShowMessage(AppResources.VRUploadYourDocument, AppResources.Information);
+                else {
+
+                    if ((BankStatementsAttachmentsListViewData != null && BankStatementsAttachmentsListViewData.Count > 0))
+                    {
+                        EnableSummaryView();
+                        PopulateSummaryReasonData();
+                        PopulateSummaryAttachments();
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(AppResources.VRUploadYourDocument, AppResources.Information);
+                    }
                 }
+
+
+                
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3971,8 +4031,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                         ZakatReferanceNumber = ZakatInstalments.d.Fbnum;
 
+                        await Application.Current.MainPage.Navigation.PushAsync(new OldZakatInstalmentPlanSuccessPage());
 
-                        EnableSucessScreenAsync();
+                        //EnableSucessScreenAsync();
                     }
                     else
                     {
@@ -4438,11 +4499,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         var financialAttachmentListViewData = new ObservableCollection<Attachment>();
                         foreach (var attach in ZakatInstalments.d.AttDetSet.results)
                         {
-                            if (attach.Dotyp == "ZIP2")
+                            if (attach.Dotyp == "IPR1")
                             {
                                 bankAttachmentListViewData.Add(attach);
                             }
-                            else if (attach.Dotyp == "ZIP3")
+                            else if (attach.Dotyp == "IPR2")
                             {
                                 financialAttachmentListViewData.Add(attach);
                             }

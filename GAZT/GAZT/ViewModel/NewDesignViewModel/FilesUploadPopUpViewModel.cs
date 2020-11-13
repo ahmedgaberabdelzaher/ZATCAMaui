@@ -473,6 +473,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                             }
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.OldZakatInstalmentFinance || IsComeForWhichAttachment == WhichAttachment.OldZakatInstalmentBankStatements)
+                        {
+                            if (VatAttachmentsList != null)
+                            {
+                                int count = VatAttachmentsList.Count();
+                                if (count >= 3)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.OldZakatInstalmentAttachmentLimitReached, AppResources.Information);
+                                    await PopupNavigation.Instance.PopAsync();
+                                    return;
+                                }
+                            }
+                        }
                         else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements || IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
                         {
                             if (VatAttachmentsList != null)
