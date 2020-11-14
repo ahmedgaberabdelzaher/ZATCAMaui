@@ -2060,11 +2060,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             MaxAmountTitle = AppResources.ZakatMax + " 0.0";
             // maxAmount = 0.0;
             InputData = "";
-            TotalAmountSAR = "0.00 SAR";
+            TotalAmountSAR = "0.00";
             VATDueAmount = "0.00";
             VATPenalityAmount = "0.00";
-            VATBillDueAmount = "0.00 SAR";
-            VATLiabilityAmount = "0.00 SAR";
+            VATBillDueAmount = "0.00";
+            VATLiabilityAmount = "0.00";
             CurrentIndex = 1;
             Year1 = "";
             Year2 = "";
@@ -4450,8 +4450,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
 
                 EnableVATBillView();
-                TotalAmountSAR = string.Format("{0:N2}", totalAmountDue) + " SAR";
-                VATBillDueAmount = string.Format("{0:N2}", totalAmountDue) + " SAR";
+                TotalAmountSAR = string.Format("{0:N2}", totalAmountDue);
+                VATBillDueAmount = string.Format("{0:N2}", totalAmountDue);
 
                 if (totalAmountDue > 0)
                 {

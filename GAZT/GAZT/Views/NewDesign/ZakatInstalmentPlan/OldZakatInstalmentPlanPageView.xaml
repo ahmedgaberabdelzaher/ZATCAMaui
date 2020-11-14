@@ -1259,7 +1259,7 @@
                                         <Grid HorizontalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
 
                                             <border:SfBorder Grid.Row="0" Margin="0,0,0,10" Padding="12"
@@ -1274,22 +1274,26 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon" Margin="5,0" WidthRequest="25" HeightRequest="25"
-                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
 
-                                                    <Label Grid.Row="0" Grid.Column="1"
-                                                               Text="{Binding Filename}"
-                                                               Style="{StaticResource CaptionLabelBlack}"
-                                                               LineHeight="0.8"
-                                                               HorizontalOptions="FillAndExpand"
-                                                               VerticalOptions="Center"/>
+                                                     <StackLayout Grid.Row="0" Grid.Column="0" >
+                                                    <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
+                                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+
+                                                       <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                    <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
+                                                </StackLayout>
+
+                                                   
 
                                                     <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                                     Text="{Binding Filename}"
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     VerticalOptions="Center"/>-->
-                                                    <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                                                   <StackLayout Grid.Row="0" Grid.Column="2" >
+
+                                                       <Image HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        Rotation="90">
                                                         <Image.Source>
@@ -1298,6 +1302,8 @@
                                                                          Glyph="{x:Static FontImage:IconFonts.Close}" />
                                                         </Image.Source>
                                                     </Image>
+                                                </StackLayout>
+                                                    
                                                 </Grid>
                                             </border:SfBorder>
                                             
@@ -1381,22 +1387,19 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon" Margin="5,0" WidthRequest="25" HeightRequest="25"
-                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
 
-                                                    <Label Grid.Row="0" Grid.Column="1"
-                                                               Text="{Binding Filename}"
-                                                               Style="{StaticResource CaptionLabelBlack}"
-                                                               LineHeight="0.8"
-                                                               HorizontalOptions="FillAndExpand"
-                                                               VerticalOptions="Center"/>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0" >
+                                                    <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
+                                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                </StackLayout>
 
-                                                    <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
-                                                                    Text="{Binding Filename}"
-                                                                    FontSize="Small" TextColor="Black"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    VerticalOptions="Center"/>-->
-                                                    <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                                                  <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                    <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
+                                                </StackLayout>
+
+                                                   <StackLayout Grid.Row="0" Grid.Column="2" >
+
+                                                        <Image HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        Rotation="90">
                                                         <Image.Source>
@@ -1405,6 +1408,16 @@
                                                                          Glyph="{x:Static FontImage:IconFonts.Close}" />
                                                         </Image.Source>
                                                     </Image>
+                                                </StackLayout>
+                                              
+
+
+                                                    <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                                    Text="{Binding Filename}"
+                                                                    FontSize="Small" TextColor="Black"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    VerticalOptions="Center"/>-->
+                                                   
                                                 </Grid>
                                             </border:SfBorder>
                                            
@@ -1820,7 +1833,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="1"/>
                                 <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSummary}" HorizontalOptions="StartAndExpand"
@@ -1953,13 +1966,13 @@
                             <!--Summary Attachments-->
 
                             <border:SfBorder  Margin="0,16,0,10" Grid.Row="5" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-
+                                 <StackLayout Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Grid Padding="0">
 
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"></RowDefinition>
                                         <RowDefinition Height="auto"></RowDefinition>
-                                        <RowDefinition Height="auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
 
                                     </Grid.RowDefinitions>
                                     <Grid Padding="15" RowSpacing="0" Grid.Row="0" >
@@ -1992,37 +2005,39 @@
 
                                     <BoxView Grid.Row="1" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                     <listView:SfListView Grid.Row="2" x:Name="SummaryAttachmentsListView" HorizontalOptions="Center"  VerticalOptions="StartAndExpand" IsScrollingEnabled="False" IsScrollBarVisible="False"
+                                     <listView:SfListView Grid.Row="2" x:Name="SummaryAttachmentsListView" HorizontalOptions="Center"  VerticalOptions="StartAndExpand" IsScrollingEnabled="False" IsScrollBarVisible="False" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent" Padding="3,0,3,0">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0">
+                                                <Grid Padding="0" RowSpacing="0" Margin="10,5,10,0">
                                                     <Grid.RowDefinitions >
                                                         <RowDefinition Height="auto"/>
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="auto"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
 
 
-                                                    <Grid Grid.Row="0" Grid.Column="0">
-                                                        <Image Source="Generic_attachment_icon"  WidthRequest="25" HeightRequest="25"
-                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                 <StackLayout Grid.Row="0" Grid.Column="0" >
+                                                    <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
+                                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                                </StackLayout>
 
-                                                    </Grid>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Margin="10,0,10,0">
 
-                                                    <Grid Grid.Row="0" Grid.Column="1">
-                                                        <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Style="{StaticResource BodyLabelBlack}" />
-                                                    </Grid>
+                                                    <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
+                                                </StackLayout>
+
+                                                  
                                                 </Grid>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                     </listView:SfListView>
 
                                 </Grid>
+                              </StackLayout>
+
                             </border:SfBorder >
 
 
