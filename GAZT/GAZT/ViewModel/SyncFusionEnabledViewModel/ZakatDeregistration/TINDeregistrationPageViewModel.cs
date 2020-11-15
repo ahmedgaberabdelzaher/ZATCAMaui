@@ -675,6 +675,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsOption2Visible");
             }
         }
+        private bool _IsPermitOption1Visible = false;
+        public bool IsPermitOption1Visible
+        {
+            get
+            {
+                return _IsPermitOption1Visible;
+            }
+            set
+            {
+                _IsPermitOption1Visible = value;
+                RaisePropertyChanged("IsPermitOption1Visible");
+            }
+        }
+
+        private bool _IsPermitOption2Visible = false;
+        public bool IsPermitOption2Visible
+        {
+            get
+            {
+                return _IsPermitOption2Visible;
+            }
+            set
+            {
+                _IsPermitOption2Visible = value;
+                RaisePropertyChanged("IsPermitOption2Visible");
+            }
+        }
+        
+        private bool _IsPermitTypesVisible = false;
+        public bool IsPermitTypesVisible
+        {
+            get
+            {
+                return _IsPermitTypesVisible;
+            }
+            set
+            {
+                _IsPermitTypesVisible = value;
+                RaisePropertyChanged("IsPermitTypesVisible");
+            }
+        }
+
 
         private TINDeregistrationModel _selectedOutletOption;
         public TINDeregistrationModel SelectedOutletOption
@@ -814,14 +856,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 return _vatDeregistrationSummaryDeclarationData;
             }
-
             set
             {
                 if (_vatDeregistrationSummaryDeclarationData == value)
                 {
                     return;
                 }
-
                 _vatDeregistrationSummaryDeclarationData = value;
                 RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
@@ -2062,6 +2102,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             PopulateIdTypeTypeFromList();
             IsOption1Visible = false;
             IsOption2Visible = false;
+            IsPermitOption1Visible = false;
+            IsPermitOption2Visible = false;
             VoidIsVisible = false;
             EnableReasonView();
         }
@@ -2903,24 +2945,41 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             if (TinDeregistrationData.ADregOpt == "3")
             {
+                if(SingleDeregistrationDate == null)
+                {
+                    IsPermitTypesVisible = false;
+                    flag = false;
+                    IsOutletContinueButtonEnabled = false;
+                    OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+
+                }
+                else
+                {
+                    IsPermitTypesVisible = true;
+                    IsOutletContinueButtonEnabled = true;
+                    OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+
+
+                }
                 AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                 List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
-                    if (string.IsNullOrEmpty(outletInfo.AOutletEffDtTb))
-                    {
-                        flag = false;
-                        IsOutletContinueButtonEnabled = false;
-                        OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
-                        break;
-                    }
-                    else
-                    {
-                        IsOutletContinueButtonEnabled = true;
-                        OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    //if (string.IsNullOrEmpty(outletInfo.AOutletEffDtTb))
+                    //{
+                    //    flag = false;
+                    //    IsOutletContinueButtonEnabled = false;
+                    //    OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
 
-                    }
+                    //    //break;
+                    //}
+                    //else
+                    //{
+                    //    IsOutletContinueButtonEnabled = true;
+                    //    OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+
+                    //}
 
                     outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
 
@@ -3760,14 +3819,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //This attachment is needed when transferring the outlets and not closing for all the cases
             if (TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
             {
-                check.Add(new TinDeregestrationAttachmentsModel
+                if (TinDeregistrationData.ADregOpt == "3")
                 {
-                    FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
-                    AttachmentName = string.Empty,
-                    IsAttachmentAttached = false,
-                    DocType = "DR07",
-                    IsMandatory = true
-                });
+                    if (SelectedPermitOutletOptionIndex == 1)
+                    {
+                        check.Add(new TinDeregestrationAttachmentsModel
+                        {
+                            FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
+                            AttachmentName = string.Empty,
+                            IsAttachmentAttached = false,
+                            DocType = "DR07",
+                            IsMandatory = true
+                        });
+                    }
+                }
+                else
+                {
+                    check.Add(new TinDeregestrationAttachmentsModel
+                    {
+                        FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
+                        AttachmentName = string.Empty,
+                        IsAttachmentAttached = false,
+                        DocType = "DR07",
+                        IsMandatory = true
+                    });
+                }
             }
 
             //In all Cases

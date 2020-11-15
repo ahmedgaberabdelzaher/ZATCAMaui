@@ -47,7 +47,7 @@
                         </Grid>-->
 
       <Grid>
-        
+  
               <ScrollView>
                 <Grid IsVisible="true" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
@@ -154,14 +154,14 @@
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
 
-                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
+                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsPermitOption1Visible}" >
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="{Binding SingleDeregistrationDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding BindingContext.SingleDeregistrationDate,Source={x:Reference TinDeregIndOutlets}}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Margin="5,0">
                                             <Image.Source>
@@ -189,7 +189,7 @@
                             </StackLayout.Triggers>-->
                  </StackLayout>
 
-                 <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="false">
+                 <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsPermitOption2Visible}">
                         <!--<StackLayout.Triggers>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
                                 <Setter Property="IsVisible" Value="false" />
@@ -211,7 +211,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                        <Label Text="{Binding SingleDeregistrationDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding BindingContext.SingleDeregistrationDate,Source={x:Reference TinDeregIndOutlets}}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -235,7 +235,7 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                     <custom:BorderlessEntry x:Name="EntryTIN" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding }" 
+                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding BindingContext.TINNumber, Source={x:Reference TIN}}" 
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                 <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
@@ -259,7 +259,7 @@
                                         </StackLayout>
 
                                         <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding IdTypeTapped}" ></TapGestureRecognizer>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"  ></TapGestureRecognizer>
                                         </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
@@ -435,12 +435,12 @@
                  <custom:CustomLabel IsVisible="{Binding IsNodataAvailableVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.Nodataavailable}" HorizontalOptions="CenterAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" />
 
-                 <listView:SfListView BackgroundColor="White" Margin="-3,0,-3,0" IsVisible="{Binding IsMultiplePermitsVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedOutletForCloseTranser.PermitTypes}" x:Name="outletsListView" HorizontalOptions="Center"
-                                             IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                SelectionMode="Single" SelectionBackgroundColor="Transparent">
+                 <ListView BackgroundColor="White" Margin="0,0,0,0" IsVisible="{Binding IsMultiplePermitsVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedOutletForCloseTranser.PermitTypes}" x:Name="outletsListView" HorizontalOptions="Center"
+                                             HasUnevenRows="True"  VerticalOptions="Center" >
                       
-                        <listView:SfListView.ItemTemplate>
+                        <ListView.ItemTemplate>
                             <DataTemplate>
+                                <ViewCell>
                                 <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Padding="0">
                                     <Grid Padding="15" RowSpacing="0" >
@@ -583,7 +583,9 @@
                                                                             Style="{StaticResource CaptionLabelGrey}" />
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HasError="{Binding FrameTinError}"
+                                                  <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5,15,5,15">
+
+                                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HorizontalOptions="FillAndExpand" HasError="{Binding FrameTinError}"
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                                             <custom:BorderlessEntry x:Name="EntryTINPermitType" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
@@ -595,6 +597,7 @@
                                                                 </Entry.Behaviors>
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
+                                                                                    </StackLayout>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
@@ -621,9 +624,11 @@
                                                         </StackLayout>
 
                                                         <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
-                                                                            Style="{StaticResource CaptionLabelGrey}" />     
-                                                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="FillAndExpand"
+                                                                            Style="{StaticResource CaptionLabelGrey}" />
+                        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5,15,5,15">
+
+                                                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HorizontalOptions="FillAndExpand"
 							                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							                                    OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                                                 <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
@@ -634,6 +639,7 @@
                                                                             </Entry.Behaviors>
                                                                 </custom:BorderlessEntry>
                                                             </inputLayout:SfTextInputLayout>
+                            </StackLayout>
                                                         </StackLayout>
                                                          <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                                              <StackLayout  IsVisible="{Binding DobText.IsVisible}">
@@ -673,10 +679,10 @@
                                         </Grid>
                                 </StackLayout>
                                 </border:SfBorder >
-
+                            </ViewCell>
 			                </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                 </listView:SfListView>
+                        </ListView.ItemTemplate>
+                 </ListView>
 
 
                  <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
