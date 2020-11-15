@@ -647,7 +647,7 @@
                                                             Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                         <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>
@@ -664,7 +664,7 @@
                                                             Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                               <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>
@@ -680,7 +680,7 @@
                                     <control:BorderlessEntry Text="{Binding IDTypeDataModel.FatherName}" IsEnabled="{Binding FathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                               <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>
@@ -696,7 +696,7 @@
                                     <control:BorderlessEntry Text="{Binding IDTypeDataModel.GrandfatherName}" IsEnabled="{Binding GrandFathersNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                               <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>
@@ -713,7 +713,7 @@
                                     <control:BorderlessEntry Text="{Binding IDTypeDataModel.FamilyName}" IsEnabled="{Binding FamilyNameText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                               <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>
@@ -733,7 +733,7 @@
                                     <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name1}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" IsEnabled="{Binding Name1Text.IsEditable}" Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                               <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>
@@ -749,7 +749,7 @@
                                     <control:BorderlessEntry Text="{Binding IDTypeDataModel.Name2}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" IsEnabled="{Binding Name2Text.IsEditable}"  Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
-                                               <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>
@@ -1142,117 +1142,120 @@
 
             </ScrollView>-->
             </ScrollView>
-            <ScrollView IsVisible="{Binding IsAttachmentsViewEnabled}">
-                <StackLayout IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  
+            <Grid IsVisible="{Binding IsAttachmentsViewEnabled}">
+                <ScrollView >
+                    <StackLayout IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  
                              Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Attachment}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Attachment}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlack}" />
-                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationProvideSuportingDocuments}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationProvideSuportingDocuments}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
-                    <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                        <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                    <ListView  x:Name="attachmentsListView"  ItemsSource="{Binding AttachmentsListViewData}" HasUnevenRows="True"
+                        <ListView  x:Name="attachmentsListView"  ItemsSource="{Binding AttachmentsListViewData}" HasUnevenRows="True"
                                       SelectionMode="None" SeparatorColor="Transparent">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Spacing="2" BindingContextChanged="attachmentsListViewChild_BindingContextChanged">
-                                        <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Spacing="2" BindingContextChanged="attachmentsListViewChild_BindingContextChanged">
+                                            <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
                                              Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start"
                                                    FlowDirection="LeftToRight" />
 
-                                        <Frame BorderColor="#B1B1B1" HasShadow="False" Padding="12" HeightRequest="30" CornerRadius="15" Margin="0,10,0,0" >
-                                            <StackLayout Orientation="Horizontal">
-                                                <custom:BorderlessEntry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                            <Frame BorderColor="#B1B1B1" HasShadow="False" Padding="12" HeightRequest="30" CornerRadius="15" Margin="0,10,0,0" >
+                                                <StackLayout Orientation="Horizontal">
+                                                    <custom:BorderlessEntry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
                                                        HorizontalTextAlignment="Start" VerticalOptions="Center" Text="{Binding AttachmentName}"  />
-                                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="90">
-                                                    <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
+                                                    <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="90">
+                                                        <Image.Source>
+                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
                                                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                    </Image.Source>
-                                                </Image>
-                                            </StackLayout>
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                        </Image.Source>
+                                                    </Image>
+                                                </StackLayout>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1"
                                                                       Tapped="AddAttachment_Tapped" CommandParameter="{Binding .}"/>
-                                            </Frame.GestureRecognizers>
-                                        </Frame>
-                                        <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,10,0,0"
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+                                            <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,10,0,0"
                                                     Style="{StaticResource CaptionLabelGrey}" />
-                                        <StackLayout BindableLayout.ItemsSource="{Binding AttachmentTypeList}"
+                                            <StackLayout BindableLayout.ItemsSource="{Binding AttachmentTypeList}"
                                             HorizontalOptions="Center" >
-                                            <BindableLayout.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Grid HorizontalOptions="FillAndExpand">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
-                                                        </Grid.RowDefinitions>
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid HorizontalOptions="FillAndExpand">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
 
 
-                                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                                     Text="{Binding Doctyp}"
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     VerticalOptions="Center"/>
-                                                        <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="12"
+                                                            <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="12"
                                                          Style="{StaticResource SfStyleGreyBorderFrame}">
-                                                            <Grid>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="auto" />
-                                                                    <RowDefinition Height="auto" />
-                                                                </Grid.RowDefinitions>
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="auto" />
+                                                                        <RowDefinition Height="auto" />
+                                                                    </Grid.RowDefinitions>
 
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="auto" />
-                                                                    <ColumnDefinition Width="auto" />
-                                                                </Grid.ColumnDefinitions>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="auto" />
+                                                                        <ColumnDefinition Width="auto" />
+                                                                    </Grid.ColumnDefinitions>
 
-                                                                <!--<Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                                    <!--<Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>-->
-                                                                <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon.png" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                                    <Image Grid.Row="0" Grid.Column="0" Source="Generic_attachment_icon.png" Margin="5,0" WidthRequest="25" HeightRequest="25"
                                                        HorizontalOptions="Start" VerticalOptions="Center"/>
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                                     Text="{Binding Filename}"
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     VerticalOptions="Center"/>
-                                                                <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand"
+                                                                    <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand"
                                                        VerticalOptions="Center"
                                                        Rotation="90">
-                                                                    <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                                        <Image.Source>
+                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
                                                                          Size="24"
                                                                          Glyph="{x:Static FontImage:IconFonts.Close}" />
-                                                                    </Image.Source>
-                                                                </Image>
-                                                            </Grid>
-                                                        </border:SfBorder>
-                                                        <Grid.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="DeleteAttachment_Tapped"
+                                                                        </Image.Source>
+                                                                        <Image.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="DeleteAttachment_Tapped"
                                                               NumberOfTapsRequired="1" CommandParameter="{Binding .}"/>
-                                                            <!--Command="{Binding NewContractCopyAttachmentTapped}"-->
-                                                        </Grid.GestureRecognizers>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </BindableLayout.ItemTemplate>
+                                                                            <!--Command="{Binding NewContractCopyAttachmentTapped}"-->
+                                                                        </Image.GestureRecognizers>
+                                                                    </Image>
+                                                                </Grid>
+                                                            </border:SfBorder>
+
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </StackLayout>
+
+
                                         </StackLayout>
+                                    </ViewCell>
 
+                                </DataTemplate>
 
-                                    </StackLayout>
-                                </ViewCell>
+                            </ListView.ItemTemplate>
 
-                            </DataTemplate>
-
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-                    <buttons:SfButton HeightRequest="48" VerticalOptions="End"  Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+                <buttons:SfButton HeightRequest="48" VerticalOptions="End"  Margin="20,16,20,5" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
-
-                </StackLayout>
-            </ScrollView>
+            </Grid>
+          
 
             <ScrollView IsVisible="{Binding IsDeclarationViewEnabled}">
                 <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1334,7 +1337,7 @@
                                     <control:BorderlessEntry Keyboard="Numeric" Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" Unfocused="EntryMobileNo_Unfocused"
                                                                 TextColor="#bbbbbb" HorizontalOptions="FillAndExpand" MaxLength="10">
-                                          <control:BorderlessEntry.Behaviors>
+                                        <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
                                     </control:BorderlessEntry>

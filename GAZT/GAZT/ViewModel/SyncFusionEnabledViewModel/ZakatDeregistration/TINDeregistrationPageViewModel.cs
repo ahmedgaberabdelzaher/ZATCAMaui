@@ -62,7 +62,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         #endregion
 
         #region Properties
-
+        public string attachmentsListViewDataString { get; set; }
         private string _labelText;
         public string LabelText
         {
@@ -374,7 +374,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     EnableOutletDetaislView(true);
 
-                     IsOutletContinueButtonEnabled = true;
+                    IsOutletContinueButtonEnabled = true;
                 }
                 else
                 {
@@ -573,8 +573,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<TinDeregestrationAttachmentsModel> attachmentsListViewData { get; set; }
-        public ObservableCollection<TinDeregestrationAttachmentsModel> AttachmentsListViewData
+        public List<TinDeregestrationAttachmentsModel> attachmentsListViewData { get; set; }
+        public List<TinDeregestrationAttachmentsModel> AttachmentsListViewData
         {
             get
             {
@@ -1102,7 +1102,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 SelectedIdNumber = string.Empty;
                                 SelectedDob = string.Empty;
-                                
+
                                 GCCIdTypeSelected();
                             }
                         }
@@ -3206,7 +3206,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (SelectedOutletOptionIndex == 1)
                 {
-                    if (string.IsNullOrEmpty(SelectedIdNumber)|| string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
+                    if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         return;
@@ -3231,7 +3231,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
                         {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob)|| string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
+                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 return;
@@ -3380,6 +3380,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
+                TinDeregistrationData.AttDetSet.Results?.Clear();
+                foreach (var item in AttachmentsListViewData)
+                {
+                    if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                        TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
+                }
                 bool isMandatoryDocAttached = false;
                 foreach (TinDeregestrationAttachmentsModel reqAttachment in AttachmentsListViewData)
                 {
@@ -3795,7 +3801,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 AttachmentsListViewData.Clear();
             }
-            AttachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>(check);
+            AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
 
             foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
             {
@@ -3805,12 +3811,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (attachmentsModelsTemp.AttachmentTypeList == null)
                             attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
-
-                        attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                        if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                            attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
                     }
                 }
             }
-
+            TinDeregistrationData.AttDetSet.Results?.Clear();
+            foreach (var item in AttachmentsListViewData)
+            {
+                if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                    TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
+            }
+            AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
+            // attachmentsListViewDataString = JsonConvert.SerializeObject(attachmentsListViewData);
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
@@ -3825,12 +3838,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (attachmentsModelsTemp.AttachmentTypeList == null)
                             attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
-
-                        attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
+                        if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                            attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
                     }
                 }
             }
-            AttachmentTypeList = attachments;
+            TinDeregistrationData.AttDetSet.Results?.Clear();
+            foreach (var item in AttachmentsListViewData)
+            {
+                if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                    TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
+            }
+            AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
             EnableAttachments();
         }
 
@@ -3859,8 +3878,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
+                TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(TinDeregistrationData.AttDetSet.Results, Models.ZakatInstalationModels.WhichAttachment.TINDeregistration
-                           , TinDeregistrationData.CaseGuid, SelectedAttachment.DocType));
+                        , TinDeregistrationData.CaseGuid, SelectedAttachment.DocType));
 
             }
             catch (GAZTUnlockAccountException ex)

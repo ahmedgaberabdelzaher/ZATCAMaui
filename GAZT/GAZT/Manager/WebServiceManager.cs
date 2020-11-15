@@ -8324,7 +8324,7 @@ namespace GAZT.Manager
         }
 
 
-        public static string GAZTGenericDeleteAttachment(string fileName, string RetGuid, string aPiMethod)//, string returnedFguid
+        public static string GAZTGenericDeleteAttachment(string fileName, string RetGuid, string aPiMethod, string doGuid="")//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -8336,7 +8336,7 @@ namespace GAZT.Manager
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url = Constants.GAZTDeteleAttachmentNew +"RetGuid='" + RetGuid + "',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + doGuid + "',AttBy='TP',OutletRef='')/$value";
                     url = url.Replace("attachmentServiceurl", aPiMethod);
                     // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
@@ -8358,6 +8358,8 @@ namespace GAZT.Manager
                         {
                             DeleteToken = values.First();
                         }
+                        if (res.StatusCode == HttpStatusCode.NoContent)
+                            DeleteToken = "X";
                     }
                     return DeleteToken;
                 }
@@ -9481,7 +9483,7 @@ namespace GAZT.Manager
                 try
                 {
 
-                    
+
                     euser1 = "null";
                     string auditor = "null";
                     string euser2 = "null";
@@ -9894,7 +9896,7 @@ namespace GAZT.Manager
                     {
                         ErrorMessage = string.Empty;
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-           
+
                         if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                         {
                             string errorMessage = string.Empty;
@@ -10112,7 +10114,7 @@ namespace GAZT.Manager
             }
             return taxPayer;
         }
-        public static async Task<TaxPayerDetails> ZakatAmendESTTaxPayerDetailGetService(string step, string TIN, string emailID, string srcidentify = null, string Fbnum = null, string Fbstax = null,string Fbustx = null)
+        public static async Task<TaxPayerDetails> ZakatAmendESTTaxPayerDetailGetService(string step, string TIN, string emailID, string srcidentify = null, string Fbnum = null, string Fbstax = null, string Fbustx = null)
         {
             TaxPayerDetails taxPayer = new TaxPayerDetails();
             if (CrossConnectivity.Current.IsConnected)
@@ -10129,10 +10131,10 @@ namespace GAZT.Manager
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                //client.DefaultRequestHeaders.Add("Token", "123");
-              //  https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet(Gpartx='3102462394',Langx='',Operationx='',PortalUsrx='A5068535@GMAIL.COM',Srcidentifyx='O000',StepNumberx='03',Euser='',Fbguid='',Fbnumx='10001159118',Fbstax='IP011',Fbustx='E0001')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    //  https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet(Gpartx='3102462394',Langx='',Operationx='',PortalUsrx='A5068535@GMAIL.COM',Srcidentifyx='O000',StepNumberx='03',Euser='',Fbguid='',Fbnumx='10001159118',Fbstax='IP011',Fbustx='E0001')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet
 
-                    var uri = Constants.ESTTaxPayerDetails + "("+ "Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='"+ lang +"',Operationx='" + "',PortalUsrx='" +emailID+ "',Srcidentifyx='" + srcidentify + "',StepNumberx='" + step + "',Euser='" + "',Fbguid='" + "',Fbnumx='"+Fbnum +"',Fbstax='"+Fbstax+"',Fbustx='"+Fbustx+"')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet&$format=json";
+                    var uri = Constants.ESTTaxPayerDetails + "(" + "Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "',Operationx='" + "',PortalUsrx='" + emailID + "',Srcidentifyx='" + srcidentify + "',StepNumberx='" + step + "',Euser='" + "',Fbguid='" + "',Fbnumx='" + Fbnum + "',Fbstax='" + Fbstax + "',Fbustx='" + Fbustx + "')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet&$format=json";
 
 
 
@@ -10192,7 +10194,7 @@ namespace GAZT.Manager
                             try
                             {
                                 replaceDString = JObject.Parse(jsonReplace)["d"].ToString();
-                                
+
                             }
                             catch (Exception ex)
                             {

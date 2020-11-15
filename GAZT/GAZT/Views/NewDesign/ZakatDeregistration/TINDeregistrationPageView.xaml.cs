@@ -14,6 +14,7 @@ using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Syncfusion.XForms.Cards;
@@ -35,12 +36,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             ChangeAeroIcon();
             SetLTR();
-           // ChangeArrowDirection();
+            // ChangeArrowDirection();
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
+            //viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>();
             this.BindingContext = viewModel;
-
+            viewModel.LoadReasonSet();
+            viewModel.PopulateAttachmentsListViewTemplate();
 
             MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
             {
@@ -159,10 +162,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
             {
-                if (arg != null)
+                if (arg != null && arg.results != null && arg.results.Count > 0)
                 {
                     viewModel.TinDeregistrationData.AttDetSet.Results = arg.results;
-                    viewModel.PopulateAttachmentsListViewTemplate();
+                    viewModel.PopulateAttachments(null);
 
                     foreach (Attachment attachment in viewModel.TinDeregistrationData.AttDetSet.Results)
                     {
@@ -240,8 +243,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 Console.WriteLine(arg);
             });
 
-            viewModel.LoadReasonSet();
-            viewModel.PopulateAttachmentsListViewTemplate();
 
             if (viewModel.TinDeregistrationData.ADregOpt == "3")
             {
@@ -277,6 +278,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            Xamarin.Forms.MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
@@ -331,7 +334,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
 
-            if(viewModel.SelectedOutletOptionIndex == 1)
+            if (viewModel.SelectedOutletOptionIndex == 1)
             {
                 viewModel.NationalTypeSelected();
             }
@@ -413,9 +416,16 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             Grid cardView = new Grid() { HeightRequest = 100 };
             Grid grid = new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, ColumnSpacing = 20, RowSpacing = 10 };
             Image image = new Image() { Source = ImageSource.FromFile("vat_tile_listofsignup"), Aspect = Aspect.Fill, HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-            Label label = new Label() { HorizontalOptions = LayoutOptions.StartAndExpand, VerticalOptions = LayoutOptions.EndAndExpand, Style = captionStyle,
-                             Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions,
-                             Margin = new Thickness(20, 0, 20, 20), TextColor = Color.White, HorizontalTextAlignment = TextAlignment.Start };
+            Label label = new Label()
+            {
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                Style = captionStyle,
+                Text = ((TINDeregistrationModel)outletDecisionOptionsListView.SelectedItem).ActiveOutletDecisionOptions,
+                Margin = new Thickness(20, 0, 20, 20),
+                TextColor = Color.White,
+                HorizontalTextAlignment = TextAlignment.Start
+            };
             grid.Children.Add(image);
             grid.Children.Add(label);
 
@@ -1641,18 +1651,31 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        private void DeleteAttachment_Tapped(object sender, EventArgs e)
+        private async void DeleteAttachment_Tapped(object sender, EventArgs e)
         {
             try
             {
-                Attachment selectedOutlet = (Attachment)(e as TappedEventArgs).Parameter;
-                var list = viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Any(q => q.Filename == selectedOutlet.Filename)).Select(f => f.AttachmentTypeList).FirstOrDefault();
-                list.Remove(selectedOutlet);
+                Attachment selectedAttachment = (Attachment)(e as TappedEventArgs).Parameter;
+                var list = viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Any(q => q.Filename == selectedAttachment.Filename)).Select(f => f.AttachmentTypeList).FirstOrDefault();
+                list.Remove(selectedAttachment);
                 list = new List<Attachment>(list);
-
-                //viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Contains(selectedOutlet)).Select(q => q.AttachmentTypeList).FirstOrDefault() = list;
-                viewModel.AttachmentTypeList = list;
-                viewModel.PopulateAttachments(viewModel.AttachmentTypeList);
+                // viewModel.PopulateAttachments(viewModel.AttachmentTypeList);
+                //   viewModel.AttachmentsListViewData = JsonConvert.DeserializeObject<List<TinDeregestrationAttachmentsModel>>(viewModel.attachmentsListViewDataString);
+                string results = WebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, viewModel.TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
+                if (results == "X")
+                {
+                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in viewModel.AttachmentsListViewData)
+                    {
+                        //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+                        if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
+                        {
+                            var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
+                            if (index != null)
+                                attachmentsModelsTemp.AttachmentTypeList.Remove(index);
+                        }
+                    }
+                    viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
+                }
             }
             catch (Exception ex)
             {

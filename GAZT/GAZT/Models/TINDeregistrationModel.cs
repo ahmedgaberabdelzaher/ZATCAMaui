@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight;
 using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
@@ -23,7 +24,7 @@ namespace EGAZT.Models
 
     }
 
-    public class TinDeregestrationAttachmentsModel : INotifyPropertyChanged
+    public class TinDeregestrationAttachmentsModel : ViewModelBase
     {
         public TinDeregestrationAttachmentsModel()
         {
@@ -39,7 +40,7 @@ namespace EGAZT.Models
             set
             {
                 _attachmentTypeList = value;
-                OnPropertyRaised("AttachmentTypeList");
+                RaisePropertyChanged("AttachmentTypeList");
             }
         }
 

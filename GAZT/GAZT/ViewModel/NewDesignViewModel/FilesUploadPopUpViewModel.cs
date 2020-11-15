@@ -538,7 +538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     bool IsAttachmentPresent = false;
                                                     foreach (Attachment ItemA in AttachmentsList.results)
                                                     {
-                                                        
+
                                                         if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                         {
                                                             IsAttachmentPresent = true;
@@ -769,7 +769,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                             }
                                         }
-                                        else { 
+                                        else
+                                        {
                                             if (Convert.ToDecimal(AttachmentSize) <= 5)
                                             {
                                                 if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
@@ -1023,7 +1024,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
 
-                        string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, attachment.Doguid, APiMethod);
+                        string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
                         {
