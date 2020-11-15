@@ -212,7 +212,7 @@
                                     </Grid>
                            
                                     <StackLayout Padding="0">
-                                        <progressBar:SfLinearProgressBar Progress="100" x:Name="TaxBalanceProgress" ProgressColor="{StaticResource Primary}" TrackHeight="16" HeightRequest="16" CornerRadius="8">
+                                        <progressBar:SfLinearProgressBar Progress="100" x:Name="TaxBalanceProgress" ProgressColor="#006450" TrackHeight="16" HeightRequest="16" CornerRadius="8">
                                         </progressBar:SfLinearProgressBar>
                                     </StackLayout>
                                     <Grid ColumnSpacing="20" Padding="0" RowSpacing="0">
