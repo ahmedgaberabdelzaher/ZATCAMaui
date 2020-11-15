@@ -73,8 +73,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
             int index = Convert.ToInt16(viewModel.SelectedPermitOutletOptionIndex);
-           // viewModel.IsOption1Visible = index == 0 ? true : false;
-            //viewModel.IsOption2Visible = index == 1 ? true : false;
+            viewModel.IsPermitOption1Visible = index == 0 ? true : false;
+            viewModel.IsPermitOption2Visible = index == 1 ? true : false;
         }
         protected override void OnAppearing()
         {
@@ -635,6 +635,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel.OnIdTypeClicked();
+        }
 
     }
 }

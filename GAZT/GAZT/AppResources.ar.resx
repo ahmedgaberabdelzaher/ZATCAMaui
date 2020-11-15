@@ -2017,7 +2017,7 @@
     <comment>Zakat return details</comment>
   </data>
     <data name="ZZDeleteAttachmentConfirmationText" xml:space="preserve">
-    <value>هل تريد حذف</value>
+    <value>هل تريد بالتأكيد حذف</value>
     <comment>Estimated Zakat</comment>
   </data>
     <data name="ZZDELETEFILE" xml:space="preserve">

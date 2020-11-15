@@ -2277,9 +2277,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         //step 4 and 5 data set
                         if (vATRegistration.d.CONTACT_PERSONSet != null)
                         {
-                                IsChangeEmailCheckBoxEnabled = true;
+                                if(!string.IsNullOrEmpty(vATRegistration.d.CONTACTDTSet.results[0].MobNumber))
+                                {
+                                    IsChangeEmailCheckBoxEnabled = true;
+                                }
+                               else
+                               {
+                                     IsChangeEmailCheckBoxEnabled = false;
+                               }
 
-                                ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
+                            ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
                             GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                             //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                             idnumber = string.Empty;
@@ -2322,11 +2329,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             ATTDETSetObject = new ATTDETSet();
                             ATTDETSetObject = vATRegistration.d.ATTDETSet;
 
+
+
                             }
-                            else
-                            {
-                                IsChangeEmailCheckBoxEnabled = false;
-                            }
+                          
                           
 
                         //Step 5
@@ -2421,7 +2427,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             if (vATRegistration.d.Decconno != null)
 
 
-                                IdNumberSR = vATRegistration.d.DecidNo;
+                            IdNumberSR = vATRegistration.d.DecidNo;
                             FirstNameSR = vATRegistration.d.Decname;
 
                             //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
