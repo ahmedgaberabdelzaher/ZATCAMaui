@@ -21,7 +21,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         private ActivityItemAmendUpdatePageViewModel viewModel;
         public ActivityItemAmendUpdatePage(ActivityNavigationModels activityNavigation)
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
+            viewModel.IsEditingMode = activityNavigation.IsEditingMode;
+            viewModel.PageType = activityNavigation.PageType;
             _activityNavigation = activityNavigation;
             viewModel = App.Locator.ActivityItemAmendUpdatePageView;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
@@ -32,19 +42,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.goBackAction = _activityNavigation.goBackAction;
             viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.results.Where(i => i.Actno == $"{Int16.Parse(_activityNavigation.nextNumber?.Actno):000}").ToList();
             viewModel.CurrentTab = _activityNavigation.openedTab;
+            viewModel.AddLicenseEnabled = false;
             BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
             if (viewModel.LicenseData.Count == 4)
             {
-                viewModel.AddLicenseEnabled = false; 
+                viewModel.AddLicenseEnabled = false;
             }
             else
             {
                 viewModel.AddLicenseEnabled = true;
 
             }
-            viewModel.SetUIAvailability();
         }
         private void SetLTR()
         {
@@ -76,7 +86,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             base.OnAppearing();
             viewModel?.OnAppearing();
-        
+
         }
         protected override void OnDisappearing()
         {

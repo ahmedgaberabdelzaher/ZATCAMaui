@@ -22,5 +22,7 @@ namespace EGAZT.Models
         public ValidateCR validateCR { get; set; } = null;
         public Nreg_ActivityItem validateLicense { get; set; } = null;
         public ActicityListDelegate goBackAction { get; set; } = null;
+        public bool IsEditingMode { get; set; }
+        public EstablishmentOutletActivitiesTabsEnum PageType { get; set; }
     }
 }

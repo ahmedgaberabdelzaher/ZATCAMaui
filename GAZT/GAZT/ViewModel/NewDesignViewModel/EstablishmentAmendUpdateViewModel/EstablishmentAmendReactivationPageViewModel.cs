@@ -2629,6 +2629,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             outletNavigationModels.idItem = idItem;
             outletNavigationModels.selectedOutletItem = item;
+            outletNavigationModels.IsEditingMode = true;
             _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
         }
         private void openNewOutlet()
@@ -2636,6 +2637,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             outletNavigationModels.idItem = idItem;
+            outletNavigationModels.IsEditingMode = false;
             _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
         }
         private void deleteOutlet(OutletItem item)
@@ -2991,7 +2993,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     {
                         taxPayerDetails.Xsexf = "X";
                     }
-                    taxPayerDetails.Natio = SelectedTaxpayerPDNationality?.Land1;
+                    taxPayerDetails.Natio = SelectedTaxpayerPDNationality?.Land1 == null ? "" : SelectedTaxpayerPDNationality?.Land1;
                     taxPayerDetails.Citizen = SelectedCitizen?.Land1 == null ? "" : SelectedCitizen.Land1;
                     taxPayerDetails.Residence = SelectedResidence?.Land1 == null ? "" : SelectedResidence?.Land1;
 

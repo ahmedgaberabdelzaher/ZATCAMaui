@@ -1186,6 +1186,16 @@ namespace EGAZT.Models.EstablishmentRegistration
                 OnPropertyChnaged(nameof(CRCopy));
             }
         }
+        private bool _deleteCRcopy;
+        public bool DeleteCRcopy
+        {
+            get => _deleteCRcopy;
+            set
+            {
+                _deleteCRcopy = value;
+                OnPropertyChnaged(nameof(DeleteCRcopy));
+            }
+        }
         private bool _transferCRCopy;
         public bool TransferCRCopy
         {
@@ -1194,6 +1204,16 @@ namespace EGAZT.Models.EstablishmentRegistration
             {
                 _transferCRCopy = value;
                 OnPropertyChnaged(nameof(TransferCRCopy));
+            }
+        }
+        private bool _deleteTransferCRCopy;
+        public bool DeleteTransferCRCopy
+        {
+            get => _deleteTransferCRCopy;
+            set
+            {
+                _deleteTransferCRCopy = value;
+                OnPropertyChnaged(nameof(DeleteTransferCRCopy));
             }
         }
         private bool _isTransferCRCopyVisible;
@@ -1324,6 +1344,16 @@ namespace EGAZT.Models.EstablishmentRegistration
             {
                 _licenseCopy = value;
                 OnPropertyChnaged(nameof(LicenseCopy));
+            }
+        }
+        private bool _deleteLicenseCopy;
+        public bool DeleteLicenseCopy
+        {
+            get => _deleteLicenseCopy;
+            set
+            {
+                _deleteLicenseCopy = value;
+                OnPropertyChnaged(nameof(DeleteLicenseCopy));
             }
         }
         private bool _transferLicenseCopy;

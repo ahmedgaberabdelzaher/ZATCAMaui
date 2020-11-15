@@ -706,6 +706,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
+                //nextNumber = IsEditingMode ? null : newNumber,
+                //IsEditingMode = IsEditingMode,
+                //PageType = _enum,
                 //SelectedOutlet = selectedOutletItem,
                 //EditEnabledMode = editModeEnabled,
                 //newActivityItems = activityItems,
@@ -726,22 +729,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                     {
                         CanExecute = true;
-                        _navigationService.NavigateTo(App.ActivityItemAmendUpdatePage, new ActivityNavigationModels()
-                        {
-                            openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
-                            taxPayerDetails = taxPayerDetails,
-                            nextNumber = newNumber,
-                            validateCR = validateCR,
-                           // SelectedOutlet = selectedOutletItem,
-                            validateLicense = PreLoadedLicenseItem,
-                            //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
-                            //newActivityItems = activityItems,
-                            goBackAction = (List<Nreg_ActivityItem> list) =>
-                            {
-                                addActivities(list);
-                                currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-                            }
-                        });
+                        //_navigationService.NavigateTo(App.ActivityItemAmendUpdatePage, new ActivityNavigationModels()
+                        //{
+                        //    openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
+                        //    taxPayerDetails = taxPayerDetails,
+                        //    nextNumber = newNumber,
+                        //    validateCR = validateCR,
+                        //   // SelectedOutlet = selectedOutletItem,
+                        //    validateLicense = PreLoadedLicenseItem,
+                        //    //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
+                        //    //newActivityItems = activityItems,
+                        //    goBackAction = (List<Nreg_ActivityItem> list) =>
+                        //    {
+                        //        addActivities(list);
+                        //        currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+                        //    }
+                        //});
+                        currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
                     }
                     else
                     {
@@ -860,11 +864,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
                 // var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-                
-                var _taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx,taxPayerDetails?.Fbstax,taxPayerDetails?.Fbustx
+
+                var _taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
                      );
 
-                 taxPayerDetails?.AttDetSet.results?.Clear();
+                taxPayerDetails?.AttDetSet.results?.Clear();
                 taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
             catch (Exception e)
@@ -993,7 +997,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
                     List<CountryDropdownItem> countries = OutletDropDowns?.country_dropdownSet?.results;
                     List<StateDropdownItem> states = OutletDropDowns?.State_dropdownSet?.results;
-               
+
                     if (selectedOutletItem != null)
                     {
 
