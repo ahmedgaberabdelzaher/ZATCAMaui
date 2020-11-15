@@ -1651,7 +1651,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 list = new List<Attachment>(list);
 
                 //viewModel.AttachmentsListViewData.Where(p => p.AttachmentTypeList.Contains(selectedOutlet)).Select(q => q.AttachmentTypeList).FirstOrDefault() = list;
-                //viewModel.AttachmentTypeList = viewModel.AttachmentTypeList;
+                viewModel.AttachmentTypeList = list;
+                viewModel.PopulateAttachments(viewModel.AttachmentTypeList);
             }
             catch (Exception ex)
             {
