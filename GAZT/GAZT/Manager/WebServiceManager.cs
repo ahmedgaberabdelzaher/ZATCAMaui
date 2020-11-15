@@ -9515,25 +9515,10 @@ namespace GAZT.Manager
                     {
                         if (GAZTzakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
-                            App.IsSessionExpired = true;
+                            //App.IsSessionExpired = true;
                             return null;
                         }
-                        HttpHeaders headers = GAZTzakatInstalmentDataResponse.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
-                        {
-                            NewToken = values.First();
-                            App.IsSessionExpired = false;
-                        }
-                        if ((!string.IsNullOrEmpty(NewToken)))
-                        {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            {
-                                App.IsSessionExpired = true;
-                                return null;
-                            }
-                            App.Token = NewToken;
-                        }
+                       
                         var _zakatInstalmentRequestData = GAZTzakatInstalmentDataResponse.Content.ReadAsStringAsync().Result;
                         _ZakatInstalmentPlanRequestList = JsonConvert.DeserializeObject<OldZakatInstalmentPlanRequestListModel>(_zakatInstalmentRequestData);
 
@@ -9560,7 +9545,7 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+                    //App.IsSessionExpired = true;
                     return null;
                 }
             }

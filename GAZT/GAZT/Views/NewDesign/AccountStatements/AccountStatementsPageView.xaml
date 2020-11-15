@@ -287,15 +287,15 @@
     <ContentPage.Content>
 <Grid>
    <ScrollView>
-        <Grid Padding="15">
-            <Grid.RowDefinitions>
+        <StackLayout Padding="15">
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
             
                 <StackLayout Spacing="-5" Grid.Row="0">
 
-                <Grid>
+                <!--<Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
@@ -324,7 +324,207 @@
                             <customcontrol:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
-                </Grid>
+                </Grid>-->
+                
+                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <custom:CustomLabel Text="{Binding SelectedTransactionTypeFilter.Txt30}"  Style="{StaticResource SectionTitleBlack}">
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
+                            </custom:CustomLabel.GestureRecognizers>
+                         </custom:CustomLabel>
+
+                        <Image  Source="arrowDropdown"  Margin="5,5,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                             <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <custom:CustomButton x:Name="btnTransactionTypePicker" Clicked="btnTransactionTypePicker_Clicked"  BackgroundColor="Transparent"></custom:CustomButton>
+                    </StackLayout>
+
+                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TransactionTypePicker"  HeaderHeight="55"
+                                         HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                                         HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
+                                         PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black"
+                                         BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False"
+                                         SelectedItemFontAttribute="Bold"
+                                         SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"
+                                         ItemHeight="40" DisplayMemberPath="Txt30" ItemsSource="{Binding TransactionTypeFilter}"  Grid.Row="0" Grid.Column="0"
+                                         Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
+                                         CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
+                                         CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TransactionTypePicker_SelectionChanged" >
+                        <syncfusion:SfPicker.Behaviors>
+                            <customcontrol:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+
+                    <Image Source="download" IsVisible="{Binding IsDownloadBtnVisile}"  Margin="5,10,5,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DownloadBtnTapped}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    
+                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}" HorizontalOptions="Start">
+                    <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent"
+                                         ItemsSource="{Binding ChipDataFilterlistForYears}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"
+                                         ChipBorderWidth="1" VerticalOptions="Center" SelectionChanged="yearChipGroup_SelectionChanged">
+                        <buttons:SfChipGroup.ItemTemplate>
+                            <DataTemplate > 
+                                <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
+                                    <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"></Image>
+                                    <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </buttons:SfChipGroup.ItemTemplate>
+                    </buttons:SfChipGroup>
+                </ScrollView>
+
+               <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSortByVisible}" Margin="0,15,0,0">
+                    <custom:CustomLabel   WidthRequest="130"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                        <custom:CustomLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}"/>
+                                <Span Text=":"></Span>
+                            </FormattedString>
+                        </custom:CustomLabel.FormattedText>
+                    </custom:CustomLabel>
+                 
+
+                   <!--PressedBackgroundColor="AliceBlue"  AppResources.TaxType-->
+                   <ScrollView HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
+                          <!--<buttons:SfChipGroup Margin="0,0,0,0" x:Name="ChipGroup_Filters" Type="Choice" HorizontalOptions="Start"  ChipBackgroundColor="Transparent" ItemsSource="{Binding FilterList}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" >
+                            <buttons:SfChipGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="0"  >
+                                        
+                                        <custom:CustomLabel Text="{Binding FilterHeader}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </buttons:SfChipGroup.ItemTemplate>
+                        </buttons:SfChipGroup>-->
+                    <StackLayout Orientation="Horizontal">
+                    <buttons:SfButton x:Name="Button_TransactionTypeFilter" Clicked="Button_TransactionTypeFilter_Clicked" HorizontalTextAlignment="Start" Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                        <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <!--<buttons:SfButton x:Name="Button_TaxTypeFilter" Clicked="Button_TaxTypeFilter_Clicked"  HorizontalTextAlignment="Start"   Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.TaxType}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
+                    <!--<buttons:SfButton x:Name="Button_FBNumFilter" Clicked="Button_FBNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASFBNum}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
+                    <buttons:SfButton x:Name="Button_SadadBillNumFilter" Clicked="Button_SadadBillNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
+                    <buttons:SfButton x:Name="Button_TaxPeriodFilter" Clicked="Button_TaxPeriodFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                        <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <buttons:SfButton  x:Name="Button_DueDateFilter" Clicked="Button_DueDateFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASDueDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                           <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <buttons:SfButton x:Name="Button_BillDiscriptionFilter"  Clicked="Button_BillDiscriptionFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillDescription}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                          <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <buttons:SfButton x:Name="Button_BillAmountFilter" Clicked="Button_BillAmountFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillAmount}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
+                          <buttons:SfButton.Triggers>
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                               <Setter Property="ShowIcon" Value="False" />
+                                                            
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            
+                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                               <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                            </buttons:SfButton.Triggers>
+                    </buttons:SfButton>
+                    <!--<buttons:SfButton  x:Name="Button_BillStatusFilter" Clicked="Button_BillStatusFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ZStatus}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
+                           </StackLayout>
+                    </ScrollView>
+                      <!--<Image>
+                                            <Image.Source>
+                                                <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Arrow}"/>
+                                            </Image.Source>
+                                        </Image>-->
+               </StackLayout>
+
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
 
                  <StackLayout Margin="10">
@@ -509,43 +709,7 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>-->
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <custom:CustomLabel Text="{Binding SelectedTransactionTypeFilter.Txt30}"  Style="{StaticResource SectionTitleBlack}">
-                            <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
-                            </custom:CustomLabel.GestureRecognizers>
-                         </custom:CustomLabel>
-
-                        <Image  Source="arrowDropdown"  Margin="5,5,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <custom:CustomButton x:Name="btnTransactionTypePicker" Clicked="btnTransactionTypePicker_Clicked"  BackgroundColor="Transparent"></custom:CustomButton>
-                    </StackLayout>
-
-                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TransactionTypePicker"  HeaderHeight="55"
-                                         HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
-                                         HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
-                                         PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black"
-                                         BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False"
-                                         SelectedItemFontAttribute="Bold"
-                                         SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"
-                                         ItemHeight="40" DisplayMemberPath="Txt30" ItemsSource="{Binding TransactionTypeFilter}"  Grid.Row="0" Grid.Column="0"
-                                         Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
-                                         CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
-                                         CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TransactionTypePicker_SelectionChanged" >
-                        <syncfusion:SfPicker.Behaviors>
-                            <customcontrol:SfPickerBehavior />
-                        </syncfusion:SfPicker.Behaviors>
-                    </syncfusion:SfPicker>
-
-                    <Image Source="download" IsVisible="{Binding IsDownloadBtnVisile}"  Margin="5,10,5,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding DownloadBtnTapped}">
-                            </TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
+               
 
                 </StackLayout>
                 
@@ -566,173 +730,13 @@
                     </buttons:SfChipGroup>
                 </ScrollView>-->
 
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}" HorizontalOptions="Start">
-                    <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent"
-                                         ItemsSource="{Binding ChipDataFilterlistForYears}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"
-                                         ChipBorderWidth="1" VerticalOptions="Center" SelectionChanged="yearChipGroup_SelectionChanged">
-                        <buttons:SfChipGroup.ItemTemplate>
-                            <DataTemplate > 
-                                <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
-                                    <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"></Image>
-                                    <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </buttons:SfChipGroup.ItemTemplate>
-                    </buttons:SfChipGroup>
-                </ScrollView>
-
-               <StackLayout Orientation="Horizontal" IsVisible="{Binding IsSortByVisible}" Margin="0,15,0,0">
-                    <custom:CustomLabel   WidthRequest="130"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
-                        <custom:CustomLabel.FormattedText>
-                            <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}"/>
-                                <Span Text=":"></Span>
-                            </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
-                 
-
-                   <!--PressedBackgroundColor="AliceBlue"  AppResources.TaxType-->
-                   <ScrollView HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
-                          <!--<buttons:SfChipGroup Margin="0,0,0,0" x:Name="ChipGroup_Filters" Type="Choice" HorizontalOptions="Start"  ChipBackgroundColor="Transparent" ItemsSource="{Binding FilterList}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" >
-                            <buttons:SfChipGroup.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="0"  >
-                                        
-                                        <custom:CustomLabel Text="{Binding FilterHeader}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </buttons:SfChipGroup.ItemTemplate>
-                        </buttons:SfChipGroup>-->
-                    <StackLayout Orientation="Horizontal">
-                    <buttons:SfButton x:Name="Button_TransactionTypeFilter" Clicked="Button_TransactionTypeFilter_Clicked" HorizontalTextAlignment="Start" Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                        <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <!--<buttons:SfButton x:Name="Button_TaxTypeFilter" Clicked="Button_TaxTypeFilter_Clicked"  HorizontalTextAlignment="Start"   Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.TaxType}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
-                    <!--<buttons:SfButton x:Name="Button_FBNumFilter" Clicked="Button_FBNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASFBNum}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
-                    <buttons:SfButton x:Name="Button_SadadBillNumFilter" Clicked="Button_SadadBillNumFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
-                    <buttons:SfButton x:Name="Button_TaxPeriodFilter" Clicked="Button_TaxPeriodFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                        <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <buttons:SfButton  x:Name="Button_DueDateFilter" Clicked="Button_DueDateFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASDueDate}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                           <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <buttons:SfButton x:Name="Button_BillDiscriptionFilter"  Clicked="Button_BillDiscriptionFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillDescription}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                          <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <buttons:SfButton x:Name="Button_BillAmountFilter" Clicked="Button_BillAmountFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ASBillAmount}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start">
-                          <buttons:SfButton.Triggers>
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="">
-                                                            <Setter Property="ImageSource" Value="" />
-                                                            <Setter Property="BackgroundColor" Value="White" />
-                                                               <Setter Property="ShowIcon" Value="False" />
-                                                            
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="ascending">
-                                                            <Setter Property="ImageSource" Value="ArrowUp" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            
-                                                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="descending">
-                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                            <Setter Property="BackgroundColor" Value="#F9F0DF" />
-                                                               <Setter Property="ShowIcon" Value="True" />
-                                                        </DataTrigger>
-                            </buttons:SfButton.Triggers>
-                    </buttons:SfButton>
-                    <!--<buttons:SfButton  x:Name="Button_BillStatusFilter" Clicked="Button_BillStatusFilter_Clicked" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ZStatus}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>-->
-                           </StackLayout>
-                    </ScrollView>
-                      <!--<Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Arrow}"/>
-                                            </Image.Source>
-                                        </Image>-->
-               </StackLayout>
-
+               
             </StackLayout>
             
             <Grid Grid.Row="1">
 
            	
-            <CollectionView x:Name="Bills" ItemsSource="{Binding StatementsLineItems}" SelectionMode="None" IsVisible="{Binding IsSearchButtonVisible}"  HorizontalOptions="FillAndExpand"	
+            <CollectionView x:Name="Bills" ItemsSource="{Binding MonthlyStatementsLineItems}" SelectionMode="None" IsVisible="{Binding IsSearchButtonVisible}"  HorizontalOptions="FillAndExpand"	
                 VerticalOptions="FillAndExpand" BackgroundColor="White">	
                     <!--<CollectionView.GroupHeaderTemplate>
                         <DataTemplate>	
@@ -752,7 +756,23 @@
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                      <DataTemplate >
-                    <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                         
+                         <StackLayout Orientation="Vertical" Spacing="5">
+                             
+                             <custom:CustomLabel Text="{Binding monthName}"  Style="{StaticResource SectionTitleBlack}">
+                                 <custom:CustomLabel.GestureRecognizers>
+                                     <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
+                                 </custom:CustomLabel.GestureRecognizers>
+                             </custom:CustomLabel>
+                             
+                               <listView:SfListView HorizontalOptions="Center"
+                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                             VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                             ItemsSource="{Binding StatementsLineItems}"
+                                             SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout Padding="0" Spacing="0">
                             <Grid  Padding="15" RowSpacing="0">
                                 <Grid.RowDefinitions>   
@@ -864,11 +884,16 @@
 
                         </StackLayout>
                     </border:SfBorder >
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                         </StackLayout>
+                         
                 </DataTemplate>
                  </CollectionView.ItemTemplate> 
                 </CollectionView>
 
-                <CollectionView x:Name="dummySearchList" ItemsSource="{Binding SearchBarListItemSource}" IsVisible="{Binding IsCloseButtonVisible}" SelectionMode="None" HorizontalOptions="FillAndExpand"
+                <!--<CollectionView x:Name="dummySearchList" ItemsSource="{Binding SearchBarListItemSource}" IsVisible="{Binding IsCloseButtonVisible}" SelectionMode="None" HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand" BackgroundColor="White" >
                      <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
@@ -940,7 +965,7 @@
                                     <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                             <Label.FormattedText>
                                             <FormattedString>
-                                                <!--<Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>-->
+                                                ~1~<Span Text="{Binding Bldat,StringFormat='{0:dd MMM yyyy}'}"/>@1@
                                                       <Span Text="{Binding FormattedBldat}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -951,7 +976,7 @@
                                     <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
                                        <Label.FormattedText>
                                             <FormattedString>
-                                                <!--<Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>-->
+                                                ~1~<Span Text="{Binding PeriodEndDt,StringFormat='{0:dd MMM yyyy}'}"/>@1@
                                                  <Span Text="{Binding FormattedPeriodEndDate}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -976,12 +1001,12 @@
                     </border:SfBorder >
                 </DataTemplate>
                  </CollectionView.ItemTemplate> 
-                </CollectionView>
+                </CollectionView>-->
 
             </Grid>
 
               
-        </Grid>
+        </StackLayout>
 
       </ScrollView>
        <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

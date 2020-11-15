@@ -17,7 +17,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:customcontrol="clr-namespace:GAZT.CustomControl" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:customcontrol="clr-namespace:GAZT.CustomControl" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:helper="clr-namespace:EGAZT.Helper"
              BackgroundImageSource="partials_background.png"
              NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.NewDesign.SupportPageView">
@@ -127,9 +127,19 @@
                     <!--FAQ View End-->
 
                     <!--Chat View Ends-->
-                    <StackLayout IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Chat}}">
-                        <WebView x:Name="ChatWebView" WidthRequest="1000" Navigating="ChatWebView_Navigating" Navigated="ChatWebView_Navigated" VerticalOptions="FillAndExpand" />
-                    </StackLayout>
+
+
+                     <Grid IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Chat}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="AliceBlue">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <helper:MyWebView x:Name="ChatWebView" Grid.Row="0" Navigating="ChatWebView_Navigating" Navigated="ChatWebView_Navigated"/>
+
+                        </Grid>
+
+
+                    
                     <!--Chat View Ends-->
 
                     <!--ContactUs View Starts-->

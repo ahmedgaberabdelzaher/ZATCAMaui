@@ -572,6 +572,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public void ResetData()
         {
+            VATInstalmentList = new ObservableCollection<Result31>();
             RequestForInstalmentPlanList = null;
             RequestForScheduleDetails = null;
 
@@ -642,7 +643,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        public ObservableCollection<Result31> _vATInstalmentList { get; set; }
+        private ObservableCollection<Result31> _vATInstalmentList { get; set; }
         public ObservableCollection<Result31> VATInstalmentList
         {
             get
@@ -662,14 +663,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 //RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results;
 
-                VATInstalmentList = new ObservableCollection<Result31> ();
+
+                var VATInstalmentListData = new ObservableCollection<Result31> ();
+
+                
                 RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results.Where(w => w.Fbtyp.Contains("VTIA")).ToList();
 
                 foreach(var instalmentListModel in RequestForInstalmentPlanList) {
 
-                    VATInstalmentList.Add(instalmentListModel);
+                    VATInstalmentListData.Add(instalmentListModel);
                 }
 
+                VATInstalmentList = VATInstalmentListData;
 
                 if (VATInstalmentList.Count > 0)
                 {

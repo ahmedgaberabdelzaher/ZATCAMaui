@@ -273,6 +273,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        Dictionary<string, string> monthlyStatementsLineItemsDic = new Dictionary<string, string>()
+        {
+
+        };
+
         public ObservableCollection<ASResult> _statementsLineItems = null;
         public ObservableCollection<ASResult> StatementsLineItems
         {
@@ -282,9 +287,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                _statementsLineItems = value;
-                RaisePropertyChanged("StatementsLineItems");
+                if (_statementsLineItems != value)
+                {
+                    monthlyStatementsLineItemsDic = new Dictionary<string, string>();
+                    var _monthlyStatementsLineItems = new ObservableCollection<MonthlyStatementsLineItem>();
+                    if (value != null && value.Count > 0)
+                    {
+                        foreach (var statement in value)
+                        {
+                            if (monthlyStatementsLineItemsDic.ContainsKey(statement.Bldat.ToString("MMMM")))
+                            {
+                                _monthlyStatementsLineItems.Single(x =>
+                                    x.monthName == statement.Bldat.ToString("MMMM")).StatementsLineItems.Add(statement);
+                            }
+                            else
+                            {
+                                var item = new MonthlyStatementsLineItem();
+                                item.monthName = statement.Bldat.ToString("MMMM");
+                                item.StatementsLineItems = new ObservableCollection<ASResult>();
+                                item.StatementsLineItems.Add(statement);
+                                _monthlyStatementsLineItems.Add(item);
+                                monthlyStatementsLineItemsDic.Add(statement.Bldat.ToString("MMMM"), "");
+                            }
+                        }
+
+                    }
+
+                    MonthlyStatementsLineItems = _monthlyStatementsLineItems;
+                    _statementsLineItems = value;
+                    RaisePropertyChanged("StatementsLineItems");
+                }
             }
+        }
+
+        public ObservableCollection<MonthlyStatementsLineItem> _monthlyStatementsLineItems = null;
+        public ObservableCollection<MonthlyStatementsLineItem> MonthlyStatementsLineItems
+        {
+            get
+            {
+                return _monthlyStatementsLineItems;
+            }
+            set
+            {
+                _monthlyStatementsLineItems = value;
+                RaisePropertyChanged("MonthlyStatementsLineItems");
+            }
+        }
+
+        public partial class MonthlyStatementsLineItem
+        {
+
+            public string monthName { get; set; }
+
+            public ObservableCollection<ASResult> StatementsLineItems { get; set; }
         }
 
         public ASYearValuesHeader _yearValuesHeader = null;
@@ -404,10 +459,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 _selectedTransactionTypeFilter = value;
 
-                if(_selectedTransactionTypeFilter.StatementFilter != null)
+                if (_selectedTransactionTypeFilter.StatementFilter != null)
                 {
                     IsYearsChipVisible = true;
-                    
+
                 }
                 else
                 {
@@ -428,7 +483,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             set
             {
                 _selectedTransactionType = value;
-                
+
                 RaisePropertyChanged("SelectedTransactionType");
             }
         }
@@ -619,7 +674,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             StatusFilterItem = string.Empty;
             TaxperiodFilterItem = string.Empty;
             TaxTypeFilterItem = string.Empty;
-            
+
         }
         public void FiltersClicked()
         {
@@ -663,7 +718,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     });
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -673,17 +728,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
-                
+
                 TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
-                    
+
                 StatementsLineItems = new ObservableCollection<ASResult>();
                 GroupedStatements = new List<GroupedAccountStatements>();
 
                 var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
                 var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.ASAccountStatementInDirectTax };
 
-                if(TabIdentification.D.Direct == "X")
+                if (TabIdentification.D.Direct == "X")
                 {
                     TaxTypeForFilter.Add(tempDirectTax);
                 }
@@ -699,7 +754,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public  async void FilterOnTaxType(string taxType)
+        public async void FilterOnTaxType(string taxType)
         {
             //API Call
             try
@@ -709,7 +764,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     statementFilter = "04";
                 }
-                if(taxType=="I")
+                if (taxType == "I")
                 {
                     statementFilter = "08";
                 }
@@ -740,7 +795,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -770,7 +825,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             ChipDataFilterlistForYears = new ObservableCollection<ASChipModel>();
 
-            if(YearValuesHeader != null && YearValuesHeader.D != null)
+            if (YearValuesHeader != null && YearValuesHeader.D != null)
             {
                 foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
                 {
@@ -798,61 +853,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 TransactionTypeDropDownParent = new ASRevenueDropDownSet();
 
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty,string.Empty, string.Empty);
-             
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
+
 
                 if (AllTransactionFilters == null)
                 {
                     AllTransactionFilters = new ObservableCollection<ASRevenueDropDownSetDataResults>();
                 }
 
-                        AllTransactionFilters.Clear();
+                AllTransactionFilters.Clear();
 
-                        ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
-                        defautlVal.Txt30 = AppResources.ASTransactionType;
-                        defautlVal.TaxType = "D";
+                ASRevenueDropDownSetDataResults defautlVal = new ASRevenueDropDownSetDataResults();
+                defautlVal.Txt30 = AppResources.ASTransactionType;
+                defautlVal.TaxType = "D";
 
-                        AllTransactionFilters.Insert(0, defautlVal);
+                AllTransactionFilters.Insert(0, defautlVal);
 
-                        ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
-                        defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
-                        defautlValIndirectTax.TaxType = "I";
+                ASRevenueDropDownSetDataResults defautlValIndirectTax = new ASRevenueDropDownSetDataResults();
+                defautlValIndirectTax.Txt30 = AppResources.ASTransactionType;
+                defautlValIndirectTax.TaxType = "I";
 
-                        AllTransactionFilters.Insert(1, defautlValIndirectTax);
+                AllTransactionFilters.Insert(1, defautlValIndirectTax);
 
-                        if (TabIdentification.D.Direct == "X")
-                        {
-                            await PopulateDataForTransactionTypes("D");
-                        }
+                if (TabIdentification.D.Direct == "X")
+                {
+                    await PopulateDataForTransactionTypes("D");
+                }
 
-                        if (TabIdentification.D.Indirect == "X")
-                        {
-                            await PopulateDataForTransactionTypes("I");
-                        }
+                if (TabIdentification.D.Indirect == "X")
+                {
+                    await PopulateDataForTransactionTypes("I");
+                }
 
-                        IsOpeningBalanceVisible = false;
-                        IsDownloadBtnVisile = false;
+                IsOpeningBalanceVisible = false;
+                IsDownloadBtnVisile = false;
 
-                        foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
-                        {
-                            if (HeaderSet.D.TaxType == aSReturnTypes.Id)
-                            {
-                                SelectedTaxTypeForFilter = aSReturnTypes;
-                            }
-                            else
-                            {
-                                SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
-                            }
-                        }
+                foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
+                {
+                    if (HeaderSet.D.TaxType == aSReturnTypes.Id)
+                    {
+                        SelectedTaxTypeForFilter = aSReturnTypes;
+                    }
+                    else
+                    {
+                        SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
+                    }
+                }
 
-                        if (HeaderSet.D.TaxType == "D")
-                        {
-                            FilterOnTaxType("D");
-                        }
-                        else if (HeaderSet.D.TaxType == "I")
-                        {
-                            FilterOnTaxType("I");
-                        }
+                if (HeaderSet.D.TaxType == "D")
+                {
+                    FilterOnTaxType("D");
+                }
+                else if (HeaderSet.D.TaxType == "I")
+                {
+                    FilterOnTaxType("I");
+                }
 
                 await Task.Run(() =>
                 {
@@ -907,9 +962,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
-                if(HeaderSet.D.StatmenetLineItemsSet != null)
+                if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {
-                    if(HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
                     {
                         IsDownloadBtnVisile = true;
                         IsNoStatementsAvaiableVisible = false;
@@ -963,7 +1018,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -1012,17 +1067,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             else if (Month == "08" || Month == "8" || Month == "أغسطس")
             {
 
-                Month ="August";
+                Month = "August";
                 //  Month = "August";
             }
             else if (Month == "09" || Month == "9" || Month == "سبتمبر")
             {
-                Month = "September" ;
+                Month = "September";
                 //  Month = "September";
             }
             else if (Month == "10" || Month == "أكتوبر")
             {
-                Month ="October" ;
+                Month = "October";
                 //Month = "October";
             }
             else if (Month == "11" || Month == "نوفمبر")

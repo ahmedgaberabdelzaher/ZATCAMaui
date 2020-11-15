@@ -2132,7 +2132,7 @@
 
                                 <StackLayout>
 
-                                    <buttons:SfButton  Margin="0,16,0,16"  x:Name="SummarybtnContinue" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                                    <buttons:SfButton  Margin="0,16,0,16"  x:Name="SummarybtnContinue" Text="{x:Static ResourceManager:AppResources.Submit}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SummaryContinueBtnTapped}" />
 
                                 </StackLayout>

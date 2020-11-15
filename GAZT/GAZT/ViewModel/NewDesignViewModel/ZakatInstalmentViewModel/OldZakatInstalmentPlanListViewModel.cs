@@ -224,7 +224,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                     try
                     {
-                        PopToRootPage();
+                        //PopToRootPage();
 
                         GetZakatInstalmentPlanList();
 
@@ -1779,7 +1779,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
 
 
-                        PopToRootPage();
+                        //PopToRootPage();
 
                         if (ReqVatInstalmentPlanResponseList != null && ReqVatInstalmentPlanResponseList.d != null)
                         {
