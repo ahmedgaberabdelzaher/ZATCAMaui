@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -25,6 +26,7 @@ namespace EGAZT.Views.NewDesign
             viewModel = App.Locator.SupportPageView;
             BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
             SetPickerFont();
         }
 
@@ -40,6 +42,8 @@ namespace EGAZT.Views.NewDesign
             {
                 BranchLocation.BackgroundColor = Color.FromHex("#FFFFFF");
             }
+
+          
 
             if (App.IsArabic)
             {

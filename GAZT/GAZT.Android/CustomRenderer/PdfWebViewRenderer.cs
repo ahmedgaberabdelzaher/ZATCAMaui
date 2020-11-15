@@ -11,6 +11,7 @@ namespace pdfjs.Droid
 	{
 		public PdfWebViewRenderer(Context context) : base(context)
 		{
+
 		}
 
          protected override void OnElementChanged(ElementChangedEventArgs<WebView> e)
