@@ -192,6 +192,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //}
             }
         }
+
+        public bool AddNewLicenseTapped = false;
+     
         private CityDropdownItem _cRIssueCity = null;
         public CityDropdownItem CRIssueCity
         {
@@ -589,10 +592,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             ActivityDetails = new ActivityDetails();
             LicenseDetails = new LicenseDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnPreButtonClick = new Command(() => navigationService.GoBack());
+            OnPreButtonClick = new Command(() => {
+
+                if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails) {
+
+                    CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
+
+                }
+                else {
+
+                    _navigationService.GoBack();
+                }
+
+
+            });
+
 
             OnNewLicenseButtonClick = new Command(() =>
             {
+
+                AddNewLicenseTapped = true;
 
                 if (AddLicenseEnabled)
                 {
@@ -1078,7 +1097,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 if (LicenseData.Count == 0)
                 {
-                    SetUIAvailability(false, PageType);
+                    if (AddNewLicenseTapped)
+                    {
+                        SetUIAvailability(true, PageType);
+
+                    }
+                    else {
+                        SetUIAvailability(false, PageType);
+
+                    }
+
                     AddLicenseEnabled = true;
                     ActivityTitle = AppResources.ESTAddLicense;
                 }

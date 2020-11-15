@@ -698,6 +698,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                 }
+               
+
             }
 
 
