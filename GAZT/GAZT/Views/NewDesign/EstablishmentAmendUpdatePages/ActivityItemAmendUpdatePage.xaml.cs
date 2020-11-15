@@ -32,6 +32,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.goBackAction = _activityNavigation.goBackAction;
             viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.results.Where(i => i.Actno == $"{Int16.Parse(_activityNavigation.nextNumber?.Actno):000}").ToList();
             viewModel.CurrentTab = _activityNavigation.openedTab;
+            viewModel.PageType = _activityNavigation.openedTab;
             BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();

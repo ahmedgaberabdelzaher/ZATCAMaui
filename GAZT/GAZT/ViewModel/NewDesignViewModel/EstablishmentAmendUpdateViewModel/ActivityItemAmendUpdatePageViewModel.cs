@@ -1126,8 +1126,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (CRData != null && CRData.Count > 0)
                 {
                     ActivityTitle = AppResources.ESTCommercialRegistration;
+                   
+                        SetUIAvailability(true, PageType);
+
                 }
+                else {
+                    SetUIAvailability(false, PageType);
+
+                }
+
             }
+
 
         }
         public void OnDisappearing()
