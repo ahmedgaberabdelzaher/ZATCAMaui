@@ -286,14 +286,26 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
 <Grid>
-   <ScrollView>
+   
         <StackLayout Padding="15">
             <!--<Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>-->
             
-                <StackLayout Spacing="-5" Grid.Row="0">
+           
+
+           	
+            <CollectionView x:Name="Bills" ItemsSource="{Binding MonthlyStatementsLineItems}" SelectionMode="None"  HorizontalOptions="FillAndExpand"	
+                VerticalOptions="FillAndExpand" BackgroundColor="White">	
+                    <!--<CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>	
+                            <Label Margin="0,0,0,0" Text="{Binding Month}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>-->
+               <CollectionView.Header>
+                   
+                   <StackLayout Orientation="Vertical" Spacing="-5" Grid.Row="0">
 
                 <!--<Grid>
                     <Grid.RowDefinitions>
@@ -732,18 +744,9 @@
 
                
             </StackLayout>
-            
-            <Grid Grid.Row="1">
-
-           	
-            <CollectionView x:Name="Bills" ItemsSource="{Binding MonthlyStatementsLineItems}" SelectionMode="None" IsVisible="{Binding IsSearchButtonVisible}"  HorizontalOptions="FillAndExpand"	
-                VerticalOptions="FillAndExpand" BackgroundColor="White">	
-                    <!--<CollectionView.GroupHeaderTemplate>
-                        <DataTemplate>	
-                            <Label Margin="0,0,0,0" Text="{Binding Month}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
-                        </DataTemplate>
-                    </CollectionView.GroupHeaderTemplate>-->
-               
+  
+               </CollectionView.Header>
+                    
                 <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
                                            ItemSpacing="20" />
@@ -766,7 +769,7 @@
                              </custom:CustomLabel>
                              
                                <listView:SfListView HorizontalOptions="Center"
-                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                             IsScrollBarVisible="False" IsScrollingEnabled="True"
                                              VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                              ItemsSource="{Binding StatementsLineItems}"
                                              SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
@@ -1003,13 +1006,11 @@
                  </CollectionView.ItemTemplate> 
                 </CollectionView>-->
 
-            </Grid>
 
               
         </StackLayout>
 
-      </ScrollView>
-       <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+          <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">

@@ -196,20 +196,20 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     || c.FormattedBldat2.ToLower().Contains(keyword.ToLower()) || c.FormattedBldat.ToLower().Contains(keyword.ToLower())).ToList();
                     // viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(suggestion);
                     //viewModel.SearchBarListItemSource = viewModel.StatementsLineItems
-                    viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(suggestion);
-                    viewModel.IsVisible_SearchList = true;
+                    //viewModel.SearchBarListItemSource = new ObservableCollection<ASResult>(suggestion);
+                    //viewModel.IsVisible_SearchList = true;
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(suggestion);
 
                 }
                 catch (Exception ex)
                 {
-                    viewModel.IsVisible_SearchList = false;
+                    //  viewModel.IsVisible_SearchList = false;
                 }
             }
             else
             {
                 viewModel.StatementsLineItems = new ObservableCollection<ASResult>(viewModel.HeaderSet.D.StatmenetLineItemsSet.Results);
-                viewModel.IsVisible_SearchList = false;
+                //viewModel.IsVisible_SearchList = false;
             }
         }
 
