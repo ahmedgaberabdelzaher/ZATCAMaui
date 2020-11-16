@@ -312,6 +312,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        public bool isMonthWiseStatementsViewVisible = true;
+
+        public bool IsMonthWiseStatementsViewVisible
+        {
+            get
+            {
+                return isMonthWiseStatementsViewVisible;
+            }
+            set
+            {
+                if (isMonthWiseStatementsViewVisible != value)
+                {
+
+                    isMonthWiseStatementsViewVisible = value;
+                    IsNormalStatementsViewVisible = !value;
+                    RaisePropertyChanged("IsMonthWiseStatementsViewVisible");
+                }
+            }
+        }
+
+        public bool isNormalStatementsViewVisible = false;
+
+        public bool IsNormalStatementsViewVisible
+        {
+            get
+            {
+                return isNormalStatementsViewVisible;
+            }
+            set
+            {
+                if (isNormalStatementsViewVisible != value)
+                {
+                    isNormalStatementsViewVisible = value;
+
+                    RaisePropertyChanged("IsNormalStatementsViewVisible");
+                }
+            }
+        }
+
         public ObservableCollection<ASResult> _statementsLineItems = null;
         public ObservableCollection<ASResult> StatementsLineItems
         {
@@ -323,14 +362,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_statementsLineItems != value)
                 {
-                    Items = value.ToList();
-
-                    var groupedData = Items.OrderBy(p => p.Bldat)
-                        .GroupBy(p => p.Bldat.ToString("MMMM"))
-                        .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
-
-                    GroupedData = groupedData;
-
+                    if (IsNormalStatementsViewVisible)
+                    {
+                        GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
+                    }
+                    else
+                    {
+                        Items = value.ToList();
+                        var groupedData = Items.OrderBy(p => p.Bldat)
+                            .GroupBy(p => p.Bldat.ToString("MMMM"))
+                            .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                        GroupedData = groupedData;
+                    }
                     _statementsLineItems = value;
                     RaisePropertyChanged("StatementsLineItems");
                 }
@@ -696,6 +739,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public void FiltersClicked()
         {
             IsSortByVisible = !IsSortByVisible;
+            IsMonthWiseStatementsViewVisible = !IsMonthWiseStatementsViewVisible;
             //await PopupNavigation.Instance.PushAsync(new AccountStatementsFiltersPageView());
         }
 
