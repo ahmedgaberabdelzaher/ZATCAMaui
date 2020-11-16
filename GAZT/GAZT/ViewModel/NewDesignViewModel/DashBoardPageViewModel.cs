@@ -929,57 +929,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     foreach(TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                     {
+                        if (taxRelationSetResult.StatementFilter == "10")
+                        {
+                             taxRelationSetResult.DisplayId = 01;
+                        }
+
                         if (taxRelationSetResult.StatementFilter == "04")
                         {
                             if (HeaderSet.D.TaxType == "D")
-                                taxRelationSetResult.DisplayId = 01;
-                            else
                                 taxRelationSetResult.DisplayId = 02;
+                            else
+                                taxRelationSetResult.DisplayId = 03;
                         }
-
-
 
                         if (taxRelationSetResult.StatementFilter == "08")
                         {
                             if (HeaderSet.D.TaxType == "I")
-                                taxRelationSetResult.DisplayId = 01;
-                            else
                                 taxRelationSetResult.DisplayId = 02;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "01")
-                        {
-                            taxRelationSetResult.DisplayId = 03;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "02")
-                        {
-                            taxRelationSetResult.DisplayId = 04;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "03")
-                        {
-                            taxRelationSetResult.DisplayId = 05;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "06")
-                        {
-                            taxRelationSetResult.DisplayId = 06;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "06")
-                        {
-                            taxRelationSetResult.DisplayId = 07;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "07")
-                        {
-                            taxRelationSetResult.DisplayId = 08;
-                        }
-
-                        if (taxRelationSetResult.StatementFilter == "09")
-                        {
-                            taxRelationSetResult.DisplayId = 09;
+                            else
+                                taxRelationSetResult.DisplayId = 03;
                         }
                     }
 
@@ -988,14 +956,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>();
                     }
 
-                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.OrderBy(temp => temp.DisplayId).ToList());
+                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03).ToList());
+                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(TaxTypeFilter.OrderBy(temp => temp.DisplayId).ToList());
 
                     foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
                     {
                         if (HeaderSet.D.TaxType == aSReturnTypes.TaxType)
                         {
                             SelectedTaxTypeForFilter = aSReturnTypes;
-                            break;
                         }
                     }
 
