@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
@@ -397,14 +398,18 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
-            if (!string.IsNullOrEmpty(EntryTIN.Text))
+
+            var cell = outletsListView.TemplatedItems.FirstOrDefault();
+            var entry = (Xamarin.Forms.Entry)cell.FindByName("EntryTINPermitType");
+
+            if (!string.IsNullOrEmpty(entry.Text))
             {
-                if (EntryTIN.Text.Substring(0, 1) != "3")
+                if (entry.Text.Substring(0, 1) != "3")
                 {
                     Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
-                    EntryTIN.Focus();
+                    entry.Focus();
                 }
-                if (EntryTIN.Text.Length != 10)
+                if (entry.Text.Length != 10)
                 {
                     if (Messages.Length > 0)
                     {
@@ -428,12 +433,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
 
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    EntryTIN.Text = string.Empty;
+                    entry.Text = string.Empty;
                 }
                 else
                 {
                     viewModel.FrameTinError = false;
-                    viewModel.ValidateIdNumberForPermitTypes(EntryTIN.Text);
+                    viewModel.ValidateIdNumberForPermitTypes(entry.Text);
                 }
             }
             else
@@ -455,7 +460,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                EntryTIN.Text = string.Empty;
+                entry.Text = string.Empty;
             }
         }
 

@@ -235,7 +235,7 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                     <custom:BorderlessEntry x:Name="EntryTIN" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding BindingContext.TINNumber, Source={x:Reference TIN}}" 
+                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding BindingContext.TINNumber, Source={x:Reference TinDeregIndOutlets}}" 
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                 <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
