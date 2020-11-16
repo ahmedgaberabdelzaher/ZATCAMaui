@@ -44,6 +44,7 @@ namespace EGAZT.Models.EstablishmentRegistration
             }
             if (value is OffNotesSet)
             {
+
                 List<OffNotes> results = (value as OffNotesSet)?.results;
                 JArray jArray = JArray.FromObject(results, serializer);
                 jArray.WriteTo(writer);
@@ -95,18 +96,18 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string RankingOrder { get; set; }
         public string Srcidentify { get; set; }
         public string Gpart { get; set; }
-        public object Enddt { get; set; }
+        public DateTime? Enddt { get; set; }
         public string Contacttp { get; set; }
         public string Defaultfg { get; set; }
         public string Outletnm { get; set; }
-        public object Startdt { get; set; }
+        public DateTime? Startdt { get; set; }
         public string Firstnm { get; set; }
         public string Lastnm { get; set; }
         public string Relationtp { get; set; }
         public string Fathernm { get; set; }
         public string Grandfathernm { get; set; }
         public string Familynm { get; set; }
-        public object Dobdt { get; set; }
+        public DateTime? Dobdt { get; set; }
         public string StartdtC { get; set; }
     }
 
@@ -131,7 +132,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public DateTime? ValidDateFrom { get; set; }
         public string Institute { get; set; } = string.Empty;
         public string City { get; set; } = string.Empty;
-        public object EntryDate { get; set; }
+        public DateTime? EntryDate { get; set; }
         public DateTime? ValidDateTo { get; set; }
         public string Country { get; set; }
         public string Region { get; set; } = string.Empty;
@@ -309,7 +310,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string RetGuid { get; set; }
         public bool Enbdele { get; set; }
         public string Seqno { get; set; }
-        public object SchGuid { get; set; }
+        public string SchGuid { get; set; }
         public bool Visedit { get; set; }
         public string Dotyp { get; set; }
         public bool Visdel { get; set; }
@@ -345,7 +346,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class NregBtnSet
     {
-        public List<object> results { get; set; }
+        public List<object> results { get; set; } = new List<object>();
     }
 
 
@@ -370,8 +371,9 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string XObsoletez { get; set; } = string.Empty;
         public string Rcodez { get; set; } = "REJ_NOTES";
         public string Erfusrz { get; set; } = string.Empty;
-        public object Erfdtz { get; set; } = null;
-        public object Erftmz { get; set; } = null;
+        public DateTime? Erfdtz { get; set; } 
+        public DateTime? Erftmz { get; set; } 
+            
         public string ByGpartz { get; set; }
         public string AttByz { get; set; } = "TP";
         public string Noteno { get; set; } = "1";
@@ -398,7 +400,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Abpkindold { get; set; }
         public string Maincr { get; set; }
         public string Autoappfg { get; set; }
-        public object Crexpdt { get; set; }
+        public DateTime? Crexpdt { get; set; }
         public string Shldfg { get; set; }
         public string Accmethod { get; set; }
         public string Qsrvfg { get; set; }
@@ -436,14 +438,14 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Branchx { get; set; }
         public string Caltp { get; set; }
         public string Capamt { get; set; }
-        public object Capregdt { get; set; }
+        public DateTime? Capregdt { get; set; }
         public string Chkfg { get; set; }
         public string Citizen { get; set; }
         public DateTime? Commdt { get; set; }
         public string DataVersion { get; set; }
         public string Decatt { get; set; }
         public string Decconno { get; set; }
-        public object Decdate { get; set; }
+        public DateTime? Decdate { get; set; }
         public string Decdesignation { get; set; }
         public string Decfg { get; set; }
         public string Decname { get; set; }
@@ -461,7 +463,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Fdday { get; set; }
         public DateTime? Fdenddt { get; set; }
         public string Fdmonth { get; set; }
-        public object Fdnewtaxdt { get; set; }
+        public DateTime? Fdnewtaxdt { get; set; }
         public string Fdtypold { get; set; }
         public string Forcapitalearn { get; set; }
         public string FormGuid { get; set; }
@@ -526,8 +528,8 @@ namespace EGAZT.Models.EstablishmentRegistration
         public NregAddressSet Nreg_AddressSet { get; set; }
         public NregContactSet Nreg_ContactSet { get; set; }
         public AttDetSet AttDetSet { get; set; }
-        public NregBtnSet Nreg_BtnSet { get; set; }
-        public NregFormEdit Nreg_FormEdit { get; set; }
+        public NregBtnSet Nreg_BtnSet { get; set; } = new NregBtnSet();
+       
         public OffNotesSet off_notesSet { get; set; }
         public NregMSGSet Nreg_MSGSet { get; set; }
     }
@@ -606,12 +608,12 @@ namespace EGAZT.Models.EstablishmentRegistration
         public Metadata __metadata { get; set; }
         public string Crnum { get; set; }
         public string CityAry { get; set; }
-        public object Validfrm { get; set; }
+        public DateTime? Validfrm { get; set; }
         public string CountryAry { get; set; }
-        public object Validto { get; set; }
+        public DateTime? Validto { get; set; }
         public string NotFound { get; set; }
         public DateTime? Issuedt { get; set; }
-        public object Expdt { get; set; }
+        public DateTime? Expdt { get; set; }
         public string Crname { get; set; }
         public string Excption { get; set; }
         public string TelephoneNumbery { get; set; }

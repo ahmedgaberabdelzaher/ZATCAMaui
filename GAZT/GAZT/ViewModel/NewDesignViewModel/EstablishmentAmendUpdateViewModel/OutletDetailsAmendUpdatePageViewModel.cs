@@ -504,12 +504,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             AddressDetails = new AddressDetails();
             ListOutletTypes = new List<string>();
             OnNextButtonClick = new Command(() =>
-         {
-             navigateToNext();
-         }, () =>
-         {
-             return CanExecute;
-         });
+            {
+                navigateToNext();
+            }, () =>
+            {
+                return CanExecute;
+            });
             OnPreButtonClick = new Command(() =>
             {
                 selectedOutletItem = null;
@@ -698,7 +698,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                 }
-               
+
 
             }
 
@@ -799,7 +799,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _address.CityCode = CitySame.CityCode;
                         _address.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
                         _address.AddrType = "0001";
-                        _address.Srcidentify = string.Format("O{0}", OutletActNumber);
+                        _address.Srcidentify = $"O{OutletActNumber}"; //string.Format("O{0}",);
                         _address.Begda = DateTime.UtcNow;
                         _address.Endda = maxDate;
                         taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
@@ -816,7 +816,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
-                        await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+
+
+                        //added to check null issue
+                        //OffNotes note = new OffNotes()
+                        //{
+                        //    Tdline = "",
+                        //    ByGpartz = App.LoginDataRetrieved.TIN
+                        //};
+                        //taxPayerDetails.off_notesSet = new OffNotesSet();
+                        //taxPayerDetails.off_notesSet.results = new List<OffNotes>();
+
+                        taxPayerDetails.off_notesSet = new OffNotesSet(); // .results.Add(note);
+                        taxPayerDetails.off_notesSet.results = new List<OffNotes>();
+                        taxPayerDetails.Nreg_BtnSet = new NregBtnSet();
+
+                        taxPayerDetails.Nreg_BtnSet.results = new List<object>();
+                      await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
 
                         selectedOutletItem = null;
