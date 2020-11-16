@@ -5,6 +5,7 @@
               xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
+
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
@@ -293,7 +294,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>-->
             
-            <ListView ios:ListView.GroupHeaderStyle="Grouped" x:Name="LvwContacts"
+            <ListView x:Name="LvwContacts"
                       Margin="5"   
                       SeparatorVisibility="None"
                       IsGroupingEnabled="True"    
