@@ -166,16 +166,16 @@
                                 <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
                             </Grid>
 
-                           <!--<StackLayout Orientation="Horizontal" Margin="15,15,15,0" IsVisible="true">
+                           <StackLayout Orientation="Horizontal" Margin="15,15,15,0" IsVisible="true">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASDashboardBalanceIndicatorTtile}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                 <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="AccountStatements_Tapped"></TapGestureRecognizer>
                                     </Image.GestureRecognizers>
                                 </Image>
-                            </StackLayout>-->
+                            </StackLayout>
 
-                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" IsVisible="false">
+                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0" IsVisible="true">
 
                                  <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
 
