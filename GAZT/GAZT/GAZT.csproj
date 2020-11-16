@@ -100,6 +100,7 @@
 		<Folder Include="Views\NewDesign\AccountStatements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\AccountStatements\" />
 		<Folder Include="Models\AccountStatements\" />
+		<Folder Include="ViewModel\NewDesignViewModel\Common\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

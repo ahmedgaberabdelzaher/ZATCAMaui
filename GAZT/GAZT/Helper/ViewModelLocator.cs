@@ -175,6 +175,7 @@ using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using EGAZT.Views.NewDesign.AccountStatements;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.Common;
 
 namespace EGAZT
 {
@@ -256,6 +257,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatInstalmentPlanListViewModel>();
             SimpleIoc.Default.Register<OldZakatInstalmentPlanViewModel>();
             SimpleIoc.Default.Register<OldZakatInstalmentPlanListViewModel>();
+            SimpleIoc.Default.Register<ViewNotePopUpViewModel>();
+            SimpleIoc.Default.Register<AddNotePopUpViewModel>();
 
             SimpleIoc.Default.Register<MorePopUpViewModelRTwo>();
             SimpleIoc.Default.Register<InstalmentPlanViewModel>();
@@ -2777,6 +2780,36 @@ namespace EGAZT
             }
         }
 
+        public AddNotePopUpViewModel AddNotesPopupPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AddNotePopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ViewNotePopUpViewModel ViewNotePopUpViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ViewNotePopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         #region Release2 ZakatInstalmentPlan
 
         public ZakatInstalmentPlanViewModel ZakatInstalmentPlanPageView
@@ -2836,6 +2869,8 @@ namespace EGAZT
                 }
             }
         }
+
+
 
         #endregion
         #region Contract Release

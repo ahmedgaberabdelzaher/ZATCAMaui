@@ -778,7 +778,7 @@
 
                 </Grid>
 
-                <Grid IsVisible="{Binding IsRevokZakatInstalmentVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid IsVisible="False" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -796,9 +796,9 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevok}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel IsVisible="False" Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevok}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlackBold}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokSubTitle}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel IsVisible="False" Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokSubTitle}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 

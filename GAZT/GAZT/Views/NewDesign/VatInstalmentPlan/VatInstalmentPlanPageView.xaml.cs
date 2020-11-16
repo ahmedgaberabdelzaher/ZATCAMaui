@@ -303,6 +303,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "Notes");
 
 
         }
@@ -365,6 +366,13 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     }
                 });
 
+                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "Notes", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        viewModel.NotesText = arg;
+                    }
+                });
 
                 MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
                 {
@@ -384,10 +392,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                             switch (buttonId)
                             {
                                 case ArButtons.إضافةملاحظات:
-                                    //viewModel.VATReturnAddNote();
+                                    viewModel.VATReturnAddNote();
                                     break;
                                 case ArButtons.عرضملاحظات:
-                                    //  viewModel.VATReturnGetNotes();
+                                      viewModel.VATReturnGetNotes();
                                     break;
                                 case ArButtons.المرفقات:
                                     // viewModel.VATViewAttachments();
@@ -423,10 +431,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                             switch (buttonId)
                             {
                                 case Buttons.CreateNotes:
-                                    //viewModel.VATReturnAddNote();
+                                    viewModel.VATReturnAddNote();
                                     break;
                                 case Buttons.DisplayNotes:
-                                    //viewModel.VATReturnGetNotes();
+                                    viewModel.VATReturnGetNotes();
                                     break;
                                 case Buttons.Attachments:
                                     // viewModel.VATViewAttachments();

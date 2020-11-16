@@ -241,9 +241,9 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="1"/>
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAgrement}" HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentAgrement}" HorizontalOptions="StartAndExpand"
                                          Style="{StaticResource PageTitleBlack}" />
-                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetRequestInstalmentDesc}" HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmetRequestInstalmentDesc}" HorizontalOptions="StartAndExpand"
                                               Style="{StaticResource CaptionLabelGrey}" />
                             <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1"/>
                         </Grid>
@@ -911,7 +911,7 @@
                                         </Frame>
                                         <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_vat_bill"/>
                                         <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAgrement}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATInstalmentAgrement}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
                                             <custom:CustomLabel TextColor="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryEdit}"

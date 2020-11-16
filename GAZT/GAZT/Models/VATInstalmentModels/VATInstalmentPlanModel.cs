@@ -83,6 +83,14 @@ namespace EGAZT.Models.VATInstalationModels
 
     //-----API Object will starts from herer-------
 
+
+    public partial class Metadata
+    {
+        public string id { get; set; }
+        public string uri { get; set; }
+        public string type { get; set; }
+    }
+
     public partial class VatInstalmentPlanResponse
     {
         public VATInstalment d { get; set; }
@@ -141,12 +149,7 @@ namespace EGAZT.Models.VATInstalationModels
         public List<Attachment> results { get; set; }
     }
 
-    public partial class Metadata
-    {
-        public Uri id { get; set; }
-        public Uri uri { get; set; }
-        public string type { get; set; }
-    }
+   
 
     public partial class NotesSet
     {
@@ -155,7 +158,7 @@ namespace EGAZT.Models.VATInstalationModels
 
     public partial class NotesSetResult
     {
-        public Metadata Metadata { get; set; }
+        public Metadata __metadata { get; set; }
         public string Notenoz { get; set; }
         public string Refnamez { get; set; }
         public string XInvoicez { get; set; }
@@ -178,6 +181,26 @@ namespace EGAZT.Models.VATInstalationModels
         public string Strdt { get; set; }
         public string Strtime { get; set; }
         public string Strline { get; set; }
+    }
+
+    public partial class NotesSetPost
+    {
+        public Metadata __metadata { get; set; }
+        public string Notenoz { get; set; }
+        public string Refnamez { get; set; }
+        public string XInvoicez { get; set; }
+        public string XObsoletez { get; set; }
+        public string Rcodez { get; set; }
+        public string Erfusrz { get; set; }
+        public string Erfdtz { get; set; }
+        public string AttByz { get; set; }
+        public string ByGpartz { get; set; }
+        public string DataVersionz { get; set; }
+        public string Noteno { get; set; }
+        public long Lineno { get; set; }
+        public long ElemNo { get; set; }
+        public string Tdformat { get; set; }
+        public string Tdline { get; set; }
     }
 
     public partial class VtadSet
@@ -280,7 +303,7 @@ namespace EGAZT.Models.VATInstalationModels
         public string Vtref { get; set; }
         public string Waers { get; set; }
         public object[] VTADSet { get; set; }
-        public NotesSetResult[] NOTESSet { get; set; }
+        public NotesSetPost[] NOTESSet { get; set; }
         public VATResults3[] VTISSet { get; set; }
         public VATResults4[] VTIASet { get; set; }
         public List<Attachment> ATTACHMENTSet { get; set; }

@@ -158,6 +158,7 @@ namespace EGAZT
         public static string OldZakatInstalmentPlanPageView = "OldZakatInstalmentPlanPageView";
         public static string OldZakatInstalmentPlanListPageView = "OldZakatInstalmentPlanListPageView";
         public static string OldZakatInstalmentPlanSuccessPage = "OldZakatInstalmentPlanSuccessPage";
+        public static string AddNotesPopupPageView = "AddNotesPopupPageView";
 
         #endregion
 

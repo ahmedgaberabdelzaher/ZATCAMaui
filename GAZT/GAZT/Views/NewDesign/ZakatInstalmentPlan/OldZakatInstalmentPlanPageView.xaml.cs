@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 InitializeComponent();
 
-                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+               // Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
                 //App.IsArabic = true;
                 ChangeAeroIcon();
@@ -237,15 +237,26 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 {
 
 
+                    if (viewModel.selectedList.ToList().Exists(item => item.AIvNoTb == dataItem.AIvNoTb))
+                    {
 
-                    if (viewModel.selectedList.Contains(dataItem))
-                    {
                         viewModel.selectedList.Remove(dataItem);
+                      
                     }
-                    else
-                    {
+                    else {
+
                         viewModel.selectedList.Add(dataItem);
                     }
+
+
+                    //if (viewModel.selectedList.Contains(dataItem))
+                    //{
+                    //    viewModel.selectedList.Remove(dataItem);
+                    //}
+                    //else
+                    //{
+                    //    viewModel.selectedList.Add(dataItem);
+                    //}
 
 
 
@@ -357,11 +368,16 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
                         {
                             var dataItem = viewModel.ZakatInvoicesList[i];
-                            if (viewModel.selectedList.Contains(dataItem))
+
+
+                            if (viewModel.selectedList.ToList().Exists(item => item.AIvNoTb == dataItem.AIvNoTb))
                             {
+
                                 BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
                                 totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].ADueAmtTb);
+
                             }
+                          
                         }
                         //viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                         viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
