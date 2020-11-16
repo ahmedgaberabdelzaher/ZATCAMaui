@@ -278,6 +278,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         };
 
+
+        public class ObservableGroupCollection<S, T> : ObservableCollection<T>
+        {
+            private readonly S _key;
+            public ObservableGroupCollection(IGrouping<S, T> group)
+                : base(group)
+            {
+                _key = group.Key;
+            }
+            public S Key
+            {
+                get { return _key; }
+            }
+        }
+
+        public IList<ASResult> Items { get; private set; }
+        public List<ObservableGroupCollection<string, ASResult>> groupedData = null;
+
+        public List<ObservableGroupCollection<string, ASResult>> GroupedData
+        {
+            get
+            {
+                return groupedData;
+            }
+            set
+            {
+                if (groupedData != value)
+                {
+                    groupedData = value;
+                }
+                RaisePropertyChanged("GroupedData");
+            }
+        }
+
         public ObservableCollection<ASResult> _statementsLineItems = null;
         public ObservableCollection<ASResult> StatementsLineItems
         {
@@ -289,31 +323,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_statementsLineItems != value)
                 {
-                    monthlyStatementsLineItemsDic = new Dictionary<string, string>();
-                    var _monthlyStatementsLineItems = new ObservableCollection<MonthlyStatementsLineItem>();
-                    if (value != null && value.Count > 0)
-                    {
-                        foreach (var statement in value)
-                        {
-                            if (monthlyStatementsLineItemsDic.ContainsKey(statement.Bldat.ToString("MMMM")))
-                            {
-                                _monthlyStatementsLineItems.Single(x =>
-                                    x.monthName == statement.Bldat.ToString("MMMM")).StatementsLineItems.Add(statement);
-                            }
-                            else
-                            {
-                                var item = new MonthlyStatementsLineItem();
-                                item.monthName = statement.Bldat.ToString("MMMM");
-                                item.StatementsLineItems = new ObservableCollection<ASResult>();
-                                item.StatementsLineItems.Add(statement);
-                                _monthlyStatementsLineItems.Add(item);
-                                monthlyStatementsLineItemsDic.Add(statement.Bldat.ToString("MMMM"), "");
-                            }
-                        }
+                    Items = value.ToList();
 
-                    }
+                    var groupedData = Items.OrderBy(p => p.Bldat)
+                        .GroupBy(p => p.Bldat.ToString("MMMM"))
+                        .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
 
-                    MonthlyStatementsLineItems = _monthlyStatementsLineItems;
+                    GroupedData = groupedData;
+
                     _statementsLineItems = value;
                     RaisePropertyChanged("StatementsLineItems");
                 }
@@ -385,8 +402,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public ObservableCollection<ASRevenueDropDownSetDataResults> _transactionTypeFilter = null;
-        public ObservableCollection<ASRevenueDropDownSetDataResults> TransactionTypeFilter
+        public ObservableCollection<TaxRelationSetResult> _transactionTypeFilter = null;
+        public ObservableCollection<TaxRelationSetResult> TransactionTypeFilter
         {
             get
             {
@@ -448,8 +465,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public ASRevenueDropDownSetDataResults _selectedTransactionTypeFilter = null;
-        public ASRevenueDropDownSetDataResults SelectedTransactionTypeFilter
+        public TaxRelationSetResult _selectedTransactionTypeFilter = null;
+        public TaxRelationSetResult SelectedTransactionTypeFilter
         {
             get
             {
@@ -659,7 +676,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
             DownloadBtnTapped = new Command(DownloadBtnClicked);
 
-            TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>();
+            TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
         }
@@ -803,8 +820,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
             }
 
-            TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>(AllTransactionFilters.Where(x => x.TaxType.Equals(taxType)).ToList());
-            SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
+            // TransactionTypeFilter = new ObservableCollection<ASRevenueDropDownSetDataResults>(AllTransactionFilters.Where(x => x.TaxType.Equals(taxType)).ToList());
+            // SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
         }
 
         public async Task PopulateDataForTransactionTypes(string taxType)
@@ -900,14 +917,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                 }
 
-                if (HeaderSet.D.TaxType == "D")
+                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.ToList());
+
+                /*if (HeaderSet.D.TaxType == "D")
                 {
                     FilterOnTaxType("D");
                 }
                 else if (HeaderSet.D.TaxType == "I")
                 {
                     FilterOnTaxType("I");
-                }
+                }*/
 
                 await Task.Run(() =>
                 {

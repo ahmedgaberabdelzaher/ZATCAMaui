@@ -42,6 +42,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 if (viewModel != null)
                 {
                     viewModel.MenuViewVisible = false;
+                    viewModel.LiveChatVisible = false;
+                    viewModel.AccountStatementVisible = false;
                     viewModel.TaxpayerName = string.Empty;
                     viewModel.HomeViewVisible = true;
                     viewModel.IsVatRegistrationTileVisible = false;
@@ -364,6 +366,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             viewModel.MenuViewVisible = false;
             viewModel.HomeViewVisible = true;
+            viewModel.AccountStatementVisible = false;
+            viewModel.LiveChatVisible = false;
             viewModel.HomeIndicatorColor = Color.DarkGreen;
             viewModel.MenuIndicatorColor = Color.White;
             viewModel.TabbarColor = Color.DarkGray;
@@ -388,6 +392,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 //viewModel._navigationService.NavigateTo(App.TaxManagementPageView);
                 viewModel.MenuViewVisible = true;
                 viewModel.HomeViewVisible = false;
+                viewModel.AccountStatementVisible = false;
+                viewModel.LiveChatVisible = false;
                 viewModel.HomeIndicatorColor = Color.White;
 
                 viewModel.MenuIndicatorColor = Color.FromHex("#006450");
@@ -524,6 +530,48 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnQuickAction_Tapped", "Quick Actions");
                 await PopupNavigation.Instance.PushAsync(new QuickActionPopUpPageView());
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            }
+            catch (Exception Ex)
+            {
+
+            }
+
+        }
+
+        private async void OnAccountStatementsClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                viewModel.MenuViewVisible = false;
+                viewModel.HomeViewVisible = false;
+                viewModel.AccountStatementVisible = true;
+                viewModel.LiveChatVisible = false;
+
+
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "AccountStatements_Tapped", "Account Statements eService");
+                viewModel._navigationService.NavigateTo(App.AccountStatementsPageView);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+            }
+            catch (Exception Ex)
+            {
+
+            }
+
+        }
+
+        private async void OnLiveChatClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                viewModel.MenuViewVisible = false;
+                viewModel.HomeViewVisible = false;
+                viewModel.AccountStatementVisible = false;
+                viewModel.LiveChatVisible = true;
+
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnSupportTapped", "Support");
+                viewModel._navigationService.NavigateTo(App.SupportPageView);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
             catch (Exception Ex)

@@ -57,6 +57,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private bool _menuViewVisible = false;
         private bool _homeViewVisible = true;
+        private bool _accountStatementVisible = false;
+        private bool _liveChatVisible = false;
         private Color _homeIndicatorColor = Color.FromHex("#005e4b");
         private Color _menuIndicatorColor = Color.White;
         private Color _tabbarColor = Color.DarkGray;
@@ -684,6 +686,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("HomeViewVisible");
             }
         }
+
+        public bool AccountStatementVisible
+        {
+            get
+            {
+                return _accountStatementVisible;
+            }
+            set
+            {
+                this._accountStatementVisible = value;
+                if (_accountStatementVisible != null)
+                {
+                    if (_accountStatementVisible)
+                    {
+                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        MenuIndicatorColor = Color.White;
+                    }
+
+                }
+                this.RaisePropertyChanged("AccountStatementVisible");
+            }
+        }
+
+
+        public bool LiveChatVisible
+        {
+            get
+            {
+                return _liveChatVisible;
+            }
+            set
+            {
+                this._liveChatVisible = value;
+                if (_liveChatVisible != null)
+                {
+                    if (_liveChatVisible)
+                    {
+                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        MenuIndicatorColor = Color.White;
+                    }
+
+                }
+                this.RaisePropertyChanged("LiveChatVisible");
+            }
+        }
+
         public Color HomeIndicatorColor
         {
             get

@@ -3609,10 +3609,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         if (!isDraftClicked)
                         {
                             isDraftClicked = true;
-                            ZakatInstalments = await SubmitClicked();
 
-                            if (ZakatInstalments != null && ZakatInstalments.d != null)
+                            var ZakatInstalmentsdata = await SubmitClicked();
+
+                            if (ZakatInstalmentsdata != null && ZakatInstalmentsdata.d != null)
                             {
+                                ZakatInstalments = ZakatInstalmentsdata;
 
                                 IsInitialDraft = true;
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -3686,9 +3688,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         IsNewLoading = false;
                     });
                 }
+
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        //_navigationService.GoBack();
+                    });
+
+                }
                 catch (Exception ex)
                 {
                 }
+
+
             }
             else
             {
@@ -3803,10 +3819,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     if (!isDraftClicked)
                     {
                         isDraftClicked = true;
-                        ZakatInstalments = await SubmitClicked();
 
-                        if (ZakatInstalments != null && ZakatInstalments.d != null)
+                        var ZakatInstalmentsdata = await SubmitClicked();
+
+
+                        if (ZakatInstalmentsdata != null && ZakatInstalmentsdata.d != null)
                         {
+
+                            ZakatInstalments = ZakatInstalmentsdata;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
 
@@ -3895,6 +3915,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 {
                     IsNewLoading = false;
                 });
+            }
+
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+
             }
             catch (Exception ex)
             {
@@ -4026,11 +4058,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 if (!isSubmitClicked)
                 {
                     isSubmitClicked = true;
-                    ZakatInstalments = await SubmitClicked();
+                    var ZakatInstalmentsdata = await SubmitClicked();
 
-                    if (ZakatInstalments != null && ZakatInstalments.d != null)
+                    if (ZakatInstalmentsdata != null && ZakatInstalmentsdata.d != null)
                     {
 
+                        ZakatInstalments = ZakatInstalmentsdata;
                         ZakatReferanceNumber = ZakatInstalments.d.Fbnum;
 
                         await Application.Current.MainPage.Navigation.PushAsync(new OldZakatInstalmentPlanSuccessPage());
@@ -4048,8 +4081,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 //Display Success Screen
 
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
 
             }
             catch (InternetException ex)

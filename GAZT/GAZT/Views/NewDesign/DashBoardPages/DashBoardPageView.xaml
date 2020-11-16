@@ -1197,14 +1197,11 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
+                              <ColumnDefinition Width="*"/>
+
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-
-
-
-
-
 
 
                         <StackLayout Grid.Column="0" BackgroundColor="Transparent" Grid.Row="0" >
@@ -1216,12 +1213,6 @@
                                 </yummy:PancakeView.Triggers>
                             </yummy:PancakeView>
 
-
-
-
-
-
-
                             <Image Source="home.png" VerticalOptions="CenterAndExpand">
                             </Image>
                             <StackLayout.GestureRecognizers>
@@ -1229,21 +1220,26 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-
-
-
-
-
-
-                        <StackLayout Grid.Column="1" Grid.Row="0">
-                            <yummy:PancakeView BackgroundColor="Transparent" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+                         <StackLayout Grid.Column="1" BackgroundColor="Transparent" Grid.Row="0" IsVisible="False">
+                            <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+                                <yummy:PancakeView.Triggers>
+                                    <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding AccountStatementVisible}" Value="True">
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                    </DataTrigger>
+                                </yummy:PancakeView.Triggers>
                             </yummy:PancakeView>
 
+                            <Image Source="details.png" VerticalOptions="CenterAndExpand">
+                            </Image>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAccountStatementsClicked"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
 
-
-
-
+                        <StackLayout Grid.Column="2" Grid.Row="0">
+                            <yummy:PancakeView BackgroundColor="Transparent" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+                            </yummy:PancakeView>
 
                             <buttons:SfButton 
                                 BackgroundImage="Flash.png"
@@ -1255,12 +1251,26 @@
                         </StackLayout>
 
 
+                         <StackLayout Grid.Column="3" BackgroundColor="Transparent" Grid.Row="0" IsVisible="False">
+                            <yummy:PancakeView Padding="3" BackgroundColor="Transparent" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+                                <yummy:PancakeView.Triggers>
+                                    <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding LiveChatVisible}" Value="True">
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                    </DataTrigger>
+                                </yummy:PancakeView.Triggers>
+                            </yummy:PancakeView>
+
+                            <Image Source="ColorChat.png" VerticalOptions="CenterAndExpand">
+                            </Image>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnLiveChatClicked"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
 
 
 
-
-                        <StackLayout Grid.Column="2" Grid.Row="0" BackgroundColor="Transparent">
+                        <StackLayout Grid.Column="4" Grid.Row="0" BackgroundColor="Transparent">
                             <yummy:PancakeView  BackgroundColor="Transparent" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0" >
                                 <yummy:PancakeView.Triggers>
                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding MenuViewVisible}" Value="True">

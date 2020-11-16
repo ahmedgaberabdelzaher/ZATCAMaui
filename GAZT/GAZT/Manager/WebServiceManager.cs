@@ -8873,6 +8873,10 @@ namespace GAZT.Manager
 
 
                 }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
                 catch (Exception ex)
                 {
                     return null;

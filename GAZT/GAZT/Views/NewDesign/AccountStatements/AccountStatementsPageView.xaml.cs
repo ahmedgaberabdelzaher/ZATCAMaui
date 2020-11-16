@@ -5,6 +5,7 @@ using System.Linq;
 using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.AccountStatements
@@ -24,6 +25,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             ChangeArrowDirection();
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            LvwContacts.On<iOS>().SetGroupHeaderStyle(GroupHeaderStyle.Grouped);
             this.BindingContext = viewModel;
 
             try
@@ -145,7 +147,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             try
             {
-                ASRevenueDropDownSetDataResults selectedReturntype = (ASRevenueDropDownSetDataResults)e.NewValue;
+                TaxRelationSetResult selectedReturntype = (TaxRelationSetResult)e.NewValue;
                 TransactionTypePicker.SelectedItem = selectedReturntype;
                 viewModel.SelectedTransactionTypeFilter = selectedReturntype;
 

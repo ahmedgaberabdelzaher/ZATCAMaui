@@ -1617,10 +1617,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         isDraftClicked = true;
                         setDATA();
-                        VatInstalments = await SubmitClicked();
+                        var VatInstalmentData = await SubmitClicked();
                         isDraftClicked = false;
-                        if (VatInstalments != null && VatInstalments.d != null)
+                        if (VatInstalmentData != null && VatInstalmentData.d != null)
                         {
+                            VatInstalments = VatInstalmentData;
+
                             Device.BeginInvokeOnMainThread(async () =>
                             {
 
@@ -1736,10 +1738,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         isDraftClicked = true;
                         setDATA();
-                        VatInstalments = await SubmitClicked();
 
-                        if (VatInstalments != null && VatInstalments.d != null)
+                        var VatInstalmentData = await SubmitClicked();
+
+                        if (VatInstalmentData != null && VatInstalmentData.d != null)
                         {
+                            VatInstalments = VatInstalmentData;
 
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -2276,6 +2280,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             await Task.Run(async () =>
             {
+
                 VatInstalments = await SubmitClicked();
             });
 
@@ -2497,7 +2502,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                   
 
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
