@@ -5020,7 +5020,7 @@
     <value>الزكاة</value>
   </data>
     <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
-    <value>خطة تقسيط ضريبة الدخل</value>
+    <value>ضريبة الدخل</value>
   </data>
     <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
     <value>ضريبة القيمة المضافة</value>
@@ -5032,10 +5032,13 @@
     <value>اختر نوع الضريبة لطلب خطة التقسيط</value>
   </data>
     <data name="ZakatInstalmetFrequency" xml:space="preserve">
-    <value>التكرار</value>
+    <value>تردد الدفعات</value>
   </data>
     <data name="ZakatInstalmentAgrement" xml:space="preserve">
-    <value>القسط الشهري</value>
+    <value>خطة التقسيط المطلوبة</value>
+  </data>
+    <data name="VATInstalmentAgrement" xml:space="preserve">
+    <value>خطة التقسيط المطلوبة</value>
   </data>
     <data name="ZakatInstalmentSchedule" xml:space="preserve">
     <value>جدول التقسيط</value>
@@ -5050,7 +5053,10 @@
     <value>طلب خطة التقسيط</value>
   </data>
     <data name="ZakatInstalmetRequestInstalmentDesc" xml:space="preserve">
-    <value>تفاصيل طلب خطة تقسيط</value>
+    <value>تفاصيل خطة التقسيط المطلوبة</value>
+  </data>
+     <data name="VATInstalmetRequestInstalmentDesc" xml:space="preserve">
+      <value>تفاصيل خطة التقسيط المطلوبة</value>
   </data>
     <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
     <value>إجمالي المبلغ المستحق</value>
@@ -5159,7 +5165,7 @@
     <value>SADAD Number</value>
   </data>
     <data name="ZakatInstalmetDetails" xml:space="preserve">
-    <value>عرض جدول الاقساط</value>
+    <value>عرض جدول التقسيط</value>
   </data>
     <data name="AllReturns" xml:space="preserve">
     <value>جميع الاقرارات</value>
@@ -5860,10 +5866,10 @@
     <value>طلب او عرض خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
     <data name="ZakatFinancialCrisis" xml:space="preserve">
-    <value>الأزمة المالية - عدم القدرة على تسوية الرسوم</value>
+    <value>ازمة مالية عدم القدرة على تسوية المستحقات</value>
   </data>
     <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
-    <value>نزاع لصالح الهيئة</value>
+    <value>حالة نزاع انتهت لصالح الهيئة العامة للزكاة والدخل</value>
   </data>
     <data name="ZakatOtherReason" xml:space="preserve">
     <value>أسباب أخرى</value>

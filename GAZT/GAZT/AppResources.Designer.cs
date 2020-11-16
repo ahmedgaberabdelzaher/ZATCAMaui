@@ -8646,6 +8646,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATInstalmentAgrement {
+            get {
+                return ResourceManager.GetString("VATInstalmentAgrement", resourceCulture);
+            }
+        }
+        
         public static string ZakatInstalmentSchedule {
             get {
                 return ResourceManager.GetString("ZakatInstalmentSchedule", resourceCulture);
@@ -8673,6 +8679,12 @@ namespace EGAZT {
         public static string ZakatInstalmetRequestInstalmentDesc {
             get {
                 return ResourceManager.GetString("ZakatInstalmetRequestInstalmentDesc", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmetRequestInstalmentDesc {
+            get {
+                return ResourceManager.GetString("VATInstalmetRequestInstalmentDesc", resourceCulture);
             }
         }
         

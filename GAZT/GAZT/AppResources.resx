@@ -5056,6 +5056,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <data name="ZakatInstalmentAgrement" xml:space="preserve">
     <value>Instalment Agreement</value>
   </data>
+     <data name="VATInstalmentAgrement" xml:space="preserve">
+    <value>Instalment Agreement</value>
+  </data>
     <data name="ZakatInstalmentSchedule" xml:space="preserve">
     <value>Instalment Schedule</value>
   </data>
@@ -5069,6 +5072,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Request Instalment Plan</value>
   </data>
     <data name="ZakatInstalmetRequestInstalmentDesc" xml:space="preserve">
+    <value>Set up your instalment plan details</value>
+  </data>
+     <data name="VATInstalmetRequestInstalmentDesc" xml:space="preserve">
     <value>Set up your instalment plan details</value>
   </data>
     <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
