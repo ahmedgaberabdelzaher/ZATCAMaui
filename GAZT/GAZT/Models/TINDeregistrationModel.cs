@@ -433,11 +433,14 @@ namespace EGAZT.Models
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("Assignme")]
-        public string Assignme { get; set; }
+        //[JsonProperty("Assignme")]
+        //public string Assignme { get; set; }
 
-        [JsonProperty("Caseid")]
-        public string Caseid { get; set; }
+        //[JsonProperty("Caseid")]
+        //public string Caseid { get; set; }
+
+        //[JsonProperty("Operation")]
+        //public string Operation { get; set; }
 
         [JsonProperty("Xvoidz")]
         public string Xvoidz { get; set; }
@@ -469,8 +472,7 @@ namespace EGAZT.Models
         [JsonProperty("PeriodKeyz")]
         public string PeriodKeyz { get; set; }
 
-        [JsonProperty("Operation")]
-        public string Operation { get; set; }
+       
 
         [JsonProperty("OfficerUidz")]
         public string OfficerUidz { get; set; }
@@ -1392,7 +1394,7 @@ namespace EGAZT.Models
         public string APermitNm4Tb { get; set; }
 
         [JsonProperty("APermitDobTb")]
-        public object APermitDobTb { get; set; }
+        public string APermitDobTb { get; set; }
 
         [JsonProperty("APermitDobHTb")]
         public string APermitDobHTb { get; set; }

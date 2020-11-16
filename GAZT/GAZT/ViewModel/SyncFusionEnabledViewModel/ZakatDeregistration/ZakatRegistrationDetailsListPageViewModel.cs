@@ -222,7 +222,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                      });
 
                                      ZakatDeregResponseData = await WebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregResponseData);
-                                     _navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
+                                     //_navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
 
                                      await Task.Run(() =>
                                      {

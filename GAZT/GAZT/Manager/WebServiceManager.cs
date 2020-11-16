@@ -11760,6 +11760,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+
                         //_validateIDResponse = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
                         //if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
                         //{
@@ -12210,8 +12211,8 @@ namespace GAZT.Manager
 
                     /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
                     //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
-                    String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
-                    //   String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
+                    //String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
+                    String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
@@ -12346,20 +12347,26 @@ namespace GAZT.Manager
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
-                    if (outletInfo.AOutletEffDtTb != null)
+                    if (outletInfo.AOutletEffDtTb != null && !outletInfo.AOutletEffDtTb.Contains("/Date("))
+                    {
                         outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
+                    }
+
+                    outletInfo.AOutletToDeregTb = "1";
                     outletInfo.AOutletEffDtCTb = "G";
                 }
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
-                    permitInfo.APermitDobTb = null;
-                    if (!permitInfo.APermitEffDtTb.Contains("/Date("))
-                        permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
-                    permitInfo.APermitEffDtCTb = "G";
-                    if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
-                        permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
-                    permitInfo.APermitValfrDtCTb = "G";
+                    //permitInfo.APermitDobTb = null;
 
+                    if(permitInfo != null)
+                    {
+                        permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
+                        permitInfo.APermitEffDtCTb = "G";
+                        
+                        permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
+                        permitInfo.APermitValfrDtCTb = "G";
+                    }
                 }
             }
             catch (Exception ex)
@@ -12367,10 +12374,12 @@ namespace GAZT.Manager
                 Console.WriteLine(ex.Message);
             }
 
-            tinDeregistrationSendResponseModel.Metadata = tinDeregistrationResponseModel.Metadata;
-            tinDeregistrationSendResponseModel.Assignme = tinDeregistrationResponseModel.Assignme;
+            //tinDeregistrationSendResponseModel.Assignme = tinDeregistrationResponseModel.Assignme;
+            //tinDeregistrationSendResponseModel.Caseid = tinDeregistrationResponseModel.Caseid;
+            //tinDeregistrationSendResponseModel.Operation = tinDeregistrationResponseModel.Operation;
+            tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.CaseGuid;
 
-            tinDeregistrationSendResponseModel.Caseid = tinDeregistrationResponseModel.Caseid;
+            tinDeregistrationSendResponseModel.Metadata = tinDeregistrationResponseModel.Metadata;
             tinDeregistrationSendResponseModel.Xvoidz = tinDeregistrationResponseModel.Xvoidz;
             tinDeregistrationSendResponseModel.TinInPrcFg = tinDeregistrationResponseModel.TinInPrcFg;
             tinDeregistrationSendResponseModel.Taxpayerz = tinDeregistrationResponseModel.Taxpayerz;
@@ -12381,12 +12390,10 @@ namespace GAZT.Manager
             tinDeregistrationSendResponseModel.RegIdz = tinDeregistrationResponseModel.RegIdz;
             tinDeregistrationSendResponseModel.PortalUsrz = tinDeregistrationResponseModel.PortalUsrz;
             tinDeregistrationSendResponseModel.PeriodKeyz = tinDeregistrationResponseModel.PeriodKeyz;
-            tinDeregistrationSendResponseModel.Operation = tinDeregistrationResponseModel.Operation;
             tinDeregistrationSendResponseModel.OfficerUidz = tinDeregistrationResponseModel.OfficerUidz;
             tinDeregistrationSendResponseModel.Monthz = tinDeregistrationResponseModel.Monthz;
             tinDeregistrationSendResponseModel.LegacyDocNo = tinDeregistrationResponseModel.LegacyDocNo;
             tinDeregistrationSendResponseModel.Langz = tinDeregistrationResponseModel.Langz;
-            tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.FormGuid;
             tinDeregistrationSendResponseModel.Fbnumz = tinDeregistrationResponseModel.Fbnumz;
             tinDeregistrationSendResponseModel.Fbnum = tinDeregistrationResponseModel.Fbnum;
             tinDeregistrationSendResponseModel.Dflag = tinDeregistrationResponseModel.Dflag;
@@ -12513,7 +12520,7 @@ namespace GAZT.Manager
                         if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count>0 && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 string errorCode = errorMesg.error.innererror.errordetails[0].code;
                                 ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;

@@ -864,7 +864,7 @@
                                                 </StackLayout>
 
 
-                                                <StackLayout Margin="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding BindingContext.IsPermitTypesVisible,Source={x:Reference TinDeReg}}"
+                                                <StackLayout Margin="0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                                                          BindableLayout.ItemsSource="{Binding PermitTypes}"  HorizontalOptions="FillAndExpand" 
                                                          VerticalOptions="FillAndExpand" >
                                                     <BindableLayout.ItemTemplate>

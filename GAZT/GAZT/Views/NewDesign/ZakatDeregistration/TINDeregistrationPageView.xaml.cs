@@ -258,9 +258,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else
             {
                 viewModel.outletEditIsVisible = false;
-
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
-
             }
 
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption", (arg) =>
@@ -328,16 +326,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //}
         }
 
+
+
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             int index = Convert.ToInt16(selectedItem.OutletOptionIndex) - 1;
+
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
 
             if (viewModel.SelectedOutletOptionIndex == 1)
             {
                 viewModel.NationalTypeSelected();
             }
+
 
             viewModel.IsOption1Visible = index == 0 ? true : false;
             viewModel.IsOption2Visible = index == 1 ? true : false;
@@ -408,9 +410,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //viewModel.TodayDate = new ObservableCollection<object>();
                 //viewModel.TodayDateinHijri = new ObservableCollection<object>();
             }
-            GetSelectedDataTemplate();
+            GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
         }
-        void GetSelectedDataTemplate()
+        void GetSelectedDataTemplate(bool isIndex1 = false)
         {
             var captionStyle = Resources["CaptionLabelBlack"] as Style;
             Grid cardView = new Grid() { HeightRequest = 100 };
@@ -448,6 +450,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
             int index = Convert.ToInt16(viewModel.SelectedOutletOptionIndex);
+            if (isIndex1)
+            {
+                index = 1;
+            }
             viewModel.IsOption1Visible = index == 0 ? true : false;
             viewModel.IsOption2Visible = index == 1 ? true : false;
         }
@@ -586,7 +592,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             else
                             {
                                 viewModel.FrameIDError = false;
-                                if (!string.IsNullOrEmpty(viewModel.SelectedDob))
+                                if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                                 {
                                     viewModel.ValidateIDNumber();
                                 }
@@ -1029,20 +1035,16 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     string convertedDeregDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
                     deregDate = Convert.ToDateTime(convertedDeregDate);
-
                 }
                 else
                 {
                     deregDate = Convert.ToDateTime(viewModel.PkrDBO);
-
-
                 }
 
 
                 if (deregDate < permitDate)
                 {
                     viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-
                 }
 
             }
@@ -1230,8 +1232,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 string year = selectedItem[2].ToString();
                 string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
                 viewModel.SelectedDob = date;
-
-
             }
             else
             {
@@ -1241,8 +1241,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 string year = selectedItem[2].ToString();
                 string date = year + "/" + month + "/" + day;
                 viewModel.SelectedDob = date;
-
-
             }
         }
 
