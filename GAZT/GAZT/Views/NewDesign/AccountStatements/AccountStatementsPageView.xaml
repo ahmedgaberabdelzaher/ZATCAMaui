@@ -443,6 +443,7 @@
                   </ListView.GroupHeaderTemplate>
                 <ListView.Footer>
 
+                    <Grid>
                      <ListView Margin="5"  IsVisible="{Binding IsNormalStatementsViewVisible}" 
                   SeparatorVisibility="None"
                   VerticalScrollBarVisibility="Never"
@@ -572,7 +573,8 @@
                     </DataTemplate>  
                 </ListView.ItemTemplate>
                 
-            </ListView> 
+            </ListView>
+                        </Grid>
                     </ListView.Footer>
                 <ListView.Header>
 
