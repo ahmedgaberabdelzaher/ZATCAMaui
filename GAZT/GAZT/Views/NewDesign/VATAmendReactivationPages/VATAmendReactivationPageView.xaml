@@ -1890,7 +1890,7 @@
                                                 <!--#region Modified-->
 
                                                 <StackLayout BindableLayout.ItemsSource="{Binding ListFinanceRepresenatives}" 
-                                                          VerticalOptions="FillAndExpand" IsEnabled="True">
+                                                          VerticalOptions="FillAndExpand" IsEnabled="True" >
                                                     <BindableLayout.ItemTemplate>
                                                         <DataTemplate>
                                                             <!--<ViewCell>-->
@@ -2138,9 +2138,11 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
 
                                                 <!--#endregion-->
-
+                                                <BoxView HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" HeightRequest="2"
+                                                         IsVisible="{Binding IsNewFinancialRepVisible}" Margin="0,10,0,0"/>
                                                 <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
-                              ColumnSpacing="0" RowSpacing="15" BackgroundColor="White" IsVisible="{Binding IsNewFinancialRepVisible}">
+                                                       ColumnSpacing="0" RowSpacing="15" BackgroundColor="White" IsVisible="{Binding IsNewFinancialRepVisible}"
+                                                       Margin="0,10,0,0">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>

@@ -1887,7 +1887,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                             case ArButtons.حفظكمسودة:
                                 OperationCode = "05";
-                              
+
                                 break;
 
                             case ArButtons.تقديم:
@@ -1968,13 +1968,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                     else
                     {
-                        
-                            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-                            if (result)
-                            {
-                                await viewModel.SubmitClicked();
-                            }
-                        
+
+                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                        if (result)
+                        {
+                            await viewModel.SubmitClicked();
+                        }
+
                     }
                 }
                 else
@@ -1998,11 +1998,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         viewModel.IsFinancialDChangeSectionEnabled = true;
 
                     }
-                if (App.VATType == Enums.PageExecutionType.Amend)
-                {
-                        if(viewModel.CurrentStep == "Step 3")
+                    if (App.VATType == Enums.PageExecutionType.Amend)
+                    {
+                        if (viewModel.CurrentStep == "Step 3")
                         {
-                            if (!viewModel.IsAddAdditionalInfoChecked )
+                            if (!viewModel.IsAddAdditionalInfoChecked)
                             {
                                 string message = AppResources.ZZVATAmendNoChangesMadeMessage;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
@@ -2032,29 +2032,29 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 }
                             }
                         }
-                        else 
+                        else
                         {
-                            if (!viewModel.IsFDChangeSectionChecked || !viewModel.IsAddAdditionalInfoChecked || !viewModel.IsAddNewRepresentativeChecked )
+                            if (viewModel.IsFDChangeSectionChecked || viewModel.IsAddAdditionalInfoChecked || viewModel.IsAddNewRepresentativeChecked)
+                            {
+                                //var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                                //if (result)
+                                //{
+                                await viewModel.SubmitClicked();
+                                //}
+                            }
+                            else
                             {
                                 string message = AppResources.ZZVATAmendNoChangesMadeMessage;
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
                             }
-                            else
-                            {
-                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-                                if (result)
-                                {
-                                    await viewModel.SubmitClicked();
-                                }
-                            }
                         }
-                
-                 
-                }
-                else
-                {
-                    await viewModel.SubmitClicked();
-                }
+
+
+                    }
+                    else
+                    {
+                        await viewModel.SubmitClicked();
+                    }
                 }
             }
         }
