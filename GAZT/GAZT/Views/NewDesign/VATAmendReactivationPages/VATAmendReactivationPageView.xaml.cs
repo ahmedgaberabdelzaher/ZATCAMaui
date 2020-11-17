@@ -321,6 +321,16 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             return;
                         }
                     }
+                    else
+                    {
+                        viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Gpart;
+                        viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
+                        viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
+                        viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Lastnm;
+                        viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
+                        viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
+                        viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+                    }
 
                     //viewModel.IsDeclarationChecked = false;
                     //viewModel.CurrentStep = "Submit";
@@ -4673,6 +4683,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.IsNewFinancialRepVisible = false;
                     viewModel.IsAddNewRepresentativeChecked = false;
+
+                    viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Gpart;
+                    viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
+                    viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
+                    viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Lastnm;
+                    viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
+                    viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
+                    viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
                 }
             }
         }

@@ -1474,7 +1474,7 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-            
+
                                                         <StackLayout Grid.Row="0">
                                                             <Label Text="{x:Static custom2:AppResources.ZZZAmendFinancialRepreGtext}" Padding="0,0,0,0" Style="{StaticResource GAZTCaptionBlackLabel}"/>
 
@@ -1819,48 +1819,48 @@
                                             <StackLayout>
                                                 <StackLayout Margin="0,0,0,15" >
 
-                                        <StackLayout Orientation="Vertical" IsVisible="{Binding FinancialRepresentative.AddNewFinRepCBVisible}" IsEnabled="{Binding FinancialRepresentative.AddNewFinRepresentativeCB}">
-                                             <StackLayout Orientation="Horizontal">
-                                                               <Grid HeightRequest="30" WidthRequest="30" VerticalOptions="CenterAndExpand">
-                                                            <CheckBox x:Name="cbChangeEmail"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.IsChangeEmailCheckBoxEnabled,Source={x:Reference VATRegistration}}" IsChecked="{Binding IsChangeEmailChecked}">
-                                                                <CheckBox.Triggers>
-                                                                    <DataTrigger TargetType="CheckBox"  Value="false">
-                                                                        <Setter Property="Color" Value="#ff0000" />
-                                                                    </DataTrigger>
-                                                                </CheckBox.Triggers>
-                                                            </CheckBox>
-                                                            <!--<Button HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
+                                                    <StackLayout Orientation="Vertical" IsVisible="{Binding FinancialRepresentative.AddNewFinRepCBVisible}" IsEnabled="{Binding FinancialRepresentative.AddNewFinRepresentativeCB}">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Grid HeightRequest="30" WidthRequest="30" VerticalOptions="CenterAndExpand">
+                                                                <CheckBox x:Name="cbChangeEmail"  HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.IsChangeEmailCheckBoxEnabled,Source={x:Reference VATRegistration}}" IsChecked="{Binding IsChangeEmailChecked}">
+                                                                    <CheckBox.Triggers>
+                                                                        <DataTrigger TargetType="CheckBox"  Value="false">
+                                                                            <Setter Property="Color" Value="#ff0000" />
+                                                                        </DataTrigger>
+                                                                    </CheckBox.Triggers>
+                                                                </CheckBox>
+                                                                <!--<Button HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
                                                                     Clicked="ChangeMobileNumber_Tapped"/>-->
-                                                        </Grid>
-                                                             <custom:CustomLabel   Style="{StaticResource GAZTCaptionBlackLabel}" VerticalOptions="CenterAndExpand">
-                                                            <custom:CustomLabel.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{x:Static custom2:AppResources.ZZZAmendFinancialRepCheck}"  />
-                                                                </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal">
-                                                        <Grid HeightRequest="30" WidthRequest="30" VerticalOptions="CenterAndExpand">
-                                                            <CheckBox x:Name="cbAddRepresentative" IsEnabled="{Binding  BindingContext.IsAddFinancialRepresentativeCheckBoxEnabled,Source={x:Reference VATRegistration}}" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddNewRepresentativeChecked}">
-                                                                <CheckBox.Triggers>
-                                                                    <DataTrigger TargetType="CheckBox"  Value="false">
-                                                                        <Setter Property="Color" Value="#ff0000" />
-                                                                    </DataTrigger>
-                                                                </CheckBox.Triggers>
-                                                            </CheckBox>
-                                                            <Button IsEnabled="{Binding  BindingContext.IsAddFinancialRepButtonEnabled,Source={x:Reference VATRegistration}}" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
-                                                                    Clicked="AddNewRepresentative_Tapped"/>
-                                                        </Grid>
-                                                        <custom:CustomLabel   Style="{StaticResource GAZTCaptionBlackLabel}" VerticalOptions="CenterAndExpand">
-                                                            <custom:CustomLabel.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />
-                                                                </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                                                            </Grid>
+                                                            <custom:CustomLabel   Style="{StaticResource GAZTCaptionBlackLabel}" VerticalOptions="CenterAndExpand">
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static custom2:AppResources.ZZZAmendFinancialRepCheck}"  />
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
                                                         </StackLayout>
-                                            </StackLayout>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Grid HeightRequest="30" WidthRequest="30" VerticalOptions="CenterAndExpand">
+                                                                <CheckBox x:Name="cbAddRepresentative" IsEnabled="{Binding  BindingContext.IsAddFinancialRepresentativeCheckBoxEnabled,Source={x:Reference VATRegistration}}" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsAddNewRepresentativeChecked}">
+                                                                    <CheckBox.Triggers>
+                                                                        <DataTrigger TargetType="CheckBox"  Value="false">
+                                                                            <Setter Property="Color" Value="#ff0000" />
+                                                                        </DataTrigger>
+                                                                    </CheckBox.Triggers>
+                                                                </CheckBox>
+                                                                <Button IsEnabled="{Binding  BindingContext.IsAddFinancialRepButtonEnabled,Source={x:Reference VATRegistration}}" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"
+                                                                    Clicked="AddNewRepresentative_Tapped"/>
+                                                            </Grid>
+                                                            <custom:CustomLabel   Style="{StaticResource GAZTCaptionBlackLabel}" VerticalOptions="CenterAndExpand">
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static custom2:AppResources.VATChangeRegistrationAddFinancialRepresentative}"  />
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
+                                                        </StackLayout>
+                                                    </StackLayout>
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
 
@@ -2573,19 +2573,19 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding GpartSum}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding TxtIDTypeSum}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IdnumberFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding IdnumberSum}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.FirstnmFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding FirstnmSum}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.LastnmFR}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding LastnmSum}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <!--<Label Grid.Row="5" Grid.Column="1" Text="{Binding MobNumberFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
@@ -2593,13 +2593,13 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="(0966)" TextColor="Black"  />
-                                                                    <Span   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.MobNumberFR}" />
+                                                                    <Span   Text="{Binding BindingContext.MobNumberSum, Source={x:Reference VATRegistration}}" />
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
 
                                                         <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding BindingContext.SmtpAddrSum, Source={x:Reference VATRegistration}}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                     </Grid>
                                                 </StackLayout>
                                             </Frame>
@@ -2801,7 +2801,7 @@ SelectionChanged="DDlIDTypeSR_OkayButtonClicked" OkButtonClicked="DDlIDTypeSR_Ok
 
                                 </Grid>
 
-                                <StackLayout  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="White" >
+                                <StackLayout  Padding="15,0,15,30" VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                     <buttons:SfButton  x:Name="MainButtonName" Text="{Binding CurrentStep}" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}" CornerRadius="14" Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
                                 </StackLayout>
                             </StackLayout>
