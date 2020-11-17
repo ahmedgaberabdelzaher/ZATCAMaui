@@ -6848,34 +6848,34 @@
     <value>سنة</value>
   </data>
     <data name="ZakatCashBank" xml:space="preserve">
-    <value>2.الإيرادات</value>
+    <value>2. الإيرادات</value>
   </data>
     <data name="ZakatShortTermInvestment" xml:space="preserve">
-    <value>صافي الدخل.3</value>
+    <value>3. صافي الدخل</value>
   </data>
     <data name="ZakatDebitors" xml:space="preserve">
-    <value>النقد + البنك.4</value>
+    <value>4. النقد + البنك</value>
   </data>
     <data name="ZakatInventory" xml:space="preserve">
-    <value>الاستثمارات قصيرة الأجل .5</value>
+    <value>5. الاستثمارات قصيرة الأجل</value>
   </data>
     <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>إجمالي الأصول المتداولة.6</value>
+    <value>6. إجمالي الأصول المتداولة</value>
   </data>
     <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-    <value>إجمالي الخصوم المتداولة .7</value>
+    <value>7. إجمالي الخصوم المتداولة</value>
   </data>
     <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>المدينون.8</value>
+    <value>8. المدينون</value>
   </data>
     <data name="ZakatRevenue" xml:space="preserve">
-    <value>الدائنون.9</value>
+    <value>9. الدائنون</value>
   </data>
     <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-    <value>الأرباح المرحلة - الخسائر المتراكمة.10</value>
+    <value>10. الأرباح المرحلة - الخسائر المتراكمة</value>
   </data>
     <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>نسبة الربحية ٣ / ٢.11</value>
+    <value>11. نسبة الربحية ٣ / ٢</value>
   </data>
     <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -6917,13 +6917,13 @@
     <value>المرفقات - كشوفات مالية لآخر 3 سنوات</value>
   </data>
     <data name="ZakatInstalmentCashRatio" xml:space="preserve">
-    <value>نسبة النقدية (٤+٥) / ٧</value>
+    <value>13. نسبة النقدية (٤+٥) / ٧</value>
   </data>
     <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
     <value>عرض تفاصيل القسط</value>
   </data>
     <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
-    <value>نسبة التداول ٦ / ٧</value>
+    <value>12. نسبة التداول ٦ / ٧</value>
   </data>
     <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -8570,4 +8570,7 @@
     <data name="OldZakatInstalmentAttachmentLimitReached" xml:space="preserve">
       <value>يجب أن لا يزيد عدد المرفقات عن 3 ملفات.</value>
     </data>
+    <data name="ZakatOldFinancialDetails" xml:space="preserve">
+    <value>البيانات المالية</value>
+  </data>
 </root>

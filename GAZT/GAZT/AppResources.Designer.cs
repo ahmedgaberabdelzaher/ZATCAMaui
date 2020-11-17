@@ -15209,5 +15209,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("OldZakatInstalmentAttachmentLimitReached", resourceCulture);
             }
         }
+        
+        public static string ZakatOldFinancialDetails {
+            get {
+                return ResourceManager.GetString("ZakatOldFinancialDetails", resourceCulture);
+            }
+        }
     }
 }
