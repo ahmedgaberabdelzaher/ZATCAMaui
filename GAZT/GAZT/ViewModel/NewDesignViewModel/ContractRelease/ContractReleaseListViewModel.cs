@@ -437,9 +437,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             //ContractReLeaseSummaryData.EstimatedProfitforTax = resultData.d.ATaxProfitPer;
             //ContractReLeaseSummaryData.TheValueofZakatdues = resultData.d.ADueZakat;
             //ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
-            ZakatDues = ContractReLeaseSummaryData.TheValueofZakatdues;
-            TaxDues = ContractReLeaseSummaryData.TheValueofTaxdues;
-            TotalDues = ContractReLeaseSummaryData.TotalDues;
+            ZakatDues = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.TheValueofZakatdues);
+            TaxDues = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.TheValueofTaxdues);
+            TotalDues = UtilityManager.GetCommaSeparatedAmount(ContractReLeaseSummaryData.TotalDues);
             var ccAttachments = new ObservableCollection<Attachment>();
             var invoiceAttachments = new ObservableCollection<Attachment>();
 

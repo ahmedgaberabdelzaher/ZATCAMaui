@@ -2517,7 +2517,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     var amount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
                     VatInstalments.d.Totliablityamt = amount;
                     VatInstalments.d.StepNumberz = "03";
-
+                    VatInstalments.d.Decflg = "0";
                     VatInstalments.d.Operationz = "10";
 
 
@@ -3441,6 +3441,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
                 }
+                else {
+
+                    request.d.NOTESSet = new NotesSetPost[0];
+
+                }
+
             }
 
 

@@ -166,7 +166,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
                 if (SelectedFbNum != null)
                 {
-                    String downloadurl = Constants.ZakatdownloadCoverFormFile + "'" + SelectedFbNum + "')/$value";
+                    String downloadurl = Constants.OldZakatdownloadCoverFormFile + "'" + SelectedFbNum + "')/$value";
                     //await WebServiceManager.FileDownload(downloadurl, "pdf");
                     _navigationService.NavigateTo(App.PdfView, downloadurl);
 
@@ -1529,7 +1529,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 SummarySelectedBillsList.Add(new OldZakatSelectBillModel()
                 {
                     billNumber = AppResources.Bill + (SummarySelectedBillsList.Count + 1).ToString("00") + ":",
-                    amount = bill.ADueAmtTb,
+                    amount = UtilityManager.GetCommaSeparatedAmount(bill.ADueAmtTb),
                     saadNumber = bill.AIvNoTb,
                     taxPeriod = bill.ADueDtTb,
                     isSelected = false,

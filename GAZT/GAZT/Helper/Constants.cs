@@ -366,6 +366,7 @@ namespace GAZT.Helper
         public static string ZakatObjectionRemoveobjectionURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_RMV_OBJ_SRV/HeaderSet(";
         public static string ZakatObjectionRemoveObjAckURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(";
         public static string ZakatdownloadCoverFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/cover_formSet(Fbnum=";
+        public static string OldZakatdownloadCoverFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum=";
 
 
         public static string ZakatObjectionWDMaindataRL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotes_tp09Set(";
