@@ -121,11 +121,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         private async void OutletType_Clicked(object sender, EventArgs e)
         {
             var result = await DisplayActionSheet(AppResources.SelectOutletType, null, null, viewModel.ListOutletTypes.ToArray());
-            if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 1 && viewModel.isMainOutletExists && viewModel.selectedOutletItem.Actcat != "M")
+
+            if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 0 && viewModel.ListOutlets.Exists(x=>x.Actcat =="M"))
             {
                 await PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.SelectOutletTypeError));
                 return;
             }
+
             else if (result != null && result != AppResources.OKText)
             {
                 viewModel.SelectedOutletType = result;

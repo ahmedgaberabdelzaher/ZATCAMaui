@@ -470,7 +470,7 @@
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
                                                             </custom:CustomLabel>
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration} }"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration}}"
                                             ContainerType="Outlined" x:Name="FrmEStartDate" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
@@ -504,7 +504,7 @@
                                                                 </StackLayout.GestureRecognizers>
 
                                                             </StackLayout>
-                                                            <Button Grid.Row="1" IsVisible="false" x:Name="btn1" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration} }"  BackgroundColor="Transparent" Clicked="btn1_Clicked" Margin="0,0,0,0" />
+                                                            <Button Grid.Row="1" IsVisible="false" x:Name="btn1" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration}}"  BackgroundColor="Transparent" Clicked="btn1_Clicked" Margin="0,0,0,0" />
                                                             <custom1:CustomDatePicker Grid.Row="1" FlowDirection="RightToLeft" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration} }"
 								ShowHeader="false"
 								Margin="2" 
@@ -538,8 +538,8 @@
                                                         </Grid>
                                                     </StackLayout>
                                                     <!--End Of Read Only or pre-populated {Binding TodayDate}"-->
-                                                    <!--Start Of Additional Information-->
-                                                    <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration} }">
+                                                    <!--Start Of Additional Information--> 
+                                                    <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration}}">
                                                         <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
                                                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                                         <Label Text="{x:Static custom2:AppResources.VATRImportExport}" Padding="0,0,0,0" Style="{StaticResource GAZTSmallBlackLbl}"/>
@@ -554,7 +554,7 @@
                                                             </Grid.ColumnDefinitions>
                                                             <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
                                                             <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
-                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.ImporterNoRB,Source={x:Reference VATRegistration} }">
+                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.ImporterNoRB,Source={x:Reference VATRegistration}}">
                                                                 <Grid>
                                                                     <Image Margin="0" x:Name="ImporterImage" Source="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.ImporterImageSource}" Aspect="AspectFill"  Grid.Row="0">
                                                                     </Image>
@@ -576,7 +576,7 @@
 
                                                             </cards:SfCardView>
                                                             <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True"  Margin="3" Padding="0"  ShadowColor="#5d6770" 
-                                                          BackgroundColor="DarkGreen"  CornerRadius="3" HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterNoRB,Source={x:Reference VATRegistration} }">
+                                                          BackgroundColor="DarkGreen"  CornerRadius="3" HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterNoRB,Source={x:Reference VATRegistration}}">
 
                                                                 <Grid Margin="0" Padding="0" VerticalOptions="FillAndExpand">
                                                                     <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
@@ -602,7 +602,7 @@
                                                             </cards:SfCardView>
                                                         </Grid>
                                                         <Label Text="{x:Static custom2:AppResources.VATRAttachment}" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}" Padding="0,0,0,0" Style="{StaticResource GAZTCaptionBlackLabel}"/>
-                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterrAttachmentsBtn,Source={x:Reference VATRegistration} }" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1"  Margin="0,-6,0,-6" IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterrAttachmentsBtn,Source={x:Reference VATRegistration}}" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                                             <StackLayout Orientation="Horizontal">
@@ -698,8 +698,8 @@
                                                 </StackLayout>-->
                                                     <!--
                                             </StackLayout>-->
-
-                                                    <StackLayout Grid.Row="9" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration} }">
+                                                   
+                                                    <StackLayout Grid.Row="9" IsEnabled= "{Binding BindingContext.TaxPayerDetails.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
@@ -716,7 +716,7 @@
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <!--New Accounts-->
-                                                                    <custom:BorderlessEntry   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewAccountText}" TextColor="DarkGreen" VerticalTextAlignment="Center"  IsEnabled="False" Style="{StaticResource GAZTEntry}">
+                                                                    <custom:BorderlessEntry HorizontalOptions="FillAndExpand"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewAccountText}" TextColor="DarkGreen" VerticalTextAlignment="Center"  IsEnabled="False" Style="{StaticResource GAZTEntry}">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                                         <Image.Source>
@@ -749,13 +749,12 @@
                                                                 </Image>
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>-->
-
-
-                                                            <Button Grid.Row="1" x:Name="NewAccount" IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker,Source={x:Reference VATRegistration} }" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
+                                                             
+                                                            <Button Grid.Row="1" x:Name="NewAccount" IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker,Source={x:Reference VATRegistration}}"
+                                                                    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
                                                         </Grid>
                                                     </StackLayout>
-
-                                                    <StackLayout Grid.Row="10" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration} }">
+                                                    <StackLayout Grid.Row="10" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
 
                                                         <Grid>
                                                             <Grid.RowDefinitions>
@@ -768,7 +767,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
 
-                                                            <CollectionView Grid.Row="1" HeightRequest="100"   Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="OnPageSelectedForIban"   SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SelectedIban}" SelectionMode="Single"  ItemsSource="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IbanList}"   x:Name="Ibanset"  ItemsLayout="HorizontalList" Margin="0"   BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                                            <CollectionView Grid.Row="1" HeightRequest="100"   Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="OnPageSelectedForIban"
+                                                                            SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SelectedIban}" SelectionMode="Single"
+                                                                            ItemsSource="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IbanList}" x:Name="Ibanset"
+                                                                            ItemsLayout="HorizontalList" Margin="0"   BackgroundColor="White" HorizontalOptions="FillAndExpand"
+                                                                            VerticalOptions="FillAndExpand" >
                                                                 <CollectionView.ItemTemplate>
                                                                     <DataTemplate>
 
@@ -787,8 +790,8 @@
                                                                                         </Grid.RowDefinitions>
                                                                                         <StackLayout Grid.Row="1" Spacing="0">
 
-                                                                                            <Label Text="{Binding Iban}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
-                                                                                            <Label Text="{x:Static custom2:AppResources.VATRInmaBank}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
+                                                                                            <Label Text="{Binding Iban}" HorizontalOptions="FillAndExpand"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
+                                                                                            <!--<Label Text="{x:Static custom2:AppResources.VATRInmaBank}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>-->
                                                                                         </StackLayout>
                                                                                     </Grid>
                                                                                 </Grid>
@@ -2110,7 +2113,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                                     <Label Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource GAZTCaptionBlackLabel}"/>
                                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
-                                            ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}" 
+                                            ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                         <custom:BorderlessEntry Text="{Binding SmtpAddrFR}" 
                                                                     Placeholder="{x:Static custom2:AppResources.Email}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}">
@@ -2121,7 +2124,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                                     <Label Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource GAZTCaptionBlackLabel}"/>
                                                                     <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
-                                                ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}"
+                                                ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                         <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
                                                                             <Entry.Behaviors>

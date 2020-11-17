@@ -163,7 +163,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _isFDNameMobEmailEnable = value;
+                if (IsChangeEmailChecked)
+                {
+                    _isFDNameMobEmailEnable = true;
 
+                }
+                else
+                {
+                    _isFDNameMobEmailEnable = false;
+                }
                 RaisePropertyChanged("IsFDNameMobEmailEnable");
             }
         }
@@ -960,10 +968,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 if (_isAddAdditionalInfoChecked)
                 {
                     AddAdditionalInfoCheckBoxEnabled = false;
+                    IsTaxPayerIBANEnabled = true;
+                    IsTaxPayerEligDateEnabled = true;
+                    TaxPayerDetails.ExporterrAttachmentsBtn = true;
+                    TaxPayerDetails.ImporterNoRB = true;
+                    TaxPayerDetails.ExporterNoRB = true;
                 }
                 else
                 {
                     AddAdditionalInfoCheckBoxEnabled = true;
+                    IsTaxPayerIBANEnabled = false;
+                    IsTaxPayerEligDateEnabled = false;
+                    TaxPayerDetails.ExporterrAttachmentsBtn = false;
+                    TaxPayerDetails.ImporterNoRB = false;
+                    TaxPayerDetails.ExporterNoRB = false;
                 }
 
                 RaisePropertyChanged("IsAddAdditionalInfoChecked");
@@ -1910,8 +1928,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 _taxPayerDetails.AddInformationCB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
                 _taxPayerDetails.AddInformationCBVisible = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
                 _taxPayerDetails.AddInformationParent = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                IsTaxPayerIBANEnabled = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                IsTaxPayerEligDateEnabled = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
+                IsTaxPayerIBANEnabled = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
+                IsTaxPayerEligDateEnabled = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
 
                 _taxPayerDetails.ImporterYesRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
                 _taxPayerDetails.ImporterNoRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
@@ -2400,6 +2418,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
+                                TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name;
 
                                 GpartSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 IdnumberSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
@@ -2407,6 +2426,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 MobNumberSum = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 SmtpAddrSum = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
+
                                 if (App.VATType == Enums.PageExecutionType.Amend)
                                 {
                                     GpartFR = string.Empty;
@@ -2422,6 +2442,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     int count = 0;
                                     foreach (var item in vATRegistration.d.CONTACT_PERSONSet.results)
                                     {
+                                        SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
+
 
                                         ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
                                         {
@@ -2431,7 +2453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                             LastnmFR = item.Lastnm,
                                             MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
                                             SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
-                                            TxtIDTypeFR = IdTypeListFR[IDTypeIndexFR].Name
+                                            TxtIDTypeFR = SelectedIdTypeFR.Name
                                         });
                                         count++;
                                     }

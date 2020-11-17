@@ -3942,8 +3942,7 @@
      <value>يجب ان يكون حجم الملف اقل من 5 ميجا </value>
     </data>
     <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
- <value>1. يجب ان يكون حجم الملف اقل من 5 ميقا</value>
-    </data>
+<value>1. يجب ان يكون حجم الملف اقل من 5 ميغابايت</value>     </data>
     <data name="ZZZZVATRAttachmentNote2" xml:space="preserve">
     <value>2. يجب ان تكون صيغة الملف من ضمن: Doc,Docx,Jpg,PDF,xlsx,xls</value>
   </data>
@@ -4830,8 +4829,7 @@
     <value>تنشيط حساب ضريبة القيمة المضافة</value>
   </data>
     <data name="VATAmendAttachmentSizeError" xml:space="preserve">
-    <value>يجب ان يكون حجم الملف اقل من 5 ميقا</value>
-    </data>
+ <value>يجب ان يكون حجم الملف اقل من 5 ميغابايت</value>      </data>
     <data name="VATAmendMobileNumberValidation" xml:space="preserve">
     <value>يجب أن يبدأ رقم الجوال بـ 009665</value>
   </data>

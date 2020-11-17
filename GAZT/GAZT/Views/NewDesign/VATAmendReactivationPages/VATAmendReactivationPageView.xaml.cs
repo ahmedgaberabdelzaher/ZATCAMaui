@@ -1237,6 +1237,15 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
+            if (!viewModel.IsChangeEmailChecked)
+            {
+                viewModel.IsFDNameMobEmailEnable = false;
+            }
+            if (!viewModel.IsAddAdditionalInfoChecked)
+            {
+                viewModel.IsTaxPayerIBANEnabled = false;
+                viewModel.IsTaxPayerEligDateEnabled = false;
+            }
         }
         public async Task GetVatRegistrationData()
         {
@@ -2019,7 +2028,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                             else
                             {
-                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRSaveasdraftMessage, AppResources.ZYes, AppResources.ZNo);
                                 if (result)
                                 {
                                     await viewModel.SubmitClicked();
@@ -2035,7 +2044,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             }
                             else
                             {
-                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRSaveasdraftMessage, AppResources.ZYes, AppResources.ZNo);
                                 if (result)
                                 {
                                     await viewModel.SubmitClicked();
@@ -4526,7 +4535,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
+            viewModel.IsTaxPayerIBANEnabled = !((CheckBox)sender).IsChecked;
             // viewModel.IsAddAdditionalInfoChecked = true;
         }
 
