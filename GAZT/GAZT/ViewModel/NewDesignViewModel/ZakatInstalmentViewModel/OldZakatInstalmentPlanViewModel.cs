@@ -4388,7 +4388,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                selectedList.Clear();
+                //selectedList.Clear();
 
 
 
@@ -4494,8 +4494,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
 
                 EnableVATBillView();
-                TotalAmountSAR = string.Format("{0:N2}", totalAmountDue);
-                VATBillDueAmount = string.Format("{0:N2}", totalAmountDue);
+                //TotalAmountSAR = string.Format("{0:N2}", totalAmountDue);
+                //VATBillDueAmount = string.Format("{0:N2}", totalAmountDue);
 
                 if (totalAmountDue > 0)
                 {

@@ -8344,7 +8344,7 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
 
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
                     HttpResponseMessage res = client.DeleteAsync(url).Result;
@@ -8846,7 +8846,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        var serilized = JsonConvert.SerializeObject(_vATInstalment);
+                        var serilized = JsonConvert.SerializeObject(_vATInstalment.d);
                         client.DefaultRequestHeaders.Add("Token", "123");
                         client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                         client.DefaultRequestHeaders.Add("X-Requested-With", "X");

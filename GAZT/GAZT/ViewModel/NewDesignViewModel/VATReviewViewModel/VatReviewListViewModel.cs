@@ -973,7 +973,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             TaxPeriodFrom = strTaxPeriodFromDate;
 
             ReportDetails = responseModel.d.NotesSet.results[0].Tdline;
-            RequestedReviewAmount = responseModel.d.SecurityDtl.Disamt;
+            RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Disamt);
             string strTaxPeriodToDate = "";
             if (responseModel.d.SecurityDtl.Abrzo != null)
             {
@@ -1001,19 +1001,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             TaxPeriodTo = strTaxPeriodToDate;
 
-            PenalityAmountInQuestion = responseModel.d.SecurityDtl.Penamount;
+            PenalityAmountInQuestion = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Penamount);
 
             modelVATReviewsReturn.TotalTaxLiability = responseModel.d.SecurityDtl.Liaamt;
             modelVATReviewsReturn.TaxPaid = responseModel.d.SecurityDtl.Clramt;
-            modelVATReviewsReturn.RequestToReviewAmount = responseModel.d.SecurityDtl.Amttp;
-            modelVATReviewsReturn.ParticularAmount = responseModel.d.SecurityDtl.Disamt;
+            
+            modelVATReviewsReturn.RequestToReviewAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Amttp);
+            modelVATReviewsReturn.ParticularAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Disamt);
             //for Dispute Details  Map the Strline
             //modelVATReviewsReturn.Corrections = responseModel.d.NotesSet.results;
             //Step4 End
 
             //Step 5 Security Payments
 
-            SecurityAmount = responseModel.d.SecurityDtl.Secamt;
+            SecurityAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Secamt);
+
             if (Double.Parse(SecurityAmount) == 0)
             {
                 IsSecurityAmountMorethanZero = false;
