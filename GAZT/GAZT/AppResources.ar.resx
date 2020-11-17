@@ -5863,7 +5863,7 @@
     <value>في حال سدادكم مبلغ الفاتورة أعلاه يمكنكم الحصول على الشهادة آلياً</value>
   </data>
     <data name="VATInstalmentRequestToVatInstalment" xml:space="preserve">
-    <value>طلب او عرض خطة تقسيط ضريبة القيمة المضافة</value>
+    <value>طلب خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
     <data name="ZakatFinancialCrisis" xml:space="preserve">
     <value>ازمة مالية عدم القدرة على تسوية المستحقات</value>
@@ -5947,7 +5947,7 @@
     <value>خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
     <data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
-    <value>عرض خطة التقسيط</value>
+    <value>عرض جدول خطة التقسيط</value>
   </data>
     <data name="VatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة التقسيط لضريبة القيمة المضافة</value>
