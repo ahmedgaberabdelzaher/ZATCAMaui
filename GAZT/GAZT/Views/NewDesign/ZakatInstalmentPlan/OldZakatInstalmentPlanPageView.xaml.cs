@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 InitializeComponent();
 
-               // Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                // Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
                 //App.IsArabic = true;
                 ChangeAeroIcon();
@@ -241,9 +241,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     {
 
                         viewModel.selectedList.Remove(dataItem);
-                      
+
                     }
-                    else {
+                    else
+                    {
 
                         viewModel.selectedList.Add(dataItem);
                     }
@@ -271,11 +272,27 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                     viewModel.VATBillDueAmount = string.Format("{0:N2}", totalAmountDue);
                     viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmountDue);
-                    viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
+                    if (viewModel.MaxAmount < Math.Round(totalAmountDue * (20.0f / 100.0f), 2))
+                    {
+                        viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
+                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                    }
+                    else if (viewModel.MinAmount > Math.Round(totalAmountDue, 2))
+                    {
+                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                        viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
+                    }
+                    else
+                    {
+                        viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
+                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                    }
+
+                    //viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                    viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
+                    //viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
                     viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + viewModel.MaxAmount;
                     viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
 
                 }
                 catch (Exception ex)
@@ -377,7 +394,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                 totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].ADueAmtTb);
 
                             }
-                          
+
                         }
                         //viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
                         viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);

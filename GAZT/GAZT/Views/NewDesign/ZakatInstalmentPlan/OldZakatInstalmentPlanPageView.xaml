@@ -1090,8 +1090,8 @@
 
                         <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSchedule}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource SectionTitleBlack}" />
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSchedule}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />-->
 
                         </Grid>
 

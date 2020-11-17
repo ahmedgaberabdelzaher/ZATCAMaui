@@ -63,7 +63,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         private bool _isIncomeTaxViewEnabled = false;
         private bool _isZakatSelected = false;
         private bool _isVATAmountVisible = false;
-        private double _numberOFInstalmentSliderValue = 0;
         private bool _isSummaryViewEnabled = true;
         private bool _isStatementViewEnabled = false;
         private bool _isAttachmentsViewEnabled = false;
@@ -88,7 +87,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         private List<CorrespondanceModel> _listZAKATCorrespondance = null;
         private CorrespondenceFiltersModel _selectedFilterZakat = null;
         public List<OldResults3> selectedList = new List<OldResults3>();
-        private List<OldResults3> _zakatInvoicesList;
+        private List<OldResults3> _zakatInvoicesList = null;
 
         #endregion
 
@@ -487,6 +486,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
+        private double _numberOFInstalmentSliderValue = 0;
 
         public double NumberOFInstalmentSliderValue
         {
@@ -2055,7 +2055,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
             DownPaymentAmount = 0.0;
             PeriodicInstalment = 0.0;
+
             MinAmount = 0.0;
+            MaxAmount = 100.0;
             MinAmountTitle = AppResources.ZakatMin + " 0.0";
             MaxAmountTitle = AppResources.ZakatMax + " 0.0";
             // maxAmount = 0.0;
@@ -4396,7 +4398,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 //ZakatInvoicesList = ZakatInstalments.d.Z_INVOICE_UI5Set.results;
 
-                ZakatInvoicesList = new List<OldResults3>();
+                var zakatInvoicesListData = new List<OldResults3>();
 
                 for (int i = 0; i < ZakatInstalments.d.Z_INVOICE_UI5Set.results.Count; i++)
                 {
@@ -4407,16 +4409,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         if (IsZakat) {
 
                             
-                            if (ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].AIvAbtyp.Equals("ZAKT"))
+                            if ((ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].AIvAbtyp.Equals("ZAKT")) || (ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].AIvAbtyp.Equals(AppResources.FORM5Zakat)))
                             {
-                                ZakatInvoicesList.Add(ZakatInstalments.d.Z_INVOICE_UI5Set.results[i]);
+                                zakatInvoicesListData.Add(ZakatInstalments.d.Z_INVOICE_UI5Set.results[i]);
 
                             }
                         }
                         else {
-                            if (ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].AIvAbtyp.Equals("ITAX"))
+                            if ((ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].AIvAbtyp.Equals("ITAX")) || (ZakatInstalments.d.Z_INVOICE_UI5Set.results[i].AIvAbtyp.Equals(AppResources.ZakatInstalmetSelectTypeIncomeTax)))
                             {
-                                ZakatInvoicesList.Add(ZakatInstalments.d.Z_INVOICE_UI5Set.results[i]);
+                                zakatInvoicesListData.Add(ZakatInstalments.d.Z_INVOICE_UI5Set.results[i]);
 
                             }
                             
@@ -4428,6 +4430,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     }
 
                 }
+
+                ZakatInvoicesList = zakatInvoicesListData;
 
 
                     for (int i = 0; i < ZakatInvoicesList.Count; i++)
