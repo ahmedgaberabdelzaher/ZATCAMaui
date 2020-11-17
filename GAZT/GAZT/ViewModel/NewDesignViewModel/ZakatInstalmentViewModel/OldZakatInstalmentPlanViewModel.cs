@@ -37,12 +37,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         private bool _isNoDataLableVisible = false;
 
         int noOfInstalments = 1;
-        double minInstalments = 1;
         double maxInstalments = 36;
+
+        double minInstalments = 0;
         double downPaymentAmount = 400.00;
         double periodicInstalment = 0.0;
-        double minAmount = 400.0;
         double maxAmount = 2000000.0;
+
+        double minAmount = 0;
         string inputData = "";
         string totalAmountSAR = "0.00 SAR";
         string downPaymentSAR = "0.00 SAR";
@@ -2048,16 +2050,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IsZakatSelected = true;
             DownPaymentSliderValue = 1;
             IsInitialDraft = false;
-            NoOfInstalments = 1;
-            MinInstalments = 1;
             MaxInstalments = 36;
+            selectedList.Clear();
+
+            NoOfInstalments = 1;
+            MinInstalments = 0;
             MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
             DownPaymentAmount = 0.0;
             PeriodicInstalment = 0.0;
-
-            MinAmount = 0.0;
             MaxAmount = 100.0;
+            MinAmount = 0;
             MinAmountTitle = AppResources.ZakatMin + " 0.0";
             MaxAmountTitle = AppResources.ZakatMax + " 0.0";
             // maxAmount = 0.0;
@@ -3159,6 +3162,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             try
             {
                 double totalAmount = double.Parse(TotalAmountSAR.Replace(" SAR", ""));
+                if(MinInstalments == 0) {
+
+                    MinInstalments = 1;
+                }
+
                 if (totalAmount == 0)
                 {
                     Device.BeginInvokeOnMainThread(async () =>

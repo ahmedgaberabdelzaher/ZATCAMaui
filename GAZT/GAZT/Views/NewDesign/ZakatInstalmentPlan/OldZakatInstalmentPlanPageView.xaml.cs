@@ -59,7 +59,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             catch (Exception ex)
             {
 
-
+                viewModel.IsLoading = false;
 
             }
 
