@@ -2418,7 +2418,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name;
+
+                                if (!string.IsNullOrEmpty(vATRegistration.d.CONTACT_PERSONSet.results[0].Type)) {
+
+                                    TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name;
+
+                                }
+
 
                                 GpartSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 IdnumberSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
@@ -2444,6 +2450,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     {
                                         SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
 
+                                        string selectedIdTypeName = "";
+
+                                        if(SelectedIdTypeFR != null && string.IsNullOrEmpty(SelectedIdTypeFR.Name)) {
+
+                                            selectedIdTypeName = SelectedIdTypeFR.Name;
+                                        }
 
                                         ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
                                         {
@@ -2453,7 +2465,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                             LastnmFR = item.Lastnm,
                                             MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
                                             SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
-                                            TxtIDTypeFR = SelectedIdTypeFR.Name
+                                            TxtIDTypeFR = selectedIdTypeName
                                         });
                                         count++;
                                     }
