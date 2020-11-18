@@ -3404,48 +3404,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     request.d.NOTESSet = new NotesSetPost[1];
                     request.d.NOTESSet[0] = notes;
-                }
-            }
-                else {
 
-                if (!string.IsNullOrEmpty(NotesText))
-                {
-
-                    NotesSetPost notes = new NotesSetPost();
-
-                    Metadata _metdata = new Metadata();
-                    _metdata.uri = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
-                    _metdata.type = "ZDP_VTIA_SRV.NOTES";
-                    _metdata.id = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
-
-                    notes.__metadata = _metdata;
-                    notes.AttByz = "TP";
-                    notes.ElemNo = 0;
-
-                    notes.Erfdtz = null;
-                    notes.Erfusrz = "";
-                    notes.Lineno = 1;
-                    notes.Noteno = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
-                    notes.Notenoz = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
-                    notes.Rcodez = "VTIA_NOTES";
-                    notes.Refnamez = "";
-                    notes.Tdformat = "";
-                    notes.XInvoicez = "";
-                    notes.XObsoletez = "";
-                    notes.DataVersionz = "00000";
-                    notes.Tdline = NotesText;
-                    notes.ByGpartz = App.LoginDataRetrieved.TIN;
-
-                    request.d.NOTESSet = new NotesSetPost[1];
-                    request.d.NOTESSet[0] = notes;
-
-
-                }
+                    }
                 else {
 
                     request.d.NOTESSet = new NotesSetPost[0];
+                }
 
                 }
+                else {
+
+                        if (!string.IsNullOrEmpty(NotesText))
+                        {
+
+                            NotesSetPost notes = new NotesSetPost();
+
+                            Metadata _metdata = new Metadata();
+                            _metdata.uri = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
+                            _metdata.type = "ZDP_VTIA_SRV.NOTES";
+                            _metdata.id = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
+
+                            notes.__metadata = _metdata;
+                            notes.AttByz = "TP";
+                            notes.ElemNo = 0;
+
+                            notes.Erfdtz = null;
+                            notes.Erfusrz = "";
+                            notes.Lineno = 1;
+                            notes.Noteno = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
+                            notes.Notenoz = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
+                            notes.Rcodez = "VTIA_NOTES";
+                            notes.Refnamez = "";
+                            notes.Tdformat = "";
+                            notes.XInvoicez = "";
+                            notes.XObsoletez = "";
+                            notes.DataVersionz = "00000";
+                            notes.Tdline = NotesText;
+                            notes.ByGpartz = App.LoginDataRetrieved.TIN;
+
+                            request.d.NOTESSet = new NotesSetPost[1];
+                            request.d.NOTESSet[0] = notes;
+
+
+                        }
+                        else {
+
+                            request.d.NOTESSet = new NotesSetPost[0];
+
+                        }
 
             }
 
