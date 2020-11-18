@@ -193,11 +193,11 @@ namespace EGAZT.Views.NewDesign
             viewModel.setFAQ();
             if (App.IsArabic)
             {
-                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
             }
             else
             {
-                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
             }
         }
 
@@ -253,11 +253,13 @@ namespace EGAZT.Views.NewDesign
             ContactUsWebView.IsVisible = true;
             if (App.IsArabic)
             {
-                ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+                //ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+                ContactUsWebView.Source = "https://gazt.gov.sa/ar/ContactUs/Pages/SuggestAndComplaintMV.aspx";
             }
             else
             {
-                ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+                //ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+                ContactUsWebView.Source = "https://gazt.gov.sa/en/ContactUs/Pages/SuggestAndComplaintMV.aspx";
             }
         }
 

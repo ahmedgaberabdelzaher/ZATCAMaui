@@ -23,7 +23,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
-          //  SetLanguage();
+            //  SetLanguage();
             loadingIndicator.IsVisible = true;
         }
 
@@ -31,11 +31,13 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             if (App.IsArabic)
             {
-                taxEvasionWebView.Source = string.Format("https://gazt.gov.sa/{0}/ContactUs/Pages/ReportFraud.aspx", "ar");
+                // taxEvasionWebView.Source = string.Format("https://gazt.gov.sa/{0}/ContactUs/Pages/ReportFraud.aspx", "ar");
+                taxEvasionWebView.Source = "https://10.50.14.186/ar/ContactUs/Pages/ReportFraudMV.aspx";
             }
             else
             {
-                taxEvasionWebView.Source = string.Format("https://gazt.gov.sa/{0}/ContactUs/Pages/ReportFraud.aspx", "en");
+                //taxEvasionWebView.Source = string.Format("https://gazt.gov.sa/{0}/ContactUs/Pages/ReportFraud.aspx", "en");
+                taxEvasionWebView.Source = "https://10.50.14.186/en/ContactUs/Pages/ReportFraudMV.aspx";
             }
         }
 
