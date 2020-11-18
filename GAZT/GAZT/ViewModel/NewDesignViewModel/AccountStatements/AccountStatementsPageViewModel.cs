@@ -273,6 +273,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
+        public bool isNotHaveStatements = false;
+        public bool IsNotHaveStatements
+        {
+            get
+            {
+                return isNotHaveStatements;
+            }
+            set
+            {
+                if (isNotHaveStatements != value)
+                {
+                    isNotHaveStatements = value;
+                    RaisePropertyChanged("IsNotHaveStatements");
+                }
+            }
+        }
+
         Dictionary<string, string> monthlyStatementsLineItemsDic = new Dictionary<string, string>()
         {
 
@@ -362,6 +379,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_statementsLineItems != value)
                 {
+                    if (value.Count > 0)
+                    {
+                        IsNotHaveStatements = false;
+
+                    }
+                    else
+                    {
+                        IsNotHaveStatements = true;
+                        //_dialogService.ShowMessage(AppResources.ASNoFinancialTransactions, AppResources.ZError);
+                    }
                     if (IsNormalStatementsViewVisible)
                     {
                         GroupedData = new List<ObservableGroupCollection<string, ASResult>>();
@@ -369,9 +396,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     else
                     {
                         Items = value.ToList();
-                        var groupedData = Items.OrderBy(p => p.Bldat)
-                            .GroupBy(p => p.Bldat.ToString("MMMM"))
-                            .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+
+                        List<ObservableGroupCollection<string, ASResult>> groupedData;
+                        if (App.IsArabic)
+                        {
+                            groupedData = Items.OrderBy(p => p.Bldat)
+                                .GroupBy(p => p.Bldat.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("ar")))
+                                .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                        }
+                        else
+                        {
+                            groupedData = Items.OrderBy(p => p.Bldat)
+                                .GroupBy(p => p.Bldat.ToString("MMMM"))
+                                .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                        }
+                        
                         GroupedData = groupedData;
                     }
                     _statementsLineItems = value;
