@@ -537,7 +537,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                         headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                         headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.Message = string.Format(AppResources.ZRefundRequestSavedAsDraft+ "  " + VatNewReqSummaryData.Fbnumx);
+                        headerAmountInfo.Message = string.Format(AppResources.ZVatRefundRequestSavedAsDraft);
 
                         headerWithInfos.Add(headerAmountInfo);
 
