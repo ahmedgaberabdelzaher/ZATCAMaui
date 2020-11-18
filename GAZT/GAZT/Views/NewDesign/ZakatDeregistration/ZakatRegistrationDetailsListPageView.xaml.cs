@@ -19,7 +19,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             ChangeAeroIcon();
 
             SetLTR();
-            //ChangeArrowDirection();
 
             viewModel = App.Locator.ZakatRegistrationDetailsListPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -30,7 +29,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             base.OnAppearing();
             viewModel.PopulateZakatRegListData();
-            //ChangeArrowDirection();
         }
 
         private void SetLTR()
@@ -45,40 +43,27 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-            }
-        }
-
-
         public void ChangeAeroIcon()
         {
-            if (App.IsArabic)
+            try
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                if (App.IsArabic)
+                {
+                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                    Resources["ImageReverse"] = Resources["ArrowImageForArabicStyle"];
+                }
+                else
+                {
+                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                    Resources["ImageReverse"] = Resources["ArrowImageForEnglishStyle"];
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+
             }
+
         }
 
         public async void registrationDetailsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)

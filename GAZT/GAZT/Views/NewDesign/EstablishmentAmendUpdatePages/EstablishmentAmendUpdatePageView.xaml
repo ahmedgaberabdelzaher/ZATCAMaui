@@ -1617,7 +1617,7 @@
                         </cards:SfCardView>
                               <StackLayout Orientation="Horizontal">
                                 <CheckBox x:Name="CBAcknowledment"   VerticalOptions="CenterAndExpand"  IsChecked="{Binding ESTLedge}"/>
-                                <custom:CustomLabel Margin="0" HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                <custom:CustomLabel Margin="5,10,0,15"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span LineHeight="1.5"  Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}" TextColor="Black"   />

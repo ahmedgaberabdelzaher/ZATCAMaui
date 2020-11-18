@@ -80,6 +80,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsArabic");
             }
         }
+
         public void ZAKATAmendOrUpdateClicked()
         {
             _navigationService.NavigateTo(App.EstablishmentAmendUpdatePage, ZakatDeregResponseData);
@@ -87,32 +88,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public void PopulateZakatRegListData()
         {
             ObservableCollection<ZakatDeregistrationDetailsListModel> tempZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>();
+            string fileImage = string.Empty;
+            if(App.IsArabic)
+            {
+                fileImage = "arrowLeft.png";
+            }
+            else
+            {
+                fileImage = "arrowRight.png";
+
+            }
+
             if (App.LoginDataRetrieved.ZkReg == "X")
             {
                 tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.ZZTaxPayerDetails,
                     ZDImageSource = "vat_ic_taxpayerDetail",
+                    ArrowImageSource = fileImage
                 });
                 tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
                     ZDImageSource = "establishments",
+                    ArrowImageSource = fileImage
                 });
                 tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.ESTFinancialDetails,
                     ZDImageSource = "details",
+                    ArrowImageSource = fileImage
                 });
                 tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.TinDeregistration,
                     ZDImageSource = "deregistration",
+                    ArrowImageSource = fileImage
                 });
                 tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.ZZAmend,
                     ZDImageSource = "registration.png",
+                    ArrowImageSource = fileImage
                 });
 
             }
@@ -122,6 +139,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     ZDTitle = AppResources.TPUpdate,
                     ZDImageSource = "sf_ic_Paid.png",
+                    ArrowImageSource = fileImage
+
                 });
             }
             ZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);

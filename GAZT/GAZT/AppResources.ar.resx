@@ -6378,16 +6378,16 @@
     <value>منشأة دائمة</value>
   </data>
     <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
-    <value>فرع شركة غير مقيمة مصرح لها بمزاولة الأعمال بالمملكة</value>
-  </data>
-    <data name="ESTConstuctionSiteLabel" xml:space="preserve">
     <value>مواقع الإنشاء, ومرافق التجميع وممارسة الأعمال الإشرافية المتعلقة بها.</value>
   </data>
-    <data name="ESTInstallationLabel" xml:space="preserve">
+    <data name="ESTConstuctionSiteLabel" xml:space="preserve">
     <value>التركيبات والمواقع المستخدمة في أعمال المسح للموارد الطبيعية, ومعدات الحفر, والسفن المستخدمة في مسح الموارد الطبيعية, وممارسة الأعمال الإشرافية المتعلقة بها.</value>
   </data>
-    <data name="ESTAFixedBaseLabel" xml:space="preserve">
+    <data name="ESTInstallationLabel" xml:space="preserve">
     <value>قاعدة ثابتة يمارس منها الشخص الطبيعي غير المقيم نشاطة.</value>
+  </data>
+    <data name="ESTAFixedBaseLabel" xml:space="preserve">
+    <value>فرع شركة غير مقيمة مصرح لها بمزاولة الأعمال بالمملكة.</value>
   </data>
     <data name="ESTANonResidentPartnerLabel" xml:space="preserve">
     <value>يعد الشريك غير المقيم في شركة أشخاص مقيمة مالكاً لمنشأة دائمة بالمملكة على شكل حصة في شركة الاشخاص.</value>

@@ -130,6 +130,7 @@ namespace EGAZT.Models
     {
         public string ZDTitle { get; set; }
         public string ZDImageSource { get; set; }
+        public string ArrowImageSource { get; set; }
     }
 
     public partial class TinDeregistrationParentResponseModel
