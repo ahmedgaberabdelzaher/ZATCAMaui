@@ -635,6 +635,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
+       
+
         private void downPaymentEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             try

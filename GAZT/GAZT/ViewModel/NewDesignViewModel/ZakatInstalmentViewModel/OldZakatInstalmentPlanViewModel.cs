@@ -39,7 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         int noOfInstalments = 1;
         double maxInstalments = 36;
 
-        double minInstalments = 0;
+        double minInstalments = 1;
         double downPaymentAmount = 400.00;
         double periodicInstalment = 0.0;
         double maxAmount = 2000000.0;
@@ -2054,7 +2054,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             selectedList.Clear();
 
             NoOfInstalments = 1;
-            MinInstalments = 0;
+            MinInstalments = 1;
             MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
             DownPaymentAmount = 0.0;
@@ -4336,8 +4336,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetMonthly)
             {
-                MinInstalments = 1;
-                MaxInstalments = 36;
+                //MinInstalments = 1;
+                //MaxInstalments = 36;
+                updateSliderInstalmentValues(1, 36);
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
                 SelectedFrequencyType = "1";
@@ -4345,8 +4346,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             else if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetQuarterly)
             {
-                MinInstalments = 1;
-                MaxInstalments = 12;
+                //MinInstalments = 1;
+                //MaxInstalments = 12;
+                updateSliderInstalmentValues(1, 12);
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
                 SelectedFrequencyType = "2";
@@ -4354,8 +4356,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             else if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetHalfYearly)
             {
-                MinInstalments = 1;
-                MaxInstalments = 6;
+                //MinInstalments = 1;
+                //MaxInstalments = 6;
+                updateSliderInstalmentValues(1, 6);
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 6;
                 SelectedFrequencyType = "3";
@@ -4363,8 +4366,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             else if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetYearly)
             {
-                MinInstalments = 1;
-                MaxInstalments = 3;
+                // MinInstalments = 1;
+                // MaxInstalments = 3;
+                updateSliderInstalmentValues(1, 3);
                 MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 3;
                 SelectedFrequencyType = "4";
@@ -4384,7 +4388,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
     }
-
+        private void updateSliderInstalmentValues(int minValue, int maxValue)
+        {
+            if (MaxInstalments < minValue)
+            {
+                MaxInstalments = maxValue;
+                MinInstalments = minValue;
+            }
+            else if (MinInstalments > maxValue)
+            {
+                MinInstalments = minValue;
+                MaxInstalments = maxValue;
+            }
+            else
+            {
+                MaxInstalments = maxValue;
+                MinInstalments = minValue;
+            }
+        }
 
 
 
