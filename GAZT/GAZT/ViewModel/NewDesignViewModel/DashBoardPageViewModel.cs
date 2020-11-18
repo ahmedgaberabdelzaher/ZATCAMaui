@@ -865,6 +865,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _accStmtnCreditAmount { get; set; }
+        public string AccStmtnCreditAmount
+        {
+            get
+            {
+                return _accStmtnCreditAmount;
+            }
+            set
+            {
+                _accStmtnCreditAmount = value;
+                RaisePropertyChanged("AccStmtnCreditAmount");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -968,11 +982,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
 
                     double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
-                    double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));
+                    double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
                     double totalBalance = tempEndProgressBar + startCreditProgressBar;
 
+                    AccStmtnCreditAmount = HeaderSet.D.Credit.Replace("-", string.Empty);
+
                     DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
-                    CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100) + DebitAmountEndProgressBar;
+                    CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
 
                     TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
                     MessagingCenter.Send<Object>(this, "UpdateProgressBar");
@@ -1541,8 +1557,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));
                 double totalBalance = tempEndProgressBar + startCreditProgressBar;
 
+                AccStmtnCreditAmount = HeaderSet.D.Credit.Replace("-", string.Empty);
+
                 DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
-                CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100) + DebitAmountEndProgressBar;
+                CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100);
                 MessagingCenter.Send<Object>(this, "UpdateProgressBar");
 
                 await Task.Run(() =>
