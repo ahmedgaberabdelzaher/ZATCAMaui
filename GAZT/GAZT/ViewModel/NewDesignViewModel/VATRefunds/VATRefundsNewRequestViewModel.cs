@@ -547,7 +547,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                         PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                        _navigationService.GoBack();
+                       // _navigationService.GoBack();
 
                         //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
                     });
