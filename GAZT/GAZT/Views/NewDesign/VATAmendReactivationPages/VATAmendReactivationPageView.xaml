@@ -778,9 +778,31 @@
 
 
                                                                         <Grid Padding="5,0,5,0">
-                                                                            <cards:SfCardView  HasShadow="True"   ShadowColor="#5d6770" 
-                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker,Source={x:Reference VATRegistration} }">
-                                                                                <Grid>
+                                                                            <cards:SfCardView  HasShadow="True"    BackgroundColor="Transparent" CornerRadius="3" HeightRequest="136" WidthRequest="171"
+                                                           HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker,Source={x:Reference VATRegistration} }">
+                                                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10">
+                                                                                            <Grid.RowDefinitions>
+                                                                                                <RowDefinition Height="30*"/>
+                                                                                                <RowDefinition Height="70*"/>
+                                                                                                <RowDefinition Height="auto"/>
+                                                                                            </Grid.RowDefinitions>
+                                                                                            <Grid.ColumnDefinitions>
+                                                                                                <ColumnDefinition Width="*"/>
+                                                                                            </Grid.ColumnDefinitions>
+                                                                                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="vat_tile_IbanCard_background.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                                                            <StackLayout  Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Spacing="0" Margin="5,0,5,30">
+                                                                                                <Image Margin="5,0,5,15" IsVisible="false"  HeightRequest="32" WidthRequest="32"  Source="positive" Aspect="Fill" HorizontalOptions="End" VerticalOptions="Center"/>
+
+                                                                                                <Label  Text="" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
+                                                                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                                                </Label>
+                                                                                                <Label Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
+                                                                                                                        Margin="20,0,20,0" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                                                </Label>
+                                                                                            </StackLayout>
+
+                                                                                      </Grid>
+                                                                                <!--<Grid>
                                                                                     <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
                                                                                     </Image>
                                                                                     <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
@@ -789,12 +811,17 @@
                                                                                             <RowDefinition Height="auto"/>
                                                                                         </Grid.RowDefinitions>
                                                                                         <StackLayout Grid.Row="1" Spacing="0">
-
+                                                                                               <Label  Text="" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
+                                                                                                     Margin="20,0,20,0" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                                                </Label>
+                                                                                               <Label Text="{Binding Iban}" Style="{StaticResource GAZTCaptionBlackLabel}" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
+                                                                                                      Margin="20,0,20,0" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                                                               </Label>
                                                                                             <Label Text="{Binding Iban}" HorizontalOptions="FillAndExpand"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
-                                                                                            <!--<Label Text="{x:Static custom2:AppResources.VATRInmaBank}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>-->
+                                                                                            <Label Text="{x:Static custom2:AppResources.VATRInmaBank}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
                                                                                         </StackLayout>
                                                                                     </Grid>
-                                                                                </Grid>
+                                                                                </Grid>-->
                                                                             </cards:SfCardView>
                                                                         </Grid>
                                                                     </DataTemplate>
@@ -1914,7 +1941,7 @@
 
                                                                     <Label Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTCaptionBlackLabel}"/>
                                                                     <inputLayout:SfTextInputLayout Margin="0,-6,0,-6" 
-                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="False"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                                         <custom:BorderlessEntry  Text="{Binding GpartFR}" IsEnabled="False"  Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False"  MaxLength="10"
                                                             TextChanged="EntryTINNumber_TextChanged"   Placeholder="{x:Static custom2:AppResources.TINS}" Style="{StaticResource GAZTEntry}">
@@ -1950,7 +1977,7 @@
                                                                             </StackLayout>
                                                                         </inputLayout:SfTextInputLayout>
 
-                                                                        <custom:CustomButton  Grid.Row="1" Clicked="btnID_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="10,0,10,0"/>
+                                                                        <custom:CustomButton  Grid.Row="1"  FontSize="Small" BackgroundColor="Transparent" Margin="10,0,10,0"/>
 
                                                                         <syncfusion:SfPicker Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="False" HeaderText="{x:Static local:AppResources.ZZIDType}"
@@ -1970,10 +1997,10 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="White"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="10,0,10,0"
+                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}"  Margin="10,0,10,0"
                         PickerHeight="200"
                         PickerWidth="270"
-                         FooterHeight="46" OkButtonClicked="DDlIDTypeFR_OkButtonClicked"  CancelButtonClicked="DDlIDTypeFR_CancelButtonClicked">
+                         FooterHeight="46" OkButtonClicked="DDlIDTypeFR_OkButtonClicked"  >
                                                                             <syncfusion:SfPicker.Behaviors>
                                                                                 <custom1:SfPickerBehavior />
                                                                             </syncfusion:SfPicker.Behaviors>
@@ -1996,7 +2023,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                         </Label>-->
 
                                                                     <inputLayout:SfTextInputLayout Margin="0,-6,0,-6" 
-                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="False"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                                                         <custom:BorderlessEntry Text="{Binding IdnumberFR}" FontFamily="{StaticResource SSTArabicMedium}"  Unfocused="EntryIDNo_Unfocused"  Keyboard="Numeric"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="EntryIDNo_TextChanged" Placeholder="{x:Static local:AppResources.IDNumber}" Style="{StaticResource GAZTEntry}">
@@ -2116,7 +2143,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                         <custom:BorderlessEntry Text="{Binding SmtpAddrFR}" 
-                                                                    Placeholder="{x:Static custom2:AppResources.Email}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}">
+                                                                    Placeholder="{x:Static custom2:AppResources.Email}" Unfocused="EntryEmail_Unfocused" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}">
                                                                         </custom:BorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
                                                                 </StackLayout>
@@ -2126,7 +2153,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                     <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
+                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
                                                                             <Entry.Behaviors>
                                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                                             </Entry.Behaviors>
