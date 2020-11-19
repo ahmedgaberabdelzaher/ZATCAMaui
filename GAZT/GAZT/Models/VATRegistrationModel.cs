@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GalaSoft.MvvmLight;
 
 namespace EGAZT.Models
 {
@@ -321,31 +322,281 @@ namespace EGAZT.Models
         public bool Parent { get; set; }
         public bool CBAgreeCondition { get; set; }
     }
-    public class TaxPayer_DetailsAvailability
+    public class TaxPayer_DetailsAvailability: ViewModelBase
     {
-        public bool Parent { get; set; }
-        public bool TaxPayerDetailsParent { get; set; }
-        public bool AdditionalInfoParent { get; set; }
-        public bool TinEntry1 { get; set; }
-        public bool TinEntry2 { get; set; }
-        public bool MainOutletEntry1 { get; set; }
-        public bool MainOutletEntry2 { get; set; }
-        public bool StartDateEntry { get; set; }
-        public bool AddressEntry1 { get; set; }
-        public bool AddressEntry2 { get; set; }
-        public bool SourceEntry { get; set; }
-        public bool AddInformationCB { get; set; }
-        public bool AddInformationCBVisible { get; set; }
-        public bool AddInformationParent { get; set; }
-        public bool ImporterYesRB { get; set; }
-        public bool ImporterNoRB { get; set; }
-        public bool ImporterAttachmentsBtn { get; set; }
-        public bool ExporterYesRB { get; set; }
-        public bool ExporterNoRB { get; set; }
-        public bool ExporterrAttachmentsBtn { get; set; }
-        public bool ExistingIBANPicker { get; set; }
-        public bool NewIBANPicker { get; set; }
-        public bool CommencementDate { get; set; }
+        private bool _parent;
+        public bool Parent {
+            get { return _parent; }
+            set { _parent = value;
+                RaisePropertyChanged("Parent");
+            }
+
+       }
+        private bool _taxPayerDetailsParent;
+
+        public bool TaxPayerDetailsParent {
+            get { return _taxPayerDetailsParent; }
+            set
+            {
+                _taxPayerDetailsParent = value;
+                RaisePropertyChanged("TaxPayerDetailsParent");
+            }
+        }
+        private bool _AdditionalInfoParent;
+
+        public bool AdditionalInfoParent
+        {
+            get { return _AdditionalInfoParent; }
+            set
+            {
+                _AdditionalInfoParent = value;
+                RaisePropertyChanged("AdditionalInfoParent");
+            }
+        }
+        private bool _TinEntry1;
+        public bool TinEntry1
+        {
+            get { return _TinEntry1; }
+            set
+            {
+                _TinEntry1 = value;
+                RaisePropertyChanged("TinEntry1");
+            }
+        }
+
+        private bool _TinEntry2;
+        public bool TinEntry2
+        {
+            get { return _TinEntry2; }
+            set
+            {
+                _TinEntry2 = value;
+                RaisePropertyChanged("TinEntry2");
+            }
+        }
+
+        private bool _MainOutletEntry1;
+        public bool MainOutletEntry1
+        {
+            get { return _MainOutletEntry1; }
+            set
+            {
+                _MainOutletEntry1 = value;
+                RaisePropertyChanged("MainOutletEntry1");
+            }
+        }
+
+        private bool _MainOutletEntry2;
+
+        public bool MainOutletEntry2
+        {
+            get { return _MainOutletEntry2; }
+            set
+            {
+                _MainOutletEntry2 = value;
+                RaisePropertyChanged("MainOutletEntry2");
+            }
+        }
+        private bool _StartDateEntry;
+
+        public bool StartDateEntry
+        {
+            get { return _StartDateEntry; }
+            set
+            {
+                _StartDateEntry = value;
+                RaisePropertyChanged("StartDateEntry");
+            }
+        }
+        private bool _AddressEntry1;
+
+        public bool AddressEntry1
+        {
+            get { return _AddressEntry1; }
+            set
+            {
+                _AddressEntry1 = value;
+                RaisePropertyChanged("AddressEntry1");
+            }
+        }
+        private bool _AddressEntry2;
+
+        public bool AddressEntry2
+        {
+            get { return _AddressEntry2; }
+            set
+            {
+                _AddressEntry2 = value;
+                RaisePropertyChanged("AddressEntry2");
+            }
+        }
+        private bool _SourceEntry;
+
+        public bool SourceEntry
+        {
+            get { return _SourceEntry; }
+            set
+            {
+                _SourceEntry = value;
+                RaisePropertyChanged("SourceEntry");
+            }
+        }
+        private bool _AddInformationCB;
+
+        public bool AddInformationCB
+        {
+            get { return _AddInformationCB; }
+            set
+            {
+                _AddInformationCB = value;
+                RaisePropertyChanged("AddInformationCB");
+            }
+        }
+        private bool _AddInformationCBVisible;
+
+        public bool AddInformationCBVisible
+        {
+            get { return _AddInformationCBVisible; }
+            set
+            {
+                _AddInformationCBVisible = value;
+                RaisePropertyChanged("AddInformationCBVisible");
+            }
+        }
+
+        private bool _AddInformationParent;
+
+        public bool AddInformationParent
+        {
+            get { return _AddInformationParent; }
+            set
+            {
+                _AddInformationParent = value;
+                RaisePropertyChanged("AddInformationParent");
+            }
+        }
+        private bool _ImporterYesRB;
+
+        public bool ImporterYesRB
+        {
+            get { return _ImporterYesRB; }
+            set
+            {
+                _ImporterYesRB = value;
+                RaisePropertyChanged("ImporterYesRB");
+            }
+        }
+        private bool _ImporterNoRB;
+        public bool ImporterNoRB {
+            get
+            { return _ImporterNoRB; }
+
+            set {
+                _ImporterNoRB = value;
+
+                RaisePropertyChanged("ImporterNoRB");
+            }
+
+        }
+        private bool _ImporterAttachmentsBtn;
+        public bool ImporterAttachmentsBtn
+        {
+            get
+            { return _ImporterAttachmentsBtn; }
+
+            set
+            {
+                _ImporterAttachmentsBtn = value;
+
+                RaisePropertyChanged("ImporterAttachmentsBtn");
+            }
+
+        }
+        private bool _ExporterYesRB;
+        public bool ExporterYesRB
+        {
+            get
+            { return _ExporterYesRB; }
+
+            set
+            {
+                _ExporterYesRB = value;
+
+                RaisePropertyChanged("ExporterYesRB");
+            }
+
+        }
+        private bool _ExporterNoRB;
+        public bool ExporterNoRB
+        {
+            get
+            { return _ExporterNoRB; }
+
+            set
+            {
+                _ExporterNoRB = value;
+
+                RaisePropertyChanged("ExporterNoRB");
+            }
+
+        }
+
+        private bool _ExporterrAttachmentsBtn;
+        public bool ExporterrAttachmentsBtn
+        {
+            get
+            { return _ExporterrAttachmentsBtn; }
+
+            set
+            {
+                _ExporterrAttachmentsBtn = value;
+
+                RaisePropertyChanged("ExporterrAttachmentsBtn");
+            }
+
+        }
+        private bool _ExistingIBANPicker;
+        public bool ExistingIBANPicker
+        {
+            get
+            { return _ExistingIBANPicker; }
+
+            set
+            {
+                _ExistingIBANPicker = value;
+
+                RaisePropertyChanged("ExistingIBANPicker");
+            }
+
+        }
+        private bool _NewIBANPicker;
+        public bool NewIBANPicker
+        {
+            get
+            { return _NewIBANPicker; }
+
+            set
+            {
+                _NewIBANPicker = value;
+
+                RaisePropertyChanged("NewIBANPicker");
+            }
+
+        }
+        private bool _CommencementDate;
+        public bool CommencementDate
+        {
+            get
+            { return _CommencementDate; }
+
+            set
+            {
+                _CommencementDate = value;
+
+                RaisePropertyChanged("CommencementDate");
+            }
+
+        }
     }
     public class FinancialDetailsAvailability
     {

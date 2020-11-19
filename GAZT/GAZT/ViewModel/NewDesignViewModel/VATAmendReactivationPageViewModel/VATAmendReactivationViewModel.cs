@@ -970,18 +970,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     AddAdditionalInfoCheckBoxEnabled = false;
                     IsTaxPayerIBANEnabled = true;
                     IsTaxPayerEligDateEnabled = true;
-                    TaxPayerDetails.ExporterrAttachmentsBtn = true;
-                    TaxPayerDetails.ImporterNoRB = true;
-                    TaxPayerDetails.ExporterNoRB = true;
+                    
                 }
                 else
                 {
                     AddAdditionalInfoCheckBoxEnabled = true;
                     IsTaxPayerIBANEnabled = false;
                     IsTaxPayerEligDateEnabled = false;
-                    TaxPayerDetails.ExporterrAttachmentsBtn = false;
-                    TaxPayerDetails.ImporterNoRB = false;
-                    TaxPayerDetails.ExporterNoRB = false;
+                 
                 }
 
                 RaisePropertyChanged("IsAddAdditionalInfoChecked");
@@ -1908,39 +1904,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 return _instAndCondition;
             }
         }
-        private TaxPayer_DetailsAvailability _taxPayerDetails = new TaxPayer_DetailsAvailability();
+        private TaxPayer_DetailsAvailability _taxPayerDetails;//= new TaxPayer_DetailsAvailability();
         public TaxPayer_DetailsAvailability TaxPayerDetails
         {
             get
             {
-                _taxPayerDetails.Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.TaxPayerDetailsParent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-
-                _taxPayerDetails.TinEntry1 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.TinEntry2 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.MainOutletEntry1 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.MainOutletEntry2 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.StartDateEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.AddressEntry1 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.AddressEntry2 = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.SourceEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-
-                _taxPayerDetails.AddInformationCB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
-                _taxPayerDetails.AddInformationCBVisible = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
-                _taxPayerDetails.AddInformationParent = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                IsTaxPayerIBANEnabled = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                IsTaxPayerEligDateEnabled = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-
-                _taxPayerDetails.ImporterYesRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ImporterNoRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ImporterAttachmentsBtn = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExporterYesRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExporterNoRB = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExporterrAttachmentsBtn = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.ExistingIBANPicker = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.NewIBANPicker = App.VATType == Enums.PageExecutionType.Amend ? true : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                _taxPayerDetails.CommencementDate = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                return _taxPayerDetails;
+                 return _taxPayerDetails;
+            }
+            set
+            {
+                _taxPayerDetails = value;
+                RaisePropertyChanged("TaxPayerDetails");
             }
         }
         private FinancialDetailsAvailability _financialDetails = new FinancialDetailsAvailability();
@@ -2005,6 +1979,83 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
         #endregion
 
+       public  void SetUIAvailability()
+        {
+            switch (App.VATType)
+            {
+                case Enums.PageExecutionType.Amend:
+                    InstAndCondition.CBAgreeCondition =
+
+                    TaxPayerDetails.Parent =
+                    TaxPayerDetails.TaxPayerDetailsParent =
+
+                    TaxPayerDetails.TinEntry1 =
+                    TaxPayerDetails.TinEntry2 =
+                    TaxPayerDetails.MainOutletEntry1 =
+                    TaxPayerDetails.MainOutletEntry2 =
+                    TaxPayerDetails.StartDateEntry =
+                    TaxPayerDetails.AddressEntry1 =
+                    TaxPayerDetails.AddressEntry2 =
+                    TaxPayerDetails.SourceEntry = 
+                    TaxPayerDetails.CommencementDate = false;
+
+
+                    TaxPayerDetails.AddInformationCB =
+                    TaxPayerDetails.AddInformationCBVisible =
+                    TaxPayerDetails.AddInformationParent =
+                    IsTaxPayerIBANEnabled =
+                    IsTaxPayerEligDateEnabled =
+                    TaxPayerDetails.ImporterYesRB =
+                    TaxPayerDetails.ImporterNoRB =
+                    TaxPayerDetails.ImporterAttachmentsBtn =
+                    TaxPayerDetails.ExporterYesRB =
+                    TaxPayerDetails.ExporterNoRB =
+                    TaxPayerDetails.ExporterrAttachmentsBtn =
+                    TaxPayerDetails.ExistingIBANPicker =
+                    TaxPayerDetails.NewIBANPicker = true;
+
+
+                    break;
+                case Enums.PageExecutionType.Reactivation:
+                    InstAndCondition.CBAgreeCondition = true;
+
+                    TaxPayerDetails.Parent = false;
+                    TaxPayerDetails.TaxPayerDetailsParent = false;
+
+                    TaxPayerDetails.TinEntry1 =  false ;
+                    TaxPayerDetails.TinEntry2 = false ;
+                    TaxPayerDetails.MainOutletEntry1 = false  ;
+                    TaxPayerDetails.MainOutletEntry2 = false ;
+                    TaxPayerDetails.StartDateEntry = false  ;
+                    TaxPayerDetails.AddressEntry1 = false ;
+                    TaxPayerDetails.AddressEntry2 = false  ;
+                    TaxPayerDetails.SourceEntry = false  ;
+
+                    TaxPayerDetails.AddInformationCB = false ;
+                    TaxPayerDetails.AddInformationCBVisible = false;
+                    TaxPayerDetails.AddInformationParent =  false ;
+                    IsTaxPayerIBANEnabled = false ;
+                    IsTaxPayerEligDateEnabled =  true ;
+
+                    TaxPayerDetails.ImporterYesRB =  false;
+                    TaxPayerDetails.ImporterNoRB =  false ;
+                    TaxPayerDetails.ImporterAttachmentsBtn =  false;
+                    TaxPayerDetails.ExporterYesRB = false;
+                    TaxPayerDetails.ExporterNoRB =  false ;
+                    TaxPayerDetails.ExporterrAttachmentsBtn =  false ;
+                    TaxPayerDetails.ExistingIBANPicker =  false;
+                    TaxPayerDetails.NewIBANPicker =  false ;
+                    TaxPayerDetails.CommencementDate =true ;
+
+                    break;
+                default:
+                    InstAndCondition.CBAgreeCondition = true;
+
+                    break;
+            }
+        }
+
+
         public VATAmendReactivationPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -2024,23 +2075,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         #region Method
 
 
-        void SetUIAvailability()
-        {
-            // to be added, currently not using
-            switch (App.VATType)
-            {
-                case Enums.PageExecutionType.Amend:
-                    InstAndCondition.CBAgreeCondition = false;
-                    break;
-                case Enums.PageExecutionType.Reactivation:
-                    InstAndCondition.CBAgreeCondition = true;
-                    break;
-                default:
-                    InstAndCondition.CBAgreeCondition = true;
-                    break;
+        //void SetUIAvailability()
+        //{
+        //    // to be added, currently not using
+        //    switch (App.VATType)
+        //    {
+        //        case Enums.PageExecutionType.Amend:
+        //            InstAndCondition.CBAgreeCondition = false;
+        //            break;
+        //        case Enums.PageExecutionType.Reactivation:
+        //            InstAndCondition.CBAgreeCondition = true;
+        //            break;
+        //        default:
+        //            InstAndCondition.CBAgreeCondition = true;
+        //            break;
 
-            }
-        }
+        //    }
+        //}
         public void setDATA()
         {
             try

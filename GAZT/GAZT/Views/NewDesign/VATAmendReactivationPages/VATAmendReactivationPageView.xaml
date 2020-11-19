@@ -539,7 +539,7 @@
                                                     </StackLayout>
                                                     <!--End Of Read Only or pre-populated {Binding TodayDate}"-->
                                                     <!--Start Of Additional Information--> 
-                                                    <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled,Source={x:Reference VATRegistration}}">
+                                                    <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
                                                         <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
                                                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                                         <Label Text="{x:Static custom2:AppResources.VATRImportExport}" Padding="0,0,0,0" Style="{StaticResource GAZTSmallBlackLbl}"/>
@@ -699,7 +699,7 @@
                                                     <!--
                                             </StackLayout>-->
                                                    
-                                                    <StackLayout Grid.Row="9" IsEnabled= "{Binding BindingContext.TaxPayerDetails.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
+                                                    <StackLayout Grid.Row="9" IsEnabled= "{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
@@ -754,7 +754,7 @@
                                                                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
                                                         </Grid>
                                                     </StackLayout>
-                                                    <StackLayout Grid.Row="10" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
+                                                    <StackLayout Grid.Row="10" IsEnabled="{Binding IsTaxPayerIBANEnabled}">
 
                                                         <Grid>
                                                             <Grid.RowDefinitions>

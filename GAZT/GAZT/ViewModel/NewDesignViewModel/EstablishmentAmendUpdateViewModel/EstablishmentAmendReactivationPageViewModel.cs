@@ -1535,6 +1535,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             //bindingOutletList();
             // }
             SetUIAvailability();
+
+            bindingOutletList();
+
         }
 
         void SetUIAvailability()

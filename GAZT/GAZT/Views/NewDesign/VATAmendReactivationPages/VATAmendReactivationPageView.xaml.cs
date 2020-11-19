@@ -69,13 +69,22 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 //lblDOB.IsVisible = false;
                 NewFRDOBField.IsVisible = false;
 
+                viewModel.SetUIAvailability();
 
             }
             catch (Exception ex)
             {
 
             }
-
+            if (!viewModel.IsChangeEmailChecked)
+            {
+                viewModel.IsFDNameMobEmailEnable = false;
+            }
+            if (!viewModel.IsAddAdditionalInfoChecked)
+            {
+                viewModel.IsTaxPayerIBANEnabled = false;
+                viewModel.IsTaxPayerEligDateEnabled = false;
+            }
             //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
             //viewModel.IsFinancialDChangeSectionEnabled = true;
         }
@@ -1237,15 +1246,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
-            if (!viewModel.IsChangeEmailChecked)
-            {
-                viewModel.IsFDNameMobEmailEnable = false;
-            }
-            if (!viewModel.IsAddAdditionalInfoChecked)
-            {
-                viewModel.IsTaxPayerIBANEnabled = false;
-                viewModel.IsTaxPayerEligDateEnabled = false;
-            }
+
+
         }
         public async Task GetVatRegistrationData()
         {
@@ -4535,7 +4537,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void AddAdditionalInfo_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            viewModel.IsTaxPayerIBANEnabled = !((CheckBox)sender).IsChecked;
+            viewModel.IsTaxPayerIBANEnabled = ((CheckBox)sender).IsChecked;
+            viewModel.IsTaxPayerEligDateEnabled = ((CheckBox)sender).IsChecked;
             // viewModel.IsAddAdditionalInfoChecked = true;
         }
 
