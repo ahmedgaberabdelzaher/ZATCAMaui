@@ -25,6 +25,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             SetLTR();
             //  SetLanguage();
             loadingIndicator.IsVisible = true;
+            SetLanguage();
         }
 
         void SetLanguage()
@@ -44,7 +45,6 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            SetLanguage();
         }
 
         public void ChangeAeroIcon()
