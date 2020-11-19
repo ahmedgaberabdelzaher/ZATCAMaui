@@ -2050,17 +2050,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IsZakatSelected = true;
             DownPaymentSliderValue = 1;
             IsInitialDraft = false;
-            MaxInstalments = 36;
             selectedList.Clear();
 
             NoOfInstalments = 1;
             MinInstalments = 1;
+            MaxInstalments = 36;
             MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
             DownPaymentAmount = 0.0;
             PeriodicInstalment = 0.0;
-            MaxAmount = 100.0;
             MinAmount = 0;
+            MaxAmount = 100.0;
             MinAmountTitle = AppResources.ZakatMin + " 0.0";
             MaxAmountTitle = AppResources.ZakatMax + " 0.0";
             // maxAmount = 0.0;

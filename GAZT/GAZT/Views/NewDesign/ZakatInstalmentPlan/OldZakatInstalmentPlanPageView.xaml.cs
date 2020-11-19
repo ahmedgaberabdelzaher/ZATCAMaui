@@ -41,12 +41,14 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 ChangeAeroIcon();
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
-
-
                 viewModel = App.Locator.OldZakatInstalmentPlanPageView;
-                this.BindingContext = viewModel;
+               
+                viewModel.MinInstalments = 1;
+                viewModel.MaxInstalments = 36;
+                viewModel.MinAmount= 0;
+                viewModel.MaxAmount= 1;
                 viewModel.ResetData();
+                this.BindingContext = viewModel;
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
                 viewModel.showInstructionsDialog();
