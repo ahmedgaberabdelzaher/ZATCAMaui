@@ -11,6 +11,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -221,7 +222,7 @@
                                             <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding VATRefundsHeaderSet.ReassessAmt}"/>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.ReassessAmt,Converter={StaticResource commaSeparatorConverter}}"/>
                                                         <Span Text=" "/>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                     </FormattedString>
@@ -235,7 +236,7 @@
                                             <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding VATRefundsHeaderSet.OffsetTot}"/>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.OffsetTot,Converter={StaticResource commaSeparatorConverter}}"/>
                                                         <Span Text=" "/>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                     </FormattedString>
@@ -249,7 +250,7 @@
                                             <Label Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding VATRefundsHeaderSet.NetCreditBal}"/>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.NetCreditBal,Converter={StaticResource commaSeparatorConverter}}"/>
                                                         <Span Text=" "/>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                     </FormattedString>
@@ -266,7 +267,7 @@
                                             <Label Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="End">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding VATRefundsHeaderSet.RequestedAmt}"/>
+                                                        <Span Text="{Binding VATRefundsHeaderSet.RequestedAmt,Converter={StaticResource commaSeparatorConverter}}"/>
                                                         <Span Text=" "/>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                     </FormattedString>
@@ -402,19 +403,19 @@
                                                         <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsReassessedBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="3" Grid.Column="1">
-                                                        <Label Text="{Binding ReassessBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                        <Label Text="{Binding ReassessBal,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="4" Grid.Column="0">
                                                         <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="4" Grid.Column="1" >
-                                                        <Label Text="{Binding Offsets}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                        <Label Text="{Binding Offsets,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="5" Grid.Column="0">
                                                         <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="5" Grid.Column="1" >
-                                                        <Label Text="{Binding NetCreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                        <Label Text="{Binding NetCreditBal,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="6" Grid.Column="0">
                                                         <Label Text="{x:Static ResourceManager:AppResources.ZStatus}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
@@ -652,7 +653,7 @@
                                             <Label Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="End">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding VatNewReqSummaryData.Rfamt}"/>
+                                                        <Span Text="{Binding VatNewReqSummaryData.Rfamt,Converter={StaticResource commaSeparatorConverter}}"/>
                                                         <Span Text=" "/>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                     </FormattedString>

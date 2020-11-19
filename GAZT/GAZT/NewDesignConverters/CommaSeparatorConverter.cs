@@ -7,23 +7,24 @@ using Xamarin.Forms;
 
 namespace EGAZT.NewDesignConverters
 {
-    public class NegetiveToPositiveValueConverter : IValueConverter
+    public class CommaSeparatorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null && double.Parse(value.ToString()) < 0)
+            if (value != null)
             {
-                var absValue = Math.Abs(double.Parse(value.ToString()));
-                string str = UtilityManager.GetCommaSeparatedAmount(absValue.ToString());
+                string str = UtilityManager.GetCommaSeparatedAmount(value.ToString());
                 return str;
             }
             else
+            {
                 return value;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return null;
+            return value;
         }
     }
 }

@@ -6,21 +6,23 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl" x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsListPageView"
              xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local="clr-namespace:EGAZT.Helper" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" BackgroundImageSource="partials_background.png" NavigationPage.HasNavigationBar="False">
      <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-                 <ResourceDictionary>
+                <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
                     </Style>
                     <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="0" />
                     </Style>
-                    <local:NegativeStringConverter x:Key="negativeStringConverter"/>    
+                    <local:NegativeStringConverter x:Key="negativeStringConverter"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -169,7 +171,7 @@
                                                     <custom:CustomLabel  HorizontalOptions="StartAndExpand" Text="{Binding RequestedAmt}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" >
                                                         <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding RequestedAmt}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
+                                                        <Span Text="{Binding RequestedAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
                                                             <Span Text=" "/>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                         </FormattedString>
@@ -182,7 +184,7 @@
                                                 <Label  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                                      <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding ReassessAmt}"/>
+                                                        <Span Text="{Binding ReassessAmt,Converter={StaticResource commaSeparatorConverter}}"/>
                                                             <Span Text=" "/>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                         </FormattedString>
@@ -194,7 +196,7 @@
                                                 <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding OffsetTot}"/>
+                                                        <Span Text="{Binding OffsetTot,Converter={StaticResource commaSeparatorConverter}}"/>
                                                             <Span Text=" "/>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                         </FormattedString>
@@ -206,7 +208,7 @@
                                                 <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                                      <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding NetCreditBal}"/>
+                                                        <Span Text="{Binding NetCreditBal,Converter={StaticResource commaSeparatorConverter}}"/>
                                                             <Span Text=" "/>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                                         </FormattedString>
