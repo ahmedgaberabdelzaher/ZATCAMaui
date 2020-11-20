@@ -180,12 +180,10 @@
                                  <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
 
                                     <StackLayout VerticalOptions="Start" Margin="15,5,15,15" Spacing="0" Orientation="Vertical" >
-                                        <StackLayout Orientation="Vertical" Margin="0,0,0,10"
+                                        <StackLayout Orientation="Vertical" Margin="0,0,0,5"
                                          HorizontalOptions="StartAndExpand" Spacing="-5">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTaxType}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="StartAndExpand">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTaxType}" Style="{StaticResource ValueLabelBlackMedium}" HorizontalOptions="StartAndExpand">
                                             </custom:CustomLabel>
-
-                                            <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
                                         </StackLayout>
                                         <Grid>
                                         <Grid.RowDefinitions>
@@ -195,7 +193,7 @@
                                             <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="30"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Text="{Binding SelectedTaxTypeForFilter.Txt30}" Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueLabelBlackMedium}">
+                                        <custom:CustomLabel Text="{Binding SelectedTaxTypeForFilterValue.Txt30, Mode=OneWay}" Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueLabelBlackMedium}">
                                         </custom:CustomLabel>
 
                                         <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"></Image>
@@ -210,8 +208,8 @@
                                                              SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                              ItemHeight="40" DisplayMemberPath="Txt30" ItemsSource="{Binding TaxTypeFilter}"  Grid.Row="0" Grid.Column="0"
                                                              Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
-                                                             CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
-                                                             CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TaxTypePicker_SelectionChanged">
+                                                             CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"  
+                                                             CancelButtonBackgroundColor="#EAF7CC" SelectedItem="{Binding SelectedTaxTypeForFilterValue}">
                                             <syncfusion:SfPicker.Behaviors>
                                                 <customcontrol:SfPickerBehavior />
                                             </syncfusion:SfPicker.Behaviors>

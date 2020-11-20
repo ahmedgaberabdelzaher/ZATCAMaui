@@ -114,6 +114,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public ASTabIdentification _tabIdentification = null;
+        public ASTabIdentification TabIdentification
+        {
+            get
+            {
+                return _tabIdentification;
+            }
+            set
+            {
+                _tabIdentification = value;
+                RaisePropertyChanged("TabIdentification");
+            }
+        }
+
         private String _taxpayerName;
         public String TaxpayerName
         {
@@ -274,6 +288,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        public TaxRelationSetResult _selectedTaxTypeForFilterValue = null;
+        public TaxRelationSetResult SelectedTaxTypeForFilterValue
+        {
+            get
+            {
+                return _selectedTaxTypeForFilterValue;
+            }
+            set
+            {
+
+                _selectedTaxTypeForFilterValue = value;
+                PopulateStatements(_selectedTaxTypeForFilterValue.TaxType, _selectedTaxTypeForFilterValue.StatementFilter, string.Empty);
+
+                RaisePropertyChanged("SelectedTaxTypeForFilterValue");
+            }
+        }
+
         public TaxRelationSetResult _SelectedTaxTypeForFilter = null;
         public TaxRelationSetResult SelectedTaxTypeForFilter
         {
@@ -283,7 +315,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+
                 _SelectedTaxTypeForFilter = value;
+                PopulateStatements(_SelectedTaxTypeForFilter.TaxType, _SelectedTaxTypeForFilter.StatementFilter, string.Empty);
+
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
             }
         }
@@ -939,29 +974,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 GetAccountStatements = Task.Run(async () =>
                 {
+                    TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                     HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
 
                     foreach(TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                     {
-                        if (taxRelationSetResult.StatementFilter == "10")
+                        if (TabIdentification.D.Direct == "X")
                         {
-                             taxRelationSetResult.DisplayId = 01;
+                            if (taxRelationSetResult.StatementFilter == "01")
+                            {
+                                taxRelationSetResult.DisplayId = 01;
+                            }
+
+                            if (taxRelationSetResult.StatementFilter == "02")
+                            {
+                                taxRelationSetResult.DisplayId = 02;
+                            }
+
+                            if (taxRelationSetResult.StatementFilter == "03")
+                            {
+                                taxRelationSetResult.DisplayId = 03;
+                            }
                         }
 
-                        if (taxRelationSetResult.StatementFilter == "04")
+                        if (TabIdentification.D.Indirect == "X")
                         {
-                            if (HeaderSet.D.TaxType == "D")
-                                taxRelationSetResult.DisplayId = 02;
-                            else
-                                taxRelationSetResult.DisplayId = 03;
-                        }
+                            if (taxRelationSetResult.StatementFilter == "06")
+                            {
+                                taxRelationSetResult.DisplayId = 06;
+                            }
 
-                        if (taxRelationSetResult.StatementFilter == "08")
-                        {
-                            if (HeaderSet.D.TaxType == "I")
-                                taxRelationSetResult.DisplayId = 02;
-                            else
-                                taxRelationSetResult.DisplayId = 03;
+                            if (taxRelationSetResult.StatementFilter == "07")
+                            {
+                                taxRelationSetResult.DisplayId = 07;
+                            }
+
+                            if (taxRelationSetResult.StatementFilter == "09")
+                            {
+                                taxRelationSetResult.DisplayId = 09;
+                            }
                         }
                     }
 
@@ -970,16 +1021,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>();
                     }
 
-                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03).ToList());
+                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
                     TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(TaxTypeFilter.OrderBy(temp => temp.DisplayId).ToList());
+                    SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
 
-                    foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
-                    {
-                        if (HeaderSet.D.TaxType == aSReturnTypes.TaxType)
-                        {
-                            SelectedTaxTypeForFilter = aSReturnTypes;
-                        }
-                    }
+                    //foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
+                    //{
+                    //    if (HeaderSet.D.TaxType == aSReturnTypes.TaxType)
+                    //    {
+                    //        SelectedTaxTypeForFilter = aSReturnTypes;
+                    //    }
+                    //}
 
                     double tempEndProgressBar = (Convert.ToDouble(HeaderSet.D.DebitAmount));
                     double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));

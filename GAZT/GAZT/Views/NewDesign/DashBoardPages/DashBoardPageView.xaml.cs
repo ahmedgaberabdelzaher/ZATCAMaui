@@ -92,6 +92,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             RefreshDashboardCommand();
             getYesCommandToLogout();
             getNoCommandToLogout();
+
             viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
             viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
@@ -1172,19 +1173,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             TaxTypePicker.IsOpen = true;
         }
 
-        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                TaxRelationSetResult selectedReturntype = (TaxRelationSetResult)e.NewValue;
-                TaxTypePicker.SelectedItem = selectedReturntype;
-                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
-                viewModel.PopulateStatements(selectedReturntype.TaxType, selectedReturntype.StatementFilter, string.Empty);
-            }
-            catch (Exception ex)
-            {
+        //private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        TaxRelationSetResult selectedReturntype = (TaxRelationSetResult)e.NewValue;
+        //        TaxTypePicker.SelectedItem = selectedReturntype;
+        //        viewModel.SelectedTaxTypeForFilter = selectedReturntype;
+        //        viewModel.PopulateStatements(selectedReturntype.TaxType, selectedReturntype.StatementFilter, string.Empty);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
     }
 }
