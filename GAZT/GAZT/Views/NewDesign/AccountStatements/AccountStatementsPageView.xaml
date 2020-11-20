@@ -816,7 +816,7 @@
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
 
                  <StackLayout Margin="10">
-                     <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding IsOpeningBalanceVisible}">
+                     <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="false">
                              <StackLayout Padding="0" Spacing="0">
                                 <Grid  Padding="15" RowSpacing="0">
                                     <Grid.RowDefinitions>   
