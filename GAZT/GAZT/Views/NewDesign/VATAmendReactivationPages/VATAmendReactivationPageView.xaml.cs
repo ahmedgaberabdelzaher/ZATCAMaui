@@ -85,7 +85,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsTaxPayerIBANEnabled = false;
                 viewModel.IsTaxPayerEligDateEnabled = false;
             }
-            //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
+                     //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
             //viewModel.IsFinancialDChangeSectionEnabled = true;
         }
         public void clearDATA()
@@ -329,9 +329,12 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             return;
                         }
+                    
+
                     }
                     else
                     {
+
                         viewModel.GpartSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Gpart;
                         viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
                         viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
@@ -339,7 +342,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
                         viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
                         viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+
                     }
+
 
                     //viewModel.IsDeclarationChecked = false;
                     //viewModel.CurrentStep = "Submit";
@@ -470,10 +475,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     flag = false;
                     FrmPhoneNumber.HasError = true;
                 }
-                IDValidationResult = await ValidateIDNumber();
+              //  IDValidationResult = await ValidateIDNumber();
                 if (!flag)
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                 }
             }
             else
@@ -494,10 +499,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                 //viewModel.IsContinueButtonEnable = false;
             }
-            if (!IDValidationResult)
-            {
-                flag = false;
-            }
+            //if (!IDValidationResult)
+            //{
+            //    flag = false;
+            //}
             return await Task.FromResult(flag);
         }
         public async void step5Validation()
@@ -2295,8 +2300,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                          
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                             viewModel.SmtpAddrFR = vATSignUpData.d.Email;
                             viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
@@ -2442,8 +2446,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
-                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                      
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                             viewModel.SmtpAddrFR = vATSignUpData.d.Email;
                             FrmFirstName.IsEnabled = false;
@@ -2569,7 +2572,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             FrmEmailAddress.IsEnabled = true;
                             FrmPhoneNumber.IsEnabled = true;
                         }
-                        else if (vATSignUpData.d == null)
+                        else if (vATSignUpData.d == null )
                         {
                             result = false;
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
@@ -4680,6 +4683,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.IsNewFinancialRepVisible = true;
                     viewModel.IsAddNewRepresentativeChecked = true;
+
+                    viewModel.GpartSum = 
+                    viewModel.IdnumberSum = 
+                    viewModel.FirstnmSum = 
+                    viewModel.LastnmSum =
+                    viewModel.MobNumberSum =
+                    viewModel.SmtpAddrSum = string.Empty;
+                    viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.FirstOrDefault()?.Name;
                 }
                 else
                 {

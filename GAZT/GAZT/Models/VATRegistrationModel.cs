@@ -98,6 +98,11 @@ namespace EGAZT.Models
     public class CONTACT_PERSONSet
     {
         public List<ResultsItemForContactPerson> results { get; set; }
+
+        public static implicit operator CONTACT_PERSONSet(List<CONTACT_PERSONSet> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
@@ -610,20 +615,143 @@ namespace EGAZT.Models
         public bool AttachSectionCBVisible { get; set; }
         public bool AttachSectionAddNewType { get; set; }
     }
-    public class FinancialRepresentativeAvailability
+    public class FinancialRepresentativeAvailability : ViewModelBase
     {
-        public bool Parent { get; set; }
-        public bool ChangeMobileEmailCB { get; set; }
-        public bool AddNewFinRepresentativeCB { get; set; }
-        public bool AddNewFinRepCBVisible { get; set; }
-        public bool SkipBtn { get; set; }
-        public bool TinEntry { get; set; }
-        public bool IDTypeEntry { get; set; }
-        public bool IDNoEntry { get; set; }
-        public bool FNameEntry { get; set; }
-        public bool SurnameEntry { get; set; }
-        public bool MobileNoEntry { get; set; }
-        public bool EmailIDEntry { get; set; }
+        private bool _parent;
+        public bool Parent
+        {
+            get { return _parent; }
+            set
+            {
+                _parent = value;
+                RaisePropertyChanged("Parent");
+            }
+
+        }
+        private bool _ChangeMobileEmailCB;
+        public bool ChangeMobileEmailCB
+        {
+            get { return _ChangeMobileEmailCB; }
+            set
+            {
+                _ChangeMobileEmailCB = value;
+                RaisePropertyChanged("ChangeMobileEmailCB");
+            }
+
+        }
+
+        private bool _AddNewFinRepresentativeCB;
+        public bool AddNewFinRepresentativeCB
+        {
+            get { return _AddNewFinRepresentativeCB; }
+            set
+            {
+                _AddNewFinRepresentativeCB = value;
+                RaisePropertyChanged("AddNewFinRepresentativeCB");
+            }
+
+        }
+
+        private bool _AddNewFinRepCBVisible;
+        public bool AddNewFinRepCBVisible
+        {
+            get { return _AddNewFinRepCBVisible; }
+            set
+            {
+                _AddNewFinRepCBVisible = value;
+                RaisePropertyChanged("AddNewFinRepCBVisible");
+            }
+
+        }
+        private bool _SkipBtn;
+        public bool SkipBtn
+        {
+            get { return _SkipBtn; }
+            set
+            {
+                _SkipBtn = value;
+                RaisePropertyChanged("SkipBtn");
+            }
+
+        }
+        private bool _TinEntry;
+        public bool TinEntry
+        {
+            get { return _TinEntry; }
+            set
+            {
+                _TinEntry = value;
+                RaisePropertyChanged("TinEntry");
+            }
+
+        }
+        private bool _IDTypeEntry;
+        public bool IDTypeEntry
+        {
+            get { return _IDTypeEntry; }
+            set
+            {
+                _IDTypeEntry = value;
+                RaisePropertyChanged("IDTypeEntry");
+            }
+
+        }
+        private bool _IDNoEntry;
+        public bool IDNoEntry
+        {
+            get { return _IDNoEntry; }
+            set
+            {
+                _IDNoEntry = value;
+                RaisePropertyChanged("IDNoEntry");
+            }
+
+        }
+        private bool _FNameEntry;
+        public bool FNameEntry
+        {
+            get { return _FNameEntry; }
+            set
+            {
+                _FNameEntry = value;
+                RaisePropertyChanged("FNameEntry");
+            }
+
+        }
+        private bool _SurnameEntry;
+        public bool SurnameEntry
+        {
+            get { return _SurnameEntry; }
+            set
+            {
+                _SurnameEntry = value;
+                RaisePropertyChanged("SurnameEntry");
+            }
+
+        }
+        private bool _MobileNoEntry;
+        public bool MobileNoEntry
+        {
+            get { return _MobileNoEntry; }
+            set
+            {
+                _MobileNoEntry = value;
+                RaisePropertyChanged("MobileNoEntry");
+            }
+
+        }
+        private bool _EmailIDEntry;
+        public bool EmailIDEntry
+        {
+            get { return _EmailIDEntry; }
+            set
+            {
+                _EmailIDEntry = value;
+                RaisePropertyChanged("EmailIDEntry");
+            }
+
+        }
+     
        // public List<NewFinancialRepresentative> ListNewFinRepresentative { get; set; }
     }
     //public class NewFinancialRepresentative

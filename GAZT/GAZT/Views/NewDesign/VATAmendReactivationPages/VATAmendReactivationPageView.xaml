@@ -2153,7 +2153,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                     <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
+                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
                                                                             <Entry.Behaviors>
                                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                                             </Entry.Behaviors>
@@ -2603,19 +2603,19 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding GpartSum}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding BindingContext.GpartSum, Source={x:Reference VATRegistration}}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding TxtIDTypeSum}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="1" Grid.Column="1"  Text="{Binding BindingContext.TxtIDTypeSum, Source={x:Reference VATRegistration}}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding IdnumberSum}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="2" Grid.Column="1"  Text="{Binding BindingContext.IdnumberSum,Source={x:Reference VATRegistration}}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding FirstnmSum}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="3" Grid.Column="1"  Text="{Binding BindingContext.FirstnmSum,Source={x:Reference VATRegistration}}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding LastnmSum}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                                        <Label Grid.Row="4" Grid.Column="1"   Text="{Binding BindingContext.LastnmSum,Source={x:Reference VATRegistration}}"  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <!--<Label Grid.Row="5" Grid.Column="1" Text="{Binding MobNumberFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->

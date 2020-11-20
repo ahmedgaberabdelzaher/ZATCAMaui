@@ -35,10 +35,11 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 {
                     Label_Name.Text = response.d.TinNm;
                     Label_ApplicationNumber.Text = response.d.Fbnumz;
-                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.VatTaxDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                   // string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.VatTaxDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     viewModel.FBNumber = response.d.Fbnumz;
-                    //Label_Date.Text = response.d.GoLiveDt;
+                    string StartdateToshow = DateTime.Today.Date.ToString("dd/MM/yyyy").Replace('-', '/');
                     Label_Date.Text = StartdateToshow;
+                    //Label_Date.Text = response.d.GoLiveDt;
                 }
             }
 
