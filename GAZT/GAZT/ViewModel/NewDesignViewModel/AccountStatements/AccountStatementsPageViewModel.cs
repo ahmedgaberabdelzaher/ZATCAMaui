@@ -410,7 +410,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                 .GroupBy(p => p.Bldat.ToString("MMMM"))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                         }
-                        
+
                         GroupedData = groupedData;
                     }
                     _statementsLineItems = value;
@@ -923,23 +923,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
 
+            var chipDataFilterlistForYears = new ObservableCollection<ASChipModel>();
             ChipDataFilterlistForYears = new ObservableCollection<ASChipModel>();
 
             if (YearValuesHeader != null && YearValuesHeader.D != null)
             {
                 foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
                 {
-                    ChipDataFilterlistForYears.Add(new ASChipModel() { Text = aSYearValuesResults.Persl, TemplateType = AppResources.Paid });
+                    chipDataFilterlistForYears.Add(new ASChipModel() { Text = aSYearValuesResults.Persl, TemplateType = AppResources.Paid });
                 }
             }
             else
             {
-                ChipDataFilterlistForYears.Add(new ASChipModel() { Text = "2015", TemplateType = AppResources.Paid });
-                ChipDataFilterlistForYears.Add(new ASChipModel() { Text = "2016", TemplateType = AppResources.Paid });
-                ChipDataFilterlistForYears.Add(new ASChipModel() { Text = "2017", TemplateType = AppResources.Paid });
-                ChipDataFilterlistForYears.Add(new ASChipModel() { Text = "2018", TemplateType = AppResources.Paid });
-                ChipDataFilterlistForYears.Add(new ASChipModel() { Text = "2019", TemplateType = AppResources.Paid });
+                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2015", TemplateType = AppResources.Paid });
+                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2016", TemplateType = AppResources.Paid });
+                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2017", TemplateType = AppResources.Paid });
+                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2018", TemplateType = AppResources.Paid });
+                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2019", TemplateType = AppResources.Paid });
             }
+            var desc = chipDataFilterlistForYears.OrderByDescending(item => item.Text);
+
+            foreach (ASChipModel aSChipModel in desc)
+            {
+                ChipDataFilterlistForYears.Add(aSChipModel);
+            }
+
         }
 
         public async void PopulateASFilterData()

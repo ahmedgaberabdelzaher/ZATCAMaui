@@ -985,7 +985,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.CreditAmount.Replace("-", string.Empty)));
                     double totalBalance = tempEndProgressBar + startCreditProgressBar;
 
-                    AccStmtnCreditAmount = HeaderSet.D.Credit.Replace("-", string.Empty);
+                    AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
 
                     DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
                     CreditAmountStartProgressBar = (startCreditProgressBar / totalBalance) * 100;
@@ -1557,7 +1557,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 double startCreditProgressBar = (Convert.ToDouble(HeaderSet.D.Credit.Replace("-", string.Empty)));
                 double totalBalance = tempEndProgressBar + startCreditProgressBar;
 
-                AccStmtnCreditAmount = HeaderSet.D.Credit.Replace("-", string.Empty);
+                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
 
                 DebitAmountEndProgressBar = (tempEndProgressBar / totalBalance) * 100;
                 CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100);
