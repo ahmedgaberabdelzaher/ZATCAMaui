@@ -8571,4 +8571,10 @@
     <data name="ZakatOldFinancialDetails" xml:space="preserve">
     <value>البيانات المالية</value>
   </data>
+ <data name="ASAccountStatementTaxType" xml:space="preserve">
+    <value>نوع الضريبة</value>
+  </data>
+  <data name="ASAccountStatementTheBalances" xml:space="preserve">
+    <value>الرصيد</value>
+  </data>
 </root>

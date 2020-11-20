@@ -179,8 +179,15 @@
 
                                  <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="15,15,15,10">
 
-                                    <StackLayout VerticalOptions="Start" Margin="15,5,15,15" Spacing="0" >
-                                      <Grid>
+                                    <StackLayout VerticalOptions="Start" Margin="15,5,15,15" Spacing="0" Orientation="Vertical" >
+                                        <StackLayout Orientation="Vertical" Margin="0,0,0,10"
+                                         HorizontalOptions="StartAndExpand" Spacing="-5">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTaxType}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="StartAndExpand">
+                                            </custom:CustomLabel>
+
+                                            <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                                        </StackLayout>
+                                        <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>

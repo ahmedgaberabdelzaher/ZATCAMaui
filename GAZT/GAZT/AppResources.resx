@@ -8631,4 +8631,10 @@ I acknowledge that the above bank account information is correct and assume full
      <data name="ZakatOldFinancialDetails" xml:space="preserve">
     <value>Financial Details</value>
   </data>
+ <data name="ASAccountStatementTaxType" xml:space="preserve">
+    <value>Tax Type</value>
+  </data>
+  <data name="ASAccountStatementTheBalances" xml:space="preserve">
+    <value>The Balance</value>
+  </data>
 </root>

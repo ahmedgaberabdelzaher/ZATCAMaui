@@ -15215,5 +15215,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZakatOldFinancialDetails", resourceCulture);
             }
         }
+        
+        public static string ASAccountStatementTaxType {
+            get {
+                return ResourceManager.GetString("ASAccountStatementTaxType", resourceCulture);
+            }
+        }
+        
+        public static string ASAccountStatementTheBalances {
+            get {
+                return ResourceManager.GetString("ASAccountStatementTheBalances", resourceCulture);
+            }
+        }
     }
 }
