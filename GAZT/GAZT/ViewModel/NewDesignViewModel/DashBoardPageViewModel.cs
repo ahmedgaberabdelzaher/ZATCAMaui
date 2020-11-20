@@ -250,8 +250,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                _taxTypeFilter = value;
-                this.RaisePropertyChanged("TaxTypeFilter");
+                if (value != null)
+                {
+                    value = new ObservableCollection<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
+                    _taxTypeFilter = value;
+                    this.RaisePropertyChanged("TaxTypeFilter");
+                }
             }
         }
 
@@ -301,7 +305,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _selectedTaxTypeForFilterValue = value;
                 PopulateStatements(_selectedTaxTypeForFilterValue.TaxType, _selectedTaxTypeForFilterValue.StatementFilter, string.Empty);
-
+                
                 RaisePropertyChanged("SelectedTaxTypeForFilterValue");
             }
         }
@@ -977,53 +981,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                     HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
 
-                    foreach(TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
-                    {
-                        if (TabIdentification.D.Direct == "X")
+                        foreach(TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                         {
-                            if (taxRelationSetResult.StatementFilter == "01")
+                            if (TabIdentification.D.Direct == "X")
                             {
-                                taxRelationSetResult.DisplayId = 01;
+                                if (taxRelationSetResult.StatementFilter == "01")
+                                {
+                                    taxRelationSetResult.DisplayId = 01;
+                                }
+
+                                if (taxRelationSetResult.StatementFilter == "02")
+                                {
+                                    taxRelationSetResult.DisplayId = 02;
+                                }
+
+                                if (taxRelationSetResult.StatementFilter == "03")
+                                {
+                                    taxRelationSetResult.DisplayId = 03;
+                                }
                             }
 
-                            if (taxRelationSetResult.StatementFilter == "02")
+                            if (TabIdentification.D.Indirect == "X")
                             {
-                                taxRelationSetResult.DisplayId = 02;
-                            }
+                                if (taxRelationSetResult.StatementFilter == "06")
+                                {
+                                    taxRelationSetResult.DisplayId = 06;
+                                }
 
-                            if (taxRelationSetResult.StatementFilter == "03")
-                            {
-                                taxRelationSetResult.DisplayId = 03;
+                                if (taxRelationSetResult.StatementFilter == "07")
+                                {
+                                    taxRelationSetResult.DisplayId = 07;
+                                }
+
+                                if (taxRelationSetResult.StatementFilter == "09")
+                                {
+                                    taxRelationSetResult.DisplayId = 09;
+                                }
                             }
                         }
 
-                        if (TabIdentification.D.Indirect == "X")
+                        if(TaxTypeFilter == null)
                         {
-                            if (taxRelationSetResult.StatementFilter == "06")
-                            {
-                                taxRelationSetResult.DisplayId = 06;
-                            }
-
-                            if (taxRelationSetResult.StatementFilter == "07")
-                            {
-                                taxRelationSetResult.DisplayId = 07;
-                            }
-
-                            if (taxRelationSetResult.StatementFilter == "09")
-                            {
-                                taxRelationSetResult.DisplayId = 09;
-                            }
+                            TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>();
                         }
-                    }
 
-                    if(TaxTypeFilter == null)
-                    {
-                        TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>();
-                    }
-
-                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
-                    TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(TaxTypeFilter.OrderBy(temp => temp.DisplayId).ToList());
-                    SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
+                        TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+                        SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
 
                     //foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
                     //{

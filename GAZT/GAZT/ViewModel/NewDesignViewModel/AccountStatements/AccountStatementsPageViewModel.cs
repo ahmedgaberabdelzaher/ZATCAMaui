@@ -484,7 +484,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public ObservableCollection<TaxRelationSetResult> _transactionTypeFilter = null;
+        public ObservableCollection<TaxRelationSetResult> _transactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
         public ObservableCollection<TaxRelationSetResult> TransactionTypeFilter
         {
             get
@@ -493,6 +493,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (value == null || value.Count == 0) return;
+                value = new ObservableCollection<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
                 _transactionTypeFilter = value;
                 RaisePropertyChanged("TransactionTypeFilter");
             }
@@ -512,8 +514,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public ObservableCollection<ASChipModel> _chipDataFilterlistForYears = null;
-        public ObservableCollection<ASChipModel> ChipDataFilterlistForYears
+        public List<ASChipModel> _chipDataFilterlistForYears = null;
+        public List<ASChipModel> ChipDataFilterlistForYears
         {
             get
             {
@@ -547,7 +549,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public TaxRelationSetResult _selectedTransactionTypeFilter = null;
+        public TaxRelationSetResult _selectedTransactionTypeFilter;
         public TaxRelationSetResult SelectedTransactionTypeFilter
         {
             get
@@ -556,19 +558,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
-                _selectedTransactionTypeFilter = value;
+                if (value == null) return;
+                    _selectedTransactionTypeFilter = value;
 
-                if (_selectedTransactionTypeFilter.StatementFilter != null)
-                {
-                    IsYearsChipVisible = true;
+                    if (_selectedTransactionTypeFilter.StatementFilter != null)
+                    {
+                        IsYearsChipVisible = true;
+                    }
+                    else
+                    {
+                        IsYearsChipVisible = false;
+                    }
 
-                }
-                else
-                {
-                    IsYearsChipVisible = false;
-                }
+                    RaisePropertyChanged("SelectedTransactionTypeFilter");
 
-                RaisePropertyChanged("SelectedTransactionTypeFilter");
+                    if (_selectedTransactionTypeFilter.StatementFilter != null)
+                    {
+                        Task.Run(async () =>
+                        {
+                            await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
+                        });
+                    }
+
+                
             }
         }
 
@@ -751,7 +763,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 throw new ArgumentNullException("dialogService");
             }
 
-            GoBackBtnTapped = new Command(async () =>
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -919,35 +931,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public async Task PopulateDataInChipsForYears(string taxType, string statementFilter)
+        public async Task<bool> PopulateDataInChipsForYears(string taxType, string statementFilter)
         {
-            YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
-
-            var chipDataFilterlistForYears = new ObservableCollection<ASChipModel>();
-            ChipDataFilterlistForYears = new ObservableCollection<ASChipModel>();
-
-            if (YearValuesHeader != null && YearValuesHeader.D != null)
+            try
             {
-                foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
+                IsLoading = true;
+                YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
+
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
+
+                var chipDataFilterlistForYears = new List<ASChipModel>();
+                ChipDataFilterlistForYears = new List<ASChipModel>();
+
+
+                if (YearValuesHeader != null && YearValuesHeader.D != null)
                 {
-                    chipDataFilterlistForYears.Add(new ASChipModel() { Text = aSYearValuesResults.Persl, TemplateType = AppResources.Paid });
+                    foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
+                    {
+                        chipDataFilterlistForYears.Add(new ASChipModel() { Text = aSYearValuesResults.Persl, TemplateType = AppResources.Paid });
+                    }
+                }
+                else
+                {
+                    chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2015", TemplateType = AppResources.Paid });
+                    chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2016", TemplateType = AppResources.Paid });
+                    chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2017", TemplateType = AppResources.Paid });
+                    chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2018", TemplateType = AppResources.Paid });
+                    chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2019", TemplateType = AppResources.Paid });
+                }
+                var desc = chipDataFilterlistForYears.OrderByDescending(item => item.Text);
+
+                foreach (ASChipModel aSChipModel in desc)
+                {
+                    ChipDataFilterlistForYears.Add(aSChipModel);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2015", TemplateType = AppResources.Paid });
-                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2016", TemplateType = AppResources.Paid });
-                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2017", TemplateType = AppResources.Paid });
-                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2018", TemplateType = AppResources.Paid });
-                chipDataFilterlistForYears.Add(new ASChipModel() { Text = "2019", TemplateType = AppResources.Paid });
+                Console.WriteLine(ex.Message);
             }
-            var desc = chipDataFilterlistForYears.OrderByDescending(item => item.Text);
-
-            foreach (ASChipModel aSChipModel in desc)
+            finally
             {
-                ChipDataFilterlistForYears.Add(aSChipModel);
+                IsLoading = false;
             }
-
+            return true;
         }
 
         public async void PopulateASFilterData()
@@ -1008,7 +1035,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                 }
 
-                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.ToList());
+                //TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.ToList());
+
+
+                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                {
+                    if (TabIdentification.D.Direct == "X")
+                    {
+                        if (taxRelationSetResult.StatementFilter == "01")
+                        {
+                            taxRelationSetResult.DisplayId = 01;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "02")
+                        {
+                            taxRelationSetResult.DisplayId = 02;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "03")
+                        {
+                            taxRelationSetResult.DisplayId = 03;
+                        }
+                    }
+
+                    if (TabIdentification.D.Indirect == "X")
+                    {
+                        if (taxRelationSetResult.StatementFilter == "06")
+                        {
+                            taxRelationSetResult.DisplayId = 06;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "07")
+                        {
+                            taxRelationSetResult.DisplayId = 07;
+                        }
+
+                        if (taxRelationSetResult.StatementFilter == "09")
+                        {
+                            taxRelationSetResult.DisplayId = 09;
+                        }
+                    }
+                }
+
+                if (TransactionTypeFilter == null)
+                {
+                    TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
+                }
+
+                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+                SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
 
                 /*if (HeaderSet.D.TaxType == "D")
                 {

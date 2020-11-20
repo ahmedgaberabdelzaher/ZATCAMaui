@@ -98,10 +98,12 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                SortByStackLayout.FlowDirection = FlowDirection.LeftToRight;
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+                SortByStackLayout.FlowDirection = FlowDirection.RightToLeft;
             }
         }
 
@@ -129,38 +131,33 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         }
 
-        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                ASReturnTypes selectedReturntype = (ASReturnTypes)e.NewValue;
-                //  TaxTypePicker.SelectedItem = selectedReturntype;
-                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
-            }
-            catch (Exception ex)
-            {
+        //private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        ASReturnTypes selectedReturntype = (ASReturnTypes)e.NewValue;
+        //        //  TaxTypePicker.SelectedItem = selectedReturntype;
+        //        viewModel.SelectedTaxTypeForFilter = selectedReturntype;
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
-        private async void TransactionTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            try
-            {
-                TaxRelationSetResult selectedReturntype = (TaxRelationSetResult)e.NewValue;
-                TransactionTypePicker.SelectedItem = selectedReturntype;
-                viewModel.SelectedTransactionTypeFilter = selectedReturntype;
+        //private void TransactionTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        TaxRelationSetResult selectedReturntype = (TaxRelationSetResult)e.NewValue;
+        //        TransactionTypePicker.SelectedItem = selectedReturntype;
+        //        viewModel.SelectedTransactionTypeFilter = selectedReturntype;
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                if (viewModel.SelectedTransactionTypeFilter.StatementFilter != null)
-                {
-                    await viewModel.PopulateDataInChipsForYears(viewModel.SelectedTaxTypeForFilter.Id, viewModel.SelectedTransactionTypeFilter.StatementFilter);
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
+        //    }
+        //}
 
         void searchButtonTapped(System.Object sender, System.EventArgs e)
         {
@@ -229,7 +226,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 ChipGroup_Years.SelectedItem = selectedReturntype;
                 viewModel.SelectedYear = selectedReturntype;
                 viewModel.IsOpeningBalanceVisible = true;
-                viewModel.PopulateStatements(viewModel.SelectedTaxTypeForFilter.Id, viewModel.SelectedTransactionTypeFilter.StatementFilter, viewModel.SelectedYear.Text);
+                viewModel.PopulateStatements(viewModel.SelectedTransactionTypeFilter.TaxType, viewModel.SelectedTransactionTypeFilter.StatementFilter, viewModel.SelectedYear.Text);
             }
             catch (Exception ex)
             {
