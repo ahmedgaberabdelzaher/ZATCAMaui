@@ -85,6 +85,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsTaxPayerIBANEnabled = false;
                // viewModel.IsTaxPayerEligDateEnabled = false;
             }
+
+            if(App.VATType == Enums.PageExecutionType.Amend)
+            {
+                viewModel.Declaration.IDTypeOrNoEntry = false;
+                viewModel.Declaration.ContactNameEntry = false;
+
+            }
                      //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
             //viewModel.IsFinancialDChangeSectionEnabled = true;
         }
@@ -1645,7 +1652,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void btnContactID_Clicked(object sender, EventArgs e)
         {
-            DDlContactIDType.IsOpen = true;
+            if (App.VATType == Enums.PageExecutionType.Reactivation)
+            {
+                DDlContactIDType.IsOpen = true;
+            }
         }
         #region SetColor
         public void SetfirstBoxColor()
@@ -4602,11 +4612,15 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         }
         private void EntryEmail_Unfocused(object sender, FocusEventArgs e)
         {
-            bool flag = IsValid(viewModel.SmtpAddrFR);
-            if (!flag)
+            if (viewModel.VATRegistrationDetailsData.d.CONTACTDTSet.results != null)
             {
-                ShowValidationPopup(AppResources.ZZPleaseenteravalidEmailAddress);
-                return;
+                bool flag1 = IsValid(viewModel.VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr);
+                bool flag = IsValid(viewModel.SmtpAddrFR);
+                if (!flag || !flag1)
+                {
+                    ShowValidationPopup(AppResources.ZZPleaseenteravalidEmailAddress);
+                    return;
+                }
             }
         }
         public void ShowValidationPopup(string sourceString)
