@@ -83,7 +83,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             if (!viewModel.IsAddAdditionalInfoChecked)
             {
                 viewModel.IsTaxPayerIBANEnabled = false;
-                viewModel.IsTaxPayerEligDateEnabled = false;
+               // viewModel.IsTaxPayerEligDateEnabled = false;
             }
                      //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
             //viewModel.IsFinancialDChangeSectionEnabled = true;
@@ -174,7 +174,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void btn1_Clicked(object sender, EventArgs e)
         {
-            DpEStartDate.IsOpen = true;
+            if (App.VATType == Enums.PageExecutionType.Reactivation)
+            {
+                DpEStartDate.IsOpen = true;
+            }
         }
 
         private void btnImporter_Clicked(object sender, EventArgs e)
@@ -4558,7 +4561,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private async void VATEligibleDateClicked(object sender, EventArgs e)
         {
-
+            if (App.VATType == Enums.PageExecutionType.Reactivation)
+            { 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = "";
             genericDatePickerModel.PickerId = "EndDateTypePicker";
@@ -4579,6 +4583,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel._navigationService.GoBack();
                 });
             }
+         }
         }
         public bool IsValid(string emailaddress)
         {

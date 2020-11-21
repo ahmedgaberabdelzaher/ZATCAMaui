@@ -764,14 +764,74 @@ namespace EGAZT.Models
     //    public bool MobileNoEntry { get; set; }
     //    public bool EmailIDEntry { get; set; }
     //}
-    public class DeclarationAvailability
+    public class DeclarationAvailability: ViewModelBase
     {
-        public bool Parent { get; set; }
-        public bool AcknowledgementCB { get; set; }
-        public bool IDTypeOrNoPicker { get; set; }
-        public bool IDTypeOrNoEntry { get; set; }
-        public bool DOBEntry { get; set; }
-        public bool ContactNameEntry { get; set; }
+        private bool _parent;
+        public bool Parent
+        {
+            get { return _parent; }
+            set
+            {
+                _parent = value;
+                RaisePropertyChanged("Parent");
+            }
+
+        }
+        private bool _AcknowledgementCB;
+        public bool AcknowledgementCB
+        {
+            get { return _AcknowledgementCB; }
+            set
+            {
+                _AcknowledgementCB = value;
+                RaisePropertyChanged("AcknowledgementCB");
+            }
+
+        }
+        private bool _IDTypeOrNoPicker;
+        public bool IDTypeOrNoPicker
+        {
+            get { return _IDTypeOrNoPicker; }
+            set
+            {
+                _IDTypeOrNoPicker = value;
+                RaisePropertyChanged("IDTypeOrNoPicker");
+            }
+
+        }
+        private bool _IDTypeOrNoEntry;
+        public bool IDTypeOrNoEntry
+        {
+            get { return _IDTypeOrNoEntry; }
+            set
+            {
+                _IDTypeOrNoEntry = value;
+                RaisePropertyChanged("IDTypeOrNoEntry");
+            }
+
+        }
+        private bool _DOBEntry;
+        public bool DOBEntry
+        {
+            get { return _DOBEntry; }
+            set
+            {
+                _DOBEntry = value;
+                RaisePropertyChanged("DOBEntry");
+            }
+
+        }
+        private bool _ContactNameEntry;
+        public bool ContactNameEntry
+        {
+            get { return _ContactNameEntry; }
+            set
+            {
+                _ContactNameEntry = value;
+                RaisePropertyChanged("ContactNameEntry");
+            }
+
+        }
     }
     public class FinancialRepresentativesModel
     {

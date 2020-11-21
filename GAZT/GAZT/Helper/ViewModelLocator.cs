@@ -2066,6 +2066,9 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATAmendReactivationPageViewModel>();
+                    SimpleIoc.Default.Register<VATAmendReactivationPageViewModel>();
+
                     return ServiceLocator.Current.GetInstance<VATAmendReactivationPageViewModel>();
                 }
                 catch (Exception ex)

@@ -584,7 +584,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged(nameof(IsTaxPayerIBANEnabled));
             }
         }
-        private bool _isTaxPayerEligDateEnabled;
+        private bool _isTaxPayerEligDateEnabled = false;
         public bool IsTaxPayerEligDateEnabled
         {
             get => _isTaxPayerEligDateEnabled;
@@ -961,7 +961,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 {
                     AddAdditionalInfoCheckBoxEnabled = false;
                     IsTaxPayerIBANEnabled = true;
-                    IsTaxPayerEligDateEnabled = true;
+                    IsTaxPayerEligDateEnabled = false;
                     
                 }
                 else
@@ -1475,6 +1475,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _txtIDTypeFR = value;
+                TxtIDTypeSum = value;
+                TxtIDTypeSR = value;
                 RaisePropertyChanged("TxtIDTypeFR");
             }
         }
@@ -1502,6 +1504,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _txtIDTypeSR = value;
+                
                 RaisePropertyChanged("TxtIDTypeSR");
             }
         }
@@ -1943,19 +1946,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("FinancialRepresentative");
             }
         }
-        private DeclarationAvailability _declaration = new DeclarationAvailability();
+        private DeclarationAvailability _declaration; //= new DeclarationAvailability();
         public DeclarationAvailability Declaration
         {
             get
             {
-                _declaration.Parent = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                _declaration.AcknowledgementCB = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                _declaration.IDTypeOrNoPicker = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                _declaration.IDTypeOrNoEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                _declaration.DOBEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : true;
-                IsDeclarationDOBVisible = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? false : false;
-                _declaration.ContactNameEntry = App.VATType == Enums.PageExecutionType.Amend ? false : App.VATType == Enums.PageExecutionType.Reactivation ? true : true;
-                return _declaration;
+               return _declaration;
+            }
+            set
+            {
+                _declaration = value;
+                RaisePropertyChanged("Declaration");
             }
         }
 
@@ -1984,12 +1985,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     TaxPayerDetails.SourceEntry = 
                     TaxPayerDetails.CommencementDate = false;
 
-
+                    IsTaxPayerEligDateEnabled = false;
                     TaxPayerDetails.AddInformationCB =
                     TaxPayerDetails.AddInformationCBVisible =
                     TaxPayerDetails.AddInformationParent =
                     IsTaxPayerIBANEnabled =
-                    IsTaxPayerEligDateEnabled =
                     TaxPayerDetails.ImporterYesRB =
                     TaxPayerDetails.ImporterNoRB =
                     TaxPayerDetails.ImporterAttachmentsBtn =
@@ -2015,6 +2015,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     FinancialRepresentative.MobileNoEntry =  false ;
                     FinancialRepresentative.EmailIDEntry =  false ;
 
+                    Declaration.Parent = false ;
+                    Declaration.AcknowledgementCB = false ;
+                    Declaration.IDTypeOrNoPicker =  false;
+                    Declaration.IDTypeOrNoEntry =  false;
+                    Declaration.DOBEntry = false;
+                    IsDeclarationDOBVisible =  false;
+                    Declaration.ContactNameEntry =  false;
 
 
 
@@ -2066,6 +2073,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     FinancialRepresentative.MobileNoEntry = false ;
                     FinancialRepresentative.EmailIDEntry = false ;
 
+                    Declaration.Parent = true;
+                    Declaration.AcknowledgementCB =true ;
+                    Declaration.IDTypeOrNoPicker = true ;
+                    Declaration.IDTypeOrNoEntry =  true ;
+                    Declaration.DOBEntry =  false ;
+                    IsDeclarationDOBVisible = false ;
+                    Declaration.ContactNameEntry =  true;
 
 
                     break;
@@ -2137,35 +2151,95 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
 
                 }
-                //ResultsItemForContactPerson contactSet = new ResultsItemForContactPerson();
-                //contactSet.Gpart = GpartFR;
-                //contactSet.Type = SelectedIdTypeFR.ID;
-                //contactSet.Idnumber = IdnumberFR;
-                //contactSet.Firstnm = FirstnmFR;
-                //contactSet.Lastnm = LastnmFR;
-                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Add(contactSet);
-
-                //ResultsItemForContactPerson contactSet1 = new ResultsItemForContactPerson();
-                //contactSet.Gpart = GpartFR;
-                //contactSet.Type = SelectedIdTypeFR.ID;
-                //contactSet.Idnumber = IdnumberFR;
-                //contactSet.Firstnm = FirstnmFR;
-                //contactSet.Lastnm = LastnmFR;
-                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Add(contactSet);
-
-                VATRegistrationDetailsData.d.VatTaxDt = Bdt;
-                VATRegistrationDetailsData.d.StepNumberz = "2";
-                //  VATRegistrationDetailsData.d.DecidTy = string.Empty;
                 //Step 4
+           
 
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
-                if (SelectedIdTypeFR != null)
-                    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Idnumber = IdnumberFR;
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Firstnm = FirstnmFR;
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
-                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
-                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
+                //VATRegistrationDetailsData.d.VatTaxDt = Bdt;
+                //VATRegistrationDetailsData.d.StepNumberz = "2";
+                //VATRegistrationDetailsData.d.DecidTy = string.Empty;
+
+                //Step 4
+                if (IsAddNewRepresentativeChecked)
+                {
+
+                    ResultsItemForContactPerson contactSet = new ResultsItemForContactPerson();
+                    contactSet.TransactionType = "CHG_RGVT";//VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].TransactionType;
+                    contactSet.FormGuid = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].FormGuid;
+                    contactSet.DataVersion = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].DataVersion;
+                    contactSet.LineNo = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].LineNo;
+                    contactSet.RankingOrder = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].RankingOrder;
+                    contactSet.Srcidentify = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Srcidentify;
+                    contactSet.Contacttp = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Contacttp;
+                    contactSet.Relationtp = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Relationtp;
+                    contactSet.Defaultfg = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Defaultfg;
+                    contactSet.Startdt = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Startdt;
+                    contactSet.StartdtC = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].StartdtC;
+                    contactSet.Enddt = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Enddt;
+                    contactSet.Dobdt = VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Dobdt;
+                    contactSet.Fathernm = string.Empty;
+                    contactSet.Grandfathernm = string.Empty;
+                    contactSet.Familynm = string.Empty;
+                    contactSet.Title = string.Empty;
+                    contactSet.Initials = string.Empty;
+
+                    contactSet.Gpart = GpartFR;
+                    if (SelectedIdTypeFR != null) { 
+                    contactSet.Type = SelectedIdTypeFR.ID;
+                    }
+                    contactSet.Idnumber = IdnumberFR;
+                    contactSet.Firstnm = FirstnmFR;
+                    contactSet.Lastnm = LastnmFR;
+
+                    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results =
+                        VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Select(x=> { x.__metadata = null;return x;}).ToList();
+                    bool checkDuplicate = false;
+                    foreach (var item in VATRegistrationDetailsData.d.CONTACT_PERSONSet.results)
+                    {
+                        checkDuplicate = JsonCompare(item, contactSet);
+                        if (checkDuplicate)
+                            break;
+                    }
+                    if (!checkDuplicate) 
+                    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Add(contactSet);
+                    checkDuplicate = false;
+                    ResultsItemForContact contact = new ResultsItemForContact();
+
+                    contact.TransactionType = "CHG_RGVT";//VATRegistrationDetailsData.d.CONTACTDTSet.results[0].TransactionType;
+                    contact.FormGuid = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].FormGuid;
+                    contact.DataVersion = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].DataVersion;
+                    contact.LineNo = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].LineNo;
+                    contact.RankingOrder = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].RankingOrder;
+                    contact.Srcidentify = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].Srcidentify;
+                    contact.Consnumber = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].Consnumber;
+                    contact.Begda = null;
+                    contact.Endda = null;
+                    contact.TelNumber = MobNumberFR;
+                    contact.R3User = string.Empty;
+                    contact.MobNumber = MobNumberFR;
+                    contact.SmtpAddr = SmtpAddrFR;
+                    VATRegistrationDetailsData.d.CONTACTDTSet.results =
+                       VATRegistrationDetailsData.d.CONTACTDTSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
+
+                   
+                    foreach (var item in VATRegistrationDetailsData.d.CONTACTDTSet.results)
+                    {
+                        checkDuplicate = JsonCompare(item, contact);
+                        if (checkDuplicate)
+                            break;
+                    }
+                    if (!checkDuplicate)
+                        VATRegistrationDetailsData.d.CONTACTDTSet.results.Add(contact);
+                }
+
+
+                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
+                //if (SelectedIdTypeFR != null)
+                //    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
+                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Idnumber = IdnumberFR;
+                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Firstnm = FirstnmFR;
+                //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
+                //VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
+                //VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
 
                 //Step 5
                 if (IsDeclarationChecked)
@@ -2223,6 +2297,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             {
 
             }
+        }
+
+        private bool JsonCompare(object obj, object another)
+        {
+            if (ReferenceEquals(obj, another)) return true;
+            if ((obj == null) || (another == null)) return false;
+            if (obj.GetType() != another.GetType()) return false;
+
+            var objJson = JsonConvert.SerializeObject(obj);
+            var anotherJson = JsonConvert.SerializeObject(another);
+
+            return objJson == anotherJson;
         }
 
         public async Task<VATRegistrationDetails> SubmitClicked()
@@ -2550,8 +2636,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                             LastnmFR = item.Lastnm,
                                             MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
                                             SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
-                                            TxtIDTypeFR = selectedIdTypeName
-                                        });
+                                            TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name
+
+                                    });
                                         count++;
                                     }
                                 }
@@ -2655,7 +2742,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             {
 
                                 SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy).FirstOrDefault();
-                                TxtIDTypeSR = SelectedIdTypeSR.Name;
+                                TxtIDTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy).FirstOrDefault().Name; //SelectedIdTypeSR.Name;
                             }
                             if (vATRegistration.d.Decconno != null)
 
