@@ -12,6 +12,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GalaSoft.MvvmLight.Ioc;
 using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
@@ -31,7 +32,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         public TINDeregistrationPageView(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
             InitializeComponent();
-
+            
             viewModel = App.Locator.TINDeregistrationPageView;
 
             ChangeAeroIcon();
@@ -45,11 +46,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.LoadReasonSet();
             viewModel.PopulateAttachmentsListViewTemplate();
 
-            MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
-            {
-                outletDecisionOptionsListView.SelectedItem = x;
+            //MessagingCenter.Subscribe<TINDeregistrationModel>(this, "selectedOutletOption", (x) =>
+            //{
+            //    outletDecisionOptionsListView.SelectedItem = x;
 
-            });
+            //});
             //Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
             //{
             //    if (arg != null)
@@ -276,11 +277,15 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            Xamarin.Forms.MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            outletDecisionOptionsListView.SelectedItem = null;
+            //SimpleIoc.Default.Unregister<TINDeregistrationPageViewModel>();
+            //SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
 
+            Xamarin.Forms.MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
+            GC.Collect();
         }
 
         private void SetLTR()

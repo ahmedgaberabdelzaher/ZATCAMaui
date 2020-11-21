@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
@@ -10,7 +11,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.GenericPickers
         #region Constructor
         public PickerPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            PickerItemSource = new ObservableCollection<string>();
+            PickerItemSource = new List<string>();
             DataSource = new GenericPickerModel();
         }
         #endregion
@@ -29,8 +30,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.GenericPickers
             }
         }
 
-        private ObservableCollection<string> _pickerItemSource { get; set; }
-        public ObservableCollection<string> PickerItemSource
+        private List<string> _pickerItemSource { get; set; }
+        public List<string> PickerItemSource
         {
             get
             {

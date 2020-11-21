@@ -1425,6 +1425,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 taxPayerDetails.Draftfg = "X";
                                 taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                                 taxPayerDetails.UserTypx = "TP";
+
+                                if (taxPayerDetails.Augrp == null)
+                                    taxPayerDetails.Augrp = string.Empty;
+
+
                                 var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                 if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
                                 {

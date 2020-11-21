@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,8 +53,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<ZakatDeregistrationDetailsListModel> _zakatRegListData { get; set; }
-        public ObservableCollection<ZakatDeregistrationDetailsListModel> ZakatRegListData
+        public List<ZakatDeregistrationDetailsListModel> _zakatRegListData { get; set; }
+        public List<ZakatDeregistrationDetailsListModel> ZakatRegListData
         {
             get
             {
@@ -87,7 +88,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public void PopulateZakatRegListData()
         {
-            ObservableCollection<ZakatDeregistrationDetailsListModel> tempZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>();
+            List<ZakatDeregistrationDetailsListModel> tempZakatRegListData = new List<ZakatDeregistrationDetailsListModel>();
             string fileImage = string.Empty;
             if(App.IsArabic)
             {
@@ -143,7 +144,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 });
             }
-            ZakatRegListData = new ObservableCollection<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);
+            ZakatRegListData = new List<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);
         }
 
         public async void GetNewTinDeregistrationDataCliked()
@@ -158,7 +159,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 ZakatDeregResponseData = await WebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregResponseData);
 
                 //VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
-                //IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
+                //IbanData = new List<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
                 //VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
 
                 await Task.Run(() =>

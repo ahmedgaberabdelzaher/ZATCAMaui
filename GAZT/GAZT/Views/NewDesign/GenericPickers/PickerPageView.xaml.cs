@@ -13,7 +13,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
     public partial class PickerPageView : PopupPage
     {
         PickerPageViewModel viewModel;
-        public PickerPageView(ObservableCollection<string> _pickerSource)
+        public PickerPageView(List<string> _pickerSource)
         {
             InitializeComponent();
 

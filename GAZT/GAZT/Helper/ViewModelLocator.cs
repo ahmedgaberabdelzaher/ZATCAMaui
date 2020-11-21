@@ -3068,6 +3068,9 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TINDeregistrationPageViewModel>();
+                    SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
+
                     return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
                 }
                 catch (Exception ex)

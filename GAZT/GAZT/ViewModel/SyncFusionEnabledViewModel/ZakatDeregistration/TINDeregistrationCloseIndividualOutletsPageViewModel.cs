@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -581,7 +582,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async void OnIdTypeClicked()
         {
-            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+            List<string> idTypeData = new List<string>();
 
             foreach (IBANType iBANType in IBANTypesList)
             {

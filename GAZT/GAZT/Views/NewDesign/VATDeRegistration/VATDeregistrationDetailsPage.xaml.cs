@@ -870,7 +870,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         void VatDeregIdClicked(System.Object sender, System.EventArgs e)
         {
 
-            ObservableCollection<string> iDTypes = new ObservableCollection<string>();
+            List<string> iDTypes = new List<string>();
             iDTypes.Add(AppResources.NationaID);
             iDTypes.Add(AppResources.ZZIqamaID);
             iDTypes.Add(AppResources.ZZGCCID);

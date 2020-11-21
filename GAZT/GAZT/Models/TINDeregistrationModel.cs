@@ -313,7 +313,8 @@ namespace EGAZT.Models
         public string ADeregSelectedReasonValue { get; set; }
 
         [JsonProperty("ADregOpt")]
-        public string ADregOpt { get; set; }
+        public string ADregOpt { get;
+            set; }
 
         [JsonProperty("ADocumnt9")]
         public string ADocumnt9 { get; set; }
@@ -434,14 +435,14 @@ namespace EGAZT.Models
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        //[JsonProperty("Assignme")]
-        //public string Assignme { get; set; }
+        [JsonProperty("Assignme")]
+        public string Assignme { get; set; }
 
-        //[JsonProperty("Caseid")]
-        //public string Caseid { get; set; }
+        [JsonProperty("Caseid")]
+        public string Caseid { get; set; }
 
-        //[JsonProperty("Operation")]
-        //public string Operation { get; set; }
+        [JsonProperty("Operation")]
+        public string Operation { get; set; }
 
         [JsonProperty("Xvoidz")]
         public string Xvoidz { get; set; }
@@ -738,8 +739,6 @@ namespace EGAZT.Models
 
         }
 
-
-
         [JsonIgnore]
 
         public List<Attachment> _results { get; set; }
@@ -1018,9 +1017,9 @@ namespace EGAZT.Models
         public string AOutletDobCTb { get; set; }
 
         [JsonIgnore]
-        private ObservableCollection<PermitSetResult> _permitTypes { get; set; }
+        private List<PermitSetResult> _permitTypes { get; set; }
         [JsonIgnore]
-        public ObservableCollection<PermitSetResult> PermitTypes
+        public List<PermitSetResult> PermitTypes
         {
             get
             {
@@ -1151,7 +1150,7 @@ namespace EGAZT.Models
         {
             get { return aPermitDeregDisplayDate; }
             set
-            { if (!string.IsNullOrEmpty(value)) { aPermitDeregDisplayDate = value; OnPropertyRaised("APermitDeregDisplayDate"); } }
+            { { aPermitDeregDisplayDate = value; OnPropertyRaised("APermitDeregDisplayDate"); } }
         }
 
         [JsonIgnore]
@@ -1268,15 +1267,13 @@ namespace EGAZT.Models
         }
 
         [JsonIgnore]
-        public string aPermitTransTinTb { get; set; }
+        private string aPermitTransTinTb=string.Empty;
 
         [JsonProperty("APermitTransTinTb")]
         public string APermitTransTinTb
         {
             get
             {
-                if (string.IsNullOrEmpty(aPermitTransTinTb))
-                    return string.Empty;
 
                 return aPermitTransTinTb;
             }
@@ -1314,9 +1311,9 @@ namespace EGAZT.Models
         }
 
         [JsonIgnore]
-        private ObservableCollection<IBANType> _iBANTypesList;
+        private List<IBANType> _iBANTypesList;
         [JsonIgnore]
-        public ObservableCollection<IBANType> IBANTypesList
+        public List<IBANType> IBANTypesList
         {
             get
             {
@@ -1332,26 +1329,26 @@ namespace EGAZT.Models
 
         public void PopulateIdTypeTypeFromList()
         {
-            IBANTypesList = new ObservableCollection<IBANType>();
-            ObservableCollection<IBANType> IBANTypesDummyList = new ObservableCollection<IBANType>();
+            IBANTypesList = new List<IBANType>();
+            List<IBANType> IBANTypesDummyList = new List<IBANType>();
             IBANType iBANType = new IBANType();
             iBANType.key = "ZS0001";
-            iBANType.Text = AppResources.NationaID;
+            iBANType.Text = AppResources.TinDeregistrationNationalID;
             IBANTypesDummyList.Add(iBANType);
 
             IBANType iBANType2 = new IBANType();
             iBANType2.key = "ZS0005";
-            iBANType2.Text = AppResources.ZIBANCompanyID;
+            iBANType2.Text = AppResources.TinDeregistrationCompanyID;
             IBANTypesDummyList.Add(iBANType2);
 
             IBANType iBANType3 = new IBANType();
             iBANType3.key = "ZS0002";
-            iBANType3.Text = AppResources.ZZIqamaID;
+            iBANType3.Text = AppResources.TinDeregistrationIQAMANumber;
             IBANTypesDummyList.Add(iBANType3);
 
             IBANType iBANType4 = new IBANType();
             iBANType4.key = "ZS0003";
-            iBANType4.Text = AppResources.ZZGCCID;
+            iBANType4.Text = AppResources.TinDeregistrationGCCID;
             IBANTypesDummyList.Add(iBANType4);
 
             IBANTypesList = IBANTypesDummyList;
@@ -1364,19 +1361,19 @@ namespace EGAZT.Models
 
                 if(aPermitIdTypeTb == "ZS0001")
                 {
-                    PermitIdTypeName = AppResources.NationaID;
+                    PermitIdTypeName = AppResources.TinDeregistrationNationalID;
                 }
                 else if(aPermitIdTypeTb == "ZS0005")
                 {
-                    PermitIdTypeName = AppResources.ZIBANCompanyID;
+                    PermitIdTypeName = AppResources.TinDeregistrationCompanyID;
                 }
                 else if(aPermitIdTypeTb == "ZS0002")
                 {
-                    PermitIdTypeName = AppResources.ZZIqamaID;
+                    PermitIdTypeName = AppResources.TinDeregistrationIQAMANumber;
                 }
                 else
                 {
-                    PermitIdTypeName = AppResources.ZZGCCID;
+                    PermitIdTypeName = AppResources.TinDeregistrationGCCID;
                 }
 
                 OnPropertyRaised("APermitIdTypeTb");

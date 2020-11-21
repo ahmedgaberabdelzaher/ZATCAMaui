@@ -2083,7 +2083,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IsFinsancialStatementsEditable = true;
             InstalmentSliderVisible = true;
 
-            var list = new ObservableCollection<string>();
+            var list = new List<string>();
             list.Add(AppResources.ZYes);
             list.Add(AppResources.ZNo);
             GenericPickerModel genericPickerModel = new GenericPickerModel();

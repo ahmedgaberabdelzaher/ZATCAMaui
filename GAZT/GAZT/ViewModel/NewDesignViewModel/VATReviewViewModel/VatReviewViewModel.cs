@@ -2801,7 +2801,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void setIdPickerModel()
         {
-            ObservableCollection<string> iDTypes = new ObservableCollection<string>();
+            List<string> iDTypes = new List<string>();
             iDTypes.Add(AppResources.VFCNationalID);
             iDTypes.Add(AppResources.VFCIqamaID);
             iDTypes.Add(AppResources.VFCGCCID);
@@ -2817,7 +2817,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void setReviewReasonPickerModel()
         {
-            ObservableCollection<string> reasonTypes = new ObservableCollection<string>();
+            List<string> reasonTypes = new List<string>();
             foreach (var reason in reviewReasonList)
             {
                 reasonTypes.Add(reason.Reasons);
@@ -2833,7 +2833,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
         private void setReviewSubReasonPickerModel(string selectedReason)
         {
-            ObservableCollection<string> subReasonTypes = new ObservableCollection<string>();
+            List<string> subReasonTypes = new List<string>();
             selectedReviewReason = reviewReasonList.First(reviewReason => reviewReason.Reasons == selectedReason);
             subReviewReasonList = selectedReviewReason.ListSubReason;
             foreach (var subReason in subReviewReasonList)
@@ -2882,7 +2882,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         private void setApplicationRefPickerModel(List<VATObjectionRejectedFormModel.AppRefNumResult> results)
         {
             appRefNumList = results;
-            ObservableCollection<string> appRefNums = new ObservableCollection<string>();
+            List<string> appRefNums = new List<string>();
 
             if (results != null && results.Count > 0)
             {

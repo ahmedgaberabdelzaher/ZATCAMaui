@@ -190,7 +190,7 @@
                         </listView:SfListView.LayoutManager>
                     </listView:SfListView>
                     <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsOption1Visible}">
-                        <custom:CustomLabel x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}"  >
+                        <custom:CustomLabel x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}" >
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"/>
@@ -208,7 +208,7 @@
                             <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
-                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
+                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd"  
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
                                 </custom:BorderlessEntry>
@@ -759,7 +759,8 @@
 
                     </StackLayout>
 
-                    <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" HorizontalOptions="FillAndExpand" VerticalOptions="End"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                    <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" HorizontalOptions="FillAndExpand" VerticalOptions="End"
+                                      x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
                 </Grid>
@@ -924,7 +925,7 @@
                                                                 <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
                                                                     <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                                 </StackLayout>
-                                                                <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5">
+                                                                <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5" > 
                                                                     <Label Text="{Binding APermitDeregDisplayDate}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="5" Grid.Column="0" Spacing="-5">
@@ -1457,7 +1458,7 @@
                             </StackLayout>
                         </border:SfBorder >
                         <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout Padding="0">
+                            <StackLayout Padding="0" >
                                 <Grid Padding="15" RowSpacing="0" >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
@@ -1477,7 +1478,7 @@
                                     </StackLayout>
                                 </Grid>
 
-                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                                 <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding TinDeregistrationData.AttDetSet.Results}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                                     <listView:SfListView.ItemTemplate>

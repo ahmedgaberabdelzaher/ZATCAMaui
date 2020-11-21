@@ -149,8 +149,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsNodataAvailableVisible");
             }
         }
-        private ObservableCollection<object> _todayDate;
-        public ObservableCollection<object> TodayDate
+        private List<object> _todayDate;
+        public List<object> TodayDate
         {
             get
             {
@@ -162,8 +162,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("TodayDate");
             }
         }
-        private ObservableCollection<object> _todayDateinHijri;
-        public ObservableCollection<object> TodayDateinHijri
+        private List<object> _todayDateinHijri;
+        public List<object> TodayDateinHijri
         {
             get
             {
@@ -481,10 +481,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<TINDeregistrationModel> c { get; set; }
+        public List<TINDeregistrationModel> c { get; set; }
 
-        public ObservableCollection<TINDeregistrationModel> outletDecisionOptions { get; set; }
-        public ObservableCollection<TINDeregistrationModel> OutletDecisionOptions
+        public List<TINDeregistrationModel> outletDecisionOptions { get; set; }
+        public List<TINDeregistrationModel> OutletDecisionOptions
         {
             get
             {
@@ -512,8 +512,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
 
-        public ObservableCollection<TINDeregistrationModel> permitOutletDecisionOptions { get; set; }
-        public ObservableCollection<TINDeregistrationModel> PermitOutletDecisionOptions
+        public List<TINDeregistrationModel> permitOutletDecisionOptions { get; set; }
+        public List<TINDeregistrationModel> PermitOutletDecisionOptions
         {
             get
             {
@@ -527,7 +527,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private TINDeregistrationModel selectedPermitTypeOutletOption { get; set; }
+        private TINDeregistrationModel selectedPermitTypeOutletOption;
         public TINDeregistrationModel SelectedPermitTypeOutletOption
         {
             get
@@ -588,8 +588,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryReasonData { get; set; }
-        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryReasonData
+        public List<TINDeregistrationSummaryModel> _tinDeregistrationSummaryReasonData { get; set; }
+        public List<TINDeregistrationSummaryModel> TinDeregistrationSummaryReasonData
         {
             get
             {
@@ -604,8 +604,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryOutletData { get; set; }
-        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryOutletData
+        public List<TINDeregistrationSummaryModel> _tinDeregistrationSummaryOutletData { get; set; }
+        public List<TINDeregistrationSummaryModel> TinDeregistrationSummaryOutletData
         {
             get
             {
@@ -620,8 +620,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryDeclarationData { get; set; }
-        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryDeclarationData
+        public List<TINDeregistrationSummaryModel> _tinDeregistrationSummaryDeclarationData { get; set; }
+        public List<TINDeregistrationSummaryModel> TinDeregistrationSummaryDeclarationData
         {
             get
             {
@@ -649,7 +649,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("SelectedOutletOptionIndex");
             }
         }
-        private bool _isOption1Visible = false;
+        private bool _isOption1Visible ;
         public bool IsOption1Visible
         {
             get
@@ -662,7 +662,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsOption1Visible");
             }
         }
-        private bool _isOption2Visible = false;
+        private bool _isOption2Visible ;
         public bool IsOption2Visible
         {
             get
@@ -746,8 +746,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         PopulateAttachmentsListViewTemplate();
                     }
+                    RaisePropertyChanged("SelectedOutletOption");
                 }
-                RaisePropertyChanged("SelectedOutletOption");
+                else
+                {
+                    _selectedOutletOption = null;
+                }
             }
         }
 
@@ -849,8 +853,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("SelectedAttachment");
             }
         }
-        public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryDeclarationData { get; set; }
-        public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryDeclarationData
+        public List<VATDeregistrationSummaryModel> _vatDeregistrationSummaryDeclarationData { get; set; }
+        public List<VATDeregistrationSummaryModel> VATDeregistrationSummaryDeclarationData
         {
             get
             {
@@ -920,8 +924,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private ObservableCollection<Attachment> _tinDeregAttachmentList;
-        public ObservableCollection<Attachment> TinDeregAttachmentList
+        private List<Attachment> _tinDeregAttachmentList;
+        public List<Attachment> TinDeregAttachmentList
         {
             get
             {
@@ -1002,8 +1006,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
 
-        public ObservableCollection<TinDeregReasonSetResult> _tinDeregReasons { get; set; }
-        public ObservableCollection<TinDeregReasonSetResult> TinDeregReasons
+        public List<TinDeregReasonSetResult> _tinDeregReasons { get; set; }
+        public List<TinDeregReasonSetResult> TinDeregReasons
         {
             get
             {
@@ -1065,7 +1069,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                     }
                                     //outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
-                                    outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                                    outletInfo.PermitTypes = new List<PermitSetResult>();
 
                                     foreach (PermitSetResult permitInfo in allPermitTypes)
                                     {
@@ -1094,7 +1098,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                             //permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
 
                                             if (outletInfo.PermitTypes == null)
-                                                outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                                                outletInfo.PermitTypes = new List<PermitSetResult>();
 
 
                                             outletInfo.PermitTypes.Add(permitInfo);
@@ -1150,7 +1154,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             string tempSelectedReason = PickerModel.SelectedValue;
 
-                            SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
                               x =>
                               {
                                   if (x.APermitNoTb == selectedAPermitReason)
@@ -1186,7 +1190,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (PickerModel.PickerId == "permitIdTypePicker")
                         {
-                            SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
                               x =>
                               {
                                   if (x.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb)
@@ -1222,7 +1226,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
                 RaisePropertyChanged("PickerModel");
@@ -1240,7 +1244,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _singleOutletDeregistrationDate = value;
 
-                SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
                     x =>
                     {
                         if (x.APermitNoTb == selectedAPermitOutletnoTb)
@@ -1249,6 +1253,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             x.APermitEffDtCTb = "G";
                             x.APermitEffDtHTb = SingleOutletDeregistrationDate.ToString("yyyy/MM/dd");
                             x.APermitDeregDisplayDate = SingleOutletDeregistrationDate.ToString("dd/MM/yyyy");
+                            if(Convert.ToDateTime(x.APermitValfrDtHTb)> SingleOutletDeregistrationDate)
+                            {
+                                 _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                                x.APermitDeregDisplayDate = string.Empty;
+                            }
                         }
                         return x;
                     }
@@ -1269,7 +1278,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _permitDob = value;
 
-                SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
                     x =>
                     {
                         if (x.APermitNoTb == selectedAPermitOutletnoTb)
@@ -1301,7 +1310,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         //    {
         //        _singleDeregistrationDate = value;
 
-        //        SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+        //        SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
         //            x =>
         //            {
         //                x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(_singleDeregistrationDate);
@@ -1332,7 +1341,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (SelectedOutletForCloseTranser.PermitTypes != null)
                         {
-                            SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
                             x =>
                             {
                                
@@ -1598,9 +1607,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<Attachment> tinDeregAttachmentsListViewData { get; set; }
+        public List<Attachment> tinDeregAttachmentsListViewData { get; set; }
 
-        public ObservableCollection<Attachment> TinDeregAttachmentsListViewData
+        public List<Attachment> TinDeregAttachmentsListViewData
         {
             get { return tinDeregAttachmentsListViewData; }
 
@@ -1688,8 +1697,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private ObservableCollection<IBANType> _iBANTypesList;
-        public ObservableCollection<IBANType> IBANTypesList
+        private List<IBANType> _iBANTypesList;
+        public List<IBANType> IBANTypesList
         {
             get
             {
@@ -1732,8 +1741,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<OutletSetResult> _allOutlets { get; set; }
-        public ObservableCollection<OutletSetResult> AllOutlets
+        public List<OutletSetResult> _allOutlets { get; set; }
+        public List<OutletSetResult> AllOutlets
         {
             get
             {
@@ -1962,8 +1971,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void PopulateIdTypeTypeFromList()
         {
-            IBANTypesList = new ObservableCollection<IBANType>();
-            ObservableCollection<IBANType> IBANTypesDummyList = new ObservableCollection<IBANType>();
+            IBANTypesList = new List<IBANType>();
+            List<IBANType> IBANTypesDummyList = new List<IBANType>();
             IBANType iBANType = new IBANType();
             iBANType.key = "ZS0001";
             iBANType.Text = AppResources.TinDeregistrationNationalID;
@@ -1990,7 +1999,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async void OnPermitTypeTinEntered(PermitSetResult permitSetResult)
         {
-            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+            List<string> idTypeData = new List<string>();
 
             foreach (IBANType iBANType in IBANTypesList)
             {
@@ -2010,7 +2019,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         private PermitSetResult tempIdTypePermitSetResult = new PermitSetResult();
         public async void OnPermitIdTypeClicked(PermitSetResult permitSetResult)
         {
-            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+            List<string> idTypeData = new List<string>();
 
             foreach (IBANType iBANType in IBANTypesList)
             {
@@ -2029,7 +2038,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async void OnIdTypeClicked()
         {
-            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+            List<string> idTypeData = new List<string>();
 
             foreach (IBANType iBANType in IBANTypesList)
             {
@@ -2115,7 +2124,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async Task SetDefaultDate()
         {
-            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            List<object> todaycollection = new List<object>();
             //Select today dates
 
             if (DateTime.Now.Date.Day < 10)
@@ -2131,7 +2140,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             DefaultMonth = DateTime.Now.Date.Month;
 
             //TodayDateinHijri
-            ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
+            List<object> todaycollectionHijri = new List<object>();
             var calendar = new HijriCalendar();
             if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
                 todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
@@ -2160,9 +2169,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
                 if (TinDeregistrationReasonSetData != null)
                 {
-                    TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
+                    TinDeregReasons = TinDeregistrationReasonSetData.ReasonSet.Results.ToList();
 
-                    AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                    AllOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                     List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
 
                     if (!String.IsNullOrEmpty(TinDeregistrationData.ADregReason) && !String.IsNullOrWhiteSpace(TinDeregistrationData.ADregReason))
@@ -2194,8 +2203,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2")
                     {
                         if (TinDeregistrationData.AEffectiveDt != null)
+                        {
                             DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDt);
-                        PickerDobToDisplay = DateTime.Parse(TinDeregistrationData.AEffectiveDt).Date.ToString("dd/MM/yyyy");
+                            PickerDobToDisplay = DateTime.Parse(TinDeregistrationData.AEffectiveDt).Date.ToString("dd/MM/yyyy");
+                        }
                     }
 
 
@@ -2215,7 +2226,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             outletInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
 
                         }
-                        outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                        outletInfo.PermitTypes = new List<PermitSetResult>();
 
 
                         foreach (PermitSetResult permitInfo in allPermitTypes)
@@ -2241,7 +2252,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 if (permitInfo.APermitDregRsnTb == null)
                                     permitInfo.APermitDregRsnTb = string.Empty;
                                 if (outletInfo.PermitTypes == null)
-                                    outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                                    outletInfo.PermitTypes = new List<PermitSetResult>();
 
                                 outletInfo.PermitTypes.Add(permitInfo);
                             }
@@ -2288,7 +2299,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                List<string> reasonData = new List<string>();
 
                 foreach (TinDeregReasonSetResult reasonDataDesc in TinDeregReasons)
                 {
@@ -2310,7 +2321,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
             catch (InternetException ex)
             {
@@ -2322,7 +2333,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
 
         }
@@ -2331,7 +2342,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                List<string> reasonData = new List<string>();
                 reasonData.Add(AppResources.TinDeregistrationClosed);
                 reasonData.Add(AppResources.TinDeregistrationTransfer);
 
@@ -2344,7 +2355,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
             catch (InternetException ex)
             {
@@ -2356,7 +2367,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
 
         }
@@ -2730,7 +2741,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2792,7 +2803,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                             IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
 
-                            SelectedOutletForCloseTranser.PermitTypes = new ObservableCollection<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
                               x =>
                               {
                                   x.APermitIdTypeTb = idType.Text;
@@ -2847,7 +2858,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2878,7 +2889,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     OutletOptionIndex = "3"
                 });
 
-                PermitOutletDecisionOptions = new ObservableCollection<TINDeregistrationModel>(tempValues);
+                PermitOutletDecisionOptions = new List<TINDeregistrationModel>(tempValues);
             }
             catch (Exception ex)
             {
@@ -2927,7 +2938,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             OutletOptionIndex = "2"
                         });
                     }
-                    OutletDecisionOptions = new ObservableCollection<TINDeregistrationModel>(tempValues);
+                    OutletDecisionOptions = new List<TINDeregistrationModel>(tempValues);
                 }
                 else
                 {
@@ -2993,7 +3004,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 }
-                AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                AllOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                 List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
@@ -3013,7 +3024,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     //}
 
-                    outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                    outletInfo.PermitTypes = new List<PermitSetResult>();
 
                     foreach (PermitSetResult permitInfo in allPermitTypes)
                     {
@@ -3050,7 +3061,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             }
 
                             if (outletInfo.PermitTypes == null)
-                                outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                                outletInfo.PermitTypes = new List<PermitSetResult>();
 
                             outletInfo.PermitTypes.Add(permitInfo);
                         }
@@ -3081,7 +3092,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
         }
 
@@ -3144,7 +3155,37 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                     case ProcessStep.Step3:
                         {
+                            try
+                            {
+                                foreach(Attachment selectedAttachment in TinDeregistrationData.AttDetSet.Results)
+                                {
+                                    string results = WebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
+                                    if (results == "X")
+                                    {
+                                        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                                        {
+                                            //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
+                                            if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
+                                            {
+                                                var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
+                                                if (index != null)
+                                                    attachmentsModelsTemp.AttachmentTypeList.Remove(index);
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                return;
+                            }
+
+                            AttachmentsListViewData.Clear();
+                            TinDeregistrationData.AttDetSet.Results.Clear();
+
                             EnableOutletDetaislView();
+                          
                             break;
                         }
                     case ProcessStep.Step4:
@@ -3155,7 +3196,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             }
                             catch(Exception ex)
                             {
-                                Console.WriteLine(ex.Message);
+                                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                             }
                            
                             break;
@@ -3215,7 +3256,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             try
                             {
-                                AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                                AllOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                                 List<PermitSetResult> allPermitTypes = new List<PermitSetResult>();
 
                                 if (TinDeregistrationData.PermitSet !=  null && TinDeregistrationData.PermitSet.Results != null)
@@ -3249,7 +3290,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                     outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
                                                 }
 
-                                                outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                                                outletInfo.PermitTypes = new List<PermitSetResult>();
 
                                                 foreach (PermitSetResult permitInfo in allPermitTypes)
                                                 {
@@ -3292,12 +3333,43 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                         }
 
                                                         if (outletInfo.PermitTypes == null)
-                                                            outletInfo.PermitTypes = new ObservableCollection<PermitSetResult>();
+                                                            outletInfo.PermitTypes = new List<PermitSetResult>();
 
                                                         outletInfo.PermitTypes.Add(permitInfo);
                                                     }
                                                 }
                                             }
+                                            else if(TinDeregistrationData.ADregOpt == "1")
+                                                {
+                                            foreach (PermitSetResult permitInfo in allPermitTypes)
+                                            {
+                                                if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                                                {
+                                                        permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
+                                                        permitInfo.APermitDregRsnTb = "1";
+
+                                                    if (permitInfo.APermitIdNoTb == null)
+                                                        permitInfo.APermitIdNoTb = "";
+
+                                                    if (permitInfo.APermitTransTinTb == null)
+                                                        permitInfo.APermitTransTinTb = "";
+
+                                                    if (SelectedOutletOption.OutletOptionIndex != "3")
+                                                    {
+                                                        permitInfo.APermitDeregDisplayDate = PickerDobToDisplay;//DeregistrationDate.ToString("dd MMM yyyy");
+                                                        permitInfo.APermitEffDtHTb = DeregistrationDate.ToString("yyyyMMdd");
+                                                        permitInfo.APermitEffDtCTb = "G";
+                                                        permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
+
+                                                    }
+
+                                                    if (outletInfo.PermitTypes == null)
+                                                        outletInfo.PermitTypes = new List<PermitSetResult>();
+
+                                                    outletInfo.PermitTypes.Add(permitInfo);
+                                                }
+                                            }
+                                        }
                                             else
                                             { 
                                                 outletInfo.AOutletEffDtHTb = DeregistrationDate.ToString("yyyy/MM/dd");
@@ -3408,10 +3480,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                    await SaveAsDraft();
-                    //  VoidIsVisible = true;
+                    //await SaveAsDraft();
+                    ////  VoidIsVisible = true;
 
-                    EnableOutletDetaislView();
+                    //EnableOutletDetaislView();
+
+
                 }
 
 
@@ -3423,6 +3497,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     outletEditIsVisible = false;
                 }
+
+                if(PopupNavigation.Instance.PopupStack.Count>0)
+                    await PopupNavigation.Instance.PopAllAsync();
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3442,11 +3519,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc));
+                await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc,this));
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
             catch (InternetException ex)
             {
@@ -3458,7 +3535,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
 
         }
@@ -3490,7 +3567,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     }
                 }
             }
@@ -3508,7 +3585,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
         }
 
@@ -3980,7 +4057,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
-            var attachmentsListViewData = new ObservableCollection<Attachment>();
+            var attachmentsListViewData = new List<Attachment>();
 
             foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
             {
@@ -4038,7 +4115,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
             catch (InternetException ex)
             {
@@ -4050,7 +4127,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
             }
         }
 
@@ -4082,7 +4159,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     SummaryData = DeregistrationDate.ToString("dd/MM/yyyy"),
                     IsEditVisible = true
                 });
-                TinDeregistrationSummaryReasonData = new ObservableCollection<TINDeregistrationSummaryModel>(summaryReasonData);
+                TinDeregistrationSummaryReasonData = new List<TINDeregistrationSummaryModel>(summaryReasonData);
             }
             catch (Exception ex)
             {
@@ -4120,7 +4197,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     IsEditVisible = true
                 });
 
-                TinDeregistrationSummaryDeclarationData = new ObservableCollection<TINDeregistrationSummaryModel>(summaryDeclarationData);
+                TinDeregistrationSummaryDeclarationData = new List<TINDeregistrationSummaryModel>(summaryDeclarationData);
             }
             catch (Exception ex)
             {
@@ -4210,7 +4287,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -4310,8 +4387,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     OutletSetResult[] oldOutlets = new OutletSetResult[AllOutlets.Count];
                     AllOutlets.CopyTo(oldOutlets, 0);
-                    ObservableCollection<OutletSetResult> listOutlets;
-                    listOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                    List<OutletSetResult> listOutlets;
+                    listOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
                     List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet.Results);
                     for (int i = 0; i < oldOutlets.Count(); i++)
                     {
@@ -4389,7 +4466,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         App.HideProgressView();
                     });
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
                 List<Attachment> tempAttachDetSet = new List<Attachment>();
@@ -4505,7 +4582,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
@@ -4544,7 +4621,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 await Task.Run(() =>
                 {
                     App.HideProgressView();

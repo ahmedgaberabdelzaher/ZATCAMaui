@@ -923,7 +923,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         public async void OnIbanIdTypeClicked()
         {
-            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+            List<string> idTypeData = new List<string>();
 
             foreach(IBANType iBANType in IBANTypesList)
             {
@@ -941,8 +941,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public async void OnIbanNumberClicked()
         {
             if(IBANIDNumberList != null && IBANIDNumberList.Count > 0)
-            {
-                ObservableCollection<string> idNumberData = new ObservableCollection<string>();
+            { 
+                List<string> idNumberData = new List<string>();
 
                 foreach (IBANIDNumber iBANId in IBANIDNumberList)
                 {

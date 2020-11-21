@@ -763,7 +763,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         private void setPickerModel()
         {
-            var list = new ObservableCollection<string>();
+            var list = new List<string>();
             list.Add(AppResources.CRSupplyforAramco);
             list.Add(AppResources.CRSupplyandmaintenance);
             list.Add(AppResources.CRsupplymaintenanceandoperating);

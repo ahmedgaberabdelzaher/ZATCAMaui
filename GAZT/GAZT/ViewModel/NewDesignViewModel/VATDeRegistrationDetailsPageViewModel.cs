@@ -1487,7 +1487,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void OnVatRegistrationReasonClicked()
         {
 
-            ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
+            List<string> reasonDescription = new List<string>();
             string reqType = string.Empty;
             if (SelectedOutletOption != null)
             {

@@ -310,7 +310,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string RetGuid { get; set; }
         public bool Enbdele { get; set; }
         public string Seqno { get; set; }
-        public string SchGuid { get; set; }
+        public string SchGuid { get; set; } = string.Empty;
         public bool Visedit { get; set; }
         public string Dotyp { get; set; }
         public bool Visdel { get; set; }
@@ -372,7 +372,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Rcodez { get; set; } = "REJ_NOTES";
         public string Erfusrz { get; set; } = string.Empty;
         public DateTime? Erfdtz { get; set; } 
-        public DateTime? Erftmz { get; set; } 
+        public string Erftmz { get; set; } 
             
         public string ByGpartz { get; set; }
         public string AttByz { get; set; } = "TP";
@@ -392,7 +392,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public List<object> results { get; set; }
     }
 
-    public class TaxPayerDetails
+    public class   TaxPayerDetails
     {
         [JsonIgnore]
         public Metadata __metadata { get; set; }

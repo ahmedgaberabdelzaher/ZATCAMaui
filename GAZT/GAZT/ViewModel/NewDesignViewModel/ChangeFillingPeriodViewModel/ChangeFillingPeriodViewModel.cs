@@ -1364,7 +1364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         private void setEffectiveDatePickerModel()
         {
-            var list = new ObservableCollection<string>();
+            var list = new List<string>();
 
             foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
             {
@@ -1381,7 +1381,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         private void setIdPickerModel()
         {
-            ObservableCollection<string> iDTypes = new ObservableCollection<string>();
+            List<string> iDTypes = new List<string>();
             iDTypes.Add(AppResources.VFCNationalID);
             iDTypes.Add(AppResources.VFCIqamaID);
             iDTypes.Add(AppResources.VFCGCCID);
