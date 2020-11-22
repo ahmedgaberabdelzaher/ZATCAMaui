@@ -1283,14 +1283,17 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         }
         public void setIban()
         {
-            if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.OptIban))
+            if(viewModel.VATRegistrationDetailsData != null)
             {
-                viewModel.NewAccountText = AppResources.ZTERNewAccount;
-            }
-            else
-            {
-                viewModel.NewAccountText = AppResources.VATREditAccount;
-                triggerIban(viewModel.VATRegistrationDetailsData.d.OptIban);
+                if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.OptIban))
+                {
+                    viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                }
+                else
+                {
+                    viewModel.NewAccountText = AppResources.VATREditAccount;
+                    triggerIban(viewModel.VATRegistrationDetailsData.d.OptIban);
+                }
             }
         }
         private void DateEntry_Focused(object sender, FocusEventArgs e)

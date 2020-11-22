@@ -2566,7 +2566,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         //OriginalVATRegistrationDetailsData = await WebServiceManager.GAZTGetVATRegistrationData(pageType);
 
 
-
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                         if (vATRegistration != null && vATRegistration.d != null)
@@ -2594,7 +2593,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name;
+
+                                try
+                                {
+                                    TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name;
+                                }
+                                catch(Exception ex)
+                                {
+
+                                }
 
 
                                 GpartSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
@@ -2603,8 +2610,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 MobNumberSum = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 SmtpAddrSum = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
 
+                                try
+                                {
+                                    TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+                                }
+                                catch(Exception ex)
+                                {
+
+                                }
 
                                 if (App.VATType == Enums.PageExecutionType.Amend)
                                 {
