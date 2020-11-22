@@ -632,16 +632,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             else
             {
 
-
             }
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
-
-
-
-
         }
 
         public void FilterAllData()
@@ -1196,14 +1191,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
                     new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
             };
-                if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.VtReg == "X")
-                {
-                    ReturnTypesList.RemoveAt(2);
-                }
                 ReturnTypeForFilter = new List<ReturnTypes>();
                 ReturnTypeForFilter = ReturnTypesList;
-
-
             }
             catch (Exception ex)
             {
