@@ -138,7 +138,7 @@ namespace EGAZT.Models
     }
     public class ResultsItemForDOCSetforsubmit
     {
-   //     public __metadata __metadata { get; set; }
+        //     public __metadata __metadata { get; set; }
         public string Mandt { get; set; }
         public string FormGuid { get; set; }
         public string DataVersion { get; set; }
@@ -327,19 +327,23 @@ namespace EGAZT.Models
         public bool Parent { get; set; }
         public bool CBAgreeCondition { get; set; }
     }
-    public class TaxPayer_DetailsAvailability: ViewModelBase
+    public class TaxPayer_DetailsAvailability : ViewModelBase
     {
         private bool _parent;
-        public bool Parent {
+        public bool Parent
+        {
             get { return _parent; }
-            set { _parent = value;
+            set
+            {
+                _parent = value;
                 RaisePropertyChanged("Parent");
             }
 
-       }
+        }
         private bool _taxPayerDetailsParent;
 
-        public bool TaxPayerDetailsParent {
+        public bool TaxPayerDetailsParent
+        {
             get { return _taxPayerDetailsParent; }
             set
             {
@@ -492,11 +496,13 @@ namespace EGAZT.Models
             }
         }
         private bool _ImporterNoRB;
-        public bool ImporterNoRB {
+        public bool ImporterNoRB
+        {
             get
             { return _ImporterNoRB; }
 
-            set {
+            set
+            {
                 _ImporterNoRB = value;
 
                 RaisePropertyChanged("ImporterNoRB");
@@ -751,8 +757,8 @@ namespace EGAZT.Models
             }
 
         }
-     
-       // public List<NewFinancialRepresentative> ListNewFinRepresentative { get; set; }
+
+        // public List<NewFinancialRepresentative> ListNewFinRepresentative { get; set; }
     }
     //public class NewFinancialRepresentative
     //{
@@ -764,7 +770,7 @@ namespace EGAZT.Models
     //    public bool MobileNoEntry { get; set; }
     //    public bool EmailIDEntry { get; set; }
     //}
-    public class DeclarationAvailability: ViewModelBase
+    public class DeclarationAvailability : ViewModelBase
     {
         private bool _parent;
         public bool Parent

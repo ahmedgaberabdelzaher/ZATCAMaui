@@ -62,8 +62,8 @@ namespace EGAZT.Models
     public class Result2
     {
         public Metadata3 __metadata { get; set; }
-        public string Partner { get; set; }
-        public string Bkvid { get; set; }
+        public string Partner { get; set; } = string.Empty;
+        public string Bkvid { get; set; } = string.Empty;
         public string Iban { get; set; }
     }
     public class IBANSet

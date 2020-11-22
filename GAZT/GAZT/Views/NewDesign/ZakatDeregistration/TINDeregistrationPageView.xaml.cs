@@ -227,7 +227,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg.PickerId == "DeregDatePicker")
                 {
                     viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
-
                 }
                 if (arg.PickerId == "DOBDateTypePicker")
                 {

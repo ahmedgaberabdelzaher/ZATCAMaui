@@ -344,7 +344,7 @@
 
 
 
-                                                    <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }" IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
+                                                    <StackLayout Orientation="Horizontal" IsVisible="{Binding BindingContext.TaxPayerDetails.AddInformationCBVisible,Source={x:Reference VATRegistration} }"  IsEnabled="{Binding BindingContext.TaxPayerDetails.AddInformationCB,Source={x:Reference VATRegistration} }">
                                                         <CheckBox   VerticalOptions="CenterAndExpand" IsEnabled="{Binding BindingContext.AddAdditionalInfoCheckBoxEnabled,Source={x:Reference VATRegistration}}" IsChecked="{Binding BindingContext.IsAddAdditionalInfoChecked,Source={x:Reference VATRegistration} }" CheckedChanged="AddAdditionalInfo_CheckedChanged">
                                                             <CheckBox.Triggers>
                                                                 <DataTrigger TargetType="CheckBox"  Value="false">
@@ -538,7 +538,7 @@
                                                         </Grid>
                                                     </StackLayout>
                                                     <!--End Of Read Only or pre-populated {Binding TodayDate}"-->
-                                                    <!--Start Of Additional Information--> 
+                                                    <!--Start Of Additional Information-->
                                                     <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
                                                         <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
                                                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
@@ -698,7 +698,7 @@
                                                 </StackLayout>-->
                                                     <!--
                                             </StackLayout>-->
-                                                   
+
                                                     <StackLayout Grid.Row="9" IsEnabled= "{Binding BindingContext.IsTaxPayerIBANEnabled,Source={x:Reference VATRegistration}}">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
@@ -749,7 +749,7 @@
                                                                 </Image>
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>-->
-                                                             
+
                                                             <Button Grid.Row="1" x:Name="NewAccount" IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker,Source={x:Reference VATRegistration}}"
                                                                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
                                                         </Grid>
@@ -780,28 +780,28 @@
                                                                         <Grid Padding="5,0,5,0">
                                                                             <cards:SfCardView  HasShadow="True"    BackgroundColor="Transparent" CornerRadius="3" HeightRequest="136" WidthRequest="171"
                                                            HorizontalOptions="FillAndExpand" IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker,Source={x:Reference VATRegistration} }">
-                                                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10">
-                                                                                            <Grid.RowDefinitions>
-                                                                                                <RowDefinition Height="30*"/>
-                                                                                                <RowDefinition Height="70*"/>
-                                                                                                <RowDefinition Height="auto"/>
-                                                                                            </Grid.RowDefinitions>
-                                                                                            <Grid.ColumnDefinitions>
-                                                                                                <ColumnDefinition Width="*"/>
-                                                                                            </Grid.ColumnDefinitions>
-                                                                                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="vat_tile_IbanCard_background.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                                                            <StackLayout  Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Spacing="0" Margin="5,0,5,30">
-                                                                                                <Image Margin="5,0,5,15" IsVisible="false"  HeightRequest="32" WidthRequest="32"  Source="positive" Aspect="Fill" HorizontalOptions="End" VerticalOptions="Center"/>
+                                                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10">
+                                                                                    <Grid.RowDefinitions>
+                                                                                        <RowDefinition Height="30*"/>
+                                                                                        <RowDefinition Height="70*"/>
+                                                                                        <RowDefinition Height="auto"/>
+                                                                                    </Grid.RowDefinitions>
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="*"/>
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Source="vat_tile_IbanCard_background.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                                                    <StackLayout  Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Spacing="0" Margin="5,0,5,30">
+                                                                                        <Image Margin="5,0,5,15" IsVisible="false"  HeightRequest="32" WidthRequest="32"  Source="positive" Aspect="Fill" HorizontalOptions="End" VerticalOptions="Center"/>
 
-                                                                                                <Label  Text="" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
+                                                                                        <Label  Text="" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
                                                                                                                         Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
-                                                                                                </Label>
-                                                                                                <Label Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
+                                                                                        </Label>
+                                                                                        <Label Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" TextColor="White" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
                                                                                                                         Margin="20,0,20,0" HorizontalTextAlignment="Start" LineHeight="0.8">
-                                                                                                </Label>
-                                                                                            </StackLayout>
+                                                                                        </Label>
+                                                                                    </StackLayout>
 
-                                                                                      </Grid>
+                                                                                </Grid>
                                                                                 <!--<Grid>
                                                                                     <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
                                                                                     </Image>

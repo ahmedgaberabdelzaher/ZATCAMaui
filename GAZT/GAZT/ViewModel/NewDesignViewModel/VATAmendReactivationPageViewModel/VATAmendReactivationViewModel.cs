@@ -343,8 +343,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("quesTion4answerSelected");
             }
         }
-        private ObservableCollection<object> _todayDate;
-        public ObservableCollection<object> TodayDate
+        private List<object> _todayDate;
+        public List<object> TodayDate
         {
             get
             {
@@ -962,14 +962,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     AddAdditionalInfoCheckBoxEnabled = false;
                     IsTaxPayerIBANEnabled = true;
                     IsTaxPayerEligDateEnabled = false;
-                    
+
                 }
                 else
                 {
                     AddAdditionalInfoCheckBoxEnabled = true;
                     IsTaxPayerIBANEnabled = false;
                     IsTaxPayerEligDateEnabled = false;
-                 
+
                 }
 
                 RaisePropertyChanged("IsAddAdditionalInfoChecked");
@@ -1504,7 +1504,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _txtIDTypeSR = value;
-                
+
                 RaisePropertyChanged("TxtIDTypeSR");
             }
         }
@@ -1671,7 +1671,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
         }
 
-        private ObservableCollection<Result2> _ibanList;
+        private ObservableCollection<Result2> _ibanList=new ObservableCollection<Result2>();
         public ObservableCollection<Result2> IbanList
         {
             get
@@ -1681,7 +1681,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _ibanList = value;
-                RaisePropertyChanged("IbanList");
             }
         }
 
@@ -1902,12 +1901,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 return _instAndCondition;
             }
         }
-        private TaxPayer_DetailsAvailability _taxPayerDetails;//= new TaxPayer_DetailsAvailability();
+        private TaxPayer_DetailsAvailability _taxPayerDetails = new TaxPayer_DetailsAvailability();
         public TaxPayer_DetailsAvailability TaxPayerDetails
         {
             get
             {
-                 return _taxPayerDetails;
+                return _taxPayerDetails;
             }
             set
             {
@@ -1932,12 +1931,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 return _financialDetails;
             }
         }
-        private FinancialRepresentativeAvailability _financialRepresentative;// = new FinancialRepresentativeAvailability();
+        private FinancialRepresentativeAvailability _financialRepresentative = new FinancialRepresentativeAvailability();
         public FinancialRepresentativeAvailability FinancialRepresentative
         {
             get
             {
-                
+
                 return _financialRepresentative;
             }
             set
@@ -1946,12 +1945,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("FinancialRepresentative");
             }
         }
-        private DeclarationAvailability _declaration; //= new DeclarationAvailability();
+        private DeclarationAvailability _declaration = new DeclarationAvailability();
         public DeclarationAvailability Declaration
         {
             get
             {
-               return _declaration;
+                return _declaration;
             }
             set
             {
@@ -1965,7 +1964,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
         #endregion
 
-       public  void SetUIAvailability()
+        public void SetUIAvailability()
         {
             switch (App.VATType)
             {
@@ -1982,7 +1981,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     TaxPayerDetails.StartDateEntry =
                     TaxPayerDetails.AddressEntry1 =
                     TaxPayerDetails.AddressEntry2 =
-                    TaxPayerDetails.SourceEntry = 
+                    TaxPayerDetails.SourceEntry =
                     TaxPayerDetails.CommencementDate = false;
 
                     IsTaxPayerEligDateEnabled = false;
@@ -2000,28 +1999,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     TaxPayerDetails.NewIBANPicker = true;
 
                     FinancialRepresentative.Parent = false;
-                    FinancialRepresentative.ChangeMobileEmailCB =  false ;
+                    FinancialRepresentative.ChangeMobileEmailCB = false;
                     FinancialRepresentative.AddNewFinRepresentativeCB = true;
-                    FinancialRepresentative.AddNewFinRepCBVisible =  true ;
-                    IsNewFinancialRepVisible = false ;
-                    FinancialRepresentative.SkipBtn =  false ;
+                    FinancialRepresentative.AddNewFinRepCBVisible = true;
+                    IsNewFinancialRepVisible = false;
+                    FinancialRepresentative.SkipBtn = false;
 
 
-                    FinancialRepresentative.TinEntry =  true;
-                    FinancialRepresentative.IDTypeEntry = true ;
-                    FinancialRepresentative.IDNoEntry = false ;
+                    FinancialRepresentative.TinEntry = true;
+                    FinancialRepresentative.IDTypeEntry = true;
+                    FinancialRepresentative.IDNoEntry = false;
                     FinancialRepresentative.FNameEntry = false;
-                    FinancialRepresentative.SurnameEntry =  false ;
-                    FinancialRepresentative.MobileNoEntry =  false ;
-                    FinancialRepresentative.EmailIDEntry =  false ;
+                    FinancialRepresentative.SurnameEntry = false;
+                    FinancialRepresentative.MobileNoEntry = false;
+                    FinancialRepresentative.EmailIDEntry = false;
 
-                    Declaration.Parent = false ;
-                    Declaration.AcknowledgementCB = false ;
-                    Declaration.IDTypeOrNoPicker =  false;
-                    Declaration.IDTypeOrNoEntry =  false;
+                    Declaration.Parent = false;
+                    Declaration.AcknowledgementCB = false;
+                    Declaration.IDTypeOrNoPicker = false;
+                    Declaration.IDTypeOrNoEntry = false;
                     Declaration.DOBEntry = false;
-                    IsDeclarationDOBVisible =  false;
-                    Declaration.ContactNameEntry =  false;
+                    IsDeclarationDOBVisible = false;
+                    Declaration.ContactNameEntry = false;
 
 
 
@@ -2032,54 +2031,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     TaxPayerDetails.Parent = false;
                     TaxPayerDetails.TaxPayerDetailsParent = false;
 
-                    TaxPayerDetails.TinEntry1 =  false ;
-                    TaxPayerDetails.TinEntry2 = false ;
-                    TaxPayerDetails.MainOutletEntry1 = false  ;
-                    TaxPayerDetails.MainOutletEntry2 = false ;
-                    TaxPayerDetails.StartDateEntry = false  ;
-                    TaxPayerDetails.AddressEntry1 = false ;
-                    TaxPayerDetails.AddressEntry2 = false  ;
-                    TaxPayerDetails.SourceEntry = false  ;
+                    TaxPayerDetails.TinEntry1 = false;
+                    TaxPayerDetails.TinEntry2 = false;
+                    TaxPayerDetails.MainOutletEntry1 = false;
+                    TaxPayerDetails.MainOutletEntry2 = false;
+                    TaxPayerDetails.StartDateEntry = false;
+                    TaxPayerDetails.AddressEntry1 = false;
+                    TaxPayerDetails.AddressEntry2 = false;
+                    TaxPayerDetails.SourceEntry = false;
 
-                    TaxPayerDetails.AddInformationCB = false ;
+                    TaxPayerDetails.AddInformationCB = false;
                     TaxPayerDetails.AddInformationCBVisible = false;
-                    TaxPayerDetails.AddInformationParent =  false ;
-                    IsTaxPayerIBANEnabled = false ;
-                    IsTaxPayerEligDateEnabled =  true ;
+                    TaxPayerDetails.AddInformationParent = false;
+                    IsTaxPayerIBANEnabled = false;
+                    IsTaxPayerEligDateEnabled = true;
 
-                    TaxPayerDetails.ImporterYesRB =  false;
-                    TaxPayerDetails.ImporterNoRB =  false ;
-                    TaxPayerDetails.ImporterAttachmentsBtn =  false;
+                    TaxPayerDetails.ImporterYesRB = false;
+                    TaxPayerDetails.ImporterNoRB = false;
+                    TaxPayerDetails.ImporterAttachmentsBtn = false;
                     TaxPayerDetails.ExporterYesRB = false;
-                    TaxPayerDetails.ExporterNoRB =  false ;
-                    TaxPayerDetails.ExporterrAttachmentsBtn =  false ;
-                    TaxPayerDetails.ExistingIBANPicker =  false;
-                    TaxPayerDetails.NewIBANPicker =  false ;
-                    TaxPayerDetails.CommencementDate =true ;
+                    TaxPayerDetails.ExporterNoRB = false;
+                    TaxPayerDetails.ExporterrAttachmentsBtn = false;
+                    TaxPayerDetails.ExistingIBANPicker = false;
+                    TaxPayerDetails.NewIBANPicker = false;
+                    TaxPayerDetails.CommencementDate = true;
 
-                    FinancialRepresentative.Parent = false ;
-                    FinancialRepresentative.ChangeMobileEmailCB =  false ;
-                    FinancialRepresentative.AddNewFinRepresentativeCB =  false ;
-                    FinancialRepresentative.AddNewFinRepCBVisible =  false ;
-                    IsNewFinancialRepVisible =  false ;
-                    FinancialRepresentative.SkipBtn =  false ;
+                    FinancialRepresentative.Parent = false;
+                    FinancialRepresentative.ChangeMobileEmailCB = false;
+                    FinancialRepresentative.AddNewFinRepresentativeCB = false;
+                    FinancialRepresentative.AddNewFinRepCBVisible = false;
+                    IsNewFinancialRepVisible = false;
+                    FinancialRepresentative.SkipBtn = false;
 
 
-                    FinancialRepresentative.TinEntry =false;
-                    FinancialRepresentative.IDTypeEntry = false ;
-                    FinancialRepresentative.IDNoEntry =  false ;
-                    FinancialRepresentative.FNameEntry =  false ;
-                    FinancialRepresentative.SurnameEntry =  false ;
-                    FinancialRepresentative.MobileNoEntry = false ;
-                    FinancialRepresentative.EmailIDEntry = false ;
+                    FinancialRepresentative.TinEntry = false;
+                    FinancialRepresentative.IDTypeEntry = false;
+                    FinancialRepresentative.IDNoEntry = false;
+                    FinancialRepresentative.FNameEntry = false;
+                    FinancialRepresentative.SurnameEntry = false;
+                    FinancialRepresentative.MobileNoEntry = false;
+                    FinancialRepresentative.EmailIDEntry = false;
 
                     Declaration.Parent = true;
-                    Declaration.AcknowledgementCB =true ;
-                    Declaration.IDTypeOrNoPicker = true ;
-                    Declaration.IDTypeOrNoEntry =  true ;
-                    Declaration.DOBEntry =  false ;
-                    IsDeclarationDOBVisible = false ;
-                    Declaration.ContactNameEntry =  true;
+                    Declaration.AcknowledgementCB = true;
+                    Declaration.IDTypeOrNoPicker = true;
+                    Declaration.IDTypeOrNoEntry = true;
+                    Declaration.DOBEntry = false;
+                    IsDeclarationDOBVisible = false;
+                    Declaration.ContactNameEntry = true;
 
 
                     break;
@@ -2152,7 +2151,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 }
                 //Step 4
-           
+
 
                 //VATRegistrationDetailsData.d.VatTaxDt = Bdt;
                 //VATRegistrationDetailsData.d.StepNumberz = "2";
@@ -2183,15 +2182,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     contactSet.Initials = string.Empty;
 
                     contactSet.Gpart = GpartFR;
-                    if (SelectedIdTypeFR != null) { 
-                    contactSet.Type = SelectedIdTypeFR.ID;
+                    if (SelectedIdTypeFR != null)
+                    {
+                        contactSet.Type = SelectedIdTypeFR.ID;
                     }
                     contactSet.Idnumber = IdnumberFR;
                     contactSet.Firstnm = FirstnmFR;
                     contactSet.Lastnm = LastnmFR;
 
                     VATRegistrationDetailsData.d.CONTACT_PERSONSet.results =
-                        VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Select(x=> { x.__metadata = null;return x;}).ToList();
+                        VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
                     bool checkDuplicate = false;
                     foreach (var item in VATRegistrationDetailsData.d.CONTACT_PERSONSet.results)
                     {
@@ -2199,8 +2199,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         if (checkDuplicate)
                             break;
                     }
-                    if (!checkDuplicate) 
-                    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Add(contactSet);
+                    if (!checkDuplicate)
+                        VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Add(contactSet);
                     checkDuplicate = false;
                     ResultsItemForContact contact = new ResultsItemForContact();
 
@@ -2220,7 +2220,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     VATRegistrationDetailsData.d.CONTACTDTSet.results =
                        VATRegistrationDetailsData.d.CONTACTDTSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
 
-                   
+
                     foreach (var item in VATRegistrationDetailsData.d.CONTACTDTSet.results)
                     {
                         checkDuplicate = JsonCompare(item, contact);
@@ -2586,7 +2586,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
                                 GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
-                            
+
                                 IdnumberFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                                 FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
                                 LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
@@ -2623,7 +2623,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                         string selectedIdTypeName = "";
 
-                                        if(SelectedIdTypeFR != null && string.IsNullOrEmpty(SelectedIdTypeFR.Name)) {
+                                        if (SelectedIdTypeFR != null && string.IsNullOrEmpty(SelectedIdTypeFR.Name))
+                                        {
 
                                             selectedIdTypeName = SelectedIdTypeFR.Name;
                                         }
@@ -2638,7 +2639,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                             SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
                                             TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name
 
-                                    });
+                                        });
                                         count++;
                                     }
                                 }
@@ -2845,7 +2846,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                             OriginalData = JsonConvert.SerializeObject(VATRegistrationDetailsData);
                             VATRegistrationData = JsonConvert.DeserializeObject<VATRegistrationDetails>(OriginalData);
-              
+
                         }
                         else
                         {
@@ -2940,23 +2941,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
         public void setIban()
         {
-            IbanList = new ObservableCollection<Result2>();
-
-            if (VATRegistrationDetailsData.d.IBANSet != null)
+            if (VATRegistrationDetailsData.d.IBANSet != null&& VATRegistrationDetailsData.d.IBANSet.results!=null)
             {
-
-                IbanList = new ObservableCollection<Result2>(VATRegistrationDetailsData.d.IBANSet.results);
-
-                ObservableCollection<Result2> resultList = new ObservableCollection<Result2>();
-
-                foreach (var item in IbanList)
+                foreach (var item in VATRegistrationDetailsData.d.IBANSet.results)
                 {
                     if (!string.IsNullOrEmpty(item.Bkvid))
                     {
-                        resultList.Add(item);
+                        IbanList.Add(item);
                     }
                 }
-                IbanList = resultList;
             }
 
         }
@@ -2991,9 +2984,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         }
 
 
-        public async Task SetDefaultDate()
+        public void SetDefaultDate()
         {
-            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            List<object> todaycollection = new List<object>();
             //Select today dates
 
             if (DateTime.Now.Date.Day < 10)

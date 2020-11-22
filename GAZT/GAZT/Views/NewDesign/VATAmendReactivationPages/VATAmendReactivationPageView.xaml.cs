@@ -56,43 +56,49 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                 Task.Run(async () =>
                 {
-                    viewModel.IsLoading = true;
-                    await GetVatRegistrationData();
-                });
-                if (App.VATType == Enums.PageExecutionType.Amend)
-                    viewModel.PageTitle = AppResources.ZZZZVatRegistrationAmendmentTile;
-                else if (App.VATType == Enums.PageExecutionType.Reactivation)
-                    viewModel.PageTitle = AppResources.ZZZZVatRegistrationReactivationTile;
-                else if (App.VATType == Enums.PageExecutionType.Register)
-                    viewModel.PageTitle = AppResources.ZZZZVatRegistrationTile;
-                //FrmContactDBO.IsVisible = false;
-                //lblDOB.IsVisible = false;
-                NewFRDOBField.IsVisible = false;
+                    try
+                    {
+                        viewModel.IsLoading = true;
+                        await GetVatRegistrationData();
+                        if (App.VATType == Enums.PageExecutionType.Amend)
+                            viewModel.PageTitle = AppResources.ZZZZVatRegistrationAmendmentTile;
+                        else if (App.VATType == Enums.PageExecutionType.Reactivation)
+                            viewModel.PageTitle = AppResources.ZZZZVatRegistrationReactivationTile;
+                        else if (App.VATType == Enums.PageExecutionType.Register)
+                            viewModel.PageTitle = AppResources.ZZZZVatRegistrationTile;
+                        NewFRDOBField.IsVisible = false;
+                        viewModel.SetUIAvailability();
+                        if (!viewModel.IsChangeEmailChecked)
+                        {
+                            viewModel.IsFDNameMobEmailEnable = false;
+                        }
+                        if (!viewModel.IsAddAdditionalInfoChecked)
+                        {
+                            viewModel.IsTaxPayerIBANEnabled = false;
+                            // viewModel.IsTaxPayerEligDateEnabled = false;
+                        }
 
-                viewModel.SetUIAvailability();
+                        if (App.VATType == Enums.PageExecutionType.Amend)
+                        {
+                            viewModel.Declaration.IDTypeOrNoEntry = false;
+                            viewModel.Declaration.ContactNameEntry = false;
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                });
+
 
             }
             catch (Exception ex)
             {
 
             }
-            if (!viewModel.IsChangeEmailChecked)
-            {
-                viewModel.IsFDNameMobEmailEnable = false;
-            }
-            if (!viewModel.IsAddAdditionalInfoChecked)
-            {
-                viewModel.IsTaxPayerIBANEnabled = false;
-               // viewModel.IsTaxPayerEligDateEnabled = false;
-            }
 
-            if(App.VATType == Enums.PageExecutionType.Amend)
-            {
-                viewModel.Declaration.IDTypeOrNoEntry = false;
-                viewModel.Declaration.ContactNameEntry = false;
-
-            }
-                     //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
+            //viewModel.AddAdditionalInfoCheckBoxEnabled = true;
             //viewModel.IsFinancialDChangeSectionEnabled = true;
         }
         public void clearDATA()
@@ -142,7 +148,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
+                var selectedItem = DpEStartDate.SelectedItem as List<object>;
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
@@ -160,7 +166,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
+                var selectedItem = DpEStartDate.SelectedItem as List<object>;
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
@@ -212,47 +218,29 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string message = messagestring;
                 if (!string.IsNullOrEmpty(message))
                 {
-                    bool isExist = false;
                     if (!string.IsNullOrEmpty(message))
                     {
-                        List<Result2> results1D = new List<Result2>();
+
+                        //item.Iban = message;
+                        viewModel.VATRegistrationDetailsData.d.OptIban = message;
+                        viewModel.NewAccountText = AppResources.VATREditAccount;
+
+
+                        Result2 result2 = new Result2();
+                        result2.Iban = message;
+
+
+                        bool checkDuplicate = false;
                         foreach (var item in viewModel.IbanList)
                         {
-                            Result2 result = new Result2();
-                            result = item;
-
-                            if (string.IsNullOrEmpty(item.Bkvid))
-                            {
-                                isExist = true;
-                                result.Iban = message;
-                                //item.Iban = message;
-                                viewModel.VATRegistrationDetailsData.d.OptIban = message;
-                                viewModel.NewAccountText = AppResources.VATREditAccount;
-                            }
-                            results1D.Add(result);
+                            checkDuplicate = JsonCompare(item, result2);
+                            if (checkDuplicate)
+                                break;
                         }
-
-                        if (results1D != null && results1D.Count != 0)
-                        {
-                            if (viewModel.IbanList != null)
-                            {
-                                viewModel.IbanList.Clear();
-                            }
-                            viewModel.IbanList = null;
-                            viewModel.IbanList = new ObservableCollection<Result2>(results1D);
-                        }
-
-
-                        if (!isExist)
-                        {
-                            viewModel.VATRegistrationDetailsData.d.OptIban = message;
-                            Result2 result2 = new Result2();
-                            result2.Iban = message;
-                            List<Result2> results = new List<Result2>();
-                            results.Add(result2);
-                            viewModel.IbanList = new ObservableCollection<Result2>(results);
-                            viewModel.NewAccountText = AppResources.VATREditAccount;
-                        }
+                        if (!checkDuplicate)
+                            viewModel.IbanList.Add(result2);
+                        checkDuplicate = false;
+                        viewModel.NewAccountText = AppResources.VATREditAccount;
                     }
                     //                viewModel.IsNewAccountClicked = false;
                 }
@@ -262,7 +250,17 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
             }
         }
+        private bool JsonCompare(object obj, object another)
+        {
+            if (ReferenceEquals(obj, another)) return true;
+            if ((obj == null) || (another == null)) return false;
+            if (obj.GetType() != another.GetType()) return false;
 
+            var objJson = JsonConvert.SerializeObject(obj);
+            var anotherJson = JsonConvert.SerializeObject(another);
+
+            return objJson == anotherJson;
+        }
 
         private async void btnContinue_Clicked(object sender, EventArgs e)
         {
@@ -339,7 +337,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         {
                             return;
                         }
-                    
+
 
                     }
                     else
@@ -485,7 +483,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     flag = false;
                     FrmPhoneNumber.HasError = true;
                 }
-              //  IDValidationResult = await ValidateIDNumber();
+                //  IDValidationResult = await ValidateIDNumber();
                 if (!flag)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
@@ -1218,7 +1216,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 viewModel.IbanList = null;
                                 if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null && viewModel.VATRegistrationDetailsData.d.IBANSet != null)
                                 {
-                                    viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
+                                    viewModel.IbanList.Clear();
+                                    foreach (var item in viewModel.VATRegistrationDetailsData.d.IBANSet.results)
+                                    {
+                                        if (!string.IsNullOrEmpty(item.Bkvid))
+                                        {
+                                            viewModel.IbanList.Add(item);
+                                        }
+                                    }
                                 }
                                 viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
                                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
@@ -1268,19 +1273,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    await viewModel.onPageLoad();
-                    setIban();
-                });
-                //await Task.Run(() =>
-                //{
-                //    viewModel.IsLoading = false;
-                //});
+                await viewModel.onPageLoad();
+                setIban();
             }
             catch (Exception ex)
             {
@@ -1311,7 +1305,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void DpEStartDate_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            //var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
+            //var selectedItem = DpEStartDate.SelectedItem as List<object>;
             //string month = selectedItem[1].ToString();
             //string day = selectedItem[0].ToString();
             //string year = selectedItem[2].ToString();
@@ -2313,7 +2307,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
-                          
+
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                             viewModel.SmtpAddrFR = vATSignUpData.d.Email;
                             viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
@@ -2459,7 +2453,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             viewModel.GpartFR = vATSignUpData.d.Tin;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
-                      
+
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                             viewModel.SmtpAddrFR = vATSignUpData.d.Email;
                             FrmFirstName.IsEnabled = false;
@@ -2585,7 +2579,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                             FrmEmailAddress.IsEnabled = true;
                             FrmPhoneNumber.IsEnabled = true;
                         }
-                        else if (vATSignUpData.d == null )
+                        else if (vATSignUpData.d == null)
                         {
                             result = false;
                             IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
@@ -3170,7 +3164,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                var selectedItem = SignUpDOB.SelectedItem as List<object>;
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
@@ -3485,7 +3479,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = ContactDOBPicker.SelectedItem as ObservableCollection<object>;
+                var selectedItem = ContactDOBPicker.SelectedItem as List<object>;
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
@@ -4505,7 +4499,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                var selectedItem = SignUpDOB.SelectedItem as List<object>;
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
@@ -4533,7 +4527,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = ContactDOBPicker.SelectedItem as ObservableCollection<object>;
+                var selectedItem = ContactDOBPicker.SelectedItem as List<object>;
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
@@ -4572,28 +4566,28 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private async void VATEligibleDateClicked(object sender, EventArgs e)
         {
             if (App.VATType == Enums.PageExecutionType.Reactivation)
-            { 
-            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "";
-            genericDatePickerModel.PickerId = "EndDateTypePicker";
-            try
             {
-                var ssd = App.Locator.CalendarPickerPageView.SelectedDate;
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = "";
+                genericDatePickerModel.PickerId = "EndDateTypePicker";
+                try
                 {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
+                    var ssd = App.Locator.CalendarPickerPageView.SelectedDate;
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        viewModel._navigationService.GoBack();
+                    });
+                }
             }
-         }
         }
         public bool IsValid(string emailaddress)
         {
@@ -4703,9 +4697,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.IsNewFinancialRepVisible = true;
                     viewModel.IsAddNewRepresentativeChecked = true;
 
-                    viewModel.GpartSum = 
-                    viewModel.IdnumberSum = 
-                    viewModel.FirstnmSum = 
+                    viewModel.GpartSum =
+                    viewModel.IdnumberSum =
+                    viewModel.FirstnmSum =
                     viewModel.LastnmSum =
                     viewModel.MobNumberSum =
                     viewModel.SmtpAddrSum = string.Empty;
