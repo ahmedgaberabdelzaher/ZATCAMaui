@@ -2181,7 +2181,7 @@
     <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
     <value>عزيزي المكلف, الإقرار قيد المراجعة في الهيئة ولا يمكن تعديله</value>
   </data>
-        <data name="ZDearTaxpayerZakatSubmitMessage1" xml:space="preserve">     <value>Dear taxpayer, your ZAKAT registration application No</value>   </data>    <data name="ZDearTaxpayerZakatSubmitMessage2" xml:space="preserve">     <value>is in process with GAZT</value>   </data> 
+        <data name="ZDearTaxpayerZakatSubmitMessage1" xml:space="preserve">     <value>عزيزي المكلف، طلب التسجيل في الزكاة رقم</value>   </data>    <data name="ZDearTaxpayerZakatSubmitMessage2" xml:space="preserve">     <value> الخاص بكم قيد المعالجة لدى الهيئة</value>   </data> 
     <data name="ZNA" xml:space="preserve">
     <value>لا ينطبق</value>
   </data>
