@@ -252,20 +252,23 @@
                                 <TapGestureRecognizer Tapped="searchButtonTapped"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        <Image Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
-                            <Image.GestureRecognizers>
-                               <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
-                               </TapGestureRecognizer>
-                           </Image.GestureRecognizers>
-                        </Image>
                         <Image Source="filter">
                              <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="filterButtonTapped"/>
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <SearchBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                     Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"> 
+                    <SearchBar  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
                     </SearchBar>
+                            <Image Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
+                                    </TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
                 </Grid>
                 <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
@@ -347,6 +350,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -412,6 +416,30 @@
                                     
                                     
                                 </StackLayout>
+                                  <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5" >
+                                        <Label Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+                                        <Label Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="StartAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+
+                                                    <Span Text="{Binding Fbnum}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                        <Label Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
+
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="SingleLabel"  HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Vtre2}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </custom:CustomLabel>
+
+
+                                    </StackLayout>
                             </Grid>
 
                         </StackLayout>
@@ -606,10 +634,18 @@
                      
                         <StackLayout Orientation="Vertical" Spacing="-5" Grid.Row="0">
 
-                            <StackLayout Orientation="Vertical" Margin="0,0,0,10"
+                           <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            
+                                <StackLayout Orientation="Vertical" Margin="0,0,0,10"
                                          HorizontalOptions="StartAndExpand" Spacing="-5">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTaxType}" Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand">
-                                </custom:CustomLabel>
+
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASAccountStatementTaxType}" Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand">
+                                    </custom:CustomLabel>
+                                   
+                                </StackLayout>
+
+
+                            
                             </StackLayout>
                             
                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
@@ -618,13 +654,22 @@
                                 <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
                             </custom:CustomLabel.GestureRecognizers>
                          </custom:CustomLabel>
+                                                  
+                        <Image Source="arrowDropdown"   Margin="0,5,0,0" 
+                                HorizontalOptions="Start" VerticalOptions="Center">
 
-                        <Image  Source="arrowDropdown"  Margin="5,5,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked"/> 
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked">
+                                </TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                            
+                        </Image>
+                        <Image Source="download" IsVisible="{Binding IsDownloadBtnVisile}"  Margin="5,5,5,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DownloadBtnTapped}">
+                                </TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
-                        <custom:CustomButton x:Name="btnTransactionTypePicker" Clicked="btnTransactionTypePicker_Clicked"  BackgroundColor="Transparent"></custom:CustomButton>
                     </StackLayout>
 
                     <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TransactionTypePicker"  HeaderHeight="55"
@@ -643,12 +688,7 @@
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
 
-                    <Image Source="download" IsVisible="{Binding IsDownloadBtnVisile}"  Margin="5,10,5,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding DownloadBtnTapped}">
-                            </TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
+                    
                     
                      <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}" HorizontalOptions="Start">
                     <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent"
