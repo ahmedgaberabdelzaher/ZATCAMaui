@@ -3080,6 +3080,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Operationx = "01";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
+                    taxPayerDetails.Acsactivitydet = "X";
+                    taxPayerDetails.Acscontactper = "X";
+                    taxPayerDetails.Fbsta = "IP021";
+                    taxPayerDetails.Fbstax = "IP021";
+                    taxPayerDetails.Fbust = "E0015";
+                    taxPayerDetails.Fbustx = "E0015";
+                    taxPayerDetails.Mandt = "330";
+
+                    /*
+                     "Fbsta": "IP011",
+                        "Fbstax": "IP011",
+                        "Fbust": "E0001",
+                        "Fbustx": "E0001",*/
+
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
