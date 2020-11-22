@@ -2574,15 +2574,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             //step 4 and 5 data set
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
-                                if (!string.IsNullOrEmpty(vATRegistration.d.CONTACTDTSet.results[0].MobNumber))
+                                if (vATRegistration.d.CONTACT_PERSONSet.results != null)
                                 {
-                                    IsChangeEmailCheckBoxEnabled = true;
+                                    if (!string.IsNullOrEmpty(vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber))
+                                    {
+                                        IsChangeEmailCheckBoxEnabled = true;
+                                    }
+                                    else
+                                    {
+                                        IsChangeEmailCheckBoxEnabled = false;
+                                    }
                                 }
-                                else
-                                {
-                                    IsChangeEmailCheckBoxEnabled = false;
-                                }
-
                                 ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
                                 GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
