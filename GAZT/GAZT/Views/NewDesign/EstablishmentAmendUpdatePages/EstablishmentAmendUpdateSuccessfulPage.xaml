@@ -61,7 +61,7 @@
                             </border:SfBorder>
                         </StackLayout>
                     </ScrollView>
-                    <buttons:SfButton Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTGoToDashboard}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="White" TextColor="#d49504" Clicked="GoToDashBoardButtonClick" />
+                    <buttons:SfButton Grid.Row="1" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="White" TextColor="#d49504" Clicked="GoToDashBoardButtonClick" />
                 </Grid>
             </yummy:PancakeView>
         </Grid>

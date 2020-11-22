@@ -84,7 +84,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void ZAKATAmendOrUpdateClicked()
         {
-            _navigationService.NavigateTo(App.EstablishmentAmendUpdatePage, ZakatDeregResponseData);
+            _navigationService.NavigateTo(App.EstablishmentAmendUpdatePage);
         }
         public void PopulateZakatRegListData()
         {
