@@ -1604,17 +1604,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             var listOfActionButtonsApplicable = new List<string>();
             if (App.selectedVATItem != "")
             {
-
                 listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
             }
-
 
             listOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
 
             if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
             {
                 listOfActionButtonsApplicable.Add(AppResources.ZZDisplayNotes);
-
             }
 
             listOfActionButtonsApplicable.Add(AppResources.ZZCreateNotes);
@@ -2914,6 +2911,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         {
 
                             vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData(selectedItemFormID.d.Fbguid, selectedItemFormID.d.Euser);
+                            if(vATInstalment != null)
+                            {
+                                if(vATInstalment.d.NotesSet != null && vATInstalment.d.NotesSet.results.Count > 0)
+                                    {
+                                        int notesCount = vATInstalment.d.NotesSet.results.Count;
+                                        var notesText = vATInstalment.d.NotesSet.results[notesCount - 1];
+                                        NotesText = notesText.Strline;
+                                    }
+
+                            }
                             VatInstalments = vATInstalment;
                         }
                     }
@@ -3372,46 +3379,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-                if(VatInstalments.d.NotesSet.results.Count > 0) {
+            if(VatInstalments.d.NotesSet.results.Count > 0)
+            {
 
-                if (!string.IsNullOrEmpty(NotesText))
-                {
+                    if (!string.IsNullOrEmpty(NotesText))
+                    {
 
-                    NotesSetPost notes = new NotesSetPost();
+                        NotesSetPost notes = new NotesSetPost();
 
-                    Metadata _metdata = new Metadata();
-                    _metdata.uri = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
-                    _metdata.type = "ZDP_VTIA_SRV.NOTES";
-                    _metdata.id = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
+                        Metadata _metdata = new Metadata();
+                        _metdata.uri = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
+                        _metdata.type = "ZDP_VTIA_SRV.NOTES";
+                        _metdata.id = "undefined/sap/opu/odata/SAP/ZDP_VTIA_SRV/NOTESSet('00NaN')";
 
-                    notes.__metadata = _metdata;
-                    notes.AttByz = "TP";
-                    notes.ElemNo = 0;
+                        notes.__metadata = _metdata;
+                        notes.AttByz = "TP";
+                        notes.ElemNo = 0;
 
-                    notes.Erfdtz = null;
-                    notes.Erfusrz = "";
-                    notes.Lineno = 1;
-                    notes.Noteno = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
-                    notes.Notenoz = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
-                    notes.Rcodez = "VTIA_NOTES";
-                    notes.Refnamez = VatInstalments.d.NotesSet.results[0].Refnamez;
-                    notes.Tdformat = "";
-                    notes.XInvoicez = "";
-                    notes.XObsoletez = "";
-                    notes.DataVersionz = "00000";
-                    notes.Tdline = NotesText;
-                    notes.ByGpartz = App.LoginDataRetrieved.TIN;
+                        notes.Erfdtz = null;
+                        notes.Erfusrz = "";
+                        notes.Lineno = 1;
+                        notes.Noteno = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
+                        notes.Notenoz = (VatInstalments.d.NotesSet.results.Count + 1).ToString();
+                        notes.Rcodez = "VTIA_NOTES";
+                        notes.Refnamez = VatInstalments.d.NotesSet.results[0].Refnamez;
+                        notes.Tdformat = "";
+                        notes.XInvoicez = "";
+                        notes.XObsoletez = "";
+                        notes.DataVersionz = "00000";
+                        notes.Tdline = NotesText;
+                        notes.ByGpartz = App.LoginDataRetrieved.TIN;
 
-                    request.d.NOTESSet = new NotesSetPost[1];
-                    request.d.NOTESSet[0] = notes;
+                        request.d.NOTESSet = new NotesSetPost[2];
+
+                        NotesSetResult notesSetResult = VatInstalments.d.NotesSet.results[0];
+
+                        var serilizedNotes = JsonConvert.SerializeObject(notesSetResult);
+                        NotesSetPost notesSetLatest = JsonConvert.DeserializeObject<NotesSetPost>(serilizedNotes);
+
+                        request.d.NOTESSet[0] = notesSetLatest;
+                        request.d.NOTESSet[1] = notes;
 
                     }
-                else {
+                    else
+                    {
+                        request.d.NOTESSet = new NotesSetPost[0];
+                    }
 
-                    request.d.NOTESSet = new NotesSetPost[0];
-                }
-
-                }
+            }
                 else {
 
                         if (!string.IsNullOrEmpty(NotesText))

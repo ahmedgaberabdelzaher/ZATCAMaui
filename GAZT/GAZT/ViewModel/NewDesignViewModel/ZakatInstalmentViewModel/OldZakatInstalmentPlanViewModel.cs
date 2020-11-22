@@ -2057,7 +2057,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             MaxInstalments = 36;
             MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
-            DownPaymentAmount = 0.0;
+            DownPaymentAmount = 0.0;    
             PeriodicInstalment = 0.0;
             MinAmount = 0;
             MaxAmount = 100.0;
@@ -3162,6 +3162,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             try
             {
                 double totalAmount = double.Parse(TotalAmountSAR.Replace(" SAR", ""));
+
+                if(selectedList != null)
+                {
+                    if (selectedList.Count == 1)
+                    {
+                        updateSliderInstalmentValues(2, 12);
+                        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+                        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
+                       
+                    }
+                    else if(selectedList.Count == 2)
+                    {
+                        updateSliderInstalmentValues(2, 24);
+                        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+                        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 24;
+                    }
+                    else if(selectedList.Count == 3)
+                    {
+                        updateSliderInstalmentValues(2, 36);
+                        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+                        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
+                    }
+                }
+
+
                 if(MinInstalments == 0) {
 
                     MinInstalments = 1;
@@ -3180,9 +3205,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     EnableAgreementView();
                 }
                 return;
-
-
-
             }
             catch (GAZTUnlockAccountException ex)
             {
