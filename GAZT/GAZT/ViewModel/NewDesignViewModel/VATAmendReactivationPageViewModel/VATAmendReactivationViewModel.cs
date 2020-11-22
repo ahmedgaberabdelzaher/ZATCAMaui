@@ -2603,7 +2603,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                 }
 
-
                                 GpartSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 IdnumberSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                                 FirstnmSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
@@ -2635,41 +2634,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     int count = 0;
                                     foreach (var item in vATRegistration.d.CONTACT_PERSONSet.results)
                                     {
-                                        SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
-
-                                        string selectedIdTypeName = "";
-
-                                        if (SelectedIdTypeFR != null && string.IsNullOrEmpty(SelectedIdTypeFR.Name))
+                                        try
                                         {
+                                            SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
 
-                                            selectedIdTypeName = SelectedIdTypeFR.Name;
+                                            string selectedIdTypeName = "";
+
+                                            if (SelectedIdTypeFR != null && string.IsNullOrEmpty(SelectedIdTypeFR.Name))
+                                            {
+
+                                                selectedIdTypeName = SelectedIdTypeFR.Name;
+                                            }
+
+                                            ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
+                                            {
+                                                GpartFR = item.Gpart,
+                                                IdnumberFR = item.Idnumber,
+                                                FirstnmFR = item.Firstnm,
+                                                LastnmFR = item.Lastnm,
+                                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
+                                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
+                                                TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name
+
+                                            });
+                                            count++;
                                         }
-
-                                        ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
+                                        catch (Exception ex)
                                         {
-                                            GpartFR = item.Gpart,
-                                            IdnumberFR = item.Idnumber,
-                                            FirstnmFR = item.Firstnm,
-                                            LastnmFR = item.Lastnm,
-                                            MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
-                                            SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
-                                            TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name
 
-                                        });
-                                        count++;
+                                        }
                                     }
                                 }
 
+                                try
+                                { 
                                 SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
+
                                 TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
                                 ATTDETSetObject = new ATTDETSet();
                                 ATTDETSetObject = vATRegistration.d.ATTDETSet;
 
 
-
                             }
-
-
 
                             //Step 5
 
