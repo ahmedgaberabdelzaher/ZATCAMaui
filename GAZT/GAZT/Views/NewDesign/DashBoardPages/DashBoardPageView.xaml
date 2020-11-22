@@ -236,8 +236,8 @@
                                             </StackLayout>
                                             <yummy:PancakeView Grid.Row="1" Grid.Column="0" BackgroundColor="{StaticResource ErrorColor}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
                                             </yummy:PancakeView>
-                                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal"  VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" >
-                                                <custom:CustomLabel  TextColor="{StaticResource Primary}" FlowDirection="LeftToRight" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal"  VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" >
+                                                <custom:CustomLabel  TextColor="{StaticResource ErrorColor}" FlowDirection="LeftToRight" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding HeaderSet.D.DebitAmount}"></Span>
@@ -245,7 +245,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  TextColor="{StaticResource Primary}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                <custom:CustomLabel  TextColor="{StaticResource ErrorColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
@@ -264,8 +264,8 @@
                                                     </DataTrigger>
                                                 </yummy:PancakeView.Triggers>
                                             </yummy:PancakeView>
-                                            <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
-                                                <custom:CustomLabel  TextColor="{StaticResource ErrorColor}" FlowDirection="LeftToRight" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand" Spacing="2"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" >
+                                                <custom:CustomLabel  TextColor="{StaticResource Primary}" FlowDirection="LeftToRight" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding AccStmtnCreditAmount}"></Span>
@@ -273,7 +273,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  TextColor="{StaticResource ErrorColor}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                                                <custom:CustomLabel  TextColor="{StaticResource Primary}"  Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
