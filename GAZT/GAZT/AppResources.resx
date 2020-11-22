@@ -2157,6 +2157,12 @@ Should we require further information, we would be in contact.</value>
     <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
     <value>Dear taxpayer, the return is under GAZT review and cannot be amended.</value>
   </data>
+    <data name="ZDearTaxpayerZakatSubmitMessage1" xml:space="preserve">
+    <value>Dear taxpayer, your ZAKAT registration application No</value>
+  </data>
+   <data name="ZDearTaxpayerZakatSubmitMessage2" xml:space="preserve">
+    <value>is in process with GAZT</value>
+  </data>
     <data name="ZNA" xml:space="preserve">
     <value>N/A</value>
   </data>

@@ -3778,6 +3778,18 @@ namespace EGAZT {
             }
         }
         
+        public static string ZDearTaxpayerZakatSubmitMessage1 {
+            get {
+                return ResourceManager.GetString("ZDearTaxpayerZakatSubmitMessage1", resourceCulture);
+            }
+        }
+        
+        public static string ZDearTaxpayerZakatSubmitMessage2 {
+            get {
+                return ResourceManager.GetString("ZDearTaxpayerZakatSubmitMessage2", resourceCulture);
+            }
+        }
+        
         public static string ZNA {
             get {
                 return ResourceManager.GetString("ZNA", resourceCulture);

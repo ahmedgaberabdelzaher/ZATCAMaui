@@ -44,7 +44,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 if (_currentTab == value)
                 {
-                    if (IsNavigationCompletedToSuccessfulPage == false)
+                    if (!IsNavigationCompletedToSuccessfulPage)
                     {
                         // Task.Run((() => fetchTabDataAndBind(_currentTab)));
                         Device.BeginInvokeOnMainThread(async () => fetchTabDataAndBind(_currentTab));
@@ -2298,11 +2298,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {
-                        if (IsNavigationCompletedToSuccessfulPage == false)
-                        {
-                            IsNavigationCompletedToSuccessfulPage = true;
-                            _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
-                        }
+                        //if (!IsNavigationCompletedToSuccessfulPage)
+                        //{
+
+                        // IsNavigationCompletedToSuccessfulPage = true;
+                        // _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                        string message = string.Empty;
+                        message = AppResources.ZDearTaxpayerZakatSubmitMessage1 +" " +taxPayerDetails.Fbnumx+" " + AppResources.ZDearTaxpayerZakatSubmitMessage2;
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
+
+                        _navigationService.GoBack();
+                        // throw new GAZTVATRegistrationInProcessException("Dear Taxpayer, your ZAKAT registration application number :"+ taxPayerDetails.Fbnumx+"is in process with GAZT");
+                        //}
                     }
                     else
                     {
