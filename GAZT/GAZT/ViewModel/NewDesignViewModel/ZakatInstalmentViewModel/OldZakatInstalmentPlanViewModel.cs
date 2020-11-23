@@ -510,7 +510,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (minInstalments != value)
+                if (minInstalments != value&&MaxInstalments>value)
                 {
                     minInstalments = value;
                     RaisePropertyChanged("MinInstalments");
@@ -526,7 +526,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (maxInstalments != value)
+                if (maxInstalments != value&&MinInstalments<value)
                 {
                     maxInstalments = value;
                     RaisePropertyChanged("MaxInstalments");
@@ -4382,15 +4382,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 //MaxInstalments = 36;
                 if (selectedList.Count == 2)
                 {
-                    updateSliderInstalmentValues(1, 24);
+                    updateSliderInstalmentValues(2, 24);
                 }
                 else if (selectedList.Count == 1)
                 {
-                    updateSliderInstalmentValues(1, 12);
+                    updateSliderInstalmentValues(2, 12);
                 }
                 else
                 {
-                    updateSliderInstalmentValues(1, 36);
+                    updateSliderInstalmentValues(2, 36);
                 }
                 /*MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
@@ -4405,15 +4405,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 //updateSliderInstalmentValues(1, 12);
                 if (selectedList.Count == 2)
                 {
-                    updateSliderInstalmentValues(1, 8);
+                    updateSliderInstalmentValues(2, 8);
                 }
                 else if (selectedList.Count == 1)
                 {
-                    updateSliderInstalmentValues(1, 4);
+                    updateSliderInstalmentValues(2, 4);
                 }
                 else
                 {
-                    updateSliderInstalmentValues(1, 12);
+                    updateSliderInstalmentValues(2, 12);
                 }
                 /*MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
@@ -4428,21 +4428,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 //updateSliderInstalmentValues(1, 6);
                 if (selectedList.Count == 2)
                 {
-                    updateSliderInstalmentValues(1, 4);
+                    updateSliderInstalmentValues(2, 4);
                 }
                 else if (selectedList.Count == 1)
                 {
-                    updateSliderInstalmentValues(1, 2);
+                    NoOfInstalments = 2;
+                    InstalmentSliderVisible = false;
+                    //updateSliderInstalmentValues(2, 2);
                 }
                 else
                 {
-                    updateSliderInstalmentValues(1, 6);
+                    updateSliderInstalmentValues(2, 6);
                 }
                 /*MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 6;
                 */
                 SelectedFrequencyType = "3";
-                InstalmentSliderVisible = true;
+                //InstalmentSliderVisible = true;
             }
             else if (frequencyModel.FrequencyOptions == AppResources.ZakatInstalmetYearly)
             {
@@ -4486,21 +4488,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         private void updateSliderInstalmentValues(int minValue, int maxValue)
         {
             InstalmentSliderVisible = true;
-            if (MaxInstalments < minValue)
-            {
-                MaxInstalments = maxValue;
-                MinInstalments = minValue;
-            }
-            else if (MinInstalments > maxValue)
-            {
-                MinInstalments = minValue;
-                MaxInstalments = maxValue;
-            }
-            else
-            {
-                MaxInstalments = maxValue;
-                MinInstalments = minValue;
-            }
+
+            MinInstalments = 0;
+            MaxInstalments = 1;
+
+            MaxInstalments = maxValue;
+            MinInstalments = minValue;
+
             MinInstalmentsTitle = AppResources.ZakatMin + " " + minValue;
             MaxInstalmentsTitle = AppResources.ZakatMax + " " + maxValue;
         }
