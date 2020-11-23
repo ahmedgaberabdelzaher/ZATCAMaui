@@ -77,7 +77,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <StackLayout Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
+                            <!--<StackLayout Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -91,10 +91,10 @@
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" 
                                                       />
-                                    <!--IsEnabled="{Binding BindingContext.RegTaxPayerTypeAvailability.ReportingBranch,Source={x:Reference ESTAmendReactivationPage}}"-->
+                                    IsEnabled="{Binding BindingContext.RegTaxPayerTypeAvailability.ReportingBranch,Source={x:Reference ESTAmendReactivationPage}}"
                                 </StackLayout>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
+                            </StackLayout>-->
+                            <StackLayout Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -105,7 +105,7 @@
                                 </Label>
                                 <custom:CustomLabel Text="{Binding SelectedEntityType}" HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
-                            <StackLayout Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
+                            <!--<StackLayout Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -115,8 +115,8 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <custom:CustomLabel Text="{Binding SelectedTaxPayerType}"  HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical" Grid.Row="3" Margin="0,0,0,10">
+                            </StackLayout>-->
+                            <StackLayout Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -127,7 +127,7 @@
                                 </Label>
                                 <custom:CustomLabel Text="{Binding SelectedRegNationalityType}"  HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
-                            <Grid  Grid.Row="4" Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                            <Grid  Grid.Row="2" Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                 <!--<Grid.IsVisible>
                                     <MultiBinding>
                                         <Binding Path="IsSaudi,Converter={StaticResource xBoolToVisibilityConverter}" ConverterParameter='invert'/>
@@ -152,7 +152,7 @@
                                 <buttons:SfButton ImageWidth="25" VerticalOptions="CenterAndExpand"  Grid.Row="0"  Grid.Column="1" IsVisible="{Binding IsClickedStayMoreThanKSAOption}" TextColor=" DarkGreen" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTResidentOptionValue}"  BorderWidth="1" BackgroundColor="#cee0dd"  CornerRadius="20"  HorizontalOptions="EndAndExpand"/>
 
                             </Grid>
-                            <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
+                            <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="3"  Margin="0,0,0,10" IsVisible="{Binding IsSaudi,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
                                 <Grid  Margin="0,0,0,10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="120"/>
@@ -232,7 +232,7 @@
                                 </Grid>
                             </StackLayout>
                             <!-- Attachment layout start-->
-                            <StackLayout x:Name="RentAttachmentsMainLayout"  IsVisible="{Binding IsClickedOwnRentOption}" Orientation="Vertical" Grid.Row="6" Margin="0,0,0,10">
+                            <StackLayout x:Name="RentAttachmentsMainLayout"  IsVisible="{Binding IsClickedOwnRentOption}" Orientation="Vertical" Grid.Row="4" Margin="0,0,0,10">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"  Style="{StaticResource ButtonLabelBlackBold}"/>
                                 <StackLayout Orientation="Horizontal" >
                                     <Label HorizontalOptions="Start" Style="{StaticResource forLightLabel}" >
@@ -295,7 +295,7 @@
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout x:Name="NoneOfTheAboveOptionsLayout" IsVisible="{Binding IsClickedNoneOfTheAboveOption}" Orientation="Vertical" Grid.Row="7" Margin="0,0,0,10">
+                            <StackLayout x:Name="NoneOfTheAboveOptionsLayout" IsVisible="{Binding IsClickedNoneOfTheAboveOption}" Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -359,7 +359,7 @@
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout x:Name="PermanentEstablishmentsOptionsLayout" IsVisible="{Binding IsClickedPermanentLegalEntity}"  Orientation="Vertical" Grid.Row="8" Margin="0,0,0,10">
+                            <StackLayout x:Name="PermanentEstablishmentsOptionsLayout" IsVisible="{Binding IsClickedPermanentLegalEntity}"  Orientation="Vertical" Grid.Row="6" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -482,7 +482,7 @@
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
-                            <CollectionView  x:Name="OrgNonResidentActivitylistCV" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
+                            <CollectionView  x:Name="OrgNonResidentActivitylistCV" Grid.Row="7"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
                                                  ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivityItem, Mode=TwoWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">

@@ -2312,9 +2312,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         // throw new GAZTVATRegistrationInProcessException("Dear Taxpayer, your ZAKAT registration application number :"+ taxPayerDetails.Fbnumx+"is in process with GAZT");
                         //}
                     }
-                    else
+
+                    if(!string.IsNullOrEmpty(taxPayerDetails?.Atype))
                     {
-                        IsNavigationCompletedToSuccessfulPage = false;
+                        if(taxPayerDetails?.Atype == "2")
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
+
+                            _navigationService.GoBack();
+                        }
                     }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";

@@ -75,8 +75,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private string _TotalString = AppResources.NDTotalNumberOfBills;
         private Dashboard DashboardData = null;
         private CalendarEventCollection _CommittmentsSchedule = null;
-        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
-        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _Bills = null;
+        private List<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
+        private List<OverduePaymentAndUnSubmittedReturn> _Bills = null;
         private ObservableCollection<ReturnTypeAndCorrepsondingCount> _SegregatedReturnTypesAndCorrepsondingCounts = null;
         private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _Returns = null;
         private ObservableCollection<eServiceInfo> _eServices = null;
@@ -228,7 +228,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("CommittmentsSchedule");
             }
         }
-        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> BillsAndReturnsCommitments
+        public List<OverduePaymentAndUnSubmittedReturn> BillsAndReturnsCommitments
         {
             get
             {
@@ -575,17 +575,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("Logout");
             }
         }
-
-        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Bills
+ 
+        public List<OverduePaymentAndUnSubmittedReturn> Bills
         {
             get
             {
-                return this._Bills;
+                return _Bills;
             }
             set
             {
-                this._Bills = value;
-                this.RaisePropertyChanged("Bills");
+                _Bills = value;
+                RaisePropertyChanged("Bills");
             }
         }
         public ObservableCollection<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypesAndCorrepsondingCounts
@@ -954,9 +954,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 GetBillsTask = Task.Run(async () =>
                 {
-                    Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+                    Bills = new List<OverduePaymentAndUnSubmittedReturn>();
+
+        
                     List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                    foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
+
+                    Bills = new List<OverduePaymentAndUnSubmittedReturn>(TempBills);
+
+                    foreach (OverduePaymentAndUnSubmittedReturn ee in Bills)
                     {
                         Bills.Add(ee);
                     }
@@ -1130,7 +1135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 List<OverduePaymentAndUnSubmittedReturn> OverduePaymentsAndUnSubmittedReturns = new List<OverduePaymentAndUnSubmittedReturn>();
 
                 if (BillsAndReturnsCommitments == null)
-                    BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+                    BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
 
                 // Create events
                 foreach (var Bill in Bills)
@@ -1213,7 +1218,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(i => DateTime.Parse(i.DueDate)).ToList();
 
-                    BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
+                    BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
                     if (BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
                     {
                         SetNoCommitmentsAvailableLabelVisibility = false;

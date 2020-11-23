@@ -8,9 +8,10 @@ namespace EGAZT.Models
     public class OutletNavigationModels
     {
         public EstablishmentRegistrationOutletTabsEnum openedTab { get; set; } = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-        public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public TaxPayerDetails taxPayerDetails { get; set; } = new TaxPayerDetails();
+        
         public Nreg_IdItem idItem { get; set; } = null;
-        public OutletItem selectedOutletItem { get; set; } = null;
+        public OutletItem selectedOutletItem { get; set; } = new OutletItem();
         public bool IsEditingMode { get; set; }
     }
 

@@ -1470,7 +1470,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 obj.DocUrl = attDetItem.DocUrl;
                 obj.Dotyp = attDetItem.Dotyp;
                 obj.Doguid = attDetItem.Doguid;
-                list.Add(obj);
+                if (!list.Contains(obj))
+                {
+                    list.Add(obj);
+                }
             }
             CRsCopies = new ObservableCollection<Attachment>(list);
 
@@ -1490,8 +1493,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 obj.DocUrl = attDetItem.DocUrl;
                 obj.Dotyp = attDetItem.Dotyp;
                 obj.Doguid = attDetItem.Doguid;
-                list.Add(obj);
+                if (!list.Contains(obj))
+                {
+                    list.Add(obj);
+                }
             }
+            TransferCRsCopies.Clear();
 
             TransferCRsCopies = new ObservableCollection<Attachment>(list);
         }

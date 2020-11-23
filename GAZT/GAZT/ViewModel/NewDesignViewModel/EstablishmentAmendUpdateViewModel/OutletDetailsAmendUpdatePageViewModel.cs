@@ -1279,7 +1279,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         {
             CanExecute = true;
             OutletName = string.Empty;
-            taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+            if (taxPayerDetails != null)
+            {
+                taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+            }
             PostalAsPhysical = false;
 
             HouseNumber = string.Empty;

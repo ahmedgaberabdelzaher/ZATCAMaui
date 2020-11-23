@@ -8299,10 +8299,10 @@
     <value>نوع الضريبة</value>
   </data>
      <data name="ASAccountStatementDebit" xml:space="preserve">
-    <value>مدين</value>
+    <value>المبلغ المطلوب سداده</value>
   </data>
     <data name="ASAccountStatementCredit" xml:space="preserve">
-    <value>دائن</value>
+    <value>المبلغ الخاص بك</value>
   </data>
    <data name="ASAccountStatementFrom" xml:space="preserve">
     <value>تاريخ البداية</value>
