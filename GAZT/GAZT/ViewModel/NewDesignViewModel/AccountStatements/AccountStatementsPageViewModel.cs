@@ -592,6 +592,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         Task.Run(async () =>
                         {
                             await PopulateDataInChipsForYears(SelectedTransactionTypeFilter.TaxType, SelectedTransactionTypeFilter.StatementFilter);
+                            StatementsLineItems = new ObservableCollection<ASResult>();
                         });
                     }
 

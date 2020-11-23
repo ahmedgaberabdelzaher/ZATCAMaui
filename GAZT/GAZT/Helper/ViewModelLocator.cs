@@ -2415,6 +2415,7 @@ namespace EGAZT
             {
                 try
                 {
+                    
                     return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
                 }
                 catch (Exception ex)
@@ -2430,6 +2431,9 @@ namespace EGAZT
             {
                 try
                 {
+
+                    SimpleIoc.Default.Unregister<AccountStatementsDownloadPageViewModel>();
+                    SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementsDownloadPageViewModel>();
                 }
                 catch (Exception ex)

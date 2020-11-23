@@ -98,12 +98,12 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-                SortByStackLayout.FlowDirection = FlowDirection.LeftToRight;
+                LvwContacts.FlowDirection = FlowDirection.LeftToRight;
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
-                SortByStackLayout.FlowDirection = FlowDirection.RightToLeft;
+                LvwContacts.FlowDirection = FlowDirection.RightToLeft;
             }
         }
 
@@ -127,7 +127,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            Device.BeginInvokeOnMainThread(() => SetLTR());
 
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using GalaSoft.MvvmLight;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -167,7 +168,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_debit);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    OpeningAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    OpeningAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
                     if (OpeningAmount.Contains("-"))
                     {
                         IsOpeningBalancePositive = false;
@@ -234,7 +235,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_debit);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    DebitAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    DebitAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
                 }
             }
         }
@@ -270,7 +271,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_credit);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    CreditAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    CreditAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
                 }
             }
         }
@@ -305,7 +306,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_close);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    CloseAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString()) + " " + AppResources.ZSAR;
+                    CloseAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString()) + " " + AppResources.ZSAR;
                     if (CloseAmount.Contains("-"))
                     {
                         IsTotalBalancePositive = false;
@@ -344,7 +345,7 @@ namespace EGAZT.Models.AccountStatements
         public ASResult[] Results { get; set; }
     }
 
-    public partial class ASResult
+    public partial class ASResult:ViewModelBase
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
@@ -352,8 +353,12 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("Gpart")]
         public string Gpart { get; set; }
 
+
+        private string status;
         [JsonProperty("Status")]
-        public string Status { get; set; }
+        public string Status { get { return status; } set { status = value;
+               
+            } }
 
         [JsonProperty("TaxType")]
         public string TaxType { get; set; }
@@ -407,12 +412,12 @@ namespace EGAZT.Models.AccountStatements
                     decimal d = Convert.ToDecimal(_betrh);
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
-                    BetrhAmount = UtilityManager.GetCommaSeparatedAmount(amount.ToString());
+                    BetrhAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
                 }
             }
         }
 
-        public string _betrhAmount = String.Empty;
+        private string _betrhAmount = String.Empty;
         public string BetrhAmount
         {
             get
@@ -424,6 +429,24 @@ namespace EGAZT.Models.AccountStatements
                 _betrhAmount = value;
             }
         }
+
+        //[JsonIgnore]
+        //private Color _StatusBG  = Color.FromHex("#D99A29");
+        //[JsonIgnore]
+        //public Color StatusBG
+        //{
+        //    get
+        //    {
+        //        return _StatusBG;
+        //    }
+        //    set
+        //    {
+        //        _StatusBG = value;
+        //        RaisePropertyChanged("StatusBG");
+        //    }
+        //}
+
+
 
         [JsonIgnore]
         public string FormattedBetrh { get; set; }
