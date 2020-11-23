@@ -116,6 +116,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var selectedItem = e.ItemData as InstalmentAgreementFrequencyModel;
             viewModel.updateInstalmentsOnSlider(selectedItem);
         }
+
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             ZakatInstalmentPlanModel selectedItem = e.AddedItems[0] as ZakatInstalmentPlanModel;

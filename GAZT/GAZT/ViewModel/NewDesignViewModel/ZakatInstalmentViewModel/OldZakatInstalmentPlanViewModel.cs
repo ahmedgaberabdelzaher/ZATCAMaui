@@ -37,7 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         private bool _isNoDataLableVisible = false;
 
         int noOfInstalments = 1;
-        double maxInstalments = 36;
+        double maxInstalments = 12;
 
         double minInstalments = 1;
         double downPaymentAmount = 400.00;
@@ -3110,8 +3110,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         ZakatInstalments.d.AInstReqFor = "1";
                     }
 
-
-
                     if (IDType == IDTypeDictionary[AppResources.ZakatFinancialCrisis])
                     {
                         ZakatInstalments.d.AInstReqReason = "1";
@@ -3163,29 +3161,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 double totalAmount = double.Parse(TotalAmountSAR.Replace(" SAR", ""));
 
-                if(selectedList != null)
-                {
-                    if (selectedList.Count == 1)
-                    {
-                        updateSliderInstalmentValues(2, 12);
-                        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
-                        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
-                       
-                    }
-                    else if(selectedList.Count == 2)
-                    {
-                        updateSliderInstalmentValues(2, 24);
-                        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
-                        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 24;
-                    }
-                    else if(selectedList.Count == 3)
-                    {
-                        updateSliderInstalmentValues(2, 36);
-                        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
-                        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
-                    }
-                }
-
+                //if(selectedList != null)
+                //{
+                //    if (selectedList.Count == 1)
+                //    {
+                //        updateSliderInstalmentValues(2, 12);
+                //        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+                //        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
+                //    }
+                //    else if(selectedList.Count == 2)
+                //    {
+                //        updateSliderInstalmentValues(2, 24);
+                //        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+                //        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 24;
+                //    }
+                //    else if(selectedList.Count >= 3)
+                //    {
+                //        updateSliderInstalmentValues(2, 36);
+                //        MinInstalmentsTitle = AppResources.ZakatMin + " " + 2;
+                //        MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
+                //    }
+                //}
 
                 if(MinInstalments == 0) {
 
@@ -3204,6 +3200,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 {
                     EnableAgreementView();
                 }
+
+                var instalmentAgreementFrequncyModel = new InstalmentAgreementFrequencyModel();
+                if (SelectedFrequencyType == "1")
+                {
+                    instalmentAgreementFrequncyModel.FrequencyOptions = AppResources.ZakatInstalmetMonthly;
+                    updateInstalmentsOnSlider(instalmentAgreementFrequncyModel);
+                }
+                else if (SelectedFrequencyType == "2")
+                {
+                    instalmentAgreementFrequncyModel.FrequencyOptions = AppResources.ZakatInstalmetQuarterly;
+                    updateInstalmentsOnSlider(instalmentAgreementFrequncyModel);
+                }
+                else if (SelectedFrequencyType == "3")
+                {
+                    instalmentAgreementFrequncyModel.FrequencyOptions = AppResources.ZakatInstalmetHalfYearly;
+                    updateInstalmentsOnSlider(instalmentAgreementFrequncyModel);
+                }
+                else if (SelectedFrequencyType == "4")
+                {
+                    instalmentAgreementFrequncyModel.FrequencyOptions = AppResources.ZakatInstalmetYearly;
+                    updateInstalmentsOnSlider(instalmentAgreementFrequncyModel);
+                }
+
                 return;
             }
             catch (GAZTUnlockAccountException ex)
@@ -4360,9 +4379,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 //MinInstalments = 1;
                 //MaxInstalments = 36;
-                updateSliderInstalmentValues(1, 36);
-                MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
+                if (selectedList.Count == 2)
+                {
+                    updateSliderInstalmentValues(1, 24);
+                }
+                else if (selectedList.Count == 1)
+                {
+                    updateSliderInstalmentValues(1, 12);
+                }
+                else
+                {
+                    updateSliderInstalmentValues(1, 36);
+                }
+                /*MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 36;
+                */
                 SelectedFrequencyType = "1";
                 InstalmentSliderVisible = true;
             }
@@ -4370,9 +4401,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 //MinInstalments = 1;
                 //MaxInstalments = 12;
-                updateSliderInstalmentValues(1, 12);
-                MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
+                //updateSliderInstalmentValues(1, 12);
+                if (selectedList.Count == 2)
+                {
+                    updateSliderInstalmentValues(1, 8);
+                }
+                else if (selectedList.Count == 1)
+                {
+                    updateSliderInstalmentValues(1, 4);
+                }
+                else
+                {
+                    updateSliderInstalmentValues(1, 12);
+                }
+                /*MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 12;
+                */
                 SelectedFrequencyType = "2";
                 InstalmentSliderVisible = true;
             }
@@ -4380,9 +4424,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 //MinInstalments = 1;
                 //MaxInstalments = 6;
-                updateSliderInstalmentValues(1, 6);
-                MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
+                //updateSliderInstalmentValues(1, 6);
+                if (selectedList.Count == 2)
+                {
+                    updateSliderInstalmentValues(1, 4);
+                }
+                else if (selectedList.Count == 1)
+                {
+                    updateSliderInstalmentValues(1, 2);
+                }
+                else
+                {
+                    updateSliderInstalmentValues(1, 6);
+                }
+                /*MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
                 MaxInstalmentsTitle = AppResources.ZakatMax + " " + 6;
+                */
                 SelectedFrequencyType = "3";
                 InstalmentSliderVisible = true;
             }
@@ -4390,13 +4447,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 // MinInstalments = 1;
                 // MaxInstalments = 3;
-                updateSliderInstalmentValues(1, 3);
-                MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
-                MaxInstalmentsTitle = AppResources.ZakatMax + " " + 3;
-                SelectedFrequencyType = "4";
-                InstalmentSliderVisible = true;
-            }
+                //updateSliderInstalmentValues(1, 3);
+                if (selectedList.Count == 2)
+                {
+                    updateSliderInstalmentValues(1, 2);
 
+                }
+                else if (selectedList.Count == 1)
+                {
+                    //updateSliderInstalmentValues(1, 2);
+                    NoOfInstalments = 1;
+                    InstalmentSliderVisible = false;
+                }
+                else
+                {
+                    updateSliderInstalmentValues(1, 3);
+
+                }
+                /*MinInstalmentsTitle = AppResources.ZakatMin + " " + 1;
+                MaxInstalmentsTitle = AppResources.ZakatMax + " " + 3;
+                */
+                SelectedFrequencyType = "4";
+
+            }
 
             if (ZakatInstalments.d.APlanDurPeri != null && ZakatInstalments.d.APlanDurPeri != "" && int.Parse(ZakatInstalments.d.APlanDurPeri) > 0)
             {
@@ -4407,11 +4480,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 NumberOFInstalmentSliderValue = 1;
             }
 
+        }
 
-
-    }
         private void updateSliderInstalmentValues(int minValue, int maxValue)
         {
+            InstalmentSliderVisible = true;
             if (MaxInstalments < minValue)
             {
                 MaxInstalments = maxValue;
@@ -4427,9 +4500,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 MaxInstalments = maxValue;
                 MinInstalments = minValue;
             }
+            MinInstalmentsTitle = AppResources.ZakatMin + " " + minValue;
+            MaxInstalmentsTitle = AppResources.ZakatMax + " " + maxValue;
         }
-
-
 
         #endregion
 
