@@ -1593,7 +1593,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     }
                     catch
 
-                    { }
+                    {
+
+                    }
                 }
                 RaisePropertyChanged("SelectedIdTypeSR");
             }
@@ -1879,7 +1881,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
         }
 
-        private List<FinancialRepresentativesModel> _listFinanceRepresenatives { get; set; }
+        private List<FinancialRepresentativesModel> _listFinanceRepresenatives = new List<FinancialRepresentativesModel>();
         public List<FinancialRepresentativesModel> ListFinanceRepresenatives
         {
             get => _listFinanceRepresenatives;
@@ -2425,11 +2427,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             if (VATRegistrationDetailsData.d.QUESTIONSSet.results != null)
             {
 
-                string value1forimage3first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptAns).FirstOrDefault();
-                string value2forimage3second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptAns).FirstOrDefault();
+                string value1forimage3first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031")?.Select(x => x.QoptAns)?.FirstOrDefault();
+                string value2forimage3second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032")?.Select(x => x.QoptAns)?.FirstOrDefault();
 
-                string value1forimage4first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptAns).FirstOrDefault();
-                string value2forimage4second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptAns).FirstOrDefault();
+                string value1forimage4first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041")?.Select(x => x.QoptAns).FirstOrDefault();
+                string value2forimage4second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042")?.Select(x => x.QoptAns).FirstOrDefault();
 
                 if (value1forimage3first == "1")
                 {
@@ -2584,7 +2586,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                         IsChangeEmailCheckBoxEnabled = false;
                                     }
                                 }
-                                ListFinanceRepresenatives = new List<FinancialRepresentativesModel>();
                                 GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
 
@@ -2596,7 +2597,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                 try
                                 {
-                                    TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name;
+                                    TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type)?.FirstOrDefault()?.Name;
                                 }
                                 catch(Exception ex)
                                 {
@@ -2612,7 +2613,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                 try
                                 {
-                                    TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
+                                    TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type)?.FirstOrDefault()?.Name;
                                 }
                                 catch(Exception ex)
                                 {
@@ -2631,12 +2632,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 }
                                 if (App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Reactivation)
                                 {
+
+                                    var listFRep = new List<FinancialRepresentativesModel>();
                                     int count = 0;
                                     foreach (var item in vATRegistration.d.CONTACT_PERSONSet.results)
                                     {
                                         try
                                         {
-                                            SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
+                                            SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type)?.FirstOrDefault();
 
                                             string selectedIdTypeName = "";
 
@@ -2645,16 +2648,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                                 selectedIdTypeName = SelectedIdTypeFR.Name;
                                             }
-
-                                            ListFinanceRepresenatives.Add(new FinancialRepresentativesModel()
+                                            listFRep.Add(new FinancialRepresentativesModel()
                                             {
                                                 GpartFR = item.Gpart,
                                                 IdnumberFR = item.Idnumber,
                                                 FirstnmFR = item.Firstnm,
                                                 LastnmFR = item.Lastnm,
                                                 MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
-                                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
-                                                TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault().Name
+                                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[count].SmtpAddr,
+                                                TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[count].Type)?.FirstOrDefault()?.Name
 
                                             });
                                             count++;
@@ -2664,6 +2666,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                         }
                                     }
+                                    ListFinanceRepresenatives = listFRep;
                                 }
 
                                 try
@@ -2769,8 +2772,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             if (vATRegistration.d.DecidTy != null && vATRegistration.d.DecidTy != "")
                             {
 
-                                SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy).FirstOrDefault();
-                                TxtIDTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy).FirstOrDefault().Name; //SelectedIdTypeSR.Name;
+                                SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault();
+                                TxtIDTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault()?.Name; //SelectedIdTypeSR.Name;
                             }
                             if (vATRegistration.d.Decconno != null)
 
@@ -2835,21 +2838,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             {
                                 MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                                 MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
-                                MaximumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();
-                                MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
+                                MaximumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue)?.FirstOrDefault()==null?0: MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();
+                                MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue)?.FirstOrDefault()==null?0: MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
 
-                                MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
-                                MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
+                                MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue)?.FirstOrDefault() == null?0: MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
+                                MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue)?.FirstOrDefault() == null ? 0 : MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
 
 
                                 MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
                                 MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
 
-                                TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptTxt).FirstOrDefault();
+                                TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031")?.Select(x => x.QoptTxt)?.FirstOrDefault();
                                 TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();
 
-                                TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptTxt).FirstOrDefault();
-                                TextQuestion4Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptTxt).FirstOrDefault();
+                                TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041")?.Select(x => x.QoptTxt)?.FirstOrDefault();
+                                TextQuestion4Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042")?.Select(x => x.QoptTxt)?.FirstOrDefault();
 
                                 setQuestionImage();
 
