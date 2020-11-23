@@ -2070,7 +2070,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
-                            if (viewModel.IsFDChangeSectionChecked || viewModel.IsAddAdditionalInfoChecked || viewModel.IsAddNewRepresentativeChecked)
+                            if (viewModel.IsFDChangeSectionChecked || viewModel.IsAddAdditionalInfoChecked || viewModel.IsAddNewRepresentativeChecked||viewModel.IsChangeEmailChecked)
                             {
                                 //var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
                                 //if (result)
@@ -4610,14 +4610,15 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         private void EntryEmail_Unfocused(object sender, FocusEventArgs e)
         {
             if (viewModel.VATRegistrationDetailsData.d.CONTACTDTSet.results != null)
-            {
-                bool flag1 = IsValid(viewModel.VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr);
+            {   
+                bool flag1 = IsValid(viewModel.ListFinanceRepresenatives[0].SmtpAddrFR);
                 bool flag = IsValid(viewModel.SmtpAddrFR);
-                if (!flag || !flag1)
+                if (!flag1|| (viewModel.IsAddNewRepresentativeChecked && !flag))
                 {
                     ShowValidationPopup(AppResources.ZZPleaseenteravalidEmailAddress);
                     return;
                 }
+                
             }
         }
         public void ShowValidationPopup(string sourceString)

@@ -839,14 +839,16 @@ namespace EGAZT.Models
 
         }
     }
-    public class FinancialRepresentativesModel
+    public class FinancialRepresentativesModel:ViewModelBase
     {
         public string GpartFR { get; set; }
         public string TxtIDTypeFR { get; set; }
         public string IdnumberFR { get; set; }
         public string FirstnmFR { get; set; }
         public string LastnmFR { get; set; }
-        public string SmtpAddrFR { get; set; }
-        public string MobNumberFR { get; set; }
+        private string _SmtpAddrFR;
+        public string SmtpAddrFR { get { return _SmtpAddrFR; } set { _SmtpAddrFR = value; RaisePropertyChanged("SmtpAddrFR"); } }
+        private string _MobNumberFR;
+        public string MobNumberFR { get { return _MobNumberFR; } set { _MobNumberFR = value; RaisePropertyChanged("MobNumberFR"); } }
     }
 }

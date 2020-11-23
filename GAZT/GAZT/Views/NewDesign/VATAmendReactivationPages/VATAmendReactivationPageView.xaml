@@ -1920,7 +1920,7 @@
                                                 <!--#region Modified-->
 
                                                 <StackLayout BindableLayout.ItemsSource="{Binding ListFinanceRepresenatives}" 
-                                                          VerticalOptions="FillAndExpand" IsEnabled="True" >
+                                                          VerticalOptions="FillAndExpand"  IsEnabled="True" BindableLayout.EmptyView="No Data">
                                                     <BindableLayout.ItemTemplate>
                                                         <DataTemplate>
                                                             <!--<ViewCell>-->
@@ -2139,7 +2139,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 <StackLayout Grid.Row="6">
 
                                                                     <Label Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource GAZTCaptionBlackLabel}"/>
-                                                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
+                                                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" 
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                         <custom:BorderlessEntry Text="{Binding SmtpAddrFR}" 
