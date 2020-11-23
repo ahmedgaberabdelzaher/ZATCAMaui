@@ -3377,7 +3377,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                if(IsFinsancialStatementsEditable) {
+                /*if(IsFinsancialStatementsEditable) {
 
                     if ((BankStatementsAttachmentsListViewData != null && BankStatementsAttachmentsListViewData.Count > 0) && (FinanceAttachmentsListViewData != null && (FinanceAttachmentsListViewData.Count > 0)))
                     {
@@ -3391,6 +3391,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     }
                 }
                 else {
+                */
 
                     if ((BankStatementsAttachmentsListViewData != null && BankStatementsAttachmentsListViewData.Count > 0))
                     {
@@ -3402,7 +3403,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     {
                         await _dialogService.ShowMessage(AppResources.VRUploadYourDocument, AppResources.Information);
                     }
-                }
+             //   }
 
 
                 

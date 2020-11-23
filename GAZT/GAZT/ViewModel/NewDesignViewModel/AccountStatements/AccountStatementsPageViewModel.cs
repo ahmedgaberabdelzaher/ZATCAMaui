@@ -219,6 +219,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("StatusFilterItem");
             }
         }
+        
+        private string _accStmtnCreditAmount { get; set; }
+        public string AccStmtnCreditAmount
+        {
+            get
+            {
+                return _accStmtnCreditAmount;
+            }
+            set
+            {
+                _accStmtnCreditAmount = value;
+                RaisePropertyChanged("AccStmtnCreditAmount");
+            }
+        }
+        
         //Filter Item properties  end
         public ASStatementHeaderSet _headerSet = null;
         public ASStatementHeaderSet HeaderSet
@@ -888,6 +903,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
 
+                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+
                 if (StatementsLineItems == null)
                 {
                     StatementsLineItems = new ObservableCollection<ASResult>();
@@ -940,6 +957,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
 
+                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+
                 var chipDataFilterlistForYears = new List<ASChipModel>();
                 ChipDataFilterlistForYears = new List<ASChipModel>();
 
@@ -990,6 +1009,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
 
+                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
 
                 if (AllTransactionFilters == null)
                 {
@@ -1146,6 +1166,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 });
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
+
+                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
 
                 if (HeaderSet.D.StatmenetLineItemsSet != null)
                 {

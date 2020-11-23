@@ -1951,14 +1951,41 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                    <Grid Grid.Row="3" Grid.ColumnSpan="2" Padding="8">
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                         <StackLayout Padding="15,15,15,0">
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
+                                </StackLayout>
+                                    <!--<Grid Grid.Row="3" Grid.ColumnSpan="2" Padding="8">
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                     </Grid>
                                     <Grid Grid.Row="4" Grid.ColumnSpan="2" Padding="8">
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
-                                    </Grid>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                    </Grid>-->
 
                                 </StackLayout>
                             </border:SfBorder >
