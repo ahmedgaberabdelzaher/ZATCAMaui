@@ -204,11 +204,11 @@
                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                         </StackLayout>
 
-                        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                            <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  >
+                            <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" >
                                 <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
                                                          Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
-                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd"  
+                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd"  BackgroundColor="Gray"
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
                                 </custom:BorderlessEntry>

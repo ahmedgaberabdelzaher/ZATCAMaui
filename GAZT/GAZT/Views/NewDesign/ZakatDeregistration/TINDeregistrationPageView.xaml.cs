@@ -1643,7 +1643,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 TinDeregestrationAttachmentsModel selectedOutlet = (TinDeregestrationAttachmentsModel)(e as TappedEventArgs).Parameter;
                 viewModel.SelectedAttachment = selectedOutlet;
-                viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+                //viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
                 viewModel.NewAttachmentClicked();
             }
             catch (Exception ex)
