@@ -28,19 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        private FlowDirection _FlowDirect = FlowDirection.RightToLeft;
-        public FlowDirection FlowDirect
-        {
-            get
-            {
-                return _FlowDirect;
-            }
-            set
-            {
-                _FlowDirect = value;
-                RaisePropertyChanged("FlowDirect");
-            }
-        }
+        
 
 
         public BaseViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -55,7 +43,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
 
         public void PopToRootPage()

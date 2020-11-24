@@ -169,7 +169,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     OpeningAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString());
-                    if (OpeningAmount.Contains("-"))
+                    if (amount.ToString().Contains("-"))
                     {
                         IsOpeningBalancePositive = false;
                     }
@@ -307,7 +307,7 @@ namespace EGAZT.Models.AccountStatements
                     decimal amount = d;
                     amount.ToString(format);  //will return $24,508,975.94
                     CloseAmount = UtilityManager.GetCommaSeparatedAmount(Math.Abs(amount).ToString()) + " " + AppResources.ZSAR;
-                    if (CloseAmount.Contains("-"))
+                    if (amount.ToString().Contains("-"))
                     {
                         IsTotalBalancePositive = false;
                     }

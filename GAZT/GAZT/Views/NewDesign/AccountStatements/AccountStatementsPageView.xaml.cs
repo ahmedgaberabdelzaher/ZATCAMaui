@@ -19,14 +19,14 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             InitializeComponent();
 
             viewModel = App.Locator.AccountStatementsPageView;
+
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            //LvwContacts.On<iOS>().SetGroupHeaderStyle(GroupHeaderStyle.Grouped);
+            this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
             //SetPickerFont();
             ChangeArrowDirection();
-
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            LvwContacts.On<iOS>().SetGroupHeaderStyle(GroupHeaderStyle.Grouped);
-            this.BindingContext = viewModel;
 
             try
             {
@@ -99,11 +99,14 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
                 LvwContacts.FlowDirection = FlowDirection.LeftToRight;
+                (LvwContacts.Header as StackLayout).FlowDirection = FlowDirection.LeftToRight;
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
                 LvwContacts.FlowDirection = FlowDirection.RightToLeft;
+                LvwContacts.FlowDirection = FlowDirection.RightToLeft;
+                (LvwContacts.Header as StackLayout).FlowDirection = FlowDirection.RightToLeft;
             }
         }
 
@@ -127,7 +130,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Device.BeginInvokeOnMainThread(() => SetLTR());
+            //Device.BeginInvokeOnMainThread(() => SetLTR());
 
         }
 
