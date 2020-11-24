@@ -8578,4 +8578,38 @@
   <data name="ASAccountStatementTheBalances" xml:space="preserve">
     <value>الرصيد</value>
   </data>
+    <data name="Objections" xml:space="preserve">
+      <value>الاعتراضات</value>
+    </data>
+    <data name="NDContractRelease" xml:space="preserve">
+      <value>طلب الافراج عن عقد</value>
+    </data>
+    <data name="VatRegistration" xml:space="preserve">
+      <value>التسجيل في ضريبة القيمة المضافة</value>
+    </data>
+    <data name="GeneralServices" xml:space="preserve">
+      <value>خدمات عامة</value>
+    </data>
+    <data name="VATDeregistrations" xml:space="preserve">
+      <value>إلغاء التسجيل في ضريبة القيمة المضافة</value>
+    </data>
+    <data name="InstallmentPlans" xml:space="preserve">
+      <value>خطط التقسيط</value>
+    </data>
+  <data name="VATRefundsRequest" xml:space="preserve">
+    <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
+  </data>
+  <data name="ChangeVatFillingFrequency" xml:space="preserve">
+    <value>تغيير فترة تقديم إقرارات ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZOverdueCommitments" xml:space="preserve">
+    <value>الالتزامات المتأخرة</value>
+    <comment>Dashboard</comment>
+  </data>
+  <data name="ZZUpcomingCommitments" xml:space="preserve">
+    <value>الالتزامات القادمة</value>
+    <comment>Dashboard</comment>
+  </data>
+
+
 </root>
