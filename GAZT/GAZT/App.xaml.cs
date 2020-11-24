@@ -70,6 +70,9 @@ namespace EGAZT
         public static string CalendarPickerPageView = "CalendarPickerPageView";
         public static string PickerPageView = "PickerPageView";
         public static string ZakatRegistrationDetailsListPageView = "ZakatRegistrationDetailsListPageView";
+        public static string GeneralServicesListPageView = "GeneralServicesListPageView";
+        public static string RefundRequestMenuListPageView = "RefundRequestMenuListPageView";
+        public static string FillingFreuencyMenuListPageView = "FillingFreuencyMenuListPageView";
         public static string TINDeregistrationCloseIndividualOutletsPageView = "TINDeregistrationCloseIndividualOutletsPageView";
         public static string ZakatRegistrationOutletsDetails = "ZakatRegistrationOutletsDetails";
         public static string ZakatRegistrationFinancialDetails = "ZakatRegistrationFinancialDetails";

@@ -8401,7 +8401,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
     <value>Please enter correct data</value>
   </data>
     <data name="ASAccountStatementDashboardTileText" xml:space="preserve">
-    <value>Account Statement</value>
+    <value>Account Statements</value>
   </data>
   <data name="ASAccountStatementDirectTax" xml:space="preserve">
     <value>Direct Tax</value>
@@ -8642,5 +8642,38 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="ASAccountStatementTheBalances" xml:space="preserve">
     <value>The Balance</value>
+  </data>
+  <data name="Objections" xml:space="preserve">
+    <value>Objections</value>
+  </data>
+  <data name="NDContractRelease" xml:space="preserve">
+    <value>Contract Release</value>
+  </data>
+  
+  <data name="VatRegistration" xml:space="preserve">
+    <value>VAT Registration</value>
+  </data>
+  <data name="GeneralServices" xml:space="preserve">
+    <value>General Services</value>
+  </data>
+  <data name="VATDeregistrations" xml:space="preserve">
+    <value>VAT Deregistrations</value>
+  </data>
+  <data name="InstallmentPlans" xml:space="preserve">
+    <value>Installment Plans</value>
+  </data>
+  <data name="VATRefundsRequest" xml:space="preserve">
+    <value>VAT Refunds Request</value>
+  </data>
+  <data name="ChangeVatFillingFrequency" xml:space="preserve">
+    <value>Change VAT Filling Frequency</value>
+  </data>
+  <data name="ZZOverdueCommitments" xml:space="preserve">
+    <value>Overdue Commitments</value>
+    <comment>Dashboard</comment>
+  </data>
+  <data name="ZZUpcomingCommitments" xml:space="preserve">
+    <value>Upcoming Commitments</value>
+    <comment>Dashboard</comment>
   </data>
 </root>

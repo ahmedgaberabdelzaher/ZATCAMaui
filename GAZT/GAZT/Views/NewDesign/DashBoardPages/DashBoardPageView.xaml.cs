@@ -190,17 +190,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             viewModel.IsEstablishmentRegistrationTileVisible = false;
                             viewModel.IsVatRegistrationTileVisible = true;
                             viewModel.IsRegistrationDetailsTileVisible = true;
+                            viewModel.IfRegInZakat = true;
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "U")
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = true;
                             viewModel.IsRegistrationDetailsTileVisible = false;
-
+                            viewModel.IfRegInZakat = false;
                         }
                         else if(App.LoginDataRetrieved.ZkReg == "N")
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = false;
                             viewModel.IsRegistrationDetailsTileVisible = false;
+                            viewModel.IfRegInZakat = false;
                         }
 
                         if (App.LoginDataRetrieved.VtReg == "X")
@@ -223,6 +225,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             {
                                 viewModel.IsVatRegistrationTileVisible = false;
                                 viewModel.IsEstablishmentRegistrationTileVisible = true;
+                                viewModel.IfRegInZakat = false;
                             }
 
                         }
@@ -958,7 +961,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ChangeFillingPeriod_Tapped", "Change Filing Period eService");
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
+                viewModel._navigationService.NavigateTo(App.FillingFreuencyMenuListPageView);
 
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
@@ -1187,5 +1190,42 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         //    }
         //}
+
+        private void RefundRequest_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRefundRequest_Tapped", "VAT Refund Request eService");
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.RefundRequestMenuListPageView);
+            });
+
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
+        private void General_Services_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "GeneralServices_Tapped", "General Services");
+
+            /*await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });*/
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.GeneralServicesListPageView);
+
+            });
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
+        private void Vat_Registration_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRegistration_Details_Tapped", "VAT Registration Details eService");
+            //await Task.Run(() => viewModel.IsLoading = true);
+            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationPageView));
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
     }
 }

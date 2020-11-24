@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EGAZT.Enums;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using EGAZT.Views.NewDesign.VATDeRegistration;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -92,6 +95,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 }
+                else if (selectedItem.ZDTitle == AppResources.VATRegistrationDetails)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VatRegistrationTile_Tapped", "VAT Registration eService");
+                    viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                }
                 else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.TPUpdate)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Amendment/Update eService");
@@ -99,6 +109,42 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.ZAKATAmendOrUpdateClicked();
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
+                else if (selectedItem.ZDTitle == AppResources.ZZZZVatRegistrationAmendmentTile)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATAmend_Tapped", "VAT Amendment eService");
+                    App.VATType = PageExecutionType.Amend;
+                    viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                    /*
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
+                    //viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                    */
+
+                } 
+                /*else if (selectedItem.ZDTitle == AppResources.Registrations)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
+                    //viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                } */
+                else if (selectedItem.ZDTitle == AppResources.VATDeregistrations)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
+                    //viewModel._navigationService.NavigateTo(App.VATDeregistrationInstructionsPage);
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+                    });
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                    /*Device.BeginInvokeOnMainThread(() =>
+                    {
+                        PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+                    });*/
+                    //AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                }
+                
                 else
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "TIN Deregistration eService");

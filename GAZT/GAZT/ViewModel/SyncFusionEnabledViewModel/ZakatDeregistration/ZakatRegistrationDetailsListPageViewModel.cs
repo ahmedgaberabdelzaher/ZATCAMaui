@@ -100,38 +100,88 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             }
 
-            if (App.LoginDataRetrieved.ZkReg == "X")
-            {
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                {
-                    ZDTitle = AppResources.ZZTaxPayerDetails,
-                    ZDImageSource = "vat_ic_taxpayerDetail",
-                    ArrowImageSource = fileImage
-                });
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                {
-                    ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
-                    ZDImageSource = "establishments",
-                    ArrowImageSource = fileImage
-                });
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+            
+            if (App.LoginDataRetrieved.ZkReg == "X"||App.LoginDataRetrieved.VtReg == "X")
+            {   
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    {
+                        ZDTitle = AppResources.ZZTaxPayerDetails,
+                        ZDImageSource = "vat_ic_taxpayerDetail",
+                        ArrowImageSource = fileImage
+                    });
+
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
+                            ZDImageSource = "establishments",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.ESTFinancialDetails,
                     ZDImageSource = "details",
                     ArrowImageSource = fileImage
                 });
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                   
+                if (App.LoginDataRetrieved.VtReg == "X")
                 {
-                    ZDTitle = AppResources.TinDeregistration,
-                    ZDImageSource = "deregistration",
-                    ArrowImageSource = fileImage
-                });
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    {
+                        ZDTitle = AppResources.VATRegistrationDetails,
+                        ZDImageSource = "details",
+                        ArrowImageSource = fileImage
+                    });
+                }
+
+                if (App.LoginDataRetrieved.ZkReg == "X")
                 {
-                    ZDTitle = AppResources.ZZAmend,
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    {
+                        ZDTitle = AppResources.ZZAmend,
+                        ZDImageSource = "registration.png",
+                        ArrowImageSource = fileImage
+                    });
+                }
+
+                if (App.LoginDataRetrieved.VtReg == "X")
+                {
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    {
+                        ZDTitle = AppResources.ZZZZVatRegistrationAmendmentTile,
+                        ZDImageSource = "registration.png",
+                        ArrowImageSource = fileImage
+                    });
+                }
+                /*tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                {
+                    ZDTitle = AppResources.Registrations,
                     ZDImageSource = "registration.png",
                     ArrowImageSource = fileImage
-                });
+                });*/
+
+                if (App.LoginDataRetrieved.VtReg == "X")
+                {
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    {
+                        ZDTitle = AppResources.VATDeregistrations,
+                        ZDImageSource = "deregistration",
+                        ArrowImageSource = fileImage
+                    });
+                }
+
+                if (App.LoginDataRetrieved.ZkReg == "X")
+                {
+                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    {
+                        ZDTitle = AppResources.TinDeregistration,
+                        ZDImageSource = "deregistration",
+                        ArrowImageSource = fileImage
+                    });
+                }
 
             }
             else if (App.LoginDataRetrieved.ZkReg == "U")

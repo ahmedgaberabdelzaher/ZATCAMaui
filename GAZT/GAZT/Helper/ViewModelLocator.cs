@@ -217,6 +217,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
+            SimpleIoc.Default.Register<GeneralServicesViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
@@ -2637,6 +2638,9 @@ namespace EGAZT
             navigationService.Configure(App.TINDeregistrationCloseIndividualOutletsPageView, typeof(TINDeregistrationCloseIndividualOutletsPageView));
 
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
+            navigationService.Configure(App.GeneralServicesListPageView, typeof(GeneralServicesListPageView));
+            navigationService.Configure(App.RefundRequestMenuListPageView, typeof(RefundRequestMenuListPageView));
+            navigationService.Configure(App.FillingFreuencyMenuListPageView, typeof(FillingFreuencyMenuListPageView));
             navigationService.Configure(App.ZakatRegistrationTaxPayerDetails, typeof(ZakatRegistrationTaxPayerDetails));
             navigationService.Configure(App.ZakatRegistrationOutletsDetails, typeof(ZakatRegistrationOutletsDetails));
             navigationService.Configure(App.ZakatRegistrationFinancialDetails, typeof(ZakatRegistrationFinancialDetails));
@@ -3124,6 +3128,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public GeneralServicesViewModel GeneralServicesListView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GeneralServicesViewModel>();
                 }
                 catch (Exception ex)
                 {
