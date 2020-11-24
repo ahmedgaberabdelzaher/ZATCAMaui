@@ -69,15 +69,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             {
                 outletDecisionOptions.Add(new SelectionModel
                 {
-                    SelectionTitle = AppResources.VatReview,
+                    SelectionTitle = AppResources.DBSMVATObjection,
                     IsSelected = false
                 });
             }
-            outletDecisionOptions.Add(new SelectionModel
+
+            if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.ZkReg == "X")
             {
-                SelectionTitle = AppResources.ZakatIncomeTaxObjection,
-                IsSelected = false
-            });
+                outletDecisionOptions.Add(new SelectionModel
+                {
+                    SelectionTitle = AppResources.DBSMZAKATObjection,
+                    IsSelected = false
+                });
+            }
+
             SelectionOptions = outletDecisionOptions;
         }
     }

@@ -103,35 +103,40 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             
             if (App.LoginDataRetrieved.ZkReg == "X"||App.LoginDataRetrieved.VtReg == "X")
             {   
+                    if (App.LoginDataRetrieved.ZkReg == "X") {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.ZZTaxPayerDetails,
+                        ZDTitle = AppResources.DBSMTaxpayerDetails,
                         ZDImageSource = "vat_ic_taxpayerDetail",
                         ArrowImageSource = fileImage
                     });
+                    }
 
                     if (App.LoginDataRetrieved.ZkReg == "X")
                     {
                         tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                         {
-                            ZDTitle = AppResources.TinDeregistrationRegistrationOutlets,
+                            ZDTitle = AppResources.DBSMOutlets,
                             ZDImageSource = "establishments",
                             ArrowImageSource = fileImage
                         });
                     }
 
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                {
-                    ZDTitle = AppResources.ESTFinancialDetails,
-                    ZDImageSource = "details",
-                    ArrowImageSource = fileImage
-                });
-                   
-                if (App.LoginDataRetrieved.VtReg == "X")
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMFinancialDetails,
+                            ZDImageSource = "details",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    if (App.LoginDataRetrieved.VtReg == "X")
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.VATRegistrationDetails,
+                        ZDTitle = AppResources.DBSMVATRegistrationDetails,
                         ZDImageSource = "details",
                         ArrowImageSource = fileImage
                     });
@@ -141,7 +146,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.ZZAmend,
+                        ZDTitle = AppResources.DBSMAmend,
                         ZDImageSource = "registration.png",
                         ArrowImageSource = fileImage
                     });
@@ -151,7 +156,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.ZZZZVatRegistrationAmendmentTile,
+                        ZDTitle = AppResources.DBSMAmendmentOfVATRegistration,
                         ZDImageSource = "registration.png",
                         ArrowImageSource = fileImage
                     });
@@ -167,7 +172,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.VATDeregistrations,
+                        ZDTitle = AppResources.DBSMVATDeregistration,
                         ZDImageSource = "deregistration",
                         ArrowImageSource = fileImage
                     });
@@ -177,7 +182,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.TinDeregistration,
+                        ZDTitle = AppResources.DBSMTINDeregistration,
                         ZDImageSource = "deregistration",
                         ArrowImageSource = fileImage
                     });

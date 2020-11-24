@@ -8676,4 +8676,61 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Upcoming Commitments</value>
     <comment>Dashboard</comment>
   </data>
+  <data name="DBBills" xml:space="preserve">
+    <value>Bills</value>
+  </data>
+  <data name="DBRefundRequest" xml:space="preserve">
+    <value>Refund Requests</value>
+  </data>
+  <data name="DBApplicationStatus" xml:space="preserve">
+    <value>Application status</value>
+  </data>
+  <data name="DBLogOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="DBSMZakatInstalmentPlan" xml:space="preserve">
+      <value>Zakat Instalment Plan</value>
+    </data>
+  <data name="DBSMIncomeTax" xml:space="preserve">
+      <value>Income Tax Instalment Plan</value>
+    </data>
+  <data name="DBSMVATInstalmentPlan" xml:space="preserve">
+      <value>VAT Instalment Plan</value>
+    </data>
+  <data name="DBSMZAKATObjection" xml:space="preserve">
+      <value>Zakat Objection</value>
+    </data>
+  <data name="DBSMVATObjection" xml:space="preserve">
+      <value>VAT Objection</value>
+    </data>
+  <data name="DBSMTaxpayerDetails" xml:space="preserve">
+      <value>Taxpayer Details</value>
+    </data>
+  <data name="DBSMOutlets" xml:space="preserve">
+      <value>Outlets</value>
+    </data>
+  <data name="DBSMFinancialDetails" xml:space="preserve">
+      <value>Financial Details</value>
+    </data>
+  <data name="DBSMVATRegistrationDetails" xml:space="preserve">
+      <value>VAT Registration Details</value>
+    </data>
+  <data name="DBSMAmend" xml:space="preserve">
+      <value>Amend</value>
+    </data>
+  <data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
+      <value>Amendment Of VAT Registration</value>
+    </data>
+  <data name="DBSMVATDeregistration" xml:space="preserve">
+      <value>VAT Deregistration</value>
+    </data>
+  <data name="DBSMTINDeregistration" xml:space="preserve">
+      <value>TIN Deregistration</value>
+    </data>
+  <data name="DBSMTaxEvasionReport" xml:space="preserve">
+      <value>Tax Evasion Report</value>
+    </data>
+  <data name="DBSMChat" xml:space="preserve">
+      <value>Chat</value>
+    </data>
 </root>

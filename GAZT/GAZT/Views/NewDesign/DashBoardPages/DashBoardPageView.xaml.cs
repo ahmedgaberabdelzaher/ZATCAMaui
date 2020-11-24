@@ -136,6 +136,12 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             }
         }
+        
+        private void btnCommitmentsPickerClicked(object sender, System.EventArgs e)
+        {
+            CommitmentsPicker.IsOpen = true;
+        }
+        
         public void OnDataLoad()
         {
             if (viewModel != null)
@@ -321,7 +327,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                    viewModel.PopulateBillsInformation();
                    viewModel.PopulateReturnsInformation();
-                   viewModel.PopualateCommittmentsInformation();
+                   //viewModel.PopualateCommittmentsInformation();
+                   viewModel.SelectedCommitmentFilterValue = AppResources.ZZOverdueCommitments;
+
+                   /*if (!string.IsNullOrEmpty(viewModel.SelectedCommitmentFilterValue))
+                   {
+                       viewModel.PopualateCommittmentsInformation(viewModel.SelectedCommitmentFilterValue);
+                   }*/
                    try
                    {
                        if (viewModel.BillsAndReturnsCommitments != null)

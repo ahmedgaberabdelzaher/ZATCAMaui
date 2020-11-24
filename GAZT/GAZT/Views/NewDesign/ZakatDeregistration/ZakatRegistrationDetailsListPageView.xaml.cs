@@ -76,40 +76,40 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var selectedLv = sender as SfListView;
                 ZakatDeregistrationDetailsListModel selectedItem = (ZakatDeregistrationDetailsListModel)selectedLv.SelectedItem;
 
-                if (selectedItem.ZDTitle == AppResources.ZZTaxPayerDetails)
+                if (selectedItem.ZDTitle == AppResources.DBSMTaxpayerDetails)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Tax Payer Details eService");
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationTaxPayerDetails);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                else if (selectedItem.ZDTitle == AppResources.TinDeregistrationRegistrationOutlets)
+                else if (selectedItem.ZDTitle == AppResources.DBSMOutlets)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Outlet Details eService");
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationOutletsDetails);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                else if (selectedItem.ZDTitle == AppResources.ESTFinancialDetails)
+                else if (selectedItem.ZDTitle == AppResources.DBSMFinancialDetails)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Financial Details eService");
                     viewModel._navigationService.NavigateTo(App.ZakatRegistrationFinancialDetails);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 }
-                else if (selectedItem.ZDTitle == AppResources.VATRegistrationDetails)
+                else if (selectedItem.ZDTitle == AppResources.DBSMVATRegistrationDetails)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VatRegistrationTile_Tapped", "VAT Registration eService");
                     viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 }
-                else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.TPUpdate)
+                else if (((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.DBSMAmend || ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.TPUpdate)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "Establishment Registration Amendment/Update eService");
-                    App.ZAKATType = ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.ZZAmend ? Enums.PageExecutionType.Amend : Enums.PageExecutionType.Update;
+                    App.ZAKATType = ((ZakatDeregistrationDetailsListModel)e.AddedItems[0]).ZDTitle == AppResources.DBSMAmend ? Enums.PageExecutionType.Amend : Enums.PageExecutionType.Update;
                     viewModel.ZAKATAmendOrUpdateClicked();
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                else if (selectedItem.ZDTitle == AppResources.ZZZZVatRegistrationAmendmentTile)
+                else if (selectedItem.ZDTitle == AppResources.DBSMAmendmentOfVATRegistration)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATAmend_Tapped", "VAT Amendment eService");
                     App.VATType = PageExecutionType.Amend;
@@ -129,7 +129,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 } */
-                else if (selectedItem.ZDTitle == AppResources.VATDeregistrations)
+                else if (selectedItem.ZDTitle == AppResources.DBSMVATDeregistration)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
                     //viewModel._navigationService.NavigateTo(App.VATDeregistrationInstructionsPage);

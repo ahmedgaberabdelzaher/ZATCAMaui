@@ -235,12 +235,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
                 outletDecisionOptions.Add(new InstalmentPlanModel
                 {
-                    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeZakat,
+                    ActiveOutletDecisionOptions = AppResources.DBSMZakatInstalmentPlan,
                     ActiveOutletDecisionOptionsIsSelected = false
                 });
                 outletDecisionOptions.Add(new InstalmentPlanModel
                 {
-                    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                    ActiveOutletDecisionOptions = AppResources.DBSMIncomeTax,
                     ActiveOutletDecisionOptionsIsSelected = false
                 });
             }
@@ -249,7 +249,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
                 outletDecisionOptions.Add(new InstalmentPlanModel
                 {
-                    ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeVAT,
+                    ActiveOutletDecisionOptions = AppResources.DBSMVATInstalmentPlan,
                     ActiveOutletDecisionOptionsIsSelected = false
                 });
             }

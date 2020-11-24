@@ -87,7 +87,7 @@
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ColorChat.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDChat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBSMChat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>

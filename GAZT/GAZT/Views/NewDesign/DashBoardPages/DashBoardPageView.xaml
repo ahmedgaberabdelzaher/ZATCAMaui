@@ -308,7 +308,36 @@
                                     <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                         
                                         <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                        
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="30"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Text="{Binding SelectedCommitmentFilterValue}" Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueLabelBlackMedium}">
+                                            </custom:CustomLabel>
+
+                                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"></Image>
+                                            <custom:CustomButton x:Name="btn1" Clicked="btnCommitmentsPickerClicked"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="Transparent"></custom:CustomButton>
+
+                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CommitmentsPicker"  HeaderHeight="55"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                                                             HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
+                                                             PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black"
+                                                             BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False"
+                                                             SelectedItemFontAttribute="Bold"
+                                                             SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"
+                                                             ItemHeight="40" DisplayMemberPath="Txt30" ItemsSource="{Binding CommitmentsListFilter}"  Grid.Row="0" Grid.Column="0"
+                                                             Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
+                                                             CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
+                                                             CancelButtonBackgroundColor="#EAF7CC" SelectedItem="{Binding SelectedCommitmentFilterValue}">
+                                                <syncfusion:SfPicker.Behaviors>
+                                                    <customcontrol:SfPickerBehavior />
+                                                </syncfusion:SfPicker.Behaviors>
+                                            </syncfusion:SfPicker>
+                                        </Grid>
                                         <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
                                         <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
@@ -596,7 +625,7 @@
 
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_Payments"></Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBBills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Label_MyBills"/>
                                             </StackLayout.GestureRecognizers>
@@ -660,7 +689,7 @@
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="ic_RefundR.png">
                                             </Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBRefundRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="RefundRequest_Tapped" />
                                             </StackLayout.GestureRecognizers>
@@ -778,7 +807,7 @@
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="ic_menu_Tax_check.png">
                                         </Image>
-                                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZFormBundleStatus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBApplicationStatus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
                                         </StackLayout.GestureRecognizers>
@@ -835,7 +864,7 @@
                                         <Image Source="log_out">
 
                                         </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZLogout}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBLogOut}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="Logout_Tapped"/>
                                         </StackLayout.GestureRecognizers>

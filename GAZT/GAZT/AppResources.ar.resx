@@ -2181,7 +2181,13 @@
     <data name="ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended" xml:space="preserve">
     <value>عزيزي المكلف, الإقرار قيد المراجعة في الهيئة ولا يمكن تعديله</value>
   </data>
-        <data name="ZDearTaxpayerZakatSubmitMessage1" xml:space="preserve">     <value>عزيزي المكلف، طلب التسجيل في الزكاة رقم</value>   </data>    <data name="ZDearTaxpayerZakatSubmitMessage2" xml:space="preserve">     <value> الخاص بكم قيد المعالجة لدى الهيئة</value>   </data> 
+        <data name="ZDearTaxpayerZakatSubmitMessage1" xml:space="preserve">
+    <value>عزيزي المكلف، طلب التسجيل في الزكاة رقم</value>
+  </data>
+   <data name="ZDearTaxpayerZakatSubmitMessage2" xml:space="preserve">
+    <value> الخاص بكم قيد المعالجة لدى الهيئة</value>
+  </data>
+
     <data name="ZNA" xml:space="preserve">
     <value>لا ينطبق</value>
   </data>
@@ -3943,7 +3949,8 @@
      <value>يجب ان يكون حجم الملف اقل من 5 ميجا </value>
     </data>
     <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
-<value>1. يجب ان يكون حجم الملف اقل من 5 ميغابايت</value>     </data>
+<value>1. يجب ان يكون حجم الملف اقل من 5 ميغابايت</value>
+    </data>
     <data name="ZZZZVATRAttachmentNote2" xml:space="preserve">
     <value>2. يجب ان تكون صيغة الملف من ضمن: Doc,Docx,Jpg,PDF,xlsx,xls</value>
   </data>
@@ -4830,7 +4837,8 @@
     <value>تنشيط حساب ضريبة القيمة المضافة</value>
   </data>
     <data name="VATAmendAttachmentSizeError" xml:space="preserve">
- <value>يجب ان يكون حجم الملف اقل من 5 ميغابايت</value>      </data>
+ <value>يجب ان يكون حجم الملف اقل من 5 ميغابايت</value>
+     </data>
     <data name="VATAmendMobileNumberValidation" xml:space="preserve">
     <value>يجب أن يبدأ رقم الجوال بـ 009665</value>
   </data>
@@ -8610,6 +8618,61 @@
     <value>الالتزامات القادمة</value>
     <comment>Dashboard</comment>
   </data>
-
-
+    <data name="DBBills" xml:space="preserve">
+      <value>الفواتير</value>
+    </data>
+    <data name="DBRefundRequest" xml:space="preserve">
+      <value>طلبات الاسترداد</value>
+    </data>
+    <data name="DBApplicationStatus" xml:space="preserve">
+      <value>حالة الطلبات</value>
+    </data>
+    <data name="DBLogOut" xml:space="preserve">
+      <value>تسجيل الخروج</value>
+    </data>
+  <data name="DBSMZakatInstalmentPlan" xml:space="preserve">
+      <value>خطة التقسيط الزكاة</value>
+    </data>
+  <data name="DBSMIncomeTax" xml:space="preserve">
+      <value>خطة التقسيط ضريبة الدخل</value>
+    </data>
+  <data name="DBSMVATInstalmentPlan" xml:space="preserve">
+      <value>خطة التقسيط ضريبة القيمة المضافة</value>
+    </data>
+  <data name="DBSMZAKATObjection" xml:space="preserve">
+      <value>اعتراضات الزكاة</value>
+    </data>
+<data name="DBSMVATObjection" xml:space="preserve">
+      <value>اعتراضات ضريبة القيمة المضافة</value>
+    </data>
+  <data name="DBSMTaxpayerDetails" xml:space="preserve">
+      <value>تفاصيل الحساب</value>
+    </data>
+  <data name="DBSMOutlets" xml:space="preserve">
+      <value>الفروع المسجلة</value>
+    </data>
+  <data name="DBSMFinancialDetails" xml:space="preserve">
+      <value>التفاصيل المالية</value>
+    </data>
+  <data name="DBSMVATRegistrationDetails" xml:space="preserve">
+      <value>تفاصيل التسجيل في ضريبة القيمة المضافة</value>
+    </data>
+  <data name="DBSMAmend" xml:space="preserve">
+      <value>تعديل الحساب</value>
+    </data>
+  <data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
+      <value>تعديل تفاصيل التسجيل في ضريبة القيمة المضافة</value>
+    </data>
+  <data name="DBSMVATDeregistration" xml:space="preserve">
+      <value>إلغاء التسجيل في ضريبة القيمة المضافة</value>
+    </data>
+  <data name="DBSMTINDeregistration" xml:space="preserve">
+      <value>إيقاف الرقم المميز</value>
+    </data>
+  <data name="DBSMTaxEvasionReport" xml:space="preserve">
+      <value>تقديم بلاغ التهرب الضريبي</value>
+    </data>
+  <data name="DBSMChat" xml:space="preserve">
+      <value>المحادثة الفورية</value>
+    </data>
 </root>

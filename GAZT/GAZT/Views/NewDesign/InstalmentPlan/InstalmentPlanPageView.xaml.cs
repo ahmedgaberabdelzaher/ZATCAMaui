@@ -79,14 +79,14 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             //            viewModel.ReasonContinueBtnClicked();
 
 
-            if (selectedItem.ActiveOutletDecisionOptions == AppResources.ZakatInstalmetSelectTypeZakat)
+            if (selectedItem.ActiveOutletDecisionOptions == AppResources.DBSMZakatInstalmentPlan)
             {
                 viewModel.IsZakatSelected = true;
                 viewModel.IsIncomeTaxViewEnabled = false;
                 Preferences.Set("isZakat", true);
                 viewModel.ZakatBtnClicked();
             }
-            else if (selectedItem.ActiveOutletDecisionOptions == AppResources.ZakatInstalmetSelectTypeIncomeTax)
+            else if (selectedItem.ActiveOutletDecisionOptions == AppResources.DBSMIncomeTax)
             {
                 viewModel.IsZakatSelected = false;
                 viewModel.IsIncomeTaxViewEnabled = true;
