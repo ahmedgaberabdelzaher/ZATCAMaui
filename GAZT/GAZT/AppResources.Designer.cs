@@ -15293,5 +15293,119 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZUpcomingCommitments", resourceCulture);
             }
         }
+        
+        public static string DBBills {
+            get {
+                return ResourceManager.GetString("DBBills", resourceCulture);
+            }
+        }
+        
+        public static string DBRefundRequest {
+            get {
+                return ResourceManager.GetString("DBRefundRequest", resourceCulture);
+            }
+        }
+        
+        public static string DBApplicationStatus {
+            get {
+                return ResourceManager.GetString("DBApplicationStatus", resourceCulture);
+            }
+        }
+        
+        public static string DBLogOut {
+            get {
+                return ResourceManager.GetString("DBLogOut", resourceCulture);
+            }
+        }
+        
+        public static string DBSMZakatInstalmentPlan {
+            get {
+                return ResourceManager.GetString("DBSMZakatInstalmentPlan", resourceCulture);
+            }
+        }
+        
+        public static string DBSMIncomeTax {
+            get {
+                return ResourceManager.GetString("DBSMIncomeTax", resourceCulture);
+            }
+        }
+        
+        public static string DBSMVATInstalmentPlan {
+            get {
+                return ResourceManager.GetString("DBSMVATInstalmentPlan", resourceCulture);
+            }
+        }
+        
+        public static string DBSMZAKATObjection {
+            get {
+                return ResourceManager.GetString("DBSMZAKATObjection", resourceCulture);
+            }
+        }
+        
+        public static string DBSMVATObjection {
+            get {
+                return ResourceManager.GetString("DBSMVATObjection", resourceCulture);
+            }
+        }
+        
+        public static string DBSMTaxpayerDetails {
+            get {
+                return ResourceManager.GetString("DBSMTaxpayerDetails", resourceCulture);
+            }
+        }
+        
+        public static string DBSMOutlets {
+            get {
+                return ResourceManager.GetString("DBSMOutlets", resourceCulture);
+            }
+        }
+        
+        public static string DBSMFinancialDetails {
+            get {
+                return ResourceManager.GetString("DBSMFinancialDetails", resourceCulture);
+            }
+        }
+        
+        public static string DBSMVATRegistrationDetails {
+            get {
+                return ResourceManager.GetString("DBSMVATRegistrationDetails", resourceCulture);
+            }
+        }
+        
+        public static string DBSMAmend {
+            get {
+                return ResourceManager.GetString("DBSMAmend", resourceCulture);
+            }
+        }
+        
+        public static string DBSMAmendmentOfVATRegistration {
+            get {
+                return ResourceManager.GetString("DBSMAmendmentOfVATRegistration", resourceCulture);
+            }
+        }
+        
+        public static string DBSMVATDeregistration {
+            get {
+                return ResourceManager.GetString("DBSMVATDeregistration", resourceCulture);
+            }
+        }
+        
+        public static string DBSMTINDeregistration {
+            get {
+                return ResourceManager.GetString("DBSMTINDeregistration", resourceCulture);
+            }
+        }
+        
+        public static string DBSMTaxEvasionReport {
+            get {
+                return ResourceManager.GetString("DBSMTaxEvasionReport", resourceCulture);
+            }
+        }
+        
+        public static string DBSMChat {
+            get {
+                return ResourceManager.GetString("DBSMChat", resourceCulture);
+            }
+        }
     }
 }

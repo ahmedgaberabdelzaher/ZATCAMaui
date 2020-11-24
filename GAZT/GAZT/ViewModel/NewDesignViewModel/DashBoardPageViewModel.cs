@@ -316,7 +316,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public TaxRelationSetResult _selectedTaxTypeForFilterValue = null;
+        public TaxRelationSetResult _selectedTaxTypeForFilterValue = new TaxRelationSetResult();
         public TaxRelationSetResult SelectedTaxTypeForFilterValue
         {
             get
@@ -325,11 +325,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-
-                _selectedTaxTypeForFilterValue = value;
-                PopulateStatements(_selectedTaxTypeForFilterValue.TaxType, _selectedTaxTypeForFilterValue.StatementFilter, string.Empty);
-                
-                RaisePropertyChanged("SelectedTaxTypeForFilterValue");
+                if (value != null)
+                {
+                    _selectedTaxTypeForFilterValue = value;
+                    PopulateStatements(_selectedTaxTypeForFilterValue.TaxType, _selectedTaxTypeForFilterValue.StatementFilter, string.Empty);
+                    RaisePropertyChanged("SelectedTaxTypeForFilterValue");
+                }
             }
         }
         private string _selectedCommitmentFilterValue = string.Empty;
@@ -349,7 +350,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public TaxRelationSetResult _SelectedTaxTypeForFilter = null;
+        public TaxRelationSetResult _SelectedTaxTypeForFilter = new TaxRelationSetResult();
         public TaxRelationSetResult SelectedTaxTypeForFilter
         {
             get
@@ -358,11 +359,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-
-                _SelectedTaxTypeForFilter = value;
-                PopulateStatements(_SelectedTaxTypeForFilter.TaxType, _SelectedTaxTypeForFilter.StatementFilter, string.Empty);
-
-                RaisePropertyChanged("SelectedTaxTypeForFilter");
+                if (value != null)
+                {
+                    _SelectedTaxTypeForFilter = value;
+                    PopulateStatements(_SelectedTaxTypeForFilter.TaxType, _SelectedTaxTypeForFilter.StatementFilter, string.Empty);
+                    RaisePropertyChanged("SelectedTaxTypeForFilter");
+                }
             }
         }
 
@@ -1172,10 +1174,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //PopToRootPage();
                 });
             }
-            await Task.Run(() =>
-            {
+           
                 IsLoading = false;
-            });
         }
         public void PopualateCommittmentsInformation(string filterValue)
         {
@@ -1672,10 +1672,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
                     IsLoading = true;
-                });
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
@@ -1689,10 +1686,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100);
                 MessagingCenter.Send<Object>(this, "UpdateProgressBar");
 
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
             }
             catch (Exception ex)
             {
