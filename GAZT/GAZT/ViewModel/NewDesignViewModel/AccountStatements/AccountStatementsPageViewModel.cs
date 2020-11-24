@@ -341,7 +341,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         }
 
         public IList<ASResult> Items { get; private set; }
-        public List<ObservableGroupCollection<string, ASResult>> groupedData = null;
+        private List<ObservableGroupCollection<string, ASResult>> groupedData = null;
 
         public List<ObservableGroupCollection<string, ASResult>> GroupedData
         {
@@ -427,21 +427,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         Items = value.ToList();
 
-                        List<ObservableGroupCollection<string, ASResult>> groupedData;
+                        List<ObservableGroupCollection<string, ASResult>> agroupedData;
                         if (App.IsArabic)
                         {
-                            groupedData = Items.OrderBy(p => p.Bldat)
-                                .GroupBy(p => p.Bldat.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("ar")))
+                            agroupedData = Items.OrderBy(p => p.Bldat)
+                                .GroupBy(p => p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("ar")))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                         }
                         else
                         {
-                            groupedData = Items.OrderBy(p => p.Bldat)
-                                .GroupBy(p => p.Bldat.ToString("MMMM"))
+                            agroupedData = Items.OrderBy(p => p.Bldat)
+                                .GroupBy(p => p.Bldat?.ToString("MMMM"))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                         }
 
-                        GroupedData = groupedData;
+                        GroupedData = agroupedData;
                     }
                     _statementsLineItems = value;
                     RaisePropertyChanged("StatementsLineItems");
@@ -1153,16 +1153,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
-                {
+                
                     IsLoading = false;
-                });
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+               
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                _navigationService.GoBack();
+              
             }
             catch (Exception ex)
             {

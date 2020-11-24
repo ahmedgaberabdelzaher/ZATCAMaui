@@ -15239,5 +15239,59 @@ namespace EGAZT {
                 return ResourceManager.GetString("ASAccountStatementTheBalances", resourceCulture);
             }
         }
+        
+        public static string Objections {
+            get {
+                return ResourceManager.GetString("Objections", resourceCulture);
+            }
+        }
+        
+        public static string NDContractRelease {
+            get {
+                return ResourceManager.GetString("NDContractRelease", resourceCulture);
+            }
+        }
+        
+        public static string VatRegistration {
+            get {
+                return ResourceManager.GetString("VatRegistration", resourceCulture);
+            }
+        }
+        
+        public static string GeneralServices {
+            get {
+                return ResourceManager.GetString("GeneralServices", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrations {
+            get {
+                return ResourceManager.GetString("VATDeregistrations", resourceCulture);
+            }
+        }
+        
+        public static string InstallmentPlans {
+            get {
+                return ResourceManager.GetString("InstallmentPlans", resourceCulture);
+            }
+        }
+        
+        public static string ChangeVatFillingFrequency {
+            get {
+                return ResourceManager.GetString("ChangeVatFillingFrequency", resourceCulture);
+            }
+        }
+        
+        public static string ZZOverdueCommitments {
+            get {
+                return ResourceManager.GetString("ZZOverdueCommitments", resourceCulture);
+            }
+        }
+        
+        public static string ZZUpcomingCommitments {
+            get {
+                return ResourceManager.GetString("ZZUpcomingCommitments", resourceCulture);
+            }
+        }
     }
 }

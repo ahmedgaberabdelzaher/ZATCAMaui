@@ -18,7 +18,7 @@ namespace EGAZT.Models.AccountStatements
 
     public class GroupedAccountStatements : List<ASResult>
     {
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public string Month { get; set; }
         public GroupedAccountStatements(ASResult groupingItem, List<ASResult> groupingItems) : base()
         {
@@ -458,9 +458,9 @@ namespace EGAZT.Models.AccountStatements
         //FormatedAbrzu = date;
 
         [JsonIgnore]
-        private DateTime _Bldat;
+        private DateTime? _Bldat;
         [JsonProperty("Bldat")]
-        public DateTime Bldat
+        public DateTime? Bldat
         {
             get
             {
@@ -471,7 +471,7 @@ namespace EGAZT.Models.AccountStatements
                 if (_Bldat != null)
                 {
                     _Bldat = value;
-                    FormattedBldat = _Bldat.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     FormattedBldat = date;
@@ -486,10 +486,10 @@ namespace EGAZT.Models.AccountStatements
         public string FormattedBldat2 { get; set; }
 
         [JsonIgnore]
-        public DateTime _Bldat2 { get; set; }
+        public DateTime? _Bldat2 { get; set; }
 
         [JsonProperty("Bldat2")]
-        public DateTime Bldat2
+        public DateTime? Bldat2
         {
             get
             {
@@ -500,7 +500,7 @@ namespace EGAZT.Models.AccountStatements
                 if (_Bldat2 != null)
                 {
                     _Bldat2 = value;
-                    FormattedBldat2 = _Bldat2.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     FormattedBldat2 = date;
