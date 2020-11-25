@@ -979,7 +979,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 GetAccountStatements = Task.Run(async () =>
                 {
                     TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                    ASRevenueDropDownSet tempvalue=new ASRevenueDropDownSet();
+                    #region check rohith
+                    ASRevenueDropDownSet tempvalue =new ASRevenueDropDownSet();
                     if (TabIdentification.D.Direct == "X")
                     {
                          tempvalue = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("D");
@@ -998,6 +999,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
 
                     }
+                    #endregion
                     foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                         {
                             if (TabIdentification.D.Direct == "X")
