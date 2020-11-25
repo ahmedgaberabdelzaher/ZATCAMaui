@@ -868,7 +868,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public async void PopulateReturnTypeList()
+        public async Task PopulateReturnTypeList()
         {
             try
             {
@@ -913,10 +913,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     statementFilter = "08";
                 }
 
-                await Task.Run(() =>
-                {
                     IsLoading = true;
-                });
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType);
 
@@ -1013,20 +1010,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             return true;
         }
 
-        public async void PopulateASFilterData()
+        public async Task PopulateASFilterData()
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
 
                 TransactionTypeDropDownParent = new ASRevenueDropDownSet();
 
-                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet("10", string.Empty, "A");
 
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
 
                 if (AllTransactionFilters == null)
                 {
@@ -1056,6 +1048,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     await PopulateDataForTransactionTypes("I");
                 }
+
+                HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
+                    (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType);
+                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
 
                 IsOpeningBalanceVisible = false;
                 IsDownloadBtnVisile = false;
@@ -1173,10 +1169,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
-                await Task.Run(() =>
-                {
                     IsLoading = true;
-                });
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
@@ -1233,10 +1226,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsNoStatementsAvaiableVisible = true;
                 }
 
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
             }
             catch (Exception ex)
             {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using Xamarin.Forms;
@@ -27,17 +28,19 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             SetLTR();
             //SetPickerFont();
             ChangeArrowDirection();
-
-            try
+            Task.Run(async() =>
             {
-                viewModel.PopulateReturnTypeList();
-                viewModel.PopulateASFilterData();
-                viewModel.PopulateFiltersData();
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                   await viewModel.PopulateReturnTypeList();
+                   await viewModel.PopulateASFilterData();
+                   viewModel.PopulateFiltersData();
+                }
+                catch (Exception ex)
+                {
 
-            }
+                }
+            });
         }
 
         public void ChangeArrowDirection()

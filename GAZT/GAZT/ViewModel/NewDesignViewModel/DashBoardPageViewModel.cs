@@ -979,9 +979,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 GetAccountStatements = Task.Run(async () =>
                 {
                     TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                    HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+                    ASRevenueDropDownSet tempvalue=new ASRevenueDropDownSet();
+                    if (TabIdentification.D.Direct == "X")
+                    {
+                         tempvalue = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("D");
+                    }
 
-                        foreach(TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                    if (TabIdentification.D.Indirect == "X"&&tempvalue?.D?.Results?.Count()>0)
+                    {
+                         tempvalue = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("I");
+                    }
+                    try
+                    {
+                        HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(tempvalue.D?.Results[0]?.StatementFilter, string.Empty, tempvalue.D?.Results[0]?.TaxType);
+                    }
+                    catch
+                    {
+                        HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
+
+                    }
+                    foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                         {
                             if (TabIdentification.D.Direct == "X")
                             {
