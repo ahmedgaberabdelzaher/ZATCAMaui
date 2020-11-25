@@ -104,6 +104,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
+		<EmbeddedResource Remove="ViewModel\NewDesignViewModel\DashBoardPageViewModel\DashBoardPageView.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Update="AppResources.ar.Designer.cs">
@@ -210,9 +211,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\Common\YesNoAlertPopupView.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
-			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\DashBoardPages\InfoPopUpPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>

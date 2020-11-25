@@ -39,38 +39,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
-                if (viewModel != null)
-                {
-                    viewModel.MenuViewVisible = false;
-                    viewModel.LiveChatVisible = false;
-                    viewModel.AccountStatementVisible = false;
-                    viewModel.TaxpayerName = string.Empty;
-                    viewModel.HomeViewVisible = true;
-                    viewModel.IsVatRegistrationTileVisible = false;
-                }
-
-                if (App.TP != null)
-                    viewModel.TaxPayerProfile = App.TP;
-
-                if (App.IsArabic)
-                {
-                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText; ;
-                    viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
-                }
-                else
-                {
-                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText;
-                    viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
-                }
-
-                viewModel.MenuViewVisible = false;
-                viewModel.HomeViewVisible = true;
             }
             catch (Exception ex)
             {
 
             }
         }
+
+        private void btnCommitmentsPickerClicked(object sender, System.EventArgs e)
+        {
+            CommitmentsPicker.IsOpen = true;
+        }
+
         public void ChangeArrowDirection()
         {
             if (App.IsArabic)
@@ -107,7 +87,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 Device.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
             });
         }
-        public async void getYesCommandToLogout()
+        public void getYesCommandToLogout()
         {
             try
             {
@@ -140,7 +120,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             if (viewModel != null)
             {
-                viewModel.IsLoading = false;
+                //viewModel.IsLoading = false;
                 // viewModel.MenuViewVisible = false;
                 // viewModel.HomeViewVisible = true;
                 //viewModel.StackMenuColor = Color.White;
@@ -191,13 +171,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             viewModel.IsVatRegistrationTileVisible = true;
                             viewModel.IsRegistrationDetailsTileVisible = true;
                         }
-                        else if(App.LoginDataRetrieved.ZkReg == "U")
+                        else if (App.LoginDataRetrieved.ZkReg == "U")
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = true;
                             viewModel.IsRegistrationDetailsTileVisible = false;
 
                         }
-                        else if(App.LoginDataRetrieved.ZkReg == "N")
+                        else if (App.LoginDataRetrieved.ZkReg == "N")
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = false;
                             viewModel.IsRegistrationDetailsTileVisible = false;
@@ -226,7 +206,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             }
 
                         }
-                        else if(App.LoginDataRetrieved.VtSignup == "X")
+                        else if (App.LoginDataRetrieved.VtSignup == "X")
                         {
                             if (App.LoginDataRetrieved.VtReg == string.Empty)
                             {
@@ -236,22 +216,23 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             }
                         }
 
-                        
-                        if((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
+
+                        if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
                         {
                             viewModel.IfnotRegInVATAndZakat = false;
                         }
-                        if(App.LoginDataRetrieved.VtReg == "X")
+                        if (App.LoginDataRetrieved.VtReg == "X")
                         {
                             viewModel.IfnotRegInVATAndZakat = true;
                             viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                             viewModel.IfSignUpnNotRegInVAT = false;
                         }
-                        else if(App.LoginDataRetrieved.VtReg == string.Empty)
+                        else if (App.LoginDataRetrieved.VtReg == string.Empty)
                         {
                             viewModel.IfSignUpnNotRegInVATShowVATServie = false;
                             viewModel.IfSignUpnNotRegInVAT = true;
-                        }else if(App.LoginDataRetrieved.ZkReg == "X")
+                        }
+                        else if (App.LoginDataRetrieved.ZkReg == "X")
                         {
                             viewModel.IfSignUpnNotRegInVAT = true;
                         }
@@ -303,50 +284,46 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-
-                });
+                viewModel.IsLoading = true;
 
                 await viewModel.LoadDashboardData();
 
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                   viewModel.BillCount = string.Empty;
-                   viewModel.BillsAndReturnsCommitments = null;
+                    viewModel.BillCount = string.Empty;
+                    viewModel.BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
 
-                   viewModel.PopulateBillsInformation();
-                   viewModel.PopulateReturnsInformation();
-                   viewModel.PopualateCommittmentsInformation();
-                   try
-                   {
-                       if (viewModel.BillsAndReturnsCommitments != null)
-                       {
-                           if (viewModel.BillsAndReturnsCommitments.Count > 0)
-                           {
-                               CollectionView_Commitment.ScrollTo(0);
-                           }
+                    viewModel.PopulateBillsInformation();
+                    viewModel.PopulateReturnsInformation();
+                    viewModel.PopualateCommittmentsInformation();
 
-                       }
-                   }
-                   catch(Exception ex)
-                   {
-                   }
-                   
-                   viewModel.IsLoading = false;
+                    // viewModel.SelectedCommitmentFilterValue = AppResources.ZZOverdueCommitments;
 
-               });
+                    try
+                    {
+                        if (viewModel.BillsAndReturnsCommitments != null)
+                        {
+                            if (viewModel.BillsAndReturnsCommitments.Count > 0)
+                            {
+                                CollectionView_Commitment.ScrollTo(0);
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                    viewModel.IsLoading = false;
+
+                });
 
                 // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)
             {
-                await Task.Run(() =>
-                {
                     viewModel.IsLoading = false;
-
-                });
             }
         }
 
@@ -360,7 +337,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #endregion
 
-        
+
         private void OnHomeTapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnHomeTapped", "Home Page");
@@ -386,7 +363,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             //if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
-            if(true)
+            if (true)
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnMenuTapped", AppResources.ZZZMenu + " Page");
 
@@ -410,11 +387,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private async void TappedOnMyBills(object sender, EventArgs e)
         {
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyBills", AppResources.MyBills + " Page");
@@ -432,11 +405,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void TappedOnMyReturns(object sender, EventArgs e)
         {
             //App.DisplayProgressView();
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnMyReturns", AppResources.Returns + " Page");
@@ -456,11 +425,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             ReturnTypeAndCorrepsondingCount BModel = (ReturnTypeAndCorrepsondingCount)arrowImage.BindingContext;
             if (BModel.ReturnTypeName == AppResources.Submitted)
             {
-                await Task.Run(() =>
-                {
                     viewModel.IsLoading = true;
-
-                });
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Submitted Return from Dashboard");
@@ -471,11 +436,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
             if (BModel.ReturnTypeName == AppResources.UnSubmitted)
             {
-                await Task.Run(() =>
-                {
                     viewModel.IsLoading = true;
-
-                });
                 Device.BeginInvokeOnMainThread(() =>
                 {
 
@@ -487,11 +448,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
             if (BModel.ReturnTypeName == AppResources.OverDue)
             {
-                await Task.Run(() =>
-                {
                     viewModel.IsLoading = true;
-
-                });
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TappedOnSingleReturns", "Overdue Return from Dashboard");
@@ -507,11 +464,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             // App.DisplayProgressView();
 
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "PaidBills_Tapped", "Paid Bills from Dashboard");
@@ -585,11 +538,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void partiallyClicked(object sender, EventArgs e)
         {
             //  App.DisplayProgressView();
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "PaidBills_Tapped", "Partially Paid Bills from Dashboard");
@@ -602,11 +551,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void unPaidClicked(object sender, EventArgs e)
         {
             //   App.DisplayProgressView();
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
 
@@ -645,7 +590,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 //}
                 PopupNavigation.Instance.PushAsync(new LogoutPageView(AppResources.LogoutConfirmationMessage));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -653,11 +598,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void Label_MyBills(object sender, EventArgs e)
         {
             //     App.DisplayProgressView();
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "MyBills_Tapped", "All Bills from Dashboard");
@@ -672,15 +613,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private async void Label_MyRetuns_Tapped(object sender, EventArgs e)
         {
-            //       App.DisplayProgressView();   await Task.Run(() =>
 
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "MyRetuns_Tapped", "Returns eService");
 
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
@@ -691,11 +627,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void Label_MyProfile_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "MyProfile_Tapped", "My Profile eService");
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.TaxpayerProfilePageView);
@@ -793,9 +725,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
                 viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
-                viewModel.PaidString = AppResources.Paid+" "+viewModel.PaidBillCount;
-                viewModel.UnPaidString = AppResources.UnPaid+" "+viewModel.UnPaidBillCount;
-                viewModel.PartiallyPaidString = AppResources.Partiallynewui+" "+viewModel.PartiallyPaidBillCount;
+                viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
+                viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
+                viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
                 viewModel.TotalString = AppResources.NDTotalNumberOfBills;
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 180;
@@ -836,11 +768,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Inbox_Tapped", "Inbox eService");
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
@@ -851,11 +779,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATLookUp_Tapped", "VAT Registration Verification eService");
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
@@ -866,11 +790,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void TaxpayerCertificate_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxpayerCertificate_Tapped", "My Certificates eService");
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
@@ -881,11 +801,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
+            
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -896,12 +812,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void TinRegistrationDetails_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
-
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TinRegistrationDetails_Tapped", "Registration Details");
 
             Device.BeginInvokeOnMainThread(() =>
@@ -915,11 +825,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void VatRegistrationTile_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VatRegistrationTile_Tapped", "VAT Registration eService");
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
@@ -927,20 +833,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
-        //private async void Vat_Registration_Details_Tapped(object sender, EventArgs e)
-        //{
-        //    await Task.Run(() =>
-        //    {
-        //        viewModel.IsLoading = true;
-
-        //    });
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //         viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails);
-
-        //    });
-
-        //}
+        
 
         private async void ZakatInstalmentPlan_Tapped(object sender, EventArgs e)
         {
@@ -988,12 +881,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private async void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
-            //await Task.Run(() =>
-            //{
-            //    viewModel.IsLoading = true;
-
-            //});
-
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRefundRequest_Tapped", "VAT Refund Request eService");
 
             Device.BeginInvokeOnMainThread(() =>
@@ -1031,11 +918,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxEvasion_Tapped", "Tax Evasion eService");
 
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 // viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
@@ -1050,11 +933,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnVATNowTapped", "VAT Registration eService");
             App.VATType = PageExecutionType.Register;
-            await Task.Run(() =>
-            {
                 viewModel.IsLoading = true;
-
-            });
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
@@ -1072,11 +951,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void OnZakatNowTapped(object sender, EventArgs e)
         {
-            await Task.Run(() => viewModel.IsLoading = true);
+            viewModel.IsLoading = true;
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnZakatNowTapped", "Establishment Registration eService");
             Device.BeginInvokeOnMainThread(() =>
             {
-                if (App.LoginDataRetrieved.ZkReg=="U")
+                if (App.LoginDataRetrieved.ZkReg == "U")
                 {
                     App.ZAKATType = PageExecutionType.Update;
                     viewModel._navigationService.NavigateTo(App.EstablishmentAmendUpdatePage);
@@ -1098,7 +977,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private async void VATAment_Tapped(object sender, EventArgs e)
         {
-            await Task.Run(() => viewModel.IsLoading = true);
+            viewModel.IsLoading = true;
 
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATAmend_Tapped", "VAT Amendment eService");
 
@@ -1111,7 +990,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void VATReactivation_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATReactivation_Tapped", "VAT Reactivation eService");
-            await Task.Run(() => viewModel.IsLoading = true);
+            viewModel.IsLoading = true;
             App.VATType = PageExecutionType.Reactivation;
             Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATAmendReactivationPageView));
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
@@ -1120,7 +999,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void VATRegistration_Details_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRegistration_Details_Tapped", "VAT Registration Details eService");
-            await Task.Run(() => viewModel.IsLoading = true);
+            viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationDisplayDetails));
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }

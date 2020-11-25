@@ -63,9 +63,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private Color _menuIndicatorColor = Color.White;
         private Color _tabbarColor = Color.DarkGray;
         private Color _stackMenuColor = Color.White;
-        private string _paidbillCount=string.Empty;
-        private string _partiallypaidbillCount=string.Empty;
-        private string _unPaidbillCount= string.Empty;
+        private string _paidbillCount = string.Empty;
+        private string _partiallypaidbillCount = string.Empty;
+        private string _unPaidbillCount = string.Empty;
         private string _NextCommitmentsString = AppResources.ZZZZNextCommitments;
         private string _ReturnString = AppResources.NDReturns;
         private string _BillString = AppResources.Bills;
@@ -75,12 +75,143 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private string _TotalString = AppResources.NDTotalNumberOfBills;
         private Dashboard DashboardData = null;
         private CalendarEventCollection _CommittmentsSchedule = null;
-        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
-        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _Bills = null;
-        private ObservableCollection<ReturnTypeAndCorrepsondingCount> _SegregatedReturnTypesAndCorrepsondingCounts = null;
-        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _Returns = null;
-        private ObservableCollection<eServiceInfo> _eServices = null;
-        private ObservableCollection<TaxRelationSetResult> Tax = null;
+
+
+        #region Lists
+        private List<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
+        private List<OverduePaymentAndUnSubmittedReturn> _Bills = null;
+        private List<ReturnTypeAndCorrepsondingCount> _SegregatedReturnTypesAndCorrepsondingCounts = null;
+        private List<OverduePaymentAndUnSubmittedReturn> _Returns = null;
+        private List<eServiceInfo> _eServices = null;
+        private List<TaxRelationSetResult> Tax = null;
+        private List<TaxRelationSetResult> _taxTypeFilter = null;
+        //private List<string> _CommitmentsListFilter = null;
+        private List<MyBillsChartModel> _MyBillsChartModels = null;
+
+
+        public List<OverduePaymentAndUnSubmittedReturn> BillsAndReturnsCommitments
+        {
+            get
+            {
+                return this._BillsAndReturnsCommitments;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this._BillsAndReturnsCommitments = value;
+                    RaisePropertyChanged("BillsAndReturnsCommitments");
+                }
+
+            }
+        }
+        public List<TaxRelationSetResult> TaxTypeFilter
+        {
+            get
+            {
+                return _taxTypeFilter;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    value = new List<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
+                    _taxTypeFilter = value;
+                    this.RaisePropertyChanged("TaxTypeFilter");
+                }
+            }
+        }
+        public List<MyBillsChartModel> MyBillsChartModels
+        {
+            get
+            {
+                return this._MyBillsChartModels;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this._MyBillsChartModels = value;
+                    this.RaisePropertyChanged("MyBillsChartModels");
+                }
+            }
+        }
+        public List<OverduePaymentAndUnSubmittedReturn> Bills
+        {
+            get
+            {
+                return this._Bills;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this._Bills = value;
+                    this.RaisePropertyChanged("Bills");
+                }
+            }
+        }
+        public List<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypesAndCorrepsondingCounts
+        {
+            get
+            {
+                return this._SegregatedReturnTypesAndCorrepsondingCounts;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this._SegregatedReturnTypesAndCorrepsondingCounts = value;
+                    this.RaisePropertyChanged("SegregatedReturnTypesAndCorrepsondingCounts");
+                }
+            }
+        }
+        public List<OverduePaymentAndUnSubmittedReturn> Returns
+        {
+            get
+            {
+                return this._Returns;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this._Returns = value;
+                    this.RaisePropertyChanged("Returns");
+                }
+            }
+        }
+        public List<eServiceInfo> eServicesAvailableToTheTP
+        {
+            get
+            {
+                return this._eServices;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this._eServices = value;
+                    this.RaisePropertyChanged("eServicesAvailableToTheTP");
+                }
+            }
+        }
+        public List<string> CommitmentsListFilter
+        {
+            get
+            {
+                return new List<string> { AppResources.ZZOverdueCommitments, AppResources.ZZUpcomingCommitments };
+            }
+            //set
+            //{
+            //    if (value != null)
+            //    {
+            //        _CommitmentsListFilter = value;
+            //        this.RaisePropertyChanged("CommitmentsListFilter");
+            //    }
+            //}
+        }
+        #endregion
 
         #endregion
 
@@ -228,36 +359,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("CommittmentsSchedule");
             }
         }
-        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> BillsAndReturnsCommitments
-        {
-            get
-            {
-                return this._BillsAndReturnsCommitments;
-            }
-            set
-            {
-                this._BillsAndReturnsCommitments = value;
-                this.RaisePropertyChanged("BillsAndReturnsCommitments");
-            }
-        }
-
-        private ObservableCollection<TaxRelationSetResult> _taxTypeFilter = null;
-        public ObservableCollection<TaxRelationSetResult> TaxTypeFilter
-        {
-            get
-            {
-                return _taxTypeFilter;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    value = new ObservableCollection<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
-                    _taxTypeFilter = value;
-                    this.RaisePropertyChanged("TaxTypeFilter");
-                }
-            }
-        }
 
         private double _debitAmountEndProgressBar = 0;
         public double DebitAmountEndProgressBar
@@ -305,7 +406,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _selectedTaxTypeForFilterValue = value;
                 PopulateStatements(_selectedTaxTypeForFilterValue.TaxType, _selectedTaxTypeForFilterValue.StatementFilter, string.Empty);
-                
+
                 RaisePropertyChanged("SelectedTaxTypeForFilterValue");
             }
         }
@@ -383,19 +484,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private ObservableCollection<MyBillsChartModel> _MyBillsChartModels = null;
-        public ObservableCollection<MyBillsChartModel> MyBillsChartModels
-        {
-            get
-            {
-                return this._MyBillsChartModels;
-            }
-            set
-            {
-                this._MyBillsChartModels = value;
-                this.RaisePropertyChanged("MyBillsChartModels");
-            }
-        }
 
         private string _billCount;
         public string BillCount
@@ -423,7 +511,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("PaidBillCount");
             }
         }
-        
+
         public string PartiallyPaidBillCount
         {
             get
@@ -576,54 +664,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Bills
-        {
-            get
-            {
-                return this._Bills;
-            }
-            set
-            {
-                this._Bills = value;
-                this.RaisePropertyChanged("Bills");
-            }
-        }
-        public ObservableCollection<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypesAndCorrepsondingCounts
-        {
-            get
-            {
-                return this._SegregatedReturnTypesAndCorrepsondingCounts;
-            }
-            set
-            {
-                this._SegregatedReturnTypesAndCorrepsondingCounts = value;
-                this.RaisePropertyChanged("SegregatedReturnTypesAndCorrepsondingCounts");
-            }
-        }
-        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Returns
-        {
-            get
-            {
-                return this._Returns;
-            }
-            set
-            {
-                this._Returns = value;
-                this.RaisePropertyChanged("Returns");
-            }
-        }
-        public ObservableCollection<eServiceInfo> eServicesAvailableToTheTP
-        {
-            get
-            {
-                return this._eServices;
-            }
-            set
-            {
-                this._eServices = value;
-                this.RaisePropertyChanged("eServicesAvailableToTheTP");
-            }
-        }
+        
         public GAZT.Models.TaxPayerProfile TaxPayerProfile
         {
             get
@@ -917,135 +958,144 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("AccStmtnCreditAmount");
             }
         }
+        private string _selectedCommitmentFilterValue=null;
 
+        public string SelectedCommitmentFilterValue
+        {
+            get
+            {
+                return _selectedCommitmentFilterValue;
+            }
+            set
+            {
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _selectedCommitmentFilterValue = value;
+                    PopualateCommittmentsInformation();
+                    RaisePropertyChanged("SelectedCommitmentFilterValue");
+
+                }
+
+            }
+        }
         #endregion
 
         #region Constructor
         public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            MenuViewVisible = false;
+            LiveChatVisible = false;
+            AccountStatementVisible = false;
+            TaxpayerName = string.Empty;
+            HomeViewVisible = true;
+            IsVatRegistrationTileVisible = false;
+            if (App.TP != null)
+                 TaxPayerProfile = App.TP;
+
+            if (App.IsArabic)
+            {
+                //  TranslateText = AppResources.ZZZSetLanguageText; ;
+                 TranslateText = AppResources.ZZZChangetoLanguage;
+            }
+            else
+            {
+                //  TranslateText = AppResources.ZZZSetLanguageText;
+                 TranslateText = AppResources.ZZZChangetoLanguage;
+            }
+
+             MenuViewVisible = false;
+             HomeViewVisible = true;
         }
         #endregion
 
         #region Method
         public async Task LoadDashboardData()
         {
-            await Task.Delay(3000);
-
-            Task GetDashboardDataTask = null;
-            Task GetBillsTask = null;
-            Task GetReturnsTask = null;
-            Task GetAccountStatements = null;
+            //CommitmentsListFilter = new List<string> { AppResources.ZZOverdueCommitments, AppResources.ZZUpcomingCommitments };
+            SelectedCommitmentFilterValue = AppResources.ZZOverdueCommitments;
 
             if (App.TP != null)
             {
-                if(App.TP.TypeChk=="X")
+                if (App.TP.TypeChk == "X")
                 {
-                    TaxpayerName = AppResources.Hello + " " +  App.TP.NameFirst + " " + App.TP.NameLast;
+                    TaxpayerName = AppResources.Hello + " " + App.TP.NameFirst + " " + App.TP.NameLast;
                 }
                 else
                 {
                     TaxpayerName = AppResources.Hello + " " + App.TP.NameOrg1;
                 }
 
-                GetDashboardDataTask = Task.Run(() =>
-                {
+                
                     DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-                });
+                
 
-                GetBillsTask = Task.Run(async () =>
-                {
-                    Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+                    var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
                     List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                     foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
                     {
-                        Bills.Add(ee);
+                    temp1.Add(ee);
                     }
-                    //Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
+                    Bills = temp1;
+                    //Bills = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
                     System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
-                });
 
-                GetReturnsTask = Task.Run(async () =>
-                {
-                    Returns = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+                    var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
                     List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                     foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
                     {
-                        Returns.Add(ee);
+                        temp2.Add(ee);
                     }
-                    //Returns = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempReturns);
+                    Returns = temp2;
+
+                    //Returns = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempReturns);
                     System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
-                });
-
-                GetAccountStatements = Task.Run(async () =>
-                {
                     TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
-                    #region check rohith
-                    ASRevenueDropDownSet tempvalue =new ASRevenueDropDownSet();
-                    if (TabIdentification.D.Direct == "X")
-                    {
-                         tempvalue = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("D");
-                    }
+                    HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
 
-                    if (TabIdentification.D.Indirect == "X"&&tempvalue?.D?.Results?.Count()>0)
-                    {
-                         tempvalue = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet("I");
-                    }
-                    try
-                    {
-                        HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(tempvalue.D?.Results[0]?.StatementFilter, string.Empty, tempvalue.D?.Results[0]?.TaxType);
-                    }
-                    catch
-                    {
-                        HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(string.Empty, string.Empty, string.Empty);
-
-                    }
-                    #endregion
                     foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                    {
+                        if (TabIdentification.D.Direct == "X")
                         {
-                            if (TabIdentification.D.Direct == "X")
+                            if (taxRelationSetResult.StatementFilter == "01")
                             {
-                                if (taxRelationSetResult.StatementFilter == "01")
-                                {
-                                    taxRelationSetResult.DisplayId = 01;
-                                }
-
-                                if (taxRelationSetResult.StatementFilter == "02")
-                                {
-                                    taxRelationSetResult.DisplayId = 02;
-                                }
-
-                                if (taxRelationSetResult.StatementFilter == "03")
-                                {
-                                    taxRelationSetResult.DisplayId = 03;
-                                }
+                                taxRelationSetResult.DisplayId = 01;
                             }
 
-                            if (TabIdentification.D.Indirect == "X")
+                            if (taxRelationSetResult.StatementFilter == "02")
                             {
-                                if (taxRelationSetResult.StatementFilter == "06")
-                                {
-                                    taxRelationSetResult.DisplayId = 06;
-                                }
+                                taxRelationSetResult.DisplayId = 02;
+                            }
 
-                                if (taxRelationSetResult.StatementFilter == "07")
-                                {
-                                    taxRelationSetResult.DisplayId = 07;
-                                }
-
-                                if (taxRelationSetResult.StatementFilter == "09")
-                                {
-                                    taxRelationSetResult.DisplayId = 09;
-                                }
+                            if (taxRelationSetResult.StatementFilter == "03")
+                            {
+                                taxRelationSetResult.DisplayId = 03;
                             }
                         }
 
-                        if(TaxTypeFilter == null)
+                        if (TabIdentification.D.Indirect == "X")
                         {
-                            TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>();
-                        }
+                            if (taxRelationSetResult.StatementFilter == "06")
+                            {
+                                taxRelationSetResult.DisplayId = 06;
+                            }
 
-                        TaxTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
-                        SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
+                            if (taxRelationSetResult.StatementFilter == "07")
+                            {
+                                taxRelationSetResult.DisplayId = 07;
+                            }
+
+                            if (taxRelationSetResult.StatementFilter == "09")
+                            {
+                                taxRelationSetResult.DisplayId = 09;
+                            }
+                        }
+                    }
+
+                        TaxTypeFilter = new List<TaxRelationSetResult>();
+
+                    TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+                    SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
 
                     //foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
                     //{
@@ -1066,11 +1116,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     TotalAmountProgressBar = DebitAmountEndProgressBar + CreditAmountStartProgressBar;
                     MessagingCenter.Send<Object>(this, "UpdateProgressBar");
-                });
             }
             try
             {
-                await Task.WhenAll(GetDashboardDataTask, GetBillsTask, GetReturnsTask);
                 //await Task.Delay(2000);
                 //PopualateCommittmentsInformation();
             }
@@ -1137,20 +1185,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //PopToRootPage();
                 });
             }
-            await Task.Run(() =>
-            {
                 IsLoading = false;
-            });
         }
+
+
         public void PopualateCommittmentsInformation()
         {
             try
             {
-                List<OverduePaymentAndUnSubmittedReturn> OverduePaymentsAndUnSubmittedReturns = new List<OverduePaymentAndUnSubmittedReturn>();
 
-                if (BillsAndReturnsCommitments == null)
-                    BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+                //if (BillsAndReturnsCommitments == null)
+                //    BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>();
 
+                var BillsAndReturnsCommitmentsTemp = new List<OverduePaymentAndUnSubmittedReturn>();
                 // Create events
                 foreach (var Bill in Bills)
                 {
@@ -1158,24 +1205,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Bill.IsPaymentOverdue = true;
                     Bill.ColorCode = Color.FromHex("#AA0C19");
 
-                    BillsAndReturnsCommitments.Add(Bill);
+                    BillsAndReturnsCommitmentsTemp.Add(Bill);
                 }
                 foreach (var UnsubmittedReturn in Returns)
                 {
                     UnsubmittedReturn.IsUnSubmittedReturn = true;
                     UnsubmittedReturn.IsPaymentOverdue = false;
                     UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
-                    BillsAndReturnsCommitments.Add(UnsubmittedReturn);
+                    BillsAndReturnsCommitmentsTemp.Add(UnsubmittedReturn);
                 }
-
+                
                 if (BillsAndReturnsCommitments != null)
                 {
                     DateTime Today = DateTime.Now;
                     var BillsAndReturnsCommitmentsLocal = new List<OverduePaymentAndUnSubmittedReturn>();
-                    var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
+                    var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
                     try
                     {
 
+
+                            /*foreach (var item in CommitmentsListFilter)
+                            {*/
+
+                            if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
+                            {
+                                BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) <= 0).ToList();
+
+                            }
+                            else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
+                            {
+                                BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) > 0).ToList();
+
+                            }
+                            // }
 
                         if (BillsAndReturnsCommitmentsOverdurItems != null && BillsAndReturnsCommitmentsOverdurItems.Count > 0)
                         {
@@ -1195,44 +1257,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (BillsAndReturnsCommitmentsLocal.Count == 4)
                         {
-                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitments.OrderBy(a => a.DueDateDateTime).Take(4).ToList();
+                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsTemp.OrderBy(a => a.DueDateDateTime).Take(4).ToList();
                         }
                         else
                         {
-                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitments.OrderBy(a => a.DueDateDateTime).Take(5).ToList();
+                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsTemp.OrderBy(a => a.DueDateDateTime).Take(5).ToList();
                         }
-                        if (BillsAndReturnsCommitments.Count > 3)
+                        if (BillsAndReturnsCommitmentsTemp.Count > 3)
                         {
-                            if (BillsAndReturnsCommitments[2].DueDateDateTime.Date == BillsAndReturnsCommitments[3].DueDateDateTime.Date)
+                            if (BillsAndReturnsCommitmentsTemp[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsTemp[3].DueDateDateTime.Date)
                             {
-                                if (BillsAndReturnsCommitments.Count > 4)
+                                if (BillsAndReturnsCommitmentsTemp.Count > 4)
                                 {
-                                    if (BillsAndReturnsCommitments[2].DueDateDateTime.Date == BillsAndReturnsCommitments[4].DueDateDateTime.Date)
+                                    if (BillsAndReturnsCommitmentsTemp[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsTemp[4].DueDateDateTime.Date)
                                     {
                                     }
                                     else
                                     {
-                                        BillsAndReturnsCommitments.RemoveAt(4);
+                                        BillsAndReturnsCommitmentsTemp.RemoveAt(4);
                                     }
                                 }
                             }
                             else
                             {
-                                if (BillsAndReturnsCommitments.Count > 3)
+                                if (BillsAndReturnsCommitmentsTemp.Count > 3)
                                 {
-                                    BillsAndReturnsCommitments.RemoveAt(3);
+                                    BillsAndReturnsCommitmentsTemp.RemoveAt(3);
                                 }
-                                if (BillsAndReturnsCommitments.Count > 3)
+                                if (BillsAndReturnsCommitmentsTemp.Count > 3)
                                 {
-                                    BillsAndReturnsCommitments.RemoveAt(3);
+                                    BillsAndReturnsCommitmentsTemp.RemoveAt(3);
                                 }
                             }
                         }
                     }
 
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(i => DateTime.Parse(i.DueDate)).ToList();
+                    BillsAndReturnsCommitmentsTemp.Clear();
+                    foreach (var item in BillsAndReturnsCommitmentsLocal)
+                    {
 
-                    BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
+                        BillsAndReturnsCommitmentsTemp.Add(item);
+                    }
+                    BillsAndReturnsCommitments = BillsAndReturnsCommitmentsTemp;
+                    // BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
                     if (BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
                     {
                         SetNoCommitmentsAvailableLabelVisibility = false;
@@ -1350,7 +1418,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //        PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
 
                     //        SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
-                    //        MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
+                    //        MyBillsChartModels = new List<MyBillsChartModel>();
 
                     //        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
                     //        BillCount = PaidBillCountAndAmount.BillCount.ToString();
@@ -1370,6 +1438,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     //}
                     //Partially Paid Bills
+                    var MyBillsChartModelsTemp = new List<MyBillsChartModel>();
+
                     if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
                     {
                         BillTypeCorrepsondingCountAndAmount PartiallyPaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
@@ -1398,9 +1468,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         PartiallyPaidBillCountAndAmount.BillTypeName = AppResources.Partial;
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(PartiallyPaidBillCountAndAmount);
-                        MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
 
-                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
+                        MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
                         BillCount = PartiallyPaidBillCountAndAmount.BillCount.ToString();
                         // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PartiallyPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(227, 152, 0));
@@ -1438,7 +1507,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(UnPaidBillCountAndAmount);
 
-                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#EC0000") });
+                        MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#EC0000") });
                         BillCount = UnPaidBillCountAndAmount.BillCount.ToString();
                         // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(UnPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(236, 0, 0));
@@ -1447,7 +1516,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         UnPaidBillCount = BillCount;
 
                     }
-
+                    MyBillsChartModels = MyBillsChartModelsTemp;
                     if (Colors == null)
                         Colors = new ChartColorCollection();
 
@@ -1455,9 +1524,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     BillCount = iBillsCount.ToString();
 
-                    PaidString = AppResources.Paid+" "+PaidBillCount;
-                    PartiallyPaidString = AppResources.Partiallynewui+" "+PartiallyPaidBillCount ;
-                    UnPaidString = AppResources.UnPaid+" "+UnPaidBillCount;
+                    PaidString = AppResources.Paid + " " + PaidBillCount;
+                    PartiallyPaidString = AppResources.Partiallynewui + " " + PartiallyPaidBillCount;
+                    UnPaidString = AppResources.UnPaid + " " + UnPaidBillCount;
 
                 }
             }
@@ -1473,7 +1542,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void PopulateReturnsInformation()
         {
-            ObservableCollection<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypeAndCorrepsondingCount = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
+            List<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypeAndCorrepsondingCount = new List<ReturnTypeAndCorrepsondingCount>();
             try
             {
                 if (DashboardData != null)
@@ -1551,8 +1620,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-                        if (SegregatedReturnTypesAndCorrepsondingCounts == null)
-                            SegregatedReturnTypesAndCorrepsondingCounts = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
+                        if (SegregatedReturnTypesAndCorrepsondingCounts != null)
+                            SegregatedReturnTypesAndCorrepsondingCounts.Clear();
 
                         SegregatedReturnTypesAndCorrepsondingCounts = SegregatedReturnTypeAndCorrepsondingCount;
                     }
@@ -1565,7 +1634,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void PopulateeServicesApplicableToTheTaxPayer()
         {
             //Call the API to get the eSevrices applicable to the TP
-            eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
+            var eServicesAvailableToTheTPTemp = new List<eServiceInfo>();
+
+            if (eServicesAvailableToTheTP != null)
+                eServicesAvailableToTheTP.Clear();
             if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
             {
                 UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
@@ -1575,11 +1647,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
                     {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
+                        eServicesAvailableToTheTPTemp.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
                     }
                     if (ItemType == "03" || ItemType == "13")
                     {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                        eServicesAvailableToTheTPTemp.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
                     }
                 }
             }
@@ -1619,10 +1691,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
                     IsLoading = true;
-                });
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType);
 
@@ -1636,17 +1705,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 CreditAmountStartProgressBar = ((startCreditProgressBar / totalBalance) * 100);
                 MessagingCenter.Send<Object>(this, "UpdateProgressBar");
 
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
             }
             catch (Exception ex)
             {
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
             }
         }
 
@@ -1673,11 +1736,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async Task LogOut()
         {
-            await Task.Run(() =>
-            {
                 // App.DisplayProgressView();
                 IsLoading = true;
-            });
             if (App.TP != null)
                 App.TP = null;
             if (App.PreviousIsArabic)
@@ -1700,11 +1760,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
 
-            await Task.Run(() =>
-            {
                 //App.HideProgressView();
                 IsLoading = false;
-            });
 
             //var _navigation = Application.Current.MainPage.Navigation;
             //foreach (var item in _navigation.NavigationStack)
