@@ -1189,6 +1189,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
+                    Xamarin.Forms.NavigationPage.SetBackButtonTitle(this,"");
+                    //Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
                     DDlIDType.BackgroundColor = Color.FromHex("#FFFFFF");
                     DDlContactIDType.BackgroundColor = Color.FromHex("#FFFFFF");
                 }
@@ -3156,10 +3158,9 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(EntryTINNumber.Text))
-            {
+           
                 SignUpDOB.IsOpen = true;
-            }
+         
 
         }
 
@@ -4502,7 +4503,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var selectedItem = SignUpDOB.SelectedItem as List<object>;
+                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();

@@ -4025,7 +4025,7 @@ namespace GAZT.Manager
             }
         }
         #region SYNFUSION INTEGRATION
-        public static Dashboard GAZTGetDashboardData(string lang, string TIN)
+        public static  Dashboard GAZTGetDashboardData(string lang, string TIN)
         {
             Dashboard dashboardData = null;
             if (CrossConnectivity.Current.IsConnected)
@@ -4041,7 +4041,15 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     //client.DefaultRequestHeaders.Add("Token", App.Token);
                     string uri = Constants.GetDashboardData + TIN + "'" + "&saml2=enabled" + "&$format=json";
-                    HttpResponseMessage GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTGetDashboardResponse = new HttpResponseMessage();
+                    try
+                    {
+                        GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
                     if (GAZTGetDashboardResponse != null)
                     {
                         if (GAZTGetDashboardResponse.StatusCode == HttpStatusCode.Unauthorized)

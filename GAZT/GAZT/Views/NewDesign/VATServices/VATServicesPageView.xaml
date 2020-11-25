@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              xmlns:custom="clr-namespace:GAZT"
              NavigationPage.HasNavigationBar="False"
+             NavigationPage.BackButtonTitle=""
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"

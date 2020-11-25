@@ -308,9 +308,43 @@
                                     <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                         
                                         <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                         <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="30"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Text="{Binding SelectedCommitmentFilterValue}" Grid.Column="0" Grid.Row="0" Style="{StaticResource ValueLabelBlackMedium}">
+                                            </custom:CustomLabel>
+                                              
+                                              
+                                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,5,5,5" HorizontalOptions="Start" VerticalOptions="Start"></Image>
+                                            <custom:CustomButton x:Name="btn1" Clicked="btnCommitmentsPickerClicked"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="Transparent"></custom:CustomButton>
+
+                                            <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CommitmentsPicker"  HeaderHeight="55"
+                                                                 BackgroundColor="White"  
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                                                             HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
+                                                             PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black"
+                                                              SelectedItemFontSize="15" ShowFooter="False"
+                                                             SelectedItemFontAttribute="Bold"
+                                                             SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"
+                                                             ItemHeight="40"  ItemsSource="{Binding CommitmentsListFilter}"  Grid.Row="0" Grid.Column="0"
+                                                             Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
+                                                             CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
+                                                             CancelButtonBackgroundColor="#EAF7CC" SelectedItem="{Binding SelectedCommitmentFilterValue}"  >
+                                                <syncfusion:SfPicker.Behaviors>
+                                                    <customcontrol:SfPickerBehavior />
+                                                </syncfusion:SfPicker.Behaviors>
+                                            </syncfusion:SfPicker>
+                                        </Grid>
                                         <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
 
-                                        <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
+                                        <CollectionView HeightRequest="80"  x:Name="CollectionView_Commitment" ItemsLayout="HorizontalList"
+                                                        ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                                        BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
                                                     <StackLayout Orientation="Horizontal" Margin="8">
@@ -568,7 +602,7 @@
             </Grid>
 
             <!--Menu Starts-->
-            <Grid x:Name="OldMenu" Grid.Row="0" IsVisible="{Binding MenuViewVisible}">
+            <Grid x:Name="OldMenu" Grid.Row="0" IsVisible="{Binding MenuViewVisible}" >
                 <ScrollView>
                     <Grid >
                         <Grid x:Name="ParentMenu">
