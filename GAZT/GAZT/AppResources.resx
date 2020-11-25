@@ -5010,7 +5010,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Review the below details</value>
   </data>
     <data name="ZZZZNextCommitments" xml:space="preserve">
-    <value>Next Commitments</value>
+    <value>Commitments</value>
   </data>
     <data name="ZZZZPleaseSelect" xml:space="preserve">
     <value>Please Select</value>

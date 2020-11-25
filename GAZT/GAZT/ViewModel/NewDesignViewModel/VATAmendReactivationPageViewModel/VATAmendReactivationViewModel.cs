@@ -2220,7 +2220,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     contact.MobNumber = MobNumberFR;
                     contact.SmtpAddr = SmtpAddrFR;
                     VATRegistrationDetailsData.d.CONTACTDTSet.results =
-                       VATRegistrationDetailsData.d.CONTACTDTSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
+                     VATRegistrationDetailsData.d.CONTACTDTSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
 
 
                     foreach (var item in VATRegistrationDetailsData.d.CONTACTDTSet.results)
@@ -2233,7 +2233,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         VATRegistrationDetailsData.d.CONTACTDTSet.results.Add(contact);
                 }
 
+                if(IsChangeEmailChecked)
+                {
+                    bool checkDuplicate = false;
 
+                    ResultsItemForContact contact = new ResultsItemForContact();
+
+                    contact.TransactionType = "CHG_RGVT";//VATRegistrationDetailsData.d.CONTACTDTSet.results[0].TransactionType;
+                    contact.FormGuid = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].FormGuid;
+                    contact.DataVersion = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].DataVersion;
+                    contact.LineNo = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].LineNo;
+                    contact.RankingOrder = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].RankingOrder;
+                    contact.Srcidentify = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].Srcidentify;
+                    contact.Consnumber = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].Consnumber;
+                    contact.Begda = null;
+                    contact.Endda = null;
+                    contact.TelNumber = ListFinanceRepresenatives[0].MobNumberFR;
+                    contact.R3User = string.Empty;
+                    contact.MobNumber = ListFinanceRepresenatives[0].MobNumberFR;
+                    contact.SmtpAddr = ListFinanceRepresenatives[0].SmtpAddrFR;
+                    VATRegistrationDetailsData.d.CONTACTDTSet.results =
+                     VATRegistrationDetailsData.d.CONTACTDTSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
+
+
+                    foreach (var item in VATRegistrationDetailsData.d.CONTACTDTSet.results)
+                    {
+                        checkDuplicate = JsonCompare(item, contact);
+                        if (checkDuplicate)
+                            break;
+                    }
+                    if (!checkDuplicate)
+                        VATRegistrationDetailsData.d.CONTACTDTSet.results.Add(contact);
+                }
                 //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
                 //if (SelectedIdTypeFR != null)
                 //    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
