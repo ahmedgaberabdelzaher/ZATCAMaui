@@ -801,14 +801,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _address.AddrType = "0001";
                         _address.Srcidentify = $"O{OutletActNumber}"; //string.Format("O{0}",);
                         _address.Begda = DateTime.UtcNow;
-                        _address.Endda = maxDate;
+                        _address.Endda = maxDate; 
                         taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
+
+                        string oldMstFlasg = string.Empty;
+
+                        if(ListOutlets != null && ListOutlets.Count > 1)
+                        {
+                            foreach(OutletItem nreg_OutletItem in ListOutlets)
+                             {
+                                if(nreg_OutletItem.Actno == OutletActNumber)
+                                {
+                                    oldMstFlasg = nreg_OutletItem.Oldmst;
+                                    break;
+                                }
+                            }
+                        }
 
                         taxPayerDetails?.Nreg_OutletSet?.results?.Clear();
                         Nreg_OutletItem outletItem = new Nreg_OutletItem();
                         outletItem.Actnm = OutletName;
                         outletItem.Actno = OutletActNumber;
                         outletItem.Caltp = taxPayerDetails?.Caltp;
+                        outletItem.Oldmst = oldMstFlasg;
+                        
                         outletItem.Actcat = SelectedOutletType == AppResources.MainOutlet ? "M" : SelectedOutletType == AppResources.SubOutlet ? "S" : "";
                         // outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
                         //outletItem.Conatt = "X";
@@ -816,7 +832,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
-
 
                         //added to check null issue
                         //OffNotes note = new OffNotes()
@@ -830,9 +845,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         taxPayerDetails.off_notesSet = new OffNotesSet(); // .results.Add(note);
                         taxPayerDetails.off_notesSet.results = new List<OffNotes>();
                         taxPayerDetails.Nreg_BtnSet = new NregBtnSet();
-
+                        
                         taxPayerDetails.Nreg_BtnSet.results = new List<object>();
-                      await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
 
                         selectedOutletItem = null;

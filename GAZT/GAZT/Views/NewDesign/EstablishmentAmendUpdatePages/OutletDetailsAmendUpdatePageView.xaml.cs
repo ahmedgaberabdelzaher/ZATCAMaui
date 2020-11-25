@@ -26,6 +26,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
             viewModel.IsEditingMode = outletNavigation.IsEditingMode;
             viewModel.currentTab = outletNavigation.openedTab;
+            
             BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
