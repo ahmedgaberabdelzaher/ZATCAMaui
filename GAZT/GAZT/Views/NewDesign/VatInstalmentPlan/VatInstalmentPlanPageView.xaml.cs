@@ -361,7 +361,6 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 {
                     if (arg != null)
                     {
-
                         //viewModel.EnableSucessScreenAsync();
                     }
                 });
