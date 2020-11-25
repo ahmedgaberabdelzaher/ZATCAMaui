@@ -46,6 +46,31 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
+        private void Vat_Registration_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRegistration_Details_Tapped", "VAT Registration Details eService");
+            //await Task.Run(() => viewModel.IsLoading = true);
+            Device.BeginInvokeOnMainThread(() => viewModel._navigationService.NavigateTo(App.VATRegistrationPageView));
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
+        private void General_Services_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "GeneralServices_Tapped", "General Services");
+
+            /*await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });*/
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.GeneralServicesListPageView);
+
+            });
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
         private void btnCommitmentsPickerClicked(object sender, System.EventArgs e)
         {
             CommitmentsPicker.IsOpen = true;
@@ -710,6 +735,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             }
         }
+
+        private void RefundRequest_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATRefundRequest_Tapped", "VAT Refund Request eService");
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.RefundRequestMenuListPageView);
+            });
+
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
         public void SetRTLDirection()
         {
             try

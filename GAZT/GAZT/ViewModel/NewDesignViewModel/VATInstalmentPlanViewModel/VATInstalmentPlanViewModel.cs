@@ -3402,7 +3402,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         notes.Tdline = NotesText;
                         notes.ByGpartz = App.LoginDataRetrieved.TIN;
 
-                        request.d.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.results.Count + 1];
+                        request.d.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.results.Count+1];
                         int i = 0;
 
                         foreach (NotesSetResult notesSetResult1 in VatInstalments.d.NotesSet.results)
@@ -3413,12 +3413,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             i = i + 1;
                         }
 
-                        request.d.NOTESSet[VatInstalments.d.NotesSet.results.Count + 1] = notes;
+                        request.d.NOTESSet[VatInstalments.d.NotesSet.results.Count] = notes;
                     }
                 }
                 else
                 {
-                    request.d.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.results.Count + 1];
+                    request.d.NOTESSet = new NotesSetPost[VatInstalments.d.NotesSet.results.Count];
                     int i = 0;
 
                     foreach (NotesSetResult notesSetResult1 in VatInstalments.d.NotesSet.results)
