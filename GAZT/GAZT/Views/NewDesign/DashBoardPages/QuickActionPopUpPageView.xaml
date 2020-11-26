@@ -71,46 +71,21 @@
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
                                                     </Image.GestureRecognizers>
                    </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SubmitZakatReturn}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.QuickActionShowOverDueReturns}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center">
                        <custom:CustomLabel.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForZAKAT"/>
+                                <TapGestureRecognizer Tapped="OnOverdueReturnClicked"/>
                                                     </custom:CustomLabel.GestureRecognizers>
                    </custom:CustomLabel>
                 <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForZAKAT"/>
+                            <TapGestureRecognizer Tapped="OnOverdueReturnClicked"/>
                                                     </StackLayout.GestureRecognizers>
                  </StackLayout>
               <border:SfBorder.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForZAKAT"/>
+                        <TapGestureRecognizer Tapped="OnOverdueReturnClicked"/>
                                                     </border:SfBorder.GestureRecognizers>
          
               </border:SfBorder>             
         
-
-
-         <border:SfBorder x:Name="VATReturn"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
-               <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
-                   <!--<Image Source="menu_return.png" VerticalOptions="Center">
-                       <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
-                                                    </Image.GestureRecognizers>
-                   </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DeclareVATReturn}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
-                       <custom:CustomLabel.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForVATDeclaration"/>
-                                                    </custom:CustomLabel.GestureRecognizers>
-                   </custom:CustomLabel>
-                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnMyReturnsClicked}" BackgroundColor="White" TextColor="Black"  WidthRequest="150"/>-->
-
-                <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForVATDeclaration"/>
-                                                    </StackLayout.GestureRecognizers>
-                 </StackLayout>
-              <border:SfBorder.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnMyReturnsClickedForVATDeclaration"/>
-                                                    </border:SfBorder.GestureRecognizers>
-              
-              </border:SfBorder>
 
 
 
@@ -121,8 +96,8 @@
                                                         <TapGestureRecognizer Tapped="OnMyReturnsClicked"/>
                                                     </Image.GestureRecognizers>
                    </Image>-->
-                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ReadInbox}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
-                       <custom:CustomLabel.GestureRecognizers>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.QuickActionShowCertificates}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
+                       <custom:CustomLabel.GestureRecognizers>  
                                                         <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
                                                     </custom:CustomLabel.GestureRecognizers>
                    </custom:CustomLabel>
