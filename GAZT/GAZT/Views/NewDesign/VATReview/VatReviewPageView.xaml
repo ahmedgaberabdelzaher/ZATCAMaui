@@ -13,10 +13,14 @@
              x:Class="EGAZT.Views.NewDesign.VatReview.VatReviewPageView"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+                                      xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>
         <ResourceDictionary>
+                                <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -616,7 +620,7 @@
                             <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10"
                                              Style="{StaticResource GreyBorderFrame}">
                                 <custom:BorderlessEntry IsEnabled="False"
-                                                        Text="{Binding PenalityAmountInQuestion}"
+                                                        Text="{Binding PenalityAmountInQuestion,Converter={StaticResource commaSeparatorConverter}}"
                                                         HorizontalOptions="FillAndExpand"
                                                         Style="{StaticResource BodyLabelBlack}" />
                             </border:SfBorder>
@@ -750,7 +754,7 @@
                                              Style="{StaticResource GreyBorderFrame}">
                                 <custom:BorderlessEntry x:Name="rrAmountTxt"
                                                         IsEnabled="{Binding IsRRAmountEdit}"
-                                                        Text="{Binding RequestedReviewAmount}"
+                                                        Text="{Binding RequestedReviewAmount,Converter={StaticResource commaSeparatorConverter}}"
                                                         Keyboard="Numeric"
                                                         Unfocused="RRAmountUnfocused"
                                                         HorizontalOptions="FillAndExpand"
@@ -1169,7 +1173,7 @@
                                 <custom:CustomLabel
                                     Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}"
                                     Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                <custom:CustomLabel Text="{Binding SecurityAmount}"
+                                <custom:CustomLabel Text="{Binding SecurityAmount,Converter={StaticResource commaSeparatorConverter}}"
                                                     Style="{StaticResource SectionTitleBlackBold}"
                                                     HorizontalOptions="EndAndExpand" />
                             </StackLayout>
@@ -1802,7 +1806,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label 
-                                                                Text="{Binding PenalityAmountInQuestion}"
+                                                                Text="{Binding PenalityAmountInQuestion,Converter={StaticResource commaSeparatorConverter}}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
@@ -1842,7 +1846,7 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
                                                 <Label
-                                                                Text="{Binding RequestedReviewAmount}"
+                                                                Text="{Binding RequestedReviewAmount,Converter={StaticResource commaSeparatorConverter}}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
@@ -1937,7 +1941,7 @@
                                                                  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                             </StackLayout>
                                             <StackLayout  Grid.Column="1">
-                                                <Label Text="{Binding SecurityAmount}"
+                                                <Label Text="{Binding SecurityAmount,Converter={StaticResource commaSeparatorConverter}}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />

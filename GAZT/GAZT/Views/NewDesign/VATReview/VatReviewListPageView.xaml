@@ -10,10 +10,14 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png"
+                         xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
              x:Class="EGAZT.Views.NewDesign.VatReview.VatReviewListPageView">
 
     <ContentPage.Resources>
         <ResourceDictionary>
+                    <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -535,7 +539,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.VRPenality_amount_in_question}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                             <custom:CustomLabel Grid.Column="1"
-                                                                Text="{Binding PenalityAmountInQuestion}"
+                                                                Text="{Binding PenalityAmountInQuestion,Converter={StaticResource commaSeparatorConverter}}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
@@ -570,7 +574,7 @@
                                                                 Text="{x:Static ResourceManager:AppResources.VRPleasespecifytheparticularamount}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
                                             <custom:CustomLabel Grid.Column="1"
-                                                                Text="{Binding RequestedReviewAmount}"
+                                                                Text="{Binding RequestedReviewAmount,Converter={StaticResource commaSeparatorConverter}}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />
@@ -644,7 +648,7 @@
                                             <custom:CustomLabel Grid.Column="0"
                                                                 Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding SecurityAmount}"
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding SecurityAmount,Converter={StaticResource commaSeparatorConverter}}"
                                                                 Style="{StaticResource ValueLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
                                                                 HorizontalTextAlignment="End" />

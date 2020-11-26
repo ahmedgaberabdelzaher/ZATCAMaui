@@ -389,7 +389,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
 
             }
-
         }
 
         private void AmountToReleaseUnfocused(object sender, FocusEventArgs e)

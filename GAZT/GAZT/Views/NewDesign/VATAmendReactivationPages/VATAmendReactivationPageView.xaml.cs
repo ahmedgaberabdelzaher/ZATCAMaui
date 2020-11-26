@@ -39,6 +39,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 InitializeComponent();
                 viewModel = App.Locator.VATAmendReactivationPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+
                 this.BindingContext = viewModel;
                 ChangeAeroIcon();
                 clearDATA();

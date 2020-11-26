@@ -15,13 +15,12 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
-
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
 		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              Title="{Binding PageTitle}"
-              NavigationPage.BackButtonTitle=""
-             
+                           xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:custom2="clr-namespace:EGAZT"            
              xmlns:local1="clr-namespace:GAZT"
@@ -33,6 +32,8 @@
              x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
+                  <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <!--<CustomControl:DataMarkerConverter x:Key="converter" />-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -1271,8 +1272,8 @@
                                                                 <Label Text="{x:Static custom2:AppResources.VATRGreaterThan}" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
                                                             </StackLayout>
                                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                                <Label Text="{Binding MinimumDisplayValueOfSlider1}" TextColor="#010101"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                                <Label Text="{Binding MaximumDisplayValueOfSlider1}" TextColor="#010101"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                                <Label Text="{Binding MinimumDisplayValueOfSlider1,Converter={StaticResource commaSeparatorConverter}}" TextColor="#010101"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                                <Label Text="{Binding MaximumDisplayValueOfSlider1,Converter={StaticResource commaSeparatorConverter}}" TextColor="#010101"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                             </StackLayout>
                                                         </StackLayout>
 
@@ -1298,8 +1299,8 @@
                                                                 <Label Text="{x:Static custom2:AppResources.VATRGreaterThan}" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                             </StackLayout>
                                                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                                <Label Text="{Binding MinimumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                                <Label Text="{Binding MaximumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                                <Label Text="{Binding MinimumDisplayValueOfSlider2,Converter={StaticResource commaSeparatorConverter}}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                                <Label Text="{Binding MaximumDisplayValueOfSlider2,Converter={StaticResource commaSeparatorConverter}}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                             </StackLayout>
                                                         </StackLayout>
 

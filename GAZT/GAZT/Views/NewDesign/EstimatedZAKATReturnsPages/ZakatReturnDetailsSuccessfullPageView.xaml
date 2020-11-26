@@ -11,11 +11,13 @@
              mc:Ignorable="d"
               NavigationPage.HasNavigationBar="False"
             Title= "{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
 
              BackgroundImageSource="partials_background"
            x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZakatReturnDetailsSuccessfullPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -44,6 +46,8 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="Margin" Value="0,-10,0,0"/>
             </Style>
+       <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -79,9 +83,9 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADPaymentNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
                                     <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
                                     <Image Source="zakat_copy.png">
-<Image.GestureRecognizers>
-<TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked"/>
-</Image.GestureRecognizers>
+                                    <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked"/>
+                                    </Image.GestureRecognizers>
                                         
                                     </Image>
                                 </StackLayout>
@@ -104,7 +108,7 @@
                                         <custom:CustomLabel>
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding ZAKATAmount}" FontSize="12"/>
+                                                    <Span Text="{Binding ZAKATAmount,Converter={StaticResource commaSeparatorConverter}}" FontSize="12"/>
                                                     <Span Text=" "/>
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" FontSize="12"/>
                                                 </FormattedString>

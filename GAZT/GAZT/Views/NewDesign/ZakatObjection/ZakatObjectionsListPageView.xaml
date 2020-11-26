@@ -11,7 +11,9 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
-             mc:Ignorable="d" FlowDirection="RightToLeft"    
+             mc:Ignorable="d" FlowDirection="RightToLeft"
+            xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
               xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.NewDesign.ZAKATObjectionPages.ZakatObjectionsListPageView"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png"
@@ -19,6 +21,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+        <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -295,14 +299,14 @@
                                         <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{Binding Currency}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                         <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOAssessmentAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding AssessmentAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding AssessmentAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                         <custom:CustomLabel Grid.Row="7" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="7" Grid.Column="1" Text="{Binding DisplayRevisedAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="7" Grid.Column="1" Text="{Binding DisplayRevisedAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
 
                                         <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="8" Grid.Column="1" Text="{Binding DisplayDisputeAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="8" Grid.Column="1" Text="{Binding DisplayDisputeAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
 
                                 </StackLayout>

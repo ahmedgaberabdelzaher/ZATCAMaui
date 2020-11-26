@@ -20,7 +20,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             InitializeComponent();
             ChangeAeroIcon();
-
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             SetLTR();
 
             viewModel = App.Locator.ZakatRegistrationDetailsListPageView;

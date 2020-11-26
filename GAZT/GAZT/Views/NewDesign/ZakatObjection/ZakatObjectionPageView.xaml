@@ -14,6 +14,8 @@
              xmlns:local1="clr-namespace:EGAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d" FlowDirection="RightToLeft"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
@@ -25,6 +27,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+         <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -177,7 +181,7 @@
                                                     <custom:CustomLabel Grid.Row="1" TextColor="White" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding FinancialPeriod}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
                                                     <BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                    <custom:CustomLabel Grid.Row="3" TextColor="White" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand"
+                                                    <custom:CustomLabel Grid.Row="3" TextColor="White" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="StartAndExpand"
                                                                     Style="{StaticResource SectionTitleBlack}" />
                                                     <custom:CustomLabel Grid.Row="4" TextColor="White" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                     <custom:CustomLabel Grid.Row="5" TextColor="White" Grid.Column="0" Text="{Binding ReferenceNum}" Style="{StaticResource ValueLabelBlack}"></custom:CustomLabel>
@@ -314,7 +318,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOAssessmentAmountGAZT}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -325,7 +329,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding RevisedAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding RevisedAmount,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -336,7 +340,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding DisputeAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding DisputeAmount,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
@@ -788,7 +792,7 @@
                                 <custom:CustomLabel
                                 Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}"
                                 Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                <custom:CustomLabel Text="{Binding SecurityAmount,StringFormat='{0:N} SAR'}"
+                                <custom:CustomLabel Text="{Binding SecurityAmount,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}"
                                                 Style="{StaticResource SectionTitleBlack}"
                                                 HorizontalOptions="EndAndExpand" />
                             </StackLayout>
@@ -1217,7 +1221,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOAssessmentAmountGAZT}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding AssessmentAmountGAZT,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
 
                                     </StackLayout>
@@ -1235,7 +1239,7 @@
                                                             <ColumnDefinition Width="auto"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding RevisedAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding RevisedAmount,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
                                                     </Grid>
                               </Frame>
 
@@ -1249,7 +1253,7 @@
                                                             <ColumnDefinition Width="auto"></ColumnDefinition>
                                                         </Grid.ColumnDefinitions>
                                                         <custom:CustomLabel  Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding DisputeAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
+                                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding DisputeAmount,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"  />
                                                     </Grid>
                               </Frame>
 
@@ -1620,14 +1624,14 @@
                                         <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{Binding Currency}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                         <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZOAssessmentAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding AssessmentAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding AssessmentAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                         <custom:CustomLabel Grid.Row="7" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZORevisedAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="7" Grid.Column="1" Text="{Binding RevisedAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="7" Grid.Column="1" Text="{Binding RevisedAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
 
                                         <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZODisputeAmount}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="8" Grid.Column="1" Text="{Binding DisputeAmount}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="8" Grid.Column="1" Text="{Binding DisputeAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
 
                                 </StackLayout>

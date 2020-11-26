@@ -1645,7 +1645,7 @@
                                                 VerticalOptions="Center"
                                                 Style="{StaticResource BodyLabelBlack}" />
 
-                                                        <custom:CustomLabel Text="{Binding VATPenalityAmount}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                                        <custom:CustomLabel Text="{Binding VATPenalityAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
                                                 Style="{StaticResource SectionTitleBlackBold}" />
 
                                                     </StackLayout>
