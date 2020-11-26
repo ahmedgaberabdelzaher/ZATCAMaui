@@ -1263,6 +1263,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 });
 
                 //await GetVatRegistrationData();
+
+                viewModel.IsNewFinancialRepVisible = viewModel.IsAddNewRepresentativeChecked;
             }
             catch (Exception ex)
             {

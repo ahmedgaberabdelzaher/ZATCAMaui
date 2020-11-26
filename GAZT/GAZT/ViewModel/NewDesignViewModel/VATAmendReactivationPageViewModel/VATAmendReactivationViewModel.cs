@@ -1022,7 +1022,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             {
                 _isAddNewRepresentativeChecked = value;
                 IsNewFinancialRepVisible = value;
-
+                IsChangeEmailCheckBoxEnabled=  !value; 
                 RaisePropertyChanged("IsAddNewRepresentativeChecked");
             }
         }
@@ -1047,7 +1047,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsFDNameMobEmailEnable = false;
                     IsAddFinancialRepresentativeCheckBoxEnabled = true;
                     IsAddFinancialRepButtonEnabled = true;
-                    
+
                     if (!string.IsNullOrEmpty(tempmobile))
                     {
                         PrimaryMobNumberFR = tempmobile;
@@ -1058,8 +1058,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         PrimarySmtpAddrFR = tempEmail;
                         RaisePropertyChanged("PrimarySmtpAddrFR");
                     }
+                    FinancialRepresentativesModel financialRepresentativesModel = ListFinanceRepresenatives[0];
+                    financialRepresentativesModel.MobNumberFR = PrimaryMobNumberFR;
+                    financialRepresentativesModel.SmtpAddrFR = PrimarySmtpAddrFR;
+                    ListFinanceRepresenatives = new List<FinancialRepresentativesModel>() { financialRepresentativesModel };
+
                 }
-                
+
+                IsAddFinancialRepresentativeCheckBoxEnabled = !value;
+
                 RaisePropertyChanged("IsChangeEmailChecked");
             }
         }
@@ -2748,6 +2755,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                         }
                                     }
+
                                     ListFinanceRepresenatives = listFRep;
                                 }
 

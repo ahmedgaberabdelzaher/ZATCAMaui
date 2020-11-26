@@ -352,7 +352,7 @@
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{Binding Idnumber}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
                                         <Image Grid.Column="1" Source="check_oval.png" IsVisible="{Binding Actcat, Converter={StaticResource isMainActivityConverter}}" HorizontalOptions="Center" VerticalOptions="Center" />
-                                        <Image Grid.Column="2" Source="arrowRight.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Image Grid.Column="2" Source="arrowRight.png" HorizontalOptions="Center" VerticalOptions="Center" Style="{DynamicResource BackButtonArrow}"/>
 
                                     </Grid>
                                     <cards:SfCardView.GestureRecognizers>

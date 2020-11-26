@@ -24,6 +24,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
     {
         #region Variable
         GAZTNewDesignDashBoardPageViewModel viewModel;
+        private bool isTimerOff = false;
         #endregion
 
         public GAZTNewDesignDashBoardPageView()
@@ -111,6 +112,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 rangeColors.Add(new RangeColor() { Color = Color.FromHex("AA0C19"), IsGradient = false, Start = viewModel.CreditAmountStartProgressBar, End = 100 });
                 Device.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
             });
+            isTimerOff = false;
+            StartTimer();
+            viewModel.IsLoading = false;
         }
         public void getYesCommandToLogout()
         {
@@ -270,8 +274,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 ChangeArrowDirection();
                 App.HasToRefreshLoaderOnDashboard = false;
-                if(!App.isTimerOn)
-                App.StartTimer(0, 2, 0);
+                
             }
             else
             {
@@ -279,15 +282,38 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
+        private void StartTimer()
+        {
+            int counter = 120;
+            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                
+                    counter = counter - 1;
+                   
+
+
+
+                    // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+                if (counter == 0)
+                {
+                    counter = 120;
+                    App.HasToRefreshLoaderOnDashboard = true;
+                    OnDataLoad();
+                }
+                return !isTimerOff;
+                // }
+            });
+        }
+
         public  void RefreshDashboardCommand()
         {
             try
             {
-                MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
-                MessagingCenter.Subscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard", async (sender, arg) =>
-                {
-                   await OnDataLoad();
-                });
+                //MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
+                //MessagingCenter.Subscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard", async (sender, arg) =>
+                //{
+                //   await OnDataLoad();
+                //});
             }
             catch (Exception ex)
             {
@@ -301,6 +327,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
             MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
             MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
+            isTimerOff = true;
         }
         private async Task LoadData()
         {
@@ -629,13 +656,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 billInfo.BillTypeName = AppResources.All;
                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-
             });
 
         }
         private async void Label_MyRetuns_Tapped(object sender, EventArgs e)
         {
-
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "MyRetuns_Tapped", "Returns eService");
 
                 viewModel.IsLoading = true;
@@ -655,7 +680,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.TaxpayerProfilePageView);
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-
         }
         private void Aboutus_Tapped(object sender, EventArgs e)
         {
@@ -756,7 +780,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppResources.Culture = ci;
                 // InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
-                viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+                viewModel.TranslateText = "Set to English";
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
@@ -783,7 +807,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppResources.Culture = ci;
                 //InitializeComponent();
                 this.FlowDirection = FlowDirection.LeftToRight;
-                viewModel.TranslateText = AppResources.ZZZSetToArabic;
+                viewModel.TranslateText = "تعيين إلى العربية";
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
