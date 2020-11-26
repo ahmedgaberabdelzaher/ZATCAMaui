@@ -56,6 +56,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
+        private async void OnOverdueReturnClicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
+
+        }
+
         private async void OnMyReturnsClickedForZAKAT(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
@@ -74,8 +81,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private async void OnCorrespondanceClicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
-            viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
-
+            viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
         }
 
         private async void OnGetSupportClicked(object sender, EventArgs e)
