@@ -2652,12 +2652,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             outletNavigationModels.idItem = idItem;
             outletNavigationModels.selectedOutletItem = item;
             outletNavigationModels.IsEditingMode = true;
+            outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
             _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
         }
         private void openNewOutlet()
         {
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
+            outletNavigationModels.selectedOutletItem = null;
             outletNavigationModels.idItem = idItem;
             outletNavigationModels.IsEditingMode = false;
             _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
