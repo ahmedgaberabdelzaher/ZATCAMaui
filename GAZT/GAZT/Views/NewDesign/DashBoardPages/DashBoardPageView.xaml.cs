@@ -270,6 +270,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 ChangeArrowDirection();
                 App.HasToRefreshLoaderOnDashboard = false;
+                if(!App.isTimerOn)
                 App.StartTimer(0, 2, 0);
             }
             else
@@ -278,13 +279,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
-        public async void RefreshDashboardCommand()
+        public  void RefreshDashboardCommand()
         {
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "StartTimerForDashboard", async (sender, arg) =>
+                MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
+                MessagingCenter.Subscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard", async (sender, arg) =>
                 {
-                    OnDataLoad();
+                   await OnDataLoad();
                 });
             }
             catch (Exception ex)
@@ -296,7 +298,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<object, string>(this, "StartTimerForDashboard");
+            MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
             MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
             MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
         }

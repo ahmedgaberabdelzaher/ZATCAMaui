@@ -36,6 +36,7 @@ using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using System.Diagnostics;
 using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
+using EGAZT.Views.NewDesign.DashBoardPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -796,6 +797,8 @@ namespace EGAZT
             return false;
         }
 
+
+        public static bool isTimerOn = false;
         public static void StartTimer(int h, int m, int sec)
         {
             int hour = h;
@@ -835,12 +838,14 @@ namespace EGAZT
                 });
                 if (hour == 0 && mins == 0 && counter == 0)
                 {
+                    isTimerOn = false;
                     App.HasToRefreshLoaderOnDashboard = true;
-                    MessagingCenter.Send<Object, string>(Application.Current, "StartTimerForDashboard", "StartTimerForDashboard");
+                    MessagingCenter.Send<GAZTNewDesignDashBoardPageView, string>(new GAZTNewDesignDashBoardPageView(), "StartTimerForDashboard", "StartTimerForDashboard");
                     return false;
                 }
                 else
                 {
+                    isTimerOn = true;
                     return true;
                 }
                 // }
