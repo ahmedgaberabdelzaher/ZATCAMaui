@@ -334,7 +334,7 @@
                                                              ItemHeight="40"  ItemsSource="{Binding CommitmentsListFilter}"  Grid.Row="0" Grid.Column="0"
                                                              Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
                                                              CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
-                                                             CancelButtonBackgroundColor="#EAF7CC" SelectedItem="{Binding SelectedCommitmentFilterValue}"  >
+                                                             CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="CommitmentsPicker_SelectionChanged"  >
                                                 <syncfusion:SfPicker.Behaviors>
                                                     <customcontrol:SfPickerBehavior />
                                                 </syncfusion:SfPicker.Behaviors>
@@ -553,7 +553,7 @@
                                         <Setter Property="BackgroundColor" Value="{StaticResource NewDullOrangeColor}"/>
                                     </DataTrigger>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding IsEstablishmentRegistrationTileVisible}" Value="True">
-                                        <Setter Property="BackgroundColor" Value="{StaticResource NewDullOrangeColor}"/>
+                                        <Setter Property="BackgroundColor" Value="LightGray"/>
                                     </DataTrigger>
                                 </StackLayout.Triggers>
                             </StackLayout>

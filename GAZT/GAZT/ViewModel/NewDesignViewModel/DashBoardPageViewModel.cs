@@ -8,7 +8,6 @@ using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -958,7 +957,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("AccStmtnCreditAmount");
             }
         }
-        private string _selectedCommitmentFilterValue=null;
+        private string _selectedCommitmentFilterValue = null;
 
         public string SelectedCommitmentFilterValue
         {
@@ -979,6 +978,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
         }
+
+        private string _SelectedCommitmentFilterLabelValue = null;
+
+        public string SelectedCommitmentFilterLabelValue
+        {
+            get
+            {
+                return _SelectedCommitmentFilterLabelValue;
+            }
+            set
+            {
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    _SelectedCommitmentFilterLabelValue = value;
+                    RaisePropertyChanged("SelectedCommitmentFilterLabelValue");
+
+                }
+
+            }
+        }
+
+        
         #endregion
 
         #region Constructor
@@ -1006,6 +1028,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
              MenuViewVisible = false;
              HomeViewVisible = true;
+
+
         }
         #endregion
 
@@ -1013,7 +1037,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async Task LoadDashboardData()
         {
             //CommitmentsListFilter = new List<string> { AppResources.ZZOverdueCommitments, AppResources.ZZUpcomingCommitments };
-            SelectedCommitmentFilterValue = AppResources.ZZOverdueCommitments;
 
             if (App.TP != null)
             {
@@ -1032,10 +1055,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
                     List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+
                     foreach (OverduePaymentAndUnSubmittedReturn ee in TempBills)
                     {
-                    temp1.Add(ee);
+                        temp1.Add(ee);
                     }
+
                     Bills = temp1;
                     //Bills = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
                     System.Diagnostics.Debug.WriteLine("Bills " + Bills.Count);
@@ -1055,7 +1080,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
                     {
-                        if (TabIdentification.D.Direct == "X")
+                        if (TabIdentification.D?.Direct == "X")
                         {
                             if (taxRelationSetResult.StatementFilter == "01")
                             {
@@ -1073,7 +1098,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         }
 
-                        if (TabIdentification.D.Indirect == "X")
+                        if (TabIdentification.D?.Indirect == "X")
                         {
                             if (taxRelationSetResult.StatementFilter == "06")
                             {
@@ -1095,7 +1120,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxTypeFilter = new List<TaxRelationSetResult>();
 
                     TaxTypeFilter = new List<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
-                    SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
+                if(TaxTypeFilter!=null && TaxTypeFilter.Count>0)
+                SelectedTaxTypeForFilterValue = TaxTypeFilter.FirstOrDefault();
 
                     //foreach (TaxRelationSetResult aSReturnTypes in TaxTypeFilter)
                     //{
@@ -1186,6 +1212,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
                 IsLoading = false;
+            SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
 
@@ -1222,8 +1249,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
                     try
                     {
-
-
                             /*foreach (var item in CommitmentsListFilter)
                             {*/
 

@@ -90,10 +90,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         #region Method
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            OnDataLoad();
+            await OnDataLoad();
             RefreshDashboardCommand();
             getYesCommandToLogout();
             getNoCommandToLogout();
@@ -141,7 +141,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             }
         }
-        public void OnDataLoad()
+        private async Task OnDataLoad()
         {
             if (viewModel != null)
             {
@@ -157,13 +157,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 App.IsComingFromSleepMode = false;
 
 
-                Task.Run(async () =>
-                {
                     await LoadData();
-
-                    if (viewModel != null)
-                        viewModel.IsLoading = false;
-                });
                 try
                 {
                     //if (App.LoginDataRetrieved.VtReg == null)
@@ -273,6 +267,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 {
                     viewModel.IsVatRegistrationTileVisible = true;
                 }
+
                 ChangeArrowDirection();
                 App.HasToRefreshLoaderOnDashboard = false;
                 App.StartTimer(0, 2, 0);
@@ -692,6 +687,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
                     Navigation.PopAsync();
                     viewModel.NDCommitments = AppResources.NDCommitments;
@@ -714,6 +710,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection();
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
                     Navigation.PopAsync();
                     viewModel.NDCommitments = AppResources.NDCommitments;
@@ -1090,6 +1087,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             TaxTypePicker.IsOpen = true;
         }
 
+        void CommitmentsPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+             viewModel.SelectedCommitmentFilterLabelValue= viewModel.SelectedCommitmentFilterValue = e.NewValue.ToString();
+            
+        }
         //private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         //{
         //    try
