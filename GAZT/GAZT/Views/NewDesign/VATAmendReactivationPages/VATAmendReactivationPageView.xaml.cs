@@ -4755,5 +4755,61 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         {
 
         }
+        
+        private void GoBackToTaxPayerDetails(object sender, EventArgs e)
+        {
+            viewModel.CurrentIndex = 2;
+            viewModel.CurrentStep = AppResources.VATRStep2;
+            viewModel.SetVisibility();
+            viewModel.IsTaxPayersVisible = true;
+            SetsecondBoxColor();
+        }
+
+        private void GoBackToSalesDetails(object sender, EventArgs e)
+        {
+            viewModel.CurrentIndex = 3;
+            step3Validation();
+        }
+
+        private void GoBackToVATExpenseDetails(object sender, EventArgs e)
+        {
+            viewModel.CurrentIndex = 3;
+            step3Validation();
+        }
+        private void GoBackToFinacialRepresentativeDetails(object sender, EventArgs e)
+        {
+            viewModel.CurrentIndex = 4;
+            if (viewModel.RegTypeCode == "N")
+            {
+                if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
+                {
+                    viewModel.CurrentStep = AppResources.VATRStep5;
+
+                    viewModel.SetVisibility();
+                    //viewModel.IsFinancialVisible = true;
+                    viewModel.IsFinancialVisible = true;
+                    //SetfifthBoxColor();
+                    SetfourthBoxColor();
+                    if (viewModel.CurrentIndex == 3)
+                        viewModel.CurrentIndex++;
+                }
+                else
+                {
+                    FrmNewAttachment.HasError = true;
+                }
+            }
+            else
+            {
+                viewModel.CurrentStep = AppResources.VATRStep5;
+                viewModel.SetVisibility();
+
+                //viewModel.IsFinancialVisible = true;
+                viewModel.IsFinancialVisible = true;
+                //SetfifthBoxColor();
+                SetfourthBoxColor();
+                if (viewModel.CurrentIndex == 3)
+                    viewModel.CurrentIndex++;
+            }   
+        }
     }
 }

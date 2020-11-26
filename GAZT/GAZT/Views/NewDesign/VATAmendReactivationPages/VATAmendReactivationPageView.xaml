@@ -2412,7 +2412,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                         </ScrollView>
                                     </Grid>
                                     <!--Summery-->
-                                    <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0" IsVisible="{Binding IsSummaryVisible}"
+                                     <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0" IsVisible="{Binding IsSummaryVisible}"
                               x:Name="SummeryView">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -2449,18 +2449,48 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <!--Taxpayer Details Summery-->
                                             <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
-                                                        <!--<Image>
+                                                    <!--<StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                        ~1~<Image>
                                                         <Image.Source>
                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
                                                         </Image.Source>
-                                                    </Image>-->
-                                                        <!--<Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>-->
-                                                        <!--<Label  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>-->
+                                                    </Image>@1@
+                                                        ~1~<Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>@1@
+                                                        ~1~<Label  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>@1@
                                                         <Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
                                                         <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  Style="{StaticResource GAZTSmallBlackLbl}"/>
-                                                    </StackLayout>
+                                                        
+                                                    </StackLayout>-->
+                                                    <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                                        
+                                    <Image Grid.Row="0" Grid.Column="0" Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
+
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  Style="{StaticResource GAZTSmallBlackLbl}"/>
+
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                        <Label 
+                                            Text="{x:Static custom2:AppResources.CREdit}"
+                                            VerticalOptions="CenterAndExpand"
+                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="GoBackToTaxPayerDetails" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                   
+                                </Grid>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
@@ -2531,7 +2561,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <!--Sales Details Summery-->
                                             <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                    <!--   <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                         <Image>
                                                             <Image.Source>
                                                                 <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
@@ -2539,7 +2569,44 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </Image.Source>
                                                         </Image>
                                                         <Label Text="{x:Static custom2:AppResources.SalesDetails}"   Style="{StaticResource GAZTSmallBlackLbl}"/>
-                                                    </StackLayout>
+                                                      
+                                                         
+                                                    </StackLayout>-->
+                                                   
+                                                    <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                                             <Image Grid.Row="0" Grid.Column="0">
+                                                                 <Image.Source>
+                                                                     <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
+                                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
+                                                                 </Image.Source>
+                                                             </Image>
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static custom2:AppResources.SalesDetails}"   Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                        
+                                    </StackLayout>
+                                   
+
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                        <Label 
+                                            Text="{x:Static custom2:AppResources.CREdit}"
+                                            VerticalOptions="CenterAndExpand"
+                                            Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="GoBackToSalesDetails" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                   
+                                </Grid>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <StackLayout Padding="10,5,10,10">
                                                         <!--SliderLable1-->
@@ -2552,7 +2619,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             </Frame>
                                             <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                    <!--<StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                         <Image>
                                                             <Image.Source>
                                                                 <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
@@ -2560,7 +2627,43 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </Image.Source>
                                                         </Image>
                                                         <Label Text="{x:Static custom2:AppResources.VATRExpensesDetails}"   Style="{StaticResource GAZTSmallBlackLbl}"/>
-                                                    </StackLayout>
+                                                       
+                                                    </StackLayout>-->
+                                                    <Grid Padding="15" RowSpacing="0">
+                                                                                        <Grid.RowDefinitions>
+                                                                                            <RowDefinition Height="auto" />
+                                                                                        </Grid.RowDefinitions>
+                                                                                        <Grid.ColumnDefinitions>
+                                                                                            <ColumnDefinition Width="auto" />
+                                                                                            <ColumnDefinition Width="*" />
+                                                                                            <ColumnDefinition Width="auto" />
+                                                                                        </Grid.ColumnDefinitions>
+                                                                                                                
+                                                        <Image Grid.Row="0" Grid.Column="0">
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
+                                                                    Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                                                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                                                                     Padding="8,0">
+                                                                                            <Label Text="{x:Static custom2:AppResources.VATRExpensesDetails}"   Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                                                            
+                                                                                        </StackLayout>
+                                                                                       
+                                                    
+                                                                                        <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                                                                            <Label 
+                                                                                                Text="{x:Static custom2:AppResources.CREdit}"
+                                                                                                VerticalOptions="CenterAndExpand"
+                                                                                                Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                                                                                <Label.GestureRecognizers>
+                                                                                                    <TapGestureRecognizer Tapped="GoBackToVATExpenseDetails" />
+                                                                                                </Label.GestureRecognizers>
+                                                                                            </Label>
+                                                                                        </StackLayout>
+                                                                                       
+                                                                                    </Grid>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <StackLayout Padding="10,5,10,10">
                                                         <!--quesTion4answerSelected-->
@@ -2573,7 +2676,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             </Frame>
                                             <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                    <!--<StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                         <Image>
                                                             <Image.Source>
                                                                 <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
@@ -2581,7 +2684,44 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             </Image.Source>
                                                         </Image>
                                                         <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource GAZTSmallBlackLbl}"/>
-                                                    </StackLayout>
+                                                       
+                                                    </StackLayout>-->
+                                                     <Grid Padding="15" RowSpacing="0">
+                                                                                        <Grid.RowDefinitions>
+                                                                                            <RowDefinition Height="auto" />
+                                                                                        </Grid.RowDefinitions>
+                                                                                        <Grid.ColumnDefinitions>
+                                                                                            <ColumnDefinition Width="auto" />
+                                                                                            <ColumnDefinition Width="*" />
+                                                                                            <ColumnDefinition Width="auto" />
+                                                                                        </Grid.ColumnDefinitions>
+                                                         
+                                                         <Image Grid.Row="0" Grid.Column="0">
+                                                             <Image.Source>
+                                                                 <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
+                                                                     Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
+                                                             </Image.Source>
+                                                         </Image>
+                                                                                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                                                                     Padding="8,0">
+
+                                                                                            <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" Style="{StaticResource GAZTSmallBlackLbl}"/>
+
+                                                                                        </StackLayout>
+                                                                                       
+                                                    
+                                                                                        <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                                                                            <Label 
+                                                                                                Text="{x:Static custom2:AppResources.CREdit}"
+                                                                                                VerticalOptions="CenterAndExpand"
+                                                                                                Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                                                                                <Label.GestureRecognizers>
+                                                                                                    <TapGestureRecognizer Tapped="GoBackToFinacialRepresentativeDetails" />
+                                                                                                </Label.GestureRecognizers>
+                                                                                            </Label>
+                                                                                        </StackLayout>
+                                                                                       
+                                                                                    </Grid>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <Grid Padding="10,5,10,10">
                                                         <Grid.RowDefinitions>
