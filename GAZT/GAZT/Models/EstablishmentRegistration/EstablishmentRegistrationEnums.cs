@@ -36,9 +36,10 @@ namespace EGAZT.Models
 
     public enum EstablishmentRegistrationOutletTabsEnum
     {
-        OutletDetail = 1,
-        ActivityDetails = 2,
-        AddressDetails = 3
+        OutletDetail,
+        ActivityDetails,
+        AddressDetails ,
+        NewOutlet 
     }
 
     public enum EstablishmentOutletActivitiesTabsEnum
