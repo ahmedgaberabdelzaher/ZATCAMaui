@@ -1047,10 +1047,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsFDNameMobEmailEnable = false;
                     IsAddFinancialRepresentativeCheckBoxEnabled = true;
                     IsAddFinancialRepButtonEnabled = true;
-
-
+                    
+                    if (!string.IsNullOrEmpty(tempmobile))
+                    {
+                        PrimaryMobNumberFR = tempmobile;
+                        RaisePropertyChanged("PrimaryMobNumberFR");
+                    }
+                    if (!string.IsNullOrEmpty(tempEmail))
+                    {
+                        PrimarySmtpAddrFR = tempEmail;
+                        RaisePropertyChanged("PrimarySmtpAddrFR");
+                    }
                 }
-
+                
                 RaisePropertyChanged("IsChangeEmailChecked");
             }
         }
@@ -1098,7 +1107,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _IsChangeEmailCheckBoxEnabled = value;
-
 
                 RaisePropertyChanged("IsChangeEmailCheckBoxEnabled");
             }
@@ -1312,6 +1320,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
         }
 
+        private string tempEmail = string.Empty;
+        private string tempmobile = string.Empty;
+        
+        private string _primarymobNumberFR = string.Empty;
+        public string PrimaryMobNumberFR
+        {
+            get
+            {
+                return _primarymobNumberFR;
+            }
+            set
+            {
+                _primarymobNumberFR = value;
+                RaisePropertyChanged("PrimaryMobNumberFR");
+            }
+        }
+        
         private string _mobNumberFR = string.Empty;
         public string MobNumberFR
         {
@@ -1368,6 +1393,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
         }
 
+        private string _primarysmtpAddrFR = string.Empty;
+        public string PrimarySmtpAddrFR
+        {
+            get
+            {
+                return _primarysmtpAddrFR;
+            }
+            set
+            {
+                _primarysmtpAddrFR = value;
+                RaisePropertyChanged("PrimarySmtpAddrFR");
+            }
+        }
+        
         private string _smtpAddrFR = string.Empty;
         public string SmtpAddrFR
         {
@@ -2252,10 +2291,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     contact.Consnumber = VATRegistrationDetailsData.d.CONTACTDTSet.results[0].Consnumber;
                     contact.Begda = null;
                     contact.Endda = null;
-                    contact.TelNumber = ListFinanceRepresenatives[0].MobNumberFR;
+                    contact.TelNumber = PrimaryMobNumberFR;// ListFinanceRepresenatives[0].PrimaryMobNumberFR;
                     contact.R3User = string.Empty;
-                    contact.MobNumber = ListFinanceRepresenatives[0].MobNumberFR;
-                    contact.SmtpAddr = ListFinanceRepresenatives[0].SmtpAddrFR;
+                    contact.MobNumber = PrimaryMobNumberFR;//ListFinanceRepresenatives[0].MobNumberFR;
+                    contact.SmtpAddr = PrimarySmtpAddrFR;//ListFinanceRepresenatives[0].SmtpAddrFR;
 
                     VATRegistrationDetailsData.d.CONTACTDTSet.results =
                      VATRegistrationDetailsData.d.CONTACTDTSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
@@ -2631,9 +2670,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 IdnumberFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                                 FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
                                 LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
-                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
-                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-
+                                PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
+                                PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
+                                tempmobile = PrimaryMobNumberFR;
+                                tempEmail = PrimarySmtpAddrFR;
+                                
                                 try
                                 {
                                     TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type)?.FirstOrDefault()?.Name;
@@ -2647,9 +2688,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 IdnumberSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                                 FirstnmSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
                                 LastnmSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
-                                MobNumberSum = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
-                                SmtpAddrSum = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-
+                                PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
+                                PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
+                                tempmobile = PrimaryMobNumberFR;
+                                tempEmail = PrimarySmtpAddrFR;
+                                
                                 try
                                 {
                                     TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type)?.FirstOrDefault()?.Name;
@@ -2665,8 +2708,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     IdnumberFR = string.Empty;
                                     FirstnmFR = string.Empty;
                                     LastnmFR = string.Empty;
-                                    SmtpAddrFR = string.Empty;
-                                    MobNumberFR = string.Empty;
+                                    PrimarySmtpAddrFR = string.Empty;
+                                    PrimaryMobNumberFR = string.Empty;
                                     TxtIDTypeFR = string.Empty;
                                 }
                                 if (App.VATType == Enums.PageExecutionType.Amend || App.VATType == Enums.PageExecutionType.Reactivation)

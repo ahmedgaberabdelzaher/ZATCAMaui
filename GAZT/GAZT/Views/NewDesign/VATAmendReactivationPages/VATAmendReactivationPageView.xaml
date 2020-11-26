@@ -2137,7 +2137,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" 
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                                        <custom:BorderlessEntry Text="{Binding SmtpAddrFR}" 
+                                                                        <custom:BorderlessEntry Text="{Binding PrimarySmtpAddrFR}" 
                                                                     Placeholder="{x:Static custom2:AppResources.Email}" Unfocused="EntryEmail_Unfocused" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}">
                                                                         </custom:BorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
@@ -2148,7 +2148,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                     <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}" 
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused" Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
+                                                                        <custom:BorderlessEntry FontFamily="{StaticResource SSTArabicMedium}" Unfocused="EntryPhoneNumber_Unfocused" Text="{Binding PrimaryMobNumberFR}" HorizontalTextAlignment="Start" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="15" Keyboard="Telephone" Style="{StaticResource GAZTEntry}">
                                                                             <Entry.Behaviors>
                                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                                             </Entry.Behaviors>
