@@ -382,6 +382,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 viewModel.ContractTotalAmount = Double.Parse(ContractTotalAmountText.Text);
                 viewModel.MakeCalculations();
+                ContractTotalAmountText.Text = String.Format("{0:N}", Convert.ToDouble(ContractTotalAmountText.Text));
+
             }
             catch (Exception ex)
             {
@@ -399,7 +401,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     viewModel._dialogService.ShowMessageBox(AppResources.CRTotalAmountRequirdtoReleasemustbelesstotalamountofcontract, AppResources.CRWarning);
                 }
                 viewModel.AmountToRelease = Double.Parse(AmountoReleaseTxt.Text);
+
                 viewModel.MakeCalculations();
+                AmountoReleaseTxt.Text = String.Format("{0:N}", Convert.ToDouble(AmountoReleaseTxt.Text));
+
             }
             catch (Exception ex)
             {

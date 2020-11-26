@@ -9,12 +9,16 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                        xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
              x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleaseListPageView"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>
         <ResourceDictionary>
+          <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -308,7 +312,7 @@
                                     <custom:CustomLabel  HorizontalOptions="EndAndExpand">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding ContractTotalAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{Binding ContractTotalAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                             </FormattedString>
@@ -323,7 +327,7 @@
                                      <custom:CustomLabel  HorizontalOptions="EndAndExpand">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding AmountToRelease}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{Binding AmountToRelease,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                             </FormattedString>
@@ -348,7 +352,7 @@
                                                          <custom:CustomLabel  HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1">
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{Binding ZakatDues}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{Binding ZakatDues,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                     <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 </FormattedString>
@@ -370,7 +374,7 @@
                                                         <custom:CustomLabel  HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1">
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{Binding TaxDues}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{Binding TaxDues,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                     <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 </FormattedString>
@@ -392,7 +396,7 @@
                                                          <custom:CustomLabel  HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1">
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="{Binding TotalDues}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{Binding TotalDues,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                     <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 </FormattedString>

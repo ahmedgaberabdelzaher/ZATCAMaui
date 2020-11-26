@@ -11,6 +11,8 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
+                                        xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
              mc:Ignorable="d" FlowDirection="RightToLeft"    
               xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.NewDesign.InstalmentPlan.VatInstalmentPlanListPageView" 
@@ -18,6 +20,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+                         <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -355,7 +359,7 @@
  
 
                                                     <custom:CustomLabel   Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" Style="{StaticResource CaptionLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                    <custom:CustomLabel  Grid.Column="1" Text="{Binding amount}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                                    <custom:CustomLabel  Grid.Column="1" Text="{Binding amount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                                 </Grid>
 
                                             </Grid>
@@ -491,7 +495,7 @@
                                          <custom:CustomLabel>
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding TotalLiabilityAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{Binding TotalLiabilityAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                             </FormattedString>
@@ -535,7 +539,7 @@
                                      <custom:CustomLabel>
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding TotalAmount}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                <Span Text="{Binding TotalAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                             </FormattedString>
@@ -630,7 +634,7 @@
                                                  <custom:CustomLabel>
                                                         <custom:CustomLabel.FormattedText>
                                                          <FormattedString>
-                                                        <Span Text="{Binding InstalmentAmt}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                        <Span Text="{Binding InstalmentAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                         <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                     </FormattedString>
@@ -642,7 +646,7 @@
                                                 <custom:CustomLabel>
                                                         <custom:CustomLabel.FormattedText>
                                                          <FormattedString>
-                                                        <Span Text="{Binding RemainingAmt}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                        <Span Text="{Binding RemainingAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                         <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                     </FormattedString>
@@ -651,7 +655,7 @@
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentRelevantTax}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding PeriodText}"  Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding PeriodText,Converter={StaticResource commaSeparatorConverter}}"  Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                             </Grid>
 
@@ -772,7 +776,7 @@
                                                     <custom:CustomLabel HorizontalOptions="StartAndExpand">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding RemainingAmt}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                <Span Text="{Binding RemainingAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                             </FormattedString>
@@ -785,7 +789,7 @@
                                                     <custom:CustomLabel HorizontalOptions="StartAndExpand">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding TotalPaidAmt}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                <Span Text="{Binding TotalPaidAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                             </FormattedString>
@@ -865,7 +869,7 @@
                                  <custom:CustomLabel Grid.Column="1" HorizontalOptions="EndAndExpand">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding ScheduleTotalAmountPaid}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                <Span Text="{Binding ScheduleTotalAmountPaid,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                             </FormattedString>
@@ -898,7 +902,7 @@
                                    <custom:CustomLabel Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{Binding ScheduleAmountRemaining}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                <Span Text="{Binding ScheduleAmountRemaining,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                                             </FormattedString>

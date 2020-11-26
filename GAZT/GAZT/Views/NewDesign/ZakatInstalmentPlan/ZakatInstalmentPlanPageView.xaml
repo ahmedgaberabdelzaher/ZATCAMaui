@@ -11,6 +11,8 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
+              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
              mc:Ignorable="d" FlowDirection="RightToLeft"    
               xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.ZakatInstalmentPlanPageView" 
@@ -20,6 +22,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+      <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -1094,7 +1098,7 @@
                                                 Style="{StaticResource BodyLabelBlack}" />
 
                                     <cards:SfCardView Padding="10,0,10,0" Margin="0,0,0,5" HorizontalOptions="FillAndExpand" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
-                                        <custom:BorderlessEntry  x:Name="downPaymentEntry" Text="{Binding DownPaymentAmount}" HorizontalOptions="FillAndExpand"
+                                        <custom:BorderlessEntry  x:Name="downPaymentEntry" Text="{Binding DownPaymentAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}" Keyboard="Numeric" TextChanged="downPaymentEntry_TextChanged" Unfocused="downPaymentEntry_Unfocused" />
                                     </cards:SfCardView>
                                     <Frame CornerRadius="10"  
@@ -1109,9 +1113,9 @@
                                                 MaximumTrackColor="LightSlateGray"
                                         ValueChanged="DownPayment_ValueChanged"
                                                 Value="{Binding DownPaymentSliderValue}"
-                                            Maximum="{Binding MaxAmount}" 
+                                            Maximum="{Binding MaxAmount,Converter={StaticResource commaSeparatorConverter}}" 
                                             Margin="5,5,5,10"
-                                     Minimum="{Binding MinAmount}"/>
+                                     Minimum="{Binding MinAmount,Converter={StaticResource commaSeparatorConverter}}"/>
 
                                         </StackLayout>
                                     </Frame>
@@ -1138,7 +1142,7 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                    <custom:CustomLabel  Text="{Binding VATBillDueAmount}" HorizontalOptions="EndAndExpand"
+                                    <custom:CustomLabel  Text="{Binding VATBillDueAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="EndAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}" VerticalTextAlignment="Center"/>
 
                                 </StackLayout>
@@ -1475,7 +1479,7 @@
                                                 <Frame  HorizontalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,20,0,0" Padding="0">
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
                                                         <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                                        <Label Text="{Binding VATBillDueAmount}" FontSize="Medium" FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                                        <Label Text="{Binding VATBillDueAmount,Converter={StaticResource commaSeparatorConverter}}" FontSize="Medium" FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
                                                     </StackLayout>
                                                 </Frame>
                                                 <buttons:SfButton Margin="0,16,0,16"  x:Name="btnVATBillsContinue" Command="{Binding BillContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
@@ -1518,16 +1522,16 @@
                                                 <custom:CustomLabel Grid.Row="4" Grid.ColumnSpan="2" Text="{Binding InvNo}" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
 
                                                 <custom:CustomLabel Grid.Column="0"   Grid.Row="5"   Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Column="0" Grid.Row="6" Text="{Binding DueAmt,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Column="0" Grid.Row="6" Text="{Binding DueAmt,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
 
 
                                                 <custom:CustomLabel Grid.Row="5"  Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="6" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding DueDt}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 
                                                 <custom:CustomLabel Grid.Row="7"  Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{Binding InvAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{Binding InvAmt,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}" ></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="8" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding ClearedAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="8" HorizontalOptions="CenterAndExpand" Grid.Column="1" Text="{Binding ClearedAmt,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>
                                     </cards:SfCardView>
@@ -1567,15 +1571,15 @@
 
 
                                                 <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel TextColor="White" Grid.Row="6" Grid.Column="0" Text="{Binding DueAmt,StringFormat='{0:N} SAR'}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
+                                                <custom:CustomLabel TextColor="White" Grid.Row="6" Grid.Column="0" Text="{Binding DueAmt,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="StartAndExpand" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
 
 
                                                 <custom:CustomLabel Grid.Row="5" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding DueDt}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="0" Text="{Binding InvAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="0" Text="{Binding InvAmt,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="1"  HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding ClearedAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="8" TextColor="White" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding ClearedAmt,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                             </Grid>
                                         </Grid>
                                     </cards:SfCardView>
@@ -1711,7 +1715,7 @@
 
                                                 <StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPeriodicInstalmentAmount}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                    <Label Text="{Binding InsAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                                    <Label Text="{Binding InsAmt,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
@@ -2000,7 +2004,7 @@
                                                 VerticalOptions="Center"
                                                 Style="{StaticResource BodyLabelBlack}" />
 
-                                        <custom:CustomLabel Text="{Binding VATBillDueAmount}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                        <custom:CustomLabel Text="{Binding VATBillDueAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
                                                 Style="{StaticResource SectionTitleBlackBold}" />
 
 
@@ -2025,7 +2029,7 @@
 
 
 
-                                        <custom:CustomLabel Text="{Binding VATPenalityAmount}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                        <custom:CustomLabel Text="{Binding VATPenalityAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
                                                 Style="{StaticResource SectionTitleBlackBold}" />
 
 

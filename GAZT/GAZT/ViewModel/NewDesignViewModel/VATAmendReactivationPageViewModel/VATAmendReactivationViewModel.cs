@@ -2192,17 +2192,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     contactSet.Firstnm = FirstnmFR;
                     contactSet.Lastnm = LastnmFR;
 
+
                     VATRegistrationDetailsData.d.CONTACT_PERSONSet.results =
                         VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
+                    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Add(contactSet);
+
                     bool checkDuplicate = false;
                     foreach (var item in VATRegistrationDetailsData.d.CONTACT_PERSONSet.results)
                     {
                         checkDuplicate = JsonCompare(item, contactSet);
                         if (checkDuplicate)
-                            break;
+                        break;
                     }
                     if (!checkDuplicate)
                         VATRegistrationDetailsData.d.CONTACT_PERSONSet.results.Add(contactSet);
+
                     checkDuplicate = false;
                     ResultsItemForContact contact = new ResultsItemForContact();
 
@@ -2252,18 +2256,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     contact.R3User = string.Empty;
                     contact.MobNumber = ListFinanceRepresenatives[0].MobNumberFR;
                     contact.SmtpAddr = ListFinanceRepresenatives[0].SmtpAddrFR;
+
                     VATRegistrationDetailsData.d.CONTACTDTSet.results =
                      VATRegistrationDetailsData.d.CONTACTDTSet.results.Select(x => { x.__metadata = null; return x; }).ToList();
 
 
-                    foreach (var item in VATRegistrationDetailsData.d.CONTACTDTSet.results)
-                    {
-                        checkDuplicate = JsonCompare(item, contact);
-                        if (checkDuplicate)
-                            break;
-                    }
-                    if (!checkDuplicate)
-                        VATRegistrationDetailsData.d.CONTACTDTSet.results.Add(contact);
+
+                    //foreach (var item in VATRegistrationDetailsData.d.CONTACTDTSet.results)
+                    //{
+                    //    checkDuplicate = JsonCompare(item, contact);
+                    //    if (checkDuplicate)
+                    //        break;
+                    //}
+                    VATRegistrationDetailsData.d.CONTACTDTSet.results.Add(contact);
+
+                    var updatedContactList = VATRegistrationDetailsData.d.CONTACTDTSet.results.GroupBy(x => x.MobNumber).Select(x => x.First()).ToList();
+                    VATRegistrationDetailsData.d.CONTACTDTSet.results = updatedContactList;
                 }
                 //VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
                 //if (SelectedIdTypeFR != null)

@@ -353,6 +353,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("AmountToRelease");
             }
         }
+        
+
+       private double _contractTotalAmountText = 0.0;
+        public double ContractTotalAmountText
+        {
+            get { return _contractTotalAmountText; }
+            set
+            {
+                _contractTotalAmountText = value;
+                RaisePropertyChanged("ContractTotalAmountText");
+            }
+        }
+
+
+        private double _amountoReleaseTxt = 0.0;
+        public double AmountoReleaseTxt
+        {
+            get { return _amountoReleaseTxt; }
+            set
+            {
+                _amountoReleaseTxt = value;
+                RaisePropertyChanged("AmountoReleaseTxt");
+            }
+        }
 
         private double _pickedContractPercent = 0.0;
 
