@@ -780,7 +780,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppResources.Culture = ci;
                 // InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
-                viewModel.TranslateText = "Set to English";
+                viewModel.TranslateText = "English";
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
@@ -807,7 +807,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 AppResources.Culture = ci;
                 //InitializeComponent();
                 this.FlowDirection = FlowDirection.LeftToRight;
-                viewModel.TranslateText = "تعيين إلى العربية";
+                viewModel.TranslateText = "عربي";
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
