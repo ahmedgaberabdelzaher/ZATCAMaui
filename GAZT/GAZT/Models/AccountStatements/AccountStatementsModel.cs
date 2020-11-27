@@ -468,9 +468,10 @@ namespace EGAZT.Models.AccountStatements
             }
             set
             {
+                _Bldat = value;
                 if (_Bldat != null)
                 {
-                    _Bldat = value;
+                   
                     FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
@@ -486,7 +487,7 @@ namespace EGAZT.Models.AccountStatements
         public string FormattedBldat2 { get; set; }
 
         [JsonIgnore]
-        public DateTime? _Bldat2 { get; set; }
+        private DateTime? _Bldat2 { get; set; }
 
         [JsonProperty("Bldat2")]
         public DateTime? Bldat2
@@ -497,9 +498,10 @@ namespace EGAZT.Models.AccountStatements
             }
             set
             {
+                _Bldat2 = value;
                 if (_Bldat2 != null)
                 {
-                    _Bldat2 = value;
+                  
                     FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     string[] dts = FormattedBldat2.Split('-');
                     string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
