@@ -339,11 +339,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
 
-            if (viewModel.SelectedOutletOptionIndex == 1)
+            //if (viewModel.SelectedOutletOptionIndex == 1)
+            //{
+            //    viewModel.NationalTypeSelected();
+            //}
+            if(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
-                viewModel.NationalTypeSelected();
+                  viewModel.NationalTypeSelected();
             }
-
 
             viewModel.IsOption1Visible = index == 0 ? true : false;
             viewModel.IsOption2Visible = index == 1 ? true : false;
@@ -453,13 +456,17 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.OutletCheckboxTitle = AppResources.TinDeregistrationOutletCheckboxCloseAllOutlets;
             }
 
-            int index = Convert.ToInt16(viewModel.SelectedOutletOptionIndex);
-            if (isIndex1)
+            //int index = Convert.ToInt16(viewModel.SelectedOutletOptionIndex);
+            //if (isIndex1)
+            //{
+            //    index = 1;
+            //}
+            if (viewModel.SelectedOutletOption.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
-                index = 1;
+                viewModel.IsOption2Visible = true;
             }
-            viewModel.IsOption1Visible = index == 0 ? true : false;
-            viewModel.IsOption2Visible = index == 1 ? true : false;
+            //viewModel.IsOption1Visible = index == 0 ? true : false;
+            //viewModel.IsOption2Visible = index == 1 ? true : false;
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
