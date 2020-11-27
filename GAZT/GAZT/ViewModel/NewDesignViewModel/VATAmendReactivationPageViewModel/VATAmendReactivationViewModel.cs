@@ -1048,19 +1048,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsAddFinancialRepresentativeCheckBoxEnabled = true;
                     IsAddFinancialRepButtonEnabled = true;
 
-                    if (!string.IsNullOrEmpty(tempmobile))
-                    {
-                        PrimaryMobNumberFR = tempmobile;
-                        RaisePropertyChanged("PrimaryMobNumberFR");
-                    }
-                    if (!string.IsNullOrEmpty(tempEmail))
-                    {
-                        PrimarySmtpAddrFR = tempEmail;
-                        RaisePropertyChanged("PrimarySmtpAddrFR");
-                    }
+                   
                     FinancialRepresentativesModel financialRepresentativesModel = ListFinanceRepresenatives[0];
-                    financialRepresentativesModel.MobNumberFR = PrimaryMobNumberFR;
-                    financialRepresentativesModel.SmtpAddrFR = PrimarySmtpAddrFR;
+                    financialRepresentativesModel.MobNumberFR = tempmobile;
+                    financialRepresentativesModel.SmtpAddrFR = tempEmail;
                     ListFinanceRepresenatives = new List<FinancialRepresentativesModel>() { financialRepresentativesModel };
 
                 }
@@ -1934,6 +1925,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _listFinanceRepresenatives = value;
+
                 RaisePropertyChanged(nameof(ListFinanceRepresenatives));
             }
         }
@@ -2409,11 +2401,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsLoading = true;
                 });
                 setDATA();
-                ATTDETSet ATTDETSetnew = new ATTDETSet();
-                ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
+                var ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
+                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = ListFinanceRepresenatives[0].MobNumberFR;
+                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = ListFinanceRepresenatives[0].SmtpAddrFR;
                 //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
                 response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
+                tempmobile= ListFinanceRepresenatives[0].MobNumberFR; 
+                tempEmail = ListFinanceRepresenatives[0].SmtpAddrFR;
+                PrimaryMobNumberFR = ListFinanceRepresenatives[0].MobNumberFR;
+                PrimarySmtpAddrFR = ListFinanceRepresenatives[0].SmtpAddrFR;
                 if (response != null && response.d != null)
                 {
                     try
@@ -2449,7 +2446,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             setDataAfterSubmitAPIAsync(response);
 
                         }
-                        IsLoading = false;
+
+                                IsLoading = false;
                         return response;
 
                     }
@@ -2743,8 +2741,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                                 IdnumberFR = item.Idnumber,
                                                 FirstnmFR = item.Firstnm,
                                                 LastnmFR = item.Lastnm,
-                                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
-                                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[count].SmtpAddr,
+                                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber,
+                                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
                                                 TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[count].Type)?.FirstOrDefault()?.Name
 
                                             });
@@ -2832,7 +2830,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     IsAddNewRepresentativeChecked = false;
-                                    IsNewFinancialRepVisible = true;
+                                    IsNewFinancialRepVisible = false;
                                 });
                             }
                             switch (App.VATType)
