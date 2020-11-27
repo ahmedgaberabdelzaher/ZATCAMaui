@@ -1058,7 +1058,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                 foreach (OutletSetResult outletInfo in AllOutlets)
                                 {
-                                    if (SelectedOutletOptionIndex == 0 || SelectedOutletOptionIndex == 2)
+                                    if (SelectedOutletOption.Equals(AppResources.TinDeregistrationCloseAllOutlets) || SelectedOutletOption.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
                                     {
                                         outletInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
 
@@ -3375,6 +3375,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                 outletInfo.AOutletEffDtHTb = DeregistrationDate.ToString("yyyy/MM/dd");
                                                 outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(DeregistrationDate));
                                                 outletInfo.AOutletEffDtCTb = "G";
+                                                foreach (PermitSetResult permitInfo in allPermitTypes)
+                                                {
+                                                    permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("yyyy/MM/dd");
+                                                }
                                             }
                                         }
                                     
