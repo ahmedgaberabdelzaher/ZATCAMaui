@@ -130,10 +130,6 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
 
         }
         public void ChangeAeroIcon()
@@ -353,8 +349,8 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         viewModel.IdnumberSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Idnumber;
                         viewModel.FirstnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Firstnm;
                         viewModel.LastnmSum = viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Lastnm;
-                        viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
-                        viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
+                        viewModel.MobNumberSum = viewModel.ListFinanceRepresenatives[0].MobNumberFR;
+                        viewModel.SmtpAddrSum = viewModel.ListFinanceRepresenatives[0].SmtpAddrFR;
                         viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
 
                     }
