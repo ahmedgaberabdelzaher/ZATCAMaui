@@ -431,7 +431,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         if (App.IsArabic)
                         {
                             agroupedData = Items.OrderBy(p => p.Bldat)
-                                .GroupBy(p => p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("ar")))
+                              .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("en"))))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                         }
                         else

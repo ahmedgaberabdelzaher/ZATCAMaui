@@ -1255,7 +1255,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
                             {
                                 BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) <= 0).ToList();
-
+                                
                             }
                             else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
                             {
@@ -1282,36 +1282,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (BillsAndReturnsCommitmentsLocal.Count == 4)
                         {
-                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsTemp.OrderBy(a => a.DueDateDateTime).Take(4).ToList();
+                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(a => a.DueDateDateTime).Take(4).ToList();
                         }
                         else
                         {
-                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsTemp.OrderBy(a => a.DueDateDateTime).Take(5).ToList();
+                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(a => a.DueDateDateTime).Take(5).ToList();
                         }
-                        if (BillsAndReturnsCommitmentsTemp.Count > 3)
+                        if (BillsAndReturnsCommitmentsLocal.Count > 3)
                         {
-                            if (BillsAndReturnsCommitmentsTemp[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsTemp[3].DueDateDateTime.Date)
+                            if (BillsAndReturnsCommitmentsLocal[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsLocal[3].DueDateDateTime.Date)
                             {
-                                if (BillsAndReturnsCommitmentsTemp.Count > 4)
+                                if (BillsAndReturnsCommitmentsLocal.Count > 4)
                                 {
-                                    if (BillsAndReturnsCommitmentsTemp[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsTemp[4].DueDateDateTime.Date)
+                                    if (BillsAndReturnsCommitmentsLocal[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsLocal[4].DueDateDateTime.Date)
                                     {
                                     }
                                     else
                                     {
-                                        BillsAndReturnsCommitmentsTemp.RemoveAt(4);
+                                        BillsAndReturnsCommitmentsLocal.RemoveAt(4);
                                     }
                                 }
                             }
                             else
                             {
-                                if (BillsAndReturnsCommitmentsTemp.Count > 3)
+                                if (BillsAndReturnsCommitmentsLocal.Count > 3)
                                 {
-                                    BillsAndReturnsCommitmentsTemp.RemoveAt(3);
+                                    BillsAndReturnsCommitmentsLocal.RemoveAt(3);
                                 }
-                                if (BillsAndReturnsCommitmentsTemp.Count > 3)
+                                if (BillsAndReturnsCommitmentsLocal.Count > 3)
                                 {
-                                    BillsAndReturnsCommitmentsTemp.RemoveAt(3);
+                                    BillsAndReturnsCommitmentsLocal.RemoveAt(3);
                                 }
                             }
                         }
@@ -1319,12 +1319,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(i => DateTime.Parse(i.DueDate)).ToList();
                     BillsAndReturnsCommitmentsTemp.Clear();
-                    foreach (var item in BillsAndReturnsCommitmentsLocal)
-                    {
+                    //foreach (var item in BillsAndReturnsCommitmentsLocal)
+                    //{
 
-                        BillsAndReturnsCommitmentsTemp.Add(item);
-                    }
-                    BillsAndReturnsCommitments = BillsAndReturnsCommitmentsTemp;
+                    //    BillsAndReturnsCommitmentsTemp.Add(item);
+                    //}
+                    BillsAndReturnsCommitments = BillsAndReturnsCommitmentsLocal;
+                   
                     // BillsAndReturnsCommitments = new List<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
                     if (BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
                     {
