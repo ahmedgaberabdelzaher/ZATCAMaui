@@ -1087,7 +1087,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     if (DpDbo3.SelectedItem != null)
                     {
-                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                        var selectedItem = DpDbo3.SelectedItem as ObservableCollection<object>;
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
