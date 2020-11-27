@@ -553,7 +553,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     //viewModel.VATRegistrationDetailsData.d.Operationz = IsSubmitClicked ? "01" : viewModel.VATRegistrationDetailsData.d.Operationz;
                     if (App.VATType == Enums.PageExecutionType.Amend)
                     {
-                        if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked)
+                        if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked&&!viewModel.IsChangeEmailChecked)
                         {
                             PopupNavigation.PushAsync(new SingleButtonPopupView(AppResources.OKText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage));
                             return;
