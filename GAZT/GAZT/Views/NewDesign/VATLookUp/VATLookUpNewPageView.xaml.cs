@@ -98,6 +98,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                 PPicker.BackgroundColor = Color.FromHex("#FFFFFF");
             }
             
+                        MessagingCenter.Send(this, "ScanData", "abc");
         }
         private void SetLTR()
         {
