@@ -1022,7 +1022,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             {
                 _isAddNewRepresentativeChecked = value;
                 IsNewFinancialRepVisible = value;
-                IsChangeEmailCheckBoxEnabled=  !value; 
+                IsChangeEmailCheckBoxEnabled = !value;
                 RaisePropertyChanged("IsAddNewRepresentativeChecked");
             }
         }
@@ -1048,11 +1048,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsAddFinancialRepresentativeCheckBoxEnabled = true;
                     IsAddFinancialRepButtonEnabled = true;
 
-                   
-                    FinancialRepresentativesModel financialRepresentativesModel = ListFinanceRepresenatives[0];
-                    financialRepresentativesModel.MobNumberFR = tempmobile;
-                    financialRepresentativesModel.SmtpAddrFR = tempEmail;
-                    ListFinanceRepresenatives = new List<FinancialRepresentativesModel>() { financialRepresentativesModel };
+                    if (TempDataContacts != null)
+                    {
+                        var items = new List<FinancialRepresentativesModel>();
+                        for (int i = 0; i < ListFinanceRepresenatives.Count(); i++)
+                        {
+                            FinancialRepresentativesModel financialRepresentativesModel = ListFinanceRepresenatives[i];
+                            financialRepresentativesModel.MobNumberFR = TempDataContacts[i].tempmobile;
+                            financialRepresentativesModel.SmtpAddrFR = TempDataContacts[i].tempEmail;
+                            items.Add(financialRepresentativesModel);
+                        }
+                        ListFinanceRepresenatives = items;
+                    }
 
                 }
 
@@ -1272,7 +1279,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _firstnmFR = value;
-                FirstnmSum = value;
                 RaisePropertyChanged("FirstnmFR");
             }
         }
@@ -1300,7 +1306,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _lastnmFR = value;
-                LastnmSum = value;
                 RaisePropertyChanged("LastnmFR");
             }
         }
@@ -1318,8 +1323,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
         }
 
-        private string tempEmail = string.Empty;
-        private string tempmobile = string.Empty;
+        private List<TempDataContact> TempDataContacts { get; set; } = new List<TempDataContact>();
+            public class TempDataContact
+        {
+             public string tempEmail { get; set; }
+            public string tempmobile { get; set; }
+        }        
+   
         
         private string _primarymobNumberFR = string.Empty;
         public string PrimaryMobNumberFR
@@ -1345,7 +1355,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _mobNumberFR = value;
-                MobNumberSum = value;
                 RaisePropertyChanged("MobNumberFR");
             }
         }
@@ -1415,7 +1424,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _smtpAddrFR = value;
-                SmtpAddrSum = value;
                 RaisePropertyChanged("SmtpAddrFR");
             }
         }
@@ -1512,7 +1520,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _txtIDTypeFR = value;
-                TxtIDTypeSum = value;
                 TxtIDTypeSR = value;
                 RaisePropertyChanged("TxtIDTypeFR");
             }
@@ -1924,9 +1931,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             get => _listFinanceRepresenatives;
             set
             {
-                _listFinanceRepresenatives = value;
-
+                if (value != null) {
+                    _listFinanceRepresenatives = value;
+                    if (value.Count > 0)
+                    { MobNumberSum = value[0].MobNumberFR;
+                       SmtpAddrSum = value[0].SmtpAddrFR;
+                            }
                 RaisePropertyChanged(nameof(ListFinanceRepresenatives));
+                }
             }
         }
 
@@ -2401,16 +2413,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     IsLoading = true;
                 });
                 setDATA();
+                for (int i = 0; i < ListFinanceRepresenatives.Count(); i++)
+                {
+                    VATRegistrationDetailsData.d.CONTACTDTSet.results[i].MobNumber = ListFinanceRepresenatives[i].MobNumberFR;
+                    VATRegistrationDetailsData.d.CONTACTDTSet.results[i].SmtpAddr  = ListFinanceRepresenatives[i].SmtpAddrFR;
+                }
+
+
                 var ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
-                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = ListFinanceRepresenatives[0].MobNumberFR;
-                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = ListFinanceRepresenatives[0].SmtpAddrFR;
+
                 //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
                 response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
-                tempmobile= ListFinanceRepresenatives[0].MobNumberFR; 
-                tempEmail = ListFinanceRepresenatives[0].SmtpAddrFR;
-                PrimaryMobNumberFR = ListFinanceRepresenatives[0].MobNumberFR;
-                PrimarySmtpAddrFR = ListFinanceRepresenatives[0].SmtpAddrFR;
+                if (TempDataContacts != null)
+                {
+                    var items = new List<FinancialRepresentativesModel>();
+
+                    for (int i = 0; i < ListFinanceRepresenatives.Count(); i++)
+                    {
+                        FinancialRepresentativesModel financialRepresentativesModel = ListFinanceRepresenatives[i];
+                        financialRepresentativesModel.MobNumberFR = VATRegistrationDetailsData.d.CONTACTDTSet.results[i].MobNumber;
+                        financialRepresentativesModel.SmtpAddrFR = VATRegistrationDetailsData.d.CONTACTDTSet.results[i].SmtpAddr;
+                        items.Add(financialRepresentativesModel);
+                    }
+                    ListFinanceRepresenatives = items;
+                }
+                
                 if (response != null && response.d != null)
                 {
                     try
@@ -2677,8 +2705,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                tempmobile = PrimaryMobNumberFR;
-                                tempEmail = PrimarySmtpAddrFR;
+                                //tempmobile = PrimaryMobNumberFR;
+                                //tempEmail = PrimarySmtpAddrFR;
                                 
                                 try
                                 {
@@ -2695,8 +2723,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 LastnmSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
                                 PrimaryMobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 PrimarySmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
-                                tempmobile = PrimaryMobNumberFR;
-                                tempEmail = PrimarySmtpAddrFR;
+                                //tempmobile = PrimaryMobNumberFR;
+                                //tempEmail = PrimarySmtpAddrFR;
                                 
                                 try
                                 {
@@ -2741,10 +2769,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                                 IdnumberFR = item.Idnumber,
                                                 FirstnmFR = item.Firstnm,
                                                 LastnmFR = item.Lastnm,
-                                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber,
-                                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr,
+                                                MobNumberFR = vATRegistration.d.CONTACTDTSet.results[count].MobNumber,
+                                                SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[count].SmtpAddr,
                                                 TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[count].Type)?.FirstOrDefault()?.Name
-
+                                                
+                                            });
+                                            TempDataContacts.Add(new TempDataContact { 
+                                            tempEmail= vATRegistration.d.CONTACTDTSet.results[count].SmtpAddr,
+                                            tempmobile= vATRegistration.d.CONTACTDTSet.results[count].MobNumber
                                             });
                                             count++;
                                         }

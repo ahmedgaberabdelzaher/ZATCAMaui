@@ -355,7 +355,7 @@
                                                                         <custom:CustomLabel VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
                                                                             <custom:CustomLabel.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding Day}" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
+                                                                                    <Span Text="{Binding Day    }" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
                                                                                     <Span Text="&#10;" LineHeight="1"/>
                                                                                     <Span Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"></Span>
                                                                                 </FormattedString>
