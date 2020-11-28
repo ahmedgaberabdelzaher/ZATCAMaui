@@ -56,32 +56,32 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
         private void Dashboard_Tapped(object sender, EventArgs e)
         {
-            //var _navigation = Application.Current.MainPage.Navigation;
-            //foreach (var item in _navigation.NavigationStack)
-            //{
-            //    if (item.GetType().Name == App.ContractReleasePageView)
-            //    {
-            //        _navigation.RemovePage(item);
-            //        break;
-            //    }
-            //}
+            var _navigation = Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ContractReleasePageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
 
-            //foreach (var item in _navigation.NavigationStack)
-            //{
-            //    if (item.GetType().Name == App.ContractReleaseListPageView)
-            //    {
-            //        _navigation.RemovePage(item);
-            //        break;
-            //    }
-            //}
-            //foreach (var item in _navigation.NavigationStack)
-            //{
-            //    if (item.GetType().Name == App.ContractReleaseSuccessPageView)
-            //    {
-            //        _navigation.RemovePage(item);
-            //        break;
-            //    }
-            //}
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ContractReleaseListPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ContractReleaseSuccessPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
             viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
 
         }

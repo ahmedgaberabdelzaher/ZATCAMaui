@@ -1874,11 +1874,11 @@
                         <buttons:SfButton Margin="0,16,0,16"
                                           Text="{x:Static ResourceManager:AppResources.Confirm}"
                                           Style="{StaticResource PrimaryButtonStyle}"
-                                          Command="{Binding SummaryConBtnTapped}" />
+                                          Command="{Binding SummaryConBtnTapped}"
+                                          Clicked="SubmitClicked"/>
 
                     </StackLayout>
                 </Grid>
-
                
             </Grid>
                  
@@ -1887,7 +1887,7 @@
                     
         </ScrollView>
 
-            <Grid IsVisible="{Binding IsLoading1}" BackgroundColor="Transparent">
+            <Grid x:Name="Loadingbar" IsVisible="{Binding IsLoading1}" BackgroundColor="Transparent">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                  Opacity="0.4" VerticalOptions="FillAndExpand" />
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
