@@ -509,7 +509,7 @@
                             </StackLayout>
 
                         </StackLayout>
-                        <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  >
+                        <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}"  IsVisible="{Binding IsDobVisible}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}"/>
@@ -517,13 +517,13 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <StackLayout Orientation="Horizontal" >
+                        <StackLayout Orientation="Horizontal" IsVisible="{Binding IsDobVisible}">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                             <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal}" Toggled="HijriCal3Switch_Toggled" />
                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                         </StackLayout>
 
-                        <Grid >
+                        <Grid IsVisible="{Binding IsDobVisible}">
                             <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
                                                          Text ="{Binding PickerDOBDateDisplay}" Unfocused="DOBDatePicker_Unfocused" TextChanged="DOBDateEntry_TextChanged"
