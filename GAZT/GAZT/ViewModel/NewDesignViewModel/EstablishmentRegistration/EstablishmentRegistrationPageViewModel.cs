@@ -2423,7 +2423,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.StackTrace);
+                throw e;
             }
             finally
             {

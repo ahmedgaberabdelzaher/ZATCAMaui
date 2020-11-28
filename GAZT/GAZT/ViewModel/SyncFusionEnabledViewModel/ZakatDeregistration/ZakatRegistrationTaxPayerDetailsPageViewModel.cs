@@ -10,13 +10,15 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
-    public class ZakatRegistrationTaxPayerDetailsPageViewModel: EstablishmentRegistrationPageViewModel
+    public class ZakatRegistrationTaxPayerDetailsPageViewModel : EstablishmentRegistrationPageViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
 
@@ -28,48 +30,71 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             });
         }
 
-        
+
 
         public async Task LoadDataTaxPayerDetails()
         {
-            await Task.Run(() =>
-            {
-                App.DisplayProgressView();
-            });
             try
             {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
                 await Task.Run(async () =>
                 {
                     await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.RegistrationType);
                 });
-                
-            }
-            catch(Exception ex)
-            {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
-            }
 
-            try
-            {
                 await Task.Run(async () =>
                 {
                     await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
-                }); 
-            }
-            catch(Exception ex)
-            {
+                });
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
                 });
             }
-            await Task.Run(() =>
+            catch (InternetException)
             {
-                App.HideProgressView();
-            });
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                try
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+                await _dialogService.ShowMessage(message, AppResources.Information, AppResources.OKText, () =>
+                {
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception mex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+                Console.WriteLine(mex.Message);
+            }
         }
     }
 }

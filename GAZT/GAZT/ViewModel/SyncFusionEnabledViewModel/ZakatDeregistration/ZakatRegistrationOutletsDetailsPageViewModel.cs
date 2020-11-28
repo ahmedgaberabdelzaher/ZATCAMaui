@@ -4,6 +4,8 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
@@ -32,19 +34,52 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.Outlets);
                 });
-            }
-            catch (Exception ex)
-            {
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
                 });
             }
-
-            await Task.Run(() =>
+            catch (InternetException)
             {
-                App.HideProgressView();
-            });
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                try
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+                await _dialogService.ShowMessage(message, AppResources.Information, AppResources.OKText, () =>
+                {
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception mex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+                Console.WriteLine(mex.Message);
+            }
         }
     }
 }
