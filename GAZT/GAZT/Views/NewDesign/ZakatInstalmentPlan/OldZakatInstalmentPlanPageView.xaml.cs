@@ -42,11 +42,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.OldZakatInstalmentPlanPageView;
-               
+
                 viewModel.MinInstalments = 1;
                 viewModel.MaxInstalments = 36;
-                viewModel.MinAmount= 0;
-                viewModel.MaxAmount= 1;
+                viewModel.MinAmount = 0;
+                viewModel.MaxAmount = 1;
                 viewModel.ResetData();
                 this.BindingContext = viewModel;
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
@@ -173,6 +173,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             viewModel.DownPaymentAmount = args.NewValue;
             downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
+            downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
+
+
         }
 
         private void Installment_ValueChanged(object sender, ValueChangedEventArgs args)
@@ -292,9 +295,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
 
                     //viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    viewModel.MinAmountTitle = AppResources.ZakatMin + " " + viewModel.MinAmount;
+                    viewModel.MinAmountTitle = AppResources.ZakatMin + " " + String.Format("{0:N}", viewModel.MinAmount) ;
                     //viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
-                    viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + viewModel.MaxAmount;
+                    viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + String.Format("{0:N}", viewModel.MaxAmount); 
                     viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
 
                 }
@@ -413,7 +416,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+                {
                     viewModel.YesNoPickerModel = arg;
                     viewModel.updatePicker();
                     // Console.WriteLine(arg);
@@ -512,10 +516,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
 
-                MessagingCenter.Subscribe<object, string>(this, "SelectedReason", (sender, arg) => {
+                MessagingCenter.Subscribe<object, string>(this, "SelectedReason", (sender, arg) =>
+                {
                     if (arg != null)
                     {
-                        Device.BeginInvokeOnMainThread(() => {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
 
                             try
                             {
@@ -614,22 +620,39 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 {
                     viewModel.showDialog(AppResources.ZakatInstalmentCannotExceed + " " + viewModel.MaxAmount);
                     downPaymentEntry.Text = viewModel.MinAmount.ToString();
+                    downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
+
                     downPaymentSlider.Value = viewModel.MinAmount;
+                    string s = (string)downPaymentSlider.Value.ToString("N");
+                    downPaymentSlider.Value = Convert.ToDouble(s);
+
+
                 }
                 else if (Double.Parse(downPaymentEntry.Text) < viewModel.MinAmount)
                 {
                     viewModel.showDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
                     downPaymentEntry.Text = viewModel.MinAmount.ToString();
+                    downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
+
                     downPaymentSlider.Value = viewModel.MinAmount;
+
+                    string s = (string)downPaymentSlider.Value.ToString("N");
+                    downPaymentSlider.Value = Convert.ToDouble(s);
+
                 }
                 else if (downPaymentEntry.Text.Length == 0)
                 {
                     downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
+                    downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
+
                 }
                 else
                 {
                     viewModel.DownPaymentAmount = Math.Round(Double.Parse(downPaymentEntry.Text), 2);
                     downPaymentSlider.Value = viewModel.DownPaymentAmount;
+
+                    string s = (string)downPaymentSlider.Value.ToString("N");
+                    downPaymentSlider.Value = Convert.ToDouble(s);
                 }
             }
             catch (Exception ex)
@@ -638,7 +661,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-       
+
 
         private void downPaymentEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -659,6 +682,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     {
                         viewModel.DownPaymentAmount = Math.Round(Double.Parse(downPaymentEntry.Text), 2);
                         downPaymentSlider.Value = viewModel.DownPaymentAmount;
+                        string s = (string)downPaymentSlider.Value.ToString("N");
+                        downPaymentSlider.Value = Convert.ToDouble(s);
+
                         var dueAmount = viewModel.VATBillDueAmount.Replace("SAR", "");
                         viewModel.PeriodicInstalment = Math.Abs(double.Parse(dueAmount) - double.Parse(downPaymentEntry.Text));
                     }
@@ -670,9 +696,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
+   
         private void calculation_TextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.calculateYear1Data();
+
         }
         private void calculation2_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -839,5 +867,137 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
             }
         }
+
+        void CashBankText_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                viewModel.CashBankY1 = CashBankText.Text;
+                CashBankText.Text = String.Format("{0:N}", Convert.ToDouble(CashBankText.Text));
+
+                viewModel.StiY1 = ShortTermInvestmentText.Text;
+                ShortTermInvestmentText.Text = String.Format("{0:N}", Convert.ToDouble(ShortTermInvestmentText.Text));
+
+                viewModel.DebitorsY1 = DebitorsText.Text;
+                DebitorsText.Text = String.Format("{0:N}", Convert.ToDouble(DebitorsText.Text));
+
+                viewModel.InventoryY1 = InventoryText.Text;
+                InventoryText.Text = String.Format("{0:N}", Convert.ToDouble(InventoryText.Text));
+
+                viewModel.TcAssetsY1 = TcAssetsText.Text;
+                TcAssetsText.Text = String.Format("{0:N}", Convert.ToDouble(TcAssetsText.Text));
+
+                viewModel.ZakatY1 = ZakatText.Text;
+                ZakatText.Text = String.Format("{0:N}", Convert.ToDouble(ZakatText.Text));
+
+                viewModel.TcLiabltyY1 = TcLiabilityText.Text;
+                TcLiabilityText.Text = String.Format("{0:N}", Convert.ToDouble(TcLiabilityText.Text));
+
+                viewModel.RevenueY1 = RevenueText.Text;
+                RevenueText.Text = String.Format("{0:N}", Convert.ToDouble(RevenueText.Text));
+
+                viewModel.NetIncomeY1 = NetIncomeText.Text;
+                NetIncomeText.Text = String.Format("{0:N}", Convert.ToDouble(NetIncomeText.Text));
+
+                viewModel.NcFlowY1 = NcFlowText.Text;
+                NcFlowText.Text = String.Format("{0:N}", Convert.ToDouble(NcFlowText.Text));
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        
+        void calculation2_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                viewModel.CashBankY2 = CashBank2Text.Text;
+                CashBank2Text.Text = String.Format("{0:N}", Convert.ToDouble(CashBank2Text.Text));
+
+                viewModel.StiY2 = Sti2Text.Text;
+                Sti2Text.Text = String.Format("{0:N}", Convert.ToDouble(Sti2Text.Text));
+
+                viewModel.DebitorsY2 = Debitors2Text.Text;
+                Debitors2Text.Text = String.Format("{0:N}", Convert.ToDouble(Debitors2Text.Text));
+
+                viewModel.InventoryY2 = Inventory2Text.Text;
+                Inventory2Text.Text = String.Format("{0:N}", Convert.ToDouble(Inventory2Text.Text));
+
+                viewModel.TcAssetsY2 = TcAssets2Text.Text;
+                TcAssets2Text.Text = String.Format("{0:N}", Convert.ToDouble(TcAssets2Text.Text));
+
+                viewModel.ZakatY2 = Zakat2Text.Text;
+                Zakat2Text.Text = String.Format("{0:N}", Convert.ToDouble(Zakat2Text.Text));
+
+                viewModel.TcLiabltyY2 = TcLiability2Text.Text;
+                TcLiability2Text.Text = String.Format("{0:N}", Convert.ToDouble(TcLiability2Text.Text));
+
+                viewModel.RevenueY2 = Revenue2Text.Text;
+                Revenue2Text.Text = String.Format("{0:N}", Convert.ToDouble(Revenue2Text.Text));
+
+                viewModel.NetIncomeY2 = NetIncome2Text.Text;
+                NetIncome2Text.Text = String.Format("{0:N}", Convert.ToDouble(NetIncome2Text.Text));
+
+                viewModel.NcFlowY2 = NcFlow2Text.Text;
+                NcFlow2Text.Text = String.Format("{0:N}", Convert.ToDouble(NcFlow2Text.Text));
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        void calculation3_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                viewModel.CashBankY3 = CashBank3Text.Text;
+                CashBank3Text.Text = String.Format("{0:N}", Convert.ToDouble(CashBank3Text.Text));
+
+                viewModel.StiY3 = Sti3Text.Text;
+                Sti3Text.Text = String.Format("{0:N}", Convert.ToDouble(Sti3Text.Text));
+
+                viewModel.DebitorsY3 = Debitors3Text.Text;
+                Debitors3Text.Text = String.Format("{0:N}", Convert.ToDouble(Debitors3Text.Text));
+
+                viewModel.InventoryY3 = Inventory3Text.Text;
+                Inventory3Text.Text = String.Format("{0:N}", Convert.ToDouble(Inventory3Text.Text));
+
+                viewModel.TcAssetsY3 = TcAssets3Text.Text;
+                TcAssets3Text.Text = String.Format("{0:N}", Convert.ToDouble(TcAssets3Text.Text));
+
+                viewModel.ZakatY3 = Zakat3Text.Text;
+                Zakat3Text.Text = String.Format("{0:N}", Convert.ToDouble(Zakat3Text.Text));
+
+                viewModel.TcLiabltyY3 = TcLiability3Text.Text;
+                TcLiability3Text.Text = String.Format("{0:N}", Convert.ToDouble(TcLiability3Text.Text));
+
+                viewModel.RevenueY3 = Revenue3Text.Text;
+                Revenue3Text.Text = String.Format("{0:N}", Convert.ToDouble(Revenue3Text.Text));
+
+                viewModel.NetIncomeY3 = NetIncome3Text.Text;
+                NetIncome3Text.Text = String.Format("{0:N}", Convert.ToDouble(NetIncome3Text.Text));
+
+                viewModel.NcFlowY3 = NcFlow3Text.Text;
+                NcFlow3Text.Text = String.Format("{0:N}", Convert.ToDouble(NcFlow3Text.Text));
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
     }
 }

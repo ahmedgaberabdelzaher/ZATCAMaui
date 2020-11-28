@@ -690,15 +690,16 @@
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
-                                        <StackLayout Orientation="Horizontal" Spacing="20">
+                                        <StackLayout Orientation="Horizontal" Spacing="20" x:Name="refundreqMenu" >
                                             <Image Source="ic_RefundR.png">
                                             </Image>
-                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBRefundRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.DBRefundRequest}"
+                                                                 Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="RefundRequest_Tapped" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                        <BoxView Style="{StaticResource WhiteLineSeperator}" x:Name="refundreqMenuBox" />
                                         
                                         <!--
                                         <StackLayout Orientation="Horizontal" Spacing="20">
@@ -712,7 +713,7 @@
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                         -->
 
-                                        <StackLayout Orientation="Horizontal" Spacing="20">
+                                        <StackLayout Orientation="Horizontal" Spacing="20" x:Name="fillingMenu">
                                             <Image Source="ic_vat_return.png">
                                             </Image>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -720,7 +721,7 @@
                                                 <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                        <BoxView Style="{StaticResource WhiteLineSeperator}" x:Name="fillingMenuBox"  />
                                         
                                         <StackLayout Orientation="Vertical" IsVisible="{Binding IfRegInZakat}">
                                         <StackLayout Orientation="Horizontal" Spacing="20">

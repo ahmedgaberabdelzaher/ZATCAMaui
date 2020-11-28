@@ -1098,7 +1098,7 @@
                                                 Style="{StaticResource BodyLabelBlack}" />
 
                                     <cards:SfCardView Padding="10,0,10,0" Margin="0,0,0,5" HorizontalOptions="FillAndExpand" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
-                                        <custom:BorderlessEntry  x:Name="downPaymentEntry" Text="{Binding DownPaymentAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="FillAndExpand"
+                                        <custom:BorderlessEntry  x:Name="downPaymentEntry" Text="{Binding DownPaymentAmount,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="FillAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}" Keyboard="Numeric" TextChanged="downPaymentEntry_TextChanged" Unfocused="downPaymentEntry_Unfocused" />
                                     </cards:SfCardView>
                                     <Frame CornerRadius="10"  

@@ -740,6 +740,9 @@ namespace EGAZT
             {
                 try
                 {
+
+                    SimpleIoc.Default.Unregister<VATLookUpNewPageViewModel>();
+                    SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATLookUpNewPageViewModel>();
                 }
                 catch (Exception ex)
@@ -2897,6 +2900,9 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ContractReleaseViewModel>();
+                    SimpleIoc.Default.Register<ContractReleaseViewModel>();
+
                     return ServiceLocator.Current.GetInstance<ContractReleaseViewModel>();
                 }
                 catch (Exception ex)
@@ -2912,6 +2918,8 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ContractReleaseListViewModel>();
+                    SimpleIoc.Default.Register<ContractReleaseListViewModel>();
                     return ServiceLocator.Current.GetInstance<ContractReleaseListViewModel>();
                 }
                 catch (Exception ex)

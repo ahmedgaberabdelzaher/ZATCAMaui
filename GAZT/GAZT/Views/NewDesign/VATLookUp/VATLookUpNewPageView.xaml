@@ -284,7 +284,6 @@
                          BackgroundColor="White">
                 <buttons:SfButton x:Name="btnScan"
                                   Text="{x:Static ResourceManager:AppResources.ZQRScanner}"
-                                  Command="{Binding OnScanButtonClicked}"
                                   Style="{StaticResource PrimaryButtonStyle}"/>
                 <buttons:SfButton x:Name="btnSearch"
                                   Text="{Binding LookUpButtonText}"

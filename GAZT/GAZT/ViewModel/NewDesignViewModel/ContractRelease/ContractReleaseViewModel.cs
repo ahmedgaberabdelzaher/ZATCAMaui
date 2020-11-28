@@ -1125,8 +1125,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         private async void SummaryConBtnClicked()
         {
 
-           
-
             try
             {
 
@@ -1143,8 +1141,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         {
                             IsLoading1 = false;
                         });
-                        await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView());
-                        //_navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
+                       // await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView());
+                        _navigationService.NavigateTo(App.ContractReleaseSuccessPageView,this);
                     }
                 }
 
@@ -1167,6 +1165,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
