@@ -154,11 +154,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                         viewModel.IsOption2Visible = false;
                         viewModel.IsOption1Visible = false;
+                        viewModel.AddOutletDecisionOptions();
                     }
                 }
 
 
                 Console.WriteLine(arg);
+              
             });
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>

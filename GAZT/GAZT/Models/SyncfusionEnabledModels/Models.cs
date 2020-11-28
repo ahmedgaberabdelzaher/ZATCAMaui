@@ -173,15 +173,15 @@ namespace GAZT.Models
                 if (_dueDate != null)
                 {
                     Day= Convert.ToDateTime(_dueDate).ToString("dd", new CultureInfo("en-US"));
-                    //if (App.IsArabic)
-                    //{
-                    //    Month = UtilityManager.GetMonthName(Convert.ToDateTime(_dueDate).ToString("MMMM", new CultureInfo("en-US"))); 
-                    //}
-                    //else
-                    //{
-                    //    Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
-                    //}
-                    Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
+                    if (App.IsArabic)
+                    {
+                        Month = UtilityManager.GetMonthName(Convert.ToDateTime(_dueDate).ToString("MMMM", new CultureInfo("en-US")));
+                    }
+                    else
+                    {
+                        Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
+                    }
+                    // Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
                     FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     DueDateDateTime = Convert.ToDateTime(_dueDate);
                     //if (App.IsArabic)
