@@ -740,6 +740,9 @@ namespace EGAZT
             {
                 try
                 {
+
+                    SimpleIoc.Default.Unregister<VATLookUpNewPageViewModel>();
+                    SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATLookUpNewPageViewModel>();
                 }
                 catch (Exception ex)
