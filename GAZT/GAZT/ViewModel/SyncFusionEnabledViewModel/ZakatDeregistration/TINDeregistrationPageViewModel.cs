@@ -3343,7 +3343,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                         if (outletInfo.PermitTypes == null)
                                                             outletInfo.PermitTypes = new List<PermitSetResult>();
 
-                                                        outletInfo.PermitTypes.Add(permitInfo);
+                                                        if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
+                                                            outletInfo.PermitTypes.Add(permitInfo);
                                                     }
                                                 }
                                             }
@@ -3374,7 +3375,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                     if (outletInfo.PermitTypes == null)
                                                         outletInfo.PermitTypes = new List<PermitSetResult>();
 
-                                                    outletInfo.PermitTypes.Add(permitInfo);
+                                                    if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
+                                                        outletInfo.PermitTypes.Add(permitInfo);
                                                 }
                                             }
                                         }
