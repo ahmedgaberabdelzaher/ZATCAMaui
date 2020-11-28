@@ -281,6 +281,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                 };
             });
+
+            MessagingCenter.Subscribe<VATLookUpNewPageViewModel, string>(this, "ScanData", async (sender, arg) =>
+            {
+                LookupNumber = arg;
+                getBarcodeData();
+            });
         }
 
         #region Methods
@@ -583,5 +589,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
         #endregion
+
+        public void onDissapear()
+        {
+            MessagingCenter.Unsubscribe<VATLookUpNewPageViewModel, string>(this, "ScanData");
+        }
     }
 }

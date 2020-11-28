@@ -46,6 +46,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                 scanPage.OnScanResult += (result) => {
                     scanPage.IsScanning = false;
                     Device.BeginInvokeOnMainThread(async () => {
+                        MessagingCenter.Send(this, "ScanData", result.Text);
                         await Navigation.PopAsync();
                         viewModel.LookupNumber = result.Text;
                         
@@ -96,6 +97,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             {
                 PPicker.BackgroundColor = Color.FromHex("#FFFFFF");
             }
+            
         }
         private void SetLTR()
         {
@@ -160,6 +162,12 @@ namespace EGAZT.Views.NewDesign.VATLookUp
         {
             Device.BeginInvokeOnMainThread(() =>
           viewModel.IsNameVisible = false);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.onDissapear();
         }
     }
 }
