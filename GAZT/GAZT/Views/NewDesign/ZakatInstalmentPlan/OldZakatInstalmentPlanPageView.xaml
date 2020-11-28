@@ -8,7 +8,8 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
                            xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
@@ -18,30 +19,30 @@
              x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.OldZakatInstalmentPlanPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
- 
+
 
     <ContentPage.Resources>
         <ResourceDictionary>
-                  <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-                  <ResourceDictionary>
-                <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                    <Setter Property="Rotation" Value="180" />
-                </Style>
-                <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                    <Setter Property="Rotation" Value="0" />
-                </Style>
-            </ResourceDictionary>
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
- 
+
 
         </ResourceDictionary>
 
- 
+
 
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -79,7 +80,7 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
-                       
+
                         <StackLayout  Grid.Row="0" Grid.Column="2">
                             <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Rotation="90">
                                 <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
@@ -96,7 +97,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
 
- 
+
 
     <ContentPage.Content>
 
@@ -110,7 +111,7 @@
 
                     <!--Data Entry/calculations screen-->
 
-                                        <StackLayout Orientation="Vertical" IsVisible="{Binding InstalmentPlanAgreementsVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                    <StackLayout Orientation="Vertical" IsVisible="{Binding InstalmentPlanAgreementsVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <!--
                         <Grid.RowDefinitions>
@@ -144,50 +145,50 @@
 
                         </Grid>
 
-                         <Grid Grid.Row="2" Margin="0,0,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource ValueLabelBlack}" >
-                             <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTaxpayerHoldingFinancialStatement}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
-
-                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <Grid>
+                        <Grid Grid.Row="2" Margin="0,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding PickedFinancialStatement}"
+                            <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}" >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTaxpayerHoldingFinancialStatement}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding PickedFinancialStatement}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
-                            
 
-                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+
+                                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
                                                          Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
-                                    </Image.Source>
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ShowFinancialStatementPicker}"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            
-                            </Grid>
-                        </border:SfBorder>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ShowFinancialStatementPicker}"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
 
-                    </Grid>
+                                </Grid>
+                            </border:SfBorder>
+
+                        </Grid>
 
                         <Grid Grid.Row="3" IsEnabled="{Binding IsFinsancialStatementsEditable}" Margin="0,10,0,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <cards:SfCardView  HasShadow="True" Padding="10" CornerRadius="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -214,21 +215,25 @@
                                                 Margin="0,0,0,10"
                                                 VerticalOptions="FillAndExpand"
                                                 Style="{StaticResource ValueLabelBlack}" >
-                                          <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatYearOne}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZakatYearOne}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
 
                                     <!--ZakatYear-->
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Orientation="Vertical">
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="10" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding Year1}" Keyboard="Numeric" TextChanged="Year1Change_TextChanged"
+                                            <custom:GAZTBorderlessEntry Text="{Binding Year1}" Keyboard="Numeric" MaxLength="4" TextChanged="Year1Change_TextChanged"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"/>
+                                                          HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}">
+                                                   <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -242,9 +247,13 @@
 
                                         <border:SfBorder  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding CashBankY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="CashBankText" Text="{Binding CashBankY1}"  Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" />
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" Unfocused="CashBankText_Unfocused">
+                                                      <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -261,9 +270,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding StiY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="ShortTermInvestmentText" Text="{Binding StiY1}"  Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" />
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" Unfocused="CashBankText_Unfocused">
+                                                      <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -279,9 +292,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding DebitorsY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="DebitorsText" Text="{Binding DebitorsY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" Unfocused="CashBankText_Unfocused">
+                                                      <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
 
                                     </StackLayout>
@@ -296,9 +313,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding InventoryY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="InventoryText" Text="{Binding InventoryY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" />
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" Unfocused="CashBankText_Unfocused" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
                                     <!--ZakatInstalmentTotalCurrentAssets-->
@@ -311,9 +332,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding TcAssetsY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="TcAssetsText" Text="{Binding TcAssetsY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" />
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" Unfocused="CashBankText_Unfocused" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -328,9 +353,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding ZakatY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="ZakatText" Text="{Binding ZakatY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" />
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged"  Unfocused="CashBankText_Unfocused" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -345,9 +374,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding TcLiabltyY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="TcLiabilityText" Text="{Binding TcLiabilityY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" />
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged"  Unfocused="CashBankText_Unfocused" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -362,9 +395,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding RevenueY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="RevenueText" Text="{Binding RevenueY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand"  TextChanged="calculation_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand"  TextChanged="calculation_TextChanged"  Unfocused="CashBankText_Unfocused" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -379,9 +416,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding NetIncomeY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="NetIncomeText" Text="{Binding NetIncomeY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" Unfocused="CashBankText_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -396,9 +437,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding NcFlowY1}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="NcFlowText" Text="{Binding NcFlowY1}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation_TextChanged" Unfocused="CashBankText_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
@@ -410,7 +455,7 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:CustomLabel Text="{Binding ProfitRatioY1}"
+                                            <custom:CustomLabel Text="{Binding ProfitRatioY1,Converter={StaticResource commaSeparatorConverter}}"
                                                           FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
@@ -425,7 +470,7 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:CustomLabel Text="{Binding CashRatioY1}"
+                                            <custom:CustomLabel Text="{Binding CashRatioY1,Converter={StaticResource commaSeparatorConverter}}"
                                                           FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
@@ -458,22 +503,26 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Margin="0,0,0,10"
                                                 Style="{StaticResource ValueLabelBlack}" >
-                                           <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatYearTwo}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZakatYearTwo}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
 
                                     <!--ZakatYear-->
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="10" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding Year2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry Text="{Binding Year2}" MaxLength="4" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}" />
+                                                          HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -487,9 +536,13 @@
 
                                         <border:SfBorder  HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding CashBankY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="CashBank2Text" Text="{Binding CashBankY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -506,9 +559,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding StiY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Sti2Text"  Text="{Binding StiY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -524,9 +581,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding DebitorsY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Debitors2Text"  Text="{Binding DebitorsY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
 
                                     </StackLayout>
@@ -541,9 +602,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding InventoryY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Inventory2Text"  Text="{Binding InventoryY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
                                     <!--ZakatInstalmentTotalCurrentAssets-->
@@ -556,9 +621,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding TcAssetsY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="TcAssets2Text"  Text="{Binding TcAssetsY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -573,9 +642,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding ZakatY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Zakat2Text"  Text="{Binding ZakatY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -590,9 +663,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding TcLiabltyY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="TcLiability2Text"  Text="{Binding TcLiabltyY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -607,9 +684,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding RevenueY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Revenue2Text"  Text="{Binding RevenueY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -624,9 +705,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding NetIncomeY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="NetIncome2Text" Text="{Binding NetIncomeY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -641,9 +726,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding NcFlowY2}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="NcFlow2Text" Text="{Binding NcFlowY2}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation2_TextChanged" Unfocused="calculation2_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
@@ -655,7 +744,7 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <Label Text="{Binding ProfitRatioY2}"
+                                            <Label Text="{Binding ProfitRatioY2,Converter={StaticResource commaSeparatorConverter}}"
                                                            FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
@@ -670,7 +759,7 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <Label Text="{Binding CashRatioY2}"
+                                            <Label Text="{Binding CashRatioY2,Converter={StaticResource commaSeparatorConverter}}"
                                                           FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
@@ -703,22 +792,26 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Margin="0,0,0,10"
                                                 Style="{StaticResource ValueLabelBlack}" >
-                                           <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatYearThree}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZakatYearThree}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
 
                                     <!--ZakatYear-->
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="10" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding Year3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry Text="{Binding Year3}" MaxLength="4" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}" />
+                                                          HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -732,9 +825,13 @@
 
                                         <border:SfBorder  HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding CashBankY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="CashBank3Text" Text="{Binding CashBankY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -751,9 +848,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding StiY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Sti3Text" Text="{Binding StiY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -769,9 +870,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding DebitorsY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Debitors3Text" Text="{Binding DebitorsY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
 
                                     </StackLayout>
@@ -786,9 +891,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding InventoryY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Inventory3Text" Text="{Binding InventoryY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
                                     <!--ZakatInstalmentTotalCurrentAssets-->
@@ -801,9 +910,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding TcAssetsY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="TcAssets3Text" Text="{Binding TcAssetsY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -818,9 +931,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding ZakatY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Zakat3Text" Text="{Binding ZakatY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -835,9 +952,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding TcLiabltyY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="TcLiability3Text" Text="{Binding TcLiabltyY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -852,9 +973,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand" Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding RevenueY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="Revenue3Text" Text="{Binding RevenueY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -869,9 +994,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding NetIncomeY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="NetIncome3Text" Text="{Binding NetIncomeY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
 
@@ -886,9 +1015,13 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:GAZTBorderlessEditor Text="{Binding NcFlowY3}" Keyboard="Numeric"
+                                            <custom:GAZTBorderlessEntry x:Name="NcFlow3Text" Text="{Binding NcFlowY3}" Keyboard="Numeric"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
-                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged"/>
+                                                          HorizontalOptions="FillAndExpand" TextChanged="calculation3_TextChanged" Unfocused="calculation3_Unfocused">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <custom1:AmountValidator/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
                                         </border:SfBorder>
                                     </StackLayout>
                                     <StackLayout Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
@@ -900,7 +1033,7 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:CustomLabel Text="{Binding ProfitRatioY3}"
+                                            <custom:CustomLabel Text="{Binding ProfitRatioY3,Converter={StaticResource commaSeparatorConverter}}"
                                                           FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
@@ -915,7 +1048,7 @@
 
                                         <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="5" Style="{StaticResource GreyBorderFrame}">
 
-                                            <custom:CustomLabel Text="{Binding CashRatioY3}"
+                                            <custom:CustomLabel Text="{Binding CashRatioY3,Converter={StaticResource commaSeparatorConverter}}"
                                                              FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" />
                                         </border:SfBorder>
@@ -1171,10 +1304,10 @@
                                     </Frame>
                                     <StackLayout Padding="10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel Text="{Binding MinAmountTitle}" HorizontalOptions="StartAndExpand"
+                                        <custom:CustomLabel Text="{Binding MinAmountTitle}"  HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                        <custom:CustomLabel  Text="{Binding MaxAmountTitle}" HorizontalOptions="EndAndExpand"
+                                        <custom:CustomLabel  Text="{Binding MaxAmountTitle}"  HorizontalOptions="EndAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>
 
                                     </StackLayout>
@@ -1192,7 +1325,7 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                     <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" >
+                                    <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" >
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding VATBillDueAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
@@ -1200,8 +1333,8 @@
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
-                                     </custom:CustomLabel>
-                              
+                                    </custom:CustomLabel>
+
 
                                 </StackLayout>
                             </Frame>
@@ -1257,7 +1390,7 @@
                                               SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" 
                                               SelectionChanged="attachmentsListView_SelectionChanged"
                                                TapCommand="{Binding BankStatementsAttachmentTapped}" Margin="0,0,0,10" >
-                               
+
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid HorizontalOptions="FillAndExpand">
@@ -1279,38 +1412,38 @@
                                                         <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
 
-                                                     <StackLayout Grid.Row="0" Grid.Column="0" >
-                                                    <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
+                                                    <StackLayout Grid.Row="0" Grid.Column="0" >
+                                                        <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
                                                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                </StackLayout>
+                                                    </StackLayout>
 
-                                                       <StackLayout Grid.Row="0" Grid.Column="1" >
-                                                    <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
-                                                </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                        <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
+                                                    </StackLayout>
 
-                                                   
+
 
                                                     <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
                                                                     Text="{Binding Filename}"
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     VerticalOptions="Center"/>-->
-                                                   <StackLayout Grid.Row="0" Grid.Column="2" >
+                                                    <StackLayout Grid.Row="0" Grid.Column="2" >
 
-                                                       <Image HorizontalOptions="Center"
+                                                        <Image HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        Rotation="90">
-                                                        <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
                                                                          Size="24"
                                                                          Glyph="{x:Static FontImage:IconFonts.Close}" />
-                                                        </Image.Source>
-                                                    </Image>
-                                                </StackLayout>
-                                                    
+                                                            </Image.Source>
+                                                        </Image>
+                                                    </StackLayout>
+
                                                 </Grid>
                                             </border:SfBorder>
-                                            
+
 
                                         </Grid>
                                     </DataTemplate>
@@ -1327,13 +1460,13 @@
                             <custom:CustomLabel Grid.Row="0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" >
-                                 <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentBankSettlement}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentBankSettlement}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                          Style="{StaticResource SfStyleGreyBorderFrame}">
 
@@ -1370,7 +1503,7 @@
                                               ItemsSource="{Binding FinanceAttachmentsListViewData}" 
                                               SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" 
                                                TapCommand="{Binding FinanceAttachmentTapped}" Margin="0,0,0,10" >
-                              
+
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid HorizontalOptions="FillAndExpand">
@@ -1393,27 +1526,27 @@
                                                     </Grid.ColumnDefinitions>
 
                                                     <StackLayout Grid.Row="0" Grid.Column="0" >
-                                                    <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
+                                                        <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
                                                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                </StackLayout>
+                                                    </StackLayout>
 
-                                                  <StackLayout Grid.Row="0" Grid.Column="1" >
-                                                    <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
-                                                </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1" >
+                                                        <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
+                                                    </StackLayout>
 
-                                                   <StackLayout Grid.Row="0" Grid.Column="2" >
+                                                    <StackLayout Grid.Row="0" Grid.Column="2" >
 
                                                         <Image HorizontalOptions="Center"
                                                        VerticalOptions="Center"
                                                        Rotation="90">
-                                                        <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
                                                                          Size="24"
                                                                          Glyph="{x:Static FontImage:IconFonts.Close}" />
-                                                        </Image.Source>
-                                                    </Image>
-                                                </StackLayout>
-                                              
+                                                            </Image.Source>
+                                                        </Image>
+                                                    </StackLayout>
+
 
 
                                                     <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
@@ -1421,10 +1554,10 @@
                                                                     FontSize="Small" TextColor="Black"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     VerticalOptions="Center"/>-->
-                                                   
+
                                                 </Grid>
                                             </border:SfBorder>
-                                           
+
 
                                         </Grid>
                                     </DataTemplate>
@@ -1442,13 +1575,13 @@
                             <custom:CustomLabel Grid.Row="0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" >
-                                      <custom:CustomLabel.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentFInancialStatement}"  />
-                                            <!--<Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />-->
-                                        </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                              </custom:CustomLabel>
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentFInancialStatement}"  />
+                                        <!--<Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />-->
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
                             <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
                                          Style="{StaticResource SfStyleGreyBorderFrame}">
                                 <Grid>
@@ -1551,15 +1684,15 @@
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
                                                         <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                                          <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center">
-                                        <custom:CustomLabel.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VATBillDueAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                     </custom:CustomLabel>
+                                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center">
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding VATBillDueAmount,StringFormat='{0:N}',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
 
                                                     </StackLayout>
                                                 </Frame>
@@ -1605,16 +1738,16 @@
 
 
                                                 <custom:CustomLabel  Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
-                                                 <custom:CustomLabel Grid.Row="6"  Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding ADueAmtTb,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="6"  Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding ADueAmtTb,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
 
-                                                 
+
                                                 <custom:CustomLabel Grid.Row="5"  Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="6"  Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7"  Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="8"  Grid.Column="0" Text="{Binding AIvAmtTb,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7"  Grid.Column="1"  HorizontalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatClearedAmount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="8"  Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{Binding AClearedAmtTb,StringFormat='{0:N} SAR',Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
-                                                
+
                                             </Grid>
                                         </Grid>
                                     </cards:SfCardView>
@@ -1654,9 +1787,9 @@
 
 
                                                 <custom:CustomLabel TextColor="White" Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatBillAmount}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
-                                                 <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding ADueAmtTb,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="0" HorizontalOptions="StartAndExpand" Text="{Binding ADueAmtTb,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
 
-                                                 
+
                                                 <custom:CustomLabel Grid.Row="5" TextColor="White" Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="6" TextColor="White" Grid.Column="1" HorizontalOptions="EndAndExpand" Text="{Binding ADueDtTb}" Style="{StaticResource GAZTCaptionBlackLabel}"></custom:CustomLabel>
                                                 <custom:CustomLabel Grid.Row="7" TextColor="White" Grid.Column="0"  Text="{x:Static ResourceManager:AppResources.ZZZInvoiceamount}" Style="{StaticResource MiniNewGrayLabelStyle}"></custom:CustomLabel>
@@ -1955,33 +2088,33 @@
 
                                     <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                         <StackLayout Padding="15,15,15,0">
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                    
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </Grid>
-                                    
-                                </StackLayout>
+                                    <StackLayout Padding="15,15,15,0">
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        </Grid>
+
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        </Grid>
+
+                                    </StackLayout>
                                     <!--<Grid Grid.Row="3" Grid.ColumnSpan="2" Padding="8">
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
                                         <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
@@ -1997,77 +2130,77 @@
                             <!--Summary Attachments-->
 
                             <border:SfBorder  Margin="0,16,0,10" Grid.Row="5" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                 <StackLayout Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Grid Padding="0">
+                                <StackLayout Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid Padding="0">
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"></RowDefinition>
-                                        <RowDefinition Height="auto"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
-
-                                    </Grid.RowDefinitions>
-                                    <Grid Padding="15" RowSpacing="0" Grid.Row="0" >
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+
                                         </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="auto"/>
-                                        </Grid.ColumnDefinitions>
+                                        <Grid Padding="15" RowSpacing="0" Grid.Row="0" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
 
-                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                            <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_attachment"/>
-                                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                        </StackLayout>
-                                        <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryEdit}"
+                                            </Frame>
+                                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_attachment"/>
+                                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryEdit}"
                                            VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
-                                                <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding GoBackToAttachments}" ></TapGestureRecognizer>
-                                                </Label.GestureRecognizers>
-                                            </Label>
-                                        </StackLayout>
-                                    </Grid>
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding GoBackToAttachments}" ></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
 
-                                    <BoxView Grid.Row="1" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        <BoxView Grid.Row="1" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                     <listView:SfListView Grid.Row="2" x:Name="SummaryAttachmentsListView" HorizontalOptions="Center"  VerticalOptions="StartAndExpand" IsScrollingEnabled="False" IsScrollBarVisible="False" AutoFitMode="Height" ItemSpacing="5"
+                                        <listView:SfListView Grid.Row="2" x:Name="SummaryAttachmentsListView" HorizontalOptions="Center"  VerticalOptions="StartAndExpand" IsScrollingEnabled="False" IsScrollBarVisible="False" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent" Padding="3,0,3,0">
-                                        <listView:SfListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0" Margin="10,5,10,0">
-                                                    <Grid.RowDefinitions >
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
+                                            <listView:SfListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Padding="0" RowSpacing="0" Margin="10,5,10,0">
+                                                        <Grid.RowDefinitions >
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
 
 
-                                                 <StackLayout Grid.Row="0" Grid.Column="0" >
-                                                    <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
+                                                        <StackLayout Grid.Row="0" Grid.Column="0" >
+                                                            <Image Source="Generic_attachment_icon" WidthRequest="25"         HeightRequest="25"
                                                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                                </StackLayout>
+                                                        </StackLayout>
 
-                                                <StackLayout Grid.Row="0" Grid.Column="1" Margin="10,0,10,0">
+                                                        <StackLayout Grid.Row="0" Grid.Column="1" Margin="10,0,10,0">
 
-                                                    <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
-                                                </StackLayout>
+                                                            <custom:CustomLabel Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End" VerticalOptions="FillAndExpand"/>
+                                                        </StackLayout>
 
-                                                  
-                                                </Grid>
-                                            </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                    </listView:SfListView>
 
-                                </Grid>
-                              </StackLayout>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </listView:SfListView.ItemTemplate>
+                                        </listView:SfListView>
+
+                                    </Grid>
+                                </StackLayout>
 
                             </border:SfBorder >
 
@@ -2117,16 +2250,16 @@
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>
 
                                         <custom:CustomLabel HorizontalOptions="EndAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center">
-                                        <custom:CustomLabel.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding VATBillDueAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                     </custom:CustomLabel>
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding VATBillDueAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                    <Span Text="&#160;" Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource ValueLabelBlack}" ></Span>
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                        </custom:CustomLabel>
 
-                                      
+
 
 
 

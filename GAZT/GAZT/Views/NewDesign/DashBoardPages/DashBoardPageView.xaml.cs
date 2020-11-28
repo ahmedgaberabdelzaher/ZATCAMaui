@@ -132,7 +132,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
-        public async void getNoCommandToLogout()
+        public void getNoCommandToLogout()
         {
             try
             {
@@ -193,6 +193,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             viewModel.IsEstablishmentRegistrationTileVisible = false;
                             viewModel.IsVatRegistrationTileVisible = true;
                             viewModel.IsRegistrationDetailsTileVisible = true;
+                            viewModel.IfRegInZakat = true;
+                            refundreqMenu.IsVisible = refundreqMenuBox.IsVisible= false;
+                            fillingMenu.IsVisible = fillingMenuBox.IsVisible = false;  
                         }
                         else if (App.LoginDataRetrieved.ZkReg == "U")
                         {
@@ -209,6 +212,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         if (App.LoginDataRetrieved.VtReg == "X")
                         {
                             viewModel.IsVatRegistrationTileVisible = false;
+                            viewModel.IfRegInZakat = false;
+
                         }
                         else if (App.LoginDataRetrieved.VtReg == "R")
                         {

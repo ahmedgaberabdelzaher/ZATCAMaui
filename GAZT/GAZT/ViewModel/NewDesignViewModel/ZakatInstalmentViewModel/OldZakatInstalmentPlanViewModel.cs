@@ -2794,6 +2794,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             try
             {
+                
                 if ((StiY1.Length > 0 && double.Parse(StiY1) != 0) && (CashBankY1.Length > 0 && double.Parse(CashBankY1) != 0))
                 {
                     NcFlowY1 = (double.Parse(StiY1) / double.Parse(CashBankY1)).ToString("0.00");
@@ -4619,7 +4620,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 if (totalAmountDue > 0)
                 {
                     MaxAmount = Math.Round(totalAmountDue, 2);
-                    MaxAmountTitle = AppResources.ZakatMax + " " + MaxAmount;
+
+                    MaxAmountTitle = AppResources.ZakatMax + " " + String.Format("{0:N}", MaxAmount);
+                    ;
+                   /// MaxAmountTitle = String.Format("{0:N}", MaxAmount);
+
 
                 }
                 if (totalAmountDue > 0)
@@ -4628,8 +4633,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     //DownPaymentAmount = MinAmount;
                     DownPaymentAmount = Math.Round(totalAmountDue * (float.Parse(ZakatInstalments.d.Percentage) / 100.0f), 2); // MinAmount;
 
-                    MinAmountTitle = AppResources.ZakatMin + " " + MinAmount;
+                    MinAmountTitle = AppResources.ZakatMin + " " + String.Format("{0:N}", MinAmount);
+                   
+                   // MinAmountTitle = String.Format("{0:N}", MinAmount);
+
                     DownPaymentSliderValue = DownPaymentAmount;
+
+                    string s = (string)DownPaymentSliderValue.ToString("N");
+                    DownPaymentSliderValue = Convert.ToDouble(s);
 
                 }
 
@@ -4647,6 +4658,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     {
                         DownPaymentAmount = Double.Parse(ZakatInstalments.d.ADpAmt);
                         DownPaymentSliderValue = Double.Parse(ZakatInstalments.d.ADpAmt);
+                        string s = (string)DownPaymentSliderValue.ToString("N");
+                        DownPaymentSliderValue = Convert.ToDouble(s);
+
                     }
 
                     if (!string.IsNullOrEmpty(ZakatInstalments.d.ATotalAmt) && Double.Parse(ZakatInstalments.d.ATotalAmt) > 0)
@@ -5484,17 +5498,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                  }
 
             }
-
-
-            
-
-           
-
-
-
-
-
-
 
 
             // _postData.FnDtlSet = ZakatInstalments.d.FnDtlSet.results.ToArray();

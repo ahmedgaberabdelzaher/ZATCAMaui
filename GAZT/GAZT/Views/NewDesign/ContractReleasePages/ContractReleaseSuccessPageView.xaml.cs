@@ -19,16 +19,16 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
     {
         public ContractReleaseViewModel viewModel;
 
-        public ContractReleaseSuccessPageView()
+        public ContractReleaseSuccessPageView(ContractReleaseViewModel viewModel)
         {
             InitializeComponent();
-
+            this.viewModel = viewModel;
 
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-            viewModel = App.Locator.ContractReleasePageView;
+            //viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
 
             ReferenceNumberTxt.Text = viewModel.ContractReleaseData.d.Fbnumz;
@@ -56,35 +56,35 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
         private void Dashboard_Tapped(object sender, EventArgs e)
         {
-            var _navigation = Application.Current.MainPage.Navigation;
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.ContractReleasePageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
+            //var _navigation = Application.Current.MainPage.Navigation;
+            //foreach (var item in _navigation.NavigationStack)
+            //{
+            //    if (item.GetType().Name == App.ContractReleasePageView)
+            //    {
+            //        _navigation.RemovePage(item);
+            //        break;
+            //    }
+            //}
 
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.ContractReleaseListPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.ContractReleaseSuccessPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
+            //foreach (var item in _navigation.NavigationStack)
+            //{
+            //    if (item.GetType().Name == App.ContractReleaseListPageView)
+            //    {
+            //        _navigation.RemovePage(item);
+            //        break;
+            //    }
+            //}
+            //foreach (var item in _navigation.NavigationStack)
+            //{
+            //    if (item.GetType().Name == App.ContractReleaseSuccessPageView)
+            //    {
+            //        _navigation.RemovePage(item);
+            //        break;
+            //    }
+            //}
             viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
-        
-    }
+
+        }
 
         private async void ReferenceNumberCopyTapped(object sender, EventArgs e)
         {
@@ -100,7 +100,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                         await viewModel._dialogService.ShowMessageBox(AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
 
                     }
-                 
+
                 }
             }
             catch (Exception ex)
@@ -111,7 +111,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
         }
 
-        private async void Download_Acknowledgement(object sender, EventArgs e)
+        private void Download_Acknowledgement(object sender, EventArgs e)
         {
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
@@ -140,7 +140,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
 
-        private async void Download_AcknowledgementForm(object sender, EventArgs e)
+        private void Download_AcknowledgementForm(object sender, EventArgs e)
         {
             if (viewModel.ContractReleaseData.d.Fbnumz != null)
             {
@@ -173,7 +173,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                         await viewModel._dialogService.ShowMessageBox(AppResources.CRContractingNumber + " " + text, AppResources.Copied);
 
                     }
-               
+
                 }
             }
             catch (Exception ex)
