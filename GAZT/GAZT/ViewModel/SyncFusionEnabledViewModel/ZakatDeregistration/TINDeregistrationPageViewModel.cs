@@ -997,6 +997,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private bool _isDobVisible = true;
+        public bool IsDobVisible
+        {
+            get
+            {
+                return _isDobVisible;
+            }
+
+            set
+            {
+
+                _isDobVisible = value;
+                RaisePropertyChanged("IsDobVisible");
+            }
+        }
+
         private string _selectedIDTypeCode { get; set; }
         public string SelectedIDTypeCode
         {
@@ -1009,6 +1025,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
 
                 _selectedIDTypeCode = value;
+                if (_selectedIDTypeCode != null)
+                {
+                    if (_selectedIDTypeCode == "ZS0005")
+                    {
+                        FathersNameText.IsVisible = false;
+                        // SurnameText.IsVisible = false;
+                        GrandFathersNameText.IsVisible = false;
+                        FamilyNameText.IsVisible = false;
+                        IsDobVisible = false;
+                    }
+                    else
+                    {
+                        FathersNameText.IsVisible = true;
+                        SurnameText.IsVisible = true;
+                        GrandFathersNameText.IsVisible = true;
+                        FamilyNameText.IsVisible = true;
+                        IsDobVisible = true;
+                    }
+                }
+                else
+                {
+                    IsDobVisible = true;
+                }
                 RaisePropertyChanged("SelectedIDTypeCode");
             }
         }

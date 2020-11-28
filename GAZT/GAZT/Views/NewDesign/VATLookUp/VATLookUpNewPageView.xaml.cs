@@ -2,10 +2,13 @@
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
+using System.Linq;
 using Rg.Plugins.Popup.Services;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
+
 
 
 namespace EGAZT.Views.NewDesign.VATLookUp
@@ -34,6 +37,23 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+
+            ZXingScannerPage scanPage;
+            btnScan.Clicked += async (a,e) =>
+            {
+                viewModel.SelectedParameterType = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+                scanPage = new ZXingScannerPage();
+                scanPage.OnScanResult += (result) => {
+                    scanPage.IsScanning = false;
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await Navigation.PopAsync();
+                        viewModel.LookupNumber = result.Text;
+                        
+                    });
+                    viewModel.getBarcodeData();
+                };
+                await Navigation.PushAsync(scanPage);
+            };
         }
         public void SetPickerFont()
         {
@@ -138,7 +158,8 @@ namespace EGAZT.Views.NewDesign.VATLookUp
 
         private void BorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-          viewModel.IsNameVisible = false;
+            Device.BeginInvokeOnMainThread(() =>
+          viewModel.IsNameVisible = false);
         }
     }
 }

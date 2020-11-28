@@ -434,8 +434,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async void getBarcodeData()
         {
-            await Task.Run(async () =>
-            {
+           
                 try
                 {
                     IsLoading = true;
@@ -582,7 +581,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-            });
         }
         #endregion
     }
