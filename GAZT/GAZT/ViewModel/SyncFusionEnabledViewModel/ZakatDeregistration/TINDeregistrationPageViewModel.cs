@@ -350,10 +350,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isDeclarationChecked)
                 {
                     IsDeclarationContinueButtonEnabled = true;
+                        TinDeregistrationData.ADeclarationChkbox = "1";
+                  
                 }
                 else
                 {
                     IsDeclarationContinueButtonEnabled = false;
+                    TinDeregistrationData.ADeclarationChkbox = "0";
+
                 }
 
                 RaisePropertyChanged("IsDeclarationChecked");
@@ -375,10 +379,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     EnableOutletDetaislView(true);
 
                     IsOutletContinueButtonEnabled = true;
+                    TinDeregistrationData.AStep = 4;
+
+
                 }
                 else
                 {
                     IsOutletContinueButtonEnabled = false;
+                    
                 }
 
                 RaisePropertyChanged("IsOutletChecked");
@@ -3899,20 +3907,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (TinDeregistrationData.ADregOpt == "2")
                     {
+                        //check.Add(new TinDeregestrationAttachmentsModel
+                        //{
+                        //    FieldTitle = AppResources.TinDeregistrationAttachmentMinisterialResponse,
+                        //    AttachmentName = string.Empty,
+                        //    IsAttachmentAttached = false,
+                        //    DocType = "DR03",
+                        //    IsMandatory = true
+                        //});
+                        //check.Add(new TinDeregestrationAttachmentsModel
+                        //{
+                        //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement,
+                        //    AttachmentName = string.Empty,
+                        //    IsAttachmentAttached = false,
+                        //    DocType = "DR09",
+                        //    IsMandatory = true
+                        //});
                         check.Add(new TinDeregestrationAttachmentsModel
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentMinisterialResponse,
+                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
                             AttachmentName = string.Empty,
                             IsAttachmentAttached = false,
-                            DocType = "DR03",
-                            IsMandatory = true
-                        });
-                        check.Add(new TinDeregestrationAttachmentsModel
-                        {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR09",
+                            DocType = "DR02",
                             IsMandatory = true
                         });
                     }
@@ -4359,14 +4375,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
 
-                    if (IsDeclarationChecked)
-                    {
-                        TinDeregistrationData.ADeclarationChkbox = "1";
-                    }
-                    else
-                    {
-                        TinDeregistrationData.ADeclarationChkbox = "0";
-                    }
+                    //if (IsDeclarationChecked)
+                    //{
+                    //    TinDeregistrationData.ADeclarationChkbox = "1";
+                    //}
+                    //else
+                    //{
+                    //    TinDeregistrationData.ADeclarationChkbox = "0";
+                    //}
 
 
                     //try
