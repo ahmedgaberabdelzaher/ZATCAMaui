@@ -284,7 +284,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             MessagingCenter.Subscribe<VATLookUpNewPageViewModel, string>(this, "ScanData", async (sender, arg) =>
             {
-                SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+                SelectedParameterType = ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
                 LookupNumber = arg;
                 getBarcodeData();
             });

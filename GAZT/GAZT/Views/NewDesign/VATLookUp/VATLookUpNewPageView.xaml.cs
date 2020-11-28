@@ -41,7 +41,6 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             ZXingScannerPage scanPage;
             btnScan.Clicked += async (a,e) =>
             {
-                viewModel.SelectedParameterType = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
                 scanPage = new ZXingScannerPage();
                 scanPage.OnScanResult += (result) => {
                     scanPage.IsScanning = false;
