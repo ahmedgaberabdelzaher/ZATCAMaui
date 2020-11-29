@@ -3948,30 +3948,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     if (TinDeregistrationData.ADregOpt == "2")
                     {
-                        //check.Add(new TinDeregestrationAttachmentsModel
-                        //{
-                        //    FieldTitle = AppResources.TinDeregistrationAttachmentMinisterialResponse,
-                        //    AttachmentName = string.Empty,
-                        //    IsAttachmentAttached = false,
-                        //    DocType = "DR03",
-                        //    IsMandatory = true
-                        //});
-                        //check.Add(new TinDeregestrationAttachmentsModel
-                        //{
-                        //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement,
-                        //    AttachmentName = string.Empty,
-                        //    IsAttachmentAttached = false,
-                        //    DocType = "DR09",
-                        //    IsMandatory = true
-                        //});
                         check.Add(new TinDeregestrationAttachmentsModel
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
+                            FieldTitle = AppResources.TinDeregistrationAttachmentMinisterialResponse,
                             AttachmentName = string.Empty,
                             IsAttachmentAttached = false,
-                            DocType = "DR02",
+                            DocType = "DR03",
                             IsMandatory = true
                         });
+                        check.Add(new TinDeregestrationAttachmentsModel
+                        {
+                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement,
+                            AttachmentName = string.Empty,
+                            IsAttachmentAttached = false,
+                            DocType = "DR09",
+                            IsMandatory = true
+                        });
+                        //check.Add(new TinDeregestrationAttachmentsModel
+                        //{
+                        //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
+                        //    AttachmentName = string.Empty,
+                        //    IsAttachmentAttached = false,
+                        //    DocType = "DR02",
+                        //    IsMandatory = true
+                        //});
                     }
                 }
 
@@ -3988,32 +3988,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     if (TinDeregistrationData.ADregOpt == "2")
                     {
-                        check.Add(new TinDeregestrationAttachmentsModel
-                        {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR08",
-                            IsMandatory = true
-                        });
+                            //check.Add(new TinDeregestrationAttachmentsModel
+                            //{
+                            //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
+                            //    AttachmentName = string.Empty,
+                            //    IsAttachmentAttached = false,
+                            //    DocType = "DR08",
+                            //    IsMandatory = true
+                            //});
                     }
                 }
 
                 //Logics pending for reason 3 4 5 for idtype 2
-                if (TinDeregistrationData.ADregReason == "4")
-                {
-                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
-                    {
-                        check.Add(new TinDeregestrationAttachmentsModel
-                        {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR05",
-                            IsMandatory = true
-                        });
-                    }
-                }
                 if (TinDeregistrationData.ADregReason == "5")
                 {
                     if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
@@ -4024,6 +4010,34 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             AttachmentName = string.Empty,
                             IsAttachmentAttached = false,
                             DocType = "DR04",
+                            IsMandatory = true
+                        });
+                    }
+                }
+                if (TinDeregistrationData.ADregReason == "7")
+                {
+                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                    {
+                        //check.Add(new TinDeregestrationAttachmentsModel
+                        //{
+                        //    FieldTitle = AppResources.TinDeregistrationAttachmentMerger,
+                        //    AttachmentName = string.Empty,
+                        //    IsAttachmentAttached = false,
+                        //    DocType = "DR04",
+                        //    IsMandatory = true
+                        //});
+                    }
+                }
+                if (TinDeregistrationData.ADregReason == "4")
+                {
+                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                    {
+                        check.Add(new TinDeregestrationAttachmentsModel
+                        {
+                            FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
+                            AttachmentName = string.Empty,
+                            IsAttachmentAttached = false,
+                            DocType = "DR05",
                             IsMandatory = true
                         });
                     }
@@ -4063,30 +4077,41 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             //In all Cases
 
+
             if (TinDeregistrationData != null)
             {
-                if (TinDeregistrationData.PermitSet.Results[0].APermitTypeTb == "BUP002")
+                if (TinDeregistrationData.PermitSet != null && TinDeregistrationData.PermitSet.Results != null)
                 {
-                    check.Add(new TinDeregestrationAttachmentsModel
+                    foreach (var item in TinDeregistrationData.PermitSet.Results)
                     {
-                        FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing,
-                        AttachmentName = string.Empty,
-                        IsAttachmentAttached = false,
-                        DocType = "DR10",
-                        IsMandatory = true
-                    });
+                        if (item.APermitTypeTb == "BUP002")
+                        {
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR10",
+                                IsMandatory = true
+                            });
+                        }
+
+                        else if (item.APermitTypeTb == "ZS0004")
+                        {
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR11",
+                                IsMandatory = true
+                            });
+                        }
+                    }
                 }
-                else if (TinDeregistrationData.PermitSet.Results[0].APermitTypeTb == "ZS0004")
-                {
-                    check.Add(new TinDeregestrationAttachmentsModel
-                    {
-                        FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
-                        AttachmentName = string.Empty,
-                        IsAttachmentAttached = false,
-                        DocType = "DR11",
-                        IsMandatory = true
-                    });
-                }
+
+
+
             }
             if (AttachmentsListViewData != null)
             {
