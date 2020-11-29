@@ -1278,40 +1278,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         Console.WriteLine(ex.Message);
                     }
 
-                    if (BillsAndReturnsCommitmentsLocal.Count > 3)
+                    if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
                     {
-                        if (BillsAndReturnsCommitmentsLocal.Count == 4)
-                        {
-                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(a => a.DueDateDateTime).Take(4).ToList();
-                        }
-                        else
-                        {
-                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(a => a.DueDateDateTime).Take(5).ToList();
-                        }
                         if (BillsAndReturnsCommitmentsLocal.Count > 3)
                         {
-                            if (BillsAndReturnsCommitmentsLocal[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsLocal[3].DueDateDateTime.Date)
+                            if (BillsAndReturnsCommitmentsLocal.Count == 4)
                             {
-                                if (BillsAndReturnsCommitmentsLocal.Count > 4)
-                                {
-                                    if (BillsAndReturnsCommitmentsLocal[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsLocal[4].DueDateDateTime.Date)
-                                    {
-                                    }
-                                    else
-                                    {
-                                        BillsAndReturnsCommitmentsLocal.RemoveAt(4);
-                                    }
-                                }
+                                BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(a => a.DueDateDateTime).Take(4).ToList();
                             }
                             else
                             {
-                                if (BillsAndReturnsCommitmentsLocal.Count > 3)
+                                BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(a => a.DueDateDateTime).Take(5).ToList();
+                            }
+                            if (BillsAndReturnsCommitmentsLocal.Count > 3)
+                            {
+                                if (BillsAndReturnsCommitmentsLocal[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsLocal[3].DueDateDateTime.Date)
                                 {
-                                    BillsAndReturnsCommitmentsLocal.RemoveAt(3);
+                                    if (BillsAndReturnsCommitmentsLocal.Count > 4)
+                                    {
+                                        if (BillsAndReturnsCommitmentsLocal[2].DueDateDateTime.Date == BillsAndReturnsCommitmentsLocal[4].DueDateDateTime.Date)
+                                        {
+                                        }
+                                        else
+                                        {
+                                            BillsAndReturnsCommitmentsLocal.RemoveAt(4);
+                                        }
+                                    }
                                 }
-                                if (BillsAndReturnsCommitmentsLocal.Count > 3)
+                                else
                                 {
-                                    BillsAndReturnsCommitmentsLocal.RemoveAt(3);
+                                    if (BillsAndReturnsCommitmentsLocal.Count > 3)
+                                    {
+                                        BillsAndReturnsCommitmentsLocal.RemoveAt(3);
+                                    }
+                                    if (BillsAndReturnsCommitmentsLocal.Count > 3)
+                                    {
+                                        BillsAndReturnsCommitmentsLocal.RemoveAt(3);
+                                    }
                                 }
                             }
                         }
