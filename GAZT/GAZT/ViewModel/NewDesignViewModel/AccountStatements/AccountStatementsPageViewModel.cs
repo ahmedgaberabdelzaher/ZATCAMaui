@@ -430,15 +430,58 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         List<ObservableGroupCollection<string, ASResult>> agroupedData;
                         if (App.IsArabic)
                         {
-                            agroupedData = Items.OrderBy(p => p.Bldat)
+                            try
+                            {
+                                if (HeaderSet.D.CalType.Equals("G"))
+                                {
+                                    agroupedData = Items.OrderBy(p => p.Bldat)
+                                  .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("en"))))
+                                    .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                                }
+                                else
+                                {
+                                    agroupedData = Items.OrderBy(p => p.Bldat)
+                                  .GroupBy(p => p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("ar")))
+                                    .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                                agroupedData = Items.OrderBy(p => p.Bldat)
                               .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("en"))))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                            }
+                            
+                            
+                            
                         }
                         else
                         {
-                            agroupedData = Items.OrderBy(p => p.Bldat)
-                                .GroupBy(p => p.Bldat?.ToString("MMMM"))
-                                .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                            try
+                            {
+                                if (HeaderSet.D.CalType.Equals("G"))
+                                {
+                                    agroupedData = Items.OrderBy(p => p.Bldat)
+                                        .GroupBy(p => p.Bldat?.ToString("MMMM"))
+                                        .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList(); 
+                                }
+                                else
+                                {
+                                    agroupedData = Items.OrderBy(p => p.Bldat)
+                                  .GroupBy(p => UtilityManager.GetMonthNameHijri(p.Bldat?.ToString("MM", System.Globalization.CultureInfo.GetCultureInfo("ar"))) )
+                                    .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                agroupedData = Items.OrderBy(p => p.Bldat)
+                                    .GroupBy(p => p.Bldat?.ToString("MMMM"))
+                                    .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+                            }
+
                         }
 
                         GroupedData = agroupedData;
