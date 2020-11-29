@@ -102,7 +102,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             else
             {
-
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
             if (App.IsArabic)

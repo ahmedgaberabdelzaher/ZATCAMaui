@@ -72,7 +72,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
@@ -788,7 +788,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>-->
 
-                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TINDeregistrationDetailsEdit}" HorizontalOptions="StartAndExpand"
+                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletDetails}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlack}" />
                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletReviewMessage}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
