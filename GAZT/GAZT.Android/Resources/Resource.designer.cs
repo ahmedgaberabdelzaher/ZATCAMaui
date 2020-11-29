@@ -26458,7 +26458,7 @@ namespace GAZT.Droid
 			public const int registration = 2131165767;
 			
 			// aapt resource value: 0x7F070248
-			public const int request_verification = 2131165768;
+			public const int requestVerification = 2131165768;
 			
 			// aapt resource value: 0x7F070249
 			public const int ReSchedule = 2131165769;
