@@ -11280,9 +11280,9 @@ namespace GAZT.Manager
             }
         }
         //Request Model and Submit models are same here based on provided api list
-        public async static Task<ContractReleaseFormResponse> GAZTSubmitContractReleaseRequestData(ContractReleaseFormRequest contractReleaseFormData)
+        public async static Task<string> GAZTSubmitContractReleaseRequestData(ContractReleaseFormRequest contractReleaseFormData)
         {
-            ContractReleaseFormResponse _submitRequestData = new ContractReleaseFormResponse();
+            string _contractReleasesubmitResponse = string.Empty;
             try
             {
 
@@ -11304,10 +11304,10 @@ namespace GAZT.Manager
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                 HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                var _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
-                _submitRequestData = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(_contractReleasesubmitResponse);
+                _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
+               // _submitRequestData = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(_contractReleasesubmitResponse);
 
-                if (!string.IsNullOrEmpty(_contractReleasesubmitResponse) && _submitRequestData.d == null)
+                if (!string.IsNullOrEmpty(_contractReleasesubmitResponse))
                 {
                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
                     if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -11328,13 +11328,13 @@ namespace GAZT.Manager
             {
                 throw new GAZTVATRegistrationInProcessException(ex.Message);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 App.IsSessionExpired = true;
                 return null;
             }
-            return _submitRequestData;
+            return _contractReleasesubmitResponse;
 
 
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -1132,18 +1133,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     isSubmitted = true;
 
+             
+                        IsLoading1 = true;
                   
 
-                    ContractReleaseData = await SubmitClicked();
-                    if (ContractReleaseData.d != null)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading1 = false;
-                        });
-                       // await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView());
-                        _navigationService.NavigateTo(App.ContractReleaseSuccessPageView,this);
-                    }
+                    // ContractReleaseData = await SubmitClicked();
+                    await SubmitClicked();
+                    //if (ContractReleaseData.d != null)
+                    //{
+                       
+                    //    await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView(this));
+                    //   // _navigationService.NavigateTo(App.ContractReleaseSuccessPageView,this);
+                    //}
+                    //else
+                    //{
+                    //    await _dialogService.ShowMessage("Bad Request", AppResources.Information);
+
+                    //}
+
+                 
+                        IsLoading1 = false;
+                    
                 }
 
             }
@@ -1626,63 +1636,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 return "E";
         }
 
-        public async Task<ContractReleaseFormResponse> SubmitClicked()
+        public async Task<bool> SubmitClicked()
         {
             ContractReleaseFormResponse response = new ContractReleaseFormResponse();
 
-
-
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
-
 
 
             try
             {
 
 
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading1 = true;
-                });
 
 
                 request = BuildRequestObject();
 
 
+                // response = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
+                string ContractReleaseResponse = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
+                ContractReleaseFormResponse releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(ContractReleaseResponse);
 
-
-                await Task.Run(async () =>
+                if (releaseFormResponse.d == null)
                 {
-                    response = await WebServiceManager.GAZTSubmitContractReleaseRequestData(request);
-
-
-
-                    PopToRootPage();
-                    if (response != null && response.d != null)
+                    isSubmitted = false;
+                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ContractReleaseResponse);
+                    StringBuilder Message = new StringBuilder();
+                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        try
+                        if (itemerror.severity.Contains("error"))
                         {
-                            await Task.Run(() =>
+                            if (Message.Length > 0)
                             {
-                                IsLoading1 = false;
-                            });
-                            return response;
-                        }
-                        catch (Exception ex)
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading1 = false;
-                            });
-                            return null;
+                                Message.Append(Environment.NewLine);
+                            }
+                            Message.Append(itemerror.message);
                         }
                     }
 
+                    await _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+
+                }
+                else
+                {
+                   // PopToRootPage();
+
+                    ContractReleaseData = releaseFormResponse;
+
+                    if (ContractReleaseData.d != null)
+                    {
+
+                        await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView(this));
+                        // _navigationService.NavigateTo(App.ContractReleaseSuccessPageView,this);
+                    }
+
+                }
 
 
-                    return response;
-                });
-                return response;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -1693,12 +1702,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         //IsLoading = false;
                     });
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
+                    //_navigationService.GoBack();
 
 
 
                 });
-                return response;
             }
 
 
@@ -1707,13 +1715,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 await Task.Run(() =>
                 {
-                    IsLoading1 = false;
+                   // IsLoading1 = false;
                 });
-                return response;
             }
 
-
-
+            
+            return true;
         }
 
 

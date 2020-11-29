@@ -553,6 +553,11 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                  DpDbo.SelectedItem = todaycollection;
              }*/
         }
+
+        void SubmitClicked(System.Object sender, System.EventArgs e)
+        {
+            Loadingbar.IsVisible = true;
+        }
     }
 
     public interface ContractReleaseInterface
