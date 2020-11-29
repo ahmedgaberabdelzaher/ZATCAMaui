@@ -1279,6 +1279,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _firstnmFR = value;
+                                FirstnmSum = value;
+
                 RaisePropertyChanged("FirstnmFR");
             }
         }
@@ -1306,6 +1308,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _lastnmFR = value;
+                                LastnmSum = value;
+
                 RaisePropertyChanged("LastnmFR");
             }
         }
@@ -1355,6 +1359,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _mobNumberFR = value;
+                                MobNumberSum = value;
+
                 RaisePropertyChanged("MobNumberFR");
             }
         }
@@ -1424,6 +1430,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _smtpAddrFR = value;
+                                SmtpAddrSum = value;
+
                 RaisePropertyChanged("SmtpAddrFR");
             }
         }
@@ -1520,6 +1528,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             set
             {
                 _txtIDTypeFR = value;
+               TxtIDTypeSum = value;
+
                 TxtIDTypeSR = value;
                 RaisePropertyChanged("TxtIDTypeFR");
             }
