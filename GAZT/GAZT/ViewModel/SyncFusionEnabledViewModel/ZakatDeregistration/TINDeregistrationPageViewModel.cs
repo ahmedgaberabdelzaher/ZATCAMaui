@@ -1041,12 +1041,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         SurnameText.IsVisible = true;
                         GrandFathersNameText.IsVisible = true;
                         FamilyNameText.IsVisible = true;
-                        IsDobVisible = true;
+                        if (SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+                        {
+                            IsDobVisible = false;
+                        }
+                        else
+                        {
+                            IsDobVisible = true;
+                        }
                     }
                 }
                 else
                 {
-                    IsDobVisible = true;
+                    if (SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+                    {
+                        IsDobVisible = false;
+                    }
+                    else
+                    {
+                        IsDobVisible = true;
+                    }
                 }
                 RaisePropertyChanged("SelectedIDTypeCode");
             }
