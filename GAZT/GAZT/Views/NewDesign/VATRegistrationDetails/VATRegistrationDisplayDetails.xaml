@@ -167,7 +167,8 @@
                                                         <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="positive"/>
                                                         <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="IBAN Details" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                            
+                                                            <Label Text="{x:Static custom2:AppResources.NAIBANDetails}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                                         </StackLayout>
                                                     </Grid>     
                               <BoxView Style="{StaticResource lineSeperator}"/>
@@ -187,7 +188,7 @@
                                                  <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                                    <Label Text="IBAN" Style="{StaticResource ValueLabelBlack}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label x:Name="{Binding IbanText}" Text="{x:Static custom2:AppResources.NAIBAN}" Style="{StaticResource ValueLabelBlack}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
                                                     <Label Text="{Binding Iban}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
@@ -290,7 +291,7 @@
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>

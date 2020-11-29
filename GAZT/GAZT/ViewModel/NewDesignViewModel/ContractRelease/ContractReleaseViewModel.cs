@@ -1133,9 +1133,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     isSubmitted = true;
 
-             
-                        IsLoading1 = true;
-                  
+                Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading1 = true;
+                        });
 
                     // ContractReleaseData = await SubmitClicked();
                     await SubmitClicked();
@@ -1152,7 +1153,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     //}
 
                  
-                        IsLoading1 = false;
+                      Device.BeginInvokeOnMainThread(() =>
+                        {
+                            IsLoading1 = false;
+                        });
                     
                 }
 
@@ -1647,7 +1651,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
 
 
-
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
 
                 request = BuildRequestObject();
 
@@ -1674,6 +1681,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     }
 
                     await _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
 
                 }
                 else
@@ -1689,6 +1700,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         // _navigationService.NavigateTo(App.ContractReleaseSuccessPageView,this);
                     }
 
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
+
                 }
 
 
@@ -1699,7 +1715,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     await Task.Run(() =>
                     {
-                        //IsLoading = false;
+                        App.HideProgressView();
                     });
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     //_navigationService.GoBack();
@@ -1715,7 +1731,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 await Task.Run(() =>
                 {
-                   // IsLoading1 = false;
+                    App.HideProgressView();
                 });
             }
 

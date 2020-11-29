@@ -6762,6 +6762,12 @@ namespace EGAZT {
             }
         }
         
+        public static string NAIBANDetails {
+            get {
+                return ResourceManager.GetString("NAIBANDetails", resourceCulture);
+            }
+        }
+        
         public static string VATRGreaterThan {
             get {
                 return ResourceManager.GetString("VATRGreaterThan", resourceCulture);
