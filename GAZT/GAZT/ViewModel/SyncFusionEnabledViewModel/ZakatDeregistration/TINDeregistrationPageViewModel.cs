@@ -4012,6 +4012,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             DocType = "DR04",
                             IsMandatory = true
                         });
+                        check.Add(new TinDeregestrationAttachmentsModel
+                        {
+                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
+                            AttachmentName = string.Empty,
+                            IsAttachmentAttached = false,
+                            DocType = "DR08",
+                            IsMandatory = true
+                        });
                     }
                 }
                 if (TinDeregistrationData.ADregReason == "7")
