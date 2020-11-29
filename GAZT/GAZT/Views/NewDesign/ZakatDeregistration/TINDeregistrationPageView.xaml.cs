@@ -1212,8 +1212,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             else
             {
-                viewModel.FrameTinError = true;
-                Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
+               // viewModel.FrameTinError = true;
+                //Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
 
                 popUp.Message = Messages.ToString();
                 popUp.IsLinkAvailable = false;
@@ -1228,7 +1228,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+              //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
 
