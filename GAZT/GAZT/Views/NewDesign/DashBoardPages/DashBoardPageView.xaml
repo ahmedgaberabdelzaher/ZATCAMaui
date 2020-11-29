@@ -550,7 +550,7 @@
                                 </yummy:PancakeView>
                                 <StackLayout.Triggers>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding IsVatRegistrationTileVisible}" Value="True">
-                                        <Setter Property="BackgroundColor" Value="{StaticResource NewDullOrangeColor}"/>
+                                        <Setter Property="BackgroundColor" Value="LightGray"/>
                                     </DataTrigger>
                                     <DataTrigger TargetType="StackLayout" Binding="{Binding IsEstablishmentRegistrationTileVisible}" Value="True">
                                         <Setter Property="BackgroundColor" Value="LightGray"/>
