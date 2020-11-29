@@ -243,7 +243,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                                 viewModel.IfSignUpnNotRegInVAT = true;
                             }
                         }
+                        if(App.LoginDataRetrieved.ZkReg == "X" && App.LoginDataRetrieved.VtReg =="X")
+                        {
+                            viewModel.IfRegInZakat = true;
 
+                        }
 
                         if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
                         {

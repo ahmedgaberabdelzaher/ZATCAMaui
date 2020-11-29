@@ -41,16 +41,13 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             ZXingScannerPage scanPage;
             btnScan.Clicked += async (a,e) =>
             {
-                viewModel.SelectedParameterType = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
                 scanPage = new ZXingScannerPage();
                 scanPage.OnScanResult += (result) => {
                     scanPage.IsScanning = false;
                     Device.BeginInvokeOnMainThread(async () => {
+                        MessagingCenter.Send(this, "ScanData", result.Text);
                         await Navigation.PopAsync();
-                        viewModel.LookupNumber = result.Text;
-                        
                     });
-                    viewModel.getBarcodeData();
                 };
                 await Navigation.PushAsync(scanPage);
             };
@@ -96,6 +93,8 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             {
                 PPicker.BackgroundColor = Color.FromHex("#FFFFFF");
             }
+            
+                        MessagingCenter.Send(this, "ScanData", "abc");
         }
         private void SetLTR()
         {
@@ -160,6 +159,12 @@ namespace EGAZT.Views.NewDesign.VATLookUp
         {
             Device.BeginInvokeOnMainThread(() =>
           viewModel.IsNameVisible = false);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.onDissapear();
         }
     }
 }

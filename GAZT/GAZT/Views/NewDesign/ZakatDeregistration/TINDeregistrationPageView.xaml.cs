@@ -870,10 +870,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
 
-
             }
             catch (Exception ex)
             {
+            }
+            finally
+            {
+                Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
             }
         }
 
@@ -924,10 +927,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
 
-
             }
             catch (Exception ex)
             {
+            }
+            finally
+            {
+                Device.BeginInvokeOnMainThread(() => HijriCalSwitch1.IsToggled = viewModel.IsDOBHijriCal);
             }
         }
 

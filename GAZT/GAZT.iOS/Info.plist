@@ -38,7 +38,7 @@
 	<key>CFBundleName</key>
 	<string>E-GAZT</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>Assets.xcassets/AppIcon-1.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>Custom Property</key>
@@ -81,8 +81,8 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.egazt</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.124</string>
+	<string>1.0.125</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.2.1.63</string>
+	<string>3.2.1.64</string>
 </dict>
 </plist>

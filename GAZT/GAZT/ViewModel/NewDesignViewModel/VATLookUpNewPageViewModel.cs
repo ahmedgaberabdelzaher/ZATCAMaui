@@ -251,35 +251,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
             OnScanButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                try
-                {
-                    SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
-                }
-                catch
-                { 
-                }
-                IsNameVisible = false;
-                ZXingScannerPage scanPage = new ZXingScannerPage();
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Application.Current.MainPage.Navigation.PushAsync(scanPage);
-                });
+                //try
+                //{
+                //    SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+                //}
+                //catch
+                //{ 
+                //}
+                //IsNameVisible = false;
+                //ZXingScannerPage scanPage = new ZXingScannerPage();
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await Application.Current.MainPage.Navigation.PushAsync(scanPage);
+                //});
 
-                string id = string.Empty;
-                string _language = "A";
-                scanPage.OnScanResult += (result) =>
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Application.Current.MainPage.Navigation.PopAsync();
-                        LookupNumber = result.Text;
-                        id = result.Text;
-                        SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
-                      //  TxtSearchParameter = SelectedParameterType.ParameterType.First();
-                        getBarcodeData();
+                //string id = string.Empty;
+                //string _language = "A";
+                //scanPage.OnScanResult += (result) =>
+                //{
+                //    Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //        await Application.Current.MainPage.Navigation.PopAsync();
+                //        LookupNumber = result.Text;
+                //        id = result.Text;
+                //        SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+                //      //  TxtSearchParameter = SelectedParameterType.ParameterType.First();
+                //        getBarcodeData();
 
-                    });
-                };
+                //    });
+                //};
+            });
+
+            MessagingCenter.Subscribe<VATLookUpNewPageViewModel, string>(this, "ScanData", async (sender, arg) =>
+            {
+                SelectedParameterType = ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
+                LookupNumber = arg;
+                getBarcodeData();
             });
         }
 
@@ -583,5 +590,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
         #endregion
+
+        public void onDissapear()
+        {
+            MessagingCenter.Unsubscribe<VATLookUpNewPageViewModel, string>(this, "ScanData");
+        }
     }
 }
