@@ -3743,7 +3743,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                    _navigationService.GoBack();
+                    //_navigationService.GoBack();
 
                 }
             }
@@ -4664,6 +4664,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (InternetException ex)
                 {
+                    isSubmitted = false;
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
@@ -4676,6 +4677,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (GAZTErrorException ex)
                 {
+                    isSubmitted = false;
+
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
@@ -4690,6 +4693,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (Exception ex)
                 {
+                    isSubmitted = false;
+
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     await Task.Run(() =>
                     {
@@ -4703,6 +4708,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
+                isSubmitted = false;
+
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -4715,6 +4722,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
+                isSubmitted = false;
+
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -4729,6 +4738,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                isSubmitted = false;
+
                 Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 await Task.Run(() =>
                 {
