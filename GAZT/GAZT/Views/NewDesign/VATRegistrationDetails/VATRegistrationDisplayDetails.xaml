@@ -187,7 +187,7 @@
                                                  <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                                    <Label Text="IBAN" Style="{StaticResource ValueLabelBlack}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label x:Name="{Binding IbanText}" Text="IBAN" Style="{StaticResource ValueLabelBlack}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
                                                     <Label Text="{Binding Iban}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
@@ -290,7 +290,7 @@
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"/>
+                                                        <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.GpartFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
 
                                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                         <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.TxtIDTypeFR}" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>

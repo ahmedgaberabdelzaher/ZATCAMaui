@@ -306,6 +306,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Iban");
             }
         }
+        
+        private string _IbanText = string.Empty;
+        public string IbanText
+        {
+            get
+            {
+                return _IbanText;
+            }
+            set
+            {
+                _IbanText = value;
+                RaisePropertyChanged("IbanText");
+            }
+        }
         private string _smtpAddrFR = string.Empty;
         public string SmtpAddrFR
         {
@@ -320,6 +334,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         
+
+        private string _TxtIDTypeFR = string.Empty;
+        public string TxtIDTypeFR
+        {
+            get
+            {
+                return _TxtIDTypeFR;
+            }
+            set
+            {
+                _TxtIDTypeFR = value;
+                RaisePropertyChanged("TxtIDTypeFR");
+            }
+        }
         private string _importExportText = string.Empty;
         public string ImportExportText
         {
@@ -421,28 +449,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
                                 SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
                                 DOB = vATRegistration.d.CONTACT_PERSONSet.results[0].Dobdt;
+                                if(vATRegistration.d.CONTACT_PERSONSet.results[0].Type.Equals("ZS0003"))
+                                {
+                                    TxtIDTypeFR = AppResources.ZZGCCID;
+                                }
+                                else if(vATRegistration.d.CONTACT_PERSONSet.results[0].Type.Equals("ZS0002"))
+                                {
+                                    TxtIDTypeFR = AppResources.ZZIqamaID;
+
+                                }
+                                else
+                                {
+                                    TxtIDTypeFR = AppResources.ZZNationalID;
+
+                                }
+                            }
+
+                            if(vATRegistration.d.DecidTy.Equals("ZS0003"))
+                            {
+                                IDType = AppResources.ZZGCCID;
+                            }else if (vATRegistration.d.DecidTy.Equals("ZS0002"))
+                            {
+                                IDType = AppResources.ZZIqamaID;
+
+                            }
+                             else
+                            {
+                                IDType = AppResources.ZZNationalID;
 
                             }
 
-                            IDType = vATRegistration.d.DecidTy;
+                           // IDType = vATRegistration.d.DecidTy;
                             IDNumber = vATRegistration.d.DecidNo;
                             ContactPersonName = vATRegistration.d.Decname;
+                        }
+                        IbanList = new ObservableCollection<Result2>();
+
+                        if (vATRegistration.d.IBANSet != null)
+                        {
+                            IbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet.results);
+                            for (int i = 0; i < IbanList.Count; i++)
+                            {
+                                if (!string.IsNullOrEmpty(IbanList.ElementAt(i).Iban))
+                                {
+
+                                    Iban = IbanList.FirstOrDefault().Iban;
+                                    IbanText = "IBAN";
+                                }
+                                else
+                                {
+                                    IbanText = "";
+                                }
+                            }
+
                         }
                         if (vATRegistration.d.QUESTIONSSet != null)
                         {
                             List<ResultsItemForQuestion> quest1AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns == "1").ToList();
-                            quesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
-
+                            if (quest1AnsList.Count > 0)
+                            {
+                                quesTion1answerSelected = quest1AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+                            }
                             List<ResultsItemForQuestion> quest2AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").ToList();
-                            quesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
-
+                            if (quest2AnsList.Count > 0)
+                            {
+                                quesTion2answerSelected = quest2AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
+                            }
                             List<ResultsItemForQuestion> quest3AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList();
+                            if (quest3AnsList.Count > 0) { 
                             quesTion3answerSelected = quest3AnsList.FirstOrDefault().QoptTxt; // vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").ToList;
-
+                                 }
                             List<ResultsItemForQuestion> quest4AnsList = vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToList();
-
-                            quesTion4answerSelected = quest3AnsList.FirstOrDefault().QoptTxt;//vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToString();
-                        }
+                            if (quest4AnsList.Count > 0)
+                            {
+                                quesTion4answerSelected = quest3AnsList.FirstOrDefault().QoptTxt;//vATRegistration.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").ToString();
+                            }
+                         }
                         if (vATRegistration.d.VatTaxDt != null)
                         {
                             string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -458,7 +540,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
                             //MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
                         }
-                        IbanList = new ObservableCollection<Result2>();
                         if (vATRegistration.d.ATTDETSet != null)
                         { 
                             foreach (Attachment ItemA in vATRegistration.d.ATTDETSet.results)
@@ -467,19 +548,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                          }
                       
-                        if (vATRegistration.d.IBANSet != null)
-                        {
-                            IbanList = new ObservableCollection<Result2>(vATRegistration.d.IBANSet.results);
-                            for (int i = 0; i < IbanList.Count; i++)
-                            {
-                                if(IbanList.ElementAt(i).Iban != string.Empty)
-                                {
-                                    Iban = IbanList.FirstOrDefault().Iban;
-
-                                }
-                            }
-                      
-                        }
+                     
                         if (vATRegistration.d.ExFg=="1")
                         {
                             ImportExportText = "Exporter";
