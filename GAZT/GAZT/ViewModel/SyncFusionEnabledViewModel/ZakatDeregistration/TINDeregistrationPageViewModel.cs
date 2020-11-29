@@ -2861,7 +2861,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                   x.APermitNm6Tb = IDTypeDataModel.GrandfatherName;
                                   x.APermitNm7Tb = IDTypeDataModel.FamilyName;
                                   x.APermitDobHTb = IDTypeDataModel.TaxpDob;
-
+                                  x.APermitDeregDisplayDobDate = IDTypeDataModel.Birthdt10;
                                   return x;
                               }
                               ).ToList());
