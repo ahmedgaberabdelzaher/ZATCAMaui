@@ -2075,11 +2075,11 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-hdpi\request_verification.png">
+    <AndroidResource Include="Resources\drawable-hdpi\requestVerification.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-mdpi\request_verification.png">
+    <AndroidResource Include="Resources\drawable-mdpi\requestVerification.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
@@ -2143,15 +2143,15 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xhdpi\request_verification.png">
+    <AndroidResource Include="Resources\drawable-xhdpi\requestVerification.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xxhdpi\request_verification.png">
+    <AndroidResource Include="Resources\drawable-xxhdpi\requestVerification.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\request_verification.png">
+    <AndroidResource Include="Resources\drawable-xxxhdpi\requestVerification.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
