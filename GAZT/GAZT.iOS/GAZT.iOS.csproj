@@ -310,6 +310,15 @@
     <BundleResource Include="Resources\ArrowUp%402x.png" />
     <BundleResource Include="Resources\ArrowUp%403x.png" />
     <Compile Include="CustomRenderer\TransparentViewCellRenderer.cs" />
+    <BundleResource Include="Resources\password.png" />
+    <BundleResource Include="Resources\password%402x.png" />
+    <BundleResource Include="Resources\password%403x.png" />
+    <BundleResource Include="Resources\requestVerification.png" />
+    <BundleResource Include="Resources\requestVerification%402x.png" />
+    <BundleResource Include="Resources\requestVerification%403x.png" />
+    <BundleResource Include="Resources\taxEvasion_green.png" />
+    <BundleResource Include="Resources\taxEvasion_green%402x.png" />
+    <BundleResource Include="Resources\taxEvasion_green%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
