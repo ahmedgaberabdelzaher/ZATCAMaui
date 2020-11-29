@@ -4025,6 +4025,11 @@
     <value>الايبان</value>
     <comment>NewAccountPopUp</comment>
   </data>
+      <data name="NAIBANDetails" xml:space="preserve">
+       <value>تفاصيل الايبان</value>
+    <comment>VATRegistrationDisplayDetails</comment>
+  </data>
+
   <data name="NASA" xml:space="preserve">
     <value>SA</value>
     <comment>NewAccountPopUp</comment>

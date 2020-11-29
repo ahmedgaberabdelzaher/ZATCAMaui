@@ -4072,6 +4072,10 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Financial Details</value>
     <comment>VATRegistrationPageView</comment>
   </data>
+    <data name="NAIBANDetails" xml:space="preserve">
+       <value>IBAN Details</value>
+    <comment>VATRegistrationDisplayDetails</comment>
+  </data>
   <data name="VATRGreaterThan" xml:space="preserve">
     <value>Greater than</value>
     <comment>VATRegistrationPageView</comment>
