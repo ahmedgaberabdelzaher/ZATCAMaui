@@ -402,12 +402,12 @@
                  <custom:CustomLabel IsVisible="{Binding IsNodataAvailableVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.Nodataavailable}" HorizontalOptions="CenterAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" />
 
-                 <ListView BackgroundColor="White" Margin="0,0,0,0" IsVisible="{Binding IsMultiplePermitsVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding SelectedOutletForCloseTranser.PermitTypes}" x:Name="outletsListView" HorizontalOptions="Center"
-                                             HasUnevenRows="True"  VerticalOptions="Center" >
+                 <StackLayout BackgroundColor="White" Margin="0,0,0,0" IsVisible="{Binding IsMultiplePermitsVisible}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" BindableLayout.ItemsSource="{Binding SelectedOutletForCloseTranser.PermitTypes}" x:Name="outletsListView" HorizontalOptions="Center"
+                                             VerticalOptions="Center" >
                       
-                        <ListView.ItemTemplate>
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
+                                <!--<ViewCell>-->
                                 <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Padding="0">
                                     <Grid Padding="15" RowSpacing="0" >
@@ -646,10 +646,10 @@
                                         </Grid>
                                 </StackLayout>
                                 </border:SfBorder >
-                            </ViewCell>
+                            <!--</ViewCell>-->
 			                </DataTemplate>
-                        </ListView.ItemTemplate>
-                 </ListView>
+                        </BindableLayout.ItemTemplate>
+                 </StackLayout>
 
 
                  <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">

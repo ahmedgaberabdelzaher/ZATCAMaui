@@ -375,7 +375,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
 
-            var cell = outletsListView.TemplatedItems.FirstOrDefault();
+            var cell = outletsListView.Children.FirstOrDefault();
             var entry = (Xamarin.Forms.Entry)cell.FindByName("EntryTINPermitType");
 
             if (!string.IsNullOrEmpty(entry.Text))
@@ -516,36 +516,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 try
                 {
-                    MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (senderDate, arg) =>
-                    {
-                        if (arg.PickerId == "DeregDatePicker")
-                        {
-                            viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
-                        }
-                        if (arg.PickerId == "DeregPermitOutletDatePicker")
-                        {
-                            viewModel.SingleOutletDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
-                        }
-                        if (arg.PickerId == "DOBDateTypePicker")
-                        {
-                            viewModel.SelectedDob = arg.SelectedValue;
-
-                            if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
-                            {
-                                if (!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
-                                {
-                                    //viewModel.ValidateIDNumber();
-                                }
-                            }
-                        }
-
-                        if (arg.PickerId == "DeregOutletSingleDatePicker")
-                        {
-                            viewModel.SingleDeregistrationDate = arg.SelectedValue;//Convert.ToDateTime(arg.SelectedValue).ToString("dd/MM/yyyy");
-                        }
-
-                        MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
-                    });
+                    datepickermessagecenter();
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
@@ -570,6 +541,39 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
+        private void datepickermessagecenter()
+        {
+            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (senderDate, arg) =>
+            {
+                if (arg.PickerId == "DeregDatePicker")
+                {
+                    viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                }
+                if (arg.PickerId == "DeregPermitOutletDatePicker")
+                {
+                    viewModel.SingleOutletDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                }
+                if (arg.PickerId == "DOBDateTypePicker")
+                {
+                    viewModel.SelectedDob = arg.SelectedValue;
+
+                    if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    {
+                        if (!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
+                        {
+                            //viewModel.ValidateIDNumber();
+                        }
+                    }
+                }
+
+                if (arg.PickerId == "DeregOutletSingleDatePicker")
+                {
+                    viewModel.SingleDeregistrationDate = arg.SelectedValue;//Convert.ToDateTime(arg.SelectedValue).ToString("dd/MM/yyyy");
+                }
+
+                MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+            });
+        }
 
         async void TapGestureRecognizerSelectSingleOutleDate_Tapped(System.Object sender, System.EventArgs e)
         {
@@ -587,6 +591,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 try
                 {
+                    datepickermessagecenter();
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
