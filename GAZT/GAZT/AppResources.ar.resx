@@ -8664,4 +8664,7 @@
   <data name="QuickActionShowCertificates" xml:space="preserve">
     <value>استعراض الشهادات</value>
   </data>
+  <data name="TINDeregistrationDetailsEdit" xml:space="preserve">
+    <value>تفاصيل الايقاف</value>
+  </data>
 </root>

@@ -788,7 +788,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>-->
 
-                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletDetails}" HorizontalOptions="StartAndExpand"
+                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TINDeregistrationDetailsEdit}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlack}" />
                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletReviewMessage}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
@@ -823,7 +823,7 @@
                                                 </StackLayout>
                                                 <StackLayout  Grid.Row="0" Grid.Column="2" IsVisible="{Binding BindingContext.outletEditIsVisible,Source={x:Reference TinDeReg}}" x:Name="editButton">
                                                     <buttons:SfButton x:Name="buttonEdit" Margin="0,26,0,16" IsEnabled="False"  Clicked="newName_Clicked"  HorizontalOptions="End"  VerticalOptions="End" Text="{x:Static ResourceManager:AppResources.NDEdit}"
-                                                          TextColor="#006450" BackgroundColor="Transparent" />
+                                                          Style="{StaticResource NoBackgroundButtonStylePrimary}" BackgroundColor="Transparent" />
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer NumberOfTapsRequired="1" 
                                                                   Tapped="TapGestureRecognizer_Tapped"
