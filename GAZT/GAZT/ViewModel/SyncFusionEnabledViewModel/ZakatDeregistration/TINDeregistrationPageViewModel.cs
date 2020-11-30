@@ -4132,7 +4132,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     foreach (var item in TinDeregistrationData.PermitSet.Results)
                     {
-                        if (item.APermitTypeTb == "BUP002")
+                        if (item.APermitTypeTb == "BUP002"&&! check.Exists(x=>x.DocType=="DR10"))
                         {
                             check.Add(new TinDeregestrationAttachmentsModel
                             {
@@ -4144,7 +4144,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             });
                         }
 
-                        else if (item.APermitTypeTb == "ZS0004")
+                        else if (item.APermitTypeTb == "ZS0004" && !check.Exists(x => x.DocType == "DR11"))
                         {
                             check.Add(new TinDeregestrationAttachmentsModel
                             {
