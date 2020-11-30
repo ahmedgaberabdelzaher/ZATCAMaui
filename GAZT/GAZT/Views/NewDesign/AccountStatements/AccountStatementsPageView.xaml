@@ -516,33 +516,33 @@
                                         <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
                                         <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
                                     </StackLayout>
-                                     <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                     <yummy:PancakeView Grid.Row="0" Grid.Column="1" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                         <yummy:PancakeView.Triggers>
                                                  <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="1">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource Billed}" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource BILLED}" />
                                                 </DataTrigger>
                                              <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="3">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource BilledOrDue}" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource BILLED_DUE}" />
                                                 </DataTrigger>
                                              <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="2">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource Cleared}" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource CLEARED}" />
                                                 </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="1">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource Reverse}" />
+                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="6">
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource REVERSE}" />
                                                 </DataTrigger>
                                              <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="5">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource Credit}" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource CREDIT}" />
                                                 </DataTrigger>
                                              <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="4">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource UnderReview}" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource UNDERREVIEW}" />
                                                 </DataTrigger>
-                                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="1">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource Transferred}" />
+                                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="8">
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource TRANSFERRED}" />
                                                 </DataTrigger>
                                              <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="9">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource Refunded}" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource REFUNDED}" />
                                                 </DataTrigger>
-                                                <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="2">
+                                                <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="7">
                                                     <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
                                                 </DataTrigger>
                                             </yummy:PancakeView.Triggers>
@@ -551,33 +551,33 @@
                                             <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}" TextColor="{StaticResource Secondary}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                 <Label.Triggers>
                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                        <Setter Property="TextColor" Value="{StaticResource Billed}" />
+                                                        <Setter Property="TextColor" Value="{StaticResource BILLED}" />
                                                     </DataTrigger>
                                                       <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="3">
-                                                        <Setter Property="TextColor" Value="{StaticResource BilledOrDue}" />
+                                                        <Setter Property="TextColor" Value="{StaticResource BILLED_DUE}" />
                                                     </DataTrigger>
                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="2">
-                                                        <Setter Property="TextColor" Value="{StaticResource Cleared}" />
+                                                        <Setter Property="TextColor" Value="{StaticResource CLEARED}" />
                                                     </DataTrigger>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                        <Setter Property="TextColor" Value="{StaticResource Reverse}" />
-                                                    </DataTrigger>
-
-                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                        <Setter Property="TextColor" Value="{StaticResource Credit}" />
-                                                    </DataTrigger>
-                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="9">
-                                                        <Setter Property="TextColor" Value="{StaticResource UnderReview}" />
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="6">
+                                                        <Setter Property="TextColor" Value="{StaticResource REVERSE}" />
                                                     </DataTrigger>
 
-                                                       <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                        <Setter Property="TextColor" Value="{StaticResource Transferred}" />
+                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="5">
+                                                        <Setter Property="TextColor" Value="{StaticResource CREDIT}" />
                                                     </DataTrigger>
-                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                        <Setter Property="TextColor" Value="{StaticResource Refunded}" />
+                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="4">
+                                                        <Setter Property="TextColor" Value="{StaticResource UNDERREVIEW}" />
+                                                    </DataTrigger>
+
+                                                       <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="8">
+                                                        <Setter Property="TextColor" Value="{StaticResource TRANSFERRED}" />
+                                                    </DataTrigger>
+                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="9">
+                                                        <Setter Property="TextColor" Value="{StaticResource REFUNDED}" />
                                                     </DataTrigger>
                                                     
-                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="4">
+                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="7">
                                                         <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
                                                     </DataTrigger>
 
