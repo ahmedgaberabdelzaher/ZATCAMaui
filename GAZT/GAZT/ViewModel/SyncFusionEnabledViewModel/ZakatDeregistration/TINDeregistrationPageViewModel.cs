@@ -3777,19 +3777,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                if (IsDeclarationChecked)
-                {
-                    PopulateSummaryReasonData();
-                    PopulateSummaryDeclarationData();
-                    if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
+                Device.BeginInvokeOnMainThread(async () => {
+                    if (IsDeclarationChecked)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        PopulateSummaryReasonData();
+                        PopulateSummaryDeclarationData();
+                        if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        }
+                        else
+                        {
+                            EnableSummaryView();
+                        }
                     }
-                    else
-                    {
-                        EnableSummaryView();
-                    }
-                }
+                });
             }
             catch (GAZTUnlockAccountException ex)
             {

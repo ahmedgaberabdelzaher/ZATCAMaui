@@ -1432,9 +1432,9 @@
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding TinDeregistrationSummaryReasonData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                                    <listView:SfListView.ItemTemplate>
+                                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="5"  Padding="5,0"
+                                      BindableLayout.ItemsSource="{Binding TinDeregistrationSummaryReasonData}" >
+                                    <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <Grid Padding="0" RowSpacing="0">
                                                 <Grid.RowDefinitions >
@@ -1453,8 +1453,8 @@
                                                 </StackLayout>
                                             </Grid>
                                         </DataTemplate>
-                                    </listView:SfListView.ItemTemplate>
-                                </listView:SfListView>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
                             </StackLayout>
                         </border:SfBorder >
                         <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -1479,9 +1479,9 @@
                                 </Grid>
 
                                 <BoxView  Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding TinDeregistrationData.AttDetSet.Results}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                                    <listView:SfListView.ItemTemplate>
+                                <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center"  VerticalOptions="Center" Spacing="5" Padding="5,0"
+                                      BindableLayout.ItemsSource="{Binding TinDeregistrationData.AttDetSet.Results}" >
+                                    <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <Grid Padding="0" RowSpacing="0">
                                                 <Grid.RowDefinitions >
@@ -1548,8 +1548,8 @@
                                                 </StackLayout>
                                             </Grid>
                                         </DataTemplate>
-                                    </listView:SfListView.ItemTemplate>
-                                </listView:SfListView>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
                             </StackLayout>
                         </border:SfBorder >
                         <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -1574,9 +1574,9 @@
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                                <listView:SfListView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryDeclarationListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding TinDeregistrationSummaryDeclarationData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                                    <listView:SfListView.ItemTemplate>
+                                <StackLayout  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryDeclarationListView" HorizontalOptions="Center" VerticalOptions="Center" Spacing="5" Padding="5,0"
+                                      BindableLayout.ItemsSource="{Binding TinDeregistrationSummaryDeclarationData}" >
+                                    <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <Grid Padding="0" RowSpacing="0">
                                                 <Grid.RowDefinitions >
@@ -1595,8 +1595,8 @@
                                                 </StackLayout>
                                             </Grid>
                                         </DataTemplate>
-                                    </listView:SfListView.ItemTemplate>
-                                </listView:SfListView>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
                             </StackLayout>
                         </border:SfBorder >
                     </Grid>
