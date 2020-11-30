@@ -4333,14 +4333,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
                     IsEditVisible = true
                 });
-                summaryReasonData.Add(new TINDeregistrationSummaryModel
+                if (SelectedOutletOption.OutletOptionIndex != "3")
                 {
-                    //TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
+                    summaryReasonData.Add(new TINDeregistrationSummaryModel
+                    {
+                        //TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
-                    SummaryTitle = AppResources.TinDeregistrationDate,
-                    SummaryData = DeregistrationDate.ToString("dd/MM/yyyy"),
-                    IsEditVisible = true
-                });
+                        SummaryTitle = AppResources.TinDeregistrationDate,
+                        SummaryData = DeregistrationDate.ToString("dd/MM/yyyy"),
+                        IsEditVisible = true
+                    });
+                }
                 TinDeregistrationSummaryReasonData = new List<TINDeregistrationSummaryModel>(summaryReasonData);
             }
             catch (Exception ex)
