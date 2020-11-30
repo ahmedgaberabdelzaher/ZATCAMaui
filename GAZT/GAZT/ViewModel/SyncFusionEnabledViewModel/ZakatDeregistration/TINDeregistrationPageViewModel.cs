@@ -756,10 +756,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     RaisePropertyChanged("SelectedOutletOption");
                 }
-                else
-                {
-                    _selectedOutletOption = null;
-                }
+                //else
+                //{
+                //    _selectedOutletOption = null;
+                //}
             }
         }
 
@@ -4332,10 +4332,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 summaryReasonData.Add(new TINDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.TinDeregistrationQuestionOutlets,
-                    SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
+                    SummaryData = SelectedOutletOption?.ActiveOutletDecisionOptions ,
                     IsEditVisible = true
                 });
-                if (SelectedOutletOption.OutletOptionIndex != "3")
+                if (SelectedOutletOption?.OutletOptionIndex != "3")
                 {
                     summaryReasonData.Add(new TINDeregistrationSummaryModel
                     {

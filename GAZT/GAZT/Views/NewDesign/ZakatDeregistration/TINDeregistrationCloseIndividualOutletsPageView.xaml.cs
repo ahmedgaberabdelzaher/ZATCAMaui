@@ -109,10 +109,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-        
+            viewModel = null;
+
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
-            GC.Collect();
+            GC.Collect(1);
         }
         private void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
