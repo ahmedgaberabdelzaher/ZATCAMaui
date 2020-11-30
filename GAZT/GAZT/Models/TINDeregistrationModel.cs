@@ -1279,7 +1279,7 @@ namespace EGAZT.Models
             }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value.Trim()))
                 {
                     aPermitTransTinTb = value;
                    

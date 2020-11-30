@@ -4497,10 +4497,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
+                //await Task.Run(() =>
+                //{
+                //    App.DisplayProgressView();
+                //});
+                await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView);
 
                 try
                 {
@@ -4649,10 +4650,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (Exception ex)
                 {
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
+                    //await Task.Run(() =>
+                    //{
+                    //    App.HideProgressView();
+                    //});
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
@@ -4688,10 +4689,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         //await _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
+                        //await Task.Run(() =>
+                        //{
+                        //    App.HideProgressView();
+                        //});
                     }
                     else if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
                     {
@@ -4729,25 +4730,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         string number = TinDeregistrationData.Fbnum;
                         string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
                         await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
+                        //await Task.Run(() =>
+                        //{
+                        //    App.HideProgressView();
+                        //});
                         _navigationService.GoBack();
                     }
 
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
+                    //await Task.Run(() =>
+                    //{
+                    //    App.HideProgressView();
+                    //});
                 }
                 catch (InternetException ex)
                 {
                     isSubmitted = false;
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
+                    //await Task.Run(() =>
+                    //{
+                    //    App.HideProgressView();
+                    //});
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -4758,10 +4759,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     isSubmitted = false;
 
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
+                    //await Task.Run(() =>
+                    //{
+                    //    App.HideProgressView();
+                    //});
 
                     string message = ex.Message;
 
@@ -4775,24 +4776,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     isSubmitted = false;
 
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
+                    //await Task.Run(() =>
+                    //{
+                    //    App.HideProgressView();
+                    //});
                 }
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                //await Task.Run(() =>
+                //{
+                //    App.HideProgressView();
+                //});
             }
             catch (InternetException ex)
             {
                 isSubmitted = false;
 
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                //await Task.Run(() =>
+                //{
+                //    App.HideProgressView();
+                //});
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -4803,10 +4804,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 isSubmitted = false;
 
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                //await Task.Run(() =>
+                //{
+                //    App.HideProgressView();
+                //});
 
                 string message = ex.Message;
 
@@ -4820,10 +4821,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 isSubmitted = false;
 
                 Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                //await Task.Run(() =>
+                //{
+                //    App.HideProgressView();
+                //});
+            }
+            finally
+            {
+                if(PopupNavigation.PopupStack.Count>0)
+              await  PopupNavigation.Instance.PopAsync(true);
             }
         }
 

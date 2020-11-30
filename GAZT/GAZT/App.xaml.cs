@@ -760,7 +760,7 @@ namespace EGAZT
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread( () =>
                 {
                     PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
                 });
@@ -978,7 +978,8 @@ namespace EGAZT
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                PopupNavigation.Instance.PopAsync(true);
+                if (PopupNavigation.PopupStack.Count > 0)
+                    PopupNavigation.Instance.PopAsync(true);
             });
         }
 
