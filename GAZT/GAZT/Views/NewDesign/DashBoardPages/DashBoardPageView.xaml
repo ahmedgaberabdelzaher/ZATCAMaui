@@ -13,11 +13,14 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              ios:Page.UseSafeArea="true"
+              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
             BackgroundImageSource="partials_background" x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView">
     <ContentPage.Resources>
-        <ResourceDictionary> 
+        <ResourceDictionary>
+            <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <!--<CustomControl:DataMarkerConverter x:Key="converter" />-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -404,17 +407,17 @@
 
                                                                     </custom:CustomLabel>
 
-                                                                    <custom:CustomLabel    IsVisible="{Binding IsPaymentOverdue}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
+                                                                    <custom:CustomLabel IsVisible="{Binding IsPaymentOverdue}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
                                                                         <custom:CustomLabel.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZAmount}"></Span>
                                                                                 <Span Text=" : "></Span>
-                                                                                <Span Text="{Binding Amount}"></Span>
+                                                                                <Span Text="{Binding Amount,Converter={StaticResource commaSeparatorConverter}}"/><Span Text=" "/>
+                                                                                <!--<Span Text="{Binding Amount}"></Span>-->
                                                                                 <Span Text="&#160;&#160;"/>
                                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"></Span>
                                                                             </FormattedString>
                                                                         </custom:CustomLabel.FormattedText>
-
                                                                     </custom:CustomLabel>
 
                                                                     <!--<custom:CustomLabel Text="200,000,00 SAR" TextColor="Black"  />-->
