@@ -155,6 +155,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 viewModel.IsNodataAvailableVisible = false;
                 viewModel.IsMultiplePermitsVisible = false;
+                if (viewModel.SelectedPermitOutletOptionIndex == 1)
+                {
+                    viewModel.FirstNameLbl = AppResources.ZZZVATRFirstName;
+                    viewModel.SurnameNameLbl = AppResources.TinDeregistrationSurName;
+                }
             }
             GetSelectedDataTemplate();
 
