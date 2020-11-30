@@ -698,10 +698,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                 }
-
-
             }
-
 
             _navigationService.NavigateTo(App.ActivityItemAmendUpdatePage, new ActivityNavigationModels()
             {

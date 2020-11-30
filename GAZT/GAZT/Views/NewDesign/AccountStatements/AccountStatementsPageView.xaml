@@ -18,6 +18,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:StringToColor x:Key="StringToColor" />
+            <local:StringToColorConvertor x:Key="StringToColorConvertor" />
             <local:IntToBoolConverter x:Key="IntToBoolConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -325,7 +326,7 @@
                                     <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
                                 </StackLayout>
                                  <Frame Grid.Row="0" Grid.Column="1"
-                                                    BackgroundColor="{Binding Status,Converter={StaticResource StringToColor}}"
+                                                    BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
                                                     Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"
                                                     HeightRequest="20" Opacity=".2"
                                         HasShadow="False"   
@@ -341,7 +342,7 @@
                                  </Frame>
                                 <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
                                         <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}"
-                                               TextColor="{Binding Status,Converter={StaticResource StringToColor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                               TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                             <!--<Label.Triggers>
                                                  <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
                                                     <Setter Property="TextColor" Value="{StaticResource Primary}" />
@@ -516,72 +517,16 @@
                                         <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
                                         <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
                                     </StackLayout>
-                                     <yummy:PancakeView Grid.Row="0" Grid.Column="1" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                        <yummy:PancakeView.Triggers>
-                                                 <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="1">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource BILLED}" />
-                                                </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="3">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource BILLED_DUE}" />
-                                                </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="2">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource CLEARED}" />
-                                                </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="6">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource REVERSE}" />
-                                                </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="5">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource CREDIT}" />
-                                                </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="4">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource UNDERREVIEW}" />
-                                                </DataTrigger>
-                                                     <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="8">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource TRANSFERRED}" />
-                                                </DataTrigger>
-                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="9">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource REFUNDED}" />
-                                                </DataTrigger>
-                                                <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="7">
-                                                    <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
-                                                </DataTrigger>
-                                            </yummy:PancakeView.Triggers>
+                                     <yummy:PancakeView Grid.Row="0" Grid.Column="1" Padding="10,10,10,10"  
+                                                        CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"
+                                                        VerticalOptions="CenterAndExpand" HorizontalOptions="End"
+                                                        BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}">
+                                       
                                      </yummy:PancakeView>
                                     <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
-                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}" TextColor="{StaticResource Secondary}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                <Label.Triggers>
-                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="1">
-                                                        <Setter Property="TextColor" Value="{StaticResource BILLED}" />
-                                                    </DataTrigger>
-                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="3">
-                                                        <Setter Property="TextColor" Value="{StaticResource BILLED_DUE}" />
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="2">
-                                                        <Setter Property="TextColor" Value="{StaticResource CLEARED}" />
-                                                    </DataTrigger>
-                                                    <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="6">
-                                                        <Setter Property="TextColor" Value="{StaticResource REVERSE}" />
-                                                    </DataTrigger>
-
-                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="5">
-                                                        <Setter Property="TextColor" Value="{StaticResource CREDIT}" />
-                                                    </DataTrigger>
-                                                      <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="4">
-                                                        <Setter Property="TextColor" Value="{StaticResource UNDERREVIEW}" />
-                                                    </DataTrigger>
-
-                                                       <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="8">
-                                                        <Setter Property="TextColor" Value="{StaticResource TRANSFERRED}" />
-                                                    </DataTrigger>
-                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="9">
-                                                        <Setter Property="TextColor" Value="{StaticResource REFUNDED}" />
-                                                    </DataTrigger>
-                                                    
-                                                     <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="7">
-                                                        <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
-                                                    </DataTrigger>
-
-                                                </Label.Triggers>
+                                            <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}"
+                                                   TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                               
                                             </Label>
                                     </StackLayout>
                                 </Grid>

@@ -1133,10 +1133,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     isSubmitted = true;
 
-                Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading1 = true;
-                        });
+                //Device.BeginInvokeOnMainThread(() =>
+                //        {
+                //            IsLoading1 = true;
+                //        });
 
                     // ContractReleaseData = await SubmitClicked();
                     await SubmitClicked();
@@ -1153,10 +1153,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     //}
 
                  
-                      Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading1 = false;
-                        });
+                      //Device.BeginInvokeOnMainThread(() =>
+                      //  {
+                      //      IsLoading1 = false;
+                      //  });
                     
                 }
 
