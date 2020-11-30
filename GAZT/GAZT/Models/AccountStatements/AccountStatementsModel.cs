@@ -360,8 +360,11 @@ namespace EGAZT.Models.AccountStatements
             set
             {
                 status = value;
-               
+                
             } }
+
+        [JsonIgnore]
+        public Color StatusColor { get; set; }
 
         [JsonProperty("TaxType")]
         public string TaxType { get; set; }
@@ -387,9 +390,14 @@ namespace EGAZT.Models.AccountStatements
         [JsonProperty("Waers")]
         public string Waers { get; set; }
 
+        private string _StatusDesc;
         [JsonProperty("StatusDesc")]
-        public string StatusDesc { get;
-            set; }
+        public string StatusDesc {
+            get { return _StatusDesc; }
+            set {
+                _StatusDesc = value;
+                
+            } }
 
         [JsonProperty("TaxtypeDesc")]
         public string TaxtypeDesc { get; set; }
