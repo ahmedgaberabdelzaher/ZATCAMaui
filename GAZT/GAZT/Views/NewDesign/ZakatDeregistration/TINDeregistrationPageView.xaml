@@ -72,7 +72,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
@@ -810,7 +810,7 @@
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
                                                     <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="50"/>
+                                                    <ColumnDefinition Width="56"/>
                                                 </Grid.ColumnDefinitions>
 
                                                 <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Center" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
@@ -823,7 +823,7 @@
                                                 </StackLayout>
                                                 <StackLayout  Grid.Row="0" Grid.Column="2" IsVisible="{Binding BindingContext.outletEditIsVisible,Source={x:Reference TinDeReg}}" x:Name="editButton">
                                                     <buttons:SfButton x:Name="buttonEdit" Margin="0,26,0,16" IsEnabled="False"  Clicked="newName_Clicked"  HorizontalOptions="End"  VerticalOptions="End" Text="{x:Static ResourceManager:AppResources.NDEdit}"
-                                                          TextColor="#006450" BackgroundColor="Transparent" />
+                                                          Style="{StaticResource NoBackgroundButtonStylePrimary}" BackgroundColor="Transparent" />
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer NumberOfTapsRequired="1" 
                                                                   Tapped="TapGestureRecognizer_Tapped"

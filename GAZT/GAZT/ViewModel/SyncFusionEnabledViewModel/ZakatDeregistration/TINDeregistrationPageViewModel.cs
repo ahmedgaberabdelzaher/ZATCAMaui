@@ -805,7 +805,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
         //3102410588
-        private string _firstNameLbl { get; set; }
+        private string _firstNameLbl { get; set; } = AppResources.ZZZVATRFirstName;
         public string FirstNameLbl
         {
             get
@@ -819,7 +819,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private string _surnameNameLbl { get; set; }
+        private string _surnameNameLbl { get; set; } = AppResources.TinDeregistrationSurName;
         public string SurnameNameLbl
         {
             get
@@ -1041,12 +1041,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         SurnameText.IsVisible = true;
                         GrandFathersNameText.IsVisible = true;
                         FamilyNameText.IsVisible = true;
-                        IsDobVisible = true;
+                        if (SelectedReason.ReasonCd == "6" && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+                        {
+                            IsDobVisible = false;
+                        }
+                        else
+                        {
+                            IsDobVisible = true;
+                        }
                     }
                 }
                 else
                 {
-                    IsDobVisible = true;
+                    if (SelectedReason.ReasonCd == "6" && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+                    {
+                        IsDobVisible = false;
+                    }
+                    else
+                    {
+                        IsDobVisible = true;
+                    }
                 }
                 RaisePropertyChanged("SelectedIDTypeCode");
             }
@@ -2777,9 +2791,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 SelectedIdtype = idType.Text;
                                 SelectedIDTypeCode = idType.key;
+                                IsName1Visible = false;
+
+                                
+                                FirstNameLbl = AppResources.ZZZVATRFirstName;
+                                SurnameNameLbl = AppResources.TinDeregistrationSurName;
+                                
+                                SelectedDob = IDTypeDataModel.Birthdt10;
                                 PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
                                 SelectedIdNumber = IDTypeDataModel.Idnum;
                                 TINNumber = IDTypeDataModel.Tin;
+
+
+                                if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
+                                {
+                                    NationalTypeSelected();
+                                }
+                                else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
+                                {
+                                    IsName1Visible = true;
+                                    CompanyIdTypeSelected();
+                                }
+                                else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
+                                {
+                                    IqamaTypeSelected();
+                                }
+                                else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                                {
+                                    GCCIdTypeSelected();
+                                }
                             }
                         }
                         //else
@@ -3777,7 +3817,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                    _navigationService.GoBack();
+                    //_navigationService.GoBack();
 
                 }
             }
@@ -4698,6 +4738,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (InternetException ex)
                 {
+                    isSubmitted = false;
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
@@ -4710,6 +4751,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (GAZTErrorException ex)
                 {
+                    isSubmitted = false;
+
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
@@ -4724,6 +4767,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (Exception ex)
                 {
+                    isSubmitted = false;
+
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     await Task.Run(() =>
                     {
@@ -4737,6 +4782,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
+                isSubmitted = false;
+
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -4749,6 +4796,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
+                isSubmitted = false;
+
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -4763,6 +4812,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                isSubmitted = false;
+
                 Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 await Task.Run(() =>
                 {

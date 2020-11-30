@@ -26,6 +26,17 @@
 
     <!--Vat New UI-->
 
+
+    <!--Account Statements-->
+    <Color x:Key="BILLED">#FCE087</Color>
+    <Color x:Key="BILLED_DUE">#E52027</Color>
+    <Color x:Key="CLEARED">#99C97B</Color>
+    <Color x:Key="REVERSE">#999999</Color>
+    <Color x:Key="CREDIT">#C5C3C3</Color>
+    <Color x:Key="UNDERREVIEW">#FCE087</Color>
+    <Color x:Key="TRANSFERRED">#99C97B</Color>
+    <Color x:Key="REFUNDED">#99C97B</Color>
+    <!--Account Statements-->
     <!-- SST Arabic Bold.ttf -->
     <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
         <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />

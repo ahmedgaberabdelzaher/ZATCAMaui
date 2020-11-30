@@ -15425,5 +15425,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("QuickActionShowCertificates", resourceCulture);
             }
         }
+        
+        public static string TINDeregistrationDetailsEdit {
+            get {
+                return ResourceManager.GetString("TINDeregistrationDetailsEdit", resourceCulture);
+            }
+        }
     }
 }
