@@ -1215,28 +1215,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             string tempSelectedReason = PickerModel.SelectedValue;
 
-                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
-                              x =>
-                              {
-                                  if (x.APermitNoTb == selectedAPermitReason)
-                                  {
-                                      x.APermitDisplayReason = tempSelectedReason;
+                            //SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                            //  x =>
+                            //  {
+                            //      if (x.APermitNoTb == selectedAPermitReason)
+                            //      {
+                            //          x.APermitDisplayReason = tempSelectedReason;
 
-                                      if (tempSelectedReason == AppResources.TinDeregistrationClosed)
-                                      {
-                                          x.APermitDregRsnTb = "1";
-                                          IsDetailsFieldEnabled = false;
-                                      }
-                                      else
-                                      {
-                                          x.APermitDregRsnTb = "3";
-                                          IsDetailsFieldEnabled = true;
-                                      }
-                                  }
+                            //          if (tempSelectedReason == AppResources.TinDeregistrationClosed)
+                            //          {
+                            //              x.APermitDregRsnTb = "1";
+                            //              IsDetailsFieldEnabled = false;
+                            //          }
+                            //          else
+                            //          {
+                            //              x.APermitDregRsnTb = "3";
+                            //              IsDetailsFieldEnabled = true;
+                            //          }
+                            //      }
 
-                                  return x;
-                              }
-                              ).ToList());
+                            //      return x;
+                            //  }
+                            //  ).ToList());
+                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList())   ;
+
+                            foreach (var items in SelectedOutletForCloseTranser.PermitTypes)
+                            {
+                                if (items.APermitNoTb== selectedAPermitReason)
+                                {
+                                    items.APermitDisplayReason = tempSelectedReason;
+                                    if (tempSelectedReason == AppResources.TinDeregistrationClosed)
+                                    {
+                                        items.APermitDregRsnTb = "1";
+                                        IsDetailsFieldEnabled = false;
+                                    }
+                                    else
+                                    {
+                                        items.APermitDregRsnTb = "3";
+                                        IsDetailsFieldEnabled = true;
+                                    }
+
+                                }
+                            }
 
                             if (PickerModel.SelectedValue == AppResources.TinDeregistrationClosed)
                             {
@@ -1251,36 +1271,64 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (PickerModel.PickerId == "permitIdTypePicker")
                         {
-                            SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
-                              x =>
-                              {
-                                  if (x.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb)
-                                  {
-                                      //x.APermitIdTypeTb
+                            //SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                            //  x =>
+                            //  {
+                            //      if (x.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb)
+                            //      {
+                            //          //x.APermitIdTypeTb
 
-                                      x.APermitTransTinTb = string.Empty;
-                                      x.APermitIdNoTb = string.Empty;
+                            //          x.APermitTransTinTb = string.Empty;
+                            //          x.APermitIdNoTb = string.Empty;
 
-                                      if (PickerModel.SelectedValue == AppResources.TinDeregistrationNationalID)
-                                      {
-                                          x.APermitIdTypeTb = "ZS0001";
-                                      }
-                                      else if (PickerModel.SelectedValue == AppResources.TinDeregistrationCompanyID)
-                                      {
-                                          x.APermitIdTypeTb = "ZS0005";
-                                      }
-                                      else if (PickerModel.SelectedValue == AppResources.TinDeregistrationIQAMANumber)
-                                      {
-                                          x.APermitIdTypeTb = "ZS0002";
-                                      }
-                                      else if (PickerModel.SelectedValue == AppResources.TinDeregistrationGCCID)
-                                      {
-                                          x.APermitIdTypeTb = "ZS0003";
-                                      }
-                                  }
-                                  return x;
-                              }
-                              ).ToList());
+                            //          if (PickerModel.SelectedValue == AppResources.TinDeregistrationNationalID)
+                            //          {
+                            //              x.APermitIdTypeTb = "ZS0001";
+                            //          }
+                            //          else if (PickerModel.SelectedValue == AppResources.TinDeregistrationCompanyID)
+                            //          {
+                            //              x.APermitIdTypeTb = "ZS0005";
+                            //          }
+                            //          else if (PickerModel.SelectedValue == AppResources.TinDeregistrationIQAMANumber)
+                            //          {
+                            //              x.APermitIdTypeTb = "ZS0002";
+                            //          }
+                            //          else if (PickerModel.SelectedValue == AppResources.TinDeregistrationGCCID)
+                            //          {
+                            //              x.APermitIdTypeTb = "ZS0003";
+                            //          }
+                            //      }
+                            //      return x;
+                            //  }
+                            //  ).ToList());
+
+                            foreach (var Item in SelectedOutletForCloseTranser.PermitTypes.ToList())
+                            {
+                                if (Item.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb)
+                                {
+                                    Item.APermitTransTinTb = string.Empty;
+                                    Item.APermitIdNoTb = string.Empty;
+                                    if (PickerModel.SelectedValue == AppResources.TinDeregistrationNationalID)
+                                    {
+                                        Item.APermitIdTypeTb = "ZS0001";
+                                    }
+                                    else if (PickerModel.SelectedValue == AppResources.TinDeregistrationCompanyID)
+                                    {
+                                        Item.APermitIdTypeTb = "ZS0005";
+                                    }
+                                    else if (PickerModel.SelectedValue == AppResources.TinDeregistrationIQAMANumber)
+                                    {
+                                        Item.APermitIdTypeTb = "ZS0002";
+                                    }
+                                    else if (PickerModel.SelectedValue == AppResources.TinDeregistrationGCCID)
+                                    {
+                                        Item.APermitIdTypeTb = "ZS0003";
+                                    }
+                                }
+                            }
+
+
+
                         }
                     }
 

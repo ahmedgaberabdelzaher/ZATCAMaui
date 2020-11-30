@@ -806,7 +806,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                         string oldMstFlasg = string.Empty;
 
-                        if(ListOutlets != null && ListOutlets.Count > 1)
+                        if(ListOutlets != null && ListOutlets.Count > 0)
                         {
                             foreach(OutletItem nreg_OutletItem in ListOutlets)
                              {

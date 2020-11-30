@@ -20,7 +20,7 @@ namespace GAZT.iOS
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
     }
