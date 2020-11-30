@@ -1282,9 +1282,10 @@ namespace EGAZT.Models
                 if (!string.IsNullOrEmpty(value))
                 {
                     aPermitTransTinTb = value;
-                    Task.Run(async() =>
-                    { 
+                   
                         if(aPermitTransTinTb.Length == 10)
+                        {
+                        Task.Run(async () =>
                         {
                             string resultData = await WebServiceManager.GAZTGetTInNumberData(aPermitIdNoTb);
                             string _responseData = JObject.Parse(resultData)["d"].ToString();
@@ -1302,8 +1303,9 @@ namespace EGAZT.Models
                                 }
 
                             }
+                        });
                     }
-                    });
+                
 
                     OnPropertyRaised("APermitTransTinTb");
                 }
