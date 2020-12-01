@@ -955,6 +955,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void OnDOBClicked(object sender, EventArgs e)
         {
+            
             if (!viewModel.IsHijriCal)
             {
                 DpDbo.IsOpen = true;
@@ -967,6 +968,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void OnIDDOBClicked(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(idNumber.Text))
+            {
+                idNumber.Focus();
+                return;
+            }
+
             if (!viewModel.IsDOBHijriCal)
             {
                 DpDbo3.IsOpen = true;
@@ -1599,6 +1606,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.outletEditIsVisible = true;
                 viewModel.SelectedOutletForCloseTranser = selectedItem;
                 viewModel.SelectedPermitOutletOptionIndex = viewModel.AllOutlets.IndexOf(selectedItem);
+                viewModel.SingleDeregistrationDate = string.Empty;
                 viewModel.AddPermitOutletDecisionOptions();
                 viewModel.AddPopUpPage();
                 var view = sender as SfListView;

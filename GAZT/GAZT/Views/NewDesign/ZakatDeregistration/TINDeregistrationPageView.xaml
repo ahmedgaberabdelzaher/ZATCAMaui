@@ -340,7 +340,7 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <StackLayout Orientation="Horizontal" >
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}" HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
                                 <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal, Mode=TwoWay}" Toggled="HijriCal2Switch_Toggled" />
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
                             </StackLayout>
@@ -365,7 +365,7 @@
                                         </StackLayout>
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
-                                <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
+                                <Button  TextColor="Transparent"  BackgroundColor="Transparent" Clicked="OnDOBClicked"  Margin="0,0,0,0" >
                                 </Button>
                                 <custom1:CustomDatePicker FlowDirection="RightToLeft" 
 								ShowHeader="False"
@@ -498,7 +498,7 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <control:BorderlessEntry  IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <control:BorderlessEntry x:Name="idNumber"  IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                         <control:BorderlessEntry.Behaviors>
