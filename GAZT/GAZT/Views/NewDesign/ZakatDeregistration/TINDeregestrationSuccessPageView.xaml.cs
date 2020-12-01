@@ -27,7 +27,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (response.Fbnum != null)
                 {
                     if (response.ADecName != null)
-                        Label_Name.Text = response.ADecName;
+                        Label_Name.Text = response.ATaxpayerName;
 
                     Label_ApplicationNumber.Text = response.Fbnum;
                     viewModel.FBNumber = response.Fbnum;
