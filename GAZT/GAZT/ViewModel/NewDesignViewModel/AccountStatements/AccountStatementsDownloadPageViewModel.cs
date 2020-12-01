@@ -12,7 +12,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
     public class AccountStatementsDownloadPageViewModel: BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }
-        public ICommand DownloadBtnTapped { get; set; }
+        public ICommand DownloadBtnTappedDownloadPage { get; set; }
 
         private string _fromDate = AppResources.ASAccountStatementFrom;
         public string FromDate
@@ -73,11 +73,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 _navigationService.GoBack();
             });
 
-            DownloadBtnTapped = new Command(DownloadBtnClicked);
+            DownloadBtnTappedDownloadPage = new Command(DownloadBtnClickedDownloadPage);
             ASTaxpayerSelectedValues = new ASTaxpayerSelectedValues();
         }
 
-        public void DownloadBtnClicked()
+        public void DownloadBtnClickedDownloadPage()
         {
             DateTime dateTimeFrom = DateTime.Parse(FromDate);
             DateTime dateTimeTo = DateTime.Parse(ToDate);

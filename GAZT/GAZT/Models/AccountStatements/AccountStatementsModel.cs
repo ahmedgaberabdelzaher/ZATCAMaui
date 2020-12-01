@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using static EGAZT.ViewModel.NewDesignViewModel.AccountStatements.AccountStatementsPageViewModel;
 
 namespace EGAZT.Models.AccountStatements
 {
@@ -28,6 +29,12 @@ namespace EGAZT.Models.AccountStatements
         }
     }
 
+    public class DataForDownloadPage
+    {
+        public  ASTaxpayerSelectedValues ASTaxpayerSelectedValues;
+        public List<ObservableGroupCollection<string, ASResult>> GroupedDataForDownload;
+    }
+    
     public class ASTaxpayerSelectedValues
     {
         public string TaxType { get; set; }

@@ -25,6 +25,76 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand FiltersTapped { get; set; }
         public ICommand DownloadBtnTapped { get; set; }
+        public ICommand DownloadBtnTappedDownloadPage { get; set; }
+
+        private string _fromDate = AppResources.ASAccountStatementFrom;
+        public string FromDate
+        {
+            get
+            {
+                return _fromDate;
+            }
+            set
+            {
+                _fromDate = value;
+                RaisePropertyChanged("FromDate");
+            }
+        }
+
+        private DateTime _FromDateDownloadPage ;
+        public DateTime FromDateDownloadPage
+        {
+            get
+            {
+                return _FromDateDownloadPage;
+            }
+            set
+            {
+                _FromDateDownloadPage = value;
+                RaisePropertyChanged("FromDateDownloadPage");
+            }
+        }
+        private DateTime _ToDateDownloadPage;
+        public DateTime ToDateDownloadPage
+        {
+            get
+            {
+                return _ToDateDownloadPage;
+            }
+            set
+            {
+                _ToDateDownloadPage = value;
+                RaisePropertyChanged("ToDateDownloadPage");
+            }
+        }
+
+
+        private ASTaxpayerSelectedValues _asTaxpayerSelectedValues;
+        public ASTaxpayerSelectedValues ASTaxpayerSelectedValues
+        {
+            get
+            {
+                return _asTaxpayerSelectedValues;
+            }
+            set
+            {
+                _asTaxpayerSelectedValues = value;
+                RaisePropertyChanged("ASTaxpayerSelectedValues");
+            }
+        }
+        private string _toDate = AppResources.ASAccountStatementTo;
+        public string ToDate
+        {
+            get
+            {
+                return _toDate;
+            }
+            set
+            {
+                _toDate = value;
+                RaisePropertyChanged("ToDate");
+            }
+        }
 
         private List<GroupedAccountStatements> _groupedStatements;
         public List<GroupedAccountStatements> GroupedStatements
@@ -356,6 +426,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     groupedData = value;
                 }
                 RaisePropertyChanged("GroupedData");
+            }
+        }
+
+        private List<ObservableGroupCollection<string, ASResult>> _GroupedDataForDownload ;
+
+        public List<ObservableGroupCollection<string, ASResult>> GroupedDataForDownload
+        {
+            get
+            {
+                return _GroupedDataForDownload;
+            }
+            set
+            {
+                
+                    _GroupedDataForDownload = value;
+                
+                RaisePropertyChanged("GroupedDataForDownload");
             }
         }
 
@@ -843,6 +930,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             });
 
             DownloadBtnTapped = new Command(DownloadBtnClicked);
+            DownloadBtnTappedDownloadPage = new Command(DownloadBtnClickedDownloadPage);
 
             TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
             IsSortByVisible = false;
@@ -883,6 +971,76 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             else
                 return 'E';
         }
+        public void DownloadBtnClickedDownloadPage()
+        {
+            DateTime dateTimeFrom = DateTime.Parse(FromDate);
+            DateTime dateTimeTo = DateTime.Parse(ToDate);
+
+            if (dateTimeFrom > dateTimeTo)
+            {
+                _dialogService.ShowMessage(AppResources.ASFromDateShouldNotbeGreaterThanToDate, AppResources.Information);
+            }
+            else
+            {
+                var temp = (dateTimeTo - dateTimeFrom).TotalDays;
+
+                if (temp > 365)
+                {
+                    _dialogService.ShowMessage(AppResources.ASViewStatementForOnlyOneYear, AppResources.Information);
+                }
+                
+                else
+                {
+                    if (Int32.Parse(ASTaxpayerSelectedValues.Year) >= dateTimeFrom.Year && Int32.Parse(ASTaxpayerSelectedValues.Year) <= dateTimeTo.Year)
+                    {
+                        if (GroupedDataForDownload.First().Where(p => p.Bldat >= dateTimeFrom && p.Bldat <= dateTimeTo).Count() > 0)
+                        {
+                            string fromStr = dateTimeFrom.ToString("yyyy-MM-dd");
+                            string toStr = dateTimeTo.ToString("yyyy-MM-dd");
+
+                            String pdfUrl = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + ASTaxpayerSelectedValues.TaxType + "',FiscalYear='" + dateTimeFrom.Year + "',StatementFilter='" + ASTaxpayerSelectedValues.StatementFilter + "',FromDt=datetime'" + fromStr + "T00:00:00',ToDt=datetime'" + toStr + "T00:00:00',Langz='" + GetLangZParameter() + "')/$value";
+                            ShowPdf1(pdfUrl);
+                        }
+                        else
+                        {
+                            _dialogService.ShowMessage("There are no financial transactions", AppResources.Information);
+                        }
+
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessage(AppResources.ASViewStatementForOnlyOneYear, AppResources.Information);
+                    }
+
+
+                }
+            }
+
+        }
+
+
+
+        public void ShowPdf1(string pdfUrl)
+        {
+            try
+            {
+                if (pdfUrl != null)
+                {
+                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
         public void ShowPdf(string pdfUrl)
         {
@@ -894,8 +1052,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     aSTaxpayerSelectedValues.TaxType = SelectedTaxTypeForFilter.Id;
                     aSTaxpayerSelectedValues.StatementFilter = SelectedTransactionTypeFilter.StatementFilter;
                     aSTaxpayerSelectedValues.Year = SelectedYear.Text;
-
-                    _navigationService.NavigateTo(App.AccountStatementsDownloadPageView, aSTaxpayerSelectedValues);
+                    DataForDownloadPage Data = new DataForDownloadPage();
+                    Data.ASTaxpayerSelectedValues = aSTaxpayerSelectedValues;
+                    Data.GroupedDataForDownload = groupedData;
+                    _navigationService.NavigateTo(App.AccountStatementsDownloadPageView, Data);
                 }
                 else
                 {

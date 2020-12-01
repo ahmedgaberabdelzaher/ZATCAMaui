@@ -15,18 +15,24 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 {
     public partial class AccountStatementsDownloadPageView : ContentPage
     {
-        AccountStatementsDownloadPageViewModel viewModel;
+        //AccountStatementsDownloadPageViewModel viewModel;
 
-        public AccountStatementsDownloadPageView(ASTaxpayerSelectedValues aSTaxpayerSelectedValues)
+
+        AccountStatementsPageViewModel viewModel;
+        public AccountStatementsDownloadPageView(DataForDownloadPage Data)
         {
             InitializeComponent();
 
-            viewModel = App.Locator.AccountStatementsDownloadPageView;
+
+            viewModel = App.Locator.AccountStatementsPageView;
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            viewModel.ASTaxpayerSelectedValues = aSTaxpayerSelectedValues;
+
+            viewModel.GroupedDataForDownload = Data.GroupedDataForDownload  ;
+            viewModel. ASTaxpayerSelectedValues = new ASTaxpayerSelectedValues();
+            viewModel.ASTaxpayerSelectedValues = Data.ASTaxpayerSelectedValues;
 
             viewModel.FromDate = AppResources.ASAccountStatementFrom;
             viewModel.ToDate = AppResources.ASAccountStatementTo;
@@ -45,10 +51,12 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     if (arg.PickerId == "StartDateTypePicker")
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue).ToShortDateString();
+                        viewModel.FromDateDownloadPage = Convert.ToDateTime(arg.SelectedValue);
                     }
                     else if (arg.PickerId == "EndDateTypePicker")
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue).ToShortDateString();
+                        viewModel.ToDateDownloadPage  = Convert.ToDateTime(arg.SelectedValue);
                     }
                 }
                 else

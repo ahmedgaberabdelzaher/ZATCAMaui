@@ -136,7 +136,7 @@
 
                 </StackLayout>
 
-                <buttons:SfButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,0"  x:Name="btnReasonContinue" Command="{Binding DownloadBtnTapped}" Text="{x:Static ResourceManager:AppResources.VatInstalmentDownload}"
+                <buttons:SfButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,0"  x:Name="btnReasonContinue" Command="{Binding DownloadBtnTappedDownloadPage}" Text="{x:Static ResourceManager:AppResources.VatInstalmentDownload}"
                 Style="{StaticResource PrimaryButtonStyle}"/>
       </Grid>
     </ContentPage.Content>
