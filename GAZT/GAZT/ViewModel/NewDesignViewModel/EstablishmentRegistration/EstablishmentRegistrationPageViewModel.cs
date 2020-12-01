@@ -2313,15 +2313,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
                     {
-                        var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.Somethingwentwrong)
+                        var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.SomethingwentwrongTaxDetails)
                         {
                             CloseWhenBackgroundIsClicked = false
                         };
+
                         someThingWhentWrong.OnDone = () =>
                         {
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                            _navigationService.GoBack();
                         };
+                        if (PopupNavigation.PopupStack.Count > 0)
+                            await PopupNavigation.PopAsync();
                         await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
                         return;
                     }
@@ -2342,6 +2345,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    if (idItem != null)
                     if (App.IsArabic)
                     {
                         GCCIDType = ArIDType[idItem?.Type];
@@ -2350,7 +2354,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         GCCIDType = EnIDType[idItem?.Type];
                     }
-                    GCCIDTypeIdNumberValue = idItem.Idnumber;
+                    GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
