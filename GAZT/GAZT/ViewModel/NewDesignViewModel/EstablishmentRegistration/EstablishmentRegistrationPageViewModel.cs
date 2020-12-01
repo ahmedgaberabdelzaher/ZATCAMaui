@@ -2285,6 +2285,99 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        public async Task<bool> FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum _enum)
+        {
+            clearFormData(_enum);
+            try
+            {
+                IsLoading = true;
+                if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
+                {
+                    await GetReportingBranchListFromServer();
+                    //var nationalityTask = GetPdNationalityListFromServer(null);
+                    //await Task.WhenAll(branchTask, nationalityTask);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
+                    {
+                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                    }
+                    SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
+                    SelectedEntityType = AppResources.ESTSelectedEntityTypeLabel;// Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
+                    SelectedTaxPayerType = AppResources.ESTSelectedTaxPayerType;
+                    if (taxPayerDetails?.Tpnationality == "SAUDI")
+                        SelectedRegNationalityType = AppResources.ESTNationalitySAUDI;
+                    else if (taxPayerDetails?.Tpnationality == "GCC")
+                        SelectedRegNationalityType = AppResources.ESTNationalityGCC;
+                    else if (taxPayerDetails?.Tpnationality == "FOREIGN")
+                        SelectedRegNationalityType = AppResources.ESTNationalityFOREIGN;
+
+                    if (!NationalityMapping.ContainsKey(taxPayerDetails?.Tpnationality) || ReportingBranchList?.Count == 0)
+                    {
+                       
+                        return false;
+                    }
+                    IsSaudi = taxPayerDetails?.Tpnationality == "SAUDI";
+                    if (IsSaudi)
+                    {
+                        TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
+                    }
+                    else
+                    {
+                        ResidenceTypePrePopulateData(taxPayerDetails);
+                        RentAttachmentPrePopulateCheck(taxPayerDetails);
+                    }
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+                {
+
+                    await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
+                    idItem = taxPayerDetails?.Nreg_IdSet?.results?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    if (idItem != null)
+                        if (App.IsArabic)
+                        {
+                            GCCIDType = ArIDType[idItem?.Type];
+                        }
+                        else
+                        {
+                            GCCIDType = EnIDType[idItem?.Type];
+                        }
+                    GCCIDTypeIdNumberValue = idItem?.Idnumber;
+                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    FirstName = taxPayerDetails?.NameFirst;
+                    LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
+                    FatherName = taxPayerDetails?.FatherName;
+                    GrandFatherName = taxPayerDetails?.GrandfatherName;
+                    FamilyName = taxPayerDetails?.FamilyName;
+                    Initial = taxPayerDetails?.Initials;
+                    if (taxPayerDetails?.Xsexm == "X")
+                        SelectedGender = GenderList.FirstOrDefault();
+                    if (taxPayerDetails?.Xsexf == "X")
+                        SelectedGender = GenderList.LastOrDefault();
+                    if (string.IsNullOrEmpty(SelectedGender))
+                    {
+                        SelectedGender = GenderList.FirstOrDefault();
+                    }
+                    SelectedTaxpayerPDNationality = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
+                    SelectedCitizen = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
+                    SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                IsLoading = false;
+                Device.BeginInvokeOnMainThread(() => updateDatePickers(_enum));
+            }
+
+            return true;
+        }
+
+
         public async Task FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum _enum)
         {
             clearFormData(_enum);
@@ -2318,13 +2411,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             CloseWhenBackgroundIsClicked = false
                         };
 
-                        someThingWhentWrong.OnDone = () =>
+                        someThingWhentWrong.OnDone = async() =>
                         {
+                            
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown; 
                             _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         };
-                        if (PopupNavigation.PopupStack.Count > 0)
-                            await PopupNavigation.PopAsync();
+                        
                         await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
                         return;
                     }
@@ -2344,7 +2437,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
+                    idItem = taxPayerDetails?.Nreg_IdSet?.results?.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     if (idItem != null)
                     if (App.IsArabic)
                     {

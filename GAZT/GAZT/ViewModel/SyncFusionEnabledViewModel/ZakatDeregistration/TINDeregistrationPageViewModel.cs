@@ -2534,6 +2534,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 try
                 {
+                  await  PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+
+
                     string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, SelectedIdNumber, dob);
 
                     if (IDTypeDataModel == null)
@@ -2550,7 +2553,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
                     TINNumber = IDTypeDataModel.Tin;
 
-
                     //}
 
                     if (_responseData == null)
@@ -2558,10 +2560,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                         if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                         {
-                            await Task.Run(() =>
-                            {
-                                App.HideProgressView();
-                            });
+                            
 
                             FrameIDError = true;
 
@@ -2570,10 +2569,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         else
                         {
                             FrameIDError = false;
-                            await Task.Run(() =>
-                            {
-                                App.HideProgressView();
-                            });
+                           
 
                             await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                         }
@@ -2582,6 +2578,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         FrameIDError = false;
                     }
+                    if (PopupNavigation.PopupStack.Count() > 0)
+                        await PopupNavigation.PopAsync();
                 }
                 catch
                 {
@@ -2592,6 +2590,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                         {
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
                             FrameIDError = true;
                             await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                         }
@@ -2599,6 +2599,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             //FrmIDNumber.HasError = false;
                             FrameIDError = false;
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
                             await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                         }
 
@@ -2606,6 +2608,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         PickerDOBDateDisplay = string.Empty;
                         TINNumber = string.Empty;
                         IDTypeDataModel = new VATSignUpD();
+                       
                     }
                     catch (GAZTException gex)
                     {
@@ -2630,10 +2633,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await Task.Run(() =>
-                            {
-                                App.HideProgressView();
-                            });
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
 
                             await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             _navigationService.GoBack();
@@ -2643,10 +2644,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await Task.Run(() =>
-                            {
-                                App.HideProgressView();
-                            });
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
                         });
@@ -2658,10 +2657,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             // IsLoading = false;
-                            await Task.Run(() =>
-                            {
-                                App.HideProgressView();
-                            });
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
                             await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             //_navigationService.GoBack();
                         });
@@ -2672,25 +2669,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await Task.Run(() =>
-                            {
-                                App.HideProgressView();
-                            });
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
                             await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                             //_navigationService.GoBack();
                         });
                     }
                 }
 
+
             }
 
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                await Task.Run(() =>
-                {
                     IsLoading = false;
-                });
-            });
         }
 
         public async Task ValidateIdNumberFromApi(string tinNumber)

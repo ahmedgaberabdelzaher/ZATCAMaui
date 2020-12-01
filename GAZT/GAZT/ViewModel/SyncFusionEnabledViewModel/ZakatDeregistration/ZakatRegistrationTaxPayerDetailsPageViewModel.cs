@@ -34,22 +34,39 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-               await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
-               
-               await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.RegistrationType);
+                await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                var retVal = await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.RegistrationType);
+                await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
 
-                    await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
-                if (PopupNavigation.PopupStack.Count > 0)
-                    await PopupNavigation.PopAsync();
+                if (!retVal)
+                {
+                    var someThingWhentWrong = new AttachmentInformationPopUp(AppResources.SomethingwentwrongTaxDetails)
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+
+                    someThingWhentWrong.OnDone = async () =>
+                    {
+                        if (PopupNavigation.PopupStack.Count > 0)
+                            PopupNavigation.PopAllAsync();
+                        currentTab = EstablishmentRegistrationTabsEnum.Unknown;
+                        _navigationService.GoBack();
+                    };
+                    if (PopupNavigation.PopupStack.Count > 0)
+                        PopupNavigation.PopAsync();
+                    await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
+                    if (PopupNavigation.PopupStack.Count > 0 && retVal)
+                        await PopupNavigation.PopAsync();
+                }
             }
             catch (InternetException)
             {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        if (PopupNavigation.PopupStack.Count > 0)
-                            await PopupNavigation.PopAsync();
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    if (PopupNavigation.PopupStack.Count > 0)
+                        await PopupNavigation.PopAsync();
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
 
             }
             catch (GAZTErrorException ex)
@@ -71,5 +88,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
            
         }
+
+
     }
 }
