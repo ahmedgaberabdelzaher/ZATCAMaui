@@ -2320,8 +2320,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                         someThingWhentWrong.OnDone = () =>
                         {
-                            currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                            _navigationService.GoBack();
+                            currentTab = EstablishmentRegistrationTabsEnum.Unknown; 
+                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         };
                         if (PopupNavigation.PopupStack.Count > 0)
                             await PopupNavigation.PopAsync();

@@ -30,15 +30,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             });
         }
 
-
-
         public async Task LoadDataTaxPayerDetails()
         {
             try
             {
                await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
                
-                    await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.RegistrationType);
+               await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.RegistrationType);
 
                     await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
                 if (PopupNavigation.PopupStack.Count > 0)
@@ -48,13 +46,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        if (PopupNavigation.PopupStack.Count > 0)
+                            await PopupNavigation.PopAsync();
                         await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     });
 
             }
             catch (GAZTErrorException ex)
             {
-               
+
+                if (PopupNavigation.PopupStack.Count > 0)
+                    await PopupNavigation.PopAsync();
                 string message = ex.Message;
                 await _dialogService.ShowMessage(message, AppResources.Information, AppResources.OKText, () =>
                 {
@@ -63,7 +65,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception mex)
             {
-                
+                if (PopupNavigation.PopupStack.Count > 0)
+                    await PopupNavigation.PopAsync();
                 Console.WriteLine(mex.Message);
             }
            
