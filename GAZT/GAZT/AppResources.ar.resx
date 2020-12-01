@@ -573,6 +573,9 @@
   <data name="Somethingwentwrong" xml:space="preserve">
     <value>حدث خطأ ما الرجاء اعادة المحاوله</value>
   </data>
+  <data name="SomethingwentwrongTaxDetails" xml:space="preserve">
+    <value>هذي الخدمة غير متوفره في التطبيق للشركات، الرجاء التوجه إلى البوابة لحديث التسجيل</value>
+  </data>
   <data name="Pleasechangepassword" xml:space="preserve">
     <value>الرجاء تغيير كلمة المرور</value>
   </data>

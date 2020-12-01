@@ -36,51 +36,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
-                await Task.Run(async () =>
-                {
+               await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+               
                     await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.RegistrationType);
-                });
 
-                await Task.Run(async () =>
-                {
                     await FetchDataForDisplayDetails(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
-                });
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                if (PopupNavigation.PopupStack.Count > 0)
+                    await PopupNavigation.PopAsync();
             }
             catch (InternetException)
             {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
-
-                try
-                {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     });
 
-                }
-                catch (Exception mex)
-                {
-                    Console.WriteLine(mex.Message);
-                }
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
-
+               
                 string message = ex.Message;
                 await _dialogService.ShowMessage(message, AppResources.Information, AppResources.OKText, () =>
                 {
@@ -89,12 +63,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception mex)
             {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
+                
                 Console.WriteLine(mex.Message);
             }
+           
         }
     }
 }

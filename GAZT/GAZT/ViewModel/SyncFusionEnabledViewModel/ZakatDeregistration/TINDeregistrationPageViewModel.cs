@@ -1408,31 +1408,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        //private DateTime _singleDeregistrationDate;
-        //public DateTime SingleDeregistrationDate
-        //{
-        //    get
-        //    {
-        //        return _singleDeregistrationDate;
-        //    }
-        //    set
-        //    {
-        //        _singleDeregistrationDate = value;
 
-        //        SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
-        //            x =>
-        //            {
-        //                x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(_singleDeregistrationDate);
-        //                x.APermitEffDtCTb = "G";
-        //                x.APermitEffDtHTb = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate.ToString("yyyyMMdd");
-        //                x.APermitDeregDisplayDate = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate.ToString("dd MMM yyyy");
-        //                return x;
-        //            }
-        //            ).ToList());
-
-        //        RaisePropertyChanged("SingleDeregistrationDate");
-        //    }
-        //}
 
         private string _singleDeregistrationDate;
         public string SingleDeregistrationDate
@@ -1453,7 +1429,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
                             x =>
                             {
-                               
+
                                 x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(Convert.ToDateTime(_singleDeregistrationDate));
                                 x.APermitEffDtCTb = "G";
                                 x.APermitEffDtHTb = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("yyyyMMdd");
@@ -1467,7 +1443,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("SingleDeregistrationDate");
             }
         }
-        private DateTime _deregistrationDate = DateTime.Now;
+
+        private DateTime _deregistrationDate = DateTime.Now ;
         public DateTime DeregistrationDate
         {
             get
@@ -2612,6 +2589,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         string Result = await WebServiceManager.GAZTValidateIDTypes(idTypeCode, SelectedIdNumber, dob);
                         IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
                         if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                         {
                             FrameIDError = true;
@@ -2623,6 +2601,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             FrameIDError = false;
                             await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                         }
+
+                        FirstNameFromIdType = string.Empty;
+                        PickerDOBDateDisplay = string.Empty;
+                        TINNumber = string.Empty;
+                        IDTypeDataModel = new VATSignUpD();
                     }
                     catch (GAZTException gex)
                     {
@@ -3417,7 +3400,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                     outletInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
                                                 }
 
-                                                
                                                 if (SingleDeregistrationDate != null)
                                                 {
                                                     outletInfo.AOutletEffDtHTb = SingleDeregistrationDate == null ? "" : SingleDeregistrationDate;//.ToString("yyyyMMdd");

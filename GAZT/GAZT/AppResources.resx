@@ -556,6 +556,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="Somethingwentwrong" xml:space="preserve">
     <value>Something went wrong, Please try again</value>
   </data>
+  <data name="SomethingwentwrongTaxDetails" xml:space="preserve">
+    <value>This feature is not available for companies through the app, please go to the portal, to update the registration</value>
+  </data>
   <data name="RequestTimeoutTitle" xml:space="preserve">
     <value>Request Timeout</value>
   </data>
