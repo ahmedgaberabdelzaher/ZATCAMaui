@@ -1003,7 +1003,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         }
                         else
                         {
-                            _dialogService.ShowMessage("There are no financial transactions", AppResources.Information);
+                            _dialogService.ShowMessage(AppResources.Therearenofinancialtransactions, AppResources.Information);
                         }
 
                     }

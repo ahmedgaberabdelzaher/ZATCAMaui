@@ -8670,4 +8670,8 @@
   <data name="TINDeregistrationDetailsEdit" xml:space="preserve">
     <value>تفاصيل الايقاف</value>
   </data>
+     <data name="Therearenofinancialtransactions" xml:space="preserve">
+    <value>لا يوجد عمليات مالية مسجلة</value>
+  </data>
+    
 </root>
