@@ -1041,11 +1041,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         SurnameText.IsVisible = true;
                         GrandFathersNameText.IsVisible = true;
                         FamilyNameText.IsVisible = true;
-                        if (SelectedReason.ReasonCd == "6" && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
-                        {
-                            IsDobVisible = false;
-                        }
-                        else
+                        //if (SelectedReason.ReasonCd == "6" && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+                        //{
+                        //    IsDobVisible = false;
+                        //}
+                        //else
                         {
                             IsDobVisible = true;
                         }
@@ -1053,11 +1053,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 else
                 {
-                    if (SelectedReason.ReasonCd == "6" && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
-                    {
-                        IsDobVisible = false;
-                    }
-                    else
+                    //if (SelectedReason.ReasonCd == "6" && SelectedOutletOption.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
+                    //{
+                    //    IsDobVisible = false;
+                    //}
+                    //else
                     {
                         IsDobVisible = true;
                     }

@@ -347,7 +347,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             if(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle))
             {
                 viewModel.NationalTypeSelected();
-                Device.BeginInvokeOnMainThread(() => viewModel.IsDobVisible = false);
+                Device.BeginInvokeOnMainThread(() => viewModel.IsDobVisible = true);
             }
 
             viewModel.IsOption1Visible = index == 0 ? true : false;
