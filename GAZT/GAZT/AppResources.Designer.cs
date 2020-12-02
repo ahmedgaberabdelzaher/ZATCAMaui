@@ -9006,6 +9006,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRefundTpParameter {
+            get {
+                return ResourceManager.GetString("VATRefundTpParameter", resourceCulture);
+            }
+        }
+        
         public static string VATRefundsReassesmentAmount {
             get {
                 return ResourceManager.GetString("VATRefundsReassesmentAmount", resourceCulture);

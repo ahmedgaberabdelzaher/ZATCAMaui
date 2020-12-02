@@ -5240,6 +5240,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VATRefundsRequest" xml:space="preserve">
     <value>VAT Refunds Request</value>
   </data>
+   <data name="VATRefundTpParameter" xml:space="preserve">
+    <value>Refund Request</value>
+  </data>
   <data name="VATRefundsReassesmentAmount" xml:space="preserve">
     <value>Reassesment Amount</value>
   </data>
