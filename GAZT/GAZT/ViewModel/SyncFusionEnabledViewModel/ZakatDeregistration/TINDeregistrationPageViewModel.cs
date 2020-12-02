@@ -1181,15 +1181,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         else if (PickerModel.PickerId == "idTypePicker")
                         {
+                            if(SelectedIdtype != PickerModel.SelectedValue)
+                            {
+                                SelectedIdNumber = string.Empty;
+                                TINNumber = string.Empty;
+                                PickerDOBDateDisplay = string.Empty;
+                                FirstNameFromIdType = string.Empty;
+                                IDTypeDataModel = new VATSignUpD();
+                            }
+
                             SelectedIdtype = PickerModel.SelectedValue;
                             IBANType idType = IBANTypesList.Where(m => m.Text == PickerModel.SelectedValue).FirstOrDefault();
                             SelectedIDTypeCode = idType.key;
-                            IDTypeDataModel = new VATSignUpD();
 
                             FirstNameLbl = AppResources.ZZZVATRFirstName;
                             SurnameNameLbl = AppResources.TinDeregistrationSurName;
                             IsName1Visible = false;
-
+                          
                             if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
                             {
                                 NationalTypeSelected();
@@ -2524,6 +2532,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
             {
                 idTypeCode = "ZS0005";
+                dob = string.Empty;
             }
             else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
             {
@@ -2560,8 +2569,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                         if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                         {
-
-
                             FrameIDError = true;
 
                             await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
@@ -2608,7 +2615,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         PickerDOBDateDisplay = string.Empty;
                         TINNumber = string.Empty;
                         IDTypeDataModel = new VATSignUpD();
-
+                        SelectedIdNumber = string.Empty;
                     }
                     catch (GAZTException gex)
                     {

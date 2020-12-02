@@ -8676,5 +8676,8 @@
      <data name="Therearenofinancialtransactions" xml:space="preserve">
     <value>لا يوجد عمليات مالية مسجلة</value>
   </data>
-    
+  <data name="CompanyIDlengthis10digit" xml:space="preserve">
+    <value>رقم الشركة يجب ان لا يزيد عن ١٠ خانات</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>

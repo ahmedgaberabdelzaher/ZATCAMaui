@@ -2376,6 +2376,10 @@ Should we require further information, we would be in contact.</value>
     <value>National ID length is 10 digit</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="CompanyIDlengthis10digit" xml:space="preserve">
+    <value>Company ID length cannot be more than 10 digits</value>
+    <comment>Sign Up</comment>
+  </data>
   <data name="ZZNationalIDstartswith1" xml:space="preserve">
     <value>National ID starts with 1</value>
     <comment>Sign Up</comment>
