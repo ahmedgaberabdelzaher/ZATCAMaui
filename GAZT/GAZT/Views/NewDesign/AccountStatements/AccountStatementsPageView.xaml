@@ -713,20 +713,16 @@
                     </buttons:SfChipGroup>
                 </ScrollView>
 
-               <StackLayout x:Name="SortByStackLayout"
-                            Orientation="Horizontal" IsVisible="{Binding IsSortByVisible}" Margin="0,15,0,0">
-                    <custom:CustomLabel   WidthRequest="130"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
-                        <custom:CustomLabel.FormattedText>
-                            <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}"/>
-                                <Span Text=":"></Span>
-                            </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+               <Grid x:Name="SortByStackLayout"
+                            ColumnSpacing="25" RowSpacing="0" IsVisible="{Binding IsSortByVisible}" Margin="0,15,0,0">
+                   <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
                  
 
                    <!--PressedBackgroundColor="AliceBlue"  AppResources.TaxType-->
-                   <ScrollView HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
+                   <ScrollView Grid.Column="1" HorizontalOptions="StartAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never"  >
                           <!--<buttons:SfChipGroup Margin="0,0,0,0" x:Name="ChipGroup_Filters" Type="Choice" HorizontalOptions="Start"  ChipBackgroundColor="Transparent" ItemsSource="{Binding FilterList}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" >
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate>
@@ -858,7 +854,17 @@
                                                 <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Arrow}"/>
                                             </Image.Source>
                                         </Image>-->
-               </StackLayout>
+                   <StackLayout Grid.Column="0" BackgroundColor="White" HorizontalOptions="Start">
+                    <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                        <custom:CustomLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}"/>
+                                <Span Text=":"></Span>
+                            </FormattedString>
+                        </custom:CustomLabel.FormattedText>
+                    </custom:CustomLabel>
+                   </StackLayout>
+               </Grid>
 
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
 
