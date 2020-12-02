@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -60,7 +61,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
+            await Task.Run(() =>
+            {
+                viewModel.isLoading = true;
+            });
+
+            
             await viewModel.LoadDataTaxPayerDetails();
+
+
+            await Task.Run(() =>
+            {
+                viewModel.isLoading = false;
+            });
+
         }
     }
 }
