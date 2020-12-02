@@ -246,6 +246,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         if(App.LoginDataRetrieved.ZkReg == "X" && App.LoginDataRetrieved.VtReg =="X")
                         {
                             viewModel.IfRegInZakat = true;
+                            refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
+
 
                         }
 

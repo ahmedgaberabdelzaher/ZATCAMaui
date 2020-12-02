@@ -491,7 +491,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
 
         }
-        //        string taxType = string.Empty;
+
+        void LvwContacts_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            LvwContacts.SelectedItem = null;
+        }        //        string taxType = string.Empty;
         //        if (viewModel.SelectedTaxTypeForFilter.Id == "00")
         //        {
         //            taxType = "D";
