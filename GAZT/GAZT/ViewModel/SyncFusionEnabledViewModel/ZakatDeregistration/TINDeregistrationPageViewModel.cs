@@ -2528,6 +2528,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
             {
                 idTypeCode = "ZS0003";
+                dob = string.Empty;
             }
 
             if (!string.IsNullOrEmpty(SelectedIdNumber))
@@ -2547,13 +2548,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     string _responseData = JObject.Parse(Result)["d"].ToString();
                     IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
 
-                    FirstNameFromIdType = IDTypeDataModel.Name1;
-                    //if (!string.IsNullOrEmpty(IDTypeDataModel.TaxpDob))
-                    //{
-                    PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
-                    TINNumber = IDTypeDataModel.Tin;
+                    if (!string.IsNullOrEmpty(IDTypeDataModel.Name1)) FirstNameFromIdType = IDTypeDataModel.Name1;
+                    if (!string.IsNullOrEmpty(IDTypeDataModel.Tin)) TINNumber = IDTypeDataModel.Tin;
+                    if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) PickerDOBDateDisplay = IDTypeDataModel.Birthdt10;
 
-                    //}
+                    if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                    {
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name1)) FirstNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Name2)) SurnameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.FatherName)) FathersNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.GrandfatherName)) GrandFathersNameText.IsEditable = false;
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.FamilyName)) FamilyNameText.IsEditable = false;
+                        //Disable DOB
+                        if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10)) DobText.IsEditable = false;
+                    }
 
                     if (_responseData == null)
                     {

@@ -372,11 +372,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
-                    viewModel.IDTypeDataModel.Name1 = string.Empty;
-                    viewModel.IDTypeDataModel.Name2 = string.Empty;
-                    viewModel.IDTypeDataModel.FatherName = string.Empty;
-                    viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
-                    viewModel.IDTypeDataModel.FamilyName = string.Empty;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IDTypeDataModel.Name1 = string.Empty;
+                        viewModel.IDTypeDataModel.Name2 = string.Empty;
+                        viewModel.IDTypeDataModel.FatherName = string.Empty;
+                        viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+                        viewModel.IDTypeDataModel.FamilyName = string.Empty;
+                    });
                 }
             }
             else if (viewModel.IsOption1Visible == true)
@@ -409,11 +412,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
-                    viewModel.IDTypeDataModel.Name1 = string.Empty;
-                    viewModel.IDTypeDataModel.Name2 = string.Empty;
-                    viewModel.IDTypeDataModel.FatherName = string.Empty;
-                    viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
-                    viewModel.IDTypeDataModel.FamilyName = string.Empty;
+                    Device.BeginInvokeOnMainThread(() => {
+                        viewModel.IDTypeDataModel.Name1 = string.Empty;
+                        viewModel.IDTypeDataModel.Name2 = string.Empty;
+                        viewModel.IDTypeDataModel.FatherName = string.Empty;
+                        viewModel.IDTypeDataModel.GrandfatherName = string.Empty;
+                        viewModel.IDTypeDataModel.FamilyName = string.Empty;
+                    });
                 }
                 viewModel.PickerDobToDisplay = string.Empty;
                 //viewModel.TodayDate = new ObservableCollection<object>();
@@ -973,7 +978,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 idNumber.Focus();
                 return;
             }
-
+            if(viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID && viewModel.DobText.IsEditable == false)
+            {
+                return;
+            }
             if (!viewModel.IsDOBHijriCal)
             {
                 DpDbo3.IsOpen = true;
