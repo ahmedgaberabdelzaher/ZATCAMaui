@@ -54,10 +54,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
-               
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    }); 
+                }
+                catch
+                {
+
+                }
                 string message = ex.Message;
+
                 await _dialogService.ShowMessage(message, AppResources.Information, AppResources.OKText, () =>
                 {
+                   
                     _navigationService.GoBack();
                 });
             }

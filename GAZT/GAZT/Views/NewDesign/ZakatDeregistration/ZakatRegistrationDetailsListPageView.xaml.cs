@@ -28,10 +28,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             this.BindingContext = viewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async  void OnAppearing()
         {
             base.OnAppearing();
             viewModel.PopulateZakatRegListData();
+            try
+            {
+               // await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
+
         }
 
         private void SetLTR()

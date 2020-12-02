@@ -2321,6 +2321,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         someThingWhentWrong.OnDone = () =>
                         {
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown;
+                            IsLoading = false;
                             _navigationService.GoBack();
                         };
                         if (PopupNavigation.PopupStack.Count > 0)
@@ -2427,6 +2428,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception e)
             {
+                // Device.BeginInvokeOnMainThread( () => await IsLoading = false);
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                  
+                       
+                //});
+                await Task.Run(() =>
+                {
+
+                    IsLoading = false;
+                });
                 throw e;
             }
             finally
