@@ -29,12 +29,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 _navigationService.GoBack();
             });
         }
+        public bool _isLoading { get; set; }
+        public bool isLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("isLoading");
+            }
+        }
 
         public async Task LoadDataTaxPayerDetails()
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                isLoading = true;
+            //  await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
                 var retVal = await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.RegistrationType);
                 await FetchDataForDisplayDetailsExt(EstablishmentRegistrationTabsEnum.TaxpayerDetail);
 
@@ -47,20 +62,44 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     someThingWhentWrong.OnDone = async () =>
                     {
+                        isLoading = false;
                         if (PopupNavigation.PopupStack.Count > 0)
                             PopupNavigation.PopAllAsync();
                         currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                         _navigationService.GoBack();
                     };
-                    if (PopupNavigation.PopupStack.Count > 0)
-                        PopupNavigation.PopAsync();
+                      //if (PopupNavigation.PopupStack.Count > 0)
+                      //      PopupNavigation.PopAsync();
+                   
                     await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
-                    if (PopupNavigation.PopupStack.Count > 0 && retVal)
-                        await PopupNavigation.PopAsync();
+
+
+                    //isLoading = false;
+                    //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.SomethingwentwrongTaxDetails));
+                    //_navigationService.GoBack();
+
                 }
+                if (PopupNavigation.PopupStack.Count > 0 && retVal)
+                    await PopupNavigation.PopAsync();
+
+                //try
+                //{
+                //    await Task.Run(() =>
+                //    {
+
+                //        App.HideProgressView();
+
+                //    });
+                //}
+                //catch
+                //{
+
+                //}
+
             }
             catch (InternetException)
             {
+              //  isLoading = true;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     if (PopupNavigation.PopupStack.Count > 0)
@@ -71,13 +110,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
+                isLoading = false;
 
                 try
                 {
                     await Task.Run(() =>
                     {
                         App.HideProgressView();
-                    }); 
+                    });
                 }
                 catch
                 {
@@ -92,12 +132,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 await _dialogService.ShowMessage(message, AppResources.Information, AppResources.OKText, () =>
                 {
-                   
+                   // isLoading = false;
                     _navigationService.GoBack();
                 });
             }
             catch (Exception mex)
             {
+               // isLoading = false;
                 if (PopupNavigation.PopupStack.Count > 0)
                     await PopupNavigation.PopAsync();
                 Console.WriteLine(mex.Message);
