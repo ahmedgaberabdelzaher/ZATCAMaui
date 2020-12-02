@@ -4114,6 +4114,12 @@ namespace EGAZT {
             }
         }
         
+        public static string CompanyIDlengthis10digit {
+            get {
+                return ResourceManager.GetString("CompanyIDlengthis10digit", resourceCulture);
+            }
+        }
+        
         public static string ZZNationalIDstartswith1 {
             get {
                 return ResourceManager.GetString("ZZNationalIDstartswith1", resourceCulture);
@@ -9003,6 +9009,12 @@ namespace EGAZT {
         public static string VATRefundsRequest {
             get {
                 return ResourceManager.GetString("VATRefundsRequest", resourceCulture);
+            }
+        }
+        
+        public static string VATRefundTpParameter {
+            get {
+                return ResourceManager.GetString("VATRefundTpParameter", resourceCulture);
             }
         }
         

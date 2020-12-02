@@ -665,7 +665,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
-                                if (!string.IsNullOrEmpty(viewModel.SelectedDob))
+                                if (!string.IsNullOrEmpty(viewModel.PickerDOBDateDisplay))
                                 {
                                     viewModel.ValidateIDNumber();
                                 }
@@ -720,12 +720,31 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
 
-                    if (viewModel.SelectedIdtype == AppResources.ZIBANCompanyID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationCompanyID)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "7")
                         {
                             //Have to change to neww error message
                             popUp.Message = AppResources.TinDeregistrationCompanyIDCheck;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.SelectedIdNumber = string.Empty;
+                        }
+                        else if (viewModel.SelectedIdNumber.Length > 10)
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.CompanyIDlengthis10digit;
                             popUp.IsLinkAvailable = false;
                             if (App.IsArabic)
                             {
@@ -766,6 +785,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.FrameIDError = false;
             }
         }
+
         private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             try
@@ -803,9 +823,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
-
                         viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
-
                     }
                     else
                     {

@@ -5214,6 +5214,9 @@
   <data name="VATRefundsRequest" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
+   <data name="VATRefundTpParameter" xml:space="preserve">
+    <value>طلب إسترداد</value>
+  </data>
   <data name="VATRefundsReassesmentAmount" xml:space="preserve">
     <value>المبلغ الإجمالي بعد إعادة التقييم</value>
   </data>
@@ -8673,5 +8676,8 @@
      <data name="Therearenofinancialtransactions" xml:space="preserve">
     <value>لا يوجد عمليات مالية مسجلة</value>
   </data>
-    
+  <data name="CompanyIDlengthis10digit" xml:space="preserve">
+    <value>رقم الشركة يجب ان لا يزيد عن ١٠ خانات</value>
+    <comment>Sign Up</comment>
+  </data>
 </root>

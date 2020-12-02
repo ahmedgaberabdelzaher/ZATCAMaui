@@ -507,7 +507,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
                 VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
             }
-            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
+            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
             VatNewReqSummaryData.Confirmfg = "X";
             VatNewReqSummaryData.TcFg = "X";
 
@@ -1103,7 +1103,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
             VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
 
-            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
+            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
 
             //VatRefundsDisplayDataModel.Statusx = "E0013";
             VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
