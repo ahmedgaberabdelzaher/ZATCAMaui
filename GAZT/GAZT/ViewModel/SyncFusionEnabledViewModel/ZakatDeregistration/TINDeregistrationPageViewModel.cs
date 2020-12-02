@@ -3513,7 +3513,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
 
-                if (SelectedOutletOptionIndex == 1)
+                if (SelectedOutletOption.OutletOptionIndex == "2")
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
                     {
@@ -3560,7 +3560,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
 
                 }
-                else if (SelectedOutletOptionIndex == 2)
+                else if (SelectedOutletOption.OutletOptionIndex == "3")
                 {
                     if (SelectedReason == null)
                     {
@@ -3573,54 +3573,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         EnableOutletDetaislView();
                     }
                 }
-                else if (SelectedOutletOptionIndex == 0)
+                else if (SelectedOutletOption.OutletOptionIndex == "1")
                 {
                     if (SelectedReason == null || string.IsNullOrEmpty(PickerDobToDisplay))
                     {
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                     }
-                    else if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        return;
-                    }
-                    else
-                    {
-                        if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
-                        {
-                            if (string.IsNullOrEmpty(SelectedIdNumber))
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                return;
-                            }
-                        }
-                        else if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
-                        {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                return;
-                            }
-                        }
-                        else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
-                        {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                return;
-                            }
-                        }
-                        else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
-                        {
-                            if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                return;
-                            }
-                        }
-                        await SaveAsDraft();
-                        EnableOutletDetaislView();
-                    }
+
+                    await SaveAsDraft();
+                    EnableOutletDetaislView();
                 }
 
                 if (TinDeregistrationData.ADregOpt == "3")
