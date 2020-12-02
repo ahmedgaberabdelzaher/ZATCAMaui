@@ -302,7 +302,7 @@
                       VerticalScrollBarVisibility="Never"
                       GroupDisplayBinding="{Binding Key}"        
                       ItemsSource="{Binding GroupedData}"  
-                     
+                      ItemTapped="LvwContacts_ItemTapped"
                       HasUnevenRows="True">  
                 <ListView.ItemTemplate>  
                     <DataTemplate>
