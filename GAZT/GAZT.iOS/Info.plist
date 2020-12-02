@@ -81,8 +81,8 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.egazt</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.135</string>
+	<string>1.0.136</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.2.1.74</string>
+	<string>3.2.1.75</string>
 </dict>
 </plist>
