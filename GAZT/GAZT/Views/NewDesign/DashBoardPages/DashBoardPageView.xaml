@@ -352,16 +352,21 @@
                                                         BackgroundColor="Transparent" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
                                             <CollectionView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackLayout Orientation="Horizontal" Margin="8">
+                                                    <StackLayout Orientation="Horizontal" Margin="8" >
                                                         <cards:SfCardView HasShadow="True" CornerRadius="14" Margin="0,0,0,5" >
                                                             <StackLayout Orientation="Horizontal">
                                                                 <cards:SfCardView  IsVisible="{Binding IsUnSubmittedReturn}" Margin="{OnPlatform iOS='1', Android='0,0,0,-5'}" HasShadow="True" CornerRadius="14" WidthRequest="80" HeightRequest="80">
-                                                                    <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
-                                                                        <custom:CustomLabel VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                                                                    <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                                                                        <custom:CustomLabel VerticalTextAlignment="Center" Margin="0,0,0,-2"   HorizontalTextAlignment="Center" VerticalOptions="End">
                                                                             <custom:CustomLabel.FormattedText>
                                                                                 <FormattedString>
                                                                                     <Span Text="{Binding Day    }" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
-                                                                                    <Span Text="&#10;" LineHeight="1"/>
+                                                                                </FormattedString>
+                                                                            </custom:CustomLabel.FormattedText>
+                                                                        </custom:CustomLabel>
+     <custom:CustomLabel VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-2,0,0">
+                                                                            <custom:CustomLabel.FormattedText>
+                                                                                <FormattedString>
                                                                                     <Span Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"></Span>
                                                                                 </FormattedString>
                                                                             </custom:CustomLabel.FormattedText>
@@ -374,14 +379,19 @@
                                                                     </cards:SfCardView.Triggers>
                                                                 </cards:SfCardView>
 
-                                                                <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}"  Margin="{OnPlatform iOS='1', Android='0,0,0,-5'}" HasShadow="True" CornerRadius="14" WidthRequest="80" HeightRequest="80">
-                                                                    <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
-                                                                        <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                                                                <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}" BackgroundColor="Red"   Margin="{OnPlatform iOS='1', Android='0,0,0,-5'}" HasShadow="True" CornerRadius="14" WidthRequest="80" HeightRequest="80">
+                                                                    <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                                                                        <custom:CustomLabel VerticalTextAlignment="Center" Margin="0,0,0,-2"   HorizontalTextAlignment="Center" VerticalOptions="End">
                                                                             <custom:CustomLabel.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding Day}" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
-                                                                                    <Span Text="&#10;"/>
-                                                                                    <Span Text="{Binding Month}" ></Span>
+                                                                                    <Span Text="{Binding Day    }" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
+                                                                                </FormattedString>
+                                                                            </custom:CustomLabel.FormattedText>
+                                                                        </custom:CustomLabel>
+     <custom:CustomLabel VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-2,0,0">
+                                                                            <custom:CustomLabel.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"></Span>
                                                                                 </FormattedString>
                                                                             </custom:CustomLabel.FormattedText>
                                                                         </custom:CustomLabel>
