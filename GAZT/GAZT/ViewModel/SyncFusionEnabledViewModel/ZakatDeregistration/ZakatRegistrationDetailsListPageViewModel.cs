@@ -161,6 +161,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         ArrowImageSource = fileImage
                     });
                 }
+
                 /*tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.Registrations,
