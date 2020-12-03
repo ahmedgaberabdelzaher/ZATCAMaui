@@ -288,6 +288,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 LookupNumber = arg;
                 getBarcodeData();
             });
+
+
         }
 
         #region Methods
