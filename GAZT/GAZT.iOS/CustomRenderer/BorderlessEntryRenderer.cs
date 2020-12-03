@@ -56,6 +56,8 @@ namespace GAZT
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextColor = UIColor.Black;
+                AddDoneButton();
+
             }
             fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             //this.Control.Font = UIFont.FromName(NSBundle.MainBundle.LocalizedString("FontName", ""), (float)fontSize);
@@ -65,7 +67,6 @@ namespace GAZT
             //    this.Control.Font = UIFont.FromName("Cairo-Regular", (float)fontSize);
             //else
             //this.Control.Font = UIFont.FromName("Helvetica-Normal", (float)fontSize);
-            this.AddDoneButton();
 
         }
         protected void AddDoneButton()
