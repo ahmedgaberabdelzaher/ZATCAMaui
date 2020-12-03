@@ -1969,9 +1969,7 @@
     <data name="ZVATReviseDownPaymentButton" xml:space="preserve">
     <value>Revise Down Payment</value>
   </data>
-    <data name="ZVATRevokeButton" xml:space="preserve">
-    <value>Revoke</value>
-  </data>
+  
     <data name="ZVATSalesdetailsButton" xml:space="preserve">
     <value>Sales details</value>
   </data>
@@ -8403,7 +8401,7 @@ info@gazt.gov.sa</value>
     <data name="ZakatRevokConfirmationText" xml:space="preserve">
     <value>عزيزي المكلف, عند اكتمال طلبك لإلغاء خطة التقسيط رقم  سيتم إعادة اصدار الفواتير المرتبطة بخطة التقسيط بالمبلغ المتبقي الواجب سداده ولا يمكنك طلب خطة تقسيط أخرى لنفس تلك الفواتير.</value>
   </data>
-    <data name="ZVATRevokeButton" xml:space="preserve">
+  <data name="ZVATRevokeButton" xml:space="preserve">
     <value>إلغاء</value>
   </data>
     <data name="ZakatInstalmentRevokNotes" xml:space="preserve">
@@ -8508,19 +8506,7 @@ info@gazt.gov.sa</value>
         <value>الرجاء زيارة البوابة الإلكترونية لإرسال البيانات الإضافية</value>
     </data>    
 
-    <data name="SortBy" xml:space="preserve">
-        <value>Sort by</value>
-    </data>
-
-  <data name="Statement" xml:space="preserve">
-    <value>Statement</value>
-  </data>
-       <data name="Selectarangeanddownloadthestatement" xml:space="preserve">
-    <value>Select a range and download the statement</value>
-  </data>
-        <data name="StatementDate" xml:space="preserve">
-    <value>Statement Date</value>
-  </data>
+  
       <data name="SortBy" xml:space="preserve">
         <value>ترتيب حسب</value>
     </data>
@@ -8533,8 +8519,179 @@ info@gazt.gov.sa</value>
      <data name="StatementDate" xml:space="preserve">
     <value>تاريخ كشف الحساب</value>
   </data>
-   <data name="TotalOpeningBalance">
+   <data name="TotalOpeningBalance" xml:space="preserve">
         <value>الرصيد الافتتاحي</value>
     </data>
+     <data name="SomethingwentwrongTaxDetails" xml:space="preserve">
+    <value>هذي الخدمة غير متوفره في التطبيق للشركات، الرجاء التوجه إلى البوابة لحديث التسجيل</value>
+  </data>
+     <data name="ZDearTaxpayerZakatSubmitMessage1" xml:space="preserve">
+    <value>عزيزي المكلف، طلب التسجيل في الزكاة رقم</value>
+  </data>
+  <data name="ZDearTaxpayerZakatSubmitMessage2" xml:space="preserve">
+    <value> الخاص بكم قيد المعالجة لدى الهيئة</value>
+  </data>
+    <data name="ZZZAmendFinancialRepCheck" xml:space="preserve">
+    <value>هل تريد تغيير رقم الجوال أو البريد الإلكتروني</value>
+  </data>
+  <data name="ZZZAmendFinancialRepreGtext" xml:space="preserve">
+    <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
+  </data>
+  <data name="ZZVATAmendNoChangesMadeMessage" xml:space="preserve">
+    <value>لا يوجد تغييرات لا يمكن الحفظ</value>
+    <comment>VAT Amend</comment>
+  </data>
+  <data name="ZZVATAmendNoChangesMadeSubmitMessage" xml:space="preserve">
+    <value>لا يوجد تغييرات لا يمكن التقديم</value>
+    <comment>VAT Amend</comment>
+  </data>
+     <data name="ZZZZVATAmendAttachmentNote" xml:space="preserve">
+    <value>يجب ان يكون حجم الملف اقل من 5 ميجا </value>
+  </data>
+       <data name="NAIBANDetails" xml:space="preserve">
+       <value>تفاصيل الايبان</value>
+    <comment>VATRegistrationDisplayDetails</comment>
+  </data>
+      <data name="VATInstalmentAgrement" xml:space="preserve">
+    <value>خطة التقسيط المطلوبة</value>
+  </data>
+    <data name="VATInstalmetRequestInstalmentDesc" xml:space="preserve">
+    <value>تفاصيل خطة التقسيط المطلوبة</value>
+  </data>
+     <data name="VATRefundTpParameter" xml:space="preserve">
+    <value>طلب إسترداد</value>
+  </data>
+      <data name="OldZakatInstructions" xml:space="preserve">
+    <value>1- اقر بعدم توفر سيوله ماليه لدي كافية لتسديد المبلغ المستحق بشكل كامل.
+2- أتعهد بتزويد الهيئة العامة للزكاة والدخل بكشوفات حديثة لجميع حسابات الأنشطة البنكية بالإضافة إلى حساباتي الشخصية.
+3- أقر بصلاحية الهيئة العامة للزكاة والدخل في:
+- إلغاء خطة التقسيط الخاصة في حال تأخرت عن سداد قسطين بشكل متتابع.
+- تقدير المبلغ المالي وفترة الأقساط.
+- إلغاء خطة التقسيط في حال ثبوت القدرة المالية لسداد كامل المستحقات.
+4- اقر بسداد ما يقل عن 20% من قيمة إجمالي المديونيات السابقة.</value>
+  </data>
+  <data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
+    <value>بيان دافعي الضرائب المالية القابضة</value>
+  </data>
+  <data name="OldZakatAttachmentTitle" xml:space="preserve">
+    <value>1. يجب أن يكون حجم الملف أقل من 1 ميجابايت
+2. يجب ان يكون الملف بأحد الصيغ التالية: XLS, XLSX, PDF, JPG
+3. الحد الأقصى لعدد المرفقات المسموح بها هو 3.</value>
+  </data>
+  <data name="OldZakatInstalmentAttachmentLimitReached" xml:space="preserve">
+    <value>يجب أن لا يزيد عدد المرفقات عن 3 ملفات.</value>
+  </data>
+  <data name="ZakatOldFinancialDetails" xml:space="preserve">
+    <value>البيانات المالية</value>
+  </data>
+  <data name="ASAccountStatementTaxType" xml:space="preserve">
+    <value>نوع الضريبة</value>
+  </data>
+  <data name="ASAccountStatementTheBalances" xml:space="preserve">
+    <value>الرصيد</value>
+  </data>
+  <data name="Objections" xml:space="preserve">
+    <value>الاعتراضات</value>
+  </data>
+  <data name="NDContractRelease" xml:space="preserve">
+    <value>طلب الافراج عن عقد</value>
+  </data>
+  <data name="VatRegistration" xml:space="preserve">
+    <value>التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="GeneralServices" xml:space="preserve">
+    <value>خدمات عامة</value>
+  </data>
+  <data name="VATDeregistrations" xml:space="preserve">
+    <value>إلغاء التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="InstallmentPlans" xml:space="preserve">
+    <value>خطط التقسيط</value>
+  </data>
+  <data name="ChangeVatFillingFrequency" xml:space="preserve">
+    <value>تغيير فترة تقديم إقرارات ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZOverdueCommitments" xml:space="preserve">
+    <value>الالتزامات المتأخرة</value>
+    <comment>Dashboard</comment>
+  </data>
+  <data name="ZZUpcomingCommitments" xml:space="preserve">
+    <value>الالتزامات القادمة</value>
+    <comment>Dashboard</comment>
+  </data>
+  <data name="DBBills" xml:space="preserve">
+    <value>الفواتير</value>
+  </data>
+  <data name="DBRefundRequest" xml:space="preserve">
+    <value>طلبات الاسترداد</value>
+  </data>
+  <data name="DBApplicationStatus" xml:space="preserve">
+    <value>حالة الطلبات</value>
+  </data>
+  <data name="DBLogOut" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="DBSMZakatInstalmentPlan" xml:space="preserve">
+    <value>خطة التقسيط الزكاة</value>
+  </data>
+  <data name="DBSMIncomeTax" xml:space="preserve">
+    <value>خطة التقسيط ضريبة الدخل</value>
+  </data>
+  <data name="DBSMVATInstalmentPlan" xml:space="preserve">
+    <value>خطة التقسيط ضريبة القيمة المضافة</value>
+  </data>
+  <data name="DBSMZAKATObjection" xml:space="preserve">
+    <value>اعتراضات الزكاة</value>
+  </data>
+  <data name="DBSMVATObjection" xml:space="preserve">
+    <value>اعتراضات ضريبة القيمة المضافة</value>
+  </data>
+  <data name="DBSMTaxpayerDetails" xml:space="preserve">
+    <value>تفاصيل الحساب</value>
+  </data>
+  <data name="DBSMOutlets" xml:space="preserve">
+    <value>الفروع المسجلة</value>
+  </data>
+  <data name="DBSMFinancialDetails" xml:space="preserve">
+    <value>التفاصيل المالية</value>
+  </data>
+  <data name="DBSMVATRegistrationDetails" xml:space="preserve">
+    <value>تفاصيل التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="DBSMAmend" xml:space="preserve">
+    <value>تعديل الحساب</value>
+  </data>
+  <data name="DBSMAmendmentOfVATRegistration" xml:space="preserve">
+    <value>تعديل تفاصيل التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="DBSMVATDeregistration" xml:space="preserve">
+    <value>إلغاء التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="DBSMTINDeregistration" xml:space="preserve">
+    <value>إيقاف الرقم المميز</value>
+  </data>
+  <data name="DBSMTaxEvasionReport" xml:space="preserve">
+    <value>تقديم بلاغ التهرب الضريبي</value>
+  </data>
+  <data name="DBSMChat" xml:space="preserve">
+    <value>المحادثة الفورية</value>
+  </data>
+  <data name="QuickActionShowOverDueReturns" xml:space="preserve">
+    <value>استعراض الاقرارات المتأخرة</value>
+  </data>
+  <data name="QuickActionShowCertificates" xml:space="preserve">
+    <value>استعراض الشهادات</value>
+  </data>
+  <data name="TINDeregistrationDetailsEdit" xml:space="preserve">
+    <value>تفاصيل الايقاف</value>
+  </data>
+     <data name="Therearenofinancialtransactions" xml:space="preserve">
+    <value>لا يوجد عمليات مالية مسجلة</value>
+  </data>
+  <data name="CompanyIDlengthis10digit" xml:space="preserve">
+    <value>رقم الشركة يجب ان لا يزيد عن ١٠ خانات</value>
+    <comment>Sign Up</comment>
+  </data>
+     
 
 </root>
