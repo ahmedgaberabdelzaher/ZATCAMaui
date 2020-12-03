@@ -1624,7 +1624,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         SeletedZakatForm = await WebServiceManager.GAZTGetOldZakatRequestDisplayData(item.referanceNumber, item.statusType);
 
-
                         PopToRootPage();
 
 
