@@ -449,6 +449,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public async Task OnVoidBtnClicked()
         {
             VatNewReqSummaryData.Operationx = "04";
+            VatNewReqSummaryData.Confirmfg = "";
             VatNewReqSummaryData.Gpartx = App.LoginDataRetrieved.TIN;
             VatNewReqSummaryData.Langx = UtilityManager.GetLanguageParameter();
             VatNewReqSummaryData.Rfamt = "-" + VatNewReqSummaryData.Rfamt;

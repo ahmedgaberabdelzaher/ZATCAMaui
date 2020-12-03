@@ -305,6 +305,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
+            MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
         }
 
         private void SetLTR()

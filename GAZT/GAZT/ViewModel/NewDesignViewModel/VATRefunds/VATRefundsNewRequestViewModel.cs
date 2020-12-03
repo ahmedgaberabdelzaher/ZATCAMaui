@@ -451,7 +451,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                             case Buttons.SaveasDraft:
 
-                                OnSaveDraftClicked();
+                               OnSaveDraftClicked();
 
                                 break;
                             default:
@@ -508,7 +508,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
             }
             VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundTpParameter;
-            VatNewReqSummaryData.Confirmfg = "X";
+        VatNewReqSummaryData.Confirmfg = "";
             VatNewReqSummaryData.TcFg = "X";
 
             //VatRefundsDisplayDataModel.Statusx = "E0013";
@@ -526,7 +526,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 if (VatNewReqSummaryData.Operationx.Equals("05"))
                 {
                     //  string number = response.d.Fbnumz;
-                     App.selectedVATItem =  VatNewReqSummaryData.Fbnumx;
+                    App.selectedVATItem = VatNewReqSummaryData.Fbnumx;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         App.selectedVATItem = VatNewReqSummaryData.Fbnumx;
@@ -547,7 +547,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                         PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-                       // _navigationService.GoBack();
+                        // _navigationService.GoBack();
 
                         //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
                     });
@@ -588,6 +588,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 {
                     await _dialogService.ShowMessage(message, AppResources.Information);
                 });
+            }
+            catch (Exception ex)
+            {
+
             }
 
 
