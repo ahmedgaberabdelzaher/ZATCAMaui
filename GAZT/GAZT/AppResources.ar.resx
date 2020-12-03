@@ -226,10 +226,10 @@
     <value>رقم الجوال</value>
   </data>
     <data name="MyBills" xml:space="preserve">
-    <value>فواتيري</value>
+    <value>الفواتير</value>
   </data>
     <data name="MyBillsInvoices" xml:space="preserve">
-    <value>فواتيري</value>
+    <value> الفواتير</value>
   </data>
     <data name="MyBillsPaidAmount" xml:space="preserve">
     <value>المبلغ المدفوع</value>
@@ -3012,7 +3012,7 @@
     <comment>Title</comment>
   </data>
     <data name="ZZZMyBillsTitle" xml:space="preserve">
-    <value>فواتيري</value>
+    <value> الفواتير</value>
     <comment>Title</comment>
   </data>
     <data name="ZZZMyCertificateTitle" xml:space="preserve">
@@ -7008,8 +7008,8 @@
     <data name="VRNewObjectionorReview" xml:space="preserve">
     <value>طلب جديد للمراجعة أو الاعتراض</value>
   </data>
-    <data name="VRObjectionsReviews" xml:space="preserve">
-    <value>الاعتراضات و المراجعات</value>
+   <data name="VRObjectionsReviews" xml:space="preserve">
+    <value>الاعتراضات</value>
   </data>
     <data name="VRSelectType" xml:space="preserve">
     <value>اختر نوع</value>
@@ -7036,8 +7036,8 @@
     <data name="VRCheckBoxDesc" xml:space="preserve">
     <value>أوافق على التعليمات والشروط وإكمال الخطوات</value>
   </data>
-    <data name="VRObjectionsAndReviews" xml:space="preserve">
-    <value>الاعتراضات و المراجعات</value>
+   <data name="VRObjectionsAndReviews" xml:space="preserve">
+    <value>الاعتراضات </value>
   </data>
     <data name="VRAll" xml:space="preserve">
     <value>الكل</value>
