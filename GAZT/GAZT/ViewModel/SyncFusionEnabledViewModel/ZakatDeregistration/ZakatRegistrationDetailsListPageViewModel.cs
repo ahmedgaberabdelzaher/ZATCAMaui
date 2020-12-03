@@ -178,15 +178,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     });
                 }
 
-                if (App.LoginDataRetrieved.ZkReg == "X")
-                {
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                    {
-                        ZDTitle = AppResources.DBSMTINDeregistration,
-                        ZDImageSource = "deregistration",
-                        ArrowImageSource = fileImage
-                    });
-                }
+                //TODO  Add this after  approval
+
+                //if (App.LoginDataRetrieved.ZkReg == "X")
+                //{
+                //    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                //    {
+                //        ZDTitle = AppResources.DBSMTINDeregistration,
+                //        ZDImageSource = "deregistration",
+                //        ArrowImageSource = fileImage
+                //    });
+                //}
 
             }
             else if (App.LoginDataRetrieved.ZkReg == "U")
