@@ -2,9 +2,11 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using System.ComponentModel;
+
 using GAZT.iOS.CustomRenderer;
 using GAZT;
 using EGAZT;
+using System.Drawing;
 
 [assembly: ExportRenderer(typeof(BorderlessEntry), typeof(BorderlessEntryRenderer))]
 namespace GAZT
@@ -63,6 +65,25 @@ namespace GAZT
             //    this.Control.Font = UIFont.FromName("Cairo-Regular", (float)fontSize);
             //else
             //this.Control.Font = UIFont.FromName("Helvetica-Normal", (float)fontSize);
+            this.AddDoneButton();
+
+        }
+        protected void AddDoneButton()
+        {
+            var toolbar = new UIToolbar(new RectangleF(0.0f, 0.0f, 50.0f, 44.0f));
+
+            var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate
+            {
+                this.Control.ResignFirstResponder();
+                var baseEntry = this.Element.GetType();
+                ((IEntryController)Element).SendCompleted();
+            });
+
+            toolbar.Items = new UIBarButtonItem[] {
+                new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace),
+                doneButton
+            };
+            this.Control.InputAccessoryView = toolbar;
         }
     }
 }
