@@ -186,7 +186,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     //New Code For Manage VAT Registration and Zakat Registration Tile
 
                     if (App.LoginDataRetrieved != null)
-                    {
+                        {
 
                         if (App.LoginDataRetrieved.ZkReg == "X")
                         {
@@ -195,7 +195,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             viewModel.IsRegistrationDetailsTileVisible = true;
                             viewModel.IfRegInZakat = true;
                             refundreqMenu.IsVisible = refundreqMenuBox.IsVisible= false;
-                            fillingMenu.IsVisible = fillingMenuBox.IsVisible = false;  
+                          fillingMenu.IsVisible = fillingMenuBox.IsVisible = false;  
                         }
                         else if (App.LoginDataRetrieved.ZkReg == "U")
                         {
@@ -247,6 +247,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         {
                             viewModel.IfRegInZakat = true;
                             refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
+                            fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
 
 
                         }
