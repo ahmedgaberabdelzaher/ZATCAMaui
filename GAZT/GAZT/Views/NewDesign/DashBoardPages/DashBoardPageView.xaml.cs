@@ -98,7 +98,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             RefreshDashboardCommand();
             getYesCommandToLogout();
             getNoCommandToLogout();
-
+            SetPickerFont();
             viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
             viewModel.PaidString = AppResources.Paid + " " + viewModel.PaidBillCount;
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
@@ -116,6 +116,50 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             StartTimer();
             viewModel.IsLoading = false;
         }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+                            TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                            CommitmentsPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            CommitmentsPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                            CommitmentsPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                            CommitmentsPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        {
+
+                            TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+
+                            CommitmentsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CommitmentsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CommitmentsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CommitmentsPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
         public void getYesCommandToLogout()
         {
             try

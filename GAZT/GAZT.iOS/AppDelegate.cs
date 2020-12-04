@@ -102,17 +102,17 @@ namespace GAZT.iOS
             //    statusBar.BackgroundColor = UIColor.Green;// //Color.FromHex("#7f6550").ToUIColor(); // change to your desired color 
             //}
 
-            if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-            {
-                var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, new NSSet());
-                UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
-                UIApplication.SharedApplication.RegisterForRemoteNotifications();
-            }
-            else
-            {
-                UIRemoteNotificationType notificationType = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-                UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationType);
-            }
+            //if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            //{
+            //    var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, new NSSet());
+            //    UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+            //    UIApplication.SharedApplication.RegisterForRemoteNotifications();
+            //}
+            //else
+            //{
+            //    UIRemoteNotificationType notificationType = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
+            //    UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationType);
+            //}
 
 
             return base.FinishedLaunching(app, options);
