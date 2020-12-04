@@ -326,7 +326,7 @@ namespace GAZT.Manager
             }
             else if (Month == "December")
             {
-                Month = "ديسيمبر";
+                Month = "ديسمبر";
             }
             FinalDate = Day + "-" + Month + "-" + Year;
             return FinalDate;
@@ -711,7 +711,7 @@ namespace GAZT.Manager
             }
             else if (Month == "12" || Month == "December")
             {
-                Month = !App.IsArabic ? "December" : "ديسيمبر";
+                Month = !App.IsArabic ? "December" : "ديسمبر";
                 //   Month = "December";
             }
             return Month;

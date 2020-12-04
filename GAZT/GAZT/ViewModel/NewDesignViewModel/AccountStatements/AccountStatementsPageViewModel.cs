@@ -1498,7 +1498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Month = "November";
                 // Month = "November";
             }
-            else if (Month == "12" || Month == "ديسيمبر")
+            else if (Month == "12" || Month == "ديسمبر")
             {
                 Month = "December";
                 //   Month = "December";
