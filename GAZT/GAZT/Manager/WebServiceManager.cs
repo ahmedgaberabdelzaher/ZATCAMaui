@@ -10430,7 +10430,9 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    //client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(contentType))
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
@@ -10463,7 +10465,9 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    //client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
 
                     HttpResponseMessage response = client.DeleteAsync(uri).Result;
