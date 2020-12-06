@@ -1247,6 +1247,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     DateTime Today = DateTime.Now;
                     var BillsAndReturnsCommitmentsLocal = new List<OverduePaymentAndUnSubmittedReturn>();
                     var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
+                    BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsOverdurItems.OrderByDescending(i => DateTime.Parse(i.DueDate)).ToList();
+
+                    var tempList = new List<OverduePaymentAndUnSubmittedReturn>();
+
                     try
                     {
                             /*foreach (var item in CommitmentsListFilter)
@@ -1255,7 +1259,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (SelectedCommitmentFilterValue.Equals(AppResources.ZZOverdueCommitments))
                             {
                                 BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a => DateTime.Compare(a.DueDateDateTime, Today) <= 0).ToList();
-                                
+                               
+                                foreach(var item in BillsAndReturnsCommitmentsOverdurItems)
+                                {
+                                    var date = Convert.ToDateTime(item.DueDate);
+                                    if (date.Year != Today.Year)
+                                    {
+                                        if (App.IsArabic)
+                                        {
+                                            item.Day = UtilityManager.GetMonthName(Convert.ToDateTime(date).ToString("MMMM", new CultureInfo("en-US")));
+                                        }
+                                        else
+                                        {
+                                            item.Day = Convert.ToDateTime(date).ToString("MMM", new CultureInfo("en-US"));
+                                        }
+
+                                        item.Month = date.Year.ToString();
+ 
+                                    }
+  
+                                }
+
                             }
                             else if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
                             {
@@ -1320,7 +1344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                     }
 
-                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(i => DateTime.Parse(i.DueDate)).ToList();
+                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderByDescending(i => DateTime.Parse(i.DueDate)).ToList();
                     BillsAndReturnsCommitmentsTemp.Clear();
                     //foreach (var item in BillsAndReturnsCommitmentsLocal)
                     //{

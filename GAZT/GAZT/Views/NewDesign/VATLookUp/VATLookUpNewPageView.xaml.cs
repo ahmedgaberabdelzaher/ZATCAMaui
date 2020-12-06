@@ -47,6 +47,12 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                     Device.BeginInvokeOnMainThread(async () => {
                         MessagingCenter.Send(this, "ScanData", result.Text);
                         await Navigation.PopAsync();
+
+                        viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
+                        viewModel.LookupNumber = result.Text;
+                        viewModel.getBarcodeData();
+
+
                     });
                 };
                 await Navigation.PushAsync(scanPage);

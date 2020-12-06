@@ -11,20 +11,30 @@ namespace EGAZT.NewDesignConverters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            if (value != null && !string.IsNullOrEmpty(value.ToString()))
             {
                 string str = UtilityManager.GetCommaSeparatedAmount(value.ToString());
                 return str;
             }
             else
             {
-                return value;
+                return "0.00";
             }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
+            if (value != null && !string.IsNullOrEmpty(value.ToString()))
+            {
+                if (value.ToString().Contains(","))
+                    return System.Convert.ToDouble(value.ToString().Replace(",", ""));
+                else
+                    return System.Convert.ToDouble(value);
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

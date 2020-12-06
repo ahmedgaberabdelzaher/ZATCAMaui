@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using GAZT.CustomControl;
 using GAZT.iOS.CustomRenderer;
 using UIKit;
@@ -27,10 +28,29 @@ namespace GAZT.iOS.CustomRenderer
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextColor = UIColor.Black;
+                this.AddDoneButton();
+
             }
 
             fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+        }
+        protected void AddDoneButton()
+        {
+            var toolbar = new UIToolbar(new RectangleF(0.0f, 0.0f, 50.0f, 44.0f));
+
+            var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate
+            {
+                this.Control.ResignFirstResponder();
+                var baseEntry = this.Element.GetType();
+                ((IEntryController)Element).SendCompleted();
+            });
+
+            toolbar.Items = new UIBarButtonItem[] {
+                new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace),
+                doneButton
+            };
+            this.Control.InputAccessoryView = toolbar;
         }
     }
 }

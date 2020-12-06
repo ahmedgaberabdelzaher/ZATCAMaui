@@ -36,7 +36,7 @@
 	<key>MinimumOSVersion</key>
 	<string>11.0</string>
 	<key>CFBundleName</key>
-	<string>E-GAZT</string>
+	<string>GAZT</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon-1.appiconset</string>
 	<key>XSLaunchImageAssets</key>
@@ -77,12 +77,12 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>CFBundleDisplayName</key>
-	<string>E-GAZT</string>
+	<string>GAZT</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.egazt</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.137</string>
+	<string>1.0.28</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.2.1.76</string>
+	<string>1.0.10</string>
 </dict>
 </plist>

@@ -56,7 +56,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.setMoreOptioButtons();
-
+                downPaymentSlider.ValueChanged += (a,e)=>{ downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString()); };
             }
             catch (Exception ex)
             {
@@ -169,14 +169,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        private void DownPayment_ValueChanged(object sender, ValueChangedEventArgs args)
-        {
-            viewModel.DownPaymentAmount = args.NewValue;
-            downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
-            downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
-
-
-        }
+       
 
         private void Installment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
@@ -295,11 +288,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
 
                     //viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    viewModel.MinAmountTitle = AppResources.ZakatMin + " " + String.Format("{0:N}", viewModel.MinAmount) ;
+                    viewModel.MinAmountTitle = AppResources.ZakatMin + " " + String.Format("{0:N}", viewModel.MinAmount);
                     //viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
-                    viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + String.Format("{0:N}", viewModel.MaxAmount); 
+                    viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + String.Format("{0:N}", viewModel.MaxAmount);
                     viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-
+                    downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
                 catch (Exception ex)
                 {
@@ -616,78 +609,26 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             try
             {
-                if (Double.Parse(downPaymentEntry.Text) > viewModel.MaxAmount)
+                if (viewModel.DownPaymentAmount > viewModel.MaxAmount)
                 {
                     viewModel.showDialog(AppResources.ZakatInstalmentCannotExceed + " " + viewModel.MaxAmount);
-                    downPaymentEntry.Text = viewModel.MinAmount.ToString();
-                    downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
-
-                    downPaymentSlider.Value = viewModel.MinAmount;
-                    string s = (string)downPaymentSlider.Value.ToString("N");
-                    downPaymentSlider.Value = Convert.ToDouble(s);
-
-
+                    viewModel.DownPaymentAmount = viewModel.MaxAmount;
+                    //viewModel.DownPaymentSliderValue = viewModel.MinAmount;
                 }
-                else if (Double.Parse(downPaymentEntry.Text) < viewModel.MinAmount)
+                else if (viewModel.DownPaymentAmount < viewModel.MinAmount)
                 {
                     viewModel.showDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
-                    downPaymentEntry.Text = viewModel.MinAmount.ToString();
-                    downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
-
-                    downPaymentSlider.Value = viewModel.MinAmount;
-
-                    string s = (string)downPaymentSlider.Value.ToString("N");
-                    downPaymentSlider.Value = Convert.ToDouble(s);
-
+                    viewModel.DownPaymentAmount = viewModel.MinAmount;
+                    //viewModel.DownPaymentSliderValue = viewModel.MaxAmount;
                 }
-                else if (downPaymentEntry.Text.Length == 0)
-                {
-                    downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
-                    downPaymentEntry.Text = String.Format("{0:N}", Convert.ToDouble(downPaymentEntry.Text));
 
-                }
                 else
                 {
-                    viewModel.DownPaymentAmount = Math.Round(Double.Parse(downPaymentEntry.Text), 2);
-                    downPaymentSlider.Value = viewModel.DownPaymentAmount;
-
-                    string s = (string)downPaymentSlider.Value.ToString("N");
-                    downPaymentSlider.Value = Convert.ToDouble(s);
+                   // downPaymentSlider.Value = viewModel.DownPaymentAmount;
                 }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-
-
-        private void downPaymentEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                if (downPaymentEntry.Text.Length > 0)
+                if (viewModel.DownPaymentAmount > 0)
                 {
-                    if (Double.Parse(downPaymentEntry.Text) > viewModel.MaxAmount)
-                    {
-                        downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
-                    }
-                    else if (Double.Parse(downPaymentEntry.Text) < viewModel.MinAmount)
-                    {
-                        downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
-
-                    }
-                    else
-                    {
-                        viewModel.DownPaymentAmount = Math.Round(Double.Parse(downPaymentEntry.Text), 2);
-                        downPaymentSlider.Value = viewModel.DownPaymentAmount;
-                        string s = (string)downPaymentSlider.Value.ToString("N");
-                        downPaymentSlider.Value = Convert.ToDouble(s);
-
-                        var dueAmount = viewModel.VATBillDueAmount.Replace("SAR", "");
-                        viewModel.PeriodicInstalment = Math.Abs(double.Parse(dueAmount) - double.Parse(downPaymentEntry.Text));
-                    }
+                   downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
             }
             catch (Exception ex)
@@ -696,7 +637,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-   
+
+
+     
+
+
         private void calculation_TextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.calculateYear1Data();
@@ -911,7 +856,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        
+
         void calculation2_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             try
@@ -998,6 +943,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
+        void SfButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
+        }
 
     }
 }

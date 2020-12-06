@@ -161,6 +161,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         ArrowImageSource = fileImage
                     });
                 }
+
                 /*tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                 {
                     ZDTitle = AppResources.Registrations,
@@ -177,6 +178,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         ArrowImageSource = fileImage
                     });
                 }
+
+                //TODO  Add this after  approval
 
                 if (App.LoginDataRetrieved.ZkReg == "X")
                 {

@@ -196,6 +196,27 @@
                 <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Center" />-->
                 <ScrollView Margin="0,20,0,0">
                     <StackLayout Spacing="20" Padding="0,0,0,10">
+                       <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="ic_Version.png"></Image>
+                            <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.AppVersion}"/>
+                                        <Span Text="&#160;&#160;"/>
+                                        <Span  Text="{Binding AppVersion}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </custom:CustomLabel>
+                        </StackLayout>-->
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDV}"/>
+                                            <Span Text="&#160;&#160;"/>
+                                            <Span  Text="{Binding AppVersion}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </custom:CustomLabel>
                        
 
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>

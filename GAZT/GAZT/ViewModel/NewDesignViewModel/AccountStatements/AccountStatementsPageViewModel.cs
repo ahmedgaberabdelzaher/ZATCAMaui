@@ -484,7 +484,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
             }
         }
+        public ObservableCollection<ASResult> _statementsLineItemsDownloadPage = null;
 
+        public ObservableCollection<ASResult> StatementsLineItemsDownloadPage
+        {
+            get
+            {
+                return _statementsLineItemsDownloadPage;
+            }
+            set
+            {
+                
+                    _statementsLineItemsDownloadPage = value;
+
+                    RaisePropertyChanged("StatementsLineItemsDownloadPage");
+               
+            }
+        }
         public ObservableCollection<ASResult> _statementsLineItems = null;
         public ObservableCollection<ASResult> StatementsLineItems
         {
@@ -759,6 +775,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("SelectedTransactionType");
             }
         }
+        public bool _IsNormalListDownloadPage = false;
+        public bool IsNormalListDownloadPage
+        {
+            get
+            {
+                return _IsNormalListDownloadPage;
+            }
+            set
+            {
+                _IsNormalListDownloadPage = value;
+
+                RaisePropertyChanged("IsNormalListDownloadPage");
+            }
+        }
 
         public bool _isYearsChipVisible;
         public bool IsYearsChipVisible
@@ -991,20 +1021,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 
                 else
                 {
-                    if (Int32.Parse(ASTaxpayerSelectedValues.Year) >= dateTimeFrom.Year && Int32.Parse(ASTaxpayerSelectedValues.Year) <= dateTimeTo.Year)
+                    int year;
+                    if (Int32.Parse(ASTaxpayerSelectedValues.Year) > 1500)
                     {
-                        if (GroupedDataForDownload.First().Where(p => p.Bldat >= dateTimeFrom && p.Bldat <= dateTimeTo).Count() > 0)
-                        {
-                            string fromStr = dateTimeFrom.ToString("yyyy-MM-dd");
-                            string toStr = dateTimeTo.ToString("yyyy-MM-dd");
+                        year = Int32.Parse(ASTaxpayerSelectedValues.Year);
+                    }
+                    else
+                    {
+                        string[]  tempyear = UtilityManager.HijriToGreg("01 / 01 /"+ASTaxpayerSelectedValues.Year).Split('/');
 
-                            String pdfUrl = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + ASTaxpayerSelectedValues.TaxType + "',FiscalYear='" + dateTimeFrom.Year + "',StatementFilter='" + ASTaxpayerSelectedValues.StatementFilter + "',FromDt=datetime'" + fromStr + "T00:00:00',ToDt=datetime'" + toStr + "T00:00:00',Langz='" + GetLangZParameter() + "')/$value";
-                            ShowPdf1(pdfUrl);
+                        year = Int32.Parse(tempyear[0]);
+                    }
+                    if (year >= dateTimeFrom.Year && year <= dateTimeTo.Year)
+                    {
+                        if (IsNormalListDownloadPage)
+                        {
+                            if (StatementsLineItemsDownloadPage.Where(p => p.Bldat >= dateTimeFrom && p.Bldat <= dateTimeTo).Count() > 0)
+                            {
+                                string fromStr = dateTimeFrom.ToString("yyyy-MM-dd");
+                                string toStr = dateTimeTo.ToString("yyyy-MM-dd");
+
+                                String pdfUrl = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + ASTaxpayerSelectedValues.TaxType + "',FiscalYear='" + dateTimeFrom.Year + "',StatementFilter='" + ASTaxpayerSelectedValues.StatementFilter + "',FromDt=datetime'" + fromStr + "T00:00:00',ToDt=datetime'" + toStr + "T00:00:00',Langz='" + GetLangZParameter() + "')/$value";
+                                ShowPdf1(pdfUrl);
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessage(AppResources.Therearenofinancialtransactions, AppResources.Information);
+                            }
+
                         }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.Therearenofinancialtransactions, AppResources.Information);
+                            if (GroupedDataForDownload.First().Where(p => p.Bldat >= dateTimeFrom && p.Bldat <= dateTimeTo).Count() > 0)
+                            {
+                                string fromStr = dateTimeFrom.ToString("yyyy-MM-dd");
+                                string toStr = dateTimeTo.ToString("yyyy-MM-dd");
+
+                                String pdfUrl = Constants.AccountStatementDownloadPdf + "Fguid='" + App.LoginDataRetrieved.FbGuid + "'" + ",Taxtype='" + ASTaxpayerSelectedValues.TaxType + "',FiscalYear='" + dateTimeFrom.Year + "',StatementFilter='" + ASTaxpayerSelectedValues.StatementFilter + "',FromDt=datetime'" + fromStr + "T00:00:00',ToDt=datetime'" + toStr + "T00:00:00',Langz='" + GetLangZParameter() + "')/$value";
+                                ShowPdf1(pdfUrl);
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessage(AppResources.Therearenofinancialtransactions, AppResources.Information);
+                            }
                         }
+                        
+                        
 
                     }
                     else
@@ -1055,6 +1117,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     DataForDownloadPage Data = new DataForDownloadPage();
                     Data.ASTaxpayerSelectedValues = aSTaxpayerSelectedValues;
                     Data.GroupedDataForDownload = groupedData;
+                    Data.StatementsLineItems = StatementsLineItems;
+                    if (IsNormalStatementsViewVisible)
+                    {
+                        Data.isNormalList = true;
+                    }
+                    else
+                    {
+                        Data.isNormalList = false;
+                    }
                     _navigationService.NavigateTo(App.AccountStatementsDownloadPageView, Data);
                 }
                 else
@@ -1498,7 +1569,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Month = "November";
                 // Month = "November";
             }
-            else if (Month == "12" || Month == "ديسيمبر")
+            else if (Month == "12" || Month == "ديسمبر")
             {
                 Month = "December";
                 //   Month = "December";

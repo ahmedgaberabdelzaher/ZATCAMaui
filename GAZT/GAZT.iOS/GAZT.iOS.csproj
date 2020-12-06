@@ -89,7 +89,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision> eGAZT Distribution Profile</CodesignProvision>
+    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
     <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
@@ -525,9 +525,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-App-83.5x83.5%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\icon.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\AppStore.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1100,10 +1098,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_check_circle_24px%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_logo_gazt.png" />
@@ -2328,5 +2322,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Bg_Bottom_nav.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>
