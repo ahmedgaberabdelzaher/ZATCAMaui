@@ -9,7 +9,7 @@
                   xmlns:ResourceManager="clr-namespace:EGAZT"
                   xmlns:FontImage="clr-namespace:MVP.FontIcons"
                   xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
-
+                  xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
                   xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
                   xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
                   xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
@@ -24,6 +24,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
                 <Setter Property="FontSize" Value="12" />
             </Style>
+            <converters:TINDeregistrationAPermitDregRsnTbValueConverter x:Key="dregRsnTbValueConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -120,7 +121,7 @@
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
 
-                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsPermitOption1Visible}" >
+                 <StackLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsPermitOption1Visible}">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -170,7 +171,7 @@
                         <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>-->
 
                         <StackLayout>
-                            <StackLayout >
+                            <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -202,7 +203,7 @@
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                     <custom:BorderlessEntry x:Name="EntryTIN" IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding BindingContext.TINNumber, Source={x:Reference TinDeregIndOutlets}}" 
+                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused" Text="{Binding TINNumber}" 
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                 <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
@@ -239,7 +240,7 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                    <custom:BorderlessEntry x:Name="idNumber" IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding SelectedIdNumber}"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                     </custom:BorderlessEntry>
@@ -266,7 +267,7 @@
                                         </StackLayout>
 
                                         <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Command="{Binding OnTinRegistrationDateTapped}" ></TapGestureRecognizer>
+                                             <TapGestureRecognizer Tapped="IndiviualTinRegistrationDOBTapped" ></TapGestureRecognizer>
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
@@ -528,8 +529,8 @@
                                                         </StackLayout>
                                                     </border:SfBorder >
                                             </StackLayout>
-                                            <StackLayout x:Name="parentView" Grid.Row="7" Grid.ColumnSpan="2" IsVisible="{Binding IsOutletTranferOutletGridVisible}"
-                                                         IsEnabled="{Binding BindingContext.IsDetailsFieldEnabled ,Source={x:Reference TinDeregIndOutlets}}">
+                                            <StackLayout x:Name="parentView" Grid.Row="7" Grid.ColumnSpan="2" IsVisible="{Binding APermitDregRsnTb, Converter={StaticResource dregRsnTbValueConverter}}"
+                                                         IsEnabled="{Binding APermitDregRsnTb, Converter={StaticResource dregRsnTbValueConverter}}">
                                                <Grid RowSpacing="8">
                                                         <Grid.RowDefinitions >
                                                             <RowDefinition Height="auto"/>
@@ -629,7 +630,8 @@
                                                                     </StackLayout>
 
                                                                     <StackLayout.GestureRecognizers>
-                                                                         <TapGestureRecognizer Command="{Binding OnTinRegistrationDateTapped}" ></TapGestureRecognizer>
+                                                                         <TapGestureRecognizer Tapped="OnIndiviualOutletTinRegistrationDOBTapped"
+                                                                                CommandParameter="{Binding APermitNoTb}" ></TapGestureRecognizer>
                                                                      </StackLayout.GestureRecognizers>
 
                                                             </StackLayout>
@@ -862,7 +864,7 @@
 
                  </StackLayout>
 
-                 <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}"
+                 <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding OutletPermitPopupReasonContinueBtnTapped}"
                                    Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 

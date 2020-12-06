@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
@@ -117,7 +118,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         }
         private void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(viewModel.SelectedIdNumber))
+            if (!string.IsNullOrEmpty(viewModel?.SelectedIdNumber))
             {
                 viewModel.FrameIDError = false;
             }
@@ -174,7 +175,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 StringBuilder Messages = new StringBuilder();
                 if (!string.IsNullOrEmpty(viewModel.SelectedIdtype))
                 {
-                    if (viewModel.SelectedIdtype == AppResources.NationaID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationNationalID)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "1")
                         {
@@ -228,13 +229,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.SelectedDob))
                                 {
-                                    viewModel.ValidateIDNumber();
+                                    viewModel.ValidateIDNumberForIndiviualOutlets();
                                 }
                             }
                         }
                     }
 
-                    if (viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "2")
                         {
@@ -288,13 +289,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.SelectedDob))
                                 {
-                                    viewModel.ValidateIDNumber();
+                                    viewModel.ValidateIDNumberForIndiviualOutlets();
                                 }
                             }
                         }
                     }
 
-                    if (viewModel.SelectedIdtype == AppResources.ZZGCCID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationGCCID)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) == "0")
                         {
@@ -336,7 +337,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
 
-                    if (viewModel.SelectedIdtype == AppResources.ZIBANCompanyID)
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationCompanyID)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "7")
                         {
@@ -357,10 +358,29 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
+                        else if (viewModel.SelectedIdNumber.Length > 10)
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.CompanyIDlengthis10digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.SelectedIdNumber = string.Empty;
+                        }
                         else
                         {
                             viewModel.FrameIDError = false;
-                            viewModel.ValidateIDNumber();
+                            viewModel.ValidateIDNumberForIndiviualOutlets();
                         }
                     }
                 }
@@ -446,7 +466,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        async void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
@@ -480,13 +500,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     EntryTIN.Text = string.Empty;
                 }
                 else
                 {
                     viewModel.FrameTinError = false;
-                    viewModel.ValidateIdNumberFromApi(EntryTIN.Text);
+                    await viewModel.ValidateIdNumberFromApi(EntryTIN.Text);
                 }
             }
             else
@@ -507,7 +527,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
         }
@@ -559,15 +579,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     viewModel.SingleOutletDeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
                 }
-                if (arg.PickerId == "DOBDateTypePicker")
+                if (arg.PickerId == "PermitTypeDobPickerDateTypePicker")
+                {
+                    viewModel.PermitDob = Convert.ToDateTime(arg.SelectedValue);
+                }
+                if (arg.PickerId == "_DOBDateTypePicker")
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
-
-                    if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    viewModel.PkrDBO = arg.SelectedValue;
+                    if (viewModel.SelectedIdtype == AppResources.TinDeregistrationNationalID || viewModel.SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
                     {
                         if (!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
                         {
-                            //viewModel.ValidateIDNumber();
+                            //await Task.Delay(700);
+                            viewModel.ValidateIDNumberForIndiviualOutlets();
                         }
                     }
                 }
@@ -662,5 +687,47 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.OnIdTypeClicked();
         }
 
+        async void IndiviualTinRegistrationDOBTapped(System.Object sender, System.EventArgs e)
+        {
+            if (string.IsNullOrEmpty(idNumber.Text))
+            {
+                idNumber.Focus();
+                return;
+            }
+            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregDOBDatePickerTitle;
+            genericDatePickerModel.PickerId = "_DOBDateTypePicker";
+            try
+            {
+                datepickermessagecenter();
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+            }
+            catch (GAZTUnlockAccountException)
+            {
+
+            }
+        }
+
+        async void OnIndiviualOutletTinRegistrationDOBTapped(System.Object sender, System.EventArgs e)
+        {
+            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregDOBDatePickerTitle;
+            genericDatePickerModel.PickerId = "PermitTypeDobPickerDateTypePicker";
+            try
+            {
+                if ((e as TappedEventArgs).Parameter != null)
+                {
+                    var parameterVal = (e as TappedEventArgs).Parameter.ToString();
+                    viewModel.OnOutletPermitTypeDeRegisrtationReasonDateTapped.Execute(parameterVal);
+                }
+                datepickermessagecenter();
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+
+        }
     }
 }
