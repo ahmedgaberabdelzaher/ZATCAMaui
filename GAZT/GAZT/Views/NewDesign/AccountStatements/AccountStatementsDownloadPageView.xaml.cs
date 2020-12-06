@@ -33,6 +33,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             viewModel.GroupedDataForDownload = Data.GroupedDataForDownload  ;
             viewModel. ASTaxpayerSelectedValues = new ASTaxpayerSelectedValues();
             viewModel.ASTaxpayerSelectedValues = Data.ASTaxpayerSelectedValues;
+            viewModel.IsNormalListDownloadPage = Data.isNormalList;
+            viewModel.StatementsLineItemsDownloadPage = Data.StatementsLineItems;
 
             viewModel.FromDate = AppResources.ASAccountStatementFrom;
             viewModel.ToDate = AppResources.ASAccountStatementTo;

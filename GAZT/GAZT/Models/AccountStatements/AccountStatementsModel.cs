@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using GalaSoft.MvvmLight;
 using GAZT.Manager;
@@ -33,6 +34,8 @@ namespace EGAZT.Models.AccountStatements
     {
         public  ASTaxpayerSelectedValues ASTaxpayerSelectedValues;
         public List<ObservableGroupCollection<string, ASResult>> GroupedDataForDownload;
+        public ObservableCollection<ASResult> StatementsLineItems;
+        public bool isNormalList;
     }
     
     public class ASTaxpayerSelectedValues
