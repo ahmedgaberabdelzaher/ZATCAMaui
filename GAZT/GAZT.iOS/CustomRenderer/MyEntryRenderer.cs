@@ -28,11 +28,12 @@ namespace GAZT.iOS.CustomRenderer
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextColor = UIColor.Black;
+                this.AddDoneButton();
+
             }
 
             fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
-            this.AddDoneButton();
         }
         protected void AddDoneButton()
         {

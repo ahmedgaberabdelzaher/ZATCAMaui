@@ -517,12 +517,19 @@
                                         <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleSmallMediumBlack}"/>
                                         <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
                                     </StackLayout>
-                                     <yummy:PancakeView Grid.Row="0" Grid.Column="1" Padding="10,10,10,10"  
+                                     <!--<yummy:PancakeView Grid.Row="0" Grid.Column="1" Padding="10,10,10,10"  
                                                         CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"
                                                         VerticalOptions="CenterAndExpand" HorizontalOptions="End"
                                                         BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}">
                                        
-                                     </yummy:PancakeView>
+                                     </yummy:PancakeView>-->
+
+                                     <Frame Grid.Row="0" Grid.Column="1"
+                                                    BackgroundColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"
+                                                    Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"
+                                                    HeightRequest="20" Opacity=".2"
+                                        HasShadow="False"   
+                                                    VerticalOptions="CenterAndExpand" HorizontalOptions="End" />
                                     <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
                                             <Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding StatusDesc}"
                                                    TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">

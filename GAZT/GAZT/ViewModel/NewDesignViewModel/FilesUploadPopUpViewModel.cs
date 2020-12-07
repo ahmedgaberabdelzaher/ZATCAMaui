@@ -778,9 +778,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                     bool IsAttachmentPresent = false;
                                                     foreach (Attachment ItemA in AttachmentsList.results)
                                                     {
-                                                        var fileName = (WebUtility.UrlEncode(AttachmentName));
+                                                       // var fileName = (WebUtility.UrlEncode(AttachmentName));
 
-                                                        if ((fileName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
+                                                        if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                         {
                                                             IsAttachmentPresent = true;
                                                         }
