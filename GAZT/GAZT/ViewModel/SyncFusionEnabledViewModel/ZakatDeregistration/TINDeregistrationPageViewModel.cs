@@ -3903,25 +3903,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         return;
                     }
-                    //else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitDregRsnTb == "3") != null)
-                    //{
-                    //    var transferrred = SelectedOutletForCloseTranser.PermitTypes.Select(x => x.APermitDregRsnTb == "3").ToList();
-                    //    if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => {
-                    //        return x.APermitDregRsnTb == "3" && !string.IsNullOrWhiteSpace(x.APermitIdNoTb);
-                    //    }) == null)
-                    //    {
-                    //        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                    //        return;
-                    //    }
-                    //    else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => {
-                    //        return x.APermitDregRsnTb == "3" && !string.IsNullOrWhiteSpace(x.APermitDeregDisplayDobDate);
-                    //    }) == null)
-                    //    {
-                    //        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                    //        return;
-                    //    }
-
-                    //}
+                    else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitDregRsnTb == "3") != null)
+                    {
+                        var transferrred = SelectedOutletForCloseTranser.PermitTypes.Where(x => x.APermitDregRsnTb == "3");
+                        if (transferrred.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.APermitIdNoTb)) == null)
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            return;
+                        }
+                        else if (transferrred.FirstOrDefault(x =>!string.IsNullOrWhiteSpace(x.APermitDeregDisplayDobDate)) == null)
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                            return;
+                        }
+                    }
                     else
                     {
                         await SaveAsDraft();
