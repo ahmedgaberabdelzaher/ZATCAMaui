@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AppDynamics.Agent;
 using Foundation;
 using UIKit;
 namespace GAZT.iOS
@@ -21,6 +22,7 @@ namespace GAZT.iOS
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Instrumentation.ReportError(ex, ErrorSeverityLevel.CRITICAL);
             }
         }
     }

@@ -15,6 +15,7 @@ using Plugin.Media;
 using Java.Lang;
 using System;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace GAZT.Droid
 {
@@ -94,9 +95,23 @@ namespace GAZT.Droid
             //resetDisconnectTimer();
 
             //StartTimerForLoginRefresh(0,1,0);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
         }
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new System.Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
 
+            AppDynamics.Agent.Instrumentation.ReportError(newExc, ErrorSeverityLevel.CRITICAL);
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new System.Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as System.Exception);
+
+            AppDynamics.Agent.Instrumentation.ReportError(newExc, ErrorSeverityLevel.CRITICAL);
+        }
         public class MyHandlerICallback : Java.Lang.Object, Handler.ICallback
         {
             private MainActivity mainActivity;
