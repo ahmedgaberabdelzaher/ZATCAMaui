@@ -749,13 +749,11 @@ namespace EGAZT
 
         public static void InitializeAppDynamics()
         {
-#if !DEBUG
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
             AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
             config.CollectorURL = "https://eum.gazt.gov.sa:443";
             AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
-#endif
         }
 
         public static async void DisplayProgressView()

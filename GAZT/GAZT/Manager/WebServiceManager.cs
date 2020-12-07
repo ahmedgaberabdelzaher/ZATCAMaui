@@ -10885,9 +10885,31 @@ namespace GAZT.Manager
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
-                            outlets = JsonConvert.DeserializeObject<List<OutletItem>>(ESTBranchesDropDownResponseJSON);
+                            var checkObj = JObject.Parse(ESTBranchesDropDownResponseJSON);//["d"].ToString();
+                           
+                            if (ESTBranchesDropDownResponseJSON != null && checkObj.GetType().GetProperty("d") != null)
+                            {
+                                ESTBranchesDropDownResponseJSON= JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                                outlets = JsonConvert.DeserializeObject<List<OutletItem>>(ESTBranchesDropDownResponseJSON);
+                            }
+                            else
+                            {
+                               // String _responseData = ESTBranchesDropDownResponseJSON.Content.ReadAsStringAsync().Result;
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null
+                                    && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                                {
+                                    string errorCode = errorMesg.error.innererror.errordetails[0].code;
+
+                                    var errorMsg = errorMesg.error.innererror.errordetails[0].message;
+
+                                    String WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
+                                    errorMsg = WithReplacedString;
+                                    //ErrorMessageForVAT
+                                    throw new GAZTErrorException(errorMsg);
+                                }
+                            }
                         }
                     }
                 }
@@ -10895,14 +10917,16 @@ namespace GAZT.Manager
                 {
                     throw new GAZTInvalidDataException();
                 }
+          
                 catch (HttpRequestException ex)
                 {
                     throw ex;
                 }
                 catch (GAZTException gex)
                 {
-                    throw gex;
+                    throw new GAZTErrorException(gex.Message);
                 }
+       
                 catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();

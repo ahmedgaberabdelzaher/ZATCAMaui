@@ -936,90 +936,97 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     clearFormData();
-                    var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
-                    _outletTempData.ForEach(_out =>
+                    try
                     {
-                        if (_out.Actcat == "M")
+                        var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
+                        _outletTempData.ForEach(_out =>
                         {
-                            isMainOutletExists = true;
-                        }
-                    });
-                    ListOutlets = _outletTempData;
-                    ListOutletTypes.Clear();
-                    //if (isMainOutletExists)
-                    //{
-                    //    ListOutletTypes.Add(AppResources.SubOutlet);
-                    //}
-                    //else
-                    //{
-                    ListOutletTypes.Add(AppResources.ESTMainOutlet);
-                    ListOutletTypes.Add(AppResources.ESTSubOutlet);
-                    // }
-                    if (isMainOutletExists)
-                        SelectedOutletType = AppResources.ESTSubOutlet;
-                    else
-                        SelectedOutletType = AppResources.ESTMainOutlet;
-                    if (selectedOutletItem != null)
-                    {
-                        newNumber = new OutletNumber()
-                        {
-                            Actno = selectedOutletItem?.Actno
-                        };
-                        OutletName = selectedOutletItem?.Actnm;
-                        if (selectedOutletItem.Actcat == "M")
-                        {
-                            SelectedOutletType = AppResources.ESTMainOutlet;
-                        }
-                        else if (selectedOutletItem.Actcat == "S")
-                        {
-                            SelectedOutletType = AppResources.ESTSubOutlet;
-                        }
-                    }
-                    else
-                    {
-                        newNumber = await WebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
-                    }
-                    OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-                    // taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-                    taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
-                     );
+                            if (_out.Actcat == "M")
+                            {
+                                isMainOutletExists = true;
+                            }
+                        });
+                        ListOutlets = _outletTempData;
+                        ListOutletTypes.Clear();
 
-                    if (OutletActNumber == "000")
-                    {
-                        var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
-                        if (preLoadedItems.Count == 1)
+                        //if (isMainOutletExists)
+                        //{
+                        //    ListOutletTypes.Add(AppResources.SubOutlet);
+                        //}
+                        //else
+                        //{
+                        ListOutletTypes.Add(AppResources.ESTMainOutlet);
+                        ListOutletTypes.Add(AppResources.ESTSubOutlet);
+                        // }
+                        if (isMainOutletExists)
+                            SelectedOutletType = AppResources.ESTSubOutlet;
+                        else
+                            SelectedOutletType = AppResources.ESTMainOutlet;
+                        if (selectedOutletItem != null)
                         {
-                            var preLoadedItem = preLoadedItems.FirstOrDefault();
-                            if (preLoadedItem?.Type == "BUP002")
+                            newNumber = new OutletNumber()
                             {
-                                validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
-                                if (!string.IsNullOrEmpty(validateCR?.Crname))
-                                {
-                                    OutletName = validateCR?.Crname;
-                                    validateCR.Crnum = preLoadedItem?.Idnumber;
-                                }
-                                PreLoadedLicenseItem = null;
+                                Actno = selectedOutletItem?.Actno
+                            };
+                            OutletName = selectedOutletItem?.Actnm;
+                            if (selectedOutletItem.Actcat == "M")
+                            {
+                                SelectedOutletType = AppResources.ESTMainOutlet;
                             }
-                            else if (preLoadedItem?.Type == "ZS0004")
+                            else if (selectedOutletItem.Actcat == "S")
                             {
-                                validateCR = null;
-                                PreLoadedLicenseItem = preLoadedItem;
-                            }
-                            else
-                            {
-                                validateCR = null;
-                                PreLoadedLicenseItem = null;
+                                SelectedOutletType = AppResources.ESTSubOutlet;
                             }
                         }
                         else
                         {
-                            //nothing to do
+                            newNumber = await WebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
                         }
-                    }
-                    else
+                        OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+                        // taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                        taxPayerDetails = await WebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
+                         );
+
+                        if (OutletActNumber == "000")
+                        {
+                            var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
+                            if (preLoadedItems.Count == 1)
+                            {
+                                var preLoadedItem = preLoadedItems.FirstOrDefault();
+                                if (preLoadedItem?.Type == "BUP002")
+                                {
+                                    validateCR = await WebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                                    if (!string.IsNullOrEmpty(validateCR?.Crname))
+                                    {
+                                        OutletName = validateCR?.Crname;
+                                        validateCR.Crnum = preLoadedItem?.Idnumber;
+                                    }
+                                    PreLoadedLicenseItem = null;
+                                }
+                                else if (preLoadedItem?.Type == "ZS0004")
+                                {
+                                    validateCR = null;
+                                    PreLoadedLicenseItem = preLoadedItem;
+                                }
+                                else
+                                {
+                                    validateCR = null;
+                                    PreLoadedLicenseItem = null;
+                                }
+                            }
+                            else
+                            {
+                                //nothing to do
+                            }
+                        }
+                        else
+                        {
+                            validateCR = null;
+                            PreLoadedLicenseItem = null;
+                        }
+                    }catch(Exception ex)
                     {
-                        validateCR = null;
-                        PreLoadedLicenseItem = null;
+
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
