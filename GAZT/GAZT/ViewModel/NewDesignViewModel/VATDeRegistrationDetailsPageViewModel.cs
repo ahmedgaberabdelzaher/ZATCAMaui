@@ -254,6 +254,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _reasonTitle = value;
+                if (_reasonTitle != null)
+                {
+                    if (_reasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
+                    {
+                        IsOthersEditorVisible = true;
+                        OtherField = string.Empty;
+
+                    }
+                    else
+                    {
+                        IsOthersEditorVisible = false;
+
+
+                    }
+                }
+                else
+                {
+                    IsOthersEditorVisible = true;
+                }
                 RaisePropertyChanged("ReasonTitle");
             }
         }
