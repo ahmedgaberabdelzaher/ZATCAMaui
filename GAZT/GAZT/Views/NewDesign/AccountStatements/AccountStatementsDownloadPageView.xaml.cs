@@ -10,6 +10,8 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Xamarin.Forms.Xaml;
+
 
 namespace EGAZT.Views.NewDesign.AccountStatements
 {

@@ -38,7 +38,7 @@ using System.Diagnostics;
 using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
 using EGAZT.Views.NewDesign.DashBoardPages;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace EGAZT
 {
     public partial class App : Application
