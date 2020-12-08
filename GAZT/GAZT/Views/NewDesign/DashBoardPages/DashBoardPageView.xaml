@@ -120,7 +120,7 @@
                 <yummy:PancakeView Grid.Row="1" Padding="0" CornerRadius="12,12,0,0" VerticalOptions="FillAndExpand">
                     <ScrollView BackgroundColor="White">
                         <StackLayout Spacing="0">
-                            <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsVatRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="15,16,15,8">
+                            <!--<Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsVatRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="15,16,15,8">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -144,7 +144,7 @@
                                 <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
                             </Grid>
 
-                            <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                            <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                             <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsEstablishmentRegistrationTileVisible}" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="15,16,15,8">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
