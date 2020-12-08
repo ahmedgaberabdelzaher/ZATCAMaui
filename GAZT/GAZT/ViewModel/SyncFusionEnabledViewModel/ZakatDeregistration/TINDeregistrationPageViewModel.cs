@@ -3319,7 +3319,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             if (TinDeregistrationData.ADregOpt == "3")
             {
-                if (SingleDeregistrationDate == null)
+                if (SingleDeregistrationDate == null && !flagCB) // TODO check outlet permit de registration date
                 {
                     IsPermitTypesVisible = false;
                     flag = false;
@@ -3920,7 +3920,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     else
                     {
                         await SaveAsDraft();
-                        EnableOutletDetaislView();
+                        EnableOutletDetaislView(true);
                     }
                 }
                 else if (SelectedPermitOutletOptionIndex == 0)
