@@ -37,6 +37,10 @@ using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using System.Diagnostics;
 using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
 using EGAZT.Views.NewDesign.DashBoardPages;
+using System.Threading;
+using System.IO;
+using AppDynamics.Agent;
+using Newtonsoft.Json;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -477,6 +481,13 @@ namespace EGAZT
             _dialogService = dialogService;
 
             InitializeAppDynamics();
+            DisplayCrashReport();
+
+            ////Thread.Sleep(60000);
+
+            //var a = 10;
+            //var b = 0;
+            //var c = a / b;
 
             MainPage = navigationPage;
         }
@@ -751,8 +762,11 @@ namespace EGAZT
         {
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+
             AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
-            config.CollectorURL = "https://eum.gazt.gov.sa:443";
+
+            config.EnableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa";
             AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
 
@@ -974,11 +988,11 @@ namespace EGAZT
         }
 
 
-        public static async void HideProgressView()
+        public static void HideProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                if (PopupNavigation.PopupStack.Count > 0)
+                if (PopupNavigation.Instance.PopupStack.Count > 0)
                     PopupNavigation.Instance.PopAsync(true);
             });
         }
@@ -1011,6 +1025,27 @@ namespace EGAZT
         public static void OnBackPressed()
         {
             MessagingCenter.Send<Application>(Application.Current, "BackButtonPressed");
+        }
+
+        private static void DisplayCrashReport()
+        {
+            const string errorFilename = "Fatal.log";
+            var libraryPath = Environment.GetFolderPath(Xamarin.Forms.Device.RuntimePlatform==Xamarin.Forms.Device.iOS? Environment.SpecialFolder.Resources: Environment.SpecialFolder.Personal);
+            var errorFilePath = Path.Combine(libraryPath, errorFilename);
+
+            if (!File.Exists(errorFilePath))
+            {
+                return;
+            }
+
+            var errorText = File.ReadAllText(errorFilePath);
+            if (string.IsNullOrEmpty(errorText))
+                return;
+
+            Instrumentation.ReportError(JsonConvert.DeserializeObject<Exception>(errorText), ErrorSeverityLevel.CRITICAL);
+
+            File.WriteAllText(errorFilePath, "");
+
         }
 
     }

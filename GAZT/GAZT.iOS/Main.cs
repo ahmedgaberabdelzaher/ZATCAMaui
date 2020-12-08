@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using AppDynamics.Agent;
 using Foundation;
+using Newtonsoft.Json;
 using UIKit;
 namespace GAZT.iOS
 {
@@ -22,8 +26,24 @@ namespace GAZT.iOS
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Instrumentation.ReportError(ex, ErrorSeverityLevel.CRITICAL);
+                LogUnhandledException(ex);
             }
         }
+
+        internal static void LogUnhandledException(Exception exception)
+        {
+            try
+            {
+                const string errorFileName = "Fatal.log";
+                var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Resources); // iOS: Environment.SpecialFolder.Resources
+                var errorFilePath = Path.Combine(libraryPath, errorFileName);
+                File.WriteAllText(errorFilePath, JsonConvert.SerializeObject(exception));
+            }
+            catch(Exception ex)
+            {
+                // just suppress any error logging exceptions
+            }
+        }
+        
     }
 }
