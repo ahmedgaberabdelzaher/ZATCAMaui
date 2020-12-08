@@ -113,7 +113,7 @@
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
+    <CodesignProvision>eGAZT Enterprise Provisioning Profile</CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
