@@ -78,6 +78,13 @@ namespace GAZT.iOS
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
             SfMaskedEditRenderer.Init();
 
+            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa:443";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+
+
             // Add the below line if you are using SfLinearProgressBar.
             Syncfusion.XForms.iOS.ProgressBar.SfLinearProgressBarRenderer.Init();
 

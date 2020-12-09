@@ -838,9 +838,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
         public string CreateLoginURL(string lang)
         {
-            string deviceOs = Xamarin.Essentials.DeviceInfo.Platform.ToString();
-            string deviceUdid = DependencyService.Get<IDeviceInfo>().GetDeviceUdid();
-            return WebServiceManager.CreateSAMLLoginURL("", deviceUdid, "", deviceOs, lang);
+            try
+            {
+                string deviceOs = Xamarin.Essentials.DeviceInfo.Platform.ToString();
+                string deviceUdid = DependencyService.Get<IDeviceInfo>().GetDeviceUdid();
+                return WebServiceManager.CreateSAMLLoginURL("", deviceUdid, "", deviceOs, lang);
+
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
 
             //return WebServiceManager.CreateSAMLLoginURL("", "", "", "", lang);
         }
@@ -850,7 +858,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             string response = string.Empty;
             string UserId = App.LoginDataRetrieved.TIN;
 
-            Instrumentation.SetUserData("user_id", UserId);
+         Instrumentation.SetUserData("user_id", UserId);
 
             String lang = "E";
             string language = UtilityManager.GetLanguageParameter();

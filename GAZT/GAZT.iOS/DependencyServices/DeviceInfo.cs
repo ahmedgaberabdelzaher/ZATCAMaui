@@ -12,6 +12,7 @@ using MobileCoreServices;
 [assembly: Dependency(typeof(DeviceInfo))]
 namespace GAZT.iOS.DependencyServices
 {
+    [Preserve(AllMembers = true)]
     public class DeviceInfo : IDeviceInfo
     {
         //public int ScreenHeight => throw new NotImplementedException();
