@@ -19,9 +19,10 @@ using static GAZT.ErrorMessage;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public class ZakatRegistrationDetailsListPageViewModel : BaseViewModel
     {
-        [Preserve(AllMembers = true)]
+      
         #region Variable
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand DeregisterTinTapped { get; set; }

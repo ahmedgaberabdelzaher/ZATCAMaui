@@ -9,11 +9,13 @@ using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxEvasionVerifyMobileNumberPage : ContentPage
     {

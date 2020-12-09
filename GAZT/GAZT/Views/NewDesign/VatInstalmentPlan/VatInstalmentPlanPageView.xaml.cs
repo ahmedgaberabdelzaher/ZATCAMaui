@@ -16,6 +16,7 @@ using VATResults4 = EGAZT.Models.VATInstalationModels.VATResults4;
 
 namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     public partial class VatInstalmentPlanPageView : ContentPage
     {
 

@@ -5,10 +5,12 @@ using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.InstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     public partial class InstalmentPlanPageView : ContentPage
     {
 

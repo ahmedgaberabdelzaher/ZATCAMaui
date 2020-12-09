@@ -16,6 +16,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
+    [Preserve(AllMembers = true)]
     public partial class ZakatInstalmentPlanPageView : ContentPage
     {
 

@@ -9,9 +9,11 @@ using Xamarin.Forms;
 using GAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignShowVatInformationPopUpPageView : PopupPage
     {

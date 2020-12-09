@@ -38,6 +38,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
             }
         }
     }
+
+    [Preserve(AllMembers = true)]
     public class ReturnsPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

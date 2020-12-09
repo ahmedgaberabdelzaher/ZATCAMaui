@@ -8,10 +8,12 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public partial class ZakatRegistrationDetailsListPageView : ContentPage
     {
         ZakatRegistrationDetailsListPageViewModel viewModel;

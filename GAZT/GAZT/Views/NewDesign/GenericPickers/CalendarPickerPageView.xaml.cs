@@ -8,10 +8,12 @@ using EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.GenericPickers
 {
+    [Preserve(AllMembers = true)]
     public partial class CalendarPickerPageView : PopupPage
     {
         public Dictionary<string, string> months;
