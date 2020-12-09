@@ -80,6 +80,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.SingleDeregistrationDate = string.Empty;
                 viewModel.SelectedIdNumber = string.Empty;
                 viewModel.SelectedIdtype = string.Empty;
+                viewModel.SelectedDob = string.Empty;
                 viewModel.TINNumber = string.Empty;
                 viewModel.IDTypeDataModel = new VATSignUpD();
             }
