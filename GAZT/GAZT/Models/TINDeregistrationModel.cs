@@ -1210,7 +1210,19 @@ namespace EGAZT.Models
                 {
                     aPermitDregRsnTb = value;
                     if (!String.IsNullOrEmpty(aPermitDregRsnTb))
+                    {
                         APermitIsReasonSelected = true;
+                        if(value == "1")
+                        {
+                            APermitDisplayReason = AppResources.TinDeregistrationClosed;
+                            ReasonDescription = AppResources.TinDeregistrationClosed;
+                        }
+                        else
+                        {
+                            APermitDisplayReason = AppResources.TinDeregistrationTransfer;
+                            ReasonDescription = AppResources.TinDeregistrationTransfer;
+                        }
+                    }
                     OnPropertyRaised("APermitDregRsnTb");
                 }
             }
