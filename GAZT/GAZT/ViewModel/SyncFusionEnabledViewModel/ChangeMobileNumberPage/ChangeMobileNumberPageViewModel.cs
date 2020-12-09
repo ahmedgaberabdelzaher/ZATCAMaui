@@ -11,8 +11,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ChangeMobileNumberPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

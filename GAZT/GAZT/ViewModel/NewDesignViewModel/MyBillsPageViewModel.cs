@@ -16,9 +16,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignMyBillsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;

@@ -6,9 +6,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public class AccountStatementsDownloadPageViewModel: BaseViewModel
     {
         public ICommand GoBackBtnTapped { get; set; }

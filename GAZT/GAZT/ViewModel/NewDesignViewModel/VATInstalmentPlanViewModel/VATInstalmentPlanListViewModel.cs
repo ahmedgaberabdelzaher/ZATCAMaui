@@ -22,9 +22,12 @@ using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.DisplayInstallmentAgreementSchedulePlan;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.VATInstalmentScheduleDetailsModel;
 using Application = Xamarin.Forms.Application;
-
+using Xamarin.Forms.Internals;
+ 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 {
+   
+    [Preserve(AllMembers = true)]
     public class VATInstalmentPlanListViewModel : ViewModelBase
     {
         #region Variable

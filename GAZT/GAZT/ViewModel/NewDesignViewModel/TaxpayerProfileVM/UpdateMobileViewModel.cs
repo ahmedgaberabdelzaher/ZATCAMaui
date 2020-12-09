@@ -12,9 +12,11 @@ using Rg.Plugins.Popup.Services;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Models.TPProfile;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
+    [Preserve(AllMembers = true)]
     public class UpdateMobileViewModel : ViewModelBase
     {
         #region Variable

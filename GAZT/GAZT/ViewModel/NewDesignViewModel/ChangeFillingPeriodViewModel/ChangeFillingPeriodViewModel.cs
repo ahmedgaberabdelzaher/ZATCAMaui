@@ -26,9 +26,11 @@ using static EGAZT.Models.ChageFillingPeriodModel.VATChangeFillingPeriodRequestM
 using System.Text.RegularExpressions;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ChangeFillingPeriodViewModel : ViewModelBase
     {
 

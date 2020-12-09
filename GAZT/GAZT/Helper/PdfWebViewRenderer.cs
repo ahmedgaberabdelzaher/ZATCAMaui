@@ -1,11 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
-
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Helper
 {
-    
-        public class MyWebView : WebView
+    [Preserve(AllMembers = true)]
+    public class MyWebView : WebView
         {
 
         }

@@ -20,10 +20,12 @@ using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static EGAZT.Models.ZakatObjectionsModel.ZakatObjectionWithdrawPostModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ZakatObjectionViewModel : BaseViewModel
     {
         #region Enums

@@ -176,9 +176,11 @@ using EGAZT.Views.NewDesign.AccountStatements;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class ViewModelLocator
     {
 

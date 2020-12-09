@@ -16,9 +16,11 @@ using GAZT.Manager;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
+    [Preserve(AllMembers = true)]
     public class ActivityItemPageViewModel : BaseViewModel
     {
         #region variables

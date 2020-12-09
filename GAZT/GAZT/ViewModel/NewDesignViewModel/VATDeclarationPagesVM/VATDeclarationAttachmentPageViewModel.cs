@@ -25,9 +25,11 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-
+using Xamarin.Forms.Internals;
+ 
 namespace EGAZT
-{
+{ 
+    [Preserve(AllMembers = true)]
     public class VATDeclarationAttachmentPageViewModel : ViewModelBase
     {
         #region Variable

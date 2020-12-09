@@ -18,10 +18,11 @@ using Xamarin.Forms;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Models.ZakatInstalationModels;
 using System.Linq;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
-   
+    [Preserve(AllMembers = true)]
     public class FinancialDetailAttachmentPopupPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

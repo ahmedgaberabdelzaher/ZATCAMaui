@@ -14,10 +14,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignMyReturnsNewPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;

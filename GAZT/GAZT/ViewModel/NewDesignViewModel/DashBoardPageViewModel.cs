@@ -14,9 +14,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
+    [Preserve(AllMembers = true)]
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
         #region Variable

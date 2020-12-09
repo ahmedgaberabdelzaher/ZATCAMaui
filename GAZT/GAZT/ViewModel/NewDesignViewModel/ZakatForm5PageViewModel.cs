@@ -15,11 +15,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using ZakatForm5Model;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-     public class ZakatForm5PageViewModel : BaseViewModel
+    [Preserve(AllMembers = true)]
+    public class ZakatForm5PageViewModel : BaseViewModel
     {
 
         #region Variable

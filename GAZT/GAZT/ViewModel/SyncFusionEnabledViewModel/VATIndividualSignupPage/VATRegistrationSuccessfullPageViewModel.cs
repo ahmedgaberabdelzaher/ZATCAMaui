@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
+    [Preserve(AllMembers = true)]
     public class VATRegistrationSuccessfullPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

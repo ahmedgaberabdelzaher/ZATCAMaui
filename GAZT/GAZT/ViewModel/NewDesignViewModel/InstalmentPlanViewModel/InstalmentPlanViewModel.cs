@@ -7,9 +7,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 {
+    [Preserve(AllMembers = true)]
     public class InstalmentPlanViewModel: ViewModelBase
     {
         #region Variable

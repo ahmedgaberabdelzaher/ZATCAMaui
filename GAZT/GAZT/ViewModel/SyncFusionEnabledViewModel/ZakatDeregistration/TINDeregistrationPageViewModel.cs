@@ -23,10 +23,12 @@ using Newtonsoft.Json.Linq;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static GAZT.ErrorMessage;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
+    [Preserve(AllMembers = true)]
     public class TINDeregistrationPageViewModel : ViewModelBase
     {
         #region Variable

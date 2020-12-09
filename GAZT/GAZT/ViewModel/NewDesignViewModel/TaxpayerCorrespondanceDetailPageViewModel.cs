@@ -10,10 +10,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-   public  class TaxpayerCorrespondanceDetailPageViewModel : BaseViewModel
+    [Preserve(AllMembers = true)]
+    public  class TaxpayerCorrespondanceDetailPageViewModel : BaseViewModel
     {
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }

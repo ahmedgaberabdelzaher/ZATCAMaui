@@ -27,7 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
@@ -60,13 +60,26 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <CodesignProvision>eGAZT Development Profile</CodesignProvision>
+    <MtouchExtraArgs>--linkskip=MvvmLight 
+
+--linkskip=GalaSoft.MvvmLight 
+
+--linkskip=GalaSoft 
+
+--linkskip=GalaSoft.MvvmLight
+
+--linkskip=GalaSoft.MvvmLight.Extras
+
+--linkskip=GalaSoft.MvvmLight.Platform
+
+--linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>

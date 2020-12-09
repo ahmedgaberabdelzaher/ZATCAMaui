@@ -13,6 +13,7 @@ using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 {
+  
     /// <summary>
     /// ViewModel for on-boarding gradient page with animation.
     /// </summary>

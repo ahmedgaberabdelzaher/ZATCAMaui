@@ -14,12 +14,14 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static GAZT.ErrorMessage;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
     public class ZakatRegistrationDetailsListPageViewModel : BaseViewModel
     {
+        [Preserve(AllMembers = true)]
         #region Variable
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand DeregisterTinTapped { get; set; }

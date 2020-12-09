@@ -12,10 +12,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-   public class RefundAccountPopupPageViewModel : BaseViewModel
+    [Preserve(AllMembers = true)]
+    public class RefundAccountPopupPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;

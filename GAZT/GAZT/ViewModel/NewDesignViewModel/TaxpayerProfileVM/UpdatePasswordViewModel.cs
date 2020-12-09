@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
+    [Preserve(AllMembers = true)]
     public class UpdatePasswordViewModel : ViewModelBase
     {
         #region Variable

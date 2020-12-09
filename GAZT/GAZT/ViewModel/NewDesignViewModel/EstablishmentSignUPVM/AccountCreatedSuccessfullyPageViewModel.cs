@@ -5,8 +5,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
+    [Preserve(AllMembers = true)]
     public class AccountCreatedSuccessfullyPageViewModel : ViewModelBase
     {
         #region Veriables

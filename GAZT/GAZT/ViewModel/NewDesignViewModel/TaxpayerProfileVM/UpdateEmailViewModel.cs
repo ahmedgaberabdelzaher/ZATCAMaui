@@ -8,9 +8,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
+    [Preserve(AllMembers = true)]
     public class UpdateEmailViewModel : ViewModelBase
     {
         #region Variable

@@ -21,10 +21,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     /// <summary>
     /// ViewModel for article list page.
     /// </summary> 
-    [Preserve(AllMembers = true)]
+
     public class SFAnonymousLandingPageViewModel : ViewModelBase
     {
         #region Fields

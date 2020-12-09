@@ -22,10 +22,12 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Metadata = EGAZT.Models.ContractRelease.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
+    [Preserve(AllMembers = true)]
     public class ContractReleaseViewModel : ViewModelBase
     {
         #region Enums

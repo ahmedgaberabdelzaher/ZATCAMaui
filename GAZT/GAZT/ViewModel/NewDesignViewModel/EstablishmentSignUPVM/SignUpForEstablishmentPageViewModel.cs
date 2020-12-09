@@ -21,10 +21,12 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 //MobileVerification = SummaryView
 //EmailVerificatiom =VerificationView
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
+    [Preserve(AllMembers = true)]
     public class SignUpForEstablishmentPageViewModel : BaseViewModel
     {
 

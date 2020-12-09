@@ -11,9 +11,11 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
-
+using Xamarin.Forms.Internals;
+ 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
-{
+{ 
+    [Preserve(AllMembers = true)]
     public class VATRefundDetailsPageViewModel : ViewModelBase
     {
         #region Commands

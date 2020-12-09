@@ -13,8 +13,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ForgotUsernamePasswordPageViewModel : ViewModelBase
     {
         #region Variable

@@ -15,8 +15,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATAmendReactivationPageViewModel : ViewModelBase
     {
         public VATRegistrationDetails VATRegistrationData = new VATRegistrationDetails();

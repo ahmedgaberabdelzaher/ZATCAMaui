@@ -37,10 +37,11 @@ using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using System.Diagnostics;
 using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
 using EGAZT.Views.NewDesign.DashBoardPages;
-
+using Xamarin.Forms.Internals;
 
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public partial class App : Application
     {
         #region new design views

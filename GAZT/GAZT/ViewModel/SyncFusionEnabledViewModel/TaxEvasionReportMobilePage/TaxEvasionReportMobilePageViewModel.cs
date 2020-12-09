@@ -11,8 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class TaxEvasionReportMobilePageViewModel : ViewModelBase
     {
         public ICommand BackButtonClicked { get; set; }

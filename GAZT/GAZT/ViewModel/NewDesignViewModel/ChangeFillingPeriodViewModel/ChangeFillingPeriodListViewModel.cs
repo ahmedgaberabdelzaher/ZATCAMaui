@@ -12,9 +12,11 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ChangeFillingPeriodListViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;

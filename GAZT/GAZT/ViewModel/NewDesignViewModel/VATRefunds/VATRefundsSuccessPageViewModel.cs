@@ -5,9 +5,11 @@ using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 {
+    [Preserve(AllMembers = true)]
     public class VATRefundsSuccessPageViewModel:ViewModelBase
     {
         #region Variable

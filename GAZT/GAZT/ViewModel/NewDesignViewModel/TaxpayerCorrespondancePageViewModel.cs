@@ -14,11 +14,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Shapes;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    
+    [Preserve(AllMembers = true)]
+
     public class TaxpayerCorrespondancePageViewModel : BaseViewModel
     {
         #region Fields

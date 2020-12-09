@@ -13,8 +13,11 @@ using System.Globalization;
 using Newtonsoft.Json;
 using GAZT.Helper;
 using System.Linq;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class ChecKTINStatusViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;

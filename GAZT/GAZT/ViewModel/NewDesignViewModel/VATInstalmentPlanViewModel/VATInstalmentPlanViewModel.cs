@@ -28,9 +28,11 @@ using pdfjs.Interfaces;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Metadata = EGAZT.Models.VATInstalationModels.Metadata;
-
+using Xamarin.Forms.Internals;
+ 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
-{
+{ 
+    [Preserve(AllMembers = true)]
     public class VATInstalmentPlanViewModel : ViewModelBase
     {
         #region Variable

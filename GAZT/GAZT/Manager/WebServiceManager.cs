@@ -46,9 +46,11 @@ using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
 using Xamarin.Essentials;
 using EGAZT.Models.AccountStatements;
 using Formatting = Newtonsoft.Json.Formatting;
+using Xamarin.Forms.Internals;
 
 namespace GAZT.Manager
 {
+    [Preserve(AllMembers = true)]
     public static class WebServiceManager
     {
         public static string ErrorMessage = string.Empty;

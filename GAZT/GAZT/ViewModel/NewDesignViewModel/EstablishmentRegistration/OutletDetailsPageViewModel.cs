@@ -14,9 +14,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
+    [Preserve(AllMembers = true)]
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable

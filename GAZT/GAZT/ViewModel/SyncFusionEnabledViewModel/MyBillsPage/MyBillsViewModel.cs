@@ -14,8 +14,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
 {
+    [Preserve(AllMembers = true)]
     public class MyBillsViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
