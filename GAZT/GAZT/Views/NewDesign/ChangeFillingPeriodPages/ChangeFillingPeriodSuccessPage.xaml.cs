@@ -4,12 +4,14 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeFillingPeriodSuccessPage : ContentPage
     {

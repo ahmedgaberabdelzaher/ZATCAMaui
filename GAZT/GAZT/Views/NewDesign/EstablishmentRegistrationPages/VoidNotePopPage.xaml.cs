@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
+    [Preserve(AllMembers = true)]
     public partial class VoidNotePopPage : PopupPage
     {
         public delegate void OnItemSelectDelegate(string note);

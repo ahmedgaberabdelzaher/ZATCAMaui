@@ -15,9 +15,11 @@ using GAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EstablishmentRegistrationPage : ContentPage
     {

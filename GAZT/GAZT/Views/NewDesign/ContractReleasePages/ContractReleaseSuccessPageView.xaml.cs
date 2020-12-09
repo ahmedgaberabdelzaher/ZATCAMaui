@@ -8,12 +8,14 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContractReleaseSuccessPageView : ContentPage
     {

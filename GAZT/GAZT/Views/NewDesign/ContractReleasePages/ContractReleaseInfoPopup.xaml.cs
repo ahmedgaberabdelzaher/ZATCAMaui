@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContractReleaseInfoPopup : PopupPage
     {

@@ -15,9 +15,11 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Rg.Plugins.Popup.Services;
 using GAZT.Manager;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeFillingPeriodPageView : ContentPage,ChangeFillingInterface
     {

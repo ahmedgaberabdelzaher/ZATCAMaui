@@ -11,6 +11,7 @@ using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InstructionsBottomPopUpView : PopupPage
     {

@@ -9,12 +9,14 @@ using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 
 namespace EGAZT.Views.NewDesign.AccountStatements
 {
+    [Preserve(AllMembers = true)]
     public partial class AccountStatementsDownloadPageView : ContentPage
     {
         //AccountStatementsDownloadPageViewModel viewModel;

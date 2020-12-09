@@ -4,11 +4,13 @@ using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using GAZT.Helper;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
+    [Preserve(AllMembers = true)]
     public partial class ChangeFillingPeriodListPageView : ContentPage
     {
 

@@ -5,9 +5,11 @@ using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
+    [Preserve(AllMembers = true)]
     public partial class OutletDetailsPageView : ContentPage
     {
         private OutletDetailsPageViewModel viewModel;
