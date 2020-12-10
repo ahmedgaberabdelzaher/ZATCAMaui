@@ -1148,7 +1148,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 //decimal TotalAttachmentSize = 0;
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
-
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
                 if (fileData != null)
@@ -1477,6 +1476,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             CRsCopies = new ObservableCollection<Attachment>(list);
 
+
+            list.Clear();
             lists = taxPayerDetails.AttDetSet.results.Where(x =>
             {
                 var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, CRNumber);

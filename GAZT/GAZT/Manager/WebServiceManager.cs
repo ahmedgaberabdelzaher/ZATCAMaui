@@ -10887,7 +10887,7 @@ namespace GAZT.Manager
                         {
                             var checkObj = JObject.Parse(ESTBranchesDropDownResponseJSON);//["d"].ToString();
                            
-                            if (ESTBranchesDropDownResponseJSON != null && checkObj.GetType().GetProperty("d") != null)
+                            if (ESTBranchesDropDownResponseJSON != null && checkObj != null)
                             {
                                 ESTBranchesDropDownResponseJSON= JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
                                 ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
