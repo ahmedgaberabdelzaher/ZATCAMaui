@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class VATSignUpCaseId
     {
         public VATSignUpCaseIdD d { get; set; }
     }
 
-   
+    [Preserve(AllMembers = true)]
     public class VATSignUpCaseIdResults
     {
         public __metadata __metadata { get; set; }
@@ -55,6 +57,7 @@ namespace EGAZT
         public string Type { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class VATSignUpCaseIdD
     {
         public IList<VATSignUpCaseIdResults> results { get; set; }

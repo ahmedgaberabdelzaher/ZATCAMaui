@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.VatReviewModel
 {
+    [Preserve(AllMembers = true)]
     public class VATObjectionButtonFormModeModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 

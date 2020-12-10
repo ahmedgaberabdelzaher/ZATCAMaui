@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace ZakatForm5Model
 {
+    [Preserve(AllMembers = true)]
     public partial class ZakatForm5Data
     {
         public ZakatForm5DataResult d { get; set; }

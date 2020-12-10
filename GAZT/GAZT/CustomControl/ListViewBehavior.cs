@@ -10,11 +10,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
-
-
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
 
     public class ListViewBehavior : Behavior<SfListView>
     {

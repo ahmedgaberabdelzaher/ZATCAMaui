@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using static EGAZT.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
 
 namespace EGAZT.Models.ZakatInstalationModels
 {
+    [Preserve(AllMembers = true)]
     public class OldZakatInstalmentPlanModel
     {
         public string ActiveOutletDecisionOptions { get; set; }

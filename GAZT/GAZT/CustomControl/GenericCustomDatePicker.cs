@@ -5,9 +5,11 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using GAZT.CustomControl;
 using Syncfusion.SfPicker.XForms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class GenericCustomDatePicker : Syncfusion.SfPicker.XForms.SfPicker
     {
         public Dictionary<string, string> months;

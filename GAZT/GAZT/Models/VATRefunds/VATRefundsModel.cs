@@ -5,9 +5,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel;
 using GAZT.Manager;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.VATRefunds
-{
+{ [Preserve(AllMembers = true)]
     public class VATRefundsModel
     {
         public VATRefundsModel()

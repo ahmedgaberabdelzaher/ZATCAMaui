@@ -1,6 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     //public class ForgotPasswordOTP
     //{
     //    public ForgotPasswordOTPResult forgotPasswordOTPResult { get; set; }

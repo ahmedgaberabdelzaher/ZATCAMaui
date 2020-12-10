@@ -1,9 +1,11 @@
 ﻿using GAZT.Manager;
 using System;
 using System.Globalization;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class MyBills
     {
         public string Abtypt { get; set; } //TaxType

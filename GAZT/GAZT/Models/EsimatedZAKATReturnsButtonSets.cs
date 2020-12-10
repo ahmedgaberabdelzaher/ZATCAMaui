@@ -1,8 +1,11 @@
 ﻿using EGAZT.Models;
 using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class EsimatedZAKATReturnsButtonSets
     {
         public EsimatedZAKATReturnsButtonSetsD d { get; set; }

@@ -1,28 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ContractRelease
 {
+    [Preserve(AllMembers = true)]
     public class ContractReleaseModel
     {
         public ContractReleaseModel()
         {
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class ContractReleaseFormResponse
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public CotractResponse d { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class ContractReleaseFormRequest
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public CotractRequest d { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata
         {
             public string id { get; set; }
@@ -30,23 +33,24 @@ namespace EGAZT.Models.ContractRelease
             public string type { get; set; }
         }
 
-       
-        public class AttDetSetResult
+    [Preserve(AllMembers = true)]
+    public class AttDetSetResult
         {
             public AttDetSet[] results { get; set; }
         }
+    [Preserve(AllMembers = true)]
     public class ZnotesSetResult
           {
                 public ZnotesSet[] results { get; set; }
             }
-
+    [Preserve(AllMembers = true)]
     public partial class AttDetSet {
 
 
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public partial class ZnotesSet
         {
             public Metadata __metadata { get; set; }
@@ -65,8 +69,8 @@ namespace EGAZT.Models.ContractRelease
             public string Tdformat { get; set; }
             public string Tdline { get; set; }
         }
-
-        public class CotractResponse
+    [Preserve(AllMembers = true)]
+    public class CotractResponse
          {
             public Metadata __metadata { get; set; }
             public string Euser { get; set; }
@@ -137,7 +141,7 @@ namespace EGAZT.Models.ContractRelease
             public AttDetSetResult AttDetSet { get; set; }
             public ZnotesSetResult znotesSet { get; set; }
         }
-
+    [Preserve(AllMembers = true)]
     public class CotractRequest
     {
         public Metadata __metadata { get; set; }
@@ -209,7 +213,7 @@ namespace EGAZT.Models.ContractRelease
         public AttDetSet[] AttDetSet { get; set; }
         public ZnotesSet[] znotesSet { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ContractReLeaseApplicationFormModel
     {
         public D d { get; set; }

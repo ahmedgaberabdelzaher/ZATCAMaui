@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
-{
+{[Preserve(AllMembers = true)]
+
     public class Result
     {
         public string Descript { get; set; }

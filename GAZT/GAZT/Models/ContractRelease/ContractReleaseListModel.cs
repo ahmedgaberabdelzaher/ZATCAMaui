@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ContractRelease
 {
+    [Preserve(AllMembers = true)]
     public class ContractReleaseListModel
     {
         public ContractReleaseListModel()
@@ -10,7 +12,7 @@ namespace EGAZT.Models.ContractRelease
         }
     }
 
-
+    [Preserve(AllMembers = true)]
     public class ContractReleaseSummaryModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 

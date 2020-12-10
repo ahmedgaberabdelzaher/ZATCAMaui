@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class __metadataForVATREgistrationOtherInfo
     {
 
@@ -13,7 +15,7 @@ namespace EGAZT.Models
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public class ResultsItemForButton
     {
         /// <summary>
@@ -33,7 +35,7 @@ namespace EGAZT.Models
         /// </summary>
         public string Button { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class VR_UI_BTNSet
     {
         /// <summary>
@@ -43,7 +45,7 @@ namespace EGAZT.Models
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public class ResultsItemForDOCSet
     {
         /// <summary>
@@ -83,14 +85,15 @@ namespace EGAZT.Models
         /// </summary>
         public string Txt50 { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ELGBL_DOCSet
     {
         /// <summary>
         /// 
         /// </summary>
         public List<ResultsItemForElgblDocSet> results { get; set; }
-    }  
+    }
+    [Preserve(AllMembers = true)]
     public class ELGBL_DOCSetforsubmit
     {
         /// <summary>
@@ -98,7 +101,7 @@ namespace EGAZT.Models
         /// </summary>
         public List<ResultsItemForDOCSetforsubmit> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class VATRegistrationWithOtherInformation
     {
         /// <summary>
@@ -178,7 +181,7 @@ namespace EGAZT.Models
         /// </summary>
         public ELGBL_DOCSet ELGBL_DOCSet { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class VATRegistrationOtherDetails
     {
         /// <summary>
@@ -188,7 +191,7 @@ namespace EGAZT.Models
     }
 
 
-
+    [Preserve(AllMembers = true)]
 
 
     public class DataToPassTofinancialDetailAttachmentPopup

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Interactivity;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class RestrictSpecialCharactorsBehaviour : Xamarin.Forms.Behavior<Entry>
     {
         protected override void OnAttachedTo(Entry entry)

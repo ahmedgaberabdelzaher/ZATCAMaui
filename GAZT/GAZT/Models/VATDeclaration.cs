@@ -3,26 +3,32 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     //public class Metadata
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
+   
     public class VATDeclarationsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Metadata2
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Note
     {
         public Metadata2 __metadata { get; set; }
@@ -49,16 +55,19 @@ namespace EGAZT.Models
         public string Strtime { get; set; } //time
         public string Strline { get; set; }   //note
     }
+    [Preserve(AllMembers = true)]
     public class NOTESSet
     {
         public List<Note> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Metadata3
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Result2
     {
         public Metadata3 __metadata { get; set; }
@@ -66,16 +75,19 @@ namespace EGAZT.Models
         public string Bkvid { get; set; } = string.Empty;
         public string Iban { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class IBANSet
     {
         public List<Result2> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Metadata4
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Result3
     {
         public Metadata4 __metadata { get; set; }
@@ -86,16 +98,19 @@ namespace EGAZT.Models
         public string Currency { get; set; }
         public string ReturnId { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CFSet
     {
         public List<Result3> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Metadata5
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Attachment
     {
         public Metadata5 __metadata { get; set; }
@@ -120,6 +135,7 @@ namespace EGAZT.Models
         public string Visedit { get; set; }
         public string Visdel { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class VATAttachment
     {
@@ -146,17 +162,20 @@ namespace EGAZT.Models
         public string Visdel { get; set; }
         public string DeleteImageSource { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class ATTACHSet
     {
         public List<Attachment> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Metadata6
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Result5
     {
         public Metadata6 __metadata { get; set; }
@@ -175,18 +194,22 @@ namespace EGAZT.Models
         public string Region { get; set; }
         public string SizUn { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ADRSet
     {
         public List<Result5> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATRMSGSet
     {
         public List<object> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class AttachmentRootOject
     {
         public Attachment d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeclarationD
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -424,12 +447,14 @@ namespace EGAZT.Models
         //        handler(this, new PropertyChangedEventArgs(propertyName));
         //}
     }
+    [Preserve(AllMembers = true)]
     public class VATAttachments
     {
         public string Id { get; set; }
         public string DocumentName { get; set; }
         public string Size { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CreditCarried
     {
         public string SerialNumber { get; set; }
@@ -437,10 +462,12 @@ namespace EGAZT.Models
         public string DocumentNumber { get; set; }
         public string Amount { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeclaration
     {
         public VATDeclarationD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATDeclarationTabbedPageName : INotifyPropertyChanged
     {
         Color textColor = Color.FromHex("#FFFFFF");
@@ -489,6 +516,7 @@ namespace EGAZT.Models
         }
         public event PropertyChangedEventHandler PropertyChanged;
     }
+    [Preserve(AllMembers = true)]
     public class ApplicableButton
     {
         public string Fbtyp { get; set; }
@@ -501,12 +529,13 @@ namespace EGAZT.Models
 
 
     #region New Added models for VAT 15%change
+    [Preserve(AllMembers = true)]
     public class VATPERITEMSet
     {
         public List<Result6> results { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public class Result6
     {
         public VATDeclarationsMetadata __metadata { get; set; }

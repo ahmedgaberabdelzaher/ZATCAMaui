@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class __metadata
     {
         public string id { get; set; }
@@ -13,7 +14,7 @@ namespace EGAZT.Models
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public class ResultsItem
     {
         public __metadata __metadata { get; set; }
@@ -27,7 +28,7 @@ namespace EGAZT.Models
         public string Region { get; set; }
         public string RegionDesc { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ADDRESSSet
     {
         public List<ResultsItem> results { get; set; }
@@ -39,7 +40,7 @@ namespace EGAZT.Models
     //}
 
 
-
+    [Preserve(AllMembers = true)]
     public class ResultsItemForContact
     {
         public __metadata __metadata { get; set; }
@@ -57,7 +58,7 @@ namespace EGAZT.Models
         public string SmtpAddr { get; set; }
         public string MobNumber { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class CONTACTDTSet
     {
         public List<ResultsItemForContact> results { get; set; }

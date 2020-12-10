@@ -2,9 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
-     public class ForgotCredentialType
+    [Preserve(AllMembers = true)]
+    public class ForgotCredentialType
     {
         public string id { get; set; }
         public string CredentialType { get; set; }

@@ -9,9 +9,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ZakatInstalmentModels
 {
+    [Preserve(AllMembers = true)]
     public class OldZakatInstalmentPlanListModel
     {
         public OldZakatInstalmentPlanListModel()

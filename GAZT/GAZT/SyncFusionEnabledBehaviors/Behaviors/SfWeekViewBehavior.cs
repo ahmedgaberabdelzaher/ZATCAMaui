@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZTeServicesApp.Behaviors
 {
+    [Preserve(AllMembers = true)]
     public class SfWeekViewBehavior : Behavior<SfCalendar>
     {
             private Syncfusion.SfCalendar.XForms.SfCalendar calendar;

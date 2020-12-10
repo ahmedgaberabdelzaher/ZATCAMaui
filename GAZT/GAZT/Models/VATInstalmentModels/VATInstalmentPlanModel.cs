@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.VATInstalationModels
-{
+{[Preserve(AllMembers = true)]
     public class VATInstalmentPlanModel
     {
         public VATInstalmentPlanModel()

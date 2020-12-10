@@ -2,9 +2,11 @@
 using System;
 using System.Globalization;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.NewDesignConverters
 {
+    [Preserve(AllMembers = true)]
     public class ZakatForm5TabEnumToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;
@@ -24,6 +26,7 @@ namespace EGAZT.NewDesignConverters
 
 
 
+    [Preserve(AllMembers = true)]
     public class FinancialSubTabEnumToVisibilityConverter : IValueConverter
     {
         private bool isVisible { get; set; } = false;

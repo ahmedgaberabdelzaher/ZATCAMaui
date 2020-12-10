@@ -1,8 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class CookieModel
     {
         public string CName { get; set; }

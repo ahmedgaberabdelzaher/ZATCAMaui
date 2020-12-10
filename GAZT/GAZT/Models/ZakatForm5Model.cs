@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public enum ZakatForm5TabEnum
     {
         BasicInformation = 1,
@@ -11,6 +13,7 @@ namespace EGAZT.Models
         ZakatEstimation = 3
     }
 
+    [Preserve(AllMembers = true)]
     public enum FinancialSubTabEnum
     {
         Cabs = 1,

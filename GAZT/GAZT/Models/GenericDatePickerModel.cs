@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class GenericDatePickerModel
     {
         public GenericDatePickerModel()

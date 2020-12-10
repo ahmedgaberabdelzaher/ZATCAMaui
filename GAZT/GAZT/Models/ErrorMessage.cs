@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Internals;
+
 namespace GAZT
 {
-    public class ErrorMessage
+	[Preserve(AllMembers = true)]
+	public class ErrorMessage
     {
 		public class Message
 		{

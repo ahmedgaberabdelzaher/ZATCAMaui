@@ -1,8 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
+
     public partial class AttachmentDocumentModel
     {
         [JsonProperty("d")]

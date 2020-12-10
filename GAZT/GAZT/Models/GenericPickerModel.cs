@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class GenericPickerModel
     {
         public GenericPickerModel()

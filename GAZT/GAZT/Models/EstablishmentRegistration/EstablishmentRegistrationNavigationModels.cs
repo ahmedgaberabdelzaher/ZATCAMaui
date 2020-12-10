@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using EGAZT.Models.EstablishmentRegistration;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public delegate void ActicityListDelegate(List<Nreg_ActivityItem> list);
+    [Preserve(AllMembers = true)]
     public class OutletNavigationModels
     {
         public EstablishmentRegistrationOutletTabsEnum openedTab { get; set; } = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
@@ -14,7 +17,7 @@ namespace EGAZT.Models
         public OutletItem selectedOutletItem { get; set; } = new OutletItem();
         public bool IsEditingMode { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ActivityNavigationModels
     {
         public EstablishmentOutletActivitiesTabsEnum openedTab { get; set; } = EstablishmentOutletActivitiesTabsEnum.ActivityList;

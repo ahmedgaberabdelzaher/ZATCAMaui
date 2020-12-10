@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.CustomControl
 {
+    [Preserve(AllMembers = true)]
     public class SfPickerBehavior : Behavior<Syncfusion.SfPicker.XForms.SfPicker>
     {
         protected override void OnAttachedTo(Syncfusion.SfPicker.XForms.SfPicker bindable)

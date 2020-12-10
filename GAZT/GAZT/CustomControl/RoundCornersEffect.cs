@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+
 namespace GAZT
-{ 
+{
+    [Preserve(AllMembers = true)]
     public class RoundCornersEffect : RoutingEffect
     {
         public RoundCornersEffect() : base("MyCompany.RoundCornersEffect")

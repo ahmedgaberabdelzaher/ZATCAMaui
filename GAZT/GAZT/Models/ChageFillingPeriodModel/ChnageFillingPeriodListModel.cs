@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ChageFillingPeriodModel
 {
+    [Preserve(AllMembers = true)]
     public class VATChangeFillingListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -150,7 +152,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class VATChangeFillingSummaryModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 

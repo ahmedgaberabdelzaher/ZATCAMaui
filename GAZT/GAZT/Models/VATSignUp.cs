@@ -1,18 +1,22 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
+
 namespace EGAZT
 {
+    [Preserve(AllMembers = true)]
     public class VATSignUp
     {
         public VATSignUpD d { get; set; }
     }
-
-     public class __metadata
+    [Preserve(AllMembers = true)]
+    public class __metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class VATSignUpD
     {
         public __metadata __metadata { get; set; }

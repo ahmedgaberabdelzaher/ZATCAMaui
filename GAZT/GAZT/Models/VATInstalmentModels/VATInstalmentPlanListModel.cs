@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.VATInstalmentModels
-{
+{[Preserve(AllMembers = true)]
     public class VATInstalmentPlanListModel
     {
         public VATInstalmentPlanListModel()
@@ -12,7 +13,7 @@ namespace EGAZT.Models.VATInstalmentModels
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public class RequestToVATInstallmentPlan
     {
         public class __metadata
@@ -131,6 +132,7 @@ namespace EGAZT.Models.VATInstalmentModels
 
     }
 
+    [Preserve(AllMembers = true)]
     public class RequestToVATInstallmentPlanDetails
     {
         public D d { get; set; }

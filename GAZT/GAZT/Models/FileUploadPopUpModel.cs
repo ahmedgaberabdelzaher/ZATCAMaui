@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ZakatInstalationModels
 {
-    
-        public class AttachmentModel
+    [Preserve(AllMembers = true)]
+
+    public class AttachmentModel
         {
             public Metadata5 __metadata { get; set; }
             public string RetGuid { get; set; }

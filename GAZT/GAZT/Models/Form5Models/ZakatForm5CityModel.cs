@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.Form5Models
 {
+    [Preserve(AllMembers = true)]
     public class ZakatForm5CityModel
     {
 

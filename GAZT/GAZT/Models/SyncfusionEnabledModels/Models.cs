@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text;
+using Xamarin.Forms.Internals;
+
 namespace GAZT.Models
 {
+    [Preserve(AllMembers = true)]
     public class ReturnInfo
     {
         public string ReturnTypeName { get; set; }
