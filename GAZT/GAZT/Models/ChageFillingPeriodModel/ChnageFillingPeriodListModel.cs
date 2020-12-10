@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using Xamarin.Forms.Internals;
 
@@ -9,130 +10,215 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     public class VATChangeFillingListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+
         public D d { get; set; }
         public class Metadata
         {
+            [DataMember]
             public string id { get; set; }
+            [DataMember]
             public string uri { get; set; }
+            [DataMember]
             public string type { get; set; }
         }
 
         public class Metadata2
         {
+            [DataMember]
             public string id { get; set; }
+            [DataMember]
             public string uri { get; set; }
+            [DataMember]
             public string type { get; set; }
         }
 
         public class Result
         {
+            [DataMember]
             public Metadata2 __metadata { get; set; }
+            [DataMember]
             public string FbtText { get; set; }
+            [DataMember]
             public string Fbtyp { get; set; }
+            [DataMember]
             public string UserErrFg { get; set; }
+            [DataMember]
             public string SysFlg { get; set; }
+            [DataMember]
             public string Ldate { get; set; }
         }
 
         public class REQTYPSet
         {
+            [DataMember]
             public List<Result> results { get; set; }
         }
 
         public class Metadata3
         {
+            [DataMember]
             public string id { get; set; }
+            [DataMember]
             public string uri { get; set; }
+            [DataMember]
             public string type { get; set; }
         }
 
         public class Result2
         {
+            [DataMember]
             public Metadata3 __metadata { get; set; }
+            [DataMember]
             public string Mandt { get; set; }
+            [DataMember]
             public string Stsma { get; set; }
+            [DataMember]
             public string Estat { get; set; }
+            [DataMember]
             public string Spras { get; set; }
+            [DataMember]
             public string Txt04 { get; set; }
+            [DataMember]
             public string Txt30 { get; set; }
+            [DataMember]
             public bool Ltext { get; set; }
         }
 
         public class STATUSSet
         {
+            [DataMember]
             public List<Result2> results { get; set; }
         }
 
         public class Metadata4
         {
+            [DataMember]
             public string id { get; set; }
+            [DataMember]
             public string uri { get; set; }
+            [DataMember]
             public string type { get; set; }
         }
 
         public class ChangeFillingFrequency
         {
+            [DataMember]
             public Metadata4 __metadata { get; set; }
+            [DataMember]
             public string Selector { get; set; }
+            [DataMember]
             public string Fbnum { get; set; }
+            [DataMember]
             public string Fbtyp { get; set; }
+            [DataMember]
             public string Gpart { get; set; }
+            [DataMember]
             public string NameLast { get; set; }
+            [DataMember]
             public string NameFirst { get; set; }
+            [DataMember]
             public string NameOrg1 { get; set; }
+            [DataMember]
             public string NameOrg2 { get; set; }
+            [DataMember]
             public string FullNm { get; set; }
+            [DataMember]
             public string GpartFullNm { get; set; }
+            [DataMember]
             public string WfSub { get; set; }
+            [DataMember]
             public string Fbust { get; set; }
+            [DataMember]
             public string FbustTxt { get; set; }
+            [DataMember]
             public string Receipt { get; set; }
+            [DataMember]
             public string AssignUsr { get; set; }
+            [DataMember]
             public string LoginUsr { get; set; }
+            [DataMember]
             public string AssignMe { get; set; }
+            [DataMember]
             public string NewUser { get; set; }
+            [DataMember]
             public string TileInd { get; set; }
+            [DataMember]
             public string FbtText { get; set; }
+            [DataMember]
             public string TransactionType { get; set; }
+            [DataMember]
             public string WiId { get; set; }
+            [DataMember]
             public string WiPrio { get; set; }
+            [DataMember]
             public string WiPrioDesc { get; set; }
         }
 
         public class ASSLISTSet
         {
+            [DataMember]
             public List<ChangeFillingFrequency> results { get; set; }
         }
 
+        [Serializable]
+        [DataContract]
         public class D
         {
+            [DataMember]
             public Metadata __metadata { get; set; }
+            [DataMember]
             public string UserTin { get; set; }
+            [DataMember]
             public string AudTin { get; set; }
+            [DataMember]
             public object Begda { get; set; }
+            [DataMember]
             public string TaxType { get; set; }
+            [DataMember]
             public object Endda { get; set; }
+            [DataMember]
             public string Euser { get; set; }
+            [DataMember]
             public string Fbnum { get; set; }
+            [DataMember]
             public string Fbsta { get; set; }
+            [DataMember]
             public string Fbtyp { get; set; }
+            [DataMember]
             public string Fbust { get; set; }
+            [DataMember]
             public string Formproc { get; set; }
+            [DataMember]
             public string Gpart { get; set; }
+            [DataMember]
             public string Lang { get; set; }
+            [DataMember]
             public string Mandt { get; set; }
+            [DataMember]
             public string Officer { get; set; }
+            [DataMember]
             public string Operation { get; set; }
+            [DataMember]
             public string Persl { get; set; }
+            [DataMember]
             public string PortalUsr { get; set; }
+            [DataMember]
             public string ReturnId { get; set; }
+            [DataMember]
             public string Status { get; set; }
+            [DataMember]
             public string StepNumber { get; set; }
+            [DataMember]
             public string TransactionType { get; set; }
+            [DataMember]
             public string TxnTp { get; set; }
+            [DataMember]
             public string UserTyp { get; set; }
+            [DataMember]
             public REQTYPSet REQTYPSet { get; set; }
+            [DataMember]
             public STATUSSet STATUSSet { get; set; }
+            [DataMember]
             public ASSLISTSet ASSLISTSet { get; set; }
         }
 
@@ -140,11 +226,16 @@ namespace EGAZT.Models.ChageFillingPeriodModel
 
         public class VATChangeFillingListData
         {
+            [DataMember]
             public string Fbnum { get; set; }
+            [DataMember]
             public string Gpart { get; set; }
+            [DataMember]
             //Status code for Fbust and it used for sumamry purpose
             public string Fbust { get; set; }
+            [DataMember]
             public string FbustTxt { get; set; }
+            [DataMember]
 
             //FbtText means Request to change filing frequency
             public string FbtText { get; set; }
