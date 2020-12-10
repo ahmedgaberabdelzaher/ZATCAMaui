@@ -20,11 +20,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Entry = Xamarin.Forms.Entry;
 namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATReturnsPageViewEX : ContentPage
     {

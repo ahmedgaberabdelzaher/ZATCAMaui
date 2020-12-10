@@ -33,7 +33,7 @@
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
-    <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit</MtouchExtraArgs>
+    <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

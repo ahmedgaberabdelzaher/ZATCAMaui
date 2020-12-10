@@ -7,10 +7,12 @@ using System.Threading;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber
 {
+    [Preserve(AllMembers = true)]
     public partial class InternationalMobileNumberCodePages : ContentPage
     {
 

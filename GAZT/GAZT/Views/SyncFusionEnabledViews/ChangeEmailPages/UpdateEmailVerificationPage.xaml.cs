@@ -7,11 +7,12 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages
 {
-
+    [Preserve(AllMembers = true)]
     public partial class UpdateEmailVerificationPage : ContentPage
     {
         #region Variable

@@ -4,9 +4,11 @@ using System.Globalization;
 using System.Threading;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
 {
+    [Preserve(AllMembers = true)]
     public partial class UnlockAccountSuccessPageView : ContentPage
     {
         UnlockAccountSuccessPageViewModel viewModel;

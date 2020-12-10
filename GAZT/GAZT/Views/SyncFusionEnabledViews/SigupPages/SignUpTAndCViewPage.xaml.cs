@@ -3,10 +3,12 @@ using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using System;
 using System.IO;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC
 {
+    [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpTAndCViewPage : ContentPage
     {
