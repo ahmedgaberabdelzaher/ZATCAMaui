@@ -22,6 +22,7 @@ namespace GAZT.Models
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
+    [Preserve(AllMembers = true)]
     public class EsimatedZAKATReturnsButtonSetsUIButton
     {
         public Metadata2 __metadata { get; set; }
@@ -31,10 +32,12 @@ namespace GAZT.Models
         public string TransactionType { get; set; }
         public string UserTyp { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class UIBtnSet
     {
         public List<EsimatedZAKATReturnsButtonSetsUIButton> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EsimatedZAKATReturnsButtonSetsD
     {
         public Metadata __metadata { get; set; }

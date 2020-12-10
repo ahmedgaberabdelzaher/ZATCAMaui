@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {

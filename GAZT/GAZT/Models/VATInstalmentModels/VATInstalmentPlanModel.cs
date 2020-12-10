@@ -14,7 +14,7 @@ namespace EGAZT.Models.VATInstalationModels
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class InstalmentAgreementFrequencyModel
     {
         public InstalmentAgreementFrequencyModel()
@@ -25,7 +25,7 @@ namespace EGAZT.Models.VATInstalationModels
         public string FrequencyOptions { get; set; }
         public bool IsSelected { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class InstalmentAgreementAttachmentsModel
     {
         public InstalmentAgreementAttachmentsModel()
@@ -38,7 +38,7 @@ namespace EGAZT.Models.VATInstalationModels
 
         public bool IsAttachmentAttached { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ZakatSelectBillModel
     {
         public ZakatSelectBillModel()
@@ -53,7 +53,7 @@ namespace EGAZT.Models.VATInstalationModels
         public bool isSelected { get; set; }
         public string billType { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ZakatSummaryViewModel
     {
         public ZakatSummaryViewModel()
@@ -69,7 +69,7 @@ namespace EGAZT.Models.VATInstalationModels
         public string billType { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class InstalmentAgreementInstalmentPlansModel
     {
         public InstalmentAgreementInstalmentPlansModel()
@@ -84,19 +84,19 @@ namespace EGAZT.Models.VATInstalationModels
 
     //-----API Object will starts from herer-------
 
-
+    [Preserve(AllMembers = true)]
     public partial class Metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatInstalmentPlanResponse
     {
         public VATInstalment d { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VATInstalment
     {
         public Metadata __metadata { get; set; }
@@ -144,19 +144,19 @@ namespace EGAZT.Models.VATInstalationModels
         public VtiaSet VTIASet { get; set; }
         public AttachmentSet AttachmentSet { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class AttachmentSet
     {
         public List<Attachment> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
-   
 
     public partial class NotesSet
     {
         public List<NotesSetResult> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class NotesSetResult
     {
         public Metadata __metadata { get; set; }
@@ -183,7 +183,7 @@ namespace EGAZT.Models.VATInstalationModels
         public string Strtime { get; set; }
         public string Strline { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class NotesSetPost
     {
         public Metadata __metadata { get; set; }
@@ -203,17 +203,17 @@ namespace EGAZT.Models.VATInstalationModels
         public string Tdformat { get; set; }
         public string Tdline { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VtadSet
     {
         public object[] results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VtiaSet
     {
         public VATResults4[] results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VATResults4
     {
         public Metadata __metadata { get; set; }
@@ -232,12 +232,12 @@ namespace EGAZT.Models.VATInstalationModels
         public string Taxperioddsc { get; set; }
         public string ReturnId { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VtisSet
     {
         public VATResults3[] results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VATResults3
     {
         public Metadata __metadata { get; set; }
@@ -255,13 +255,13 @@ namespace EGAZT.Models.VATInstalationModels
         public string Waers { get; set; }
         public string ReturnId { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatInstalmentPlanRequest
     {
         public VATInstalmentRequest d { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public partial class VATInstalmentRequest
     {
         public Metadata __metadata { get; set; }

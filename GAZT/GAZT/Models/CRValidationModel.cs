@@ -9,12 +9,14 @@ namespace GAZT.Models
     class CRValidationModel
     {
     }
+    [Preserve(AllMembers = true)]
     public class CRValidationModelMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CRValidationModelD
     {
         public CRValidationModelMetadata __metadata { get; set; }
@@ -37,6 +39,7 @@ namespace GAZT.Models
         public string Addresstypey { get; set; }
         public string AddressPhysicaly { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CRValidationModelRootObject
     {
         public CRValidationModelD d { get; set; }

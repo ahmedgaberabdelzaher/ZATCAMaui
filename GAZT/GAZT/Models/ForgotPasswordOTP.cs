@@ -35,6 +35,7 @@ namespace EGAZT.Models
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class D
     {
         // check metadata while calling for sentOTP
@@ -81,6 +82,7 @@ namespace EGAZT.Models
     //    public string RdBt { get; set; }
     //    public string Hyperlink { get; set; }
     //}
+    [Preserve(AllMembers = true)]
     public class ForgotPasswordOTP
     {
         public D d { get; set; }

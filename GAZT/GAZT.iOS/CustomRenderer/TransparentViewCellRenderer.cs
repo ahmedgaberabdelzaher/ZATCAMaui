@@ -1,13 +1,16 @@
 ﻿using System;
+
 using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(ViewCell), typeof(TransparentViewCellRenderer))]
 
 namespace GAZT.iOS.CustomRenderer
 {
+    [Preserve(AllMembers = true)]
     public class TransparentViewCellRenderer : ViewCellRenderer
     {
 

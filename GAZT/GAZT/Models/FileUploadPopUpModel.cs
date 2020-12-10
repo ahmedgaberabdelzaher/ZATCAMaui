@@ -30,13 +30,15 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string Visdel { get; set; }
             
         }
-        
-        public class Attachments
+    [Preserve(AllMembers = true)]
+
+    public class Attachments
         {
             public List <Attachment> results { get; set; }
         }
-        
-        public enum WhichAttachment
+    [Preserve(AllMembers = true)]
+
+    public enum WhichAttachment
         {
            VATInstalment = 0,
             ContractReleaseCopy = 2,

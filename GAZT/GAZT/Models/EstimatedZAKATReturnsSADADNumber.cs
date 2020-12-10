@@ -10,22 +10,27 @@ namespace GAZT.Models
     {
         public EstimatedZAKATReturnsSADADNumberD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberDeferred
     {
         public string uri { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberDeferredReasonSet
     {
         public EstimatedZAKATReturnsSADADNumberDeferred __deferred { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberDeferred2
     {
         public string uri { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberAttachSet
     {
         public EstimatedZAKATReturnsSADADNumberDeferred2 __deferred { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberResult
     {
         public Metadata2 __metadata { get; set; }
@@ -41,18 +46,22 @@ namespace GAZT.Models
         public bool AmendInvoiceVisibility { get; set; } = false;
         public bool InvoiceVisibility { get; set; } = false;
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberInvoiceSet
     {
         public List<EstimatedZAKATReturnsSADADNumberResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class Deferred3
     {
         public string uri { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberThresholdSet
     {
         public Deferred3 __deferred { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class EstimatedZAKATReturnsSADADNumberD
     {
         public Metadata __metadata { get; set; }
@@ -133,6 +142,7 @@ namespace GAZT.Models
         public EstimatedZAKATReturnsSADADNumberInvoiceSet InvoiceSet { get; set; }
         public EstimatedZAKATReturnsSADADNumberThresholdSet ThresholdSet { get; set; }
     }
+  
     //public class RootObject
     //{
     //    public EstimatedZAKATReturnsSADADNumberD d { get; set; }

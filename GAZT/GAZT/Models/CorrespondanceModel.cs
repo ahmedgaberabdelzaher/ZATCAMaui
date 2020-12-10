@@ -29,6 +29,7 @@ namespace GAZT.Models
         public DateTime Cdate { get; set; }
         public string TaxtpFg { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CorrespondenceCollection : ObservableCollection<CorrespondanceModel>
     {
         public string MonthAndYear { get; set; }

@@ -2,6 +2,7 @@
 using GAZT;
 using GAZT.iOS.CustomRenderer;
 using Foundation;
+using Xamarin.Forms.Internals;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -10,6 +11,7 @@ using EGAZT;
 [assembly: ExportRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class CustomLabelRenderer : LabelRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)

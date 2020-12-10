@@ -121,7 +121,7 @@ namespace EGAZT.Models.TPProfile
             return TPProfileAPIRequestData;
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class TPProfileAPIRequestDataModel
     {
         public string NewMobile { get; set; } // Mobile

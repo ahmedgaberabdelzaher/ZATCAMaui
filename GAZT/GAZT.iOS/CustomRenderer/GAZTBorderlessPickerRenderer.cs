@@ -14,6 +14,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(GAZTBorderlessPicker), typeof(GAZTBorderlessPickerRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class GAZTBorderlessPickerRenderer: PickerRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Picker> e)

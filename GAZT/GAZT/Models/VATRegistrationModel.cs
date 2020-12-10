@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using GalaSoft.MvvmLight;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models
 {

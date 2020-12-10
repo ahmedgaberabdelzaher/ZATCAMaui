@@ -9,12 +9,14 @@ namespace GAZT.Models
     class IDTypeModel
     {
     }
+    [Preserve(AllMembers = true)]
     public class IDTypeModelMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class IDTypeModelD
     {
         public IDTypeModelMetadata __metadata { get; set; }
@@ -61,6 +63,7 @@ namespace GAZT.Models
         public string BpkindDesc { get; set; }
         public string RegionDesc { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class IDTypeModelRootObject
     {
         public IDTypeModelD d { get; set; }

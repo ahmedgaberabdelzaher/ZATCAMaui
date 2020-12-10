@@ -31,6 +31,7 @@ namespace GAZT.Models
             }
         }
     }
+    [Preserve(AllMembers = true)]
     public class BillInfo
     {
         private BillType _billTypeProperty;
@@ -52,6 +53,7 @@ namespace GAZT.Models
         public string BackgroundGradientStart { get; set; }
         public string BackgroundGradientEnd { get; set; }     
     }
+    [Preserve(AllMembers = true)]
     public class eServiceInfo
     {
         public string eServiceName { get; set; }
@@ -60,6 +62,7 @@ namespace GAZT.Models
         public string iConImagePath { get; set; }
         public string OnClickEvents { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OverduePaymentAndUnSubmittedReturn
     {
         public DateTime? Abrzu { get; set; }
@@ -247,6 +250,7 @@ namespace GAZT.Models
             }
         }
     }
+    [Preserve(AllMembers = true)]
     public enum ReturnType
     {
         RtnTot = 0,
@@ -256,12 +260,14 @@ namespace GAZT.Models
         PprtnTot = 4,
         DueIcr = 5
     }
+    [Preserve(AllMembers = true)]
     public enum BillType
     {
         PbillsTot = 0,
         UpbillsTot = 1,
         PrbillsTot = 2,
     }
+    [Preserve(AllMembers = true)]
     public class FAQ
     {
         #region Properties

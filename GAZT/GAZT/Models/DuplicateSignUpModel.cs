@@ -9,12 +9,14 @@ namespace GAZT.Models
     class DuplicateSignUpModel
     {
     }
+    [Preserve(AllMembers = true)]
     public class DuplicateSignUpModelMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class DuplicateSignUpModelD
     {
         public DuplicateSignUpModelMetadata __metadata { get; set; }
@@ -28,6 +30,7 @@ namespace GAZT.Models
         public string Country { get; set; }
         public string City { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class DuplicateSignUpModelRootObject
     {
         public DuplicateSignUpModelD d { get; set; }

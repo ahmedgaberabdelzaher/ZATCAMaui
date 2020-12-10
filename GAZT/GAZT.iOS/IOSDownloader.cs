@@ -16,6 +16,7 @@ using Xamarin.Forms;
 
 namespace GAZT.iOS
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class IOSDownloader : IPrintService
     {
         const double LONG_DELAY = 3.5;

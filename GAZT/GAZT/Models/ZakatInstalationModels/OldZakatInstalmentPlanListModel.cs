@@ -20,7 +20,7 @@ namespace EGAZT.Models.ZakatInstalmentModels
         {
         }
     }
-
+    [Preserve(AllMembers = true)]
 
 
     public class OldRequestToZakatInstallmentPlan
@@ -140,7 +140,7 @@ namespace EGAZT.Models.ZakatInstalmentModels
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class OldRequestToVATInstallmentPlanDetails
     {
         public D d { get; set; }
@@ -764,7 +764,7 @@ namespace EGAZT.Models.ZakatInstalmentModels
         #endregion
 
     }
-
+    [Preserve(AllMembers = true)]
     public class OldEvtNotif12SetResult
     {
         public Metadata2 __metadata { get; set; }
@@ -779,10 +779,12 @@ namespace EGAZT.Models.ZakatInstalmentModels
         public string IncoText { get; set; }
         public string RetFbn { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OldEvtNotif12Set
     {
         public List<OldEvtNotif12SetResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OldZakatRevokeList
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -926,7 +928,7 @@ namespace EGAZT.Models.ZakatInstalmentModels
         public D d { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
 
     public class OldZakatRevokeValidateModel
     {
@@ -949,7 +951,7 @@ namespace EGAZT.Models.ZakatInstalmentModels
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class OldZakatRevokeSendSMSModel
     {
         public D d { get; set; }
@@ -980,7 +982,7 @@ namespace EGAZT.Models.ZakatInstalmentModels
 
 
     }
-
+    [Preserve(AllMembers = true)]
     public class OldZakatInstalmentValidateNewRequestModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 

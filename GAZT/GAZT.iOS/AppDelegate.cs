@@ -25,6 +25,7 @@ using Syncfusion.XForms.iOS.Buttons;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using GAZT.iOS.CustomRenderer;
 
 namespace GAZT.iOS
 {
@@ -64,7 +65,7 @@ namespace GAZT.iOS
             new SfBusyIndicatorRenderer();
             SfCardLayoutRenderer.Init();
             new Syncfusion.SfNavigationDrawer.XForms.iOS.SfNavigationDrawerRenderer();
-
+       
             new SfRotator();
             SfListViewRenderer.Init();
             SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.

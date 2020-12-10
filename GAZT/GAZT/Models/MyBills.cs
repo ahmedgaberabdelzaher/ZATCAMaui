@@ -1,4 +1,4 @@
-﻿using GAZT.Manager;
+﻿    using GAZT.Manager;
 using System;
 using System.Globalization;
 using Xamarin.Forms.Internals;

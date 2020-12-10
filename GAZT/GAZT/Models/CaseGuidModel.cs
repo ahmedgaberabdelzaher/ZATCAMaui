@@ -9,12 +9,14 @@ namespace GAZT.Models
     class CaseGuidModel
     {
     }
+    [Preserve(AllMembers = true)]
     public class CaseGuidModelMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CaseGuidModelResult
     {
         public CaseGuidModelMetadata __metadata { get; set; }
@@ -56,10 +58,12 @@ namespace GAZT.Models
         public string AAgree { get; set; }
         public string AAgreeTm { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CaseGuidModelD
     {
         public List<CaseGuidModelResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class CaseGuidModelRootObject
     {
         public CaseGuidModelD d { get; set; }

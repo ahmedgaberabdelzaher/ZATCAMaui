@@ -22,7 +22,7 @@ namespace GAZT.Models
 
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class CookieHeaderModel
     {
         [JsonProperty("sap-metadata-last-modified")]

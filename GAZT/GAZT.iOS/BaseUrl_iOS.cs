@@ -11,6 +11,7 @@ using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 [assembly: Dependency(typeof(BaseUrl_iOS))]
 namespace GAZT.iOS
 {
+	[Xamarin.Forms.Internals.Preserve(AllMembers = true)]
 	public class BaseUrl_iOS : IBaseUrl
 	{
 		public string Get()

@@ -8,7 +8,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(Page), typeof(KeyboardRender))]
 namespace GAZT.iOS.CustomRenderer
 {
-    [Preserve(AllMembers = true)]
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class KeyboardRender : PageRenderer
     {
         private static bool _isEnabled;

@@ -12,14 +12,14 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class OldInstalmentAgreementFrequencyModel
     {
 
         public string FrequencyOptions { get; set; }
         public bool IsSelected { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class OldInstalmentAgreementAttachmentsModel
     {
 
@@ -29,6 +29,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
         public bool IsAttachmentAttached { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class OldZakatListModel
     {
 
@@ -48,6 +49,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
 
     }
+    [Preserve(AllMembers = true)]
     public class OldZakatSelectBillModel
     {
 
@@ -59,6 +61,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string billType { get; set; }
         public string frequency { get; set; }
     }
+    [Preserve(AllMembers = true)]
 
     public class OldZakatSummaryViewModel
     {
@@ -71,6 +74,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string billType { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
 
     public class OldInstalmentAgreementInstalmentPlansModel
     {
@@ -80,13 +84,14 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string TotalAmountPaid { get; set; }
         public string TotalAmountRemaining { get; set; }
     }
+   
 
     //-----API Object will starts from herer-------
 
 
 
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
+    [Preserve(AllMembers = true)]
 
     public partial class ZakatNotesSet
     {
@@ -108,14 +113,14 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Tdline { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
 
     public partial class OldZakatInstalmentPlanResponse
     {
         public ZakatInstalment d { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
     public partial class Metadata
     {
         public string id { get; set; }
@@ -123,7 +128,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string uri { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
 
     public partial class OldZakatInstalment
     {
@@ -179,28 +184,28 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Zdays { get; set; }
     }
 
-
+    [Preserve(AllMembers = true)]
 
     public partial class OldAttachSet
     {
         public Attachment[] results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldFnDtlSet
     {
         public FnDtlSetObject[] results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldInsPlanOffSet
     {
         public object[] result { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldInsPlanSet
     {
         public Results4[] results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldResults4
     {
         public Metadata __metadata { get; set; }
@@ -222,12 +227,12 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Waers { get; set; }
         public string ReturnId { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldInvDtlsSet
     {
         public Results5[] results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldResults5
     {
         public Metadata Metadata { get; set; }
@@ -256,7 +261,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string TotAmt { get; set; }
         public string Waers { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
 
 
     public partial class OldRetmsgSet
@@ -264,10 +269,10 @@ namespace EGAZT.Models.ZakatInstalationModels
         public object[] results { get; set; }
     }
 
+    [Preserve(AllMembers = true)]
 
-   
 
-    
+
 
     public partial class OldZakatInstalmentPlanRequest
     {
@@ -442,7 +447,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public class OldZAKATRequestPlanModel
     {
         public D d { get; set; }
@@ -618,17 +623,17 @@ namespace EGAZT.Models.ZakatInstalationModels
             public EvtNotif1Set EvtNotif1Set { get; set; }
         }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldZakatInvoiceList
     {
         public ZakatInvoices d { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldZakatInvoices
     {
         public List<OldZakatInvoicesResult> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldZakatInvoicesResult
     {
         public Metadata __metadata { get; set; }
@@ -659,7 +664,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     }
 
 
-
+    [Preserve(AllMembers = true)]
     public class OldZakatInstalmentPlanRequestListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -849,13 +854,13 @@ namespace EGAZT.Models.ZakatInstalationModels
 
     }
 
-
+    [Preserve(AllMembers = true)]
 
     public partial class OldZakatRequestDisplayModel
     {
         public OldD d { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldD
     {
         public Metadata __metadata { get; set; }
@@ -1029,12 +1034,12 @@ namespace EGAZT.Models.ZakatInstalationModels
         public OldZProposedinsSet z_proposedinsSet { get; set; }
         public OldZInvoiceUi5Set Z_INVOICE_UI5Set { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldAttDetSet
     {
         public List<Attachment> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
 
     public class AttResult
     {
@@ -1060,24 +1065,24 @@ namespace EGAZT.Models.ZakatInstalationModels
     }
 
 
+    [Preserve(AllMembers = true)]
 
-   
 
     public partial class OldOffNotesSet
     {
         public List<ZakatNotesSet> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldZInvoiceSet
     {
         public List<object> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldZInvoiceUi5Set
     {
         public List<OldResults3> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldResults3
     {
         public Metadata __metadata { get; set; }
@@ -1091,12 +1096,12 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string AIvTb { get; set; }
         public string AIvAbtyp { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class OldZProposedinsSet
     {
         public List<object> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class OldZakatSummaryInputModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
@@ -1168,7 +1173,7 @@ namespace EGAZT.Models.ZakatInstalationModels
 
 
     }
-
+    [Preserve(AllMembers = true)]
 
     public class OldZakatInstalmentInvListModel
     {
@@ -1220,7 +1225,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class OldSummaryDisplayModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 

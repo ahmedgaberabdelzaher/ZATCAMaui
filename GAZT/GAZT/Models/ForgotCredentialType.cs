@@ -12,12 +12,14 @@ namespace GAZT.Models
         public string id { get; set; }
         public string CredentialType { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ChangePasswordForEmail
     {
         public string OldEmail { get; set; }
         public string NewEmail { get; set; }
         public ComingToOTPVerificationScreenFrom navigateTo { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATParameterType
     {
         public string id { get; set; }

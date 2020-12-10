@@ -5,10 +5,12 @@ using GAZT;
 using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Preserve(AllMembers = true)]
     public class CustomEntryRenderer : EntryRenderer
     {
         double fontSize;

@@ -9,6 +9,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(MyEntry), typeof(MyEntryRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
+    [Xamarin.Forms.Internals.Preserve(AllMembers = true)]
     public class MyEntryRenderer : EntryRenderer
     {
         double fontSize;

@@ -13,12 +13,14 @@ namespace GAZT.Models
     public class MyReturnsModel
     {
     }
+    [Preserve(AllMembers = true)]
     public class MyReturnsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class MyReturnsResult
     {
         public Metadata __metadata { get; set; }
@@ -331,19 +333,23 @@ namespace GAZT.Models
             }
         }
     }
+    [Preserve(AllMembers = true)]
     public class MyReturnsD
     {
         public List<MyReturnsResult> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class MyReturnsRootObject
     {
         public MyReturnsD d { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ReturnTypes
     {
         public string TaxType { get; set; }
         public string Id { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ChipModel
     {
         public string TemplateType { get; set; }

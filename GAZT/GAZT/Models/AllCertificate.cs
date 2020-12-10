@@ -15,18 +15,22 @@ namespace GAZT.Models
         public string UserTin { get; set; }
         public string Pdfurl { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ZakatSet
     {
         public List<Result> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class VATSet
     {
         public List<Result> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class ExciseSet
     {
         public List<Result> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class AllCertificate
     {
         public ZakatSet ZakatSet { get; set; }
