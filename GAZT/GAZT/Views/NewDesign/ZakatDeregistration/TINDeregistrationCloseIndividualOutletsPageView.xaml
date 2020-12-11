@@ -25,6 +25,7 @@
                 <Setter Property="FontSize" Value="12" />
             </Style>
             <converters:TINDeregistrationAPermitDregRsnTbValueConverter x:Key="dregRsnTbValueConverter" />
+            <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -599,8 +600,8 @@
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" HorizontalOptions="FillAndExpand"
 							                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							                                    OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                                                <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                                        VerticalTextAlignment="Start" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged" Text="{Binding APermitIdNoTb, Mode=TwoWay}"
+                                                                <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                        VerticalTextAlignment="Start" Unfocused="PermitIDNo_Unfocused" Text="{Binding APermitIdNoTb, Mode=TwoWay}"
                                                                                         TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                                     <Entry.Behaviors>
                                                                                 <custom1:OnlyNumericValuesBehaviour/>
@@ -610,14 +611,11 @@
                             </StackLayout>
                                                         </StackLayout>
                                                          <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                                                             <StackLayout  IsVisible="{Binding DobText.IsVisible}">
                                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                                             Style="{StaticResource CaptionLabelGrey}" />
-                                                          </StackLayout>
-                                                          <StackLayout >
                                                             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
-                                                                <StackLayout IsEnabled="{Binding DobText.IsEditable}" Orientation="Horizontal"  Padding="5,15,5,15">
+                                                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
                                                                     <Label Text="{Binding APermitDeregDisplayDobDate, Mode=TwoWay}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
@@ -636,13 +634,124 @@
 
                                                             </StackLayout>
                                                             </border:SfBorder >
+                                                         </StackLayout>
+                                                         <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding APermitIsCompanyId,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"><!-- for non compnay-->
+                                                             <StackLayout>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" HorizontalOptions="StartAndExpand"
+                                                                                Style="{StaticResource CaptionLabelGrey}" />
+                                                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm3Tb, Mode=TwoWay}" IsEnabled="{ Binding APermitEditable}" 
+                                                                                            Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
+                                                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                        <control:BorderlessEntry.Behaviors>
+                                                                            <custom1:AlphabetandArabicCharacters/>
+                                                                        </control:BorderlessEntry.Behaviors>
+                                                                    </control:BorderlessEntry>
+                                                                </inputLayout:SfTextInputLayout>
+                                                            </StackLayout>
+
+                                                            <StackLayout>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" HorizontalOptions="StartAndExpand"
+                                                                                Style="{StaticResource CaptionLabelGrey}" />
+                                                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm4Tb, Mode=TwoWay}"  IsEnabled="{ Binding APermitEditable}"
+                                                                                            Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
+                                                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                        <control:BorderlessEntry.Behaviors>
+                                                                            <custom1:AlphabetandArabicCharacters/>
+                                                                        </control:BorderlessEntry.Behaviors>
+                                                                    </control:BorderlessEntry>
+                                                                </inputLayout:SfTextInputLayout>
+                                                            </StackLayout>
+
+                                                            <StackLayout>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" HorizontalOptions="StartAndExpand"
+                                                                                Style="{StaticResource CaptionLabelGrey}" />
+                                                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm5Tb}"  IsEnabled="{ Binding APermitEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
+                                                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                        <control:BorderlessEntry.Behaviors>
+                                                                            <custom1:AlphabetandArabicCharacters/>
+                                                                        </control:BorderlessEntry.Behaviors>
+                                                                    </control:BorderlessEntry>
+                                                                </inputLayout:SfTextInputLayout>
+                                                            </StackLayout>
+
+                                                            <StackLayout>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" HorizontalOptions="StartAndExpand"
+                                                                                Style="{StaticResource CaptionLabelGrey}" />
+                                                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm6Tb}" IsEnabled="{ Binding APermitEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
+                                                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                        <control:BorderlessEntry.Behaviors>
+                                                                            <custom1:AlphabetandArabicCharacters/>
+                                                                        </control:BorderlessEntry.Behaviors>
+                                                                    </control:BorderlessEntry>
+                                                                </inputLayout:SfTextInputLayout>
+                                                            </StackLayout>
+
+
+                                                            <StackLayout>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
+                                                                                Style="{StaticResource CaptionLabelGrey}" />
+                                                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm7Tb}" IsEnabled="{ Binding APermitEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
+                                                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                        <control:BorderlessEntry.Behaviors>
+                                                                            <custom1:AlphabetandArabicCharacters/>
+                                                                        </control:BorderlessEntry.Behaviors>
+                                                                    </control:BorderlessEntry>
+                                                                </inputLayout:SfTextInputLayout>
                                                             </StackLayout>
                                                          </StackLayout>
-                                                    <StackLayout>
-                            
-                           
-                                                        </StackLayout>
+                                                         <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding APermitIsCompanyId}"><!-- for compnay-->
+                                                             <StackLayout>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" HorizontalOptions="StartAndExpand"
+                                                                                Style="{StaticResource CaptionLabelGrey}" />
+                                                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm3Tb}" IsEnabled="False" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
+                                                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                        <control:BorderlessEntry.Behaviors>
+                                                                            <custom1:AlphabetandArabicCharacters/>
+                                                                        </control:BorderlessEntry.Behaviors>
+                                                                    </control:BorderlessEntry>
+                                                                </inputLayout:SfTextInputLayout>
+                                                            </StackLayout>
 
+                                                            <StackLayout>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" HorizontalOptions="StartAndExpand"
+                                                                                Style="{StaticResource CaptionLabelGrey}" />
+                                                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm4Tb}" IsEnabled="False" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                                            VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
+                                                                                            TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
+                                                                        <control:BorderlessEntry.Behaviors>
+                                                                            <custom1:AlphabetandArabicCharacters/>
+                                                                        </control:BorderlessEntry.Behaviors>
+                                                                    </control:BorderlessEntry>
+                                                                </inputLayout:SfTextInputLayout>
+                                                            </StackLayout>
+                                                         </StackLayout>
                                                   </Grid>
                                             </StackLayout>
                                         </Grid>

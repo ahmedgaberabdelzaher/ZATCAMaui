@@ -750,5 +750,242 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
         }
+
+        void PermitIDNo_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                var permitIDNum = sender as GAZT.BorderlessEntry;
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+
+                var selectedPermit = viewModel?.SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => x.APermitNoTb == viewModel.tempIdTypePermitSetResult.APermitNoTb || x.APermitNoTb == viewModel.selectedAPermitReason);
+
+                if (!string.IsNullOrEmpty(selectedPermit?.PermitIdTypeName))
+                {
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationNationalID)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) != "1")
+                        {
+                            popUp.Message = AppResources.ZZNationalIDstartswith1;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                            //ZZPleaseenteravalidNationalID
+                        }
+                        else
+                        {
+                            if (selectedPermit?.APermitIdNoTb.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            }
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //viewModel.FrameIDError = true;
+                                permitIDNum.Text = string.Empty;
+                            }
+                            else
+                            {
+                                //viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(selectedPermit?.APermitDeregDisplayDobDate))
+                                {
+                                    viewModel.ValidateIDNumberForIndiviualPermit();
+                                }
+                            }
+                        }
+                    }
+
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationIQAMANumber)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) != "2")
+                        {
+                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else
+                        {
+                            if (selectedPermit?.APermitIdNoTb.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            }
+
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //FrmIDNumber.HasError = true;
+                                //viewModel.FrameIDError = true;
+                                permitIDNum.Text = string.Empty;
+                            }
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                                //viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(selectedPermit.APermitDeregDisplayDobDate))
+                                {
+                                    viewModel.ValidateIDNumberForIndiviualPermit();
+                                }
+                            }
+                        }
+                    }
+
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationGCCID)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) == "0")
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else if (!(selectedPermit?.APermitIdNoTb.Length <= 15 && selectedPermit?.APermitIdNoTb.Length >= 7))
+                        {
+                            popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                            //EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                        }
+                        else
+                        {
+                            //viewModel.FrameIDError = false;
+                            viewModel.ValidateIDNumberForIndiviualPermit();
+                        }
+                    }
+
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationCompanyID)
+                    {
+                        if (selectedPermit?.APermitIdNoTb.Substring(0, 1) != "7")
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.TinDeregistrationCompanyIDCheck;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else if (selectedPermit.APermitIdNoTb.Length > 10)
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.CompanyIDlengthis10digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            //viewModel.FrameIDError = true;
+                            permitIDNum.Text = string.Empty;
+                        }
+                        else
+                        {
+                            //viewModel.FrameIDError = false;
+                            viewModel.ValidateIDNumberForIndiviualPermit();
+                        }
+                    }
+                }
+                //else
+                //{
+                //    viewModel.FrameIDError = true;
+                //}
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

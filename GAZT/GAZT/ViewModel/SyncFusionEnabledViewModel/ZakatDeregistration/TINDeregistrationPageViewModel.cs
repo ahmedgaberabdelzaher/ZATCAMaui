@@ -1333,6 +1333,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 {
                                     Item.APermitTransTinTb = string.Empty;
                                     Item.APermitIdNoTb = string.Empty;
+                                    Item.APermitNm3Tb = string.Empty;
+                                    Item.APermitNm4Tb = string.Empty;
+                                    Item.APermitNm5Tb = string.Empty;
+                                    Item.APermitNm6Tb = string.Empty;
+                                    Item.APermitNm7Tb = string.Empty;
+                                    Item.APermitDeregDisplayDobDate = string.Empty;
+                                    PkrDBO = string.Empty;
+
+
                                     if (PickerModel.SelectedValue == AppResources.TinDeregistrationNationalID)
                                     {
                                         Item.APermitIdTypeTb = "ZS0001";
@@ -1422,7 +1431,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 x.APermitDobTb = ConvertDateFormat(PermitDob);
                                 x.APermitDobCTb = "G";
                                 x.APermitDobHTb = PermitDob.ToString("yyyyMMdd");
-                                x.APermitDeregDisplayDobDate = PermitDob.ToString("dd/MM/yyyy");
+                                x.APermitDeregDisplayDobDate = PermitDob.ToString("yyyy/MM/dd");
+
+                                PkrDBO = PermitDob.ToString("yyyy/MM/dd");
+                                if(x.PermitIdTypeName == AppResources.TinDeregistrationNationalID || x.PermitIdTypeName == AppResources.TinDeregistrationIQAMANumber)
+                                {
+                                    if (!string.IsNullOrWhiteSpace(x.APermitIdNoTb))
+                                    {
+                                        ValidateIDNumberForIndiviualPermit();
+                                    }
+                                }
                             }
                         }
                         return x;
@@ -2127,7 +2145,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
-        private PermitSetResult tempIdTypePermitSetResult = new PermitSetResult();
+        public PermitSetResult tempIdTypePermitSetResult = new PermitSetResult();
         public async void OnPermitIdTypeClicked(PermitSetResult permitSetResult)
         {
             List<string> idTypeData = new List<string>();
@@ -2832,6 +2850,177 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         TINNumber = string.Empty;
                         IDTypeDataModel = new VATSignUpD();
                         SelectedIdNumber = string.Empty;
+                    }
+                    catch (GAZTException gex)
+                    {
+                        // Handle the GAZT custom exception.
+                        string MessageForTheUser = gex.Message;
+                        if (gex is GAZTInvalidDataException)
+                        {
+                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        }
+                        if (gex is GAZTNetworkConnectivityIssueException)
+                        {
+                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                        }
+                        else if (gex is GAZTInternetException)
+                        {
+                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                        }
+                        else if (gex is GAZTSessionExpiredException)
+                        {
+                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                        }
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
+
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
+                        });
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            // IsLoading = false;
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //_navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+
+                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //_navigationService.GoBack();
+                        });
+                    }
+                }
+
+
+            }
+
+            IsLoading = false;
+        }
+
+
+        public async void ValidateIDNumberForIndiviualPermit()
+        {
+            string dob = PkrDBO.Replace("/", "");
+            string idTypeCode = string.Empty;
+
+            var selectedPermit = SelectedOutletForCloseTranser?.PermitTypes.FirstOrDefault(x => x.APermitNoTb == tempIdTypePermitSetResult.APermitNoTb || x.APermitNoTb == selectedAPermitReason);
+            idTypeCode = selectedPermit?.aPermitIdTypeTb;
+            
+
+            if (!string.IsNullOrEmpty(selectedPermit?.APermitIdNoTb))
+            {
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+
+
+                    string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, selectedPermit?.APermitIdNoTb, dob);
+
+                    string _responseData = JObject.Parse(Result)["d"].ToString();
+                    var IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+
+                    selectedPermit.APermitTransTinTb = IDTypeDataModel.Tin;
+                    selectedPermit.APermitNm3Tb = IDTypeDataModel.Name1;
+                    selectedPermit.APermitNm4Tb = IDTypeDataModel.Name2;
+                    selectedPermit.APermitNm5Tb = IDTypeDataModel.FatherName;
+                    selectedPermit.APermitNm6Tb = IDTypeDataModel.GrandfatherName;
+                    selectedPermit.APermitNm7Tb = IDTypeDataModel.FamilyName;
+                    selectedPermit.APermitDeregDisplayDobDate = IDTypeDataModel.Birthdt10;
+
+                    selectedPermit.APermitEditable = false;
+
+                    if (selectedPermit?.PermitIdTypeName == AppResources.TinDeregistrationGCCID)
+                    {
+                        if (string.IsNullOrWhiteSpace(IDTypeDataModel?.Birthdt10) && string.IsNullOrWhiteSpace(IDTypeDataModel.TaxpDob))
+                        {
+                            selectedPermit.APermitEditable = true;
+                        }
+                    }
+
+                    if (_responseData == null)
+                    {
+                        IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                        if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                        {
+                            FrameIDError = true;
+
+                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        }
+                        else
+                        {
+                            FrameIDError = false;
+
+
+                            await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        }
+                    }
+                    else
+                    {
+                        FrameIDError = false;
+                    }
+                    if (PopupNavigation.PopupStack.Count() > 0)
+                        await PopupNavigation.PopAsync();
+                }
+                catch (Exception _ex)
+                {
+                    try
+                    {
+                        string Result = await WebServiceManager.GAZTValidateIDTypes(idTypeCode, selectedPermit?.APermitIdNoTb, dob);
+                        IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+
+                        if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                        {
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
+                            FrameIDError = true;
+                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        }
+                        else
+                        {
+                            //FrmIDNumber.HasError = false;
+                            FrameIDError = false;
+                            if (PopupNavigation.PopupStack.Count() > 0)
+                                await PopupNavigation.PopAsync();
+                            await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        }
+
+                        selectedPermit.APermitTransTinTb = string.Empty;
+                        selectedPermit.APermitIdNoTb = string.Empty;
+                        selectedPermit.APermitNm3Tb = string.Empty;
+                        selectedPermit.APermitNm4Tb = string.Empty;
+                        selectedPermit.APermitNm5Tb = string.Empty;
+                        selectedPermit.APermitNm6Tb = string.Empty;
+                        selectedPermit.APermitNm7Tb = string.Empty;
+                        selectedPermit.APermitDeregDisplayDobDate = string.Empty;
+                        PkrDBO = string.Empty;
+
                     }
                     catch (GAZTException gex)
                     {
@@ -4165,7 +4354,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private string selectedAPermitReason;
+        public string selectedAPermitReason;
         public void OnOutletPermitTypeReasonClicked(string value)
         {
             this.selectedAPermitReason = value;
