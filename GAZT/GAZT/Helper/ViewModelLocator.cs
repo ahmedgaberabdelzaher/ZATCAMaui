@@ -18,8 +18,8 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewMode
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel;
+//using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewModel;
+//using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.DisplayNotesPage_ViewModel;
@@ -67,7 +67,7 @@ using EGAZT.Views.NewDesign.MyReturnsNewPages;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
-using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
+//using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
 using EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails;
 using EGAZT.Views.SyncFusionEnabledViews.AddNote;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
@@ -78,42 +78,42 @@ using EGAZT.Views.SyncFusionEnabledViews.ChangeEmail;
 using EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages;
 using EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber;
 using EGAZT.Views.SyncFusionEnabledViews.ChangePassword;
-using EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus;
+//using EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus;
 using EGAZT.Views.SyncFusionEnabledViews.ContactUsPage;
-using EGAZT.Views.SyncFusionEnabledViews.Correspondance;
-using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
-using EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount;
+//using EGAZT.Views.SyncFusionEnabledViews.Correspondance;
+//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+//using EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount;
 using EGAZT.Views.SyncFusionEnabledViews.CreditCarried;
 using EGAZT.Views.SyncFusionEnabledViews.DisplayNotes;
 using EGAZT.Views.SyncFusionEnabledViews.FAQPage;
 using EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword;
 using EGAZT.Views.SyncFusionEnabledViews.ICRList;
 using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
-using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
-using EGAZT.Views.SyncFusionEnabledViews.MyCertificate;
-using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
-using EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage;
+//using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
+//using EGAZT.Views.SyncFusionEnabledViews.MyCertificate;
+//using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
+//using EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.OTPPage;
 using EGAZT.Views.SyncFusionEnabledViews.PdfView;
 using EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy;
-using EGAZT.Views.SyncFusionEnabledViews.ReturnsPage;
+//using EGAZT.Views.SyncFusionEnabledViews.ReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using EGAZT.Views.SyncFusionEnabledViews.SFLanding;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
 using EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage;
-using EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC;
+//using EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC;
 using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
-using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
-using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm;
-using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
-using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
-using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType;
+//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
+//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm;
+//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
+//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
+//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType;
 using EGAZT.Views.SyncFusionEnabledViews.TaxPayerProfile_View;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
-using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
+//using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
 using EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages;
 using EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View;
@@ -325,8 +325,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<AddNotePageViewModel>();
             SimpleIoc.Default.Register<AddPopPageViewModel>();
             SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
-            SimpleIoc.Default.Register<CorrespondancePageViewModel>();
-            SimpleIoc.Default.Register<CorrespondenceDetailsPageViewModel>();
+            // SimpleIoc.Default.Register<CorrespondancePageViewModel>();
+            //SimpleIoc.Default.Register<CorrespondenceDetailsPageViewModel>();
             SimpleIoc.Default.Register<FormBundleStatusPageViewModel>();
             SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
             SimpleIoc.Default.Register<SignUpFormPageViewModel>();
@@ -1646,34 +1646,34 @@ namespace EGAZT
         }
 
 
-        public CorrespondancePageViewModel CorrespondancePageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<CorrespondancePageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-        public CorrespondenceDetailsPageViewModel CorrespondenceDetailsPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<CorrespondenceDetailsPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
+        //public CorrespondancePageViewModel CorrespondancePageView
+        //{
+        //    get
+        //    {
+        //        try
+        //        {
+        //            return ServiceLocator.Current.GetInstance<CorrespondancePageViewModel>();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
+        //public CorrespondenceDetailsPageViewModel CorrespondenceDetailsPageView
+        //{
+        //    get
+        //    {
+        //        try
+        //        {
+        //            return ServiceLocator.Current.GetInstance<CorrespondenceDetailsPageViewModel>();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
         public TaxEvasionReportMobilePageViewModel TaxEvasionReportPhonePageView
         {
             get
@@ -2556,10 +2556,10 @@ namespace EGAZT
             //navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
 
             //SYNCFUSION INTEGRATION
-            navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
+            //navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.PdfView, typeof(PdfView));
             //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
-            navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
+            //navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
             navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
             navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
             navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
@@ -2568,13 +2568,13 @@ namespace EGAZT
             navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
             navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
             navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
-            navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
+            //navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
             navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
             navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
             navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
             navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
             navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
-            navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
+            //navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
             navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
             navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
             navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
@@ -2585,25 +2585,25 @@ namespace EGAZT
             navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
             navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
-            navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
+            //navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
+            //navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
             navigationService.Configure(App.FormBundleStatusPageView, typeof(EGAZT.Views.NewDesign.FormBundleStatusPages.FormBundleStatusPageView));
-            navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
-            navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
+            //navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
+            //navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
-            navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
-            navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
-            navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
-            navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
-            navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
-            navigationService.Configure(App.TaxEvasionReportMobilePageView, typeof(TaxEvasionReportMobilePageView));
-            navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
+            //navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
+            //navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
+            //navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
+            //navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
+            //navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
+            //navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
+            //navigationService.Configure(App.TaxEvasionReportMobilePageView, typeof(TaxEvasionReportMobilePageView));
+            //navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
             navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
             navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
             navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
-            navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
-            navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
+            //navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
+            //navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
             navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
             navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
             navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
@@ -2616,9 +2616,9 @@ namespace EGAZT
             navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
 
             navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
-            navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
+            //navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
 
-            navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
+            //navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
             navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
             navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
 

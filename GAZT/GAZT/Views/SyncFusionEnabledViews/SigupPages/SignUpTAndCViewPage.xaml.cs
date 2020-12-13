@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
-using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
 using System;
 using System.IO;
 using Xamarin.Forms;

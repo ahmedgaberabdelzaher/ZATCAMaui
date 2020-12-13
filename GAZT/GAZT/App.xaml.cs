@@ -26,7 +26,7 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
-using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
+//using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -763,10 +763,10 @@ namespace EGAZT
         {
             try
             {
-                MainThread.BeginInvokeOnMainThread( () =>
-                {
-                    PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
-                });
+                MainThread.BeginInvokeOnMainThread(() =>
+               {
+                   PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
+               });
             }
             catch (Exception ex)
             {

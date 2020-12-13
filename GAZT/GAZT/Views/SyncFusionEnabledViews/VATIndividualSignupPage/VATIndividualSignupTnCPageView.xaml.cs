@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
-using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
+//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using System;
 using System.Collections.Generic;
 using System.IO;
