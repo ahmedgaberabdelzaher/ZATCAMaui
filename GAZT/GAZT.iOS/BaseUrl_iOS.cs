@@ -6,8 +6,8 @@ using Xamarin.Forms;
 using Foundation;
 using UIKit;
 using GAZT.iOS;
-using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
-
+//using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
 [assembly: Dependency(typeof(BaseUrl_iOS))]
 namespace GAZT.iOS
 {
