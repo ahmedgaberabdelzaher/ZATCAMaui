@@ -1391,7 +1391,9 @@ namespace EGAZT.Models
         [JsonIgnore]
             public string aPermitIdTypeTb;
             [JsonProperty("APermitIdTypeTb")]
-            public string APermitIdTypeTb { get { return aPermitIdTypeTb; } set { aPermitIdTypeTb = value;
+            public string APermitIdTypeTb { get {
+                return aPermitIdTypeTb;
+            } set { aPermitIdTypeTb = value;
 
                 if(aPermitIdTypeTb == "ZS0001")
                 {
@@ -1408,7 +1410,7 @@ namespace EGAZT.Models
                     PermitIdTypeName = AppResources.TinDeregistrationIQAMANumber;
                     APermitIsCompanyId = false;
                 }
-                else
+                else if(aPermitIdTypeTb == "ZS0003")
                 {
                     PermitIdTypeName = AppResources.TinDeregistrationGCCID;
                     APermitIsCompanyId = false;

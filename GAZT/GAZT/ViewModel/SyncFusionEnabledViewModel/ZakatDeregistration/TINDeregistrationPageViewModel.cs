@@ -3335,6 +3335,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                   x.APermitNm7Tb = IDTypeDataModel.FamilyName;
                                   x.APermitDobHTb = IDTypeDataModel.TaxpDob;
                                   x.APermitDeregDisplayDobDate = IDTypeDataModel.Birthdt10;
+                                  x.APermitIdTypeTb = IDTypeDataModel.Idtype;
                                   return x;
                               }
                               ).ToList());
@@ -3510,7 +3511,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (SelectedPermitOutletOptionIndex == 2)// TODO check outlet permit de registration date
                 {
-                    if(SelectedOutletForCloseTranser?.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDate)) == null)
+                    if(SelectedOutletForCloseTranser?.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDate)) != null)
                     {
                         IsPermitTypesVisible = false;
                         flag = false;
@@ -3564,6 +3565,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     outletInfo.PermitTypes = new List<PermitSetResult>();
 
+                    var temp = new List<PermitSetResult>();
                     foreach (PermitSetResult permitInfo in allPermitTypes)
                     {
                         if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
@@ -3601,10 +3603,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (outletInfo.PermitTypes == null)
                                 outletInfo.PermitTypes = new List<PermitSetResult>();
 
-                            outletInfo.PermitTypes.Add(permitInfo);
+                            if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
+                            {
+                                //outletInfo.PermitTypes.Add(permitInfo);
+                                temp.Add(permitInfo);
+                            }
+
                         }
                     }
-
+                    outletInfo.PermitTypes = temp;
                 }
             }
             CurrentStep = ProcessStep.Step2;
@@ -4123,9 +4130,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             return;
                         }
+                        else
+                        {
+                            //transfer case
+                            await SaveAsDraft();
+                            EnableOutletDetaislView();
+                        }
                     }
                     else
                     {
+                        //close case
                         await SaveAsDraft();
                         EnableOutletDetaislView();
                     }

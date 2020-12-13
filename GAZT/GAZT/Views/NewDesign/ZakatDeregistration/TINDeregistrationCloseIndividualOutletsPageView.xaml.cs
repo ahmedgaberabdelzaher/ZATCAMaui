@@ -416,14 +416,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        void BorderlessEntryPermittype_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        async void BorderlessEntryPermittype_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
 
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
 
             var cell = outletsListView.Children.FirstOrDefault();
-            var entry = (Xamarin.Forms.Entry)cell.FindByName("EntryTINPermitType");
+            var entry = sender as GAZT.BorderlessEntry;
 
             if (!string.IsNullOrEmpty(entry.Text))
             {
@@ -455,13 +455,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     entry.Text = string.Empty;
                 }
                 else
                 {
                     viewModel.FrameTinError = false;
-                    viewModel.ValidateIdNumberForPermitTypes(entry.Text);
+                    await viewModel.ValidateIdNumberForPermitTypes(entry.Text);
                 }
             }
             else
@@ -482,7 +482,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 entry.Text = string.Empty;
             }
         }
