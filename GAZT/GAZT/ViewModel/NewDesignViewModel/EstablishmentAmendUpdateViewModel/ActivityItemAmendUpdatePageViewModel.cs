@@ -879,7 +879,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         ActivityDetails.MainActivity = false;
                         ActivityDetails.IsMainActivityVisible = false;
                         ActivityDetails.CRCopy = true;
-                        ActivityDetails.DeleteCRcopy = false;
+                        ActivityDetails.DeleteCRcopy = true;
                         ActivityDetails.TransferCRCopy = false;
                         ActivityDetails.DeleteTransferCRCopy = false;
                         ActivityDetails.IsTransferCRCopyVisible = false;
@@ -895,7 +895,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         LicenseDetails.MainActivity = false;
                         LicenseDetails.IsMainActivityVisible = false;
                         LicenseDetails.LicenseCopy = true;
-                        LicenseDetails.DeleteLicenseCopy = false;
+                        LicenseDetails.DeleteLicenseCopy = true;
                         LicenseDetails.MainGroup = false;
                         LicenseDetails.SubGroup = false;
                         LicenseDetails.Activity = false;
