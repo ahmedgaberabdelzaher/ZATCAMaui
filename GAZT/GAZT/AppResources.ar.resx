@@ -5712,8 +5712,8 @@
     <value>النهاية</value>
   </data>
     <data name="NDEdit" xml:space="preserve">
-    <value>تعديل</value>
-  </data>
+        <value>تعديل</value>
+    </data>
     <data name="NDLessThan5MinRegister" xml:space="preserve">
     <value>الرجاء اكمال عملية التسجيل</value>
     <comment>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</comment>
