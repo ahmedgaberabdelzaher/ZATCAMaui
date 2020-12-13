@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using Environment = System.Environment;
 using System.IO;
 using Newtonsoft.Json;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace GAZT.Droid
 {
@@ -101,6 +102,9 @@ namespace GAZT.Droid
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
+            global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
+           .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+
         }
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {

@@ -10056,6 +10056,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinderegEdit {
+            get {
+                return ResourceManager.GetString("TinderegEdit", resourceCulture);
+            }
+        }
+        
         public static string NDLessThan5MinRegister {
             get {
                 return ResourceManager.GetString("NDLessThan5MinRegister", resourceCulture);
