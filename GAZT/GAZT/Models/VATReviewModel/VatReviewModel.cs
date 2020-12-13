@@ -4,21 +4,21 @@ using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.VatReviewModel
 {
-    [Preserve(AllMembers = true)]
     public class VATObjectionButtonFormModeModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
 
 
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata2 __metadata { get; set; }
@@ -26,17 +26,17 @@ namespace EGAZT.Models.VatReviewModel
             public string Fbust { get; set; }
             public string Button { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class VRUIBTNSet
         {
             public List<Result> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ELGBLDOCSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata3
         {
             public string id { get; set; }
@@ -45,7 +45,7 @@ namespace EGAZT.Models.VatReviewModel
         }
 
 
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -77,9 +77,10 @@ namespace EGAZT.Models.VatReviewModel
 
     public class VATObjectionEnableSubmitModel
     {
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
+        [Preserve(AllMembers = true)]
 
         public class D
         {
@@ -97,6 +98,7 @@ namespace EGAZT.Models.VatReviewModel
 
     public class VATObjectionFormModel
     {
+        [Preserve(AllMembers = true)]
         public class VATReviewsReturnModel
         {
             public string TIN { get; set; }
@@ -133,6 +135,7 @@ namespace EGAZT.Models.VatReviewModel
             public string ApplicationNo { get; set; }
             public string Date { get; set; }
         }
+        [Preserve(AllMembers = true)]
         public class ReviewReason
         {
             public string ProcCD { get; set; }
@@ -140,6 +143,7 @@ namespace EGAZT.Models.VatReviewModel
 
             public List<SubReason> ListSubReason { get; set; }
         }
+        [Preserve(AllMembers = true)]
         public class SubReason
         {
             public string Code { get; set; }
@@ -150,9 +154,9 @@ namespace EGAZT.Models.VatReviewModel
     public class VATObjectionGenrateSadadModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -181,7 +185,7 @@ namespace EGAZT.Models.VatReviewModel
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class Metadata
     {
         public string id { get; set; }
@@ -192,17 +196,17 @@ namespace EGAZT.Models.VatReviewModel
     public class VATObjectionListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
 
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata2 __metadata { get; set; }
@@ -212,19 +216,19 @@ namespace EGAZT.Models.VatReviewModel
             public string SysFlg { get; set; }
             public DateTime? Ldate { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class REQTYPSet
         {
             public List<Result> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata3
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result2
         {
             public Metadata3 __metadata { get; set; }
@@ -236,19 +240,19 @@ namespace EGAZT.Models.VatReviewModel
             public string Txt30 { get; set; }
             public bool Ltext { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class STATUSSet
         {
             public List<Result2> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata4
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result3
         {
             public Metadata4 __metadata { get; set; }
@@ -277,12 +281,12 @@ namespace EGAZT.Models.VatReviewModel
             public string WiPrio { get; set; }
             public string WiPrioDesc { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ASSLISTSet
         {
             public List<Result3> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -319,17 +323,18 @@ namespace EGAZT.Models.VatReviewModel
 
     public class VATObjectionRejectedFormModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
 
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class AppRefNumResult
         {
             public Metadata2 __metadata { get; set; }
@@ -360,12 +365,12 @@ namespace EGAZT.Models.VatReviewModel
             public string TrnTyp { get; set; }
             public DateTime? DecDt { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class RejectedFormSet
         {
             public List<AppRefNumResult> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -386,9 +391,10 @@ namespace EGAZT.Models.VatReviewModel
 
     public class VATObjectionSecurityAmountModel
     {
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
+        [Preserve(AllMembers = true)]
 
         public class D
         {
@@ -401,9 +407,10 @@ namespace EGAZT.Models.VatReviewModel
         }
     }
 
-
+    [Preserve(AllMembers = true)]
     public class ReasonSetResult
     {
+        
         public Metadata2 __metadata { get; set; }
         public string Pentyp { get; set; }
         public string ProcCd { get; set; }
@@ -417,17 +424,17 @@ namespace EGAZT.Models.VatReviewModel
         public string DtFrmFlg { get; set; }
         public string DtToFlg { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class ReasonSet1
     {
         public List<ReasonSetResult> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class AddressSet1
     {
         public List<AddressResults> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class AddressResults
     {
         public Metadata3 __metadata { get; set; }
@@ -441,31 +448,32 @@ namespace EGAZT.Models.VatReviewModel
         public string Region { get; set; }
         public string RegionDesc { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class QuesListSet1
     {
         public List<object> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class AttdetSet1
     {
         public List<Attachment> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class IdDetailSet
     {
         public List<object> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class NotesSet
     {
         public List<NotesSetResults> results { get; set; }
     }
+    [Preserve(AllMembers = true)]
     public class NotesSetGet
     {
         public List<NotesSetResultsGet> results { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class NotesSetResultsGet
     {
         public Metadata __metadata { get; set; }
@@ -488,7 +496,7 @@ namespace EGAZT.Models.VatReviewModel
         public string Strline { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public partial class NotesSetResults
     {
         public Metadata __metadata { get; set; }
@@ -509,7 +517,7 @@ namespace EGAZT.Models.VatReviewModel
         public string Tdformat { get; set; }
         public string Tdline { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public partial class SecurityDtl
     {
         public Metadata __metadata { get; set; }
@@ -547,7 +555,7 @@ namespace EGAZT.Models.VatReviewModel
         public string Sopbel { get; set; }
         public string Perslt { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class MainReasonSetResults
     {
         public Metadata4 __metadata { get; set; }
@@ -563,17 +571,18 @@ namespace EGAZT.Models.VatReviewModel
         public string DtFrmFlg { get; set; }
         public string DtToFlg { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class MainReasonSet
     {
         public List<MainReasonSetResults> results { get; set; }
     }
     public class VATObjectionSummaryModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
 
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
@@ -581,13 +590,13 @@ namespace EGAZT.Models.VatReviewModel
             public string type { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class ReasonSet
         {
             public List<ReasonSetResult> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata3
         {
             public string id { get; set; }
@@ -598,7 +607,7 @@ namespace EGAZT.Models.VatReviewModel
 
 
 
-
+        [Preserve(AllMembers = true)]
         public class Metadata4
         {
             public string id { get; set; }
@@ -607,7 +616,7 @@ namespace EGAZT.Models.VatReviewModel
         }
 
 
-
+        [Preserve(AllMembers = true)]
         public class Metadata5
         {
             public string id { get; set; }
@@ -615,7 +624,7 @@ namespace EGAZT.Models.VatReviewModel
             public string type { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class D
         {
@@ -682,10 +691,10 @@ namespace EGAZT.Models.VatReviewModel
     public class VATObjectionValidateTaxpayerModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
 
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -737,10 +746,10 @@ namespace EGAZT.Models.VatReviewModel
 
     public class VATObjectionViewbillModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
 
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata __metadata { get; set; }
@@ -757,13 +766,13 @@ namespace EGAZT.Models.VatReviewModel
             public DateTime Abrzo { get; set; }
             public string Desc { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public List<Result> results { get; set; }
         }
     }
-
+    [Preserve(AllMembers = true)]
     public class VATObjectionFormViewBillModel
     {
         public string DocumentNumber { get; set; }
@@ -777,7 +786,7 @@ namespace EGAZT.Models.VatReviewModel
         public string Amount { get; set; }
 
     }
-
+    [Preserve(AllMembers = true)]
     public partial class VatObjectionsRequest
     {
         public Metadata __metadata { get; set; }
@@ -841,15 +850,17 @@ namespace EGAZT.Models.VatReviewModel
 
     public class VATObjectionSummaryInputModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -902,23 +913,23 @@ namespace EGAZT.Models.VatReviewModel
 
         public class VATReviewRequestTPFVModel
         {
-            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+            [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             public D d { get; set; }
-
+            [Preserve(AllMembers = true)]
             public class Metadata
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata2
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result
             {
                 public Metadata2 __metadata { get; set; }
@@ -943,19 +954,19 @@ namespace EGAZT.Models.VatReviewModel
                 public string Visedit { get; set; }
                 public string Visdel { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class AttdetSet
             {
                 public List<Attachment> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata3
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result2
             {
                 public Metadata3 __metadata { get; set; }
@@ -982,22 +993,22 @@ namespace EGAZT.Models.VatReviewModel
                 public string Strtime { get; set; }
                 public string Strline { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class NotesSet
             {
                 public List<Result2> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class QUESLISTSet
             {
                 public List<object> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class QUESTIONSSet
             {
                 public List<object> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class D
             {
                 public Metadata __metadata { get; set; }
@@ -1060,23 +1071,23 @@ namespace EGAZT.Models.VatReviewModel
 
         public class VATReviewRequestTPFVOn1stAPISuccessModel
         {
-            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+            [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             public D d { get; set; }
-
+            [Preserve(AllMembers = true)]
             public class Metadata
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata2
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result
             {
                 public Metadata2 __metadata { get; set; }
@@ -1087,12 +1098,12 @@ namespace EGAZT.Models.VatReviewModel
                 public string TransactionType { get; set; }
                 public string UserTyp { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class UIBTNSet
             {
                 public List<Result> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class D
             {
                 public Metadata __metadata { get; set; }
@@ -1122,7 +1133,7 @@ namespace EGAZT.Models.VatReviewModel
             }
 
         }
-
+        [Preserve(AllMembers = true)]
         public class VATReviewRequestTPFVReturnModel
         {
             public string AgreeFlag { get; set; }
@@ -1148,22 +1159,24 @@ namespace EGAZT.Models.VatReviewModel
 
         public class VATReviewRequestVTGRModel
         {
+            [Preserve(AllMembers = true)]
             // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             public D d { get; set; }
+            [Preserve(AllMembers = true)]
             public class Metadata
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata2
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result
             {
                 public Metadata2 __metadata { get; set; }
@@ -1178,19 +1191,19 @@ namespace EGAZT.Models.VatReviewModel
                 public string DmsTp { get; set; }
                 public string DmsTxt { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class ELGBLDOCSet
             {
                 public List<Result> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata3
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class TABLESetResult
             {
                 public Metadata3 __metadata { get; set; }
@@ -1230,19 +1243,19 @@ namespace EGAZT.Models.VatReviewModel
                 public string VatPuchase { get; set; }
                 public string VatSupply { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class TABLESet
             {
                 public List<TABLESetResult> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata4
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result3
             {
                 public Metadata4 __metadata { get; set; }
@@ -1269,19 +1282,19 @@ namespace EGAZT.Models.VatReviewModel
                 public string Strtime { get; set; }
                 public string Strline { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class NOTESSet
             {
                 public List<Result3> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata5
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result4
             {
                 public Metadata5 __metadata { get; set; }
@@ -1306,24 +1319,24 @@ namespace EGAZT.Models.VatReviewModel
                 public string Visedit { get; set; }
                 public string Visdel { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class ATTDETSet
             {
                 public List<Attachment> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class QUESLISTSet
             {
                 public List<object> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata6
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result5
             {
                 public Metadata6 __metadata { get; set; }
@@ -1332,12 +1345,13 @@ namespace EGAZT.Models.VatReviewModel
                 public string Txt50 { get; set; }
                 public string EffDt { get; set; }
             }
+            [Preserve(AllMembers = true)]
 
             public class EFFDATESet
             {
                 public List<Result5> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class D
             {
                 public Metadata __metadata { get; set; }
@@ -1417,22 +1431,23 @@ namespace EGAZT.Models.VatReviewModel
 
         public class VATReviewRequestVTGROn1stAPISuccessModel
         {
-            // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+            [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             public D d { get; set; }
+            [Preserve(AllMembers = true)]
             public class Metadata
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata2
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result
             {
                 public Metadata2 __metadata { get; set; }
@@ -1445,17 +1460,17 @@ namespace EGAZT.Models.VatReviewModel
                 public DateTime? EndDt { get; set; }
                 public string Txt50 { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class ELGBLDOCSet
             {
                 public List<Result> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class VRUIBTNSet
             {
                 public List<object> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class D
             {
                 public Metadata __metadata { get; set; }
@@ -1479,7 +1494,7 @@ namespace EGAZT.Models.VatReviewModel
                 public VRUIBTNSet VR_UI_BTNSet { get; set; }
             }
         }
-
+        [Preserve(AllMembers = true)]
         public class VATDREGViewApllicationViewModel
         {
             public AttdetSet AttachmentSet { get; set; }
@@ -1532,15 +1547,17 @@ namespace EGAZT.Models.VatReviewModel
 
         public class VATObjectionDREGReasonModel
         {
+            [Preserve(AllMembers = true)]
             // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             public D d { get; set; }
+            [Preserve(AllMembers = true)]
             public class Metadata
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result
             {
                 public Metadata __metadata { get; set; }
@@ -1549,7 +1566,7 @@ namespace EGAZT.Models.VatReviewModel
                 public string Reason { get; set; }
                 public string Rdesc { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class D
             {
                 public List<Result> results { get; set; }
@@ -1560,22 +1577,24 @@ namespace EGAZT.Models.VatReviewModel
 
         public class VATReviewDREGViewApplicationModel
         {
+            [Preserve(AllMembers = true)]
             // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             public D d { get; set; }
+            [Preserve(AllMembers = true)]
             public class Metadata
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata2
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result
             {
                 public Metadata2 __metadata { get; set; }
@@ -1601,19 +1620,19 @@ namespace EGAZT.Models.VatReviewModel
                 public string Region { get; set; }
                 public string RegionDesc { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class AddressSet
             {
                 public List<Result> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata3
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result2
             {
                 public Metadata3 __metadata { get; set; }
@@ -1640,19 +1659,19 @@ namespace EGAZT.Models.VatReviewModel
                 public string Strtime { get; set; }
                 public string Strline { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class NotesSet
             {
                 public List<Result2> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Metadata4
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result3
             {
                 public Metadata4 __metadata { get; set; }
@@ -1677,17 +1696,17 @@ namespace EGAZT.Models.VatReviewModel
                 public string Visdel { get; set; }
                 public string Erftm { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class AttdetSet
             {
                 public List<Attachment> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class QuesListSet
             {
                 public List<object> results { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class D
             {
                 public Metadata __metadata { get; set; }
@@ -1768,7 +1787,7 @@ namespace EGAZT.Models.VatReviewModel
             }
 
         }
-
+        [Preserve(AllMembers = true)]
         public class VATReviewRequestVTGRReturnModel
         {
             public string AgreeFlag { get; set; }
@@ -1794,15 +1813,17 @@ namespace EGAZT.Models.VatReviewModel
 
         public class VATReviewDREGSuspensionListModel
         {
+            [Preserve(AllMembers = true)]
             // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
             public D d { get; set; }
+            [Preserve(AllMembers = true)]
             public class Metadata
             {
                 public string id { get; set; }
                 public string uri { get; set; }
                 public string type { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class Result
             {
                 public Metadata __metadata { get; set; }
@@ -1815,7 +1836,7 @@ namespace EGAZT.Models.VatReviewModel
                 public DateTime? NextDtfrom { get; set; }
                 public DateTime? NextDtto { get; set; }
             }
-
+            [Preserve(AllMembers = true)]
             public class D
             {
                 public List<Result> results { get; set; }

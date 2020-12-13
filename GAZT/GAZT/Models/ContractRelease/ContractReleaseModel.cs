@@ -11,16 +11,18 @@ namespace EGAZT.Models.ContractRelease
         {
         }
     }
-    [Preserve(AllMembers = true)]
+   
     public class ContractReleaseFormResponse
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public CotractResponse d { get; set; }
 
     }
-    [Preserve(AllMembers = true)]
+  
     public class ContractReleaseFormRequest
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public CotractRequest d { get; set; }
 

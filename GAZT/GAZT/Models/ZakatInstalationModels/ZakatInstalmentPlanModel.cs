@@ -95,7 +95,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
 
-
+    [Preserve(AllMembers = true)]
     public partial class ZakatInstalmentPlanResponse
     {
         public ZakatInstalment d { get; set; }
@@ -302,11 +302,12 @@ namespace EGAZT.Models.ZakatInstalationModels
     }
 
 
-    [Preserve(AllMembers = true)]
+ 
     public class ZAKATRequestPlanModel
     {
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
-
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class Metadata
         {
@@ -314,7 +315,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public partial class FnDtlSetObject
         {
             public string CashBankY1 { get; set; }
@@ -372,26 +373,27 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string ZakatY2 { get; set; }
             public string ZakatY3 { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class AuthServSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class WorklistSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class RevokeListSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class EvtNotif12Set
         {
             public List<object> results { get; set; }
         }
+        [Preserve(AllMembers = true)]
 
         public class Metadata2
         {
@@ -399,7 +401,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata2 __metadata { get; set; }
@@ -413,12 +415,12 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string Betrh { get; set; }
             public string Opbel { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class EvtNotif1Set
         {
             public List<Result> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -519,32 +521,33 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string Waers { get; set; }
     }
 
-    [Preserve(AllMembers = true)]
+    
 
     public class ZakatInstalmentPlanRequestListModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        [Preserve(AllMembers = true)] // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class AuthServSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata2 __metadata { get; set; }
@@ -565,17 +568,17 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string IptypeFg { get; set; }
 
         }
-
+        [Preserve(AllMembers = true)]
         public class WorklistSet
         {
             public List<Result> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class RevokeListSet
         {
             public List<RevokeListResult> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public partial class RevokeListResult
         {
             public Metadata __metadata { get; set; }
@@ -596,12 +599,12 @@ namespace EGAZT.Models.ZakatInstalationModels
             public bool Revoke { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
         public class EvtNotif12Set
         {
             public List<Result2> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result2
         {
             public Metadata __metadata { get; set; }
@@ -615,12 +618,12 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string AIvTb { get; set; }
             public string AIvAbtyp { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class EvtNotif1Set
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -899,9 +902,10 @@ namespace EGAZT.Models.ZakatInstalationModels
     {
         public List<object> results { get; set; }
     }
-    [Preserve(AllMembers = true)]
+  
     public class ZakatSummaryInputModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class Metadata
         {
@@ -909,7 +913,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -964,7 +968,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string UserErrFg { get; set; }
             public string TaxOffUid { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
 
         public D d { get; set; }
 
@@ -1147,12 +1151,14 @@ namespace EGAZT.Models.ZakatInstalationModels
         public object[] retmsgSet { get; set; }
         public object[] insPlan_OffSet { get; set; }
     }
-    [Preserve(AllMembers = true)]
+  
 
     public class ZakatInstalmentInvListModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
@@ -1161,7 +1167,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
 
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata __metadata { get; set; }
@@ -1191,7 +1197,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string Waers { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class D
         {
@@ -1199,9 +1205,10 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
     }
-    [Preserve(AllMembers = true)]
+
     public class SummaryDisplayModel
     {
+        [Preserve(AllMembers = true)]
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class Metadata
         {
@@ -1210,7 +1217,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string type { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class FnDtlSet
         {
@@ -1218,33 +1225,33 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
 
-
+        [Preserve(AllMembers = true)]
         public class Deferred
         {
             public string uri { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class InsPlanOffSet
         {
             public Deferred __deferred { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class Deferred2
         {
             public string uri { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class InvDtlsSet
         {
             public Deferred2 __deferred { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
 
 
         public class Metadata2
@@ -1254,7 +1261,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string type { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class Result
         {
@@ -1279,21 +1286,21 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string Enbdele { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class AttachSet
         {
             public List<Result> results { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class Deferred3
         {
             public string uri { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class InsPlanSet
         {
@@ -1301,19 +1308,19 @@ namespace EGAZT.Models.ZakatInstalationModels
         }
 
 
-
+        [Preserve(AllMembers = true)]
         public class NotesSet
         {
             public List<object> results { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class Deferred4
         {
             public string uri { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
 
 
         public class RetmsgSet
@@ -1321,7 +1328,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public Deferred4 __deferred { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
 
         public class D
         {
@@ -1376,7 +1383,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public NotesSet NotesSet { get; set; }
             public RetmsgSet retmsgSet { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
 
     }

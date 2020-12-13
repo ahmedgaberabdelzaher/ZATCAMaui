@@ -109,7 +109,7 @@ namespace EGAZT.Models.Form5Models
         public IList<Results14> results { get; set; }
 
     }
-   
+    [Preserve(AllMembers = true)]
     public class Results15
     {
         public __metadata __metadata { get; set; }
@@ -119,12 +119,13 @@ namespace EGAZT.Models.Form5Models
         public string Text { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class Zsub_desc_ASet2
     {
         public IList<Results15> results { get; set; }
 
     }
-  
+    [Preserve(AllMembers = true)]
     public class Results16
     {
         public __metadata __metadata { get; set; }
@@ -136,12 +137,13 @@ namespace EGAZT.Models.Form5Models
         public string Lstsch { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class Zmain_descSet
     {
         public IList<Results16> results { get; set; }
 
     }
-  
+    [Preserve(AllMembers = true)]
     public class Results17
     {
         public __metadata __metadata { get; set; }
@@ -155,11 +157,13 @@ namespace EGAZT.Models.Form5Models
         public string CityExt { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class ZcitySet
     {
         public IList<Results17> results { get; set; }
 
     }
+    [Preserve(AllMembers = true)]
     public class ZakatForm5CityDataResult
     {
         public __metadata __metadata { get; set; }
