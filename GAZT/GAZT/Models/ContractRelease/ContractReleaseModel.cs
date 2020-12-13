@@ -213,25 +213,27 @@ namespace EGAZT.Models.ContractRelease
         public AttDetSet[] AttDetSet { get; set; }
         public ZnotesSet[] znotesSet { get; set; }
     }
-    [Preserve(AllMembers = true)]
+ 
     public class ContractReLeaseApplicationFormModel
     {
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ContractResult
         {
             public Metadata2 __metadata { get; set; }
@@ -259,17 +261,17 @@ namespace EGAZT.Models.ContractRelease
             public string Euser { get; set; }
             public string Fbguid { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ListSet
         {
             public List<ContractResult> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class AuthServSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }

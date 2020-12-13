@@ -4,14 +4,16 @@ using Xamarin.Forms.Internals;
 
 namespace GAZT
 {
-	[Preserve(AllMembers = true)]
+	
 	public class ErrorMessage
     {
+		[Preserve(AllMembers = true)]
 		public class Message
 		{
 			public string lang { get; set; }
 			public string value { get; set; }
 		}
+		[Preserve(AllMembers = true)]
 		public class Application
 		{
 			public string component_id { get; set; }
@@ -19,11 +21,13 @@ namespace GAZT
 			public string service_id { get; set; }
 			public string service_version { get; set; }
 		}
+		[Preserve(AllMembers = true)]
 		public class ErrorResolution
 		{
 			public string SAP_Transaction { get; set; }
 			public string SAP_Note { get; set; }
 		}
+		[Preserve(AllMembers = true)]
 		public class Errordetail
 		{
 			public string code { get; set; }
@@ -32,6 +36,7 @@ namespace GAZT
 			public string severity { get; set; }
 			public string target { get; set; }
 		}
+		[Preserve(AllMembers = true)]
 		public class Innererror
 		{
 			public Application application { get; set; }
@@ -40,12 +45,15 @@ namespace GAZT
 			public ErrorResolution Error_Resolution { get; set; }
 			public List<Errordetail> errordetails { get; set; }
 		}
+	
+		[Preserve(AllMembers = true)]
 		public class Error
 		{
 			public string code { get; set; }
 			public Message message { get; set; }
 			public Innererror innererror { get; set; }
 		}
+		[Preserve(AllMembers = true)]
 		public class ErrorObj
 		{
 			public Error error { get; set; }

@@ -6,12 +6,13 @@ using Xamarin.Forms.Internals;
 
 namespace EGAZT.Models.ChageFillingPeriodModel
 {
-    [Preserve(AllMembers = true)]
+
     public class VATChangeFillingListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             [DataMember]
@@ -21,6 +22,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             [DataMember]
             public string type { get; set; }
         }
+        [Preserve(AllMembers = true)]
 
         public class Metadata2
         {
@@ -31,7 +33,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             [DataMember]
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             [DataMember]
@@ -47,13 +49,13 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             [DataMember]
             public string Ldate { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class REQTYPSet
         {
             [DataMember]
             public List<Result> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata3
         {
             [DataMember]
@@ -63,7 +65,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             [DataMember]
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result2
         {
             [DataMember]
@@ -83,13 +85,14 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             [DataMember]
             public bool Ltext { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class STATUSSet
         {
             [DataMember]
             public List<Result2> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
+     
         public class Metadata4
         {
             [DataMember]
@@ -99,7 +102,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             [DataMember]
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ChangeFillingFrequency
         {
             [DataMember]
@@ -153,7 +156,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             [DataMember]
             public string WiPrioDesc { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ASSLISTSet
         {
             [DataMember]
@@ -162,6 +165,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
 
         [Serializable]
         [DataContract]
+        [Preserve(AllMembers = true)]
         public class D
         {
             [DataMember]
@@ -223,7 +227,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         }
 
 
-
+        [Preserve(AllMembers = true)]
         public class VATChangeFillingListData
         {
             [DataMember]
@@ -247,36 +251,38 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     public class VATChangeFillingSummaryModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        [Preserve(AllMembers = true)]
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class EffDateSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class UIBTNSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class NOTESSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Metadata2
         {
             public string id { get; set; }
             public string uri { get; set; }
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
             public Metadata2 __metadata { get; set; }
@@ -301,22 +307,22 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string Visedit { get; set; }
             public string Visdel { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ATTACHSet
         {
             public List<Attachment> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class ATTTYPSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class QuesListSet
         {
             public List<object> results { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class D
         {
             public Metadata __metadata { get; set; }
@@ -372,7 +378,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public QuesListSet QuesListSet { get; set; }
         }
 
-
+        [Preserve(AllMembers = true)]
         public class VATChangingSummaryData
         {
 
