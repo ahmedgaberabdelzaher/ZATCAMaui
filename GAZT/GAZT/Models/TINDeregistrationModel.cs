@@ -884,6 +884,20 @@ namespace EGAZT.Models
             }
         }
 
+        [JsonIgnore]
+        private bool showPermit { get; set; }
+
+        [JsonIgnore]
+        public bool ShowPermit
+        {
+            get { return showPermit; }
+            set
+            {
+                showPermit = value;
+                OnPropertyRaised("ShowPermit");
+            }
+        }
+
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
@@ -1187,6 +1201,8 @@ namespace EGAZT.Models
                 OnPropertyRaised("APermitIsReasonSelected");
             }
         }
+
+       
 
         [JsonIgnore]
         public string aPermitDeregDisplayDobDate { get; set; }
