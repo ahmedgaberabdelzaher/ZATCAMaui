@@ -268,9 +268,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             });
         }
 
-        private async void SetDate()
+        private void SetDate()
         {
-            await viewModel.SetDefaultDate();
+             viewModel.SetDefaultDate();
 
         }
 
@@ -797,12 +797,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsHijriCal)
                 {
-                    if (DpDboHijri.SelectedItem != null)
+                    if (DpDboHijri.SelectedItem != null&&(DpDboHijri.SelectedItem as IList<object>).Count==3)
                     {
-                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
                         viewModel.PickerDobToDisplay = viewModel.PkrDBO; //DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
@@ -820,12 +819,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
-                    if (DpDbo.SelectedItem != null)
+                    if (DpDbo.SelectedItem != null && (DpDbo.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
                         viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
@@ -851,12 +849,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsHijriCal)
                 {
-                    if (DpDboHijri2.SelectedItem != null)
+                    if (DpDboHijri2.SelectedItem != null && (DpDboHijri2.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDboHijri2.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDboHijri2.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDboHijri2.SelectedItem as IList<object>)[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
                         viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
@@ -873,12 +870,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
-                    if (DpDbo2.SelectedItem != null)
+                    if (DpDbo2.SelectedItem != null && (DpDbo2.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDbo2.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDbo2.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDbo2.SelectedItem as IList<object>)[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.DeregistrationDate = Convert.ToDateTime(viewModel.PkrDBO);
                         viewModel.PickerDobToDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
@@ -909,12 +905,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsDOBHijriCal)
                 {
-                    if (DpDboHijri3.SelectedItem != null)
+                    if (DpDboHijri3.SelectedItem != null && (DpDboHijri3.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
                         viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
@@ -931,12 +926,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
-                    if (DpDbo3.SelectedItem != null)
+                    if (DpDbo3.SelectedItem != null && (DpDbo3.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
                         viewModel.SelectedDob = day + "/" + month + "/" + year;
                         viewModel.PickerDOBDateDisplay = viewModel.PkrDBO;//DateTime.Parse(viewModel.PkrDBO).Date.ToString("dd MMM yyyy");
@@ -1009,6 +1003,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 DpDboHijri3.IsOpen = true;
             }
         }
+        CultureInfo provider = CultureInfo.InvariantCulture;
         private void DpDbo_Closed(object sender, EventArgs e)
         {
             bool isHIjri;
@@ -1018,14 +1013,13 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsHijriCal)
                 {
-                    if (DpDboHijri.SelectedItem != null)
+                    if (DpDboHijri.SelectedItem != null && (DpDboHijri.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
                         var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.ParseExact(viewModel.SelectedDob, "dd/MM/yyyy", provider))
                         {
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             viewModel.PickerDOBDateDisplay = "";
@@ -1043,12 +1037,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 {
                     if (DpDbo.SelectedItem != null)
                     {
-                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
-                        var date = year + "/" + month + "/" + day;
-                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
+                            string month = (DpDbo.SelectedItem as IList<object>)[1].ToString();
+                            string day = (DpDbo.SelectedItem as IList<object>)[0].ToString();
+                            string year = (DpDbo.SelectedItem as IList<object>)[2].ToString();
+                            var date = year + "/" + month + "/" + day;
+                        if (!string.IsNullOrEmpty(date) && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.ParseExact(viewModel.SelectedDob, "dd/MM/yyyy", provider))
                         {
                             viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
                             viewModel.PickerDOBDateDisplay = "";
@@ -1111,12 +1104,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 if (viewModel.IsDOBHijriCal)
                 {
-                    if (DpDboHijri3.SelectedItem != null)
+                    if (DpDboHijri3.SelectedItem != null && (DpDboHijri3.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDboHijri3.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
                         {
@@ -1133,12 +1125,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 else
                 {
-                    if (DpDbo3.SelectedItem != null)
+                    if (DpDbo3.SelectedItem != null && (DpDbo3.SelectedItem as IList<object>).Count == 3)
                     {
-                        var selectedItem = DpDbo3.SelectedItem as ObservableCollection<object>;
-                        string month = selectedItem[1].ToString();
-                        string day = selectedItem[0].ToString();
-                        string year = selectedItem[2].ToString();
+                        string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
+                        string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
+                        string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
                         var date = year + "/" + month + "/" + day;
                         if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
                         {
@@ -1278,19 +1269,17 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             if (viewModel.IsDOBHijriCal)
             {
-                var selectedItem = DpDboHijri3.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = (DpDboHijri3.SelectedItem as IList<object>)[1].ToString();
+                string day = (DpDboHijri3.SelectedItem as IList<object>)[0].ToString();
+                string year = (DpDboHijri3.SelectedItem as IList<object>)[2].ToString();
                 string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
                 viewModel.SelectedDob = date;
             }
             else
             {
-                var selectedItem = DpDbo3.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
+                string month = (DpDbo3.SelectedItem as IList<object>)[1].ToString();
+                string day = (DpDbo3.SelectedItem as IList<object>)[0].ToString();
+                string year = (DpDbo3.SelectedItem as IList<object>)[2].ToString();
                 string date = year + "/" + month + "/" + day;
                 viewModel.SelectedDob = date;
             }
@@ -1302,11 +1291,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             if (viewModel.IsHijriCal)
             {
-                var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
+                
+                    string month = (DpDboHijri.SelectedItem as IList<object>)[1].ToString();
+                    string day = (DpDboHijri.SelectedItem as IList<object>)[0].ToString();
+                    string year = (DpDboHijri.SelectedItem as IList<object>)[2].ToString();
+                    string date = UtilityManager.HijriToGreg(year + "/" + month + "/" + day);
                 viewModel.DeregistrationDate = Convert.ToDateTime(date);
 
 

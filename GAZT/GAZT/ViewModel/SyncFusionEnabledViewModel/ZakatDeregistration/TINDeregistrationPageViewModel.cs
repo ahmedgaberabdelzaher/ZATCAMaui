@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -8,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
-using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
@@ -20,7 +18,6 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using static GAZT.ErrorMessage;
@@ -1146,7 +1143,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     }
                                     //outletInfo.ReasonDescription = SelectedReason.ReasonDesc;
                                     outletInfo.PermitTypes = new List<PermitSetResult>();
-
+                                    var tempPermitTypes= new List<PermitSetResult>();
                                     foreach (PermitSetResult permitInfo in allPermitTypes)
                                     {
 
@@ -1173,13 +1170,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                             }
                                             //permitInfo.ReasonDescription = SelectedReason.ReasonDesc;
 
-                                            if (outletInfo.PermitTypes == null)
-                                                outletInfo.PermitTypes = new List<PermitSetResult>();
+                                            //if (outletInfo.PermitTypes == null)
+                                            //    outletInfo.PermitTypes = new List<PermitSetResult>();
 
 
-                                            outletInfo.PermitTypes.Add(permitInfo);
+                                            tempPermitTypes.Add(permitInfo);
                                         }
                                     }
+                                    outletInfo.PermitTypes = tempPermitTypes;
                                 }
                                 DateField.IsVisible = true;
 
@@ -2252,7 +2250,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
 
-        public async Task SetDefaultDate()
+        public void SetDefaultDate()
         {
             List<object> todaycollection = new List<object>();
             //Select today dates
@@ -3772,12 +3770,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-                //TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate).ToString();
-                //TinDeregistrationData.AEffectiveDt = TinDeregistrationData.ASubmissionDate;
-                //TinDeregistrationData.ADecDate = TinDeregistrationData.ASubmissionDate;
-
-                //await SaveAsDraft();
-
                 try
                 {
                     if (SelectedReason == null)
@@ -3813,7 +3805,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 {
                                     foreach (OutletSetResult outletInfo in AllOutlets)
                                     {
-        
+                                        outletInfo.PermitTypes = new List<PermitSetResult>();
+                                        var tempPermitTypes = new List<PermitSetResult>();
                                         if (TinDeregistrationData.ADregOpt == "3")
                                         {
                                             if (SelectedOutletOptionIndex == 0 || SelectedOutletOptionIndex == 2)
@@ -3832,8 +3825,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                 outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
                                             }
 
-                                            outletInfo.PermitTypes = new List<PermitSetResult>();
-
+                                           
                                             foreach (PermitSetResult permitInfo in allPermitTypes)
                                             {
                                                 if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
@@ -3874,11 +3866,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                     }
 
-                                                    if (outletInfo.PermitTypes == null)
-                                                        outletInfo.PermitTypes = new List<PermitSetResult>();
+                                                    //if (outletInfo.PermitTypes == null)
+                                                    //    outletInfo.PermitTypes = new List<PermitSetResult>();
 
-                                                    if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
-                                                        outletInfo.PermitTypes.Add(permitInfo);
+                                                    //if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
+                                                    //    outletInfo.PermitTypes.Add(permitInfo);
+                                                    tempPermitTypes.Add(permitInfo);
                                                 }
                                             }
                                         }
@@ -3906,11 +3899,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                                     }
 
-                                                    if (outletInfo.PermitTypes == null)
-                                                        outletInfo.PermitTypes = new List<PermitSetResult>();
+                                                    //if (outletInfo.PermitTypes == null)
+                                                    //    outletInfo.PermitTypes = new List<PermitSetResult>();
 
-                                                    if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
-                                                        outletInfo.PermitTypes.Add(permitInfo);
+                                                    //if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
+                                                        tempPermitTypes.Add(permitInfo);
                                                 }
                                             }
                                         }
@@ -3924,6 +3917,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                 permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("yyyy/MM/dd");
                                             }
                                         }
+                                        outletInfo.PermitTypes = tempPermitTypes;
                                     }
 
                                 }
@@ -4130,19 +4124,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             return;
                         }
-                        else
-                        {
-                            //transfer case
-                            await SaveAsDraft();
-                            EnableOutletDetaislView();
-                        }
+                        
                     }
-                    else
-                    {
-                        //close case
                         await SaveAsDraft();
                         EnableOutletDetaislView();
-                    }
                 }
                 else if (SelectedPermitOutletOptionIndex == 0)
                 {
