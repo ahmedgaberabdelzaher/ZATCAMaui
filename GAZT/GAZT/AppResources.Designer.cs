@@ -3544,6 +3544,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZUpdateZakatDelete {
+            get {
+                return ResourceManager.GetString("ZZUpdateZakatDelete", resourceCulture);
+            }
+        }
+        
         public static string ZZFileWithTheSameNameAlreadyExists {
             get {
                 return ResourceManager.GetString("ZZFileWithTheSameNameAlreadyExists", resourceCulture);

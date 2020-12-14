@@ -1594,7 +1594,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 QuestionMark = "?";
             }
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + item.Filename + QuestionMark);
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZUpdateZakatDelete + "   " + item.Filename + QuestionMark);
             confirmPopup.OnSelect = async (str) =>
             {
                 if (str == "Yes")

@@ -2021,6 +2021,10 @@
     <value>حذف الملف</value>
     <comment>Estimated Zakat</comment>
   </data>
+       <data name="ZZUpdateZakatDelete" xml:space="preserve">
+    <value>هل تريد بالتأكيد حذف</value>
+    <comment>Establishment Amend</comment>
+  </data>
    <data name="ZZFileWithTheSameNameAlreadyExists" xml:space="preserve">
     <value>يوجد ملف بنفس الاسم مرفق مسبقا</value>
     <comment>Estimated Zakat</comment>
