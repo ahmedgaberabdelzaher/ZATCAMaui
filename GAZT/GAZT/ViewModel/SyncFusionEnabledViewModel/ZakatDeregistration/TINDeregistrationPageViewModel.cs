@@ -37,6 +37,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public int DefaultMonth;
         public int DefaultMonthHijri;
         public bool isSubmitted;
+        public string permitThirdOptionReason = string.Empty;
+
         //
         #endregion
 
@@ -1120,6 +1122,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         if (PickerModel.PickerId == "reasonPicker")
                         {
                             string tempSelectedReason = PickerModel.SelectedValue;
+                            permitThirdOptionReason = PickerModel.SelectedValue;
+
                             if (tempSelectedReason != string.Empty)
                             {
                                 SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
@@ -1474,6 +1478,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 x.APermitEffDtCTb = "G";
                                 x.APermitEffDtHTb = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("yyyyMMdd");
                                 x.APermitDeregDisplayDate = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("dd MMM yyyy");
+                                if (Convert.ToDateTime(x.APermitValfrDtHTb) > Convert.ToDateTime(SingleDeregistrationDate))
+                                {
+                                    _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
+                                    x.APermitDeregDisplayDate = string.Empty;
+                                }
                                 return x;
                             }
                             ).ToList());
@@ -4677,7 +4686,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (TinDeregistrationData.ADregOpt == "3")
                 {
-                    if (SelectedPermitOutletOptionIndex == 1)
+                    if (SelectedPermitOutletOptionIndex == 1 || permitThirdOptionReason.Contains(AppResources.TinDeregistrationTransfer))
+            
                     {
                         check.Add(new TinDeregestrationAttachmentsModel
                         {
