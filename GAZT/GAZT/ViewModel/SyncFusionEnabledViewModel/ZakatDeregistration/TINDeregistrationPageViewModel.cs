@@ -3542,29 +3542,57 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             IsOutletContinueButtonEnabled = true;
                             OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
                         }
+                        else
+                        {
+                            IsOutletContinueButtonEnabled = false;
+                            OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                        }
                     }
                 }
                 else
                 {
+                        AllOutlets = AllOutlets?.Select(x => {
+                            if (x.AOutletNoTb == SelectedOutletForCloseTranser?.AOutletNoTb)
+                                x.PermitTypes = x.PermitTypes.Select(y => {
+                                    y.ReasonDescription = SelectedPermitOutletOptionIndex == 0?AppResources.TinDeregistrationClosed: AppResources.TinDeregistrationTransfer;
+                                    return y;
+                                }).ToList();
+                            return x;
+                        }).ToList();
+                   
                     if (SingleDeregistrationDate == null)
                     {
                         //IsPermitTypesVisible = false;
                         flag = false;
                         IsOutletContinueButtonEnabled = false;
                         OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
-
+                        AllOutlets = AllOutlets?.Select(x =>
+                        {
+                                x.ShowPermit = false;
+                            return x;
+                        }).ToList();
                     }
                     else
                     {
                         AllOutlets = AllOutlets?.Select(x =>
                         {
+                            if (x.PermitTypes.Any(y => !string.IsNullOrWhiteSpace(y.APermitDeregDisplayDate)))
                                 x.ShowPermit = true;
+                            else
+                                x.ShowPermit = false;
                             return x;
                         }).ToList();
                         //IsPermitTypesVisible = true;
-                        IsOutletContinueButtonEnabled = true;
-                        OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
-
+                        if (!AllOutlets.Any(x => !x.ShowPermit))
+                        {
+                            IsOutletContinueButtonEnabled = true;
+                            OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                        }
+                        else
+                        {
+                            IsOutletContinueButtonEnabled = false;
+                            OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                        }
                     }
                 }
                 AllOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
@@ -3572,21 +3600,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
-                    //if (string.IsNullOrEmpty(outletInfo.AOutletEffDtTb))
-                    //{
-                    //    flag = false;
-                    //    IsOutletContinueButtonEnabled = false;
-                    //    OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
-
-                    //    //break;
-                    //}
-                    //else
-                    //{
-                    //    IsOutletContinueButtonEnabled = true;
-                    //    OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
-
-                    //}
-
                     outletInfo.PermitTypes = new List<PermitSetResult>();
 
                     var temp = new List<PermitSetResult>();
@@ -3594,18 +3607,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
                         {
-
-
-                            //if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2")
-                            //{
-                            //    permitInfo.ReasonDescription = AppResources.TinDeregistrationClosed;
-
-                            //}
-                            //else
-                            //{
-                            //    permitInfo.ReasonDescription = AppResources.TinDeregistrationTransfer;
-                            //}
-
                             if (permitInfo.APermitDregRsnTb == null)
                                 permitInfo.APermitDregRsnTb = string.Empty;
 
@@ -3623,13 +3624,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
 
                             }
-
                             if (outletInfo.PermitTypes == null)
                                 outletInfo.PermitTypes = new List<PermitSetResult>();
 
                             if (!outletInfo.PermitTypes.Any(any => any.APermitNoTb == permitInfo.APermitNoTb && any.APermitTypeTb == permitInfo.APermitTypeTb))
                             {
-                                //outletInfo.PermitTypes.Add(permitInfo);
                                 temp.Add(permitInfo);
                             }
 
@@ -3637,6 +3636,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     outletInfo.PermitTypes = temp;
                 }
+            }
+            else
+            {
+                AllOutlets = AllOutlets?.Select(x =>
+                {
+                    x.ShowPermit = true;
+                    return x;
+                }).ToList();
+                IsOutletContinueButtonEnabled = true;
+                OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
             }
             CurrentStep = ProcessStep.Step2;
             IsBackButtonVisible = true;
@@ -3941,6 +3950,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                             foreach (PermitSetResult permitInfo in allPermitTypes)
                                             {
                                                 permitInfo.APermitDeregDisplayDate = DeregistrationDate.ToString("yyyy/MM/dd");
+                                                tempPermitTypes.Add(permitInfo);
+
                                             }
                                         }
                                         outletInfo.PermitTypes = tempPermitTypes;
@@ -4072,6 +4083,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
+
                 if (SelectedPermitOutletOptionIndex == 1)
                 {
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SingleDeregistrationDate) || string.IsNullOrEmpty(SelectedIdtype))
@@ -4113,7 +4125,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 return;
                             }
                         }
-
+                        
+                            SelectedOutletForCloseTranser.ReasonDescription = AppResources.TinDeregistrationTransfer;
+                       
                         await SaveAsDraft();
                         EnableOutletDetaislView();
                     }
@@ -4162,7 +4176,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         return;
                     }
-
+                    SelectedOutletForCloseTranser.ReasonDescription = AppResources.TinDeregistrationClosed;
                     await SaveAsDraft();
                     EnableOutletDetaislView();
                 }
@@ -4680,24 +4694,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
             }
 
+            bool isTransfer = false;
 
             //This attachment is needed when transferring the outlets and not closing for all the cases
             if (TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
             {
                 if (TinDeregistrationData.ADregOpt == "3")
                 {
-                    if (SelectedPermitOutletOptionIndex == 1 || permitThirdOptionReason.Contains(AppResources.TinDeregistrationTransfer))
-            
-                    {
-                        check.Add(new TinDeregestrationAttachmentsModel
+
+                    if(AllOutlets!=null&&AllOutlets.Count>0)
+                    isTransfer = AllOutlets.Any(x =>x.PermitTypes != null && x.PermitTypes.Any(y => y.APermitDisplayReason.Equals(AppResources.TinDeregistrationTransfer)));
+
+                    if (isTransfer || SelectedPermitOutletOptionIndex == 1 || permitThirdOptionReason.Contains(AppResources.TinDeregistrationTransfer))
+
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR07",
-                            IsMandatory = true
-                        });
-                    }
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR07",
+                                IsMandatory = true
+                            });
+                        }
+                    
                 }
                 else
                 {

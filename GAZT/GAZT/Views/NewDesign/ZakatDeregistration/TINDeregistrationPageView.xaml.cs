@@ -424,6 +424,16 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //viewModel.TodayDate = new ObservableCollection<object>();
                 //viewModel.TodayDateinHijri = new ObservableCollection<object>();
             }
+
+            viewModel.AllOutlets = viewModel.AllOutlets.Select(x=>
+            {
+                x.PermitTypes = x.PermitTypes.Select(y=> {
+                    y.APermitDeregDisplayDate = null;
+                    return y;
+                }).ToList();
+                return x;
+            }).ToList();
+
             GetSelectedDataTemplate(selectedItem.ActiveOutletDecisionOptions.Equals(AppResources.TinDeregistrationTransferAllOutletsToSingle));
         }
         void GetSelectedDataTemplate(bool isIndex1 = false)
