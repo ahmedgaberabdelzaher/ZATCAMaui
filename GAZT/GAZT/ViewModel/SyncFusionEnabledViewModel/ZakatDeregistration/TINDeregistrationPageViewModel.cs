@@ -5280,7 +5280,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                         TinDeregistrationData.Fbnum = tempTinDeregData.Fbnum;
                         TinDeregistrationData.Fbnumz = tempTinDeregData.Fbnumz;
-
                         //TinDeregistrationData = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregistrationDataResponse);
                         //TinDeregistrationData.AttDetSet.Results = AttachmentsCopy;
 
