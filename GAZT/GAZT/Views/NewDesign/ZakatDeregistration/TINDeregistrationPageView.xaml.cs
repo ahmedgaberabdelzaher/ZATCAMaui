@@ -162,7 +162,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
               
             });
 
-            Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
             {
                 if (arg != null && arg.results != null && arg.results.Count > 0)
                 {

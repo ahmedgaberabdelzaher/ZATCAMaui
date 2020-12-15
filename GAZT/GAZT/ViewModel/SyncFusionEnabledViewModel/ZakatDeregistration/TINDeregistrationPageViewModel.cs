@@ -371,7 +371,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 return _isOutletChecked;
             }
             set
-            {
+            { if (value == _isOutletChecked) return;
                 _isOutletChecked = value;
 
                 if (_isOutletChecked)
@@ -1474,7 +1474,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             x =>
                             {
 
-                                x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(Convert.ToDateTime(_singleDeregistrationDate));
+                                x.APermitEffDtTb = _singleDeregistrationDate == null ? "" : ConvertDateFormat(_singleDeregistrationDate);
                                 x.APermitEffDtCTb = "G";
                                 x.APermitEffDtHTb = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("yyyyMMdd");
                                 x.APermitDeregDisplayDate = _singleDeregistrationDate == null ? "" : _singleDeregistrationDate;//.ToString("dd MMM yyyy");
@@ -3335,12 +3335,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                               {
                                   x.APermitIdTypeTb = idType.Text;
                                   x.APermitIdNoTb = IDTypeDataModel.Idnum;
+                                  x.APermitNm1Tb = IDTypeDataModel.Name1;
+                                  x.APermitNm2Tb = IDTypeDataModel.Name2;
                                   x.APermitNm3Tb = IDTypeDataModel.Name1;
                                   x.APermitNm4Tb = IDTypeDataModel.Name2;
                                   x.APermitNm5Tb = IDTypeDataModel.FatherName;
                                   x.APermitNm6Tb = IDTypeDataModel.GrandfatherName;
                                   x.APermitNm7Tb = IDTypeDataModel.FamilyName;
-                                  x.APermitDobHTb = IDTypeDataModel.TaxpDob;
+                                  x.APermitDobTb = ConvertDateFormat(IDTypeDataModel.Birthdt10);
                                   x.APermitDeregDisplayDobDate = IDTypeDataModel.Birthdt10;
                                   x.APermitIdTypeTb = IDTypeDataModel.Idtype;
                                   return x;
@@ -3857,7 +3859,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                             {
                                                 outletInfo.AOutletEffDtHTb = SingleDeregistrationDate == null ? "" : SingleDeregistrationDate;//.ToString("yyyyMMdd");
                                                 outletInfo.AOutletEffDtCTb = "G";
-                                                outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(SingleDeregistrationDate));
+                                                outletInfo.AOutletEffDtTb = ConvertDateFormat(SingleDeregistrationDate);
                                             }
 
                                            
@@ -3945,7 +3947,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                         else
                                         {
                                             outletInfo.AOutletEffDtHTb = DeregistrationDate.ToString("yyyy/MM/dd");
-                                            outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(DeregistrationDate));
+                                            outletInfo.AOutletEffDtTb = ConvertDateFormat(DeregistrationDate);
                                             outletInfo.AOutletEffDtCTb = "G";
                                             foreach (PermitSetResult permitInfo in allPermitTypes)
                                             {
@@ -4953,7 +4955,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public String ConvertDateFormat(object newDate)
         {
-            if (newDate == null)
+            if (newDate==null)
                 return null;
 
             if (!newDate.ToString().Contains("/Date("))
@@ -5101,7 +5103,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
                     TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy/MM/dd");
 
-
                     //if (IsDeclarationChecked)
                     //{
                     //    TinDeregistrationData.ADeclarationChkbox = "1";
@@ -5148,6 +5149,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         //TODO
 
                         outletInfo.AOutletDobTb = ConvertDateFormat(DeregistrationDate);
+                        outletInfo.AOutletToDeregTb = "1";
+
+                        if(SelectedPermitOutletOptionIndex == 0)
+                        {
+                            outletInfo.AOutletDregOptTb = "1";
+                        }
+                        else if (SelectedPermitOutletOptionIndex == 1)
+                        {
+                            outletInfo.AOutletDregOptTb = "2";
+
+                        }
+                        else
+                        {
+                            outletInfo.AOutletDregOptTb = "3";
+
+                        }
+
 
                         //if (IsOutletChecked)
                         //{
@@ -5169,13 +5187,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 {
                                     if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
                                     {
-                                        permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
+                                        permitInfo.APermitValfrDtTb = ConvertDateFormat(permitInfo.APermitValfrDtTb);
                                     }
                                     permitInfo.APermitValfrDtCTb = "G";
                                 }
                             }
                         }
-                        catch
+                        catch(Exception ex)
                         {
 
                         }
@@ -5184,12 +5202,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             if (TinDeregistrationData.ADregOpt == "3")
                             {
-                                permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
+                                permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitEffDtTb);
                                 permitInfo.APermitEffDtCTb = "G";
-
+                                
+                                permitInfo.APermitDobCTb =string.IsNullOrEmpty(permitInfo.APermitDobTb)?"": "G";
+                                permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
                             }
                         }
-                        catch
+                        catch (Exception ex)
                         {
 
                         }

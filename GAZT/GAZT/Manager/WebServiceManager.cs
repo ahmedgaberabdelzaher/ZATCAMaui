@@ -12390,7 +12390,7 @@ namespace GAZT.Manager
                 }
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
-                    permitInfo.APermitDobTb = null;
+                    
                     if ((!string.IsNullOrEmpty(permitInfo.APermitEffDtTb)&& !permitInfo.APermitEffDtTb.Contains("/Date(")))
                         permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
                     permitInfo.APermitEffDtCTb = "G";
