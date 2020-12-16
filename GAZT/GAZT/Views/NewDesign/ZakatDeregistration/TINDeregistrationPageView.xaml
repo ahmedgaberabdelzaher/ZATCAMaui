@@ -649,9 +649,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                         
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />
+                
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
