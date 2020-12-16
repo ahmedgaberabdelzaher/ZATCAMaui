@@ -448,7 +448,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _iSOutletContinueButtonEnabled = value;
-                if (_iSOutletContinueButtonEnabled)
+                if (value)
                 {
                     OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
                 }
@@ -3342,7 +3342,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                   x.APermitNm5Tb = IDTypeDataModel.FatherName;
                                   x.APermitNm6Tb = IDTypeDataModel.GrandfatherName;
                                   x.APermitNm7Tb = IDTypeDataModel.FamilyName;
-                                  x.APermitDobTb = ConvertDateFormat(IDTypeDataModel.Birthdt10);
+                                  if (!string.IsNullOrEmpty(IDTypeDataModel.Birthdt10))
+                                  {
+                                      x.APermitDobTb = ConvertDateFormat(IDTypeDataModel.Birthdt10);
+                                  }
                                   x.APermitDeregDisplayDobDate = IDTypeDataModel.Birthdt10;
                                   x.APermitIdTypeTb = IDTypeDataModel.Idtype;
                                   return x;
@@ -3526,7 +3529,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         //IsPermitTypesVisible = false;
                         flag = false;
                         IsOutletContinueButtonEnabled = false;
-                        OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
                     }
                     else
                     {
@@ -3538,17 +3540,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 x.ShowPermit = false;
                             return x;
                         }).ToList();
-                        //IsPermitTypesVisible = true;
-                        if (!AllOutlets.Any(x => !x.ShowPermit))
-                        {
-                            IsOutletContinueButtonEnabled = true;
-                            OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
-                        }
-                        else
-                        {
-                            IsOutletContinueButtonEnabled = false;
-                            OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
-                        }
+                            IsOutletContinueButtonEnabled = !AllOutlets.Any(x => !x.ShowPermit)? true:false;
+                       
                     }
                 }
                 else
@@ -3567,7 +3560,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         //IsPermitTypesVisible = false;
                         flag = false;
                         IsOutletContinueButtonEnabled = false;
-                        OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
                         AllOutlets = AllOutlets?.Select(x =>
                         {
                                 x.ShowPermit = false;
@@ -3585,16 +3577,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             return x;
                         }).ToList();
                         //IsPermitTypesVisible = true;
-                        if (!AllOutlets.Any(x => !x.ShowPermit))
-                        {
-                            IsOutletContinueButtonEnabled = true;
-                            OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
-                        }
-                        else
-                        {
-                            IsOutletContinueButtonEnabled = false;
-                            OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
-                        }
+                        
+                            IsOutletContinueButtonEnabled = !AllOutlets.Any(x => !x.ShowPermit)? true:false;
+                        
                     }
                 }
                 AllOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
@@ -3647,7 +3632,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     return x;
                 }).ToList();
                 IsOutletContinueButtonEnabled = true;
-                OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
             }
             CurrentStep = ProcessStep.Step2;
             IsBackButtonVisible = true;
@@ -4247,6 +4231,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async void OutletContinueBtnClicked()
         {
+            if (!IsOutletContinueButtonEnabled) return;
             try
             {
                 if (IsOutletChecked)
