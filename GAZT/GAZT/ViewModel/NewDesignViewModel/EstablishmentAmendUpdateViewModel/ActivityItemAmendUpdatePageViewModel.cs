@@ -194,7 +194,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         }
 
         public bool AddNewLicenseTapped = false;
-     
+
         private CityDropdownItem _cRIssueCity = null;
         public CityDropdownItem CRIssueCity
         {
@@ -592,14 +592,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             ActivityDetails = new ActivityDetails();
             LicenseDetails = new LicenseDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnPreButtonClick = new Command(() => {
+            OnPreButtonClick = new Command(() =>
+            {
 
-                if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails) {
+                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+                {
 
                     CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
 
                 }
-                else {
+                else
+                {
 
                     _navigationService.GoBack();
                 }
@@ -1102,7 +1105,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         SetUIAvailability(true, PageType);
 
                     }
-                    else {
+                    else
+                    {
                         SetUIAvailability(false, PageType);
 
                     }
@@ -1126,11 +1130,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (CRData != null && CRData.Count > 0)
                 {
                     ActivityTitle = AppResources.ESTCommercialRegistration;
-                   
-                        SetUIAvailability(true, PageType);
+
+                    SetUIAvailability(true, PageType);
 
                 }
-                else {
+                else
+                {
                     SetUIAvailability(false, PageType);
 
                 }
@@ -1661,17 +1666,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
                     return false;
                 }
-                else if (CRMainGroup == null)
+                else if (CRMainGroup == null && ActivityDetails.MainGroup == true)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
-                else if (CRSubGroup == null)
+                else if (CRSubGroup == null && ActivityDetails.SubGroup == true)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
-                else if (CRAcitivity == null)
+                else if (CRAcitivity == null && ActivityDetails.Activity == true)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;
