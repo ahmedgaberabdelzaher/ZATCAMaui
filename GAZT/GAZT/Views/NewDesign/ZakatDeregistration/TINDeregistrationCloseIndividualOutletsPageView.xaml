@@ -47,8 +47,10 @@
                         Grid.Column="0"
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>-->
-  <Grid>
-  <ScrollView>
+
+      <Grid>
+  
+              <ScrollView>
                 <Grid IsVisible="true"   Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                      <RowDefinition Height="auto"/>
@@ -74,7 +76,7 @@
                     <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationSelectReason}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
                     <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
-                    </Grid>
+                </Grid>
                 
                  <listView:SfListView IsScrollingEnabled="False" x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand"
                                       VerticalOptions="FillAndExpand"
@@ -83,17 +85,16 @@
                                    IsVisible="true"   ItemsSource="{Binding PermitOutletDecisionOptions}"
                                       SelectedItem="{Binding SelectedPermitTypeOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
-                 <listView:SfListView.ItemTemplate>
-                 <DataTemplate>
-                 <Grid  BackgroundColor="Transparent"  HeightRequest="100">
-                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                       <Grid  BackgroundColor="Transparent"  HeightRequest="100">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                         <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                        <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}"
-                                               HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                               Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start">
+                                        <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start">
                                         </Label>
                                     </Grid>
-                 </Grid>
+                                </Grid>
 					                <!--<cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
@@ -102,8 +103,8 @@
                                                 </Label>
                                             </Grid>
                                     </cards:SfCardView>--> 
-			     </DataTemplate>
-                 </listView:SfListView.ItemTemplate>
+			                </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
                       <!--<listView:SfListView.SelectedItemTemplate>
                             <DataTemplate>
 					                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
@@ -130,89 +131,8 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                       <StackLayout x:Name="CalLabel" Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"  />
-                            <Switch x:Name="HijriCalSwitch" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal}" Toggled="HijriCalSwitch_Toggled" />
-                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
-                        </StackLayout>
-                        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                        <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" >
-                        <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry" 
-                         Text ="{Binding PickerCloseAllDeregDateDisplay}" Unfocused="CloseDeregDatePicker_Unfocused" TextChanged="DeregDateEntry_TextChanged"
-                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd"  BackgroundColor="Gray"
-                         VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                </custom:BorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <!--<Image Source="arrowDropdown.png"/>-->
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Margin="5,0">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                            </Image.Source>
-                                        </Image>
-                                    </StackLayout>
-                                </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
-                            <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
-                            </Button>
-                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                                BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                HeaderBackgroundColor="#EAF7CC"
-                                SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                BorderColor="Black"
-								ShowFooter="False"
-								ShowColumnHeader="True"
-                                ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								x:Name="CloseDeregDatePicker"
-                                OKButtonTextColor="#006450" 
-                                CancelButtonTextColor="#006450"
-                                SelectedItem="{Binding TodayDate}"
-                                HorizontalOptions="FillAndExpand"
-                                Closed="CloseDeregDatePicker_Closed"
-                        
-								ItemHeight="40">
-                                <custom1:CustomDatePicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </custom1:CustomDatePicker.Behaviors>
-                            </custom1:CustomDatePicker>
-                            <!--HijriDatePicker-->
-                            <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                                BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                HeaderBackgroundColor="#EAF7CC"
-                                SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                BorderColor="Black"
-                                SelectedItem="{Binding TodayDateinHijri}"                                  
-								ShowFooter="False"
-								ShowColumnHeader="True"
-                                ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								x:Name="CloseDeregDatePickerHijri"
-                             OKButtonTextColor="#006450"    
-                             CancelButtonTextColor="#006450"
-            
-                            HorizontalOptions="FillAndExpand"
-                               Closed="CloseDeregDatePicker_Closed"
-                               
-								ItemHeight="40">
-                            </custom1:CustomHijriDatePicker>
-                            <!--SelectedItem="{Binding TodayDate}"-->
-                            <!--HijriDatePicker-->
-                        </Grid>
-
-                            <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                     
+                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
@@ -230,7 +150,7 @@
                                           <TapGestureRecognizer Tapped="TapGestureRecognizerSingleDeregDate_Tapped" CommandParameter="{Binding APermitNoTb}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                            </border:SfBorder >-->
+                            </border:SfBorder >
                             <!--<StackLayout.Triggers>
                                  <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedPermitOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="true" />
@@ -268,92 +188,8 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                           <StackLayout Orientation="Horizontal" >
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}" HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                                <Switch x:Name="HijriCalSwitch1" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsHijriCal, Mode=TwoWay}" Toggled="HijriCal2Switch_Toggled" />
-                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
-                            </StackLayout>
-                              <Grid >
-                                <inputLayout:SfTextInputLayout x:Name="FrmDBO2" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry21"
-                                                         Text ="{Binding PickerCloseAllDeregDateDisplay}" Unfocused="CloseDeregDatePicker_Unfocused" TextChanged="DeregDateEntry_TextChanged"
-                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                    </custom:BorderlessEntry>
-                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                        <!--<Image Source="arrowDropdown.png"/>-->
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                </Image.Source>
-                                            </Image>
-                                        </StackLayout>
-                                    </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
-                                <Button  TextColor="Transparent"  BackgroundColor="Transparent" Clicked="OnDOBClicked"  Margin="0,0,0,0" >
-                                </Button>
-                                <custom1:CustomDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                                BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                                 SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                 BorderColor="Black"
-                                
-                                
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								
-								x:Name="TransferDeregDatePicker"
-                             OKButtonTextColor="#006450" 
-                              CancelButtonTextColor="#006450"
-                            SelectedItem="{Binding TodayDate}"
-                            HorizontalOptions="FillAndExpand"
-                                 Closed="CloseDeregDatePicker_Closed"
-                                                    
-								ItemHeight="40">
-                                    <custom1:CustomDatePicker.Behaviors>
-                                        <custom1:SfPickerBehavior />
-                                    </custom1:CustomDatePicker.Behaviors>
-                                </custom1:CustomDatePicker>
-                                <!--HijriDatePicker-->
-                                <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                              BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                    BorderColor="Black"
-                                  SelectedItem="{Binding TodayDateinHijri}"                                  
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								x:Name="TransferDeregDatePickerHijri"
-                             OKButtonTextColor="#006450"    
-                             CancelButtonTextColor="#006450"
-                           
-                            HorizontalOptions="FillAndExpand"
-                               Closed="CloseDeregDatePicker_Closed"
-                                                    
-								ItemHeight="40">
-                                </custom1:CustomHijriDatePicker>
-                                <!--SelectedItem="{Binding TodayDate}"-->
-                                <!--HijriDatePicker-->
-                            </Grid>
-
-                                <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                            
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
@@ -373,7 +209,7 @@
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
-                                </border:SfBorder >-->
+                                </border:SfBorder >
                             </StackLayout>
                             <StackLayout IsVisible="{Binding TinText.IsVisible}">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
@@ -451,92 +287,8 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <StackLayout Orientation="Horizontal" IsVisible="{Binding IsDobVisible}">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                            <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal, Mode=TwoWay}" Toggled="HijriCal3Switch_Toggled" />
-                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
-                        </StackLayout>
-                                                    <Grid IsVisible="{Binding IsDobVisible}">
-                            <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
-                                                         Text ="{Binding TransferPickerDOBDateDisplay}" Unfocused="TransferDOBDatePicker_Unfocused" TextChanged="TransferDOBDateEntry_TextChanged"
-                                                         Focused="OnTransferDOBDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                </custom:BorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <!--<Image Source="arrowDropdown.png"/>-->
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Margin="5,0">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                            </Image.Source>
-                                        </Image>
-                                    </StackLayout>
-                                </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
-                            <Button BackgroundColor="Transparent" Clicked="OnTransferIDDOBClicked" Margin="0,0,0,0" >
-                            </Button>
-                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                              BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                    BorderColor="Black"
-                                
-                                
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								
-								x:Name="TransferDOBPicker"
-                             OKButtonTextColor="#006450"                               
-                             CancelButtonTextColor="#006450" 
-                            SelectedItem="{Binding TodayDate}"
-                            HorizontalOptions="FillAndExpand"
-                                 Closed="TransferDOBPicker_Closed"
-                            
-								ItemHeight="40">
-                                <custom1:CustomDatePicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </custom1:CustomDatePicker.Behaviors>
-                            </custom1:CustomDatePicker>
-                            <!--HijriDatePicker-->
-                            <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                                BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                HeaderBackgroundColor="#EAF7CC"
-                                SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                BorderColor="Black"
-                                SelectedItem="{Binding TodayDateinHijri}"                                  
-								ShowFooter="False"
-								ShowColumnHeader="True"
-                                ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								x:Name="TransferDOBPickerHijri"
-                                OKButtonTextColor="#006450"    
-                                CancelButtonTextColor="#006450"
-                           
-                                HorizontalOptions="FillAndExpand"
-                               Closed="TransferDOBPicker_Closed"
-                 
-								ItemHeight="40">
-                            </custom1:CustomHijriDatePicker>
-                            <!--SelectedItem="{Binding TodayDate}"-->
-                            <!--HijriDatePicker-->
-                        </Grid>
-
-                                <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout IsEnabled="{Binding DobText.IsEditable}" Orientation="Horizontal"  Padding="5,15,5,15">
                                         
@@ -555,7 +307,7 @@
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
-                                </border:SfBorder >-->
+                                </border:SfBorder >
                             </StackLayout>
 
                          <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all other id types except comapny id-!>-->
@@ -786,94 +538,8 @@
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}"  HorizontalOptions="StartAndExpand"
                                                 VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}" />   
                                         </StackLayout>
-                                             <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                            <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal, Mode=TwoWay}" Toggled="HijriCal4Switch_Toggled" />
-                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
-                        </StackLayout>
-                                        <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5" >
-                            <Grid IsVisible="{Binding IsDobVisible}">
-                            <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
-                                                         Text ="{Binding APermitDeregDisplayDate}" Unfocused="ClosePermitDeregDatePicker_Unfocused"
-                                                        TextChanged="ClosePermitDeregDatePicker_TextChanged"
-                                                         Focused="OnClosePermitDeregDatePickerDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                </custom:BorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <!--<Image Source="arrowDropdown.png"/>-->
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Margin="5,0">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                            </Image.Source>
-                                        </Image>
-                                    </StackLayout>
-                                </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
-                            <Button BackgroundColor="Transparent" Clicked="OnClosePermitDeregDateClicked" Margin="0,0,0,0" >
-                            </Button>
-                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                              BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                                SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                BorderColor="Black"
-                                
-                                
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								
-								x:Name="ClosePermitDeregDatePicker"
-                             OKButtonTextColor="#006450"                               
-                             CancelButtonTextColor="#006450" 
-                            SelectedItem="{Binding TodayDate}"
-                            HorizontalOptions="FillAndExpand"
-                                 Closed="ClosePermitDeregDatePicker_Closed"
-                            
-								ItemHeight="40">
-                                <custom1:CustomDatePicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </custom1:CustomDatePicker.Behaviors>
-                            </custom1:CustomDatePicker>
-                            <!--HijriDatePicker-->
-                            <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                                BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                HeaderBackgroundColor="#EAF7CC"
-                                SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                BorderColor="Black"
-                                SelectedItem="{Binding TodayDateinHijri}"                                  
-								ShowFooter="False"
-								ShowColumnHeader="True"
-                                ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								x:Name="ClosePermitDeregDatePickerHijri"
-                                OKButtonTextColor="#006450"    
-                                CancelButtonTextColor="#006450"
-                           
-                                HorizontalOptions="FillAndExpand"
-                               Closed="ClosePermitDeregDatePicker_Closed"
-                 
-								ItemHeight="40">
-                            </custom1:CustomHijriDatePicker>
-                            <!--SelectedItem="{Binding TodayDate}"-->
-                            <!--HijriDatePicker-->
-                        </Grid>
-
-                                            <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                        <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5" >
+                                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                                  <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" >
                                                     <Label Text="{Binding APermitDeregDisplayDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" />
@@ -886,10 +552,10 @@
                                                         </Image>
                                                      </StackLayout>
                                                 <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tappe" CommandParameter="{Binding APermitNoTb}"></TapGestureRecognizer>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizerSelectSingleOutleDate_Tapped" CommandParameter="{Binding APermitNoTb}"></TapGestureRecognizer>
                                                 </StackLayout.GestureRecognizers>
                                              </StackLayout>
-                                            </border:SfBorder>-->
+                                            </border:SfBorder>
                                          </StackLayout>
                                           <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
                                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
@@ -997,92 +663,7 @@
                                                          <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
                                                                             Style="{StaticResource CaptionLabelGrey}" />
-                                                                  <StackLayout Orientation="Horizontal" >
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGregorian}"  HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}"/>
-                            <Switch x:Name="HijriCalSwitch3" HorizontalOptions="CenterAndExpand" IsToggled="{Binding IsDOBHijriCal, Mode=TwoWay}" Toggled="HijriCal5Switch_Toggled" />
-                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDHijri}" HorizontalOptions="End" Style="{StaticResource CaptionLabelBlack}"/>
-                        </StackLayout>
-                                                                                 <Grid IsVisible="{Binding IsDobVisible}">
-                            <inputLayout:SfTextInputLayout x:Name="FrmDBO1" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry23"
-                                                         Text ="{Binding APermitDeregDisplayDobDate}" Unfocused="ClosePermitDOBDatePicker_Unfocused" TextChanged="ClosePermitDOBDatePicker_TextChanged"
-                                                         Focused="OnClosePermitDOBPickerDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                </custom:BorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <!--<Image Source="arrowDropdown.png"/>-->
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Margin="5,0">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                            </Image.Source>
-                                        </Image>
-                                    </StackLayout>
-                                </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
-                            <Button BackgroundColor="Transparent" Clicked="OnClosePermitDOBDateClicked" Margin="0,0,0,0" >
-                            </Button>
-                            <custom1:CustomDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                              BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                    BorderColor="Black"
-                                
-                                
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								
-								x:Name="ClosePermitDOBPicker"
-                             OKButtonTextColor="#006450"                               
-                             CancelButtonTextColor="#006450" 
-                            SelectedItem="{Binding TodayDate}"
-                            HorizontalOptions="FillAndExpand"
-                                 Closed="ClosePermitDOBPicker_Closed"
-                            
-								ItemHeight="40">
-                                <custom1:CustomDatePicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                                </custom1:CustomDatePicker.Behaviors>
-                            </custom1:CustomDatePicker>
-                            <!--HijriDatePicker-->
-                            <custom1:CustomHijriDatePicker FlowDirection="RightToLeft" 
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                                BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                HeaderBackgroundColor="#EAF7CC"
-                                SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                BorderColor="Black"
-                                SelectedItem="{Binding TodayDateinHijri}"                                  
-								ShowFooter="False"
-								ShowColumnHeader="True"
-                                ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								x:Name="ClosePermitDOBPickerHijri"
-                                OKButtonTextColor="#006450"    
-                                CancelButtonTextColor="#006450"
-                           
-                                HorizontalOptions="FillAndExpand"
-                               Closed="ClosePermitDOBPicker_Closed"
-                 
-								ItemHeight="40">
-                            </custom1:CustomHijriDatePicker>
-                            <!--SelectedItem="{Binding TodayDate}"-->
-                            <!--HijriDatePicker-->
-                        </Grid>
-
-                                                            <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
@@ -1102,7 +683,7 @@
                                                                      </StackLayout.GestureRecognizers>
 
                                                             </StackLayout>
-                                                            </border:SfBorder >-->
+                                                            </border:SfBorder >
                                                          </StackLayout>
                                                          <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding APermitIsCompanyId,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"><!-- for non compnay-->
                                                              <StackLayout>
@@ -1161,9 +742,7 @@
                                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                                    <control:BorderlessEntry Text="{Binding APermitNm6Tb}" IsEnabled="{ Binding APermitEditable}"
-                                                                                             Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}"
-                                                                                             FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm6Tb}" IsEnabled="{ Binding APermitEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                                         <control:BorderlessEntry.Behaviors>
@@ -1180,9 +759,7 @@
                                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                                    <control:BorderlessEntry Text="{Binding APermitNm7Tb}" IsEnabled="{ Binding APermitEditable}"
-                                                                                             Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"
-                                                                                             HorizontalTextAlignment="Start"
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm7Tb}" IsEnabled="{ Binding APermitEditable}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                                         <control:BorderlessEntry.Behaviors>
@@ -1199,9 +776,7 @@
                                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							                                        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                                    <control:BorderlessEntry Text="{Binding APermitNm3Tb}" IsEnabled="False"
-                                                                                             Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}"
-                                                                                             FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                    <control:BorderlessEntry Text="{Binding APermitNm3Tb}" IsEnabled="False" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                                             VerticalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"
                                                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                                                         <control:BorderlessEntry.Behaviors>
