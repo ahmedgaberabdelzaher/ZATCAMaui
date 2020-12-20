@@ -9,12 +9,12 @@ namespace EGAZT.CustomControl
        
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value.Equals("1"))
-                return Color.FromHex("#006450");
-            else if (value.Equals("2"))
-                return Color.FromHex("#AA0C19");
+            if (value.Equals("P"))
+                return (Color)App.Current.Resources["Primary"];
+            else if (value.Equals("I"))
+                return (Color)App.Current.Resources["Secondary"];
             else
-                return Color.FromHex("#D99A29");
+                return (Color)App.Current.Resources["ErrorColor"];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -9,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -64,10 +66,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             { 
             
             }
-          SetPickerFont();
             ChangeAeroIcon();
             SetLTR();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+           
+
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             Bills.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
@@ -79,47 +81,15 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
           //  App.HideProgressView();
 
         }
-        public void SetPickerFont()
-        {
-            try
-            {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
-                {
-
-                    case Xamarin.Forms.Device.iOS:
-                        {
-                          
-                                TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                                TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
-                        }
-                        break;
-                    case Xamarin.Forms.Device.Android:
-                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-        }
+     
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
-            }
-            else
-            {
-                TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
-            }
+            
+           // On<iOS>().SetUseSafeArea(true);
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            this.Padding = safeInsets;
         }
         private void SetLTR()
         {
@@ -150,26 +120,15 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
         private void btn_Clicked(object sender, System.EventArgs e)
         {
-            TaxTypePicker.IsOpen = true;
-        }
-
-        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            try
+            MessagingCenter.Subscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew", (a, arg) =>
             {
-                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-                TaxTypePicker.SelectedItem = selectedReturntype;
-                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
-               // ChipGroup_statusFilter.SelectedItem = null;
-                //viewModel.SelectedChipFilterItem = null;          
-            }
-            catch(Exception ex)
-            { 
-            
-            }
-            
+                viewModel.SelectedTaxTypeForFilter = arg;
+                MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, string>(this, "pickerNew");
+            });
+            PopupNavigation.Instance.PushAsync(new NewPopupPageView(viewModel.TaxTypeForFilter, viewModel.SelectedTaxTypeForFilter),false);
         }
 
+      
         private void chipgroup_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
             try

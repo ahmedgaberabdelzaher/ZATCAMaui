@@ -100,9 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_SelectedTaxTypeForFilter != null)
                 {
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
-                    FilterOnTaxType(MyBillsOriginal);
                     FilterIfTypeAndStausFilterSelected();
-
                 }
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
             }
@@ -480,71 +478,63 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
         public void FilterOnTaxType(ObservableCollection<MyBills> BillsToProcss)
         {
-            if (SelectedTaxTypeForFilter.Id == "00")
+            switch (SelectedTaxTypeForFilter.Id)
             {
-                MyBills = new ObservableCollection<MyBills>(BillsToProcss);
+                case "00":
+                    MyBills = new ObservableCollection<MyBills>(BillsToProcss);
+                    break;
+                case "01":
+                    if (App.IsArabic)
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الزكاة") || x.Abtypt.Equals("الزكاة")).ToList());
+                    }
+                    else
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Zakat") || x.Abtypt.Equals("Voluntary Zakat")).ToList());
+                    }
+                    break;
+                case "02":
+                    if (App.IsArabic)
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة القيمة المضافة") || x.Abtypt.Equals("ضريبة القيمة المضافة")).ToList());
+                    }
+                    else
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("VAT") || x.Abtypt.Equals("VAT Eligible Person")).ToList());
+                    }
+                    break;
+                case "03":
+                    if (!App.IsArabic)
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Excise Tax") || x.Abtypt.Equals("ETAX")).ToList());
+                    }
+                    else
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الضريبة الانتقائية")).ToList());
+                    }
+                    break;
+                case "04":
+                    if (!App.IsArabic)
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Withholding Tax")).ToList());
+                    }
+                    else
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
+                    }
+                    break;
+                case "05":
+                    if (!App.IsArabic)
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Income Tax")).ToList());
+                    }
+                    else
+                    {
+                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الدخل")).ToList());
+                    }
+                    break;
             }
-            
-            if (SelectedTaxTypeForFilter.Id == "01")
-            {
-                if (App.IsArabic)
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الزكاة") || x.Abtypt.Equals("الزكاة")).ToList());
-                }
-                else
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Zakat")|| x.Abtypt.Equals("Voluntary Zakat")).ToList());
-                }
             }
-            
-            if (SelectedTaxTypeForFilter.Id == "02")
-            {
-                if (App.IsArabic) 
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة القيمة المضافة")|| x.Abtypt.Equals("ضريبة القيمة المضافة")).ToList());
-                }
-                else
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("VAT") || x.Abtypt.Equals("VAT Eligible Person")).ToList());
-                }
-            }
-            
-            if (SelectedTaxTypeForFilter.Id == "03")
-            {
-                if (!App.IsArabic)
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Excise Tax") || x.Abtypt.Equals("ETAX")).ToList());
-                }
-                else
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الضريبة الانتقائية")).ToList());
-                }
-            }
-            
-            if (SelectedTaxTypeForFilter.Id == "04")
-            {
-                if (!App.IsArabic)
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Withholding Tax")).ToList());
-                }
-                else
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
-                }
-            }
-            if (SelectedTaxTypeForFilter.Id == "05")
-            {
-                if (!App.IsArabic)
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Income Tax")).ToList());
-                }
-                else
-                {
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الدخل")).ToList());
-                }
-            }
-
-        }
 
         public void FilterIfTypeAndStausFilterSelected()
         {

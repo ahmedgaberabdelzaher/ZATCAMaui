@@ -19,7 +19,6 @@
              BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:StringToColor x:Key="StringToColor" />
             <local:StringToColorConvertor x:Key="StringToColorConvertor" />
             <local:IntToBoolConverter x:Key="IntToBoolConverter" />
             <ResourceDictionary.MergedDictionaries>

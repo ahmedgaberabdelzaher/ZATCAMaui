@@ -1,11 +1,8 @@
 using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.OnboardingPages;
-using EGAZT.Views.NewDesign.VATLookUp;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
-using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
-
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
 using GAZT.Models;
@@ -20,24 +17,12 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using EGAZT.Views.NewDesign.ZakatDeregistration;
-using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
-using EGAZT.Views.NewDesign.VATDeRegistration;
-using EGAZT.Views.NewDesign.ZakatForm5;
-using EGAZT.Views.NewDesign.TAXEvasionPages;
-using EGAZT.Views.NewDesign.VATRefunds;
-using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
-using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using GAZT.Helper;
 using GAZT.Manager;
 using System.Linq;
-using EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel;
-using EGAZT.Views.NewDesign.VATAmendReactivationPages;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using System.Diagnostics;
-using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
 using EGAZT.Views.NewDesign.DashBoardPages;
-using System.Threading;
 using System.IO;
 using AppDynamics.Agent;
 using Newtonsoft.Json;
@@ -760,14 +745,14 @@ namespace EGAZT
 
         public static void InitializeAppDynamics()
         {
-            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
-            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            //var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            //config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
 
-            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            //AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
 
-            config.EnableAggregateExceptionReporting = true;
-            config.CollectorURL = "https://eum.gazt.gov.sa";
-            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+            //config.EnableAggregateExceptionReporting = true;
+            //config.CollectorURL = "https://eum.gazt.gov.sa";
+            //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
 
         public static async void DisplayProgressView()
