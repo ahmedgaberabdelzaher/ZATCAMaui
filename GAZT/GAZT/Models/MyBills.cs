@@ -54,6 +54,8 @@ namespace EGAZT.Models
             }
         }
 
+
+
         private bool _isPartiallyPaidVisibile = false;
         public bool IsPartiallyPaidVisibile
         {

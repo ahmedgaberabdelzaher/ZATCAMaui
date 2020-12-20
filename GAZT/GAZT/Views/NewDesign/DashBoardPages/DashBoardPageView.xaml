@@ -32,17 +32,18 @@
                     <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="0" />
                     </Style>
+                    <Color x:Key="ShadowLvl0">#EFEFEF</Color>
+                    <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
+                        <Setter Property="BackgroundColor" Value="White" />
+                        <Setter Property="CornerRadius" Value="14" />
+                        <Setter Property="HasShadow" Value="True" />
+                        <Setter Property="BorderWidth" Value="1"/>
+                        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+                        <Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />
+                    </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <Color x:Key="ShadowLvl0">#EFEFEF</Color>
-            <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="CornerRadius" Value="14" />
-                <Setter Property="HasShadow" Value="True" />
-                <Setter Property="BorderWidth" Value="1"/>
-                <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
-                <Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />
-            </Style>
+           
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
