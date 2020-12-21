@@ -50,6 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (value != null&&_selectedChipFilterItem!=value)
                 {
+                    _selectedChipFilterItem = value;
                     FilterIfTypeAndStausFilterSelected();
                 }
                 _selectedChipFilterItem = value;
