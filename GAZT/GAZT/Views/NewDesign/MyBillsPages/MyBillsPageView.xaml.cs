@@ -23,9 +23,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         public GAZTNewDesignMyBillsPageView(BillInfo billInfo = null)
         {
             InitializeComponent();
-            
-          //  App.DisplayProgressView();
 
+            //  App.DisplayProgressView();
+
+            if (viewModel != null) return;
             viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
             this.BindingContext = viewModel;
             try
@@ -35,10 +36,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.PopulateReturnTypeList();
                 viewModel.PopulateDataInChips();
                 viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
-                viewModel.SelectedChipFilterItem = null;
 
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
-                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[0];
 
                 if (billInfo != null)
                 {
@@ -59,6 +57,11 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     }
                     ChipGroup_statusFilter.SelectedItem = viewModel.SelectedChipFilterItem;
                     viewModel.SelectionColor = Color.AliceBlue;
+                }
+                else
+                {
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist[0];
+                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist[0];
                 }
 
             }
@@ -123,7 +126,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             MessagingCenter.Subscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew", (a, arg) =>
             {
                 viewModel.SelectedTaxTypeForFilter = arg;
-                MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, string>(this, "pickerNew");
+                MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew");
             });
             PopupNavigation.Instance.PushAsync(new NewPopupPageView(viewModel.TaxTypeForFilter, viewModel.SelectedTaxTypeForFilter),false);
         }
@@ -136,14 +139,18 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
+                Device.BeginInvokeOnMainThread(() => { 
                 if(selectedReturntype.Text== AppResources.UnPaid)
-                {
-                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["ErrorColor"];
-                }
+                    {
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
+                    }
                 else if(selectedReturntype.Text == AppResources.Partiallynewui)
                 {
-                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["Secondary"];
-                }
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#D99A29");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
+                    }
+                });
                 //viewModel.SelectionColor = Color.AliceBlue;
             }
             catch (Exception ex)
