@@ -48,11 +48,14 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
-
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.PartiallyPaid)).FirstOrDefault();
+                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#D99A29");
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
                         viewModel.FilterIfTypeAndStausFilterSelected();
                     }
                     ChipGroup_statusFilter.SelectedItem = viewModel.SelectedChipFilterItem;
@@ -137,8 +140,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             try
             {
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
-                ChipGroup_statusFilter.SelectedItem = selectedReturntype;
-                viewModel.SelectedChipFilterItem = selectedReturntype;
+                //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 Device.BeginInvokeOnMainThread(() => {
                     if (selectedReturntype.Text == AppResources.UnPaid)
                     {
@@ -151,7 +153,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                         ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
                     }
                 });
-                //viewModel.SelectionColor = Color.AliceBlue;
+                viewModel.SelectedChipFilterItem = selectedReturntype;
             }
             catch (Exception ex)
             {
