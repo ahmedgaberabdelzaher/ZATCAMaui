@@ -11,7 +11,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 {
     public partial class NewPopupPageView : PopupPage
     {
-        public ReturnTypes SelectedTaxTypeForFilter { get; }
+        public ReturnTypes sSelectedTaxTypeForFilter { get; }
 
         public NewPopupPageView(List<ReturnTypes> taxTypeForFilter, ReturnTypes selectedTaxTypeForFilter)
         {
@@ -19,7 +19,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             //SetPickerFont();
             CloseWhenBackgroundIsClicked = false;
             TaxTypePicker.ItemsSource = taxTypeForFilter;
-            SelectedTaxTypeForFilter = selectedTaxTypeForFilter;
+            sSelectedTaxTypeForFilter = selectedTaxTypeForFilter;
         }
 
         protected async override void OnAppearing()
@@ -28,22 +28,22 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             try
             {
                 var items = TaxTypePicker.ItemsSource as List<ReturnTypes>;
-                var selectedItem = items.FirstOrDefault(x => x.Id == SelectedTaxTypeForFilter.Id && x.TaxType == SelectedTaxTypeForFilter.TaxType);
+                var selectedItem = items.FirstOrDefault(x => x.Id == sSelectedTaxTypeForFilter.Id && x.TaxType == sSelectedTaxTypeForFilter.TaxType);
                 TaxTypePicker.SelectedItem = selectedItem;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
             await picker.TranslateTo(0, 500, 0);
             await picker.TranslateTo(0, 0, 250);
         }
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            TaxTypePicker.SelectedIndex = null;
-            TaxTypePicker.ItemsSource = null;
-        }
+        //protected override void OnDisappearing()
+        //{
+        //    base.OnDisappearing();
+        //    TaxTypePicker.SelectedIndex = null;
+        //    TaxTypePicker.ItemsSource = null;
+        //}
 
         private async void Dissapear()
         {
@@ -97,7 +97,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         }
 
-         void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
             Dissapear();
         }
