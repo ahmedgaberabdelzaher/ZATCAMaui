@@ -108,26 +108,21 @@
                             HorizontalScrollBarVisibility="Never" 
                             VerticalOptions="Center" Margin="0,24,0,0">
                     <buttons:SfChipGroup Margin="0" x:Name="ChipGroup_statusFilter" Type="Choice" 
-                                         Padding="0"  HorizontalOptions="Start" 
+                                         Padding="-5,0,-5,0"  HorizontalOptions="Start" 
                                          ChipBackgroundColor="Transparent" 
                                          ItemsSource="{Binding ChipDataFilterlist}" 
-                                         HeightRequest="32" 
-                                         IsClippedToBounds="True"
+                                         SelectedChipBackgroundColor="#F9F0DF" HeightRequest="32" 
                                          ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" 
                                          SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" >
                         <buttons:SfChipGroup.ItemTemplate>
                             <DataTemplate >
-                                <StackLayout Margin="-5,-10" Orientation="Horizontal" Spacing="2" Padding="5,-2" WidthRequest="70">
-                                    <Image Source="{Binding ImageSource}"
-                                           HorizontalOptions="Center"
-                                           HeightRequest="25"
-                                           VerticalOptions="Center"/>
-                                    <custom:CustomLabel Text="{Binding Text}"
-                                                        HorizontalOptions="CenterAndExpand" 
-                                                        Style="{StaticResource CaptionLabelBlack}"
-                                                        VerticalTextAlignment="Center"
-                                                        VerticalOptions="Center"/>
+                                <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2">
+                                    <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
+                                    <custom:CustomLabel Padding="4,0,4,0" Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
                                 </StackLayout>
+                                <!--<StackLayout Margin="0" Padding="0" Spacing="2" "#E5EFED">
+                                    <buttons:SfChip   BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" TextColor="{StaticResource NeutralBlack}"  BackgroundColor="White"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                </StackLayout>-->
                             </DataTemplate>
                         </buttons:SfChipGroup.ItemTemplate>
                     </buttons:SfChipGroup>
