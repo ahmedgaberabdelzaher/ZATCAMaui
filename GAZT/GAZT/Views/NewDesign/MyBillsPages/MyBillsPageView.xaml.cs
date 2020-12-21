@@ -136,6 +136,14 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
+                if(selectedReturntype.Text== AppResources.UnPaid)
+                {
+                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["ErrorColor"];
+                }
+                else if(selectedReturntype.Text == AppResources.Partiallynewui)
+                {
+                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["Secondary"];
+                }
                 //viewModel.SelectionColor = Color.AliceBlue;
             }
             catch (Exception ex)

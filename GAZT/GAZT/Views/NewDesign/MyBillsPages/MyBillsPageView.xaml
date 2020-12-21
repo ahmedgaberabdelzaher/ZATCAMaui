@@ -104,9 +104,14 @@
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
                 <!--<custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>-->
-                <ScrollView BackgroundColor="Transparent" Orientation="Horizontal" HorizontalScrollBarVisibility="Never" VerticalOptions="Center" Margin="0,24,0,0">
-                    <buttons:SfChipGroup Margin="0" x:Name="ChipGroup_statusFilter" Type="Choice" Padding="-5,0,-5,0"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent" 
-                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF" HeightRequest="32" 
+                <ScrollView BackgroundColor="Transparent" Orientation="Horizontal"
+                            HorizontalScrollBarVisibility="Never" 
+                            VerticalOptions="Center" Margin="0,24,0,0">
+                    <buttons:SfChipGroup Margin="0" x:Name="ChipGroup_statusFilter" Type="Choice" 
+                                         Padding="-5,0,-5,0"  HorizontalOptions="Start" 
+                                         ChipBackgroundColor="Transparent" 
+                                         ItemsSource="{Binding ChipDataFilterlist}" 
+                                         SelectedChipBackgroundColor="#F9F0DF" HeightRequest="32" 
                                          ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" 
                                          SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" >
                         <buttons:SfChipGroup.ItemTemplate>

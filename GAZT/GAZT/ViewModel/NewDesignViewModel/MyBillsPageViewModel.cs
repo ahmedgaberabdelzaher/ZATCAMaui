@@ -48,12 +48,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                _selectedChipFilterItem = value;
-                if (_selectedChipFilterItem != null)
+                if (value != null&&_selectedChipFilterItem!=value)
                 {
                     FilterIfTypeAndStausFilterSelected();
-                    
                 }
+                _selectedChipFilterItem = value;
                 RaisePropertyChanged("SelectedChipFilterItem");
             }
         }
