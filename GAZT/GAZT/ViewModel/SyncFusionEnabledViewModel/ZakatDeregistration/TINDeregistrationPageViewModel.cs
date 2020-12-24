@@ -38,6 +38,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public int DefaultMonthHijri;
         public bool isSubmitted;
         public string permitThirdOptionReason = string.Empty;
+        public string selectedCalPermitNo = null;
 
         //
         #endregion
@@ -225,6 +226,47 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _PickerDobToDisplay = value;
                 RaisePropertyChanged("PickerDobToDisplay");
+            }
+        }
+        private string _PickerCloseAllDeregDateDisplay = string.Empty;
+        public string PickerCloseAllDeregDateDisplay
+        {
+            get
+            {
+                return _PickerCloseAllDeregDateDisplay;
+            }
+            set
+            {
+                _PickerCloseAllDeregDateDisplay = value;
+                RaisePropertyChanged("PickerCloseAllDeregDateDisplay");
+            }
+        }
+
+
+        private string _TransferPickerDOBDateDisplay = string.Empty;
+        public string TransferPickerDOBDateDisplay
+        {
+            get
+            {
+                return _TransferPickerDOBDateDisplay;
+            }
+            set
+            {
+                _TransferPickerDOBDateDisplay = value;
+                RaisePropertyChanged("TransferPickerDOBDateDisplay");
+            }
+        }
+        private string _PickerTransferDeregDateDisplay = string.Empty;
+        public string PickerTransferDeregDateDisplay
+        {
+            get
+            {
+                return _PickerTransferDeregDateDisplay;
+            }
+            set
+            {
+                _PickerTransferDeregDateDisplay = value;
+                RaisePropertyChanged("PickerTransferDeregDateDisplay");
             }
         }
         private string _PickerDOBDateDisplay = string.Empty;

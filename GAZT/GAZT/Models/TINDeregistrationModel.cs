@@ -1041,6 +1041,7 @@ namespace EGAZT.Models
             }
             set
             {
+                if (_permitTypes == value) return;
                 _permitTypes = value;
                 OnPropertyRaised("PermitTypes");
             }
@@ -1189,7 +1190,7 @@ namespace EGAZT.Models
         }
 
         [JsonIgnore]
-        public bool aPermitIsReasonSelected { get; set; }
+        private bool aPermitIsReasonSelected { get; set; }
 
         [JsonIgnore]
         public bool APermitIsReasonSelected
@@ -1202,8 +1203,47 @@ namespace EGAZT.Models
             }
         }
 
-       
+        [JsonIgnore]
+        private bool isHijiri { get; set; }
 
+        [JsonIgnore]
+        public bool IsHijiri
+        {
+            get { return isHijiri; }
+            set
+            {
+                if (isHijiri == value) return;
+                if (value)
+                    APermitDeregDisplayDate = UtilityManager.ConvertToHijri(APermitDeregDisplayDate);
+                else
+                    APermitDeregDisplayDate = UtilityManager.HijriToGreg(APermitDeregDisplayDate);
+                if (!string.IsNullOrEmpty(APermitDeregDisplayDate))
+                    APermitEffDtTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDate);
+                isHijiri = value;
+                OnPropertyRaised("IsHijiri");
+            }
+        }
+        [JsonIgnore]
+        private bool isDOBHijiri { get; set; }
+        
+        [JsonIgnore]
+        public bool IsDOBHijiri
+        {
+            get { return isDOBHijiri; }
+            set
+            {
+                if (isDOBHijiri == value) return;
+
+                if (value)
+                    APermitDeregDisplayDobDate = UtilityManager.ConvertToHijri(APermitDeregDisplayDobDate);
+                else
+                    APermitDeregDisplayDobDate = UtilityManager.HijriToGreg(APermitDeregDisplayDobDate);
+                if (!string.IsNullOrEmpty(APermitDeregDisplayDobDate))
+                APermitDobTb = UtilityManager.ConvertDateFormat(APermitDeregDisplayDobDate);
+                isDOBHijiri = value;
+                OnPropertyRaised("IsDOBHijiri");
+            }
+        }
         [JsonIgnore]
         public string aPermitDeregDisplayDobDate { get; set; }
 

@@ -1078,13 +1078,72 @@ namespace GAZT.Manager
         "dd-M-yyyy","d-MM-yyyy","yyyy MM dd",
         "yyyy M d","dd MM yyyy","d M yyyy",
         "dd M yyyy","d MM yyyy"};
-        public static  string HijriToGreg(string hijri)
+        public static string HijriToGreg(string hijri)
         {
             CultureInfo arCul = new CultureInfo("ar-SA");
             CultureInfo enCul = new CultureInfo("en-US");
             DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
             return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
         }
+
+
+        public static string ConvertToHijri(string date)
+        {
+            try
+            {
+                CultureInfo arSA = new CultureInfo("ar-SA");
+                CultureInfo enCul = new CultureInfo("en-US");
+                DateTime tempDate = DateTime.ParseExact(date, allFormats, enCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
+                return tempDate.ToString("yyyy/MM/dd", arSA.DateTimeFormat);
+
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+
+        }
+        public static string ConvertToGreg(string date)
+        {
+            try
+            {
+                CultureInfo arSA = new CultureInfo("en-US");
+                arSA.DateTimeFormat.Calendar = new GregorianCalendar();
+                return DateTime.ParseExact(date, "yyyy/MM/dd", arSA).ToString("yyyy/MM/dd");
+            }
+            catch(Exception ex)
+            {
+                return "";
+            }
+             
+        }
+
+        public static string ConvertDateFormat(object newDate)
+        {
+            if (newDate == null)
+                return null;
+
+            if (!newDate.ToString().Contains("/Date("))
+            {
+                DateTime dateTime = Convert.ToDateTime(newDate);
+
+                string ConvertedDate = string.Empty;
+                TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                string unixTime = span.TotalSeconds.ToString("N0");
+                unixTime = unixTime.Replace(",", "");
+                ConvertedDate = "" + "/Date(" + unixTime + ")/";
+
+                long unixTimestamp = ((long)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+
+                unixTimestamp = unixTimestamp * 1000;
+
+                ConvertedDate = "" + "/Date(" + unixTimestamp + ")/";
+                return ConvertedDate;
+            }
+
+            return newDate.ToString();
+        }
+
         // * New Password Validation
         public static bool ValidateNewPassword(string password)
         {
