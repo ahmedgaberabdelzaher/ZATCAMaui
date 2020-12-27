@@ -57,6 +57,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isPrevReturn == value) return;
                 _isPrevReturn = value;
                 RaisePropertyChanged("IsPrevReturn");
             }
@@ -71,6 +72,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isNewReturn == value) return;
+
                 _isNewReturn = value;
                 RaisePropertyChanged("IsNewReturn");
             }
@@ -86,6 +89,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isFifteenPercentChange == value) return;
+
                 _isFifteenPercentChange = value;
                 RaisePropertyChanged("IsFifteenPercentChange");
             }
@@ -101,6 +106,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isFivePersenctVisible == value) return;
+
                 _isFivePersenctVisible = value;
                 RaisePropertyChanged("IsFivePersenctVisible");
             }
@@ -115,6 +122,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isFifteenPersenctVisible == value) return;
+
                 _isFifteenPersenctVisible = value;
                 RaisePropertyChanged("IsFifteenPersenctVisible");
             }
@@ -144,9 +153,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isSwitchToggledFor15PercentChange == value) return;
+
                 _isSwitchToggledFor15PercentChange = value;
-                if (_isSwitchToggledFor15PercentChange != null)
-                {
+              
                     if (_isSwitchToggledFor15PercentChange == true)
                     {
                         IsYesChecked = true;
@@ -157,7 +167,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         IsNoChecked = true;
                         IsYesChecked = false;
                     }
-                }
+                
                 RaisePropertyChanged("IsSwitchToggledFor15PercentChange");
             }
         }
@@ -172,6 +182,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isYesChecked == value) return;
+
                 _isYesChecked = value;
                 RaisePropertyChanged("IsYesChecked");
             }
@@ -186,6 +198,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isNoChecked == value) return;
+
                 _isNoChecked = value;
                 if(_isNoChecked==true)
                 {
@@ -210,6 +224,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_fDirection == value) return;
+
                 _fDirection = value;
                 RaisePropertyChanged("FDirection");
             }
@@ -223,6 +239,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_firstSubmissionCount == value) return;
+
                 _firstSubmissionCount = value;
                 RaisePropertyChanged("FirstSubmissionCount");
             }
@@ -237,6 +255,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_selectedIndex == value) return;
+
                 _selectedIndex = value;
                 RaisePropertyChanged("SelectedIndex");
             }
@@ -250,6 +270,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseVatDeclaration == value) return;
+
                 _responseVatDeclaration = value;
                 RaisePropertyChanged("ResponseVatDeclaration");
             }
@@ -263,6 +285,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stepNumber == value) return;
                 _stepNumber = value;
                 RaisePropertyChanged("StepNumber");
             }
@@ -276,6 +299,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stepNumberz == value) return;
                 _stepNumberz = value;
                 RaisePropertyChanged("StepNumberz");
             }
@@ -289,6 +313,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -302,6 +328,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isFirstSubmission == value) return;
+
                 _isFirstSubmission = value;
                 RaisePropertyChanged("IsFirstSubmission");
             }
@@ -316,6 +344,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isRefundNoMsgDisplayed == value) return;
+
                 _isRefundNoMsgDisplayed = value;
                 RaisePropertyChanged("IsRefundNoMsgDisplayed");
             }
@@ -330,6 +360,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isRefundYesMsgDisplayed == value) return;
+
                 _isRefundYesMsgDisplayed = value;
                 RaisePropertyChanged("IsRefundYesMsgDisplayed");
             }
@@ -344,6 +376,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isSwitchToggled == value) return;
+
                 _isSwitchToggled = value;
                 try
                 {
@@ -387,6 +421,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isSwitchVisible == value) return;
+
                 _isSwitchVisible = value;
                 RaisePropertyChanged("IsSwitchVisible");
             }
@@ -400,6 +436,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isDeclarationChecked == value) return;
+
                 _isDeclarationChecked = value;
                 RaisePropertyChanged("IsDeclarationChecked");
             }
@@ -413,6 +451,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATDeclarationD == value) return;
+
                 _vATDeclarationD = value;
                 RaisePropertyChanged("VATDeclarationD");
             }
@@ -426,6 +466,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATDeclarationData == value) return;
+
                 _vATDeclarationData = value;
                 RaisePropertyChanged("VATDeclarationData");
             }
@@ -439,6 +481,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_aTTACHSetsList == value) return;
+
                 _aTTACHSetsList = value;
                 RaisePropertyChanged("ATTACHSetsList");
             }
@@ -452,6 +496,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_dummyaTTACHSetsList == value) return;
+
                 _dummyaTTACHSetsList = value;
                 RaisePropertyChanged("DummyATTACHSetsList");
             }
@@ -465,6 +511,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_creditCarriedsList == value) return;
+
                 _creditCarriedsList = value;
                 RaisePropertyChanged("CreditCarriedsList");
             }
@@ -478,6 +526,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vatTabbledPageList == value) return;
+
                 _vatTabbledPageList = value;
                 RaisePropertyChanged("VatTabbledPageList");
             }
@@ -491,6 +541,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vatAttachmentsList == value) return;
+
                 _vatAttachmentsList = value;
                 RaisePropertyChanged("VatAttachmentsList");
             }
@@ -504,6 +556,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleOptionMenu == value) return;
+
                 _isVisibleOptionMenu = value;
                 RaisePropertyChanged("IsVisibleOptionMenu");
             }
@@ -517,6 +571,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleVatReturnForm == value) return;
+
                 _isVisibleVatReturnForm = value;
                 RaisePropertyChanged("IsVisibleVatReturnForm");
             }
@@ -530,6 +586,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleTaxPayerDetails == value) return;
+
                 _isVisibleTaxPayerDetails = value;
                 RaisePropertyChanged("IsVisibleTaxPayerDetails");
             }
@@ -543,6 +601,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleCreditCarriedForward == value) return;
+
                 _isVisibleCreditCarriedForward = value;
                 RaisePropertyChanged("IsVisibleCreditCarriedForward");
             }
@@ -556,6 +616,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleSummary == value) return;
+
                 _isVisibleSummary = value;
                 RaisePropertyChanged("IsVisibleSummary");
             }
@@ -569,6 +631,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleAttachments == value) return;
+
                 _isVisibleAttachments = value;
                 RaisePropertyChanged("IsVisibleAttachments");
             }
@@ -582,6 +646,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleAcknowledgment == value) return;
+
                 _isVisibleAcknowledgment = value;
                 RaisePropertyChanged("IsVisibleAcknowledgment");
             }
@@ -595,6 +661,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isCheckedTaxPayerDetailsInfo == value) return;
+
                 _isCheckedTaxPayerDetailsInfo = value;
                 if (_isCheckedTaxPayerDetailsInfo == true)
                 {
@@ -625,6 +693,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isGetAcknowledgementClicked == value) return;
+
                 _isGetAcknowledgementClicked = value;
                 RaisePropertyChanged("IsGetAcknowledgementClicked");
             }
@@ -638,6 +708,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVATReturnFieldCheckForSaveAsDraft == value) return;
+
                 _isVATReturnFieldCheckForSaveAsDraft = value;
                 RaisePropertyChanged("IsVATReturnFieldCheckForSaveAsDraft");
             }
@@ -651,6 +723,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isChangeRegistrationlinkVisible == value) return;
+
                 _isChangeRegistrationlinkVisible = value;
                 RaisePropertyChanged("IsChangeRegistrationlinkVisible");
             }
@@ -664,6 +738,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isDeclarationCheckedForSummary == value) return;
+
                 _isDeclarationCheckedForSummary = value;
                 if (_isDeclarationCheckedForSummary == true)
                 {
@@ -693,6 +769,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_ischkRefundDeclaration == value) return;
+
                 _ischkRefundDeclaration = value;
                 RaisePropertyChanged("IschkRefundDeclaration");
             }
@@ -706,6 +784,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isDeclarationCheckedForInstruction == value) return;
+
                 _isDeclarationCheckedForInstruction = value;
                 if (_isDeclarationCheckedForInstruction == true)
                 {
@@ -736,6 +816,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_onMoreOptionsEnabled == value) return;
+
                 _onMoreOptionsEnabled = value;
                 RaisePropertyChanged("OnMoreOptionsEnabled");
             }
@@ -749,9 +831,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
-                if (value == true)
-                {
-                }
+                if (_isMainButtonEnabled == value) return;
+
+              
                 _isMainButtonEnabled = value;
                 //OnStepButtonClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsMainButtonEnabled");
@@ -766,9 +848,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
-                if (value == true)
-                {
-                }
+                if (_isMainButtonVisible == value) return;
+
                 _isMainButtonVisible = value;
                 //OnStepButtonClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsMainButtonVisible");
@@ -783,6 +864,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isUnFocusedTextBox == value) return;
+
                 _isUnFocusedTextBox = value;
                 RaisePropertyChanged("IsUnFocusedTextBox");
             }
@@ -796,6 +879,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isFirstTimeGet == value) return;
+
                 _isFirstTimeGet = value;
                 RaisePropertyChanged("IsFirstTimeGet");
             }
@@ -809,6 +894,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isTaxPayerControlEnabled == value) return;
+
                 _isTaxPayerControlEnabled = value;
                 RaisePropertyChanged("IsTaxPayerControlEnabled");
             }
@@ -822,6 +909,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleNotes == value) return;
+
                 _isVisibleNotes = value;
                 RaisePropertyChanged("IsVisibleNotes");
             }
@@ -835,6 +924,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleInstrunction == value) return;
+
                 _isVisibleInstrunction = value;
                 RaisePropertyChanged("IsVisibleInstrunction");
             }
@@ -848,6 +939,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isTabbedMenuAvailable == value) return;
+
                 _isTabbedMenuAvailable = value;
                 RaisePropertyChanged("IsTabbedMenuAvailable");
             }
@@ -861,6 +954,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleCreditCarriedLabel == value) return;
+
                 _isVisibleCreditCarriedLabel = value;
                 RaisePropertyChanged("IsVisibleCreditCarriedLabel");
             }
@@ -875,6 +970,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isAmendClicked == value) return;
+
                 _isAmendClicked = value;
                 if (_isAmendClicked == true)
                 {
@@ -897,6 +994,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_pageFontSize == value) return;
+
                 _pageFontSize = value;
                 RaisePropertyChanged("PageFontSize");
             }
@@ -910,6 +1009,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_attachmentName == value) return;
+
                 _attachmentName = value;
                 RaisePropertyChanged("AttachmentName");
             }
@@ -923,6 +1024,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_buttonName == value) return;
+
                 _buttonName = value;
                 RaisePropertyChanged("ButtonName");
             }
@@ -936,6 +1039,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_noteText == value) return;
+
                 _noteText = value;
                 RaisePropertyChanged("NoteText");
             }
@@ -949,6 +1054,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseNote == value) return;
+
                 _responseNote = value;
                 RaisePropertyChanged("ResponseNote");
             }
@@ -962,6 +1069,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseIBANSET == value) return;
+
                 _responseIBANSET = value;
                 RaisePropertyChanged("ResponseIBANSET");
             }
@@ -975,6 +1084,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseCFSET == value) return;
+
                 _responseCFSET = value;
                 RaisePropertyChanged("ResponseCFSET");
             }
@@ -988,6 +1099,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseAttachSet == value) return;
+
                 _responseAttachSet = value;
                 RaisePropertyChanged("ResponseAttachSet");
             }
@@ -1001,6 +1114,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseAddressSET == value) return;
+
                 _responseAddressSET = value;
                 RaisePropertyChanged("ResponseResult5");
             }
@@ -1014,6 +1129,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseobject == value) return;
+
                 _responseobject = value;
                 RaisePropertyChanged("Responseobject");
             }
@@ -1027,6 +1144,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_responseVATDeclarationD == value) return;
+
                 _responseVATDeclarationD = value;
                 RaisePropertyChanged("ResponseVATDeclarationD");
             }
@@ -1040,6 +1159,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_pageSelectedItems == value) return;
+
                 _pageSelectedItems = value;
                 RaisePropertyChanged("PageSelectedItems");
             }
@@ -1053,6 +1174,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_pageSelectedItem == value) return;
+
                 _pageSelectedItem = value;
                 RaisePropertyChanged("PageSelectedItem");
             }
@@ -1066,6 +1189,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATRate001 == value) return;
+
                 _vATRate001 = value;
                 RaisePropertyChanged("VATRate001");
             }
@@ -1079,6 +1204,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATRate002 == value) return;
+
                 _vATRate002 = value;
                 RaisePropertyChanged("VATRate002");
             }
@@ -1093,6 +1220,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATRate003 == value) return;
+
                 _vATRate003 = value;
                 RaisePropertyChanged("VATRate003");
             }
@@ -1106,6 +1235,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_tPName == value) return;
+
                 _tPName = value;
                 RaisePropertyChanged("TPName");
             }
@@ -1119,6 +1250,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_returnReferenceNumber == value) return;
+
                 _returnReferenceNumber = value;
                 RaisePropertyChanged("ReturnReferenceNumber");
             }
@@ -1132,6 +1265,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_taxablePeriod == value) return;
+
                 _taxablePeriod = value;
                 RaisePropertyChanged("TaxablePeriod");
             }
@@ -1145,6 +1280,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_receiptDate == value) return;
+
                 _receiptDate = value;
                 RaisePropertyChanged("ReceiptDate");
             }
@@ -1158,6 +1295,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_sadadNumber == value) return;
+
                 _sadadNumber = value;
                 RaisePropertyChanged("SadadNumber");
             }
@@ -1171,6 +1310,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_calculationRateSet == value) return;
+
                 _calculationRateSet = value;
                 RaisePropertyChanged("CalculationRateSet");
             }
@@ -1184,6 +1325,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_taxpayerPeriodFromDate == value) return;
+
                 _taxpayerPeriodFromDate = value;
                 RaisePropertyChanged("TaxpayerPeriodFromDate");
             }
@@ -1197,6 +1340,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_taxpayerPeriodToDate == value) return;
+
                 _taxpayerPeriodToDate = value;
                 RaisePropertyChanged("TaxpayerPeriodToDate");
             }
@@ -1210,6 +1355,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isControlEnabled == value) return;
+
                 _isControlEnabled = value;
                 RaisePropertyChanged("IsControlEnabled");
             }
@@ -1224,6 +1371,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isControlEnabledForEntry == value) return;
+
                 _isControlEnabledForEntry = value;
                 RaisePropertyChanged("IsControlEnabledForEntry");
             }
@@ -1237,6 +1386,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isDeclarationCheckEnabled == value) return;
+
                 _isDeclarationCheckEnabled = value;
                 RaisePropertyChanged("IsDeclarationCheckEnabled");
             }
@@ -1250,6 +1401,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isTaxPayerCheckEnabled == value) return;
+
                 _isTaxPayerCheckEnabled = value;
                 RaisePropertyChanged("IsTaxPayerCheckEnabled");
             }
@@ -1263,6 +1416,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_calculationRateSetVTTH == value) return;
+
                 _calculationRateSetVTTH = value;
                 RaisePropertyChanged("CalculationRateSetVTTH");
             }
@@ -1276,6 +1431,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_calculationRateIGRTSet == value) return;
+
                 _calculationRateIGRTSet = value;
                 RaisePropertyChanged("CalculationRateIGRTSet");
             }
@@ -1289,6 +1446,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_correctionPeriodAmount == value) return;
+
                 _correctionPeriodAmount = value;
                 RaisePropertyChanged("CorrectionPeriodAmount");
             }
@@ -1302,6 +1461,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_correctionNegativePeriodAmount == value) return;
+
                 _correctionNegativePeriodAmount = value;
                 RaisePropertyChanged("CorrectionNegativePeriodAmount");
             }
@@ -1316,6 +1477,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_totalsalesAmt == value) return;
+
                 _totalsalesAmt = value;
                 RaisePropertyChanged("TotalsalesAmt");
             }
@@ -1329,6 +1492,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_totalsalesAdj == value) return;
+
                 _totalsalesAdj = value;
                 RaisePropertyChanged("TotalsalesAdj");
             }
@@ -1342,6 +1507,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_totalpurchaseAmt == value) return;
+
                 _totalpurchaseAmt = value;
                 RaisePropertyChanged("TotalpurchaseAmt");
             }
@@ -1355,6 +1522,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_totalpurchaseAdj == value) return;
+
                 _totalpurchaseAdj = value;
                 RaisePropertyChanged("TotalpurchaseAdj");
             }
@@ -1368,6 +1537,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stdsalesVat == value) return;
+
                 _stdsalesVat = value;
                 RaisePropertyChanged("StdsalesVat");
             }
@@ -1381,6 +1552,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_totaldueVat == value) return;
+
                 _totaldueVat = value;
                 if (_totaldueVat != null)
                 {
@@ -1398,6 +1571,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_carriedValueString == value) return;
+
                 _carriedValueString = value;
                 RaisePropertyChanged("CarriedValueString");
             }
@@ -1413,6 +1588,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             {
                 try
                 {
+                    if (_preperiodcorr == value) return;
+
                     _preperiodcorr = value;
                     if (_preperiodcorr != null)
                     {
@@ -1451,6 +1628,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isGreaterThanFiveT == value) return;
+
                 _isGreaterThanFiveT = value;
                 RaisePropertyChanged("IsGreaterThanFiveT");
             }
@@ -1464,6 +1643,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_netdueVat == value) return;
+
                 _netdueVat = value;
                 RaisePropertyChanged("NetdueVat");
             }
@@ -1477,6 +1658,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_creditVat == value) return;
+
                 _creditVat = value;
                 if (_creditVat != null)
                 {
@@ -1494,6 +1677,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_totalsalesVat == value) return;
+
                 _totalsalesVat = value;
                 if (!string.IsNullOrEmpty(_totalsalesVat))
                 {
@@ -1527,6 +1712,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stdpurchasesVat == value) return;
+
                 _stdpurchasesVat = value;
                 RaisePropertyChanged("StdpurchasesVat");
             }
@@ -1540,6 +1727,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_importspaidVat == value) return;
+
                 _importspaidVat = value;
                 RaisePropertyChanged("ImportspaidVat");
             }
@@ -1553,6 +1742,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_totalpurchaseVat == value) return;
+
                 _totalpurchaseVat = value;
                 if (!string.IsNullOrEmpty(_totalpurchaseVat))
                 {
@@ -1578,6 +1769,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_amountPayable == value) return;
+
                 _amountPayable = value;
                 RaisePropertyChanged("AmountPayable");
             }
@@ -1591,6 +1784,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_importsaccVat == value) return;
+
                 _importsaccVat = value;
                 RaisePropertyChanged("ImportsaccVat");
             }
@@ -1605,6 +1800,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isSadadNumberVisible == value) return;
+
                 _isSadadNumberVisible = value;
                 RaisePropertyChanged("IsSadadNumberVisible");
             }
@@ -1618,6 +1815,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_fullAddress == value) return;
+
                 _fullAddress = value;
                 RaisePropertyChanged("FullAddress");
             }
@@ -1634,10 +1833,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_is15PercentChangeToggled == value) return;
                 _is15PercentChangeToggled = value;
-                if (_is15PercentChangeToggled == true)
-                {
-                }
                 RaisePropertyChanged("Is15PercentChangeToggled");
             }
         }
@@ -1654,6 +1851,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_iSSwichButtonEnable == value) return;
+
                 _iSSwichButtonEnable = value;
                 if (_iSSwichButtonEnable == true)
                 {
@@ -1681,6 +1880,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_IsVisiblechkRefundDeclaration == value) return;
+
                 _IsVisiblechkRefundDeclaration = value;
                 RaisePropertyChanged("IsVisiblechkRefundDeclaration");
             }
@@ -1694,6 +1895,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_txtSelectedIBAN == value) return;
+
                 _txtSelectedIBAN = value;
                 RaisePropertyChanged("TxtSelectedIBAN");
             }
@@ -1707,6 +1910,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_selectedIBAN == value) return;
+
                 _selectedIBAN = value;
                 if (_selectedIBAN != null)
                 {
@@ -1724,6 +1929,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_selectedIBANPrev == value) return;
+
                 _selectedIBANPrev = value;
                 //if (_selectedIBAN != null)
                 //{
@@ -1741,6 +1948,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_iBANList == value) return;
+
                 _iBANList = value;
                 if (_iBANList != null && _iBANList.Count != 0)
                 {
@@ -1769,6 +1978,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isEnableIBAN == value) return;
+
                 _isEnableIBAN = value;
                 RaisePropertyChanged("IsEnableIBAN");
             }
@@ -1782,6 +1993,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isEnableIBANType == value) return;
+
                 _isEnableIBANType = value;
                 RaisePropertyChanged("IsEnableIBANType");
             }
@@ -1795,6 +2008,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVATRefunCheckedVisible == value) return;
+
                 _isVATRefunCheckedVisible = value;
                 RaisePropertyChanged("IsVATRefunCheckedVisible");
             }
@@ -1808,6 +2023,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_ibanNumberText == value) return;
+
                 _ibanNumberText = value;
                 RaisePropertyChanged("IbanNumberText");
             }
@@ -1821,6 +2038,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isIBANValid == value) return;
+
                 _isIBANValid = value;
                 RaisePropertyChanged("IsIBANValid");
             }
@@ -1834,6 +2053,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isCheckedRefund == value) return;
+
                 _isCheckedRefund = value;
                 if (_isCheckedRefund == true)
                 {
@@ -1862,6 +2083,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isVisibleDropdownForRefund == value) return;
+
                 _isVisibleDropdownForRefund = value;
                 RaisePropertyChanged("IsVisibleDropdownForRefund");
             }
@@ -1875,6 +2098,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isTextBoxVisibleForIban == value) return;
+
                 _isTextBoxVisibleForIban = value;
                 RaisePropertyChanged("IsTextBoxVisibleForIban");
             }
@@ -1888,6 +2113,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isTextBoxEnableForIban == value) return;
+
                 _isTextBoxEnableForIban = value;
                 RaisePropertyChanged("IsTextBoxEnableForIban");
             }
@@ -1901,6 +2128,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isDropdownVisibleForIban == value) return;
+
                 _isDropdownVisibleForIban = value;
                 RaisePropertyChanged("IsDropdownVisibleForIban");
             }
@@ -1914,6 +2143,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isEnableIBANIdNumber == value) return;
+
                 _isEnableIBANIdNumber = value;
                 RaisePropertyChanged("IsEnableIBANIdNumber");
             }
@@ -1927,6 +2158,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_iBANTypesList == value) return;
+
                 _iBANTypesList = value;
                 if (_iBANTypesList != null && _iBANTypesList.Count != 0)
                 {
@@ -1955,6 +2188,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_selectedIBANType == value) return;
+
                 _selectedIBANType = value;
                 if (_selectedIBANType != null)
                 {
@@ -1976,6 +2211,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_selectedIBANTypePrev == value) return;
+
                 _selectedIBANTypePrev = value;
                 //if (_selectedIBANType != null)
                 //{
@@ -1997,6 +2234,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_txtSelectedIBANType == value) return;
+
                 _txtSelectedIBANType = value;
                 RaisePropertyChanged("TxtSelectedIBANType");
             }
@@ -2010,6 +2249,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_iBANIDNumberList == value) return;
+
                 _iBANIDNumberList = value;
                 if (_iBANIDNumberList != null && _iBANIDNumberList.Count() != 0)
                 {
@@ -2038,6 +2279,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_selectedIBANIDNumber == value) return;
+
                 _selectedIBANIDNumber = value;
                 if (_selectedIBANIDNumber != null)
                 {
@@ -2055,6 +2298,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_selectedIBANIDNumberPrev == value) return;
+
                 _selectedIBANIDNumberPrev = value;
                 //if (_selectedIBANIDNumber != null)
                 //{
@@ -2072,6 +2317,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_TxtSelectedIBANIDNumber == value) return;
+
                 _TxtSelectedIBANIDNumber = value;
                 RaisePropertyChanged("TxtSelectedIBANIDNumber");
             }
@@ -2085,6 +2332,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isRefundVisible == value) return;
+
                 _isRefundVisible = value;
                 RaisePropertyChanged("IsRefundVisible");
             }
@@ -2099,6 +2348,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isSwichButtonOf15PercentChangeEnableToTap == value) return;
+
                 _isSwichButtonOf15PercentChangeEnableToTap = value;
                 RaisePropertyChanged("IsSwichButtonOf15PercentChangeEnableToTap");
             }
@@ -2113,6 +2364,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isSwichButtonEnableToTap == value) return;
+
                 _isSwichButtonEnableToTap = value;
                 RaisePropertyChanged("IsSwichButtonEnableToTap");
             }
@@ -2126,6 +2379,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_isEnableCheckedRefund == value) return;
+
                 _isEnableCheckedRefund = value;
                 RaisePropertyChanged("IsEnableCheckedRefund");
             }
@@ -2142,6 +2397,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATNewModelFor15Percent == value) return;
+
                 _vATNewModelFor15Percent = value;
                 RaisePropertyChanged("VATNewModelFor15Percent");
             }
@@ -2157,6 +2414,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATNewModelFor5Percent == value) return;
+
                 _vATNewModelFor5Percent = value;
                 RaisePropertyChanged("VATNewModelFor5Percent");
             }
@@ -2172,6 +2431,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stdsalesVat15 == value) return;
+
                 _stdsalesVat15 = value;
                 RaisePropertyChanged("StdsalesVat15");
             }
@@ -2186,6 +2447,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stdsalesVat5 == value) return;
+
                 _stdsalesVat5 = value;
                 RaisePropertyChanged("StdsalesVat5");
             }
@@ -2201,6 +2464,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stdpurchasesVat15 == value) return;
+
                 _stdpurchasesVat15 = value;
                 RaisePropertyChanged("StdpurchasesVat15");
             }
@@ -2215,6 +2480,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_stdpurchasesVat5 == value) return;
+
                 _stdpurchasesVat5 = value;
                 RaisePropertyChanged("StdpurchasesVat5");
             }
@@ -2245,6 +2512,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_importspaidVat5 == value) return;
+
                 _importspaidVat5 = value;
                 RaisePropertyChanged("ImportspaidVat5");
             }
@@ -2260,6 +2529,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_importsaccVat15 == value) return;
+
                 _importsaccVat15 = value;
                 RaisePropertyChanged("ImportsaccVat15");
             }
@@ -2274,6 +2545,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_importsaccVat5 == value) return;
+
                 _importsaccVat5 = value;
                 RaisePropertyChanged("ImportsaccVat5");
             }
@@ -2289,6 +2562,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATRate002For15Percent == value) return;
+
                 _vATRate002For15Percent = value;
                 RaisePropertyChanged("VATRate002For15Percent");
             }
@@ -2303,6 +2578,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_vATRate003For5Percent == value) return;
+
                 _vATRate003For5Percent = value;
                 RaisePropertyChanged("VATRate003For5Percent");
             }
@@ -2320,6 +2597,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             set
             {
+                if (_entryVatAmountTextColor == value) return;
+
                 _entryVatAmountTextColor = value;
                 if (_entryVatAmountTextColor == Color.FromHex("#ff0000"))
                 {

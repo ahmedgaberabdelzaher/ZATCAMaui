@@ -66,11 +66,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                 //});
                 try
                 {
-                    Task.Run(() =>
-                    {
+                   
                         IsLoading = true;
-                    });
-                    await Task.Run(async () =>
+                    await Task.Run(() =>
                     {
                         Task LoginClickedTask = Task.Run(async () =>
                         {
@@ -78,10 +76,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                         });
                         LoginClickedTask.Wait();
                     });
-                    Task.Run(() =>
-                    {
+                    
                         IsLoading = false;
-                    });
+                    
                 }
                 catch (AggregateException ae)
                 {
@@ -116,13 +113,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     IsLoading = false;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     });
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             this.BackButtonClicked = new Command(this.BackButtonClick);
@@ -149,7 +148,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
-                _appVersion = value;
+                if (_appVersion == value) return;
+
+                    _appVersion = value;
                 RaisePropertyChanged("AppVersion");
             }
         }
@@ -165,10 +166,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
-                //if (this.password == value)
-                //{
-                //    return;
-                //}
+                if (this.password == value)
+                {
+                    return;
+                }
+
                 this.password = value;
                 this.RaisePropertyChanged("Password");
             }
@@ -268,8 +270,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_PreviousUserName == value) return;
+
                 _PreviousUserName = value;
             }
+
         }
         private string _tINID = string.Empty;
         public string TINID
@@ -280,6 +285,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_tINID == value) return;
+
                 _tINID = value;
                 RaisePropertyChanged("TINID");
             }
@@ -475,6 +482,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
+                if (_NavigaateToThisService == value) return;
+
                 _NavigaateToThisService = value;
             }
         }
@@ -626,12 +635,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                         await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                                     });
                                 }
-                                catch (Exception)
+                                catch (Exception ex)
                                 {
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
                                         await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
                                     });
+                                    Console.Write(ex.ToString());
+                                    Console.Write(ex.StackTrace.ToString());
                                 }
                             });
                         }
@@ -662,10 +673,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                     response = AppResources.UserAccountLocked;
                                 }
                             }
-                            await Task.Run(() =>
-                            {
+                           
                                 IsLoading = false;
-                            });
+                           
                             if (0 == String.Compare("Error: NameResolutionFailure", response, true))
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -681,10 +691,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                 });
                             }
                         }
-                        await Task.Run(() =>
-                        {
+                        
                             IsLoading = false;
-                        });
+
                     }
                     catch (GAZTException gex)
                     {
@@ -779,16 +788,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
             }
-            await Task.Run(() =>
-            {
+            finally{
                 IsLoading = false;
-            });
+            }
 
         }
         /// <summary>
@@ -852,11 +861,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
             Instrumentation.SetUserData("user_id", UserId);
 
-            String lang = "E";
+            //string lang = "E";
             string language = UtilityManager.GetLanguageParameter();
 
-            if (App.IsArabic == true)
-                lang = "AR";
+            //if (App.IsArabic == true)
+            //    lang = "AR";
 
             string _currentAttempts = CurrentAttempt.ToString();
             string languag = UtilityManager.GetLanguageParameter();
@@ -892,9 +901,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     }
                     
                 }
-                catch
+                catch(Exception ex)
                 {
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
             }
@@ -902,7 +912,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
             String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
 
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 try
                 {
@@ -967,12 +977,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     });
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
             });
@@ -986,11 +998,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
             Instrumentation.SetUserData("user_id", UserId);
 
-            String lang = "E";
+           
             string language = UtilityManager.GetLanguageParameter();
 
-            if (App.IsArabic == true)
-                lang = "AR";
+           
 
             string _currentAttempts = CurrentAttempt.ToString();
             string languag = UtilityManager.GetLanguageParameter();
@@ -1022,16 +1033,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     }
 
                 }
-                catch
+                catch(Exception ex)
                 {
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
 
             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
             String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
 
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 try
                 {
@@ -1098,12 +1110,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     });
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
             });

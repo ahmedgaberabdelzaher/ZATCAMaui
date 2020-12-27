@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Timers;
-using EGAZT.Models;
-using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
-using Rg.Plugins.Popup.Services;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Models.TPProfile;
@@ -21,7 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
-        public System.Timers.Timer otpTimer;
+        public Timer otpTimer;
         public int countDownSeconds;
         public string EnteredOTP = string.Empty;
 
@@ -37,6 +33,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_IsLoading == value) return;
+
                 _IsLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
@@ -51,6 +49,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_maxDigids == value) return;
+
                 _maxDigids = value;
                 RaisePropertyChanged("MaxDigids");
             }
@@ -65,6 +65,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_CountryCode == value) return;
+
                 _CountryCode = value;
                 if (_CountryCode != null)
                 {
@@ -88,6 +90,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_mobileCountryCode == value) return;
+
                 _mobileCountryCode = value;
                 RaisePropertyChanged("MobileCountryCode");
             }
@@ -99,6 +103,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _CurrentMobileNumberEntryText; }
             set
             {
+                if (_CurrentMobileNumberEntryText == value) return;
+
                 _CurrentMobileNumberEntryText = value;
                 RaisePropertyChanged("CurrentMobileNumberEntryText");
             }
@@ -110,6 +116,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _NewMobileNumberEntryText; }
             set
             {
+                if (_NewMobileNumberEntryText == value) return;
+
                 _NewMobileNumberEntryText = value;
 
                 /*BtnEnableFlag = false;
@@ -145,7 +153,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             }
                         }
                     }
-                    catch (Exception ex) { }
+                    catch (Exception ex) {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                    }
                 }
                 RaisePropertyChanged("NewMobileNumberEntryText");
             }
@@ -161,6 +172,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_oTPFirstDigit == value) return;
+
                 _oTPFirstDigit = value;
 
                 if (!string.IsNullOrEmpty(OTPFirstDigit))
@@ -185,6 +198,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPSecondDigit == value) return;
+
                 _OTPSecondDigit = value;
                 if (!string.IsNullOrEmpty(OTPSecondDigit))
                 {
@@ -207,6 +222,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPThirdDigit == value) return;
+
                 _OTPThirdDigit = value;
                 if (!string.IsNullOrEmpty(OTPThirdDigit))
                 {
@@ -229,6 +246,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPFourthDigit == value) return;
+
                 _OTPFourthDigit = value;
                 if (!string.IsNullOrEmpty(OTPFourthDigit))
                 {
@@ -252,6 +271,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_LblCountDownTimer == value) return;
+
                 _LblCountDownTimer = value;
                 RaisePropertyChanged("LblCountDownTimer");
             }
@@ -266,6 +287,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_OTPSentOnThisMobileNumber == value) return;
+
                 _OTPSentOnThisMobileNumber = value;
                 RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
@@ -277,6 +300,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _BtnEnableFlag; }
             set
             {
+                if (_BtnEnableFlag == value) return;
+
                 _BtnEnableFlag = value;
                 RaisePropertyChanged("BtnEnableFlag");
             }
@@ -411,6 +436,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.Message);
                 ShowValidationPopup(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             return TP;

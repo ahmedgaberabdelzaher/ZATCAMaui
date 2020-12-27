@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GAZT.Manager;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -23,6 +21,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_IsLoading == value) return;
                 _IsLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
@@ -37,6 +36,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_CurrentPasswordEntry == value) return;
+
                 _CurrentPasswordEntry = value;
                 RaisePropertyChanged("CurrentPasswordEntry");
             }
@@ -51,6 +52,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_NewPasswordEntry == value) return;
+
                 _NewPasswordEntry = value;
                 RaisePropertyChanged("NewPasswordEntry");
             }
@@ -65,6 +68,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_ConfirmPasswordEntry == value) return;
+
                 _ConfirmPasswordEntry = value;
                 RaisePropertyChanged("ConfirmPasswordEntry");
             }

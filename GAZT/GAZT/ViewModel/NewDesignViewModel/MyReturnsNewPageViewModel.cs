@@ -38,6 +38,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_returnTypeForFilter == value) return;
                 _returnTypeForFilter = value;
                 RaisePropertyChanged("ReturnTypeForFilter");
             }
@@ -51,6 +52,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isListVisible == value) return;
+
                 _isListVisible = value;
                 RaisePropertyChanged("IsListVisible");
             }
@@ -65,6 +68,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_index == value) return;
+
                 _index = value;
                 RaisePropertyChanged("Index");
             }
@@ -78,6 +83,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setNoDataLabelVisibilityALL == value) return;
+
                 _setNoDataLabelVisibilityALL = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityALL");
             }
@@ -91,23 +98,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedListItem == value) return;
+
                 _selectedListItem = value;
 
                 if (_selectedListItem != null)
                 {
-                    //Device.BeginInvokeOnMainThread(async () =>
-                    //{
-                    //    IsLoading = true;
-                    //});
-
+              
                     Task.Run(async () =>
                     {
                         await Task.Run(async () =>
                         {
                             IsLoading = true;
                         });
-                        if (_selectedListItem.Open != null)
-                        {
+                      
                             if (_selectedListItem.Open)
                             {
                                 if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
@@ -198,9 +202,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             }
 
-                        }
-
-
+     
                     });
 
                 }
@@ -218,6 +220,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedChipFilterItem == value) return;
+
                 _selectedChipFilterItem = value;
                 if (_selectedChipFilterItem != null)
                 {
@@ -249,6 +253,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_chipDataFilterlist == value) return;
+
                 _chipDataFilterlist = value;
                 RaisePropertyChanged("ChipDataFilterlist");
             }
@@ -262,6 +268,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_filterLabelText == value) return;
+
                 _filterLabelText = value;
                 RaisePropertyChanged("FilterLabelText");
             }
@@ -275,6 +283,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedReturnTypeForFilter == value) return;
+
                 _selectedReturnTypeForFilter = value;
                 if (_selectedReturnTypeForFilter != null)
                 {
@@ -296,6 +306,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isArabic == value) return;
+
                 _isArabic = value;
                 RaisePropertyChanged("IsArabic");
             }
@@ -310,6 +322,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_listToDisplay == value) return;
+
                 _listToDisplay = value;
                 if (_listToDisplay != null)
                 {
@@ -346,6 +360,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -732,7 +748,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -824,7 +841,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -916,7 +934,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void FilterETData()
@@ -1007,7 +1026,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void FilterWTData()
@@ -1098,7 +1118,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         //public void FilterIfTypeAndStausFilterSelected()
@@ -1196,7 +1217,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -1238,8 +1260,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
         #endregion
-
-
 
     }
 }

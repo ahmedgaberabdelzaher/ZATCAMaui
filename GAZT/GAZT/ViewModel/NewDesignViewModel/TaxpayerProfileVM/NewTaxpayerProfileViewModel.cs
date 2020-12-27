@@ -27,6 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _IsLoading; }
             set
             {
+                if (_IsLoading == value) return;
                 _IsLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
@@ -37,6 +38,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _listTINStatus; }
             set
             {
+                if (_listTINStatus == value) return;
+
                 _listTINStatus = value;
                 RaisePropertyChanged("ListTINStatus");
             }
@@ -50,6 +53,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_TinStatusLabelText == value) return;
+
                 _TinStatusLabelText = value;
                 RaisePropertyChanged("TinStatusLabelText");
             }
@@ -63,6 +68,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             set
             {
+                if (_ResidenceText == value) return;
+
                 _ResidenceText = value;
                 RaisePropertyChanged("ResidenceText");
             }
@@ -73,6 +80,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _TPProfileNameLbl; }
             set
             {
+
+                if (_TPProfileNameLbl == value) return;
+
                 _TPProfileNameLbl = value;
                 RaisePropertyChanged("TPProfileNameLbl");
             }
@@ -84,6 +94,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _TINLabel; }
             set
             {
+                if (_TINLabel == value) return;
+
                 _TINLabel = value;
                 RaisePropertyChanged("TINLabel");
             }
@@ -95,6 +107,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _MobileNumber; }
             set
             {
+                if (_MobileNumber == value) return;
+
                 _MobileNumber = value;
                 RaisePropertyChanged("MobileNumber");
             }
@@ -106,6 +120,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _EmailEntry; }
             set
             {
+                if (_EmailEntry == value) return;
+
                 _EmailEntry = value;
                 RaisePropertyChanged("EmailEntry");
             }
@@ -117,6 +133,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _PasswordEntry; }
             set
             {
+                if (_PasswordEntry == value) return;
+
                 _PasswordEntry = value;
                 RaisePropertyChanged("PasswordEntry");
             }
@@ -128,6 +146,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             get { return _ShowHidePasswordImage; }
             set
             {
+                if (_ShowHidePasswordImage == value) return;
+
                 _ShowHidePasswordImage = value;
                 RaisePropertyChanged("ShowHidePasswordImage");
             }
@@ -164,10 +184,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 // Session Expired Or Not
                 PopToRootPage();
             }
-            catch
+            catch(Exception ex)
             {
                 IsLoading = false;
                 TinStatusLabelText = " - ";
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

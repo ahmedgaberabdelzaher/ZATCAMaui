@@ -34,6 +34,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TaxTypeForFilter == value) return;
+
                 _TaxTypeForFilter = value;
                 RaisePropertyChanged("TaxTypeForFilter");
             }
@@ -48,6 +50,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedChipFilterItem == value) return;
+
                 if (value != null&&_selectedChipFilterItem!=value)
                 {
                     _selectedChipFilterItem = value;
@@ -67,6 +71,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SelectionColor == value) return;
+
                 _SelectionColor = value;
                 
                 RaisePropertyChanged("SelectionColor");
@@ -83,6 +89,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_chipDataFilterlist == value) return;
+
                 _chipDataFilterlist = value;
                 RaisePropertyChanged("ChipDataFilterlist");
             }
@@ -96,6 +104,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SelectedTaxTypeForFilter == value) return;
+
                 _SelectedTaxTypeForFilter = value;
                 if (_SelectedTaxTypeForFilter != null)
                 {
@@ -114,6 +124,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_filterLabelText == value) return;
+
                 _filterLabelText = value;
 
                 RaisePropertyChanged("FilterLabelText");
@@ -129,6 +141,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TaxTypeFilteredBills == value) return;
+
                 _TaxTypeFilteredBills = value;
             }
         }
@@ -142,6 +156,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_myBills == value) return;
+
                 _myBills = value;
                 if(_myBills!=null)
                 {
@@ -202,6 +218,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_amountLabel == value) return;
+
                 _amountLabel = value;
               
              
@@ -218,6 +236,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -232,6 +252,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isListVisible == value) return;
+
                 _isListVisible = value;
                 RaisePropertyChanged("IsListVisible");
             }
@@ -245,6 +267,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isNoDataLableVisible == value) return;
+
                 _isNoDataLableVisible = value;
                 RaisePropertyChanged("isNoDataLableVisible");
             }
@@ -259,6 +283,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_myBillsOriginal == value) return;
+
                 _myBillsOriginal = value;
                 RaisePropertyChanged("MyBillsOriginal");
             }
@@ -272,6 +298,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selcectedBillsIndex == value) return;
+
                 _selcectedBillsIndex = value;
                 RaisePropertyChanged("SelcectedBillsIndex");
             }
@@ -417,7 +445,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
             }
-            catch (Exception ex)
+            catch 
             {
             }
 
@@ -428,19 +456,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
-                //new ChipModel(){Text =AppResources.Paid, TemplateType = AppResources.Paid, ImageSource="Paid_check.png"},
                 new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"},
                 new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"}
-                //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
             };
         }        
-        public async Task PopToRootPage()
+        public void PopToRootPage()
         {
             try
             {
                 if (App.IsSessionExpired)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         if (App.TP != null)
                             App.TP = null;
@@ -470,7 +496,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
 
             }
-            catch(Exception ex)
+            catch
             {
 
             }
