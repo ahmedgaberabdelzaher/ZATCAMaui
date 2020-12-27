@@ -4597,17 +4597,100 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         #region Attachments View
         public void PopulateAttachmentsListViewTemplate()
         {
-            List<TinDeregestrationAttachmentsModel> check = new List<TinDeregestrationAttachmentsModel>();
-
-            //ADregReason: "2"
-            //ADregOpt: "1"
-
-            if (TinDeregistrationData.ATinType == "1")
+            try
             {
-                //Bankruptcy for Establishment
-                if (TinDeregistrationData.ADregReason == "2")
+                List<TinDeregestrationAttachmentsModel> check = new List<TinDeregestrationAttachmentsModel>();
+
+                //ADregReason: "2"
+                //ADregOpt: "1"
+
+                if (TinDeregistrationData.ATinType == "1")
                 {
-                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                    //Bankruptcy for Establishment
+                    if (TinDeregistrationData.ADregReason == "2")
+                    {
+                        if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                        {
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR02",
+                                IsMandatory = true
+                            });
+                        }
+                    }
+
+                    //Death Certificate of individual
+                    if (TinDeregistrationData.ADregReason == "3")
+                    {
+                        if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                        {
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentDeathCertificate,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR01",
+                                IsMandatory = true
+                            });
+                        }
+                    }
+
+                    //Liquidatation
+                    if (TinDeregistrationData.ADregReason == "4")
+                    {
+                        if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                        {
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR05",
+                                IsMandatory = true
+                            });
+                        }
+                    }
+                }
+
+                if (TinDeregistrationData.ATinType == "2")
+                {
+                    //TinDeregistrationAttachmentMinisterialResponse
+
+                    if (TinDeregistrationData.ADregReason == "1")
+                    {
+                        if (TinDeregistrationData.ADregOpt == "2")
+                        {
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentMinisterialResponse,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR03",
+                                IsMandatory = true
+                            });
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR09",
+                                IsMandatory = true
+                            });
+                            //check.Add(new TinDeregestrationAttachmentsModel
+                            //{
+                            //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
+                            //    AttachmentName = string.Empty,
+                            //    IsAttachmentAttached = false,
+                            //    DocType = "DR02",
+                            //    IsMandatory = true
+                            //});
+                        }
+                    }
+
+                    if (TinDeregistrationData.ADregReason == "2")
                     {
                         check.Add(new TinDeregestrationAttachmentsModel
                         {
@@ -4617,167 +4700,99 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             DocType = "DR02",
                             IsMandatory = true
                         });
-                    }
-                }
 
-                //Death Certificate of individual
-                if (TinDeregistrationData.ADregReason == "3")
-                {
-                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
-                    {
-                        check.Add(new TinDeregestrationAttachmentsModel
+                        if (TinDeregistrationData.ADregOpt == "2")
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentDeathCertificate,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR01",
-                            IsMandatory = true
-                        });
+                            //check.Add(new TinDeregestrationAttachmentsModel
+                            //{
+                            //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
+                            //    AttachmentName = string.Empty,
+                            //    IsAttachmentAttached = false,
+                            //    DocType = "DR08",
+                            //    IsMandatory = true
+                            //});
+                        }
                     }
-                }
 
-                //Liquidatation
-                if (TinDeregistrationData.ADregReason == "4")
-                {
-                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                    //Logics pending for reason 3 4 5 for idtype 2
+                    if (TinDeregistrationData.ADregReason == "5")
                     {
-                        check.Add(new TinDeregestrationAttachmentsModel
+                        if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR05",
-                            IsMandatory = true
-                        });
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentMerger,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR04",
+                                IsMandatory = true
+                            });
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR08",
+                                IsMandatory = true
+                            });
+                        }
                     }
-                }
-            }
-
-            if (TinDeregistrationData.ATinType == "2")
-            {
-                //TinDeregistrationAttachmentMinisterialResponse
-
-                if (TinDeregistrationData.ADregReason == "1")
-                {
-                    if (TinDeregistrationData.ADregOpt == "2")
+                    if (TinDeregistrationData.ADregReason == "7")
                     {
-                        check.Add(new TinDeregestrationAttachmentsModel
+                        if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentMinisterialResponse,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR03",
-                            IsMandatory = true
-                        });
-                        check.Add(new TinDeregestrationAttachmentsModel
+                            //check.Add(new TinDeregestrationAttachmentsModel
+                            //{
+                            //    FieldTitle = AppResources.TinDeregistrationAttachmentMerger,
+                            //    AttachmentName = string.Empty,
+                            //    IsAttachmentAttached = false,
+                            //    DocType = "DR04",
+                            //    IsMandatory = true
+                            //});
+                        }
+                    }
+                    if (TinDeregistrationData.ADregReason == "4")
+                    {
+                        if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractOfSaleAgreement,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR09",
-                            IsMandatory = true
-                        });
-                        //check.Add(new TinDeregestrationAttachmentsModel
-                        //{
-                        //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
-                        //    AttachmentName = string.Empty,
-                        //    IsAttachmentAttached = false,
-                        //    DocType = "DR02",
-                        //    IsMandatory = true
-                        //});
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR05",
+                                IsMandatory = true
+                            });
+                        }
                     }
                 }
 
-                if (TinDeregistrationData.ADregReason == "2")
-                {
-                    check.Add(new TinDeregestrationAttachmentsModel
-                    {
-                        FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
-                        AttachmentName = string.Empty,
-                        IsAttachmentAttached = false,
-                        DocType = "DR02",
-                        IsMandatory = true
-                    });
+                bool isTransfer = false;
 
-                    if (TinDeregistrationData.ADregOpt == "2")
-                    {
-                        //check.Add(new TinDeregestrationAttachmentsModel
-                        //{
-                        //    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
-                        //    AttachmentName = string.Empty,
-                        //    IsAttachmentAttached = false,
-                        //    DocType = "DR08",
-                        //    IsMandatory = true
-                        //});
-                    }
-                }
-
-                //Logics pending for reason 3 4 5 for idtype 2
-                if (TinDeregistrationData.ADregReason == "5")
+                //This attachment is needed when transferring the outlets and not closing for all the cases
+                if (TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
                 {
-                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
+                    if (TinDeregistrationData.ADregOpt == "3")
                     {
-                        check.Add(new TinDeregestrationAttachmentsModel
+
+                        if (AllOutlets != null && AllOutlets.Count > 0)
+                            isTransfer = AllOutlets.Any(x => x.PermitTypes != null && x.PermitTypes.Any(y =>!string.IsNullOrEmpty(y.APermitDisplayReason) && y.APermitDisplayReason.Equals(AppResources.TinDeregistrationTransfer)));
+
+                        if (isTransfer || SelectedPermitOutletOptionIndex == 1 || permitThirdOptionReason.Contains(AppResources.TinDeregistrationTransfer))
+
                         {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentMerger,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR04",
-                            IsMandatory = true
-                        });
-                        check.Add(new TinDeregestrationAttachmentsModel
-                        {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR08",
-                            IsMandatory = true
-                        });
+                            check.Add(new TinDeregestrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
+                                AttachmentName = string.Empty,
+                                IsAttachmentAttached = false,
+                                DocType = "DR07",
+                                IsMandatory = true
+                            });
+                        }
+
                     }
-                }
-                if (TinDeregistrationData.ADregReason == "7")
-                {
-                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
-                    {
-                        //check.Add(new TinDeregestrationAttachmentsModel
-                        //{
-                        //    FieldTitle = AppResources.TinDeregistrationAttachmentMerger,
-                        //    AttachmentName = string.Empty,
-                        //    IsAttachmentAttached = false,
-                        //    DocType = "DR04",
-                        //    IsMandatory = true
-                        //});
-                    }
-                }
-                if (TinDeregistrationData.ADregReason == "4")
-                {
-                    if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
-                    {
-                        check.Add(new TinDeregestrationAttachmentsModel
-                        {
-                            FieldTitle = AppResources.TinDeregistrationAttachmentLiquidation,
-                            AttachmentName = string.Empty,
-                            IsAttachmentAttached = false,
-                            DocType = "DR05",
-                            IsMandatory = true
-                        });
-                    }
-                }
-            }
-
-            bool isTransfer = false;
-
-            //This attachment is needed when transferring the outlets and not closing for all the cases
-            if (TinDeregistrationData.ADregOpt == "2" || TinDeregistrationData.ADregOpt == "3")
-            {
-                if (TinDeregistrationData.ADregOpt == "3")
-                {
-
-                    if (AllOutlets != null && AllOutlets.Count > 0)
-                        isTransfer = AllOutlets.Any(x => x.PermitTypes != null && x.PermitTypes.Any(y => y.APermitDisplayReason.Equals(AppResources.TinDeregistrationTransfer)));
-
-                    if (isTransfer || SelectedPermitOutletOptionIndex == 1 || permitThirdOptionReason.Contains(AppResources.TinDeregistrationTransfer))
-
+                    else
                     {
                         check.Add(new TinDeregestrationAttachmentsModel
                         {
@@ -4788,86 +4803,76 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             IsMandatory = true
                         });
                     }
-
                 }
-                else
+
+                //In all Cases
+
+
+                if (TinDeregistrationData != null)
                 {
-                    check.Add(new TinDeregestrationAttachmentsModel
+                    if (TinDeregistrationData.PermitSet != null && TinDeregistrationData.PermitSet.Results != null)
                     {
-                        FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
-                        AttachmentName = string.Empty,
-                        IsAttachmentAttached = false,
-                        DocType = "DR07",
-                        IsMandatory = true
-                    });
-                }
-            }
-
-            //In all Cases
-
-
-            if (TinDeregistrationData != null)
-            {
-                if (TinDeregistrationData.PermitSet != null && TinDeregistrationData.PermitSet.Results != null)
-                {
-                    foreach (var item in TinDeregistrationData.PermitSet.Results)
-                    {
-                        if (item.APermitTypeTb == "BUP002" && !check.Exists(x => x.DocType == "DR10"))
+                        foreach (var item in TinDeregistrationData.PermitSet.Results)
                         {
-                            check.Add(new TinDeregestrationAttachmentsModel
+                            if (item.APermitTypeTb == "BUP002" && !check.Exists(x => x.DocType == "DR10"))
                             {
-                                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing,
-                                AttachmentName = string.Empty,
-                                IsAttachmentAttached = false,
-                                DocType = "DR10",
-                                IsMandatory = true
-                            });
+                                check.Add(new TinDeregestrationAttachmentsModel
+                                {
+                                    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing,
+                                    AttachmentName = string.Empty,
+                                    IsAttachmentAttached = false,
+                                    DocType = "DR10",
+                                    IsMandatory = true
+                                });
+                            }
+
+                            else if (item.APermitTypeTb == "ZS0004" && !check.Exists(x => x.DocType == "DR11"))
+                            {
+                                check.Add(new TinDeregestrationAttachmentsModel
+                                {
+                                    FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
+                                    AttachmentName = string.Empty,
+                                    IsAttachmentAttached = false,
+                                    DocType = "DR11",
+                                    IsMandatory = true
+                                });
+                            }
                         }
+                    }
 
-                        else if (item.APermitTypeTb == "ZS0004" && !check.Exists(x => x.DocType == "DR11"))
+
+
+                }
+                if (AttachmentsListViewData != null)
+                {
+                    AttachmentsListViewData.Clear();
+                }
+                AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
+
+                foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
+                {
+                    foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                    {
+                        if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
                         {
-                            check.Add(new TinDeregestrationAttachmentsModel
-                            {
-                                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
-                                AttachmentName = string.Empty,
-                                IsAttachmentAttached = false,
-                                DocType = "DR11",
-                                IsMandatory = true
-                            });
+                            if (attachmentsModelsTemp.AttachmentTypeList == null)
+                                attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
+                            if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
+                                attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
                         }
                     }
                 }
-
-
-
-            }
-            if (AttachmentsListViewData != null)
-            {
-                AttachmentsListViewData.Clear();
-            }
-            AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(check);
-
-            foreach (Attachment attachmentTemp in TinDeregistrationData.AttDetSet.Results)
-            {
-                foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
+                TinDeregistrationData.AttDetSet.Results?.Clear();
+                foreach (var item in AttachmentsListViewData)
                 {
-                    if (attachmentTemp.Dotyp == attachmentsModelsTemp.DocType)
-                    {
-                        if (attachmentsModelsTemp.AttachmentTypeList == null)
-                            attachmentsModelsTemp.AttachmentTypeList = new List<Attachment>();
-                        if (!attachmentsModelsTemp.AttachmentTypeList.Contains(attachmentTemp))
-                            attachmentsModelsTemp.AttachmentTypeList.Add(attachmentTemp);
-                    }
+                    if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
+                        TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
                 }
+                AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
+                // attachmentsListViewDataString = JsonConvert.SerializeObject(attachmentsListViewData);
             }
-            TinDeregistrationData.AttDetSet.Results?.Clear();
-            foreach (var item in AttachmentsListViewData)
-            {
-                if (item.AttachmentTypeList != null && item.AttachmentTypeList.Count >= 0)
-                    TinDeregistrationData.AttDetSet.Results.AddRange(item.AttachmentTypeList);
-            }
-            AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(AttachmentsListViewData);
-            // attachmentsListViewDataString = JsonConvert.SerializeObject(attachmentsListViewData);
+
+            catch (Exception ex) { }
         }
         public void PopulateAttachments(List<Attachment> attachments)
         {
