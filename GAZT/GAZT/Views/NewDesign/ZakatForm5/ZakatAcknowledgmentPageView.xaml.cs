@@ -65,7 +65,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //    {
             //        viewModel.IsLoading = true;
             //    });
-               await viewModel.LoadZakatForm5_ACK_Data();
+                viewModel.LoadZakatForm5_ACK_Data();
             //    //Device.BeginInvokeOnMainThread(() => {
 
             //    //    ////App.HideProgressView();
@@ -94,7 +94,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         {
             //try
             //{
-            await viewModel.LoadZakatForm5_ACK_Data();
+             viewModel.LoadZakatForm5_ACK_Data();
             //    if (viewModel.ZakatForm5DataResult != null)
             //    {
             //        // BPicker.SelectedIndex = 14;

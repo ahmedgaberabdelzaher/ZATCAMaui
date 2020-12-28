@@ -1,8 +1,6 @@
 ﻿using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -19,6 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_creditCarriedsList == value) return;
                 _creditCarriedsList = value;
                 RaisePropertyChanged("CreditCarriedsList");
             }
@@ -32,6 +31,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vATDeclarationData == value) return;
+
                 _vATDeclarationData = value;
                 RaisePropertyChanged("VATDeclarationData");
             }
@@ -45,6 +46,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isNoDataLabelVisible == value) return;
+
                 _isNoDataLabelVisible = value;
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
@@ -58,6 +61,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isListViewVisible == value) return;
+
                 _isListViewVisible = value;
                 RaisePropertyChanged("IsListViewVisible");
             }

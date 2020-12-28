@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
-using EGAZT.ViewModel.NewDesignViewModel;
-using GAZT;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Timers;
 using System;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.CustomControl;
-using MVP.FontIcons;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {//TEAST

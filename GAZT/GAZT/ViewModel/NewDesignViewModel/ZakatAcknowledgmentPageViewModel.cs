@@ -24,6 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_AknowledgementDataList == value) return;
                 _AknowledgementDataList = value;
                 RaisePropertyChanged("AknowledgementDataList");
             }
@@ -36,6 +37,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_sadadBillNumber == value) return;
+
                 _sadadBillNumber = value;
                 RaisePropertyChanged(() => SadadBillNumber);
             }
@@ -49,6 +52,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if (_totalZakatPayble == value) return;
+
                 _totalZakatPayble = value;
                 RaisePropertyChanged(() => TotalZakatPayble);
             }
@@ -70,12 +75,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         #endregion
 
-        public async Task LoadZakatForm5_ACK_Data()
+        public void LoadZakatForm5_ACK_Data()
         {
             if (AknowledgementDataList[0].Sopbel != "")
             {
                 SadadBillNumber = AknowledgementDataList[0].Sopbel.ToString();
-            }else
+            }
+            else
             {
                 SadadBillNumber = " - ";
 
@@ -84,7 +90,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (AknowledgementDataList[0].Betrh != "")
             {
 
-            TotalZakatPayble = UtilityManager.GetCommaSeparatedAmount(AknowledgementDataList[0].Betrh.ToString());
+                TotalZakatPayble = UtilityManager.GetCommaSeparatedAmount(AknowledgementDataList[0].Betrh.ToString());
             }
             else
             {

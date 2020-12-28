@@ -155,8 +155,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
                                 {
-                                    //Vat
-                                    GetVATAllReturnsAsync(_selectedListItem);
+                                //Vat
+                                await GetVATAllReturnsAsync(_selectedListItem);
                                 }
                                 if (_selectedListItem.TaxType.Equals("ETAX"))
                                 {

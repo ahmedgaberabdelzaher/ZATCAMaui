@@ -37,6 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_SelectedTaxTypeForFilter == value) return;
                 _SelectedTaxTypeForFilter = value;
                 if (_SelectedTaxTypeForFilter != null)
                 {
@@ -55,6 +56,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -68,6 +71,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_selectedCertificate == value) return;
+
                 _selectedCertificate = value;
                 RaisePropertyChanged("SelectedCertificate");
                 if (SelectedCertificate != null && SelectedCertificate.Pdfurl != null)
@@ -85,6 +90,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_filterLabelText == value) return;
+
                 _filterLabelText = value;
 
                 RaisePropertyChanged("FilterLabelText");
@@ -98,6 +105,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TaxTypeForFilter == value) return;
+
                 _TaxTypeForFilter = value;
                 RaisePropertyChanged("TaxTypeForFilter");
             }
@@ -111,6 +120,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_certificateListToDisplay == value) return;
+
                 _certificateListToDisplay = value;
                 if (_certificateListToDisplay != null)
                 {
@@ -143,6 +154,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isNoDataLabelVisible == value) return;
+
                 _isNoDataLabelVisible = value;
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
@@ -156,6 +169,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isCertificateListVisible == value) return;
+
                 _isCertificateListVisible = value;
                 RaisePropertyChanged("IsCertificateListVisible");
             }
@@ -169,6 +184,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_certificateListToAll == value) return;
+
                 _certificateListToAll = value;
                 RaisePropertyChanged("CertificateListToAll");
             }
@@ -182,6 +199,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_certificateListToZAKAT == value) return;
+
                 _certificateListToZAKAT = value;
                 RaisePropertyChanged("CertificateListToZAKAT");
             }
@@ -195,6 +214,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_certificateListToVAT == value) return;
+
                 _certificateListToVAT = value;
                 RaisePropertyChanged("_certificateListToVAT");
             }
@@ -208,6 +229,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_certificateListToET == value) return;
+
                 _certificateListToET = value;
                 RaisePropertyChanged("_certificateListToET");
             }
@@ -220,6 +243,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_TaxPayerProfile == value) return;
+
                 _TaxPayerProfile = value;
                 RaisePropertyChanged("TaxPayerProfile");
             }
@@ -260,7 +285,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 CertificateListToAll = new List<Result>();
                 allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
                 PopToRootPage();
-                bool Flag = false;
                 if (allCertificate != null)
                 {
                     if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
@@ -303,7 +327,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-             //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
@@ -343,7 +369,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -362,6 +389,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 

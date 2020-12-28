@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -54,6 +52,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isEditTextVisible == value) return;
                 _isEditVisible = value;
                 RaisePropertyChanged("isEditVisible");
             }
@@ -68,6 +67,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLabelVisible == value) return;
+
                 _isLabelVisible = value;
                 RaisePropertyChanged("isLabelVisible");
             }
@@ -82,6 +83,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -96,6 +99,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_isEditTextVisible == value) return;
+
                 _isEditTextVisible = value;
                 RaisePropertyChanged("IsEditTextVisible");
             }
@@ -111,6 +116,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setAmendButtonVisibility == value) return;
+
                 _setAmendButtonVisibility = value;
                 RaisePropertyChanged("SetAmendButtonVisibility");
             }
@@ -126,6 +133,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_zakatReturnDetail == value) return;
+
                 _zakatReturnDetail = value;
                 RaisePropertyChanged("ZakatReturnDetail");
             }
@@ -141,6 +150,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_zakatReturnDetails == value) return;
+
                 _zakatReturnDetails = value;
                 RaisePropertyChanged("ZakatReturnDetails");
             }
@@ -156,6 +167,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_abrzu == value) return;
+
                 _abrzu = value;
                 RaisePropertyChanged("Abrzu");
             }
@@ -171,6 +184,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_fromDate == value) return;
+
                 _fromDate = value;
                 RaisePropertyChanged("FromDate");
             }
@@ -185,6 +200,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_toDate == value) return;
+
                 _toDate = value;
                 RaisePropertyChanged("ToDate");
             }
@@ -200,6 +217,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_releaseOrBillDetailsButtonText == value) return;
+
                 _releaseOrBillDetailsButtonText = value;
                 RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
             }
@@ -214,6 +233,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_totalVATSalesEditImageSource == value) return;
+
                 _totalVATSalesEditImageSource = value;
                 RaisePropertyChanged("TotalVATSalesEditImageSource");
             }
@@ -228,6 +249,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_averageNumberOfLabourEditImageSource == value) return;
+
                 _averageNumberOfLabourEditImageSource = value;
                 RaisePropertyChanged("AverageNumberOfLabourEditImageSource");
             }
@@ -242,6 +265,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_importValueEditImageSource == value) return;
+
                 _importValueEditImageSource = value;
                 RaisePropertyChanged("ImportValueEditImageSource");
             }
@@ -257,6 +282,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_importFromPointOfSalesEditImageSource == value) return;
+
                 _importFromPointOfSalesEditImageSource = value;
                 RaisePropertyChanged("ImportFromPointOfSalesEditImageSource");
             }
@@ -271,6 +298,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_contactFromETIMADSystemEditImageSource == value) return;
+
                 _contactFromETIMADSystemEditImageSource = value;
                 RaisePropertyChanged("ContactFromETIMADSystemEditImageSource");
             }
@@ -285,6 +314,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_exportValueEditImageSource == value) return;
+
                 _exportValueEditImageSource = value;
                 RaisePropertyChanged("ExportValueEditImageSource");
             }
@@ -299,6 +330,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_purchaseValueEditImageSource == value) return;
+
                 _purchaseValueEditImageSource = value;
                 RaisePropertyChanged("PurchaseValueEditImageSource");
             }
@@ -314,6 +347,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_capitalAmountEditImageSource == value) return;
+
                 _capitalAmountEditImageSource = value;
                 RaisePropertyChanged("CapitalAmountEditImageSource");
             }
@@ -329,6 +364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setSubmitButtonVisibility == value) return;
                 _setSubmitButtonVisibility = value;
                 RaisePropertyChanged("SetSubmitButtonVisibility");
             }
@@ -343,6 +379,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setConfirmButtonVisibility == value) return;
+
                 _setConfirmButtonVisibility = value;
                 RaisePropertyChanged("SetConfirmButtonVisibility");
             }
@@ -357,6 +395,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_iCRStatus == value) return;
+
                 _iCRStatus = value;
                 RaisePropertyChanged("ICRStatus");
             }
@@ -372,6 +412,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_iCRStatusImage == value) return;
+
                 _iCRStatusImage = value;
                 RaisePropertyChanged("ICRStatusImage");
             }
@@ -387,6 +429,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_changeFromEstimateTAccountringBasisButtonVisibility == value) return;
+
                 _changeFromEstimateTAccountringBasisButtonVisibility = value;
                 RaisePropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
             }
@@ -402,6 +446,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_checkBoxStatus == value) return;
+
                 _checkBoxStatus = value;
                 RaisePropertyChanged("CheckBoxStatus");
             }
@@ -416,6 +462,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_desClaimerVisibility == value) return;
+
                 _desClaimerVisibility = value;
                 RaisePropertyChanged("DesClaimerVisibility");
             }
@@ -444,6 +492,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setReadOnlyToTotalVATSales == value) return;
+
                 _setReadOnlyToTotalVATSales = value;
                 RaisePropertyChanged("SetReadOnlyToTotalVATSales");
             }
@@ -458,6 +508,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_setReadOnlyToOtherThanTotalVATSales == value) return;
+
                 _setReadOnlyToOtherThanTotalVATSales = value;
                 RaisePropertyChanged("SetReadOnlyToOtherThanTotalVATSales");
             }
@@ -472,6 +524,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_zAKATReturnsPagName == value) return;
+
                 _zAKATReturnsPagName = value;
                 RaisePropertyChanged("ZAKATReturnsPagName");
             }
@@ -486,6 +540,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_labnoE == value) return;
+
                 _labnoE = value;
                 RaisePropertyChanged("LabnoE");
             }
@@ -500,6 +556,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_tvtslE == value) return;
+
                 _tvtslE = value;
                 RaisePropertyChanged("TvtslE");
             }
@@ -514,12 +572,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_impvalE == value) return;
+
                 _impvalE = value;
                 RaisePropertyChanged("ImpvalE");
             }
         }
 
-         private string _sumcnt = "";
+        private string _sumcnt = "";
         public string Sumcnt
         {
             get
@@ -528,6 +588,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_sumcnt == value) return;
+
                 _sumcnt = value;
                 RaisePropertyChanged("Sumcnt");
             }
@@ -543,6 +605,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_pramtE == value) return;
+
                 _pramtE = value;
                 RaisePropertyChanged("PramtE");
             }
@@ -902,7 +966,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                         }
                     });
                 }
@@ -917,7 +981,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                         }
                     });
                 }
@@ -934,7 +998,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                             }
                         });
                     });
@@ -952,7 +1016,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                               await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                             }
                         });
                     });
