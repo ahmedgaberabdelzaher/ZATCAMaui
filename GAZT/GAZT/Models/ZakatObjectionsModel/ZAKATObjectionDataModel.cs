@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using Xamarin.Forms.Internals;
 
@@ -400,27 +401,37 @@ namespace EGAZT.Models.ZakatObjectionsModel
         }
 
     }
-
+    [Preserve(AllMembers = true)]
     public class ZakatObjectionWithDrawListModel
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public D d { get; set; }
+        [Preserve(AllMembers = true)]
         public class Metadata
         {
+            [DataMember]
             public string id { get; set; }
+            [DataMember]
             public string uri { get; set; }
+            [DataMember]
             public string type { get; set; }
         }
-
+        [Preserve(AllMembers = true)]
         public class Result
         {
+            [DataMember]
             public Metadata __metadata { get; set; }
+            [DataMember]
             public string Taxpy { get; set; }
+            [DataMember]
             public string ObjFbnum { get; set; }
         }
-
+        [Serializable]
+        [DataContract]
+        [Preserve(AllMembers = true)]
         public class D
         {
+            [DataMember]
             public List<Result> results { get; set; }
         }
 

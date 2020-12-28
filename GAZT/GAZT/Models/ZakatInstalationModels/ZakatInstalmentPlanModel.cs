@@ -95,7 +95,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
 
-    [Preserve(AllMembers = true)]
+    //[Preserve(AllMembers = true)]
     public partial class ZakatInstalmentPlanResponse
     {
         public ZakatInstalment d { get; set; }

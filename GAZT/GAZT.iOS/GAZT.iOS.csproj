@@ -556,7 +556,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-App-83.5x83.5%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\AppStore.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\AppStore.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

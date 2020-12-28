@@ -2147,7 +2147,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
 
 
-        public async Task SetDefaultDate()
+        public void SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             //Select today dates
