@@ -1,7 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -17,6 +16,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if (_vatReturnUIButtons == value) return;
                 _vatReturnUIButtons = value;
                 RaisePropertyChanged("VatReturnUIButtons");
             }
