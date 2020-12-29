@@ -1,11 +1,6 @@
-﻿using EGAZT.Helper;
-using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
+﻿using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
 using GAZT.Helper;
-using GAZT.Manager;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -64,7 +59,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             catch (Exception ex)
             {
 
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }

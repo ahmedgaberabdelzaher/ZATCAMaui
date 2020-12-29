@@ -39,7 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         private bool _isAttachmentsViewEnabled = false;
         ZakatInstalmentValidateNewRequestModel result = null;
 
-        public System.Timers.Timer otpTimer;
+        public Timer otpTimer;
         public int countDownSeconds;
 
         #endregion
@@ -183,7 +183,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             NoteContinueTapped = new Command(async () =>
             {
-                ValidateNoteAndContinueAsync();
+               await ValidateNoteAndContinueAsync();
             });
 
             ZDownloadForm = new Command(async () =>
@@ -307,13 +307,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -328,17 +330,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-
-
             set
             {
                 if (_DueInvoicesListSet12 == value)
                 {
                     return;
                 }
-
-
-
 
 
                 _DueInvoicesListSet12 = value;
@@ -521,6 +518,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isZakat == value) return;
                 _isZakat = value;
                 RaisePropertyChanged("IsZakat");
             }
@@ -535,6 +533,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_zakatTitle == value) return;
+
                 _zakatTitle = value;
                 RaisePropertyChanged("ZakatTitle");
             }
@@ -549,6 +549,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_zakatInstalments == value) return;
+
                 _zakatInstalments = value;
                 RaisePropertyChanged("ZakatInstalments");
             }
@@ -563,6 +565,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_noteEditor == value) return;
+
                 _noteEditor = value;
                 RaisePropertyChanged("NoteEditor");
             }
@@ -576,6 +580,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_IsDueBillsVisible == value) return;
+
                 _IsDueBillsVisible = value;
                 RaisePropertyChanged("IsDueBillsVisible");
             }
@@ -682,6 +688,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_LblCountDownTimer == value) return;
+
                 _LblCountDownTimer = value;
                 RaisePropertyChanged("LblCountDownTimer");
             }
@@ -696,6 +704,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_oTPFirstDigit == value) return;
+
                 _oTPFirstDigit = value;
                 if (!string.IsNullOrEmpty(OTPFirstDigit))
                 {
@@ -719,6 +729,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_OTPSecondDigit == value) return;
+
                 _OTPSecondDigit = value;
                 if (!string.IsNullOrEmpty(OTPSecondDigit))
                 {
@@ -741,6 +753,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_OTPThirdDigit == value) return;
+
                 _OTPThirdDigit = value;
                 if (!string.IsNullOrEmpty(OTPThirdDigit))
                 {
@@ -763,6 +777,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_OTPFourthDigit == value) return;
+
                 _OTPFourthDigit = value;
                 if (!string.IsNullOrEmpty(OTPFourthDigit))
                 {
@@ -797,6 +813,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_continueButtonEnability == value) return;
+
                 _continueButtonEnability = value;
 
                 RaisePropertyChanged(() => ContinueButtonEnability);
@@ -811,6 +829,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_selectedFrequencyName == value) return;
+
                 _selectedFrequencyName = value;
                 RaisePropertyChanged("SelectedFrequencyName");
             }
@@ -825,6 +845,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isResendOTPEnabled == value) return;
+
                 _isResendOTPEnabled = value;
                 // OnResendOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsResendOTPEnabled");
@@ -903,6 +925,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -916,6 +940,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isSummaryAttachmentsVisible == value) return;
+
                 _isSummaryAttachmentsVisible = value;
                 RaisePropertyChanged("IsSummaryAttachmentsVisible");
             }
@@ -929,6 +955,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isZakatLandingPageVisible == value) return;
+
                 _isZakatLandingPageVisible = value;
                 RaisePropertyChanged("IsZakatLandingPageVisible");
             }
@@ -943,6 +971,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_createZakatInstalmentBtnVisible == value) return;
+
                 _createZakatInstalmentBtnVisible = value;
                 RaisePropertyChanged("CreateZakatInstalmentBtnVisible");
             }
@@ -957,6 +987,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isOTPPageVisible == value) return;
+
                 _isOTPPageVisible = value;
                 RaisePropertyChanged("IsOTPPageVisible");
             }
@@ -969,6 +1001,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_IsZakatSummaryVisible == value) return;
+
                 _IsZakatSummaryVisible = value;
                 RaisePropertyChanged("IsZakatSummaryVisible");
             }
@@ -983,6 +1017,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isZakatSummaryRevokeVisible == value) return;
+
                 _isZakatSummaryRevokeVisible = value;
                 RaisePropertyChanged("IsZakatSummaryRevokeVisible");
             }
@@ -996,6 +1032,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isRevokZakatInstalmentVisible == value) return;
+
                 _isRevokZakatInstalmentVisible = value;
                 RaisePropertyChanged("IsRevokZakatInstalmentVisible");
             }
@@ -1010,6 +1048,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isNoteViewVisible == value) return;
+
                 _isNoteViewVisible = value;
                 RaisePropertyChanged("IsNoteViewVisible");
             }
@@ -1066,6 +1106,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_zakatInstalmentPlanRequestListModel == value) return;
+
                 _zakatInstalmentPlanRequestListModel = value;
                 RaisePropertyChanged("ZakatInstalmentPlanRequestListModel");
             }
@@ -1079,6 +1121,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_paymentFrequency == value) return;
+
                 _paymentFrequency = value;
                 RaisePropertyChanged("PaymentFrequency");
             }
@@ -1094,6 +1138,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_noOfInstalments == value) return;
+
                 _noOfInstalments = value;
                 RaisePropertyChanged("NoOfInstalments");
             }
@@ -1107,6 +1153,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_instalmentAmount == value) return;
+
                 _instalmentAmount = value;
                 RaisePropertyChanged("InstalmentAmount");
             }
@@ -1120,6 +1168,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_penaltyAmount == value) return;
+
                 _penaltyAmount = value;
                 RaisePropertyChanged("PenaltyAmount");
             }
@@ -1134,6 +1184,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_instalmentsCount == value) return;
+
                 _instalmentsCount = value;
                 RaisePropertyChanged("InstalmentsCount");
             }
@@ -1148,6 +1200,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_totalAmount == value) return;
+
                 _totalAmount = value;
                 RaisePropertyChanged("TotalAmount");
             }
@@ -1162,6 +1216,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_selectedFbNum == value) return;
+
                 _selectedFbNum = value;
                 RaisePropertyChanged("SelectedFbNum");
             }
@@ -1198,6 +1254,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_numberOfInstalmentPlans == value) return;
+
                 _numberOfInstalmentPlans = value;
                 RaisePropertyChanged("NumberOfInstalmentPlans");
             }
@@ -1213,6 +1271,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_reqVatInstalmentPlanResponseList == value) return;
+
                 _reqVatInstalmentPlanResponseList = value;
                 RaisePropertyChanged("ReqVatInstalmentPlanResponseList");
             }
@@ -1226,6 +1286,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_requestForInstalmentPlanList == value) return;
+
                 _requestForInstalmentPlanList = value;
                 RaisePropertyChanged("RequestForInstalmentPlanList");
             }
@@ -1239,6 +1301,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_RevokeListItem == value) return;
+
                 _RevokeListItem = value;
                 RaisePropertyChanged("RevokeListItem");
             }
@@ -1253,6 +1317,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_requestForRevokeList == value) return;
+
                 _requestForRevokeList = value;
                 RaisePropertyChanged("RequestForRevokeList");
             }
@@ -1398,10 +1464,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
-                //if (SummarySelectedBillsList == value)
-                //{
-                //    return;
-                //}
+             
+                if (summarySelectedBillsList == value) return;
+
                 summarySelectedBillsList = value;
                 RaisePropertyChanged("SummarySelectedBillsList");
             }
@@ -1435,6 +1500,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_seletedZakatForm == value) return;
                 _seletedZakatForm = value;
                 RaisePropertyChanged("SeletedZakatForm");
             }
@@ -1448,6 +1514,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_SummaryNoOfInstalments == value) return;
+
                 _SummaryNoOfInstalments = value;
                 RaisePropertyChanged("SummaryNoOfInstalments");
             }
@@ -1460,6 +1528,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_isAttachmentsViewEnabled == value) return;
+
                 _isAttachmentsViewEnabled = value;
                 RaisePropertyChanged("IsAttachmentsViewEnabled");
             }
@@ -1491,6 +1561,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             set
             {
+                if (_enteredOTP == value) return;
+
                 _enteredOTP = value;
                 RaisePropertyChanged("EnteredOTP");
             }
@@ -1765,13 +1837,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1827,6 +1901,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                     catch (InternetException ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -1848,6 +1924,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 //{
 
                 //});
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -1858,13 +1936,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1991,6 +2071,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                     catch (InternetException ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -2022,13 +2104,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2120,13 +2204,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2148,7 +2234,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     IsLoading = true;
                     ZakatInstalments = null;
-                    ZakatInstalmentPlanRevokeResponse vATInstalment = null;
                     try
                     {
                         ZakatInstalments = await WebServiceManager.GetZakatInstalmentRevokePostData(SelectedFbNum);
@@ -2225,13 +2310,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2376,6 +2463,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 return response;
             }
 
@@ -2487,6 +2576,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                     catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 });
                 await Task.Run(() =>
