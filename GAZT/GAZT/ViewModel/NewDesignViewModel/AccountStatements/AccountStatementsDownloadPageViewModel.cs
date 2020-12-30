@@ -23,6 +23,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_fromDate == value) return;
+
                 _fromDate = value;
                 RaisePropertyChanged("FromDate");
             }
@@ -37,6 +39,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_toDate == value) return;
+
                 _toDate = value;
                 RaisePropertyChanged("ToDate");
             }
@@ -51,6 +55,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_asTaxpayerSelectedValues == value) return;
+
                 _asTaxpayerSelectedValues = value;
                 RaisePropertyChanged("ASTaxpayerSelectedValues");
             }

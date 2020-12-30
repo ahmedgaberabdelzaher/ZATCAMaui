@@ -24,6 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
+                if (_tINnumber == value) return;
                 _tINnumber = value;
 
                 RaisePropertyChanged("TINnumber");
@@ -35,10 +36,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
-            //OnLoginPageLinkClicked = new Xamarin.Forms.Command(() =>
-            //{
-            //    _navigationService.NavigateTo(App.LogInPageView, App.SFLandingPageView);
-            //});
+          
         }
         #endregion
     }
