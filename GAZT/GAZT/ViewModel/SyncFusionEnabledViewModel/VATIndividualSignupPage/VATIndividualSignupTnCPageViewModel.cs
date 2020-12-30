@@ -4,8 +4,6 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -35,6 +33,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_webUrl == value) return;
                 _webUrl = value;
                 RaisePropertyChanged("WebUrl");
             }
@@ -48,6 +47,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -61,6 +62,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ischkTAndC == value) return;
+
                 _ischkTAndC = value;
                 if (_ischkTAndC == true)
                 {
@@ -84,6 +87,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isButtonEnabled == value) return;
+
                 _isButtonEnabled = value;
                 RaisePropertyChanged("IsButtonEnabled");
             }
@@ -97,6 +102,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_verifybuttonDisableColor == value) return;
+
                 _verifybuttonDisableColor = value;
                 RaisePropertyChanged("VerifyButtonDisableColor");
             }
@@ -178,16 +185,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     catch (Exception ex)
                     {
-                        await Task.Run(() =>
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    await Task.Run(() =>
                         {
                             IsLoading = false;
                         });
                     }
                 });
-
-            
-               
-        
         }
         #endregion
     }

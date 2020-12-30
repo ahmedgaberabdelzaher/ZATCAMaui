@@ -25,6 +25,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
+                if (_mobileCodes == value) return;
             _mobileCodes = value;
             RaisePropertyChanged("MobileCodes");
         }
@@ -40,7 +41,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
-            _mobileCodesAllValues = value;
+                if (_mobileCodesAllValues == value) return;
+
+                _mobileCodesAllValues = value;
             RaisePropertyChanged("MobileCodesAllValues");
         }
     }
@@ -54,7 +57,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
-            _filteredItems = value;
+                if (_filteredItems == value) return;
+
+                _filteredItems = value;
             RaisePropertyChanged("FilteredItems");
         }
     }
@@ -67,7 +72,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         set
         {
-            _ibanNumberText = value;
+                if (_ibanNumberText == value) return;
+
+                _ibanNumberText = value;
             RaisePropertyChanged("InternationalMobileCodeText");
         }
     }

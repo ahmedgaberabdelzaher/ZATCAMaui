@@ -26,6 +26,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -40,6 +41,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ImageIndividualTile == value) return;
+
                 _ImageIndividualTile = value;
                 RaisePropertyChanged("ImageIndividualTile");
             }
@@ -54,6 +57,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ImageIndividualIcon == value) return;
+
                 _ImageIndividualIcon = value;
                 if (_ImageEstimatedIcon.Equals("vat_new_individual_G.png"))
                 {
@@ -79,6 +84,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ImageEstimatedTile == value) return;
+
                 _ImageEstimatedTile = value;
                 RaisePropertyChanged("ImageEstimatedTile");
             }
@@ -92,6 +99,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_ImageEstimatedIcon == value) return;
+
                 _ImageEstimatedIcon = value;
                 if (_ImageEstimatedIcon.Equals("vat_new_Establishment_G.png"))
                 {
@@ -118,6 +127,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set 
             {
+                if (_IndividualTileColor == value) return;
+
                 _IndividualTileColor = value;
 
                 RaisePropertyChanged("IndividualTileColor");
@@ -132,6 +143,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
+                if (_EstimatedTileColor == value) return;
+
                 _EstimatedTileColor = value;
                 RaisePropertyChanged("EstimatedTileColor");
             }
