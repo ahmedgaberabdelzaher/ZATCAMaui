@@ -4,8 +4,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.VATRefunds;
-using EGAZT.Views.SyncFusionEnabledViews.AddPop;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -34,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-
+                if (_vatRefundsModel == value) return;
                 _vatRefundsModel = value;
                 RaisePropertyChanged("VATRefundsModel");
             }
@@ -50,6 +48,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_isInstructionsChecked == value) return;
 
                 _isInstructionsChecked = value;
                 RaisePropertyChanged("IsInstructionsChecked");
@@ -66,6 +65,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_isInstructionsVisible == value) return;
 
                 _isInstructionsVisible = value;
                 RaisePropertyChanged("IsInstructionsVisible");
@@ -82,6 +82,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
                 RaisePropertyChanged("VatRefundsDisplayDataModel");
@@ -99,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 throw new ArgumentNullException("dialogService");
             }
 
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -117,7 +118,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -145,6 +147,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 App.HideProgressView();
 
                 try
@@ -199,6 +203,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     App.HideProgressView();

@@ -39,6 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -53,6 +54,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_estimatedZAKATSADADNumber == value) return;
+
                 _estimatedZAKATSADADNumber = value;
                 RaisePropertyChanged("EstimatedZAKATSADADNumber");
             }
@@ -67,6 +70,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_setSuccessMessageVisibility == value) return;
+
                 _setSuccessMessageVisibility = value;
                 RaisePropertyChanged("SetSuccessMessageVisibility");
             }
@@ -81,6 +86,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_refreshIconImageSource == value) return;
+
                 _refreshIconImageSource = value;
                 RaisePropertyChanged("RefreshIconImageSource");
             }
@@ -215,7 +222,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=enabled";
             ShowPdf(url);
         }
-        public async void ShowPdf(string pdfUrl)
+        public void ShowPdf(string pdfUrl)
         {
             if (pdfUrl != null)
             {
@@ -256,6 +263,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     // Handle Exception
                 }
             }

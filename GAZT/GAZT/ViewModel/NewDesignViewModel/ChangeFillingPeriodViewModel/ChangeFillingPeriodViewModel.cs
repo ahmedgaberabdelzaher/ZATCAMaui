@@ -66,6 +66,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isLoading == value) return;
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -80,6 +81,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isFrequencyDetailsChecked == value) return;
+
                 _isFrequencyDetailsChecked = value;
                 RaisePropertyChanged("IsFrequencyDetailsChecked");
             }
@@ -91,6 +94,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isDecCheckBoxVisible; }
             set
             {
+                if (_isDecCheckBoxVisible == value) return;
+
                 _isDecCheckBoxVisible = value;
                 RaisePropertyChanged("IsDecCheckBoxVisible");
             }
@@ -122,6 +127,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -147,6 +154,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _pickedDate; }
             set
             {
+                if (_pickedDate == value) return;
+
                 _pickedDate = value;
                 RaisePropertyChanged("PickedDate");
             }
@@ -161,6 +170,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _contactPersonName; }
             set
             {
+                if (_contactPersonName == value) return;
+
                 _contactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
             }
@@ -173,18 +184,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _idNumber; }
             set
             {
+                if (_idNumber == value) return;
+
                 _idNumber = value;
                 RaisePropertyChanged("IDNumber");
             }
         }
 
-        private bool isIDVerified = false;
+        private bool _isIDVerified = false;
         public bool IsIDVerified
         {
-            get { return isIDVerified; }
+            get { return _isIDVerified; }
             set
             {
-                isIDVerified = value;
+                if (_isIDVerified == value) return;
+
+                _isIDVerified = value;
                 RaisePropertyChanged("IsIDVerified");
             }
         }
@@ -194,6 +209,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _contractPersonEditable; }
             set
             {
+                if (_contractPersonEditable == value) return;
+
                 _contractPersonEditable = value;
                 RaisePropertyChanged("ContractPersonEditable");
             }
@@ -206,6 +223,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _idType; }
             set
             {
+                if (_idType == value) return;
+
                 _idType = value;
                 RaisePropertyChanged("IDType");
             }
@@ -218,6 +237,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isDOBVisible; }
             set
             {
+                if (_isDOBVisible == value) return;
+
                 _isDOBVisible = value;
                 RaisePropertyChanged("IsDOBVisible");
             }
@@ -230,6 +251,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isAtachmentsVisible; }
             set
             {
+                if (_isAtachmentsVisible == value) return;
+
                 _isAtachmentsVisible = value;
                 RaisePropertyChanged("IsAtachmentsVisible");
             }
@@ -242,6 +265,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _effectiveDatePicked; }
             set
             {
+                if (_effectiveDatePicked == value) return;
+
                 _effectiveDatePicked = value;
                 RaisePropertyChanged("EffectiveDatePicked");
             }
@@ -254,6 +279,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _idTypePickerModel; }
             set
             {
+                if (_idTypePickerModel == value) return;
+
                 _idTypePickerModel = value;
                 RaisePropertyChanged("IDTypePickerModel");
             }
@@ -266,6 +293,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _effectiveDatePickerModel; }
             set
             {
+                if (_effectiveDatePickerModel == value) return;
+
                 _effectiveDatePickerModel = value;
                 RaisePropertyChanged("EffectiveDatePickerModel");
             }
@@ -278,6 +307,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isFrequencyDetailsEnabled; }
             set
             {
+                if (_isFrequencyDetailsEnabled == value) return;
+
                 _isFrequencyDetailsEnabled = value;
                 FrequencyDetailsButtonBackGroundColor = Color.FromHex(_isFrequencyDetailsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsFrequencyDetailsEnabled");
@@ -306,6 +337,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isAttachmentsEnabled; }
             set
             {
+                if (_isAttachmentsEnabled == value) return;
+
                 _isAttachmentsEnabled = value;
                 AttachButtonBackGroundColor = Color.FromHex(_isAttachmentsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsAttachmentsEnabled");
@@ -334,6 +367,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isDeclarationEnabled; }
             set
             {
+                if (_isDeclarationEnabled == value) return;
+
                 _isDeclarationEnabled = value;
                 DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsDeclarationEnabled");
@@ -468,6 +503,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _changeFillingResponse; }
             set
             {
+                if (_changeFillingResponse == value) return;
+
                 _changeFillingResponse = value;
                 RaisePropertyChanged("ChangeFillingResponse");
             }
@@ -480,6 +517,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _effectiveDateResponse; }
             set
             {
+                if (_effectiveDateResponse == value) return;
+
                 _effectiveDateResponse = value;
                 RaisePropertyChanged("EffectiveDateResponse");
             }
@@ -528,7 +567,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             });
             onMoreOptionClicked = new Command(async () =>
             {
-                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
 
             CloseClick = new Command(async () =>
@@ -698,7 +737,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                 //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
@@ -749,6 +788,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -816,7 +857,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                 _navigationService.GoBack();
 
@@ -845,7 +886,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -868,7 +909,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                     WebServiceManager.ErrorMessageForVAT = string.Empty;
                                 });
@@ -889,6 +930,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1192,7 +1235,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1270,12 +1314,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1293,9 +1341,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -1518,6 +1568,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isBackVisible == value) return;
                 _isBackVisible = value;
                 RaisePropertyChanged("IsBackVisible");
             }
@@ -1532,6 +1583,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isFrequencyViewEnabled == value) return;
+
                 _isFrequencyViewEnabled = value;
                 RaisePropertyChanged("IsFrequencyViewEnabled");
             }
@@ -1547,6 +1600,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isAttachmentsViewEnabled == value) return;
+
                 _isAttachmentsViewEnabled = value;
                 RaisePropertyChanged("IsAttachmentsViewEnabled");
             }
@@ -1561,6 +1616,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isDeclarationViewEnabled == value) return;
+
                 _isDeclarationViewEnabled = value;
                 RaisePropertyChanged("IsDeclarationViewEnabled");
             }
@@ -1575,6 +1632,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_isSummaryViewEnabled == value) return;
+
                 _isSummaryViewEnabled = value;
                 RaisePropertyChanged("IsSummaryViewEnabled");
             }
@@ -1589,6 +1648,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_showAttachments == value) return;
+
                 _showAttachments = value;
                 RaisePropertyChanged("ShowAttachments");
             }
@@ -1604,6 +1665,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_selectedOutletOptionIndex == value) return;
+
                 _selectedOutletOptionIndex = value;
                 RaisePropertyChanged("SelectedOutletOptionIndex");
             }
@@ -1618,6 +1681,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_selectedAttachmentText == value) return;
+
                 _selectedAttachmentText = value;
                 RaisePropertyChanged("SelectedAttachmentText");
             }
@@ -1633,6 +1698,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_referenceNumber == value) return;
+
                 _referenceNumber = value;
                 RaisePropertyChanged("ReferenceNumber");
             }
@@ -1647,6 +1714,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_currentFrequency == value) return;
+
                 _currentFrequency = value;
                 RaisePropertyChanged("CurrentFrequency");
             }
@@ -1661,6 +1730,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_newFrequency == value) return;
+
                 _newFrequency = value;
                 RaisePropertyChanged("NewFrequency");
             }
@@ -1672,6 +1743,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isTwoYearsAtachmentsVisible; }
             set
             {
+                if (_isTwoYearsAtachmentsVisible == value) return;
+
                 _isTwoYearsAtachmentsVisible = value;
                 RaisePropertyChanged("IsTwoYearsAtachmentsVisible");
             }
@@ -1682,6 +1755,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isMonthsAtachmentsVisible; }
             set
             {
+                if (_isMonthsAtachmentsVisible == value) return;
+
                 _isMonthsAtachmentsVisible = value;
                 RaisePropertyChanged("IsMonthsAtachmentsVisible");
             }
@@ -1692,6 +1767,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             get { return _isOthersAtachmentsVisible; }
             set
             {
+                if (_isOthersAtachmentsVisible == value) return;
+
                 _isOthersAtachmentsVisible = value;
                 RaisePropertyChanged("IsOthersAtachmentsVisible");
             }
@@ -1741,6 +1818,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             set
             {
+                if (_selectedOutletOption == value) return;
+
                 _selectedOutletOption = value;
                 RaisePropertyChanged("SelectedOutletOption");
             }
@@ -1772,7 +1851,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1810,7 +1890,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public async void AttachmentsContinueBtnClicked()
+        public void AttachmentsContinueBtnClicked()
         {
             try
             {
@@ -1823,7 +1903,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1835,7 +1916,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public async void GoBackToDeclarationClicked()
+        public void GoBackToDeclarationClicked()
         {
             try
             {
@@ -1843,7 +1924,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1854,7 +1936,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 });
             }
         }
-        public async void GoBackToDashboardClicked()
+        public void GoBackToDashboardClicked()
         {
             try
             {
@@ -1862,7 +1944,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1873,7 +1956,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 });
             }
         }
-        public async void GoBackToAttachmentsClicked()
+        public void GoBackToAttachmentsClicked()
         {
             try
             {
@@ -1881,7 +1964,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1892,7 +1976,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 });
             }
         }
-        public async void GoBackToFrequencyDetailsClicked()
+        public void GoBackToFrequencyDetailsClicked()
         {
             try
             {
@@ -1900,7 +1984,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -1974,7 +2059,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
     
 
 
-        public async void DeclarationContinueBtnClicked()
+        public void DeclarationContinueBtnClicked()
         {
 
             try
@@ -1987,7 +2072,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -2028,7 +2114,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -2089,6 +2176,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         isSubmitted = false;
                         IsLoading = false;
                         return null;
@@ -2113,6 +2202,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 isSubmitted = false;
                 return response;
             }
@@ -2305,6 +2396,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     catch (InternetException ex)
                     {
+
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -2329,13 +2421,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2411,13 +2505,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2483,13 +2579,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2715,7 +2813,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 

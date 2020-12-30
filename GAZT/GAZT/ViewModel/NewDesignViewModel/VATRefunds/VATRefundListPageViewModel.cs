@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
-using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 
@@ -35,7 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-
+                if (_vatRefundsModel == value) return;
                 _vatRefundsModel = value;
                 RaisePropertyChanged("VATRefundsModel");
             }
@@ -53,6 +51,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsSubItemReturnsSet == value) return;
 
                 _vatRefundsSubItemReturnsSet = value;
                 RaisePropertyChanged("VATRefundsSubItemReturnsSet");
@@ -68,6 +67,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_vatRefundsSet == value) return;
 
                 _vatRefundsSet = value;
                 RaisePropertyChanged("VATRefundsSet");
@@ -83,6 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_vatRefundsSetCopy == value) return;
 
                 _vatRefundsSetCopy = value;
                 RaisePropertyChanged("VATRefundsSetCopy");
@@ -98,6 +99,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_vatRefundsSetCopy == value) return;
 
                 _vatRefundsSearchSet = value;
                 RaisePropertyChanged("VATRefundsSearchSet");
@@ -114,6 +116,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsListResultModel == value) return;
 
                 _vatRefundsListResultModel = value;
                 RaisePropertyChanged("VatRefundsListResultModel");
@@ -134,6 +137,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
                 RaisePropertyChanged("VatRefundsDisplayDataModel");
@@ -150,6 +154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_ibanData == value) return;
 
                 _ibanData = value;
                 RaisePropertyChanged("IbanData");
@@ -166,6 +171,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsIbanDataModel == value) return;
 
                 _vatRefundsIbanDataModel = value;
                 RaisePropertyChanged("VatRefundsIbanDataModel");
@@ -182,6 +188,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_totalReassessmentAmount == value) return;
 
                 _totalReassessmentAmount = value;
                 RaisePropertyChanged("TotalReassessmentAmount");
@@ -198,6 +205,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_isSearchButtonVisible == value) return;
 
                 _isSearchButtonVisible = value;
                 RaisePropertyChanged("IsSearchButtonVisible");
@@ -214,6 +222,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_isCloseButtonVisible == value) return;
 
                 _isCloseButtonVisible = value;
                 RaisePropertyChanged("IsCloseButtonVisible");
@@ -273,7 +282,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 IsLoading = true;
             });
 
-            Task GetRefundListTask = null;
 
             try
             {
@@ -362,6 +370,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                    IsLoading = false;

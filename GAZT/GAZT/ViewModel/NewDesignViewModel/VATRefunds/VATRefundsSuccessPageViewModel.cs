@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Input;
 using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight;
@@ -26,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-
+                if (_vatNewReqSummaryData == value) return;
                 _vatNewReqSummaryData = value;
                 RaisePropertyChanged("VatNewReqSummaryData");
             }
@@ -50,7 +49,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             _dialogService = dialogService;
 
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });

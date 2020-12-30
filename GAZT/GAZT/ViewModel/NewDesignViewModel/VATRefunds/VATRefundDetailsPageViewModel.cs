@@ -35,7 +35,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-
+                if (_vatRefundsHeaderSet == value) return;
                 _vatRefundsHeaderSet = value;
                 RaisePropertyChanged("VATRefundsHeaderSet");
             }
@@ -51,6 +51,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsSubItemReturnsSet == value) return;
 
                 _vatRefundsSubItemReturnsSet = value;
                 RaisePropertyChanged("VATRefundsSubItemReturnsSet");
@@ -67,6 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsListResultModel == value) return;
 
                 _vatRefundsListResultModel = value;
                 RaisePropertyChanged("VatRefundsListResultModel");
@@ -78,6 +80,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             get => _TPAddress;
             set
             {
+                if (_TPAddress == value) return;
+
                 _TPAddress = value;
                 RaisePropertyChanged(nameof(TPAddress));
             }
@@ -109,6 +113,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatNewReqSummaryData == value) return;
 
                 _vatNewReqSummaryData = value;
                 RaisePropertyChanged("VatNewReqSummaryData");
@@ -125,6 +130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
                 RaisePropertyChanged("VatRefundsDisplayDataModel");
@@ -141,6 +147,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_isNewReqSummary == value) return;
 
                 _isNewReqSummary = value;
                 RaisePropertyChanged("IsNewReqSummary");
@@ -157,6 +164,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
+                if (_selectedIbanIdType == value) return;
 
                 _selectedIbanIdType = value;
                 RaisePropertyChanged("SelectedIbanIdType");
@@ -172,6 +180,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_iBANTypesList == value) return;
+
                 _iBANTypesList = value;
                 RaisePropertyChanged("IBANTypesList");
             }
@@ -186,6 +196,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -419,6 +431,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -470,6 +484,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;

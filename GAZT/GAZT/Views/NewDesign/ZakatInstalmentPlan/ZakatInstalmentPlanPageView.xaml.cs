@@ -332,7 +332,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {

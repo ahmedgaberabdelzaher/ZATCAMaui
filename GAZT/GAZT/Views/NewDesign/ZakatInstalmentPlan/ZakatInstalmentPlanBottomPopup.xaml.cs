@@ -9,8 +9,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatInstalmentPlanBottomPopup : PopupPage
     {
-
-
         ZakatInstalmentPlanViewModel viewModel;
         public ZakatInstalmentPlanBottomPopup()
         {

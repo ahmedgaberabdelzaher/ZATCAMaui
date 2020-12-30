@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GAZT.Helper;
-using GAZT.Manager;
-using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
@@ -31,6 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_IsSummaryVisible == value) return;
                 _IsSummaryVisible = value;
                 RaisePropertyChanged("IsSummaryVisible");
             }
@@ -45,6 +40,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_IsDeclarationVisible == value) return;
+
                 _IsDeclarationVisible = value;
                 RaisePropertyChanged("IsDeclarationVisible");
             }
@@ -59,6 +56,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_IsAttachmentsVisible == value) return;
+
                 _IsAttachmentsVisible = value;
                 RaisePropertyChanged("IsAttachmentsVisible");
             }
@@ -73,6 +72,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_IsObjectionReasonVisible == value) return;
+
                 _IsObjectionReasonVisible = value;
                 RaisePropertyChanged("IsObjectionReasonVisible");
             }
@@ -87,6 +88,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_IsObjectionDetailVisible == value) return;
+
                 _IsObjectionDetailVisible = value;
                 RaisePropertyChanged("IsObjectionDetailVisible");
             }
@@ -101,6 +104,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_HeaderTitle == value) return;
+
                 _HeaderTitle = value;
                 RaisePropertyChanged("HeaderTitle");
             }
@@ -115,6 +120,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             set
             {
+                if (_subHeaderTitle == value) return;
+
                 _subHeaderTitle = value;
                 RaisePropertyChanged("subHeaderTitle");
             }

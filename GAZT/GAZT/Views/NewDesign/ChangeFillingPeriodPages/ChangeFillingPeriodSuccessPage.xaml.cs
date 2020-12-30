@@ -1,7 +1,6 @@
 ﻿using System;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using GAZT.Helper;
-using GAZT.Manager;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -104,7 +103,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             {
             }
         }
-        private async void Download_Acknowledgement(object sender, EventArgs e)
+        private void Download_Acknowledgement(object sender, EventArgs e)
         {
             if (viewModel.ChangeFillingResponse.d.Fbnumz != null)
             {

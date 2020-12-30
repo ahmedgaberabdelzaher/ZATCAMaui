@@ -80,10 +80,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
         public ICommand GoBackToReportDetails { get; set; }
         public ICommand onMoreOptionClicked { get; set; }
 
-
-
-
-
         #endregion
 
         public readonly INavigationService _navigationService;
@@ -100,6 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_ListOfActionButtonsApplicable == value) return;
                 _ListOfActionButtonsApplicable = value;
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
@@ -112,6 +109,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isBackVisible; }
             set
             {
+                if (_isBackVisible == value) return;
+
                 _isBackVisible = value;
                 RaisePropertyChanged("IsBackVisible");
             }
@@ -124,6 +123,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isLoading; }
             set
             {
+                if (_isLoading == value) return;
+
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
             }
@@ -136,6 +137,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isReviewReasonVisible; }
             set
             {
+                if (_isReviewReasonVisible == value) return;
+
                 _isReviewReasonVisible = value;
                 RaisePropertyChanged("ReviewReasonVisible");
             }
@@ -148,6 +151,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _reviewDetailsVisible; }
             set
             {
+                if (_reviewDetailsVisible == value) return;
+
                 _reviewDetailsVisible = value;
                 RaisePropertyChanged("ReviewDetailsVisible");
             }
@@ -160,6 +165,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _reportDetailsVisible; }
             set
             {
+                if (_reportDetailsVisible == value) return;
+
                 _reportDetailsVisible = value;
                 RaisePropertyChanged("ReportDetailsVisible");
             }
@@ -172,6 +179,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _securityPaymentVisible; }
             set
             {
+                if (_securityPaymentVisible == value) return;
+
                 _securityPaymentVisible = value;
                 RaisePropertyChanged("SecurityPaymentVisible");
             }
@@ -184,6 +193,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _declarationVisible; }
             set
             {
+                if (_declarationVisible == value) return;
+
                 _declarationVisible = value;
                 RaisePropertyChanged("DeclarationVisible");
             }
@@ -196,6 +207,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _summaryVisible; }
             set
             {
+                if (_summaryVisible == value) return;
+
                 _summaryVisible = value;
                 RaisePropertyChanged("SummaryVisible");
             }
@@ -208,6 +221,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isSadadSecuritySelected; }
             set
             {
+                if (_isSadadSecuritySelected == value) return;
+
                 _isSadadSecuritySelected = value;
                 RaisePropertyChanged("IsSadadSecuritySelected");
             }
@@ -219,6 +234,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _sadadGenerateBtnVisible; }
             set
             {
+                if (_sadadGenerateBtnVisible == value) return;
+
                 _sadadGenerateBtnVisible = value;
                 RaisePropertyChanged("SadadGenerateBtnVisible");
             }
@@ -229,6 +246,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _sadadGenerateProgressVisible; }
             set
             {
+                if (_sadadGenerateProgressVisible == value) return;
+
                 _sadadGenerateProgressVisible = value;
                 RaisePropertyChanged("SadadGenerateProgressVisible");
             }
@@ -239,6 +258,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _sadadAmountVisible; }
             set
             {
+                if (_sadadAmountVisible == value) return;
+
                 _sadadAmountVisible = value;
                 RaisePropertyChanged("SadadAmountVisible");
             }
@@ -251,6 +272,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isBankGurantSecuritySelected; }
             set
             {
+                if (_isBankGurantSecuritySelected == value) return;
+
                 _isBankGurantSecuritySelected = value;
                 RaisePropertyChanged("IsBankGurantSecuritySelected");
             }
@@ -263,6 +286,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isSecurityAmountMorethanZero; }
             set
             {
+                if (_isSecurityAmountMorethanZero == value) return;
+
                 _isSecurityAmountMorethanZero = value;
                 RaisePropertyChanged("IsSecurityAmountMorethanZero");
             }
@@ -275,6 +300,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _pickedDate; }
             set
             {
+                if (_pickedDate == value) return;
+
                 _pickedDate = value;
                 RaisePropertyChanged("PickedDate");
             }
@@ -289,6 +316,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _contactPersonName; }
             set
             {
+                if (_contactPersonName == value) return;
+
                 _contactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
             }
@@ -301,6 +330,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _reviewReason; }
             set
             {
+                if (_reviewReason == value) return;
+
                 _reviewReason = value;
                 RaisePropertyChanged("ReviewReason");
             }
@@ -313,6 +344,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _subReviewReason; }
             set
             {
+                if (_subReviewReason == value) return;
+
                 _subReviewReason = value;
                 RaisePropertyChanged("SubReviewReason");
             }
@@ -325,6 +358,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _applicationRefNumber; }
             set
             {
+                if (_applicationRefNumber == value) return;
+
                 _applicationRefNumber = value;
                 RaisePropertyChanged("ApplicationRefNumber");
             }
@@ -337,6 +372,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _requestDate; }
             set
             {
+                if (_requestDate == value) return;
+
                 _requestDate = value;
                 RaisePropertyChanged("RequestDate");
             }
@@ -349,6 +386,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _formattedrequestDate; }
             set
             {
+                if (_formattedrequestDate == value) return;
+
                 _formattedrequestDate = value;
                 RaisePropertyChanged("FormattedRequestDate");
             }
@@ -362,6 +401,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _formattedTaxperdioFromDate; }
             set
             {
+                if (_formattedTaxperdioFromDate == value) return;
+
                 _formattedTaxperdioFromDate = value;
                 RaisePropertyChanged("FormattedTaxperdioFromDate");
             }
@@ -375,6 +416,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _formattedTaxperdioToDate; }
             set
             {
+                if (_formattedTaxperdioToDate == value) return;
+
                 _formattedTaxperdioToDate = value;
                 RaisePropertyChanged("FormattedTaxperdioToDate");
             }
@@ -387,6 +430,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _taxPeriodOfCase; }
             set
             {
+                if (_taxPeriodOfCase == value) return;
+
                 _taxPeriodOfCase = value;
                 RaisePropertyChanged("TaxPeriodOfCase");
             }
@@ -399,6 +444,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _taxPeriodFrom; }
             set
             {
+                if (_taxPeriodFrom == value) return;
+
                 _taxPeriodFrom = value;
                 RaisePropertyChanged("TaxPeriodFrom");
             }
@@ -411,6 +458,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _taxPeriodTo; }
             set
             {
+                if (_taxPeriodTo == value) return;
+
                 _taxPeriodTo = value;
                 RaisePropertyChanged("TaxPeriodTo");
             }
@@ -423,6 +472,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _penalityAmountInQuestion; }
             set
             {
+                if (_penalityAmountInQuestion == value) return;
+
                 _penalityAmountInQuestion = value;
                 RaisePropertyChanged("PenalityAmountInQuestion");
             }
@@ -435,6 +486,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _reportDetails; }
             set
             {
+                if (_reportDetails == value) return;
+
                 _reportDetails = value;
                 RaisePropertyChanged("ReportDetails");
             }
@@ -447,6 +500,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _sADADNumber; }
             set
             {
+                if (_sADADNumber == value) return;
+
                 _sADADNumber = value;
                 RaisePropertyChanged("SADADNumber");
             }
@@ -458,10 +513,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _securityNumber; }
             set
             {
+                if (_securityNumber == value) return;
+
                 _securityNumber = value;
                 RaisePropertyChanged("SecurityNumber");
             }
         }
+
 
 
         public string _securityAmount = "";
@@ -471,6 +529,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _securityAmount; }
             set
             {
+                if (_securityAmount == value) return;
+
                 _securityAmount = value;
                 RaisePropertyChanged("SecurityAmount");
             }
@@ -483,6 +543,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _idNumber; }
             set
             {
+                if (_idNumber == value) return;
+
                 _idNumber = value;
                 RaisePropertyChanged("IDNumber");
             }
@@ -495,6 +557,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isIDVerified; }
             set
             {
+                if (isIDVerified == value) return;
+
                 isIDVerified = value;
                 RaisePropertyChanged("IsIDVerified");
             }
@@ -509,6 +573,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_vatReferanceNumber == value) return;
+
                 _vatReferanceNumber = value;
                 RaisePropertyChanged("VATReferanceNumber");
             }
@@ -520,6 +586,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _contractPersonEditable; }
             set
             {
+                if (_contractPersonEditable == value) return;
+
                 _contractPersonEditable = value;
                 RaisePropertyChanged("ContractPersonEditable");
             }
@@ -532,6 +600,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _idType; }
             set
             {
+                if (_idType == value) return;
+
                 _idType = value;
                 RaisePropertyChanged("IDType");
             }
@@ -544,6 +614,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isDOBVisible; }
             set
             {
+                if (_isDOBVisible == value) return;
+
                 _isDOBVisible = value;
                 RaisePropertyChanged("IsDOBVisible");
             }
@@ -557,6 +629,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isSadadCheckBox1; }
             set
             {
+                if (isSadadCheckBox1 == value) return;
+
                 isSadadCheckBox1 = value;
                 RaisePropertyChanged("IsSadadCheckBox1");
             }
@@ -569,6 +643,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isSadadCheckBox2; }
             set
             {
+                if (isSadadCheckBox2 == value) return;
+
                 isSadadCheckBox2 = value;
                 RaisePropertyChanged("IsSadadCheckBox2");
             }
@@ -581,6 +657,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isSadadCheckBox3; }
             set
             {
+                if (isSadadCheckBox3 == value) return;
                 isSadadCheckBox3 = value;
                 RaisePropertyChanged("IsSadadCheckBox3");
             }
@@ -593,6 +670,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isSadadCheckBox4; }
             set
             {
+                if (isSadadCheckBox4 == value) return;
+
                 isSadadCheckBox4 = value;
                 RaisePropertyChanged("IsSadadCheckBox4");
             }
@@ -605,6 +684,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isGeneratingFormbundle; }
             set
             {
+                if (isGeneratingFormbundle == value) return;
+
                 isGeneratingFormbundle = value;
                 RaisePropertyChanged("IsGeneratingFormbundle");
             }
@@ -618,6 +699,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isSadadRefeshVisible; }
             set
             {
+                if (isSadadRefeshVisible == value) return;
+
                 isSadadRefeshVisible = value;
                 RaisePropertyChanged("IsSadadRefeshVisible");
             }
@@ -636,6 +719,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (securityType == value) return;
+
                 securityType = value;
                 RaisePropertyChanged("SecurityType");
             }
@@ -650,6 +735,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (isReportDetailsEditable == value) return;
+
                 isReportDetailsEditable = value;
                 RaisePropertyChanged("IsReportDetailsEditable");
             }
@@ -663,6 +750,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (isDisputeDetailsEditable == value) return;
+
                 isDisputeDetailsEditable = value;
                 RaisePropertyChanged("IsDisputeDetailsEditable");
             }
@@ -676,6 +765,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (dAPOptionsEditable == value) return;
+
                 dAPOptionsEditable = value;
                 RaisePropertyChanged("DAPOptionsEditable");
             }
@@ -689,6 +780,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (isSecurityPOEditable == value) return;
+
                 isSecurityPOEditable = value;
                 RaisePropertyChanged("IsSecurityPOEditable");
             }
@@ -701,6 +794,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _reviewReasonPickerModel; }
             set
             {
+                if (_reviewReasonPickerModel == value) return;
+
                 _reviewReasonPickerModel = value;
                 RaisePropertyChanged("ReviewReasonPickerModel");
             }
@@ -718,6 +813,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (isSecurityPaymentsTabVisible == value) return;
+
                 isSecurityPaymentsTabVisible = value;
                 RaisePropertyChanged("IsSecurityPaymentsTabVisible");
             }
@@ -730,6 +827,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _reviewSubReasonPickerModel; }
             set
             {
+                if (_reviewSubReasonPickerModel == value) return;
+
                 _reviewSubReasonPickerModel = value;
                 RaisePropertyChanged("ReviewSubReasonPickerModel");
             }
@@ -742,6 +841,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _applicationRefPickerModel; }
             set
             {
+                if (_applicationRefPickerModel == value) return;
+
                 _applicationRefPickerModel = value;
                 RaisePropertyChanged("ApplicationRefPickerModel");
             }
@@ -754,6 +855,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _idTypePickerModel; }
             set
             {
+                if (_idTypePickerModel == value) return;
+
                 _idTypePickerModel = value;
                 RaisePropertyChanged("IDTypePickerModel");
             }
@@ -765,6 +868,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isReviewReasonEnabled; }
             set
             {
+                if (_isReviewReasonEnabled == value) return;
+
                 _isReviewReasonEnabled = value;
                 ReviewReasonButtonBackGroundColor = Color.FromHex(_isReviewReasonEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsReviewReasonEnabled");
@@ -795,6 +900,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isReportDetailsEnabled; }
             set
             {
+                if (_isReportDetailsEnabled == value) return;
+
                 _isReportDetailsEnabled = value;
                 ReportDetailsButtonBackGroundColor = Color.FromHex(_isReportDetailsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsReportDetailsEnabled");
@@ -825,6 +932,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isReviewDetailsEnabled; }
             set
             {
+                if (_isReviewDetailsEnabled == value) return;
+
                 _isReviewDetailsEnabled = value;
                 ReviewDetailsButtonBackGroundColor = Color.FromHex(_isReviewDetailsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsReviewDetailsEnabled");
@@ -855,6 +964,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isSecurityPaymentEnabled; }
             set
             {
+                if (_isSecurityPaymentEnabled == value) return;
+
                 _isSecurityPaymentEnabled = value;
                 SecurityPaymentButtonBackGroundColor = Color.FromHex(_isSecurityPaymentEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsSecurityPaymentEnabled");
@@ -884,6 +995,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isDeclarationEnabled; }
             set
             {
+                if (_isDeclarationEnabled == value) return;
+
                 _isDeclarationEnabled = value;
                 DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsDeclarationEnabled");
@@ -896,6 +1009,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBDocumentNumber; }
             set
             {
+                if (_vBDocumentNumber == value) return;
+
                 _vBDocumentNumber = value;
                 RaisePropertyChanged("VBDocumentNumber");
             }
@@ -906,6 +1021,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBSadadNumber; }
             set
             {
+                if (_vBSadadNumber == value) return;
+
                 _vBSadadNumber = value;
                 RaisePropertyChanged("VBSadadNumber");
             }
@@ -916,6 +1033,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBDateofPenality; }
             set
             {
+                if (_vBDateofPenality == value) return;
+
                 _vBDateofPenality = value;
                 RaisePropertyChanged("VBDateofPenality");
             }
@@ -926,6 +1045,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBDescriptionOfPenality; }
             set
             {
+                if (_vBDescriptionOfPenality == value) return;
+
                 _vBDescriptionOfPenality = value;
                 RaisePropertyChanged("VBDescriptionOfPenality");
             }
@@ -936,6 +1057,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBPeriodkey; }
             set
             {
+                if (_vBPeriodkey == value) return;
+
                 _vBPeriodkey = value;
                 RaisePropertyChanged("VBPeriodkey");
             }
@@ -946,6 +1069,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBStartDate; }
             set
             {
+                if (_vBStartDate == value) return;
+
                 _vBStartDate = value;
                 RaisePropertyChanged("VBStartDate");
             }
@@ -956,6 +1081,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBEndDate; }
             set
             {
+                if (_vBEndDate == value) return;
+
                 _vBEndDate = value;
                 RaisePropertyChanged("VBEndDate");
             }
@@ -966,6 +1093,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBDueDate; }
             set
             {
+                if (_vBDueDate == value) return;
+
                 _vBDueDate = value;
                 RaisePropertyChanged("VBDueDate");
             }
@@ -976,6 +1105,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vBAmount; }
             set
             {
+                if (_vBAmount == value) return;
+
                 _vBAmount = value;
                 RaisePropertyChanged("VBAmount");
             }
@@ -987,6 +1118,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vATinNumber; }
             set
             {
+                if (_vBAmount == value) return;
+
                 _vATinNumber = value;
                 RaisePropertyChanged("VATinNumber");
             }
@@ -998,6 +1131,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAAccNumber; }
             set
             {
+                if (_vAAccNumber == value) return;
+
                 _vAAccNumber = value;
                 RaisePropertyChanged("VAAccNumber");
             }
@@ -1009,6 +1144,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAIdnumber; }
             set
             {
+                if (_vAIdnumber == value) return;
+
                 _vAIdnumber = value;
                 RaisePropertyChanged("VAIdnumber");
             }
@@ -1020,6 +1157,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vATaxpayerName; }
             set
             {
+                if (_vATaxpayerName == value) return;
+
                 _vATaxpayerName = value;
                 RaisePropertyChanged("VATaxpayerName");
             }
@@ -1031,6 +1170,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAAddress; }
             set
             {
+                if (_vAAddress == value) return;
+
                 _vAAddress = value;
                 RaisePropertyChanged("VAAddress");
             }
@@ -1042,6 +1183,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAVATReturnType; }
             set
             {
+                if (_vAVATReturnType == value) return;
+
                 _vAVATReturnType = value;
                 RaisePropertyChanged("VAVATReturnType");
             }
@@ -1053,6 +1196,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAVatReturnReferenceNo; }
             set
             {
+                if (_vAVatReturnReferenceNo == value) return;
+
                 _vAVatReturnReferenceNo = value;
                 RaisePropertyChanged("VAVatReturnReferenceNo");
             }
@@ -1064,6 +1209,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vATaxPeriod; }
             set
             {
+                if (_vATaxPeriod == value) return;
+
                 _vATaxPeriod = value;
                 RaisePropertyChanged("VATaxPeriod");
             }
@@ -1075,6 +1222,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAVatAccountNum; }
             set
             {
+                if (_vAVatAccountNum == value) return;
+
                 _vAVatAccountNum = value;
                 RaisePropertyChanged("VAVatAccountNum");
             }
@@ -1086,6 +1235,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vASalesAmount; }
             set
             {
+                if (_vASalesAmount == value) return;
+
                 _vASalesAmount = value;
                 RaisePropertyChanged("VASalesAmount");
             }
@@ -1097,6 +1248,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vASalesVatAdjustment; }
             set
             {
+                if (_vASalesVatAdjustment == value) return;
+
                 _vASalesVatAdjustment = value;
                 RaisePropertyChanged("VASalesVatAdjustment");
             }
@@ -1108,6 +1261,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAVatOnSales; }
             set
             {
+                if (_vAVatOnSales == value) return;
+
                 _vAVatOnSales = value;
                 RaisePropertyChanged("VAVatOnSales");
             }
@@ -1119,6 +1274,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAPurchaseAmount; }
             set
             {
+                if (_vAPurchaseAmount == value) return;
+
                 _vAPurchaseAmount = value;
                 RaisePropertyChanged("VAPurchaseAmount");
             }
@@ -1130,6 +1287,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAPurchaseVatAdjustment; }
             set
             {
+                if (_vAPurchaseVatAdjustment == value) return;
+
                 _vAPurchaseVatAdjustment = value;
                 RaisePropertyChanged("VAPurchaseVatAdjustment");
             }
@@ -1141,6 +1300,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vAVatOnPurchase; }
             set
             {
+                if (_vAVatOnPurchase == value) return;
+
                 _vAVatOnPurchase = value;
                 RaisePropertyChanged("VAVatOnPurchase");
             }
@@ -1152,6 +1313,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vATotalDueVAT; }
             set
             {
+                if (_vATotalDueVAT == value) return;
+
                 _vATotalDueVAT = value;
                 RaisePropertyChanged("VATotalDueVAT");
             }
@@ -1163,6 +1326,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vATotalCreditVAT; }
             set
             {
+                if (_vATotalCreditVAT == value) return;
+
                 _vATotalCreditVAT = value;
                 RaisePropertyChanged("VATotalCreditVAT");
             }
@@ -1174,6 +1339,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isDECCheckBox; }
             set
             {
+                if (isDECCheckBox == value) return;
+
                 isDECCheckBox = value;
                 RaisePropertyChanged("IsDECCheckBox");
             }
@@ -1185,6 +1352,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vACorrrections; }
             set
             {
+                if (_vACorrrections == value) return;
+
                 _vACorrrections = value;
                 RaisePropertyChanged("VACorrrections");
             }
@@ -1196,6 +1365,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _vANetVat; }
             set
             {
+                if (_vANetVat == value) return;
+
                 _vANetVat = value;
                 RaisePropertyChanged("VANetVat");
             }
@@ -1207,6 +1378,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _viewApplicationTypeText; }
             set
             {
+                if (_viewApplicationTypeText == value) return;
+
                 _viewApplicationTypeText = value;
                 RaisePropertyChanged("ViewApplicationTypeText");
             }
@@ -1219,6 +1392,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get => _currenrIndex;
             set
             {
+                if (_currenrIndex == value) return;
+
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
@@ -1240,6 +1415,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _totalTaxLiability; }
             set
             {
+                if (_totalTaxLiability == value) return;
+
                 _totalTaxLiability = value;
                 RaisePropertyChanged("TotalTaxLiability");
             }
@@ -1250,6 +1427,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _taxPaid; }
             set
             {
+                if (_taxPaid == value) return;
+
                 _taxPaid = value;
                 RaisePropertyChanged("TaxPaid");
             }
@@ -1264,6 +1443,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (requestedReviewAmount == value) return;
+
                 requestedReviewAmount = value;
                 RaisePropertyChanged("RequestedReviewAmount");
             }
@@ -1277,6 +1458,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (disputeDetailsDesc == value) return;
+
                 disputeDetailsDesc = value;
                 RaisePropertyChanged("DisputeDetailsDesc");
             }
@@ -1291,6 +1474,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (isPenlaityAmountVisible == value) return;
+
                 isPenlaityAmountVisible = value;
                 RaisePropertyChanged("IsPenlaityAmountVisible");
             }
@@ -1304,6 +1489,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRTIDEffectiveDateFrom == value) return;
+
                 vRTIDEffectiveDateFrom = value;
                 RaisePropertyChanged("VRTIDEffectiveDateFrom");
             }
@@ -1318,6 +1505,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRTIDEffectiveDateTo == value) return;
+
                 vRTIDEffectiveDateTo = value;
                 RaisePropertyChanged("VRTIDEffectiveDateTo");
             }
@@ -1332,6 +1521,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (cIPFTxablePurchases == value) return;
+
                 cIPFTxablePurchases = value;
                 RaisePropertyChanged("CIPFTxablePurchases");
             }
@@ -1346,6 +1537,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (cIPFExemptPurchases == value) return;
+
                 cIPFExemptPurchases = value;
                 RaisePropertyChanged("CIPFExemptPurchases");
             }
@@ -1360,6 +1553,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (cITxablePurchases == value) return;
+
                 cITxablePurchases = value;
                 RaisePropertyChanged("CITxablePurchases");
             }
@@ -1374,6 +1569,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (cIExemptPurchases == value) return;
+
                 cIExemptPurchases = value;
                 RaisePropertyChanged("CIExemptPurchases");
             }
@@ -1388,6 +1585,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (pIPFTxablePurchases == value) return;
+
                 pIPFTxablePurchases = value;
                 RaisePropertyChanged("PIPFTxablePurchases");
             }
@@ -1402,6 +1601,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (pIPFExemptPurchases == value) return;
+
                 pIPFExemptPurchases = value;
                 RaisePropertyChanged("PIPFExemptPurchases");
             }
@@ -1416,6 +1617,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (pITxablePurchases == value) return;
+
                 pITxablePurchases = value;
                 RaisePropertyChanged("PITxablePurchases");
             }
@@ -1430,6 +1633,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (pIExemptPurchases == value) return;
+
                 pIExemptPurchases = value;
                 RaisePropertyChanged("PIExemptPurchases");
             }
@@ -1444,6 +1649,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vITDReportDetails == value) return;
+
                 vITDReportDetails = value;
                 RaisePropertyChanged("VITDReportDetails");
             }
@@ -1458,6 +1665,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vITDIDType == value) return;
+
                 vITDIDType = value;
                 RaisePropertyChanged("VITDIDType");
             }
@@ -1472,6 +1681,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vITDIDNumber == value) return;
+
                 vITDIDNumber = value;
                 RaisePropertyChanged("VITDIDNumber");
             }
@@ -1486,6 +1697,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vITDDateOfBirth == value) return;
+
                 vITDDateOfBirth = value;
                 RaisePropertyChanged("VITDDateOfBirth");
             }
@@ -1500,6 +1713,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vITDContactPersonName == value) return;
+
                 vITDContactPersonName = value;
                 RaisePropertyChanged("VITDContactPersonName");
             }
@@ -1514,6 +1729,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSRequestType == value) return;
+
                 vRVSRequestType = value;
                 RaisePropertyChanged("VRVSRequestType");
             }
@@ -1528,6 +1745,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSStartofSuspensionPeriod == value) return;
+
                 vRVSStartofSuspensionPeriod = value;
                 RaisePropertyChanged("VRVSStartofSuspensionPeriod");
             }
@@ -1542,6 +1761,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSEndofSuspensionPeriod == value) return;
+
                 vRVSEndofSuspensionPeriod = value;
                 RaisePropertyChanged("VRVSEndofSuspensionPeriod");
             }
@@ -1556,6 +1777,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSSuspendedfilingperiod == value) return;
+
                 vRVSSuspendedfilingperiod = value;
                 RaisePropertyChanged("VRVSSuspendedfilingperiod");
             }
@@ -1570,6 +1793,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSNextfilingperiod == value) return;
+
                 vRVSNextfilingperiod = value;
                 RaisePropertyChanged("VRVSNextfilingperiod");
             }
@@ -1584,6 +1809,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSNextfilingduedate == value) return;
+
                 vRVSNextfilingduedate = value;
                 RaisePropertyChanged("VRVSNextfilingduedate");
             }
@@ -1598,6 +1825,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSRFSuspensionofFiling == value) return;
+
                 vRVSRFSuspensionofFiling = value;
                 RaisePropertyChanged("VRVSRFSuspensionofFiling");
             }
@@ -1612,6 +1841,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSIDType == value) return;
+
                 vRVSIDType = value;
                 RaisePropertyChanged("VRVSIDType");
             }
@@ -1626,6 +1857,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSIDNumber == value) return;
+
                 vRVSIDNumber = value;
                 RaisePropertyChanged("VRVSIDNumber");
             }
@@ -1640,6 +1873,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRVSContactPersonName == value) return;
+
                 vRVSContactPersonName = value;
                 RaisePropertyChanged("VRVSContactPersonName");
             }
@@ -1654,6 +1889,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vRRequesttoReviewtheAmountValue == value) return;
+
                 vRRequesttoReviewtheAmountValue = value;
                 RaisePropertyChanged("VRRequesttoReviewtheAmountValue");
             }
@@ -1668,6 +1905,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (isVITDDOBVisible == value) return;
+
                 isVITDDOBVisible = value;
                 RaisePropertyChanged("IsVITDDOBVisible");
             }
@@ -1682,6 +1921,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (isApplicationVisible == value) return;
+
                 isApplicationVisible = value;
                 RaisePropertyChanged("IsApplicationVisible");
             }
@@ -1692,6 +1933,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isAssessPayOptionVisible; }
             set
             {
+                if (_isAssessPayOptionVisible == value) return;
+
                 _isAssessPayOptionVisible = value;
                 RaisePropertyChanged("IsAssessPayOptionVisible");
             }
@@ -1703,6 +1946,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isDraftClicked; }
             set
             {
+                if (isDraftClicked == value) return;
+
                 isDraftClicked = value;
                 RaisePropertyChanged("IsDraftClicked");
             }
@@ -1713,6 +1958,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return _isRRAmountEdit; }
             set
             {
+                if (_isRRAmountEdit == value) return;
+
                 _isRRAmountEdit = value;
                 RaisePropertyChanged("IsRRAmountEdit");
             }
@@ -1724,6 +1971,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return partialAmountCheckBox; }
             set
             {
+                if (partialAmountCheckBox == value) return;
+
                 partialAmountCheckBox = value;
                 RaisePropertyChanged("PartialAmountCheckBox");
             }
@@ -1737,6 +1986,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_charCountDisputeDetails == value) return;
+
                 _charCountDisputeDetails = value;
                 RaisePropertyChanged("charCountDisputeDetails");
             }
@@ -1753,6 +2004,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_charCountReportDetails == value) return;
+
                 _charCountReportDetails = value;
                 RaisePropertyChanged("charCountReportDetails");
             }
@@ -1764,6 +2017,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return fullPaymentCheckBox; }
             set
             {
+                if (fullPaymentCheckBox == value) return;
+
                 fullPaymentCheckBox = value;
                 RaisePropertyChanged("FullPaymentCheckBox");
             }
@@ -1805,6 +2060,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_vatDeregistrationSummaryDeclarationData == value) return;
+
                 if (value != null)
                 {
                     _vatDeregistrationSummaryDeclarationData = value;
@@ -1851,6 +2108,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (vatDeRegAttachmentsList == value) return;
+
                 if (value != null)
                     vatDeRegAttachmentsList = value;
                 RaisePropertyChanged("VatDeRegAttachmentsList");
@@ -1865,6 +2124,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_vatDeregistrationSummaryReasonData == value) return;
+
                 if (value != null)
                 {
                     _vatDeregistrationSummaryReasonData = value;
@@ -1935,6 +2196,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_vRVGVATeligiblesupplies == value) return;
+
                 _vRVGVATeligiblesupplies = value;
                 RaisePropertyChanged("VRVGVATeligiblesupplies");
             }
@@ -1948,6 +2211,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_vRVGVATeligiblepurchases == value) return;
+
                 _vRVGVATeligiblepurchases = value;
                 RaisePropertyChanged("VRVGVATeligiblepurchases");
             }
@@ -1961,6 +2226,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_vRVGEffectivedate == value) return;
+
                 _vRVGEffectivedate = value;
                 RaisePropertyChanged("VRVGEffectivedate");
             }
@@ -2002,6 +2269,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVGIDType == value) return;
+
                 _VrVGIDType = value;
                 RaisePropertyChanged("VRVGIDType");
             }
@@ -2015,6 +2284,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVGIDNumber == value) return;
+
                 _VrVGIDNumber = value;
                 RaisePropertyChanged("VRVGIDNumber");
             }
@@ -2028,6 +2299,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVGContactPersonName == value) return;
+
                 _VrVGContactPersonName = value;
                 RaisePropertyChanged("VRVGContactPersonName");
             }
@@ -2044,6 +2317,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_defaultReq == value) return;
+
                 _defaultReq = value;
                 RaisePropertyChanged("DefaultReq");
             }
@@ -2057,6 +2332,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_defaultSecurity == value) return;
+
                 _defaultSecurity = value;
                 RaisePropertyChanged("DefaultSecurity");
             }
@@ -2102,6 +2379,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRDOB == value) return;
+
                 _VrVRDOB = value;
                 RaisePropertyChanged("VrVRDOB");
             }
@@ -2115,6 +2394,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRIDType == value) return;
+
                 _VrVRIDType = value;
                 RaisePropertyChanged("VrVRIDType");
             }
@@ -2128,6 +2409,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRIDNumber == value) return;
+
                 _VrVRIDNumber = value;
                 RaisePropertyChanged("VrVRIDNumber");
             }
@@ -2141,6 +2424,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRContactPersonName == value) return;
+
                 _VrVRContactPersonName = value;
                 RaisePropertyChanged("VrVRContactPersonName");
             }
@@ -2152,6 +2437,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             get { return isSadadCheckBoxEnabled; }
             set
             {
+                if (isSadadCheckBoxEnabled == value) return;
+
                 isSadadCheckBoxEnabled = value;
                 RaisePropertyChanged("IsSadadCheckBoxEnabled");
             }
@@ -2166,6 +2453,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRcontactDOB == value) return;
+
                 _VrVRcontactDOB = value;
                 RaisePropertyChanged("VrVRContactDOB");
             }
@@ -2179,6 +2468,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRidNumberSR == value) return;
+
                 _VrVRidNumberSR = value;
                 RaisePropertyChanged("VrVRIdNumberSR");
             }
@@ -2193,6 +2484,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRfirstNameSR == value) return;
+
                 _VrVRfirstNameSR = value;
                 RaisePropertyChanged("VrVRFirstNameSR");
             }
@@ -2206,6 +2499,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRlastnmFR == value) return;
+
                 _VrVRlastnmFR = value;
                 RaisePropertyChanged("VrVRLastnmFR");
             }
@@ -2220,6 +2515,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRmobNumberFR == value) return;
+
                 _VrVRmobNumberFR = value;
                 RaisePropertyChanged("VrVRMobNumberFR");
             }
@@ -2233,6 +2530,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRvatEligibleStartDate == value) return;
+
                 _VrVRvatEligibleStartDate = value;
                 RaisePropertyChanged("VrVRVatEligibleStartDate");
             }
@@ -2247,6 +2546,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRquesTion3answerSelected == value) return;
+
                 _VrVRquesTion3answerSelected = value;
 
                 RaisePropertyChanged("VrVRquesTion3answerSelected");
@@ -2261,6 +2562,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRquesTion4answerSelected == value) return;
+
                 _VrVRquesTion4answerSelected = value;
 
                 RaisePropertyChanged("VrVRquesTion4answerSelected");
@@ -2275,6 +2578,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRquesTion1answerSelected == value) return;
+
                 _VrVRquesTion1answerSelected = value;
 
                 RaisePropertyChanged("VrVRquesTion1answerSelected");
@@ -2289,6 +2594,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRquesTion2answerSelected == value) return;
+
                 _VrVRquesTion2answerSelected = value;
 
                 RaisePropertyChanged("VrVRquesTion2answerSelected");
@@ -2303,6 +2610,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRidnumberFR == value) return;
+
                 _VrVRidnumberFR = value;
                 RaisePropertyChanged("VrVRIdnumberFR");
             }
@@ -2316,6 +2625,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRtypeFR == value) return;
+
                 _VrVRtypeFR = value;
                 RaisePropertyChanged("VrVRTypeFR");
             }
@@ -2330,6 +2641,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRfirstnmFR == value) return;
+
                 _VrVRfirstnmFR = value;
                 RaisePropertyChanged("VrVRFirstnmFR");
             }
@@ -2343,6 +2656,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRgpartFR == value) return;
+
                 _VrVRgpartFR = value;
                 RaisePropertyChanged("VrVRGpartFR");
             }
@@ -2356,6 +2671,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRIban == value) return;
+
                 _VrVRIban = value;
                 RaisePropertyChanged("VrVRIban");
             }
@@ -2369,6 +2686,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRsmtpAddrFR == value) return;
+
                 _VrVRsmtpAddrFR = value;
                 RaisePropertyChanged("VrVRSmtpAddrFR");
             }
@@ -2383,6 +2702,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRimportExportText == value) return;
+
                 _VrVRimportExportText = value;
                 RaisePropertyChanged("VrVRImportExportText");
             }
@@ -2396,6 +2717,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRAttachmentName == value) return;
+
                 _VrVRAttachmentName = value;
                 RaisePropertyChanged("VrVRAttachmentName");
             }
@@ -2409,6 +2732,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRvATRegistrationDetailsData == value) return;
+
                 _VrVRvATRegistrationDetailsData = value;
                 RaisePropertyChanged("VrVRVATRegistrationDetailsData");
             }
@@ -2422,6 +2747,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRminMaxRanges == value) return;
+
                 _VrVRminMaxRanges = value;
                 RaisePropertyChanged("VrVRMinMaxRanges");
             }
@@ -2437,6 +2764,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             set
             {
+                if (_VrVRibanList == value) return;
+
                 _VrVRibanList = value;
                 RaisePropertyChanged("VrVRIbanList");
             }
@@ -2477,34 +2806,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             _dialogService = dialogService;
 
-            CloseClick = new Command(async () => { _navigationService.GoBack(); });
+            CloseClick = new Command(() => { _navigationService.GoBack(); });
 
-            GoBackClick = new Command(async () => { BackNavigations(); });
+            GoBackClick = new Command(() => { BackNavigations(); });
 
-            ReviewReasonConBtnTapped = new Command(async () => { ReviewReasonConBtnClicked(); });
+            ReviewReasonConBtnTapped = new Command(() => { ReviewReasonConBtnClicked(); });
 
-            ReviewDetailsConBtnTapped = new Command(async () => { ReviewDetailsConBtnClicked(); });
-            ReportDetailsConBtnTapped = new Command(async () => { ReportDetailsConBtnClicked(); });
-            SecurityPaymentConBtnTapped = new Command(async () => { SecurityPaymentConBtnClicked(); });
+            ReviewDetailsConBtnTapped = new Command(() => { ReviewDetailsConBtnClicked(); });
+            ReportDetailsConBtnTapped = new Command(() => { ReportDetailsConBtnClicked(); });
+            SecurityPaymentConBtnTapped = new Command(() => { SecurityPaymentConBtnClicked(); });
 
-            DeclarationConBtnTapped = new Command(async () => { DeclarationConBtnClicked(); });
+            DeclarationConBtnTapped = new Command(() => { DeclarationConBtnClicked(); });
 
-            SummaryConBtnTapped = new Command(async () => { SummaryConBtnClicked(); });
+            SummaryConBtnTapped = new Command(() => { SummaryConBtnClicked(); });
 
-            GoBackToReviewReason = new Command(async () => { EnableReviewReasonView(); });
-            GoBackToReviewDetails = new Command(async () => { EnableReviewDetailsView(); });
-            GoBackToDeclaration = new Command(async () => { EnableDeclarationView(); });
-            ViewApplicationTapped = new Command(async () => { ViewApplicationClicked(); });
-            NewAttachmentTapped = new Command(async () => { NewAttachmentClicked(); });
+            GoBackToReviewReason = new Command(() => { EnableReviewReasonView(); });
+            GoBackToReviewDetails = new Command(() => { EnableReviewDetailsView(); });
+            GoBackToDeclaration = new Command(() => { EnableDeclarationView(); });
+            ViewApplicationTapped = new Command(() => { ViewApplicationClicked(); });
+            NewAttachmentTapped = new Command(() => { NewAttachmentClicked(); });
             NewBankGuranteeAttachmentTapped = new Command(NewBankGuranteeAttachmentClicked);
-            ReviewReasonCommand = new Command(async () => { showReviewReasonPickerDialog(); });
-            SubReviewReasonCommand = new Command(async () => { showSubReviewReasonPickerDialog(); });
-            ApplicationNumRefCommand = new Command(async () => { showAppRefNumberPickerDialog(); });
-            SadadGenerateBtnTapped = new Command(async () => { ShowSADADConfirmation(); });
-            ShowDatePicker = new Command(async () => { showDatePickerDialog(); });
-            IdTypeSpinnerTapped = new Command(async () => { showIdTypePickerDialog(); });
-            GoBackToReportDetails = new Command(async () => { EnableReportDetailsView(); });
-            onMoreOptionClicked = new Command(async () =>
+            ReviewReasonCommand = new Command(() => { showReviewReasonPickerDialog(); });
+            SubReviewReasonCommand = new Command(() => { showSubReviewReasonPickerDialog(); });
+            ApplicationNumRefCommand = new Command(() => { showAppRefNumberPickerDialog(); });
+            SadadGenerateBtnTapped = new Command(() => { ShowSADADConfirmation(); });
+            ShowDatePicker = new Command(() => { showDatePickerDialog(); });
+            IdTypeSpinnerTapped = new Command(() => { showIdTypePickerDialog(); });
+            GoBackToReportDetails = new Command(() => { EnableReportDetailsView(); });
+            onMoreOptionClicked = new Command(() =>
             {
                 PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
@@ -2562,7 +2891,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                     _navigationService.GoBack();
 
@@ -2592,7 +2921,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -2615,7 +2944,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         WebServiceManager.ErrorMessageForVAT = string.Empty;
                     });
@@ -2657,7 +2986,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                     //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
@@ -2686,7 +3015,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     {
                         IsLoading = false;
                     });
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         IsLoading = false;
                         //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
@@ -2941,12 +3270,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2964,12 +3296,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -2988,12 +3322,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3012,12 +3348,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -3037,6 +3375,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -3068,6 +3408,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -3100,6 +3442,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -3129,6 +3473,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -3153,6 +3499,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -3188,6 +3536,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -3212,9 +3562,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     Convert.ToDecimal(selectedApplicationRef.Liaamt),
                     Convert.ToDecimal(selectedApplicationRef.Clramt));
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3267,6 +3618,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -3376,7 +3729,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             SecurityType = AppResources.VRBANKGURANTEE;
         }
 
-        public async Task GenerateSadadNumberAsync()
+        public  async Task GenerateSadadNumberAsync()
         {
             ShowSadadProgressLabel();
             IsSadadCheckBoxEnabled = false;
@@ -3600,6 +3953,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void PopulateVatDeRegAttachments(List<Attachment> attachments)
@@ -3662,6 +4017,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3972,8 +4329,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     }
                     EnableSecurityPaymentsConButton();
                 }
-                catch (Exception e)
-                { }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                }
 
                 if (selectedApplicationRef.Msgflg == "X")
                 {
@@ -4234,7 +4594,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -4713,10 +5074,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() => { IsLoading = false; });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -4876,10 +5239,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() => { IsLoading = false; });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -5143,9 +5508,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                         EnableSecurityPaymentsConButton();
                     }
-                    catch (Exception e)
+                    catch (Exception ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                 }
@@ -5473,13 +5839,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -5953,6 +6321,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     }
                     catch (Exception ex)
                     {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                         IsLoading = false;
                         return null;
 
@@ -5981,6 +6351,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 return response;
             }
 
@@ -6099,13 +6471,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -6251,7 +6625,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 //{
 
                 //});
-                Device.BeginInvokeOnMainThread(async () =>
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -6261,11 +6637,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     // _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     // _navigationService.GoBack();
@@ -6364,14 +6742,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-
-                });
+            
             }
         }
 
@@ -6491,13 +6868,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -6598,13 +6977,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -6725,13 +7106,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -6905,13 +7288,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }

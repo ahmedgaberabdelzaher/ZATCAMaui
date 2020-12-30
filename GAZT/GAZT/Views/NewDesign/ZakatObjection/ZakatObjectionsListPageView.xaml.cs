@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             this.BindingContext = viewModel;
             viewModel.ResetData();
             viewModel.ZAKATObjectionList();
-            
+
 
         }
 
@@ -60,29 +60,29 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                 Preferences.Set("ZakatObjectionSelectedValue", item.Fbnum);
                 Preferences.Set("ZakatObjectionSelectedType", item.Fbtyp);
 
-               
-              
 
-                    if (item.Fbtyp == "TP09")
-                    {
-                        viewModel.GetWithdrawReviewReason(item.Fbnum);
-                    }
-                    else if (item.Fbtyp == "TP10")
-                    {
-                        viewModel.GetWithdrawReviewReasonTP10(item.Fbnum);
-                    }
-                    else if (item.Fbtyp == "ZNOB" && (item.StatText == "Additional Info Requested" || item.StatText == "طلب معلومات اضافية"))
-                    {
-                        viewModel.showRejectPopup();
-                    }
+
+
+                if (item.Fbtyp == "TP09")
+                {
+                    viewModel.GetWithdrawReviewReason(item.Fbnum);
+                }
+                else if (item.Fbtyp == "TP10")
+                {
+                    viewModel.GetWithdrawReviewReasonTP10(item.Fbnum);
+                }
+                else if (item.Fbtyp == "ZNOB" && (item.StatText == "Additional Info Requested" || item.StatText == "طلب معلومات اضافية"))
+                {
+                    viewModel.showRejectPopup();
+                }
                 else
-                    {
-                        viewModel.ReqInstalmentBtnClickedAsync();
-                    }
-                
+                {
+                    viewModel.ReqInstalmentBtnClicked();
+                }
 
 
-               
+
+
             }
             catch (Exception exception)
             {
